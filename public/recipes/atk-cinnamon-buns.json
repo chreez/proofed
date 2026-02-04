@@ -1,0 +1,293 @@
+{
+  "meta": {
+    "name": "ATK Cinnamon Buns",
+    "source": "America's Test Kitchen",
+    "yields": "8 buns",
+    "total_time": "~1.5 hrs"
+  },
+  "config": {
+    "early_check_percent": 0.7
+  },
+  "vessels": [
+    { "id": "V1", "name": "Small Bowl", "reuse": "Filling mixture - holds until assembly" },
+    { "id": "V2", "name": "Large Bowl", "reuse": "Dry mix → dough → freed after transfer to counter" },
+    { "id": "V3", "name": "Medium Bowl", "reuse": "Wet mix → freed → glaze" },
+    { "id": "V4", "name": "Cast Iron Skillet (25cm)", "reuse": "Grease → rise → bake → serve" },
+    { "id": "V5", "name": "Microwave-Safe Bowl", "reuse": "Melt all butter at start, portion throughout" }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": ["Small Bowl", "Large Bowl", "Medium Bowl", "Cast Iron Skillet (25cm)", "Microwave-Safe Bowl"],
+        "equipment": ["Whisk", "Rubber Spatula", "Rolling Pin", "Serrated Knife", "Plastic Wrap", "Wire Rack", "Pastry Brush"],
+        "ingredients": [
+          { "id": "butter", "name": "Unsalted Butter (melted)", "total": 140, "unit": "g", "breakdown": [
+            { "label": "filling", "amount": 14 },
+            { "label": "wet mix", "amount": 28 },
+            { "label": "brush dough", "amount": 28 },
+            { "label": "grease skillet", "amount": 14 },
+            { "label": "brush before bake", "amount": 28 },
+            { "label": "glaze", "amount": 28 }
+          ]},
+          { "id": "flour", "name": "All-Purpose Flour", "total": 390, "unit": "g", "breakdown": null },
+          { "id": "brown_sugar", "name": "Dark Brown Sugar (packed)", "total": 149, "unit": "g", "breakdown": null },
+          { "id": "granulated_sugar", "name": "Granulated Sugar", "total": 75, "unit": "g", "breakdown": [
+            { "label": "filling", "amount": 50 },
+            { "label": "wet mix", "amount": 25 }
+          ]},
+          { "id": "powdered_sugar", "name": "Confectioners' Sugar", "total": 113, "unit": "g", "breakdown": null },
+          { "id": "milk", "name": "Whole Milk", "total": 326, "unit": "g", "breakdown": [
+            { "label": "dough (warm to 43°C)", "amount": 296 },
+            { "label": "glaze (room temp)", "amount": 30 }
+          ]},
+          { "id": "cream_cheese", "name": "Cream Cheese (softened)", "total": 85, "unit": "g", "breakdown": null },
+          { "id": "yeast", "name": "Instant Yeast", "total": 12, "unit": "g", "breakdown": null },
+          { "id": "baking_powder", "name": "Baking Powder", "total": 10, "unit": "g", "breakdown": null },
+          { "id": "cinnamon", "name": "Ground Cinnamon", "total": 5, "unit": "g", "breakdown": null },
+          { "id": "cloves", "name": "Ground Cloves", "total": 0.3, "unit": "g", "breakdown": null },
+          { "id": "salt", "name": "Salt", "total": 6, "unit": "g", "breakdown": [
+            { "label": "filling", "amount": 0.75 },
+            { "label": "dough", "amount": 4.5 },
+            { "label": "glaze", "amount": 0.75 }
+          ]},
+          { "id": "vanilla", "name": "Vanilla Extract", "total": 2, "unit": "g", "breakdown": null }
+        ]
+      },
+      "states": []
+    },
+    {
+      "id": "MIXES",
+      "title": "Prepare Components",
+      "gather": null,
+      "states": ["MIX_FILLING", "MIX_DRY", "MIX_WET"]
+    },
+    {
+      "id": "DOUGH",
+      "title": "Form Dough",
+      "gather": null,
+      "states": ["COMBINE_DOUGH", "KNEAD"]
+    },
+    {
+      "id": "ASSEMBLE",
+      "title": "Roll and Fill",
+      "gather": null,
+      "states": ["ROLL_FILL", "ROLL_CYLINDER", "CUT_ARRANGE"]
+    },
+    {
+      "id": "RISE_BAKE",
+      "title": "Rise and Bake",
+      "gather": null,
+      "states": ["RISE", "PRE_BAKE", "BAKE"]
+    },
+    {
+      "id": "FINISH",
+      "title": "Cool and Glaze",
+      "gather": null,
+      "states": ["COOL", "MAKE_GLAZE", "APPLY_GLAZE"]
+    }
+  ],
+  "states": [
+    {
+      "id": "MIX_FILLING",
+      "title": "Make Filling Mixture",
+      "direction": "In small bowl, combine brown sugar, 14g melted butter, 50g granulated sugar, cinnamon, cloves, and 0.75g salt. Mix until uniform. Set aside.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Dark Brown Sugar", "amount": "149g" },
+        { "name": "Butter", "amount": "14g" },
+        { "name": "Granulated Sugar", "amount": "50g" },
+        { "name": "Cinnamon", "amount": "5g" },
+        { "name": "Cloves", "amount": "0.3g" },
+        { "name": "Salt", "amount": "0.75g" }
+      ],
+      "exit_condition": "Mixture is evenly combined with no dry pockets",
+      "notes": null
+    },
+    {
+      "id": "MIX_DRY",
+      "title": "Combine Dry Ingredients",
+      "direction": "In large bowl, whisk together flour, baking powder, and 4.5g salt.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Flour", "amount": "390g" },
+        { "name": "Baking Powder", "amount": "10g" },
+        { "name": "Salt", "amount": "4.5g" }
+      ],
+      "exit_condition": "Dry ingredients evenly distributed, no clumps",
+      "notes": null
+    },
+    {
+      "id": "MIX_WET",
+      "title": "Activate Yeast",
+      "direction": "In medium bowl, whisk together warm milk (43°C/110°F), yeast, 28g melted butter, and 25g granulated sugar until yeast dissolves.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Milk (warm)", "amount": "296g" },
+        { "name": "Yeast", "amount": "12g" },
+        { "name": "Butter", "amount": "28g" },
+        { "name": "Granulated Sugar", "amount": "25g" }
+      ],
+      "exit_condition": "Yeast fully dissolved, no granules visible",
+      "notes": [
+        { "text": "Milk must be 40-46°C (105-115°F). Too hot kills yeast, too cool won't activate.", "critical": true }
+      ]
+    },
+    {
+      "id": "COMBINE_DOUGH",
+      "title": "Combine Wet and Dry",
+      "direction": "Pour wet mixture into dry ingredients. Stir with rubber spatula until dough comes together.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Shaggy dough formed, no dry flour visible. Dough will be sticky.",
+      "notes": null
+    },
+    {
+      "id": "KNEAD",
+      "title": "Knead Dough",
+      "direction": "Transfer dough to lightly floured counter. Knead until smooth, round ball forms.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth, slightly tacky but not sticky, holds ball shape",
+      "notes": [
+        { "text": "Add flour sparingly—too much makes dense buns", "critical": false }
+      ]
+    },
+    {
+      "id": "ROLL_FILL",
+      "title": "Roll and Apply Filling",
+      "direction": "Roll dough into 30×23 cm rectangle with long side facing you. Brush with 28g melted butter, leaving 1cm border. Sprinkle filling mixture evenly, leaving 2cm border at top edge. Press filling lightly to adhere.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter", "amount": "28g" }
+      ],
+      "exit_condition": "Filling evenly distributed and pressed into butter",
+      "notes": null
+    },
+    {
+      "id": "ROLL_CYLINDER",
+      "title": "Roll Into Cylinder",
+      "direction": "Starting from long edge nearest you, roll dough away into tight cylinder, tucking as you go. Pinch seam and ends closed. Adjust to 30cm length with even diameter.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Tight, even cylinder with sealed seam on bottom",
+      "notes": [
+        { "text": "Keep roll taut—loose rolls cause gaps in finished buns", "critical": false }
+      ]
+    },
+    {
+      "id": "CUT_ARRANGE",
+      "title": "Cut and Arrange",
+      "direction": "Grease skillet with 14g butter. Using serrated knife, cut cylinder into 8 equal pieces (~4cm each). Arrange cut-side down in skillet: 1 in center, 7 around edge. Cover loosely with plastic wrap.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter", "amount": "14g" }
+      ],
+      "exit_condition": "8 buns arranged in skillet, covered with plastic",
+      "notes": null
+    },
+    {
+      "id": "RISE",
+      "title": "Rise",
+      "direction": "Let buns rise at room temperature, covered.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns have expanded and are touching each other",
+      "notes": [
+        { "text": "Start preheating oven 15 minutes into rise", "critical": false }
+      ]
+    },
+    {
+      "id": "PRE_BAKE",
+      "title": "Prep for Oven",
+      "direction": "Preheat oven to 175°C (350°F) with rack in middle position. Remove plastic wrap. Brush bun tops with 28g melted butter.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter", "amount": "28g" }
+      ],
+      "exit_condition": "Oven preheated, buns brushed, plastic removed",
+      "notes": null
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "direction": "Transfer skillet to oven. Bake, rotating skillet halfway through.",
+      "duration_min": 27,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns are deep golden brown, filling is bubbling",
+      "notes": [
+        { "text": "Skillet handle will be extremely hot—use potholders!", "critical": true },
+        { "text": "Rotate at 13-14 minute mark for even browning", "critical": false }
+      ]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "direction": "Transfer skillet to wire rack. Let cool.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns are warm but not molten-hot",
+      "notes": [
+        { "text": "Filling is molten—eating too soon will burn mouth", "critical": true }
+      ]
+    },
+    {
+      "id": "MAKE_GLAZE",
+      "title": "Make Glaze",
+      "direction": "In medium bowl (V3, now empty), whisk cream cheese, confectioners' sugar, 28g melted butter, 30g milk, vanilla, and 0.75g salt until smooth.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Cream Cheese", "amount": "85g" },
+        { "name": "Confectioners' Sugar", "amount": "113g" },
+        { "name": "Butter", "amount": "28g" },
+        { "name": "Milk (room temp)", "amount": "30g" },
+        { "name": "Vanilla", "amount": "2g" },
+        { "name": "Salt", "amount": "0.75g" }
+      ],
+      "exit_condition": "Smooth, pourable glaze with no lumps",
+      "notes": [
+        { "text": "Can make during COOL step to save time", "critical": false }
+      ]
+    },
+    {
+      "id": "APPLY_GLAZE",
+      "title": "Glaze Buns",
+      "direction": "Spread glaze evenly over warm buns. Serve immediately.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All buns covered with glaze",
+      "notes": [
+        { "text": "Careful—skillet handle is still hot", "critical": true }
+      ]
+    }
+  ]
+}

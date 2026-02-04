@@ -1,0 +1,379 @@
+{
+  "meta": {
+    "name": "ATK Cinnamon Buns (Overnight)",
+    "source": "America's Test Kitchen (adapted)",
+    "yields": "8 buns",
+    "total_time": "~14 hrs (Day 1: 2.5 hrs active, Day 2: 1.5 hrs)",
+    "variant": "overnight"
+  },
+  "config": {
+    "early_check_percent": 0.7
+  },
+  "vessels": [
+    { "id": "V1", "name": "Small Bowl", "reuse": "Filling mixture (Day 2)" },
+    { "id": "V2", "name": "Large Bowl", "reuse": "Autolyse → dough → bulk ferment → cold retard" },
+    { "id": "V3", "name": "Medium Bowl", "reuse": "Glaze (Day 2)" },
+    { "id": "V4", "name": "Cast Iron Skillet (25cm)", "reuse": "Grease → proof → bake → serve" },
+    { "id": "V5", "name": "Microwave-Safe Bowl", "reuse": "Melt butter as needed" }
+  ],
+  "stages": [
+    {
+      "id": "PREP_DAY1",
+      "title": "Day 1: Mise en Place",
+      "gather": {
+        "vessels": ["Large Bowl", "Microwave-Safe Bowl"],
+        "equipment": ["Whisk", "Rubber Spatula", "Plastic Wrap"],
+        "ingredients": [
+          { "id": "flour", "name": "All-Purpose Flour", "total": 390, "unit": "g", "breakdown": null },
+          { "id": "milk", "name": "Whole Milk", "total": 326, "unit": "g", "breakdown": [
+            { "label": "dough (warm to 43°C)", "amount": 296 },
+            { "label": "glaze (room temp)", "amount": 30 }
+          ]},
+          { "id": "butter", "name": "Unsalted Butter", "total": 140, "unit": "g", "breakdown": [
+            { "label": "dough", "amount": 28 },
+            { "label": "filling", "amount": 14 },
+            { "label": "brush dough", "amount": 28 },
+            { "label": "grease skillet", "amount": 14 },
+            { "label": "brush before bake", "amount": 28 },
+            { "label": "glaze", "amount": 28 }
+          ]},
+          { "id": "granulated_sugar", "name": "Granulated Sugar", "total": 75, "unit": "g", "breakdown": [
+            { "label": "filling", "amount": 50 },
+            { "label": "dough", "amount": 25 }
+          ]},
+          { "id": "yeast", "name": "Instant Yeast", "total": 9, "unit": "g", "breakdown": null },
+          { "id": "salt", "name": "Salt", "total": 6, "unit": "g", "breakdown": [
+            { "label": "filling", "amount": 0.75 },
+            { "label": "dough", "amount": 4.5 },
+            { "label": "glaze", "amount": 0.75 }
+          ]}
+        ]
+      },
+      "states": []
+    },
+    {
+      "id": "AUTOLYSE",
+      "title": "Autolyse",
+      "gather": null,
+      "states": ["AUTOLYSE_MIX", "AUTOLYSE_REST"]
+    },
+    {
+      "id": "DOUGH_DAY1",
+      "title": "Mix Dough",
+      "gather": null,
+      "states": ["ADD_YEAST", "ADD_REMAINING", "DEVELOP"]
+    },
+    {
+      "id": "FERMENT",
+      "title": "Bulk Ferment",
+      "gather": null,
+      "states": ["BULK_RISE", "FOLD", "COLD_RETARD"]
+    },
+    {
+      "id": "PREP_DAY2",
+      "title": "Day 2: Morning Prep",
+      "gather": {
+        "vessels": ["Small Bowl", "Medium Bowl", "Cast Iron Skillet (25cm)"],
+        "equipment": ["Rolling Pin", "Serrated Knife", "Pastry Brush", "Wire Rack"],
+        "ingredients": [
+          { "id": "brown_sugar", "name": "Dark Brown Sugar (packed)", "total": 149, "unit": "g", "breakdown": null },
+          { "id": "cinnamon", "name": "Ground Cinnamon", "total": 5, "unit": "g", "breakdown": null },
+          { "id": "cloves", "name": "Ground Cloves", "total": 0.3, "unit": "g", "breakdown": null },
+          { "id": "powdered_sugar", "name": "Confectioners' Sugar", "total": 113, "unit": "g", "breakdown": null },
+          { "id": "cream_cheese", "name": "Cream Cheese (softened)", "total": 85, "unit": "g", "breakdown": null },
+          { "id": "vanilla", "name": "Vanilla Extract", "total": 2, "unit": "g", "breakdown": null }
+        ]
+      },
+      "states": ["TEMPER", "MIX_FILLING"]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Roll and Fill",
+      "gather": null,
+      "states": ["ROLL_FILL", "ROLL_CYLINDER", "CUT_ARRANGE"]
+    },
+    {
+      "id": "PROOF_BAKE",
+      "title": "Proof and Bake",
+      "gather": null,
+      "states": ["FINAL_PROOF", "PRE_BAKE", "BAKE"]
+    },
+    {
+      "id": "FINISH",
+      "title": "Cool and Glaze",
+      "gather": null,
+      "states": ["COOL", "MAKE_GLAZE", "APPLY_GLAZE"]
+    }
+  ],
+  "states": [
+    {
+      "id": "AUTOLYSE_MIX",
+      "title": "Combine Flour and Milk",
+      "direction": "In large bowl, combine flour and warm milk (43°C/110°F). Mix with rubber spatula until no dry flour remains. Dough will be shaggy.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Flour", "amount": "390g" },
+        { "name": "Milk (warm)", "amount": "296g" }
+      ],
+      "exit_condition": "No dry flour visible, shaggy mass formed",
+      "notes": null
+    },
+    {
+      "id": "AUTOLYSE_REST",
+      "title": "Rest (Autolyse)",
+      "direction": "Cover bowl with plastic wrap. Let rest at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed, dough is relaxed and slightly smoother",
+      "notes": [
+        { "text": "Autolyse hydrates flour and begins gluten development without kneading", "critical": false }
+      ]
+    },
+    {
+      "id": "ADD_YEAST",
+      "title": "Add Yeast",
+      "direction": "Sprinkle yeast and 25g sugar over dough. Mix with rubber spatula, then squeeze and fold dough to incorporate.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Yeast", "amount": "9g" },
+        { "name": "Granulated Sugar", "amount": "25g" }
+      ],
+      "exit_condition": "Yeast and sugar evenly distributed throughout dough",
+      "notes": [
+        { "text": "Reduced yeast from 12g to 9g - long ferment needs less", "critical": false }
+      ]
+    },
+    {
+      "id": "ADD_REMAINING",
+      "title": "Add Salt and Butter",
+      "direction": "Add salt and 28g softened butter. Squeeze and fold dough until fully incorporated.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Salt", "amount": "4.5g" },
+        { "name": "Butter (softened)", "amount": "28g" }
+      ],
+      "exit_condition": "No butter streaks visible, dough is cohesive",
+      "notes": [
+        { "text": "Butter should be soft but not melted for this method", "critical": true }
+      ]
+    },
+    {
+      "id": "DEVELOP",
+      "title": "Develop Gluten",
+      "direction": "In bowl, stretch and fold dough: grab one side, stretch up, fold over center. Rotate 90° and repeat. Do 4 folds total (one full rotation).",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth and elastic, pulls back when stretched",
+      "notes": null
+    },
+    {
+      "id": "BULK_RISE",
+      "title": "Bulk Ferment",
+      "direction": "Cover bowl with plastic wrap. Let rise at room temperature.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has risen ~50%, looks puffy with some bubbles",
+      "notes": [
+        { "text": "Time varies with room temperature. Look for 50% rise, not exact time.", "critical": false }
+      ]
+    },
+    {
+      "id": "FOLD",
+      "title": "Stretch and Fold",
+      "direction": "Perform another set of 4 stretch-and-folds in the bowl. This strengthens gluten and redistributes yeast.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is tighter and more elastic than before",
+      "notes": null
+    },
+    {
+      "id": "COLD_RETARD",
+      "title": "Refrigerate Overnight",
+      "direction": "Cover bowl tightly with plastic wrap. Refrigerate for 8-12 hours (overnight).",
+      "duration_min": 480,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Next morning, dough is cold, slightly risen, with developed flavor",
+      "notes": [
+        { "text": "Dough can stay refrigerated up to 24 hours if needed", "critical": false },
+        { "text": "END OF DAY 1 - Continue tomorrow morning", "critical": true }
+      ]
+    },
+    {
+      "id": "TEMPER",
+      "title": "Temper Dough",
+      "direction": "Remove dough from refrigerator. Let sit at room temperature while you prepare filling and equipment.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is pliable but still cool, not room temperature",
+      "notes": [
+        { "text": "Don't let it warm completely - cool dough is easier to roll", "critical": false }
+      ]
+    },
+    {
+      "id": "MIX_FILLING",
+      "title": "Make Filling Mixture",
+      "direction": "In small bowl, combine brown sugar, 14g melted butter, 50g granulated sugar, cinnamon, cloves, and 0.75g salt. Mix until uniform.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Dark Brown Sugar", "amount": "149g" },
+        { "name": "Butter (melted)", "amount": "14g" },
+        { "name": "Granulated Sugar", "amount": "50g" },
+        { "name": "Cinnamon", "amount": "5g" },
+        { "name": "Cloves", "amount": "0.3g" },
+        { "name": "Salt", "amount": "0.75g" }
+      ],
+      "exit_condition": "Mixture is evenly combined with no dry pockets",
+      "notes": [
+        { "text": "Can make while dough tempers", "critical": false }
+      ]
+    },
+    {
+      "id": "ROLL_FILL",
+      "title": "Roll and Apply Filling",
+      "direction": "On lightly floured surface, roll dough into 30×23 cm rectangle with long side facing you. Brush with 28g melted butter, leaving 1cm border. Sprinkle filling mixture evenly, leaving 2cm border at top edge. Press filling lightly to adhere.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter (melted)", "amount": "28g" }
+      ],
+      "exit_condition": "Filling evenly distributed and pressed into butter",
+      "notes": [
+        { "text": "Cold dough may need extra rolling - let it relax if it springs back", "critical": false }
+      ]
+    },
+    {
+      "id": "ROLL_CYLINDER",
+      "title": "Roll Into Cylinder",
+      "direction": "Starting from long edge nearest you, roll dough away into tight cylinder, tucking as you go. Pinch seam and ends closed. Adjust to 30cm length with even diameter.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Tight, even cylinder with sealed seam on bottom",
+      "notes": [
+        { "text": "Keep roll taut—loose rolls cause gaps in finished buns", "critical": false }
+      ]
+    },
+    {
+      "id": "CUT_ARRANGE",
+      "title": "Cut and Arrange",
+      "direction": "Grease skillet with 14g butter. Using serrated knife, cut cylinder into 8 equal pieces (~4cm each). Arrange cut-side down in skillet: 1 in center, 7 around edge.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter", "amount": "14g" }
+      ],
+      "exit_condition": "8 buns arranged in skillet",
+      "notes": null
+    },
+    {
+      "id": "FINAL_PROOF",
+      "title": "Final Proof",
+      "direction": "Cover skillet loosely with plastic wrap. Let rise at room temperature until buns are puffy and touching.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns have expanded significantly and are touching each other",
+      "notes": [
+        { "text": "Start preheating oven 20 minutes before proof is done", "critical": false },
+        { "text": "May take 45-75 min depending on room temperature", "critical": false }
+      ]
+    },
+    {
+      "id": "PRE_BAKE",
+      "title": "Prep for Oven",
+      "direction": "Preheat oven to 175°C (350°F) with rack in middle position. Remove plastic wrap. Brush bun tops with 28g melted butter.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter (melted)", "amount": "28g" }
+      ],
+      "exit_condition": "Oven preheated, buns brushed, plastic removed",
+      "notes": null
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "direction": "Transfer skillet to oven. Bake, rotating skillet halfway through.",
+      "duration_min": 27,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns are deep golden brown, filling is bubbling",
+      "notes": [
+        { "text": "Skillet handle will be extremely hot—use potholders!", "critical": true },
+        { "text": "Rotate at 13-14 minute mark for even browning", "critical": false }
+      ]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "direction": "Transfer skillet to wire rack. Let cool.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns are warm but not molten-hot",
+      "notes": [
+        { "text": "Filling is molten—eating too soon will burn mouth", "critical": true }
+      ]
+    },
+    {
+      "id": "MAKE_GLAZE",
+      "title": "Make Glaze",
+      "direction": "In medium bowl, whisk cream cheese, confectioners' sugar, 28g melted butter, 30g milk, vanilla, and 0.75g salt until smooth.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Cream Cheese", "amount": "85g" },
+        { "name": "Confectioners' Sugar", "amount": "113g" },
+        { "name": "Butter (melted)", "amount": "28g" },
+        { "name": "Milk (room temp)", "amount": "30g" },
+        { "name": "Vanilla", "amount": "2g" },
+        { "name": "Salt", "amount": "0.75g" }
+      ],
+      "exit_condition": "Smooth, pourable glaze with no lumps",
+      "notes": [
+        { "text": "Can make during COOL step to save time", "critical": false }
+      ]
+    },
+    {
+      "id": "APPLY_GLAZE",
+      "title": "Glaze Buns",
+      "direction": "Spread glaze evenly over warm buns. Serve immediately.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All buns covered with glaze",
+      "notes": [
+        { "text": "Careful—skillet handle is still hot", "critical": true }
+      ]
+    }
+  ]
+}

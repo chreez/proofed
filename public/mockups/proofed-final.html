@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proofed_ — Color Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #e8e8e8;
+      padding: 32px;
+      color: #1a1a1a;
+    }
+    h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .subtitle { color: #666; margin-bottom: 32px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    .card-header {
+      padding: 28px 24px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .brand-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+    }
+
+    .recipe-info {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+    }
+
+    .sample-ui {
+      padding: 16px 24px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .sample-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .sample-item:last-child { border: none; }
+
+    .check {
+      width: 16px;
+      height: 16px;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .card-footer {
+      padding: 14px 24px;
+      font-size: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 0;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .style-tag {
+      padding: 4px 8px;
+      border-radius: 0;
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-left: auto;
+    }
+
+    /* Variant 1: Stone */
+    .v1 .card-header {
+      background: #e8e4dc;
+      color: #1a1816;
+      border-bottom: 2px solid #1a1816;
+    }
+    .v1 .tagline { color: #4a4640; }
+    .v1 .recipe-info { color: #5c5850; }
+    .v1 .sample-ui { background: #fff; color: #1a1a1a; }
+    .v1 .check { background: #1a1816; color: white; }
+    .v1 .check.empty { background: transparent; border: 2px solid #1a1816; }
+    .v1 .card-footer { background: #f5f3ef; }
+
+    /* Variant 2: Stone + Ochre accent */
+    .v2 .card-header {
+      background: #e8e4dc;
+      color: #1a1816;
+      border-bottom: 2px solid #8b7428;
+    }
+    .v2 .brand-name span { color: #8b7428; }
+    .v2 .tagline { color: #4a4640; }
+    .v2 .recipe-info { color: #5c5850; }
+    .v2 .sample-ui { background: #fff; color: #1a1a1a; }
+    .v2 .check { background: #8b7428; color: white; }
+    .v2 .check.empty { background: transparent; border: 2px solid #8b7428; }
+    .v2 .card-footer { background: #f5f3ef; }
+
+    /* Variant 3: Stone + Forest accent */
+    .v3 .card-header {
+      background: #e8e4dc;
+      color: #1a1816;
+      border-bottom: 2px solid #2d4a3e;
+    }
+    .v3 .brand-name span { color: #2d4a3e; }
+    .v3 .tagline { color: #4a4640; }
+    .v3 .recipe-info { color: #5c5850; }
+    .v3 .sample-ui { background: #fff; color: #1a1a1a; }
+    .v3 .check { background: #2d4a3e; color: white; }
+    .v3 .check.empty { background: transparent; border: 2px solid #2d4a3e; }
+    .v3 .card-footer { background: #f5f3ef; }
+
+    /* Variant 4: Stone + Clay accent */
+    .v4 .card-header {
+      background: #e8e4dc;
+      color: #1a1816;
+      border-bottom: 2px solid #8b4530;
+    }
+    .v4 .brand-name span { color: #8b4530; }
+    .v4 .tagline { color: #4a4640; }
+    .v4 .recipe-info { color: #5c5850; }
+    .v4 .sample-ui { background: #fff; color: #1a1a1a; }
+    .v4 .check { background: #8b4530; color: white; }
+    .v4 .check.empty { background: transparent; border: 2px solid #8b4530; }
+    .v4 .card-footer { background: #f5f3ef; }
+
+    /* Variant 5: Inverted Stone */
+    .v5 .card-header {
+      background: #1a1816;
+      color: #e8e4dc;
+      border-bottom: 2px solid #8b7428;
+    }
+    .v5 .brand-name span { color: #8b7428; }
+    .v5 .tagline { color: #a8a49c; }
+    .v5 .recipe-info { color: #888580; }
+    .v5 .sample-ui { background: #faf9f7; color: #1a1a1a; }
+    .v5 .check { background: #1a1816; color: white; }
+    .v5 .check.empty { background: transparent; border: 2px solid #1a1816; }
+    .v5 .card-footer { background: #f0ede8; }
+
+    /* Variant 6: Warm White */
+    .v6 .card-header {
+      background: #faf8f5;
+      color: #1a1816;
+      border-bottom: 2px solid #1a1816;
+    }
+    .v6 .tagline { color: #5c5850; }
+    .v6 .recipe-info { color: #6a665e; }
+    .v6 .sample-ui { background: #fff; color: #1a1a1a; }
+    .v6 .check { background: #1a1816; color: white; }
+    .v6 .check.empty { background: transparent; border: 2px solid #1a1816; }
+    .v6 .card-footer { background: #f5f3ef; }
+  </style>
+</head>
+<body>
+  <h1>proofed_</h1>
+  <p class="subtitle">Recipe workflows, simplified — pick a color direction</p>
+
+  <div class="grid">
+
+    <!-- Variant 1: Stone (pure) -->
+    <div class="card v1">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">proofed<span>_</span></div>
+          <div class="tagline">Recipe workflows, simplified</div>
+        </div>
+        <div class="recipe-info">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #e8e4dc;"></span>
+        <span class="swatch" style="background: #1a1816;"></span>
+        <span class="swatch" style="background: #fff;"></span>
+        <span class="style-tag" style="background: #1a1816; color: #e8e4dc;">stone</span>
+      </div>
+    </div>
+
+    <!-- Variant 2: Stone + Ochre -->
+    <div class="card v2">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">proofed<span>_</span></div>
+          <div class="tagline">Recipe workflows, simplified</div>
+        </div>
+        <div class="recipe-info">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #e8e4dc;"></span>
+        <span class="swatch" style="background: #8b7428;"></span>
+        <span class="swatch" style="background: #fff;"></span>
+        <span class="style-tag" style="background: #8b7428; color: #fff;">stone+ochre</span>
+      </div>
+    </div>
+
+    <!-- Variant 3: Stone + Forest -->
+    <div class="card v3">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">proofed<span>_</span></div>
+          <div class="tagline">Recipe workflows, simplified</div>
+        </div>
+        <div class="recipe-info">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #e8e4dc;"></span>
+        <span class="swatch" style="background: #2d4a3e;"></span>
+        <span class="swatch" style="background: #fff;"></span>
+        <span class="style-tag" style="background: #2d4a3e; color: #e8f0ec;">stone+forest</span>
+      </div>
+    </div>
+
+    <!-- Variant 4: Stone + Clay -->
+    <div class="card v4">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">proofed<span>_</span></div>
+          <div class="tagline">Recipe workflows, simplified</div>
+        </div>
+        <div class="recipe-info">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #e8e4dc;"></span>
+        <span class="swatch" style="background: #8b4530;"></span>
+        <span class="swatch" style="background: #fff;"></span>
+        <span class="style-tag" style="background: #8b4530; color: #fff;">stone+clay</span>
+      </div>
+    </div>
+
+    <!-- Variant 5: Inverted -->
+    <div class="card v5">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">proofed<span>_</span></div>
+          <div class="tagline">Recipe workflows, simplified</div>
+        </div>
+        <div class="recipe-info">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #1a1816;"></span>
+        <span class="swatch" style="background: #8b7428;"></span>
+        <span class="swatch" style="background: #faf9f7;"></span>
+        <span class="style-tag" style="background: #1a1816; color: #8b7428;">inverted</span>
+      </div>
+    </div>
+
+    <!-- Variant 6: Warm White -->
+    <div class="card v6">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">proofed<span>_</span></div>
+          <div class="tagline">Recipe workflows, simplified</div>
+        </div>
+        <div class="recipe-info">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #faf8f5;"></span>
+        <span class="swatch" style="background: #1a1816;"></span>
+        <span class="swatch" style="background: #fff;"></span>
+        <span class="style-tag" style="background: #1a1816; color: #faf8f5;">warm white</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

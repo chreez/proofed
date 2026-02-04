@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand & Style Exploration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&family=Inter:wght@400;500;600&family=Libre+Baskerville:wght@400;700&family=Space+Grotesk:wght@400;500;600&family=Fraunces:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      padding: 32px;
+      color: #333;
+    }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    .subtitle { color: #666; margin-bottom: 32px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .card-header {
+      padding: 24px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .brand-name {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .sample-ui {
+      padding: 16px 24px;
+      font-size: 13px;
+    }
+
+    .sample-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .sample-item:last-child { border: none; }
+
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .card-footer {
+      padding: 16px 24px;
+      font-size: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 0;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .style-tag {
+      padding: 4px 8px;
+      border-radius: 0;
+      font-size: 11px;
+    }
+
+    /* Style 1: Warm Minimal */
+    .style-1 .card-header {
+      background: #f5f0e8;
+      color: #1a1714;
+    }
+    .style-1 .brand-name {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+    }
+    .style-1 .tagline {
+      font-family: 'DM Sans', sans-serif;
+      color: #4a4235;
+    }
+    .style-1 .sample-ui {
+      background: #fff;
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1714;
+    }
+    .style-1 .check {
+      background: #8b6914;
+      color: white;
+    }
+    .style-1 .check.empty {
+      background: transparent;
+      border: 2px solid #8b6914;
+    }
+    .style-1 .card-footer {
+      background: #f5f0e8;
+    }
+
+    /* Style 2: Clean Modern */
+    .style-2 .card-header {
+      background: #1a1a1a;
+      color: #ffffff;
+    }
+    .style-2 .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+    }
+    .style-2 .tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #888;
+    }
+    .style-2 .sample-ui {
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      color: #333;
+    }
+    .style-2 .check {
+      background: #000;
+      color: white;
+    }
+    .style-2 .check.empty {
+      background: transparent;
+      border: 2px solid #ddd;
+    }
+    .style-2 .card-footer {
+      background: #f8f8f8;
+    }
+
+    /* Style 3: Soft Natural */
+    .style-3 .card-header {
+      background: #e0d9cc;
+      color: #1f1d19;
+    }
+    .style-3 .brand-name {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+    }
+    .style-3 .tagline {
+      font-family: 'Inter', sans-serif;
+      color: #3d3830;
+    }
+    .style-3 .sample-ui {
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      color: #1f1d19;
+    }
+    .style-3 .check {
+      background: #4a3f2f;
+      color: white;
+    }
+    .style-3 .check.empty {
+      background: transparent;
+      border: 2px solid #4a3f2f;
+    }
+    .style-3 .card-footer {
+      background: #e8e2d6;
+    }
+
+    /* Style 4: Editorial */
+    .style-4 .card-header {
+      background: #fff;
+      color: #222;
+      border-bottom: 3px solid #222;
+    }
+    .style-4 .brand-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 32px;
+    }
+    .style-4 .tagline {
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 11px;
+    }
+    .style-4 .sample-ui {
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      color: #333;
+    }
+    .style-4 .check {
+      background: #222;
+      color: white;
+      border-radius: 2px;
+    }
+    .style-4 .check.empty {
+      background: transparent;
+      border: 2px solid #222;
+      border-radius: 2px;
+    }
+    .style-4 .card-footer {
+      background: #fafafa;
+      border-top: 1px solid #eee;
+    }
+
+    /* Style 5: Craft */
+    .style-5 .card-header {
+      background: #2c2416;
+      color: #f4e9d6;
+    }
+    .style-5 .brand-name {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      color: #e8c47c;
+    }
+    .style-5 .tagline {
+      font-family: 'DM Sans', sans-serif;
+      color: #a89880;
+    }
+    .style-5 .sample-ui {
+      background: #faf7f2;
+      font-family: 'DM Sans', sans-serif;
+      color: #4a4035;
+    }
+    .style-5 .check {
+      background: #8b6914;
+      color: white;
+    }
+    .style-5 .check.empty {
+      background: transparent;
+      border: 2px solid #c4b9a9;
+    }
+    .style-5 .card-footer {
+      background: #f0ebe1;
+    }
+
+    /* Style 6: Paper */
+    .style-6 .card-header {
+      background: #f5f2ec;
+      color: #1a1816;
+      border: 1px solid #c9c4ba;
+      border-bottom: none;
+    }
+    .style-6 .brand-name {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 700;
+      font-size: 26px;
+    }
+    .style-6 .tagline {
+      font-family: 'Inter', sans-serif;
+      color: #4a4640;
+      font-style: italic;
+    }
+    .style-6 .sample-ui {
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      color: #1a1816;
+      border: 1px solid #c9c4ba;
+      border-top: none;
+    }
+    .style-6 .check {
+      background: #2d5a2d;
+      color: white;
+    }
+    .style-6 .check.empty {
+      background: transparent;
+      border: 2px solid #2d5a2d;
+    }
+    .style-6 .card-footer {
+      background: #ebe7df;
+      border: 1px solid #c9c4ba;
+      border-top: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Brand & Style Exploration</h1>
+  <p class="subtitle">Simple, readable recipe workflow — pick a direction</p>
+
+  <div class="grid">
+
+    <!-- Style 1: Warm Minimal -->
+    <div class="card style-1">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">Mise</div>
+          <div class="tagline">Everything in its place</div>
+        </div>
+        <div style="font-size: 12px; font-family: 'DM Sans', sans-serif;">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #faf8f5;"></span>
+        <span class="swatch" style="background: #c9a66b;"></span>
+        <span class="swatch" style="background: #3d3528;"></span>
+        <span class="style-tag" style="background: #f0ebe1; color: #5c5347;">Warm Minimal</span>
+      </div>
+    </div>
+
+    <!-- Style 2: Clean Modern -->
+    <div class="card style-2">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">proofed</div>
+          <div class="tagline">Recipe workflows, simplified</div>
+        </div>
+        <div style="font-size: 12px; font-family: 'Space Grotesk', sans-serif; color: #666;">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #1a1a1a;"></span>
+        <span class="swatch" style="background: #ffffff; border-color: #ddd;"></span>
+        <span class="swatch" style="background: #f8f8f8;"></span>
+        <span class="style-tag" style="background: #eee; color: #333;">Clean Modern</span>
+      </div>
+    </div>
+
+    <!-- Style 3: Soft Natural -->
+    <div class="card style-3">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">Hearth</div>
+          <div class="tagline">Bake with confidence</div>
+        </div>
+        <div style="font-size: 12px; font-family: 'Inter', sans-serif;">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #e8e4dc;"></span>
+        <span class="swatch" style="background: #7d6e58;"></span>
+        <span class="swatch" style="background: #fdfcfa;"></span>
+        <span class="style-tag" style="background: #d4cdc1; color: #4a4539;">Soft Natural</span>
+      </div>
+    </div>
+
+    <!-- Style 4: Editorial -->
+    <div class="card style-4">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">The Proof</div>
+          <div class="tagline">Recipes that work</div>
+        </div>
+        <div style="font-size: 12px; font-family: 'Inter', sans-serif;">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #222;"></span>
+        <span class="swatch" style="background: #fff; border-color: #ddd;"></span>
+        <span class="swatch" style="background: #fafafa;"></span>
+        <span class="style-tag" style="background: #222; color: #fff;">Editorial</span>
+      </div>
+    </div>
+
+    <!-- Style 5: Craft -->
+    <div class="card style-5">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">Crumb</div>
+          <div class="tagline">The art of the bake</div>
+        </div>
+        <div style="font-size: 12px; font-family: 'DM Sans', sans-serif; color: #a89880;">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #2c2416;"></span>
+        <span class="swatch" style="background: #e8c47c;"></span>
+        <span class="swatch" style="background: #faf7f2;"></span>
+        <span class="style-tag" style="background: #2c2416; color: #e8c47c;">Craft</span>
+      </div>
+    </div>
+
+    <!-- Style 6: Paper -->
+    <div class="card style-6">
+      <div class="card-header">
+        <div>
+          <div class="brand-name">Bench Notes</div>
+          <div class="tagline">Your baking companion</div>
+        </div>
+        <div style="font-size: 12px; font-family: 'Inter', sans-serif;">ATK Cinnamon Buns · 8 buns</div>
+      </div>
+      <div class="sample-ui">
+        <div class="sample-item"><span class="check">✓</span> Small Bowl</div>
+        <div class="sample-item"><span class="check">✓</span> Large Bowl</div>
+        <div class="sample-item"><span class="check empty"></span> Medium Bowl</div>
+      </div>
+      <div class="card-footer">
+        <span class="swatch" style="background: #f9f6f1;"></span>
+        <span class="swatch" style="background: #5c7c5c;"></span>
+        <span class="swatch" style="background: #2d2a26;"></span>
+        <span class="style-tag" style="background: #e5e0d8; color: #3d3a36;">Paper</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
