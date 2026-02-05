@@ -1,5 +1,9 @@
 # User Preferences (Steering Rules)
 
+## Git Workflow
+
+- **Always confirm before pushing** — show diff/summary and wait for approval
+
 ## Equipment Preferences
 
 ### Stand Mixer

@@ -60,6 +60,9 @@ Add checks here for new features:
 | F6 | Sink checked | Checked items move to bottom of list + shrink | 2026-02-04 |
 | F7 | Section collapse | Section collapses to badge when all items complete | 2026-02-04 |
 | F8 | Section expand | Clicking collapsed badge expands section | 2026-02-04 |
+| F9 | Native checkboxes | Gather items use native checkbox with accent-color | 2026-02-05 |
+| F10 | Copy full recipe | Header "Copy Recipe" button copies plain text for Paprika | 2026-02-05 |
+| F11 | Copy mise en place | Per-section "Copy" button copies stage gather list | 2026-02-05 |
 
 ## Brand Validation (proofed.)
 
