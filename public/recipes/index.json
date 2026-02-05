@@ -1,6 +1,7 @@
 {
   "recipes": [
     { "id": "atk-cinnamon-buns", "name": "ATK Cinnamon Buns (Quick)", "file": "atk-cinnamon-buns.json" },
-    { "id": "atk-cinnamon-buns-overnight", "name": "ATK Cinnamon Buns (Overnight)", "file": "atk-cinnamon-buns-overnight.json" }
+    { "id": "atk-cinnamon-buns-overnight", "name": "ATK Cinnamon Buns (Overnight)", "file": "atk-cinnamon-buns-overnight.json" },
+    { "id": "atk-cinnamon-buns-ultimate", "name": "ATK Ultimate Cinnamon Buns", "file": "atk-cinnamon-buns-ultimate.json" }
   ]
 }

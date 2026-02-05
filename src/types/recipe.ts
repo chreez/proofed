@@ -59,6 +59,7 @@ export interface RecipeState {
   components: StateComponent[] | null
   exit_condition: string
   notes: StateNote[] | null
+  technique_url?: string
 }
 
 export interface StateComponent {
