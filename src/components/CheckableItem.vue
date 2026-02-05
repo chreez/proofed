@@ -12,18 +12,18 @@ const emit = defineEmits<{
 
 <template>
   <div>
-    <button
-      @click="emit('toggle')"
-      class="checkbox-item w-full text-left"
+    <label
+      class="checkbox-item w-full text-left cursor-pointer"
     >
-      <span
-        class="w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 transition-colors"
-        :class="checked ? 'bg-ink border-ink text-white' : 'border-ink'"
+      <input
+        type="checkbox"
+        :checked="checked"
+        @change="emit('toggle')"
+        class="w-4 h-4 flex-shrink-0"
+        style="accent-color: #a65d45;"
       >
-        <span v-if="checked" class="text-xs">✓</span>
-      </span>
       <span class="text-body" :class="{ 'checked': checked }">{{ label }}</span>
-    </button>
+    </label>
     <slot name="detail" />
   </div>
 </template>

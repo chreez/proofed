@@ -98,7 +98,8 @@ function collapse() {
             <input
               type="checkbox"
               :checked="allChecked"
-              class="accent-ink pointer-events-none"
+              class="pointer-events-none"
+              style="accent-color: #a65d45;"
             >
             {{ toggleLabel }}
           </label>
@@ -136,15 +137,20 @@ function collapse() {
         />
 
         <!-- Checked items sink to bottom, smaller -->
-        <div
+        <label
           v-for="item in checkedItems"
           :key="item.id"
-          @click="handleToggle(item.id)"
           class="flex items-center gap-2 px-2 py-1 rounded cursor-pointer hover:bg-stone-100 opacity-50 text-sm transition-all"
         >
-          <span class="w-4 h-4 border-2 bg-ink border-ink text-white flex items-center justify-center text-xs flex-shrink-0">✓</span>
+          <input
+            type="checkbox"
+            checked
+            @change="handleToggle(item.id)"
+            class="w-4 h-4 flex-shrink-0"
+            style="accent-color: #a65d45;"
+          >
           <span class="text-stone-400 line-through">{{ item.label }}</span>
-        </div>
+        </label>
       </div>
     </div>
   </div>
