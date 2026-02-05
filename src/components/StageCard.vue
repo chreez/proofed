@@ -54,6 +54,7 @@ const stateCount = computed(() => {
           v-if="stage.gather"
           :gather="stage.gather"
           :stage-id="stage.id"
+          :stage-title="stage.title"
           :progress="progress"
         />
 

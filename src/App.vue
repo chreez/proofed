@@ -100,7 +100,7 @@ function getStatesForStage(stateIds: string[]) {
       </div>
 
       <template v-else-if="currentRecipe && progress">
-        <RecipeMeta :meta="currentRecipe.meta" class="mb-6" />
+        <RecipeMeta :recipe="currentRecipe" class="mb-6" />
 
         <div class="space-y-4">
           <StageCard

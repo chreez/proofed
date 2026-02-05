@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { GatherSection } from '@/types/recipe'
 import GatherCategory from '@/components/GatherCategory.vue'
 
 const props = defineProps<{
   gather: GatherSection
   stageId: string
+  stageTitle: string
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
 }>()
+
+const copied = ref(false)
 
 const vesselItems = computed(() =>
   (props.gather.vessels || []).map(v => ({
@@ -32,11 +35,60 @@ const ingredientItems = computed(() =>
       : undefined
   }))
 )
+
+function formatGatherForCopy(): string {
+  const lines: string[] = []
+
+  lines.push(`Mise en Place - ${props.stageTitle}`)
+  lines.push('')
+
+  if (vesselItems.value.length) {
+    lines.push('Vessels:')
+    for (const v of vesselItems.value) {
+      lines.push(`- ${v.label}`)
+    }
+    lines.push('')
+  }
+
+  if (equipmentItems.value.length) {
+    lines.push('Equipment:')
+    for (const e of equipmentItems.value) {
+      lines.push(`- ${e.label}`)
+    }
+    lines.push('')
+  }
+
+  if (ingredientItems.value.length) {
+    lines.push('Ingredients:')
+    for (const ing of ingredientItems.value) {
+      lines.push(`- ${ing.label}`)
+    }
+  }
+
+  return lines.join('\n').trim()
+}
+
+async function copyGather(): Promise<void> {
+  const text = formatGatherForCopy()
+  await navigator.clipboard.writeText(text)
+  copied.value = true
+  setTimeout(() => {
+    copied.value = false
+  }, 2000)
+}
 </script>
 
 <template>
   <div class="bg-stone-50 rounded-lg p-4 border border-stone-200">
-    <h4 class="text-sm font-medium text-stone-500 uppercase tracking-wide mb-3">Gather</h4>
+    <div class="flex items-center justify-between mb-3">
+      <h4 class="text-sm font-medium text-stone-500 uppercase tracking-wide">Gather</h4>
+      <button
+        @click="copyGather"
+        class="text-sm text-muted hover:text-ink transition-colors"
+      >
+        {{ copied ? 'Copied!' : 'Copy' }}
+      </button>
+    </div>
 
     <GatherCategory
       v-if="vesselItems.length"
