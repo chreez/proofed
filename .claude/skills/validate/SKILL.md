@@ -3,7 +3,7 @@ name: validate
 description: Run validation checks against the bake workflow spec. Use after any feature work or recipe changes.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, Task
-model: claude-sonnet
+model: sonnet
 argument-hint: [recipe-name] or blank for all
 ---
 
