@@ -25,3 +25,9 @@ CLAUDE.local.md
 # Logs
 *.log
 npm-debug.log*
+
+# Local Netlify folder
+.netlify
+
+# Nested repo (accidental duplicate)
+baking-recipes/
