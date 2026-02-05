@@ -29,7 +29,7 @@ const stateCount = computed(() => {
       @click="toggle"
       class="w-full flex items-center justify-between text-left"
     >
-      <h3 class="text-lg text-heading">{{ stage.title }}</h3>
+      <h3 class="card-title">{{ stage.title }}</h3>
       <div class="flex items-center gap-3">
         <span v-if="states.length" class="text-muted text-sm">
           {{ stateCount.done }}/{{ stateCount.total }}

@@ -29,6 +29,7 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | D8 | Vessels minimized | ≤5-6 vessels with documented reuse chains | `public/recipes/*.json` |
 | D9 | Atomic states | One physical action per state | `public/recipes/*.json` |
 | D12 | Technique references | Complex techniques must include reference link OR be self-explanatory in ≤1 sentence | `public/recipes/*.json` |
+| D13 | Design system usage | Styling must use shortcuts from `uno.config.ts`; no one-off utility combinations | `src/components/*.vue` |
 | D10 | Critical notes styled | `critical: true` notes render with danger styling | `src/components/StateStep.vue` |
 | D11 | Auto-advance works | Stage collapses when complete, next expands | `src/composables/useProgress.ts` |
 
