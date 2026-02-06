@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, computed, watch } from 'vue'
+import { onMounted, onUnmounted, ref, computed, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
@@ -11,6 +11,8 @@ import RecipeIndex from '@/components/RecipeIndex.vue'
 import VariantTabs from '@/components/VariantTabs.vue'
 import CookLogSection from '@/components/CookLogSection.vue'
 import VersionTimeline from '@/components/VersionTimeline.vue'
+import TocSidebar from '@/components/TocSidebar.vue'
+import TocPill from '@/components/TocPill.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -127,6 +129,55 @@ const aggregatedStepNotes = computed(() => {
   }
   return notes
 })
+
+// TOC: Query param toggle (?toc=sidebar or ?toc=pill)
+const tocMode = computed(() => {
+  const mode = route.query.toc as string
+  return mode === 'sidebar' || mode === 'pill' ? mode : 'pill' // default to pill
+})
+
+// TOC: Stage data for navigation
+const tocStages = computed(() => {
+  if (!currentRecipe.value) return []
+  return currentRecipe.value.stages.map(s => ({ id: s.id, title: s.title }))
+})
+
+// TOC: Track which stages are complete (all states checked)
+const completedStageIds = computed(() => {
+  if (!currentRecipe.value || !progress.value) return []
+  return currentRecipe.value.stages
+    .filter(stage => {
+      const stateIds = stage.states
+      return stateIds.length > 0 && stateIds.every(id => progress.value!.isStateChecked(id))
+    })
+    .map(s => s.id)
+})
+
+// TOC: Current stage (first non-collapsed)
+const currentStageId = computed(() => {
+  if (!currentRecipe.value || !progress.value) return null
+  const uncollapsed = currentRecipe.value.stages.find(s => !progress.value!.isStageCollapsed(s.id))
+  return uncollapsed?.id ?? currentRecipe.value.stages[0]?.id ?? null
+})
+
+// TOC: Navigate to section
+function handleTocNavigate(target: string) {
+  let elementId = ''
+  if (target === 'cook-log') {
+    elementId = 'cook-log-section'
+  } else if (target === 'change-log') {
+    elementId = 'version-history-section'
+  } else {
+    elementId = `stage-${target}`
+  }
+
+  nextTick(() => {
+    const el = document.getElementById(elementId)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  })
+}
 </script>
 
 <template>
@@ -158,6 +209,26 @@ const aggregatedStepNotes = computed(() => {
       </template>
 
       <template v-else-if="currentRecipe && progress">
+        <!-- TOC Components -->
+        <TocSidebar
+          v-if="tocMode === 'sidebar'"
+          :stages="tocStages"
+          :has-cook-log="!!currentRecipe.cook_log?.length"
+          :has-change-log="!!currentRecipe.change_log?.length"
+          :current-stage-id="currentStageId"
+          :completed-stage-ids="completedStageIds"
+          @navigate="handleTocNavigate"
+        />
+        <TocPill
+          v-else
+          :stages="tocStages"
+          :has-cook-log="!!currentRecipe.cook_log?.length"
+          :has-change-log="!!currentRecipe.change_log?.length"
+          :current-stage-id="currentStageId"
+          :completed-stage-ids="completedStageIds"
+          @navigate="handleTocNavigate"
+        />
+
         <RecipeMeta :recipe="currentRecipe" class="mb-6" />
 
         <VariantTabs
@@ -169,6 +240,7 @@ const aggregatedStepNotes = computed(() => {
         <div class="space-y-4">
           <StageCard
             v-for="stage in currentRecipe.stages"
+            :id="`stage-${stage.id}`"
             :key="stage.id"
             :stage="stage"
             :states="getStatesForStage(stage.states)"
@@ -180,12 +252,14 @@ const aggregatedStepNotes = computed(() => {
 
         <CookLogSection
           v-if="currentRecipe.cook_log?.length"
+          id="cook-log-section"
           :cook-log="currentRecipe.cook_log"
           class="mt-8"
         />
 
         <VersionTimeline
           v-if="currentRecipe.change_log?.length"
+          id="version-history-section"
           :change-log="currentRecipe.change_log"
           :current-version="currentRecipe.version ?? 'v1.0.0'"
           class="mt-8"
