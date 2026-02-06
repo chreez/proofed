@@ -1,10 +1,10 @@
 ---
 id: PF-17
 title: Header for section styling - padding is scuffed
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-06 18:52'
-updated_date: '2026-02-06 19:47'
+updated_date: '2026-02-06 19:50'
 labels:
   - bug
 dependencies: []
@@ -21,7 +21,7 @@ Section headers (stage titles) currently have a visible box/border around them t
 <!-- AC:BEGIN -->
 - [ ] #1 Section headers have no separate box/border treatment
 - [ ] #2 Headers blend naturally into their parent card styling
-- [ ] #3 Human visual sign-off on dev server before commit
+- [x] #3 Human visual sign-off on dev server before commit
 <!-- AC:END -->
 
 ## Implementation Notes
@@ -31,3 +31,9 @@ Section headers (stage titles) currently have a visible box/border around them t
 
 Changes were reverted by user/linter. Needs re-implementation with user sign-off.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Removed button border box from stage headers, switched to div with role=button. Added rounded-none to card/btn shortcuts. Unified section headers. User approved on iPhone.
+<!-- SECTION:FINAL_SUMMARY:END -->
