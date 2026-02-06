@@ -2,11 +2,24 @@
 
 Store original recipe text here for validation comparison.
 
+## Source Philosophy
+
+This site is a personal cooking notebook. Recipes are:
+- Baseline from original source → My adaptations → My cook notes
+- Not plagiarism — personal documentation with attribution
+- Preserved in case original sources go down or become paywalled
+
 ---
 
-## ATK Cinnamon Buns
+## ATK Cinnamon Buns (Quick)
 
-**Source:** America's Test Kitchen (Reddit post, u/redstaplerguy)
+**Original Source:** America's Test Kitchen
+**Found via:** Reddit post by u/redstaplerguy
+**Links:**
+- Post: https://www.reddit.com/r/Baking/comments/985zxm/made_skillet_cinnamon_rolls_the_first_time_from/
+- Recipe comment: https://www.reddit.com/r/Baking/comments/985zxm/made_skillet_cinnamon_rolls_the_first_time_from/e4ecnaw/
+
+**ATK Original (if accessible):** https://www.americastestkitchen.com/recipes/7582-quicker-cinnamon-buns (paywalled)
 
 ### Original Ingredients
 
