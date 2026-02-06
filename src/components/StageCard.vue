@@ -4,11 +4,17 @@ import type { Stage, RecipeState, RecipeConfig } from '@/types/recipe'
 import GatherSection from '@/components/GatherSection.vue'
 import StateStep from '@/components/StateStep.vue'
 
+interface StepNoteData {
+  note: string
+  date: string
+}
+
 const props = defineProps<{
   stage: Stage
   states: RecipeState[]
   config: RecipeConfig
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
+  stepNotes?: Record<string, StepNoteData>
 }>()
 
 const isCollapsed = computed(() => props.progress.isStageCollapsed(props.stage.id))
@@ -66,6 +72,7 @@ const stateCount = computed(() => {
             :stage-id="stage.id"
             :config="config"
             :progress="progress"
+            :step-note="stepNotes?.[state.id]"
           />
         </div>
       </div>

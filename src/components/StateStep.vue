@@ -2,12 +2,19 @@
 import { computed } from 'vue'
 import type { RecipeState, RecipeConfig } from '@/types/recipe'
 import TimerDisplay from '@/components/TimerDisplay.vue'
+import StepNote from '@/components/StepNote.vue'
+
+interface StepNoteData {
+  note: string
+  date: string
+}
 
 const props = defineProps<{
   state: RecipeState
   stageId: string
   config: RecipeConfig
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
+  stepNote?: StepNoteData
 }>()
 
 const isChecked = computed(() => props.progress.isStateChecked(props.state.id))
@@ -77,6 +84,12 @@ function toggle() {
         <p class="text-xs text-stone-400 mt-3 italic">
           Done when: {{ state.exit_condition }}
         </p>
+
+        <StepNote
+          v-if="stepNote"
+          :note="stepNote.note"
+          :date="stepNote.date"
+        />
       </div>
     </div>
   </div>
