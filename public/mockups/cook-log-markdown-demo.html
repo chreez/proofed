@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cook Log Markdown Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #faf9f7;
+      color: #1a1816;
+      padding: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 8px; }
+    .subtitle { color: #9c8e78; margin-bottom: 32px; }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 700px) {
+      .comparison { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: white;
+      border: 2px solid #e8e4dc;
+      padding: 16px;
+    }
+    .panel-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #a65d45;
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #e8e4dc;
+    }
+
+    /* Cook log entry styling */
+    .cook-log-entry {
+      padding: 16px;
+      background: rgba(251, 243, 219, 0.3);
+      border-left: 3px solid #d97706;
+    }
+    .entry-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .entry-date {
+      font-weight: 600;
+      color: #44403c;
+    }
+    .entry-version {
+      font-size: 0.75rem;
+      background: #e7e5e4;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    /* Current (before) styling */
+    .notes-list {
+      font-size: 0.875rem;
+      color: #57534e;
+      padding-left: 20px;
+    }
+    .notes-list li {
+      margin-bottom: 4px;
+    }
+    .next-time {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed #d6d3d1;
+    }
+    .next-time-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #a65d45;
+      margin-bottom: 8px;
+    }
+
+    /* Markdown rendered (after) styling */
+    .prose {
+      font-size: 0.875rem;
+      color: #57534e;
+      line-height: 1.6;
+    }
+    .prose h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #a65d45;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    .prose h4:first-child {
+      margin-top: 0;
+    }
+    .prose ul {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+    .prose li {
+      margin-bottom: 6px;
+    }
+    .prose strong {
+      color: #44403c;
+      font-weight: 600;
+    }
+    .prose em {
+      color: #78716c;
+    }
+    .prose code {
+      background: #f5f5f4;
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-size: 0.8125rem;
+    }
+
+    .verdict {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      color: #166534;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cook Log: Markdown Rendering Demo</h1>
+  <p class="subtitle">Before (plain text) vs After (markdown with marked.js)</p>
+
+  <div class="comparison">
+    <!-- BEFORE: Current implementation -->
+    <div class="panel">
+      <div class="panel-title">Before (Current)</div>
+      <div class="cook-log-entry">
+        <div class="entry-header">
+          <span class="entry-date">Wednesday, February 5, 2026</span>
+          <span class="entry-version">v1.0.0</span>
+        </div>
+
+        <ul class="notes-list">
+          <li>First bake of Ultimate version. Outcome was amazing.</li>
+          <li>Used Pyrex container with lid instead of 33×23cm baking pan with foil sling.</li>
+          <li>Flour: used 278g AP + 253g bread flour blend (was short on AP). Worked great.</li>
+        </ul>
+
+        <div class="next-time">
+          <div class="next-time-title">Next Time</div>
+          <ul class="notes-list">
+            <li>Use all AP flour — no blending. Reduces variables.</li>
+            <li>Use single yeast type — no mixing instant + active dry.</li>
+            <li>Roll dough more evenly into true square — end pieces were smaller due to uneven thickness, not cutting.</li>
+            <li>Try pasta roller for consistent thickness? Could be fun.</li>
+            <li>Pyrex with foil lining works great. Could skip foil but it makes cleanup easier.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFTER: With markdown -->
+    <div class="panel">
+      <div class="panel-title">After (Markdown)</div>
+      <div class="cook-log-entry">
+        <div class="entry-header">
+          <span class="entry-date">Wednesday, February 5, 2026</span>
+          <span class="entry-version">v1.0.0</span>
+        </div>
+
+        <div class="prose" id="markdown-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <strong>Verdict:</strong> Markdown enables richer formatting — bold highlights, inline code for measurements,
+    and cleaner structure. The JSON can store plain markdown strings instead of arrays.
+  </div>
+
+  <h2 style="margin-top: 32px; margin-bottom: 16px; font-size: 1.125rem;">Data Model Change</h2>
+
+  <div class="comparison">
+    <div class="panel">
+      <div class="panel-title">Current JSON</div>
+      <pre style="font-size: 0.75rem; overflow-x: auto; background: #f5f5f4; padding: 12px;"><code>{
+  "notes": [
+    "First bake of Ultimate version.",
+    "Used Pyrex container with lid.",
+    "Flour: used 278g AP + 253g bread flour."
+  ],
+  "next_time": [
+    "Use all AP flour — no blending.",
+    "Roll dough more evenly."
+  ]
+}</code></pre>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Markdown JSON</div>
+      <pre style="font-size: 0.75rem; overflow-x: auto; background: #f5f5f4; padding: 12px;"><code>{
+  "notes_md": "#### Session Notes\n- **First bake** of Ultimate version\n- Used Pyrex `33×23cm` with lid\n- Flour: `278g` AP + `253g` bread flour\n\n#### Next Time\n- Use **all AP flour** — reduces variables\n- Roll dough more evenly into true square"
+}</code></pre>
+    </div>
+  </div>
+
+  <script>
+    const markdown = `#### Session Notes
+- **First bake** of Ultimate version — outcome was amazing!
+- Used Pyrex container with lid instead of \`33×23cm\` baking pan
+- Flour: \`278g\` AP + \`253g\` bread flour blend *(was short on AP)*
+
+#### Next Time
+- Use **all AP flour** — no blending. Reduces variables.
+- Use **single yeast type** — no mixing instant + active dry
+- Roll dough more evenly into true square
+- Try pasta roller for consistent thickness? *Could be fun.*
+- Pyrex with foil lining works great`;
+
+    document.getElementById('markdown-content').innerHTML = marked.parse(markdown);
+  </script>
+</body>
+</html>

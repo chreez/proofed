@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { marked } from 'marked'
 import type { CookLogEntry } from '@/types/recipe'
 
 defineProps<{
   cookLog: CookLogEntry[]
 }>()
+
+// Render markdown inline (no <p> wrapper for single items)
+function renderMarkdown(text: string): string {
+  return marked.parseInline(text) as string
+}
 
 function formatDate(dateStr: string): string {
   const date = new Date(dateStr)
@@ -43,10 +49,12 @@ function stepNotesCount(entry: CookLogEntry): number {
       </div>
 
       <!-- Notes section -->
-      <ul class="text-sm text-stone-600 space-y-1 list-disc list-inside">
-        <li v-for="(note, noteIndex) in entry.notes" :key="noteIndex">
-          {{ note }}
-        </li>
+      <ul class="cook-log-list">
+        <li
+          v-for="(note, noteIndex) in entry.notes"
+          :key="noteIndex"
+          v-html="renderMarkdown(note)"
+        />
       </ul>
 
       <!-- Next time section -->
@@ -57,10 +65,12 @@ function stepNotesCount(entry: CookLogEntry): number {
         <div class="text-xs uppercase font-semibold text-accent mb-2">
           Next Time
         </div>
-        <ul class="text-sm text-stone-600 space-y-1 list-disc list-inside">
-          <li v-for="(item, itemIndex) in entry.next_time" :key="itemIndex">
-            {{ item }}
-          </li>
+        <ul class="cook-log-list">
+          <li
+            v-for="(item, itemIndex) in entry.next_time"
+            :key="itemIndex"
+            v-html="renderMarkdown(item)"
+          />
         </ul>
       </div>
 
@@ -73,3 +83,32 @@ function stepNotesCount(entry: CookLogEntry): number {
     </div>
   </section>
 </template>
+
+<style scoped>
+.cook-log-list {
+  font-size: 0.875rem;
+  color: #57534e;
+  list-style: disc;
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.cook-log-list :deep(strong) {
+  color: #44403c;
+  font-weight: 600;
+}
+
+.cook-log-list :deep(em) {
+  color: #78716c;
+}
+
+.cook-log-list :deep(code) {
+  background: #f5f5f4;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-size: 0.8125rem;
+  font-family: ui-monospace, monospace;
+}
+</style>
