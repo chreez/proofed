@@ -45,6 +45,16 @@ const progress = computed(() => {
   return useProgress(currentRecipeId.value)
 })
 
+// Formatted title for header: "Family Name - Variant - Version"
+const headerTitle = computed(() => {
+  if (!currentRecipe.value || !currentFamily.value) return ''
+  const variant = currentFamily.value.variants.find(v => v.recipeId === currentRecipeId.value)
+  const parts = [currentFamily.value.name]
+  if (variant?.label) parts.push(variant.label)
+  if (currentRecipe.value.version) parts.push(currentRecipe.value.version)
+  return parts.join(' · ')
+})
+
 // Load progress when recipe ID changes
 watch(currentRecipeId, (newId) => {
   if (newId && progress.value) {
@@ -123,7 +133,7 @@ const aggregatedStepNotes = computed(() => {
         <span
           v-if="!showIndex && currentRecipe && isScrolled"
           class="text-sm text-stone-600 font-medium"
-        >{{ currentRecipe.meta.name }}</span>
+        >{{ headerTitle }}</span>
       </div>
     </header>
 
