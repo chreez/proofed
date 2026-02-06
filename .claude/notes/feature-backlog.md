@@ -27,27 +27,24 @@ Captured during cooking sessions. Implement when ready.
 
 ## UAT Issues (2026-02-05)
 
-**Status:** Captured, needs prioritization
+**Status:** Most items completed
 
-### Header on Scroll
-- "8 buns" in sticky header feels odd/funny
-- On scroll minification, right side should show recipe name instead
-- e.g., "ATK Ultimate Cinnamon Buns" when scrolled
+### ✅ Header on Scroll (DONE 2026-02-06)
+- Shows recipe name when scrolled instead of yield
+- Smooth crossfade transition
 
 ### Table of Contents
 - Need TOC for navigating recipe sections
 - **Consider existing tooling** — don't reinvent the wheel
 - Options: scrollspy libraries, intersection observer patterns
 
-### Cook Log Formatting
-- Current layout looks unprofessional
-- Needs design pass for polish
-- Consider: card layout, better typography, visual hierarchy
+### ✅ Cook Log Formatting (DONE 2026-02-06)
+- Renders as proper markdown document
+- Removed non-functional step notes link
 
-### Animation Polish
-- Current transitions not smooth
-- Feel unprofessional
-- Need: easing curves review, duration tuning, reduce jank
+### ✅ Animation Polish (DONE 2026-02-06)
+- CSS grid animations for smooth collapse/expand
+- Removed janky max-height transitions
 
 ---
 

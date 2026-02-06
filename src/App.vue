@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, computed, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
 import { useTechniques } from '@/composables/useTechniques'
@@ -11,19 +12,21 @@ import VariantTabs from '@/components/VariantTabs.vue'
 import CookLogSection from '@/components/CookLogSection.vue'
 import VersionTimeline from '@/components/VersionTimeline.vue'
 
+const route = useRoute()
+const router = useRouter()
+
 const { loadTechniques } = useTechniques()
+const { currentRecipe, currentRecipeId, currentFamily, loading, loadManifest, loadRecipe } = useRecipe()
 
-const { currentRecipe, currentRecipeId, currentFamily, loading, loadManifest, loadRecipe, restoreLastRecipe } = useRecipe()
-
-const showIndex = ref(true)
+// Derive showIndex from route
+const showIndex = computed(() => route.name === 'index' || !route.params.recipeId)
 
 function goToIndex(): void {
-  showIndex.value = true
+  router.push('/')
 }
 
 function handleRecipeSelect(recipeId: string): void {
-  loadRecipe(recipeId)
-  showIndex.value = false
+  router.push(`/recipe/${recipeId}`)
 }
 
 const isScrolled = ref(false)
@@ -45,7 +48,7 @@ const progress = computed(() => {
   return useProgress(currentRecipeId.value)
 })
 
-// Formatted title for header: "Family Name - Variant - Version"
+// Formatted title for header: "Family Name · Variant · Version"
 const headerTitle = computed(() => {
   if (!currentRecipe.value || !currentFamily.value) return ''
   const variant = currentFamily.value.variants.find(v => v.recipeId === currentRecipeId.value)
@@ -54,6 +57,17 @@ const headerTitle = computed(() => {
   if (currentRecipe.value.version) parts.push(currentRecipe.value.version)
   return parts.join(' · ')
 })
+
+// Load recipe when route changes
+watch(
+  () => route.params.recipeId,
+  async (recipeId) => {
+    if (recipeId && typeof recipeId === 'string') {
+      await loadRecipe(recipeId)
+    }
+  },
+  { immediate: true }
+)
 
 // Load progress when recipe ID changes
 watch(currentRecipeId, (newId) => {
@@ -89,9 +103,6 @@ watch(currentRecipe, (recipe) => {
 onMounted(async () => {
   await loadTechniques()
   await loadManifest()
-  const restored = await restoreLastRecipe()
-  // Only show index if no recipe was restored
-  showIndex.value = !restored
 })
 
 function getStatesForStage(stateIds: string[]) {
@@ -152,7 +163,7 @@ const aggregatedStepNotes = computed(() => {
         <VariantTabs
           v-if="currentFamily"
           :family-id="currentFamily.id"
-          @select="loadRecipe"
+          @select="handleRecipeSelect"
         />
 
         <div class="space-y-4">
