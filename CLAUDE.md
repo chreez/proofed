@@ -44,6 +44,37 @@ public/recipes/
 
 See @.claude/rules/validation/checklist.md for criteria.
 
+## Human-in-the-Loop Gates
+
+Styling and visual tasks require explicit human sign-off before commit. This applies to:
+
+- Any backlog task with labels `bug (styling)` or `ux`
+- Any task whose title or description mentions CSS, padding, margin, layout, spacing, color, font, or visual changes
+- Any component change that alters rendered appearance (even if "minor")
+
+### Gate Requirements
+
+1. **Before committing**, the agent MUST:
+   - Present a **before/after description** of the visual changes to the user
+   - Open the dev server URL (`http://localhost:5173` and/or `http://192.168.1.213:5173` for iPhone) so the user can verify
+   - Ask the user to confirm the changes look correct on their device(s)
+   - Wait for explicit user approval (e.g., "looks good", "approved", "ship it")
+
+2. **Do NOT commit styling changes autonomously.** Even if the build passes and tests pass, visual correctness requires human eyes.
+
+3. **Backlog status**: Styling tasks cannot be marked `Done` without explicit user sign-off. If the user has not confirmed, leave the task `In Progress`.
+
+4. **If the user requests changes**, iterate and re-present before/after. Do not commit until approved.
+
+### What counts as a styling task?
+
+When in doubt, treat it as a styling task. Examples:
+- Changing UnoCSS shortcuts or theme values in `uno.config.ts`
+- Modifying `<template>` structure that affects layout
+- Adding/removing CSS classes on components
+- Adjusting padding, margin, gap, font-size, color, border
+- Responsive design changes (mobile/desktop breakpoints)
+
 ## Task Management (backlog.md)
 - Tasks live in `backlog/tasks/` as markdown files — **never edit directly**
 - Use CLI: `backlog task create`, `backlog task edit`, `backlog task list`
@@ -58,6 +89,7 @@ See @.claude/rules/validation/checklist.md for criteria.
 - **Each commit must pass `npm run build`** (tests + type-check + build)
 - **Reference backlog task ID** when applicable: `fix: header padding (PF-17)`
 - **Commit between backlog items** — don't batch multiple tasks into one commit
+- **Stage specific files** — use `git add <file>` not `git add .` or `git add -A`
 - **Message format**: `<type>: <description> (PF-XX)`
   - Types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`
   - Keep description concise, lowercase, imperative mood
@@ -66,6 +98,14 @@ See @.claude/rules/validation/checklist.md for criteria.
   - `fix: remove extra padding on card-title (PF-17)`
   - `chore: remove unused TocPill component`
   - `test: add StageCard header styling tests`
+
+### Pre-commit Hook
+
+A pre-commit hook at `.git/hooks/pre-commit` runs `npm run build` automatically on every commit. If the build fails, the commit is rejected. This is the enforcement mechanism for the "each commit must pass build" rule. If a commit is rejected:
+
+1. Run `npm run build` manually to see the full error output
+2. Fix the issue
+3. Re-stage and commit again (do NOT amend — create a new commit)
 
 ## Recurring Cleanup (Between Tasks)
 
