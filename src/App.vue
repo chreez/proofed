@@ -122,6 +122,13 @@ const aggregatedStepNotes = computed(() => {
   return notes
 })
 
+// Format version as v{major}.{minor} (drop patch) for scrolled header
+function formatVersionShort(version: string): string {
+  const match = version.match(/^v?(\d+)\.(\d+)/)
+  if (!match) return version
+  return `v${match[1]}.${match[2]}`
+}
+
 // TOC: Stage data for navigation
 const tocStages = computed(() => {
   if (!currentRecipe.value) return []
@@ -249,7 +256,7 @@ function handleTocNavigate(target: string) {
         <span
           v-if="isScrolled && currentRecipe"
           class="text-sm text-muted truncate ml-4"
-        >{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ currentRecipe.version }}</span></span>
+        >{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ formatVersionShort(currentRecipe.version) }}</span></span>
       </div>
     </header>
 

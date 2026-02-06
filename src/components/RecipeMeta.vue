@@ -8,6 +8,13 @@ const props = defineProps<{
 
 const copied = ref(false)
 
+// Format version as v{major}.{minor} (drop patch)
+function formatVersion(version: string): string {
+  const match = version.match(/^v?(\d+)\.(\d+)/)
+  if (!match) return version
+  return `v${match[1]}.${match[2]}`
+}
+
 function formatRecipeForPaprika(): string {
   const { meta, stages, states } = props.recipe
   const lines: string[] = []
@@ -64,7 +71,8 @@ async function copyRecipe(): Promise<void> {
   <div class="card">
     <div class="flex items-start justify-between gap-4">
       <div>
-        <h2 class="text-2xl text-heading mb-2">{{ recipe.meta.name }}</h2>
+        <h2 class="text-2xl text-heading">{{ recipe.meta.name }}</h2>
+        <div v-if="recipe.version" class="font-mono text-sm text-stone-400 mb-2">{{ formatVersion(recipe.version) }}</div>
         <div class="flex flex-wrap gap-4 text-muted">
           <span v-if="recipe.meta.source">{{ recipe.meta.source }}</span>
           <span>{{ recipe.meta.yields }}</span>
