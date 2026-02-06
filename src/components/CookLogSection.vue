@@ -38,7 +38,7 @@ function formatDate(dateStr: string): string {
 
 <template>
   <section>
-    <h3 class="font-semibold text-lg mb-4 pb-2 border-b border-stone-200">
+    <h3 class="card-title mb-4 pb-2 border-b border-stone-200">
       Cook Log
     </h3>
 

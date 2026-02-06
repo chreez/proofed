@@ -27,9 +27,9 @@ export default defineConfig({
     }
   },
   shortcuts: {
-    'card': 'bg-white shadow-sm p-4 border-2 border-stone-200',
-    'card-title': 'text-lg text-heading pl-2',
-    'btn': 'px-4 py-2 font-medium transition-colors cursor-pointer',
+    'card': 'bg-white shadow-sm p-4 border-2 border-stone-200 rounded-none',
+    'card-title': 'text-lg text-heading',
+    'btn': 'px-4 py-2 font-medium transition-colors cursor-pointer rounded-none appearance-none',
     'btn-primary': 'btn bg-ink text-stone-100 hover:bg-stone-800',
     'btn-secondary': 'btn bg-stone-200 text-ink hover:bg-stone-300',
     'text-heading': 'text-ink font-semibold',
