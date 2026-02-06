@@ -6,10 +6,22 @@ import { useTechniques } from '@/composables/useTechniques'
 import type { RecipeState } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import StageCard from '@/components/StageCard.vue'
+import RecipeIndex from '@/components/RecipeIndex.vue'
 
 const { loadTechniques } = useTechniques()
 
-const { currentRecipe, currentRecipeId, loading, recipeList, loadManifest, loadRecipe, restoreLastRecipe } = useRecipe()
+const { currentRecipe, currentRecipeId, loading, loadManifest, loadRecipe, restoreLastRecipe } = useRecipe()
+
+const showIndex = ref(true)
+
+function goToIndex(): void {
+  showIndex.value = true
+}
+
+function handleRecipeSelect(recipeId: string): void {
+  loadRecipe(recipeId)
+  showIndex.value = false
+}
 
 const isScrolled = ref(false)
 
@@ -64,7 +76,9 @@ watch(currentRecipe, (recipe) => {
 onMounted(async () => {
   await loadTechniques()
   await loadManifest()
-  await restoreLastRecipe()
+  const restored = await restoreLastRecipe()
+  // Only show index if no recipe was restored
+  showIndex.value = !restored
 })
 
 function getStatesForStage(stateIds: string[]) {
@@ -83,32 +97,28 @@ function getStatesForStage(stateIds: string[]) {
     >
       <div class="max-w-3xl mx-auto flex items-center justify-between">
         <h1
-          class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out"
+          class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out cursor-pointer"
           :class="isScrolled ? 'text-lg' : 'text-2xl'"
+          @click="goToIndex"
         >proofed<span class="text-accent">.</span></h1>
         <div
+          v-if="!showIndex && currentRecipe"
           class="transition-all duration-200 ease-out overflow-hidden"
           :class="isScrolled ? 'opacity-0 max-w-0' : 'opacity-100 max-w-xs'"
         >
-          <select
-            v-if="recipeList.length > 1"
-            :value="currentRecipeId"
-            @change="loadRecipe(($event.target as HTMLSelectElement).value)"
-            class="text-sm bg-white border-2 border-ink px-2 py-1 text-ink font-sans whitespace-nowrap"
-          >
-            <option v-for="r in recipeList" :key="r.id" :value="r.id">
-              {{ r.name }}
-            </option>
-          </select>
-          <span v-else-if="currentRecipe" class="text-muted whitespace-nowrap">{{ currentRecipe.meta.yields }}</span>
+          <span class="text-muted whitespace-nowrap">{{ currentRecipe.meta.yields }}</span>
         </div>
       </div>
     </header>
 
     <main class="max-w-3xl mx-auto px-4 py-6">
       <div v-if="loading" class="text-center py-12 text-muted">
-        Loading recipe...
+        Loading...
       </div>
+
+      <template v-else-if="showIndex">
+        <RecipeIndex @select="handleRecipeSelect" />
+      </template>
 
       <template v-else-if="currentRecipe && progress">
         <RecipeMeta :recipe="currentRecipe" class="mb-6" />
