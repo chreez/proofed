@@ -4,8 +4,10 @@ title: Build coverage gate
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:46'
+updated_date: '2026-02-06 19:08'
 labels:
   - infra
+  - ungroomed
 dependencies: []
 priority: medium
 ---

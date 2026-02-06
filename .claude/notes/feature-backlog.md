@@ -187,13 +187,61 @@ Example: "ATK Cinnamon Buns Ultimate v1.2.0 — cooked 2026-02-05"
 
 ---
 
+## Build Process: Coverage Gate
+
+**Status:** Backlogged
+
+**Problem:** New code should maintain test coverage. Currently tests run as prebuild but don't enforce coverage thresholds.
+
+**Implementation:**
+1. Add coverage threshold to vitest config
+2. Fail build if new lines aren't covered
+3. Current baseline: 95.45% line coverage
+
+**Config example:**
+```typescript
+// vitest.config.ts
+coverage: {
+  thresholds: {
+    lines: 95,
+    branches: 90,
+    functions: 90,
+    statements: 95
+  }
+}
+```
+
+---
+
+## Component Library Evaluation
+
+**Status:** Backlogged
+
+**Problem:** Hand-rolled dropdowns/menus lack polish and a11y robustness. Should evaluate headless component libraries.
+
+**Libraries to evaluate:**
+
+| Library | Type | Pros | Cons |
+|---------|------|------|------|
+| [vue-use-active-scroll](https://github.com/smastrom/vue-use-active-scroll) | Scrollspy | Better than our IntersectionObserver | Single-purpose |
+| [Headless UI](https://headlessui.com/) | Unstyled | Official Tailwind team, great a11y | Limited components |
+| [Radix Vue](https://www.radix-vue.com/) | Unstyled | Robust primitives, Radix port | Larger bundle |
+| [Floating UI](https://floating-ui.com/) | Positioning | Handles dropdown placement | Low-level |
+
+**Evaluation criteria:**
+1. Bundle size impact
+2. a11y compliance
+3. Styling flexibility with UnoCSS
+4. Active maintenance
+
+---
+
 ## Code Cleanup & Refactor
 
 **Status:** Backlogged
 
 **Tasks:**
 - Remove unused mockup files from `public/mockups/`
-- Remove unused `TocSidebar.vue` component (sidebar TOC abandoned)
 - General code cleanup pass
 - Review and consolidate CSS/UnoCSS usage
 
