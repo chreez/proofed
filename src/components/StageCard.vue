@@ -20,6 +20,9 @@ const props = defineProps<{
 const isCollapsed = computed(() => props.progress.isStageCollapsed(props.stage.id))
 
 function toggle() {
+  // Don't collapse if user is selecting text
+  const selection = window.getSelection()
+  if (selection && selection.toString().length > 0) return
   props.progress.toggleStageCollapse(props.stage.id)
 }
 
@@ -31,10 +34,11 @@ const stateCount = computed(() => {
 
 <template>
   <div class="card">
-    <button
+    <div
       :id="`stage-header-${stage.id}`"
       @click="toggle"
-      class="w-full flex items-center justify-between text-left scroll-mt-16 rounded-none appearance-none"
+      class="w-full flex items-center justify-between scroll-mt-16 cursor-pointer select-text"
+      role="button"
     >
       <h3 class="card-title">{{ stage.title }}</h3>
       <div class="flex items-center gap-3">
@@ -46,7 +50,7 @@ const stateCount = computed(() => {
           :class="{ 'rotate-180': !isCollapsed }"
         >▼</span>
       </div>
-    </button>
+    </div>
 
     <div
       class="grid transition-[grid-template-rows] duration-300 ease-out"

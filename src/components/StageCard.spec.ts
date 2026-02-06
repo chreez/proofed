@@ -48,18 +48,19 @@ describe('StageCard', () => {
     expect(wrapper.text()).toContain('Mise en Place')
   })
 
-  it('header button has rounded-none and appearance-none for mobile Safari', () => {
+  it('header is a clickable div with no button styling', () => {
     const wrapper = mount(StageCard, { props: defaultProps })
-    const btn = wrapper.find('#stage-header-mise-en-place')
-    expect(btn.exists()).toBe(true)
-    expect(btn.classes()).toContain('rounded-none')
-    expect(btn.classes()).toContain('appearance-none')
+    const header = wrapper.find('#stage-header-mise-en-place')
+    expect(header.exists()).toBe(true)
+    expect(header.element.tagName).toBe('DIV')
+    expect(header.classes()).toContain('cursor-pointer')
+    expect(header.classes()).toContain('select-text')
   })
 
-  it('header button has scroll-mt-16 for sticky header offset', () => {
+  it('header has scroll-mt-16 for sticky header offset', () => {
     const wrapper = mount(StageCard, { props: defaultProps })
-    const btn = wrapper.find('#stage-header-mise-en-place')
-    expect(btn.classes()).toContain('scroll-mt-16')
+    const header = wrapper.find('#stage-header-mise-en-place')
+    expect(header.classes()).toContain('scroll-mt-16')
   })
 
   it('calls toggleStageCollapse when header clicked', async () => {
