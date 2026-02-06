@@ -7,10 +7,11 @@ import type { RecipeState } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import StageCard from '@/components/StageCard.vue'
 import RecipeIndex from '@/components/RecipeIndex.vue'
+import VariantTabs from '@/components/VariantTabs.vue'
 
 const { loadTechniques } = useTechniques()
 
-const { currentRecipe, currentRecipeId, loading, loadManifest, loadRecipe, restoreLastRecipe } = useRecipe()
+const { currentRecipe, currentRecipeId, currentFamily, loading, loadManifest, loadRecipe, restoreLastRecipe } = useRecipe()
 
 const showIndex = ref(true)
 
@@ -122,6 +123,12 @@ function getStatesForStage(stateIds: string[]) {
 
       <template v-else-if="currentRecipe && progress">
         <RecipeMeta :recipe="currentRecipe" class="mb-6" />
+
+        <VariantTabs
+          v-if="currentFamily"
+          :family-id="currentFamily.id"
+          @select="loadRecipe"
+        />
 
         <div class="space-y-4">
           <StageCard
