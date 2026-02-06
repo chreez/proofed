@@ -1,10 +1,10 @@
 ---
 id: PF-18
 title: Recipe page doesn't show version on the title of the recipe.
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-06 18:52'
-updated_date: '2026-02-06 19:50'
+updated_date: '2026-02-06 19:54'
 labels:
   - bug
 dependencies: []
