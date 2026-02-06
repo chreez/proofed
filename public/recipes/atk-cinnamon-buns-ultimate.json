@@ -8,6 +8,40 @@
   "config": {
     "early_check_percent": 0.8
   },
+  "cook_log": [
+    {
+      "date": "2026-02-05",
+      "version": "v1.0.0",
+      "notes": [
+        "First bake of Ultimate version. Outcome was amazing.",
+        "Used Pyrex container with lid instead of 33×23cm baking pan with foil sling.",
+        "Foil sling: attempted with multiple small sheets — would have made unmolding difficult. Pyrex worked better.",
+        "Flour: used 278g AP + 253g bread flour blend (was short on AP). Worked great.",
+        "Yeast: had 5.4g instant, topped up with ~2g active dry.",
+        ""Bulk ferment: cold rise in fridge overnight instead of 2hr warm rise.",
+        "Cold dough: still cold to touch after few hours at room temp. Take out earlier (morning) for easier rolling.""
+      ],
+      "rolling_tips_research": [
+        "Shape before rolling: pat dough into rough square/rectangle before using rolling pin.",
+        "Cut an X: cut X on dough ball, roll each quadrant outward, they join into rectangle.",
+        "Roll from center diagonally toward corners, not just back-and-forth.",
+        "Rotate 90° every few rolls to maintain shape and prevent sticking.",
+        "Use guides for even thickness: rulers, dowels, chopsticks alongside dough.",
+        "Fix thick spots: lift and scrunch dough to redistribute, then roll toward thin areas.",
+        "Let cold dough rest 10-15 min — stiff dough snaps back.",
+        "Run hand over surface to feel for hills/valleys.",
+        "Keep pressure consistent — uneven pressure = uneven dough."
+      ],
+      "photos": [],
+      "next_time": [
+        "Use all AP flour — no blending. Reduces variables.",
+        "Use single yeast type — no mixing instant + active dry.",
+        "Roll dough more evenly into true square — end pieces were smaller due to uneven thickness, not cutting.",
+        "Try pasta roller for consistent thickness? Could be fun.",
+        "Pyrex with foil lining works great. Could skip foil but it makes cleanup easier."
+      ]
+    }
+  ],
   "vessels": [
     { "id": "V1", "name": "Stand Mixer Bowl", "reuse": "Dry mix → dough → first rise → freed after punch" },
     { "id": "V2", "name": "Small Bowl", "reuse": "Filling mixture → freed → glaze" },
@@ -222,16 +256,19 @@
     },
     {
       "id": "ROLL_DOUGH",
-      "title": "Roll Dough",
-      "direction": "Punch down risen dough. Transfer to lightly floured surface. Roll into 46×46 cm square (18×18 inch).",
-      "duration_min": 5,
+      "title": "Roll Dough into Square",
+      "direction": "Punch down risen dough. Pat into rough square shape with hands first. Transfer to lightly floured surface. Roll from center diagonally toward corners. Rotate 90° every few rolls. Target: 46×46 cm square (18×18 inch).",
+      "duration_min": 8,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Even square, consistent thickness throughout",
+      "exit_condition": "Even square with sharp corners, consistent thickness throughout. Run hand over surface to check for hills/valleys.",
       "notes": [
-        { "text": "Let dough rest 5 min if it springs back too much", "critical": false }
-      ]
+        { "text": "Cold dough? Let rest 10-15 min at room temp — stiff dough snaps back.", "critical": false },
+        { "text": "Use guides (rulers, dowels) alongside dough for even thickness.", "critical": false },
+        { "text": "Fix thick spots: lift and scrunch to redistribute, roll toward thin areas.", "critical": false }
+      ],
+      "technique_url": "https://www.roadtopastry.com/blog/hints-tips/tip-how-to-roll-out-tart-dough-into-a-square"
     },
     {
       "id": "APPLY_FILLING",
