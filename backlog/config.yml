@@ -1,0 +1,20 @@
+project_name: "proofed"
+default_status: "To Do"
+statuses: ["To Do", "In Progress", "Done"]
+labels: ["feature", "bug", "refactor", "recipe", "ux", "infra"]
+milestones: []
+definition_of_done:
+  - "vitest passes"
+  - "vue-tsc passes"
+  - "vite build passes"
+  - "/validate passes"
+date_format: yyyy-mm-dd
+max_column_width: 20
+auto_open_browser: true
+default_port: 6420
+remote_operations: true
+auto_commit: false
+bypass_git_hooks: false
+check_active_branches: true
+active_branch_days: 30
+task_prefix: "pf"
