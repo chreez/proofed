@@ -47,15 +47,12 @@ const stateCount = computed(() => {
       </div>
     </button>
 
-    <Transition
-      enter-active-class="transition-all duration-200 ease-out"
-      enter-from-class="opacity-0 max-h-0"
-      enter-to-class="opacity-100 max-h-screen"
-      leave-active-class="transition-all duration-150 ease-in"
-      leave-from-class="opacity-100 max-h-screen"
-      leave-to-class="opacity-0 max-h-0"
+    <div
+      class="grid transition-[grid-template-rows] duration-300 ease-out"
+      :class="isCollapsed ? 'grid-rows-[0fr]' : 'grid-rows-[1fr]'"
     >
-      <div v-show="!isCollapsed" class="mt-4 space-y-4 overflow-hidden">
+      <div class="overflow-hidden">
+        <div class="mt-4 space-y-4">
         <GatherSection
           v-if="stage.gather"
           :gather="stage.gather"
@@ -75,7 +72,8 @@ const stateCount = computed(() => {
             :step-note="stepNotes?.[state.id]"
           />
         </div>
+        </div>
       </div>
-    </Transition>
+    </div>
   </div>
 </template>

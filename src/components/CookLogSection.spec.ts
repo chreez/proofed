@@ -8,7 +8,6 @@ describe('CookLogSection', () => {
       date: '2026-02-05',
       version: 'v1.0.0',
       notes: ['Note 1', 'Note 2'],
-      step_notes: { 'STEP_1': 'Step note' },
       next_time: ['Try this next time']
     }]
   }
@@ -29,14 +28,12 @@ describe('CookLogSection', () => {
             date: '2026-02-05',
             version: 'v1.0.0',
             notes: ['First note'],
-            step_notes: {},
             next_time: []
           },
           {
             date: '2026-02-04',
             version: 'v0.9.0',
             notes: ['Second note'],
-            step_notes: {},
             next_time: []
           }
         ]
@@ -65,7 +62,6 @@ describe('CookLogSection', () => {
           date: '2026-02-05',
           version: 'v1.0.0',
           notes: ['Note 1'],
-          step_notes: {},
           next_time: []
         }]
       }
@@ -74,44 +70,19 @@ describe('CookLogSection', () => {
     expect(wrapper.text()).not.toContain('Next Time')
   })
 
-  it('shows step notes count when present', () => {
-    const wrapper = mount(CookLogSection, {
-      props: defaultProps
-    })
-
-    // step_notes has 1 entry, so should show "1 step note"
-    expect(wrapper.text()).toContain('1 step note')
-  })
-
-  it('shows plural step notes count for multiple notes', () => {
+  it('renders markdown formatting in notes', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
           date: '2026-02-05',
           version: 'v1.0.0',
-          notes: ['Note 1'],
-          step_notes: { 'STEP_1': 'Note 1', 'STEP_2': 'Note 2' },
+          notes: ['**Bold text** and *italic*'],
           next_time: []
         }]
       }
     })
 
-    expect(wrapper.text()).toContain('2 step notes')
-  })
-
-  it('hides step notes count when none present', () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Note 1'],
-          step_notes: {},
-          next_time: []
-        }]
-      }
-    })
-
-    expect(wrapper.text()).not.toContain('step note')
+    expect(wrapper.html()).toContain('<strong>Bold text</strong>')
+    expect(wrapper.html()).toContain('<em>italic</em>')
   })
 })

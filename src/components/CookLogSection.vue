@@ -6,9 +6,22 @@ defineProps<{
   cookLog: CookLogEntry[]
 }>()
 
-// Render markdown inline (no <p> wrapper for single items)
-function renderMarkdown(text: string): string {
-  return marked.parseInline(text) as string
+// Convert notes array to markdown and render
+function renderNotes(entry: CookLogEntry): string {
+  let md = ''
+
+  // Session notes as bullet list
+  if (entry.notes?.length) {
+    md += entry.notes.map(n => `- ${n}`).join('\n')
+  }
+
+  // Next time section
+  if (entry.next_time?.length) {
+    md += '\n\n#### Next Time\n'
+    md += entry.next_time.map(n => `- ${n}`).join('\n')
+  }
+
+  return marked.parse(md) as string
 }
 
 function formatDate(dateStr: string): string {
@@ -21,10 +34,6 @@ function formatDate(dateStr: string): string {
   })
 }
 
-function stepNotesCount(entry: CookLogEntry): number {
-  if (!entry.step_notes) return 0
-  return Object.keys(entry.step_notes).length
-}
 </script>
 
 <template>
@@ -48,63 +57,49 @@ function stepNotesCount(entry: CookLogEntry): number {
         </span>
       </div>
 
-      <!-- Notes section -->
-      <ul class="cook-log-list">
-        <li
-          v-for="(note, noteIndex) in entry.notes"
-          :key="noteIndex"
-          v-html="renderMarkdown(note)"
-        />
-      </ul>
+      <!-- Markdown content -->
+      <div class="prose" v-html="renderNotes(entry)" />
 
-      <!-- Next time section -->
-      <div
-        v-if="entry.next_time && entry.next_time.length"
-        class="mt-3 pt-3 border-t border-dashed border-stone-300"
-      >
-        <div class="text-xs uppercase font-semibold text-accent mb-2">
-          Next Time
-        </div>
-        <ul class="cook-log-list">
-          <li
-            v-for="(item, itemIndex) in entry.next_time"
-            :key="itemIndex"
-            v-html="renderMarkdown(item)"
-          />
-        </ul>
-      </div>
-
-      <!-- Footer: step notes count -->
-      <div v-if="stepNotesCount(entry) > 0" class="mt-3">
-        <a href="#" class="text-xs text-accent hover:underline">
-          {{ stepNotesCount(entry) }} step note{{ stepNotesCount(entry) > 1 ? 's' : '' }}
-        </a>
-      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.cook-log-list {
+.prose {
   font-size: 0.875rem;
   color: #57534e;
-  list-style: disc;
-  list-style-position: inside;
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
+  line-height: 1.6;
 }
 
-.cook-log-list :deep(strong) {
+.prose :deep(ul) {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.prose :deep(li) {
+  margin-bottom: 0.375rem;
+}
+
+.prose :deep(h4) {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #a65d45;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose :deep(strong) {
   color: #44403c;
   font-weight: 600;
 }
 
-.cook-log-list :deep(em) {
+.prose :deep(em) {
   color: #78716c;
 }
 
-.cook-log-list :deep(code) {
+.prose :deep(code) {
   background: #f5f5f4;
   padding: 1px 4px;
   border-radius: 2px;

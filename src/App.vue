@@ -122,10 +122,16 @@ const aggregatedStepNotes = computed(() => {
         >proofed<span class="text-accent">.</span></h1>
         <div
           v-if="!showIndex && currentRecipe"
-          class="transition-all duration-200 ease-out overflow-hidden"
-          :class="isScrolled ? 'opacity-0 max-w-0' : 'opacity-100 max-w-xs'"
+          class="relative text-sm whitespace-nowrap overflow-hidden h-5"
         >
-          <span class="text-muted whitespace-nowrap">{{ currentRecipe.meta.yields }}</span>
+          <span
+            class="absolute right-0 text-muted transition-all duration-300"
+            :class="isScrolled ? 'opacity-0 -translate-y-4' : 'opacity-100 translate-y-0'"
+          >{{ currentRecipe.meta.yields }}</span>
+          <span
+            class="absolute right-0 font-medium text-stone-600 transition-all duration-300"
+            :class="isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+          >{{ currentRecipe.meta.name }}</span>
         </div>
       </div>
     </header>
