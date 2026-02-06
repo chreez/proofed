@@ -11,7 +11,6 @@ import RecipeIndex from '@/components/RecipeIndex.vue'
 import VariantTabs from '@/components/VariantTabs.vue'
 import CookLogSection from '@/components/CookLogSection.vue'
 import VersionTimeline from '@/components/VersionTimeline.vue'
-import TocSidebar from '@/components/TocSidebar.vue'
 import TocPill from '@/components/TocPill.vue'
 
 const route = useRoute()
@@ -48,16 +47,6 @@ onUnmounted(() => {
 const progress = computed(() => {
   if (!currentRecipeId.value) return null
   return useProgress(currentRecipeId.value)
-})
-
-// Formatted title for header: "Family Name · Variant · Version"
-const headerTitle = computed(() => {
-  if (!currentRecipe.value || !currentFamily.value) return ''
-  const variant = currentFamily.value.variants.find(v => v.recipeId === currentRecipeId.value)
-  const parts = [currentFamily.value.name]
-  if (variant?.label) parts.push(variant.label)
-  if (currentRecipe.value.version) parts.push(currentRecipe.value.version)
-  return parts.join(' · ')
 })
 
 // Track if manifest is loaded
@@ -133,12 +122,6 @@ const aggregatedStepNotes = computed(() => {
   return notes
 })
 
-// TOC: Query param toggle (?toc=sidebar or ?toc=pill)
-const tocMode = computed(() => {
-  const mode = route.query.toc as string
-  return mode === 'sidebar' || mode === 'pill' ? mode : 'pill' // default to pill
-})
-
 // TOC: Stage data for navigation
 const tocStages = computed(() => {
   if (!currentRecipe.value) return []
@@ -195,10 +178,17 @@ function handleTocNavigate(target: string) {
           :class="isScrolled ? 'text-lg' : 'text-2xl'"
           @click="goToIndex"
         >proofed<span class="text-accent">.</span></h1>
-        <span
-          v-if="!showIndex && currentRecipe && isScrolled"
-          class="text-sm text-stone-600 font-medium"
-        >{{ headerTitle }}</span>
+        <!-- TOC Pill in header when scrolled -->
+        <TocPill
+          v-if="!showIndex && currentRecipe && progress && isScrolled"
+          :stages="tocStages"
+          :has-cook-log="!!currentRecipe.cook_log?.length"
+          :has-change-log="!!currentRecipe.change_log?.length"
+          :current-stage-id="currentStageId"
+          :completed-stage-ids="completedStageIds"
+          :in-header="true"
+          @navigate="handleTocNavigate"
+        />
       </div>
     </header>
 
@@ -212,32 +202,23 @@ function handleTocNavigate(target: string) {
       </template>
 
       <template v-else-if="currentRecipe && progress">
-        <!-- TOC Components -->
-        <TocSidebar
-          v-if="tocMode === 'sidebar'"
-          :stages="tocStages"
-          :has-cook-log="!!currentRecipe.cook_log?.length"
-          :has-change-log="!!currentRecipe.change_log?.length"
-          :current-stage-id="currentStageId"
-          :completed-stage-ids="completedStageIds"
-          @navigate="handleTocNavigate"
-        />
-        <TocPill
-          v-else
-          :stages="tocStages"
-          :has-cook-log="!!currentRecipe.cook_log?.length"
-          :has-change-log="!!currentRecipe.change_log?.length"
-          :current-stage-id="currentStageId"
-          :completed-stage-ids="completedStageIds"
-          @navigate="handleTocNavigate"
-        />
-
         <RecipeMeta :recipe="currentRecipe" class="mb-6" />
 
         <VariantTabs
           v-if="currentFamily"
           :family-id="currentFamily.id"
           @select="handleRecipeSelect"
+        />
+
+        <!-- TOC Pill in content when not scrolled -->
+        <TocPill
+          v-if="!isScrolled"
+          :stages="tocStages"
+          :has-cook-log="!!currentRecipe.cook_log?.length"
+          :has-change-log="!!currentRecipe.change_log?.length"
+          :current-stage-id="currentStageId"
+          :completed-stage-ids="completedStageIds"
+          @navigate="handleTocNavigate"
         />
 
         <div class="space-y-4">

@@ -12,6 +12,7 @@ const props = defineProps<{
   hasChangeLog: boolean
   currentStageId: string | null
   completedStageIds: string[]
+  inHeader?: boolean // When true, renders compact for header placement
 }>()
 
 const emit = defineEmits<{
@@ -27,7 +28,6 @@ const currentStage = computed(() => {
   if (!props.currentStageId) return props.stages[0] ?? null
   return props.stages.find(s => s.id === props.currentStageId) ?? null
 })
-
 
 // Progress text for pill (e.g., "2/4")
 const progressText = computed(() => {
@@ -88,28 +88,30 @@ onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
   document.removeEventListener('keydown', handleKeydown)
 })
-
 </script>
 
 <template>
-  <div class="toc-pill-container">
-    <!-- Floating Pill -->
+  <div class="relative" :class="inHeader ? '' : 'my-4'">
+    <!-- Pill Button -->
     <button
       ref="pillRef"
       @click="toggleDropdown"
-      class="toc-pill"
+      class="inline-flex items-center gap-2 px-3 py-1.5 bg-ink text-white text-xs font-medium cursor-pointer transition-colors hover:bg-stone-700"
+      :class="inHeader ? 'rounded-sm' : 'rounded-full shadow-md'"
       :aria-expanded="isOpen"
       aria-haspopup="true"
     >
-      <span class="toc-pill-text">{{ pillText }}</span>
-      <span
-        class="toc-pill-chevron"
-        :class="{ 'toc-pill-chevron--open': isOpen }"
+      <span class="whitespace-nowrap">{{ pillText }}</span>
+      <svg
+        width="10"
+        height="6"
+        viewBox="0 0 10 6"
+        fill="none"
+        class="transition-transform duration-200"
+        :class="isOpen ? 'rotate-180' : ''"
       >
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
+        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </button>
 
     <!-- Dropdown Menu -->
@@ -117,23 +119,23 @@ onUnmounted(() => {
       <div
         v-if="isOpen"
         ref="dropdownRef"
-        class="toc-dropdown"
+        class="absolute top-full mt-2 right-0 min-w-[180px] bg-white border-2 border-ink shadow-lg z-50"
         role="menu"
       >
         <!-- Stages List -->
-        <div class="toc-dropdown-section">
+        <div class="py-1">
           <button
             v-for="stage in stages"
             :key="stage.id"
             @click="handleNavigate(stage.id)"
-            class="toc-dropdown-item"
+            class="flex items-center gap-2 w-full px-3 py-2 text-sm text-left transition-colors hover:bg-stone-100"
             :class="{
-              'toc-dropdown-item--current': isCurrentStage(stage.id),
-              'toc-dropdown-item--completed': isStageCompleted(stage.id)
+              'text-accent font-semibold': isCurrentStage(stage.id),
+              'text-green-600': isStageCompleted(stage.id) && !isCurrentStage(stage.id)
             }"
             role="menuitem"
           >
-            <span class="toc-dropdown-check">
+            <span class="w-4 h-4 flex items-center justify-center flex-shrink-0">
               <svg
                 v-if="isStageCompleted(stage.id)"
                 width="14"
@@ -150,33 +152,33 @@ onUnmounted(() => {
                 />
               </svg>
             </span>
-            <span class="toc-dropdown-label">{{ stage.title }}</span>
+            <span>{{ stage.title }}</span>
           </button>
         </div>
 
         <!-- Separator and Additional Sections -->
         <template v-if="hasCookLog || hasChangeLog">
-          <div class="toc-dropdown-separator" />
+          <div class="h-px bg-stone-200 mx-2" />
 
-          <div class="toc-dropdown-section">
+          <div class="py-1">
             <button
               v-if="hasCookLog"
               @click="handleNavigate('cook-log')"
-              class="toc-dropdown-item"
+              class="flex items-center gap-2 w-full px-3 py-2 text-sm text-left transition-colors hover:bg-stone-100"
               role="menuitem"
             >
-              <span class="toc-dropdown-check" />
-              <span class="toc-dropdown-label">Cook Log</span>
+              <span class="w-4 h-4" />
+              <span>Cook Log</span>
             </button>
 
             <button
               v-if="hasChangeLog"
               @click="handleNavigate('change-log')"
-              class="toc-dropdown-item"
+              class="flex items-center gap-2 w-full px-3 py-2 text-sm text-left transition-colors hover:bg-stone-100"
               role="menuitem"
             >
-              <span class="toc-dropdown-check" />
-              <span class="toc-dropdown-label">Version History</span>
+              <span class="w-4 h-4" />
+              <span>Version History</span>
             </button>
           </div>
         </template>
@@ -186,125 +188,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.toc-pill-container {
-  position: fixed;
-  top: 4rem;
-  right: 1rem;
-  z-index: 5;
-}
-
-/* When header is scrolled (smaller), adjust position */
-@media (min-width: 768px) {
-  .toc-pill-container {
-    right: calc((100vw - 48rem) / 2 + 1rem);
-  }
-}
-
-.toc-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 6px 12px;
-  background: #1a1816;
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border: none;
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.toc-pill:hover {
-  background: #2a2826;
-}
-
-.toc-pill:focus {
-  outline: 2px solid #a65d45;
-  outline-offset: 2px;
-}
-
-.toc-pill-text {
-  white-space: nowrap;
-}
-
-.toc-pill-chevron {
-  display: flex;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.toc-pill-chevron--open {
-  transform: rotate(180deg);
-}
-
-.toc-dropdown {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
-  min-width: 180px;
-  background: white;
-  border: 2px solid #1a1816;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.toc-dropdown-section {
-  padding: 0.25rem 0;
-}
-
-.toc-dropdown-separator {
-  height: 1px;
-  background: #e8e4dc;
-  margin: 0.25rem 0;
-}
-
-.toc-dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  background: none;
-  border: none;
-  text-align: left;
-  font-size: 0.875rem;
-  color: #1a1816;
-  cursor: pointer;
-  transition: background-color 0.1s ease;
-}
-
-.toc-dropdown-item:hover {
-  background: #f5f3ef;
-}
-
-.toc-dropdown-item--current {
-  color: #a65d45;
-  font-weight: 600;
-}
-
-.toc-dropdown-item--completed {
-  color: #6b8e4e;
-}
-
-.toc-dropdown-item--current.toc-dropdown-item--completed {
-  color: #a65d45;
-}
-
-.toc-dropdown-check {
-  width: 14px;
-  height: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.toc-dropdown-label {
-  flex: 1;
-}
-
-/* Dropdown transition */
 .dropdown-enter-active,
 .dropdown-leave-active {
   transition: opacity 0.15s ease, transform 0.15s ease;

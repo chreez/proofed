@@ -187,6 +187,18 @@ Example: "ATK Cinnamon Buns Ultimate v1.2.0 — cooked 2026-02-05"
 
 ---
 
+## Code Cleanup & Refactor
+
+**Status:** Backlogged
+
+**Tasks:**
+- Remove unused mockup files from `public/mockups/`
+- Remove unused `TocSidebar.vue` component (sidebar TOC abandoned)
+- General code cleanup pass
+- Review and consolidate CSS/UnoCSS usage
+
+---
+
 ## Suggestion Sources
 
 **Status:** Backlogged
