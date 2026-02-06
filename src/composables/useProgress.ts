@@ -20,17 +20,28 @@ const state = reactive<ProgressState>({
 
 let stageOrder: string[] = []
 let stageContexts: Map<string, StageContext> = new Map()
+let currentRecipeId: string | null = null
 
 export function useProgress(recipeId: string) {
   const storageKey = `recipe-progress-${recipeId}`
 
   function load() {
+    // Clear state when switching to different recipe
+    if (currentRecipeId !== recipeId) {
+      state.items = {}
+      state.states = {}
+      state.stages = {}
+      stageOrder = []
+      stageContexts = new Map()
+      currentRecipeId = recipeId
+    }
+
     const saved = localStorage.getItem(storageKey)
     if (saved) {
       const parsed = JSON.parse(saved)
-      Object.assign(state.items, parsed.items || {})
-      Object.assign(state.states, parsed.states || {})
-      Object.assign(state.stages, parsed.stages || {})
+      state.items = parsed.items || {}
+      state.states = parsed.states || {}
+      state.stages = parsed.stages || {}
     }
   }
 
