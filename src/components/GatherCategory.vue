@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import CheckableItem from '@/components/CheckableItem.vue'
+import TechniqueText from '@/components/TechniqueText.vue'
 
 const props = defineProps<{
   title: string
@@ -149,7 +150,9 @@ function collapse() {
             class="w-4 h-4 flex-shrink-0"
             style="accent-color: #a65d45;"
           >
-          <span class="text-stone-400 line-through">{{ item.label }}</span>
+          <span class="text-stone-400 line-through">
+            <TechniqueText :text="item.label" />
+          </span>
         </label>
       </div>
     </div>

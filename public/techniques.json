@@ -1,0 +1,36 @@
+{
+  "techniques": {
+    "softened": {
+      "title": "Softened Butter/Cream Cheese",
+      "description": "Leave at room temperature for 30-45 minutes until easily dented with finger but not melting. Or microwave in 10-second intervals, checking frequently."
+    },
+    "room temp": {
+      "title": "Room Temperature Eggs",
+      "description": "Place eggs in warm water for 5-10 minutes, or leave on counter 30 minutes before use. Cold eggs can cause butter to seize in creamed mixtures."
+    },
+    "warm to 43°C": {
+      "title": "Warm Liquid for Yeast",
+      "description": "Heat to 40-46°C (105-115°F). Too hot kills yeast, too cold won't activate. Should feel warm but not hot on wrist — like a comfortable bath."
+    },
+    "bloomed": {
+      "title": "Blooming Yeast",
+      "description": "Dissolve yeast in warm liquid with a pinch of sugar. Wait 5-10 minutes until foamy. If no foam, yeast is dead — start with fresh yeast."
+    },
+    "packed": {
+      "title": "Packed Brown Sugar",
+      "description": "Press brown sugar firmly into measuring cup until compact. Level off top. Properly packed sugar holds its shape when dumped out."
+    },
+    "sifted": {
+      "title": "Sifted Flour/Sugar",
+      "description": "Pass through fine-mesh sieve to remove lumps and aerate. Especially important for confectioners' sugar in glazes to prevent graininess."
+    },
+    "melted": {
+      "title": "Melted Butter",
+      "description": "Melt in microwave in 30-second intervals or in small saucepan over low heat. For 'melted and cooled', let sit 5-10 minutes until warm but not hot."
+    },
+    "diced": {
+      "title": "Diced Butter (Cold)",
+      "description": "Cut cold butter into 1cm cubes. Keep refrigerated until needed. Cold butter creates flaky layers in pastry as it melts during baking."
+    }
+  }
+}

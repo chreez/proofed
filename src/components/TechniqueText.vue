@@ -1,0 +1,97 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import { useTechniques } from '@/composables/useTechniques'
+
+const props = defineProps<{
+  text: string
+}>()
+
+const { parseTextWithTechniques } = useTechniques()
+const activeTooltip = ref<string | null>(null)
+
+const parts = computed(() => parseTextWithTechniques(props.text))
+
+function showTooltip(keyword: string) {
+  activeTooltip.value = keyword
+}
+
+function hideTooltip() {
+  activeTooltip.value = null
+}
+</script>
+
+<template>
+  <span class="technique-text">
+    <template v-for="(part, index) in parts" :key="index">
+      <span v-if="part.type === 'text'">{{ part.content }}</span>
+      <span
+        v-else
+        class="technique-keyword"
+        @mouseenter="showTooltip(part.content)"
+        @mouseleave="hideTooltip"
+        @focus="showTooltip(part.content)"
+        @blur="hideTooltip"
+        tabindex="0"
+      >
+        {{ part.content }}
+        <span
+          v-if="activeTooltip === part.content && part.technique"
+          class="technique-tooltip"
+        >
+          <span class="tooltip-title">{{ part.technique.title }}</span>
+          <span class="tooltip-desc">{{ part.technique.description }}</span>
+        </span>
+      </span>
+    </template>
+  </span>
+</template>
+
+<style scoped>
+.technique-keyword {
+  color: #a65d45;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  cursor: help;
+  position: relative;
+}
+
+.technique-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1816;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  width: 260px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.technique-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1a1816;
+}
+
+.tooltip-title {
+  font-weight: 600;
+  color: #a65d45;
+}
+
+.tooltip-desc {
+  color: #e8e4dc;
+}
+</style>

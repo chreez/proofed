@@ -63,6 +63,7 @@ Add checks here for new features:
 | F9 | Native checkboxes | Gather items use native checkbox with accent-color | 2026-02-05 |
 | F10 | Copy full recipe | Header "Copy Recipe" button copies plain text for Paprika | 2026-02-05 |
 | F11 | Copy mise en place | Per-section "Copy" button copies stage gather list | 2026-02-05 |
+| F12 | Technique glossary | Keywords (softened, room temp, etc.) show tooltip on hover | 2026-02-05 |
 
 ## Brand Validation (proofed.)
 

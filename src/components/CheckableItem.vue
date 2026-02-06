@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import TechniqueText from '@/components/TechniqueText.vue'
+
 defineProps<{
   id: string
   label: string
@@ -22,7 +24,9 @@ const emit = defineEmits<{
         class="w-4 h-4 flex-shrink-0"
         style="accent-color: #a65d45;"
       >
-      <span class="text-body" :class="{ 'checked': checked }">{{ label }}</span>
+      <span class="text-body" :class="{ 'checked': checked }">
+        <TechniqueText :text="label" />
+      </span>
     </label>
     <slot name="detail" />
   </div>

@@ -2,9 +2,12 @@
 import { onMounted, onUnmounted, ref, computed, watch } from 'vue'
 import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
+import { useTechniques } from '@/composables/useTechniques'
 import type { RecipeState } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import StageCard from '@/components/StageCard.vue'
+
+const { loadTechniques } = useTechniques()
 
 const { currentRecipe, currentRecipeId, loading, recipeList, loadManifest, loadRecipe, restoreLastRecipe } = useRecipe()
 
@@ -49,6 +52,7 @@ watch(currentRecipe, (recipe) => {
 }, { immediate: true })
 
 onMounted(async () => {
+  await loadTechniques()
   await loadManifest()
   await restoreLastRecipe()
   if (currentRecipeId.value) {
