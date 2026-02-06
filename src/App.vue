@@ -9,6 +9,7 @@ import StageCard from '@/components/StageCard.vue'
 import RecipeIndex from '@/components/RecipeIndex.vue'
 import VariantTabs from '@/components/VariantTabs.vue'
 import CookLogSection from '@/components/CookLogSection.vue'
+import VersionTimeline from '@/components/VersionTimeline.vue'
 
 const { loadTechniques } = useTechniques()
 
@@ -162,6 +163,13 @@ const aggregatedStepNotes = computed(() => {
         <CookLogSection
           v-if="currentRecipe.cook_log?.length"
           :cook-log="currentRecipe.cook_log"
+          class="mt-8"
+        />
+
+        <VersionTimeline
+          v-if="currentRecipe.change_log?.length"
+          :change-log="currentRecipe.change_log"
+          :current-version="currentRecipe.version ?? 'v1.0.0'"
           class="mt-8"
         />
       </template>
