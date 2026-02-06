@@ -130,6 +130,56 @@ Link recipe variants in index.json:
 
 ---
 
+## Nutritional Info
+
+**Status:** Concept captured
+
+**Key questions:**
+1. How is it estimated? (show your work)
+2. How is it displayed?
+3. Normalization: per variant? per version?
+
+**Estimation approach:**
+- Store per-ingredient nutrition data in `public/nutrition-db.json`
+- Calculate totals from recipe ingredient amounts
+- Show calculation breakdown (transparency)
+
+**Data model:**
+```json
+{
+  "nutrition": {
+    "per_serving": {
+      "calories": 485,
+      "fat_g": 22,
+      "carbs_g": 65,
+      "protein_g": 7,
+      "sugar_g": 32,
+      "sodium_mg": 380
+    },
+    "servings": 8,
+    "estimation_method": "calculated",
+    "sources": ["usda-fdc", "manufacturer-label"],
+    "notes": "Glaze adds ~60 cal/serving"
+  }
+}
+```
+
+**Display options:**
+- Collapsed by default (badge shows calories only)
+- Expand to show full breakdown
+- "How calculated" link shows ingredient-by-ingredient math
+
+**Normalization:**
+- Store at **variant** level (Quick vs Ultimate have different ingredients)
+- Version changes that affect nutrition bump the calculation
+- `nutrition.version` field tracks when last recalculated
+
+**Validation:**
+- Sum of ingredient calories ≈ total (±5% tolerance for rounding)
+- Flag if recipe changes but nutrition not updated
+
+---
+
 ## Regression Testing (90% Coverage)
 
 **Status:** Plan formulated, not implemented

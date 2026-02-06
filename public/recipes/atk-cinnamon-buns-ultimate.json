@@ -8,6 +8,19 @@
   "config": {
     "early_check_percent": 0.8
   },
+  "version": "v1.1.0",
+  "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-02-05",
+      "summary": "Added rolling tips from research, cook log from first bake"
+    },
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-05",
+      "summary": "Initial recipe from ATK, adapted for stand mixer"
+    }
+  ],
   "cook_log": [
     {
       "date": "2026-02-05",
@@ -17,10 +30,13 @@
         "Used Pyrex container with lid instead of 33×23cm baking pan with foil sling.",
         "Foil sling: attempted with multiple small sheets — would have made unmolding difficult. Pyrex worked better.",
         "Flour: used 278g AP + 253g bread flour blend (was short on AP). Worked great.",
-        "Yeast: had 5.4g instant, topped up with ~2g active dry.",
-        "Bulk ferment: cold rise in fridge overnight instead of 2hr warm rise.",
-        "Cold dough: still cold to touch after few hours at room temp. Take out earlier (morning) for easier rolling."
+        "Yeast: had 5.4g instant, topped up with ~2g active dry."
       ],
+      "step_notes": {
+        "SHAPE_BALL": "Cold overnight ferment works great. Put in fridge after 30 min at room temp. Take out 2 hrs before shaping.",
+        "ROLL_DOUGH": "Dough was still cold and resistant. Let it warm up 30 min more next time before rolling.",
+        "CUT_ARRANGE": "Dental floss works better than knife — cleaner cuts, less squishing."
+      },
       "rolling_tips_research": [
         "Shape before rolling: pat dough into rough square/rectangle before using rolling pin.",
         "Cut an X: cut X on dough ball, roll each quadrant outward, they join into rectangle.",

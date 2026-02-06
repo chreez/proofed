@@ -32,6 +32,8 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | D13 | Design system usage | Styling must use shortcuts from `uno.config.ts`; no one-off utility combinations | `src/components/*.vue` |
 | D10 | Critical notes styled | `critical: true` notes render with danger styling | `src/components/StateStep.vue` |
 | D11 | Auto-advance works | Stage collapses when complete, next expands | `src/composables/useProgress.ts` |
+| D14 | Version summaries | Every `change_log` entry has non-empty `summary` | `public/recipes/*.json` |
+| D15 | Family variants linked | All `families[].variants[].recipeId` exist in `recipes[]` | `public/recipes/index.json` |
 
 ## Recipe Accuracy Checks
 

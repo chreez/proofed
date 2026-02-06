@@ -4,6 +4,9 @@ export interface Recipe {
   vessels: Vessel[]
   stages: Stage[]
   states: RecipeState[]
+  version?: string
+  change_log?: ChangeLogEntry[]
+  cook_log?: CookLogEntry[]
 }
 
 export interface RecipeMeta {
@@ -72,8 +75,38 @@ export interface StateNote {
   critical?: boolean
 }
 
+// Version tracking
+export interface ChangeLogEntry {
+  version: string
+  date: string
+  summary: string
+}
+
+// Cook log with step-specific notes
+export interface CookLogEntry {
+  date: string
+  version: string
+  notes: string[]
+  step_notes?: Record<string, string>
+  next_time?: string[]
+}
+
+// Recipe manifest with family grouping
 export interface RecipeManifest {
+  families?: RecipeFamily[]
   recipes: RecipeEntry[]
+}
+
+export interface RecipeFamily {
+  id: string
+  name: string
+  variants: RecipeFamilyVariant[]
+}
+
+export interface RecipeFamilyVariant {
+  id: string
+  recipeId: string
+  label: string
 }
 
 export interface RecipeEntry {
