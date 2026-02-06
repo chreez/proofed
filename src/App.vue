@@ -30,9 +30,19 @@ const progress = computed(() => {
   return useProgress(currentRecipeId.value)
 })
 
+// Load progress when recipe ID changes
+watch(currentRecipeId, (newId) => {
+  if (newId && progress.value) {
+    progress.value.load()
+  }
+})
+
 // Register stages for auto-advance when recipe loads
 watch(currentRecipe, (recipe) => {
   if (!recipe || !progress.value) return
+
+  // Load progress state for this recipe
+  progress.value.load()
 
   // Set stage order
   progress.value.setStageOrder(recipe.stages.map(s => s.id))
@@ -55,9 +65,6 @@ onMounted(async () => {
   await loadTechniques()
   await loadManifest()
   await restoreLastRecipe()
-  if (currentRecipeId.value) {
-    progress.value?.load()
-  }
 })
 
 function getStatesForStage(stateIds: string[]) {
