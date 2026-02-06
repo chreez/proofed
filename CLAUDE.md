@@ -44,6 +44,14 @@ public/recipes/
 
 See @.claude/rules/validation/checklist.md for criteria.
 
+## Task Management (backlog.md)
+- Tasks live in `backlog/tasks/` as markdown files — **never edit directly**
+- Use CLI: `backlog task create`, `backlog task edit`, `backlog task list`
+- Use `--plain` flag when agents read tasks
+- Board view: `backlog board` (terminal) or `backlog browser` (web)
+- Task prefix: `pf` (e.g., PF-1, PF-2)
+- MCP server available: tools like `task_list`, `task_create`, `task_view`
+
 ## Adding New Recipes
 1. Create `public/recipes/your-recipe.json` following schema
 2. Add entry to `public/recipes/index.json`
