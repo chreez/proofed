@@ -60,15 +60,17 @@ const headerTitle = computed(() => {
   return parts.join(' · ')
 })
 
-// Load recipe when route changes
+// Track if manifest is loaded
+const manifestLoaded = ref(false)
+
+// Load recipe when route changes (after manifest is ready)
 watch(
-  () => route.params.recipeId,
-  async (recipeId) => {
-    if (recipeId && typeof recipeId === 'string') {
+  [() => route.params.recipeId, manifestLoaded],
+  async ([recipeId, isLoaded]) => {
+    if (recipeId && typeof recipeId === 'string' && isLoaded) {
       await loadRecipe(recipeId)
     }
-  },
-  { immediate: true }
+  }
 )
 
 // Load progress when recipe ID changes
@@ -105,6 +107,7 @@ watch(currentRecipe, (recipe) => {
 onMounted(async () => {
   await loadTechniques()
   await loadManifest()
+  manifestLoaded.value = true
 })
 
 function getStatesForStage(stateIds: string[]) {

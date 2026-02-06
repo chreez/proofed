@@ -187,6 +187,34 @@ Example: "ATK Cinnamon Buns Ultimate v1.2.0 — cooked 2026-02-05"
 
 ---
 
+## Suggestion Sources
+
+**Status:** Backlogged
+
+**Problem:** When agent suggests improvements (e.g., "use dental floss for cutting"), these should:
+1. Be clearly marked as suggestions, not user experience
+2. Include source/reference when possible
+
+**Data model:**
+```json
+{
+  "next_time": [
+    {
+      "suggestion": "Try dental floss for cleaner cuts",
+      "source": "ATK technique guide",
+      "source_url": "https://..."
+    }
+  ]
+}
+```
+
+**Or simpler:** Markdown links in the text itself:
+```
+"Try [dental floss cutting technique](url) for cleaner cuts"
+```
+
+---
+
 ## About Page
 
 **Status:** Content captured, not implemented

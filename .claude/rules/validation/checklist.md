@@ -48,6 +48,15 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | R7 | Dimension conversions | Inches to cm accurate (±0.5cm) |
 | R8 | Procedural accuracy | States match original recipe instructions |
 
+## Voice & Authenticity Checks
+
+| ID | Check | Criteria |
+|----|-------|----------|
+| V1 | Notes are first-person experience | `notes` and `step_notes` must describe what the user ACTUALLY did, not suggestions or hypotheticals |
+| V2 | Suggestions go in next_time | Untested ideas belong in `next_time` array, not presented as experience |
+| V3 | Agent suggestions marked | If agent suggests an improvement, it should be prefixed with "Try:" or "Consider:" and NOT written as if user did it |
+| V4 | Sources for suggestions | External suggestions (from research, other recipes) should cite source when possible |
+
 ## Feature-Specific Checks
 
 Add checks here for new features:
