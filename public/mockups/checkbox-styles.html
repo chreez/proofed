@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox Style Options - proofed.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --stone-50: #faf9f7;
+      --stone-200: #e8e4dc;
+      --ink: #1a1816;
+      --accent: #a65d45;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--stone-50);
+      color: var(--ink);
+      padding: 2rem;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .option {
+      background: white;
+      border: 2px solid var(--ink);
+      padding: 1.5rem;
+    }
+
+    .option-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--stone-200);
+    }
+
+    .option-title span {
+      color: var(--accent);
+    }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .item.checked {
+      opacity: 0.5;
+    }
+
+    .item.checked .label {
+      text-decoration: line-through;
+    }
+
+    .label {
+      flex: 1;
+      font-size: 0.9375rem;
+    }
+
+    /* Style 1: Native */
+    .native-checkbox {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    /* Style 2: Minimal Circle */
+    .minimal-checkbox {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid var(--ink);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .minimal-checkbox.checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Style 3: Square Outline (thin) */
+    .square-checkbox {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .square-checkbox.checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .square-checkbox .check {
+      display: none;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .square-checkbox.checked .check {
+      display: block;
+    }
+
+    /* Style 4: Accent Check */
+    .accent-checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--stone-200);
+      background: white;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .accent-checkbox.checked {
+      border-color: var(--accent);
+    }
+
+    .accent-checkbox .check {
+      display: none;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .accent-checkbox.checked .check {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pick a checkbox style</h1>
+
+  <div class="grid">
+    <!-- Option 1: Native -->
+    <div class="option">
+      <div class="option-title"><span>1.</span> Native</div>
+      <div class="items" id="native-items">
+        <label class="item">
+          <input type="checkbox" class="native-checkbox" onchange="handleNativeCheck(this)">
+          <span class="label">Large Bowl</span>
+        </label>
+        <label class="item">
+          <input type="checkbox" class="native-checkbox" onchange="handleNativeCheck(this)">
+          <span class="label">Whisk</span>
+        </label>
+        <label class="item">
+          <input type="checkbox" class="native-checkbox" onchange="handleNativeCheck(this)">
+          <span class="label">Flour — 531g</span>
+        </label>
+        <label class="item">
+          <input type="checkbox" class="native-checkbox" onchange="handleNativeCheck(this)">
+          <span class="label">Brown Sugar — 149g</span>
+        </label>
+        <label class="item">
+          <input type="checkbox" class="native-checkbox" onchange="handleNativeCheck(this)">
+          <span class="label">Butter — 140g</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Option 2: Minimal Circle -->
+    <div class="option">
+      <div class="option-title"><span>2.</span> Minimal</div>
+      <div class="items" id="minimal-items">
+        <div class="item" onclick="toggleMinimal(this)">
+          <div class="minimal-checkbox"></div>
+          <span class="label">Large Bowl</span>
+        </div>
+        <div class="item" onclick="toggleMinimal(this)">
+          <div class="minimal-checkbox"></div>
+          <span class="label">Whisk</span>
+        </div>
+        <div class="item" onclick="toggleMinimal(this)">
+          <div class="minimal-checkbox"></div>
+          <span class="label">Flour — 531g</span>
+        </div>
+        <div class="item" onclick="toggleMinimal(this)">
+          <div class="minimal-checkbox"></div>
+          <span class="label">Brown Sugar — 149g</span>
+        </div>
+        <div class="item" onclick="toggleMinimal(this)">
+          <div class="minimal-checkbox"></div>
+          <span class="label">Butter — 140g</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option 3: Square Outline (thin) -->
+    <div class="option">
+      <div class="option-title"><span>3.</span> Square outline</div>
+      <div class="items" id="square-items">
+        <div class="item" onclick="toggleSquare(this)">
+          <div class="square-checkbox"><span class="check">✓</span></div>
+          <span class="label">Large Bowl</span>
+        </div>
+        <div class="item" onclick="toggleSquare(this)">
+          <div class="square-checkbox"><span class="check">✓</span></div>
+          <span class="label">Whisk</span>
+        </div>
+        <div class="item" onclick="toggleSquare(this)">
+          <div class="square-checkbox"><span class="check">✓</span></div>
+          <span class="label">Flour — 531g</span>
+        </div>
+        <div class="item" onclick="toggleSquare(this)">
+          <div class="square-checkbox"><span class="check">✓</span></div>
+          <span class="label">Brown Sugar — 149g</span>
+        </div>
+        <div class="item" onclick="toggleSquare(this)">
+          <div class="square-checkbox"><span class="check">✓</span></div>
+          <span class="label">Butter — 140g</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option 4: Accent Check -->
+    <div class="option">
+      <div class="option-title"><span>4.</span> Accent check</div>
+      <div class="items" id="accent-items">
+        <div class="item" onclick="toggleAccent(this)">
+          <div class="accent-checkbox"><span class="check">✓</span></div>
+          <span class="label">Large Bowl</span>
+        </div>
+        <div class="item" onclick="toggleAccent(this)">
+          <div class="accent-checkbox"><span class="check">✓</span></div>
+          <span class="label">Whisk</span>
+        </div>
+        <div class="item" onclick="toggleAccent(this)">
+          <div class="accent-checkbox"><span class="check">✓</span></div>
+          <span class="label">Flour — 531g</span>
+        </div>
+        <div class="item" onclick="toggleAccent(this)">
+          <div class="accent-checkbox"><span class="check">✓</span></div>
+          <span class="label">Brown Sugar — 149g</span>
+        </div>
+        <div class="item" onclick="toggleAccent(this)">
+          <div class="accent-checkbox"><span class="check">✓</span></div>
+          <span class="label">Butter — 140g</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function reorderItems(container) {
+      const items = Array.from(container.children);
+      const checked = items.filter(item => item.classList.contains('checked'));
+      const unchecked = items.filter(item => !item.classList.contains('checked'));
+
+      container.innerHTML = '';
+      unchecked.forEach(item => container.appendChild(item));
+      checked.forEach(item => container.appendChild(item));
+    }
+
+    function handleNativeCheck(checkbox) {
+      const item = checkbox.closest('.item');
+      const container = checkbox.closest('.items');
+
+      if (checkbox.checked) {
+        item.classList.add('checked');
+      } else {
+        item.classList.remove('checked');
+      }
+
+      setTimeout(() => reorderItems(container), 150);
+    }
+
+    function toggleMinimal(item) {
+      const checkbox = item.querySelector('.minimal-checkbox');
+      const container = item.closest('.items');
+
+      checkbox.classList.toggle('checked');
+      item.classList.toggle('checked');
+
+      setTimeout(() => reorderItems(container), 150);
+    }
+
+    function toggleSquare(item) {
+      const checkbox = item.querySelector('.square-checkbox');
+      const container = item.closest('.items');
+
+      checkbox.classList.toggle('checked');
+      item.classList.toggle('checked');
+
+      setTimeout(() => reorderItems(container), 150);
+    }
+
+    function toggleAccent(item) {
+      const checkbox = item.querySelector('.accent-checkbox');
+      const container = item.closest('.items');
+
+      checkbox.classList.toggle('checked');
+      item.classList.toggle('checked');
+
+      setTimeout(() => reorderItems(container), 150);
+    }
+  </script>
+</body>
+</html>

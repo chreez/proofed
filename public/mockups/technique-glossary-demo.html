@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technique Glossary Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #faf9f7;
+      color: #1a1816;
+      padding: 40px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 8px; }
+    .subtitle { color: #9c8e78; font-size: 0.875rem; margin-bottom: 32px; }
+
+    .card {
+      background: white;
+      border: 2px solid #e8e4dc;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      padding-left: 8px;
+      margin-bottom: 12px;
+    }
+
+    .gather {
+      background: #faf9f7;
+      border: 1px solid #e8e4dc;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .gather-header {
+      font-size: 0.75rem;
+      color: #9c8e78;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 0.75rem;
+      color: #b8ad9c;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+    .section-title:first-of-type { margin-top: 0; }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px;
+    }
+    .item input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #a65d45;
+    }
+    .item-label {
+      color: #5f5243;
+    }
+
+    /* Technique keyword styling */
+    .technique-keyword {
+      color: #a65d45;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+      cursor: help;
+      position: relative;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1816;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      width: 280px;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #1a1816;
+    }
+    .tooltip-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #a65d45;
+    }
+    .technique-keyword:hover .tooltip,
+    .technique-keyword:focus .tooltip {
+      display: block;
+    }
+
+    /* Demo info */
+    .demo-info {
+      background: #e8e4dc;
+      padding: 16px;
+      margin-bottom: 24px;
+      font-size: 0.875rem;
+    }
+    .demo-info strong { color: #a65d45; }
+
+    /* Glossary preview */
+    .glossary-preview {
+      margin-top: 32px;
+      padding: 16px;
+      background: #f5f3ef;
+      border: 1px dashed #b8ad9c;
+    }
+    .glossary-preview h3 {
+      font-size: 0.875rem;
+      margin-bottom: 12px;
+      color: #7d6e58;
+    }
+    .glossary-preview pre {
+      font-size: 0.75rem;
+      overflow-x: auto;
+      background: white;
+      padding: 12px;
+      border: 1px solid #e8e4dc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Technique Glossary Demo</h1>
+  <p class="subtitle">Hover over highlighted terms to see technique tips</p>
+
+  <div class="demo-info">
+    <strong>How it works:</strong> Keywords like "softened", "room temp", "bloomed" are auto-detected and linked to technique definitions. No per-recipe configuration needed.
+  </div>
+
+  <div class="card">
+    <div class="card-title">Mise en Place</div>
+    <div class="gather">
+      <div class="gather-header">Gather</div>
+
+      <div class="section-title">Ingredients</div>
+
+      <div class="item">
+        <input type="checkbox">
+        <span class="item-label">
+          Unsalted Butter (<span class="technique-keyword" tabindex="0">softened<span class="tooltip"><span class="tooltip-title">Softened Butter</span>Leave at room temperature for 30-45 minutes until easily dented with finger but not melting. Or microwave in 10-second intervals, checking frequently.</span></span>) — 170g
+        </span>
+      </div>
+
+      <div class="item">
+        <input type="checkbox">
+        <span class="item-label">
+          Large Eggs (<span class="technique-keyword" tabindex="0">room temp<span class="tooltip"><span class="tooltip-title">Room Temperature Eggs</span>Place eggs in warm water for 5-10 minutes, or leave on counter 30 minutes before use. Cold eggs can cause butter to seize in creamed mixtures.</span></span>) — 3 whole
+        </span>
+      </div>
+
+      <div class="item">
+        <input type="checkbox">
+        <span class="item-label">
+          Whole Milk (<span class="technique-keyword" tabindex="0">warm to 43°C<span class="tooltip"><span class="tooltip-title">Warm Milk for Yeast</span>Heat to 40-46°C (105-115°F). Too hot kills yeast, too cold won't activate. Should feel warm but not hot on wrist — like a comfortable bath.</span></span>) — 177g
+        </span>
+      </div>
+
+      <div class="item">
+        <input type="checkbox">
+        <span class="item-label">
+          Cream Cheese (<span class="technique-keyword" tabindex="0">softened<span class="tooltip"><span class="tooltip-title">Softened Cream Cheese</span>Leave at room temperature for 30-60 minutes. Should be easily spreadable with no resistance. Cold cream cheese creates lumps in glaze.</span></span>) — 113g
+        </span>
+      </div>
+
+      <div class="item">
+        <input type="checkbox">
+        <span class="item-label">
+          All-Purpose Flour — 531g
+        </span>
+      </div>
+
+      <div class="item">
+        <input type="checkbox">
+        <span class="item-label">
+          Instant Yeast (<span class="technique-keyword" tabindex="0">bloomed<span class="tooltip"><span class="tooltip-title">Blooming Yeast</span>Dissolve yeast in warm liquid with a pinch of sugar. Wait 5-10 minutes until foamy. If no foam, yeast is dead — start with fresh yeast.</span></span>) — 7g
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="glossary-preview">
+    <h3>📖 Glossary Data Structure (techniques.json)</h3>
+    <pre>{
+  "techniques": {
+    "softened": {
+      "title": "Softened Butter",
+      "description": "Leave at room temperature for 30-45 minutes..."
+    },
+    "room temp": {
+      "title": "Room Temperature",
+      "description": "Leave ingredient at room temperature..."
+    },
+    "bloomed": {
+      "title": "Blooming Yeast",
+      "description": "Dissolve yeast in warm liquid..."
+    },
+    "warm to 43°C": {
+      "title": "Warm Milk for Yeast",
+      "description": "Heat to 40-46°C (105-115°F)..."
+    }
+  }
+}</pre>
+  </div>
+</body>
+</html>
