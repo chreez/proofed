@@ -55,8 +55,14 @@ Styling and visual tasks require explicit human sign-off before commit. This app
 ### Gate Requirements
 
 1. **Before committing**, the agent MUST:
-   - Present a **before/after description** of the visual changes to the user
-   - Open the dev server URL (`http://localhost:5173` and/or `http://192.168.1.213:5173` for iPhone) so the user can verify
+   - Ensure dev server is running (check port 5173, start `npm run dev` if needed)
+   - Construct the most relevant URL for the change:
+     - Recipe page: `http://localhost:5173/recipe/atk-cinnamon-buns-ultimate`
+     - Specific section: append hash `#stage-prep`, `#cook-log-section`, `#version-history-section`
+     - Index page: `http://localhost:5173/`
+   - Open the URL with `open <url>` (macOS default browser)
+   - Print the iPhone URL: `http://192.168.1.213:5173/...` (same path)
+   - Present a **before/after description** of the visual changes
    - Ask the user to confirm the changes look correct on their device(s)
    - Wait for explicit user approval (e.g., "looks good", "approved", "ship it")
 
@@ -95,9 +101,21 @@ When in doubt, treat it as a styling task. Examples:
   - Keep description concise, lowercase, imperative mood
 - **Examples**:
   - `feat: add version to recipe title (PF-18)`
-  - `fix: remove extra padding on card-title (PF-17)`
+  - `fix: remove header box styling (PF-17)`
   - `chore: remove unused TocPill component`
   - `test: add StageCard header styling tests`
+
+### Backlog Commit Rules
+
+- **Backlog changes always get their own commit** — new tasks, grooming, triage, status updates
+  - `chore(backlog): add PF-23 step easing`
+  - `chore(backlog): groom PF-17, PF-18`
+  - `chore(backlog): triage and prioritize new items`
+- **Feature commits include their task file update** — when closing a task, the code change AND the pf-XX.md status update go in the same commit
+  - `fix: remove header box styling (PF-17)` includes both src/ changes and backlog/tasks/pf-17 update
+- **Steering doc updates get their own commit** — CLAUDE.md, checklist.md, memory changes
+  - `docs: add backlog commit rules to CLAUDE.md`
+- **Never let backlog files drift uncommitted** — commit after every grooming/triage session
 
 ### Pre-commit Hook
 
