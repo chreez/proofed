@@ -31,3 +31,4 @@ npm-debug.log*
 
 # Nested repo (accidental duplicate)
 baking-recipes/
+coverage/

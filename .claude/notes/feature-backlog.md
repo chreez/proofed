@@ -4,6 +4,27 @@ Captured during cooking sessions. Implement when ready.
 
 ---
 
+## Ralph Loop Adaptation
+
+**Status:** Backlogged, pending test suite
+
+**Prerequisite:** Test suite must exist for machine-verifiable completion criteria.
+
+**Structure to add:**
+```
+.claude/
+├── PRD.json              # Stories with passes: boolean
+├── LEARNINGS.md          # Append-only discoveries
+```
+
+**Tasks:**
+1. Implement test suite (PRIORITY)
+2. Convert backlog items to atomic PRD stories
+3. Add learnings file
+4. Define exit signal pattern
+
+---
+
 ## UAT Issues (2026-02-05)
 
 **Status:** Captured, needs prioritization
