@@ -4,11 +4,35 @@ Captured during cooking sessions. Implement when ready.
 
 ---
 
+## ✅ Permalinks / Clean URLs (DONE 2026-02-06)
+
+- Vue Router with history mode
+- Routes: `/` (index), `/recipe/:recipeId`
+- Netlify `_redirects` SPA fallback
+- Example: `/recipe/atk-cinnamon-buns-ultimate`
+
+---
+
+## ✅ Test Suite (DONE 2026-02-05)
+
+- 95.45% line coverage achieved
+- 80 tests across composables, components, integration
+- Runs as prebuild hook
+
+---
+
+## ✅ Recipe Families (DONE 2026-02-05)
+
+- Implemented in index.json with variants array
+- VariantTabs component for switching
+
+---
+
 ## Ralph Loop Adaptation
 
-**Status:** Backlogged, pending test suite
+**Status:** Backlogged
 
-**Prerequisite:** Test suite must exist for machine-verifiable completion criteria.
+**Prerequisite:** Test suite exists (done).
 
 **Structure to add:**
 ```
@@ -163,27 +187,6 @@ Example: "ATK Cinnamon Buns Ultimate v1.2.0 — cooked 2026-02-05"
 
 ---
 
-## Recipe Families (Option 4)
-
-**Status:** Design selected, not implemented
-
-Link recipe variants in index.json:
-```json
-{
-  "families": [{
-    "id": "atk-cinnamon-buns",
-    "name": "ATK Cinnamon Buns",
-    "variants": [
-      { "id": "quick", "label": "Quick (1.5 hrs)" },
-      { "id": "overnight", "label": "Overnight" },
-      { "id": "ultimate", "label": "Ultimate (5 hrs)" }
-    ]
-  }]
-}
-```
-
----
-
 ## About Page
 
 **Status:** Content captured, not implemented
@@ -256,128 +259,3 @@ Link recipe variants in index.json:
 - Sum of ingredient calories ≈ total (±5% tolerance for rounding)
 - Flag if recipe changes but nutrition not updated
 
----
-
-## Regression Testing (90% Coverage)
-
-**Status:** Plan formulated, not implemented
-
-**Goal:** 90% unit test coverage to catch bugs like recipe-switching state leak.
-
-### Test Framework Setup
-
-```bash
-npm install -D vitest @vue/test-utils jsdom @vitest/coverage-v8
-```
-
-**vitest.config.ts:**
-```ts
-export default {
-  test: {
-    environment: 'jsdom',
-    coverage: { reporter: ['text', 'html'], threshold: { global: 90 } }
-  }
-}
-```
-
-### Test Plan by Layer
-
-#### 1. Composables (Priority: HIGH)
-
-| File | Tests | Coverage Target |
-|------|-------|-----------------|
-| `useProgress.ts` | State isolation per recipe, load/save localStorage, toggle functions, auto-advance logic, stage collapse | 95% |
-| `useRecipe.ts` | Load manifest, load recipe, restore last recipe, error handling | 95% |
-| `useTechniques.ts` | Load techniques, keyword matching, longest-first priority, case-insensitive | 95% |
-
-**Critical test case (regression):**
-```ts
-it('clears state when switching recipes', () => {
-  const p1 = useProgress('recipe-a')
-  p1.load()
-  p1.toggleItem('item-1', 'stage-1')
-
-  const p2 = useProgress('recipe-b')
-  p2.load()
-
-  const p1Again = useProgress('recipe-a')
-  p1Again.load()
-
-  expect(p1Again.isItemChecked('item-1')).toBe(true) // persisted
-  // No leftover state from recipe-b
-})
-```
-
-#### 2. Components (Priority: MEDIUM)
-
-| Component | Tests |
-|-----------|-------|
-| `TechniqueText.vue` | Renders plain text, highlights keywords, shows tooltip on hover |
-| `CheckableItem.vue` | Renders checkbox, emits toggle, shows checked state |
-| `GatherCategory.vue` | Complete all, clear all, sink checked items, collapse when done |
-| `GatherSection.vue` | Copy to clipboard formats correctly |
-| `StageCard.vue` | Collapse/expand, progress count display |
-| `StateStep.vue` | Timer display, critical notes styling |
-| `RecipeMeta.vue` | Copy recipe formats correctly |
-
-#### 3. Integration Tests (Priority: MEDIUM)
-
-| Scenario | Test |
-|----------|------|
-| Recipe switching | Load A → check items → Load B → Load A → verify A's state intact |
-| Auto-advance | Complete all items + states → verify stage collapses, next expands |
-| Technique tooltips | Render ingredient with "softened" → verify tooltip appears |
-| Copy to clipboard | Click copy → verify clipboard contains formatted text |
-
-#### 4. Recipe JSON Validation (Priority: HIGH)
-
-| Check | Test |
-|-------|------|
-| Schema compliance | All recipes pass TypeScript type check |
-| D1-D13 criteria | Automated validation of all design spec rules |
-| Breakdown sums | `sum(breakdown.amount) === total` for all ingredients |
-
-### Test File Structure
-
-```
-src/
-├── composables/
-│   ├── useProgress.ts
-│   └── useProgress.spec.ts
-├── components/
-│   ├── TechniqueText.vue
-│   └── TechniqueText.spec.ts
-tests/
-├── integration/
-│   └── recipe-switching.spec.ts
-└── validation/
-    └── recipe-schema.spec.ts
-```
-
-### npm Scripts
-
-```json
-{
-  "test": "vitest",
-  "test:coverage": "vitest --coverage",
-  "test:watch": "vitest --watch"
-}
-```
-
-### CI Integration
-
-Add to GitHub Actions:
-```yaml
-- run: npm test
-- run: npm run test:coverage
-- uses: codecov/codecov-action@v3
-```
-
-### Execution Order
-
-1. Setup vitest + coverage
-2. Composable tests (useProgress, useRecipe, useTechniques)
-3. Component tests (TechniqueText, CheckableItem, etc.)
-4. Integration tests
-5. Recipe validation tests
-6. CI pipeline integration
