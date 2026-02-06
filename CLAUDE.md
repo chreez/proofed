@@ -89,6 +89,20 @@ When in doubt, treat it as a styling task. Examples:
 - Task prefix: `pf` (e.g., PF-1, PF-2)
 - MCP server available: tools like `task_list`, `task_create`, `task_view`
 
+### Grooming Rules
+- **New tasks arrive as `ungroomed`** — label with `ungroomed`
+- **Groomed = clarified intent + agent-verifiable ACs** — remove `ungroomed` label
+- **Grooming is planning only** — no code, just acceptance criteria
+- **Agent must ask clarification questions** before writing ACs
+
+### Task Decomposition
+- **Simple work (bugs, small fixes)**: flat single task
+- **Complex features (Medium+ priority, multi-phase)**: parent + subtasks
+- **2-level max**: parent → subtasks only, never deeper
+- **Phase-based subtasks**: `spike` → `design` → `implement` (not implementation steps)
+- Subtask IDs: `PF-14.1`, `PF-14.2`, etc. via `-p parent-id`
+- MCP `task_list` shows parents only; `task_view` reveals subtasks
+
 ## Git Commit Convention
 
 - **One logical change per commit** — don't mix features, bugs, or refactors
