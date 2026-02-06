@@ -11,7 +11,7 @@ import RecipeIndex from '@/components/RecipeIndex.vue'
 import VariantTabs from '@/components/VariantTabs.vue'
 import CookLogSection from '@/components/CookLogSection.vue'
 import VersionTimeline from '@/components/VersionTimeline.vue'
-import TocPill from '@/components/TocPill.vue'
+import TocSidebar from '@/components/TocSidebar.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -139,22 +139,90 @@ const completedStageIds = computed(() => {
     .map(s => s.id)
 })
 
-// TOC: Current stage (first non-collapsed)
+// TOC: Active section tracking — set on click, updated by scroll
+const activeSection = ref<string | null>(null)
+let tocObserver: IntersectionObserver | null = null
+
+// Current stage ID: user selection > scroll-observed > first non-collapsed
 const currentStageId = computed(() => {
+  if (activeSection.value) return activeSection.value
   if (!currentRecipe.value || !progress.value) return null
   const uncollapsed = currentRecipe.value.stages.find(s => !progress.value!.isStageCollapsed(s.id))
   return uncollapsed?.id ?? currentRecipe.value.stages[0]?.id ?? null
 })
 
-// TOC: Navigate to section
+// Set up IntersectionObserver to track visible sections
+function setupTocObserver() {
+  teardownTocObserver()
+
+  tocObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const id = entry.target.id
+          if (id === 'cook-log-section') {
+            activeSection.value = 'cook-log'
+          } else if (id === 'version-history-section') {
+            activeSection.value = 'change-log'
+          } else if (id.startsWith('stage-')) {
+            activeSection.value = id.replace('stage-', '')
+          }
+        }
+      }
+    },
+    { rootMargin: '-20% 0px -60% 0px' }
+  )
+
+  // Observe stage elements
+  nextTick(() => {
+    currentRecipe.value?.stages.forEach(stage => {
+      const el = document.getElementById(`stage-${stage.id}`)
+      if (el) tocObserver?.observe(el)
+    })
+    const cookLog = document.getElementById('cook-log-section')
+    if (cookLog) tocObserver?.observe(cookLog)
+    const versionHistory = document.getElementById('version-history-section')
+    if (versionHistory) tocObserver?.observe(versionHistory)
+  })
+}
+
+function teardownTocObserver() {
+  if (tocObserver) {
+    tocObserver.disconnect()
+    tocObserver = null
+  }
+}
+
+// Re-setup observer when recipe changes
+watch(currentRecipe, (recipe) => {
+  if (recipe) {
+    activeSection.value = null
+    setupTocObserver()
+  } else {
+    teardownTocObserver()
+  }
+})
+
+onUnmounted(() => {
+  teardownTocObserver()
+})
+
+// TOC: Navigate to section, auto-expanding collapsed stages
 function handleTocNavigate(target: string) {
+  // Immediately set active section on click
+  activeSection.value = target
+
   let elementId = ''
   if (target === 'cook-log') {
     elementId = 'cook-log-section'
   } else if (target === 'change-log') {
     elementId = 'version-history-section'
   } else {
-    elementId = `stage-${target}`
+    // Expand the stage if it's collapsed
+    if (progress.value?.isStageCollapsed(target)) {
+      progress.value.toggleStageCollapse(target)
+    }
+    elementId = `stage-header-${target}`
   }
 
   nextTick(() => {
@@ -178,21 +246,14 @@ function handleTocNavigate(target: string) {
           :class="isScrolled ? 'text-lg' : 'text-2xl'"
           @click="goToIndex"
         >proofed<span class="text-accent">.</span></h1>
-        <!-- TOC Pill in header when scrolled -->
-        <TocPill
-          v-if="!showIndex && currentRecipe && progress && isScrolled"
-          :stages="tocStages"
-          :has-cook-log="!!currentRecipe.cook_log?.length"
-          :has-change-log="!!currentRecipe.change_log?.length"
-          :current-stage-id="currentStageId"
-          :completed-stage-ids="completedStageIds"
-          :in-header="true"
-          @navigate="handleTocNavigate"
-        />
+        <span
+          v-if="isScrolled && currentRecipe"
+          class="text-sm text-muted truncate ml-4"
+        >{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ currentRecipe.version }}</span></span>
       </div>
     </header>
 
-    <main class="max-w-3xl mx-auto px-4 py-6">
+    <main class="py-6" :class="!showIndex && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4'">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
@@ -202,52 +263,54 @@ function handleTocNavigate(target: string) {
       </template>
 
       <template v-else-if="currentRecipe && progress">
-        <RecipeMeta :recipe="currentRecipe" class="mb-6" />
+        <div class="md:flex md:gap-6">
+          <div class="flex-1 min-w-0">
+            <RecipeMeta :recipe="currentRecipe" class="mb-6" />
 
-        <VariantTabs
-          v-if="currentFamily"
-          :family-id="currentFamily.id"
-          @select="handleRecipeSelect"
-        />
+            <VariantTabs
+              v-if="currentFamily"
+              :family-id="currentFamily.id"
+              @select="handleRecipeSelect"
+            />
 
-        <!-- TOC Pill in content when not scrolled -->
-        <TocPill
-          v-if="!isScrolled"
-          :stages="tocStages"
-          :has-cook-log="!!currentRecipe.cook_log?.length"
-          :has-change-log="!!currentRecipe.change_log?.length"
-          :current-stage-id="currentStageId"
-          :completed-stage-ids="completedStageIds"
-          @navigate="handleTocNavigate"
-        />
+            <div class="space-y-4">
+              <StageCard
+                v-for="stage in currentRecipe.stages"
+                :id="`stage-${stage.id}`"
+                :key="stage.id"
+                :stage="stage"
+                :states="getStatesForStage(stage.states)"
+                :config="currentRecipe.config"
+                :progress="progress"
+                :step-notes="aggregatedStepNotes"
+              />
+            </div>
 
-        <div class="space-y-4">
-          <StageCard
-            v-for="stage in currentRecipe.stages"
-            :id="`stage-${stage.id}`"
-            :key="stage.id"
-            :stage="stage"
-            :states="getStatesForStage(stage.states)"
-            :config="currentRecipe.config"
-            :progress="progress"
-            :step-notes="aggregatedStepNotes"
+            <CookLogSection
+              v-if="currentRecipe.cook_log?.length"
+              id="cook-log-section"
+              :cook-log="currentRecipe.cook_log"
+              class="mt-8 scroll-mt-16"
+            />
+
+            <VersionTimeline
+              v-if="currentRecipe.change_log?.length"
+              id="version-history-section"
+              :change-log="currentRecipe.change_log"
+              :current-version="currentRecipe.version ?? 'v1.0.0'"
+              class="mt-8 scroll-mt-16"
+            />
+          </div>
+
+          <TocSidebar
+            :stages="tocStages"
+            :has-cook-log="!!currentRecipe.cook_log?.length"
+            :has-change-log="!!currentRecipe.change_log?.length"
+            :current-stage-id="currentStageId"
+            :completed-stage-ids="completedStageIds"
+            @navigate="handleTocNavigate"
           />
         </div>
-
-        <CookLogSection
-          v-if="currentRecipe.cook_log?.length"
-          id="cook-log-section"
-          :cook-log="currentRecipe.cook_log"
-          class="mt-8"
-        />
-
-        <VersionTimeline
-          v-if="currentRecipe.change_log?.length"
-          id="version-history-section"
-          :change-log="currentRecipe.change_log"
-          :current-version="currentRecipe.version ?? 'v1.0.0'"
-          class="mt-8"
-        />
       </template>
 
       <div v-else class="text-center py-12 text-muted">

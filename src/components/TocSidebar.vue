@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps<{
   stages: { id: string; title: string }[]
@@ -7,7 +7,6 @@ const props = defineProps<{
   hasChangeLog: boolean
   currentStageId: string | null
   completedStageIds: string[]
-  stageRefs?: Record<string, HTMLElement>
 }>()
 
 const emit = defineEmits<{
@@ -16,13 +15,6 @@ const emit = defineEmits<{
 
 // Mobile bottom sheet state
 const isSheetOpen = ref(false)
-
-// Track current section via Intersection Observer
-const observedCurrentId = ref<string | null>(null)
-let observer: IntersectionObserver | null = null
-
-// Use observed ID if available, otherwise fall back to prop
-const activeId = computed(() => observedCurrentId.value ?? props.currentStageId)
 
 function isCompleted(stageId: string): boolean {
   return props.completedStageIds.includes(stageId)
@@ -40,66 +32,6 @@ function openSheet(): void {
 function closeSheet(): void {
   isSheetOpen.value = false
 }
-
-// Intersection Observer setup
-function setupObserver(): void {
-  if (!props.stageRefs) return
-
-  observer = new IntersectionObserver(
-    (entries) => {
-      // Find the entry that is most visible
-      const visibleEntries = entries.filter(e => e.isIntersecting)
-      if (visibleEntries.length > 0) {
-        // Sort by intersection ratio and pick the most visible
-        const mostVisible = visibleEntries.reduce((prev, curr) =>
-          curr.intersectionRatio > prev.intersectionRatio ? curr : prev
-        )
-        const id = mostVisible.target.getAttribute('data-stage-id')
-        if (id) {
-          observedCurrentId.value = id
-        }
-      }
-    },
-    {
-      root: null,
-      rootMargin: '-20% 0px -60% 0px',
-      threshold: [0, 0.25, 0.5, 0.75, 1]
-    }
-  )
-
-  // Observe all stage elements
-  Object.entries(props.stageRefs).forEach(([id, el]) => {
-    if (el) {
-      el.setAttribute('data-stage-id', id)
-      observer?.observe(el)
-    }
-  })
-}
-
-function teardownObserver(): void {
-  if (observer) {
-    observer.disconnect()
-    observer = null
-  }
-}
-
-// Watch for stageRefs changes and re-setup observer
-watch(() => props.stageRefs, (newRefs) => {
-  teardownObserver()
-  if (newRefs && Object.keys(newRefs).length > 0) {
-    setupObserver()
-  }
-}, { deep: true })
-
-onMounted(() => {
-  if (props.stageRefs && Object.keys(props.stageRefs).length > 0) {
-    setupObserver()
-  }
-})
-
-onUnmounted(() => {
-  teardownObserver()
-})
 
 // Handle bottom sheet drag to dismiss
 const sheetRef = ref<HTMLElement | null>(null)
@@ -143,65 +75,57 @@ function handleDragEnd(): void {
 
 <template>
   <!-- Desktop Sidebar -->
-  <aside class="hidden md:block sticky top-4 h-fit w-[180px] flex-shrink-0">
-    <nav class="border-2 border-stone-200 bg-white">
-      <div class="px-3 py-2 border-b-2 border-stone-200">
-        <span class="text-xs uppercase text-stone-400 font-medium">Contents</span>
+  <aside class="hidden md:block sticky top-20 h-fit w-[160px] flex-shrink-0">
+    <nav class="border-l border-stone-300 pl-3">
+      <div
+        v-for="stage in stages"
+        :key="stage.id"
+        @click="handleNavigate(stage.id)"
+        class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight"
+        :class="{
+          'text-accent font-medium': currentStageId === stage.id && !isCompleted(stage.id),
+          'text-stone-400 line-through': isCompleted(stage.id),
+          'text-stone-500 hover:text-ink': currentStageId !== stage.id && !isCompleted(stage.id)
+        }"
+      >
+        {{ stage.title }}
       </div>
-      <ul class="py-1">
-        <li v-for="stage in stages" :key="stage.id">
-          <button
-            @click="handleNavigate(stage.id)"
-            class="w-full text-left px-3 py-2 text-sm transition-colors duration-150"
-            :class="{
-              'bg-accent/10 text-accent font-medium border-l-2 border-accent': activeId === stage.id && !isCompleted(stage.id),
-              'text-stone-400 line-through': isCompleted(stage.id),
-              'text-ink hover:bg-stone-50': activeId !== stage.id && !isCompleted(stage.id)
-            }"
-          >
-            {{ stage.title }}
-          </button>
-        </li>
 
-        <!-- Divider before logs -->
-        <li v-if="hasCookLog || hasChangeLog" class="my-1 mx-3 h-px bg-stone-200" />
+      <div v-if="hasCookLog || hasChangeLog" class="my-2 h-px bg-stone-200" />
 
-        <li v-if="hasCookLog">
-          <button
-            @click="handleNavigate('cook-log')"
-            class="w-full text-left px-3 py-2 text-sm transition-colors duration-150"
-            :class="{
-              'bg-accent/10 text-accent font-medium border-l-2 border-accent': activeId === 'cook-log',
-              'text-ink hover:bg-stone-50': activeId !== 'cook-log'
-            }"
-          >
-            Cook Log
-          </button>
-        </li>
+      <div
+        v-if="hasCookLog"
+        @click="handleNavigate('cook-log')"
+        class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight"
+        :class="{
+          'text-accent font-medium': currentStageId === 'cook-log',
+          'text-stone-500 hover:text-ink': currentStageId !== 'cook-log'
+        }"
+      >
+        Cook Log
+      </div>
 
-        <li v-if="hasChangeLog">
-          <button
-            @click="handleNavigate('change-log')"
-            class="w-full text-left px-3 py-2 text-sm transition-colors duration-150"
-            :class="{
-              'bg-accent/10 text-accent font-medium border-l-2 border-accent': activeId === 'change-log',
-              'text-ink hover:bg-stone-50': activeId !== 'change-log'
-            }"
-          >
-            Version History
-          </button>
-        </li>
-      </ul>
+      <div
+        v-if="hasChangeLog"
+        @click="handleNavigate('change-log')"
+        class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight"
+        :class="{
+          'text-accent font-medium': currentStageId === 'change-log',
+          'text-stone-500 hover:text-ink': currentStageId !== 'change-log'
+        }"
+      >
+        Version History
+      </div>
     </nav>
   </aside>
 
   <!-- Mobile FAB -->
   <button
     @click="openSheet"
-    class="md:hidden fixed bottom-6 right-6 w-12 h-12 bg-ink text-white flex items-center justify-center shadow-lg z-40 transition-transform active:scale-95"
+    class="md:hidden fixed bottom-4 right-4 w-10 h-10 bg-ink text-white flex items-center justify-center shadow-md z-40 transition-transform active:scale-95"
     aria-label="Open table of contents"
   >
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   </button>
@@ -248,9 +172,9 @@ function handleDragEnd(): void {
                 @click="handleNavigate(stage.id)"
                 class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
                 :class="{
-                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': activeId === stage.id && !isCompleted(stage.id),
+                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': currentStageId === stage.id && !isCompleted(stage.id),
                   'text-stone-400 line-through': isCompleted(stage.id),
-                  'text-ink active:bg-stone-100': activeId !== stage.id && !isCompleted(stage.id)
+                  'text-ink active:bg-stone-100': currentStageId !== stage.id && !isCompleted(stage.id)
                 }"
               >
                 {{ stage.title }}
@@ -265,8 +189,8 @@ function handleDragEnd(): void {
                 @click="handleNavigate('cook-log')"
                 class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
                 :class="{
-                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': activeId === 'cook-log',
-                  'text-ink active:bg-stone-100': activeId !== 'cook-log'
+                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': currentStageId === 'cook-log',
+                  'text-ink active:bg-stone-100': currentStageId !== 'cook-log'
                 }"
               >
                 Cook Log
@@ -278,8 +202,8 @@ function handleDragEnd(): void {
                 @click="handleNavigate('change-log')"
                 class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
                 :class="{
-                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': activeId === 'change-log',
-                  'text-ink active:bg-stone-100': activeId !== 'change-log'
+                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': currentStageId === 'change-log',
+                  'text-ink active:bg-stone-100': currentStageId !== 'change-log'
                 }"
               >
                 Version History

@@ -7,9 +7,11 @@
 2. CHECKLIST  → Add new validation criteria HERE before any code
 3. IMPLEMENT  → Build the feature
 4. VALIDATE   → Run all checks (existing + new)
+5. BUILD      → npm run build MUST pass before returning to user
 ```
 
 **Gate:** Do NOT proceed to step 3 without completing steps 1 and 2.
+**Gate:** Do NOT return control to user if `npm run build` fails.
 
 ---
 
@@ -75,6 +77,18 @@ Add checks here for new features:
 | F10 | Copy full recipe | Header "Copy Recipe" button copies plain text for Paprika | 2026-02-05 |
 | F11 | Copy mise en place | Per-section "Copy" button copies stage gather list | 2026-02-05 |
 | F12 | Technique glossary | Keywords (softened, room temp, etc.) show tooltip on hover | 2026-02-05 |
+| F13 | TOC navigation | Sidebar TOC navigates to stages, cook log, version history | 2026-02-06 |
+| F14 | TOC auto-expand | Clicking completed/collapsed stage in TOC expands it | 2026-02-06 |
+| F15 | TOC completed styling | Completed stages show crossed out in sidebar | 2026-02-06 |
+| F16 | TOC mobile FAB | Mobile shows FAB button that opens bottom sheet TOC | 2026-02-06 |
+
+## Build Validation (MANDATORY)
+
+| ID | Check | Criteria |
+|----|-------|----------|
+| BV1 | Build passes | `npm run build` exits 0 (includes type-check + tests) |
+| BV2 | No type errors | `vue-tsc` reports no errors |
+| BV3 | Tests pass | All vitest tests pass |
 
 ## Brand Validation (proofed.)
 
