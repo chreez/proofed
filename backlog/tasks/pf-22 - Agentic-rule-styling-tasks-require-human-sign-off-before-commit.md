@@ -1,9 +1,10 @@
 ---
 id: PF-22
 title: 'Agentic rule: styling tasks require human sign-off before commit'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-06 19:04'
+updated_date: '2026-02-06 19:47'
 labels:
   - infra
 dependencies: []
@@ -25,7 +26,13 @@ Implementation:
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Rule documented in CLAUDE.md
-- [ ] #2 Styling tasks cannot be marked Done without user visual sign-off
-- [ ] #3 Agent must present before/after to user before committing
+- [x] #1 Rule documented in CLAUDE.md
+- [x] #2 Styling tasks cannot be marked Done without user visual sign-off
+- [x] #3 Agent must present before/after to user before committing
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added Human-in-the-Loop Gates section to CLAUDE.md. Styling/UX tasks require user visual sign-off before commit. Agent must present on dev server + iPhone URL.
+<!-- SECTION:FINAL_SUMMARY:END -->

@@ -4,7 +4,7 @@ title: Header for section styling - padding is scuffed
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:52'
-updated_date: '2026-02-06 19:09'
+updated_date: '2026-02-06 19:47'
 labels:
   - bug
 dependencies: []
