@@ -4,9 +4,9 @@ title: Open Graph / link preview metadata for recipe pages
 status: To Do
 assignee: []
 created_date: '2026-02-06 20:13'
+updated_date: '2026-02-06 20:25'
 labels:
   - feature
-  - ungroomed
 dependencies: []
 priority: medium
 ---
@@ -14,5 +14,16 @@ priority: medium
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-When sharing a recipe link via iMessage, Discord, Slack, etc., it should show a rich preview card with image, title, and description. Like how iMessage unfurls links.\n\nNeeds research on: Open Graph meta tags, Twitter Card tags, og:image sourcing. Base/index page should show brand tickler messaging. Recipe pages show recipe-specific preview.\n\nImage sourcing: could use cook log photos once PF-4 (photo pipeline) is implemented. Until then, need placeholder strategy.\n\nConsider: Do we need a build-time OG image generator? Or static images per recipe?
+Add Open Graph and Twitter Card meta tags so recipe links show rich previews in iMessage, Discord, Slack, etc.\n\nIndex page: brand tagline — 'proofed. — A personal cooking notebook. Recipes as structured data.'\n\nRecipe pages: use meta.description if available in JSON, fall back to template: 'A proofed. recipe: {name} — {yields}, {active_time} active'\n\nog:image: research options (brand logo card, text card with recipe name, skip until PF-4). Present options to user.\n\nNeeds to work with Vue Router SPA — may need prerendering or meta tag injection at build time.
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Index page has og:title, og:description, og:image meta tags
+- [ ] #2 Recipe pages have per-recipe og:title, og:description
+- [ ] #3 Description falls back to template if meta.description missing from JSON
+- [ ] #4 Twitter Card tags present (twitter:card, twitter:title, etc.)
+- [ ] #5 Previews render correctly in iMessage link unfurl
+- [ ] #6 og:image strategy decided via user review of options
+- [ ] #7 Works with Vue Router SPA (build-time or prerender solution)
+<!-- AC:END -->
