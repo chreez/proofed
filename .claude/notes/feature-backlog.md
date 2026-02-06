@@ -4,6 +4,66 @@ Captured during cooking sessions. Implement when ready.
 
 ---
 
+## UAT Issues (2026-02-05)
+
+**Status:** Captured, needs prioritization
+
+### Header on Scroll
+- "8 buns" in sticky header feels odd/funny
+- On scroll minification, right side should show recipe name instead
+- e.g., "ATK Ultimate Cinnamon Buns" when scrolled
+
+### Table of Contents
+- Need TOC for navigating recipe sections
+- **Consider existing tooling** — don't reinvent the wheel
+- Options: scrollspy libraries, intersection observer patterns
+
+### Cook Log Formatting
+- Current layout looks unprofessional
+- Needs design pass for polish
+- Consider: card layout, better typography, visual hierarchy
+
+### Animation Polish
+- Current transitions not smooth
+- Feel unprofessional
+- Need: easing curves review, duration tuning, reduce jank
+
+---
+
+## Baking Log (Cross-Recipe Timeline)
+
+**Status:** Major consideration
+
+**Problem:** Current layout assumes single recipe family with variants. User has multiple recipes and bakes to add.
+
+**Concept:** A master timeline view showing all bakes across all recipes
+- Chronological view of cooking sessions
+- Each entry links to the specific recipe + cook log
+- Filter by recipe family, date range
+- Shows growth/progression as a baker
+
+**Data model consideration:**
+```json
+{
+  "baking_log": [
+    {
+      "date": "2026-02-05",
+      "recipeId": "atk-cinnamon-buns-ultimate",
+      "version": "v1.0.0",
+      "outcome": "success",
+      "thumbnail": "images/2026-02-05-buns.jpg"
+    }
+  ]
+}
+```
+
+**Where does it live?**
+- Separate top-level view (not per-recipe)
+- Accessible from index page
+- Or: dedicated /log route
+
+---
+
 ## Cook Log & Notes System
 
 **Status:** Design complete, not implemented
