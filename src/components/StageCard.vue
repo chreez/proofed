@@ -32,8 +32,9 @@ const stateCount = computed(() => {
 <template>
   <div class="card">
     <button
+      :id="`stage-header-${stage.id}`"
       @click="toggle"
-      class="w-full flex items-center justify-between text-left"
+      class="w-full flex items-center justify-between text-left scroll-mt-16 rounded-none appearance-none"
     >
       <h3 class="card-title">{{ stage.title }}</h3>
       <div class="flex items-center gap-3">
