@@ -36,6 +36,7 @@ function makeProgress(checkedIds: string[] = []) {
     load: vi.fn(),
     save: vi.fn(),
     setStageOrder: vi.fn(),
+    resetSection: vi.fn(),
     resetProgress: vi.fn()
   }
 }

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { RotateCcw } from 'lucide-vue-next'
+import IconButton from '@/components/IconButton.vue'
 import type { Stage, RecipeState, RecipeConfig } from '@/types/recipe'
 import GatherSection from '@/components/GatherSection.vue'
 import StateStep from '@/components/StateStep.vue'
@@ -20,11 +22,28 @@ const props = defineProps<{
 
 const isCollapsed = computed(() => props.progress.isStageCollapsed(props.stage.id))
 
+const hasStageProgress = computed(() => {
+  const hasItemProgress = props.stage.gather
+    ? [
+        ...(props.stage.gather.vessels || []).map(v => `vessel-${v}`),
+        ...(props.stage.gather.equipment || []).map(e => `equip-${e}`),
+        ...(props.stage.gather.ingredients || []).map(i => `ing-${i.id}`)
+      ].some(id => props.progress.isItemChecked(id))
+    : false
+  const hasStateProgress = props.states.some(s => props.progress.isStateChecked(s.id))
+  return hasItemProgress || hasStateProgress
+})
+
 function toggle() {
   // Don't collapse if user is selecting text
   const selection = window.getSelection()
   if (selection && selection.toString().length > 0) return
   props.progress.toggleStageCollapse(props.stage.id)
+}
+
+function handleReset(event: MouseEvent): void {
+  event.stopPropagation()
+  props.progress.resetSection(props.stage.id)
 }
 
 function handleStateToggled(stateId: string) {
@@ -55,6 +74,14 @@ const stateCount = computed(() => {
     >
       <h3 class="card-title">{{ stage.title }}</h3>
       <div class="flex items-center gap-3">
+        <IconButton
+          v-if="hasStageProgress"
+          tooltip="Reset Section"
+          size="sm"
+          @click="handleReset"
+        >
+          <RotateCcw />
+        </IconButton>
         <span v-if="states.length" class="text-muted text-sm">
           {{ stateCount.done }}/{{ stateCount.total }}
         </span>

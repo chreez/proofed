@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
+import { ClipboardList, Check, RotateCcw } from 'lucide-vue-next'
+import IconButton from '@/components/IconButton.vue'
 import type { Recipe } from '@/types/recipe'
 
 const props = defineProps<{
@@ -11,7 +13,8 @@ const emit = defineEmits<{
   reset: []
 }>()
 
-const copied = ref(false)
+const copyBtn = useTemplateRef<InstanceType<typeof IconButton>>('copyBtn')
+const resetBtn = useTemplateRef<InstanceType<typeof IconButton>>('resetBtn')
 
 // Format version as v{major}.{minor} (drop patch)
 function formatVersion(version: string): string {
@@ -65,10 +68,12 @@ function formatRecipeForPaprika(): string {
 async function copyRecipe(): Promise<void> {
   const text = formatRecipeForPaprika()
   await navigator.clipboard.writeText(text)
-  copied.value = true
-  setTimeout(() => {
-    copied.value = false
-  }, 2000)
+  copyBtn.value?.flashCopied()
+}
+
+function handleReset(): void {
+  resetBtn.value?.flashSpin()
+  emit('reset')
 }
 </script>
 
@@ -84,20 +89,25 @@ async function copyRecipe(): Promise<void> {
           <span>{{ recipe.meta.total_time }}</span>
         </div>
       </div>
-      <div class="flex gap-2 shrink-0">
-        <button
+      <div class="flex gap-1 shrink-0">
+        <IconButton
           v-if="hasProgress"
-          @click="emit('reset')"
-          class="btn-secondary text-sm"
+          ref="resetBtn"
+          tooltip="Reset Bake"
+          @click="handleReset"
         >
-          Reset Bake
-        </button>
-        <button
+          <RotateCcw />
+        </IconButton>
+        <IconButton
+          ref="copyBtn"
+          tooltip="Copy Recipe"
           @click="copyRecipe"
-          class="btn-secondary text-sm"
         >
-          {{ copied ? 'Copied!' : 'Copy Recipe' }}
-        </button>
+          <ClipboardList />
+          <template #feedback>
+            <Check />
+          </template>
+        </IconButton>
       </div>
     </div>
   </div>

@@ -2,6 +2,13 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import RecipeMeta from './RecipeMeta.vue'
 
+// Mock lucide-vue-next icons as simple span stubs
+vi.mock('lucide-vue-next', () => ({
+  ClipboardList: { name: 'ClipboardList', template: '<svg class="icon-clipboard" />' },
+  Check: { name: 'Check', template: '<svg class="icon-check" />' },
+  RotateCcw: { name: 'RotateCcw', template: '<svg class="icon-rotate" />' }
+}))
+
 // Mock clipboard
 const writeTextMock = vi.fn().mockResolvedValue(undefined)
 Object.assign(navigator, {
@@ -120,8 +127,8 @@ describe('RecipeMeta', () => {
       props: { recipe: makeRecipe() }
     })
 
-    const button = wrapper.find('button')
-    expect(button.text()).toBe('Copy Recipe')
+    const button = wrapper.find('button[title="Copy Recipe"]')
+    expect(button.exists()).toBe(true)
 
     await button.trigger('click')
 
@@ -132,26 +139,6 @@ describe('RecipeMeta', () => {
     expect(copiedText).toContain('All-purpose flour')
     expect(copiedText).toContain('Directions:')
     expect(copiedText).toContain('Combine dry ingredients')
-  })
-
-  it('shows "Copied!" after clicking copy and resets', async () => {
-    const wrapper = mount(RecipeMeta, {
-      props: { recipe: makeRecipe() }
-    })
-
-    const button = wrapper.find('button')
-    await button.trigger('click')
-
-    // Wait for the promise
-    await vi.waitFor(() => {
-      expect(wrapper.find('button').text()).toBe('Copied!')
-    })
-
-    // Advance 2 seconds for the timeout
-    vi.advanceTimersByTime(2000)
-    await vi.waitFor(() => {
-      expect(wrapper.find('button').text()).toBe('Copy Recipe')
-    })
   })
 
   it('formats recipe with multiple stages', async () => {
@@ -202,7 +189,7 @@ describe('RecipeMeta', () => {
       props: { recipe }
     })
 
-    await wrapper.find('button').trigger('click')
+    await wrapper.find('button[title="Copy Recipe"]').trigger('click')
 
     const copiedText = writeTextMock.mock.calls[0][0]
     expect(copiedText).toContain('Flour')
@@ -237,7 +224,7 @@ describe('RecipeMeta', () => {
       props: { recipe }
     })
 
-    await wrapper.find('button').trigger('click')
+    await wrapper.find('button[title="Copy Recipe"]').trigger('click')
 
     const copiedText = writeTextMock.mock.calls[0][0]
     expect(copiedText).not.toContain('Ingredients:')
@@ -250,30 +237,30 @@ describe('Reset Bake button', () => {
     const wrapper = mount(RecipeMeta, {
       props: { recipe: makeRecipe(), hasProgress: false }
     })
-    expect(wrapper.text()).not.toContain('Reset Bake')
+    expect(wrapper.find('button[title="Reset Bake"]').exists()).toBe(false)
   })
 
   it('is hidden when hasProgress is not provided', () => {
     const wrapper = mount(RecipeMeta, {
       props: { recipe: makeRecipe() }
     })
-    expect(wrapper.text()).not.toContain('Reset Bake')
+    expect(wrapper.find('button[title="Reset Bake"]').exists()).toBe(false)
   })
 
   it('is visible when hasProgress is true', () => {
     const wrapper = mount(RecipeMeta, {
       props: { recipe: makeRecipe(), hasProgress: true }
     })
-    expect(wrapper.text()).toContain('Reset Bake')
+    expect(wrapper.find('button[title="Reset Bake"]').exists()).toBe(true)
   })
 
   it('emits reset event on click', async () => {
     const wrapper = mount(RecipeMeta, {
       props: { recipe: makeRecipe(), hasProgress: true }
     })
-    const resetBtn = wrapper.findAll('button').find(b => b.text() === 'Reset Bake')
-    expect(resetBtn).toBeDefined()
-    await resetBtn!.trigger('click')
+    const resetBtn = wrapper.find('button[title="Reset Bake"]')
+    expect(resetBtn.exists()).toBe(true)
+    await resetBtn.trigger('click')
     expect(wrapper.emitted('reset')).toHaveLength(1)
   })
 })

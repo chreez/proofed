@@ -11,6 +11,13 @@ vi.mock('@/components/GatherCategory.vue', () => ({
   }
 }))
 
+// Mock lucide-vue-next icons
+vi.mock('lucide-vue-next', () => ({
+  ClipboardList: { name: 'ClipboardList', template: '<svg class="icon-clipboard" />' },
+  Check: { name: 'Check', template: '<svg class="icon-check" />' },
+  RotateCcw: { name: 'RotateCcw', template: '<svg class="icon-rotate" />' }
+}))
+
 // Mock clipboard
 const writeTextMock = vi.fn().mockResolvedValue(undefined)
 Object.assign(navigator, {
@@ -30,6 +37,7 @@ function makeProgress() {
     load: vi.fn(),
     save: vi.fn(),
     setStageOrder: vi.fn(),
+    resetSection: vi.fn(),
     resetProgress: vi.fn()
   }
 }
@@ -136,8 +144,8 @@ describe('GatherSection', () => {
       }
     })
 
-    const button = wrapper.find('button')
-    expect(button.text()).toBe('Copy')
+    const button = wrapper.find('button[title="Copy Mise en Place"]')
+    expect(button.exists()).toBe(true)
 
     await button.trigger('click')
 
@@ -150,28 +158,6 @@ describe('GatherSection', () => {
     expect(copiedText).toContain('Rolling pin')
     expect(copiedText).toContain('Ingredients:')
     expect(copiedText).toContain('All-purpose flour')
-  })
-
-  it('shows "Copied!" after clicking copy and resets', async () => {
-    const wrapper = mount(GatherSection, {
-      props: {
-        gather: fullGather,
-        stageId: 'prep',
-        stageTitle: 'Prep',
-        progress: makeProgress()
-      }
-    })
-
-    await wrapper.find('button').trigger('click')
-
-    await vi.waitFor(() => {
-      expect(wrapper.find('button').text()).toBe('Copied!')
-    })
-
-    vi.advanceTimersByTime(2000)
-    await vi.waitFor(() => {
-      expect(wrapper.find('button').text()).toBe('Copy')
-    })
   })
 
   it('formats ingredient with breakdown in copy text', async () => {
@@ -197,11 +183,56 @@ describe('GatherSection', () => {
       }
     })
 
-    await wrapper.find('button').trigger('click')
+    await wrapper.find('button[title="Copy Mise en Place"]').trigger('click')
 
     const copiedText = writeTextMock.mock.calls[0][0]
     // Ingredient label includes total
     expect(copiedText).toContain('Unsalted butter \u2014 140g')
+  })
+
+  it('shows reset button when items have progress', () => {
+    const progress = makeProgress()
+    progress.isItemChecked = vi.fn((id: string) => id === 'vessel-10-inch cast-iron skillet')
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: fullGather,
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress
+      }
+    })
+
+    expect(wrapper.find('button[title="Reset Section"]').exists()).toBe(true)
+  })
+
+  it('hides reset button when no progress', () => {
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: fullGather,
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      }
+    })
+
+    expect(wrapper.find('button[title="Reset Section"]').exists()).toBe(false)
+  })
+
+  it('calls resetSection on reset button click', async () => {
+    const progress = makeProgress()
+    progress.isItemChecked = vi.fn(() => true)
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: fullGather,
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress
+      }
+    })
+
+    await wrapper.find('button[title="Reset Section"]').trigger('click')
+
+    expect(progress.resetSection).toHaveBeenCalledWith('prep')
   })
 
   it('renders Gather header', () => {

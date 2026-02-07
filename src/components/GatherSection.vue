@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
+import { useTemplateRef } from 'vue'
+import { ClipboardList, Check, RotateCcw } from 'lucide-vue-next'
+import IconButton from '@/components/IconButton.vue'
 import type { GatherSection } from '@/types/recipe'
 import GatherCategory from '@/components/GatherCategory.vue'
 
@@ -10,7 +13,8 @@ const props = defineProps<{
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
 }>()
 
-const copied = ref(false)
+const copyBtn = useTemplateRef<InstanceType<typeof IconButton>>('copyBtn')
+const resetBtn = useTemplateRef<InstanceType<typeof IconButton>>('resetBtn')
 
 const vesselItems = computed(() =>
   (props.gather.vessels || []).map(v => ({
@@ -34,6 +38,16 @@ const ingredientItems = computed(() =>
       ? ing.breakdown.map(b => `${b.amount}${ing.unit} ${b.label}`).join(', ')
       : undefined
   }))
+)
+
+const allItemIds = computed(() => [
+  ...vesselItems.value.map(v => v.id),
+  ...equipmentItems.value.map(e => e.id),
+  ...ingredientItems.value.map(i => i.id)
+])
+
+const hasAnyProgress = computed(() =>
+  allItemIds.value.some(id => props.progress.isItemChecked(id))
 )
 
 function formatGatherForCopy(): string {
@@ -71,10 +85,12 @@ function formatGatherForCopy(): string {
 async function copyGather(): Promise<void> {
   const text = formatGatherForCopy()
   await navigator.clipboard.writeText(text)
-  copied.value = true
-  setTimeout(() => {
-    copied.value = false
-  }, 2000)
+  copyBtn.value?.flashCopied()
+}
+
+function handleReset(): void {
+  resetBtn.value?.flashSpin()
+  props.progress.resetSection(props.stageId)
 }
 </script>
 
@@ -82,12 +98,28 @@ async function copyGather(): Promise<void> {
   <div class="bg-stone-50 rounded-none p-4 border-2 border-stone-200">
     <div class="flex items-center justify-between mb-3">
       <h4 class="text-sm font-medium text-stone-500 uppercase tracking-wide">Gather</h4>
-      <button
-        @click="copyGather"
-        class="btn-secondary text-sm"
-      >
-        {{ copied ? 'Copied!' : 'Copy' }}
-      </button>
+      <div class="flex gap-0.5">
+        <IconButton
+          v-if="hasAnyProgress"
+          ref="resetBtn"
+          tooltip="Reset Section"
+          size="sm"
+          @click="handleReset"
+        >
+          <RotateCcw />
+        </IconButton>
+        <IconButton
+          ref="copyBtn"
+          tooltip="Copy Mise en Place"
+          size="sm"
+          @click="copyGather"
+        >
+          <ClipboardList />
+          <template #feedback>
+            <Check />
+          </template>
+        </IconButton>
+      </div>
     </div>
 
     <GatherCategory

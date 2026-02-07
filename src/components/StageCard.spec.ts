@@ -17,6 +17,9 @@ vi.mock('@/components/StateStep.vue', () => ({
 vi.mock('@/composables/useScrollToNext', () => ({
   scrollToNextItem: vi.fn()
 }))
+vi.mock('lucide-vue-next', () => ({
+  RotateCcw: { name: 'RotateCcw', template: '<svg class="icon-rotate" />' }
+}))
 
 function makeProgress(collapsed = false) {
   return {
@@ -31,6 +34,7 @@ function makeProgress(collapsed = false) {
     load: vi.fn(),
     save: vi.fn(),
     setStageOrder: vi.fn(),
+    resetSection: vi.fn(),
     resetProgress: vi.fn()
   }
 }
@@ -217,6 +221,47 @@ describe('StageCard', () => {
     await stateStubs[0].trigger('click')
 
     expect(scrollToNextItem).not.toHaveBeenCalled()
+  })
+})
+
+describe('Reset button', () => {
+  it('is hidden when no stage progress', () => {
+    const wrapper = mount(StageCard, { props: defaultProps })
+    expect(wrapper.find('button[title="Reset Section"]').exists()).toBe(false)
+  })
+
+  it('is visible when stage has state progress', () => {
+    const progress = makeProgress()
+    progress.isStateChecked = vi.fn((id: string) => id === 'state-1')
+    const wrapper = mount(StageCard, {
+      props: { ...defaultProps, progress }
+    })
+    expect(wrapper.find('button[title="Reset Section"]').exists()).toBe(true)
+  })
+
+  it('calls resetSection on click', async () => {
+    const progress = makeProgress()
+    progress.isStateChecked = vi.fn(() => true)
+    const wrapper = mount(StageCard, {
+      props: { ...defaultProps, progress }
+    })
+
+    await wrapper.find('button[title="Reset Section"]').trigger('click')
+    expect(progress.resetSection).toHaveBeenCalledWith('mise-en-place')
+  })
+
+  it('stopPropagation prevents header toggle', async () => {
+    const progress = makeProgress()
+    progress.isStateChecked = vi.fn(() => true)
+    const wrapper = mount(StageCard, {
+      props: { ...defaultProps, progress }
+    })
+
+    await wrapper.find('button[title="Reset Section"]').trigger('click')
+
+    // resetSection should be called but toggleStageCollapse should NOT
+    expect(progress.resetSection).toHaveBeenCalledWith('mise-en-place')
+    expect(progress.toggleStageCollapse).not.toHaveBeenCalled()
   })
 })
 

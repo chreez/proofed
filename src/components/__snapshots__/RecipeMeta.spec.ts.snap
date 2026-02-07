@@ -8,8 +8,9 @@ exports[`HTML snapshot > matches snapshot 1`] = `
       <div class="font-mono text-sm text-stone-400 mb-2">v1.0</div>
       <div class="flex flex-wrap gap-4 text-muted"><span>America's Test Kitchen</span><span>8 buns</span><span>~1.5 hours</span></div>
     </div>
-    <div class="flex gap-2 shrink-0">
-      <!--v-if--><button class="btn-secondary text-sm">Copy Recipe</button>
+    <div class="flex gap-1 shrink-0">
+      <!--v-if-->
+      <div data-v-f6045c74="" class="icon-btn-wrap"><button data-v-f6045c74="" class="icon-btn" title="Copy Recipe"><svg class="icon-clipboard"></svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy Recipe</span></div>
     </div>
   </div>
 </div>"
