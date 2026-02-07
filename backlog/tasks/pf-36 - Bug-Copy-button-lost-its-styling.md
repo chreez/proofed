@@ -1,9 +1,10 @@
 ---
 id: PF-36
 title: 'Bug: Copy button lost its styling'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 00:48'
+updated_date: '2026-02-07 01:44'
 labels:
   - bug (styling)
   - ungroomed
@@ -19,7 +20,13 @@ The per-section "Copy" button in gather sections appears unstyled — looks like
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Copy button matches design system (stone palette, 2px border, 0 radius, proper padding)
-- [ ] #2 Button styling consistent with other interactive elements in the app
-- [ ] #3 Human visual sign-off on dev server before commit
+- [x] #1 Copy button matches design system (stone palette, 2px border, 0 radius, proper padding)
+- [x] #2 Button styling consistent with other interactive elements in the app
+- [x] #3 Human visual sign-off on dev server before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Copy button in GatherSection.vue was unstyled (plain text link). Changed to `btn-secondary text-sm` to match design system — stone background, 2px border, 0 radius, proper padding.
+<!-- SECTION:FINAL_SUMMARY:END -->

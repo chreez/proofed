@@ -1,9 +1,10 @@
 ---
 id: PF-32
 title: Header recipe title "poof" animation on scroll
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 00:33'
+updated_date: '2026-02-07 01:44'
 labels:
   - ux
 dependencies: []
@@ -18,9 +19,15 @@ When scrolling down and the header shrinks, the recipe title that appears should
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Recipe title in scrolled header fades in + scales up (~200ms)
-- [ ] #2 Animation feels light and snappy, not distracting
-- [ ] #3 No animation on scroll-up (title just disappears)
-- [ ] #4 Mobile header animation matches desktop
-- [ ] #5 Human visual sign-off on dev server before commit
+- [x] #1 Recipe title in scrolled header fades in + scales up (~200ms)
+- [x] #2 Animation feels light and snappy, not distracting
+- [x] #3 No animation on scroll-up (title just disappears)
+- [x] #4 Mobile header animation matches desktop
+- [x] #5 Human visual sign-off on dev server before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Wrapped scrolled header recipe title in Vue Transition component. Enter: 200ms ease-out fade + scale 0.92→1.0. Leave: instant (no reverse animation). Works on desktop and mobile.
+<!-- SECTION:FINAL_SUMMARY:END -->

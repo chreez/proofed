@@ -1,10 +1,10 @@
 ---
 id: PF-19
 title: Variant pill placement - Consider moving
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-06 18:53'
-updated_date: '2026-02-07 00:13'
+updated_date: '2026-02-07 01:44'
 labels:
   - ux
 dependencies: []
@@ -19,9 +19,15 @@ The variant tabs (Quick / Overnight / Ultimate) have issues with both placement 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 2-3 placement mockups presented to user for comparison
-- [ ] #2 2-3 visual style options presented (underline tabs, pills, segmented control, etc.)
-- [ ] #3 User selects placement + style before implementation
-- [ ] #4 Chosen design works on both desktop and mobile
-- [ ] #5 Human visual sign-off on dev server before commit
+- [x] #1 2-3 placement mockups presented to user for comparison
+- [x] #2 2-3 visual style options presented (underline tabs, pills, segmented control, etc.)
+- [x] #3 User selects placement + style before implementation
+- [x] #4 Chosen design works on both desktop and mobile
+- [x] #5 Human visual sign-off on dev server before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Presented 3 mockup styles (A: underline tabs, B: segmented control, C: header pills) with a dev toolbar switcher. User selected Style A — clean underline tabs with accent-colored bottom border on active tab. Removed all mockup code (Styles B/C, compact prop, dev toolbar). VariantTabs.vue now has single clean interface: familyId prop, select emit.
+<!-- SECTION:FINAL_SUMMARY:END -->
