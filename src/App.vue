@@ -259,7 +259,7 @@ function handleTocNavigate(target: string) {
     >
       <div class="mx-auto flex items-center justify-between" :class="!showIndex && !showAbout && currentRecipe ? 'max-w-4xl px-4' : 'max-w-3xl'">
         <h1
-          class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out cursor-pointer"
+          class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out cursor-pointer whitespace-nowrap"
           :class="isScrolled ? 'text-lg' : 'text-2xl'"
           @click="goToIndex"
         ><span class="brand-text">proofed</span><span class="brand-dot text-accent">.</span></h1>
@@ -374,4 +374,47 @@ function handleTocNavigate(target: string) {
   opacity: 0;
 }
 
+/* Brand entry animation: letter-spacing collapse + dot pop */
+@keyframes brand-text-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.15em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0;
+  }
+}
+
+@keyframes brand-dot-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.brand-text {
+  display: inline-block;
+  animation: brand-text-in 350ms ease-out both;
+}
+
+.brand-dot {
+  display: inline-block;
+  animation: brand-dot-in 200ms ease-out 250ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-text,
+  .brand-dot {
+    animation: none;
+  }
+}
 </style>
