@@ -44,7 +44,7 @@ describe('useRecipeMeta', () => {
 
     expect(title).toBe('proofed.')
     expect(ogDescription).toBe('A personal cooking notebook. Recipes as structured data.')
-    expect(ogUrl).toBe('https://proofed.netlify.app')
+    expect(ogUrl).toBe('https://proofeddot.netlify.app')
   })
 
   it('sets recipe-specific meta when a recipe is loaded', () => {
@@ -59,7 +59,7 @@ describe('useRecipeMeta', () => {
 
     expect(title).toBe('Test Buns — proofed.')
     expect(ogDescription).toBe('A proofed. recipe: Test Buns — 8 buns, ~1.5 hrs total')
-    expect(ogUrl).toBe('https://proofed.netlify.app/recipe/test-buns')
+    expect(ogUrl).toBe('https://proofeddot.netlify.app/recipe/test-buns')
   })
 
   it('uses meta.description when provided', () => {
@@ -97,7 +97,7 @@ describe('useRecipeMeta', () => {
 
     useRecipeMeta(() => recipe.value, () => recipeId.value)
 
-    expect(capturedInput.ogImage).toBe('https://proofed.netlify.app/og-image.png')
+    expect(capturedInput.ogImage).toBe('https://proofeddot.netlify.app/og-image.png')
     expect(capturedInput.ogImageWidth).toBe(1200)
     expect(capturedInput.ogImageHeight).toBe(630)
     expect(capturedInput.twitterCard).toBe('summary_large_image')

@@ -2,7 +2,7 @@ import { computed } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import type { Recipe } from '@/types/recipe'
 
-const BASE_URL = 'https://proofed.netlify.app'
+const BASE_URL = 'https://proofeddot.netlify.app'
 const SITE_NAME = 'proofed.'
 const DEFAULT_DESCRIPTION = 'A personal cooking notebook. Recipes as structured data.'
 

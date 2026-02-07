@@ -12,7 +12,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs'
 import { resolve } from 'path'
 
-const BASE_URL = 'https://proofed.netlify.app'
+const BASE_URL = 'https://proofeddot.netlify.app'
 const SITE_NAME = 'proofed.'
 
 interface RecipeEntry {
