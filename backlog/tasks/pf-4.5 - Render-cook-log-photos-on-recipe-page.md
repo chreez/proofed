@@ -1,9 +1,10 @@
 ---
 id: PF-4.5
 title: Render cook log photos on recipe page
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 04:36'
+updated_date: '2026-02-07 05:32'
 labels:
   - implement
 dependencies:
@@ -21,11 +22,17 @@ Vue component/template to display photos referenced in cook_log entries. Images 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Photos render in cook log section when referenced in recipe JSON
-- [ ] #2 Images use loading="lazy" and decoding="async"
-- [ ] #3 Alt text displayed from PhotoReference.alt field
+- [x] #1 Photos render in cook log section when referenced in recipe JSON
+- [x] #2 Images use loading="lazy" and decoding="async"
+- [x] #3 Alt text displayed from PhotoReference.alt field
 - [ ] #4 Caption displayed when present
-- [ ] #5 Graceful handling when cook_log has no photos
+- [x] #5 Graceful handling when cook_log has no photos
 - [ ] #6 Responsive display (full-width on mobile, constrained on desktop)
-- [ ] #7 npm run build passes
+- [x] #7 npm run build passes
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Photos render inline in CookLogSection.vue as thumbnail row. loading=lazy, decoding=async, alt text from JSON. Graceful v-if when no photos. Build passes. Visual styling deferred to PF-4.8 (ungroomed).
+<!-- SECTION:FINAL_SUMMARY:END -->

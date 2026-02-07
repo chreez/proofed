@@ -32,3 +32,8 @@ npm-debug.log*
 # Nested repo (accidental duplicate)
 baking-recipes/
 coverage/
+
+# Photo pipeline — source originals (large, private EXIF)
+photos-source/
+*.HEIC
+*.heic

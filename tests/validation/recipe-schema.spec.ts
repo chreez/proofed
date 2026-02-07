@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest'
-import { readFileSync, readdirSync } from 'fs'
+import { readFileSync, readdirSync, existsSync } from 'fs'
 import { join } from 'path'
 import type { Recipe, RecipeManifest, Ingredient } from '@/types/recipe'
 
@@ -139,6 +139,35 @@ describe('Recipe JSON Validation', () => {
             isPassive,
             `State "${state.id}" (${state.title}) has timer: true but is not a passive state`
           ).toBe(true)
+        }
+      }
+    })
+
+    // Photo paths exist on disk
+    it('cook_log photo paths exist on disk', () => {
+      if (recipe.cook_log) {
+        for (const entry of recipe.cook_log) {
+          if (entry.photos) {
+            for (const photo of entry.photos) {
+              const srcPath = join(process.cwd(), 'public', photo.src)
+              const thumbPath = join(process.cwd(), 'public', photo.thumb)
+
+              expect(
+                existsSync(srcPath),
+                `Photo src "${photo.src}" does not exist at ${srcPath}`
+              ).toBe(true)
+
+              expect(
+                existsSync(thumbPath),
+                `Photo thumb "${photo.thumb}" does not exist at ${thumbPath}`
+              ).toBe(true)
+
+              expect(
+                photo.alt.trim().length > 0,
+                `Photo "${photo.src}" has empty alt text`
+              ).toBe(true)
+            }
+          }
         }
       }
     })
