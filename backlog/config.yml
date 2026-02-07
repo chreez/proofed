@@ -8,6 +8,7 @@ definition_of_done:
   - "vue-tsc passes"
   - "vite build passes"
   - "/validate passes"
+  - "New or updated test/checklist entry covers the change made"
 date_format: yyyy-mm-dd
 max_column_width: 20
 auto_open_browser: true
