@@ -5,7 +5,7 @@ exports[`HTML snapshot > matches snapshot 1`] = `
   <h3 data-v-f626ec8a="" class="card-title mb-4 pb-2 border-b-2 border-stone-200"> Cook Log </h3>
   <div data-v-f626ec8a="" class="py-4 pr-4 pl-3 border-l-3 border-warning mb-4">
     <!-- Header: date + version badge -->
-    <div data-v-f626ec8a="" class="flex items-center gap-3 mb-3"><span data-v-f626ec8a="" class="font-semibold text-stone-700">Wednesday, February 4, 2026</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">v1.0.0</span></div><!-- Markdown content -->
+    <div data-v-f626ec8a="" class="flex items-center gap-3 mb-3"><span data-v-f626ec8a="" class="font-semibold text-stone-700">Thursday, February 5, 2026</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">v1.0.0</span></div><!-- Markdown content -->
     <div data-v-f626ec8a="" class="prose">
       <ul>
         <li>Note 1</li>
