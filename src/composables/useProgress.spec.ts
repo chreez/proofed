@@ -302,6 +302,96 @@ describe('useProgress', () => {
     expect(progress.hasProgress.value).toBe(false)
   })
 
+  describe('resetSection', () => {
+    it('clears items for that stage only', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+
+      progress.setStageOrder(['stage-1', 'stage-2'])
+      progress.registerStage('stage-1', ['item-1', 'item-2'], ['state-1'])
+      progress.registerStage('stage-2', ['item-3'], ['state-2'])
+
+      progress.toggleItem('item-1')
+      progress.toggleItem('item-2')
+      progress.toggleItem('item-3')
+
+      progress.resetSection('stage-1')
+
+      expect(progress.isItemChecked('item-1')).toBe(false)
+      expect(progress.isItemChecked('item-2')).toBe(false)
+      expect(progress.isItemChecked('item-3')).toBe(true)
+    })
+
+    it('clears states for that stage only', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+
+      progress.setStageOrder(['stage-1', 'stage-2'])
+      progress.registerStage('stage-1', ['item-1'], ['state-1'])
+      progress.registerStage('stage-2', ['item-2'], ['state-2'])
+
+      progress.toggleState('state-1')
+      progress.toggleState('state-2')
+
+      progress.resetSection('stage-1')
+
+      expect(progress.isStateChecked('state-1')).toBe(false)
+      expect(progress.isStateChecked('state-2')).toBe(true)
+    })
+
+    it('un-collapses the stage', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+
+      progress.setStageOrder(['stage-1', 'stage-2'])
+      progress.registerStage('stage-1', ['item-1'], ['state-1'])
+
+      // Complete everything to trigger auto-collapse
+      progress.toggleItem('item-1', 'stage-1')
+      progress.toggleState('state-1', 'stage-1')
+      expect(progress.isStageCollapsed('stage-1')).toBe(true)
+
+      progress.resetSection('stage-1')
+
+      expect(progress.isStageCollapsed('stage-1')).toBe(false)
+    })
+
+    it('does not affect other stages', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+
+      progress.setStageOrder(['stage-1', 'stage-2'])
+      progress.registerStage('stage-1', ['item-1'], ['state-1'])
+      progress.registerStage('stage-2', ['item-2'], ['state-2'])
+
+      progress.toggleItem('item-1')
+      progress.toggleItem('item-2')
+      progress.toggleState('state-1')
+      progress.toggleState('state-2')
+      progress.toggleStageCollapse('stage-2')
+
+      progress.resetSection('stage-1')
+
+      // Stage-2 should be completely unaffected
+      expect(progress.isItemChecked('item-2')).toBe(true)
+      expect(progress.isStateChecked('state-2')).toBe(true)
+      expect(progress.isStageCollapsed('stage-2')).toBe(true)
+    })
+
+    it('works when stage has no registered context', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+
+      // No registerStage call for 'nonexistent'
+      progress.toggleStageCollapse('nonexistent')
+      expect(progress.isStageCollapsed('nonexistent')).toBe(true)
+
+      // Should not throw, and should clear the stage collapse
+      progress.resetSection('nonexistent')
+      expect(progress.isStageCollapsed('nonexistent')).toBe(false)
+    })
+  })
+
   it('tracks completion count correctly', () => {
     const progress = useProgress('test-recipe')
     progress.load()

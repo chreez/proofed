@@ -118,6 +118,19 @@ export function useProgress(recipeId: string) {
     return { done, total: ids.length }
   }
 
+  function resetSection(stageId: string) {
+    const ctx = stageContexts.get(stageId)
+    if (ctx) {
+      for (const id of ctx.itemIds) {
+        delete state.items[id]
+      }
+      for (const id of ctx.stateIds) {
+        delete state.states[id]
+      }
+    }
+    delete state.stages[stageId]
+  }
+
   function resetProgress() {
     state.items = {}
     state.states = {}
@@ -140,6 +153,7 @@ export function useProgress(recipeId: string) {
     isStateChecked,
     isStageCollapsed,
     getCompletionCount,
+    resetSection,
     resetProgress,
     hasProgress
   }
