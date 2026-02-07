@@ -1,9 +1,10 @@
 ---
 id: PF-47
 title: 'Bug: About page shows recipe title in scrolled header (mobile)'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 02:54'
+updated_date: '2026-02-07 02:56'
 labels:
   - bug
 dependencies: []
@@ -24,3 +25,9 @@ On mobile, scrolling down on the About page causes the collapsed header to show 
 - [ ] #4 Verified on mobile (iPhone via 192.168.1.213:5173)
 - [ ] #5 Human visual sign-off before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+One-line fix in App.vue:268 — added `&& !showIndex && !showAbout` to the v-if condition for the scrolled header recipe title. Prevents recipe name from leaking onto About and Index pages.">
+<!-- SECTION:FINAL_SUMMARY:END -->

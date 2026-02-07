@@ -1,9 +1,10 @@
 ---
 id: PF-49
 title: 'Bug: Remove "packed" from brown sugar label'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 03:08'
+updated_date: '2026-02-07 03:10'
 labels:
   - bug
   - recipe
@@ -23,3 +24,9 @@ Brown sugar shows as "Light Brown Sugar (packed)" with a technique glossary tool
 - [ ] #2 Technique glossary tooltip for 'packed' removed or unreferenced
 - [ ] #3 Recipe JSON passes /validate after change
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Removed \"(packed)\" from brown sugar names in all 3 recipe variants (quick, ultimate, overnight). Deleted orphaned \"packed\" technique glossary entry. Term was a volumetric leftover from the original ATK recipe — irrelevant with gram-based weights.
+<!-- SECTION:FINAL_SUMMARY:END -->
