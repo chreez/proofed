@@ -296,7 +296,12 @@ function handleTocNavigate(target: string) {
       <template v-else-if="currentRecipe && progress">
         <div class="md:flex md:gap-6">
           <div class="flex-1 min-w-0">
-            <RecipeMeta :recipe="currentRecipe" class="mb-6" />
+            <RecipeMeta
+              :recipe="currentRecipe"
+              :has-progress="progress.hasProgress.value"
+              class="mb-6"
+              @reset="progress.resetProgress()"
+            />
 
             <VariantTabs
               v-if="currentFamily"

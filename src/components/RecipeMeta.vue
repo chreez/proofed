@@ -4,6 +4,11 @@ import type { Recipe } from '@/types/recipe'
 
 const props = defineProps<{
   recipe: Recipe
+  hasProgress?: boolean
+}>()
+
+const emit = defineEmits<{
+  reset: []
 }>()
 
 const copied = ref(false)
@@ -79,12 +84,21 @@ async function copyRecipe(): Promise<void> {
           <span>{{ recipe.meta.total_time }}</span>
         </div>
       </div>
-      <button
-        @click="copyRecipe"
-        class="btn-secondary text-sm shrink-0"
-      >
-        {{ copied ? 'Copied!' : 'Copy Recipe' }}
-      </button>
+      <div class="flex gap-2 shrink-0">
+        <button
+          v-if="hasProgress"
+          @click="emit('reset')"
+          class="btn-secondary text-sm"
+        >
+          Reset Bake
+        </button>
+        <button
+          @click="copyRecipe"
+          class="btn-secondary text-sm"
+        >
+          {{ copied ? 'Copied!' : 'Copy Recipe' }}
+        </button>
+      </div>
     </div>
   </div>
 </template>

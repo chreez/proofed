@@ -1,4 +1,4 @@
-import { reactive, watch } from 'vue'
+import { reactive, computed, watch } from 'vue'
 
 interface ProgressState {
   items: Record<string, boolean>
@@ -125,6 +125,10 @@ export function useProgress(recipeId: string) {
     localStorage.removeItem(storageKey)
   }
 
+  const hasProgress = computed<boolean>(() => {
+    return Object.values(state.items).some(Boolean) || Object.values(state.states).some(Boolean)
+  })
+
   return {
     load,
     setStageOrder,
@@ -136,6 +140,7 @@ export function useProgress(recipeId: string) {
     isStateChecked,
     isStageCollapsed,
     getCompletionCount,
-    resetProgress
+    resetProgress,
+    hasProgress
   }
 }
