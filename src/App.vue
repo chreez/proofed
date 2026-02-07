@@ -14,6 +14,7 @@ import VersionTimeline from '@/components/VersionTimeline.vue'
 import TocSidebar from '@/components/TocSidebar.vue'
 import NutritionSection from '@/components/NutritionSection.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
+import AboutPage from '@/components/AboutPage.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -21,8 +22,9 @@ const router = useRouter()
 const { loadTechniques } = useTechniques()
 const { currentRecipe, currentRecipeId, currentFamily, loading, loadManifest, loadRecipe } = useRecipe()
 
-// Derive showIndex from route
-const showIndex = computed(() => route.name === 'index' || !route.params.recipeId)
+// Derive page state from route
+const showIndex = computed(() => route.name === 'index')
+const showAbout = computed(() => route.name === 'about')
 
 function goToIndex(): void {
   router.push('/')
@@ -272,6 +274,10 @@ function handleTocNavigate(target: string) {
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
+
+      <template v-else-if="showAbout">
+        <AboutPage />
+      </template>
 
       <template v-else-if="showIndex">
         <RecipeIndex @select="handleRecipeSelect" />

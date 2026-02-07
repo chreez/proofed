@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
@@ -6,11 +7,12 @@
     <div class="max-w-3xl mx-auto flex flex-col items-center gap-3 md:flex-row md:justify-between text-xs text-stone-400">
       <span class="font-mono">proofed<span class="text-accent">.</span> &copy; 2026 Chris Palmer</span>
       <div class="flex items-center gap-4">
+        <RouterLink to="/about" class="text-stone-400 hover:text-ink transition-colors">About</RouterLink>
         <a
           href="https://github.com/chreez/proofed"
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-ink transition-colors"
+          class="text-stone-400 hover:text-ink transition-colors"
           aria-label="GitHub"
         >
           <div class="i-carbon-logo-github text-base" />
@@ -19,7 +21,7 @@
           href="https://instagram.com/rhythm_hawk"
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-ink transition-colors"
+          class="text-stone-400 hover:text-ink transition-colors"
           aria-label="Instagram"
         >
           <div class="i-carbon-logo-instagram text-base" />

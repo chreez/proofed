@@ -20,6 +20,12 @@ const router = createRouter({
       name: 'recipe',
       component: EmptyRouteView,
       meta: { showIndex: false }
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: EmptyRouteView,
+      meta: { showIndex: false }
     }
   ]
 })
