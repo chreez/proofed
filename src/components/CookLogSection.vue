@@ -38,21 +38,21 @@ function formatDate(dateStr: string): string {
 
 <template>
   <section>
-    <h3 class="card-title mb-4 pb-2 border-b border-stone-200">
+    <h3 class="card-title mb-4 pb-2 border-b-2 border-stone-200">
       Cook Log
     </h3>
 
     <div
       v-for="(entry, index) in cookLog"
       :key="index"
-      class="p-4 bg-amber-50/30 border-l-3 border-amber-400 mb-4"
+      class="py-4 pr-4 pl-3 border-l-3 border-warning mb-4"
     >
       <!-- Header: date + version badge -->
       <div class="flex items-center gap-3 mb-3">
         <span class="font-semibold text-stone-700">
           {{ formatDate(entry.date) }}
         </span>
-        <span class="text-xs bg-stone-200 px-2 py-0.5 rounded">
+        <span class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">
           {{ entry.version }}
         </span>
       </div>
@@ -67,7 +67,7 @@ function formatDate(dateStr: string): string {
 <style scoped>
 .prose {
   font-size: 0.875rem;
-  color: #57534e;
+  color: #7d6e58; /* stone-600 */
   line-height: 1.6;
 }
 
@@ -85,25 +85,25 @@ function formatDate(dateStr: string): string {
   font-size: 0.75rem;
   text-transform: uppercase;
   font-weight: 600;
-  color: #a65d45;
+  color: #a65d45; /* accent */
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .prose :deep(strong) {
-  color: #44403c;
+  color: #5f5243; /* stone-700 */
   font-weight: 600;
 }
 
 .prose :deep(em) {
-  color: #78716c;
+  color: #9c8e78; /* stone-500 */
 }
 
 .prose :deep(code) {
-  background: #f5f5f4;
+  background: #f5f3ef; /* stone-100 */
   padding: 1px 4px;
-  border-radius: 2px;
+  border-radius: 0;
   font-size: 0.8125rem;
-  font-family: ui-monospace, monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 </style>

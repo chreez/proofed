@@ -53,7 +53,7 @@ function formatValue(value: number, unit: string): string {
 
 <template>
   <section id="nutrition-section" class="scroll-mt-16">
-    <h3 class="card-title mb-4 pb-2 border-b border-stone-200">Nutrition</h3>
+    <h3 class="card-title mb-4 pb-2 border-b-2 border-stone-200">Nutrition</h3>
 
     <div v-if="!nutrition" class="text-muted">
       Not yet calculated

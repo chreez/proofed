@@ -154,7 +154,7 @@ function collapse() {
           <label
             v-for="item in checkedItems"
             :key="item.id"
-            class="flex items-center gap-2 px-2 py-1 rounded cursor-pointer hover:bg-stone-100 opacity-50 text-sm transition-all duration-200"
+            class="flex items-center gap-2 px-2 py-1 rounded-none cursor-pointer hover:bg-stone-100 opacity-50 text-sm transition-all duration-200"
           >
             <input
               type="checkbox"

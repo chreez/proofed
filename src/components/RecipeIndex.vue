@@ -115,25 +115,25 @@ function selectRecipe(recipeId: string): void {
   gap: 0.375rem;
   padding: 0.375rem 0.75rem;
   font-size: 0.875rem;
-  border: 2px solid #e8e4dc;
-  background: #faf9f7;
-  color: #1a1816;
+  border: 2px solid #e8e4dc; /* stone-200 */
+  background: #faf9f7; /* stone-50 */
+  color: #1a1816; /* ink */
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .variant-chip:hover {
-  border-color: #a65d45;
+  border-color: #a65d45; /* accent */
 }
 
 .variant-chip.active {
-  background: #a65d45;
-  border-color: #a65d45;
+  background: #a65d45; /* accent */
+  border-color: #a65d45; /* accent */
   color: white;
 }
 
 .cook-log-indicator {
-  color: #a65d45;
+  color: #a65d45; /* accent */
   font-size: 0.75rem;
 }
 

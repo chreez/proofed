@@ -27,15 +27,15 @@ describe('VersionTimeline', () => {
       props: defaultProps
     })
 
-    // Find the dot indicators (there should be 2)
-    const dots = wrapper.findAll('.absolute.-left-3')
-    expect(dots.length).toBe(2)
+    // Find the dot containers and their inner colored dots
+    const dotContainers = wrapper.findAll('.absolute.-left-6')
+    expect(dotContainers.length).toBe(2)
 
-    // First entry (v1.1.0) is current - should have bg-green-500
-    expect(dots[0].classes()).toContain('bg-green-500')
+    // First entry (v1.1.0) is current - inner dot should have bg-success
+    expect(dotContainers[0].find('.rounded-full').classes()).toContain('bg-success')
 
-    // Second entry (v1.0.0) is not current - should have bg-accent
-    expect(dots[1].classes()).toContain('bg-accent')
+    // Second entry (v1.0.0) is not current - inner dot should have bg-accent
+    expect(dotContainers[1].find('.rounded-full').classes()).toContain('bg-accent')
   })
 
   it('shows version, date, and summary for each entry', () => {

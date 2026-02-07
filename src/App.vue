@@ -263,10 +263,14 @@ function handleTocNavigate(target: string) {
           :class="isScrolled ? 'text-lg' : 'text-2xl'"
           @click="goToIndex"
         >proofed<span class="text-accent">.</span></h1>
-        <span
-          v-if="isScrolled && currentRecipe"
-          class="text-sm text-muted truncate ml-4"
-        >{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ formatVersionShort(currentRecipe.version) }}</span></span>
+        <Transition name="title-poof">
+          <div
+            v-if="isScrolled && currentRecipe"
+            class="flex items-center gap-3 ml-4 min-w-0"
+          >
+            <span class="text-sm text-muted truncate">{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ formatVersionShort(currentRecipe.version) }}</span></span>
+          </div>
+        </Transition>
       </div>
     </header>
 
@@ -348,3 +352,25 @@ function handleTocNavigate(target: string) {
     <SiteFooter />
   </div>
 </template>
+
+<style scoped>
+/* "Poof" animation: light fade + scale-up on enter, instant on leave */
+.title-poof-enter-active {
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+.title-poof-enter-from {
+  opacity: 0;
+  transform: scale(0.92);
+}
+.title-poof-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+/* No leave transition — title disappears instantly on scroll-up */
+.title-poof-leave-active {
+  transition: none;
+}
+.title-poof-leave-to {
+  opacity: 0;
+}
+</style>

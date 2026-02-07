@@ -9,13 +9,13 @@ defineProps<{
 
 <template>
   <section>
-    <h3 class="card-title mb-4 pb-2 border-b border-stone-200">
+    <h3 class="card-title mb-4 pb-2 border-b-2 border-stone-200">
       Version History
     </h3>
 
-    <div class="relative pl-4">
+    <div class="relative pl-6">
       <!-- Vertical connecting line -->
-      <div class="absolute left-1 top-0 bottom-0 w-0.5 bg-stone-200" />
+      <div class="absolute left-[9px] top-0 bottom-0 w-0.5 bg-stone-200" />
 
       <!-- Timeline entries -->
       <div
@@ -25,12 +25,16 @@ defineProps<{
       >
         <!-- Dot indicator -->
         <div
-          class="absolute -left-3 top-1.5 w-2 h-2 rounded-full"
-          :class="entry.version === currentVersion ? 'bg-green-500' : 'bg-accent'"
-        />
+          class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0"
+        >
+          <div
+            class="w-2 h-2 rounded-full"
+            :class="entry.version === currentVersion ? 'bg-success' : 'bg-accent'"
+          />
+        </div>
 
         <!-- Version + date -->
-        <div class="flex items-baseline">
+        <div class="flex items-baseline leading-5">
           <span class="font-semibold text-sm">{{ entry.version }}</span>
           <span class="text-xs text-muted ml-2">{{ entry.date }}</span>
         </div>

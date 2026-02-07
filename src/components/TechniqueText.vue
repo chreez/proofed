@@ -48,7 +48,7 @@ function hideTooltip() {
 
 <style scoped>
 .technique-keyword {
-  color: #a65d45;
+  color: #a65d45; /* accent */
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 2px;
@@ -61,10 +61,10 @@ function hideTooltip() {
   bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  background: #1a1816;
+  background: #1a1816; /* ink */
   color: white;
   padding: 12px 16px;
-  border-radius: 4px;
+  border-radius: 0;
   font-size: 0.8125rem;
   line-height: 1.5;
   width: 260px;
@@ -83,15 +83,15 @@ function hideTooltip() {
   left: 50%;
   transform: translateX(-50%);
   border: 6px solid transparent;
-  border-top-color: #1a1816;
+  border-top-color: #1a1816; /* ink */
 }
 
 .tooltip-title {
   font-weight: 600;
-  color: #a65d45;
+  color: #a65d45; /* accent */
 }
 
 .tooltip-desc {
-  color: #e8e4dc;
+  color: #e8e4dc; /* stone-200 */
 }
 </style>

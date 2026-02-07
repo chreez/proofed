@@ -7,8 +7,8 @@ defineProps<{
 </script>
 
 <template>
-  <div class="mt-2 p-3 bg-amber-50/50 border-l-3 border-amber-400">
-    <div class="text-xs uppercase font-semibold text-amber-700/80 mb-1">
+  <div class="mt-2 p-3 bg-warning/10 border-l-3 border-warning">
+    <div class="text-xs uppercase font-semibold text-warning mb-1">
       📝 MY NOTE
     </div>
     <div class="text-sm text-stone-700">

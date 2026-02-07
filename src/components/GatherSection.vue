@@ -79,12 +79,12 @@ async function copyGather(): Promise<void> {
 </script>
 
 <template>
-  <div class="bg-stone-50 rounded-lg p-4 border border-stone-200">
+  <div class="bg-stone-50 rounded-none p-4 border-2 border-stone-200">
     <div class="flex items-center justify-between mb-3">
       <h4 class="text-sm font-medium text-stone-500 uppercase tracking-wide">Gather</h4>
       <button
         @click="copyGather"
-        class="text-sm text-muted hover:text-ink transition-colors"
+        class="btn-secondary text-sm"
       >
         {{ copied ? 'Copied!' : 'Copy' }}
       </button>
