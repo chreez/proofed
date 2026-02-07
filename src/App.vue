@@ -265,7 +265,7 @@ function handleTocNavigate(target: string) {
         >proofed<span class="text-accent">.</span></h1>
         <Transition name="title-poof">
           <div
-            v-if="isScrolled && currentRecipe"
+            v-if="isScrolled && currentRecipe && !showIndex && !showAbout"
             class="flex items-center gap-3 ml-4 min-w-0"
           >
             <span class="text-sm text-muted truncate">{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ formatVersionShort(currentRecipe.version) }}</span></span>
