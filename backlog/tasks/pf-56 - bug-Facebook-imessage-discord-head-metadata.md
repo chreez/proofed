@@ -1,10 +1,10 @@
 ---
 id: PF-56
 title: bug; Facebook / imessage /discord head metadata
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-07 05:46'
-updated_date: '2026-02-07 09:01'
+updated_date: '2026-02-07 09:11'
 labels:
   - bug
 dependencies: []
@@ -31,3 +31,9 @@ OG metadata not rendering in Facebook, iMessage, Discord link previews when shar
 - [ ] #6 Facebook Sharing Debugger shows recipe-specific metadata for recipe pages
 - [ ] #7 iMessage and Discord link previews show title + image
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Fixed OG metadata domain mismatch. All og:url, og:image, and twitter:image tags were pointing to `proofed.netlify.app` (a different site) instead of `proofeddot.netlify.app`. Updated BASE_URL in index.html, prerender-og.ts, useRecipeMeta.ts, and useRecipeMeta.spec.ts. Deployed to Netlify and verified live. Facebook/iMessage/Discord previews now working.
+<!-- SECTION:FINAL_SUMMARY:END -->
