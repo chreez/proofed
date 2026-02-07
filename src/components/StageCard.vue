@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { RotateCcw } from 'lucide-vue-next'
+import { computed, useTemplateRef } from 'vue'
+import { RotateCcw, Link2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { Stage, RecipeState, RecipeConfig } from '@/types/recipe'
 import GatherSection from '@/components/GatherSection.vue'
@@ -18,7 +18,17 @@ const props = defineProps<{
   config: RecipeConfig
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
   stepNotes?: Record<string, StepNoteData>
+  sectionId: string
 }>()
+
+const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
+
+async function copyPermalink(event: MouseEvent): Promise<void> {
+  event.stopPropagation()
+  const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
+  await navigator.clipboard.writeText(url)
+  linkBtn.value?.flashCopied('Copied!')
+}
 
 const isCollapsed = computed(() => props.progress.isStageCollapsed(props.stage.id))
 
@@ -72,7 +82,22 @@ const stateCount = computed(() => {
       class="w-full flex items-center justify-between scroll-mt-16 cursor-pointer select-text"
       role="button"
     >
-      <h3 class="card-title">{{ stage.title }}</h3>
+      <div class="flex items-center gap-1">
+        <h3 class="card-title">{{ stage.title }}</h3>
+        <IconButton
+          ref="linkBtn"
+          tooltip="Copy link"
+          size="sm"
+          tooltip-align="center"
+          class="text-stone-300"
+          @click="copyPermalink"
+        >
+          <Link2 />
+          <template #feedback>
+            <Check />
+          </template>
+        </IconButton>
+      </div>
       <div class="flex items-center gap-3">
         <IconButton
           v-if="hasStageProgress"

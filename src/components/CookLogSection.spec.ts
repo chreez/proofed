@@ -9,7 +9,8 @@ describe('CookLogSection', () => {
       version: 'v1.0.0',
       notes: ['Note 1', 'Note 2'],
       next_time: ['Try this next time']
-    }]
+    }],
+    sectionId: 'cook-log-section'
   }
 
   it('renders section title', () => {
@@ -36,7 +37,8 @@ describe('CookLogSection', () => {
             notes: ['Second note'],
             next_time: []
           }
-        ]
+        ],
+        sectionId: 'cook-log-section'
       }
     })
 
@@ -63,7 +65,8 @@ describe('CookLogSection', () => {
           version: 'v1.0.0',
           notes: ['Note 1'],
           next_time: []
-        }]
+        }],
+        sectionId: 'cook-log-section'
       }
     })
 
@@ -78,7 +81,8 @@ describe('CookLogSection', () => {
           version: 'v1.0.0',
           notes: ['**Bold text** and *italic*'],
           next_time: []
-        }]
+        }],
+        sectionId: 'cook-log-section'
       }
     })
 
@@ -94,7 +98,8 @@ describe('CookLogSection', () => {
           version: 'v1.0.0',
           notes: [],
           next_time: ['Try this']
-        }]
+        }],
+        sectionId: 'cook-log-section'
       }
     })
 
@@ -109,7 +114,8 @@ describe('CookLogSection', () => {
           date: '2026-02-05',
           version: 'v1.0.0',
           notes: ['A note']
-        }]
+        }],
+        sectionId: 'cook-log-section'
       }
     })
 
@@ -125,7 +131,8 @@ describe('CookLogSection', () => {
           version: 'v1.0.0',
           notes: ['Note'],
           next_time: []
-        }]
+        }],
+        sectionId: 'cook-log-section'
       }
     })
 
@@ -144,7 +151,8 @@ describe('HTML snapshot', () => {
           version: 'v1.0.0',
           notes: ['Note 1', 'Note 2'],
           next_time: ['Try this next time']
-        }]
+        }],
+        sectionId: 'cook-log-section'
       }
     })
     expect(wrapper.html()).toMatchSnapshot()

@@ -18,7 +18,9 @@ vi.mock('@/composables/useScrollToNext', () => ({
   scrollToNextItem: vi.fn()
 }))
 vi.mock('lucide-vue-next', () => ({
-  RotateCcw: { name: 'RotateCcw', template: '<svg class="icon-rotate" />' }
+  RotateCcw: { name: 'RotateCcw', template: '<svg class="icon-rotate" />' },
+  Link2: { name: 'Link2', template: '<svg class="icon-link" />' },
+  Check: { name: 'Check', template: '<svg class="icon-check" />' }
 }))
 
 function makeProgress(collapsed = false) {
@@ -51,7 +53,8 @@ const defaultProps = {
     { id: 'state-2', title: 'Step Two', instruction: 'Do other', exit_condition: 'Done' }
   ],
   config: { early_check_percent: 75 },
-  progress: makeProgress()
+  progress: makeProgress(),
+  sectionId: 'stage-mise-en-place'
 }
 
 describe('StageCard', () => {

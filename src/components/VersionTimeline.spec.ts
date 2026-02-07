@@ -8,7 +8,8 @@ describe('VersionTimeline', () => {
       { version: 'v1.1.0', date: '2026-02-05', summary: 'Added features' },
       { version: 'v1.0.0', date: '2026-02-01', summary: 'Initial release' }
     ],
-    currentVersion: 'v1.1.0'
+    currentVersion: 'v1.1.0',
+    sectionId: 'version-history-section'
   }
 
   it('renders all changelog entries', () => {
@@ -63,7 +64,8 @@ describe('HTML snapshot', () => {
           { version: 'v1.1.0', date: '2026-02-05', summary: 'Added features' },
           { version: 'v1.0.0', date: '2026-02-01', summary: 'Initial release' }
         ],
-        currentVersion: 'v1.1.0'
+        currentVersion: 'v1.1.0',
+        sectionId: 'version-history-section'
       }
     })
     expect(wrapper.html()).toMatchSnapshot()

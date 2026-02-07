@@ -2,7 +2,14 @@
 
 exports[`HTML snapshot > matches snapshot 1`] = `
 "<section data-v-f626ec8a="">
-  <h3 data-v-f626ec8a="" class="card-title mb-4 pb-2 border-b-2 border-stone-200"> Cook Log </h3>
+  <div data-v-f626ec8a="" class="flex items-center gap-1 mb-4 pb-2 border-b-2 border-stone-200">
+    <h3 data-v-f626ec8a="" class="card-title">Cook Log</h3>
+    <div data-v-f6045c74="" data-v-f626ec8a="" class="icon-btn-wrap text-stone-300"><button data-v-f6045c74="" class="icon-btn icon-btn--sm" title="Copy link"><svg data-v-f626ec8a="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2" aria-hidden="true">
+          <path d="M9 17H7A5 5 0 0 1 7 7h2"></path>
+          <path d="M15 7h2a5 5 0 1 1 0 10h-2"></path>
+          <line x1="8" x2="16" y1="12" y2="12"></line>
+        </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
+  </div>
   <div data-v-f626ec8a="" class="py-4 pr-4 pl-3 border-l-3 border-warning mb-4">
     <!-- Header: date + version badge -->
     <div data-v-f626ec8a="" class="flex items-center gap-3 mb-3"><span data-v-f626ec8a="" class="font-semibold text-stone-700">Thursday, February 5, 2026</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">v1.0.0</span></div><!-- Markdown content -->

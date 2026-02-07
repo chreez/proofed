@@ -139,6 +139,30 @@ function formatVersionShort(version: string): string {
   return `v${match[1]}.${match[2]}`
 }
 
+// Scroll to hash target on page load (supports permalink URLs)
+watch(currentRecipe, (recipe) => {
+  if (!recipe) return
+  const hash = window.location.hash?.slice(1)
+  if (!hash) return
+
+  nextTick(() => {
+    // If it's a stage, expand it if collapsed
+    if (hash.startsWith('stage-') && progress.value) {
+      const stageId = hash.replace('stage-', '')
+      if (progress.value.isStageCollapsed(stageId)) {
+        progress.value.toggleStageCollapse(stageId)
+      }
+    }
+
+    nextTick(() => {
+      const el = document.getElementById(hash)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    })
+  })
+}, { once: true })
+
 // TOC: Stage data for navigation
 const tocStages = computed(() => {
   if (!currentRecipe.value) return []
@@ -319,12 +343,14 @@ function handleTocNavigate(target: string) {
                 :config="currentRecipe.config"
                 :progress="progress"
                 :step-notes="aggregatedStepNotes"
+                :section-id="`stage-${stage.id}`"
               />
             </div>
 
             <NutritionSection
               id="nutrition-section"
               :nutrition="currentRecipe.nutrition"
+              section-id="nutrition-section"
               class="mt-8 scroll-mt-16"
             />
 
@@ -332,6 +358,7 @@ function handleTocNavigate(target: string) {
               v-if="currentRecipe.cook_log?.length"
               id="cook-log-section"
               :cook-log="currentRecipe.cook_log"
+              section-id="cook-log-section"
               class="mt-8 scroll-mt-16"
             />
 
@@ -340,6 +367,7 @@ function handleTocNavigate(target: string) {
               id="version-history-section"
               :change-log="currentRecipe.change_log"
               :current-version="currentRecipe.version ?? 'v1.0.0'"
+              section-id="version-history-section"
               class="mt-8 scroll-mt-16"
             />
           </div>

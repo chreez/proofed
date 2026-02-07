@@ -1,17 +1,42 @@
 <script setup lang="ts">
+import { useTemplateRef } from 'vue'
+import { Link2, Check } from 'lucide-vue-next'
+import IconButton from '@/components/IconButton.vue'
 import type { ChangeLogEntry } from '@/types/recipe'
 
-defineProps<{
+const props = defineProps<{
   changeLog: ChangeLogEntry[]
   currentVersion: string
+  sectionId: string
 }>()
+
+const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
+
+async function copyPermalink(): Promise<void> {
+  const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
+  await navigator.clipboard.writeText(url)
+  linkBtn.value?.flashCopied('Copied!')
+}
 </script>
 
 <template>
   <section>
-    <h3 class="card-title mb-4 pb-2 border-b-2 border-stone-200">
-      Version History
-    </h3>
+    <div class="flex items-center gap-1 mb-4 pb-2 border-b-2 border-stone-200">
+      <h3 class="card-title">Version History</h3>
+      <IconButton
+        ref="linkBtn"
+        tooltip="Copy link"
+        size="sm"
+        tooltip-align="center"
+        class="text-stone-300"
+        @click="copyPermalink"
+      >
+        <Link2 />
+        <template #feedback>
+          <Check />
+        </template>
+      </IconButton>
+    </div>
 
     <div class="relative pl-6">
       <!-- Vertical connecting line -->

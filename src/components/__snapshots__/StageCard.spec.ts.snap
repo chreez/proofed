@@ -3,7 +3,10 @@
 exports[`HTML snapshot > matches snapshot 1`] = `
 "<div class="card">
   <div id="stage-header-mise-en-place" class="w-full flex items-center justify-between scroll-mt-16 cursor-pointer select-text" role="button">
-    <h3 class="card-title">Mise en Place</h3>
+    <div class="flex items-center gap-1">
+      <h3 class="card-title">Mise en Place</h3>
+      <div data-v-f6045c74="" class="icon-btn-wrap text-stone-300"><button data-v-f6045c74="" class="icon-btn icon-btn--sm" title="Copy link"><svg class="icon-link"></svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
+    </div>
     <div class="flex items-center gap-3">
       <!--v-if--><span class="text-muted text-sm">0/2</span><span class="text-stone-400 transition-transform duration-200 rotate-180">▼</span>
     </div>

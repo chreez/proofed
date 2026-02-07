@@ -20,7 +20,7 @@ function flashCopied(label = 'Copied!'): void {
   showFeedback.value = true
   setTimeout(() => {
     showFeedback.value = false
-  }, 2000)
+  }, 1200)
 }
 
 function flashSpin(): void {

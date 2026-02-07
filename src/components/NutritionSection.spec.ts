@@ -77,7 +77,7 @@ const mockNutrition: RecipeNutrition = {
 describe('NutritionSection', () => {
   it('shows placeholder when no nutrition data', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: undefined },
+      props: { nutrition: undefined, sectionId: 'nutrition-section' },
     })
 
     expect(wrapper.text()).toContain('Not yet calculated')
@@ -85,7 +85,7 @@ describe('NutritionSection', () => {
 
   it('renders section title', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     expect(wrapper.find('h3').text()).toBe('Nutrition')
@@ -93,7 +93,7 @@ describe('NutritionSection', () => {
 
   it('shows per-serving values by default', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     expect(wrapper.text()).toContain('1 bun')
@@ -102,7 +102,7 @@ describe('NutritionSection', () => {
 
   it('toggles to full recipe values', async () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     const fullBtn = wrapper.findAll('button').find(b => b.text() === 'Full Recipe')!
@@ -114,7 +114,7 @@ describe('NutritionSection', () => {
 
   it('toggles back to per-serving', async () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     // Go to full
@@ -130,7 +130,7 @@ describe('NutritionSection', () => {
 
   it('renders all nutrient rows', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     expect(wrapper.text()).toContain('Calories')
@@ -145,7 +145,7 @@ describe('NutritionSection', () => {
 
   it('shows ingredient breakdown with non-zero calorie items only', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     // Salt has 0 calories — should be excluded
@@ -159,7 +159,7 @@ describe('NutritionSection', () => {
 
   it('sorts breakdown by calories descending', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     const rows = wrapper.find('details').findAll('tbody tr')
@@ -169,7 +169,7 @@ describe('NutritionSection', () => {
 
   it('shows data source and disclaimer', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     expect(wrapper.text()).toContain('USDA FoodData Central')
@@ -182,7 +182,7 @@ describe('NutritionSection', () => {
       servingSize: undefined,
     }
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: nutritionNoSize },
+      props: { nutrition: nutritionNoSize, sectionId: 'nutrition-section' },
     })
 
     expect(wrapper.text()).toContain('1 of 8')
@@ -190,7 +190,7 @@ describe('NutritionSection', () => {
 
   it('formats mg values correctly', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     // Sodium should be formatted as mg
@@ -199,7 +199,7 @@ describe('NutritionSection', () => {
 
   it('renders indented rows for sub-nutrients', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     // Saturated Fat, Sugar, and Fiber are indented
@@ -213,7 +213,7 @@ describe('NutritionSection', () => {
       breakdown: [],
     }
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: nutritionNoBreakdown },
+      props: { nutrition: nutritionNoBreakdown, sectionId: 'nutrition-section' },
     })
 
     // No details element should render
@@ -222,7 +222,7 @@ describe('NutritionSection', () => {
 
   it('calories row has font-semibold', () => {
     const wrapper = mount(NutritionSection, {
-      props: { nutrition: mockNutrition },
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
     })
 
     const rows = wrapper.findAll('table:first-of-type tr')

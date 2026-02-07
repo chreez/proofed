@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, useTemplateRef } from 'vue'
+import { Link2, Check } from 'lucide-vue-next'
+import IconButton from '@/components/IconButton.vue'
 import type { RecipeNutrition, NutrientTotals } from '@/types/recipe'
 
 const props = defineProps<{
   nutrition?: RecipeNutrition
+  sectionId: string
 }>()
+
+const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
+
+async function copyPermalink(): Promise<void> {
+  const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
+  await navigator.clipboard.writeText(url)
+  linkBtn.value?.flashCopied('Copied!')
+}
 
 const showFull = ref(false)
 
@@ -53,7 +64,22 @@ function formatValue(value: number, unit: string): string {
 
 <template>
   <section>
-    <h3 class="card-title mb-4 pb-2 border-b-2 border-stone-200">Nutrition</h3>
+    <div class="flex items-center gap-1 mb-4 pb-2 border-b-2 border-stone-200">
+      <h3 class="card-title">Nutrition</h3>
+      <IconButton
+        ref="linkBtn"
+        tooltip="Copy link"
+        size="sm"
+        tooltip-align="center"
+        class="text-stone-300"
+        @click="copyPermalink"
+      >
+        <Link2 />
+        <template #feedback>
+          <Check />
+        </template>
+      </IconButton>
+    </div>
 
     <div v-if="!nutrition" class="text-muted pl-3">
       Not yet calculated
