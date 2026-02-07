@@ -23,6 +23,23 @@ Only after YES. Write agent-verifiable acceptance criteria. Present to user for 
 ### 4. Save
 After user approves ACs, update the task via backlog MCP. Remove `ungroomed` label.
 
+## Auto Groom
+
+When the user says **"auto groom"**, skip the Clarify Loop (step 1) and go straight to Echo Check (step 2) + Write ACs (step 3). Use context and silent scan to fill in gaps. Still show ACs before saving.
+
+## Spike Subtasks
+
+Create spike subtasks liberally when research is needed before implementation. Spikes are delegated to future agents — don't execute them in the current session.
+
+**Spike ID format:** `PF-XX.1`, `PF-XX.2` (subtasks of the parent)
+
+**Categories that warrant a spike:**
+- **Web research** — best practices, library trends, up-to-date documentation
+- **Hard sources** — recipes, cooking techniques, anything needing citations
+- **Exploratory code investigation** — "why doesn't X work", debugging root causes, codebase archaeology
+
+**Spike output** gets documented in the parent task's implementation notes, informing the implementation phase.
+
 ## Rules
 
 - **No code.** Not even pseudocode. ACs describe *what*, not *how*.

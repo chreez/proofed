@@ -93,12 +93,20 @@ When in doubt, treat it as a styling task. Examples:
 ### Grooming Rules
 - Follow the **Intent Translator MAX** protocol in `.claude/rules/grooming.md`
 - New tasks arrive labeled `ungroomed`; groomed tasks have agent-verifiable ACs
+- **"auto groom"** = skip clarify loop, go straight to echo check + ACs
 
 ### Task Decomposition
 - **Simple work (bugs, small fixes)**: flat single task
 - **Complex features (Medium+ priority, multi-phase)**: parent + subtasks
 - **2-level max**: parent → subtasks only, never deeper
 - **Phase-based subtasks**: `spike` → `design` → `implement` (not implementation steps)
+
+### Spike Subtasks
+- Create liberally when research is needed before implementation
+- **Categories**: web research (best practices, library trends), hard sources (recipes, techniques needing citations), exploratory code investigation ("why doesn't X work")
+- Spike IDs: `PF-XX.1`, `PF-XX.2` (subtasks via `-p parent-id`)
+- Spikes are delegated to future agents — don't launch agents in the current session
+- Output documented in parent task notes → informs implementation
 - Subtask IDs: `PF-14.1`, `PF-14.2`, etc. via `-p parent-id`
 - MCP `task_list` shows parents only; `task_view` reveals subtasks
 
