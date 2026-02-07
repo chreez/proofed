@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "prebuild": "vitest run",
+    "prebuild": "vitest run --coverage",
     "build": "vue-tsc && vite build",
     "build:fast": "vue-tsc && vite build",
     "build:test": "vitest run",
+    "coverage": "vitest run --coverage",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
     "nutrition": "tsx scripts/calculate-nutrition.ts"
   },
   "keywords": [],

@@ -9,7 +9,8 @@ JSON-first recipe workflow system. Swap data, not code.
 
 ## Commands
 - `npm run dev` - Start dev server at http://localhost:5173
-- `npm run build` - Type-check and build for production
+- `npm run build` - Coverage + type-check + build (full gate)
+- `npm run coverage` - Run tests with coverage thresholds
 
 ## Project Structure
 ```
