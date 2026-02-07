@@ -1,10 +1,10 @@
 ---
 id: PF-52
 title: Replace Copy and Reset buttons with icon-only actions
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 04:29'
-updated_date: '2026-02-07 04:35'
+updated_date: '2026-02-07 05:26'
 labels:
   - ux
 dependencies: []
