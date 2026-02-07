@@ -1,7 +1,7 @@
 ---
 id: PF-42
 title: 'Add recipe: Baguette (from Joseph''s photos)'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 02:19'
 updated_date: '2026-02-07 09:12'
@@ -20,14 +20,14 @@ New recipe from photos of a physical recipe (3 images from Joseph's phone). Need
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Tartine baguette recipe extracted from 3 source photos into valid recipe JSON
-- [ ] #2 Recipe JSON follows full schema: meta, stages, states, vessels, ingredients with gram weights, exit conditions
-- [ ] #3 Source photos stored in photos-source/ (or designated reference location) — not displayed on site
-- [ ] #4 Recipe added to public/recipes/index.json manifest
-- [ ] #5 Recipe page renders correctly on dev server
-- [ ] #6 /validate passes — all D-checks, R-checks satisfied
-- [ ] #7 No cook_log (recipe not yet baked)
-- [ ] #8 npm run build passes
+- [x] #1 Tartine baguette recipe extracted from 3 source photos into valid recipe JSON
+- [x] #2 Recipe JSON follows full schema: meta, stages, states, vessels, ingredients with gram weights, exit conditions
+- [x] #3 Source photos stored in photos-source/tartine-baguette/source/ (gitignored)
+- [x] #4 Recipe added to public/recipes/index.json manifest
+- [x] #5 Recipe page renders correctly on dev server (user visual sign-off pending)
+- [x] #6 /validate passes — all D-checks, R-checks satisfied
+- [x] #7 No cook_log (recipe not yet baked)
+- [x] #8 npm run build passes
 <!-- AC:END -->
 
 ## Implementation Notes

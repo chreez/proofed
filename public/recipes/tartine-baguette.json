@@ -1,0 +1,693 @@
+{
+  "meta": {
+    "name": "Tartine Baguette",
+    "source": "Tartine Bread by Chad Robertson",
+    "yields": "2–3 baguettes",
+    "total_time": "~12–16 hrs (2 hrs active)",
+    "description": "The right balance of poolish, increased young leaven, and softer flour blend yields a baguette for the ages. Baked to a deep golden tone, this baguette has the toasty aroma of freshly popped corn."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-07",
+      "summary": "Initial recipe from Tartine Bread (pp.128-130) by Chad Robertson"
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Poolish → freed → dough mixing"
+    },
+    {
+      "id": "V2",
+      "name": "Medium Bowl",
+      "reuse": "Leaven fermentation"
+    },
+    {
+      "id": "V3",
+      "name": "Clear Container with Lid",
+      "reuse": "Bulk fermentation"
+    },
+    {
+      "id": "V4",
+      "name": "Baking Sheet / Cutting Board",
+      "reuse": "Couche support → freed after loading"
+    },
+    {
+      "id": "V5",
+      "name": "Baking Stone",
+      "reuse": "Preheat → bake"
+    },
+    {
+      "id": "V6",
+      "name": "Rimmed Baking Sheet",
+      "reuse": "Steam towels during preheat and bake"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Mixing Bowl",
+          "Medium Bowl",
+          "Clear Container with Lid",
+          "Baking Sheet / Cutting Board",
+          "Baking Stone",
+          "Rimmed Baking Sheet"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Bench Scraper",
+          "Pizza Peel",
+          "Hand Peel (narrow board or rigid cardboard)",
+          "Double-Edged Razor in Splint Holder (lame)",
+          "Large Kitchen Towel (couche)",
+          "Kitchen Towels for Steam (2–3)",
+          "Plastic Wrap",
+          "Wire Rack",
+          "Rice Flour (for dusting)"
+        ],
+        "ingredients": [
+          {
+            "id": "ap_flour",
+            "name": "All-Purpose Flour",
+            "total": 1070,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "poolish",
+                "amount": 200
+              },
+              {
+                "label": "leaven",
+                "amount": 220
+              },
+              {
+                "label": "main dough",
+                "amount": 650
+              }
+            ]
+          },
+          {
+            "id": "bread_flour",
+            "name": "Bread Flour",
+            "total": 350,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 920,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "poolish (24°C)",
+                "amount": 200
+              },
+              {
+                "label": "leaven (27°C)",
+                "amount": 220
+              },
+              {
+                "label": "main dough (23–24°C)",
+                "amount": 500
+              }
+            ]
+          },
+          {
+            "id": "yeast",
+            "name": "Active Dry Yeast",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "starter",
+            "name": "Mature Starter",
+            "total": 15,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 24,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": [
+        "PREP_WORKSPACE"
+      ]
+    },
+    {
+      "id": "POOLISH",
+      "title": "Make Poolish",
+      "gather": null,
+      "states": [
+        "MIX_POOLISH",
+        "FERMENT_POOLISH"
+      ]
+    },
+    {
+      "id": "LEAVEN",
+      "title": "Make Leaven",
+      "gather": null,
+      "states": [
+        "FEED_LEAVEN",
+        "FERMENT_LEAVEN",
+        "FLOAT_TEST"
+      ]
+    },
+    {
+      "id": "MIX",
+      "title": "Mix Dough",
+      "gather": null,
+      "states": [
+        "MIX_DOUGH",
+        "AUTOLYSE"
+      ]
+    },
+    {
+      "id": "BULK_FERMENT",
+      "title": "Bulk Fermentation",
+      "gather": null,
+      "states": [
+        "TURN_1_SALT",
+        "TURN_2",
+        "TURN_3",
+        "TURN_4",
+        "FINAL_RISE"
+      ]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Divide, Pre-shape, and Shape",
+      "gather": null,
+      "states": [
+        "DIVIDE",
+        "PRE_SHAPE",
+        "BENCH_REST",
+        "PREPARE_COUCHE",
+        "SHAPE_BAGUETTE",
+        "PLACE_COUCHE"
+      ]
+    },
+    {
+      "id": "PROOF",
+      "title": "Final Proof",
+      "gather": null,
+      "states": [
+        "PROOF_BAGUETTES"
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": [
+        "SETUP_STEAM",
+        "PREHEAT_OVEN",
+        "SCORE_LOAD",
+        "BAKE_STEAM",
+        "BAKE_DRY",
+        "COOL"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out flour, water, salt, yeast, and starter into separate containers. Have rice flour accessible for dusting.",
+      "duration_min": 15,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed, vessels and equipment laid out",
+      "notes": [
+        {
+          "text": "Rice flour is for dusting only — it prevents sticking without absorbing into the dough",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "MIX_POOLISH",
+      "title": "Mix Poolish",
+      "direction": "In large mixing bowl (V1), combine 200g all-purpose flour, 200g water at 24°C (75°F), and 3g active dry yeast. Stir until no dry flour remains.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "All-Purpose Flour",
+          "amount": "200g"
+        },
+        {
+          "name": "Water (24°C)",
+          "amount": "200g"
+        },
+        {
+          "name": "Active Dry Yeast",
+          "amount": "3g"
+        }
+      ],
+      "exit_condition": "Poolish mixed, no dry flour visible",
+      "notes": null
+    },
+    {
+      "id": "FERMENT_POOLISH",
+      "title": "Ferment Poolish",
+      "direction": "Cover bowl and let poolish stand at warm room temperature 24–27°C (75–80°F) for 3 to 4 hours. Alternatively, ferment overnight in the refrigerator.",
+      "duration_min": 210,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Poolish is bubbly, domed, and passes the float test — a small spoonful floats in water",
+      "notes": [
+        {
+          "text": "Overnight refrigerator method: mix poolish before bed, use next morning",
+          "critical": false
+        },
+        {
+          "text": "If poolish sinks in float test, it needs more time to ferment",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "FEED_LEAVEN",
+      "title": "Feed Leaven",
+      "direction": "In medium bowl (V2), place 15g mature starter. Add 220g all-purpose flour and 220g water at 27°C (80°F). Mix thoroughly.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Mature Starter",
+          "amount": "15g"
+        },
+        {
+          "name": "All-Purpose Flour",
+          "amount": "220g"
+        },
+        {
+          "name": "Water (27°C)",
+          "amount": "220g"
+        }
+      ],
+      "exit_condition": "Leaven mixed, no dry flour visible",
+      "notes": [
+        {
+          "text": "Time the leaven so it peaks when the poolish is ready — typically feed leaven 8–12 hours before you plan to mix dough",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "FERMENT_LEAVEN",
+      "title": "Ferment Leaven",
+      "direction": "Cover and let leaven ferment at room temperature until it passes the float test. Timing varies by starter strength and ambient temperature, typically 8 to 12 hours.",
+      "duration_min": 600,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Leaven has risen, is bubbly on surface, and passes the float test",
+      "notes": [
+        {
+          "text": "Can run in parallel with poolish fermentation — plan timing so both are ready together",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "FLOAT_TEST",
+      "title": "Float Test",
+      "direction": "Drop a small spoonful of poolish into water. Drop a small spoonful of leaven into water. Both must float. If either sinks, it needs more fermentation time.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both poolish and leaven float in water",
+      "notes": [
+        {
+          "text": "Do not proceed to mixing if either fails the float test — under-fermented pre-ferments will not produce proper bread",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "MIX_DOUGH",
+      "title": "Mix Baguette Dough",
+      "direction": "Pour 500g warm water at 23–24°C (74–76°F) into a large mixing bowl (V1, freed from poolish). Add all the poolish (400g) and 400g of the leaven. Stir to disperse. Add 650g all-purpose flour and 350g bread flour. Mix thoroughly by hand until no dry flour remains. Reserve remaining leaven to refresh your starter.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Water (23–24°C)",
+          "amount": "500g"
+        },
+        {
+          "name": "Poolish",
+          "amount": "400g"
+        },
+        {
+          "name": "Leaven",
+          "amount": "400g"
+        },
+        {
+          "name": "All-Purpose Flour",
+          "amount": "650g"
+        },
+        {
+          "name": "Bread Flour",
+          "amount": "350g"
+        }
+      ],
+      "exit_condition": "Dough is shaggy but cohesive, no dry flour remains",
+      "notes": [
+        {
+          "text": "Dough will feel stiffer than basic country dough — it softens during bulk fermentation",
+          "critical": false
+        },
+        {
+          "text": "Save leftover leaven to refresh and maintain your starter",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "AUTOLYSE",
+      "title": "Autolyse Rest",
+      "direction": "Let the mixed dough rest uncovered for 25 to 40 minutes. Do not add salt yet.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has rested 25–40 minutes, feels slightly more extensible",
+      "notes": [
+        {
+          "text": "Salt is added with the first turn during bulk fermentation, not during mixing",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "TURN_1_SALT",
+      "title": "First Turn — Add Salt",
+      "direction": "Transfer dough to clear container (V3). Sprinkle 24g salt over the dough. Perform a series of stretches and folds: reach under the dough, stretch upward, and fold over itself. Rotate the container and repeat around all sides. Work the salt into the dough.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Salt",
+          "amount": "24g"
+        }
+      ],
+      "exit_condition": "Salt fully incorporated, dough has been stretched and folded from all sides",
+      "notes": [
+        {
+          "text": "The dough temperature should be about 24°C (75°F) throughout bulk fermentation",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "TURN_2",
+      "title": "Ferment — Second Turn",
+      "direction": "After 40 minutes, perform another set of stretch-and-folds from all sides of the container.",
+      "duration_min": 40,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough stretched and folded from all sides, container covered",
+      "notes": null
+    },
+    {
+      "id": "TURN_3",
+      "title": "Ferment — Third Turn",
+      "direction": "After another 40 minutes, perform another set of stretch-and-folds. Dough should be gaining strength and becoming smoother.",
+      "duration_min": 40,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough noticeably stronger and smoother, stretched and folded from all sides",
+      "notes": null
+    },
+    {
+      "id": "TURN_4",
+      "title": "Ferment — Fourth Turn",
+      "direction": "After another 40 minutes, perform the final set of stretch-and-folds. Handle the dough gently — it should be airy and billowy.",
+      "duration_min": 40,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is airy, billowy, and shows good fermentation activity",
+      "notes": [
+        {
+          "text": "Be gentle — the dough has developed significant gas by now",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "FINAL_RISE",
+      "title": "Complete Bulk Fermentation",
+      "direction": "Let dough continue to ferment undisturbed for the remaining time. Total bulk fermentation is 3 to 4 hours from the first turn.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has increased 20–30% in volume, feels airy and jiggly, surface shows bubbles",
+      "notes": [
+        {
+          "text": "Look for the dough to feel alive — it should jiggle when you move the container",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "DIVIDE",
+      "title": "Divide Dough",
+      "direction": "Turn dough out onto a lightly floured surface. Using a bench scraper, divide into 2 or 3 equal pieces depending on the size of your baking stone.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough divided into 2 or 3 equal pieces",
+      "notes": [
+        {
+          "text": "For a standard home baking stone, 3 shorter baguettes are easier to manage than 2 long ones",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "PRE_SHAPE",
+      "title": "Pre-shape",
+      "direction": "Shape each piece into a rectangle with rounded corners. Use gentle hands — preserve as much gas as possible.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Each piece shaped into a loose rectangle with rounded corners",
+      "notes": null
+    },
+    {
+      "id": "BENCH_REST",
+      "title": "Bench Rest",
+      "direction": "Let the pre-shaped pieces rest on the work surface, uncovered, for 30 minutes.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has relaxed and spread slightly, 30 minutes elapsed",
+      "notes": [
+        {
+          "text": "Use this time to prepare the couche",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "PREPARE_COUCHE",
+      "title": "Prepare Couche",
+      "direction": "Drape a large kitchen towel over a baking sheet or cutting board (V4). Dust generously with rice flour.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Couche prepared with generous rice flour dusting",
+      "notes": null
+    },
+    {
+      "id": "SHAPE_BAGUETTE",
+      "title": "Shape Baguettes",
+      "direction": "Working with one piece at a time: fold the third closest to you up and over the middle third. Hold the ends and stretch horizontally to double the width. Fold the far third over the middle like closing an envelope flap. Press the flap to build tension. Using palms and fingers, roll the dough toward you, pressing with the outer edge of palms to develop tension with each roll. Place both palms on the cylinder and roll back and forth, stretching to elongate and taper the ends. Keep the length appropriate for your baking stone.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Baguettes shaped into tapered cylinders with good surface tension, sized to fit baking stone",
+      "notes": [
+        {
+          "text": "The shape should resemble a French rolling pin — tapered at the ends, even in the middle",
+          "critical": false
+        },
+        {
+          "text": "Keep the seam tight — loose seams cause the loaf to open during baking",
+          "critical": true
+        }
+      ],
+      "technique_url": "https://www.thefreshloaf.com/node/24586/shaping-baguettes"
+    },
+    {
+      "id": "PLACE_COUCHE",
+      "title": "Place on Couche",
+      "direction": "Place shaped baguettes seam-side up on the floured towel. Separate them with folds in the towel. Bring the sides of the towel over the outer loaves to support the edges.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All baguettes on couche, separated by towel folds, outer edges supported",
+      "notes": null
+    },
+    {
+      "id": "PROOF_BAGUETTES",
+      "title": "Proof Baguettes",
+      "direction": "Let baguettes rise at warm room temperature 21–24°C (70–75°F) for 2.5 to 3 hours.",
+      "duration_min": 165,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Baguettes have visibly expanded, dough springs back slowly when gently poked",
+      "notes": [
+        {
+          "text": "Begin preheating oven with steam setup at least 45 minutes before proof is complete",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "SETUP_STEAM",
+      "title": "Set Up Steam",
+      "direction": "Soak 2–3 kitchen towels in water. Line a rimmed baking sheet (V6) with the soaked towels. Place on the bottom rack of the oven.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Rimmed baking sheet with soaked towels placed on bottom oven rack",
+      "notes": [
+        {
+          "text": "The wet towels create sustained steam — they should be thoroughly saturated",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT_OVEN",
+      "title": "Preheat Oven",
+      "direction": "Place baking stone (V5) on the middle rack. Preheat oven to 260°C (500°F) with the steam pan already inside. The oven should steam for at least 15 minutes before loading.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Oven at 260°C (500°F), baking stone fully heated, oven visibly steaming",
+      "notes": [
+        {
+          "text": "A fully preheated stone is essential for oven spring — do not rush this step",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "SCORE_LOAD",
+      "title": "Score and Load Baguettes",
+      "direction": "Dust pizza peel with rice flour. Dust the seam side of the baguettes with rice flour. Flip each loaf onto the hand peel using the couche towel, then slide onto the pizza peel. Arrange baguettes about 5cm apart. Score each loaf down the center with a series of slightly overlapping lines using the razor blade lame. Open oven door, slide baguettes onto the baking stone, and quickly shut the door. Immediately reduce oven temperature to 246°C (475°F).",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Baguettes scored and loaded onto baking stone, oven door shut, temperature reduced to 246°C (475°F)",
+      "notes": [
+        {
+          "text": "Work quickly — every second the oven door is open, you lose steam and heat",
+          "critical": true
+        },
+        {
+          "text": "Score with confident, swift strokes — hesitation tears the dough",
+          "critical": false
+        }
+      ],
+      "technique_url": "https://www.thefreshloaf.com/node/22392/scoring-bread"
+    },
+    {
+      "id": "BAKE_STEAM",
+      "title": "Bake with Steam",
+      "direction": "Bake baguettes with the steam pan in place. The steam helps develop the crust. Watch for the baguettes to start taking on color.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Baguettes are beginning to color, approximately 15 minutes elapsed",
+      "notes": [
+        {
+          "text": "Do not open the oven during this phase — steam retention is critical for crust development",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "BAKE_DRY",
+      "title": "Bake without Steam",
+      "direction": "Carefully remove the steam pan with the dried kitchen towels. Continue baking until baguettes reach a deep golden color.",
+      "duration_min": 12,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Baguettes are deep golden brown, loaves sound hollow when tapped on the bottom",
+      "notes": [
+        {
+          "text": "Use oven mitts — the steam pan and towels are extremely hot",
+          "critical": true
+        },
+        {
+          "text": "Push for deep golden, not pale — the dark crust is where the toasty corn aroma lives",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "direction": "Transfer baguettes to a wire rack. Serve warm from the oven or let cool completely.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Baguettes on cooling rack, crust is crackling as it cools",
+      "notes": [
+        {
+          "text": "The crust will soften if cooled on a flat surface — always use a rack for air circulation",
+          "critical": false
+        },
+        {
+          "text": "Listen for the crust to crackle and sing as it cools — a sign of a well-baked loaf",
+          "critical": false
+        }
+      ]
+    }
+  ]
+}
