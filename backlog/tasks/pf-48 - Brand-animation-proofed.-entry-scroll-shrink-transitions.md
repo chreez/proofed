@@ -1,10 +1,10 @@
 ---
 id: PF-48
 title: 'Brand animation: proofed. entry + scroll shrink transitions'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-07 02:56'
-updated_date: '2026-02-07 03:17'
+updated_date: '2026-02-07 03:25'
 labels:
   - ux
 dependencies: []
@@ -29,3 +29,9 @@ CSS transitions for the proofed. brand in the header:\n1. Entry animation on pag
 - [ ] #8 Works on mobile (iPhone via 192.168.1.213:5173)
 - [ ] #9 Human visual sign-off on chosen animation before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Variant C (letter-spacing collapse + dot pop) chosen from 3-variant mockup spike. 'proofed' fades in with letter-spacing 0.15em→0 (350ms), dot pops with scale bounce (200ms, 250ms delay). Added whitespace-nowrap to fix mobile dot wrapping on header shrink. Respects prefers-reduced-motion.
+<!-- SECTION:FINAL_SUMMARY:END -->
