@@ -689,5 +689,117 @@
         }
       ]
     }
-  ]
+  ],
+  "nutrition": {
+    "servings": 3,
+    "servingSize": "1 baguette",
+    "calculatedDate": "2026-02-07",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 5195.4,
+      "protein": 154.4,
+      "totalFat": 16.6,
+      "saturatedFat": 2.6,
+      "carbohydrates": 1077.3,
+      "sugar": 3.8,
+      "fiber": 38.3,
+      "sodium": 9369.1
+    },
+    "perServing": {
+      "calories": 1731.8,
+      "protein": 51.5,
+      "totalFat": 5.5,
+      "saturatedFat": 0.9,
+      "carbohydrates": 359.1,
+      "sugar": 1.3,
+      "fiber": 12.8,
+      "sodium": 3123
+    },
+    "breakdown": [
+      {
+        "ingredientId": "ap_flour",
+        "ingredientName": "All-Purpose Flour",
+        "amount": 1070,
+        "fdcId": 168894,
+        "calories": 3894.8,
+        "protein": 110.5,
+        "totalFat": 10.5,
+        "saturatedFat": 1.7,
+        "carbohydrates": 816.5,
+        "sugar": 2.9,
+        "fiber": 28.9,
+        "sodium": 21.4
+      },
+      {
+        "ingredientId": "bread_flour",
+        "ingredientName": "Bread Flour",
+        "amount": 350,
+        "fdcId": 168896,
+        "calories": 1263.5,
+        "protein": 41.9,
+        "totalFat": 5.8,
+        "saturatedFat": 0.9,
+        "carbohydrates": 253.9,
+        "sugar": 0.9,
+        "fiber": 8.4,
+        "sodium": 7
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 920,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 36.8
+      },
+      {
+        "ingredientId": "yeast",
+        "ingredientName": "Active Dry Yeast",
+        "amount": 3,
+        "fdcId": 175043,
+        "calories": 9.8,
+        "protein": 1.2,
+        "totalFat": 0.2,
+        "saturatedFat": 0,
+        "carbohydrates": 1.2,
+        "sugar": 0,
+        "fiber": 0.8,
+        "sodium": 1.5
+      },
+      {
+        "ingredientId": "starter",
+        "ingredientName": "Mature Starter",
+        "amount": 15,
+        "fdcId": 0,
+        "calories": 27.3,
+        "protein": 0.8,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 5.7,
+        "sugar": 0,
+        "fiber": 0.2,
+        "sodium": 0.5
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 24,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 9301.9
+      }
+    ]
+  }
 }
