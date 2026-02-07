@@ -119,6 +119,27 @@ When in doubt, treat it as a styling task. Examples:
   - `chore: remove unused TocPill component`
   - `test: add StageCard header styling tests`
 
+## Snapshot Tests
+
+HTML snapshot tests guard component structure. They catch unintended regressions: removed wrappers, missing classes, broken layouts.
+
+### Build Commands
+- `npm run build:fast` — type-check + bundle only (skip tests). Use for fast iteration.
+- `npm run build:test` — tests only. Use to check test status without building.
+- `npm run build` — full gate (tests + type-check + bundle). Required before every commit.
+
+### Agent Snapshot Protocol
+- If a snapshot fails unexpectedly during `npm run build`:
+  1. **STOP.** Inspect the diff. Was this component supposed to change?
+  2. If ≤2 snapshots broke from your change: note the changes, run `npx vitest --update`, continue.
+  3. If ≥3 snapshots broke: **STOP.** Present the blast radius to the user before proceeding.
+- Update snapshots: `npx vitest --update` (then re-run `npm run build` to confirm)
+- Forensic use: `git log -p src/components/__snapshots__/` to trace when a component's structure changed
+- Snapshot diffs are compact and greppable — use them to investigate reported bugs ("when did this button change?")
+
+### Covered Components
+StageCard, RecipeMeta, CookLogSection, VersionTimeline, GatherSection, TocSidebar
+
 ### Backlog Commit Rules
 
 - **Backlog changes always get their own commit** — new tasks, grooming, triage, status updates

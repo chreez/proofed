@@ -101,3 +101,10 @@ describe('TocSidebar', () => {
     expect(fab.exists()).toBe(true)
   })
 })
+
+describe('HTML snapshot', () => {
+  it('matches snapshot', () => {
+    const wrapper = mount(TocSidebar, { props: defaultProps })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+})

@@ -92,3 +92,10 @@ describe('StageCard', () => {
     expect(grid.classes()).toContain('grid-rows-[1fr]')
   })
 })
+
+describe('HTML snapshot', () => {
+  it('matches snapshot', () => {
+    const wrapper = mount(StageCard, { props: defaultProps })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+})

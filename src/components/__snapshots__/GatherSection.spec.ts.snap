@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HTML snapshot > matches snapshot 1`] = `
+"<div class="bg-stone-50 rounded-none p-4 border-2 border-stone-200">
+  <div class="flex items-center justify-between mb-3">
+    <h4 class="text-sm font-medium text-stone-500 uppercase tracking-wide">Gather</h4><button class="btn-secondary text-sm">Copy</button>
+  </div>
+  <div class="gather-category-stub" title="Vessels" items="[object Object],[object Object]" progress="[object Object]" stage-id="prep"></div>
+  <div class="gather-category-stub" title="Equipment" items="[object Object],[object Object]" progress="[object Object]" stage-id="prep"></div>
+  <div class="gather-category-stub" title="Ingredients" items="[object Object],[object Object]" progress="[object Object]" stage-id="prep"></div>
+</div>"
+`;

@@ -86,3 +86,19 @@ describe('CookLogSection', () => {
     expect(wrapper.html()).toContain('<em>italic</em>')
   })
 })
+
+describe('HTML snapshot', () => {
+  it('matches snapshot', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note 1', 'Note 2'],
+          next_time: ['Try this next time']
+        }]
+      }
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+})

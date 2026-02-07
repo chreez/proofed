@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HTML snapshot > matches snapshot 1`] = `
+"<section>
+  <h3 class="card-title mb-4 pb-2 border-b-2 border-stone-200"> Version History </h3>
+  <div class="relative pl-6">
+    <!-- Vertical connecting line -->
+    <div class="absolute left-[9px] top-0 bottom-0 w-0.5 bg-stone-200"></div><!-- Timeline entries -->
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-success"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.1.0</span><span class="text-xs text-muted ml-2">2026-02-05</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Added features</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.0.0</span><span class="text-xs text-muted ml-2">2026-02-01</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Initial release</p>
+    </div>
+  </div>
+</section>"
+`;

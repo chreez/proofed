@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HTML snapshot > matches snapshot 1`] = `
+"<div class="card">
+  <div id="stage-header-mise-en-place" class="w-full flex items-center justify-between scroll-mt-16 cursor-pointer select-text" role="button">
+    <h3 class="card-title">Mise en Place</h3>
+    <div class="flex items-center gap-3"><span class="text-muted text-sm">0/2</span><span class="text-stone-400 transition-transform duration-200 rotate-180">▼</span></div>
+  </div>
+  <div class="grid transition-[grid-template-rows] duration-300 ease-out grid-rows-[1fr]">
+    <div class="overflow-hidden">
+      <div class="mt-4 space-y-4">
+        <!--v-if-->
+        <div class="space-y-3">
+          <div state="[object Object]" stage-id="mise-en-place" config="[object Object]" progress="[object Object]"></div>
+          <div state="[object Object]" stage-id="mise-en-place" config="[object Object]" progress="[object Object]"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

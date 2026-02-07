@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HTML snapshot > matches snapshot 1`] = `
+"<div class="card">
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <h2 class="text-2xl text-heading">Quick Cinnamon Buns</h2>
+      <div class="font-mono text-sm text-stone-400 mb-2">v1.0</div>
+      <div class="flex flex-wrap gap-4 text-muted"><span>America's Test Kitchen</span><span>8 buns</span><span>~1.5 hours</span></div>
+    </div><button class="btn-secondary text-sm shrink-0">Copy Recipe</button>
+  </div>
+</div>"
+`;

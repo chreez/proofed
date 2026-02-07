@@ -54,3 +54,18 @@ describe('VersionTimeline', () => {
     expect(wrapper.text()).toContain('Initial release')
   })
 })
+
+describe('HTML snapshot', () => {
+  it('matches snapshot', () => {
+    const wrapper = mount(VersionTimeline, {
+      props: {
+        changeLog: [
+          { version: 'v1.1.0', date: '2026-02-05', summary: 'Added features' },
+          { version: 'v1.0.0', date: '2026-02-01', summary: 'Initial release' }
+        ],
+        currentVersion: 'v1.1.0'
+      }
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+})
