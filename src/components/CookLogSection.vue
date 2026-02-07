@@ -76,14 +76,12 @@ function formatDate(dateStr: string): string {
             <img
               :src="heroPhoto(entry.photos).src"
               :alt="heroPhoto(entry.photos).alt"
+              :title="heroPhoto(entry.photos).alt"
               loading="lazy"
               decoding="async"
-              class="w-full h-auto border-2 border-stone-200"
+              class="max-w-lg w-full h-auto border-2 border-stone-200"
             />
           </a>
-          <figcaption class="text-xs text-stone-500 mt-1 leading-tight">
-            {{ heroPhoto(entry.photos).alt }}
-          </figcaption>
         </figure>
         <div v-if="supportingPhotos(entry.photos).length" class="flex gap-2 overflow-x-auto">
           <figure
@@ -95,14 +93,12 @@ function formatDate(dateStr: string): string {
               <img
                 :src="photo.thumb"
                 :alt="photo.alt"
+                :title="photo.alt"
                 loading="lazy"
                 decoding="async"
                 class="h-28 w-auto border-2 border-stone-200"
               />
             </a>
-            <figcaption class="text-xs text-stone-500 mt-1 leading-tight max-w-28">
-              {{ photo.alt }}
-            </figcaption>
           </figure>
         </div>
       </div>

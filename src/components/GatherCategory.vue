@@ -13,6 +13,8 @@ const props = defineProps<{
 
 // Manual expand override - user clicked badge to expand
 const manuallyExpanded = ref(false)
+// Manual collapse - user clicked ▲ to hide a section
+const manuallyCollapsed = ref(false)
 
 const checkedItems = computed(() =>
   props.items.filter(item => props.progress.isItemChecked(item.id))
@@ -26,10 +28,19 @@ const allChecked = computed(() =>
   props.items.length > 0 && checkedItems.value.length === props.items.length
 )
 
-// Collapse only if all checked AND not manually expanded
-const isCollapsed = computed(() => allChecked.value && !manuallyExpanded.value)
+// Collapse if: (all checked and not manually expanded) OR manually collapsed
+const isCollapsed = computed(() =>
+  (allChecked.value && !manuallyExpanded.value) || manuallyCollapsed.value
+)
 
-// Reset manual expand when items change (user unchecks something)
+// Badge text: "3/3 ✓" when all done, "2/5" when partially done
+const badgeText = computed(() =>
+  allChecked.value
+    ? `${props.items.length}/${props.items.length} ✓`
+    : `${checkedItems.value.length}/${props.items.length}`
+)
+
+// Reset overrides when check state changes
 watch(allChecked, (newVal) => {
   if (!newVal) {
     manuallyExpanded.value = false
@@ -77,10 +88,15 @@ function handleCompleteAllClick(event: Event) {
 
 function expand() {
   manuallyExpanded.value = true
+  manuallyCollapsed.value = false
 }
 
 function collapse() {
-  manuallyExpanded.value = false
+  if (allChecked.value) {
+    manuallyExpanded.value = false
+  } else {
+    manuallyCollapsed.value = true
+  }
 }
 </script>
 
@@ -106,7 +122,7 @@ function collapse() {
         v-if="isCollapsed"
         class="text-xs bg-ink text-stone-50 px-2 py-0.5"
       >
-        {{ items.length }}/{{ items.length }} ✓
+        {{ badgeText }}
       </span>
 
       <!-- Expanded: controls -->
@@ -125,9 +141,8 @@ function collapse() {
           {{ toggleLabel }}
         </label>
         <button
-          v-if="allChecked && manuallyExpanded"
-          @click="collapse"
-          class="text-xs text-stone-400 hover:text-stone-600 transition-colors"
+          @click.stop="collapse"
+          class="text-xs text-stone-400 hover:text-stone-600 px-1.5 py-0.5 transition-colors select-none"
           title="Collapse"
         >
           ▲
