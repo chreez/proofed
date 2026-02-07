@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useTechniques } from '@/composables/useTechniques'
+import TempText from '@/components/TempText.vue'
 
 const props = defineProps<{
   text: string
@@ -23,7 +24,7 @@ function hideTooltip() {
 <template>
   <span class="technique-text">
     <template v-for="(part, index) in parts" :key="index">
-      <span v-if="part.type === 'text'">{{ part.content }}</span>
+      <TempText v-if="part.type === 'text'" :text="part.content" />
       <span
         v-else
         class="technique-keyword"

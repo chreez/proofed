@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import type { RecipeState, RecipeConfig } from '@/types/recipe'
 import TimerDisplay from '@/components/TimerDisplay.vue'
 import StepNote from '@/components/StepNote.vue'
+import TempText from '@/components/TempText.vue'
 
 interface StepNoteData {
   note: string
@@ -65,7 +66,7 @@ function toggle() {
             :key="comp.name"
             class="text-xs bg-stone-100 text-stone-700 px-2 py-1"
           >
-            {{ comp.name }}: {{ comp.amount }}
+            <TempText :text="comp.name" />: {{ comp.amount }}
           </span>
         </div>
 

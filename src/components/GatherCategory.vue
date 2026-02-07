@@ -2,6 +2,7 @@
 import { ref, computed, watch } from 'vue'
 import CheckableItem from '@/components/CheckableItem.vue'
 import TechniqueText from '@/components/TechniqueText.vue'
+import TempText from '@/components/TempText.vue'
 import { scrollToNextItem } from '@/composables/useScrollToNext'
 
 const props = defineProps<{
@@ -167,7 +168,7 @@ function collapse() {
             @toggle="handleToggle(item.id)"
           >
             <template v-if="item.detail" #detail>
-              <div class="text-xs text-stone-400 ml-8 mt-1">{{ item.detail }}</div>
+              <div class="text-xs text-stone-400 ml-8 mt-1"><TempText :text="item.detail" /></div>
             </template>
           </CheckableItem>
 
