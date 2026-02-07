@@ -94,6 +94,7 @@ When in doubt, treat it as a styling task. Examples:
 - Follow the **Intent Translator MAX** protocol in `.claude/rules/grooming.md`
 - New tasks arrive labeled `ungroomed`; groomed tasks have agent-verifiable ACs
 - **"auto groom"** = skip clarify loop, go straight to echo check + ACs
+- **"demo"** = at echo check, creates a spike subtask for throwaway demo page showing visual options side-by-side. Batch multiple demos per session for single user review pass
 
 ### Task Decomposition
 - **Simple work (bugs, small fixes)**: flat single task

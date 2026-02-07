@@ -15,10 +15,17 @@ Ask **one question at a time** until ≥95% confidence you understand the intent
 
 ### 2. Echo Check
 Reply with **one crisp sentence** stating: what the task delivers + #1 must-include behavior + hardest constraint.
-- End with: `YES to lock / EDITS`
+- End with: `YES to lock / EDITS / DEMO`
+
+### 2b. Demo (optional)
+If the task involves a visual or design decision with multiple valid approaches, the user (or agent) can choose **DEMO** at echo check. This creates a spike subtask to build a throwaway demo page showing the options side-by-side for user review.
+
+- Demo spike = disposable — code is not production, just enough to evaluate visually
+- When multiple tasks in a session need demos, **batch them** for a single user review pass (minimizes stopping the agentic loop)
+- After user picks an approach, the demo spike is closed and the chosen direction feeds into ACs
 
 ### 3. Write ACs
-Only after YES. Write agent-verifiable acceptance criteria. Present to user for approval before saving to backlog.
+Only after YES (or after demo review). Write agent-verifiable acceptance criteria. Present to user for approval before saving to backlog.
 
 ### 4. Save
 After user approves ACs, update the task via backlog MCP. Remove `ungroomed` label.
