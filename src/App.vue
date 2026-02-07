@@ -13,6 +13,7 @@ import CookLogSection from '@/components/CookLogSection.vue'
 import VersionTimeline from '@/components/VersionTimeline.vue'
 import TocSidebar from '@/components/TocSidebar.vue'
 import NutritionSection from '@/components/NutritionSection.vue'
+import SiteFooter from '@/components/SiteFooter.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -337,5 +338,7 @@ function handleTocNavigate(target: string) {
         No recipe loaded
       </div>
     </main>
+
+    <SiteFooter />
   </div>
 </template>

@@ -1,10 +1,10 @@
 ---
 id: PF-31
 title: Add site footer
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 00:26'
-updated_date: '2026-02-07 00:27'
+updated_date: '2026-02-07 00:34'
 labels:
   - feature
 dependencies: []
@@ -19,10 +19,16 @@ Minimal global footer on every page. Content: 'proofed. \u00a9 2026 Chris Palmer
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Footer renders on every page/route
-- [ ] #2 Shows 'proofed. © 2026 Chris Palmer'
-- [ ] #3 GitHub and Instagram links present
-- [ ] #4 On-brand minimal styling
-- [ ] #5 Does not interfere with recipe page scroll/layout
-- [ ] #6 Human visual sign-off on dev server before commit
+- [x] #1 Footer renders on every page/route
+- [x] #2 Shows 'proofed. © 2026 Chris Palmer'
+- [x] #3 GitHub and Instagram links present
+- [x] #4 On-brand minimal styling
+- [x] #5 Does not interfere with recipe page scroll/layout
+- [x] #6 Human visual sign-off on dev server before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added minimal site footer rendered on every page.\n- SiteFooter.vue: copyright line (proofed. © 2026 Chris Palmer) + GitHub/Instagram icon links\n- Mobile: stacked vertically and centered to avoid FAB overlap\n- Desktop: horizontal with justify-between\n- GitHub: https://github.com/chreez/proofed, Instagram: rhythm_hawk\n- On-brand: stone-400 text, monospace brand name, accent dot, border-t-2
+<!-- SECTION:FINAL_SUMMARY:END -->
