@@ -4,10 +4,9 @@ title: 'Add recipe: Baguette (from Joseph''s photos)'
 status: To Do
 assignee: []
 created_date: '2026-02-07 02:19'
-updated_date: '2026-02-07 02:22'
+updated_date: '2026-02-07 09:12'
 labels:
   - recipe
-  - ungroomed
 dependencies:
   - PF-4
 priority: medium
@@ -18,6 +17,18 @@ priority: medium
 <!-- SECTION:DESCRIPTION:BEGIN -->
 New recipe from photos of a physical recipe (3 images from Joseph's phone). Need to extract text from images, convert to proofed. JSON schema, validate.\n\nThis is also the first test case for a repeatable recipe ingestion pipeline — whatever process we use here should be documented so future recipe-writer agents can follow the same steps.\n\n## Source Material\n- 3 photos from Joseph's phone (need to be saved to repo or scratchpad)\n- Physical recipe text, likely handwritten or printed\n\n## Pipeline Questions (needs spike)\n- OCR tooling: Claude vision (read images directly), Tesseract, Apple Live Text?\n- Where do source images live? public/recipes/sources/? .claude/sources/?\n- Repeatable steps: image → raw text → structured JSON → validation → commit\n- Agent instructions: can a recipe-writer agent be given images + told "follow the pipeline"?
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Tartine baguette recipe extracted from 3 source photos into valid recipe JSON
+- [ ] #2 Recipe JSON follows full schema: meta, stages, states, vessels, ingredients with gram weights, exit conditions
+- [ ] #3 Source photos stored in photos-source/ (or designated reference location) — not displayed on site
+- [ ] #4 Recipe added to public/recipes/index.json manifest
+- [ ] #5 Recipe page renders correctly on dev server
+- [ ] #6 /validate passes — all D-checks, R-checks satisfied
+- [ ] #7 No cook_log (recipe not yet baked)
+- [ ] #8 npm run build passes
+<!-- AC:END -->
 
 ## Implementation Notes
 
