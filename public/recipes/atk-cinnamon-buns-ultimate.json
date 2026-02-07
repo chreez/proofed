@@ -8,8 +8,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-02-07",
+      "summary": "Reduced all sugars ~25% (brown 320→240g, granulated 100→75g, confectioners' 170→128g). Increased cream cheese 113→150g to offset thinner glaze."
+    },
     {
       "version": "v1.1.0",
       "date": "2026-02-05",
@@ -134,21 +139,21 @@
           {
             "id": "granulated_sugar",
             "name": "Granulated Sugar",
-            "total": 100,
+            "total": 75,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "brown_sugar",
             "name": "Light Brown Sugar (packed)",
-            "total": 320,
+            "total": 240,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "powdered_sugar",
             "name": "Confectioners' Sugar",
-            "total": 170,
+            "total": 128,
             "unit": "g",
             "breakdown": null
           },
@@ -171,7 +176,7 @@
           {
             "id": "cream_cheese",
             "name": "Cream Cheese (softened)",
-            "total": 113,
+            "total": 150,
             "unit": "g",
             "breakdown": null
           },
@@ -379,7 +384,7 @@
         },
         {
           "name": "Granulated Sugar",
-          "amount": "100g"
+          "amount": "75g"
         },
         {
           "name": "Salt",
@@ -467,7 +472,7 @@
       "components": [
         {
           "name": "Brown Sugar",
-          "amount": "320g"
+          "amount": "240g"
         },
         {
           "name": "Cinnamon",
@@ -622,7 +627,7 @@
       "components": [
         {
           "name": "Cream Cheese",
-          "amount": "113g"
+          "amount": "150g"
         },
         {
           "name": "Milk",
@@ -634,7 +639,7 @@
         },
         {
           "name": "Confectioners' Sugar",
-          "amount": "170g"
+          "amount": "128g"
         },
         {
           "name": "Salt",
@@ -686,27 +691,27 @@
   "nutrition": {
     "servings": 8,
     "servingSize": "1 bun",
-    "calculatedDate": "2026-02-06",
+    "calculatedDate": "2026-02-07",
     "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 6848.5,
-      "protein": 92.1,
-      "totalFat": 249.2,
-      "saturatedFat": 147.6,
-      "carbohydrates": 1075.3,
-      "sugar": 593.4,
+      "calories": 6410.9,
+      "protein": 94.2,
+      "totalFat": 261.9,
+      "saturatedFat": 154.7,
+      "carbohydrates": 932,
+      "sugar": 451.1,
       "fiber": 22.1,
-      "sodium": 5062.2
+      "sodium": 5157.6
     },
     "perServing": {
-      "calories": 856.1,
-      "protein": 11.5,
-      "totalFat": 31.2,
-      "saturatedFat": 18.5,
-      "carbohydrates": 134.4,
-      "sugar": 74.2,
+      "calories": 801.4,
+      "protein": 11.8,
+      "totalFat": 32.7,
+      "saturatedFat": 19.3,
+      "carbohydrates": 116.5,
+      "sugar": 56.4,
       "fiber": 2.8,
-      "sodium": 632.8
+      "sodium": 644.7
     },
     "breakdown": [
       {
@@ -754,44 +759,44 @@
       {
         "ingredientId": "granulated_sugar",
         "ingredientName": "Granulated Sugar",
-        "amount": 100,
+        "amount": 75,
         "fdcId": 169655,
-        "calories": 387,
+        "calories": 290.3,
         "protein": 0,
         "totalFat": 0,
         "saturatedFat": 0,
-        "carbohydrates": 100,
-        "sugar": 99.8,
+        "carbohydrates": 75,
+        "sugar": 74.9,
         "fiber": 0,
-        "sodium": 1
+        "sodium": 0.8
       },
       {
         "ingredientId": "brown_sugar",
         "ingredientName": "Light Brown Sugar (packed)",
-        "amount": 320,
+        "amount": 240,
         "fdcId": 168833,
-        "calories": 1216,
-        "protein": 0.4,
+        "calories": 912,
+        "protein": 0.3,
         "totalFat": 0,
         "saturatedFat": 0,
-        "carbohydrates": 313.9,
-        "sugar": 310.5,
+        "carbohydrates": 235.4,
+        "sugar": 232.8,
         "fiber": 0,
-        "sodium": 89.6
+        "sodium": 67.2
       },
       {
         "ingredientId": "powdered_sugar",
         "ingredientName": "Confectioners' Sugar",
-        "amount": 170,
+        "amount": 128,
         "fdcId": 169656,
-        "calories": 661.3,
+        "calories": 497.9,
         "protein": 0,
         "totalFat": 0,
         "saturatedFat": 0,
-        "carbohydrates": 169.6,
-        "sugar": 166.3,
+        "carbohydrates": 127.7,
+        "sugar": 125.2,
         "fiber": 0,
-        "sodium": 3.4
+        "sodium": 2.6
       },
       {
         "ingredientId": "milk",
@@ -810,16 +815,16 @@
       {
         "ingredientId": "cream_cheese",
         "ingredientName": "Cream Cheese (softened)",
-        "amount": 113,
+        "amount": 150,
         "fdcId": 173418,
-        "calories": 386.5,
-        "protein": 6.7,
-        "totalFat": 38.7,
-        "saturatedFat": 21.8,
-        "carbohydrates": 6.2,
-        "sugar": 4.2,
+        "calories": 513,
+        "protein": 8.9,
+        "totalFat": 51.4,
+        "saturatedFat": 28.9,
+        "carbohydrates": 8.3,
+        "sugar": 5.6,
         "fiber": 0,
-        "sodium": 362.7
+        "sodium": 481.5
       },
       {
         "ingredientId": "eggs",
