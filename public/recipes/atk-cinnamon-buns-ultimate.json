@@ -52,7 +52,33 @@
         "Run hand over surface to feel for hills/valleys.",
         "Keep pressure consistent — uneven pressure = uneven dough."
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6725-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6725-400w.webp",
+          "alt": "Dough rolled out with cinnamon sugar filling on silicone mat"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6726-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6726-400w.webp",
+          "alt": "Cut spiral bun showing swirl cross-section"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6728-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6728-400w.webp",
+          "alt": "Buns baking in oven, viewed through perforated screen"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6732-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6732-400w.webp",
+          "alt": "Fresh baked cinnamon buns in foil-lined pan"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6733-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-05/img-6733-400w.webp",
+          "alt": "Finished cinnamon buns with cream cheese glaze"
+        }
+      ],
       "next_time": [
         "Use **all AP flour** — no blending. Reduces variables.",
         "Use **single yeast type** — no mixing instant + active dry",

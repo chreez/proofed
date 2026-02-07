@@ -87,6 +87,8 @@ Add checks here for new features:
 | F20 | Nutrition placeholder | Missing nutrition → "Not yet calculated" | 2026-02-06 |
 | F21 | Nutrition toggle | Per-serving / Full toggle switches all values | 2026-02-06 |
 | F22 | Nutrition breakdown | All ingredients with >0 calories listed | 2026-02-06 |
+| F23 | Photo paths valid | All cook_log photo src/thumb paths exist on disk | 2026-02-07 |
+| F24 | Photo alt text | All cook_log photos have non-empty alt text | 2026-02-07 |
 
 ## Build Validation (MANDATORY)
 

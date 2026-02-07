@@ -61,6 +61,25 @@ function formatDate(dateStr: string): string {
       <!-- Markdown content -->
       <div class="prose" v-html="renderNotes(entry)" />
 
+      <!-- Photos -->
+      <div v-if="entry.photos?.length" class="flex flex-wrap gap-2 mt-3">
+        <a
+          v-for="(photo, i) in entry.photos"
+          :key="i"
+          :href="photo.src"
+          target="_blank"
+          class="block"
+        >
+          <img
+            :src="photo.thumb"
+            :alt="photo.alt"
+            loading="lazy"
+            decoding="async"
+            class="h-24 w-auto border-2 border-stone-200"
+          />
+        </a>
+      </div>
+
     </div>
   </section>
 </template>

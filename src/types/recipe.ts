@@ -120,6 +120,13 @@ export interface ChangeLogEntry {
   summary: string
 }
 
+// Cook log photos
+export interface CookLogPhoto {
+  src: string
+  thumb: string
+  alt: string
+}
+
 // Cook log with step-specific notes
 export interface CookLogEntry {
   date: string
@@ -127,6 +134,7 @@ export interface CookLogEntry {
   notes: string[]
   step_notes?: Record<string, string>
   next_time?: string[]
+  photos?: CookLogPhoto[]
 }
 
 // Recipe manifest with family grouping
