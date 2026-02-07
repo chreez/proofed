@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useTemplateRef } from 'vue'
+import { computed, useTemplateRef } from 'vue'
 import { ClipboardList, Check, RotateCcw } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { GatherSection } from '@/types/recipe'
