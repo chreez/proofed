@@ -9,12 +9,15 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
+      all: true,
+      include: ['src/**/*.{ts,vue}'],
+      exclude: ['src/vite-env.d.ts', 'src/main.ts', 'src/router/index.ts', 'src/types/recipe.ts'],
       thresholds: {
         global: {
-          statements: 70,
-          branches: 55,
-          functions: 75,
-          lines: 70,
+          statements: 90,
+          branches: 90,
+          functions: 90,
+          lines: 90,
         },
       },
     },

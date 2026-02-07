@@ -72,4 +72,56 @@ describe('VariantTabs', () => {
     expect(wrapper.emitted('select')).toBeTruthy()
     expect(wrapper.emitted('select')![0]).toEqual(['atk-cinnamon-buns-overnight'])
   })
+
+  it('does not emit select when clicking current variant', async () => {
+    const wrapper = mount(VariantTabs, {
+      props: {
+        familyId: 'cinnamon-buns'
+      }
+    })
+
+    const buttons = wrapper.findAll('button')
+    // Click the current tab (Quick)
+    await buttons[0].trigger('click')
+
+    expect(wrapper.emitted('select')).toBeFalsy()
+  })
+
+  it('renders nothing when family not found', () => {
+    const wrapper = mount(VariantTabs, {
+      props: {
+        familyId: 'nonexistent-family'
+      }
+    })
+
+    expect(wrapper.html()).toBe('<!--v-if-->')
+  })
+
+  it('renders nothing when family has single variant', () => {
+    mockFamilies.value = [{
+      id: 'single',
+      name: 'Single Family',
+      variants: [
+        { id: 'only', recipeId: 'only-recipe', label: 'Only' }
+      ]
+    }]
+
+    const wrapper = mount(VariantTabs, {
+      props: {
+        familyId: 'single'
+      }
+    })
+
+    expect(wrapper.html()).toBe('<!--v-if-->')
+
+    // Restore
+    mockFamilies.value = [{
+      id: 'cinnamon-buns',
+      name: 'ATK Cinnamon Buns',
+      variants: [
+        { id: 'quick', recipeId: 'atk-cinnamon-buns-quick', label: 'Quick (Same Day)' },
+        { id: 'overnight', recipeId: 'atk-cinnamon-buns-overnight', label: 'Overnight' }
+      ]
+    }]
+  })
 })

@@ -85,6 +85,54 @@ describe('CookLogSection', () => {
     expect(wrapper.html()).toContain('<strong>Bold text</strong>')
     expect(wrapper.html()).toContain('<em>italic</em>')
   })
+
+  it('handles entry with empty notes array', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: [],
+          next_time: ['Try this']
+        }]
+      }
+    })
+
+    expect(wrapper.text()).toContain('Next Time')
+    expect(wrapper.text()).toContain('Try this')
+  })
+
+  it('handles entry with undefined next_time', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['A note']
+        }]
+      }
+    })
+
+    expect(wrapper.text()).toContain('A note')
+    expect(wrapper.text()).not.toContain('Next Time')
+  })
+
+  it('formats dates correctly', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          next_time: []
+        }]
+      }
+    })
+
+    // The formatDate function should produce a readable date
+    // The exact format depends on locale, but should contain year/month/day info
+    expect(wrapper.text()).toContain('2026')
+  })
 })
 
 describe('HTML snapshot', () => {

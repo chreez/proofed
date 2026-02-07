@@ -188,4 +188,110 @@ describe('useRecipe', () => {
 
     expect(restored).toBe(false)
   })
+
+  it('getFamilyForRecipe returns family for known recipe', async () => {
+    mockFetch.mockResolvedValueOnce({
+      json: () => Promise.resolve(mockManifest)
+    })
+
+    const { loadManifest, getFamilyForRecipe } = useRecipe()
+    await loadManifest()
+
+    const family = getFamilyForRecipe('recipe-a')
+    expect(family).not.toBeNull()
+    expect(family?.id).toBe('test-family')
+  })
+
+  it('getFamilyForRecipe returns null for standalone recipe', async () => {
+    mockFetch.mockResolvedValueOnce({
+      json: () => Promise.resolve(mockManifest)
+    })
+
+    const { loadManifest, getFamilyForRecipe } = useRecipe()
+    await loadManifest()
+
+    const family = getFamilyForRecipe('recipe-b')
+    expect(family).toBeNull()
+  })
+
+  it('sets error when manifest fetch fails', async () => {
+    mockFetch.mockRejectedValueOnce(new Error('Network error'))
+
+    const { loadManifest, error } = useRecipe()
+    await loadManifest()
+
+    expect(error.value).toBe('Failed to load recipe list')
+  })
+
+  it('sets error when recipe not found in manifest', async () => {
+    mockFetch.mockResolvedValueOnce({
+      json: () => Promise.resolve(mockManifest)
+    })
+
+    const { loadManifest, loadRecipe, error, currentRecipe } = useRecipe()
+    await loadManifest()
+    await loadRecipe('nonexistent')
+
+    expect(error.value).toBe('Recipe not found')
+    expect(currentRecipe.value).toBeNull()
+  })
+
+  it('sets error when recipe fetch fails', async () => {
+    mockFetch.mockResolvedValueOnce({
+      json: () => Promise.resolve(mockManifest)
+    })
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      json: () => Promise.resolve({})
+    })
+
+    const { loadManifest, loadRecipe, error, currentRecipe } = useRecipe()
+    await loadManifest()
+    await loadRecipe('recipe-a')
+
+    expect(error.value).toBe('Failed to fetch recipe')
+    expect(currentRecipe.value).toBeNull()
+  })
+
+  it('handles non-Error exceptions in loadRecipe', async () => {
+    mockFetch.mockResolvedValueOnce({
+      json: () => Promise.resolve(mockManifest)
+    })
+    mockFetch.mockRejectedValueOnce('string error')
+
+    const { loadManifest, loadRecipe, error } = useRecipe()
+    await loadManifest()
+    await loadRecipe('recipe-a')
+
+    expect(error.value).toBe('Unknown error')
+  })
+
+  it('hasRecipe is true when currentRecipe is set', async () => {
+    mockFetch.mockResolvedValueOnce({
+      json: () => Promise.resolve(mockManifest)
+    })
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve(mockRecipe)
+    })
+
+    const { loadManifest, loadRecipe, hasRecipe } = useRecipe()
+    expect(hasRecipe.value).toBe(false)
+
+    await loadManifest()
+    await loadRecipe('recipe-a')
+
+    expect(hasRecipe.value).toBe(true)
+  })
+
+  it('handles manifest with no families property', async () => {
+    mockFetch.mockResolvedValueOnce({
+      json: () => Promise.resolve({ recipes: mockManifest.recipes })
+    })
+
+    const { loadManifest, families } = useRecipe()
+    await loadManifest()
+
+    expect(families.value).toEqual([])
+  })
 })

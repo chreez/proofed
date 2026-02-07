@@ -7,7 +7,15 @@ vi.mock('@/components/GatherSection.vue', () => ({
   default: { name: 'GatherSection', template: '<div />' }
 }))
 vi.mock('@/components/StateStep.vue', () => ({
-  default: { name: 'StateStep', template: '<div />' }
+  default: {
+    name: 'StateStep',
+    props: ['state', 'stageId', 'config', 'progress', 'stepNote'],
+    emits: ['toggled'],
+    template: '<div class="state-step-stub" @click="$emit(\'toggled\', state.id)">{{ state.title }}</div>'
+  }
+}))
+vi.mock('@/composables/useScrollToNext', () => ({
+  scrollToNextItem: vi.fn()
 }))
 
 function makeProgress(collapsed = false) {
@@ -90,6 +98,125 @@ describe('StageCard', () => {
     const wrapper = mount(StageCard, { props: defaultProps })
     const grid = wrapper.find('.grid')
     expect(grid.classes()).toContain('grid-rows-[1fr]')
+  })
+
+  it('does not collapse when user is selecting text', async () => {
+    const progress = makeProgress()
+    const wrapper = mount(StageCard, {
+      props: { ...defaultProps, progress }
+    })
+
+    // Mock window.getSelection to return a non-empty selection
+    const getSelectionSpy = vi.spyOn(window, 'getSelection').mockReturnValue({
+      toString: () => 'selected text'
+    } as unknown as Selection)
+
+    await wrapper.find('#stage-header-mise-en-place').trigger('click')
+
+    // Should NOT have called toggleStageCollapse
+    expect(progress.toggleStageCollapse).not.toHaveBeenCalled()
+
+    getSelectionSpy.mockRestore()
+  })
+
+  it('renders with gather section when stage has gather', () => {
+    const wrapper = mount(StageCard, {
+      props: {
+        ...defaultProps,
+        stage: {
+          ...defaultProps.stage,
+          gather: {
+            ingredients: [{ id: 'flour', name: 'Flour', total: 390, unit: 'g', breakdown: null }]
+          }
+        }
+      }
+    })
+    expect(wrapper.html()).toContain('div') // GatherSection stub renders
+  })
+
+  it('counts checked states for state count display', () => {
+    const progress = makeProgress()
+    progress.isStateChecked = vi.fn((id: string) => id === 'state-1')
+    const wrapper = mount(StageCard, {
+      props: { ...defaultProps, progress }
+    })
+    expect(wrapper.text()).toContain('1/2')
+  })
+
+  it('scrolls to next unchecked state when state toggled and checked', async () => {
+    const { scrollToNextItem } = await import('@/composables/useScrollToNext')
+    const progress = makeProgress()
+    // state-1 is checked but state-2 is not
+    progress.isStateChecked = vi.fn((id: string) => id === 'state-1')
+
+    const wrapper = mount(StageCard, {
+      props: {
+        ...defaultProps,
+        states: [
+          { id: 'state-1', title: 'Step One', direction: 'Do thing', exit_condition: 'Done', components: null, notes: null },
+          { id: 'state-2', title: 'Step Two', direction: 'Do other', exit_condition: 'Done', components: null, notes: null }
+        ],
+        progress
+      }
+    })
+
+    // Click state-1 stub to emit toggled
+    const stateStubs = wrapper.findAll('.state-step-stub')
+    await stateStubs[0].trigger('click')
+
+    expect(scrollToNextItem).toHaveBeenCalledWith('[data-state-id="state-2"]')
+  })
+
+  it('does not scroll when state toggled but unchecked', async () => {
+    const { scrollToNextItem } = await import('@/composables/useScrollToNext')
+    vi.mocked(scrollToNextItem).mockClear()
+
+    const progress = makeProgress()
+    // Nothing is checked
+    progress.isStateChecked = vi.fn(() => false)
+
+    const wrapper = mount(StageCard, {
+      props: {
+        ...defaultProps,
+        states: [
+          { id: 'state-1', title: 'Step One', direction: 'Do thing', exit_condition: 'Done', components: null, notes: null },
+          { id: 'state-2', title: 'Step Two', direction: 'Do other', exit_condition: 'Done', components: null, notes: null }
+        ],
+        progress
+      }
+    })
+
+    // Click state-1 stub to emit toggled (but it's unchecked)
+    const stateStubs = wrapper.findAll('.state-step-stub')
+    await stateStubs[0].trigger('click')
+
+    expect(scrollToNextItem).not.toHaveBeenCalled()
+  })
+
+  it('does not scroll when no next unchecked state', async () => {
+    const { scrollToNextItem } = await import('@/composables/useScrollToNext')
+    vi.mocked(scrollToNextItem).mockClear()
+
+    const progress = makeProgress()
+    // All states checked
+    progress.isStateChecked = vi.fn(() => true)
+
+    const wrapper = mount(StageCard, {
+      props: {
+        ...defaultProps,
+        states: [
+          { id: 'state-1', title: 'Step One', direction: 'Do thing', exit_condition: 'Done', components: null, notes: null },
+          { id: 'state-2', title: 'Step Two', direction: 'Do other', exit_condition: 'Done', components: null, notes: null }
+        ],
+        progress
+      }
+    })
+
+    // Click state-1 stub
+    const stateStubs = wrapper.findAll('.state-step-stub')
+    await stateStubs[0].trigger('click')
+
+    expect(scrollToNextItem).not.toHaveBeenCalled()
   })
 })
 

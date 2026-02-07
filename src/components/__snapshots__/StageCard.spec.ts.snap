@@ -11,8 +11,8 @@ exports[`HTML snapshot > matches snapshot 1`] = `
       <div class="mt-4 space-y-4">
         <!--v-if-->
         <div class="space-y-3">
-          <div state="[object Object]" stage-id="mise-en-place" config="[object Object]" progress="[object Object]"></div>
-          <div state="[object Object]" stage-id="mise-en-place" config="[object Object]" progress="[object Object]"></div>
+          <div class="state-step-stub">Step One</div>
+          <div class="state-step-stub">Step Two</div>
         </div>
       </div>
     </div>

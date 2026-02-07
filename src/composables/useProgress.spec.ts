@@ -180,6 +180,128 @@ describe('useProgress', () => {
     expect(progress.isStageCollapsed('stage-2')).toBe(false)
   })
 
+  it('auto-advances stage with no items (only states)', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+
+    progress.setStageOrder(['stage-1', 'stage-2'])
+    progress.registerStage('stage-1', [], ['state-1']) // no items
+    progress.registerStage('stage-2', [], ['state-2'])
+
+    // Complete the only state
+    progress.toggleState('state-1', 'stage-1')
+
+    expect(progress.isStageCollapsed('stage-1')).toBe(true)
+    expect(progress.isStageCollapsed('stage-2')).toBe(false)
+  })
+
+  it('auto-advances stage with no states (only items)', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+
+    progress.setStageOrder(['stage-1', 'stage-2'])
+    progress.registerStage('stage-1', ['item-1'], []) // no states
+    progress.registerStage('stage-2', ['item-2'], [])
+
+    // Complete the only item
+    progress.toggleItem('item-1', 'stage-1')
+
+    expect(progress.isStageCollapsed('stage-1')).toBe(true)
+  })
+
+  it('does not auto-advance when stage not in order', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+
+    // Register a stage but don't set it in the order
+    progress.setStageOrder([])
+    progress.registerStage('stage-1', [], ['state-1'])
+
+    progress.toggleState('state-1', 'stage-1')
+
+    // Should collapse but no next stage to expand
+    expect(progress.isStageCollapsed('stage-1')).toBe(true)
+  })
+
+  it('does not auto-advance when last stage in order', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+
+    progress.setStageOrder(['stage-1'])
+    progress.registerStage('stage-1', [], ['state-1'])
+
+    progress.toggleState('state-1', 'stage-1')
+
+    // Should collapse (it's the last stage)
+    expect(progress.isStageCollapsed('stage-1')).toBe(true)
+  })
+
+  it('does not check auto-advance when stageId not provided', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+
+    progress.setStageOrder(['stage-1', 'stage-2'])
+    progress.registerStage('stage-1', ['item-1'], ['state-1'])
+
+    // Toggle without stageId — no auto-advance check
+    progress.toggleItem('item-1')
+    progress.toggleState('state-1')
+
+    // Stage should NOT be collapsed (no auto-advance was triggered)
+    expect(progress.isStageCollapsed('stage-1')).toBe(false)
+  })
+
+  it('loads from same recipe ID without clearing state', async () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+
+    progress.toggleItem('item-1')
+    expect(progress.isItemChecked('item-1')).toBe(true)
+
+    // Wait for the watcher to save to localStorage
+    await vi.waitFor(() => {
+      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        'recipe-progress-test-recipe',
+        expect.stringContaining('"item-1":true')
+      )
+    })
+
+    // Load again with same recipe ID — should not clear state
+    progress.load()
+
+    // State should still be there (read from localStorage)
+    expect(progress.isItemChecked('item-1')).toBe(true)
+  })
+
+  it('hasProgress is false when no items or states checked', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+    expect(progress.hasProgress.value).toBe(false)
+  })
+
+  it('hasProgress is true when an item is checked', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+    progress.toggleItem('item-1')
+    expect(progress.hasProgress.value).toBe(true)
+  })
+
+  it('hasProgress is true when a state is checked', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+    progress.toggleState('state-1')
+    expect(progress.hasProgress.value).toBe(true)
+  })
+
+  it('hasProgress resets to false after resetProgress', () => {
+    const progress = useProgress('test-recipe')
+    progress.load()
+    progress.toggleItem('item-1')
+    expect(progress.hasProgress.value).toBe(true)
+    progress.resetProgress()
+    expect(progress.hasProgress.value).toBe(false)
+  })
+
   it('tracks completion count correctly', () => {
     const progress = useProgress('test-recipe')
     progress.load()

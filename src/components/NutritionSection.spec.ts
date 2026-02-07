@@ -175,4 +175,58 @@ describe('NutritionSection', () => {
     expect(wrapper.text()).toContain('USDA FoodData Central')
     expect(wrapper.text()).toContain('Estimates only')
   })
+
+  it('uses fallback serving label when servingSize is undefined', () => {
+    const nutritionNoSize = {
+      ...mockNutrition,
+      servingSize: undefined,
+    }
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: nutritionNoSize },
+    })
+
+    expect(wrapper.text()).toContain('1 of 8')
+  })
+
+  it('formats mg values correctly', () => {
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: mockNutrition },
+    })
+
+    // Sodium should be formatted as mg
+    expect(wrapper.text()).toContain('mg')
+  })
+
+  it('renders indented rows for sub-nutrients', () => {
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: mockNutrition },
+    })
+
+    // Saturated Fat, Sugar, and Fiber are indented
+    const indentedCells = wrapper.findAll('td.pl-4')
+    expect(indentedCells.length).toBe(3) // saturatedFat, sugar, fiber
+  })
+
+  it('renders empty breakdown gracefully', () => {
+    const nutritionNoBreakdown = {
+      ...mockNutrition,
+      breakdown: [],
+    }
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: nutritionNoBreakdown },
+    })
+
+    // No details element should render
+    expect(wrapper.find('details').exists()).toBe(false)
+  })
+
+  it('calories row has font-semibold', () => {
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: mockNutrition },
+    })
+
+    const rows = wrapper.findAll('table:first-of-type tr')
+    // First row should be Calories with font-semibold
+    expect(rows[0].classes()).toContain('font-semibold')
+  })
 })
