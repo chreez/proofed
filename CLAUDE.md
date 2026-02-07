@@ -91,10 +91,8 @@ When in doubt, treat it as a styling task. Examples:
 - MCP server available: tools like `task_list`, `task_create`, `task_view`
 
 ### Grooming Rules
-- **New tasks arrive as `ungroomed`** — label with `ungroomed`
-- **Groomed = clarified intent + agent-verifiable ACs** — remove `ungroomed` label
-- **Grooming is planning only** — no code, just acceptance criteria
-- **Agent must ask clarification questions** before writing ACs
+- Follow the **Intent Translator MAX** protocol in `.claude/rules/grooming.md`
+- New tasks arrive labeled `ungroomed`; groomed tasks have agent-verifiable ACs
 
 ### Task Decomposition
 - **Simple work (bugs, small fixes)**: flat single task
