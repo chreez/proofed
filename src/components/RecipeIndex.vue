@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRecipe } from '@/composables/useRecipe'
 
 const emit = defineEmits<{
@@ -8,8 +8,8 @@ const emit = defineEmits<{
 
 const { families, recipeList, currentRecipeId } = useRecipe()
 
-// Cache for cook_log status - fetched lazily
-const cookLogCache = ref<Record<string, boolean>>({})
+// Cache for cook_log count per recipe
+const bakeCountCache = ref<Record<string, number>>({})
 
 // Get all recipe IDs that are in families
 const recipesInFamilies = computed(() => {
@@ -27,34 +27,49 @@ const otherRecipes = computed(() =>
   recipeList.value.filter(recipe => !recipesInFamilies.value.has(recipe.id))
 )
 
-// Check if recipe has cook_log
-async function checkCookLog(recipeId: string): Promise<boolean> {
-  if (recipeId in cookLogCache.value) {
-    return cookLogCache.value[recipeId]
+// Fetch cook_log count for a recipe
+async function fetchBakeCount(recipeId: string): Promise<number> {
+  if (recipeId in bakeCountCache.value) {
+    return bakeCountCache.value[recipeId]
   }
 
   const entry = recipeList.value.find(r => r.id === recipeId)
-  if (!entry) return false
+  if (!entry) return 0
 
   try {
     const response = await fetch(`/recipes/${entry.file}`)
     const recipe = await response.json()
-    const hasCookLog = Array.isArray(recipe.cook_log) && recipe.cook_log.length > 0
-    cookLogCache.value[recipeId] = hasCookLog
-    return hasCookLog
+    const count = Array.isArray(recipe.cook_log) ? recipe.cook_log.length : 0
+    bakeCountCache.value[recipeId] = count
+    return count
   } catch {
-    return false
+    return 0
   }
 }
 
-// Load cook_log status for all recipes on mount
-onMounted(async () => {
-  const allRecipeIds = recipeList.value.map(r => r.id)
-  await Promise.all(allRecipeIds.map(id => checkCookLog(id)))
-})
+// Load bake counts when recipe list becomes available
+watch(recipeList, async (list) => {
+  if (!list.length) return
+  await Promise.all(list.map(r => fetchBakeCount(r.id)))
+}, { immediate: true })
+
+function bakeCount(recipeId: string): number {
+  return bakeCountCache.value[recipeId] ?? 0
+}
+
+// Family aggregate: sum cook_log entries from all variants
+function familyBakeCount(familyId: string): number {
+  const family = families.value.find(f => f.id === familyId)
+  if (!family) return 0
+  return family.variants.reduce((sum, v) => sum + bakeCount(v.recipeId), 0)
+}
 
 function hasCookLog(recipeId: string): boolean {
-  return cookLogCache.value[recipeId] ?? false
+  return bakeCount(recipeId) > 0
+}
+
+function bakeLabel(count: number): string {
+  return count === 1 ? '1 bake' : `${count} bakes`
 }
 
 function isActive(recipeId: string): boolean {
@@ -72,6 +87,10 @@ function selectRecipe(recipeId: string): void {
     <div v-for="family in families" :key="family.id" class="mb-6">
       <h3 class="font-mono text-sm text-ink border-l-3 border-accent pl-3 mb-3">
         {{ family.name }}
+        <span
+          v-if="familyBakeCount(family.id) > 0"
+          class="text-stone-400 font-normal"
+        > · {{ bakeLabel(familyBakeCount(family.id)) }}</span>
       </h3>
       <div class="flex flex-wrap gap-2">
         <button

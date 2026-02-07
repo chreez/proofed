@@ -15,7 +15,7 @@ exports[`HTML snapshot > matches snapshot 1`] = `
       <ul>
         <li>Try this next time</li>
       </ul>
-    </div><!-- Photos -->
+    </div><!-- Photos: hero layout -->
     <!--v-if-->
   </div>
 </section>"

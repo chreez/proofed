@@ -1,10 +1,18 @@
 <script setup lang="ts">
 import { marked } from 'marked'
-import type { CookLogEntry } from '@/types/recipe'
+import type { CookLogEntry, CookLogPhoto } from '@/types/recipe'
 
 defineProps<{
   cookLog: CookLogEntry[]
 }>()
+
+function heroPhoto(photos: CookLogPhoto[]): CookLogPhoto {
+  return photos[photos.length - 1]
+}
+
+function supportingPhotos(photos: CookLogPhoto[]): CookLogPhoto[] {
+  return photos.slice(0, -1)
+}
 
 // Convert notes array to markdown and render
 function renderNotes(entry: CookLogEntry): string {
@@ -61,23 +69,42 @@ function formatDate(dateStr: string): string {
       <!-- Markdown content -->
       <div class="prose" v-html="renderNotes(entry)" />
 
-      <!-- Photos -->
-      <div v-if="entry.photos?.length" class="flex flex-wrap gap-2 mt-3">
-        <a
-          v-for="(photo, i) in entry.photos"
-          :key="i"
-          :href="photo.src"
-          target="_blank"
-          class="block"
-        >
-          <img
-            :src="photo.thumb"
-            :alt="photo.alt"
-            loading="lazy"
-            decoding="async"
-            class="h-24 w-auto border-2 border-stone-200"
-          />
-        </a>
+      <!-- Photos: hero layout -->
+      <div v-if="entry.photos?.length" class="mt-4">
+        <figure class="gallery-figure mb-3">
+          <a :href="heroPhoto(entry.photos).src" target="_blank" class="block">
+            <img
+              :src="heroPhoto(entry.photos).src"
+              :alt="heroPhoto(entry.photos).alt"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-auto border-2 border-stone-200"
+            />
+          </a>
+          <figcaption class="text-xs text-stone-500 mt-1 leading-tight">
+            {{ heroPhoto(entry.photos).alt }}
+          </figcaption>
+        </figure>
+        <div v-if="supportingPhotos(entry.photos).length" class="flex gap-2 overflow-x-auto">
+          <figure
+            v-for="(photo, i) in supportingPhotos(entry.photos)"
+            :key="i"
+            class="gallery-figure flex-shrink-0"
+          >
+            <a :href="photo.src" target="_blank" class="block">
+              <img
+                :src="photo.thumb"
+                :alt="photo.alt"
+                loading="lazy"
+                decoding="async"
+                class="h-28 w-auto border-2 border-stone-200"
+              />
+            </a>
+            <figcaption class="text-xs text-stone-500 mt-1 leading-tight max-w-28">
+              {{ photo.alt }}
+            </figcaption>
+          </figure>
+        </div>
       </div>
 
     </div>
@@ -125,5 +152,9 @@ function formatDate(dateStr: string): string {
   border-radius: 0;
   font-size: 0.8125rem;
   font-family: 'JetBrains Mono', monospace;
+}
+
+.gallery-figure {
+  margin: 0;
 }
 </style>
