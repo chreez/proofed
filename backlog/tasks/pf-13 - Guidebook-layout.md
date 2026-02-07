@@ -4,7 +4,7 @@ title: Guidebook layout
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:47'
-updated_date: '2026-02-07 01:23'
+updated_date: '2026-02-07 01:54'
 labels:
   - ux
   - ungroomed
@@ -15,13 +15,14 @@ priority: low
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Design overall site structure and navigation beyond current index + recipe views. Consider: browse/filter by category, search, multi-recipe workflows, print view.\n\nMay be largely addressed by individual tasks (PF-12 about page, PF-16 styling, PF-2 baking log). Re-evaluate scope when those are complete.
+Site navigation structure and uniformity. Current gaps:\n- No clear way to navigate back to previous pages (breadcrumbs? back button?)\n- Home page: currently recipe index, but will need to consider baking log (blog-style) page\n- Navigation uniformity across index, recipe, about, future baking log page\n- What should the home page be when there are multiple top-level sections?\n\nKeep as placeholder until concrete need emerges. Re-evaluate after PF-2 (baking log page) is designed.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Site navigation supports index, recipe, about, and future pages
-- [ ] #2 Consistent header/footer across all views
-- [ ] #3 Mobile navigation works on iPhone
-- [ ] #4 Human visual sign-off before commit
+- [ ] #1 Clear back-navigation from any page (breadcrumbs, back button, or header nav)
+- [ ] #2 Home page strategy decided: recipe index vs baking log vs combined
+- [ ] #3 Navigation consistent across all pages (index, recipe, about, baking log)
+- [ ] #4 Mobile navigation works on iPhone
+- [ ] #5 Human visual sign-off before commit
 <!-- AC:END -->

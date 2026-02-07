@@ -4,10 +4,9 @@ title: 'Bug: Cook Log date header has unwanted indent'
 status: Done
 assignee: []
 created_date: '2026-02-07 00:22'
-updated_date: '2026-02-07 01:44'
+updated_date: '2026-02-07 01:46'
 labels:
   - bug (styling)
-  - ungroomed
 dependencies: []
 priority: medium
 ---
@@ -20,11 +19,12 @@ The cook log date subsection headers (e.g. 'Wednesday, February 4, 2026') have a
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 Date header row has reduced left padding — tight to amber border
-- [x] #2 Bullet points retain existing indent
-- [x] #3 NEXT TIME label aligns flush left with date header
-- [x] #4 Background removed for cohesion with page bg
-- [x] #5 Human visual sign-off on dev server before commit
+- [ ] #1 Cook log date headers align flush left with section header
+- [ ] #2 Timeline left border alignment consistent top to bottom
+- [ ] #3 NEXT TIME label alignment consistent with other elements
+- [ ] #4 Broader audit: all cook log section padding/margins checked for consistency
+- [ ] #5 Bullet points below date headers remain indented (unchanged)
+- [ ] #6 Human visual sign-off on dev server before commit
 <!-- AC:END -->
 
 ## Final Summary

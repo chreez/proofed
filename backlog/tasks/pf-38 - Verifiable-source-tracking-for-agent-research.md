@@ -4,9 +4,9 @@ title: Verifiable source tracking for agent research
 status: To Do
 assignee: []
 created_date: '2026-02-07 01:08'
+updated_date: '2026-02-07 02:17'
 labels:
   - feature
-  - ungroomed
 dependencies: []
 priority: low
 ---
@@ -14,5 +14,19 @@ priority: low
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-When an agent (chatbot or Claude Code) researches anything — flour substitutes, technique explanations, equipment recommendations — the sources must be captured and stored as structured data.\n\n## Problem\nCurrently agent suggestions land in next_time or cook notes with no provenance. "Try bread flour" — says who? Based on what?\n\n## Proposal\nNew JSON structure for citations/sources attached to suggestions, notes, and recipe decisions:\n```json\n{\n  "claim": "Bread flour works as AP substitute in enriched dough",\n  "sources": [\n    { "title": "King Arthur: Flour Guide", "url": "https://...", "fetched": "2026-02-07" },\n    { "title": "Serious Eats: Flour Types", "url": "https://...", "fetched": "2026-02-07" }\n  ],\n  "confidence": "high",\n  "verified_by": "agent"\n}\n```\n\nStorage options:\n- Per-recipe: sources[] array in recipe JSON\n- Global: public/data/sources.json knowledge base\n- Both: recipe-specific citations + shared reference library\n\nEventually surface on website: \"Why does this recipe use bread flour?\" → expandable citation block with links.\n\nRelates to PF-5 (source tracking), PF-11 (suggestion source tracking), PF-37 (AI chatbot).
+Unified source/citation tracking. Merges PF-5 (recipe origin) and PF-11 (suggestion sources).\n\nThree scopes:\n1. Recipe origin — meta.source becomes structured: { name, url, attribution, accessed }\n2. Suggestion citations — next_time[] items get optional source field, backwards compatible with plain strings\n3. Agent research — when an agent researches anything, sources captured as structured data: { claim, sources: [{ title, url, fetched }], confidence, verified_by }\n\nStorage: per-recipe sources in recipe JSON + potential global knowledge base.\nSurface on website eventually: expandable citation blocks with links.
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Spike: research citation schemas (JSON-LD, schema.org, custom) for recipe origins, suggestion citations, and agent research
+- [ ] #2 Spike: propose unified schema covering all three scopes
+- [ ] #3 Schema decision documented before implementation
+- [ ] #4 Recipe origins: meta.source becomes structured object with URL, attribution, date
+- [ ] #5 Suggestion citations: next_time[] items support optional source, backwards compatible
+- [ ] #6 Agent research: sources captured as structured data with URL, title, fetch date, confidence
+- [ ] #7 Display: recipe origin shown in footer 'Sources' section
+- [ ] #8 Display: suggestion/note sources shown inline as expandable citations
+- [ ] #9 All recipes updated with structured source data after schema finalized
+- [ ] #10 Recipe passes /validate after schema change
+<!-- AC:END -->

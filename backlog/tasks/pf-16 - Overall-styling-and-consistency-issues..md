@@ -4,10 +4,9 @@ title: Overall styling and consistency issues.
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:51'
-updated_date: '2026-02-07 01:23'
+updated_date: '2026-02-07 01:54'
 labels:
   - ux
-  - ungroomed
 dependencies: []
 priority: medium
 ---
@@ -20,9 +19,13 @@ Audit overall styling consistency across all components. Evaluate headless compo
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Styling audit doc lists all inconsistencies across components
-- [ ] #2 Component library evaluated: Radix Vue, Headless UI, or none
-- [ ] #3 All interactive elements follow consistent pattern (borders, radius, colors)
-- [ ] #4 UnoCSS shortcuts used everywhere — no one-off utility combos (D13)
-- [ ] #5 Human visual sign-off on each component change before commit
+- [ ] #1 Spike (timeboxed ~2hrs): audit doc lists all inconsistencies — buttons, section headers, spacing, TOC, padding drift
+- [ ] #2 Spike evaluates: reusable component patterns vs component library (Radix Vue, Headless UI) vs manual cleanup
+- [ ] #3 Decision documented: approach chosen based on spike findings
+- [ ] #4 Shared button component or pattern: all buttons (copy, toggle, FAB, nav) follow one style
+- [ ] #5 Section headers unified: cook log, version history, nutrition, stages all use same pattern
+- [ ] #6 Spacing system consistent: card padding, section gaps, margins follow defined scale
+- [ ] #7 TOC styling polished and consistent with rest of design system
+- [ ] #8 UnoCSS shortcuts used everywhere — no one-off utility combos (D13)
+- [ ] #9 Human visual sign-off on each component change before commit
 <!-- AC:END -->
