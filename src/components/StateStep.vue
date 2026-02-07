@@ -32,14 +32,14 @@ function toggle() {
 <template>
   <div
     :data-state-id="state.id"
-    class="bg-white p-4 border-2 border-stone-200 transition-opacity scroll-mt-16"
+    class="bg-surface p-4 border-2 border-stone-200 transition-opacity scroll-mt-16"
     :class="{ 'opacity-50': isChecked }"
   >
     <div class="flex items-start gap-3">
       <button
         @click="toggle"
         class="mt-1 w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 transition-colors"
-        :class="isChecked ? 'bg-ink border-ink text-white' : 'border-ink hover:bg-stone-100'"
+        :class="isChecked ? 'bg-ink border-ink text-stone-50' : 'border-ink hover:bg-stone-100'"
       >
         <span v-if="isChecked" class="text-xs">✓</span>
       </button>
@@ -80,7 +80,7 @@ function toggle() {
             v-for="(note, i) in state.notes"
             :key="i"
             class="text-sm p-2"
-            :class="note.critical ? 'bg-accent/10 text-accent border-l-4 border-accent' : 'bg-stone-100 text-stone-600'"
+            :class="note.critical ? 'bg-accent-tint text-accent border-l-4 border-accent' : 'bg-stone-100 text-stone-600'"
           >
             <span v-if="note.critical" class="font-medium">⚠ </span>
             {{ note.text }}

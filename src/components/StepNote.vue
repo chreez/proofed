@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="mt-2 p-3 bg-warning/10 border-l-3 border-warning">
+  <div class="mt-2 p-3 bg-warning-tint border-l-3 border-warning">
     <div class="text-xs uppercase font-semibold text-warning mb-1">
       📝 MY NOTE
     </div>

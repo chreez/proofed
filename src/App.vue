@@ -262,7 +262,7 @@ function handleTocNavigate(target: string) {
           class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out cursor-pointer"
           :class="isScrolled ? 'text-lg' : 'text-2xl'"
           @click="goToIndex"
-        >proofed<span class="text-accent">.</span></h1>
+        ><span class="brand-text">proofed</span><span class="brand-dot text-accent">.</span></h1>
         <Transition name="title-poof">
           <div
             v-if="isScrolled && currentRecipe && !showIndex && !showAbout"
@@ -373,4 +373,5 @@ function handleTocNavigate(target: string) {
 .title-poof-leave-to {
   opacity: 0;
 }
+
 </style>

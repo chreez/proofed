@@ -67,7 +67,7 @@ function formatDate(dateStr: string): string {
 <style scoped>
 .prose {
   font-size: 0.875rem;
-  color: #7d6e58; /* stone-600 */
+  color: var(--color-stone-600); /* stone-600 */
   line-height: 1.6;
 }
 
@@ -85,22 +85,22 @@ function formatDate(dateStr: string): string {
   font-size: 0.75rem;
   text-transform: uppercase;
   font-weight: 600;
-  color: #a65d45; /* accent */
+  color: var(--color-accent); /* accent */
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .prose :deep(strong) {
-  color: #5f5243; /* stone-700 */
+  color: var(--color-stone-700); /* stone-700 */
   font-weight: 600;
 }
 
 .prose :deep(em) {
-  color: #9c8e78; /* stone-500 */
+  color: var(--color-stone-500); /* stone-500 */
 }
 
 .prose :deep(code) {
-  background: #f5f3ef; /* stone-100 */
+  background: var(--color-stone-100); /* stone-100 */
   padding: 1px 4px;
   border-radius: 0;
   font-size: 0.8125rem;

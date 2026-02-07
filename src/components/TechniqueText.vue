@@ -48,7 +48,7 @@ function hideTooltip() {
 
 <style scoped>
 .technique-keyword {
-  color: #a65d45; /* accent */
+  color: var(--color-accent); /* accent */
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 2px;
@@ -61,8 +61,8 @@ function hideTooltip() {
   bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  background: #1a1816; /* ink */
-  color: white;
+  background: var(--color-ink); /* ink */
+  color: var(--color-stone-50);
   padding: 12px 16px;
   border-radius: 0;
   font-size: 0.8125rem;
@@ -83,15 +83,15 @@ function hideTooltip() {
   left: 50%;
   transform: translateX(-50%);
   border: 6px solid transparent;
-  border-top-color: #1a1816; /* ink */
+  border-top-color: var(--color-ink); /* ink */
 }
 
 .tooltip-title {
   font-weight: 600;
-  color: #a65d45; /* accent */
+  color: var(--color-accent); /* accent */
 }
 
 .tooltip-desc {
-  color: #e8e4dc; /* stone-200 */
+  color: var(--color-stone-400); /* muted on ink bg */
 }
 </style>

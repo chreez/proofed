@@ -104,7 +104,7 @@ function collapse() {
       <!-- Collapsed: badge -->
       <span
         v-if="isCollapsed"
-        class="text-xs bg-ink text-white px-2 py-0.5"
+        class="text-xs bg-ink text-stone-50 px-2 py-0.5"
       >
         {{ items.length }}/{{ items.length }} ✓
       </span>
@@ -120,7 +120,7 @@ function collapse() {
             type="checkbox"
             :checked="allChecked"
             class="pointer-events-none"
-            style="accent-color: #a65d45;"
+            style="accent-color: var(--color-accent);"
           >
           {{ toggleLabel }}
         </label>
@@ -173,7 +173,7 @@ function collapse() {
               checked
               @change="handleToggle(item.id)"
               class="w-4 h-4 flex-shrink-0"
-              style="accent-color: #a65d45;"
+              style="accent-color: var(--color-accent);"
             >
             <span class="text-stone-400 line-through">
               <TechniqueText :text="item.label" />

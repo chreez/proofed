@@ -9,17 +9,19 @@ export default defineConfig({
   theme: {
     colors: {
       stone: {
-        50: '#faf9f7', 100: '#f5f3ef', 200: '#e8e4dc',
-        300: '#d4cdc1', 400: '#b8ad9c', 500: '#9c8e78',
-        600: '#7d6e58', 700: '#5f5243', 800: '#433a2f', 900: '#2a241e'
+        50: 'var(--color-stone-50)', 100: 'var(--color-stone-100)', 200: 'var(--color-stone-200)',
+        300: 'var(--color-stone-300)', 400: 'var(--color-stone-400)', 500: 'var(--color-stone-500)',
+        600: 'var(--color-stone-600)', 700: 'var(--color-stone-700)', 800: 'var(--color-stone-800)',
+        900: 'var(--color-stone-900)'
       },
-      ink: '#1a1816',
-      accent: '#a65d45',
-      crust: { light: '#c9a66b', DEFAULT: '#a67c52', dark: '#6b4423' },
-      cream: '#fff8e7',
-      success: '#6b8e4e',
-      warning: '#c9a66b',
-      danger: '#a65252'
+      ink: 'var(--color-ink)',
+      accent: { DEFAULT: 'var(--color-accent)', tint: 'var(--color-accent-tint)' },
+      crust: { light: 'var(--color-crust-light)', DEFAULT: 'var(--color-crust)', dark: 'var(--color-crust-dark)' },
+      cream: 'var(--color-cream)',
+      surface: 'var(--color-surface)',
+      success: 'var(--color-success)',
+      warning: { DEFAULT: 'var(--color-warning)', tint: 'var(--color-warning-tint)' },
+      danger: 'var(--color-danger)'
     },
     fontFamily: {
       mono: ['JetBrains Mono', 'monospace'],
@@ -27,7 +29,7 @@ export default defineConfig({
     }
   },
   shortcuts: {
-    'card': 'bg-white shadow-sm p-4 border-2 border-stone-200 rounded-none',
+    'card': 'bg-surface shadow-sm p-4 border-2 border-stone-200 rounded-none',
     'card-title': 'text-lg text-heading',
     'btn': 'px-4 py-2 font-medium transition-colors cursor-pointer rounded-none appearance-none',
     'btn-primary': 'btn bg-ink text-stone-100 hover:bg-stone-800',

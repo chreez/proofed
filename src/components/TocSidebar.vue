@@ -135,7 +135,7 @@ function handleDragEnd(): void {
   <!-- Mobile FAB -->
   <button
     @click="openSheet"
-    class="md:hidden fixed bottom-4 right-4 w-10 h-10 bg-ink text-white flex items-center justify-center shadow-md z-40 transition-transform active:scale-95"
+    class="md:hidden fixed bottom-4 right-4 w-10 h-10 bg-ink text-stone-50 flex items-center justify-center shadow-md z-40 transition-transform active:scale-95"
     aria-label="Open table of contents"
   >
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,7 +158,7 @@ function handleDragEnd(): void {
       <div
         v-if="isSheetOpen"
         ref="sheetRef"
-        class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-stone-200 z-50 max-h-[70vh] overflow-hidden"
+        class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t-2 border-stone-200 z-50 max-h-[70vh] overflow-hidden"
         @touchstart="handleDragStart"
         @touchmove="handleDragMove"
         @touchend="handleDragEnd"
@@ -185,7 +185,7 @@ function handleDragEnd(): void {
                 @click="handleNavigate(stage.id)"
                 class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
                 :class="{
-                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': currentStageId === stage.id && !isCompleted(stage.id),
+                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === stage.id && !isCompleted(stage.id),
                   'text-stone-400 line-through': isCompleted(stage.id),
                   'text-ink active:bg-stone-100': currentStageId !== stage.id && !isCompleted(stage.id)
                 }"
@@ -202,7 +202,7 @@ function handleDragEnd(): void {
                 @click="handleNavigate('nutrition')"
                 class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
                 :class="{
-                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': currentStageId === 'nutrition',
+                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'nutrition',
                   'text-ink active:bg-stone-100': currentStageId !== 'nutrition'
                 }"
               >
@@ -215,7 +215,7 @@ function handleDragEnd(): void {
                 @click="handleNavigate('cook-log')"
                 class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
                 :class="{
-                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': currentStageId === 'cook-log',
+                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'cook-log',
                   'text-ink active:bg-stone-100': currentStageId !== 'cook-log'
                 }"
               >
@@ -228,7 +228,7 @@ function handleDragEnd(): void {
                 @click="handleNavigate('change-log')"
                 class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
                 :class="{
-                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': currentStageId === 'change-log',
+                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'change-log',
                   'text-ink active:bg-stone-100': currentStageId !== 'change-log'
                 }"
               >

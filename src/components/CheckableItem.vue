@@ -22,7 +22,7 @@ const emit = defineEmits<{
         :checked="checked"
         @change="emit('toggle')"
         class="w-4 h-4 flex-shrink-0"
-        style="accent-color: #a65d45;"
+        style="accent-color: var(--color-accent);"
       >
       <span class="text-body" :class="{ 'checked': checked }">
         <TechniqueText :text="label" />
