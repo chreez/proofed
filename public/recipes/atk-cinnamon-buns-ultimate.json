@@ -145,7 +145,7 @@
           },
           {
             "id": "brown_sugar",
-            "name": "Light Brown Sugar (packed)",
+            "name": "Light Brown Sugar",
             "total": 240,
             "unit": "g",
             "breakdown": null
@@ -772,7 +772,7 @@
       },
       {
         "ingredientId": "brown_sugar",
-        "ingredientName": "Light Brown Sugar (packed)",
+        "ingredientName": "Light Brown Sugar",
         "amount": 240,
         "fdcId": 168833,
         "calories": 912,

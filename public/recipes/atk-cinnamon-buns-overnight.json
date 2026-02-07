@@ -76,7 +76,7 @@
         "vessels": ["Small Bowl", "Medium Bowl", "Cast Iron Skillet (25cm)"],
         "equipment": ["Rolling Pin", "Serrated Knife", "Pastry Brush", "Wire Rack"],
         "ingredients": [
-          { "id": "brown_sugar", "name": "Dark Brown Sugar (packed)", "total": 149, "unit": "g", "breakdown": null },
+          { "id": "brown_sugar", "name": "Dark Brown Sugar", "total": 149, "unit": "g", "breakdown": null },
           { "id": "cinnamon", "name": "Ground Cinnamon", "total": 5, "unit": "g", "breakdown": null },
           { "id": "cloves", "name": "Ground Cloves", "total": 0.3, "unit": "g", "breakdown": null },
           { "id": "powdered_sugar", "name": "Confectioners' Sugar", "total": 113, "unit": "g", "breakdown": null },

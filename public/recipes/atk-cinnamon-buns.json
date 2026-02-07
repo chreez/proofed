@@ -32,7 +32,7 @@
             { "label": "glaze", "amount": 28 }
           ]},
           { "id": "flour", "name": "All-Purpose Flour", "total": 390, "unit": "g", "breakdown": null },
-          { "id": "brown_sugar", "name": "Dark Brown Sugar (packed)", "total": 149, "unit": "g", "breakdown": null },
+          { "id": "brown_sugar", "name": "Dark Brown Sugar", "total": 149, "unit": "g", "breakdown": null },
           { "id": "granulated_sugar", "name": "Granulated Sugar", "total": 75, "unit": "g", "breakdown": [
             { "label": "filling", "amount": 50 },
             { "label": "wet mix", "amount": 25 }
