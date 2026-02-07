@@ -1,10 +1,10 @@
 ---
 id: PF-50
 title: Fix wordmark SVG for GitHub dark mode
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 03:34'
-updated_date: '2026-02-07 03:49'
+updated_date: '2026-02-07 19:50'
 labels:
   - bug (styling)
 dependencies: []
@@ -24,10 +24,10 @@ Discussed options:
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Wordmark SVG uses CSS prefers-color-scheme media query to switch text fill for dark mode
-- [ ] #2 Single SVG file — no duplicate light/dark versions
-- [ ] #3 Light mode: text remains #1a1816 (ink) on light backgrounds
-- [ ] #4 Dark mode: text switches to a light color readable on GitHub's dark background (#0d1117)
-- [ ] #5 Accent dot color (#a65d45) stays the same in both modes
-- [ ] #6 README renders correctly on GitHub in both light and dark theme
+- [x] #1 Wordmark SVG uses CSS prefers-color-scheme media query to switch text fill for dark mode
+- [x] #2 Single SVG file — no duplicate light/dark versions
+- [x] #3 Light mode: text remains #1a1816 (ink) on light backgrounds
+- [x] #4 Dark mode: text switches to a light color readable on GitHub's dark background (#0d1117)
+- [x] #5 Accent dot color (#a65d45) stays the same in both modes
+- [x] #6 README renders correctly on GitHub in both light and dark theme
 <!-- AC:END -->

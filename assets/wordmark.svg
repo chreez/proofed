@@ -2,8 +2,12 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;display=swap');
     .brand { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 28px; }
+    .brand-text { fill: #1a1816; }
+    @media (prefers-color-scheme: dark) {
+      .brand-text { fill: #e8e4dc; }
+    }
   </style>
   <text x="0" y="30" class="brand">
-    <tspan fill="#1a1816">proofed</tspan><tspan fill="#a65d45">.</tspan>
+    <tspan class="brand-text">proofed</tspan><tspan fill="#a65d45">.</tspan>
   </text>
 </svg>
