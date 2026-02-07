@@ -13,7 +13,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div>
+  <div :data-item-id="id" class="scroll-mt-16">
     <label
       class="checkbox-item w-full text-left cursor-pointer"
     >

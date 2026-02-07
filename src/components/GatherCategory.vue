@@ -2,6 +2,7 @@
 import { ref, computed, watch } from 'vue'
 import CheckableItem from '@/components/CheckableItem.vue'
 import TechniqueText from '@/components/TechniqueText.vue'
+import { scrollToNextItem } from '@/composables/useScrollToNext'
 
 const props = defineProps<{
   title: string
@@ -39,7 +40,18 @@ watch(allChecked, (newVal) => {
 const toggleLabel = computed(() => allChecked.value ? 'Clear All' : 'Complete All')
 
 function handleToggle(itemId: string) {
+  const wasChecked = props.progress.isItemChecked(itemId)
   props.progress.toggleItem(itemId, props.stageId)
+
+  if (!wasChecked) {
+    const idx = props.items.findIndex(item => item.id === itemId)
+    const nextUnchecked = props.items.slice(idx + 1).find(
+      item => !props.progress.isItemChecked(item.id)
+    )
+    if (nextUnchecked) {
+      scrollToNextItem(`[data-item-id="${nextUnchecked.id}"]`)
+    }
+  }
 }
 
 function handleCompleteAllClick(event: Event) {

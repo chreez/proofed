@@ -17,16 +17,22 @@ const props = defineProps<{
   stepNote?: StepNoteData
 }>()
 
+const emit = defineEmits<{
+  toggled: [stateId: string]
+}>()
+
 const isChecked = computed(() => props.progress.isStateChecked(props.state.id))
 
 function toggle() {
   props.progress.toggleState(props.state.id, props.stageId)
+  emit('toggled', props.state.id)
 }
 </script>
 
 <template>
   <div
-    class="bg-white p-4 border-2 border-stone-200 transition-opacity"
+    :data-state-id="state.id"
+    class="bg-white p-4 border-2 border-stone-200 transition-opacity scroll-mt-16"
     :class="{ 'opacity-50': isChecked }"
   >
     <div class="flex items-start gap-3">

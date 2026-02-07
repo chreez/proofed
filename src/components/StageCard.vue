@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import type { Stage, RecipeState, RecipeConfig } from '@/types/recipe'
 import GatherSection from '@/components/GatherSection.vue'
 import StateStep from '@/components/StateStep.vue'
+import { scrollToNextItem } from '@/composables/useScrollToNext'
 
 interface StepNoteData {
   note: string
@@ -24,6 +25,18 @@ function toggle() {
   const selection = window.getSelection()
   if (selection && selection.toString().length > 0) return
   props.progress.toggleStageCollapse(props.stage.id)
+}
+
+function handleStateToggled(stateId: string) {
+  if (props.progress.isStateChecked(stateId)) {
+    const idx = props.states.findIndex(s => s.id === stateId)
+    const nextUnchecked = props.states.slice(idx + 1).find(
+      s => !props.progress.isStateChecked(s.id)
+    )
+    if (nextUnchecked) {
+      scrollToNextItem(`[data-state-id="${nextUnchecked.id}"]`)
+    }
+  }
 }
 
 const stateCount = computed(() => {
@@ -75,6 +88,7 @@ const stateCount = computed(() => {
             :config="config"
             :progress="progress"
             :step-note="stepNotes?.[state.id]"
+            @toggled="handleStateToggled"
           />
         </div>
         </div>

@@ -1,10 +1,10 @@
 ---
 id: PF-23
 title: Completing a step should ease the next substep into view
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-06 19:43'
-updated_date: '2026-02-06 20:24'
+updated_date: '2026-02-07 02:52'
 labels:
   - ux
 dependencies: []
@@ -19,10 +19,16 @@ When checking off any item (gather items or action states), the next unchecked i
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Completing a gather item scrolls next unchecked gather item into view (if offscreen)
-- [ ] #2 Completing a state step scrolls next unchecked state into view (if offscreen)
-- [ ] #3 No scroll if next item is already visible in viewport
-- [ ] #4 Does NOT trigger on final item in section
-- [ ] #5 Smooth native scroll behavior
-- [ ] #6 Human visual sign-off on dev server before commit
+- [x] #1 Completing a gather item scrolls next unchecked gather item into view (if offscreen)
+- [x] #2 Completing a state step scrolls next unchecked state into view (if offscreen)
+- [x] #3 No scroll if next item is already visible in viewport
+- [x] #4 Does NOT trigger on final item in section
+- [x] #5 Smooth native scroll behavior
+- [x] #6 Human visual sign-off on dev server before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added smooth scroll-to-next behavior when checking off gather items and state steps. Created `useScrollToNext` composable that checks viewport visibility before scrolling. Wired into GatherCategory (for gather items) and StageCard (for state steps via emit from StateStep). Skips scroll on final item in section. Uses `scrollIntoView({ behavior: 'smooth', block: 'nearest' })` with `scroll-margin-top` to account for sticky header.
+<!-- SECTION:FINAL_SUMMARY:END -->
