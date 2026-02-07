@@ -1,10 +1,10 @@
 ---
 id: PF-39
 title: 'Bug: Nutrition section styling — indent and cohesion with meta sections'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 01:30'
-updated_date: '2026-02-07 03:45'
+updated_date: '2026-02-07 04:21'
 labels:
   - bug (styling)
 dependencies: []

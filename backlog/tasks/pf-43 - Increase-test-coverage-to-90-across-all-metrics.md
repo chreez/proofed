@@ -1,9 +1,10 @@
 ---
 id: PF-43
 title: Increase test coverage to 90% across all metrics
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 02:23'
+updated_date: '2026-02-07 04:21'
 labels:
   - testing
   - ungroomed

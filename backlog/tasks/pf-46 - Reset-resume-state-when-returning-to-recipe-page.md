@@ -1,10 +1,10 @@
 ---
 id: PF-46
 title: Reset/resume state when returning to recipe page
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 02:53'
-updated_date: '2026-02-07 03:42'
+updated_date: '2026-02-07 04:21'
 labels:
   - feature
 dependencies: []

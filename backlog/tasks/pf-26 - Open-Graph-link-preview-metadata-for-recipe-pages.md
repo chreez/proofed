@@ -1,10 +1,10 @@
 ---
 id: PF-26
 title: Open Graph / link preview metadata for recipe pages
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-06 20:13'
-updated_date: '2026-02-07 03:51'
+updated_date: '2026-02-07 04:21'
 labels:
   - feature
 dependencies: []
