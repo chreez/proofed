@@ -12,6 +12,7 @@ import VariantTabs from '@/components/VariantTabs.vue'
 import CookLogSection from '@/components/CookLogSection.vue'
 import VersionTimeline from '@/components/VersionTimeline.vue'
 import TocSidebar from '@/components/TocSidebar.vue'
+import NutritionSection from '@/components/NutritionSection.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -167,7 +168,9 @@ function setupTocObserver() {
       for (const entry of entries) {
         if (entry.isIntersecting) {
           const id = entry.target.id
-          if (id === 'cook-log-section') {
+          if (id === 'nutrition-section') {
+            activeSection.value = 'nutrition'
+          } else if (id === 'cook-log-section') {
             activeSection.value = 'cook-log'
           } else if (id === 'version-history-section') {
             activeSection.value = 'change-log'
@@ -186,6 +189,8 @@ function setupTocObserver() {
       const el = document.getElementById(`stage-${stage.id}`)
       if (el) tocObserver?.observe(el)
     })
+    const nutritionEl = document.getElementById('nutrition-section')
+    if (nutritionEl) tocObserver?.observe(nutritionEl)
     const cookLog = document.getElementById('cook-log-section')
     if (cookLog) tocObserver?.observe(cookLog)
     const versionHistory = document.getElementById('version-history-section')
@@ -220,7 +225,9 @@ function handleTocNavigate(target: string) {
   activeSection.value = target
 
   let elementId = ''
-  if (target === 'cook-log') {
+  if (target === 'nutrition') {
+    elementId = 'nutrition-section'
+  } else if (target === 'cook-log') {
     elementId = 'cook-log-section'
   } else if (target === 'change-log') {
     elementId = 'version-history-section'
@@ -293,6 +300,11 @@ function handleTocNavigate(target: string) {
               />
             </div>
 
+            <NutritionSection
+              :nutrition="currentRecipe.nutrition"
+              class="mt-8 scroll-mt-16"
+            />
+
             <CookLogSection
               v-if="currentRecipe.cook_log?.length"
               id="cook-log-section"
@@ -311,6 +323,7 @@ function handleTocNavigate(target: string) {
 
           <TocSidebar
             :stages="tocStages"
+            :has-nutrition="!!currentRecipe.nutrition"
             :has-cook-log="!!currentRecipe.cook_log?.length"
             :has-change-log="!!currentRecipe.change_log?.length"
             :current-stage-id="currentStageId"

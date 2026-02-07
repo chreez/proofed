@@ -81,6 +81,12 @@ Add checks here for new features:
 | F14 | TOC auto-expand | Clicking completed/collapsed stage in TOC expands it | 2026-02-06 |
 | F15 | TOC completed styling | Completed stages show crossed out in sidebar | 2026-02-06 |
 | F16 | TOC mobile FAB | Mobile shows FAB button that opens bottom sheet TOC | 2026-02-06 |
+| F17 | Nutrition data | servings > 0, matches parsed yields | 2026-02-06 |
+| F18 | Nutrition totals | sum(breakdown.calories) = totals.calories ±1 | 2026-02-06 |
+| F19 | Nutrition per-serving | perServing = totals / servings ±0.1 | 2026-02-06 |
+| F20 | Nutrition placeholder | Missing nutrition → "Not yet calculated" | 2026-02-06 |
+| F21 | Nutrition toggle | Per-serving / Full toggle switches all values | 2026-02-06 |
+| F22 | Nutrition breakdown | All ingredients with >0 calories listed | 2026-02-06 |
 
 ## Build Validation (MANDATORY)
 

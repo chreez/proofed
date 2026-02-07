@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 const props = defineProps<{
   stages: { id: string; title: string }[]
+  hasNutrition?: boolean
   hasCookLog: boolean
   hasChangeLog: boolean
   currentStageId: string | null
@@ -91,7 +92,19 @@ function handleDragEnd(): void {
         {{ stage.title }}
       </div>
 
-      <div v-if="hasCookLog || hasChangeLog" class="my-2 h-px bg-stone-200" />
+      <div v-if="hasNutrition || hasCookLog || hasChangeLog" class="my-2 h-px bg-stone-200" />
+
+      <div
+        v-if="hasNutrition"
+        @click="handleNavigate('nutrition')"
+        class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight"
+        :class="{
+          'text-accent font-medium': currentStageId === 'nutrition',
+          'text-stone-500 hover:text-ink': currentStageId !== 'nutrition'
+        }"
+      >
+        Nutrition
+      </div>
 
       <div
         v-if="hasCookLog"
@@ -181,8 +194,21 @@ function handleDragEnd(): void {
               </button>
             </li>
 
-            <!-- Divider before logs -->
-            <li v-if="hasCookLog || hasChangeLog" class="my-2 mx-4 h-px bg-stone-200" />
+            <!-- Divider before extras -->
+            <li v-if="hasNutrition || hasCookLog || hasChangeLog" class="my-2 mx-4 h-px bg-stone-200" />
+
+            <li v-if="hasNutrition">
+              <button
+                @click="handleNavigate('nutrition')"
+                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+                :class="{
+                  'bg-accent/10 text-accent font-medium border-l-2 border-accent': currentStageId === 'nutrition',
+                  'text-ink active:bg-stone-100': currentStageId !== 'nutrition'
+                }"
+              >
+                Nutrition
+              </button>
+            </li>
 
             <li v-if="hasCookLog">
               <button

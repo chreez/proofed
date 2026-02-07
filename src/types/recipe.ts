@@ -7,6 +7,43 @@ export interface Recipe {
   version?: string
   change_log?: ChangeLogEntry[]
   cook_log?: CookLogEntry[]
+  nutrition?: RecipeNutrition
+}
+
+export interface NutrientTotals {
+  calories: number
+  protein: number
+  totalFat: number
+  saturatedFat: number
+  carbohydrates: number
+  sugar: number
+  fiber: number
+  sodium: number
+}
+
+export interface IngredientNutrition {
+  ingredientId: string
+  ingredientName: string
+  amount: number
+  fdcId?: number
+  calories: number
+  protein: number
+  totalFat: number
+  saturatedFat: number
+  carbohydrates: number
+  sugar: number
+  fiber: number
+  sodium: number
+}
+
+export interface RecipeNutrition {
+  servings: number
+  servingSize?: string
+  calculatedDate: string
+  dataSource: string
+  totals: NutrientTotals
+  perServing: NutrientTotals
+  breakdown: IngredientNutrition[]
 }
 
 export interface RecipeMeta {

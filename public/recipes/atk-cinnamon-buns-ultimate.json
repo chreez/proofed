@@ -58,87 +58,245 @@
     }
   ],
   "vessels": [
-    { "id": "V1", "name": "Stand Mixer Bowl", "reuse": "Dry mix → dough → first rise → freed after punch" },
-    { "id": "V2", "name": "Small Bowl", "reuse": "Filling mixture → freed → glaze" },
-    { "id": "V3", "name": "33×23cm Baking Pan", "reuse": "Grease → second rise → bake → serve" },
-    { "id": "V4", "name": "Liquid Measure", "reuse": "Warm milk/yeast → freed after use" }
+    {
+      "id": "V1",
+      "name": "Stand Mixer Bowl",
+      "reuse": "Dry mix → dough → first rise → freed after punch"
+    },
+    {
+      "id": "V2",
+      "name": "Small Bowl",
+      "reuse": "Filling mixture → freed → glaze"
+    },
+    {
+      "id": "V3",
+      "name": "33×23cm Baking Pan",
+      "reuse": "Grease → second rise → bake → serve"
+    },
+    {
+      "id": "V4",
+      "name": "Liquid Measure",
+      "reuse": "Warm milk/yeast → freed after use"
+    }
   ],
   "stages": [
     {
       "id": "PREP",
       "title": "Mise en Place",
       "gather": {
-        "vessels": ["Stand Mixer Bowl", "Small Bowl", "33×23cm Baking Pan", "Liquid Measure"],
-        "equipment": ["Stand Mixer + Dough Hook", "Whisk", "Rubber Spatula", "Rolling Pin", "Bench Scraper", "Plastic Wrap", "Wire Rack", "Aluminum Foil"],
+        "vessels": [
+          "Stand Mixer Bowl",
+          "Small Bowl",
+          "33×23cm Baking Pan",
+          "Liquid Measure"
+        ],
+        "equipment": [
+          "Stand Mixer + Dough Hook",
+          "Whisk",
+          "Rubber Spatula",
+          "Rolling Pin",
+          "Bench Scraper",
+          "Plastic Wrap",
+          "Wire Rack",
+          "Aluminum Foil"
+        ],
         "ingredients": [
-          { "id": "butter", "name": "Unsalted Butter", "total": 227, "unit": "g", "breakdown": [
-            { "label": "dough (softened)", "amount": 170 },
-            { "label": "filling (softened)", "amount": 57 }
-          ]},
-          { "id": "flour", "name": "All-Purpose Flour", "total": 531, "unit": "g", "breakdown": null },
-          { "id": "cornstarch", "name": "Cornstarch", "total": 64, "unit": "g", "breakdown": null },
-          { "id": "granulated_sugar", "name": "Granulated Sugar", "total": 100, "unit": "g", "breakdown": null },
-          { "id": "brown_sugar", "name": "Light Brown Sugar (packed)", "total": 320, "unit": "g", "breakdown": null },
-          { "id": "powdered_sugar", "name": "Confectioners' Sugar", "total": 170, "unit": "g", "breakdown": null },
-          { "id": "milk", "name": "Whole Milk", "total": 192, "unit": "g", "breakdown": [
-            { "label": "dough (warm to 43°C)", "amount": 177 },
-            { "label": "glaze (room temp)", "amount": 15 }
-          ]},
-          { "id": "cream_cheese", "name": "Cream Cheese (softened)", "total": 113, "unit": "g", "breakdown": null },
-          { "id": "eggs", "name": "Large Eggs (room temp)", "total": 3, "unit": "whole", "breakdown": null },
-          { "id": "yeast", "name": "Instant Yeast", "total": 7, "unit": "g", "breakdown": null },
-          { "id": "cinnamon", "name": "Ground Cinnamon", "total": 10, "unit": "g", "breakdown": null },
-          { "id": "salt", "name": "Salt", "total": 11, "unit": "g", "breakdown": [
-            { "label": "dough", "amount": 9 },
-            { "label": "filling", "amount": 1.5 },
-            { "label": "glaze (pinch)", "amount": 0.5 }
-          ]},
-          { "id": "vanilla", "name": "Vanilla Extract", "total": 5, "unit": "g", "breakdown": null }
+          {
+            "id": "butter",
+            "name": "Unsalted Butter",
+            "total": 227,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "dough (softened)",
+                "amount": 170
+              },
+              {
+                "label": "filling (softened)",
+                "amount": 57
+              }
+            ]
+          },
+          {
+            "id": "flour",
+            "name": "All-Purpose Flour",
+            "total": 531,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "cornstarch",
+            "name": "Cornstarch",
+            "total": 64,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "granulated_sugar",
+            "name": "Granulated Sugar",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "brown_sugar",
+            "name": "Light Brown Sugar (packed)",
+            "total": 320,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "powdered_sugar",
+            "name": "Confectioners' Sugar",
+            "total": 170,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "milk",
+            "name": "Whole Milk",
+            "total": 192,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "dough (warm to 43°C)",
+                "amount": 177
+              },
+              {
+                "label": "glaze (room temp)",
+                "amount": 15
+              }
+            ]
+          },
+          {
+            "id": "cream_cheese",
+            "name": "Cream Cheese (softened)",
+            "total": 113,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "eggs",
+            "name": "Large Eggs (room temp)",
+            "total": 3,
+            "unit": "whole",
+            "breakdown": null
+          },
+          {
+            "id": "yeast",
+            "name": "Instant Yeast",
+            "total": 7,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "cinnamon",
+            "name": "Ground Cinnamon",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 11,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "dough",
+                "amount": 9
+              },
+              {
+                "label": "filling",
+                "amount": 1.5
+              },
+              {
+                "label": "glaze (pinch)",
+                "amount": 0.5
+              }
+            ]
+          },
+          {
+            "id": "vanilla",
+            "name": "Vanilla Extract",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null
+          }
         ]
       },
-      "states": ["PREP_OVEN", "PREP_PAN"]
+      "states": [
+        "PREP_OVEN",
+        "PREP_PAN"
+      ]
     },
     {
       "id": "DOUGH",
       "title": "Mix Dough (Stand Mixer)",
       "gather": null,
-      "states": ["BLOOM_YEAST", "MIX_DRY", "COMBINE_DOUGH", "ADD_BUTTER"]
+      "states": [
+        "BLOOM_YEAST",
+        "MIX_DRY",
+        "COMBINE_DOUGH",
+        "ADD_BUTTER"
+      ]
     },
     {
       "id": "FIRST_RISE",
       "title": "First Rise",
       "gather": null,
-      "states": ["SHAPE_BALL", "RISE_1"]
+      "states": [
+        "SHAPE_BALL",
+        "RISE_1"
+      ]
     },
     {
       "id": "FILL",
       "title": "Make Filling",
       "gather": null,
-      "states": ["MIX_FILLING"]
+      "states": [
+        "MIX_FILLING"
+      ]
     },
     {
       "id": "ASSEMBLE",
       "title": "Roll, Fill, Shape",
       "gather": null,
-      "states": ["ROLL_DOUGH", "APPLY_FILLING", "ROLL_CYLINDER", "CUT_ARRANGE"]
+      "states": [
+        "ROLL_DOUGH",
+        "APPLY_FILLING",
+        "ROLL_CYLINDER",
+        "CUT_ARRANGE"
+      ]
     },
     {
       "id": "SECOND_RISE",
       "title": "Second Rise",
       "gather": null,
-      "states": ["RISE_2"]
+      "states": [
+        "RISE_2"
+      ]
     },
     {
       "id": "BAKE",
       "title": "Bake",
       "gather": null,
-      "states": ["PREHEAT", "BAKE"]
+      "states": [
+        "PREHEAT",
+        "BAKE"
+      ]
     },
     {
       "id": "FINISH",
       "title": "Cool and Glaze",
       "gather": null,
-      "states": ["COOL", "MAKE_GLAZE", "FIRST_GLAZE", "UNMOLD", "FINAL_GLAZE"]
+      "states": [
+        "COOL",
+        "MAKE_GLAZE",
+        "FIRST_GLAZE",
+        "UNMOLD",
+        "FINAL_GLAZE"
+      ]
     }
   ],
   "states": [
@@ -163,7 +321,10 @@
       "components": null,
       "exit_condition": "Foil sling in pan with overhanging handles, greased",
       "notes": [
-        { "text": "Foil sling = two perpendicular sheets with overhang for lifting", "critical": false }
+        {
+          "text": "Foil sling = two perpendicular sheets with overhang for lifting",
+          "critical": false
+        }
       ],
       "technique_url": "https://www.kingarthurbaking.com/blog/2017/03/27/parchment-paper-sling"
     },
@@ -175,14 +336,29 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Milk (warm)", "amount": "177g" },
-        { "name": "Yeast", "amount": "7g" },
-        { "name": "Eggs", "amount": "3 whole" }
+        {
+          "name": "Milk (warm)",
+          "amount": "177g"
+        },
+        {
+          "name": "Yeast",
+          "amount": "7g"
+        },
+        {
+          "name": "Eggs",
+          "amount": "3 whole"
+        }
       ],
       "exit_condition": "Yeast dissolved, eggs incorporated, mixture homogeneous",
       "notes": [
-        { "text": "Milk must be 40-46°C (105-115°F). Too hot kills yeast.", "critical": true },
-        { "text": "Store leftover yeast in airtight container in freezer — lasts 6+ months. No need to thaw before use.", "critical": false }
+        {
+          "text": "Milk must be 40-46°C (105-115°F). Too hot kills yeast.",
+          "critical": true
+        },
+        {
+          "text": "Store leftover yeast in airtight container in freezer — lasts 6+ months. No need to thaw before use.",
+          "critical": false
+        }
       ]
     },
     {
@@ -193,14 +369,29 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Flour", "amount": "531g" },
-        { "name": "Cornstarch", "amount": "64g" },
-        { "name": "Granulated Sugar", "amount": "100g" },
-        { "name": "Salt", "amount": "9g" }
+        {
+          "name": "Flour",
+          "amount": "531g"
+        },
+        {
+          "name": "Cornstarch",
+          "amount": "64g"
+        },
+        {
+          "name": "Granulated Sugar",
+          "amount": "100g"
+        },
+        {
+          "name": "Salt",
+          "amount": "9g"
+        }
       ],
       "exit_condition": "Dry ingredients evenly combined in mixer bowl",
       "notes": [
-        { "text": "Cornstarch is the secret to extra-tender texture", "critical": false }
+        {
+          "text": "Cornstarch is the secret to extra-tender texture",
+          "critical": false
+        }
       ]
     },
     {
@@ -222,12 +413,21 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (softened)", "amount": "170g" }
+        {
+          "name": "Butter (softened)",
+          "amount": "170g"
+        }
       ],
       "exit_condition": "Dough is smooth, elastic, and cleanly pulls from bowl sides",
       "notes": [
-        { "text": "If still sticky after 10 min, add flour 1 tbsp at a time (max 30g extra)", "critical": false },
-        { "text": "Butter must be softened, not melted—cold butter won't incorporate", "critical": true }
+        {
+          "text": "If still sticky after 10 min, add flour 1 tbsp at a time (max 30g extra)",
+          "critical": false
+        },
+        {
+          "text": "Butter must be softened, not melted—cold butter won't incorporate",
+          "critical": true
+        }
       ]
     },
     {
@@ -251,7 +451,10 @@
       "components": null,
       "exit_condition": "Dough has doubled in volume",
       "notes": [
-        { "text": "Start filling during last 15 minutes of rise", "critical": false }
+        {
+          "text": "Start filling during last 15 minutes of rise",
+          "critical": false
+        }
       ]
     },
     {
@@ -262,9 +465,18 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Brown Sugar", "amount": "320g" },
-        { "name": "Cinnamon", "amount": "10g" },
-        { "name": "Salt", "amount": "1.5g" }
+        {
+          "name": "Brown Sugar",
+          "amount": "320g"
+        },
+        {
+          "name": "Cinnamon",
+          "amount": "10g"
+        },
+        {
+          "name": "Salt",
+          "amount": "1.5g"
+        }
       ],
       "exit_condition": "Filling mixture evenly combined",
       "notes": null
@@ -279,9 +491,18 @@
       "components": null,
       "exit_condition": "Even square with sharp corners, consistent thickness throughout. Run hand over surface to check for hills/valleys.",
       "notes": [
-        { "text": "Cold dough? Let rest 10-15 min at room temp — stiff dough snaps back.", "critical": false },
-        { "text": "Use guides (rulers, dowels) alongside dough for even thickness.", "critical": false },
-        { "text": "Fix thick spots: lift and scrunch to redistribute, roll toward thin areas.", "critical": false }
+        {
+          "text": "Cold dough? Let rest 10-15 min at room temp — stiff dough snaps back.",
+          "critical": false
+        },
+        {
+          "text": "Use guides (rulers, dowels) alongside dough for even thickness.",
+          "critical": false
+        },
+        {
+          "text": "Fix thick spots: lift and scrunch to redistribute, roll toward thin areas.",
+          "critical": false
+        }
       ],
       "technique_url": "https://www.roadtopastry.com/blog/hints-tips/tip-how-to-roll-out-tart-dough-into-a-square"
     },
@@ -293,8 +514,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (softened)", "amount": "57g" },
-        { "name": "Filling mixture", "amount": "all" }
+        {
+          "name": "Butter (softened)",
+          "amount": "57g"
+        },
+        {
+          "name": "Filling mixture",
+          "amount": "all"
+        }
       ],
       "exit_condition": "Butter and filling evenly distributed, filling pressed into butter",
       "notes": null
@@ -309,7 +536,10 @@
       "components": null,
       "exit_condition": "Tight, even cylinder with sealed seam",
       "notes": [
-        { "text": "Keep tension consistent—loose rolls create gaps", "critical": false }
+        {
+          "text": "Keep tension consistent—loose rolls create gaps",
+          "critical": false
+        }
       ]
     },
     {
@@ -333,7 +563,10 @@
       "components": null,
       "exit_condition": "Buns doubled, puffy, touching each other",
       "notes": [
-        { "text": "Start preheating oven 20 minutes before rise ends", "critical": false }
+        {
+          "text": "Start preheating oven 20 minutes before rise ends",
+          "critical": false
+        }
       ]
     },
     {
@@ -357,7 +590,10 @@
       "components": null,
       "exit_condition": "Deep golden brown, filling visibly melted and bubbling",
       "notes": [
-        { "text": "Check at 35 min—ovens vary. Target is golden, not pale.", "critical": false }
+        {
+          "text": "Check at 35 min—ovens vary. Target is golden, not pale.",
+          "critical": false
+        }
       ]
     },
     {
@@ -370,7 +606,10 @@
       "components": null,
       "exit_condition": "Buns warm but not molten-hot",
       "notes": [
-        { "text": "Filling is extremely hot—wait the full time", "critical": true }
+        {
+          "text": "Filling is extremely hot—wait the full time",
+          "critical": true
+        }
       ]
     },
     {
@@ -381,15 +620,33 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Cream Cheese", "amount": "113g" },
-        { "name": "Milk", "amount": "15g" },
-        { "name": "Vanilla", "amount": "5g" },
-        { "name": "Confectioners' Sugar", "amount": "170g" },
-        { "name": "Salt", "amount": "0.5g" }
+        {
+          "name": "Cream Cheese",
+          "amount": "113g"
+        },
+        {
+          "name": "Milk",
+          "amount": "15g"
+        },
+        {
+          "name": "Vanilla",
+          "amount": "5g"
+        },
+        {
+          "name": "Confectioners' Sugar",
+          "amount": "170g"
+        },
+        {
+          "name": "Salt",
+          "amount": "0.5g"
+        }
       ],
       "exit_condition": "Smooth, spreadable glaze with no lumps",
       "notes": [
-        { "text": "Make during COOL step to save time", "critical": false }
+        {
+          "text": "Make during COOL step to save time",
+          "critical": false
+        }
       ]
     },
     {
@@ -425,5 +682,215 @@
       "exit_condition": "Buns fully glazed and ready to serve",
       "notes": null
     }
-  ]
+  ],
+  "nutrition": {
+    "servings": 8,
+    "servingSize": "1 bun",
+    "calculatedDate": "2026-02-06",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 6848.5,
+      "protein": 92.1,
+      "totalFat": 249.2,
+      "saturatedFat": 147.6,
+      "carbohydrates": 1075.3,
+      "sugar": 593.4,
+      "fiber": 22.1,
+      "sodium": 5062.2
+    },
+    "perServing": {
+      "calories": 856.1,
+      "protein": 11.5,
+      "totalFat": 31.2,
+      "saturatedFat": 18.5,
+      "carbohydrates": 134.4,
+      "sugar": 74.2,
+      "fiber": 2.8,
+      "sodium": 632.8
+    },
+    "breakdown": [
+      {
+        "ingredientId": "butter",
+        "ingredientName": "Unsalted Butter",
+        "amount": 227,
+        "fdcId": 173430,
+        "calories": 1627.6,
+        "protein": 1.9,
+        "totalFat": 184.1,
+        "saturatedFat": 116.6,
+        "carbohydrates": 0.1,
+        "sugar": 0.1,
+        "fiber": 0,
+        "sodium": 25
+      },
+      {
+        "ingredientId": "flour",
+        "ingredientName": "All-Purpose Flour",
+        "amount": 531,
+        "fdcId": 168894,
+        "calories": 1932.8,
+        "protein": 54.9,
+        "totalFat": 5.2,
+        "saturatedFat": 0.8,
+        "carbohydrates": 405.2,
+        "sugar": 1.4,
+        "fiber": 14.3,
+        "sodium": 10.6
+      },
+      {
+        "ingredientId": "cornstarch",
+        "ingredientName": "Cornstarch",
+        "amount": 64,
+        "fdcId": 169698,
+        "calories": 243.8,
+        "protein": 0.2,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 58.4,
+        "sugar": 0,
+        "fiber": 0.6,
+        "sodium": 5.8
+      },
+      {
+        "ingredientId": "granulated_sugar",
+        "ingredientName": "Granulated Sugar",
+        "amount": 100,
+        "fdcId": 169655,
+        "calories": 387,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 100,
+        "sugar": 99.8,
+        "fiber": 0,
+        "sodium": 1
+      },
+      {
+        "ingredientId": "brown_sugar",
+        "ingredientName": "Light Brown Sugar (packed)",
+        "amount": 320,
+        "fdcId": 168833,
+        "calories": 1216,
+        "protein": 0.4,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 313.9,
+        "sugar": 310.5,
+        "fiber": 0,
+        "sodium": 89.6
+      },
+      {
+        "ingredientId": "powdered_sugar",
+        "ingredientName": "Confectioners' Sugar",
+        "amount": 170,
+        "fdcId": 169656,
+        "calories": 661.3,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 169.6,
+        "sugar": 166.3,
+        "fiber": 0,
+        "sodium": 3.4
+      },
+      {
+        "ingredientId": "milk",
+        "ingredientName": "Whole Milk",
+        "amount": 192,
+        "fdcId": 171265,
+        "calories": 117.1,
+        "protein": 6,
+        "totalFat": 6.3,
+        "saturatedFat": 3.6,
+        "carbohydrates": 9.2,
+        "sugar": 9.7,
+        "fiber": 0,
+        "sodium": 82.6
+      },
+      {
+        "ingredientId": "cream_cheese",
+        "ingredientName": "Cream Cheese (softened)",
+        "amount": 113,
+        "fdcId": 173418,
+        "calories": 386.5,
+        "protein": 6.7,
+        "totalFat": 38.7,
+        "saturatedFat": 21.8,
+        "carbohydrates": 6.2,
+        "sugar": 4.2,
+        "fiber": 0,
+        "sodium": 362.7
+      },
+      {
+        "ingredientId": "eggs",
+        "ingredientName": "Large Eggs (room temp)",
+        "amount": 150,
+        "fdcId": 171287,
+        "calories": 214.5,
+        "protein": 18.8,
+        "totalFat": 14.3,
+        "saturatedFat": 4.7,
+        "carbohydrates": 1.1,
+        "sugar": 0.6,
+        "fiber": 0,
+        "sodium": 213
+      },
+      {
+        "ingredientId": "yeast",
+        "ingredientName": "Instant Yeast",
+        "amount": 7,
+        "fdcId": 175043,
+        "calories": 22.8,
+        "protein": 2.8,
+        "totalFat": 0.5,
+        "saturatedFat": 0.1,
+        "carbohydrates": 2.9,
+        "sugar": 0,
+        "fiber": 1.9,
+        "sodium": 3.6
+      },
+      {
+        "ingredientId": "cinnamon",
+        "ingredientName": "Ground Cinnamon",
+        "amount": 10,
+        "fdcId": 171320,
+        "calories": 24.7,
+        "protein": 0.4,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 8.1,
+        "sugar": 0.2,
+        "fiber": 5.3,
+        "sodium": 1
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 11,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 4263.4
+      },
+      {
+        "ingredientId": "vanilla",
+        "ingredientName": "Vanilla Extract",
+        "amount": 5,
+        "fdcId": 173471,
+        "calories": 14.4,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.6,
+        "sugar": 0.6,
+        "fiber": 0,
+        "sodium": 0.5
+      }
+    ]
+  }
 }
