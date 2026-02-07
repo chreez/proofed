@@ -51,6 +51,7 @@ export interface RecipeMeta {
   source?: string
   yields: string
   total_time: string
+  description?: string
 }
 
 export interface RecipeConfig {

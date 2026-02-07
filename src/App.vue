@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
 import { useTechniques } from '@/composables/useTechniques'
+import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import type { RecipeState } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import StageCard from '@/components/StageCard.vue'
@@ -21,6 +22,11 @@ const router = useRouter()
 
 const { loadTechniques } = useTechniques()
 const { currentRecipe, currentRecipeId, currentFamily, loading, loadManifest, loadRecipe } = useRecipe()
+
+useRecipeMeta(
+  () => currentRecipe.value,
+  () => currentRecipeId.value
+)
 
 // Derive page state from route
 const showIndex = computed(() => route.name === 'index')
