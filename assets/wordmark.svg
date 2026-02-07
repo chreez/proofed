@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" fill="none">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;display=swap');
+    .brand { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 28px; }
+  </style>
+  <text x="0" y="30" class="brand">
+    <tspan fill="#1a1816">proofed</tspan><tspan fill="#a65d45">.</tspan>
+  </text>
+</svg>
