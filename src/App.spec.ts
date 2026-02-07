@@ -832,10 +832,10 @@ describe('App', () => {
   })
 
   describe('header layout classes', () => {
-    it('uses max-w-3xl when on index page', async () => {
+    it('uses consistent max-w-4xl header on all pages', async () => {
       const { wrapper } = await mountApp('/')
       const headerContent = wrapper.find('header > div')
-      expect(headerContent.classes()).toContain('max-w-3xl')
+      expect(headerContent.classes()).toContain('max-w-4xl')
     })
 
     it('uses max-w-4xl when recipe is loaded', async () => {

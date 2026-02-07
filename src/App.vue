@@ -263,7 +263,7 @@ function handleTocNavigate(target: string) {
       class="bg-stone-200 border-b-2 border-ink px-6 sticky top-0 z-10 transition-all duration-200 ease-out"
       :class="isScrolled ? 'py-2' : 'py-4'"
     >
-      <div class="mx-auto flex items-center justify-between" :class="!showIndex && !showAbout && currentRecipe ? 'max-w-4xl px-4' : 'max-w-3xl'">
+      <div class="max-w-4xl mx-auto flex items-center justify-between">
         <h1
           class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out cursor-pointer whitespace-nowrap"
           :class="isScrolled ? 'text-lg' : 'text-2xl'"
