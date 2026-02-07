@@ -134,3 +134,19 @@ When running validation:
    ```
 
 4. If any check fails, provide specific fix instructions with file paths and line numbers.
+
+## Recipe Accuracy Gate (MANDATORY)
+
+**Trigger:** Any modification to `public/recipes/*.json` MUST include a recipe accuracy validation against the original source text.
+
+**Process:**
+1. Read the source material (stored in `.claude/rules/validation/original-recipes.md` or `photos-source/{recipe-id}/source/`)
+2. Run R1-R8 checks comparing JSON values against source
+3. Verify all gram weights, temperatures, dimensions, and procedural steps match
+4. Flag any interpretive conversions (e.g., "1 tablespoon" → grams) as informational
+
+**Source material locations:**
+- ATK Cinnamon Buns: `.claude/rules/validation/original-recipes.md`
+- Tartine Baguette: `photos-source/tartine-baguette/source/` (3 HEIC photos, pp.128-130)
+
+This gate cannot be skipped. If source material is unavailable, the modification must be flagged for manual review.
