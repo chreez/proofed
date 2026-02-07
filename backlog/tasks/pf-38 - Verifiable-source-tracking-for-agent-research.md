@@ -4,29 +4,28 @@ title: Verifiable source tracking for agent research
 status: To Do
 assignee: []
 created_date: '2026-02-07 01:08'
-updated_date: '2026-02-07 02:17'
+updated_date: '2026-02-07 20:38'
 labels:
   - feature
 dependencies: []
-priority: low
+priority: medium
 ---
 
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Unified source/citation tracking. Merges PF-5 (recipe origin) and PF-11 (suggestion sources).\n\nThree scopes:\n1. Recipe origin — meta.source becomes structured: { name, url, attribution, accessed }\n2. Suggestion citations — next_time[] items get optional source field, backwards compatible with plain strings\n3. Agent research — when an agent researches anything, sources captured as structured data: { claim, sources: [{ title, url, fetched }], confidence, verified_by }\n\nStorage: per-recipe sources in recipe JSON + potential global knowledge base.\nSurface on website eventually: expandable citation blocks with links.
+Unified source/citation tracking for recipe data. Three scopes decomposed into subtasks:\n\n1. **Recipe origin + suggestion citations** (PF-38.1 spike → PF-38.2 implement)\n2. **Agent research provenance** (PF-66 — schema with confidence ratings, per-ingredient sourcing)\n3. **Display: recipe appendix** (PF-69 — \"How was this recipe generated?\" UI)\n\nPF-38 parent tracks the overall initiative. No direct implementation on the parent.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Spike: research citation schemas (JSON-LD, schema.org, custom) for recipe origins, suggestion citations, and agent research
-- [ ] #2 Spike: propose unified schema covering all three scopes
-- [ ] #3 Schema decision documented before implementation
-- [ ] #4 Recipe origins: meta.source becomes structured object with URL, attribution, date
-- [ ] #5 Suggestion citations: next_time[] items support optional source, backwards compatible
-- [ ] #6 Agent research: sources captured as structured data with URL, title, fetch date, confidence
-- [ ] #7 Display: recipe origin shown in footer 'Sources' section
-- [ ] #8 Display: suggestion/note sources shown inline as expandable citations
-- [ ] #9 All recipes updated with structured source data after schema finalized
-- [ ] #10 Recipe passes /validate after schema change
+- [ ] #1 All subtasks complete (PF-38.1, PF-38.2)
+- [ ] #2 PF-66 (research provenance schema) complete
+- [ ] #3 PF-69 (recipe appendix UI) complete
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Subtask Structure\n\n- **PF-38.1** — Spike: research citation schemas (JSON-LD, schema.org, custom)\n- **PF-38.2** — Implement recipe origin + suggestion citations (blocked by 38.1)\n- **PF-66** — Research provenance schema (agent research scope, depends on PF-38)\n- **PF-69** — Recipe appendix UI (depends on PF-66)\n\n## Context\n\nThe CoCo curry research session (2026-02-07) produced a concrete test case: 8 parallel search agents, 45+ sources, cross-source confidence ratings. Synthesis report was in scratchpad at `coco-curry-research-synthesis.md`."
+<!-- SECTION:NOTES:END -->
