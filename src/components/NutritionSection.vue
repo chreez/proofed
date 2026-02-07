@@ -52,14 +52,14 @@ function formatValue(value: number, unit: string): string {
 </script>
 
 <template>
-  <section id="nutrition-section" class="scroll-mt-16">
+  <section>
     <h3 class="card-title mb-4 pb-2 border-b-2 border-stone-200">Nutrition</h3>
 
-    <div v-if="!nutrition" class="text-muted">
+    <div v-if="!nutrition" class="text-muted pl-3">
       Not yet calculated
     </div>
 
-    <div v-else>
+    <div v-else class="pl-3">
       <!-- Toggle -->
       <div class="flex gap-2 mb-4">
         <button

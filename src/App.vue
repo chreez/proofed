@@ -323,6 +323,7 @@ function handleTocNavigate(target: string) {
             </div>
 
             <NutritionSection
+              id="nutrition-section"
               :nutrition="currentRecipe.nutrition"
               class="mt-8 scroll-mt-16"
             />
