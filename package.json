@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "prebuild": "vitest run --coverage",
+    "prebuild": "vitest run --coverage && bash scripts/diff-coverage.sh",
     "build": "vue-tsc && vite build && tsx scripts/prerender-og.ts",
     "build:fast": "vue-tsc && vite build",
     "build:test": "vitest run",
@@ -28,6 +28,7 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@connectis/diff-test-coverage": "^1.5.3",
     "@iconify-json/carbon": "^1.2.18",
     "@unocss/preset-icons": "^66.6.0",
     "@vitejs/plugin-vue": "^6.0.4",
