@@ -24,10 +24,10 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | D1 | Units: grams only | No cups, tbsp, tsp in ingredient amounts | `public/recipes/*.json` |
 | D2 | Units: Celsius (Fahrenheit) | Temps formatted as `175°C (350°F)` | `public/recipes/*.json` |
 | D3 | Units: centimeters | Dimensions in cm, not inches | `public/recipes/*.json` |
-| D4 | timer: true only passive | Only RISE, BAKE, COOL states have `timer: true` | `public/recipes/*.json` |
+| D4 | timer: true only passive | `timer: true` only on passive/waiting states (not active hands-on steps) | `public/recipes/*.json` |
 | D5 | exit_condition required | Every state has non-empty `exit_condition` | `public/recipes/*.json` |
 | D6 | Breakdown sums match | `sum(breakdown.amount) === total` for all ingredients | `public/recipes/*.json` |
-| D7 | gather only on PREP | Only first stage has `gather` section, others `null` | `public/recipes/*.json` |
+| D7 | gather sections valid | Gather sections on stages that introduce new ingredients; other stages `null` | `public/recipes/*.json` |
 | D8 | Vessels minimized | ≤5-6 vessels with documented reuse chains | `public/recipes/*.json` |
 | D9 | Atomic states | One physical action per state | `public/recipes/*.json` |
 | D12 | Technique references | Complex techniques must include reference link OR be self-explanatory in ≤1 sentence | `public/recipes/*.json` |

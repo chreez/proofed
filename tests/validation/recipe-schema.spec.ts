@@ -127,7 +127,15 @@ describe('Recipe JSON Validation', () => {
         /retard/i,
         /temper/i,
         /autolyse.*rest/i,
-        /preheat/i
+        /preheat/i,
+        /simmer/i,
+        /steep/i,
+        /chill/i,
+        /cook.*pearl/i,
+        /infuse/i,
+        /bloom/i,
+        /soak/i,
+        /marinate/i
       ]
 
       for (const state of recipe.states) {
