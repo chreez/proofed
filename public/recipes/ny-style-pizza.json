@@ -1,0 +1,679 @@
+{
+  "meta": {
+    "name": "NY-Style Pizza Dough",
+    "source": {
+      "name": "Stella Culinary",
+      "url": "https://www.youtube.com/watch?v=P_yJO1pwpKI",
+      "type": "adapted",
+      "author": "Jacob Burton"
+    },
+    "yields": "2 pizzas",
+    "total_time": "~4 hrs (45 min active)",
+    "description": "Classic NY-style pizza dough with a 30-minute autolyse and stand mixer knead. A 62% hydration dough that stretches thin with a puffy, foldable crust."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-08",
+      "summary": "Initial recipe from Jacob Burton / Stella Culinary"
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Stand Mixer with Dough Hook"
+    },
+    {
+      "id": "V2",
+      "name": "Large Bowl",
+      "reuse": "Bulk fermentation"
+    },
+    {
+      "id": "V3",
+      "name": "Sheet Tray with Parchment",
+      "reuse": "Proofing portioned dough"
+    },
+    {
+      "id": "V4",
+      "name": "Pizza Stone",
+      "reuse": "Preheat → bake"
+    },
+    {
+      "id": "V5",
+      "name": "Wooden Pizza Peel"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Stand Mixer with Dough Hook",
+          "Large Bowl",
+          "Sheet Tray with Parchment",
+          "Pizza Stone",
+          "Wooden Pizza Peel"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Bench Scraper",
+          "Plastic Wrap",
+          "Non-Stick Spray",
+          "Wire Rack"
+        ],
+        "ingredients": [
+          {
+            "id": "bread_flour",
+            "name": "Bread Flour",
+            "total": 370,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 230,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "instant_yeast",
+            "name": "Instant Dry Yeast",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "olive_oil",
+            "name": "Olive Oil",
+            "total": 14,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 6,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "sugar",
+            "name": "Sugar",
+            "total": 15,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "cornmeal",
+            "name": "Cornmeal",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "san_marzano_sauce",
+            "name": "Raw San Marzano Tomato Sauce",
+            "total": 140,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "mozzarella",
+            "name": "Low-Moisture Mozzarella",
+            "total": 280,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "pepperoni",
+            "name": "Pepperoni",
+            "total": 140,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": [
+        "PREP_WORKSPACE"
+      ]
+    },
+    {
+      "id": "AUTOLYSE",
+      "title": "Autolyse",
+      "gather": null,
+      "states": [
+        "MIX_AUTOLYSE",
+        "AUTOLYSE_REST"
+      ]
+    },
+    {
+      "id": "KNEAD",
+      "title": "Knead",
+      "gather": null,
+      "states": [
+        "ADD_ENRICHMENTS",
+        "KNEAD_FIRST",
+        "KNEAD_SECOND",
+        "WINDOW_PANE_TEST"
+      ]
+    },
+    {
+      "id": "BULK_FERMENT",
+      "title": "Bulk Ferment",
+      "gather": null,
+      "states": [
+        "ROUND_DOUGH",
+        "BULK_FERMENT_REST"
+      ]
+    },
+    {
+      "id": "DIVIDE_PROOF",
+      "title": "Divide & Proof",
+      "gather": null,
+      "states": [
+        "DIVIDE_PORTIONS",
+        "ROUND_PORTIONS",
+        "PROOF_PORTIONS"
+      ]
+    },
+    {
+      "id": "ASSEMBLY",
+      "title": "Assembly",
+      "gather": null,
+      "states": [
+        "PREHEAT_STONE",
+        "STRETCH_DOUGH",
+        "TOP_PIZZA"
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": [
+        "BAKE_PIZZA",
+        "COOL_SLICE"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out bread flour, water, yeast, olive oil, salt, and sugar into separate containers.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed, vessels and equipment laid out",
+      "notes": null
+    },
+    {
+      "id": "MIX_AUTOLYSE",
+      "title": "Mix Autolyse",
+      "direction": "In the stand mixer bowl (V1), combine 370g bread flour, 230g water, and 5g instant yeast. Stir with the dough hook on speed 1 just until no dry flour remains.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Bread Flour",
+          "amount": "370g"
+        },
+        {
+          "name": "Water",
+          "amount": "230g"
+        },
+        {
+          "name": "Instant Dry Yeast",
+          "amount": "5g"
+        }
+      ],
+      "exit_condition": "Flour, water, and yeast combined into a shaggy mass with no dry flour visible",
+      "notes": [
+        {
+          "text": "Jacob Burton adds yeast to the autolyse water — he says it does not affect gluten formation",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "AUTOLYSE_REST",
+      "title": "Autolyse Rest",
+      "direction": "Cover the mixer bowl with plastic wrap and let the dough rest for 30 minutes at room temperature. Do not add salt, oil, or sugar yet.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed, dough is more cohesive and slightly extensible",
+      "notes": [
+        {
+          "text": "The autolyse hydrates the flour and begins gluten development passively, reducing knead time",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "ADD_ENRICHMENTS",
+      "title": "Add Enrichments",
+      "direction": "Add 14g olive oil, 15g sugar, and 6g salt to the autolyse dough in the mixer bowl (V1).",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Olive Oil",
+          "amount": "14g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "15g"
+        },
+        {
+          "name": "Salt",
+          "amount": "6g"
+        }
+      ],
+      "exit_condition": "Oil, sugar, and salt added on top of the dough, ready for kneading",
+      "notes": [
+        {
+          "text": "Olive oil adds extensibility and browning to the crust. Sugar promotes Maillard browning.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "KNEAD_FIRST",
+      "title": "Knead — First Pass",
+      "direction": "Knead in the stand mixer (V1) on speed 2 for 4 minutes. The dough should begin to pull away from the sides of the bowl.",
+      "duration_min": 4,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "4 minutes elapsed, dough is starting to come together and pull from the bowl sides",
+      "notes": null
+    },
+    {
+      "id": "KNEAD_SECOND",
+      "title": "Knead — Second Pass",
+      "direction": "Let the dough rest briefly in the bowl (1–2 minutes), then knead again on speed 2 for 4 more minutes. Total knead time is 8 minutes.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth, elastic, and pulls cleanly from the bowl sides",
+      "notes": null
+    },
+    {
+      "id": "WINDOW_PANE_TEST",
+      "title": "Window Pane Test",
+      "direction": "Pinch off a small piece of dough and gently stretch it between your fingers. It should stretch thin enough to see light through without tearing.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough stretches thin enough to see light through without tearing",
+      "notes": [
+        {
+          "text": "If the dough tears before becoming translucent, knead for 1–2 more minutes and re-test",
+          "critical": true
+        }
+      ],
+      "technique_url": "https://www.kingarthurbaking.com/blog/2020/12/14/the-windowpane-test"
+    },
+    {
+      "id": "ROUND_DOUGH",
+      "title": "Round Dough",
+      "direction": "Turn the dough out onto a clean surface. Using both hands, cup the dough and pull it toward you repeatedly to build surface tension. Tuck the edges underneath to form a taut ball.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is shaped into a smooth, taut ball with good surface tension",
+      "notes": null
+    },
+    {
+      "id": "BULK_FERMENT_REST",
+      "title": "Bulk Ferment",
+      "direction": "Place the rounded dough into a lightly oiled large bowl (V2). Cover with plastic wrap and let ferment at room temperature for 2 hours.",
+      "duration_min": 120,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has roughly doubled in size, approximately 2 hours elapsed",
+      "notes": [
+        {
+          "text": "For more complex flavor, skip the room-temperature rise and cold ferment overnight in the fridge (8–16 hours). Remove 1 hour before dividing to take the chill off.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "DIVIDE_PORTIONS",
+      "title": "Divide Portions",
+      "direction": "Turn the fermented dough out onto a lightly floured surface. Using a bench scraper, divide into 2 equal portions of approximately 310g each.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough divided into 2 portions of approximately 310g each",
+      "notes": null
+    },
+    {
+      "id": "ROUND_PORTIONS",
+      "title": "Round Portions",
+      "direction": "Flatten each portion into a disc, then tuck the edges underneath to form a tight round ball. Place each ball on a parchment-lined sheet tray (V3) sprayed with non-stick spray. Spray the tops of the dough balls with non-stick spray, then cover loosely with plastic wrap.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both portions rounded, placed on parchment-lined tray, sprayed, and covered with plastic wrap",
+      "notes": [
+        {
+          "text": "The non-stick spray on top prevents the plastic wrap from sticking and tearing the dough skin during proofing",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "PROOF_PORTIONS",
+      "title": "Proof Portions",
+      "direction": "Let the dough balls proof at room temperature for 1 to 1.5 hours. They should puff up and feel light and airy.",
+      "duration_min": 75,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough balls are puffy and visibly expanded, spring back slowly when gently poked",
+      "notes": [
+        {
+          "text": "For even more flavor development, proof in the refrigerator for 12–24 hours instead. Remove 30–60 minutes before stretching to take the chill off.",
+          "critical": false
+        },
+        {
+          "text": "Begin preheating the oven and pizza stone at least 45 minutes before you plan to bake",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT_STONE",
+      "title": "Preheat Pizza Stone",
+      "direction": "Place the pizza stone (V4) on the middle oven rack. Preheat the oven to 550°F (288°C). Allow at least 45 minutes for the stone to fully saturate with heat.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven at 550°F (288°C) and stone fully preheated for at least 45 minutes",
+      "notes": [
+        {
+          "text": "A fully preheated stone is essential — it provides the intense bottom heat that creates a properly charred NY-style crust",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "STRETCH_DOUGH",
+      "title": "Stretch Dough",
+      "direction": "Sprinkle the wooden pizza peel (V5) with 5g cornmeal. Place one dough ball on a lightly floured surface. Using your fingertips, press from the center outward, pushing air toward the edges to form the crust rim. Pick up the dough and drape it over your knuckles, gently stretching and rotating until you have a 30–33cm (12–13 inch) disc. Never use a rolling pin. Transfer to the cornmeal-dusted peel.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Cornmeal",
+          "amount": "5g"
+        }
+      ],
+      "exit_condition": "Dough stretched to a 30–33cm disc with puffy edge crust, resting on cornmeal-dusted peel",
+      "notes": [
+        {
+          "text": "Never roll pizza dough — rolling pops the gas bubbles that create the airy, puffy crust",
+          "critical": true
+        },
+        {
+          "text": "Give the peel a shake before topping to make sure the dough slides freely on the cornmeal",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "TOP_PIZZA",
+      "title": "Top Pizza",
+      "direction": "Spread 70g raw San Marzano tomato sauce over the dough, leaving a 2cm border for the crust. Add any non-cheese toppings. Top with 140g low-moisture mozzarella, torn or shredded. Place 70g pepperoni on top of the cheese so it browns and crisps directly.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Raw San Marzano Tomato Sauce",
+          "amount": "70g"
+        },
+        {
+          "name": "Low-Moisture Mozzarella",
+          "amount": "140g"
+        },
+        {
+          "name": "Pepperoni",
+          "amount": "70g"
+        }
+      ],
+      "exit_condition": "Pizza topped with sauce, cheese, and pepperoni (pepperoni on top of cheese)",
+      "notes": [
+        {
+          "text": "Pepperoni goes on top of the cheese — this is intentional so it browns, crisps, and cups up during baking",
+          "critical": false
+        },
+        {
+          "text": "Do not overload with sauce or the center will be soggy and the pizza will not slide off the peel",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "BAKE_PIZZA",
+      "title": "Bake Pizza",
+      "direction": "Open the oven and slide the pizza from the peel onto the preheated stone (V4) with a quick forward-and-back motion. Bake at 550°F (288°C) for 8–12 minutes. Repeat the stretch, top, and bake process for the second pizza.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Cheese is bubbly and lightly browned, crust is puffed and golden with charred spots",
+      "notes": [
+        {
+          "text": "Check at 8 minutes — ovens vary. Rotate the pizza halfway through if your oven has hot spots.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "COOL_SLICE",
+      "title": "Cool & Slice",
+      "direction": "Use the peel to slide the baked pizza onto a wire rack or cutting board. Let it rest for 2–3 minutes. Cut into 8 slices. Serve immediately.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Pizza rested, cut into 8 slices, ready to serve",
+      "notes": [
+        {
+          "text": "A brief rest lets the cheese set slightly so it does not slide off when you pick up a slice",
+          "critical": false
+        }
+      ]
+    }
+  ],
+  "nutrition": {
+    "servings": 2,
+    "servingSize": "1 pizza",
+    "calculatedDate": "2026-02-08",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 3147.9,
+      "protein": 150.7,
+      "totalFat": 138.7,
+      "saturatedFat": 59.2,
+      "carbohydrates": 315.1,
+      "sugar": 25.7,
+      "fiber": 13,
+      "sodium": 6922.5
+    },
+    "perServing": {
+      "calories": 1574,
+      "protein": 75.4,
+      "totalFat": 69.4,
+      "saturatedFat": 29.6,
+      "carbohydrates": 157.6,
+      "sugar": 12.9,
+      "fiber": 6.5,
+      "sodium": 3461.3
+    },
+    "breakdown": [
+      {
+        "ingredientId": "bread_flour",
+        "ingredientName": "Bread Flour",
+        "amount": 370,
+        "fdcId": 168896,
+        "calories": 1335.7,
+        "protein": 44.3,
+        "totalFat": 6.1,
+        "saturatedFat": 0.9,
+        "carbohydrates": 268.4,
+        "sugar": 1,
+        "fiber": 8.9,
+        "sodium": 7.4
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 230,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 9.2
+      },
+      {
+        "ingredientId": "instant_yeast",
+        "ingredientName": "Instant Dry Yeast",
+        "amount": 5,
+        "fdcId": 175043,
+        "calories": 16.3,
+        "protein": 2,
+        "totalFat": 0.4,
+        "saturatedFat": 0,
+        "carbohydrates": 2.1,
+        "sugar": 0,
+        "fiber": 1.3,
+        "sodium": 2.6
+      },
+      {
+        "ingredientId": "olive_oil",
+        "ingredientName": "Olive Oil",
+        "amount": 14,
+        "fdcId": 171413,
+        "calories": 123.8,
+        "protein": 0,
+        "totalFat": 14,
+        "saturatedFat": 1.9,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.3
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 6,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 2325.5
+      },
+      {
+        "ingredientId": "sugar",
+        "ingredientName": "Sugar",
+        "amount": 15,
+        "fdcId": 169655,
+        "calories": 58.1,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 15,
+        "sugar": 15,
+        "fiber": 0,
+        "sodium": 0.2
+      },
+      {
+        "ingredientId": "cornmeal",
+        "ingredientName": "Cornmeal",
+        "amount": 10,
+        "fdcId": 168876,
+        "calories": 36.2,
+        "protein": 0.8,
+        "totalFat": 0.4,
+        "saturatedFat": 0.1,
+        "carbohydrates": 7.7,
+        "sugar": 0.2,
+        "fiber": 0.7,
+        "sodium": 0.7
+      },
+      {
+        "ingredientId": "san_marzano_sauce",
+        "ingredientName": "Raw San Marzano Tomato Sauce",
+        "amount": 140,
+        "fdcId": 170506,
+        "calories": 40.6,
+        "protein": 1.8,
+        "totalFat": 0.3,
+        "saturatedFat": 0,
+        "carbohydrates": 8.1,
+        "sugar": 5,
+        "fiber": 2.1,
+        "sodium": 355.6
+      },
+      {
+        "ingredientId": "mozzarella",
+        "ingredientName": "Low-Moisture Mozzarella",
+        "amount": 280,
+        "fdcId": 170892,
+        "calories": 845.6,
+        "protein": 70.4,
+        "totalFat": 56.1,
+        "saturatedFat": 32.3,
+        "carbohydrates": 9.9,
+        "sugar": 2.8,
+        "fiber": 0,
+        "sodium": 1755.6
+      },
+      {
+        "ingredientId": "pepperoni",
+        "ingredientName": "Pepperoni",
+        "amount": 140,
+        "fdcId": 174580,
+        "calories": 691.6,
+        "protein": 31.4,
+        "totalFat": 61.4,
+        "saturatedFat": 24,
+        "carbohydrates": 3.9,
+        "sugar": 1.7,
+        "fiber": 0,
+        "sodium": 2465.4
+      }
+    ]
+  }
+}
