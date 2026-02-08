@@ -91,9 +91,18 @@
             "total": 600,
             "unit": "g",
             "breakdown": [
-              { "label": "caramelize (thinly sliced)", "amount": 300 },
-              { "label": "deep-fry (thinly sliced)", "amount": 120 },
-              { "label": "saute with pork (finely diced)", "amount": 180 }
+              {
+                "label": "caramelize (thinly sliced)",
+                "amount": 300
+              },
+              {
+                "label": "deep-fry (thinly sliced)",
+                "amount": 120
+              },
+              {
+                "label": "saute with pork (finely diced)",
+                "amount": 180
+              }
             ],
             "sourcedFrom": "S1, S2, S3, S19 — 7/7 agents; factory confirms 'onion saute' as separate listed ingredient",
             "confidence": "high",
@@ -145,8 +154,14 @@
             "total": 360,
             "unit": "g",
             "breakdown": [
-              { "label": "initial simmer", "amount": 240 },
-              { "label": "consistency adjustment", "amount": 120 }
+              {
+                "label": "initial simmer",
+                "amount": 240
+              },
+              {
+                "label": "consistency adjustment",
+                "amount": 120
+              }
             ],
             "sourcedFrom": "S3, S45 — SoraNews24 native recipe emphasizes thinner, pourable consistency",
             "confidence": "medium",
@@ -158,8 +173,14 @@
             "total": 56,
             "unit": "g",
             "breakdown": [
-              { "label": "caramelize onions", "amount": 28 },
-              { "label": "finishing (cold)", "amount": 28 }
+              {
+                "label": "caramelize onions",
+                "amount": 28
+              },
+              {
+                "label": "finishing (cold)",
+                "amount": 28
+              }
             ],
             "sourcedFrom": "S2, S26 — CoCo employee confirmed butter; Jecca Chantilly finishing technique",
             "confidence": "high",
@@ -171,8 +192,14 @@
             "total": 30,
             "unit": "g",
             "breakdown": [
-              { "label": "caramelize onions", "amount": 15 },
-              { "label": "deep-fry onions", "amount": 15 }
+              {
+                "label": "caramelize onions",
+                "amount": 15
+              },
+              {
+                "label": "deep-fry onions",
+                "amount": 15
+              }
             ],
             "sourcedFrom": "S1, S2 — standard cooking medium across all recipes",
             "confidence": "high",
@@ -194,7 +221,10 @@
             "total": 20,
             "unit": "g",
             "breakdown": [
-              { "label": "during simmer", "amount": 20 }
+              {
+                "label": "during simmer",
+                "amount": 20
+              }
             ],
             "sourcedFrom": "S1, S2, S23, S39 — 7/7 agents; retail label explicitly lists Worcestershire sauce",
             "confidence": "high",
@@ -266,8 +296,14 @@
             "total": 15,
             "unit": "g",
             "breakdown": [
-              { "label": "during simmer", "amount": 8 },
-              { "label": "final seasoning", "amount": 7 }
+              {
+                "label": "during simmer",
+                "amount": 8
+              },
+              {
+                "label": "final seasoning",
+                "amount": 7
+              }
             ],
             "sourcedFrom": "S1 — 4/7 agents; Okonomi Kitchen recipe",
             "confidence": "medium",
@@ -407,9 +443,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter", "amount": "28g" },
-        { "name": "Oil", "amount": "15g" },
-        { "name": "Onions (sliced)", "amount": "300g" }
+        {
+          "name": "Butter",
+          "amount": "28g"
+        },
+        {
+          "name": "Oil",
+          "amount": "15g"
+        },
+        {
+          "name": "Onions (sliced)",
+          "amount": "300g"
+        }
       ],
       "exit_condition": "Onions are dark brown, reduced to a jam-like paste, deeply caramelized with no raw onion smell",
       "notes": [
@@ -435,8 +480,14 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Oil", "amount": "15g" },
-        { "name": "Onions (sliced)", "amount": "120g" }
+        {
+          "name": "Oil",
+          "amount": "15g"
+        },
+        {
+          "name": "Onions (sliced)",
+          "amount": "120g"
+        }
       ],
       "exit_condition": "Onions are golden brown and crispy, draining on paper towels",
       "notes": [
@@ -458,8 +509,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Onions (diced)", "amount": "180g" },
-        { "name": "Pork Shoulder", "amount": "300g" }
+        {
+          "name": "Onions (diced)",
+          "amount": "180g"
+        },
+        {
+          "name": "Pork Shoulder",
+          "amount": "300g"
+        }
       ],
       "exit_condition": "Pork seared on all sides, diced onions translucent",
       "notes": [
@@ -477,8 +534,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Carrot (grated)", "amount": "60g" },
-        { "name": "Apple (grated)", "amount": "120g" }
+        {
+          "name": "Carrot (grated)",
+          "amount": "60g"
+        },
+        {
+          "name": "Apple (grated)",
+          "amount": "120g"
+        }
       ],
       "exit_condition": "Apple liquid has mostly evaporated, mixture is fragrant and thickened slightly",
       "notes": [
@@ -496,11 +559,26 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Beef Broth", "amount": "1200g" },
-        { "name": "Water", "amount": "240g" },
-        { "name": "Fried Onion Crisps", "amount": "120g" },
-        { "name": "Mango Chutney", "amount": "40g" },
-        { "name": "Peanut Butter", "amount": "16g" }
+        {
+          "name": "Beef Broth",
+          "amount": "1200g"
+        },
+        {
+          "name": "Water",
+          "amount": "240g"
+        },
+        {
+          "name": "Fried Onion Crisps",
+          "amount": "120g"
+        },
+        {
+          "name": "Mango Chutney",
+          "amount": "40g"
+        },
+        {
+          "name": "Peanut Butter",
+          "amount": "16g"
+        }
       ],
       "exit_condition": "Pork is tender, liquid is simmering gently, 15-20 minutes elapsed",
       "notes": [
@@ -534,7 +612,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Java Curry Roux", "amount": "200g" }
+        {
+          "name": "Java Curry Roux",
+          "amount": "200g"
+        }
       ],
       "exit_condition": "All roux dissolved, no visible lumps, sauce is thickening",
       "notes": [
@@ -556,13 +637,34 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "S&B Curry Powder", "amount": "4g" },
-        { "name": "Worcestershire Sauce", "amount": "20g" },
-        { "name": "Chuno Sauce", "amount": "10g" },
-        { "name": "Dark Soy Sauce", "amount": "23g" },
-        { "name": "Red Miso Paste", "amount": "12g" },
-        { "name": "Rice Vinegar", "amount": "8g" },
-        { "name": "Honey", "amount": "21g" }
+        {
+          "name": "S&B Curry Powder",
+          "amount": "4g"
+        },
+        {
+          "name": "Worcestershire Sauce",
+          "amount": "20g"
+        },
+        {
+          "name": "Chuno Sauce",
+          "amount": "10g"
+        },
+        {
+          "name": "Dark Soy Sauce",
+          "amount": "23g"
+        },
+        {
+          "name": "Red Miso Paste",
+          "amount": "12g"
+        },
+        {
+          "name": "Rice Vinegar",
+          "amount": "8g"
+        },
+        {
+          "name": "Honey",
+          "amount": "21g"
+        }
       ],
       "exit_condition": "All seasonings incorporated, curry has simmered 10 minutes and flavors are melding",
       "notes": [
@@ -600,9 +702,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Instant Coffee (dissolved)", "amount": "2g" },
-        { "name": "Dark Chocolate (chopped)", "amount": "5g" },
-        { "name": "White Pepper", "amount": "0.5g" }
+        {
+          "name": "Instant Coffee (dissolved)",
+          "amount": "2g"
+        },
+        {
+          "name": "Dark Chocolate (chopped)",
+          "amount": "5g"
+        },
+        {
+          "name": "White Pepper",
+          "amount": "0.5g"
+        }
       ],
       "exit_condition": "Chocolate fully melted, coffee and pepper incorporated, curry has a subtle depth",
       "notes": [
@@ -624,9 +735,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Rice Vinegar", "amount": "7g" },
-        { "name": "Salt", "amount": "6g" },
-        { "name": "Water (as needed)", "amount": "up to 120g" }
+        {
+          "name": "Rice Vinegar",
+          "amount": "7g"
+        },
+        {
+          "name": "Salt",
+          "amount": "6g"
+        },
+        {
+          "name": "Water (as needed)",
+          "amount": "up to 120g"
+        }
       ],
       "exit_condition": "Curry is pourable (gravy consistency), seasoning is balanced — sweet, savory, slightly tangy with no single flavor dominating",
       "notes": [
@@ -648,7 +768,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (cold)", "amount": "28g" }
+        {
+          "name": "Butter (cold)",
+          "amount": "28g"
+        }
       ],
       "exit_condition": "Butter fully melted, curry surface has a rich glossy sheen",
       "notes": [
@@ -686,7 +809,10 @@
       "timer": true,
       "parallel": true,
       "components": [
-        { "name": "Short-Grain Rice", "amount": "480g" }
+        {
+          "name": "Short-Grain Rice",
+          "amount": "480g"
+        }
       ],
       "exit_condition": "Rice is cooked, fluffy, and has rested 10 minutes",
       "notes": [
@@ -742,70 +868,342 @@
     "sourceCount": 64,
     "date": "2026-02-07",
     "sources": [
-      { "name": "Okonomi Kitchen — CoCo Ichibanya Curry (Vegan)", "url": "https://www.okonomikitchen.com/coco-ichibanya-style-japanese-curry-vegan/", "type": "adapted", "author": "Lisa Kitahara" },
-      { "name": "Jecca Chantilly — CoCo Ichibanya Curry Recipe", "url": "https://jeccachantilly.com/coco-ichibanya-curry-recipe/", "type": "adapted", "author": "Jecca Chantilly" },
-      { "name": "SoraNews24 — Native Japanese Curry Recipe", "url": "https://soranews24.com/2013/04/26/take-it-from-a-native-recipe-for-delicious-japanese-curry-as-found-at-coco-ichiban/", "type": "adapted", "author": "SoraNews24 staff" },
-      { "name": "EatHealthy365 — CoCo Ichibanya Copycat", "url": "https://eathealthy365.com/how-to-make-japanese-coco-ichibanya-curry-at-home-copycat/", "type": "adapted", "author": "Silas" },
-      { "name": "EatHealthy365 — CoCo Ingredient Analysis", "url": "https://eathealthy365.com/what-s-really-in-coco-ichibanya-s-famous-curry-mix/", "type": "inspired" },
-      { "name": "Cookpad — CoCo Curry Recipe (Yukoahi)", "url": "https://cookpad.com/eng/recipes/19553245", "type": "adapted", "author": "Yukoahi" },
-      { "name": "Pickled Plum — Japanese Vegetable Curry", "url": "https://pickledplum.com/japanese-vegetable-curry/", "type": "inspired" },
-      { "name": "NoRecipes — Japanese Curry from Scratch (Marc Matsumoto)", "url": "https://norecipes.com/japanese-curry-recipe-from-scratch/", "type": "inspired", "author": "Marc Matsumoto" },
-      { "name": "Serious Eats — Japanese Curry", "url": "https://www.seriouseats.com/japanese-curry-kare", "type": "inspired" },
-      { "name": "Just One Cookbook — Chicken Curry", "url": "https://www.justonecookbook.com/simple-chicken-curry/", "type": "inspired", "author": "Nami Chen" },
-      { "name": "Just One Cookbook — How to Make Curry Roux", "url": "https://www.justonecookbook.com/how-to-make-curry-roux/", "type": "inspired", "author": "Nami Chen" },
-      { "name": "Doobydobap — Katsu Curry", "url": "https://doobydobap.com/recipe/katsu-curry", "type": "inspired", "author": "Tina" },
-      { "name": "Stripes Japan — Saigen Daisuke CoCo Curry Recreation", "url": "https://japan.stripes.com/food-drink/video-japan-kitchen-easy-recipe-for-famous-coco's-curry.html", "type": "adapted", "author": "Saigen Daisuke" },
-      { "name": "Stripes Okinawa — Saigen Daisuke CoCo Video", "url": "https://okinawa.stripes.com/food-drink/video-japan-kitchen-making-famous-coco%E2%80%99s-curry-at-home.html", "type": "adapted", "author": "Saigen Daisuke" },
-      { "name": "BuzzRecipe (Ryuji) — CoCo-Style Curry", "url": "https://bazurecipe.com/2024/06/08/ココイチ風カレー/", "type": "adapted", "author": "Ryuji" },
-      { "name": "A Lot of Kitchen Eats — CoCo Sliced Beef Curry", "url": "https://alotofkitcheneats.wordpress.com/2018/05/21/coco-ichibanya-style-sliced-beef-japanese-curry/", "type": "adapted" },
-      { "name": "Nikkei Asia — House Foods / CoCo Ichibanya Acquisition", "url": "https://asia.nikkei.com/Business/House-Foods-aiming-to-use-chain-to-spread-Japanese-curry-culture", "type": "inspired" },
-      { "name": "TipRanks — Ichibanya Co. Ownership Structure", "url": "https://www.tipranks.com/news/company-announcements/ichibanya-co-ltd-affirms-independence-amid-parent-company-ownership", "type": "inspired" },
-      { "name": "Gurunavi — CoCo Ichibanya Factory Tour", "url": "https://r.gnavi.co.jp/g-interview/entry/g-mag/013099", "type": "inspired" },
-      { "name": "Nordot — CoCo Factory Production Article", "url": "https://nordot.app/597325604832117857", "type": "inspired" },
-      { "name": "ITmedia Business — CoCo Business Analysis", "url": "https://www.itmedia.co.jp/business/articles/1511/11/news003.html", "type": "inspired" },
-      { "name": "President Online — CoCo Business Magazine", "url": "https://president.jp/articles/-/86403", "type": "inspired" },
-      { "name": "DOKODEMO — CoCo Retail Product Labels", "url": "https://dokodemo.world/en/item/1098202/", "type": "inspired" },
-      { "name": "Amazon — CoCo Curry House Original Roux", "url": "https://www.amazon.com/Ichibanya-Curry-House-Original-Version/dp/B06XSYNRGT", "type": "inspired" },
-      { "name": "Amazon — CoCo Fukujinzuke Pickles", "url": "https://www.amazon.com/Ichibanya-Curry-Fukujinzuke-Japanese-pickles/dp/B072NRW3DH", "type": "inspired" },
-      { "name": "Reddit r/recipes — CoCo Employee Confirmation", "url": "https://reddit.com/r/recipes/comments/1xx97a/", "type": "inspired", "author": "u/jacobw4473" },
-      { "name": "Reddit r/MimicRecipes — Torokeru Recommendation", "url": "https://reddit.com/r/MimicRecipes/comments/dt149a/", "type": "inspired" },
-      { "name": "Reddit r/Cooking — CoCo Spice Levels", "url": "https://reddit.com/r/Cooking/comments/ysb2v2/", "type": "inspired", "author": "u/vampire-walrus" },
-      { "name": "Reddit r/JapaneseFood — CoCo Popularity Discussion", "url": "https://reddit.com/r/JapaneseFood/comments/1q96p88/", "type": "inspired", "author": "u/Kamimitsu" },
-      { "name": "Reddit r/JapaneseFood — Garlic Topping Recipe", "url": "https://reddit.com/r/JapaneseFood/comments/1jetppg/", "type": "inspired" },
-      { "name": "Reddit r/JapaneseFood — Tobikara Label Transcription", "url": "https://reddit.com/r/JapaneseFood/comments/1hzyf8w/", "type": "inspired" },
-      { "name": "Japan Truly — Best Japanese Curry Brands", "url": "https://shop.japantruly.com/blogs/product-review/best-japanese-curry-brands", "type": "inspired" },
-      { "name": "Umami Bites — Guide to Japanese Curry Roux", "url": "https://umamibites.com/useful_info/guide-to-japanese-curry-roux", "type": "inspired" },
-      { "name": "Japanese Taste — Best Japanese Curry Brands", "url": "https://japanesetaste.com/blogs/japanese-taste-blog/what-is-the-best-japanese-curry-discover-japan-s-most-popular-brands", "type": "inspired" },
-      { "name": "Tasting Table — Instant Coffee in Japanese Curry", "url": "https://www.tastingtable.com/1519263/instant-coffee-addition-japanese-curry/", "type": "inspired" },
-      { "name": "Hypebeast — Japanese Curry Secret Ingredients Survey", "url": "https://hypebeast.com/2021/7/japanese-chocolate-coffee-curry-secret-ingredients-info", "type": "inspired" },
-      { "name": "Nichinichi Magazine — Saigen Daisuke Feature", "url": "https://nichinichi-magazine.com/articles/detail/12672", "type": "inspired" },
-      { "name": "Alo Japan — Tobikara Spice Copycat", "url": "https://www.alojapan.com/1178763/copycat-recipe-for-coco-ichibanya-tobikara-exclusive-spice-spicy-powder/", "type": "inspired" },
-      { "name": "Bull-Dog Sauce — About", "url": "https://www.bulldogsauce-global.com/about/", "type": "inspired" },
-      { "name": "S&B Foods — Curry Powder", "url": "https://www.sbfoods-worldwide.com/currypowder/", "type": "inspired" },
-      { "name": "Ajinomoto — Hondashi", "url": "https://www.ajinomoto.com/brands/hondashi", "type": "inspired" },
-      { "name": "CoCo Ichibanya Official — Ordering Guide", "url": "https://www.ichibanya.co.jp/english/order.html", "type": "inspired" },
-      { "name": "Just One Cookbook — Japanese Rice Guide", "url": "https://www.justonecookbook.com/japanese-rice-everything-you-need-to-know/", "type": "inspired", "author": "Nami Chen" },
-      { "name": "Macaroni.jp — CoCo Curry Recreation", "url": "https://macaro-ni.jp/158808", "type": "inspired" },
-      { "name": "Kumiko-jp — Sara-Sara Curry", "url": "https://kumiko-jp.com/archives/412371.html", "type": "inspired" },
-      { "name": "CoCo Official Shop — Retort Pork Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1659839", "type": "inspired" },
-      { "name": "CoCo Official Shop — Retort Beef Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1660132", "type": "inspired" },
-      { "name": "CoCo Official Shop — Mild Pork Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1660134", "type": "inspired" },
-      { "name": "CoCo Official Shop — Vegetable Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1663448", "type": "inspired" },
-      { "name": "CoCo Official Shop — Keema Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1663442", "type": "inspired" },
-      { "name": "CoCo Official Shop — Soup Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1663445", "type": "inspired" },
-      { "name": "CoCo Official Shop — Super Spicy Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1413900", "type": "inspired" },
-      { "name": "CoCo Official Shop — Low-Sugar Beef Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1178195", "type": "inspired" },
-      { "name": "CoCo Official Shop — Low-Sugar Butter Chicken", "url": "https://shop.ichibanya.co.jp/item-detail/1178196", "type": "inspired" },
-      { "name": "CoCo Official Shop — Frozen Pork Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1663456", "type": "inspired" },
-      { "name": "CoCo Official Shop — Care Food (Roux Breakdown)", "url": "https://shop.ichibanya.co.jp/item-detail/1557352", "type": "inspired" },
-      { "name": "House Foods — Motteko Curry Collaboration", "url": "https://housefoods.jp/products/catalog/cd_1,088381.html", "type": "inspired" },
-      { "name": "Daisho — Soup Curry Base Collaboration", "url": "https://www.daisho.co.jp/7", "type": "inspired" },
-      { "name": "Mishima — CoCo Curry Furikake", "url": "https://www.mishima.co.jp/product/1201.html", "type": "inspired" },
-      { "name": "Sonton — CoCo Curry Toast Spread", "url": "https://www.sonton.co.jp/products/cocoichibanya/curry_toast/", "type": "inspired" },
-      { "name": "Onishi — Emergency Curry Set (Allergen-free)", "url": "https://www.onisifoods.co.jp/products/curry.html", "type": "inspired" },
-      { "name": "Amazon Japan — Tobi-Kara Spice Label", "url": "https://www.amazon.co.jp/dp/B07MXJ7DZW", "type": "inspired" },
-      { "name": "CoCo Ichibanya Official — Ingredient Origin PDF", "url": "https://www.ichibanya.co.jp/menu/pdf/origin.pdf", "type": "inspired" },
-      { "name": "CoCo Ichibanya Official — Allergen PDF", "url": "https://www.ichibanya.co.jp/menu/pdf/allergy.pdf", "type": "inspired" }
+      {
+        "name": "Okonomi Kitchen — CoCo Ichibanya Curry (Vegan)",
+        "url": "https://www.okonomikitchen.com/coco-ichibanya-style-japanese-curry-vegan/",
+        "type": "adapted",
+        "author": "Lisa Kitahara"
+      },
+      {
+        "name": "Jecca Chantilly — CoCo Ichibanya Curry Recipe",
+        "url": "https://jeccachantilly.com/coco-ichibanya-curry-recipe/",
+        "type": "adapted",
+        "author": "Jecca Chantilly"
+      },
+      {
+        "name": "SoraNews24 — Native Japanese Curry Recipe",
+        "url": "https://soranews24.com/2013/04/26/take-it-from-a-native-recipe-for-delicious-japanese-curry-as-found-at-coco-ichiban/",
+        "type": "adapted",
+        "author": "SoraNews24 staff"
+      },
+      {
+        "name": "EatHealthy365 — CoCo Ichibanya Copycat",
+        "url": "https://eathealthy365.com/how-to-make-japanese-coco-ichibanya-curry-at-home-copycat/",
+        "type": "adapted",
+        "author": "Silas"
+      },
+      {
+        "name": "EatHealthy365 — CoCo Ingredient Analysis",
+        "url": "https://eathealthy365.com/what-s-really-in-coco-ichibanya-s-famous-curry-mix/",
+        "type": "inspired"
+      },
+      {
+        "name": "Cookpad — CoCo Curry Recipe (Yukoahi)",
+        "url": "https://cookpad.com/eng/recipes/19553245",
+        "type": "adapted",
+        "author": "Yukoahi"
+      },
+      {
+        "name": "Pickled Plum — Japanese Vegetable Curry",
+        "url": "https://pickledplum.com/japanese-vegetable-curry/",
+        "type": "inspired"
+      },
+      {
+        "name": "NoRecipes — Japanese Curry from Scratch (Marc Matsumoto)",
+        "url": "https://norecipes.com/japanese-curry-recipe-from-scratch/",
+        "type": "inspired",
+        "author": "Marc Matsumoto"
+      },
+      {
+        "name": "Serious Eats — Japanese Curry",
+        "url": "https://www.seriouseats.com/japanese-curry-kare",
+        "type": "inspired"
+      },
+      {
+        "name": "Just One Cookbook — Chicken Curry",
+        "url": "https://www.justonecookbook.com/simple-chicken-curry/",
+        "type": "inspired",
+        "author": "Nami Chen"
+      },
+      {
+        "name": "Just One Cookbook — How to Make Curry Roux",
+        "url": "https://www.justonecookbook.com/how-to-make-curry-roux/",
+        "type": "inspired",
+        "author": "Nami Chen"
+      },
+      {
+        "name": "Doobydobap — Katsu Curry",
+        "url": "https://doobydobap.com/recipe/katsu-curry",
+        "type": "inspired",
+        "author": "Tina"
+      },
+      {
+        "name": "Stripes Japan — Saigen Daisuke CoCo Curry Recreation",
+        "url": "https://japan.stripes.com/food-drink/video-japan-kitchen-easy-recipe-for-famous-coco's-curry.html",
+        "type": "adapted",
+        "author": "Saigen Daisuke"
+      },
+      {
+        "name": "Stripes Okinawa — Saigen Daisuke CoCo Video",
+        "url": "https://okinawa.stripes.com/food-drink/video-japan-kitchen-making-famous-coco%E2%80%99s-curry-at-home.html",
+        "type": "adapted",
+        "author": "Saigen Daisuke"
+      },
+      {
+        "name": "BuzzRecipe (Ryuji) — CoCo-Style Curry",
+        "url": "https://bazurecipe.com/2024/06/08/ココイチ風カレー/",
+        "type": "adapted",
+        "author": "Ryuji"
+      },
+      {
+        "name": "A Lot of Kitchen Eats — CoCo Sliced Beef Curry",
+        "url": "https://alotofkitcheneats.wordpress.com/2018/05/21/coco-ichibanya-style-sliced-beef-japanese-curry/",
+        "type": "adapted"
+      },
+      {
+        "name": "Nikkei Asia — House Foods / CoCo Ichibanya Acquisition",
+        "url": "https://asia.nikkei.com/Business/House-Foods-aiming-to-use-chain-to-spread-Japanese-curry-culture",
+        "type": "inspired"
+      },
+      {
+        "name": "TipRanks — Ichibanya Co. Ownership Structure",
+        "url": "https://www.tipranks.com/news/company-announcements/ichibanya-co-ltd-affirms-independence-amid-parent-company-ownership",
+        "type": "inspired"
+      },
+      {
+        "name": "Gurunavi — CoCo Ichibanya Factory Tour",
+        "url": "https://r.gnavi.co.jp/g-interview/entry/g-mag/013099",
+        "type": "inspired"
+      },
+      {
+        "name": "Nordot — CoCo Factory Production Article",
+        "url": "https://nordot.app/597325604832117857",
+        "type": "inspired"
+      },
+      {
+        "name": "ITmedia Business — CoCo Business Analysis",
+        "url": "https://www.itmedia.co.jp/business/articles/1511/11/news003.html",
+        "type": "inspired"
+      },
+      {
+        "name": "President Online — CoCo Business Magazine",
+        "url": "https://president.jp/articles/-/86403",
+        "type": "inspired"
+      },
+      {
+        "name": "DOKODEMO — CoCo Retail Product Labels",
+        "url": "https://dokodemo.world/en/item/1098202/",
+        "type": "inspired"
+      },
+      {
+        "name": "Amazon — CoCo Curry House Original Roux",
+        "url": "https://www.amazon.com/Ichibanya-Curry-House-Original-Version/dp/B06XSYNRGT",
+        "type": "inspired"
+      },
+      {
+        "name": "Amazon — CoCo Fukujinzuke Pickles",
+        "url": "https://www.amazon.com/Ichibanya-Curry-Fukujinzuke-Japanese-pickles/dp/B072NRW3DH",
+        "type": "inspired"
+      },
+      {
+        "name": "Reddit r/recipes — CoCo Employee Confirmation",
+        "url": "https://reddit.com/r/recipes/comments/1xx97a/",
+        "type": "inspired",
+        "author": "u/jacobw4473"
+      },
+      {
+        "name": "Reddit r/MimicRecipes — Torokeru Recommendation",
+        "url": "https://reddit.com/r/MimicRecipes/comments/dt149a/",
+        "type": "inspired"
+      },
+      {
+        "name": "Reddit r/Cooking — CoCo Spice Levels",
+        "url": "https://reddit.com/r/Cooking/comments/ysb2v2/",
+        "type": "inspired",
+        "author": "u/vampire-walrus"
+      },
+      {
+        "name": "Reddit r/JapaneseFood — CoCo Popularity Discussion",
+        "url": "https://reddit.com/r/JapaneseFood/comments/1q96p88/",
+        "type": "inspired",
+        "author": "u/Kamimitsu"
+      },
+      {
+        "name": "Reddit r/JapaneseFood — Garlic Topping Recipe",
+        "url": "https://reddit.com/r/JapaneseFood/comments/1jetppg/",
+        "type": "inspired"
+      },
+      {
+        "name": "Reddit r/JapaneseFood — Tobikara Label Transcription",
+        "url": "https://reddit.com/r/JapaneseFood/comments/1hzyf8w/",
+        "type": "inspired"
+      },
+      {
+        "name": "Japan Truly — Best Japanese Curry Brands",
+        "url": "https://shop.japantruly.com/blogs/product-review/best-japanese-curry-brands",
+        "type": "inspired"
+      },
+      {
+        "name": "Umami Bites — Guide to Japanese Curry Roux",
+        "url": "https://umamibites.com/useful_info/guide-to-japanese-curry-roux",
+        "type": "inspired"
+      },
+      {
+        "name": "Japanese Taste — Best Japanese Curry Brands",
+        "url": "https://japanesetaste.com/blogs/japanese-taste-blog/what-is-the-best-japanese-curry-discover-japan-s-most-popular-brands",
+        "type": "inspired"
+      },
+      {
+        "name": "Tasting Table — Instant Coffee in Japanese Curry",
+        "url": "https://www.tastingtable.com/1519263/instant-coffee-addition-japanese-curry/",
+        "type": "inspired"
+      },
+      {
+        "name": "Hypebeast — Japanese Curry Secret Ingredients Survey",
+        "url": "https://hypebeast.com/2021/7/japanese-chocolate-coffee-curry-secret-ingredients-info",
+        "type": "inspired"
+      },
+      {
+        "name": "Nichinichi Magazine — Saigen Daisuke Feature",
+        "url": "https://nichinichi-magazine.com/articles/detail/12672",
+        "type": "inspired"
+      },
+      {
+        "name": "Alo Japan — Tobikara Spice Copycat",
+        "url": "https://www.alojapan.com/1178763/copycat-recipe-for-coco-ichibanya-tobikara-exclusive-spice-spicy-powder/",
+        "type": "inspired"
+      },
+      {
+        "name": "Bull-Dog Sauce — About",
+        "url": "https://www.bulldogsauce-global.com/about/",
+        "type": "inspired"
+      },
+      {
+        "name": "S&B Foods — Curry Powder",
+        "url": "https://www.sbfoods-worldwide.com/currypowder/",
+        "type": "inspired"
+      },
+      {
+        "name": "Ajinomoto — Hondashi",
+        "url": "https://www.ajinomoto.com/brands/hondashi",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Ichibanya Official — Ordering Guide",
+        "url": "https://www.ichibanya.co.jp/english/order.html",
+        "type": "inspired"
+      },
+      {
+        "name": "Just One Cookbook — Japanese Rice Guide",
+        "url": "https://www.justonecookbook.com/japanese-rice-everything-you-need-to-know/",
+        "type": "inspired",
+        "author": "Nami Chen"
+      },
+      {
+        "name": "Macaroni.jp — CoCo Curry Recreation",
+        "url": "https://macaro-ni.jp/158808",
+        "type": "inspired"
+      },
+      {
+        "name": "Kumiko-jp — Sara-Sara Curry",
+        "url": "https://kumiko-jp.com/archives/412371.html",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Retort Pork Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1659839",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Retort Beef Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1660132",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Mild Pork Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1660134",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Vegetable Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1663448",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Keema Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1663442",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Soup Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1663445",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Super Spicy Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1413900",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Low-Sugar Beef Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1178195",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Low-Sugar Butter Chicken",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1178196",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Frozen Pork Curry",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1663456",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Official Shop — Care Food (Roux Breakdown)",
+        "url": "https://shop.ichibanya.co.jp/item-detail/1557352",
+        "type": "inspired"
+      },
+      {
+        "name": "House Foods — Motteko Curry Collaboration",
+        "url": "https://housefoods.jp/products/catalog/cd_1,088381.html",
+        "type": "inspired"
+      },
+      {
+        "name": "Daisho — Soup Curry Base Collaboration",
+        "url": "https://www.daisho.co.jp/7",
+        "type": "inspired"
+      },
+      {
+        "name": "Mishima — CoCo Curry Furikake",
+        "url": "https://www.mishima.co.jp/product/1201.html",
+        "type": "inspired"
+      },
+      {
+        "name": "Sonton — CoCo Curry Toast Spread",
+        "url": "https://www.sonton.co.jp/products/cocoichibanya/curry_toast/",
+        "type": "inspired"
+      },
+      {
+        "name": "Onishi — Emergency Curry Set (Allergen-free)",
+        "url": "https://www.onisifoods.co.jp/products/curry.html",
+        "type": "inspired"
+      },
+      {
+        "name": "Amazon Japan — Tobi-Kara Spice Label",
+        "url": "https://www.amazon.co.jp/dp/B07MXJ7DZW",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Ichibanya Official — Ingredient Origin PDF",
+        "url": "https://www.ichibanya.co.jp/menu/pdf/origin.pdf",
+        "type": "inspired"
+      },
+      {
+        "name": "CoCo Ichibanya Official — Allergen PDF",
+        "url": "https://www.ichibanya.co.jp/menu/pdf/allergy.pdf",
+        "type": "inspired"
+      }
     ],
     "techniques": [
       {
@@ -861,6 +1259,356 @@
         "sourcedFrom": "S3 — SoraNews24 native recipe",
         "rationale": "Turn off heat, let cool, then rewarm. Flavor-cycling step that may partially replicate CoCo's industrial freeze-aging process.",
         "confidence": "low"
+      }
+    ]
+  },
+  "nutrition": {
+    "servings": 6,
+    "servingSize": "1 serving",
+    "calculatedDate": "2026-02-08",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 4800.9,
+      "protein": 130.5,
+      "totalFat": 211.7,
+      "saturatedFat": 96,
+      "carbohydrates": 591.7,
+      "sugar": 88.6,
+      "fiber": 38.1,
+      "sodium": 20339.4
+    },
+    "perServing": {
+      "calories": 800.2,
+      "protein": 21.8,
+      "totalFat": 35.3,
+      "saturatedFat": 16,
+      "carbohydrates": 98.6,
+      "sugar": 14.8,
+      "fiber": 6.4,
+      "sodium": 3389.9
+    },
+    "breakdown": [
+      {
+        "ingredientId": "curry_roux",
+        "ingredientName": "House Foods Java Curry (Medium Hot)",
+        "amount": 200,
+        "fdcId": 0,
+        "calories": 1068,
+        "protein": 16.6,
+        "totalFat": 81.4,
+        "saturatedFat": 44,
+        "carbohydrates": 70.4,
+        "sugar": 2,
+        "fiber": 6.2,
+        "sodium": 10240
+      },
+      {
+        "ingredientId": "curry_powder",
+        "ingredientName": "S&B Oriental Curry Powder",
+        "amount": 4,
+        "fdcId": 172155,
+        "calories": 13,
+        "protein": 0.5,
+        "totalFat": 0.6,
+        "saturatedFat": 0.1,
+        "carbohydrates": 2.3,
+        "sugar": 0.1,
+        "fiber": 1.3,
+        "sodium": 2.1
+      },
+      {
+        "ingredientId": "onions",
+        "ingredientName": "Yellow Onions",
+        "amount": 600,
+        "fdcId": 170000,
+        "calories": 240,
+        "protein": 6.6,
+        "totalFat": 0.6,
+        "saturatedFat": 0.3,
+        "carbohydrates": 56,
+        "sugar": 25.4,
+        "fiber": 10.2,
+        "sodium": 24
+      },
+      {
+        "ingredientId": "carrot",
+        "ingredientName": "Carrot (finely grated)",
+        "amount": 60,
+        "fdcId": 170393,
+        "calories": 24.6,
+        "protein": 0.6,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 5.7,
+        "sugar": 2.8,
+        "fiber": 1.7,
+        "sodium": 41.4
+      },
+      {
+        "ingredientId": "apple",
+        "ingredientName": "Fuji Apple (finely grated)",
+        "amount": 120,
+        "fdcId": 171688,
+        "calories": 62.4,
+        "protein": 0.3,
+        "totalFat": 0.2,
+        "saturatedFat": 0,
+        "carbohydrates": 16.6,
+        "sugar": 12.5,
+        "fiber": 2.9,
+        "sodium": 1.2
+      },
+      {
+        "ingredientId": "pork",
+        "ingredientName": "Pork Shoulder (small cubes)",
+        "amount": 300,
+        "fdcId": 167849,
+        "calories": 558,
+        "protein": 52.3,
+        "totalFat": 37.3,
+        "saturatedFat": 13.1,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 183
+      },
+      {
+        "ingredientId": "beef_broth",
+        "ingredientName": "Beef Broth (low-sodium)",
+        "amount": 1200,
+        "fdcId": 174256,
+        "calories": 84,
+        "protein": 13.7,
+        "totalFat": 2.6,
+        "saturatedFat": 1.3,
+        "carbohydrates": 0.5,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 4464
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water (for consistency)",
+        "amount": 360,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 14.4
+      },
+      {
+        "ingredientId": "butter",
+        "ingredientName": "Unsalted Butter",
+        "amount": 56,
+        "fdcId": 173430,
+        "calories": 401.5,
+        "protein": 0.5,
+        "totalFat": 45.4,
+        "saturatedFat": 28.8,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 6.2
+      },
+      {
+        "ingredientId": "oil",
+        "ingredientName": "Neutral Oil (for cooking)",
+        "amount": 30,
+        "fdcId": 171411,
+        "calories": 265.2,
+        "protein": 0,
+        "totalFat": 30,
+        "saturatedFat": 4.7,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0
+      },
+      {
+        "ingredientId": "mango_chutney",
+        "ingredientName": "Mango Chutney",
+        "amount": 40,
+        "fdcId": 0,
+        "calories": 100,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 24,
+        "sugar": 20,
+        "fiber": 0,
+        "sodium": 560
+      },
+      {
+        "ingredientId": "worcestershire",
+        "ingredientName": "Bull-Dog Worcestershire Sauce",
+        "amount": 20,
+        "fdcId": 171610,
+        "calories": 15.6,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 3.9,
+        "sugar": 2,
+        "fiber": 0,
+        "sodium": 196
+      },
+      {
+        "ingredientId": "chuno_sauce",
+        "ingredientName": "Bull-Dog Fruit & Vegetable Sauce",
+        "amount": 10,
+        "fdcId": 0,
+        "calories": 15,
+        "protein": 0.1,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 3.6,
+        "sugar": 3.6,
+        "fiber": 0,
+        "sodium": 560.5
+      },
+      {
+        "ingredientId": "soy_sauce",
+        "ingredientName": "Dark Soy Sauce (Kikkoman koikuchi)",
+        "amount": 23,
+        "fdcId": 174277,
+        "calories": 12.2,
+        "protein": 1.9,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 1.1,
+        "sugar": 0.1,
+        "fiber": 0.2,
+        "sodium": 1263.4
+      },
+      {
+        "ingredientId": "miso",
+        "ingredientName": "Red Miso Paste",
+        "amount": 12,
+        "fdcId": 172442,
+        "calories": 23.9,
+        "protein": 1.4,
+        "totalFat": 0.7,
+        "saturatedFat": 0.1,
+        "carbohydrates": 3.2,
+        "sugar": 0.7,
+        "fiber": 0.6,
+        "sodium": 447.4
+      },
+      {
+        "ingredientId": "instant_coffee",
+        "ingredientName": "Instant Coffee",
+        "amount": 2,
+        "fdcId": 171912,
+        "calories": 7.1,
+        "protein": 0.2,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 1.5,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.7
+      },
+      {
+        "ingredientId": "chocolate",
+        "ingredientName": "Dark Chocolate (70%+)",
+        "amount": 5,
+        "fdcId": 170273,
+        "calories": 29.9,
+        "protein": 0.4,
+        "totalFat": 2.1,
+        "saturatedFat": 1.2,
+        "carbohydrates": 2.3,
+        "sugar": 1.2,
+        "fiber": 0.5,
+        "sodium": 1
+      },
+      {
+        "ingredientId": "peanut_butter",
+        "ingredientName": "Peanut Butter (smooth, unsweetened)",
+        "amount": 16,
+        "fdcId": 172470,
+        "calories": 94.1,
+        "protein": 4,
+        "totalFat": 8.1,
+        "saturatedFat": 1.7,
+        "carbohydrates": 3.1,
+        "sugar": 1,
+        "fiber": 1,
+        "sodium": 2.7
+      },
+      {
+        "ingredientId": "rice_vinegar",
+        "ingredientName": "Rice Vinegar",
+        "amount": 15,
+        "fdcId": 173568,
+        "calories": 2.7,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.3
+      },
+      {
+        "ingredientId": "white_pepper",
+        "ingredientName": "White Pepper",
+        "amount": 0.5,
+        "fdcId": 170931,
+        "calories": 1.5,
+        "protein": 0.1,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.3,
+        "sugar": 0,
+        "fiber": 0.1,
+        "sodium": 0
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 6,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 2325.5
+      },
+      {
+        "ingredientId": "honey",
+        "ingredientName": "Honey",
+        "amount": 21,
+        "fdcId": 169640,
+        "calories": 63.8,
+        "protein": 0.1,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 17.3,
+        "sugar": 17.2,
+        "fiber": 0,
+        "sodium": 0.8
+      },
+      {
+        "ingredientId": "rice",
+        "ingredientName": "Short-Grain Rice (Tamanishiki)",
+        "amount": 480,
+        "fdcId": 169757,
+        "calories": 1718.4,
+        "protein": 31.2,
+        "totalFat": 2.5,
+        "saturatedFat": 0.7,
+        "carbohydrates": 379.9,
+        "sugar": 0,
+        "fiber": 13.4,
+        "sodium": 4.8
       }
     ]
   }
