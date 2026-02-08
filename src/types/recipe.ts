@@ -46,12 +46,20 @@ export interface RecipeNutrition {
   breakdown: IngredientNutrition[]
 }
 
+export interface SourcePhoto {
+  src: string
+  thumb: string
+  alt: string
+}
+
 export interface RecipeSource {
   name: string
   url?: string
   type?: 'original' | 'adapted' | 'inspired'
   author?: string
   accessed?: string
+  photos?: SourcePhoto[]
+  photoCredit?: string
 }
 
 export interface RecipeMeta {

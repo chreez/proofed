@@ -1,7 +1,30 @@
 {
   "meta": {
     "name": "Tartine Baguette",
-    "source": "Tartine Bread by Chad Robertson",
+    "source": {
+      "name": "Tartine Bread",
+      "url": "https://www.amazon.com/Tartine-Bread-Chad-Robertson/dp/0811870413",
+      "type": "adapted",
+      "author": "Chad Robertson",
+      "photoCredit": "Photos by Joseph, taken from the book",
+      "photos": [
+        {
+          "src": "/images/tartine-baguette/source/page-128-800w.webp",
+          "thumb": "/images/tartine-baguette/source/page-128-400w.webp",
+          "alt": "Tartine Bread pp. 128 — Baguette recipe introduction"
+        },
+        {
+          "src": "/images/tartine-baguette/source/page-129-800w.webp",
+          "thumb": "/images/tartine-baguette/source/page-129-400w.webp",
+          "alt": "Tartine Bread pp. 129 — Baguette formula and method"
+        },
+        {
+          "src": "/images/tartine-baguette/source/page-130-800w.webp",
+          "thumb": "/images/tartine-baguette/source/page-130-400w.webp",
+          "alt": "Tartine Bread pp. 130 — Baguette shaping and baking"
+        }
+      ]
+    },
     "yields": "2–3 baguettes",
     "total_time": "~12–16 hrs (2 hrs active)",
     "description": "The right balance of poolish, increased young leaven, and softer flour blend yields a baguette for the ages. Baked to a deep golden tone, this baguette has the toasty aroma of freshly popped corn."

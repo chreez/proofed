@@ -1,7 +1,12 @@
 {
   "meta": {
     "name": "ATK Cinnamon Buns",
-    "source": "America's Test Kitchen",
+    "source": {
+      "name": "America's Test Kitchen",
+      "url": "https://www.americastestkitchen.com/recipes/7582-quicker-cinnamon-buns",
+      "type": "adapted",
+      "author": "America's Test Kitchen"
+    },
     "yields": "8 buns",
     "total_time": "~1.5 hrs"
   },

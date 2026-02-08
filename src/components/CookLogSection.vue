@@ -38,7 +38,10 @@ function renderNotes(entry: CookLogEntry): string {
   // Next time section
   if (entry.next_time?.length) {
     md += '\n\n#### Next Time\n'
-    md += entry.next_time.map(n => `- ${n.text}`).join('\n')
+    md += entry.next_time.map(n => {
+      const sourceSuffix = n.source ? ` *(${n.source})*` : ''
+      return `- ${n.text}${sourceSuffix}`
+    }).join('\n')
   }
 
   return marked.parse(md) as string

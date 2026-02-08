@@ -1,7 +1,12 @@
 {
   "meta": {
     "name": "ATK Cinnamon Buns (Overnight)",
-    "source": "America's Test Kitchen (adapted)",
+    "source": {
+      "name": "America's Test Kitchen",
+      "url": "https://www.americastestkitchen.com/recipes/7582-quicker-cinnamon-buns",
+      "type": "adapted",
+      "author": "America's Test Kitchen"
+    },
     "yields": "8 buns",
     "total_time": "~14 hrs (Day 1: 2.5 hrs active, Day 2: 1.5 hrs)",
     "variant": "overnight"

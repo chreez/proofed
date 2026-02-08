@@ -6,6 +6,7 @@ const props = defineProps<{
   hasNutrition?: boolean
   hasCookLog: boolean
   hasChangeLog: boolean
+  hasSource: boolean
   currentStageId: string | null
   completedStageIds: string[]
 }>()
@@ -92,7 +93,7 @@ function handleDragEnd(): void {
         {{ stage.title }}
       </div>
 
-      <div v-if="hasNutrition || hasCookLog || hasChangeLog" class="my-2 h-px bg-stone-200" />
+      <div v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource" class="my-2 h-px bg-stone-200" />
 
       <div
         v-if="hasNutrition"
@@ -128,6 +129,18 @@ function handleDragEnd(): void {
         }"
       >
         Version History
+      </div>
+
+      <div
+        v-if="hasSource"
+        @click="handleNavigate('source')"
+        class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight"
+        :class="{
+          'text-accent font-medium': currentStageId === 'source',
+          'text-stone-500 hover:text-ink': currentStageId !== 'source'
+        }"
+      >
+        Source
       </div>
     </nav>
   </aside>
@@ -195,7 +208,7 @@ function handleDragEnd(): void {
             </li>
 
             <!-- Divider before extras -->
-            <li v-if="hasNutrition || hasCookLog || hasChangeLog" class="my-2 mx-4 h-px bg-stone-200" />
+            <li v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource" class="my-2 mx-4 h-px bg-stone-200" />
 
             <li v-if="hasNutrition">
               <button
@@ -233,6 +246,19 @@ function handleDragEnd(): void {
                 }"
               >
                 Version History
+              </button>
+            </li>
+
+            <li v-if="hasSource">
+              <button
+                @click="handleNavigate('source')"
+                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+                :class="{
+                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'source',
+                  'text-ink active:bg-stone-100': currentStageId !== 'source'
+                }"
+              >
+                Source
               </button>
             </li>
           </ul>
