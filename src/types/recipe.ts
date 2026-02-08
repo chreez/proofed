@@ -113,6 +113,11 @@ export interface StateNote {
   critical?: boolean
 }
 
+export interface NextTimeEntry {
+  text: string
+  source?: string
+}
+
 // Version tracking
 export interface ChangeLogEntry {
   version: string
@@ -133,7 +138,7 @@ export interface CookLogEntry {
   version: string
   notes: string[]
   step_notes?: Record<string, string>
-  next_time?: string[]
+  next_time?: NextTimeEntry[]
   photos?: CookLogPhoto[]
 }
 

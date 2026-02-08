@@ -80,11 +80,11 @@
         }
       ],
       "next_time": [
-        "Use **all AP flour** — no blending. Reduces variables.",
-        "Use **single yeast type** — no mixing instant + active dry",
-        "Roll dough more evenly into true square — end pieces were smaller due to uneven thickness, not cutting",
-        "Try pasta roller for consistent thickness? *Could be fun.*",
-        "Pyrex with foil lining works great — could skip foil but makes cleanup easier"
+        { "text": "Use **all AP flour** — no blending. Reduces variables." },
+        { "text": "Use **single yeast type** — no mixing instant + active dry" },
+        { "text": "Roll dough more evenly into true square — end pieces were smaller due to uneven thickness, not cutting" },
+        { "text": "Try pasta roller for consistent thickness? *Could be fun.*" },
+        { "text": "Pyrex with foil lining works great — could skip foil but makes cleanup easier" }
       ]
     }
   ],

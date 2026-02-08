@@ -8,7 +8,7 @@ describe('CookLogSection', () => {
       date: '2026-02-05',
       version: 'v1.0.0',
       notes: ['Note 1', 'Note 2'],
-      next_time: ['Try this next time']
+      next_time: [{ text: 'Try this next time' }]
     }],
     sectionId: 'cook-log-section'
   }
@@ -97,7 +97,7 @@ describe('CookLogSection', () => {
           date: '2026-02-05',
           version: 'v1.0.0',
           notes: [],
-          next_time: ['Try this']
+          next_time: [{ text: 'Try this' }]
         }],
         sectionId: 'cook-log-section'
       }
@@ -150,7 +150,7 @@ describe('HTML snapshot', () => {
           date: '2026-02-05',
           version: 'v1.0.0',
           notes: ['Note 1', 'Note 2'],
-          next_time: ['Try this next time']
+          next_time: [{ text: 'Try this next time' }]
         }],
         sectionId: 'cook-log-section'
       }
