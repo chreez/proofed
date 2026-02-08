@@ -1,10 +1,10 @@
 ---
 id: PF-38
 title: Verifiable source tracking for agent research
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 01:08'
-updated_date: '2026-02-08 00:02'
+updated_date: '2026-02-08 08:46'
 labels:
   - feature
 dependencies: []
@@ -19,8 +19,8 @@ Unified source/citation tracking for recipe data. Three scopes decomposed into s
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 All subtasks complete (PF-38.1, PF-38.2)
-- [ ] #2 PF-66 (research provenance schema) complete
+- [x] #1 All subtasks complete (PF-38.1, PF-38.2)
+- [x] #2 PF-66 (research provenance schema) complete
 - [ ] #3 PF-69 (recipe appendix UI) complete
 <!-- AC:END -->
 
@@ -62,3 +62,9 @@ interface NextTimeEntry {
 - PF-38.5: Validation checklist S-series
 - PF-38.6: next_time always-object migration
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+All subtasks complete for verifiable source tracking:\n\n- **PF-38.1** (spike): Researched citation schemas, proposed RecipeSource + NextTimeEntry\n- **PF-38.2**: Structured sources with photo gallery, TOC integration, attribution display\n- **PF-38.3**: Source normalizer — zero type guards in components\n- **PF-38.4**: Closed as duplicate (copy features unaffected)\n- **PF-38.5**: S-series validation checks (S1-S5) + V4 update\n- **PF-38.6**: next_time migrated from string[] to NextTimeEntry[]\n- **PF-66**: Research provenance schema (Confidence, Research, ResearchTechnique types + ingredient-level provenance)\n\nRemaining downstream: PF-69 (recipe appendix UI) tracks separately.
+<!-- SECTION:FINAL_SUMMARY:END -->
