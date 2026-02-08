@@ -57,7 +57,17 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | V1 | Notes are first-person experience | `notes` and `step_notes` must describe what the user ACTUALLY did, not suggestions or hypotheticals |
 | V2 | Suggestions go in next_time | Untested ideas belong in `next_time` array, not presented as experience |
 | V3 | Agent suggestions marked | If agent suggests an improvement, it should be prefixed with "Try:" or "Consider:" and NOT written as if user did it |
-| V4 | Sources for suggestions | External suggestions (from research, other recipes) should cite source when possible |
+| V4 | Sources for suggestions | External suggestions (from research, other recipes) should cite source via `next_time[].source` field |
+
+## Source Schema Checks
+
+| ID | Check | Criteria | Files to Verify |
+|----|-------|----------|-----------------|
+| S1 | meta.source is object | `meta.source` is an object with required `name` (non-empty string) | `public/recipes/*.json` |
+| S2 | source.url valid format | `meta.source.url` is a valid URL when present | `public/recipes/*.json` |
+| S3 | source.type valid enum | `meta.source.type` is one of `original`, `adapted`, `inspired` when present | `public/recipes/*.json` |
+| S4 | next_time items structured | `next_time[]` items are objects with required non-empty `text` field | `public/recipes/*.json` |
+| S5 | next_time source non-empty | `next_time[].source` is a non-empty string when present | `public/recipes/*.json` |
 
 ## Feature-Specific Checks
 
@@ -121,8 +131,9 @@ When running validation:
 
 1. Read this checklist first
 2. For each check category, spawn appropriate subagent:
-   - **Design checks (D1-D11)**: Read recipe JSON and component files, verify compliance
+   - **Design checks (D1-D15)**: Read recipe JSON and component files, verify compliance
    - **Recipe accuracy (R1-R8)**: Compare recipe JSON against original source text
+   - **Source schema (S1-S5)**: Verify structured source fields in recipe JSON
    - **Feature checks (F1-Fn)**: Verify feature implementation in relevant files
 
 3. Report format:

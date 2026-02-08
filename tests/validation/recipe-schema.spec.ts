@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 import { readFileSync, readdirSync, existsSync } from 'fs'
 import { join } from 'path'
-import type { Recipe, RecipeManifest, Ingredient } from '@/types/recipe'
+import type { Recipe, RecipeManifest, Ingredient, CookLogEntry } from '@/types/recipe'
 
 // Helper to load all recipe files (excluding index.json)
 function loadAllRecipes(): Array<{ id: string } & Recipe> {
@@ -186,6 +186,99 @@ describe('Recipe JSON Validation', () => {
               `First gather section should be on a PREP stage, found on "${stage.id}"`
             ).toBe(true)
             firstGatherFound = true
+          }
+        }
+      }
+    })
+
+    // S1: meta.source is object with required name field
+    it('has meta.source as object with non-empty name', () => {
+      expect(
+        recipe.meta.source,
+        'meta.source is missing'
+      ).toBeDefined()
+
+      expect(
+        typeof recipe.meta.source,
+        'meta.source must be an object'
+      ).toBe('object')
+
+      expect(
+        recipe.meta.source!.name,
+        'meta.source.name is missing'
+      ).toBeDefined()
+
+      expect(
+        recipe.meta.source!.name.trim().length > 0,
+        'meta.source.name must be non-empty'
+      ).toBe(true)
+    })
+
+    // S2: meta.source.url is valid URL format when present
+    it('has valid URL format for meta.source.url when present', () => {
+      if (recipe.meta.source?.url) {
+        expect(
+          () => new URL(recipe.meta.source!.url!),
+          `meta.source.url "${recipe.meta.source.url}" is not a valid URL`
+        ).not.toThrow()
+      }
+    })
+
+    // S3: meta.source.type is valid enum when present
+    it('has valid source type enum when present', () => {
+      const validTypes = ['original', 'adapted', 'inspired']
+      if (recipe.meta.source?.type) {
+        expect(
+          validTypes.includes(recipe.meta.source.type),
+          `meta.source.type "${recipe.meta.source.type}" must be one of: ${validTypes.join(', ')}`
+        ).toBe(true)
+      }
+    })
+
+    // S4: next_time[] items are objects with required text field
+    it('has structured next_time entries with non-empty text', () => {
+      if (recipe.cook_log) {
+        for (const entry of recipe.cook_log) {
+          if (entry.next_time) {
+            for (const item of entry.next_time) {
+              expect(
+                typeof item,
+                'next_time entry must be an object'
+              ).toBe('object')
+
+              expect(
+                item.text,
+                'next_time entry is missing text field'
+              ).toBeDefined()
+
+              expect(
+                item.text.trim().length > 0,
+                'next_time entry has empty text'
+              ).toBe(true)
+            }
+          }
+        }
+      }
+    })
+
+    // S5: next_time[].source is non-empty string when present
+    it('has non-empty source string on next_time entries when present', () => {
+      if (recipe.cook_log) {
+        for (const entry of recipe.cook_log) {
+          if (entry.next_time) {
+            for (const item of entry.next_time) {
+              if (item.source !== undefined) {
+                expect(
+                  typeof item.source,
+                  `next_time source must be a string, got ${typeof item.source}`
+                ).toBe('string')
+
+                expect(
+                  item.source.trim().length > 0,
+                  'next_time source must be non-empty when present'
+                ).toBe(true)
+              }
+            }
           }
         }
       }
