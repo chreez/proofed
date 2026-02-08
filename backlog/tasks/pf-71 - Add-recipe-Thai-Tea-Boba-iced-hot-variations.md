@@ -1,10 +1,10 @@
 ---
 id: PF-71
 title: 'Add recipe: Thai Tea Boba (iced + hot variations)'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 23:32'
-updated_date: '2026-02-08 10:53'
+updated_date: '2026-02-08 11:00'
 labels:
   - recipe
 dependencies:
@@ -41,3 +41,9 @@ New recipe from comprehensive 16-source research synthesis. Two variations: iced
 <!-- SECTION:NOTES:BEGIN -->
 ## Source Material\n\nFull 16-source research synthesis stored as backlog document doc-1.\n\n## Key Notes\n- First multi-source agent-researched recipe — test case for PF-66 (provenance schema)\n- Two variations: iced (standard) + hot\n- Recipe uses volumetric measurements from sources — will need gram conversion for proofed. schema\n- No baking involved — this is a beverage recipe, may need schema consideration (no stages like RISE/BAKE/COOL)\n- Tapioca pearl timing is critical — states should emphasize the 2-hour window"
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+First beverage recipe added. Thai Tea Boba (ChaTraMue base, 2 servings) with 6 stages, 14 states, all grams. Hot variation inline via notes. 2-hour boba critical constraint modeled. 6 primary + 10 secondary sources in provenance/research blocks. D4 checklist updated to \"timer on passive/waiting states\" (was RISE/BAKE/COOL), D7 updated to \"gather on stages introducing new ingredients\" (was first stage only). Validation test patterns broadened for beverage states.
+<!-- SECTION:FINAL_SUMMARY:END -->
