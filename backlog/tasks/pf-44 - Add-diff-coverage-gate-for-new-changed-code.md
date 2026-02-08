@@ -1,10 +1,10 @@
 ---
 id: PF-44
 title: Add diff-coverage gate for new/changed code
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 02:32'
-updated_date: '2026-02-08 10:25'
+updated_date: '2026-02-08 10:33'
 labels:
   - infra
 dependencies:
@@ -28,3 +28,9 @@ Wire up diff-test-coverage (or similar) to enforce higher coverage thresholds (e
 - [ ] #6 Failure output clearly identifies which uncovered new/changed lines missed the threshold
 - [ ] #7 `npm run build` passes
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Installed `@connectis/diff-test-coverage` and added `scripts/diff-coverage.sh` that enforces ≥90% line, ≥80% branch/function coverage on new/changed source lines. Runs after vitest coverage in `prebuild`, so it flows through the pre-commit hook. Smart diff detection (staged vs working tree). Skips cleanly for non-source commits (backlog, docs, config). Added `lcov` reporter to vitest config.
+<!-- SECTION:FINAL_SUMMARY:END -->
