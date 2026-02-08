@@ -1,0 +1,867 @@
+{
+  "meta": {
+    "name": "CoCo Ichibanya-Style Japanese Curry",
+    "source": {
+      "name": "Multi-Agent Research Synthesis",
+      "type": "original",
+      "author": "proofed. research (9 agents, 60+ sources)"
+    },
+    "yields": "4-6 servings",
+    "total_time": "~24 hrs (90 min active)",
+    "description": "A smooth, pourable Japanese curry modeled after CoCo Ichibanya — the world's largest curry chain. Built from 60+ sources including factory tours, retail product labels, and copycat recipes. The sauce is completely chunk-free (sara-sara style), with layers of hidden flavor from caramelized onions, grated apple, mango chutney, instant coffee, and dark chocolate. Mandatory overnight rest transforms it."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-08",
+      "summary": "Initial recipe synthesized from 9-agent research across 60+ sources (recipe blogs, factory tours, retail labels, Reddit threads)"
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Heavy-Bottom Pot (5L+)",
+      "reuse": "Caramelize onions -> build curry -> blend -> rest overnight -> reheat"
+    },
+    {
+      "id": "V2",
+      "name": "Small Frying Pan",
+      "reuse": "Fry onions -> freed"
+    },
+    {
+      "id": "V3",
+      "name": "Small Bowl",
+      "reuse": "Dissolve coffee -> freed -> mix seasonings"
+    },
+    {
+      "id": "V4",
+      "name": "Ladle",
+      "reuse": "Dissolve roux -> serve curry"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Heavy-Bottom Pot (5L+)",
+          "Small Frying Pan",
+          "Small Bowl",
+          "Ladle"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Box Grater or Microplane",
+          "Immersion Blender",
+          "Chopsticks (for dissolving roux)",
+          "Cutting Board",
+          "Chef's Knife",
+          "Wooden Spoon",
+          "Paper Towels"
+        ],
+        "ingredients": [
+          {
+            "id": "curry_roux",
+            "name": "House Foods Java Curry (Medium Hot)",
+            "total": 200,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S3, S13, S17 — 7/7 agents; House Foods corporate connection to CoCo Ichibanya (2015 acquisition)",
+            "confidence": "high",
+            "rationale": "Java Curry is manufactured by House Foods, which owns 51% of CoCo Ichibanya. Saigen Daisuke (Japanese recipe recreator) and SoraNews24 native recipe both specify Java Curry Medium Hot."
+          },
+          {
+            "id": "curry_powder",
+            "name": "S&B Oriental Curry Powder",
+            "total": 4,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S2, S40 — 6/7 agents recommend additional curry powder beyond roux",
+            "confidence": "high",
+            "rationale": "Additional 2 tsp beyond roux blocks boosts spice complexity. S&B red can is the standard Japanese curry powder."
+          },
+          {
+            "id": "onions",
+            "name": "Yellow Onions",
+            "total": 600,
+            "unit": "g",
+            "breakdown": [
+              { "label": "caramelize (thinly sliced)", "amount": 300 },
+              { "label": "deep-fry (thinly sliced)", "amount": 120 },
+              { "label": "saute with pork (finely diced)", "amount": 180 }
+            ],
+            "sourcedFrom": "S1, S2, S3, S19 — 7/7 agents; factory confirms 'onion saute' as separate listed ingredient",
+            "confidence": "high",
+            "rationale": "Triple onion treatment (caramelized + fried + raw) creates three dimensions of onion flavor. Okonomi Kitchen technique, supported by CoCo factory process listing sauteed onion as distinct ingredient."
+          },
+          {
+            "id": "carrot",
+            "name": "Carrot (finely grated)",
+            "total": 60,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S19, S20 — 4/7 agents; factory process confirms vegetables added during simmering",
+            "confidence": "medium",
+            "rationale": "Dissolves into sauce for sweetness without leaving chunks. Factory process adds vegetables 10 min after pork."
+          },
+          {
+            "id": "apple",
+            "name": "Fuji Apple (finely grated)",
+            "total": 120,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S2, S3, S4, S23 — 7/7 agents; retail labels confirm apple allergen across all products",
+            "confidence": "high",
+            "rationale": "Universal across all sources and confirmed by CoCo retail product allergen labeling. Fuji or Gala preferred for balanced sweetness."
+          },
+          {
+            "id": "pork",
+            "name": "Pork Shoulder (small cubes)",
+            "total": 300,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S3, S19, S20 — factory footage shows pork simmered as first protein step",
+            "confidence": "medium",
+            "rationale": "CoCo's pork curry is the baseline. Factory process: pork simmered 25 min before vegetables. Shoulder provides fat and flavor that blends into the sauce."
+          },
+          {
+            "id": "beef_broth",
+            "name": "Beef Broth (low-sodium)",
+            "total": 1200,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S26 — CoCo employee confirmed beef stock; S1, S10 use chicken stock as alternative",
+            "confidence": "low",
+            "rationale": "CoCo employee (Reddit, u/jacobw4473) specifically confirmed beef stock, contradicting most copycat recipes that use chicken. Using beef for authenticity."
+          },
+          {
+            "id": "water",
+            "name": "Water (for consistency)",
+            "total": 360,
+            "unit": "g",
+            "breakdown": [
+              { "label": "initial simmer", "amount": 240 },
+              { "label": "consistency adjustment", "amount": 120 }
+            ],
+            "sourcedFrom": "S3, S45 — SoraNews24 native recipe emphasizes thinner, pourable consistency",
+            "confidence": "medium",
+            "rationale": "CoCo curry is thinner than typical homemade Japanese curry. Higher water ratio is 'necessary to bring out the smooth flavor found at Coco Ichi' (SoraNews24)."
+          },
+          {
+            "id": "butter",
+            "name": "Unsalted Butter",
+            "total": 56,
+            "unit": "g",
+            "breakdown": [
+              { "label": "caramelize onions", "amount": 28 },
+              { "label": "finishing (cold)", "amount": 28 }
+            ],
+            "sourcedFrom": "S2, S26 — CoCo employee confirmed butter; Jecca Chantilly finishing technique",
+            "confidence": "high",
+            "rationale": "Employee confirmed butter is used. Cold butter finish adds richness and gloss — a French technique applied to Japanese curry."
+          },
+          {
+            "id": "oil",
+            "name": "Neutral Oil (for cooking)",
+            "total": 30,
+            "unit": "g",
+            "breakdown": [
+              { "label": "caramelize onions", "amount": 15 },
+              { "label": "deep-fry onions", "amount": 15 }
+            ],
+            "sourcedFrom": "S1, S2 — standard cooking medium across all recipes",
+            "confidence": "high",
+            "rationale": "Mixed with butter for caramelizing (prevents burning). Separate oil for frying onions."
+          },
+          {
+            "id": "mango_chutney",
+            "name": "Mango Chutney",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S3, S23, S50 — 7/7 agents; retail labels confirm 'fruit chutney' in keema curry",
+            "confidence": "high",
+            "rationale": "Universal across sources. Retail labels explicitly list fruit chutney. SoraNews24: 'brings flavor closer to CoCo.' Major Grey's or similar."
+          },
+          {
+            "id": "worcestershire",
+            "name": "Bull-Dog Worcestershire Sauce",
+            "total": 20,
+            "unit": "g",
+            "breakdown": [
+              { "label": "during simmer", "amount": 20 }
+            ],
+            "sourcedFrom": "S1, S2, S23, S39 — 7/7 agents; retail label explicitly lists Worcestershire sauce",
+            "confidence": "high",
+            "rationale": "Confirmed on CoCo retail product labels. Bull-Dog is the standard Japanese Worcestershire brand."
+          },
+          {
+            "id": "chuno_sauce",
+            "name": "Bull-Dog Fruit & Vegetable Sauce",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S2, S39 — 4/7 agents; distinct from Worcestershire, adds fruity sweetness",
+            "confidence": "medium",
+            "rationale": "Chuno (medium-thick) sauce is distinct from Worcestershire — fruitier and sweeter. Substitute with ketchup if unavailable."
+          },
+          {
+            "id": "soy_sauce",
+            "name": "Dark Soy Sauce (Kikkoman koikuchi)",
+            "total": 23,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S2, S4 — 5/7 agents recommend for color and umami depth",
+            "confidence": "medium",
+            "rationale": "Standard Japanese dark (koikuchi) soy sauce. Adds color depth that partially compensates for CoCo's industrial caramel coloring."
+          },
+          {
+            "id": "miso",
+            "name": "Red Miso Paste",
+            "total": 12,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1 — 4/7 agents; Okonomi Kitchen recipe",
+            "confidence": "medium",
+            "rationale": "Fermented umami without adding liquid volume. Red (aka) miso preferred over white for deeper flavor."
+          },
+          {
+            "id": "instant_coffee",
+            "name": "Instant Coffee",
+            "total": 2,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S13, S35, S36 — 7/7 agents; Japanese survey ranked coffee #2 secret curry ingredient",
+            "confidence": "high",
+            "rationale": "1 tsp dissolved in hot water. Saigen Daisuke uses it. Japanese home cook survey (Hypebeast/Calbee) ranked coffee as #2 hidden curry ingredient. Multiple reviewers warn: do NOT exceed 1 tsp."
+          },
+          {
+            "id": "chocolate",
+            "name": "Dark Chocolate (70%+)",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S4, S36 — 5/7 agents; Japanese survey ranked chocolate #3 secret curry ingredient",
+            "confidence": "medium",
+            "rationale": "Adds depth, color, and subtle bitterness. Japanese home cook survey ranked chocolate #3 hidden curry ingredient. Finely chopped so it melts instantly."
+          },
+          {
+            "id": "peanut_butter",
+            "name": "Peanut Butter (smooth, unsweetened)",
+            "total": 16,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S23 — 4/7 agents; retail labels list peanuts as allergen in standard roux",
+            "confidence": "medium",
+            "rationale": "Peanut allergen confirmed across all standard CoCo products but absent from vegetable/care variants — indicating peanuts are in the standard roux itself."
+          },
+          {
+            "id": "rice_vinegar",
+            "name": "Rice Vinegar",
+            "total": 15,
+            "unit": "g",
+            "breakdown": [
+              { "label": "during simmer", "amount": 8 },
+              { "label": "final seasoning", "amount": 7 }
+            ],
+            "sourcedFrom": "S1 — 4/7 agents; Okonomi Kitchen recipe",
+            "confidence": "medium",
+            "rationale": "Small amount adds brightness and tang. Divided addition: half during cooking (mellows), half at end (brightness)."
+          },
+          {
+            "id": "white_pepper",
+            "name": "White Pepper",
+            "total": 0.5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S1, S2 — 5/7 agents specify white pepper, NOT black",
+            "confidence": "medium",
+            "rationale": "S&B white pepper specifically. White pepper gives a different heat profile than black — more aromatic, less sharp. Consistent with Japanese curry tradition."
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 6,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "General — adjust to taste after blending",
+            "confidence": "high",
+            "rationale": "Starting amount; roux, broth, soy sauce, and Worcestershire all contribute sodium. Taste and adjust after blending."
+          },
+          {
+            "id": "honey",
+            "name": "Honey",
+            "total": 21,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S4 — 3/7 agents; EatHealthy365 copycat recipe",
+            "confidence": "low",
+            "rationale": "Optional sweetener. Vermont Curry already contains honey — reduce or omit if blending roux brands. 1 tbsp."
+          },
+          {
+            "id": "rice",
+            "name": "Short-Grain Rice (Tamanishiki)",
+            "total": 480,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "S43 — Just One Cookbook rice guide; standard CoCo serving style",
+            "confidence": "high",
+            "rationale": "Japanese short-grain rice is non-negotiable. 480g uncooked yields roughly 300g cooked per serving for 4-6 people."
+          }
+        ]
+      },
+      "states": [
+        "PREP_WORKSPACE"
+      ]
+    },
+    {
+      "id": "ONION_BASE",
+      "title": "Onion Base",
+      "gather": null,
+      "states": [
+        "CARAMELIZE_ONIONS",
+        "FRY_ONIONS"
+      ]
+    },
+    {
+      "id": "BUILD_CURRY",
+      "title": "Build the Curry",
+      "gather": null,
+      "states": [
+        "SEAR_PORK",
+        "ADD_AROMATICS",
+        "SIMMER_BROTH"
+      ]
+    },
+    {
+      "id": "ADD_ROUX",
+      "title": "Add Roux",
+      "gather": null,
+      "states": [
+        "KILL_HEAT",
+        "DISSOLVE_ROUX",
+        "SEASON_SIMMER"
+      ]
+    },
+    {
+      "id": "BLEND_SEASON",
+      "title": "Blend & Season",
+      "gather": null,
+      "states": [
+        "BLEND_SMOOTH",
+        "ADD_HIDDEN_FLAVORS",
+        "ADJUST_CONSISTENCY",
+        "FINISH_BUTTER"
+      ]
+    },
+    {
+      "id": "REST",
+      "title": "Overnight Rest",
+      "gather": null,
+      "states": [
+        "COOL_AND_REST"
+      ]
+    },
+    {
+      "id": "SERVE",
+      "title": "Serve",
+      "gather": null,
+      "states": [
+        "COOK_RICE",
+        "REHEAT_CURRY",
+        "PLATE_AND_SERVE"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out all ingredients. Thinly slice 300g onions for caramelizing. Thinly slice 120g onions for frying. Finely dice 180g onions for the pot. Finely grate the carrot and apple. Cut pork into 2cm cubes. Dissolve 2g instant coffee in 15g hot water. Finely chop chocolate.",
+      "duration_min": 20,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients prepped: onions sliced/diced in three groups, carrot and apple grated, pork cubed, coffee dissolved, chocolate chopped",
+      "notes": [
+        {
+          "text": "Keep the three onion portions separate — they enter the recipe at different times via different techniques",
+          "critical": true
+        },
+        {
+          "text": "Grate apple last to prevent browning, or toss in a splash of rice vinegar",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "CARAMELIZE_ONIONS",
+      "title": "Caramelize Onions",
+      "direction": "In heavy-bottom pot (V1), melt 28g butter with 15g oil over medium-low heat. Add 300g sliced onions. Cook 35-45 minutes, stirring every 5 minutes, until dark brown and jam-like. Do not rush — this is where 90% of the authentic flavor is born.",
+      "duration_min": 45,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter", "amount": "28g" },
+        { "name": "Oil", "amount": "15g" },
+        { "name": "Onions (sliced)", "amount": "300g" }
+      ],
+      "exit_condition": "Onions are dark brown, reduced to a jam-like paste, deeply caramelized with no raw onion smell",
+      "notes": [
+        {
+          "text": "Jecca Chantilly: '90% of the authentic flavor is born here.' Do not shortcut this step.",
+          "critical": true
+        },
+        {
+          "text": "If onions start to stick, deglaze with a splash of water and scrape up the fond",
+          "critical": false
+        },
+        {
+          "text": "CoCo factory lists 'onion saute' as a separate ingredient from raw onion — the caramelization IS the flavor",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "FRY_ONIONS",
+      "title": "Deep-Fry Onion Crisps",
+      "direction": "In small frying pan (V2), heat 15g oil over medium-high heat. Add 120g thinly sliced onions. Fry until golden brown and crispy, 8-10 minutes, stirring frequently. Transfer to paper towels to drain.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Oil", "amount": "15g" },
+        { "name": "Onions (sliced)", "amount": "120g" }
+      ],
+      "exit_condition": "Onions are golden brown and crispy, draining on paper towels",
+      "notes": [
+        {
+          "text": "Optional step from Okonomi Kitchen — adds a third dimension of onion flavor (sweet-crunchy vs jam vs fresh)",
+          "critical": false
+        },
+        {
+          "text": "Start this during the last 15 minutes of caramelizing if doing both",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "SEAR_PORK",
+      "title": "Sear Pork and Diced Onions",
+      "direction": "In the same pot (V1) with caramelized onions, add 180g diced onions and 300g pork cubes. Cook 5 minutes over medium heat until pork is seared on all sides and onions are softened.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Onions (diced)", "amount": "180g" },
+        { "name": "Pork Shoulder", "amount": "300g" }
+      ],
+      "exit_condition": "Pork seared on all sides, diced onions translucent",
+      "notes": [
+        {
+          "text": "The pork will be blended later — searing is for Maillard flavor, not texture",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "ADD_AROMATICS",
+      "title": "Add Carrot and Apple",
+      "direction": "Add 60g grated carrot and 120g grated apple to the pot. Cook 2-3 minutes until apple liquid evaporates and mixture is fragrant.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Carrot (grated)", "amount": "60g" },
+        { "name": "Apple (grated)", "amount": "120g" }
+      ],
+      "exit_condition": "Apple liquid has mostly evaporated, mixture is fragrant and thickened slightly",
+      "notes": [
+        {
+          "text": "The carrot and apple dissolve completely during blending — they add sweetness, not texture",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "SIMMER_BROTH",
+      "title": "Simmer in Broth",
+      "direction": "Add 1200g beef broth and 240g water. Add fried onion crisps (if using), 40g mango chutney, and 16g peanut butter. Bring to a boil, then reduce to a gentle simmer. Cook 15-20 minutes.",
+      "duration_min": 20,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Beef Broth", "amount": "1200g" },
+        { "name": "Water", "amount": "240g" },
+        { "name": "Fried Onion Crisps", "amount": "120g" },
+        { "name": "Mango Chutney", "amount": "40g" },
+        { "name": "Peanut Butter", "amount": "16g" }
+      ],
+      "exit_condition": "Pork is tender, liquid is simmering gently, 15-20 minutes elapsed",
+      "notes": [
+        {
+          "text": "Skim any scum that rises to the surface during the first few minutes of simmering",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "KILL_HEAT",
+      "title": "Turn Off Heat",
+      "direction": "Turn off the heat completely. Wait 1 minute for the liquid to stop bubbling. This prevents the roux from clumping.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Heat is off, liquid has stopped actively bubbling",
+      "notes": [
+        {
+          "text": "CoCo factory process confirms: heat OFF, then roux added. This is how they prevent lumps at industrial scale.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "DISSOLVE_ROUX",
+      "title": "Dissolve Roux",
+      "direction": "Break 200g Java Curry roux into small pieces. Place a few pieces in a ladle (V4), submerge in the hot broth, and dissolve with chopsticks. Stir dissolved roux back into the pot. Repeat until all roux is dissolved.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Java Curry Roux", "amount": "200g" }
+      ],
+      "exit_condition": "All roux dissolved, no visible lumps, sauce is thickening",
+      "notes": [
+        {
+          "text": "The ladle technique is the Japanese standard — do not just throw blocks into the pot",
+          "critical": true
+        },
+        {
+          "text": "Use chopsticks to stir inside the ladle until each piece is fully dissolved before adding more",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "SEASON_SIMMER",
+      "title": "Season and Simmer",
+      "direction": "Return pot to low heat. Add 4g S&B curry powder, 20g Worcestershire sauce, 10g chuno sauce, 23g dark soy sauce, 12g red miso paste, 8g rice vinegar, and 21g honey. Stir well to combine. Simmer gently for 10 minutes, stirring occasionally.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "S&B Curry Powder", "amount": "4g" },
+        { "name": "Worcestershire Sauce", "amount": "20g" },
+        { "name": "Chuno Sauce", "amount": "10g" },
+        { "name": "Dark Soy Sauce", "amount": "23g" },
+        { "name": "Red Miso Paste", "amount": "12g" },
+        { "name": "Rice Vinegar", "amount": "8g" },
+        { "name": "Honey", "amount": "21g" }
+      ],
+      "exit_condition": "All seasonings incorporated, curry has simmered 10 minutes and flavors are melding",
+      "notes": [
+        {
+          "text": "The miso should be dissolved in a small amount of the curry liquid before adding to prevent lumps",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "BLEND_SMOOTH",
+      "title": "Blend Until Completely Smooth",
+      "direction": "Using an immersion blender, blend the curry until completely smooth. No visible chunks of any kind. This is the single most important step — CoCo curry is defined by its 'sara-sara' (smooth-flowing) texture.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curry is completely smooth with zero visible chunks — when lifted on a spoon, it flows in a thin, even stream",
+      "notes": [
+        {
+          "text": "THE defining CoCo characteristic. All 7 research agents agree: no visible chunks whatsoever. Blend longer than you think necessary.",
+          "critical": true
+        },
+        {
+          "text": "If you do not have an immersion blender, transfer in batches to a regular blender (careful with hot liquid)",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "ADD_HIDDEN_FLAVORS",
+      "title": "Add Kakushi Aji (Hidden Flavors)",
+      "direction": "Add the dissolved instant coffee (2g in 15g water), 5g chopped dark chocolate, and 0.5g white pepper. Stir until chocolate is completely melted and incorporated.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Instant Coffee (dissolved)", "amount": "2g" },
+        { "name": "Dark Chocolate (chopped)", "amount": "5g" },
+        { "name": "White Pepper", "amount": "0.5g" }
+      ],
+      "exit_condition": "Chocolate fully melted, coffee and pepper incorporated, curry has a subtle depth",
+      "notes": [
+        {
+          "text": "These 'hidden flavors' (kakushi aji) should not be individually detectable — they add depth without announcing themselves",
+          "critical": false
+        },
+        {
+          "text": "Do NOT exceed 1 tsp (2g) instant coffee — multiple sources warn it becomes overpowering",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "ADJUST_CONSISTENCY",
+      "title": "Adjust Consistency and Season",
+      "direction": "Add remaining 7g rice vinegar and 6g salt. Taste and adjust. Add up to 120g water to thin the curry — it should be pourable, thinner than typical homemade Japanese curry. Think gravy consistency, not stew.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Rice Vinegar", "amount": "7g" },
+        { "name": "Salt", "amount": "6g" },
+        { "name": "Water (as needed)", "amount": "up to 120g" }
+      ],
+      "exit_condition": "Curry is pourable (gravy consistency), seasoning is balanced — sweet, savory, slightly tangy with no single flavor dominating",
+      "notes": [
+        {
+          "text": "SoraNews24: higher water ratio is 'necessary to bring out the smooth flavor found at Coco Ichi'",
+          "critical": false
+        },
+        {
+          "text": "The curry will thicken overnight — err on the side of slightly too thin now",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "FINISH_BUTTER",
+      "title": "Finish with Cold Butter",
+      "direction": "Remove pot from heat. Cut 28g cold butter into small pieces and stir into the curry until melted and the surface is glossy.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter (cold)", "amount": "28g" }
+      ],
+      "exit_condition": "Butter fully melted, curry surface has a rich glossy sheen",
+      "notes": [
+        {
+          "text": "Cold butter emulsifies into the sauce for richness — this is the French 'monter au beurre' technique applied to curry",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "COOL_AND_REST",
+      "title": "Cool and Rest Overnight",
+      "direction": "Let curry cool to room temperature. Transfer to refrigerator and rest overnight (minimum 8 hours, ideally 12-24 hours). CoCo's factory ages their curry at -25 C for one full week. Our overnight rest is the home approximation.",
+      "duration_min": 720,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curry has rested in refrigerator for at least 8 hours",
+      "notes": [
+        {
+          "text": "This step is NON-NEGOTIABLE for authentic flavor. Multiple sources: 'curry tastes even better the next day.' CoCo factory leadership calls their -25 C freezing 'a cooking process, not storage.'",
+          "critical": true
+        },
+        {
+          "text": "For even deeper flavor, rest 2-3 days. Some sources suggest freeze-thaw cycling to partially replicate CoCo's industrial aging.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "COOK_RICE",
+      "title": "Cook Rice and Rest",
+      "direction": "Wash 480g short-grain rice until water runs clear. Cook according to your rice cooker or pot instructions. Let steam 10 minutes after cooking.",
+      "duration_min": 40,
+      "timer": true,
+      "parallel": true,
+      "components": [
+        { "name": "Short-Grain Rice", "amount": "480g" }
+      ],
+      "exit_condition": "Rice is cooked, fluffy, and has rested 10 minutes",
+      "notes": [
+        {
+          "text": "Tamanishiki or Koshihikari are the standard Japanese varieties. Do not use jasmine or basmati.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "REHEAT_CURRY",
+      "title": "Reheat Curry",
+      "direction": "Transfer chilled curry to pot. Reheat gently over medium-low heat, stirring frequently. Add a splash of water if the curry has thickened too much overnight. Target: pourable gravy consistency.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curry is heated through, steaming, and at the right pourable consistency",
+      "notes": [
+        {
+          "text": "Do not boil — gentle heat preserves the complex layered flavors built during the rest",
+          "critical": true
+        },
+        {
+          "text": "SoraNews24 native recipe suggests a cool-and-reheat cycle: turn off, let cool slightly, then rewarm for even deeper flavor",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "PLATE_AND_SERVE",
+      "title": "Plate and Serve",
+      "direction": "Using a rice paddle, mold a dome of rice on one side of each plate or shallow bowl. Ladle curry alongside the rice (not over it). Serve with fukujinzuke (pickled vegetables) on the side. Top with tonkatsu or chicken katsu if desired.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Rice molded on one side, curry ladled alongside, fukujinzuke served on the side",
+      "notes": [
+        {
+          "text": "CoCo-style plating: rice on one side, curry on the other — not poured over. This lets the diner control the ratio.",
+          "critical": false
+        },
+        {
+          "text": "Fukujinzuke (pickled daikon, eggplant, lotus root, cucumber in soy sauce) is the traditional CoCo condiment",
+          "critical": false
+        }
+      ]
+    }
+  ],
+  "research": {
+    "strategy": "9 parallel search agents using 6 distinct strategies plus 3 targeted follow-ups. Strategies covered: recipe blog aggregation, Reddit/forum mining, YouTube creator analysis, Japanese-language industry reporting, manufacturer/retail product label analysis, and primary source (CoCo employee, factory tour) verification. Cross-referenced ingredient confidence across all agents to build tiered provenance.",
+    "sourceCount": 64,
+    "date": "2026-02-07",
+    "sources": [
+      { "name": "Okonomi Kitchen — CoCo Ichibanya Curry (Vegan)", "url": "https://www.okonomikitchen.com/coco-ichibanya-style-japanese-curry-vegan/", "type": "adapted", "author": "Lisa Kitahara" },
+      { "name": "Jecca Chantilly — CoCo Ichibanya Curry Recipe", "url": "https://jeccachantilly.com/coco-ichibanya-curry-recipe/", "type": "adapted", "author": "Jecca Chantilly" },
+      { "name": "SoraNews24 — Native Japanese Curry Recipe", "url": "https://soranews24.com/2013/04/26/take-it-from-a-native-recipe-for-delicious-japanese-curry-as-found-at-coco-ichiban/", "type": "adapted", "author": "SoraNews24 staff" },
+      { "name": "EatHealthy365 — CoCo Ichibanya Copycat", "url": "https://eathealthy365.com/how-to-make-japanese-coco-ichibanya-curry-at-home-copycat/", "type": "adapted", "author": "Silas" },
+      { "name": "EatHealthy365 — CoCo Ingredient Analysis", "url": "https://eathealthy365.com/what-s-really-in-coco-ichibanya-s-famous-curry-mix/", "type": "inspired" },
+      { "name": "Cookpad — CoCo Curry Recipe (Yukoahi)", "url": "https://cookpad.com/eng/recipes/19553245", "type": "adapted", "author": "Yukoahi" },
+      { "name": "Pickled Plum — Japanese Vegetable Curry", "url": "https://pickledplum.com/japanese-vegetable-curry/", "type": "inspired" },
+      { "name": "NoRecipes — Japanese Curry from Scratch (Marc Matsumoto)", "url": "https://norecipes.com/japanese-curry-recipe-from-scratch/", "type": "inspired", "author": "Marc Matsumoto" },
+      { "name": "Serious Eats — Japanese Curry", "url": "https://www.seriouseats.com/japanese-curry-kare", "type": "inspired" },
+      { "name": "Just One Cookbook — Chicken Curry", "url": "https://www.justonecookbook.com/simple-chicken-curry/", "type": "inspired", "author": "Nami Chen" },
+      { "name": "Just One Cookbook — How to Make Curry Roux", "url": "https://www.justonecookbook.com/how-to-make-curry-roux/", "type": "inspired", "author": "Nami Chen" },
+      { "name": "Doobydobap — Katsu Curry", "url": "https://doobydobap.com/recipe/katsu-curry", "type": "inspired", "author": "Tina" },
+      { "name": "Stripes Japan — Saigen Daisuke CoCo Curry Recreation", "url": "https://japan.stripes.com/food-drink/video-japan-kitchen-easy-recipe-for-famous-coco's-curry.html", "type": "adapted", "author": "Saigen Daisuke" },
+      { "name": "Stripes Okinawa — Saigen Daisuke CoCo Video", "url": "https://okinawa.stripes.com/food-drink/video-japan-kitchen-making-famous-coco%E2%80%99s-curry-at-home.html", "type": "adapted", "author": "Saigen Daisuke" },
+      { "name": "BuzzRecipe (Ryuji) — CoCo-Style Curry", "url": "https://bazurecipe.com/2024/06/08/ココイチ風カレー/", "type": "adapted", "author": "Ryuji" },
+      { "name": "A Lot of Kitchen Eats — CoCo Sliced Beef Curry", "url": "https://alotofkitcheneats.wordpress.com/2018/05/21/coco-ichibanya-style-sliced-beef-japanese-curry/", "type": "adapted" },
+      { "name": "Nikkei Asia — House Foods / CoCo Ichibanya Acquisition", "url": "https://asia.nikkei.com/Business/House-Foods-aiming-to-use-chain-to-spread-Japanese-curry-culture", "type": "inspired" },
+      { "name": "TipRanks — Ichibanya Co. Ownership Structure", "url": "https://www.tipranks.com/news/company-announcements/ichibanya-co-ltd-affirms-independence-amid-parent-company-ownership", "type": "inspired" },
+      { "name": "Gurunavi — CoCo Ichibanya Factory Tour", "url": "https://r.gnavi.co.jp/g-interview/entry/g-mag/013099", "type": "inspired" },
+      { "name": "Nordot — CoCo Factory Production Article", "url": "https://nordot.app/597325604832117857", "type": "inspired" },
+      { "name": "ITmedia Business — CoCo Business Analysis", "url": "https://www.itmedia.co.jp/business/articles/1511/11/news003.html", "type": "inspired" },
+      { "name": "President Online — CoCo Business Magazine", "url": "https://president.jp/articles/-/86403", "type": "inspired" },
+      { "name": "DOKODEMO — CoCo Retail Product Labels", "url": "https://dokodemo.world/en/item/1098202/", "type": "inspired" },
+      { "name": "Amazon — CoCo Curry House Original Roux", "url": "https://www.amazon.com/Ichibanya-Curry-House-Original-Version/dp/B06XSYNRGT", "type": "inspired" },
+      { "name": "Amazon — CoCo Fukujinzuke Pickles", "url": "https://www.amazon.com/Ichibanya-Curry-Fukujinzuke-Japanese-pickles/dp/B072NRW3DH", "type": "inspired" },
+      { "name": "Reddit r/recipes — CoCo Employee Confirmation", "url": "https://reddit.com/r/recipes/comments/1xx97a/", "type": "inspired", "author": "u/jacobw4473" },
+      { "name": "Reddit r/MimicRecipes — Torokeru Recommendation", "url": "https://reddit.com/r/MimicRecipes/comments/dt149a/", "type": "inspired" },
+      { "name": "Reddit r/Cooking — CoCo Spice Levels", "url": "https://reddit.com/r/Cooking/comments/ysb2v2/", "type": "inspired", "author": "u/vampire-walrus" },
+      { "name": "Reddit r/JapaneseFood — CoCo Popularity Discussion", "url": "https://reddit.com/r/JapaneseFood/comments/1q96p88/", "type": "inspired", "author": "u/Kamimitsu" },
+      { "name": "Reddit r/JapaneseFood — Garlic Topping Recipe", "url": "https://reddit.com/r/JapaneseFood/comments/1jetppg/", "type": "inspired" },
+      { "name": "Reddit r/JapaneseFood — Tobikara Label Transcription", "url": "https://reddit.com/r/JapaneseFood/comments/1hzyf8w/", "type": "inspired" },
+      { "name": "Japan Truly — Best Japanese Curry Brands", "url": "https://shop.japantruly.com/blogs/product-review/best-japanese-curry-brands", "type": "inspired" },
+      { "name": "Umami Bites — Guide to Japanese Curry Roux", "url": "https://umamibites.com/useful_info/guide-to-japanese-curry-roux", "type": "inspired" },
+      { "name": "Japanese Taste — Best Japanese Curry Brands", "url": "https://japanesetaste.com/blogs/japanese-taste-blog/what-is-the-best-japanese-curry-discover-japan-s-most-popular-brands", "type": "inspired" },
+      { "name": "Tasting Table — Instant Coffee in Japanese Curry", "url": "https://www.tastingtable.com/1519263/instant-coffee-addition-japanese-curry/", "type": "inspired" },
+      { "name": "Hypebeast — Japanese Curry Secret Ingredients Survey", "url": "https://hypebeast.com/2021/7/japanese-chocolate-coffee-curry-secret-ingredients-info", "type": "inspired" },
+      { "name": "Nichinichi Magazine — Saigen Daisuke Feature", "url": "https://nichinichi-magazine.com/articles/detail/12672", "type": "inspired" },
+      { "name": "Alo Japan — Tobikara Spice Copycat", "url": "https://www.alojapan.com/1178763/copycat-recipe-for-coco-ichibanya-tobikara-exclusive-spice-spicy-powder/", "type": "inspired" },
+      { "name": "Bull-Dog Sauce — About", "url": "https://www.bulldogsauce-global.com/about/", "type": "inspired" },
+      { "name": "S&B Foods — Curry Powder", "url": "https://www.sbfoods-worldwide.com/currypowder/", "type": "inspired" },
+      { "name": "Ajinomoto — Hondashi", "url": "https://www.ajinomoto.com/brands/hondashi", "type": "inspired" },
+      { "name": "CoCo Ichibanya Official — Ordering Guide", "url": "https://www.ichibanya.co.jp/english/order.html", "type": "inspired" },
+      { "name": "Just One Cookbook — Japanese Rice Guide", "url": "https://www.justonecookbook.com/japanese-rice-everything-you-need-to-know/", "type": "inspired", "author": "Nami Chen" },
+      { "name": "Macaroni.jp — CoCo Curry Recreation", "url": "https://macaro-ni.jp/158808", "type": "inspired" },
+      { "name": "Kumiko-jp — Sara-Sara Curry", "url": "https://kumiko-jp.com/archives/412371.html", "type": "inspired" },
+      { "name": "CoCo Official Shop — Retort Pork Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1659839", "type": "inspired" },
+      { "name": "CoCo Official Shop — Retort Beef Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1660132", "type": "inspired" },
+      { "name": "CoCo Official Shop — Mild Pork Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1660134", "type": "inspired" },
+      { "name": "CoCo Official Shop — Vegetable Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1663448", "type": "inspired" },
+      { "name": "CoCo Official Shop — Keema Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1663442", "type": "inspired" },
+      { "name": "CoCo Official Shop — Soup Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1663445", "type": "inspired" },
+      { "name": "CoCo Official Shop — Super Spicy Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1413900", "type": "inspired" },
+      { "name": "CoCo Official Shop — Low-Sugar Beef Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1178195", "type": "inspired" },
+      { "name": "CoCo Official Shop — Low-Sugar Butter Chicken", "url": "https://shop.ichibanya.co.jp/item-detail/1178196", "type": "inspired" },
+      { "name": "CoCo Official Shop — Frozen Pork Curry", "url": "https://shop.ichibanya.co.jp/item-detail/1663456", "type": "inspired" },
+      { "name": "CoCo Official Shop — Care Food (Roux Breakdown)", "url": "https://shop.ichibanya.co.jp/item-detail/1557352", "type": "inspired" },
+      { "name": "House Foods — Motteko Curry Collaboration", "url": "https://housefoods.jp/products/catalog/cd_1,088381.html", "type": "inspired" },
+      { "name": "Daisho — Soup Curry Base Collaboration", "url": "https://www.daisho.co.jp/7", "type": "inspired" },
+      { "name": "Mishima — CoCo Curry Furikake", "url": "https://www.mishima.co.jp/product/1201.html", "type": "inspired" },
+      { "name": "Sonton — CoCo Curry Toast Spread", "url": "https://www.sonton.co.jp/products/cocoichibanya/curry_toast/", "type": "inspired" },
+      { "name": "Onishi — Emergency Curry Set (Allergen-free)", "url": "https://www.onisifoods.co.jp/products/curry.html", "type": "inspired" },
+      { "name": "Amazon Japan — Tobi-Kara Spice Label", "url": "https://www.amazon.co.jp/dp/B07MXJ7DZW", "type": "inspired" },
+      { "name": "CoCo Ichibanya Official — Ingredient Origin PDF", "url": "https://www.ichibanya.co.jp/menu/pdf/origin.pdf", "type": "inspired" },
+      { "name": "CoCo Ichibanya Official — Allergen PDF", "url": "https://www.ichibanya.co.jp/menu/pdf/allergy.pdf", "type": "inspired" }
+    ],
+    "techniques": [
+      {
+        "name": "Blend everything smooth (sara-sara)",
+        "sourcedFrom": "All 7 agents; S1, S2, S3, S4, S45",
+        "rationale": "THE defining CoCo characteristic. Use immersion blender. Japanese term: sara-sara (smooth-flowing). No visible chunks whatsoever. Universal agreement across all sources.",
+        "confidence": "high"
+      },
+      {
+        "name": "Deep onion caramelization (35-45 min)",
+        "sourcedFrom": "All 7 agents; S1, S2, S19",
+        "rationale": "Low heat, jam-like consistency. Jecca Chantilly: '90% of the authentic flavor is born here.' Factory uses pre-sauteed onions as a separate listed ingredient.",
+        "confidence": "high"
+      },
+      {
+        "name": "Overnight rest",
+        "sourcedFrom": "All 7 agents; S19, S20",
+        "rationale": "Refrigerate minimum 3 hours, ideally overnight. CoCo factory ages 1 week at -25 C. Multiple sources confirm: 'curry tastes even better the next day.' Non-negotiable for authentic depth.",
+        "confidence": "high"
+      },
+      {
+        "name": "Higher water ratio for pourable consistency",
+        "sourcedFrom": "S3, S45 — 4-6/7 agents",
+        "rationale": "CoCo curry is thinner and more pourable than typical homemade Japanese curry. SoraNews24: 'necessary to bring out the smooth flavor found at Coco Ichi.'",
+        "confidence": "medium"
+      },
+      {
+        "name": "Turn off heat before adding roux",
+        "sourcedFrom": "S19, S20 — 4-6/7 agents; factory process confirmed",
+        "rationale": "Prevents clumping. CoCo factory process confirms: heat OFF, then roux added. Dissolve in ladle with chopsticks.",
+        "confidence": "high"
+      },
+      {
+        "name": "Finish with cold butter (monter au beurre)",
+        "sourcedFrom": "S2, S26 — 4-6/7 agents",
+        "rationale": "2 tbsp cold butter stirred in at end for richness and gloss. French technique applied to Japanese curry. CoCo employee confirmed butter usage.",
+        "confidence": "medium"
+      },
+      {
+        "name": "Triple onion treatment",
+        "sourcedFrom": "S1 — Okonomi Kitchen technique",
+        "rationale": "300g caramelized + 120g deep-fried + 180g raw in pot. Creates three dimensions of onion flavor: jammy depth, sweet crunch, fresh bite. All dissolve during blending.",
+        "confidence": "medium"
+      },
+      {
+        "name": "Baking soda in onions (optional accelerant)",
+        "sourcedFrom": "S8 — NoRecipes (Marc Matsumoto)",
+        "rationale": "Raises pH to accelerate Maillard browning. Scientific shortcut for faster caramelization. Not used in this recipe's standard method but noted as valid technique.",
+        "confidence": "low"
+      },
+      {
+        "name": "Cool-and-reheat cycling",
+        "sourcedFrom": "S3 — SoraNews24 native recipe",
+        "rationale": "Turn off heat, let cool, then rewarm. Flavor-cycling step that may partially replicate CoCo's industrial freeze-aging process.",
+        "confidence": "low"
+      }
+    ]
+  }
+}
