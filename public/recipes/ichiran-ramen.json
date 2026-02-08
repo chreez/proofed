@@ -1,0 +1,2186 @@
+{
+  "meta": {
+    "name": "Ichiran-Style Tonkotsu Ramen",
+    "source": {
+      "name": "Multi-Agent Research Synthesis",
+      "type": "original",
+      "author": "proofed. research (8 agents, 92 sources)"
+    },
+    "yields": "6-8 servings",
+    "total_time": "~14 hrs (mostly passive broth simmering)",
+    "description": "A clean, odor-free tonkotsu ramen modeled after Ichiran — Fukuoka's iconic single-menu ramen chain. Built from 92 sources including 7 official product labels, factory documentation, and the Umakara Kokumashi 'Rosetta Stone' that revealed the red sauce profile. Features a double-soup technique (pure pork bone broth + dashi), proprietary-style red sauce (sweet-first, umami-second, spicy-third), and ultra-thin Hakata noodles at 29% hydration."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-08",
+      "summary": "Initial recipe synthesized from 8-agent research across 92 sources (official Ichiran labels, copycat recipes, Japanese-language blogs, food science, community forums, product reverse-engineering)"
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Stock Pot (8L+)",
+      "reuse": "Blanch bones -> main broth cook"
+    },
+    {
+      "id": "V2",
+      "name": "Medium Saucepan",
+      "reuse": "Tare dashi -> tare assembly -> freed"
+    },
+    {
+      "id": "V3",
+      "name": "Small Saucepan",
+      "reuse": "Aroma oil -> freed -> red sauce"
+    },
+    {
+      "id": "V4",
+      "name": "Large Bowl",
+      "reuse": "Ice bath (eggs) -> assembly bowls"
+    },
+    {
+      "id": "V5",
+      "name": "Heavy Zip-Lock Bags",
+      "reuse": "Noodle kneading -> egg marinade"
+    },
+    {
+      "id": "V6",
+      "name": "Pasta Machine",
+      "reuse": "Noodle sheeting and cutting"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Stock Pot (8L+)",
+          "Medium Saucepan",
+          "Small Saucepan",
+          "Large Bowl",
+          "Heavy Zip-Lock Bags",
+          "Pasta Machine"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Fine-Mesh Strainer",
+          "Cheesecloth",
+          "Tongs",
+          "Bone Brush (stiff bristle)",
+          "Chopsticks",
+          "Immersion Blender (optional)",
+          "Cutting Board",
+          "Chef's Knife",
+          "Microplane / Fine Grater",
+          "Rolling Pin (for noodle pre-sheeting)",
+          "Cornstarch (for noodle dusting)",
+          "Thermometer"
+        ],
+        "ingredients": [
+          {
+            "id": "pork_femur_bones",
+            "name": "Pork Femur Bones (genkotsu)",
+            "total": 1500,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "8/8 agents; all sources confirm genkotsu as primary tonkotsu bone",
+            "confidence": "high",
+            "rationale": "Universal consensus. Ask butcher to cut crosswise into 5cm discs to expose marrow for maximum collagen extraction."
+          },
+          {
+            "id": "pork_trotters",
+            "name": "Pork Trotters (split lengthwise)",
+            "total": 750,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "7/8 agents; all except community intel agent",
+            "confidence": "high",
+            "rationale": "Trotters provide high-gelatin collagen that creates the characteristic creamy body. Split lengthwise for surface area."
+          },
+          {
+            "id": "pork_neck_bones",
+            "name": "Pork Neck Bones",
+            "total": 500,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/8 agents; broth science, copycats, Japanese sources",
+            "confidence": "high",
+            "rationale": "Supplementary bones that add meaty flavor alongside the collagen-heavy femurs and trotters."
+          },
+          {
+            "id": "pork_skin",
+            "name": "Pork Skin (optional)",
+            "total": 250,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "3/8 agents; Ramen Cook Blog, Adam Liaw, Yoshi",
+            "confidence": "medium",
+            "rationale": "Provides clean gelatin body without the off-aromas that can come from bone marrow. Optional but recommended for cleaner broth."
+          },
+          {
+            "id": "pork_back_fat",
+            "name": "Pork Back Fat",
+            "total": 150,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "7/8 agents; labels confirm 'lard' in commercial product, Yoshi, Adam Liaw",
+            "confidence": "high",
+            "rationale": "Rendered into aroma oil. Ichiran's commercial product uses cottonseed oil as primary fat, but pork lard is the traditional choice for authentic flavor."
+          },
+          {
+            "id": "pork_shoulder",
+            "name": "Pork Shoulder (kata rosu)",
+            "total": 500,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "6/8 agents; standard chashu cut for Ichiran-style thin slices",
+            "confidence": "high",
+            "rationale": "Shoulder provides the right fat-to-lean ratio for tender, thin-sliced chashu. Sous vide at 145 F (63 C) yields Ichiran-style melt-in-mouth texture."
+          },
+          {
+            "id": "eggs",
+            "name": "Eggs (large)",
+            "total": 300,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "6/8 agents; standard ajitama technique",
+            "confidence": "high",
+            "rationale": "6 large eggs at ~50g each. Boiled 6.5 minutes from fridge for jammy orange yolk."
+          },
+          {
+            "id": "soy_sauce",
+            "name": "Soy Sauce",
+            "total": 186,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "tare (usukuchi/light)",
+                "amount": 62
+              },
+              {
+                "label": "red sauce",
+                "amount": 31
+              },
+              {
+                "label": "chashu (dark soy)",
+                "amount": 31
+              },
+              {
+                "label": "ajitama marinade",
+                "amount": 62
+              }
+            ],
+            "sourcedFrom": "8/8 agents; all labels confirm soy sauce across all sub-recipes",
+            "confidence": "high",
+            "rationale": "Soy sauce appears in four sub-recipes. Tare uses light/usukuchi to preserve broth whiteness. Red sauce and ajitama use regular. Chashu uses dark for color."
+          },
+          {
+            "id": "sake",
+            "name": "Sake (cooking)",
+            "total": 137,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "broth aromatics",
+                "amount": 47
+              },
+              {
+                "label": "tare",
+                "amount": 19
+              },
+              {
+                "label": "chashu",
+                "amount": 14
+              },
+              {
+                "label": "ajitama marinade",
+                "amount": 57
+              }
+            ],
+            "sourcedFrom": "5/8 agents; labels, Yoshi, Just One Cookbook, multiple Japanese sources",
+            "confidence": "high",
+            "rationale": "Sake adds depth and helps remove pork odor in broth. In tare and marinades, it provides subtle sweetness and alcohol extraction of flavors."
+          },
+          {
+            "id": "mirin",
+            "name": "Mirin (hon mirin)",
+            "total": 117,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "tare",
+                "amount": 21
+              },
+              {
+                "label": "red sauce",
+                "amount": 32
+              },
+              {
+                "label": "ajitama marinade",
+                "amount": 64
+              }
+            ],
+            "sourcedFrom": "6/8 agents; labels confirm 'fermented seasoning', Japanese sources, copycats",
+            "confidence": "high",
+            "rationale": "Real hon mirin (not mirin-style) provides sweet depth and umami. Appears in three sub-recipes for different purposes: tare sweetness, red sauce depth, and egg marinade balance."
+          },
+          {
+            "id": "sugar",
+            "name": "Sugar",
+            "total": 22,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "tare",
+                "amount": 2
+              },
+              {
+                "label": "red sauce",
+                "amount": 15
+              },
+              {
+                "label": "ajitama marinade",
+                "amount": 5
+              }
+            ],
+            "sourcedFrom": "5/8 agents; Umakara label lists sugar as #2 ingredient in red sauce",
+            "confidence": "high",
+            "rationale": "The Umakara Kokumashi label was the key breakthrough: sugar is the #2 ingredient after soy sauce, confirming the red sauce is sweet-first, not spicy-first."
+          },
+          {
+            "id": "garlic",
+            "name": "Garlic",
+            "total": 60,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "broth (1 head, halved crosswise)",
+                "amount": 40
+              },
+              {
+                "label": "aroma oil (2 cloves, crushed)",
+                "amount": 10
+              },
+              {
+                "label": "red sauce (paste)",
+                "amount": 10
+              }
+            ],
+            "sourcedFrom": "7/8 agents; labels, copycats, Japanese sources all confirm garlic across sub-recipes",
+            "confidence": "high",
+            "rationale": "Garlic appears in three sub-recipes with different preparations: whole halved head for broth, crushed for oil infusion, paste for red sauce."
+          },
+          {
+            "id": "ginger",
+            "name": "Ginger",
+            "total": 20,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "broth (thick slices)",
+                "amount": 15
+              },
+              {
+                "label": "red sauce (grated)",
+                "amount": 5
+              }
+            ],
+            "sourcedFrom": "5/8 agents; labels, copycats, Just One Cookbook, cup ramen label",
+            "confidence": "high",
+            "rationale": "Sliced for broth (gentle flavor extraction over hours), grated for red sauce (immediate pungency)."
+          },
+          {
+            "id": "onion",
+            "name": "Onion (medium, halved)",
+            "total": 150,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/8 agents; labels list 'onion powder', Adam Liaw, Weissman, EatHealthy365",
+            "confidence": "high",
+            "rationale": "Added to broth as aromatic. Halved to release flavor slowly over the long cook. Discarded when straining."
+          },
+          {
+            "id": "rice_vinegar",
+            "name": "Rice Vinegar",
+            "total": 20,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "broth (odor removal)",
+                "amount": 15
+              },
+              {
+                "label": "red sauce (brightness)",
+                "amount": 5
+              }
+            ],
+            "sourcedFrom": "3/8 agents; fresh kit label lists 'brewed vinegar', Yoshi, Just One Cookbook",
+            "confidence": "medium",
+            "rationale": "In broth, vinegar helps neutralize pork odor. In red sauce, it provides the brightness noted on the Umakara label as 'acidulant'."
+          },
+          {
+            "id": "kombu",
+            "name": "Kombu (dried kelp)",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "6/8 agents; US kit label confirms kelp extract, Samsung Food, Yoshi, Kaonashi, JFL",
+            "confidence": "high",
+            "rationale": "One ~10cm square piece for tare dashi. Soaked overnight in cold water, then heated to 175 F (80 C) — never boiled to avoid bitterness."
+          },
+          {
+            "id": "dried_shiitake",
+            "name": "Dried Shiitake Mushrooms",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/8 agents; US kit label confirms shiitake extract, Yoshi, Samsung Food, JFL",
+            "confidence": "high",
+            "rationale": "1-2 small dried mushrooms for tare dashi. Soaked with kombu overnight for guanylate (GMP) extraction — synergistic with MSG."
+          },
+          {
+            "id": "katsuobushi",
+            "name": "Katsuobushi (dried bonito flakes)",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/8 agents; US kit label confirms dried bonito extract, Samsung Food, JFL, Kaonashi",
+            "confidence": "high",
+            "rationale": "Added to heated dashi and steeped 15 minutes. Provides inosinate (IMP) that synergizes with kombu glutamate for exponential umami."
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 15,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "tare",
+                "amount": 10
+              },
+              {
+                "label": "noodles",
+                "amount": 5
+              }
+            ],
+            "sourcedFrom": "7/8 agents; all recipe sources confirm salt in tare and noodles",
+            "confidence": "high",
+            "rationale": "Salt is the primary seasoning vehicle in tare. In noodles, it strengthens gluten structure alongside kansui."
+          },
+          {
+            "id": "ribotide",
+            "name": "Ribotide (IMP+GMP nucleotide blend)",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "3/8 agents; labels list 'disodium inosinate/guanylate', Yoshi specifies Ribotide",
+            "confidence": "medium",
+            "rationale": "50/50 blend of inosinic acid (IMP) and guanylic acid (GMP) that multiplies perceived umami when combined with glutamates. If unavailable, increase MSG to 3g and add dried shiitake powder."
+          },
+          {
+            "id": "msg",
+            "name": "MSG (Aji-no-moto)",
+            "total": 3,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "tare",
+                "amount": 1
+              },
+              {
+                "label": "red sauce",
+                "amount": 2
+              }
+            ],
+            "sourcedFrom": "4/8 agents; labels list 'hydrolyzed protein' and 'yeast extract', Yoshi, Ryuji",
+            "confidence": "high",
+            "rationale": "Labels use euphemisms (hydrolyzed protein, yeast extract) but these are all glutamate sources. Direct MSG is cleaner and more precise."
+          },
+          {
+            "id": "scallion_whites",
+            "name": "Scallion Whites",
+            "total": 20,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "3/8 agents; Adam Liaw, Life By Mike G, deep-dive article",
+            "confidence": "medium",
+            "rationale": "Infused into aroma oil for allium sweetness. 2 stalks, white parts only."
+          },
+          {
+            "id": "water_aroma_oil",
+            "name": "Water (aroma oil splash)",
+            "total": 15,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "2/8 agents; technique for even rendering",
+            "confidence": "medium",
+            "rationale": "Small splash of water in the pan with the fat helps render evenly at lower temperature, preventing scorching."
+          },
+          {
+            "id": "ichimi_togarashi",
+            "name": "Ichimi Togarashi (Japanese chili)",
+            "total": 8,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "8/8 agents; all labels confirm chili pepper as base ingredient",
+            "confidence": "high",
+            "rationale": "Primary heat source and the togarashi base of the red sauce. S&B or GABAN brand recommended."
+          },
+          {
+            "id": "gochugaru",
+            "name": "Gochugaru (Korean red pepper flakes)",
+            "total": 4,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "4/8 agents; RamenChef, Rakuten, Samsung Food, note.com/shinmr",
+            "confidence": "medium",
+            "rationale": "Adds fruity heat and vibrant red color. Coarse flakes, not fine powder. Ichiran says 'finest peppers from around the world' — a multi-chili blend is essential."
+          },
+          {
+            "id": "cayenne",
+            "name": "Cayenne Pepper",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "3/8 agents; RamenChef, note.com/shinmr, Samsung Food",
+            "confidence": "medium",
+            "rationale": "Sharp, clean heat that complements the more complex togarashi and gochugaru."
+          },
+          {
+            "id": "white_pepper",
+            "name": "White Pepper",
+            "total": 2,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "7/8 agents; all labels confirm pepper, Yoshi, RamenChef",
+            "confidence": "high",
+            "rationale": "Aromatic heat that blooms when the red sauce hits hot broth. White pepper is traditional in tonkotsu ramen."
+          },
+          {
+            "id": "black_pepper",
+            "name": "Black Pepper",
+            "total": 1,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "7/8 agents; all labels list 'pepper', most sources specify both white and black",
+            "confidence": "high",
+            "rationale": "Adds a different aromatic dimension than white pepper. Small amount for complexity."
+          },
+          {
+            "id": "garlic_paste_red",
+            "name": "Garlic Paste (for red sauce)",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "6/8 agents; Umakara label lists garlic as #4 ingredient, cup ramen label confirms",
+            "confidence": "high",
+            "rationale": "Grated or pressed garlic for the red sauce. The Umakara label places garlic at #4 by weight — it's a major flavor component, not just seasoning."
+          },
+          {
+            "id": "gochujang",
+            "name": "Gochujang (fermented chili paste)",
+            "total": 8,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "4/8 agents; Rakuten, Ryuji, RamenChef, Myojo",
+            "confidence": "medium",
+            "rationale": "Fermented depth and sweetness that bridges the gap between simple chili heat and Ichiran's complex aged flavor. CJ Haechandle gold label recommended."
+          },
+          {
+            "id": "sesame_oil",
+            "name": "Sesame Oil (toasted)",
+            "total": 9,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/8 agents; Ryuji, Rakuten, Samsung Food, Myojo, basic copycats",
+            "confidence": "high",
+            "rationale": "Aromatic carrier oil for the red sauce. Kadoya brand recommended. Toasted sesame oil provides the nutty depth found in many Japanese chili preparations."
+          },
+          {
+            "id": "neutral_oil",
+            "name": "Neutral Oil (for red sauce)",
+            "total": 14,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "2/8 agents; cup ramen label lists rapeseed oil, Samsung Food",
+            "confidence": "medium",
+            "rationale": "Carrier oil that gives the red sauce its paste-like body. Cup ramen label confirms rapeseed oil. Canola or grapeseed work."
+          },
+          {
+            "id": "bread_flour",
+            "name": "Bread Flour (13%+ protein)",
+            "total": 400,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "7/8 agents; all labels list 'wheat flour', noodle science confirms high-protein requirement",
+            "confidence": "high",
+            "rationale": "High-protein flour (13%+) is essential for the firm, snappy bite of Hakata noodles. King Arthur bread flour (12.7%) with added vital wheat gluten reaches the target."
+          },
+          {
+            "id": "vital_wheat_gluten",
+            "name": "Vital Wheat Gluten",
+            "total": 8,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/8 agents; all labels list 'wheat protein', noodle science, Cookpit",
+            "confidence": "high",
+            "rationale": "2% of flour weight. Boosts protein to 14%+ for the characteristic firm, chewy texture. Labels confirm 'wheat protein' as separate ingredient."
+          },
+          {
+            "id": "cold_water_noodles",
+            "name": "Cold Water (for noodles)",
+            "total": 116,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "7/8 agents; 29% hydration confirmed across noodle science sources",
+            "confidence": "high",
+            "rationale": "29% hydration (116ml for 400g flour) — low by any standard, creating a very stiff dough that requires mechanical kneading. This is what gives Hakata noodles their distinctive snap."
+          },
+          {
+            "id": "kansui",
+            "name": "Kansui Powder (alkaline salt)",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "7/8 agents; all labels confirm kansui, all noodle sources specify it",
+            "confidence": "high",
+            "rationale": "1.25% of flour weight. 70:30 potassium carbonate to sodium carbonate blend preferred. Provides the yellow color, alkaline flavor, and firm texture characteristic of ramen noodles."
+          },
+          {
+            "id": "water_tare_dashi",
+            "name": "Water (for tare dashi)",
+            "total": 200,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/8 agents; standard dashi preparation method",
+            "confidence": "high",
+            "rationale": "Base water for cold-soaking kombu and shiitake overnight, then gently heating for dashi extraction."
+          },
+          {
+            "id": "water_ajitama",
+            "name": "Water (for ajitama marinade)",
+            "total": 60,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "4/8 agents; standard ajitama marinade dilution",
+            "confidence": "high",
+            "rationale": "Dilutes the marinade to prevent over-seasoning the eggs. Combined with soy, mirin, and sake for balanced penetration."
+          }
+        ]
+      },
+      "states": [
+        "PREP_WORKSPACE"
+      ]
+    },
+    {
+      "id": "BROTH",
+      "title": "Tonkotsu Broth",
+      "gather": null,
+      "states": [
+        "SOAK_BONES",
+        "BLANCH_BONES",
+        "SCRUB_BONES",
+        "MAIN_COOK",
+        "ADD_AROMATICS",
+        "BREAK_BONES",
+        "STRAIN_BROTH",
+        "GELATION_TEST"
+      ]
+    },
+    {
+      "id": "TARE",
+      "title": "Tare (Seasoning Sauce)",
+      "gather": null,
+      "states": [
+        "MAKE_DASHI",
+        "ASSEMBLE_TARE"
+      ]
+    },
+    {
+      "id": "AROMA_OIL",
+      "title": "Aroma Oil",
+      "gather": null,
+      "states": [
+        "RENDER_FAT",
+        "STRAIN_OIL"
+      ]
+    },
+    {
+      "id": "RED_SAUCE",
+      "title": "Hiden no Tare (Red Sauce)",
+      "gather": null,
+      "states": [
+        "BLOOM_SPICES",
+        "COMBINE_WET",
+        "AGE_SAUCE"
+      ]
+    },
+    {
+      "id": "NOODLES",
+      "title": "Noodles",
+      "gather": null,
+      "states": [
+        "MIX_DOUGH",
+        "KNEAD_NOODLES",
+        "REST_DOUGH",
+        "SHEET_NOODLES",
+        "CUT_NOODLES",
+        "AGE_NOODLES"
+      ]
+    },
+    {
+      "id": "CHASHU",
+      "title": "Chashu",
+      "gather": null,
+      "states": [
+        "SEASON_PORK",
+        "COOK_CHASHU",
+        "CHILL_CHASHU"
+      ]
+    },
+    {
+      "id": "AJITAMA",
+      "title": "Ajitama (Marinated Eggs)",
+      "gather": null,
+      "states": [
+        "BOIL_EGGS",
+        "MAKE_MARINADE",
+        "MARINATE_EGGS"
+      ]
+    },
+    {
+      "id": "ASSEMBLY",
+      "title": "Bowl Assembly",
+      "gather": null,
+      "states": [
+        "HEAT_BOWLS",
+        "ASSEMBLE_BOWL",
+        "ADD_TOPPINGS"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out all ingredients by sub-recipe: broth bones and aromatics, tare dashi and assembly, aroma oil fats, red sauce spices and wet ingredients, noodle dry and wet, chashu pork and seasonings, ajitama eggs and marinade. Dissolve kansui and salt in cold water for noodles. Grate garlic and ginger for red sauce.",
+      "duration_min": 30,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed and organized by sub-recipe, kansui water mixed, garlic and ginger grated",
+      "notes": [
+        {
+          "text": "This recipe has 8 sub-recipes. Organize ingredients into labeled bowls or containers by stage to avoid confusion during the multi-day cook.",
+          "critical": true
+        },
+        {
+          "text": "Soy sauce is used in 4 sub-recipes (tare, red sauce, chashu, ajitama) — pre-measure each portion separately",
+          "critical": false
+        },
+        {
+          "text": "Timeline: Day 1 — broth, tare, aroma oil, red sauce, noodles, chashu, ajitama. Day 2+ — red sauce ages. Day 3+ — assemble bowls.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "SOAK_BONES",
+      "title": "Soak Bones (Optional Overnight)",
+      "direction": "Place 1500g pork femur bones, 750g pork trotters, 500g pork neck bones, and 250g pork skin (if using) in the large stock pot (V1). Cover with cold water. Soak 6-12 hours in the refrigerator, changing the water 2-3 times.",
+      "duration_min": 480,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Pork Femur Bones",
+          "amount": "1500g"
+        },
+        {
+          "name": "Pork Trotters",
+          "amount": "750g"
+        },
+        {
+          "name": "Pork Neck Bones",
+          "amount": "500g"
+        },
+        {
+          "name": "Pork Skin",
+          "amount": "250g"
+        }
+      ],
+      "exit_condition": "Bones have soaked 6-12 hours, water has been changed 2-3 times, liquid is less bloody than initial soak",
+      "notes": [
+        {
+          "text": "This passive step draws out blood and impurities, resulting in a cleaner-tasting broth. Skip if short on time — the blanching step handles the essentials.",
+          "critical": false
+        },
+        {
+          "text": "If bones are frozen, this soak doubles as thawing. Fully thawed bones blanch more effectively.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "BLANCH_BONES",
+      "title": "Blanch Bones",
+      "direction": "Drain the soaking water. Cover bones with fresh cold water in the stock pot (V1). Bring to a hard rolling boil over high heat. Boil vigorously for 15-20 minutes — thick grey scum will form and the water will turn dark brown. Drain completely and discard the water.",
+      "duration_min": 25,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Bones have been vigorously boiled for 15-20 minutes, all water drained, pot emptied",
+      "notes": [
+        {
+          "text": "This step is NON-NEGOTIABLE. All 8 research agents agree: aggressive blanching is the foundation of clean, odor-free tonkotsu. The water should look absolutely foul — that is the impurity you are removing.",
+          "critical": true
+        },
+        {
+          "text": "Start with cold water, not hot. Cold-start extraction draws out more blood proteins that coagulate during boiling.",
+          "critical": true
+        },
+        {
+          "text": "Some sources recommend a second blanching cycle for exceptionally clean broth. If your bones still look dark after scrubbing, repeat this step.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "SCRUB_BONES",
+      "title": "Scrub Every Bone",
+      "direction": "Under cold running water, scrub every bone individually with a stiff brush. Use a chopstick or knife tip to dig out dark marrow, blood clots, and any remaining coagulated protein from bone cavities. Pay special attention to the inside of the femur marrow channels and trotter joints.",
+      "duration_min": 15,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Every bone is clean — no visible dark spots, blood, or coagulated protein remaining. Bones should look pale white/cream.",
+      "notes": [
+        {
+          "text": "This tedious step is what separates restaurant-quality tonkotsu from cloudy, off-flavored home versions. Ichiran's official process emphasizes cleanliness above all else.",
+          "critical": true
+        },
+        {
+          "text": "If the pork skin was included, scrub it as well and remove any remaining hair or discolored patches.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "MAIN_COOK",
+      "title": "Boil Broth (12 Hours)",
+      "direction": "Return cleaned bones to the stock pot (V1) with 5L fresh cold water. Bring to a rolling boil over high heat. Once boiling, skim scum obsessively for the first 50 minutes using a fine-mesh strainer. After scum subsides, maintain a steady rolling boil — not a gentle simmer, not a volcanic eruption. Replenish with hot water every 30-45 minutes to keep bones fully submerged. Continue for 12 hours minimum.",
+      "duration_min": 720,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Broth has boiled for 12+ hours, is creamy white and opaque, bones are soft and crumbling, liquid has reduced to approximately 2-3L",
+      "notes": [
+        {
+          "text": "The ROLLING BOIL is essential. It mechanically emulsifies fat into the gelatin-rich liquid, creating the white opacity. A gentle simmer produces clear broth — the opposite of what we want.",
+          "critical": true
+        },
+        {
+          "text": "Always replenish with HOT water, never cold. Cold water drops the temperature and interrupts emulsification.",
+          "critical": true
+        },
+        {
+          "text": "Skim diligently for the first 50 minutes, then stop. After that initial period, the remaining particles contribute to body and flavor rather than off-flavors.",
+          "critical": false
+        },
+        {
+          "text": "12 hours is the sweet spot for home cooks (6/8 agents recommend 10+ hours). Professional Hakata shops go 18-20 hours. The broth gets progressively thicker and more flavorful.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "ADD_AROMATICS",
+      "title": "Add Broth Aromatics",
+      "direction": "After the first 50 minutes of skimming, add 40g garlic (1 head, halved crosswise with skin on), 15g ginger (5 thick slices), 150g onion (halved), 47g sake, and 15g rice vinegar to the boiling broth. Continue the rolling boil.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Garlic (halved head)",
+          "amount": "40g"
+        },
+        {
+          "name": "Ginger (sliced)",
+          "amount": "15g"
+        },
+        {
+          "name": "Onion (halved)",
+          "amount": "150g"
+        },
+        {
+          "name": "Sake",
+          "amount": "47g"
+        },
+        {
+          "name": "Rice Vinegar",
+          "amount": "15g"
+        }
+      ],
+      "exit_condition": "All aromatics added to the boiling broth, pot returned to steady rolling boil",
+      "notes": [
+        {
+          "text": "Aromatics go in AFTER the initial skimming period. Adding them earlier can trap impurities in the vegetable fibers.",
+          "critical": true
+        },
+        {
+          "text": "Leave garlic skin on — it protects the cloves from disintegrating over the long cook and adds subtle flavor.",
+          "critical": false
+        },
+        {
+          "text": "The rice vinegar helps neutralize lingering pork odor. Fresh noodle kit label confirms 'brewed vinegar' as an ingredient.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "BREAK_BONES",
+      "title": "Break Open Bones",
+      "direction": "At hour 6-8 of the main cook, use tongs to break open the femur bones and expose the marrow inside. Press on trotters to release any remaining collagen pockets. The bones should be softening significantly at this point.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Femur bones cracked open with marrow exposed, trotters pressed flat, visible increase in broth richness",
+      "notes": [
+        {
+          "text": "This releases the remaining marrow and collagen trapped inside the bones, dramatically increasing broth richness for the final 4-6 hours.",
+          "critical": false
+        },
+        {
+          "text": "If bones are still very hard, wait another hour. They should crack with firm tong pressure, not require a hammer.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "STRAIN_BROTH",
+      "title": "Strain Broth",
+      "direction": "Set up the fine-mesh strainer lined with cheesecloth over a large bowl or clean pot. Carefully strain the broth, pressing gently on the solids to extract maximum liquid. Discard bones and aromatics. Optionally, blend the strained broth briefly with an immersion blender for extra whiteness.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Broth is strained smooth, bones and aromatics discarded, liquid is creamy white and opaque",
+      "notes": [
+        {
+          "text": "You should have approximately 2-3L of finished broth — enough for 6-8 bowls at 350ml each.",
+          "critical": false
+        },
+        {
+          "text": "Optional: blend with immersion blender for 30 seconds. Yoshi and Ryuji both recommend this — it creates striking whiteness and mimics the extreme emulsification of a 18+ hour professional cook.",
+          "critical": false
+        },
+        {
+          "text": "Professional target: 5.9-10 Brix on a refractometer. The broth should coat a spoon and leave a visible film.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "GELATION_TEST",
+      "title": "Chill and Test Gelation",
+      "direction": "Pour a small amount of broth (60ml) into a cup and refrigerate for 30-60 minutes. Check that it sets into a firm, opaque gel with a fat cap on top.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Test sample has set into firm gel that holds its shape when tilted — confirmation of sufficient collagen extraction",
+      "notes": [
+        {
+          "text": "If the broth does not gel, it lacks collagen. This usually means the cook time was too short or the bones were not high-quality. The broth will lack body in the bowl.",
+          "critical": true
+        },
+        {
+          "text": "A proper tonkotsu gelation test should be as firm as commercial gelatin dessert. Wobbly but not liquid.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "MAKE_DASHI",
+      "title": "Make Tare Dashi",
+      "direction": "In the medium saucepan (V2), combine 200g water, 10g kombu, and 3g dried shiitake. Soak overnight in the refrigerator (or minimum 2 hours at room temperature). When ready, heat gently to 175°F (80°C) — do NOT let it boil. Remove kombu and shiitake. Add 10g katsuobushi, steep for 15 minutes off heat. Strain through fine-mesh strainer.",
+      "duration_min": 20,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        {
+          "name": "Water",
+          "amount": "200g"
+        },
+        {
+          "name": "Kombu",
+          "amount": "10g"
+        },
+        {
+          "name": "Dried Shiitake",
+          "amount": "3g"
+        },
+        {
+          "name": "Katsuobushi",
+          "amount": "10g"
+        }
+      ],
+      "exit_condition": "Dashi is strained clear golden, kombu and shiitake removed before boiling, bonito steeped and strained. Yield approximately 160ml.",
+      "notes": [
+        {
+          "text": "Do NOT boil the kombu — it releases bitter compounds (mannit and alginate) above 175°F (80°C). This is the most common dashi mistake.",
+          "critical": true
+        },
+        {
+          "text": "The double-soup technique (tonkotsu + dashi) is what makes Ichiran special. US kit labels confirm bonito, kelp, and shiitake extracts in their broth concentrate.",
+          "critical": false
+        },
+        {
+          "text": "Start this soak the night before alongside the bone soak for efficient scheduling.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "ASSEMBLE_TARE",
+      "title": "Assemble Tare",
+      "direction": "In the same medium saucepan (V2), combine 62g light soy sauce (usukuchi), 60g dashi (from previous step), 21g mirin, 19g sake, 10g salt, 2g sugar, 5g Ribotide, and 1g MSG. Heat gently over low heat until salt and sugar are fully dissolved. Do not boil. Cool to room temperature.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Light Soy Sauce (usukuchi)",
+          "amount": "62g"
+        },
+        {
+          "name": "Dashi",
+          "amount": "60g"
+        },
+        {
+          "name": "Mirin",
+          "amount": "21g"
+        },
+        {
+          "name": "Sake",
+          "amount": "19g"
+        },
+        {
+          "name": "Salt",
+          "amount": "10g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "2g"
+        },
+        {
+          "name": "Ribotide",
+          "amount": "5g"
+        },
+        {
+          "name": "MSG",
+          "amount": "1g"
+        }
+      ],
+      "exit_condition": "All tare ingredients dissolved and combined, liquid is clear amber, cooled to room temperature. Yield approximately 200ml.",
+      "notes": [
+        {
+          "text": "Use LIGHT soy sauce (usukuchi) — darker soy sauce will muddy the white broth color. Higashimaru brand is standard.",
+          "critical": true
+        },
+        {
+          "text": "Per bowl: 25-30ml. This batch makes enough for 6-8 bowls.",
+          "critical": false
+        },
+        {
+          "text": "Keeps refrigerated for weeks. The Ribotide and MSG are the umami 'superchargers' that make the tare punch far above its volume.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "RENDER_FAT",
+      "title": "Render Pork Fat",
+      "direction": "Cut 150g pork back fat into small cubes. Place in the small saucepan (V3) with 15g water, 10g garlic (2 cloves, lightly crushed), and 20g scallion whites (2 stalks). Cook over the lowest possible heat, rendering the fat slowly until the garlic is golden and the scallion whites are softened, about 20 minutes.",
+      "duration_min": 20,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        {
+          "name": "Pork Back Fat",
+          "amount": "150g"
+        },
+        {
+          "name": "Water",
+          "amount": "15g"
+        },
+        {
+          "name": "Garlic (crushed)",
+          "amount": "10g"
+        },
+        {
+          "name": "Scallion Whites",
+          "amount": "20g"
+        }
+      ],
+      "exit_condition": "Fat is fully rendered and liquid, garlic is golden (not brown), scallion whites are soft and fragrant",
+      "notes": [
+        {
+          "text": "The splash of water prevents the fat from scorching before it fully renders. It evaporates as the fat melts.",
+          "critical": false
+        },
+        {
+          "text": "Keep heat at absolute minimum. If the garlic browns, the oil will taste bitter. Golden and fragrant is the target.",
+          "critical": true
+        },
+        {
+          "text": "Ichiran's commercial product uses cottonseed oil as primary fat. For a cleaner, more neutral version, blend 100g rendered lard with 50g canola oil.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "STRAIN_OIL",
+      "title": "Strain Aroma Oil",
+      "direction": "Strain the rendered fat through a fine-mesh strainer into a clean jar, discarding the garlic and scallion solids. The oil should be clear golden and deeply fragrant.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Oil is strained clear into a jar, solids discarded. Yield approximately 120ml.",
+      "notes": [
+        {
+          "text": "Per bowl: 15-20ml floated on top of the broth. This creates the visible oil layer that is characteristic of Ichiran bowls.",
+          "critical": false
+        },
+        {
+          "text": "Keeps refrigerated for weeks. Will solidify when cold — warm gently before use.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "BLOOM_SPICES",
+      "title": "Bloom Red Sauce Spices",
+      "direction": "In the small saucepan (V3, now freed from aroma oil), warm 9g sesame oil and 14g neutral oil over very low heat. Add 10g garlic paste and 5g grated ginger, cook 2 minutes until fragrant but not browned. Remove from heat. Add the spice blend: 8g ichimi togarashi, 4g gochugaru, 3g cayenne, 2g white pepper, and 1g black pepper. Stir — the residual heat blooms the spices.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Sesame Oil",
+          "amount": "9g"
+        },
+        {
+          "name": "Neutral Oil",
+          "amount": "14g"
+        },
+        {
+          "name": "Garlic Paste",
+          "amount": "10g"
+        },
+        {
+          "name": "Ginger (grated)",
+          "amount": "5g"
+        },
+        {
+          "name": "Ichimi Togarashi",
+          "amount": "8g"
+        },
+        {
+          "name": "Gochugaru",
+          "amount": "4g"
+        },
+        {
+          "name": "Cayenne",
+          "amount": "3g"
+        },
+        {
+          "name": "White Pepper",
+          "amount": "2g"
+        },
+        {
+          "name": "Black Pepper",
+          "amount": "1g"
+        }
+      ],
+      "exit_condition": "Garlic and ginger are fragrant (not browned), spices are bloomed and aromatic, mixture is a deep red paste",
+      "notes": [
+        {
+          "text": "Add spices OFF HEAT. Residual oil heat is enough to bloom them. Direct heat will burn the fine chili powders and create bitterness.",
+          "critical": true
+        },
+        {
+          "text": "The multi-chili blend is essential. Ichiran claims 'finest peppers from around the world' — each chili type contributes different flavor compounds and heat profiles.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "COMBINE_WET",
+      "title": "Combine Red Sauce Wet Ingredients",
+      "direction": "Add 31g soy sauce, 15g sugar, 32g mirin, 8g gochujang, 2g MSG, and 5g rice vinegar to the spice paste. Stir to combine. Return to lowest heat and simmer 5 minutes until slightly thickened. Cool completely and transfer to a clean jar.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Soy Sauce",
+          "amount": "31g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "15g"
+        },
+        {
+          "name": "Mirin",
+          "amount": "32g"
+        },
+        {
+          "name": "Gochujang",
+          "amount": "8g"
+        },
+        {
+          "name": "MSG",
+          "amount": "2g"
+        },
+        {
+          "name": "Rice Vinegar",
+          "amount": "5g"
+        }
+      ],
+      "exit_condition": "All wet ingredients incorporated, sauce has simmered 5 minutes and thickened slightly, cooled and transferred to jar",
+      "notes": [
+        {
+          "text": "The Umakara Kokumashi label was the research breakthrough: ingredient order is soy sauce > sugar > yeast extract > garlic > chili. The red sauce is SWEET-FIRST, not spicy-first.",
+          "critical": true
+        },
+        {
+          "text": "The gochujang provides fermented depth that bridges simple chili paste and Ichiran's complex aged flavor profile.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "AGE_SAUCE",
+      "title": "Age Red Sauce (2-3 Days Minimum)",
+      "direction": "Seal the jar tightly and refrigerate for a minimum of 2-3 days before using. The flavors need time to integrate and mellow. Ichiran's official sauce is aged 'over many days and nights.'",
+      "duration_min": 4320,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Red sauce has aged in refrigerator for minimum 48-72 hours, flavors have mellowed and integrated",
+      "notes": [
+        {
+          "text": "Fresh red sauce will taste harsh and one-dimensional. Aging is what transforms it into something resembling Ichiran's proprietary blend. 5-7 days is even better.",
+          "critical": true
+        },
+        {
+          "text": "Per bowl: 5-8g (1-2 teaspoons), placed as a disc in the center of the broth surface. This is Ichiran's visual signature.",
+          "critical": false
+        },
+        {
+          "text": "Keeps 2+ weeks refrigerated. Make this component first to give it maximum aging time.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "MIX_DOUGH",
+      "title": "Mix Noodle Dough",
+      "direction": "In a large bowl, combine 400g bread flour and 8g vital wheat gluten, mixing well. In a separate container, dissolve 5g kansui and 5g salt completely in 116g cold water — stir until no grit remains. Add the kansui water to the flour gradually, mixing with chopsticks. The dough will be shaggy crumbs and seem impossibly dry — this is correct at 29% hydration.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Bread Flour",
+          "amount": "400g"
+        },
+        {
+          "name": "Vital Wheat Gluten",
+          "amount": "8g"
+        },
+        {
+          "name": "Cold Water (with kansui + salt)",
+          "amount": "116g"
+        },
+        {
+          "name": "Kansui Powder",
+          "amount": "5g"
+        },
+        {
+          "name": "Salt",
+          "amount": "5g"
+        }
+      ],
+      "exit_condition": "All liquid absorbed into flour, dough is shaggy crumbs with no dry flour remaining, but not yet a cohesive mass",
+      "notes": [
+        {
+          "text": "29% hydration is EXTREMELY low. The dough will NOT come together like bread dough. It should look like coarse sand or crumbles. This is normal and correct.",
+          "critical": true
+        },
+        {
+          "text": "Dissolve kansui and salt COMPLETELY before adding to flour. Undissolved kansui creates brown spots in the noodles.",
+          "critical": true
+        },
+        {
+          "text": "Kansui type matters: 70:30 potassium carbonate to sodium carbonate blend is preferred for Hakata-style. Baked baking soda (pure sodium carbonate) works as a substitute.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "KNEAD_NOODLES",
+      "title": "Knead Noodles (Foot Method)",
+      "direction": "Compress the shaggy dough into a rough block and place it in a heavy zip-lock bag (V5). Remove excess air and seal. Place the bag on the floor on a towel and step on it to flatten. Fold the flattened dough in half, reseal, and step again. Repeat 4-5 times until the dough becomes a smooth, cohesive sheet.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth, cohesive, and uniform in color (slightly yellow from kansui). No dry spots or cracks.",
+      "notes": [
+        {
+          "text": "The foot method is the only practical way to knead 29% hydration dough at home. Hand kneading is nearly impossible at this hydration level.",
+          "critical": true
+        },
+        {
+          "text": "Use a heavy-duty freezer bag, not a thin sandwich bag. The pressure will tear thin plastic.",
+          "critical": false
+        },
+        {
+          "text": "The dough should become slightly yellow from the kansui reaction with flour — this is the characteristic ramen noodle color.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "REST_DOUGH",
+      "title": "Rest Noodle Dough",
+      "direction": "Wrap the kneaded dough tightly in plastic wrap. Rest at room temperature for 40-60 minutes. This allows the gluten to relax and the kansui to fully react with the flour proteins.",
+      "duration_min": 50,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Dough has rested 40-60 minutes, gluten is relaxed, dough is slightly more pliable than before resting",
+      "notes": [
+        {
+          "text": "Resting is critical for low-hydration doughs. Without it, the dough will crack and tear during sheeting.",
+          "critical": true
+        },
+        {
+          "text": "Yamato Noodle science: resting allows moisture to distribute evenly through the dough matrix, and the kansui continues to strengthen the gluten network.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "SHEET_NOODLES",
+      "title": "Sheet Noodles",
+      "direction": "Cut the rested dough into 4 portions. Working with one portion at a time (keep others wrapped), pass through the pasta machine (V6) at the widest setting. Fold in thirds and pass again. Repeat folding and passing for the first 3 settings to build gluten structure. Then pass without folding, working down to setting 7-8 (Atlas 150) — the sheets should be approximately 1.2mm thick.",
+      "duration_min": 20,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 4 dough portions sheeted to approximately 1.2mm thickness, smooth and even with no tears or holes",
+      "notes": [
+        {
+          "text": "Fold and pass multiple times at the wider settings — this lamination builds the gluten structure that gives Hakata noodles their characteristic snap.",
+          "critical": true
+        },
+        {
+          "text": "Dust liberally with cornstarch between passes to prevent sticking. Flour will make the noodles gummy when cooked.",
+          "critical": false
+        },
+        {
+          "text": "If sheets crack at the edges, the dough needs more resting time. Re-wrap and wait 15 minutes.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "CUT_NOODLES",
+      "title": "Cut Noodles",
+      "direction": "Using the 1.5mm cutter on the pasta machine (V6), cut each sheet into thin straight noodles. Dust the cut noodles generously with cornstarch and toss to separate. Portion into 100-120g bundles.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Noodles are cut into thin straight strands approximately 1.2mm wide, dusted with cornstarch, portioned into 100-120g bundles",
+      "notes": [
+        {
+          "text": "Hakata noodles are thin and straight — not wavy. The thin profile is designed to absorb the rich broth quickly and be eaten fast (before they overexpand).",
+          "critical": false
+        },
+        {
+          "text": "100-120g per serving is standard — smaller than most ramen. Ichiran compensates with kaedama (noodle refills at 150 yen).",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "AGE_NOODLES",
+      "title": "Age Noodles (24-48 Hours)",
+      "direction": "Place portioned noodle bundles in zip-lock bags or covered containers. Refrigerate for 24-48 hours before cooking. This aging step develops flavor and improves texture.",
+      "duration_min": 1440,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Noodles have aged in refrigerator for 24-48 hours, texture is firmer and color is deeper yellow",
+      "notes": [
+        {
+          "text": "Yamato Noodle science confirms that aging allows continued kansui reaction and moisture equalization, resulting in better texture and more developed flavor.",
+          "critical": false
+        },
+        {
+          "text": "Fresh (unaged) noodles work in a pinch but lack the developed flavor and snap of aged noodles.",
+          "critical": false
+        },
+        {
+          "text": "Cook time for aged noodles: 30-45 seconds for firm (kata), 60 seconds for normal (futsu). Ichiran firmness chart: very hard 10s, hard 20s, medium 30s, soft 45s.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "SEASON_PORK",
+      "title": "Season Chashu",
+      "direction": "Place 500g pork shoulder in a zip-lock bag (V5, freed from noodle kneading). Add 31g dark soy sauce and 14g sake. Massage the marinade into the meat. Remove air using the water displacement method: submerge the bag in water with the zip open, letting water pressure push air out, then seal.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Pork Shoulder",
+          "amount": "500g"
+        },
+        {
+          "name": "Dark Soy Sauce",
+          "amount": "31g"
+        },
+        {
+          "name": "Sake",
+          "amount": "14g"
+        }
+      ],
+      "exit_condition": "Pork is evenly coated in marinade, air removed from bag, sealed tightly",
+      "notes": [
+        {
+          "text": "The water displacement method is the poor-man's vacuum seal. Submerge the bag slowly in a pot of water with the zip partially open — water pressure forces all air out.",
+          "critical": false
+        },
+        {
+          "text": "Ichiran's chashu is paper-thin and melt-in-mouth — sous vide achieves this better than traditional braising for home cooks.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "COOK_CHASHU",
+      "title": "Simmer Chashu (Sous Vide or Braise)",
+      "direction": "If using sous vide: cook the sealed bag at 145°F (63°C) for 4 hours. If braising: transfer pork to an oven-safe pot, add 100ml soy sauce, 50ml sake, 50ml mirin, 50ml water, 2 crushed garlic cloves, and 3 ginger slices. Cover and braise at 300°F (150°C) for 2-3 hours.",
+      "duration_min": 240,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Pork is tender throughout — a chopstick slides through with no resistance. Internal temperature at least 145°F (63°C).",
+      "notes": [
+        {
+          "text": "Sous vide produces the closest texture to Ichiran's thin, tender slices. Traditional braising also works but yields a different (more rustic) texture.",
+          "critical": false
+        },
+        {
+          "text": "The chashu can cook simultaneously with the broth — it requires far less attention.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "CHILL_CHASHU",
+      "title": "Chill and Slice Chashu",
+      "direction": "Transfer the cooked chashu (still in its bag) to an ice bath in the large bowl (V4). Refrigerate overnight in the marinade. When cold, slice paper-thin with a sharp knife. Before serving, sear briefly with a kitchen torch or in a screaming-hot dry pan for 10 seconds per side.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Chashu is chilled, sliced paper-thin, ready for brief searing before bowl assembly",
+      "notes": [
+        {
+          "text": "Cold pork slices much more cleanly than warm pork. Refrigerate at least 4 hours before slicing for the thinnest results.",
+          "critical": true
+        },
+        {
+          "text": "The brief sear before serving adds Maillard flavor and warms the slices. Ichiran's chashu has a light sear on the surface.",
+          "critical": false
+        },
+        {
+          "text": "Yield: approximately 12-16 thin slices (2 per bowl for 6-8 servings).",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "BOIL_EGGS",
+      "title": "Boil Eggs",
+      "direction": "Bring a pot of water to a vigorous boil. Gently lower 6 eggs (300g, straight from the refrigerator) into the boiling water using a slotted spoon. Boil for exactly 6 minutes and 30 seconds. Immediately transfer eggs to an ice bath in the large bowl (V4).",
+      "duration_min": 7,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Eggs",
+          "amount": "300g (6 eggs)"
+        }
+      ],
+      "exit_condition": "Eggs boiled exactly 6.5 minutes from fridge-cold, immediately transferred to ice bath, cooling for at least 10 minutes",
+      "notes": [
+        {
+          "text": "6 minutes 30 seconds from FRIDGE-COLD eggs into ROLLING BOIL water. This timing is precise for jammy orange yolks. Room-temperature eggs need less time (5:45).",
+          "critical": true
+        },
+        {
+          "text": "The ice bath stops cooking immediately. Leave eggs in ice water for at least 10 minutes before peeling.",
+          "critical": true
+        },
+        {
+          "text": "Peel under gently running cold water — the water gets between the membrane and the white, making peeling much easier.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "MAKE_MARINADE",
+      "title": "Make Ajitama Marinade",
+      "direction": "In a small pot, combine 62g soy sauce, 64g mirin, 57g sake, 5g sugar, and 60g water. Bring to a brief boil to cook off the alcohol (about 1 minute of boiling). Remove from heat and cool to room temperature.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        {
+          "name": "Soy Sauce",
+          "amount": "62g"
+        },
+        {
+          "name": "Mirin",
+          "amount": "64g"
+        },
+        {
+          "name": "Sake",
+          "amount": "57g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "5g"
+        },
+        {
+          "name": "Water",
+          "amount": "60g"
+        }
+      ],
+      "exit_condition": "Marinade has boiled briefly, alcohol cooked off, sugar dissolved, cooled to room temperature",
+      "notes": [
+        {
+          "text": "The brief boil cooks off harsh alcohol while preserving the sweet depth of mirin and sake. Do not skip this step or the eggs will taste boozy.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "MARINATE_EGGS",
+      "title": "Marinate Eggs (8-24 Hours)",
+      "direction": "Place peeled eggs and cooled marinade in a zip-lock bag (V5). Remove air using the water displacement method — the bag should be snug around the eggs with no air pockets, ensuring full marinade coverage. Refrigerate 8-24 hours.",
+      "duration_min": 720,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Eggs have marinated 8-24 hours, whites are brown/amber colored, yolks are jammy orange when halved",
+      "notes": [
+        {
+          "text": "The zip-lock bag method uses far less marinade than a container — the bag conforms to the eggs and eliminates air exposure. All surfaces stay in contact with marinade.",
+          "critical": false
+        },
+        {
+          "text": "8 hours is minimum for flavor penetration. 24 hours gives deeper color and flavor. Beyond 48 hours, eggs become rubbery.",
+          "critical": false
+        },
+        {
+          "text": "Halve the eggs just before serving. The jammy yolk should be a vibrant orange with a slightly gooey center.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "HEAT_BOWLS",
+      "title": "Heat Serving Bowls",
+      "direction": "Fill serving bowls with boiling water and let them sit for 2 minutes, then empty. Alternatively, place bowls in a 200°F (93°C) oven for 5 minutes. Hot bowls keep the broth at serving temperature longer.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Serving bowls are hot to the touch, water emptied",
+      "notes": [
+        {
+          "text": "Cold bowls drop broth temperature by 15-20°F immediately. Ichiran serves in pre-heated bowls to maintain the optimal broth temperature.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "ASSEMBLE_BOWL",
+      "title": "Assemble Bowl (Per Serving)",
+      "direction": "In each heated bowl: place 25-30ml tare in the bottom. Add 15-20ml aroma oil. Bring the broth to a rolling boil, then pour 350ml hot broth into the bowl. Stir vigorously to combine the tare and oil with the broth. Meanwhile, cook 100-120g noodles in vigorously boiling water for 30-45 seconds (firm) or 60 seconds (normal). Drain noodles thoroughly and add to the bowl within 30 seconds of cooking.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Tare",
+          "amount": "25-30ml"
+        },
+        {
+          "name": "Aroma Oil",
+          "amount": "15-20ml"
+        },
+        {
+          "name": "Hot Broth",
+          "amount": "350ml"
+        },
+        {
+          "name": "Noodles (cooked)",
+          "amount": "100-120g"
+        }
+      ],
+      "exit_condition": "Bowl assembled with tare dissolved in broth, aroma oil creating a visible surface layer, noodles added within 30 seconds of cooking",
+      "notes": [
+        {
+          "text": "Assembly order is CRITICAL: tare first, oil second, broth third, stir, then noodles. This is the universal ramen assembly order confirmed by all 8 research agents.",
+          "critical": true
+        },
+        {
+          "text": "Official Ichiran rule: noodles must be added within 30 seconds of leaving the boiling water. They continue cooking in the hot broth.",
+          "critical": true
+        },
+        {
+          "text": "Drain noodles thoroughly — excess water dilutes the carefully calibrated broth concentration.",
+          "critical": false
+        },
+        {
+          "text": "For barikata (extra firm) noodles: cook only 10-20 seconds. The noodles should be slightly crunchy when bitten.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "ADD_TOPPINGS",
+      "title": "Add Toppings",
+      "direction": "Arrange 2 thin chashu slices (briefly seared) on the noodles. Place 5-8g red sauce as a disc in the center of the broth surface. Add 1 halved ajitama egg. Scatter sliced scallions (green or white parts). Optional: add 2 sheets of nori (half-submerged in broth) and rehydrated kikurage (wood ear mushrooms). Serve immediately with benishoga and karashi takana on the side.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Chashu (seared slices)",
+          "amount": "2 slices (~60g)"
+        },
+        {
+          "name": "Red Sauce",
+          "amount": "5-8g"
+        },
+        {
+          "name": "Ajitama (halved)",
+          "amount": "1 egg"
+        },
+        {
+          "name": "Scallions (sliced)",
+          "amount": "1 tbsp"
+        }
+      ],
+      "exit_condition": "Bowl is fully assembled with all toppings arranged, red sauce placed as central disc on broth surface, served immediately",
+      "notes": [
+        {
+          "text": "The red sauce disc in the center of the broth surface is Ichiran's visual signature. Place it carefully as a circular pool — do not stir it in. The diner controls how much they mix.",
+          "critical": true
+        },
+        {
+          "text": "Authentic Ichiran side condiments: benishoga (red pickled ginger), karashi takana (spicy pickled mustard greens), and a fresh garlic clove pressed through a garlic press.",
+          "critical": false
+        },
+        {
+          "text": "Eat quickly. Hakata noodles are thin and absorb broth rapidly. Kaedama (noodle refill) is the Ichiran tradition — order more noodles into the remaining broth.",
+          "critical": false
+        }
+      ]
+    }
+  ],
+  "research": {
+    "strategy": "8 parallel search agents using distinct strategies: copycat recipe aggregation, Japanese-language sources, product label reverse-engineering (7 Ichiran products including the Umakara Kokumashi bridge product), red sauce deep dive, community intelligence (Reddit/forums), tonkotsu broth food science, noodle science and manufacturing, and deep-dive article analysis. Cross-referenced ingredient confidence across all agents to build tiered provenance. Key breakthrough: Umakara Kokumashi label revealed red sauce is sweet-first, umami-second, spicy-third.",
+    "sourceCount": 92,
+    "date": "2026-02-08",
+    "sources": [
+      {
+        "name": "Ichiran - The Classic Tonkotsu Ramen",
+        "url": "https://en.ichiran.com/ramen/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Five Originals",
+        "url": "https://en.ichiran.com/ganso/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Allergen Information",
+        "url": "https://en.ichiran.com/ramen/allergie.html",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Red Sauce Column",
+        "url": "https://en.ichiran.com/column/clmn-004992.html",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Natural Tonkotsu Column",
+        "url": "https://en.ichiran.com/column/clmn-005020.html",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Hakata Straight Noodles (hoso5)",
+        "url": "https://en.ichiran.com/omiyage-introduce/hoso/hoso5/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Curly Noodles (chijire5)",
+        "url": "https://en.ichiran.com/omiyage-introduce/chijire/chijire5/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Fresh Noodle Kit (namamen)",
+        "url": "https://en.ichiran.com/omiyage-introduce/etc/namamen/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Cup Ramen",
+        "url": "https://en.ichiran.com/omiyage-introduce/cup/cup/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - No Pork Version",
+        "url": "https://en.ichiran.com/omiyage-introduce/hoso/nopork5/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Vegan Japan (vegan2)",
+        "url": "https://en.ichiran.com/omiyage-introduce/hoso/vegan2/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Red Dry Sauce Can",
+        "url": "https://en.ichiran.com/omiyage-introduce/etc/hidenkan/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Umakara Kokumashi",
+        "url": "https://en.ichiran.com/omiyage-introduce/etc/ukkm/",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Osukaran Vinegar",
+        "url": "https://en.ichiran.com/menu/osukaran.html",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Omiyage Recipe Guide",
+        "url": "https://en.ichiran.com/omiyage/recipe001.html",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran - Company History",
+        "url": "https://en.ichiran.com/company/history.html",
+        "type": "original"
+      },
+      {
+        "name": "ICHIRAN USA - About",
+        "url": "https://www.ichiranusa.com/about/",
+        "type": "original"
+      },
+      {
+        "name": "ICHIRAN USA - Take-Home Kit",
+        "url": "https://shop.ichiranusa.com/products/official-ichiran-take-home-ramen-kit",
+        "type": "original"
+      },
+      {
+        "name": "ICHIRAN USA - Vegan Kit",
+        "url": "https://shop.ichiranusa.com/products/official-ichiran-vegan-take-home-ramen-kit",
+        "type": "original"
+      },
+      {
+        "name": "Ichiran Store - Umakara Page",
+        "url": "https://www.ichiranstore.com/shop/pages/ukkm.aspx",
+        "type": "original"
+      },
+      {
+        "name": "Amazon - Ichiran Take-Home Kit",
+        "url": "https://www.amazon.com/Official-ICHIRAN-Take-Home-Authentic-Tonkotsu/dp/B0CSDXG8XK",
+        "type": "original"
+      },
+      {
+        "name": "Open Food Facts - Ichiran 645g",
+        "url": "https://world.openfoodfacts.org/product/4562214820936/new-ichiran-ramen-hakata-style",
+        "type": "original"
+      },
+      {
+        "name": "Japan Spread - Ichiran 5-pack",
+        "url": "https://www.japan-spread.com/category/select/pid/5879",
+        "type": "original"
+      },
+      {
+        "name": "Kumitasu - Ichiran Allergen Detail",
+        "url": "https://www.kumitasu.com/products/detail/164706/",
+        "type": "original"
+      },
+      {
+        "name": "Furusato Tax - Fresh Noodle Set",
+        "url": "https://www.furusato-tax.jp/product/detail/40221/6328521",
+        "type": "original"
+      },
+      {
+        "name": "PR Times - Umakara Kokumashi Launch",
+        "url": "https://prtimes.jp/main/html/rd/p/000000003.000141350.html",
+        "type": "inspired"
+      },
+      {
+        "name": "Samsung Food - Ichiran Copycat",
+        "url": "https://app.samsungfood.com/recipes/107018874cfe3ff77409baa02bc59276976",
+        "type": "adapted"
+      },
+      {
+        "name": "Ramen Kaonashi - Hakata Tonkotsu",
+        "url": "https://ramenkaonashi.com/how-to-make-hakata-tonkotsu-ramen/",
+        "type": "adapted"
+      },
+      {
+        "name": "NoRecipes - Tonkotsu Ramen",
+        "url": "https://norecipes.com/tonkotsu-ramen-recipe/",
+        "type": "adapted",
+        "author": "Marc Matsumoto"
+      },
+      {
+        "name": "Joshua Weissman - Tonkotsu Ramen",
+        "url": "https://www.joshuaweissman.com/recipes/best-tonkotsu-ramen-recipe",
+        "type": "adapted",
+        "author": "Joshua Weissman"
+      },
+      {
+        "name": "Glebe Kitchen - Tonkotsu Broth",
+        "url": "https://glebekitchen.com/tonkotsu-ramen-broth-home/",
+        "type": "adapted"
+      },
+      {
+        "name": "Just One Cookbook - Easy Tonkotsu",
+        "url": "https://www.justonecookbook.com/easy-tonkotsu-ramen-recipe/",
+        "type": "adapted",
+        "author": "Nami Chen"
+      },
+      {
+        "name": "Adam Liaw - How to Make Tonkotsu",
+        "url": "https://adamliaw.com/recipe/how-to-make-tonkotsu-ramen",
+        "type": "adapted",
+        "author": "Adam Liaw"
+      },
+      {
+        "name": "EatHealthy365 - Hakata Tonkotsu",
+        "url": "https://eathealthy365.com/authentic-hakata-style-tonkotsu-ramen/",
+        "type": "adapted"
+      },
+      {
+        "name": "5am Ramen - My Take on Ichiran",
+        "url": "https://www.5amramen.com/post/my-take-on-ichiran-ramen",
+        "type": "adapted"
+      },
+      {
+        "name": "When In Manila - Ichiran at Home",
+        "url": "https://www.wheninmanila.com/how-to-make-ichiran-style-ramen-at-home/",
+        "type": "adapted"
+      },
+      {
+        "name": "Myojo USA - Ichiran-Style Tonkotsu",
+        "url": "https://www.myojousa.com/recipe/ichiran-style-tonkotsu-ramen/",
+        "type": "adapted"
+      },
+      {
+        "name": "Myojo USA - Spicy Red Paste",
+        "url": "https://www.myojousa.com/recipe/spicy-red-miso/",
+        "type": "adapted"
+      },
+      {
+        "name": "Ramen Cook Blog - Ichiran Style",
+        "url": "https://ramenchef-japan.com/ichiran/",
+        "type": "adapted"
+      },
+      {
+        "name": "Ramen Cook Blog - Red Tare #025",
+        "url": "https://ramenchef-japan.com/tare5/",
+        "type": "adapted"
+      },
+      {
+        "name": "Ramen Cook Blog - Salt Tare",
+        "url": "https://ramenchef-japan.com/tare4/",
+        "type": "adapted"
+      },
+      {
+        "name": "Yoshi / Yahoo News - Complete Ichiran",
+        "url": "https://news.yahoo.co.jp/expert/articles/fc811e99a11bb0020f4dca64a9a02a1906c67a9f",
+        "type": "adapted",
+        "author": "Yoshi"
+      },
+      {
+        "name": "Ryuji / HowToCook.JP - Ramen Shop Style",
+        "url": "https://howtocook.jp/language/en/lath_ighnzo-en/",
+        "type": "adapted",
+        "author": "Ryuji"
+      },
+      {
+        "name": "Ryuji / Nichinichi - Generic Ichiran",
+        "url": "https://nichinichi-magazine.com/articles/detail/11790",
+        "type": "adapted",
+        "author": "Ryuji"
+      },
+      {
+        "name": "Note.com/shinmr - Red Tare",
+        "url": "https://note.com/shinmr/n/na44d89cf85dd",
+        "type": "adapted"
+      },
+      {
+        "name": "Rakuten Recipe - Ichiran Red Tare",
+        "url": "https://recipe.rakuten.co.jp/recipe/1020006680/",
+        "type": "adapted"
+      },
+      {
+        "name": "Rakuten Blog - Pressure Cooker Ichiran",
+        "url": "https://plaza.rakuten.co.jp/magic0428/diary/202104140000/",
+        "type": "adapted"
+      },
+      {
+        "name": "Cookpit - Professional Ichiran",
+        "url": "https://cookpit.jp/en/local-ramen/local-ramen-56486/",
+        "type": "inspired"
+      },
+      {
+        "name": "Cookpit - Hakata Noodle Recipe",
+        "url": "https://cookpit.jp/en/explanation/012-32/",
+        "type": "inspired"
+      },
+      {
+        "name": "The Japanese Food Lab - Kurume Tonkotsu",
+        "url": "https://thejapanesefoodlab.com/kurume-tonkotsu-ramen/",
+        "type": "inspired"
+      },
+      {
+        "name": "The Japanese Food Lab - Ramen Science",
+        "url": "https://thejapanesefoodlab.com/ramen-science/",
+        "type": "inspired"
+      },
+      {
+        "name": "Ramen Chemistry - Soup Basics",
+        "url": "http://www.ramenchemistry.com/blog/2015/1/13/ramen-1012-soup-basicspork-and-chicken",
+        "type": "inspired"
+      },
+      {
+        "name": "Cook's Gazette - Tonkotsu Paitan",
+        "url": "https://www.cooksgazette.com/tonkotsu-paitan/",
+        "type": "inspired"
+      },
+      {
+        "name": "Cook's Gazette - Shoyu Tare",
+        "url": "https://www.cooksgazette.com/shoyu-tare/",
+        "type": "inspired"
+      },
+      {
+        "name": "Life By Mike G - Tare and Aroma Oil",
+        "url": "https://lifebymikeg.com/blogs/all/a-beginners-guide-to-ramen-2-tare-and-aroma-oil",
+        "type": "inspired"
+      },
+      {
+        "name": "The Takeout - Aroma Oil 101",
+        "url": "https://www.thetakeout.com/aroma-oil-101-why-ramen-benefits-when-you-add-more-fat-1830869344/",
+        "type": "inspired"
+      },
+      {
+        "name": "Yamato Noodle - Hakata Tonkotsu Noodles",
+        "url": "https://www.yamatonoodle.com/noodle-master-labs/how-to-make-hakata-tonkotsu-ramen-noodles/",
+        "type": "inspired"
+      },
+      {
+        "name": "Yamato Noodle - Kansui Guide",
+        "url": "https://www.yamatonoodle.com/noodle-master-labs/ramen-noodle-ingredients-kansui-etc/",
+        "type": "inspired"
+      },
+      {
+        "name": "Yamato Noodle - Noodle Resting Science",
+        "url": "https://www.yamatonoodle.com/noodle-master-labs/3rd-resting-for-better-ramen-noodles/",
+        "type": "inspired"
+      },
+      {
+        "name": "Seimenjyo - Hydration and Kansui",
+        "url": "https://seimenjyo.com/2020/02/26/",
+        "type": "inspired"
+      },
+      {
+        "name": "Fukuoka Leapup - Barikata Science",
+        "url": "https://en.fukuoka-leapup.jp/gourmet/202204.557",
+        "type": "inspired"
+      },
+      {
+        "name": "AbsoluteNom - Low Hydration Noodles",
+        "url": "https://absolutenom.com/2021/low-hydration-alkaline-noodle-recipe/",
+        "type": "adapted"
+      },
+      {
+        "name": "Kavey Eats - Handmade Ramen + Kansui",
+        "url": "https://www.kaveyeats.com/handmade-ramen-noodles-incl-homemade-kansui",
+        "type": "adapted"
+      },
+      {
+        "name": "Hacking Ichiran - Substack (Harvard Wang)",
+        "url": "https://soysaucesugarmirin.substack.com/p/hacking-ichiran",
+        "type": "inspired",
+        "author": "Harvard Wang"
+      },
+      {
+        "name": "How Good Is It Actually - Ichiran Comparison",
+        "url": "https://www.howgoodisitactually.com/ichiran-comparison/",
+        "type": "inspired"
+      },
+      {
+        "name": "LIVE JAPAN - Ichiran Secrets",
+        "url": "https://livejapan.com/en/article-a0001083/",
+        "type": "inspired"
+      },
+      {
+        "name": "Nippon.com - Fukuoka Soul Food",
+        "url": "https://www.nippon.com/en/guide-to-japan/gu900278/",
+        "type": "inspired"
+      },
+      {
+        "name": "Japan Food Guide - Ultimate Ichiran",
+        "url": "https://japan-food.guide/en/articles/The-Ultimate-Ichiran-Guide-A-One-of-a-Kind-Tonkotsu-Ramen-Experience-at-the-Flavor-Focused-Counter",
+        "type": "inspired"
+      },
+      {
+        "name": "Tokyo Iroha - Deep Dive into Ichiran",
+        "url": "https://tokyo-iroha.com/food/1243/",
+        "type": "inspired"
+      },
+      {
+        "name": "ApexSK - 6 Secrets of Ichiran",
+        "url": "https://www.apexsk.com/blogs/japan-lifestyle/secrets-of-the-famous-ichiran-empire-revealed",
+        "type": "inspired"
+      },
+      {
+        "name": "Wafuu Japan - Secrets of Ichiran",
+        "url": "https://wafuu.com/en-us/blogs/know-japan-wafuu/discover-the-secrets-of-ichiran-a-famous-ramen-restaurant-in-japan",
+        "type": "inspired"
+      },
+      {
+        "name": "GaijinPot - Stop Lining Up",
+        "url": "https://blog.gaijinpot.com/stop-lining-up-for-ichiran-ramen-you-cowards/",
+        "type": "inspired"
+      },
+      {
+        "name": "Ramen Club - Ichiran Ueno Review",
+        "url": "https://ramenclub.net/review-ichiran-ueno-tokyo/",
+        "type": "inspired"
+      },
+      {
+        "name": "Sajitasu - Umakara Review",
+        "url": "https://sajitasu.com/food/46712",
+        "type": "inspired"
+      },
+      {
+        "name": "Nyam with Ny - Level 10 Review",
+        "url": "https://nyamwithny.com/ichiran-ramen-level-10-review/",
+        "type": "inspired"
+      },
+      {
+        "name": "The Ramen Rater - #2705",
+        "url": "https://www.theramenrater.com/2018/01/31/2705-ichiran-fukuokatonkotsu-ramen/",
+        "type": "inspired"
+      },
+      {
+        "name": "Wikipedia - Ichiran (EN)",
+        "url": "https://en.wikipedia.org/wiki/Ichiran",
+        "type": "inspired"
+      },
+      {
+        "name": "Wikipedia - Ichiran (JP)",
+        "url": "https://ja.wikipedia.org/wiki/%E4%B8%80%E8%98%AD",
+        "type": "inspired"
+      },
+      {
+        "name": "2chfood - Ichiran Thread",
+        "url": "https://2chfood.blog.jp/archives/8863743.html",
+        "type": "inspired"
+      },
+      {
+        "name": "Ramen Laboratory - Review",
+        "url": "https://ramen-laboratory.com/itiranumaimazui/",
+        "type": "inspired"
+      },
+      {
+        "name": "Nikkan SPA - Secret Sauce Article",
+        "url": "https://nikkan-spa.jp/1682943",
+        "type": "inspired"
+      },
+      {
+        "name": "Taiho - Yobimodoshi vs Torikiri",
+        "url": "https://www.taiho.net/ramen_cource/04.html",
+        "type": "inspired"
+      },
+      {
+        "name": "Fukuoka Now - Ichiran Factory",
+        "url": "https://www.fukuoka-now.com/en/ichiranfactory/",
+        "type": "inspired"
+      },
+      {
+        "name": "Wander The Map - How to Order",
+        "url": "https://wanderthemap.com/2015/06/ichiran-ramen-how-to-order-the-perfect-bowl/",
+        "type": "inspired"
+      },
+      {
+        "name": "Sun Noodle Products",
+        "url": "https://sunnoodle.com/products/",
+        "type": "inspired"
+      },
+      {
+        "name": "Ramen Supply Co - Kansui (Amazon)",
+        "url": "https://www.amazon.com/Ramen-Supply-Company-Kansui-Powder/dp/B097N3BSMJ",
+        "type": "inspired"
+      },
+      {
+        "name": "MasteringRamen - Kansui",
+        "url": "https://masteringramen.com/products/kansui-powder-100-sodium-carbonate",
+        "type": "inspired"
+      },
+      {
+        "name": "Ramen Party SF - Bone Types",
+        "url": "https://www.ramenpartysf.com/post/unlocking-the-richness-of-tonkotsu-ramen-exploring-the-variety-of-pork-bones",
+        "type": "inspired"
+      },
+      {
+        "name": "Ramen Party SF - Brix Measurement",
+        "url": "https://www.ramenpartysf.com/post/how-to-tell-the-thickness-of-tonkotsu-broth-the-ramen-chef-s-secret-method",
+        "type": "inspired"
+      },
+      {
+        "name": "Yamachan Ramen - Tonkotsu Guide",
+        "url": "https://www.yamachanramen.com/ramen-blog/tonkotsu-ramen",
+        "type": "inspired"
+      },
+      {
+        "name": "Otaku Ramen - Authentic Tonkotsu",
+        "url": "https://otakuramen.com/blog/authentic-tonkotsu-ramen-guide",
+        "type": "inspired"
+      },
+      {
+        "name": "Men to Choujin - White Tonkotsu",
+        "url": "https://www.men-to-choujin.com/entry/2021/01/11/150352",
+        "type": "adapted"
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Aggressive blanching and bone scrubbing",
+        "sourcedFrom": "All 8 agents; universal consensus across all tonkotsu sources",
+        "rationale": "Boil 15-20 min, drain, scrub every bone under cold water, remove dark marrow with chopstick. The foundation of clean, odor-free tonkotsu. Ichiran's official process emphasizes purity.",
+        "confidence": "high"
+      },
+      {
+        "name": "Rolling boil emulsification",
+        "sourcedFrom": "All 8 agents; universal consensus — the defining tonkotsu technique",
+        "rationale": "The vigorous boil mechanically emulsifies fat into gelatin, creating the white opacity. A gentle simmer produces clear broth. Pressure cookers fail here because they suppress the mechanical action.",
+        "confidence": "high"
+      },
+      {
+        "name": "Extended cook time (12+ hours)",
+        "sourcedFrom": "6/8 agents recommend 10+ hours; range 4h (shortcuts) to 20h (Kurume)",
+        "rationale": "12 hours is the most cited sweet spot for home Hakata-style tonkotsu. Professional shops go 18+. Time extracts collagen from bones, converting it to gelatin that gives the broth body.",
+        "confidence": "high"
+      },
+      {
+        "name": "Meticulous scum skimming (first 50 minutes)",
+        "sourcedFrom": "5/8 agents; critical for clean tonkotsu flavor",
+        "rationale": "The first 50 minutes produce the most impurities. After that, remaining particles contribute to body rather than off-flavors. Obsessive early skimming, then hands-off.",
+        "confidence": "medium"
+      },
+      {
+        "name": "100% pork bones (no chicken) for Ichiran authenticity",
+        "sourcedFrom": "4/8 agents cite this; Ichiran officially confirms on their website",
+        "rationale": "Ichiran uses 100% pork bone broth with no chicken. Many copycat recipes add chicken — that produces generic tonkotsu, not Ichiran-style. The pure pork flavor is distinctive.",
+        "confidence": "high"
+      },
+      {
+        "name": "Multi-chili blend for red sauce complexity",
+        "sourcedFrom": "All 8 agents; Ichiran says 'finest peppers from around the world'",
+        "rationale": "Single-chili red sauce tastes flat. Blending ichimi togarashi, gochugaru, cayenne, white pepper, and black pepper creates the complex heat profile that distinguishes Ichiran's sauce.",
+        "confidence": "high"
+      },
+      {
+        "name": "Red sauce aging minimum 2-3 days",
+        "sourcedFrom": "5/8 agents; official: 'aged over many days and nights'",
+        "rationale": "Fresh red sauce tastes harsh and one-dimensional. Aging integrates the spice, soy, and sugar components into a cohesive flavor. 5-7 days is even better.",
+        "confidence": "medium"
+      },
+      {
+        "name": "Sweet-umami base with heat secondary in red sauce",
+        "sourcedFrom": "4/8 agents; Umakara Kokumashi label: soy sauce > sugar > yeast extract > garlic > chili",
+        "rationale": "The Umakara label was the research 'Rosetta Stone': it revealed the red sauce is sweet-first (sugar #2), umami-second (yeast extract #3), with chili heat coming after. This inverts most home copycat attempts.",
+        "confidence": "high"
+      },
+      {
+        "name": "Tare-first bowl assembly order",
+        "sourcedFrom": "All 8 agents; universal ramen assembly standard",
+        "rationale": "Tare in bowl first, then aroma oil, then hot broth poured over and stirred to dissolve. Noodles added last. This sequence ensures even seasoning distribution.",
+        "confidence": "high"
+      },
+      {
+        "name": "Red sauce placed as central disc on broth surface",
+        "sourcedFrom": "5/8 agents; Ichiran's visual signature documented in reviews and guides",
+        "rationale": "The red sauce is applied as a circular disc floating on the broth surface — not stirred in. The diner controls how much they incorporate with each bite. This is Ichiran's most recognizable visual element.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "nutrition": {
+    "servings": 7,
+    "servingSize": "1 bowl (~500ml broth + 110g noodles)",
+    "calculatedDate": "2026-02-08",
+    "dataSource": "Placeholder — pending USDA pipeline calculation (PF-78.1)",
+    "totals": {
+      "calories": 0,
+      "protein": 0,
+      "totalFat": 0,
+      "saturatedFat": 0,
+      "carbohydrates": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 0
+    },
+    "perServing": {
+      "calories": 0,
+      "protein": 0,
+      "totalFat": 0,
+      "saturatedFat": 0,
+      "carbohydrates": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 0
+    },
+    "breakdown": []
+  }
+}
