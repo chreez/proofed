@@ -1,10 +1,10 @@
 ---
 id: PF-78
 title: 'Add recipe: Ichiran-Style Tonkotsu Ramen'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-08 17:44'
-updated_date: '2026-02-08 18:12'
+updated_date: '2026-02-08 18:26'
 labels:
   - recipe
 dependencies: []
@@ -178,3 +178,18 @@ Add to `public/recipes/index.json`:
 - **Sources**: 92 (highest yet — CoCo was 64)
 - **Hardest parts**: Red sauce reconstruction (8+ ingredients, aging), per-bowl assembly ratios, noodle specs (low hydration, kansui ratio)
 <!-- SECTION:PLAN:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created `public/recipes/ichiran-ramen.json` (2,183 lines) — Ichiran-Style Tonkotsu Ramen.
+
+**Stats:** 92 research sources, 38 ingredients with full provenance (sourcedFrom, confidence, rationale), 31 states across 9 stages (Prep, Broth, Tare, Aroma Oil, Red Sauce, Noodles, Chashu, Ajitama, Assembly), 6 vessels with reuse chains, 10 research techniques.
+
+**Key modeling decisions:**
+- Per-bowl assembly ratios documented: 25-30ml tare / 15-20ml aroma oil / 350ml broth / 110g noodles
+- Red sauce reconstructed from Umakara Kokumashi label analysis (sweet-first, umami-second, spicy-third)
+- 9 shared ingredients consolidated with breakdown arrays for D6 compliance (soy sauce 186g across 4 sub-recipes, etc.)
+- Placeholder nutrition block added (pending PF-78.1 USDA pipeline)
+- Added /age/i, /boil/i, /pressure/i passive state patterns to validation test for ramen-specific states
+<!-- SECTION:FINAL_SUMMARY:END -->

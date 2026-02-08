@@ -1,10 +1,10 @@
 ---
 id: PF-79
 title: 'Add recipe: Tomita/Fuunji-Style Gyokai-Tonkotsu Tsukemen'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-08 18:05'
-updated_date: '2026-02-08 18:12'
+updated_date: '2026-02-08 18:26'
 labels:
   - recipe
 dependencies: []
@@ -250,3 +250,20 @@ Add to `public/recipes/index.json`:
 - **Multi-day recipe**: Day 1 (tare cold soak, noodles), Day 2 (broth, assembly)
 - **Hardest parts**: Bone slurry technique, temperature-controlled fish extraction, soup-wari as dual-use broth (concentrated for dipping / balanced when diluted ~50%), correct kansui ratio modeling
 <!-- SECTION:PLAN:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created `public/recipes/tomita-tsukemen.json` (2,120 lines) — Tomita/Fuunji-Style Gyokai-Tonkotsu Tsukemen.
+
+**Stats:** 74 research sources, 31 ingredients with full provenance, 39 states across 9 stages (Prep, Tare, Noodles, Animal Broth, Fish Dashi, Gyofun, Chashu, Assembly, Soup-Wari), 6 vessels with reuse chains, 12 research techniques.
+
+**Key modeling decisions:**
+- Soup-wari modeled as explicit final stage (AC#10) with HEAT_DILUTION_BROTH and SERVE_SOUP_WARI states
+- Noodle cold-shock (shimeru) modeled as explicit COLD_SHOCK_NOODLES state (AC#11)
+- Bone slurry blending (BLEND_SLURRY) documented as the signature technique with critical note
+- Temperature-controlled fish extraction at 176°F (80°C) with critical "never boil" note
+- Multi-day recipe: Day 1 (tare cold soak, noodles), Day 2 (broth, dashi, assembly)
+- 7 shared ingredients consolidated with breakdowns (soy sauce 700g across 3 sub-recipes, etc.)
+- Placeholder nutrition block added (pending PF-79.1 USDA pipeline)
+<!-- SECTION:FINAL_SUMMARY:END -->
