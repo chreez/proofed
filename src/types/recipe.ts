@@ -8,6 +8,7 @@ export interface Recipe {
   change_log?: ChangeLogEntry[]
   cook_log?: CookLogEntry[]
   nutrition?: RecipeNutrition
+  research?: Research
 }
 
 export interface NutrientTotals {
@@ -62,6 +63,30 @@ export interface RecipeSource {
   photoCredit?: string
 }
 
+/**
+ * Confidence level for ingredient/technique provenance.
+ * - high: 5+ independent sources agree on the value
+ * - medium: 2-4 sources agree
+ * - low: only 1 source (or personal judgment)
+ */
+export type Confidence = 'high' | 'medium' | 'low'
+
+// Research provenance — traces ingredient and technique decisions back to sources
+export interface ResearchTechnique {
+  name: string
+  sourcedFrom: string
+  rationale: string
+  confidence?: Confidence
+}
+
+export interface Research {
+  sources: RecipeSource[]
+  techniques: ResearchTechnique[]
+  strategy: string
+  sourceCount: number
+  date: string
+}
+
 export interface RecipeMeta {
   name: string
   source?: RecipeSource
@@ -99,6 +124,9 @@ export interface Ingredient {
   total: number
   unit: string
   breakdown: IngredientBreakdown[] | null
+  sourcedFrom?: string
+  confidence?: Confidence
+  rationale?: string
 }
 
 export interface IngredientBreakdown {
