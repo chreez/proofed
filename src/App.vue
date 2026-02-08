@@ -15,6 +15,7 @@ import VersionTimeline from '@/components/VersionTimeline.vue'
 import TocSidebar from '@/components/TocSidebar.vue'
 import NutritionSection from '@/components/NutritionSection.vue'
 import SourceSection from '@/components/SourceSection.vue'
+import ResearchSection from '@/components/ResearchSection.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
 
@@ -210,6 +211,8 @@ function setupTocObserver() {
             activeSection.value = 'change-log'
           } else if (id === 'source-section') {
             activeSection.value = 'source'
+          } else if (id === 'research-section') {
+            activeSection.value = 'research'
           } else if (id.startsWith('stage-')) {
             activeSection.value = id.replace('stage-', '')
           }
@@ -233,6 +236,8 @@ function setupTocObserver() {
     if (versionHistory) tocObserver?.observe(versionHistory)
     const sourceSection = document.getElementById('source-section')
     if (sourceSection) tocObserver?.observe(sourceSection)
+    const researchSection = document.getElementById('research-section')
+    if (researchSection) tocObserver?.observe(researchSection)
   })
 }
 
@@ -271,6 +276,8 @@ function handleTocNavigate(target: string) {
     elementId = 'version-history-section'
   } else if (target === 'source') {
     elementId = 'source-section'
+  } else if (target === 'research') {
+    elementId = 'research-section'
   } else {
     // Expand the stage if it's collapsed
     if (progress.value?.isStageCollapsed(target)) {
@@ -385,6 +392,14 @@ function handleTocNavigate(target: string) {
               section-id="source-section"
               class="mt-8 scroll-mt-16"
             />
+
+            <ResearchSection
+              v-if="currentRecipe.research"
+              id="research-section"
+              :research="currentRecipe.research"
+              section-id="research-section"
+              class="mt-8 scroll-mt-16"
+            />
           </div>
 
           <TocSidebar
@@ -393,6 +408,7 @@ function handleTocNavigate(target: string) {
             :has-cook-log="!!currentRecipe.cook_log?.length"
             :has-change-log="!!currentRecipe.change_log?.length"
             :has-source="!!currentRecipe.meta.source"
+            :has-research="!!currentRecipe.research"
             :current-stage-id="currentStageId"
             :completed-stage-ids="completedStageIds"
             @navigate="handleTocNavigate"

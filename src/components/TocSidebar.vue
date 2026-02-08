@@ -7,6 +7,7 @@ const props = defineProps<{
   hasCookLog: boolean
   hasChangeLog: boolean
   hasSource: boolean
+  hasResearch: boolean
   currentStageId: string | null
   completedStageIds: string[]
 }>()
@@ -93,7 +94,7 @@ function handleDragEnd(): void {
         {{ stage.title }}
       </div>
 
-      <div v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource" class="my-2 h-px bg-stone-200" />
+      <div v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource || hasResearch" class="my-2 h-px bg-stone-200" />
 
       <div
         v-if="hasNutrition"
@@ -141,6 +142,18 @@ function handleDragEnd(): void {
         }"
       >
         Source
+      </div>
+
+      <div
+        v-if="hasResearch"
+        @click="handleNavigate('research')"
+        class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight"
+        :class="{
+          'text-accent font-medium': currentStageId === 'research',
+          'text-stone-500 hover:text-ink': currentStageId !== 'research'
+        }"
+      >
+        Research
       </div>
     </nav>
   </aside>
@@ -208,7 +221,7 @@ function handleDragEnd(): void {
             </li>
 
             <!-- Divider before extras -->
-            <li v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource" class="my-2 mx-4 h-px bg-stone-200" />
+            <li v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource || hasResearch" class="my-2 mx-4 h-px bg-stone-200" />
 
             <li v-if="hasNutrition">
               <button
@@ -259,6 +272,19 @@ function handleDragEnd(): void {
                 }"
               >
                 Source
+              </button>
+            </li>
+
+            <li v-if="hasResearch">
+              <button
+                @click="handleNavigate('research')"
+                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+                :class="{
+                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'research',
+                  'text-ink active:bg-stone-100': currentStageId !== 'research'
+                }"
+              >
+                Research
               </button>
             </li>
           </ul>

@@ -11,6 +11,7 @@ const defaultProps = {
   hasCookLog: true,
   hasChangeLog: true,
   hasSource: false,
+  hasResearch: false,
   currentStageId: 'mix-dough',
   completedStageIds: ['mise-en-place']
 }
