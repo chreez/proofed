@@ -1,5 +1,15 @@
 import { ref, computed } from 'vue'
-import type { Recipe, RecipeManifest, RecipeFamily } from '@/types/recipe'
+import type { Recipe, RecipeManifest, RecipeFamily, RecipeSource } from '@/types/recipe'
+
+/** Normalize meta.source: plain string → { name } object; already-structured passes through. */
+export function normalizeSource(source: unknown): RecipeSource | undefined {
+  if (source == null) return undefined
+  if (typeof source === 'string') return { name: source }
+  if (typeof source === 'object' && 'name' in (source as Record<string, unknown>)) {
+    return source as RecipeSource
+  }
+  return undefined
+}
 
 const manifest = ref<RecipeManifest | null>(null)
 const currentRecipe = ref<Recipe | null>(null)
@@ -46,7 +56,9 @@ export function useRecipe() {
       const response = await fetch(`/recipes/${entry.file}`)
       if (!response.ok) throw new Error('Failed to fetch recipe')
 
-      currentRecipe.value = await response.json()
+      const data: Recipe = await response.json()
+      data.meta.source = normalizeSource(data.meta.source)
+      currentRecipe.value = data
       currentRecipeId.value = recipeId
       localStorage.setItem('last-recipe-id', recipeId)
     } catch (e) {

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { useRecipe } from './useRecipe'
+import { useRecipe, normalizeSource } from './useRecipe'
 
 // Mock localStorage with proper implementation
 let store: Record<string, string> = {}
@@ -293,5 +293,28 @@ describe('useRecipe', () => {
     await loadManifest()
 
     expect(families.value).toEqual([])
+  })
+})
+
+describe('normalizeSource', () => {
+  it('converts string to RecipeSource object', () => {
+    expect(normalizeSource("America's Test Kitchen")).toEqual({ name: "America's Test Kitchen" })
+  })
+
+  it('passes through structured RecipeSource object', () => {
+    const source = { name: 'ATK', url: 'https://example.com', type: 'original' as const }
+    expect(normalizeSource(source)).toEqual(source)
+  })
+
+  it('returns undefined for null', () => {
+    expect(normalizeSource(null)).toBeUndefined()
+  })
+
+  it('returns undefined for undefined', () => {
+    expect(normalizeSource(undefined)).toBeUndefined()
+  })
+
+  it('returns undefined for object without name', () => {
+    expect(normalizeSource({ url: 'https://example.com' })).toBeUndefined()
   })
 })

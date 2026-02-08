@@ -46,9 +46,17 @@ export interface RecipeNutrition {
   breakdown: IngredientNutrition[]
 }
 
+export interface RecipeSource {
+  name: string
+  url?: string
+  type?: 'original' | 'adapted' | 'inspired'
+  author?: string
+  accessed?: string
+}
+
 export interface RecipeMeta {
   name: string
-  source?: string
+  source?: RecipeSource
   yields: string
   total_time: string
   description?: string

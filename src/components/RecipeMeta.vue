@@ -84,7 +84,7 @@ function handleReset(): void {
         <h2 class="text-2xl text-heading">{{ recipe.meta.name }}</h2>
         <div v-if="recipe.version" class="font-mono text-sm text-stone-400 mb-2">{{ formatVersion(recipe.version) }}</div>
         <div class="flex flex-wrap gap-4 text-muted">
-          <span v-if="recipe.meta.source">{{ recipe.meta.source }}</span>
+          <span v-if="recipe.meta.source">{{ recipe.meta.source.name }}</span>
           <span>{{ recipe.meta.yields }}</span>
           <span>{{ recipe.meta.total_time }}</span>
         </div>

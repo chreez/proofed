@@ -141,7 +141,7 @@ function makeRouter() {
 
 function makeRecipe(overrides: Record<string, any> = {}) {
   return {
-    meta: { name: 'Test Buns', source: 'ATK' },
+    meta: { name: 'Test Buns', source: { name: 'ATK' } },
     version: 'v1.2.0',
     config: { early_check_percent: 75 },
     stages: [

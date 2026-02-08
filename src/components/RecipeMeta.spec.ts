@@ -19,7 +19,7 @@ function makeRecipe(overrides = {}) {
   return {
     meta: {
       name: 'Quick Cinnamon Buns',
-      source: "America's Test Kitchen",
+      source: { name: "America's Test Kitchen" },
       yields: '8 buns',
       total_time: '~1.5 hours'
     },
