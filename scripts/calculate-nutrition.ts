@@ -122,13 +122,15 @@ function divideByServings(totals: NutrientTotals, servings: number): NutrientTot
 }
 
 function parseServings(yields: string): { count: number; label: string } {
-  // Handle range yields like "2–3 baguettes" (en-dash or hyphen)
-  const rangeMatch = yields.match(/^(\d+)\s*[–\-]\s*(\d+)\s+(.+)$/)
+  // Strip approximate prefix (e.g., "~8 servings" → "8 servings")
+  const cleaned = yields.replace(/^~\s*/, '')
+  // Handle range yields like "2–3 baguettes" or "6-8 servings" (en-dash or hyphen)
+  const rangeMatch = cleaned.match(/^(\d+)\s*[–\-]\s*(\d+)\s+(.+)$/)
   if (rangeMatch) {
     const high = parseInt(rangeMatch[2], 10)
     return { count: high, label: `1 ${rangeMatch[3].replace(/s$/, '')}` }
   }
-  const match = yields.match(/^(\d+)\s+(.+)$/)
+  const match = cleaned.match(/^(\d+)\s+(.+)$/)
   if (!match) {
     throw new Error(`Cannot parse yields: "${yields}". Expected format: "8 buns" or "2–3 baguettes"`)
   }
