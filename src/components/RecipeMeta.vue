@@ -71,6 +71,10 @@ async function copyRecipe(): Promise<void> {
   copyBtn.value?.flashCopied()
 }
 
+function scrollToTop(): void {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 function handleReset(): void {
   resetBtn.value?.flashSpin()
   emit('reset')
@@ -81,7 +85,7 @@ function handleReset(): void {
   <div class="card">
     <div class="flex items-start justify-between gap-4">
       <div>
-        <h2 class="text-2xl text-heading">{{ recipe.meta.name }}</h2>
+        <h2 class="text-2xl text-heading cursor-pointer" @click="scrollToTop">{{ recipe.meta.name }}</h2>
         <div v-if="recipe.version" class="font-mono text-sm text-stone-400 mb-2">{{ formatVersion(recipe.version) }}</div>
         <div class="flex flex-wrap gap-4 text-muted">
           <span v-if="recipe.meta.source">{{ recipe.meta.source.name }}</span>
