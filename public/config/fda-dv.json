@@ -1,0 +1,14 @@
+{
+  "label": "FDA Daily Values based on 2,000 kcal/day diet",
+  "source": "https://www.fda.gov/food/nutrition-facts-label/daily-value-nutrition-and-supplement-facts-labels",
+  "values": {
+    "calories": 2000,
+    "totalFat": 78,
+    "saturatedFat": 20,
+    "carbohydrates": 275,
+    "fiber": 28,
+    "sugar": 50,
+    "protein": 50,
+    "sodium": 2300
+  }
+}

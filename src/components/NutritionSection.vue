@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref, computed, useTemplateRef } from 'vue'
+import { ref, computed, useTemplateRef, onMounted } from 'vue'
 import { Link2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { RecipeNutrition, NutrientTotals } from '@/types/recipe'
+
+interface FdaDvConfig {
+  label: string
+  source: string
+  values: Partial<Record<keyof NutrientTotals, number>>
+}
 
 const props = defineProps<{
   nutrition?: RecipeNutrition
@@ -18,6 +24,22 @@ async function copyPermalink(): Promise<void> {
 }
 
 const showFull = ref(false)
+const fdaDv = ref<FdaDvConfig | null>(null)
+
+onMounted(async () => {
+  try {
+    const res = await fetch('/config/fda-dv.json')
+    if (res.ok) {
+      fdaDv.value = await res.json() as FdaDvConfig
+    }
+  } catch {
+    // FDA DV data unavailable — % DV column simply won't render
+  }
+})
+
+const showDvColumn = computed<boolean>(() => {
+  return !showFull.value && fdaDv.value !== null
+})
 
 const activeData = computed<NutrientTotals | null>(() => {
   if (!props.nutrition) return null
@@ -59,6 +81,13 @@ function formatValue(value: number, unit: string): string {
   if (unit === 'mg') return `${Math.round(value)} mg`
   if (unit === 'kcal') return `${Math.round(value)}`
   return `${value} g`
+}
+
+function getDvPercent(key: keyof NutrientTotals): string {
+  if (!fdaDv.value || !activeData.value) return '\u2014'
+  const ref = fdaDv.value.values[key]
+  if (ref === undefined) return '\u2014'
+  return `${Math.round((activeData.value[key] / ref) * 100)}%`
 }
 </script>
 
@@ -109,6 +138,13 @@ function formatValue(value: number, unit: string): string {
 
       <!-- Nutrient table -->
       <table class="w-full text-sm border-collapse" v-if="activeData">
+        <thead v-if="showDvColumn">
+          <tr class="border-b border-stone-300">
+            <th class="text-left py-1 font-medium"></th>
+            <th class="text-right py-1 font-medium"></th>
+            <th class="text-right py-1 font-medium text-xs text-stone-500">% DV*</th>
+          </tr>
+        </thead>
         <tbody>
           <tr
             v-for="row in nutrientRows"
@@ -122,9 +158,17 @@ function formatValue(value: number, unit: string): string {
             <td class="py-1.5 text-right font-mono text-xs">
               {{ formatValue(activeData[row.key], row.unit) }}
             </td>
+            <td v-if="showDvColumn" class="py-1.5 text-right font-mono text-xs text-stone-500 pl-3">
+              {{ getDvPercent(row.key) }}
+            </td>
           </tr>
         </tbody>
       </table>
+
+      <!-- DV footnote -->
+      <p v-if="showDvColumn" class="text-xs text-stone-400 mt-2">
+        *Based on 2,000 kcal/day
+      </p>
 
       <!-- Ingredient breakdown -->
       <details v-if="sortedBreakdown.length" class="mt-4">

@@ -1,10 +1,10 @@
 ---
 id: PF-30
 title: Add % Daily Value column to nutrition table
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 00:24'
-updated_date: '2026-02-07 00:37'
+updated_date: '2026-02-08 09:28'
 labels:
   - feature
 dependencies:
@@ -20,12 +20,18 @@ Add a % Daily Value column to the nutrition table, visible only in per-serving v
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 % DV column only visible when per-serving toggle is active
-- [ ] #2 % DV computed as (perServing / fdaReference) * 100, rounded to nearest integer
-- [ ] #3 FDA reference values stored in public/config/fda-dv.json
-- [ ] #4 Only nutrients present in both recipe JSON and FDA reference show % DV
-- [ ] #5 Nutrients without an FDA reference show — (em dash) in the DV column
-- [ ] #6 Column header shows “% DV” with a footnote: “*Based on 2,000 kcal/day”
-- [ ] #7 Values over 100% display normally (no cap)
-- [ ] #8 This is a styling task — human visual sign-off required before commit
+- [x] #1 % DV column only visible when per-serving toggle is active
+- [x] #2 % DV computed as (perServing / fdaReference) * 100, rounded to nearest integer
+- [x] #3 FDA reference values stored in public/config/fda-dv.json
+- [x] #4 Only nutrients present in both recipe JSON and FDA reference show % DV
+- [x] #5 Nutrients without an FDA reference show — (em dash) in the DV column
+- [x] #6 Column header shows “% DV” with a footnote: “*Based on 2,000 kcal/day”
+- [x] #7 Values over 100% display normally (no cap)
+- [x] #8 This is a styling task — human visual sign-off required before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added % Daily Value column to nutrition table. Column only appears in per-serving view. FDA reference values loaded from public/config/fda-dv.json. Nutrients without FDA reference show em dash. Footnote reads '*Based on 2,000 kcal/day'. Values over 100% display normally (e.g. sugar 113% for cinnamon buns). Human visual sign-off confirmed.
+<!-- SECTION:FINAL_SUMMARY:END -->
