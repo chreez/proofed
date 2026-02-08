@@ -149,7 +149,7 @@ function getDvPercent(key: keyof NutrientTotals): string {
           <tr
             v-for="row in nutrientRows"
             :key="row.key"
-            class="border-b border-stone-200"
+            class="[background-image:linear-gradient(to_right,transparent,rgba(212,205,193,0.4)_15%,rgba(212,205,193,0.4)_85%,transparent)] [background-size:100%_1px] [background-position:bottom] [background-repeat:no-repeat]"
             :class="row.key === 'calories' ? 'font-semibold' : ''"
           >
             <td class="py-1.5" :class="row.indent ? 'pl-4 text-stone-600' : ''">
