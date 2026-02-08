@@ -38,6 +38,10 @@ function goToIndex(): void {
   router.push('/')
 }
 
+function scrollToTop(): void {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 function handleRecipeSelect(recipeId: string): void {
   router.push(`/recipe/${recipeId}`)
 }
@@ -312,7 +316,7 @@ function handleTocNavigate(target: string) {
             v-if="isScrolled && currentRecipe && !showIndex && !showAbout"
             class="flex items-center gap-3 ml-4 min-w-0"
           >
-            <span class="text-sm text-muted truncate">{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ formatVersionShort(currentRecipe.version) }}</span></span>
+            <span class="text-sm text-muted truncate cursor-pointer" @click="scrollToTop">{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ formatVersionShort(currentRecipe.version) }}</span></span>
           </div>
         </Transition>
       </div>
