@@ -73,9 +73,18 @@
             "total": 1674,
             "unit": "g",
             "breakdown": [
-              { "label": "brew tea", "amount": 711 },
-              { "label": "cook boba", "amount": 948 },
-              { "label": "boba syrup", "amount": 15 }
+              {
+                "label": "brew tea",
+                "amount": 711
+              },
+              {
+                "label": "cook boba",
+                "amount": 948
+              },
+              {
+                "label": "boba syrup",
+                "amount": 15
+              }
             ],
             "sourcedFrom": "All 16 sources — standard water ratios for strong brew and 5:1+ boba cooking",
             "confidence": "high",
@@ -97,8 +106,14 @@
             "total": 52,
             "unit": "g",
             "breakdown": [
-              { "label": "tea base", "amount": 26 },
-              { "label": "boba syrup", "amount": 26 }
+              {
+                "label": "tea base",
+                "amount": 26
+              },
+              {
+                "label": "boba syrup",
+                "amount": 26
+              }
             ],
             "sourcedFrom": "S4 (Oh, How Civilized), S5 (Carmyy), S9 (Mountain Rose Herbs) — brown sugar preferred over white for depth",
             "confidence": "high",
@@ -150,8 +165,14 @@
             "total": 280,
             "unit": "g",
             "breakdown": [
-              { "label": "glass 1", "amount": 140 },
-              { "label": "glass 2", "amount": 140 }
+              {
+                "label": "glass 1",
+                "amount": 140
+              },
+              {
+                "label": "glass 2",
+                "amount": 140
+              }
             ],
             "sourcedFrom": "All 16 sources — standard iced tea service",
             "confidence": "high",
@@ -214,14 +235,17 @@
     {
       "id": "BOIL_WATER",
       "title": "Boil Water for Tea",
-      "direction": "In medium saucepan (V1), bring 711g water to a rolling boil over high heat.",
+      "direction": "In medium saucepan (V1), bring 711g water to a rolling boil — 212°F (100°C) — over high heat.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Water", "amount": "711g" }
+        {
+          "name": "Water",
+          "amount": "711g"
+        }
       ],
-      "exit_condition": "Water is at a full rolling boil",
+      "exit_condition": "Water is at a full rolling boil — 212°F (100°C)",
       "notes": null
     },
     {
@@ -232,8 +256,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "ChaTraMue Thai Tea Mix", "amount": "40g" },
-        { "name": "Brown Sugar", "amount": "26g" }
+        {
+          "name": "ChaTraMue Thai Tea Mix",
+          "amount": "40g"
+        },
+        {
+          "name": "Brown Sugar",
+          "amount": "26g"
+        }
       ],
       "exit_condition": "Tea mix and sugar are stirred into the hot water, sugar dissolving",
       "notes": [
@@ -311,7 +341,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Salt", "amount": "1g" }
+        {
+          "name": "Salt",
+          "amount": "1g"
+        }
       ],
       "exit_condition": "Salt fully dissolved into the tea concentrate",
       "notes": null
@@ -344,8 +377,14 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Brown Sugar", "amount": "26g" },
-        { "name": "Water", "amount": "15g" }
+        {
+          "name": "Brown Sugar",
+          "amount": "26g"
+        },
+        {
+          "name": "Water",
+          "amount": "15g"
+        }
       ],
       "exit_condition": "Sugar fully dissolved, mixture is a thick, glossy brown syrup",
       "notes": [
@@ -362,14 +401,17 @@
     {
       "id": "BOIL_FOR_BOBA",
       "title": "Boil Water for Boba",
-      "direction": "In medium saucepan (V1, rinsed from tea), bring 948g water to a vigorous rolling boil over high heat. The water must be at a full boil before adding pearls.",
+      "direction": "In medium saucepan (V1, rinsed from tea), bring 948g water to a vigorous rolling boil — 212°F (100°C) — over high heat. The water must be at a full boil before adding pearls.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Water", "amount": "948g" }
+        {
+          "name": "Water",
+          "amount": "948g"
+        }
       ],
-      "exit_condition": "Water is at a vigorous rolling boil",
+      "exit_condition": "Water is at a vigorous rolling boil — 212°F (100°C)",
       "notes": [
         {
           "text": "The 5:1+ water-to-pearl ratio is critical — pearls need room to tumble freely without sticking together",
@@ -385,7 +427,10 @@
       "timer": true,
       "parallel": false,
       "components": [
-        { "name": "Quick-Cook Tapioca Pearls", "amount": "80g" }
+        {
+          "name": "Quick-Cook Tapioca Pearls",
+          "amount": "80g"
+        }
       ],
       "exit_condition": "Pearls are uniformly translucent throughout — no opaque white centers visible when held up to light",
       "notes": [
@@ -427,8 +472,14 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Sweetened Condensed Milk", "amount": "60g" },
-        { "name": "Evaporated Milk", "amount": "45g" }
+        {
+          "name": "Sweetened Condensed Milk",
+          "amount": "60g"
+        },
+        {
+          "name": "Evaporated Milk",
+          "amount": "45g"
+        }
       ],
       "exit_condition": "Milk mixture is smooth and homogeneous, no streaks of condensed milk visible",
       "notes": [
@@ -450,10 +501,22 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Boba (sugar-coated)", "amount": "half per glass" },
-        { "name": "Ice", "amount": "140g per glass" },
-        { "name": "Tea Concentrate", "amount": "to 3/4 full" },
-        { "name": "Milk Mixture", "amount": "half per glass" }
+        {
+          "name": "Boba (sugar-coated)",
+          "amount": "half per glass"
+        },
+        {
+          "name": "Ice",
+          "amount": "140g per glass"
+        },
+        {
+          "name": "Tea Concentrate",
+          "amount": "to 3/4 full"
+        },
+        {
+          "name": "Milk Mixture",
+          "amount": "half per glass"
+        }
       ],
       "exit_condition": "Two glasses assembled with visible layers: boba on bottom, dark tea in middle, creamy milk floating on top",
       "notes": [
@@ -604,6 +667,146 @@
         "sourcedFrom": "S1 (The Forked Spoon), S4 (Oh, How Civilized)",
         "rationale": "Pouring milk mixture slowly over the back of a spoon creates a visible layered gradient (dark tea to creamy white). Purely visual — drinker stirs before consuming.",
         "confidence": "medium"
+      }
+    ]
+  },
+  "nutrition": {
+    "servings": 2,
+    "servingSize": "1 serving (16 oz)",
+    "calculatedDate": "2026-02-08",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 737.3,
+      "protein": 8.1,
+      "totalFat": 8.6,
+      "saturatedFat": 5.4,
+      "carbohydrates": 159.2,
+      "sugar": 90.3,
+      "fiber": 0.7,
+      "sodium": 606.3
+    },
+    "perServing": {
+      "calories": 368.7,
+      "protein": 4.1,
+      "totalFat": 4.3,
+      "saturatedFat": 2.7,
+      "carbohydrates": 79.6,
+      "sugar": 45.2,
+      "fiber": 0.4,
+      "sodium": 303.2
+    },
+    "breakdown": [
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 1674,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 67
+      },
+      {
+        "ingredientId": "thai_tea_mix",
+        "ingredientName": "ChaTraMue Thai Tea Mix",
+        "amount": 40,
+        "fdcId": 0,
+        "calories": 0.4,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.1,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1.2
+      },
+      {
+        "ingredientId": "brown_sugar",
+        "ingredientName": "Dark Brown Sugar",
+        "amount": 52,
+        "fdcId": 168833,
+        "calories": 197.6,
+        "protein": 0.1,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 51,
+        "sugar": 50.5,
+        "fiber": 0,
+        "sodium": 14.6
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 1,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 387.6
+      },
+      {
+        "ingredientId": "tapioca_pearls",
+        "ingredientName": "Quick-Cook Tapioca Pearls",
+        "amount": 80,
+        "fdcId": 169717,
+        "calories": 286.4,
+        "protein": 0.2,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 71,
+        "sugar": 2.7,
+        "fiber": 0.7,
+        "sodium": 0.8
+      },
+      {
+        "ingredientId": "condensed_milk",
+        "ingredientName": "Sweetened Condensed Milk",
+        "amount": 60,
+        "fdcId": 171275,
+        "calories": 192.6,
+        "protein": 4.7,
+        "totalFat": 5.2,
+        "saturatedFat": 3.3,
+        "carbohydrates": 32.6,
+        "sugar": 32.6,
+        "fiber": 0,
+        "sodium": 76.2
+      },
+      {
+        "ingredientId": "evaporated_milk",
+        "ingredientName": "Evaporated Milk",
+        "amount": 45,
+        "fdcId": 172194,
+        "calories": 60.3,
+        "protein": 3.1,
+        "totalFat": 3.4,
+        "saturatedFat": 2.1,
+        "carbohydrates": 4.5,
+        "sugar": 4.5,
+        "fiber": 0,
+        "sodium": 47.7
+      },
+      {
+        "ingredientId": "ice",
+        "ingredientName": "Ice",
+        "amount": 280,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 11.2
       }
     ]
   }

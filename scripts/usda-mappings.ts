@@ -182,6 +182,31 @@ export const USDA_NUTRIENTS: Record<string, NutrientsPer100g> = {
     sodium: 9,
   },
 
+  baking_powder: {
+    fdcId: 171015,
+    description: 'Leavening agents, baking powder, double-acting, sodium aluminum sulfate',
+    calories: 53,
+    protein: 0,
+    totalFat: 0,
+    saturatedFat: 0,
+    carbohydrates: 27.7,
+    sugar: 0,
+    fiber: 0.2,
+    sodium: 10600,
+  },
+  cloves: {
+    fdcId: 171321,
+    description: 'Spices, cloves, ground',
+    calories: 274,
+    protein: 5.97,
+    totalFat: 13.0,
+    saturatedFat: 3.952,
+    carbohydrates: 65.53,
+    sugar: 2.38,
+    fiber: 33.9,
+    sodium: 277,
+  },
+
   // ── Tartine Baguette ingredients ──
 
   ap_flour: {
@@ -481,5 +506,72 @@ export const USDA_NUTRIENTS: Record<string, NutrientsPer100g> = {
     sugar: 0,
     fiber: 2.8,
     sodium: 1,
+  },
+
+  // ── Thai Tea Boba ingredients ──
+
+  // Proxy: ChaTraMue Thai tea mix is dried ceylon tea leaves + food coloring,
+  // steeped and strained out. Brewed tea liquid contributes ~1 kcal/100ml.
+  // Using USDA "Beverages, tea, brewed" as proxy for what actually enters the drink.
+  // FDC ID 0 = derived/proxy data.
+  thai_tea_mix: {
+    fdcId: 0,
+    description: 'ChaTraMue Thai tea mix (brewed and strained; proxy: brewed tea)',
+    calories: 1,
+    protein: 0,
+    totalFat: 0,
+    saturatedFat: 0,
+    carbohydrates: 0.3,
+    sugar: 0,
+    fiber: 0,
+    sodium: 3,
+  },
+  tapioca_pearls: {
+    fdcId: 169717,
+    description: 'Tapioca, pearl, dry',
+    calories: 358,
+    protein: 0.19,
+    totalFat: 0.02,
+    saturatedFat: 0.005,
+    carbohydrates: 88.69,
+    sugar: 3.35,
+    fiber: 0.9,
+    sodium: 1,
+  },
+  condensed_milk: {
+    fdcId: 171275,
+    description: 'Milk, canned, condensed, sweetened',
+    calories: 321,
+    protein: 7.91,
+    totalFat: 8.7,
+    saturatedFat: 5.49,
+    carbohydrates: 54.4,
+    sugar: 54.4,
+    fiber: 0,
+    sodium: 127,
+  },
+  evaporated_milk: {
+    fdcId: 172194,
+    description: 'Milk, canned, evaporated, with added vitamin A',
+    calories: 134,
+    protein: 6.81,
+    totalFat: 7.56,
+    saturatedFat: 4.59,
+    carbohydrates: 10.04,
+    sugar: 10.04,
+    fiber: 0,
+    sodium: 106,
+  },
+  ice: {
+    fdcId: 173647,
+    description: 'Ice (frozen water; same as tap water)',
+    calories: 0,
+    protein: 0,
+    totalFat: 0,
+    saturatedFat: 0,
+    carbohydrates: 0,
+    sugar: 0,
+    fiber: 0,
+    sodium: 4,
   },
 }

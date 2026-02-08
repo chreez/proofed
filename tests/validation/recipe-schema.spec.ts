@@ -199,6 +199,28 @@ describe('Recipe JSON Validation', () => {
       }
     })
 
+    // D16: Nutrition block required with non-null totals and perServing
+    it('has nutrition block with totals and perServing', () => {
+      expect(
+        recipe.nutrition,
+        'Recipe is missing nutrition block'
+      ).toBeDefined()
+
+      expect(
+        recipe.nutrition!.totals,
+        'nutrition.totals is missing'
+      ).toBeDefined()
+
+      expect(
+        recipe.nutrition!.perServing,
+        'nutrition.perServing is missing'
+      ).toBeDefined()
+
+      // Verify totals has required nutrient fields
+      expect(recipe.nutrition!.totals.calories).toBeGreaterThanOrEqual(0)
+      expect(recipe.nutrition!.perServing.calories).toBeGreaterThanOrEqual(0)
+    })
+
     // S1: meta.source is object with required name field
     it('has meta.source as object with non-empty name', () => {
       expect(

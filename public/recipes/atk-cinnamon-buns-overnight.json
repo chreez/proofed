@@ -15,43 +15,145 @@
     "early_check_percent": 0.7
   },
   "vessels": [
-    { "id": "V1", "name": "Small Bowl", "reuse": "Filling mixture (Day 2)" },
-    { "id": "V2", "name": "Large Bowl", "reuse": "Autolyse → dough → bulk ferment → cold retard" },
-    { "id": "V3", "name": "Medium Bowl", "reuse": "Glaze (Day 2)" },
-    { "id": "V4", "name": "Cast Iron Skillet (25cm)", "reuse": "Grease → proof → bake → serve" },
-    { "id": "V5", "name": "Microwave-Safe Bowl", "reuse": "Melt butter as needed" }
+    {
+      "id": "V1",
+      "name": "Small Bowl",
+      "reuse": "Filling mixture (Day 2)"
+    },
+    {
+      "id": "V2",
+      "name": "Large Bowl",
+      "reuse": "Autolyse → dough → bulk ferment → cold retard"
+    },
+    {
+      "id": "V3",
+      "name": "Medium Bowl",
+      "reuse": "Glaze (Day 2)"
+    },
+    {
+      "id": "V4",
+      "name": "Cast Iron Skillet (25cm)",
+      "reuse": "Grease → proof → bake → serve"
+    },
+    {
+      "id": "V5",
+      "name": "Microwave-Safe Bowl",
+      "reuse": "Melt butter as needed"
+    }
   ],
   "stages": [
     {
       "id": "PREP_DAY1",
       "title": "Day 1: Mise en Place",
       "gather": {
-        "vessels": ["Large Bowl", "Microwave-Safe Bowl"],
-        "equipment": ["Whisk", "Rubber Spatula", "Plastic Wrap"],
+        "vessels": [
+          "Large Bowl",
+          "Microwave-Safe Bowl"
+        ],
+        "equipment": [
+          "Whisk",
+          "Rubber Spatula",
+          "Plastic Wrap"
+        ],
         "ingredients": [
-          { "id": "flour", "name": "All-Purpose Flour", "total": 390, "unit": "g", "breakdown": null },
-          { "id": "milk", "name": "Whole Milk", "total": 326, "unit": "g", "breakdown": [
-            { "label": "dough (warm to 43°C)", "amount": 296 },
-            { "label": "glaze (room temp)", "amount": 30 }
-          ]},
-          { "id": "butter", "name": "Unsalted Butter", "total": 140, "unit": "g", "breakdown": [
-            { "label": "dough", "amount": 28 },
-            { "label": "filling", "amount": 14 },
-            { "label": "brush dough", "amount": 28 },
-            { "label": "grease skillet", "amount": 14 },
-            { "label": "brush before bake", "amount": 28 },
-            { "label": "glaze", "amount": 28 }
-          ]},
-          { "id": "granulated_sugar", "name": "Granulated Sugar", "total": 75, "unit": "g", "breakdown": [
-            { "label": "filling", "amount": 50 },
-            { "label": "dough", "amount": 25 }
-          ]},
-          { "id": "yeast", "name": "Instant Yeast", "total": 9, "unit": "g", "breakdown": null },
-          { "id": "salt", "name": "Salt", "total": 6, "unit": "g", "breakdown": [
-            { "label": "filling", "amount": 0.75 },
-            { "label": "dough", "amount": 4.5 },
-            { "label": "glaze", "amount": 0.75 }
-          ]}
+          {
+            "id": "flour",
+            "name": "All-Purpose Flour",
+            "total": 390,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "milk",
+            "name": "Whole Milk",
+            "total": 326,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "dough (warm to 43°C)",
+                "amount": 296
+              },
+              {
+                "label": "glaze (room temp)",
+                "amount": 30
+              }
+            ]
+          },
+          {
+            "id": "butter",
+            "name": "Unsalted Butter",
+            "total": 140,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "dough",
+                "amount": 28
+              },
+              {
+                "label": "filling",
+                "amount": 14
+              },
+              {
+                "label": "brush dough",
+                "amount": 28
+              },
+              {
+                "label": "grease skillet",
+                "amount": 14
+              },
+              {
+                "label": "brush before bake",
+                "amount": 28
+              },
+              {
+                "label": "glaze",
+                "amount": 28
+              }
+            ]
+          },
+          {
+            "id": "granulated_sugar",
+            "name": "Granulated Sugar",
+            "total": 75,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "filling",
+                "amount": 50
+              },
+              {
+                "label": "dough",
+                "amount": 25
+              }
+            ]
+          },
+          {
+            "id": "yeast",
+            "name": "Instant Yeast",
+            "total": 9,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 6,
+            "unit": "g",
+            "breakdown": [
+              {
+                "label": "filling",
+                "amount": 0.75
+              },
+              {
+                "label": "dough",
+                "amount": 4.5
+              },
+              {
+                "label": "glaze",
+                "amount": 0.75
+              }
+            ]
+          }
         ]
       },
       "states": []
@@ -60,54 +162,125 @@
       "id": "AUTOLYSE",
       "title": "Autolyse",
       "gather": null,
-      "states": ["AUTOLYSE_MIX", "AUTOLYSE_REST"]
+      "states": [
+        "AUTOLYSE_MIX",
+        "AUTOLYSE_REST"
+      ]
     },
     {
       "id": "DOUGH_DAY1",
       "title": "Mix Dough",
       "gather": null,
-      "states": ["ADD_YEAST", "ADD_REMAINING", "DEVELOP"]
+      "states": [
+        "ADD_YEAST",
+        "ADD_REMAINING",
+        "DEVELOP"
+      ]
     },
     {
       "id": "FERMENT",
       "title": "Bulk Ferment",
       "gather": null,
-      "states": ["BULK_RISE", "FOLD", "COLD_RETARD"]
+      "states": [
+        "BULK_RISE",
+        "FOLD",
+        "COLD_RETARD"
+      ]
     },
     {
       "id": "PREP_DAY2",
       "title": "Day 2: Morning Prep",
       "gather": {
-        "vessels": ["Small Bowl", "Medium Bowl", "Cast Iron Skillet (25cm)"],
-        "equipment": ["Rolling Pin", "Serrated Knife", "Pastry Brush", "Wire Rack"],
+        "vessels": [
+          "Small Bowl",
+          "Medium Bowl",
+          "Cast Iron Skillet (25cm)"
+        ],
+        "equipment": [
+          "Rolling Pin",
+          "Serrated Knife",
+          "Pastry Brush",
+          "Wire Rack"
+        ],
         "ingredients": [
-          { "id": "brown_sugar", "name": "Dark Brown Sugar", "total": 149, "unit": "g", "breakdown": null },
-          { "id": "cinnamon", "name": "Ground Cinnamon", "total": 5, "unit": "g", "breakdown": null },
-          { "id": "cloves", "name": "Ground Cloves", "total": 0.3, "unit": "g", "breakdown": null },
-          { "id": "powdered_sugar", "name": "Confectioners' Sugar", "total": 113, "unit": "g", "breakdown": null },
-          { "id": "cream_cheese", "name": "Cream Cheese (softened)", "total": 85, "unit": "g", "breakdown": null },
-          { "id": "vanilla", "name": "Vanilla Extract", "total": 2, "unit": "g", "breakdown": null }
+          {
+            "id": "brown_sugar",
+            "name": "Dark Brown Sugar",
+            "total": 149,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "cinnamon",
+            "name": "Ground Cinnamon",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "cloves",
+            "name": "Ground Cloves",
+            "total": 0.3,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "powdered_sugar",
+            "name": "Confectioners' Sugar",
+            "total": 113,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "cream_cheese",
+            "name": "Cream Cheese (softened)",
+            "total": 85,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "vanilla",
+            "name": "Vanilla Extract",
+            "total": 2,
+            "unit": "g",
+            "breakdown": null
+          }
         ]
       },
-      "states": ["TEMPER", "MIX_FILLING"]
+      "states": [
+        "TEMPER",
+        "MIX_FILLING"
+      ]
     },
     {
       "id": "SHAPE",
       "title": "Roll and Fill",
       "gather": null,
-      "states": ["ROLL_FILL", "ROLL_CYLINDER", "CUT_ARRANGE"]
+      "states": [
+        "ROLL_FILL",
+        "ROLL_CYLINDER",
+        "CUT_ARRANGE"
+      ]
     },
     {
       "id": "PROOF_BAKE",
       "title": "Proof and Bake",
       "gather": null,
-      "states": ["FINAL_PROOF", "PRE_BAKE", "BAKE"]
+      "states": [
+        "FINAL_PROOF",
+        "PRE_BAKE",
+        "BAKE"
+      ]
     },
     {
       "id": "FINISH",
       "title": "Cool and Glaze",
       "gather": null,
-      "states": ["COOL", "MAKE_GLAZE", "APPLY_GLAZE"]
+      "states": [
+        "COOL",
+        "MAKE_GLAZE",
+        "APPLY_GLAZE"
+      ]
     }
   ],
   "states": [
@@ -119,8 +292,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Flour", "amount": "390g" },
-        { "name": "Milk (warm)", "amount": "296g" }
+        {
+          "name": "Flour",
+          "amount": "390g"
+        },
+        {
+          "name": "Milk (warm)",
+          "amount": "296g"
+        }
       ],
       "exit_condition": "No dry flour visible, shaggy mass formed",
       "notes": null
@@ -135,7 +314,10 @@
       "components": null,
       "exit_condition": "30 minutes elapsed, dough is relaxed and slightly smoother",
       "notes": [
-        { "text": "Autolyse hydrates flour and begins gluten development without kneading", "critical": false }
+        {
+          "text": "Autolyse hydrates flour and begins gluten development without kneading",
+          "critical": false
+        }
       ]
     },
     {
@@ -146,12 +328,21 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Yeast", "amount": "9g" },
-        { "name": "Granulated Sugar", "amount": "25g" }
+        {
+          "name": "Yeast",
+          "amount": "9g"
+        },
+        {
+          "name": "Granulated Sugar",
+          "amount": "25g"
+        }
       ],
       "exit_condition": "Yeast and sugar evenly distributed throughout dough",
       "notes": [
-        { "text": "Reduced yeast from 12g to 9g - long ferment needs less", "critical": false }
+        {
+          "text": "Reduced yeast from 12g to 9g - long ferment needs less",
+          "critical": false
+        }
       ]
     },
     {
@@ -162,12 +353,21 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Salt", "amount": "4.5g" },
-        { "name": "Butter (softened)", "amount": "28g" }
+        {
+          "name": "Salt",
+          "amount": "4.5g"
+        },
+        {
+          "name": "Butter (softened)",
+          "amount": "28g"
+        }
       ],
       "exit_condition": "No butter streaks visible, dough is cohesive",
       "notes": [
-        { "text": "Butter should be soft but not melted for this method", "critical": true }
+        {
+          "text": "Butter should be soft but not melted for this method",
+          "critical": true
+        }
       ]
     },
     {
@@ -191,7 +391,10 @@
       "components": null,
       "exit_condition": "Dough has risen ~50%, looks puffy with some bubbles",
       "notes": [
-        { "text": "Time varies with room temperature. Look for 50% rise, not exact time.", "critical": false }
+        {
+          "text": "Time varies with room temperature. Look for 50% rise, not exact time.",
+          "critical": false
+        }
       ]
     },
     {
@@ -215,8 +418,14 @@
       "components": null,
       "exit_condition": "Next morning, dough is cold, slightly risen, with developed flavor",
       "notes": [
-        { "text": "Dough can stay refrigerated up to 24 hours if needed", "critical": false },
-        { "text": "END OF DAY 1 - Continue tomorrow morning", "critical": true }
+        {
+          "text": "Dough can stay refrigerated up to 24 hours if needed",
+          "critical": false
+        },
+        {
+          "text": "END OF DAY 1 - Continue tomorrow morning",
+          "critical": true
+        }
       ]
     },
     {
@@ -229,7 +438,10 @@
       "components": null,
       "exit_condition": "Dough is pliable but still cool, not room temperature",
       "notes": [
-        { "text": "Don't let it warm completely - cool dough is easier to roll", "critical": false }
+        {
+          "text": "Don't let it warm completely - cool dough is easier to roll",
+          "critical": false
+        }
       ]
     },
     {
@@ -240,16 +452,37 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Dark Brown Sugar", "amount": "149g" },
-        { "name": "Butter (melted)", "amount": "14g" },
-        { "name": "Granulated Sugar", "amount": "50g" },
-        { "name": "Cinnamon", "amount": "5g" },
-        { "name": "Cloves", "amount": "0.3g" },
-        { "name": "Salt", "amount": "0.75g" }
+        {
+          "name": "Dark Brown Sugar",
+          "amount": "149g"
+        },
+        {
+          "name": "Butter (melted)",
+          "amount": "14g"
+        },
+        {
+          "name": "Granulated Sugar",
+          "amount": "50g"
+        },
+        {
+          "name": "Cinnamon",
+          "amount": "5g"
+        },
+        {
+          "name": "Cloves",
+          "amount": "0.3g"
+        },
+        {
+          "name": "Salt",
+          "amount": "0.75g"
+        }
       ],
       "exit_condition": "Mixture is evenly combined with no dry pockets",
       "notes": [
-        { "text": "Can make while dough tempers", "critical": false }
+        {
+          "text": "Can make while dough tempers",
+          "critical": false
+        }
       ]
     },
     {
@@ -260,11 +493,17 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (melted)", "amount": "28g" }
+        {
+          "name": "Butter (melted)",
+          "amount": "28g"
+        }
       ],
       "exit_condition": "Filling evenly distributed and pressed into butter",
       "notes": [
-        { "text": "Cold dough may need extra rolling - let it relax if it springs back", "critical": false }
+        {
+          "text": "Cold dough may need extra rolling - let it relax if it springs back",
+          "critical": false
+        }
       ]
     },
     {
@@ -277,7 +516,10 @@
       "components": null,
       "exit_condition": "Tight, even cylinder with sealed seam on bottom",
       "notes": [
-        { "text": "Keep roll taut—loose rolls cause gaps in finished buns", "critical": false }
+        {
+          "text": "Keep roll taut—loose rolls cause gaps in finished buns",
+          "critical": false
+        }
       ]
     },
     {
@@ -288,7 +530,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter", "amount": "14g" }
+        {
+          "name": "Butter",
+          "amount": "14g"
+        }
       ],
       "exit_condition": "8 buns arranged in skillet",
       "notes": null
@@ -303,8 +548,14 @@
       "components": null,
       "exit_condition": "Buns have expanded significantly and are touching each other",
       "notes": [
-        { "text": "Start preheating oven 20 minutes before proof is done", "critical": false },
-        { "text": "May take 45-75 min depending on room temperature", "critical": false }
+        {
+          "text": "Start preheating oven 20 minutes before proof is done",
+          "critical": false
+        },
+        {
+          "text": "May take 45-75 min depending on room temperature",
+          "critical": false
+        }
       ]
     },
     {
@@ -315,7 +566,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (melted)", "amount": "28g" }
+        {
+          "name": "Butter (melted)",
+          "amount": "28g"
+        }
       ],
       "exit_condition": "Oven preheated, buns brushed, plastic removed",
       "notes": null
@@ -330,8 +584,14 @@
       "components": null,
       "exit_condition": "Buns are deep golden brown, filling is bubbling",
       "notes": [
-        { "text": "Skillet handle will be extremely hot—use potholders!", "critical": true },
-        { "text": "Rotate at 13-14 minute mark for even browning", "critical": false }
+        {
+          "text": "Skillet handle will be extremely hot—use potholders!",
+          "critical": true
+        },
+        {
+          "text": "Rotate at 13-14 minute mark for even browning",
+          "critical": false
+        }
       ]
     },
     {
@@ -344,7 +604,10 @@
       "components": null,
       "exit_condition": "Buns are warm but not molten-hot",
       "notes": [
-        { "text": "Filling is molten—eating too soon will burn mouth", "critical": true }
+        {
+          "text": "Filling is molten—eating too soon will burn mouth",
+          "critical": true
+        }
       ]
     },
     {
@@ -355,16 +618,37 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Cream Cheese", "amount": "85g" },
-        { "name": "Confectioners' Sugar", "amount": "113g" },
-        { "name": "Butter (melted)", "amount": "28g" },
-        { "name": "Milk (room temp)", "amount": "30g" },
-        { "name": "Vanilla", "amount": "2g" },
-        { "name": "Salt", "amount": "0.75g" }
+        {
+          "name": "Cream Cheese",
+          "amount": "85g"
+        },
+        {
+          "name": "Confectioners' Sugar",
+          "amount": "113g"
+        },
+        {
+          "name": "Butter (melted)",
+          "amount": "28g"
+        },
+        {
+          "name": "Milk (room temp)",
+          "amount": "30g"
+        },
+        {
+          "name": "Vanilla",
+          "amount": "2g"
+        },
+        {
+          "name": "Salt",
+          "amount": "0.75g"
+        }
       ],
       "exit_condition": "Smooth, pourable glaze with no lumps",
       "notes": [
-        { "text": "Can make during COOL step to save time", "critical": false }
+        {
+          "text": "Can make during COOL step to save time",
+          "critical": false
+        }
       ]
     },
     {
@@ -377,8 +661,207 @@
       "components": null,
       "exit_condition": "All buns covered with glaze",
       "notes": [
-        { "text": "Careful—skillet handle is still hot", "critical": true }
+        {
+          "text": "Careful—skillet handle is still hot",
+          "critical": true
+        }
       ]
     }
-  ]
+  ],
+  "nutrition": {
+    "servings": 8,
+    "servingSize": "1 bun",
+    "calculatedDate": "2026-02-08",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 4257.4,
+      "protein": 60.8,
+      "totalFat": 158,
+      "saturatedFat": 95.1,
+      "carbohydrates": 660.1,
+      "sugar": 351.3,
+      "fiber": 15.7,
+      "sodium": 2812.6
+    },
+    "perServing": {
+      "calories": 532.2,
+      "protein": 7.6,
+      "totalFat": 19.8,
+      "saturatedFat": 11.9,
+      "carbohydrates": 82.5,
+      "sugar": 43.9,
+      "fiber": 2,
+      "sodium": 351.6
+    },
+    "breakdown": [
+      {
+        "ingredientId": "flour",
+        "ingredientName": "All-Purpose Flour",
+        "amount": 390,
+        "fdcId": 168894,
+        "calories": 1419.6,
+        "protein": 40.3,
+        "totalFat": 3.8,
+        "saturatedFat": 0.6,
+        "carbohydrates": 297.6,
+        "sugar": 1.1,
+        "fiber": 10.5,
+        "sodium": 7.8
+      },
+      {
+        "ingredientId": "milk",
+        "ingredientName": "Whole Milk",
+        "amount": 326,
+        "fdcId": 171265,
+        "calories": 198.9,
+        "protein": 10.3,
+        "totalFat": 10.7,
+        "saturatedFat": 6.1,
+        "carbohydrates": 15.6,
+        "sugar": 16.5,
+        "fiber": 0,
+        "sodium": 140.2
+      },
+      {
+        "ingredientId": "butter",
+        "ingredientName": "Unsalted Butter",
+        "amount": 140,
+        "fdcId": 173430,
+        "calories": 1003.8,
+        "protein": 1.2,
+        "totalFat": 113.6,
+        "saturatedFat": 71.9,
+        "carbohydrates": 0.1,
+        "sugar": 0.1,
+        "fiber": 0,
+        "sodium": 15.4
+      },
+      {
+        "ingredientId": "granulated_sugar",
+        "ingredientName": "Granulated Sugar",
+        "amount": 75,
+        "fdcId": 169655,
+        "calories": 290.3,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 75,
+        "sugar": 74.9,
+        "fiber": 0,
+        "sodium": 0.8
+      },
+      {
+        "ingredientId": "yeast",
+        "ingredientName": "Instant Yeast",
+        "amount": 9,
+        "fdcId": 175043,
+        "calories": 29.3,
+        "protein": 3.6,
+        "totalFat": 0.7,
+        "saturatedFat": 0.1,
+        "carbohydrates": 3.7,
+        "sugar": 0,
+        "fiber": 2.4,
+        "sodium": 4.6
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 6,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 2325.5
+      },
+      {
+        "ingredientId": "brown_sugar",
+        "ingredientName": "Dark Brown Sugar",
+        "amount": 149,
+        "fdcId": 168833,
+        "calories": 566.2,
+        "protein": 0.2,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 146.2,
+        "sugar": 144.6,
+        "fiber": 0,
+        "sodium": 41.7
+      },
+      {
+        "ingredientId": "cinnamon",
+        "ingredientName": "Ground Cinnamon",
+        "amount": 5,
+        "fdcId": 171320,
+        "calories": 12.4,
+        "protein": 0.2,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 4,
+        "sugar": 0.1,
+        "fiber": 2.7,
+        "sodium": 0.5
+      },
+      {
+        "ingredientId": "cloves",
+        "ingredientName": "Ground Cloves",
+        "amount": 0.3,
+        "fdcId": 171321,
+        "calories": 0.8,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.2,
+        "sugar": 0,
+        "fiber": 0.1,
+        "sodium": 0.8
+      },
+      {
+        "ingredientId": "powdered_sugar",
+        "ingredientName": "Confectioners' Sugar",
+        "amount": 113,
+        "fdcId": 169656,
+        "calories": 439.6,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 112.7,
+        "sugar": 110.5,
+        "fiber": 0,
+        "sodium": 2.3
+      },
+      {
+        "ingredientId": "cream_cheese",
+        "ingredientName": "Cream Cheese (softened)",
+        "amount": 85,
+        "fdcId": 173418,
+        "calories": 290.7,
+        "protein": 5,
+        "totalFat": 29.1,
+        "saturatedFat": 16.4,
+        "carbohydrates": 4.7,
+        "sugar": 3.2,
+        "fiber": 0,
+        "sodium": 272.8
+      },
+      {
+        "ingredientId": "vanilla",
+        "ingredientName": "Vanilla Extract",
+        "amount": 2,
+        "fdcId": 173471,
+        "calories": 5.8,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.3,
+        "sugar": 0.3,
+        "fiber": 0,
+        "sodium": 0.2
+      }
+    ]
+  }
 }
