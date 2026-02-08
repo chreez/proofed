@@ -8,7 +8,12 @@ const EmptyRouteView = defineComponent({
 
 const router = createRouter({
   history: createWebHistory(),
-  scrollBehavior() {
+  scrollBehavior(to) {
+    // When a hash is present, skip the automatic scroll-to-top.
+    // The App.vue watcher handles hash scrolling after recipe DOM mounts.
+    if (to.hash) {
+      return false
+    }
     return { top: 0 }
   },
   routes: [
