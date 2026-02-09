@@ -1,10 +1,10 @@
 ---
 id: PF-81
 title: Add cook log entry to NY pizza recipe (2026-02-08)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-09 04:18'
-updated_date: '2026-02-09 04:25'
+updated_date: '2026-02-09 05:47'
 labels:
   - recipe-data
 dependencies: []
@@ -25,3 +25,9 @@ Add first bake session notes to ny-style-pizza.json cook_log field.
 - [ ] #4 next_time items added: longer proof (2+ days), jalapeños, batch of 4, drier mozzarella
 - [ ] #5 V1-V3 voice checks pass — notes are first-person experience, untested ideas in next_time
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added cook_log entry (2026-02-08) and next_time items to ny-style-pizza.json. Notes capture first bake session: underproofed dough, baking steel results, TJ's mozz issues, bake timing. Voice checks V1-V3 pass.
+<!-- SECTION:FINAL_SUMMARY:END -->
