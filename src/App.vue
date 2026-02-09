@@ -346,7 +346,9 @@ function handleTocNavigate(target: string) {
               @reset="progress.resetProgress()"
             />
 
+            <!-- RecipeSummary hidden until user provides dictated content -->
             <RecipeSummary
+              v-if="currentRecipe.summary?.mode === 'dictated'"
               :summary="currentRecipe.summary"
               :recipe="currentRecipe"
               class="mb-6"
