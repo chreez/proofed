@@ -38,11 +38,73 @@
         "8 min total bake on steel, rotated at 4 min mark, finished with 2 min under high broil",
         "Good char on bottom from the steel, crust was crispy but slightly tough from underproofing"
       ],
+      "photos": [
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/01-dough-ball-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/01-dough-ball-400w.webp",
+          "alt": "Dough ball in proofing container after 1-day cold proof"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/02-oven-preheat-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/02-oven-preheat-400w.webp",
+          "alt": "Oven preheating with baking steel on middle rack"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/03-mise-en-place-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/03-mise-en-place-400w.webp",
+          "alt": "Mise en place — Pioneer cornmeal, tomato sauce, grater on counter"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/05-stretching-dough-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/05-stretching-dough-400w.webp",
+          "alt": "Hand-stretching dough on silicone mat with measurement circles"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/06-stretched-round-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/06-stretched-round-400w.webp",
+          "alt": "Stretched dough round on wooden peel ready for toppings"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/04-baking-on-steel-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/04-baking-on-steel-400w.webp",
+          "alt": "Pizza baking on steel in oven — cheese melting, crust puffing"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/07-pulling-from-oven-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/07-pulling-from-oven-400w.webp",
+          "alt": "Pulling finished pizza from oven with wooden peel"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/10-two-pizzas-done-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/10-two-pizzas-done-400w.webp",
+          "alt": "Both pizzas done — first sliced on plate, second cooling on rack"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/11-pizza-with-wine-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/11-pizza-with-wine-400w.webp",
+          "alt": "Second pizza on cutting board with a glass of red wine"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/12-crumb-shot-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/12-crumb-shot-400w.webp",
+          "alt": "Crust cross-section showing open crumb with irregular air pockets"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/08-finished-pepperoni-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/08-finished-pepperoni-400w.webp",
+          "alt": "Finished pepperoni pizza on wire rack — cupped pepperoni, leopard-spotted char"
+        },
+        {
+          "src": "/images/ny-style-pizza/bake-2026-02-08/09-slice-fold-800w.webp",
+          "thumb": "/images/ny-style-pizza/bake-2026-02-08/09-slice-fold-400w.webp",
+          "alt": "Holding a slice showing the fold — thin center, crispy underside"
+        }
+      ],
       "next_time": [
         { "text": "Try 2-3 day cold proof for better extensibility and flavor development" },
         { "text": "Add sliced jalapeños as a topping option" },
         { "text": "Make a batch of 4 dough balls to have extras for the week" },
-        { "text": "Try a drier mozzarella — Galbani or whole milk from Costco" }
+        { "text": "Try a drier mozzarella — TJ's low-moisture was too wet to shred" }
       ]
     }
   ],

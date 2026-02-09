@@ -4,7 +4,7 @@ title: Cook log photo gallery styling and layout
 status: To Do
 assignee: []
 created_date: '2026-02-07 05:32'
-updated_date: '2026-02-07 09:06'
+updated_date: '2026-02-09 22:55'
 labels:
   - ux
 dependencies: []
@@ -20,12 +20,13 @@ Current cook log photos render as tiny 96px thumbnails in a horizontal row with 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Photos display larger than current 96px thumbnails (size determined by spike)
-- [ ] #2 Alt text renders as visible caption below/beside each photo
-- [ ] #3 Layout uses shortcuts from uno.config.ts — no one-off utility combinations
-- [ ] #4 Gallery feels integrated with cook log entry (inside border-l accent block, after notes)
-- [ ] #5 Graceful display with 1 photo, 3 photos, or 5+ photos (no broken layouts)
-- [ ] #6 Click behavior determined by spike (current new-tab preserved until spike decides)
-- [ ] #7 Mobile layout determined by spike
-- [ ] #8 npm run build passes
+- [ ] #1 Hero photo renders at full content width (not capped at max-w-lg)
+- [ ] #2 Supporting photos display in a 2-3 column grid (not horizontal scroll row)
+- [ ] #3 Supporting thumbnails larger than current h-28 — size TBD by visual review
+- [ ] #4 Click opens photo in a simple lightbox overlay (replaces new-tab behavior)
+- [ ] #5 Mobile: hero full-width, supporting stack to 2-col grid
+- [ ] #6 Graceful display with 1, 3, or 5+ photos (no broken layouts)
+- [ ] #7 Layout uses shortcuts from uno.config.ts
+- [ ] #8 HITL gate — human sign-off before commit
+- [ ] #9 npm run build passes
 <!-- AC:END -->
