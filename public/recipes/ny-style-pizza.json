@@ -14,8 +14,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-02-09",
+      "summary": "Added bake photos, fixed mozzarella notes (HEB whole milk, not TJ's), added ingredient note on mozz spec."
+    },
     {
       "version": "v1.1.0",
       "date": "2026-02-09",
@@ -34,7 +39,7 @@
       "notes": [
         "1-day cold proof was underproofed — dough was hard to stretch, kept springing back",
         "Used baking steel, preheated 1 hour at ~275°C (530°F), dropped to ~250°C (485°F) by the time pizza went in",
-        "TJ's low-moisture mozzarella was too moist to shred — had to tear by hand",
+        "HEB whole milk mozzarella was too moist to shred — had to tear by hand",
         "8 min total bake on steel, rotated at 4 min mark, finished with 2 min under high broil",
         "Good char on bottom from the steel, crust was crispy but slightly tough from underproofing"
       ],
@@ -104,7 +109,7 @@
         { "text": "Try 2-3 day cold proof for better extensibility and flavor development" },
         { "text": "Add sliced jalapeños as a topping option" },
         { "text": "Make a batch of 4 dough balls to have extras for the week" },
-        { "text": "Try a drier mozzarella — TJ's low-moisture was too wet to shred" }
+        { "text": "Use Trader Joe's low-moisture mozz next time — the HEB whole milk was too wet to shred" }
       ]
     }
   ],
@@ -214,7 +219,8 @@
             "name": "Low-Moisture Mozzarella",
             "total": 350,
             "unit": "g",
-            "breakdown": null
+            "breakdown": null,
+            "note": "Low-moisture, high-fat, whole milk mozzarella is mandatory — it shreds clean and melts right"
           },
           {
             "id": "pepperoni",
