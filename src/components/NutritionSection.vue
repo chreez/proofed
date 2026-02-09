@@ -114,7 +114,13 @@ function getDvPercent(key: keyof NutrientTotals): string {
       Not yet calculated
     </div>
 
-    <div v-else class="pl-3">
+    <div v-else class="voice-agent">
+      <!-- Agent label + tag -->
+      <div class="flex items-center gap-2 mb-3">
+        <span class="voice-agent-label">Nutrition Facts</span>
+        <span class="voice-agent-tag">calculated</span>
+      </div>
+
       <!-- Toggle -->
       <div class="flex gap-2 mb-4">
         <button

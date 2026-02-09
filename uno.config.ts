@@ -38,6 +38,11 @@ export default defineConfig({
     'text-body': 'text-stone-700',
     'text-muted': 'text-stone-500 text-sm',
     'checkbox-item': 'flex items-center gap-3 p-2 hover:bg-stone-50 cursor-pointer',
-    'checked': 'line-through text-stone-400'
+    'checked': 'line-through text-stone-400',
+    'voice-human': 'bg-cream border-t-2 border-dashed border-stone-300 p-4 mt-4',
+    'voice-human-label': 'font-mono text-xs text-crust-dark mb-2',
+    'voice-agent': 'bg-stone-100 border-2 border-stone-200 p-4',
+    'voice-agent-label': 'font-mono text-xs text-stone-400 uppercase tracking-wide',
+    'voice-agent-tag': 'font-mono text-[10px] text-stone-400 border border-stone-300 px-1.5 py-0.5'
   }
 })

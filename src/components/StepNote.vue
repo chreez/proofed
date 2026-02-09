@@ -7,9 +7,9 @@ defineProps<{
 </script>
 
 <template>
-  <div class="mt-2 p-3 bg-warning-tint border-l-3 border-warning">
-    <div class="text-xs uppercase font-semibold text-warning mb-1">
-      📝 MY NOTE
+  <div class="voice-human mt-2">
+    <div class="voice-human-label">
+      // My Note
     </div>
     <div class="text-sm text-stone-700">
       {{ note }}

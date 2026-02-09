@@ -1,10 +1,10 @@
 ---
 id: PF-87
 title: Agentic data vs human voice visual distinction
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-09 04:18'
-updated_date: '2026-02-09 04:44'
+updated_date: '2026-02-09 06:16'
 labels:
   - feature
   - ux
@@ -26,3 +26,9 @@ Website needs a way to visually distinguish agent-generated content from persona
 - [ ] #4 Existing first-person notes retroactively styled as human voice
 - [ ] #5 Requires HITL gate — styling task needs human sign-off before commit
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added voice-human (Fieldnote) and voice-agent (Data Block) UnoCSS shortcuts. Applied to StepNote (// My Note), NutritionSection ([calculated] tag), ResearchSection ([researched] tag). CookLogSection left unchanged — user preferred existing simple styling. Human sign-off received.
+<!-- SECTION:FINAL_SUMMARY:END -->

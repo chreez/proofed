@@ -73,12 +73,13 @@ function typeLabel(type: string): string {
     <!-- Collapsed summary — always visible -->
     <button
       @click="toggle"
-      class="w-full flex items-center justify-between py-3 px-4 border-2 border-stone-200 bg-stone-50 text-left transition-colors hover:bg-stone-100 cursor-pointer"
+      class="voice-agent w-full flex items-center justify-between text-left transition-colors hover:bg-stone-100 cursor-pointer"
     >
       <div>
         <span class="text-sm text-stone-700">Researched from </span>
         <span class="font-mono font-semibold text-ink">{{ research.sourceCount }}</span>
         <span class="text-sm text-stone-700"> sources</span>
+        <span class="voice-agent-tag ml-2">researched</span>
         <span class="text-xs text-stone-400 ml-2">{{ research.date }}</span>
       </div>
       <ChevronDown
@@ -92,13 +93,13 @@ function typeLabel(type: string): string {
 
       <!-- Strategy -->
       <div class="mb-6">
-        <h4 class="font-mono text-xs text-stone-400 uppercase mb-2">Strategy</h4>
+        <h4 class="voice-agent-label mb-2">Strategy</h4>
         <p class="text-sm text-stone-600 leading-relaxed">{{ research.strategy }}</p>
       </div>
 
       <!-- Techniques -->
       <div v-if="research.techniques.length" class="mb-6">
-        <h4 class="font-mono text-xs text-stone-400 uppercase mb-3">Technique Findings</h4>
+        <h4 class="voice-agent-label mb-3">Technique Findings</h4>
         <div class="space-y-3">
           <div
             v-for="tech in research.techniques"
@@ -121,7 +122,7 @@ function typeLabel(type: string): string {
 
       <!-- Sources grouped by type -->
       <div>
-        <h4 class="font-mono text-xs text-stone-400 uppercase mb-3">Sources ({{ research.sources.length }})</h4>
+        <h4 class="voice-agent-label mb-3">Sources ({{ research.sources.length }})</h4>
         <div
           v-for="(sources, type) in sourcesByType(research.sources)"
           :key="type"
