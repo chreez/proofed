@@ -14,8 +14,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-02-09",
+      "summary": "Scaled dough and toppings ×1.25 for bigger pizzas (~388g balls). 2 pizzas, more dough per pie."
+    },
     {
       "version": "v1.0.0",
       "date": "2026-02-08",
@@ -89,70 +94,70 @@
           {
             "id": "bread_flour",
             "name": "Bread Flour",
-            "total": 370,
+            "total": 463,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "water",
             "name": "Water",
-            "total": 230,
+            "total": 288,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "instant_yeast",
             "name": "Instant Dry Yeast",
-            "total": 5,
+            "total": 6,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "olive_oil",
             "name": "Olive Oil",
-            "total": 14,
+            "total": 18,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "salt",
             "name": "Salt",
-            "total": 6,
+            "total": 8,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "sugar",
             "name": "Sugar",
-            "total": 15,
+            "total": 19,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "cornmeal",
             "name": "Cornmeal",
-            "total": 10,
+            "total": 13,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "san_marzano_sauce",
             "name": "Raw San Marzano Tomato Sauce",
-            "total": 140,
+            "total": 175,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "mozzarella",
             "name": "Low-Moisture Mozzarella",
-            "total": 280,
+            "total": 350,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "pepperoni",
             "name": "Pepperoni",
-            "total": 140,
+            "total": 175,
             "unit": "g",
             "breakdown": null
           }
@@ -236,22 +241,22 @@
     {
       "id": "MIX_AUTOLYSE",
       "title": "Mix Autolyse",
-      "direction": "In the stand mixer bowl (V1), combine 370g bread flour, 230g water, and 5g instant yeast. Stir with the dough hook on speed 1 just until no dry flour remains.",
+      "direction": "In the stand mixer bowl (V1), combine 463g bread flour, 288g water, and 6g instant yeast. Stir with the dough hook on speed 1 just until no dry flour remains.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "Bread Flour",
-          "amount": "370g"
+          "amount": "463g"
         },
         {
           "name": "Water",
-          "amount": "230g"
+          "amount": "288g"
         },
         {
           "name": "Instant Dry Yeast",
-          "amount": "5g"
+          "amount": "6g"
         }
       ],
       "exit_condition": "Flour, water, and yeast combined into a shaggy mass with no dry flour visible",
@@ -281,22 +286,22 @@
     {
       "id": "ADD_ENRICHMENTS",
       "title": "Add Enrichments",
-      "direction": "Add 14g olive oil, 15g sugar, and 6g salt to the autolyse dough in the mixer bowl (V1).",
+      "direction": "Add 18g olive oil, 19g sugar, and 8g salt to the autolyse dough in the mixer bowl (V1).",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "Olive Oil",
-          "amount": "14g"
+          "amount": "18g"
         },
         {
           "name": "Sugar",
-          "amount": "15g"
+          "amount": "19g"
         },
         {
           "name": "Salt",
-          "amount": "6g"
+          "amount": "8g"
         }
       ],
       "exit_condition": "Oil, sugar, and salt added on top of the dough, ready for kneading",
@@ -376,12 +381,12 @@
     {
       "id": "DIVIDE_PORTIONS",
       "title": "Divide Portions",
-      "direction": "Turn the fermented dough out onto a lightly floured surface. Using a bench scraper, divide into 2 equal portions of approximately 310g each.",
+      "direction": "Turn the fermented dough out onto a lightly floured surface. Using a bench scraper, divide into 2 equal portions of approximately 388g each.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough divided into 2 portions of approximately 310g each",
+      "exit_condition": "Dough divided into 2 portions of approximately 388g each",
       "notes": null
     },
     {
@@ -439,14 +444,14 @@
     {
       "id": "STRETCH_DOUGH",
       "title": "Stretch Dough",
-      "direction": "Sprinkle the wooden pizza peel (V5) with 5g cornmeal. Place one dough ball on a lightly floured surface. Using your fingertips, press from the center outward, pushing air toward the edges to form the crust rim. Pick up the dough and drape it over your knuckles, gently stretching and rotating until you have a 30–33cm (12–13 inch) disc. Never use a rolling pin. Transfer to the cornmeal-dusted peel.",
+      "direction": "Sprinkle the wooden pizza peel (V5) with 7g cornmeal. Place one dough ball on a lightly floured surface. Using your fingertips, press from the center outward, pushing air toward the edges to form the crust rim. Pick up the dough and drape it over your knuckles, gently stretching and rotating until you have a 30–33cm (12–13 inch) disc. Never use a rolling pin. Transfer to the cornmeal-dusted peel.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "Cornmeal",
-          "amount": "5g"
+          "amount": "7g"
         }
       ],
       "exit_condition": "Dough stretched to a 30–33cm disc with puffy edge crust, resting on cornmeal-dusted peel",
@@ -464,22 +469,22 @@
     {
       "id": "TOP_PIZZA",
       "title": "Top Pizza",
-      "direction": "Spread 70g raw San Marzano tomato sauce over the dough, leaving a 2cm border for the crust. Add any non-cheese toppings. Top with 140g low-moisture mozzarella, torn or shredded. Place 70g pepperoni on top of the cheese so it browns and crisps directly.",
+      "direction": "Spread 88g raw San Marzano tomato sauce over the dough, leaving a 2cm border for the crust. Add any non-cheese toppings. Top with 175g low-moisture mozzarella, torn or shredded. Place 88g pepperoni on top of the cheese so it browns and crisps directly.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "Raw San Marzano Tomato Sauce",
-          "amount": "70g"
+          "amount": "88g"
         },
         {
           "name": "Low-Moisture Mozzarella",
-          "amount": "140g"
+          "amount": "175g"
         },
         {
           "name": "Pepperoni",
-          "amount": "70g"
+          "amount": "88g"
         }
       ],
       "exit_condition": "Pizza topped with sauce, cheese, and pepperoni (pepperoni on top of cheese)",
@@ -533,44 +538,44 @@
     "calculatedDate": "2026-02-08",
     "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 3147.9,
-      "protein": 150.7,
-      "totalFat": 138.7,
-      "saturatedFat": 59.2,
-      "carbohydrates": 315.1,
-      "sugar": 25.7,
-      "fiber": 13,
-      "sodium": 6922.5
+      "calories": 3943.2,
+      "protein": 188.2,
+      "totalFat": 173.9,
+      "saturatedFat": 74.0,
+      "carbohydrates": 394.8,
+      "sugar": 32.4,
+      "fiber": 16.2,
+      "sodium": 8847.0
     },
     "perServing": {
-      "calories": 1574,
-      "protein": 75.4,
-      "totalFat": 69.4,
-      "saturatedFat": 29.6,
-      "carbohydrates": 157.6,
-      "sugar": 12.9,
-      "fiber": 6.5,
-      "sodium": 3461.3
+      "calories": 1971.6,
+      "protein": 94.1,
+      "totalFat": 87.0,
+      "saturatedFat": 37.0,
+      "carbohydrates": 197.4,
+      "sugar": 16.2,
+      "fiber": 8.1,
+      "sodium": 4423.5
     },
     "breakdown": [
       {
         "ingredientId": "bread_flour",
         "ingredientName": "Bread Flour",
-        "amount": 370,
+        "amount": 463,
         "fdcId": 168896,
-        "calories": 1335.7,
-        "protein": 44.3,
-        "totalFat": 6.1,
-        "saturatedFat": 0.9,
-        "carbohydrates": 268.4,
-        "sugar": 1,
-        "fiber": 8.9,
-        "sodium": 7.4
+        "calories": 1671.4,
+        "protein": 55.4,
+        "totalFat": 7.6,
+        "saturatedFat": 1.1,
+        "carbohydrates": 335.9,
+        "sugar": 1.3,
+        "fiber": 11.1,
+        "sodium": 9.3
       },
       {
         "ingredientId": "water",
         "ingredientName": "Water",
-        "amount": 230,
+        "amount": 288,
         "fdcId": 173647,
         "calories": 0,
         "protein": 0,
@@ -579,40 +584,40 @@
         "carbohydrates": 0,
         "sugar": 0,
         "fiber": 0,
-        "sodium": 9.2
+        "sodium": 11.5
       },
       {
         "ingredientId": "instant_yeast",
         "ingredientName": "Instant Dry Yeast",
-        "amount": 5,
+        "amount": 6,
         "fdcId": 175043,
-        "calories": 16.3,
-        "protein": 2,
-        "totalFat": 0.4,
+        "calories": 19.6,
+        "protein": 2.4,
+        "totalFat": 0.5,
         "saturatedFat": 0,
-        "carbohydrates": 2.1,
+        "carbohydrates": 2.5,
         "sugar": 0,
-        "fiber": 1.3,
-        "sodium": 2.6
+        "fiber": 1.6,
+        "sodium": 3.1
       },
       {
         "ingredientId": "olive_oil",
         "ingredientName": "Olive Oil",
-        "amount": 14,
+        "amount": 18,
         "fdcId": 171413,
-        "calories": 123.8,
+        "calories": 159.2,
         "protein": 0,
-        "totalFat": 14,
-        "saturatedFat": 1.9,
+        "totalFat": 18.0,
+        "saturatedFat": 2.4,
         "carbohydrates": 0,
         "sugar": 0,
         "fiber": 0,
-        "sodium": 0.3
+        "sodium": 0.4
       },
       {
         "ingredientId": "salt",
         "ingredientName": "Salt",
-        "amount": 6,
+        "amount": 8,
         "fdcId": 173468,
         "calories": 0,
         "protein": 0,
@@ -621,77 +626,77 @@
         "carbohydrates": 0,
         "sugar": 0,
         "fiber": 0,
-        "sodium": 2325.5
+        "sodium": 3100.7
       },
       {
         "ingredientId": "sugar",
         "ingredientName": "Sugar",
-        "amount": 15,
+        "amount": 19,
         "fdcId": 169655,
-        "calories": 58.1,
+        "calories": 73.6,
         "protein": 0,
         "totalFat": 0,
         "saturatedFat": 0,
-        "carbohydrates": 15,
-        "sugar": 15,
+        "carbohydrates": 19.0,
+        "sugar": 19.0,
         "fiber": 0,
-        "sodium": 0.2
+        "sodium": 0.3
       },
       {
         "ingredientId": "cornmeal",
         "ingredientName": "Cornmeal",
-        "amount": 10,
+        "amount": 13,
         "fdcId": 168876,
-        "calories": 36.2,
-        "protein": 0.8,
-        "totalFat": 0.4,
+        "calories": 47.1,
+        "protein": 1.0,
+        "totalFat": 0.5,
         "saturatedFat": 0.1,
-        "carbohydrates": 7.7,
-        "sugar": 0.2,
-        "fiber": 0.7,
-        "sodium": 0.7
+        "carbohydrates": 10.0,
+        "sugar": 0.3,
+        "fiber": 0.9,
+        "sodium": 0.9
       },
       {
         "ingredientId": "san_marzano_sauce",
         "ingredientName": "Raw San Marzano Tomato Sauce",
-        "amount": 140,
+        "amount": 175,
         "fdcId": 170506,
-        "calories": 40.6,
-        "protein": 1.8,
-        "totalFat": 0.3,
+        "calories": 50.8,
+        "protein": 2.2,
+        "totalFat": 0.4,
         "saturatedFat": 0,
-        "carbohydrates": 8.1,
-        "sugar": 5,
-        "fiber": 2.1,
-        "sodium": 355.6
+        "carbohydrates": 10.1,
+        "sugar": 6.2,
+        "fiber": 2.6,
+        "sodium": 444.5
       },
       {
         "ingredientId": "mozzarella",
         "ingredientName": "Low-Moisture Mozzarella",
-        "amount": 280,
+        "amount": 350,
         "fdcId": 170892,
-        "calories": 845.6,
-        "protein": 70.4,
-        "totalFat": 56.1,
-        "saturatedFat": 32.3,
-        "carbohydrates": 9.9,
-        "sugar": 2.8,
+        "calories": 1057.0,
+        "protein": 88.0,
+        "totalFat": 70.1,
+        "saturatedFat": 40.4,
+        "carbohydrates": 12.4,
+        "sugar": 3.5,
         "fiber": 0,
-        "sodium": 1755.6
+        "sodium": 2194.5
       },
       {
         "ingredientId": "pepperoni",
         "ingredientName": "Pepperoni",
-        "amount": 140,
+        "amount": 175,
         "fdcId": 174580,
-        "calories": 691.6,
-        "protein": 31.4,
-        "totalFat": 61.4,
-        "saturatedFat": 24,
-        "carbohydrates": 3.9,
-        "sugar": 1.7,
+        "calories": 864.5,
+        "protein": 39.2,
+        "totalFat": 76.8,
+        "saturatedFat": 30.0,
+        "carbohydrates": 4.9,
+        "sugar": 2.1,
         "fiber": 0,
-        "sodium": 2465.4
+        "sodium": 3081.8
       }
     ]
   }

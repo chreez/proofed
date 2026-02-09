@@ -1,10 +1,10 @@
 ---
 id: PF-82
 title: Increase NY pizza yield by 25%
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-09 04:18'
-updated_date: '2026-02-09 04:27'
+updated_date: '2026-02-09 06:16'
 labels:
   - recipe-data
 dependencies:
@@ -27,3 +27,9 @@ Scale dough ingredients up 25% while maintaining baker's percentages. Update yie
 - [ ] #5 Nutrition block recalculated for new amounts
 - [ ] #6 D6 (breakdown sums) and F17-F19 (nutrition) checks pass
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Scaled all dough and topping ingredients ×1.25. Kept 2 pizzas at ~388g per ball (bigger pies, not more pies). Nutrition recalculated for 2 servings. Version bumped to v1.1.0.
+<!-- SECTION:FINAL_SUMMARY:END -->
