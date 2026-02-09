@@ -22,6 +22,25 @@
       "summary": "Initial recipe from Jacob Burton / Stella Culinary"
     }
   ],
+  "cook_log": [
+    {
+      "date": "2026-02-08",
+      "version": "v1.0.0",
+      "notes": [
+        "1-day cold proof was underproofed — dough was hard to stretch, kept springing back",
+        "Used baking steel, preheated 1 hour at ~275°C (530°F), dropped to ~250°C (485°F) by the time pizza went in",
+        "TJ's low-moisture mozzarella was too moist to shred — had to tear by hand",
+        "8 min total bake on steel, rotated at 4 min mark, finished with 2 min under high broil",
+        "Good char on bottom from the steel, crust was crispy but slightly tough from underproofing"
+      ],
+      "next_time": [
+        { "text": "Try 2-3 day cold proof for better extensibility and flavor development" },
+        { "text": "Add sliced jalapeños as a topping option" },
+        { "text": "Make a batch of 4 dough balls to have extras for the week" },
+        { "text": "Try a drier mozzarella — Galbani or whole milk from Costco" }
+      ]
+    }
+  ],
   "vessels": [
     {
       "id": "V1",
