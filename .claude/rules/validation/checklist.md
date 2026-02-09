@@ -59,6 +59,8 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | V2 | Suggestions go in next_time | Untested ideas belong in `next_time` array, not presented as experience |
 | V3 | Agent suggestions marked | If agent suggests an improvement, it should be prefixed with "Try:" or "Consider:" and NOT written as if user did it |
 | V4 | Sources for suggestions | External suggestions (from research, other recipes) should cite source via `next_time[].source` field |
+| V5 | No inferred details | Cook log `notes` must not contain brands, quantities, or specifics the user didn't explicitly state — ask to clarify, don't guess |
+| V6 | Clarify loop completed | Cook log entries must go through clarify → echo back → user approval before writing to JSON |
 
 ## Source Schema Checks
 

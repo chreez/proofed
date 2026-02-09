@@ -182,6 +182,38 @@ After completing each backlog item and before committing:
 
 This is NOT optional. Treat it as part of the task definition of done.
 
+## Cook Log Protocol
+
+Cook log entries are the user's direct bake notes. The agent is a **scribe, not an author**.
+
+### Agent Role: Format Only
+- Structure raw notes into JSON (`notes[]`, `next_time[]`)
+- Clean up grammar and punctuation
+- **Never** infer details the user didn't state (brands, quantities, techniques)
+- **Never** reword notes to change meaning or add specificity not provided
+- **Never** add suggestions or recommendations as if the user said them
+- If unsure about a detail, **ask** — wrong data is worse than missing data
+
+### Clarify Loop (MANDATORY)
+
+When the user provides cook log input (paste from notepad, dictation, etc.):
+
+1. **Parse** — extract facts from the raw input, nothing more
+2. **Clarify** — ask about anything ambiguous before writing JSON
+   - "You mentioned mozzarella — which brand/type did you use this time?"
+   - "You said the dough was hard to stretch — do you know how long the proof was?"
+3. **Prompt for gaps** — if the log seems sparse, actively interview:
+   - Check `next_time` items from previous bakes — "Did you try [X] from last session?"
+   - Reference recipe stages — "How did the autolyse/knead/proof go?"
+   - Ask about results — "How was the crumb? Flavor? Anything you'd change?"
+4. **Echo back** — present the formatted notes for user approval before writing to JSON
+
+### Why This Matters (the Mozzarella Rule)
+
+The agent once wrote `"TJ's low-moisture mozzarella was too moist to shred"` when the user actually used HEB whole milk mozzarella. TJ's is what they *want* to use next time — not what they used. The agent inferred a brand and got it backwards. This produced incorrect cook log data that violated V1-V3 voice checks.
+
+**One wrong detail poisons the whole entry.** Treat cook log input like a deposition — record what was said, clarify what's unclear, never embellish.
+
 ## Photo Pipeline
 
 ### Processing
