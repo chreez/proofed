@@ -1,3 +1,8 @@
+export interface RecipeSummary {
+  text: string
+  mode: 'dictated' | 'auto'
+}
+
 export interface Recipe {
   meta: RecipeMeta
   config: RecipeConfig
@@ -5,6 +10,7 @@ export interface Recipe {
   stages: Stage[]
   states: RecipeState[]
   version?: string
+  summary?: RecipeSummary
   change_log?: ChangeLogEntry[]
   cook_log?: CookLogEntry[]
   nutrition?: RecipeNutrition

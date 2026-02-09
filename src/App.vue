@@ -16,6 +16,7 @@ import TocSidebar from '@/components/TocSidebar.vue'
 import NutritionSection from '@/components/NutritionSection.vue'
 import SourceSection from '@/components/SourceSection.vue'
 import ResearchSection from '@/components/ResearchSection.vue'
+import RecipeSummary from '@/components/RecipeSummary.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
 
@@ -343,6 +344,12 @@ function handleTocNavigate(target: string) {
               :has-progress="progress.hasProgress.value"
               class="mb-6"
               @reset="progress.resetProgress()"
+            />
+
+            <RecipeSummary
+              :summary="currentRecipe.summary"
+              :recipe="currentRecipe"
+              class="mb-6"
             />
 
             <VariantTabs

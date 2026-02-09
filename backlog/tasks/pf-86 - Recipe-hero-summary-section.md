@@ -1,10 +1,10 @@
 ---
 id: PF-86
 title: Recipe hero summary section
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-09 04:18'
-updated_date: '2026-02-09 04:38'
+updated_date: '2026-02-09 06:26'
 labels:
   - feature
 dependencies:
