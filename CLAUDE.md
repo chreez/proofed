@@ -92,7 +92,8 @@ When in doubt, treat it as a styling task. Examples:
 
 ### Grooming Rules
 - Follow the **Intent Translator MAX** protocol in `.claude/rules/grooming.md`
-- New ideas enter as Drafts (`backlog draft create` via MCP with `status: Draft`) — they live in `backlog/drafts/` with `DRAFT-X` IDs until groomed
+- **Draft-by-default**: ALL new tasks enter as Draft (`status: Draft`) unless groomed in the same session. No exceptions — agents must never create To Do tasks without completing the clarify/intent loop first.
+- New ideas enter as Drafts via MCP (`status: Draft`) — they live in `backlog/drafts/` with `DRAFT-X` IDs until groomed
 - Grooming promotes a Draft to a PF- task (status To Do) with agent-verifiable ACs
 - Legacy: some existing PF- tasks still have `ungroomed` label — groom in place, strip label when done
 - **"auto groom"** = skip clarify loop, go straight to echo check + ACs

@@ -49,6 +49,7 @@ Create spike subtasks liberally when research is needed before implementation. S
 
 ## Rules
 
+- **Draft-by-default.** All new tasks enter as Draft (`status: Draft`) unless groomed in the same session. Agents must never create To Do tasks without completing the clarify/intent loop first.
 - **No code.** Not even pseudocode. ACs describe *what*, not *how*.
 - **No implementation planning.** That happens when the task is picked up.
 - **One task at a time.** Finish grooming before moving to the next.
