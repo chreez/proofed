@@ -317,7 +317,8 @@ function handleTocNavigate(target: string) {
             v-if="isScrolled && currentRecipe && !showIndex && !showAbout"
             class="flex items-center gap-3 ml-4 min-w-0"
           >
-            <span class="text-sm text-muted truncate cursor-pointer" @click="scrollToTop">{{ currentRecipe.meta.name }} <span v-if="currentRecipe.version" class="font-mono">{{ formatVersionShort(currentRecipe.version) }}</span></span>
+            <span class="text-sm text-muted truncate cursor-pointer" @click="scrollToTop">{{ currentRecipe.meta.name }}</span>
+            <span v-if="currentRecipe.version" class="text-sm text-muted font-mono flex-shrink-0 cursor-pointer" @click="scrollToTop">{{ formatVersionShort(currentRecipe.version) }}</span>
           </div>
         </Transition>
       </div>
