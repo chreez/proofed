@@ -70,7 +70,7 @@
             "unit": "g",
             "breakdown": [
               {
-                "label": "dough (warm to 43°C)",
+                "label": "dough (warm to 110°F)",
                 "amount": 296
               },
               {
@@ -287,7 +287,7 @@
     {
       "id": "AUTOLYSE_MIX",
       "title": "Combine Flour and Milk",
-      "direction": "In large bowl, combine flour and warm milk (43°C/110°F). Mix with rubber spatula until no dry flour remains. Dough will be shaggy.",
+      "direction": "In large bowl, combine flour and warm milk (110°F (43°C)). Mix with rubber spatula until no dry flour remains. Dough will be shaggy.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -561,7 +561,7 @@
     {
       "id": "PRE_BAKE",
       "title": "Prep for Oven",
-      "direction": "Preheat oven to 175°C (350°F) with rack in middle position. Remove plastic wrap. Brush bun tops with 28g melted butter.",
+      "direction": "Preheat oven to 350°F (175°C) with rack in middle position. Remove plastic wrap. Brush bun tops with 28g melted butter.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,

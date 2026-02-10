@@ -312,7 +312,7 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven",
-      "direction": "Adjust oven rack to middle position and preheat to 175°C (350°F).",
+      "direction": "Adjust oven rack to middle position and preheat to 350°F (175°C).",
       "timer": false,
       "components": null,
       "exit_condition": "Oven preheating",
@@ -371,7 +371,7 @@
     {
       "id": "TOAST_PECANS",
       "title": "Toast Pecans",
-      "direction": "Spread 115g pecans on rimmed sheet pan in a single layer. Toast at 175°C (350°F) for 8 minutes until fragrant and slightly darkened.",
+      "direction": "Spread 115g pecans on rimmed sheet pan in a single layer. Toast at 350°F (175°C) for 8 minutes until fragrant and slightly darkened.",
       "duration_min": 8,
       "timer": true,
       "components": [
@@ -491,11 +491,11 @@
     {
       "id": "BAKE_CAKE",
       "title": "Bake",
-      "direction": "Bake at 175°C (350°F) for 35-40 minutes, rotating pans 180° halfway through.",
+      "direction": "Bake at 350°F (175°C) for 35-40 minutes, rotating pans 180° halfway through.",
       "duration_min": 35,
       "timer": true,
       "components": null,
-      "exit_condition": "Internal temperature 96°C (205°F), or cake springs back when gently pressed",
+      "exit_condition": "Internal temperature 205°F (96°C), or cake springs back when gently pressed",
       "notes": [
         { "text": "Internal thermometer is more reliable than toothpick for dense cakes with mix-ins" },
         { "text": "Rotate pans at the halfway mark for even browning" }
@@ -1247,7 +1247,7 @@
         "confidence": "high"
       },
       {
-        "name": "Internal Temperature for Doneness (96°C / 205°F)",
+        "name": "Internal Temperature for Doneness (205°F / 96°C)",
         "sourcedFrom": "Multiple food science sources",
         "rationale": "More reliable than toothpick test for dense cakes with mix-ins that can fool visual checks. Insert thermometer into the center of the cake.",
         "confidence": "medium"

@@ -195,7 +195,7 @@
             "unit": "g",
             "breakdown": [
               {
-                "label": "dough (warm to 43°C)",
+                "label": "dough (warm to 110°F)",
                 "amount": 177
               },
               {
@@ -339,7 +339,7 @@
     {
       "id": "PREP_OVEN",
       "title": "Create Warm Environment",
-      "direction": "Heat oven to 95°C (200°F), then turn OFF. This creates a warm proofing environment.",
+      "direction": "Heat oven to 200°F (95°C), then turn OFF. This creates a warm proofing environment.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -367,7 +367,7 @@
     {
       "id": "BLOOM_YEAST",
       "title": "Bloom Yeast",
-      "direction": "In liquid measure, heat 177g milk to 43°C (110°F). Whisk in yeast until dissolved. Whisk in eggs.",
+      "direction": "In liquid measure, heat 177g milk to 110°F (43°C). Whisk in yeast until dissolved. Whisk in eggs.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -388,7 +388,7 @@
       "exit_condition": "Yeast dissolved, eggs incorporated, mixture homogeneous",
       "notes": [
         {
-          "text": "Milk must be 40-46°C (105-115°F). Too hot kills yeast.",
+          "text": "Milk must be 105-115°F (40-46°C). Too hot kills yeast.",
           "critical": true
         },
         {
@@ -608,7 +608,7 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven",
-      "direction": "Remove buns from oven if proofing inside. Heat oven to 175°C (350°F) with rack in middle position. Remove plastic wrap from buns.",
+      "direction": "Remove buns from oven if proofing inside. Heat oven to 350°F (175°C) with rack in middle position. Remove plastic wrap from buns.",
       "duration_min": 15,
       "timer": false,
       "parallel": false,

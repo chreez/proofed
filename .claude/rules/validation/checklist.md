@@ -22,7 +22,7 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | ID | Check | Criteria | Files to Verify |
 |----|-------|----------|-----------------|
 | D1 | Units: grams only | No cups, tbsp, tsp in ingredient amounts | `public/recipes/*.json` |
-| D2 | Units: Celsius (Fahrenheit) | Temps formatted as `175°C (350°F)` | `public/recipes/*.json` |
+| D2 | Units: Fahrenheit (Celsius) | Temps formatted as `350°F (175°C)` | `public/recipes/*.json` |
 | D3 | Units: centimeters | Dimensions in cm, not inches | `public/recipes/*.json` |
 | D4 | timer: true only passive | `timer: true` only on passive/waiting states (not active hands-on steps) | `public/recipes/*.json` |
 | D5 | exit_condition required | Every state has non-empty `exit_condition` | `public/recipes/*.json` |

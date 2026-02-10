@@ -138,7 +138,7 @@
             "unit": "g",
             "breakdown": [
               {
-                "label": "dough (warm to 43°C)",
+                "label": "dough (warm to 110°F)",
                 "amount": 296
               },
               {
@@ -327,7 +327,7 @@
     {
       "id": "MIX_WET",
       "title": "Activate Yeast",
-      "direction": "In medium bowl, whisk together warm milk (43°C/110°F), yeast, 28g melted butter, and 25g granulated sugar until yeast dissolves.",
+      "direction": "In medium bowl, whisk together warm milk (110°F (43°C)), yeast, 28g melted butter, and 25g granulated sugar until yeast dissolves.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -352,7 +352,7 @@
       "exit_condition": "Yeast fully dissolved, no granules visible",
       "notes": [
         {
-          "text": "Milk must be 40-46°C (105-115°F). Too hot kills yeast, too cool won't activate.",
+          "text": "Milk must be 105-115°F (40-46°C). Too hot kills yeast, too cool won't activate.",
           "critical": true
         }
       ]
@@ -451,7 +451,7 @@
     {
       "id": "PRE_BAKE",
       "title": "Prep for Oven",
-      "direction": "Preheat oven to 175°C (350°F) with rack in middle position. Remove plastic wrap. Brush bun tops with 28g melted butter.",
+      "direction": "Preheat oven to 350°F (175°C) with rack in middle position. Remove plastic wrap. Brush bun tops with 28g melted butter.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,

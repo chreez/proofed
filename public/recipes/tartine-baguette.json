@@ -132,15 +132,15 @@
             "unit": "g",
             "breakdown": [
               {
-                "label": "poolish (24°C)",
+                "label": "poolish (75°F)",
                 "amount": 200
               },
               {
-                "label": "leaven (27°C)",
+                "label": "leaven (80°F)",
                 "amount": 220
               },
               {
-                "label": "main dough (23–24°C)",
+                "label": "main dough (74–75°F)",
                 "amount": 500
               }
             ]
@@ -267,7 +267,7 @@
     {
       "id": "MIX_POOLISH",
       "title": "Mix Poolish",
-      "direction": "In large mixing bowl (V1), combine 200g all-purpose flour, 200g water at 24°C (75°F), and 3g active dry yeast. Stir until no dry flour remains.",
+      "direction": "In large mixing bowl (V1), combine 200g all-purpose flour, 200g water at 75°F (24°C), and 3g active dry yeast. Stir until no dry flour remains.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -277,7 +277,7 @@
           "amount": "200g"
         },
         {
-          "name": "Water (24°C)",
+          "name": "Water (75°F)",
           "amount": "200g"
         },
         {
@@ -291,7 +291,7 @@
     {
       "id": "FERMENT_POOLISH",
       "title": "Ferment Poolish",
-      "direction": "Cover bowl and let poolish stand at warm room temperature 24–27°C (75–80°F) for 3 to 4 hours. Alternatively, ferment overnight in the refrigerator.",
+      "direction": "Cover bowl and let poolish stand at warm room temperature 75–80°F (24–27°C) for 3 to 4 hours. Alternatively, ferment overnight in the refrigerator.",
       "duration_min": 210,
       "timer": true,
       "parallel": false,
@@ -311,7 +311,7 @@
     {
       "id": "FEED_LEAVEN",
       "title": "Feed Leaven",
-      "direction": "In medium bowl (V2), place 15g mature starter. Add 220g all-purpose flour and 220g water at 27°C (80°F). Mix thoroughly.",
+      "direction": "In medium bowl (V2), place 15g mature starter. Add 220g all-purpose flour and 220g water at 80°F (27°C). Mix thoroughly.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -325,7 +325,7 @@
           "amount": "220g"
         },
         {
-          "name": "Water (27°C)",
+          "name": "Water (80°F)",
           "amount": "220g"
         }
       ],
@@ -372,13 +372,13 @@
     {
       "id": "MIX_DOUGH",
       "title": "Mix Baguette Dough",
-      "direction": "Pour 500g warm water at 23–24°C (74–76°F) into a large mixing bowl (V1, freed from poolish). Add all the poolish (400g) and 400g of the leaven. Stir to disperse. Add 650g all-purpose flour and 350g bread flour. Mix thoroughly by hand until no dry flour remains. Reserve remaining leaven to refresh your starter.",
+      "direction": "Pour 500g warm water at 74–76°F (23–24°C) into a large mixing bowl (V1, freed from poolish). Add all the poolish (400g) and 400g of the leaven. Stir to disperse. Add 650g all-purpose flour and 350g bread flour. Mix thoroughly by hand until no dry flour remains. Reserve remaining leaven to refresh your starter.",
       "duration_min": 8,
       "timer": false,
       "parallel": false,
       "components": [
         {
-          "name": "Water (23–24°C)",
+          "name": "Water (74–75°F)",
           "amount": "500g"
         },
         {
@@ -442,7 +442,7 @@
       "exit_condition": "Salt fully incorporated, dough has been stretched and folded from all sides",
       "notes": [
         {
-          "text": "The dough temperature should be about 24°C (75°F) throughout bulk fermentation",
+          "text": "The dough temperature should be about 75°F (24°C) throughout bulk fermentation",
           "critical": false
         }
       ]
@@ -590,7 +590,7 @@
     {
       "id": "PROOF_BAGUETTES",
       "title": "Proof Baguettes",
-      "direction": "Let baguettes rise at warm room temperature 21–24°C (70–75°F) for 2.5 to 3 hours.",
+      "direction": "Let baguettes rise at warm room temperature 70–75°F (21–24°C) for 2.5 to 3 hours.",
       "duration_min": 165,
       "timer": true,
       "parallel": false,
@@ -622,12 +622,12 @@
     {
       "id": "PREHEAT_OVEN",
       "title": "Preheat Oven",
-      "direction": "Place baking stone (V5) on the middle rack. Preheat oven to 260°C (500°F) with the steam pan already inside. The oven should steam for at least 15 minutes before loading.",
+      "direction": "Place baking stone (V5) on the middle rack. Preheat oven to 500°F (260°C) with the steam pan already inside. The oven should steam for at least 15 minutes before loading.",
       "duration_min": 45,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Oven at 260°C (500°F), baking stone fully heated, oven visibly steaming",
+      "exit_condition": "Oven at 500°F (260°C), baking stone fully heated, oven visibly steaming",
       "notes": [
         {
           "text": "A fully preheated stone is essential for oven spring — do not rush this step",
@@ -638,12 +638,12 @@
     {
       "id": "SCORE_LOAD",
       "title": "Score and Load Baguettes",
-      "direction": "Dust pizza peel with rice flour. Dust the seam side of the baguettes with rice flour. Flip each loaf onto the hand peel using the couche towel, then slide onto the pizza peel. Arrange baguettes about 5cm apart. Score each loaf down the center with a series of slightly overlapping lines using the razor blade lame. Open oven door, slide baguettes onto the baking stone, and quickly shut the door. Immediately reduce oven temperature to 246°C (475°F).",
+      "direction": "Dust pizza peel with rice flour. Dust the seam side of the baguettes with rice flour. Flip each loaf onto the hand peel using the couche towel, then slide onto the pizza peel. Arrange baguettes about 5cm apart. Score each loaf down the center with a series of slightly overlapping lines using the razor blade lame. Open oven door, slide baguettes onto the baking stone, and quickly shut the door. Immediately reduce oven temperature to 475°F (246°C).",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Baguettes scored and loaded onto baking stone, oven door shut, temperature reduced to 246°C (475°F)",
+      "exit_condition": "Baguettes scored and loaded onto baking stone, oven door shut, temperature reduced to 475°F (246°C)",
       "notes": [
         {
           "text": "Work quickly — every second the oven door is open, you lose steam and heat",

@@ -1,13 +1,14 @@
 /**
  * Temperature conversion utility for badge displays.
- * Converts °C values in text to °F display with °C available for hover.
+ * Converts bare °F values in text to badged display with °C available for hover.
+ * Also handles bare °C as fallback (converts to °F display with °C tooltip).
  */
 
 export interface TempSegment {
   type: 'text' | 'temp'
   content: string
-  /** Original °C text for tooltip (only when type === 'temp') */
-  celsius?: string
+  /** Alternative unit text for tooltip (only when type === 'temp') */
+  alt?: string
 }
 
 /**
@@ -18,51 +19,85 @@ export function celsiusToFahrenheit(c: number): number {
 }
 
 /**
- * Parse text containing °C temperatures into segments.
+ * Convert Fahrenheit to Celsius, rounded to nearest integer.
+ */
+export function fahrenheitToCelsius(f: number): number {
+  return Math.round((f - 32) * 5 / 9)
+}
+
+/**
+ * Parse text containing bare temperature values into segments.
  * Handles:
- *   - Single temps: "24°C" -> "75°F"
- *   - Ranges with en-dash or hyphen: "23–24°C" or "23-24°C" -> "74–75°F"
+ *   - Bare °F: "350°F" -> badge with "175°C" tooltip
+ *   - Bare °C: "24°C" -> badge showing "75°F" with "24°C" tooltip
+ *   - Ranges: "105-115°F" -> badge with "41-46°C" tooltip
  *
- * Only matches bare °C (not already paired with °F in parentheses),
- * so body text like "24°C (75°F)" is left alone.
+ * Skips already-paired temps (e.g., "350°F (175°C)") — both units visible.
  */
 export function parseTemperatures(text: string): TempSegment[] {
-  // Match temperature patterns:
-  // Optional range: number dash/en-dash number, then °C
-  // Negative lookahead: not followed by °F reference in any format:
-  //   - space + parens: "24°C (75°F)" or "40-46°C (105-115°F)"
-  //   - slash: "43°C/110°F"
-  const tempRegex = /(\d+)\s*[–\-]\s*(\d+)°C(?!\s*[/(]\s*\d+[–\-]?\d*°F)|(\d+)°C(?!\s*[/(]\s*\d+[–\-]?\d*°F)/g
+  // Priority order: paired temps matched first (consumed as text), then bare temps (badged).
+  // Group 1: paired °F (°C) — pass through
+  // Group 2: paired °C (°F) — pass through
+  // Groups 3-4: bare °F range
+  // Group 5: bare °F single
+  // Groups 6-7: bare °C range
+  // Group 8: bare °C single
+  const tempRegex = /(\d+(?:\s*[–\-]\s*\d+)?°F\s*\(\s*\d+(?:\s*[–\-]\s*\d+)?°C\s*\))|(\d+(?:\s*[–\-]\s*\d+)?°C\s*\(\s*\d+(?:\s*[–\-]\s*\d+)?°F\s*\))|(\d+)\s*[–\-]\s*(\d+)°F|(\d+)°F|(\d+)\s*[–\-]\s*(\d+)°C|(\d+)°C/g
 
   const segments: TempSegment[] = []
   let lastIndex = 0
   let match: RegExpExecArray | null
 
   while ((match = tempRegex.exec(text)) !== null) {
+    if (match[1] !== undefined || match[2] !== undefined) {
+      // Paired temp — already has both units, skip (consumed by regex, included as text)
+      continue
+    }
+
     // Add text before this match
     if (match.index > lastIndex) {
       segments.push({ type: 'text', content: text.slice(lastIndex, match.index) })
     }
 
-    if (match[1] !== undefined && match[2] !== undefined) {
-      // Range: "23–24°C"
-      const low = parseInt(match[1], 10)
-      const high = parseInt(match[2], 10)
+    if (match[3] !== undefined && match[4] !== undefined) {
+      // Bare Fahrenheit range: "105-115°F"
+      const low = parseInt(match[3], 10)
+      const high = parseInt(match[4], 10)
+      const lowC = fahrenheitToCelsius(low)
+      const highC = fahrenheitToCelsius(high)
+      segments.push({
+        type: 'temp',
+        content: `${low}–${high}°F`,
+        alt: `${lowC}–${highC}°C`
+      })
+    } else if (match[5] !== undefined) {
+      // Bare single Fahrenheit: "350°F"
+      const f = parseInt(match[5], 10)
+      const c = fahrenheitToCelsius(f)
+      segments.push({
+        type: 'temp',
+        content: `${f}°F`,
+        alt: `${c}°C`
+      })
+    } else if (match[6] !== undefined && match[7] !== undefined) {
+      // Bare Celsius range: "23–24°C"
+      const low = parseInt(match[6], 10)
+      const high = parseInt(match[7], 10)
       const lowF = celsiusToFahrenheit(low)
       const highF = celsiusToFahrenheit(high)
       segments.push({
         type: 'temp',
         content: `${lowF}–${highF}°F`,
-        celsius: `${low}–${high}°C`
+        alt: `${low}–${high}°C`
       })
-    } else {
-      // Single: "24°C"
-      const c = parseInt(match[3], 10)
+    } else if (match[8] !== undefined) {
+      // Bare single Celsius: "24°C"
+      const c = parseInt(match[8], 10)
       const f = celsiusToFahrenheit(c)
       segments.push({
         type: 'temp',
         content: `${f}°F`,
-        celsius: `${c}°C`
+        alt: `${c}°C`
       })
     }
 
@@ -83,8 +118,8 @@ export function parseTemperatures(text: string): TempSegment[] {
 }
 
 /**
- * Check whether text contains any °C temperature pattern (for badge rendering).
+ * Check whether text contains any temperature pattern (for badge rendering).
  */
 export function hasTemperature(text: string): boolean {
-  return /\d+°C/.test(text)
+  return /\d+°[FC]/.test(text)
 }

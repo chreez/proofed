@@ -25,7 +25,7 @@ public/recipes/
 
 ## Recipe JSON Contract
 - All weights in **grams only** (no cups/tbsp)
-- Temperatures in **Celsius** with Fahrenheit in parentheses
+- Temperatures in **Fahrenheit** with Celsius in parentheses
 - Dimensions in **centimeters**
 - `timer: true` ONLY on passive states (rise, bake, cool)
 - Every state MUST have `exit_condition`

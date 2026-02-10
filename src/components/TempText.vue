@@ -16,7 +16,7 @@ const segments = computed(() => parseTemperatures(props.text))
       <span
         v-else
         class="temp-badge"
-        :data-celsius="seg.celsius"
+        :data-celsius="seg.alt"
       >{{ seg.content }}</span>
     </template>
   </span>
