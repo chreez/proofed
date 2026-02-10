@@ -1,6 +1,6 @@
 project_name: "proofed"
 default_status: "To Do"
-statuses: ["To Do", "In Progress", "Done"]
+statuses: ["Draft", "To Do", "In Progress", "Done"]
 labels: ["feature", "bug", "refactor", "recipe", "ux", "infra"]
 milestones: []
 definition_of_done:

@@ -28,7 +28,7 @@ If the task involves a visual or design decision with multiple valid approaches,
 Only after YES (or after demo review). Write agent-verifiable acceptance criteria. Present to user for approval before saving to backlog.
 
 ### 4. Save
-After user approves ACs, update the task via backlog MCP. Remove `ungroomed` label.
+After user approves ACs, update the task via backlog MCP. If the task was created as a Draft (`backlog/drafts/`), promote it to a PF- task. If it's an existing PF- task with the `ungroomed` label, remove the label.
 
 ## Auto Groom
 

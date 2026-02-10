@@ -92,7 +92,9 @@ When in doubt, treat it as a styling task. Examples:
 
 ### Grooming Rules
 - Follow the **Intent Translator MAX** protocol in `.claude/rules/grooming.md`
-- New tasks arrive labeled `ungroomed`; groomed tasks have agent-verifiable ACs
+- New ideas enter as Drafts (`backlog draft create` via MCP with `status: Draft`) — they live in `backlog/drafts/` with `DRAFT-X` IDs until groomed
+- Grooming promotes a Draft to a PF- task (status To Do) with agent-verifiable ACs
+- Legacy: some existing PF- tasks still have `ungroomed` label — groom in place, strip label when done
 - **"auto groom"** = skip clarify loop, go straight to echo check + ACs
 - **"demo"** = at echo check, creates a spike subtask for throwaway demo page showing visual options side-by-side. Batch multiple demos per session for single user review pass
 
