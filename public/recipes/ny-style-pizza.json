@@ -111,7 +111,9 @@
         { "text": "Make a batch of 4 dough balls to have extras for the week" },
         { "text": "Use Trader Joe's low-moisture mozz next time — the HEB whole milk was too wet to shred" }
       ]
-    }
+    },
+    { "date": "2026-02-15", "version": "v1.0.0", "notes": ["DUMMY — remove after demo"], "photos": [], "next_time": [] },
+    { "date": "2026-02-22", "version": "v1.0.0", "notes": ["DUMMY — remove after demo"], "photos": [], "next_time": [] }
   ],
   "vessels": [
     {
