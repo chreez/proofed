@@ -58,10 +58,6 @@ vi.mock('@/components/SiteFooter.vue', () => ({
 vi.mock('@/components/AboutPage.vue', () => ({
   default: { name: 'AboutPage', template: '<div class="about-page-stub">About</div>' }
 }))
-vi.mock('@/components/DemoIndexVariants.vue', () => ({
-  default: { name: 'DemoIndexVariants', template: '<div class="demo-index-variants-stub">Demo</div>' }
-}))
-
 // Mock composables
 const mockLoadTechniques = vi.fn()
 vi.mock('@/composables/useTechniques', () => ({
@@ -261,12 +257,6 @@ describe('App', () => {
     const { wrapper } = await mountApp('/about')
     expect(wrapper.find('.about-page-stub').exists()).toBe(true)
     expect(wrapper.text()).toContain('About')
-  })
-
-  it('shows DemoIndexVariants on demo route', async () => {
-    const { wrapper } = await mountApp('/demo/index-variants')
-    expect(wrapper.find('.demo-index-variants-stub').exists()).toBe(true)
-    expect(wrapper.text()).toContain('Demo')
   })
 
   it('shows loading state when loading is true', async () => {

@@ -19,7 +19,6 @@ import ResearchSection from '@/components/ResearchSection.vue'
 import RecipeSummary from '@/components/RecipeSummary.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
-import DemoIndexVariants from '@/components/DemoIndexVariants.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -35,7 +34,6 @@ useRecipeMeta(
 // Derive page state from route
 const showIndex = computed(() => route.name === 'index')
 const showAbout = computed(() => route.name === 'about')
-const showDemo = computed(() => route.name === 'demo-index-variants')
 
 function goToIndex(): void {
   router.push('/')
@@ -325,18 +323,13 @@ function handleTocNavigate(target: string) {
       </div>
     </header>
 
-    <!-- TODO(PF-97): demo removes py-6 top padding — needs proper per-route layout in production -->
-    <main :class="[showDemo ? 'pb-6' : 'py-6', !showIndex && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
+    <main :class="[showIndex ? 'pb-6' : 'py-6', !showIndex && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
 
       <template v-else-if="showAbout">
         <AboutPage />
-      </template>
-
-      <template v-else-if="showDemo">
-        <DemoIndexVariants />
       </template>
 
       <template v-else-if="showIndex">

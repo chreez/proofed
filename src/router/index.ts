@@ -34,12 +34,6 @@ const router = createRouter({
       name: 'about',
       component: EmptyRouteView,
       meta: { showIndex: false }
-    },
-    {
-      path: '/demo/index-variants',
-      name: 'demo-index-variants',
-      component: EmptyRouteView,
-      meta: { showIndex: false }
     }
   ]
 })
