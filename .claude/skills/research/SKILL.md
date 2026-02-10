@@ -27,6 +27,7 @@ Launch a parallel multi-agent research operation to build a comprehensive, sourc
 2. DEPLOY    → Launch 6-9 parallel agents with distinct strategies
 3. FOLLOW-UP → Launch targeted agents for gaps found in first wave
 4. SYNTHESIZE → Cross-reference, rate confidence, build master recipe
+4b. REVIEW   → Present synthesis to user for approval before saving (HITL)
 5. SAVE      → Write synthesis to photos-source/{id}/research/ + create recipe JSON
 ```
 
@@ -163,6 +164,19 @@ HIGH (6+ of N agents)  → Include in master recipe, high confidence
 MEDIUM (3-5 of N)      → Include with "recommended" qualifier
 LOW (1-2 of N)         → List in "open questions" for future testing
 ```
+
+## Step 4b: Review Gate (HITL)
+
+Before saving anything, present the synthesis to the user for review:
+
+1. **Show the executive summary** and master recipe overview
+2. **Flag open questions** — anything the user should weigh in on before it becomes a recipe
+3. **Wait for explicit approval** — user may:
+   - Approve as-is → proceed to Step 5
+   - Request changes → revise synthesis and re-present
+   - Flag items for further research → launch targeted follow-up agents, then re-synthesize
+
+Do NOT save artifacts or create recipe JSON until the user confirms the synthesis quality.
 
 ## Step 5: Save Artifacts
 
