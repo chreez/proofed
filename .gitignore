@@ -37,3 +37,6 @@ coverage/
 photos-source/
 *.HEIC
 *.heic
+
+# YouTube transcript scrape data (large media)
+carrot-cake-recipe_wVZVA7CbPn0/
