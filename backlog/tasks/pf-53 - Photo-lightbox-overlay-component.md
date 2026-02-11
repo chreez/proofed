@@ -1,10 +1,10 @@
 ---
 id: PF-53
 title: Photo lightbox overlay component
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-07 05:23'
-updated_date: '2026-02-10 09:35'
+updated_date: '2026-02-11 01:13'
 labels:
   - feature
 dependencies: []
@@ -30,3 +30,9 @@ Replace "open in new tab" with an in-page lightbox/overlay for viewing full-size
 - [ ] #8 HITL visual sign-off before commit
 - [ ] #9 npm run build passes
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Status: Code complete, HITL pending\n\n**Branch:** `mainline` (commit `8b2c064`)\n\n**What's done:**\n- PhotoLightbox.vue component with Pointer Events gesture system\n- Live drag feedback on horizontal swipe with peek adjacent images\n- Swipe-down-to-dismiss with proportional backdrop fade and scale\n- Rubber-band at edges, velocity-based commit/cancel\n- Arrow keys, Escape, close button, backdrop click for desktop\n- CookLogSection.vue wired to open lightbox on photo click\n- 35 tests in PhotoLightbox.spec.ts, 5 tests in CookLogSection.spec.ts\n- Build passes, diff-coverage passes\n\n**What's left:**\n- HITL visual sign-off on mobile (iPhone) — test swipe gestures, dismiss, navigation\n- User hasn't reviewed the upgraded gesture system on device yet\n- Open `http://192.168.1.213:5173/recipe/atk-cinnamon-buns-ultimate` → scroll to Cook Log → tap a photo
+<!-- SECTION:NOTES:END -->
