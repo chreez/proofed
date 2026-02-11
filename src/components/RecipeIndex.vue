@@ -45,6 +45,7 @@ const categoryMap: Record<string, string> = {
   'atk-cinnamon-buns-ultimate': 'baking',
   'tartine-baguette': 'baking',
   'carrot-cake': 'baking',
+  'simple-sourdough': 'baking',
   'ny-style-pizza': 'pizza & dough',
   'coco-curry': 'mains',
   'ichiran-ramen': 'mains',
