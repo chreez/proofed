@@ -1,10 +1,10 @@
 ---
 id: PF-109
 title: Photo selection review page — visual feedback tool
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-11 02:35'
-updated_date: '2026-02-11 02:37'
+updated_date: '2026-02-11 19:47'
 labels:
   - feature
   - workflow

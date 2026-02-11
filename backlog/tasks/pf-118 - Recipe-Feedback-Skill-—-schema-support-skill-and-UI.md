@@ -4,7 +4,7 @@ title: 'Recipe Feedback Skill — schema support, skill, and UI'
 status: To Do
 assignee: []
 created_date: '2026-02-11 19:26'
-updated_date: '2026-02-11 19:39'
+updated_date: '2026-02-11 19:49'
 labels:
   - feature
   - skill
@@ -31,3 +31,26 @@ A `/feedback` skill for interactive recipe review sessions. User picks a recipe,
 - [ ] #9 Agent follows Cook Log Protocol scribe principles for user input: no embellishment, no inferred details, clarify before recording
 - [ ] #10 `npm run build` passes with all schema changes, backfilled data, and any new/updated components
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## CookLogEntry.step_notes Investigation (PF-118.1 Spike)
+
+**Current shape:** `step_notes?: Record<string, string>` — flat map of state ID → single string.
+
+**Finding:** No restructuring needed. Rationale:
+- PF-118 AC#8 explicitly states no `CookLogEntry` is created for feedback sessions — cook log remains bakes only
+- Cook log step_notes are always user-authored (bake observations), never agent-contributed
+- The `source` attribution is only relevant for `RecipeState.notes[]` (StateNote), where the /feedback skill writes agent-sourced tips
+- Adding `source` to step_notes would mean changing `Record<string, string>` to `Record<string, StateNote>` which is a breaking migration for no functional gain
+
+**Recommendation:** Leave `CookLogEntry.step_notes` as `Record<string, string>`. If a future feature needs agent attribution in cook logs, it can be addressed then.
+
+## Changelog Convention for Feedback Sessions
+
+When a `/feedback` session concludes with a version bump, the `change_log` entry should:
+- Summary format: `"Added agent-sourced notes: {list of state IDs}"` e.g. `"Added agent-sourced technique notes to RISE_1, ADD_BUTTER"`
+- If user also made changes: `"Feedback session: updated directions for MIX_DRY; added agent-sourced notes to RISE_1, ADD_BUTTER"`
+- Always distinguish user changes from agent additions in the summary
+<!-- SECTION:NOTES:END -->

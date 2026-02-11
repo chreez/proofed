@@ -34,6 +34,12 @@ const router = createRouter({
       name: 'about',
       component: EmptyRouteView,
       meta: { showIndex: false }
+    },
+    {
+      path: '/review/photos/:recipeId/:date',
+      name: 'photo-review',
+      component: EmptyRouteView,
+      meta: { showIndex: false }
     }
   ]
 })

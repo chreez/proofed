@@ -55,12 +55,24 @@
         "Prediction: this batch will reheat well — planning to try in the air fryer tomorrow."
       ],
       "next_time": [
-        { "text": "Check internal temp for doneness" },
-        { "text": "Try dental floss for cleaner roll cuts" },
-        { "text": "Try air fryer directly after cooling phase — still warm, might add a nice crust" },
-        { "text": "Get milk in advance — avoid water sub" },
-        { "text": "Figure out consistent roll sizing" },
-        { "text": "More cream cheese in glaze — love that cream cheese taste" }
+        {
+          "text": "Check internal temp for doneness"
+        },
+        {
+          "text": "Try dental floss for cleaner roll cuts"
+        },
+        {
+          "text": "Try air fryer directly after cooling phase — still warm, might add a nice crust"
+        },
+        {
+          "text": "Get milk in advance — avoid water sub"
+        },
+        {
+          "text": "Figure out consistent roll sizing"
+        },
+        {
+          "text": "More cream cheese in glaze — love that cream cheese taste"
+        }
       ],
       "photos": [
         {
@@ -174,11 +186,21 @@
         }
       ],
       "next_time": [
-        { "text": "Use **all AP flour** — no blending. Reduces variables." },
-        { "text": "Use **single yeast type** — no mixing instant + active dry" },
-        { "text": "Roll dough more evenly into true square — end pieces were smaller due to uneven thickness, not cutting" },
-        { "text": "Try pasta roller for consistent thickness? *Could be fun.*" },
-        { "text": "Pyrex with foil lining works great — could skip foil but makes cleanup easier" }
+        {
+          "text": "Use **all AP flour** — no blending. Reduces variables."
+        },
+        {
+          "text": "Use **single yeast type** — no mixing instant + active dry"
+        },
+        {
+          "text": "Roll dough more evenly into true square — end pieces were smaller due to uneven thickness, not cutting"
+        },
+        {
+          "text": "Try pasta roller for consistent thickness? *Could be fun.*"
+        },
+        {
+          "text": "Pyrex with foil lining works great — could skip foil but makes cleanup easier"
+        }
       ]
     }
   ],
@@ -448,7 +470,8 @@
       "notes": [
         {
           "text": "Foil sling = two perpendicular sheets with overhang for lifting",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ],
       "technique_url": "https://www.kingarthurbaking.com/blog/2017/03/27/parchment-paper-sling"
@@ -478,11 +501,13 @@
       "notes": [
         {
           "text": "Milk must be 105-115°F (40-46°C). Too hot kills yeast.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Store leftover yeast in airtight container in freezer — lasts 6+ months. No need to thaw before use.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -515,7 +540,8 @@
       "notes": [
         {
           "text": "Cornstarch is the secret to extra-tender texture",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -547,11 +573,13 @@
       "notes": [
         {
           "text": "If still sticky after 10 min, add flour 1 tbsp at a time (max 30g extra)",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Butter must be softened, not melted—cold butter won't incorporate",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -578,7 +606,8 @@
       "notes": [
         {
           "text": "Start filling during last 15 minutes of rise",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -618,15 +647,18 @@
       "notes": [
         {
           "text": "Cold dough? Let rest 10-15 min at room temp — stiff dough snaps back.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Use guides (rulers, dowels) alongside dough for even thickness.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Fix thick spots: lift and scrunch to redistribute, roll toward thin areas.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ],
       "technique_url": "https://www.roadtopastry.com/blog/hints-tips/tip-how-to-roll-out-tart-dough-into-a-square"
@@ -663,7 +695,8 @@
       "notes": [
         {
           "text": "Keep tension consistent—loose rolls create gaps",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -690,7 +723,8 @@
       "notes": [
         {
           "text": "Start preheating oven 20 minutes before rise ends",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -717,7 +751,8 @@
       "notes": [
         {
           "text": "Check at 35 min—ovens vary. Target is golden, not pale.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -733,7 +768,8 @@
       "notes": [
         {
           "text": "Filling is extremely hot—wait the full time",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -770,7 +806,8 @@
       "notes": [
         {
           "text": "Make during COOL step to save time",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },

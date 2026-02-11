@@ -19,6 +19,7 @@ import RecipeSummary from '@/components/RecipeSummary.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
+import PhotoReview from '@/components/PhotoReview.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -34,6 +35,7 @@ useRecipeMeta(
 // Derive page state from route
 const showIndex = computed(() => route.name === 'index')
 const showAbout = computed(() => route.name === 'about')
+const showPhotoReview = computed(() => route.name === 'photo-review')
 
 function goToIndex(): void {
   router.push('/')
@@ -354,6 +356,10 @@ function handleTocNavigate(target: string) {
 
       <template v-else-if="showAbout">
         <AboutPage />
+      </template>
+
+      <template v-else-if="showPhotoReview">
+        <PhotoReview />
       </template>
 
       <template v-else-if="showIndex">

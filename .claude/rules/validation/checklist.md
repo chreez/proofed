@@ -101,6 +101,7 @@ Add checks here for new features:
 | F22 | Nutrition breakdown | All ingredients with >0 calories listed | 2026-02-06 |
 | F23 | Photo paths valid | All cook_log photo src/thumb paths exist on disk | 2026-02-07 |
 | F24 | Photo alt text | All cook_log photos have non-empty alt text | 2026-02-07 |
+| F25 | Note source field | All `StateNote` entries in recipe JSON have `source: 'user' \| 'agent'` | 2026-02-11 |
 
 ## Build Validation (MANDATORY)
 

@@ -161,6 +161,7 @@ export interface StateComponent {
 export interface StateNote {
   text: string
   critical?: boolean
+  source?: 'user' | 'agent'
 }
 
 export interface NextTimeEntry {

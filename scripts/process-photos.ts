@@ -8,7 +8,7 @@
  *   npx tsx scripts/process-photos.ts --quality 90 photos-source/{recipe-id}/{date}/
  */
 
-import { readFileSync, mkdirSync, readdirSync, existsSync, statSync } from 'fs'
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, statSync } from 'fs'
 import { join, basename, extname, resolve, relative } from 'path'
 import sharp from 'sharp'
 
@@ -24,6 +24,13 @@ const HEIC_EXTENSIONS = new Set(['.heic', '.heif'])
 interface ProcessOptions {
   dryRun: boolean
   quality: number
+}
+
+interface ManifestPhoto {
+  name: string
+  thumb: string
+  src: string
+  summary: string
 }
 
 function parseArgs(): { sourcePaths: string[]; options: ProcessOptions; all: boolean } {
@@ -96,7 +103,7 @@ async function processImage(
   filePath: string,
   outputDir: string,
   options: ProcessOptions
-): Promise<void> {
+): Promise<ManifestPhoto | null> {
   const ext = extname(filePath).toLowerCase()
   const name = sanitizeName(filePath)
   const sourceBuffer = readFileSync(filePath)
@@ -113,7 +120,7 @@ async function processImage(
     for (const size of SIZES) {
       console.log(`    [dry-run] → ${name}-${size.suffix}.webp`)
     }
-    return
+    return null
   }
 
   // HEIC: always use heic-convert (sharp reads metadata but can't decode pixels)
@@ -136,6 +143,8 @@ async function processImage(
     const stat = statSync(outputPath)
     console.log(`    → ${outputName} (${(stat.size / 1024).toFixed(0)}KB)`)
   }
+
+  return { name, thumb: `${name}-400w.webp`, src: `${name}-800w.webp`, summary: '' }
 }
 
 async function processDirectory(
@@ -164,8 +173,16 @@ async function processDirectory(
     mkdirSync(outputDir, { recursive: true })
   }
 
+  const photos: ManifestPhoto[] = []
   for (const file of files) {
-    await processImage(join(absPath, file), outputDir, options)
+    const photo = await processImage(join(absPath, file), outputDir, options)
+    if (photo) photos.push(photo)
+  }
+
+  if (!options.dryRun) {
+    const manifest = { recipeId, date, processedAt: new Date().toISOString(), photos }
+    writeFileSync(join(outputDir, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
+    console.log(`  manifest.json written (${photos.length} photos)`)
   }
 
   console.log(`\n✓ ${files.length} images processed → ${outputDir}`)

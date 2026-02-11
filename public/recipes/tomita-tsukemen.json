@@ -600,15 +600,18 @@
       "notes": [
         {
           "text": "Separating multi-use ingredients now prevents mistakes later — soy sauce, mirin, kombu, niboshi, katsuobushi, sababushi, and brown sugar all appear in multiple sub-recipes",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Remove niboshi heads and guts by pinching — larger sardines carry bitterness from digestive organs. This is the #6 most common mistake.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "This recipe spans 2 days. Day 1: tare cold soak + noodle making. Day 2: broth + dashi + assembly. Plan accordingly.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -641,15 +644,18 @@
       "notes": [
         {
           "text": "Overnight cold soak develops dramatically cleaner umami vs hot extraction — don't skip this",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Start this the evening of Day 1, along with the noodles. Both need overnight rest.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The kombu will have expanded significantly and the liquid will be noticeably more viscous from extracted glutamic acid",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -674,11 +680,13 @@
       "notes": [
         {
           "text": "Boiling the tare would destroy the clean umami built during the cold soak — use a thermometer",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The niboshi stay in — they continue to add depth. Only the kombu is removed to prevent sliminess.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -707,15 +715,18 @@
       "notes": [
         {
           "text": "The brown sugar balances the bitterness from the dried fish — taste and adjust if needed",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Press the katsuobushi firmly in the strainer — significant flavor remains in the solids",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Finished tare should taste very concentrated and salty. It will be diluted by the broth at assembly.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -744,11 +755,13 @@
       "notes": [
         {
           "text": "If using baked baking soda instead of commercial kansui: bake baking soda at 250°F (121°C) for 1 hour, then use 10g of the result as pure sodium carbonate",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The 80:20 Na:K ratio is reversed from standard ramen (which is 20:80). Sodium-heavy = softer, more supple thick noodles.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -777,11 +790,13 @@
       "notes": [
         {
           "text": "At 42% hydration this dough is very stiff. It will look too dry — this is normal. The rest period does the work of bringing it together.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Stream the water in slowly. Adding too fast creates wet pockets surrounded by dry flour.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -797,7 +812,8 @@
       "notes": [
         {
           "text": "This rest is critical — the moisture migrates into dry pockets and the gluten begins to develop without mechanical work",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -813,15 +829,18 @@
       "notes": [
         {
           "text": "This lamination process builds the gluten network that gives tsukemen noodles their signature chew. 5-8 passes minimum.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Dust with cornstarch or potato starch as needed to prevent sticking. Do not use flour — it changes the ratio.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "If the dough resists rolling, cover and rest 5 minutes before continuing. Fighting tight gluten tears the sheet.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -837,7 +856,8 @@
       "notes": [
         {
           "text": "Yamato Noodle (noodle machine manufacturer) recommends multiple rest periods for best texture development",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -853,11 +873,13 @@
       "notes": [
         {
           "text": "3mm is thick for pasta but correct for tsukemen. These are fat, square noodles — do not roll thinner.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "If your pasta machine markings don't indicate mm, measure with a ruler. 3mm is about the thickness of two stacked credit cards.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -873,15 +895,18 @@
       "notes": [
         {
           "text": "200g per serving is larger than standard ramen (100-150g). Tsukemen noodles are the star, not a supporting actor.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Expect approximately 7 portions from 1000g flour + 420g water (total dough ~1440g, minus some waste from trimming).",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Industry equivalent: #12 cutter number (Myojo USA standard for tsukemen)",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -897,11 +922,13 @@
       "notes": [
         {
           "text": "24-hour noodle rest is a strong consensus across sources. Fresh noodles without resting have an unpleasant alkaline bite and inferior texture.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "If testing: compare noodles at 24, 48, and 72 hours. Most sources agree 48h is the sweet spot for flavor development.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -926,11 +953,13 @@
       "notes": [
         {
           "text": "This blanching step is non-negotiable — it removes the 'off' flavors that would make the final broth taste muddy instead of clean and rich",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The amount of scum is normal and expected. Some bones produce more than others depending on freshness.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -946,11 +975,13 @@
       "notes": [
         {
           "text": "Scrub the bones individually — any remaining blood or scum will make the broth taste funky even after hours of cooking",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Clean the pot thoroughly as well — residual scum on the pot walls will dissolve back into the fresh broth",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -979,11 +1010,13 @@
       "notes": [
         {
           "text": "Pressure cooking accelerates collagen extraction by 3-4x. This 1-hour phase at pressure equals 3-4 hours of open-pot boiling.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The broth will already look different from typical stock — cloudier, thicker. This is the collagen emulsifying.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1008,11 +1041,13 @@
       "notes": [
         {
           "text": "Tie the pork belly with kitchen twine so you can remove it in one piece for chashu. It will be very tender after this phase.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The chicken backs add a different collagen profile that makes the broth silkier. The pork belly skin is a collagen bomb.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1028,11 +1063,13 @@
       "notes": [
         {
           "text": "The pork belly has served its dual purpose: collagen and fat into the broth, now it becomes your chashu topping",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "If the belly falls apart, that is fine — it was well-cooked. The chashu will still be delicious, just harder to slice neatly.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1061,11 +1098,13 @@
       "notes": [
         {
           "text": "Aromatics are added late deliberately — early addition during pressure cooking makes them bitter. 45-60 minutes is the consensus window.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Open boiling serves two purposes: reduction (concentrates flavor) and emulsification (violent boiling mechanically emulsifies fat into the gelatin-rich broth).",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1081,11 +1120,13 @@
       "notes": [
         {
           "text": "This is NOT a normal straining step. You are keeping the solids — they become the slurry that makes the broth tsukemen-thick.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Use a colander (large holes), not a fine-mesh strainer. You want to catch only the big bones, not filter out the good stuff.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1101,15 +1142,18 @@
       "notes": [
         {
           "text": "This is THE signature technique for Tomita-level thickness — without blending solids back in, you get regular tonkotsu, not tsukemen-thick",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The target consistency is 'gravy-thick' — it should coat a spoon and drip slowly, not run off. If too thin, reduce on the stove. If too thick, add water.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "For even more emulsification, hit the final broth with an immersion blender for 30 seconds (forced emulsification technique from Ramen Cook).",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1130,7 +1174,8 @@
       "notes": [
         {
           "text": "A thermometer is essential here. The difference between 176°F (80°C) and 212°F (100°C) is the difference between clean umami and bitter fish soup.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -1155,11 +1200,13 @@
       "notes": [
         {
           "text": "Boiling fish is the #1 mistake — it extracts bitter compounds. Steep at 176-194°F (80-90°C) only",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The kombu should be soft and expanded. The niboshi should be soft but not disintegrating.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1184,11 +1231,13 @@
       "notes": [
         {
           "text": "Thick-cut (atsukezuri) is essential — thin flakes would over-extract in the steep time and turn bitter",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Remove the kombu before adding the bonito/mackerel to prevent sliminess from over-extracted kombu",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1204,7 +1253,8 @@
       "notes": [
         {
           "text": "The residual heat (around 158-176°F / 70-80°C) is perfect for extracting inosinic acid from the dried fish without bitter compounds",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1220,11 +1270,13 @@
       "notes": [
         {
           "text": "Press firmly — significant flavor remains in the solids. You should extract at least 1-1.2L of concentrated dashi from the 1.5L starting water.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Reserve some of this dashi for the soup-wari dilution broth. Set aside about 500ml separately.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -1249,11 +1301,13 @@
       "notes": [
         {
           "text": "This is the double soup merger — the defining moment where animal richness meets fish complexity. The umami synergy between glutamic acid (kombu, soy) and inosinic acid (fish) amplifies perceived umami by approximately 8x.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The broth should be thick enough to coat noodles when dipping but remember it will be further concentrated by the tare at assembly.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1282,11 +1336,13 @@
       "notes": [
         {
           "text": "Toasting before grinding deepens the flavor and makes the fish more brittle for easier grinding",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Toast each component separately — they have different moisture levels and burn at different rates",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1311,11 +1367,13 @@
       "notes": [
         {
           "text": "This is the signature Fuunji/Tomita finishing powder. The mound of gyofun on top of the dipping broth progressively intensifies as you eat — it sinks to the bottom and concentrates the final bites.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Fuunji uses pure bonito powder; this blend is closer to Tomita's mixed-fish approach. Experiment with ratios.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1348,11 +1406,13 @@
       "notes": [
         {
           "text": "The pork belly is already fully cooked from the broth phase — this marinade is purely for flavoring, not cooking",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Save the used chashu marinade — it can be added to the ajitama marinade or used to season future dishes. Known as 'chashu dare' in ramen shops.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1373,11 +1433,13 @@
       "notes": [
         {
           "text": "6.5 minutes from a rolling boil produces the ideal ajitama yolk — jammy in the center with a thin set outer ring. Adjust by 15-30 seconds depending on altitude and egg size.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Peel under gently running water for cleanest results. Older eggs (7+ days) peel much easier than fresh ones.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1406,11 +1468,13 @@
       "notes": [
         {
           "text": "4 hours gives light flavor and color. 8-12 hours gives deeper penetration. Beyond 12 hours the whites can become rubbery.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "A ziplock bag uses less marinade than a container since you can press out the air to surround the eggs",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1426,7 +1490,8 @@
       "notes": [
         {
           "text": "This is critical for tsukemen — the noodles are cold and will rapidly cool the dipping broth. Starting with a hot bowl extends the window of optimal temperature.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -1459,15 +1524,18 @@
       "notes": [
         {
           "text": "The gyofun sits on top as a mound — it progressively dissolves as you dip noodles, intensifying the broth over the course of the meal. This is the Fuunji signature.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Rice vinegar is essential — it prevents palate fatigue with this level of richness. Without it, the broth becomes cloying after a few bites.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Reheat the broth to near-boiling before ladling — it must be scorching to compensate for the cold noodles",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -1488,11 +1556,13 @@
       "notes": [
         {
           "text": "7 minutes is for 3mm homemade noodles. If using store-bought Sun Noodle Kaedama, follow their package instructions (usually 2-3 minutes).",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Use a lot of water — at least 2L per portion. Crowding drops the temperature and makes noodles gummy.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1508,15 +1578,18 @@
       "notes": [
         {
           "text": "This is the shimeru technique — the cold shock tightens the gluten network, creating the signature springy, bouncy texture of tsukemen noodles. Skipping this turns great noodles into a soggy mess.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Massage thoroughly — surface starch makes the noodles slimy and prevents the dipping broth from clinging properly",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The contrast between ice-cold noodles and scorching-hot dipping broth is fundamental to the tsukemen experience",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1532,7 +1605,8 @@
       "notes": [
         {
           "text": "Tsukemen noodle plating is about visual appeal — a neat twist shows off the thick, golden noodles",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1569,11 +1643,13 @@
       "notes": [
         {
           "text": "Nori can be placed on the noodle plate or stood upright in the dipping broth — both presentations are traditional",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Serve immediately — the clock starts ticking as soon as the hot broth meets the bowl. The dipping broth cools with each noodle dip.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -1594,7 +1670,8 @@
       "notes": [
         {
           "text": "If you did not reserve enough fish dashi, light chicken broth or even hot water works as a substitute — the remaining dipping sauce is so concentrated it can handle significant dilution.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1615,15 +1692,18 @@
       "notes": [
         {
           "text": "Soup-wari is the reward for finishing the noodles — the dipping sauce transforms into a rich, balanced soup when diluted",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The recipe is designed for this dual-use: concentrated enough to coat cold noodles, balanced enough to drink when diluted ~50%. This is why the tare-to-broth ratio matters at assembly.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "At Fuunji, soup-wari is offered free of charge — the shop considers it part of the meal, not an extra",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     }

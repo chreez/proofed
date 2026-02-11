@@ -260,7 +260,8 @@
       "notes": [
         {
           "text": "Rice flour is for dusting only — it prevents sticking without absorbing into the dough",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -300,11 +301,13 @@
       "notes": [
         {
           "text": "Overnight refrigerator method: mix poolish before bed, use next morning",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "If poolish sinks in float test, it needs more time to ferment",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -333,7 +336,8 @@
       "notes": [
         {
           "text": "Time the leaven so it peaks when the poolish is ready — typically feed leaven 8–12 hours before you plan to mix dough",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -349,7 +353,8 @@
       "notes": [
         {
           "text": "Can run in parallel with poolish fermentation — plan timing so both are ready together",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -365,7 +370,8 @@
       "notes": [
         {
           "text": "Do not proceed to mixing if either fails the float test — under-fermented pre-ferments will not produce proper bread",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -402,11 +408,13 @@
       "notes": [
         {
           "text": "Dough will feel stiffer than basic country dough — it softens during bulk fermentation",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Save leftover leaven to refresh and maintain your starter",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -422,7 +430,8 @@
       "notes": [
         {
           "text": "Salt is added with the first turn during bulk fermentation, not during mixing",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -443,7 +452,8 @@
       "notes": [
         {
           "text": "The dough temperature should be about 75°F (24°C) throughout bulk fermentation",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -481,7 +491,8 @@
       "notes": [
         {
           "text": "Be gentle — the dough has developed significant gas by now",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -497,7 +508,8 @@
       "notes": [
         {
           "text": "Look for the dough to feel alive — it should jiggle when you move the container",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -513,7 +525,8 @@
       "notes": [
         {
           "text": "For a standard home baking stone, 3 shorter baguettes are easier to manage than 2 long ones",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -540,7 +553,8 @@
       "notes": [
         {
           "text": "Use this time to prepare the couche",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -567,11 +581,13 @@
       "notes": [
         {
           "text": "The shape should resemble a French rolling pin — tapered at the ends, even in the middle",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Keep the seam tight — loose seams cause the loaf to open during baking",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ],
       "technique_url": "https://www.thefreshloaf.com/node/24586/shaping-baguettes"
@@ -599,7 +615,8 @@
       "notes": [
         {
           "text": "Begin preheating oven with steam setup at least 45 minutes before proof is complete",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -615,7 +632,8 @@
       "notes": [
         {
           "text": "The wet towels create sustained steam — they should be thoroughly saturated",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -631,7 +649,8 @@
       "notes": [
         {
           "text": "A fully preheated stone is essential for oven spring — do not rush this step",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -647,11 +666,13 @@
       "notes": [
         {
           "text": "Work quickly — every second the oven door is open, you lose steam and heat",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Score with confident, swift strokes — hesitation tears the dough",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ],
       "technique_url": "https://www.thefreshloaf.com/node/22392/scoring-bread"
@@ -668,7 +689,8 @@
       "notes": [
         {
           "text": "Do not open the oven during this phase — steam retention is critical for crust development",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -684,11 +706,13 @@
       "notes": [
         {
           "text": "Use oven mitts — the steam pan and towels are extremely hot",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Push for deep golden, not pale — the dark crust is where the toasty corn aroma lives",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -704,11 +728,13 @@
       "notes": [
         {
           "text": "The crust will soften if cooled on a flat surface — always use a rack for air circulation",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Listen for the crust to crackle and sing as it cools — a sign of a well-baked loaf",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     }

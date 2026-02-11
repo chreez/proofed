@@ -53,6 +53,9 @@ vi.mock('@/components/AboutPage.vue', () => ({
 vi.mock('@/components/PhotoLightbox.vue', () => ({
   default: { name: 'PhotoLightbox', props: ['photos', 'initialIndex', 'open'], emits: ['close'], template: '<div class="photo-lightbox-stub" v-if="open">Lightbox</div>' }
 }))
+vi.mock('@/components/PhotoReview.vue', () => ({
+  default: { name: 'PhotoReview', template: '<div class="photo-review-stub">Photo Review</div>' }
+}))
 // Mock composables
 const mockLoadTechniques = vi.fn()
 vi.mock('@/composables/useTechniques', () => ({
@@ -126,7 +129,8 @@ function makeRouter() {
     routes: [
       { path: '/', name: 'index', component: { template: '<div />' } },
       { path: '/recipe/:recipeId', name: 'recipe', component: { template: '<div />' } },
-      { path: '/about', name: 'about', component: { template: '<div />' } }
+      { path: '/about', name: 'about', component: { template: '<div />' } },
+      { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } }
     ]
   })
 }
@@ -252,6 +256,12 @@ describe('App', () => {
     const { wrapper } = await mountApp('/about')
     expect(wrapper.find('.about-page-stub').exists()).toBe(true)
     expect(wrapper.text()).toContain('About')
+  })
+
+  it('shows PhotoReview on photo-review route', async () => {
+    const { wrapper } = await mountApp('/review/photos/test-recipe/2026-02-10')
+    expect(wrapper.find('.photo-review-stub').exists()).toBe(true)
+    expect(wrapper.text()).toContain('Photo Review')
   })
 
   it('shows loading state when loading is true', async () => {

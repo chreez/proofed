@@ -677,15 +677,18 @@
       "notes": [
         {
           "text": "This recipe has 8 sub-recipes. Organize ingredients into labeled bowls or containers by stage to avoid confusion during the multi-day cook.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Soy sauce is used in 4 sub-recipes (tare, red sauce, chashu, ajitama) — pre-measure each portion separately",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Timeline: Day 1 — broth, tare, aroma oil, red sauce, noodles, chashu, ajitama. Day 2+ — red sauce ages. Day 3+ — assemble bowls.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -718,11 +721,13 @@
       "notes": [
         {
           "text": "This passive step draws out blood and impurities, resulting in a cleaner-tasting broth. Skip if short on time — the blanching step handles the essentials.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "If bones are frozen, this soak doubles as thawing. Fully thawed bones blanch more effectively.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -738,15 +743,18 @@
       "notes": [
         {
           "text": "This step is NON-NEGOTIABLE. All 8 research agents agree: aggressive blanching is the foundation of clean, odor-free tonkotsu. The water should look absolutely foul — that is the impurity you are removing.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Start with cold water, not hot. Cold-start extraction draws out more blood proteins that coagulate during boiling.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Some sources recommend a second blanching cycle for exceptionally clean broth. If your bones still look dark after scrubbing, repeat this step.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -762,11 +770,13 @@
       "notes": [
         {
           "text": "This tedious step is what separates restaurant-quality tonkotsu from cloudy, off-flavored home versions. Ichiran's official process emphasizes cleanliness above all else.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "If the pork skin was included, scrub it as well and remove any remaining hair or discolored patches.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -782,19 +792,23 @@
       "notes": [
         {
           "text": "The ROLLING BOIL is essential. It mechanically emulsifies fat into the gelatin-rich liquid, creating the white opacity. A gentle simmer produces clear broth — the opposite of what we want.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Always replenish with HOT water, never cold. Cold water drops the temperature and interrupts emulsification.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Skim diligently for the first 50 minutes, then stop. After that initial period, the remaining particles contribute to body and flavor rather than off-flavors.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "12 hours is the sweet spot for home cooks (6/8 agents recommend 10+ hours). Professional Hakata shops go 18-20 hours. The broth gets progressively thicker and more flavorful.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -831,15 +845,18 @@
       "notes": [
         {
           "text": "Aromatics go in AFTER the initial skimming period. Adding them earlier can trap impurities in the vegetable fibers.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Leave garlic skin on — it protects the cloves from disintegrating over the long cook and adds subtle flavor.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The rice vinegar helps neutralize lingering pork odor. Fresh noodle kit label confirms 'brewed vinegar' as an ingredient.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -855,11 +872,13 @@
       "notes": [
         {
           "text": "This releases the remaining marrow and collagen trapped inside the bones, dramatically increasing broth richness for the final 4-6 hours.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "If bones are still very hard, wait another hour. They should crack with firm tong pressure, not require a hammer.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -875,15 +894,18 @@
       "notes": [
         {
           "text": "You should have approximately 2-3L of finished broth — enough for 6-8 bowls at 350ml each.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Optional: blend with immersion blender for 30 seconds. Yoshi and Ryuji both recommend this — it creates striking whiteness and mimics the extreme emulsification of a 18+ hour professional cook.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Professional target: 5.9-10 Brix on a refractometer. The broth should coat a spoon and leave a visible film.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -899,11 +921,13 @@
       "notes": [
         {
           "text": "If the broth does not gel, it lacks collagen. This usually means the cook time was too short or the bones were not high-quality. The broth will lack body in the bowl.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "A proper tonkotsu gelation test should be as firm as commercial gelatin dessert. Wobbly but not liquid.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -936,15 +960,18 @@
       "notes": [
         {
           "text": "Do NOT boil the kombu — it releases bitter compounds (mannit and alginate) above 175°F (80°C). This is the most common dashi mistake.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The double-soup technique (tonkotsu + dashi) is what makes Ichiran special. US kit labels confirm bonito, kelp, and shiitake extracts in their broth concentrate.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Start this soak the night before alongside the bone soak for efficient scheduling.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -993,15 +1020,18 @@
       "notes": [
         {
           "text": "Use LIGHT soy sauce (usukuchi) — darker soy sauce will muddy the white broth color. Higashimaru brand is standard.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Per bowl: 25-30ml. This batch makes enough for 6-8 bowls.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Keeps refrigerated for weeks. The Ribotide and MSG are the umami 'superchargers' that make the tare punch far above its volume.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1034,15 +1064,18 @@
       "notes": [
         {
           "text": "The splash of water prevents the fat from scorching before it fully renders. It evaporates as the fat melts.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Keep heat at absolute minimum. If the garlic browns, the oil will taste bitter. Golden and fragrant is the target.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Ichiran's commercial product uses cottonseed oil as primary fat. For a cleaner, more neutral version, blend 100g rendered lard with 50g canola oil.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1058,11 +1091,13 @@
       "notes": [
         {
           "text": "Per bowl: 15-20ml floated on top of the broth. This creates the visible oil layer that is characteristic of Ichiran bowls.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Keeps refrigerated for weeks. Will solidify when cold — warm gently before use.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1115,11 +1150,13 @@
       "notes": [
         {
           "text": "Add spices OFF HEAT. Residual oil heat is enough to bloom them. Direct heat will burn the fine chili powders and create bitterness.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The multi-chili blend is essential. Ichiran claims 'finest peppers from around the world' — each chili type contributes different flavor compounds and heat profiles.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1160,11 +1197,13 @@
       "notes": [
         {
           "text": "The Umakara Kokumashi label was the research breakthrough: ingredient order is soy sauce > sugar > yeast extract > garlic > chili. The red sauce is SWEET-FIRST, not spicy-first.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The gochujang provides fermented depth that bridges simple chili paste and Ichiran's complex aged flavor profile.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1180,15 +1219,18 @@
       "notes": [
         {
           "text": "Fresh red sauce will taste harsh and one-dimensional. Aging is what transforms it into something resembling Ichiran's proprietary blend. 5-7 days is even better.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Per bowl: 5-8g (1-2 teaspoons), placed as a disc in the center of the broth surface. This is Ichiran's visual signature.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Keeps 2+ weeks refrigerated. Make this component first to give it maximum aging time.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1225,15 +1267,18 @@
       "notes": [
         {
           "text": "29% hydration is EXTREMELY low. The dough will NOT come together like bread dough. It should look like coarse sand or crumbles. This is normal and correct.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Dissolve kansui and salt COMPLETELY before adding to flour. Undissolved kansui creates brown spots in the noodles.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Kansui type matters: 70:30 potassium carbonate to sodium carbonate blend is preferred for Hakata-style. Baked baking soda (pure sodium carbonate) works as a substitute.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1249,15 +1294,18 @@
       "notes": [
         {
           "text": "The foot method is the only practical way to knead 29% hydration dough at home. Hand kneading is nearly impossible at this hydration level.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Use a heavy-duty freezer bag, not a thin sandwich bag. The pressure will tear thin plastic.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The dough should become slightly yellow from the kansui reaction with flour — this is the characteristic ramen noodle color.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1273,11 +1321,13 @@
       "notes": [
         {
           "text": "Resting is critical for low-hydration doughs. Without it, the dough will crack and tear during sheeting.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Yamato Noodle science: resting allows moisture to distribute evenly through the dough matrix, and the kansui continues to strengthen the gluten network.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1293,15 +1343,18 @@
       "notes": [
         {
           "text": "Fold and pass multiple times at the wider settings — this lamination builds the gluten structure that gives Hakata noodles their characteristic snap.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Dust liberally with cornstarch between passes to prevent sticking. Flour will make the noodles gummy when cooked.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "If sheets crack at the edges, the dough needs more resting time. Re-wrap and wait 15 minutes.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1317,11 +1370,13 @@
       "notes": [
         {
           "text": "Hakata noodles are thin and straight — not wavy. The thin profile is designed to absorb the rich broth quickly and be eaten fast (before they overexpand).",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "100-120g per serving is standard — smaller than most ramen. Ichiran compensates with kaedama (noodle refills at 150 yen).",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1337,15 +1392,18 @@
       "notes": [
         {
           "text": "Yamato Noodle science confirms that aging allows continued kansui reaction and moisture equalization, resulting in better texture and more developed flavor.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Fresh (unaged) noodles work in a pinch but lack the developed flavor and snap of aged noodles.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Cook time for aged noodles: 30-45 seconds for firm (kata), 60 seconds for normal (futsu). Ichiran firmness chart: very hard 10s, hard 20s, medium 30s, soft 45s.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1374,11 +1432,13 @@
       "notes": [
         {
           "text": "The water displacement method is the poor-man's vacuum seal. Submerge the bag slowly in a pot of water with the zip partially open — water pressure forces all air out.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Ichiran's chashu is paper-thin and melt-in-mouth — sous vide achieves this better than traditional braising for home cooks.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1394,11 +1454,13 @@
       "notes": [
         {
           "text": "Sous vide produces the closest texture to Ichiran's thin, tender slices. Traditional braising also works but yields a different (more rustic) texture.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The chashu can cook simultaneously with the broth — it requires far less attention.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1414,15 +1476,18 @@
       "notes": [
         {
           "text": "Cold pork slices much more cleanly than warm pork. Refrigerate at least 4 hours before slicing for the thinnest results.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The brief sear before serving adds Maillard flavor and warms the slices. Ichiran's chashu has a light sear on the surface.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Yield: approximately 12-16 thin slices (2 per bowl for 6-8 servings).",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1443,15 +1508,18 @@
       "notes": [
         {
           "text": "6 minutes 30 seconds from FRIDGE-COLD eggs into ROLLING BOIL water. This timing is precise for jammy orange yolks. Room-temperature eggs need less time (5:45).",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "The ice bath stops cooking immediately. Leave eggs in ice water for at least 10 minutes before peeling.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Peel under gently running cold water — the water gets between the membrane and the white, making peeling much easier.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1488,7 +1556,8 @@
       "notes": [
         {
           "text": "The brief boil cooks off harsh alcohol while preserving the sweet depth of mirin and sake. Do not skip this step or the eggs will taste boozy.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1504,15 +1573,18 @@
       "notes": [
         {
           "text": "The zip-lock bag method uses far less marinade than a container — the bag conforms to the eggs and eliminates air exposure. All surfaces stay in contact with marinade.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "8 hours is minimum for flavor penetration. 24 hours gives deeper color and flavor. Beyond 48 hours, eggs become rubbery.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Halve the eggs just before serving. The jammy yolk should be a vibrant orange with a slightly gooey center.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1528,7 +1600,8 @@
       "notes": [
         {
           "text": "Cold bowls drop broth temperature by 15-20°F immediately. Ichiran serves in pre-heated bowls to maintain the optimal broth temperature.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1561,19 +1634,23 @@
       "notes": [
         {
           "text": "Assembly order is CRITICAL: tare first, oil second, broth third, stir, then noodles. This is the universal ramen assembly order confirmed by all 8 research agents.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Official Ichiran rule: noodles must be added within 30 seconds of leaving the boiling water. They continue cooking in the hot broth.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Drain noodles thoroughly — excess water dilutes the carefully calibrated broth concentration.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "For barikata (extra firm) noodles: cook only 10-20 seconds. The noodles should be slightly crunchy when bitten.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -1606,15 +1683,18 @@
       "notes": [
         {
           "text": "The red sauce disc in the center of the broth surface is Ichiran's visual signature. Place it carefully as a circular pool — do not stir it in. The diner controls how much they mix.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Authentic Ichiran side condiments: benishoga (red pickled ginger), karashi takana (spicy pickled mustard greens), and a fresh garlic clove pressed through a garlic press.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Eat quickly. Hakata noodles are thin and absorb broth rapidly. Kaedama (noodle refill) is the Ichiran tradition — order more noodles into the remaining broth.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     }

@@ -269,11 +269,13 @@
       "notes": [
         {
           "text": "For a hot variation: use only 474g water (2 cups) instead of 711g for a more concentrated brew that won't be diluted by ice",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "For a hot variation: optionally add 1 star anise pod here for a warm spice note during steeping",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -289,7 +291,8 @@
       "notes": [
         {
           "text": "Keep the lid on — the steam helps extract more flavor from the tea mix",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -305,11 +308,13 @@
       "notes": [
         {
           "text": "Longer steeping (up to 20 min) produces a stronger, more robust tea that stands up better to ice and milk dilution",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Start the boba syrup and boba cooking during this steeping time to work in parallel",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -325,11 +330,13 @@
       "notes": [
         {
           "text": "The double strain is what separates good Thai tea from gritty Thai tea — the mix is very fine and passes through a single strain",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "If you have cheesecloth, line the strainer on the second pass for even cleaner results",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -361,11 +368,13 @@
       "notes": [
         {
           "text": "The tea must be cold before assembly — warm tea melts the ice too fast and dilutes the drink",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "For a hot variation: skip this step entirely. Keep the tea warm.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -390,11 +399,13 @@
       "notes": [
         {
           "text": "The syrup should coat the back of a spoon but still be pourable — not caramelized to hard crack",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Try: muscovado sugar for even deeper molasses flavor (Carmyy approach)",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -415,7 +426,8 @@
       "notes": [
         {
           "text": "The 5:1+ water-to-pearl ratio is critical — pearls need room to tumble freely without sticking together",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -436,11 +448,13 @@
       "notes": [
         {
           "text": "Stir immediately after adding to prevent pearls from sinking and fusing to the bottom of the pot",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Test a pearl by biting it in half — it should be uniformly translucent and chewy throughout with no hard white core",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -456,11 +470,13 @@
       "notes": [
         {
           "text": "Boba must be served within 2 hours of cooking — they harden irreversibly as they cool. This is the single most important timing constraint in the entire recipe.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Keep the syrup-coated boba warm until assembly. The syrup prevents sticking and adds sweetness.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -485,11 +501,13 @@
       "notes": [
         {
           "text": "The condensed + evaporated combination is the strongest consensus across sources (9/16) — it delivers authentic Thai tea shop creaminess",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "For a hot variation: warm the milk mixture gently before adding to tea, and increase evaporated to 60g (4 Tbsp) for a latte-like body",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -522,19 +540,23 @@
       "notes": [
         {
           "text": "The ombré effect is purely visual — the drinker stirs before drinking. But it makes for a beautiful presentation.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Use a wide boba straw (12mm+) — standard straws cannot pick up the tapioca pearls",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "For a hot variation: skip ice, pour warm tea to 3/4, top with warm milk mixture. Still serve boba warm on the bottom.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Consider: freeze leftover brewed tea in ice cube trays for no-dilution iced Thai tea next time",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     }

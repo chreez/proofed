@@ -147,8 +147,14 @@
             "total": 7,
             "unit": "g",
             "breakdown": [
-              { "label": "cake batter", "amount": 4 },
-              { "label": "frosting", "amount": 3 }
+              {
+                "label": "cake batter",
+                "amount": 4
+              },
+              {
+                "label": "frosting",
+                "amount": 3
+              }
             ],
             "sourcedFrom": "Tier 1: 9/9 agents",
             "confidence": "high",
@@ -200,8 +206,14 @@
             "total": 8,
             "unit": "g",
             "breakdown": [
-              { "label": "cake batter", "amount": 4 },
-              { "label": "frosting", "amount": 4 }
+              {
+                "label": "cake batter",
+                "amount": 4
+              },
+              {
+                "label": "frosting",
+                "amount": 4
+              }
             ],
             "sourcedFrom": "Tier 2: 6/9 agents — in cake and/or frosting",
             "confidence": "medium",
@@ -269,43 +281,75 @@
           }
         ]
       },
-      "states": ["PREHEAT", "PREP_PANS"]
+      "states": [
+        "PREHEAT",
+        "PREP_PANS"
+      ]
     },
     {
       "id": "BROWN_BUTTER",
       "title": "Brown Butter (Start First)",
       "gather": null,
-      "states": ["BROWN_BUTTER_COOK", "COOL_BROWN_BUTTER", "CHILL_BROWN_BUTTER"]
+      "states": [
+        "BROWN_BUTTER_COOK",
+        "COOL_BROWN_BUTTER",
+        "CHILL_BROWN_BUTTER"
+      ]
     },
     {
       "id": "TOAST_BLOOM",
       "title": "Toast Nuts & Bloom Spices",
       "gather": null,
-      "states": ["TOAST_PECANS", "CHOP_PECANS", "BLOOM_SPICES", "COOL_SPICED_OIL"]
+      "states": [
+        "TOAST_PECANS",
+        "CHOP_PECANS",
+        "BLOOM_SPICES",
+        "COOL_SPICED_OIL"
+      ]
     },
     {
       "id": "MIX",
       "title": "Mix Batter",
       "gather": null,
-      "states": ["WHISK_WET", "WHISK_DRY", "FOLD_DRY", "FOLD_CARROTS_NUTS"]
+      "states": [
+        "WHISK_WET",
+        "WHISK_DRY",
+        "FOLD_DRY",
+        "FOLD_CARROTS_NUTS"
+      ]
     },
     {
       "id": "BAKE",
       "title": "Bake & Cool",
       "gather": null,
-      "states": ["DIVIDE_BATTER", "BAKE_CAKE", "COOL_IN_PANS", "UNMOLD", "COOL_COMPLETELY"]
+      "states": [
+        "DIVIDE_BATTER",
+        "BAKE_CAKE",
+        "COOL_IN_PANS",
+        "UNMOLD",
+        "COOL_COMPLETELY"
+      ]
     },
     {
       "id": "FROSTING",
       "title": "Brown Butter Cream Cheese Frosting",
       "gather": null,
-      "states": ["CUBE_BUTTER", "BEAT_BUTTER", "ADD_CREAM_CHEESE", "ADD_SUGAR_SALT"]
+      "states": [
+        "CUBE_BUTTER",
+        "BEAT_BUTTER",
+        "ADD_CREAM_CHEESE",
+        "ADD_SUGAR_SALT"
+      ]
     },
     {
       "id": "ASSEMBLE",
       "title": "Frost & Serve",
       "gather": null,
-      "states": ["FROST_FIRST_LAYER", "FROST_OUTSIDE", "CHILL_SET"]
+      "states": [
+        "FROST_FIRST_LAYER",
+        "FROST_OUTSIDE",
+        "CHILL_SET"
+      ]
     }
   ],
   "states": [
@@ -328,7 +372,10 @@
       "components": null,
       "exit_condition": "Both pans greased and lined with parchment",
       "notes": [
-        { "text": "Trace the pan on parchment, cut just inside the line for a clean fit" }
+        {
+          "text": "Trace the pan on parchment, cut just inside the line for a clean fit",
+          "source": "user"
+        }
       ]
     },
     {
@@ -338,12 +385,22 @@
       "duration_min": 8,
       "timer": false,
       "components": [
-        { "name": "Unsalted Butter", "amount": "226g" }
+        {
+          "name": "Unsalted Butter",
+          "amount": "226g"
+        }
       ],
       "exit_condition": "Milk solids are coffee-colored, butter smells toasty and nutty",
       "notes": [
-        { "text": "Use a light-colored pan so you can see the milk solids browning", "critical": true },
-        { "text": "Watch carefully past 5 minutes — goes from brown to burnt in seconds" }
+        {
+          "text": "Use a light-colored pan so you can see the milk solids browning",
+          "critical": true,
+          "source": "user"
+        },
+        {
+          "text": "Watch carefully past 5 minutes — goes from brown to burnt in seconds",
+          "source": "user"
+        }
       ]
     },
     {
@@ -352,7 +409,10 @@
       "direction": "Immediately transfer browned butter to medium bowl. Stir in 4g vanilla extract. Let cool to room temperature.",
       "timer": false,
       "components": [
-        { "name": "Vanilla Extract", "amount": "4g (frosting portion)" }
+        {
+          "name": "Vanilla Extract",
+          "amount": "4g (frosting portion)"
+        }
       ],
       "exit_condition": "Brown butter at room temperature, vanilla mixed in",
       "notes": null
@@ -366,8 +426,14 @@
       "components": null,
       "exit_condition": "Brown butter is completely solid — can be cut into cubes",
       "notes": [
-        { "text": "Can be done overnight — even better for flavor development" },
-        { "text": "While butter chills, proceed to toast nuts and make the cake" }
+        {
+          "text": "Can be done overnight — even better for flavor development",
+          "source": "user"
+        },
+        {
+          "text": "While butter chills, proceed to toast nuts and make the cake",
+          "source": "user"
+        }
       ]
     },
     {
@@ -377,11 +443,18 @@
       "duration_min": 8,
       "timer": true,
       "components": [
-        { "name": "Pecans", "amount": "115g" }
+        {
+          "name": "Pecans",
+          "amount": "115g"
+        }
       ],
       "exit_condition": "Pecans fragrant, slightly darkened, oil visible on surface",
       "notes": [
-        { "text": "Toasting is critical — develops flavor and prevents sogginess in batter", "critical": true }
+        {
+          "text": "Toasting is critical — develops flavor and prevents sogginess in batter",
+          "critical": true,
+          "source": "user"
+        }
       ]
     },
     {
@@ -399,16 +472,38 @@
       "direction": "Warm 240g canola oil gently in saucepan over medium-low heat. Add cinnamon, ginger, nutmeg, and cloves. Stir constantly for 15 seconds until fragrant. Remove from heat immediately.",
       "timer": false,
       "components": [
-        { "name": "Canola Oil", "amount": "240g" },
-        { "name": "Ground Cinnamon", "amount": "5g" },
-        { "name": "Ground Ginger", "amount": "1g" },
-        { "name": "Ground Nutmeg", "amount": "0.5g" },
-        { "name": "Ground Cloves", "amount": "0.3g" }
+        {
+          "name": "Canola Oil",
+          "amount": "240g"
+        },
+        {
+          "name": "Ground Cinnamon",
+          "amount": "5g"
+        },
+        {
+          "name": "Ground Ginger",
+          "amount": "1g"
+        },
+        {
+          "name": "Ground Nutmeg",
+          "amount": "0.5g"
+        },
+        {
+          "name": "Ground Cloves",
+          "amount": "0.3g"
+        }
       ],
       "exit_condition": "Oil is fragrant with bloomed spices, removed from heat",
       "notes": [
-        { "text": "Do NOT overheat — spices burn quickly. Oil should be warm, not smoking", "critical": true },
-        { "text": "Blooming extracts fat-soluble flavor compounds, amplifying spice intensity up to 10x (ATK/MasalaBear)" }
+        {
+          "text": "Do NOT overheat — spices burn quickly. Oil should be warm, not smoking",
+          "critical": true,
+          "source": "user"
+        },
+        {
+          "text": "Blooming extracts fat-soluble flavor compounds, amplifying spice intensity up to 10x (ATK/MasalaBear)",
+          "source": "user"
+        }
       ],
       "technique_url": "https://www.americastestkitchen.com/cooksillustrated/how_tos/6581-blooming-in-oil-for-flavor"
     },
@@ -420,7 +515,10 @@
       "components": null,
       "exit_condition": "Spiced oil warm but not hot to the touch",
       "notes": [
-        { "text": "Hot oil will scramble the eggs — wait until comfortable to touch the outside of the pan" }
+        {
+          "text": "Hot oil will scramble the eggs — wait until comfortable to touch the outside of the pan",
+          "source": "user"
+        }
       ]
     },
     {
@@ -429,12 +527,30 @@
       "direction": "In large mixing bowl, whisk together cooled spiced oil, granulated sugar, brown sugar, eggs, vanilla extract, and orange zest until smooth and glossy.",
       "timer": false,
       "components": [
-        { "name": "Spiced Oil (bloomed)", "amount": "all" },
-        { "name": "Granulated Sugar", "amount": "150g" },
-        { "name": "Dark Brown Sugar", "amount": "150g" },
-        { "name": "Large Eggs", "amount": "4" },
-        { "name": "Vanilla Extract", "amount": "4g (cake portion)" },
-        { "name": "Orange Zest", "amount": "2g" }
+        {
+          "name": "Spiced Oil (bloomed)",
+          "amount": "all"
+        },
+        {
+          "name": "Granulated Sugar",
+          "amount": "150g"
+        },
+        {
+          "name": "Dark Brown Sugar",
+          "amount": "150g"
+        },
+        {
+          "name": "Large Eggs",
+          "amount": "4"
+        },
+        {
+          "name": "Vanilla Extract",
+          "amount": "4g (cake portion)"
+        },
+        {
+          "name": "Orange Zest",
+          "amount": "2g"
+        }
       ],
       "exit_condition": "Mixture is smooth, glossy, and well combined",
       "notes": null
@@ -445,10 +561,22 @@
       "direction": "In medium bowl, whisk together flour, baking powder, baking soda, and salt.",
       "timer": false,
       "components": [
-        { "name": "All-Purpose Flour", "amount": "280g" },
-        { "name": "Baking Powder", "amount": "8g" },
-        { "name": "Baking Soda", "amount": "5g" },
-        { "name": "Fine Salt", "amount": "4g (cake portion)" }
+        {
+          "name": "All-Purpose Flour",
+          "amount": "280g"
+        },
+        {
+          "name": "Baking Powder",
+          "amount": "8g"
+        },
+        {
+          "name": "Baking Soda",
+          "amount": "5g"
+        },
+        {
+          "name": "Fine Salt",
+          "amount": "4g (cake portion)"
+        }
       ],
       "exit_condition": "Dry ingredients evenly whisked, no clumps",
       "notes": null
@@ -461,7 +589,11 @@
       "components": null,
       "exit_condition": "No large flour pockets, batter is thick and slightly lumpy",
       "notes": [
-        { "text": "Do NOT overmix — develops gluten and makes cake tough", "critical": true }
+        {
+          "text": "Do NOT overmix — develops gluten and makes cake tough",
+          "critical": true,
+          "source": "user"
+        }
       ]
     },
     {
@@ -470,13 +602,26 @@
       "direction": "Fold in freshly grated carrots and chopped toasted pecans until evenly distributed.",
       "timer": false,
       "components": [
-        { "name": "Fresh Carrots (fine-grated)", "amount": "325g" },
-        { "name": "Toasted Pecans (chopped)", "amount": "115g" }
+        {
+          "name": "Fresh Carrots (fine-grated)",
+          "amount": "325g"
+        },
+        {
+          "name": "Toasted Pecans (chopped)",
+          "amount": "115g"
+        }
       ],
       "exit_condition": "Carrots and pecans evenly distributed through batter",
       "notes": [
-        { "text": "Grate carrots on the small holes of a box grater — not large shreds", "critical": true },
-        { "text": "Batter will be very thick and heavy — this is correct" }
+        {
+          "text": "Grate carrots on the small holes of a box grater — not large shreds",
+          "critical": true,
+          "source": "user"
+        },
+        {
+          "text": "Batter will be very thick and heavy — this is correct",
+          "source": "user"
+        }
       ]
     },
     {
@@ -487,7 +632,10 @@
       "components": null,
       "exit_condition": "Batter divided evenly between pans, tops smoothed",
       "notes": [
-        { "text": "Weigh pans on the kitchen scale to ensure even layers" }
+        {
+          "text": "Weigh pans on the kitchen scale to ensure even layers",
+          "source": "user"
+        }
       ]
     },
     {
@@ -499,8 +647,14 @@
       "components": null,
       "exit_condition": "Internal temperature 205°F (96°C), or cake springs back when gently pressed",
       "notes": [
-        { "text": "Internal thermometer is more reliable than toothpick for dense cakes with mix-ins" },
-        { "text": "Rotate pans at the halfway mark for even browning" }
+        {
+          "text": "Internal thermometer is more reliable than toothpick for dense cakes with mix-ins",
+          "source": "user"
+        },
+        {
+          "text": "Rotate pans at the halfway mark for even browning",
+          "source": "user"
+        }
       ]
     },
     {
@@ -531,8 +685,15 @@
       "components": null,
       "exit_condition": "Cake layers completely cool to touch — no warmth at center",
       "notes": [
-        { "text": "Frosting warm cake will melt the cream cheese frosting", "critical": true },
-        { "text": "For best results, wrap cooled layers in plastic and refrigerate overnight — next-day cake is even better" }
+        {
+          "text": "Frosting warm cake will melt the cream cheese frosting",
+          "critical": true,
+          "source": "user"
+        },
+        {
+          "text": "For best results, wrap cooled layers in plastic and refrigerate overnight — next-day cake is even better",
+          "source": "user"
+        }
       ]
     },
     {
@@ -543,7 +704,10 @@
       "components": null,
       "exit_condition": "Brown butter cubed and ready to beat",
       "notes": [
-        { "text": "If butter is too hard to cut, let it sit at room temp for 5 minutes" }
+        {
+          "text": "If butter is too hard to cut, let it sit at room temp for 5 minutes",
+          "source": "user"
+        }
       ]
     },
     {
@@ -553,7 +717,10 @@
       "duration_min": 2,
       "timer": false,
       "components": [
-        { "name": "Brown Butter (cubed)", "amount": "226g" }
+        {
+          "name": "Brown Butter (cubed)",
+          "amount": "226g"
+        }
       ],
       "exit_condition": "Brown butter is smooth, light, and creamy",
       "notes": null
@@ -565,12 +732,22 @@
       "duration_min": 2,
       "timer": false,
       "components": [
-        { "name": "Cream Cheese (cold, cubed)", "amount": "340g" }
+        {
+          "name": "Cream Cheese (cold, cubed)",
+          "amount": "340g"
+        }
       ],
       "exit_condition": "Mixture is smooth, glossy, and combined",
       "notes": [
-        { "text": "Cream cheese MUST be cold from the fridge — room temp cream cheese makes runny frosting", "critical": true },
-        { "text": "Do not overbeat or frosting will thin out" }
+        {
+          "text": "Cream cheese MUST be cold from the fridge — room temp cream cheese makes runny frosting",
+          "critical": true,
+          "source": "user"
+        },
+        {
+          "text": "Do not overbeat or frosting will thin out",
+          "source": "user"
+        }
       ]
     },
     {
@@ -580,12 +757,21 @@
       "duration_min": 2,
       "timer": false,
       "components": [
-        { "name": "Powdered Sugar (sifted)", "amount": "270g" },
-        { "name": "Fine Salt", "amount": "3g (frosting portion)" }
+        {
+          "name": "Powdered Sugar (sifted)",
+          "amount": "270g"
+        },
+        {
+          "name": "Fine Salt",
+          "amount": "3g (frosting portion)"
+        }
       ],
       "exit_condition": "Frosting is smooth, thick, and spreadable",
       "notes": [
-        { "text": "Sift powdered sugar first to prevent lumps" }
+        {
+          "text": "Sift powdered sugar first to prevent lumps",
+          "source": "user"
+        }
       ]
     },
     {
@@ -596,7 +782,10 @@
       "components": null,
       "exit_condition": "First layer has an even coat of frosting",
       "notes": [
-        { "text": "Tuck strips of parchment under the edges to keep the plate clean while frosting" }
+        {
+          "text": "Tuck strips of parchment under the edges to keep the plate clean while frosting",
+          "source": "user"
+        }
       ]
     },
     {
@@ -617,8 +806,14 @@
       "components": null,
       "exit_condition": "Frosting is firm to touch, cake holds shape when sliced",
       "notes": [
-        { "text": "Store leftovers covered in refrigerator for up to 5 days" },
-        { "text": "Let slices sit at room temp 10-15 minutes before serving for best texture" }
+        {
+          "text": "Store leftovers covered in refrigerator for up to 5 days",
+          "source": "user"
+        },
+        {
+          "text": "Let slices sit at room temp 10-15 minutes before serving for best texture",
+          "source": "user"
+        }
       ]
     }
   ],

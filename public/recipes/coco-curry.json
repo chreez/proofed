@@ -428,11 +428,13 @@
       "notes": [
         {
           "text": "Keep the three onion portions separate — they enter the recipe at different times via different techniques",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Grate apple last to prevent browning, or toss in a splash of rice vinegar",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -461,15 +463,18 @@
       "notes": [
         {
           "text": "Jecca Chantilly: '90% of the authentic flavor is born here.' Do not shortcut this step.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "If onions start to stick, deglaze with a splash of water and scrape up the fond",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "CoCo factory lists 'onion saute' as a separate ingredient from raw onion — the caramelization IS the flavor",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -494,11 +499,13 @@
       "notes": [
         {
           "text": "Optional step from Okonomi Kitchen — adds a third dimension of onion flavor (sweet-crunchy vs jam vs fresh)",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Start this during the last 15 minutes of caramelizing if doing both",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -523,7 +530,8 @@
       "notes": [
         {
           "text": "The pork will be blended later — searing is for Maillard flavor, not texture",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -548,7 +556,8 @@
       "notes": [
         {
           "text": "The carrot and apple dissolve completely during blending — they add sweetness, not texture",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -585,7 +594,8 @@
       "notes": [
         {
           "text": "Skim any scum that rises to the surface during the first few minutes of simmering",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -601,7 +611,8 @@
       "notes": [
         {
           "text": "CoCo factory process confirms: heat OFF, then roux added. This is how they prevent lumps at industrial scale.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -622,11 +633,13 @@
       "notes": [
         {
           "text": "The ladle technique is the Japanese standard — do not just throw blocks into the pot",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Use chopsticks to stir inside the ladle until each piece is fully dissolved before adding more",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -671,7 +684,8 @@
       "notes": [
         {
           "text": "The miso should be dissolved in a small amount of the curry liquid before adding to prevent lumps",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -687,11 +701,13 @@
       "notes": [
         {
           "text": "THE defining CoCo characteristic. All 7 research agents agree: no visible chunks whatsoever. Blend longer than you think necessary.",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "If you do not have an immersion blender, transfer in batches to a regular blender (careful with hot liquid)",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -720,11 +736,13 @@
       "notes": [
         {
           "text": "These 'hidden flavors' (kakushi aji) should not be individually detectable — they add depth without announcing themselves",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Do NOT exceed 1 tsp (2g) instant coffee — multiple sources warn it becomes overpowering",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -753,11 +771,13 @@
       "notes": [
         {
           "text": "SoraNews24: higher water ratio is 'necessary to bring out the smooth flavor found at Coco Ichi'",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "The curry will thicken overnight — err on the side of slightly too thin now",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -778,7 +798,8 @@
       "notes": [
         {
           "text": "Cold butter emulsifies into the sauce for richness — this is the French 'monter au beurre' technique applied to curry",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -794,11 +815,13 @@
       "notes": [
         {
           "text": "This step is NON-NEGOTIABLE for authentic flavor. Multiple sources: 'curry tastes even better the next day.' CoCo factory leadership calls their -25 C freezing 'a cooking process, not storage.'",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "For even deeper flavor, rest 2-3 days. Some sources suggest freeze-thaw cycling to partially replicate CoCo's industrial aging.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -819,7 +842,8 @@
       "notes": [
         {
           "text": "Tamanishiki or Koshihikari are the standard Japanese varieties. Do not use jasmine or basmati.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -835,11 +859,13 @@
       "notes": [
         {
           "text": "Do not boil — gentle heat preserves the complex layered flavors built during the rest",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "SoraNews24 native recipe suggests a cool-and-reheat cycle: turn off, let cool slightly, then rewarm for even deeper flavor",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -855,11 +881,13 @@
       "notes": [
         {
           "text": "CoCo-style plating: rice on one side, curry on the other — not poured over. This lets the diner control the ratio.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Fukujinzuke (pickled daikon, eggplant, lotus root, cucumber in soy sauce) is the traditional CoCo condiment",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     }

@@ -106,10 +106,18 @@
         }
       ],
       "next_time": [
-        { "text": "Try 2-3 day cold proof for better extensibility and flavor development" },
-        { "text": "Add sliced jalapeños as a topping option" },
-        { "text": "Make a batch of 4 dough balls to have extras for the week" },
-        { "text": "Use Trader Joe's low-moisture mozz next time — the HEB whole milk was too wet to shred" }
+        {
+          "text": "Try 2-3 day cold proof for better extensibility and flavor development"
+        },
+        {
+          "text": "Add sliced jalapeños as a topping option"
+        },
+        {
+          "text": "Make a batch of 4 dough balls to have extras for the week"
+        },
+        {
+          "text": "Use Trader Joe's low-moisture mozz next time — the HEB whole milk was too wet to shred"
+        }
       ]
     }
   ],
@@ -331,7 +339,8 @@
       "notes": [
         {
           "text": "Jacob Burton adds yeast to the autolyse water — he says it does not affect gluten formation",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -347,7 +356,8 @@
       "notes": [
         {
           "text": "The autolyse hydrates the flour and begins gluten development passively, reducing knead time",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -376,7 +386,8 @@
       "notes": [
         {
           "text": "Olive oil adds extensibility and browning to the crust. Sugar promotes Maillard browning.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -414,7 +425,8 @@
       "notes": [
         {
           "text": "If the dough tears before becoming translucent, knead for 1–2 more minutes and re-test",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ],
       "technique_url": "https://www.kingarthurbaking.com/blog/2020/12/14/the-windowpane-test"
@@ -442,7 +454,8 @@
       "notes": [
         {
           "text": "For more complex flavor, skip the room-temperature rise and cold ferment overnight in the fridge (8–16 hours). Remove 1 hour before dividing to take the chill off.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -469,7 +482,8 @@
       "notes": [
         {
           "text": "The non-stick spray on top prevents the plastic wrap from sticking and tearing the dough skin during proofing",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -485,11 +499,13 @@
       "notes": [
         {
           "text": "For even more flavor development, proof in the refrigerator for 12–24 hours instead. Remove 30–60 minutes before stretching to take the chill off.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Begin preheating the oven and pizza stone at least 45 minutes before you plan to bake",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -505,7 +521,8 @@
       "notes": [
         {
           "text": "A fully preheated stone is essential — it provides the intense bottom heat that creates a properly charred NY-style crust",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -526,11 +543,13 @@
       "notes": [
         {
           "text": "Never roll pizza dough — rolling pops the gas bubbles that create the airy, puffy crust",
-          "critical": true
+          "critical": true,
+          "source": "user"
         },
         {
           "text": "Give the peel a shake before topping to make sure the dough slides freely on the cornmeal",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -559,11 +578,13 @@
       "notes": [
         {
           "text": "Pepperoni goes on top of the cheese — this is intentional so it browns, crisps, and cups up during baking",
-          "critical": false
+          "critical": false,
+          "source": "user"
         },
         {
           "text": "Do not overload with sauce or the center will be soggy and the pizza will not slide off the peel",
-          "critical": true
+          "critical": true,
+          "source": "user"
         }
       ]
     },
@@ -579,7 +600,8 @@
       "notes": [
         {
           "text": "Check at 8 minutes — ovens vary. Rotate the pizza halfway through if your oven has hot spots.",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -595,7 +617,8 @@
       "notes": [
         {
           "text": "A brief rest lets the cheese set slightly so it does not slide off when you pick up a slice",
-          "critical": false
+          "critical": false,
+          "source": "user"
         }
       ]
     }
@@ -609,17 +632,17 @@
       "calories": 3943.2,
       "protein": 188.2,
       "totalFat": 173.9,
-      "saturatedFat": 74.0,
+      "saturatedFat": 74,
       "carbohydrates": 394.8,
       "sugar": 32.4,
       "fiber": 16.2,
-      "sodium": 8847.0
+      "sodium": 8847
     },
     "perServing": {
       "calories": 1971.6,
       "protein": 94.1,
-      "totalFat": 87.0,
-      "saturatedFat": 37.0,
+      "totalFat": 87,
+      "saturatedFat": 37,
       "carbohydrates": 197.4,
       "sugar": 16.2,
       "fiber": 8.1,
@@ -675,7 +698,7 @@
         "fdcId": 171413,
         "calories": 159.2,
         "protein": 0,
-        "totalFat": 18.0,
+        "totalFat": 18,
         "saturatedFat": 2.4,
         "carbohydrates": 0,
         "sugar": 0,
@@ -705,8 +728,8 @@
         "protein": 0,
         "totalFat": 0,
         "saturatedFat": 0,
-        "carbohydrates": 19.0,
-        "sugar": 19.0,
+        "carbohydrates": 19,
+        "sugar": 19,
         "fiber": 0,
         "sodium": 0.3
       },
@@ -716,10 +739,10 @@
         "amount": 13,
         "fdcId": 168876,
         "calories": 47.1,
-        "protein": 1.0,
+        "protein": 1,
         "totalFat": 0.5,
         "saturatedFat": 0.1,
-        "carbohydrates": 10.0,
+        "carbohydrates": 10,
         "sugar": 0.3,
         "fiber": 0.9,
         "sodium": 0.9
@@ -743,8 +766,8 @@
         "ingredientName": "Low-Moisture Mozzarella",
         "amount": 350,
         "fdcId": 170892,
-        "calories": 1057.0,
-        "protein": 88.0,
+        "calories": 1057,
+        "protein": 88,
         "totalFat": 70.1,
         "saturatedFat": 40.4,
         "carbohydrates": 12.4,
@@ -760,7 +783,7 @@
         "calories": 864.5,
         "protein": 39.2,
         "totalFat": 76.8,
-        "saturatedFat": 30.0,
+        "saturatedFat": 30,
         "carbohydrates": 4.9,
         "sugar": 2.1,
         "fiber": 0,
