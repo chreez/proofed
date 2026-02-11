@@ -247,6 +247,83 @@ describe('GatherSection', () => {
 
     expect(wrapper.text()).toContain('Gather')
   })
+
+  it('copies only unchecked items when some are checked', async () => {
+    const progress = makeProgress()
+    // Check the first vessel and first ingredient
+    progress.isItemChecked = vi.fn((id: string) =>
+      id === 'vessel-10-inch cast-iron skillet' || id === 'ing-flour'
+    )
+
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: fullGather,
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress
+      }
+    })
+
+    await wrapper.find('button[title="Copy Mise en Place"]').trigger('click')
+
+    expect(writeTextMock).toHaveBeenCalledTimes(1)
+    const copiedText = writeTextMock.mock.calls[0][0]
+    expect(copiedText).toContain('Mise en Place - Prep')
+    // Checked vessel should be excluded
+    expect(copiedText).not.toContain('10-inch cast-iron skillet')
+    // Unchecked vessel should be included
+    expect(copiedText).toContain('Large mixing bowl')
+    // Equipment untouched — both should be included
+    expect(copiedText).toContain('Equipment:')
+    expect(copiedText).toContain('Rolling pin')
+    expect(copiedText).toContain('Serrated knife')
+    // Checked ingredient excluded, unchecked included
+    expect(copiedText).not.toContain('All-purpose flour')
+    expect(copiedText).toContain('Unsalted butter')
+  })
+
+  it('omits empty sections from copy when all items in a category are checked', async () => {
+    const progress = makeProgress()
+    // Check both vessels
+    progress.isItemChecked = vi.fn((id: string) =>
+      id === 'vessel-10-inch cast-iron skillet' || id === 'vessel-Large mixing bowl'
+    )
+
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: fullGather,
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress
+      }
+    })
+
+    await wrapper.find('button[title="Copy Mise en Place"]').trigger('click')
+
+    const copiedText = writeTextMock.mock.calls[0][0]
+    expect(copiedText).not.toContain('Vessels:')
+    expect(copiedText).toContain('Equipment:')
+    expect(copiedText).toContain('Ingredients:')
+  })
+
+  it('shows "Everything gathered!" feedback when all items are checked', async () => {
+    const progress = makeProgress()
+    progress.isItemChecked = vi.fn(() => true)
+
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: fullGather,
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress
+      }
+    })
+
+    await wrapper.find('button[title="Copy Mise en Place"]').trigger('click')
+
+    // Should NOT call clipboard
+    expect(writeTextMock).not.toHaveBeenCalled()
+  })
 })
 
 describe('HTML snapshot', () => {

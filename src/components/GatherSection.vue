@@ -49,31 +49,39 @@ const hasAnyProgress = computed(() =>
   allItemIds.value.some(id => props.progress.isItemChecked(id))
 )
 
+const allItemsChecked = computed(() =>
+  allItemIds.value.length > 0 && allItemIds.value.every(id => props.progress.isItemChecked(id))
+)
+
 function formatGatherForCopy(): string {
   const lines: string[] = []
 
   lines.push(`Mise en Place - ${props.stageTitle}`)
   lines.push('')
 
-  if (vesselItems.value.length) {
+  const uncheckedVessels = vesselItems.value.filter(v => !props.progress.isItemChecked(v.id))
+  const uncheckedEquipment = equipmentItems.value.filter(e => !props.progress.isItemChecked(e.id))
+  const uncheckedIngredients = ingredientItems.value.filter(i => !props.progress.isItemChecked(i.id))
+
+  if (uncheckedVessels.length) {
     lines.push('Vessels:')
-    for (const v of vesselItems.value) {
+    for (const v of uncheckedVessels) {
       lines.push(`- ${v.label}`)
     }
     lines.push('')
   }
 
-  if (equipmentItems.value.length) {
+  if (uncheckedEquipment.length) {
     lines.push('Equipment:')
-    for (const e of equipmentItems.value) {
+    for (const e of uncheckedEquipment) {
       lines.push(`- ${e.label}`)
     }
     lines.push('')
   }
 
-  if (ingredientItems.value.length) {
+  if (uncheckedIngredients.length) {
     lines.push('Ingredients:')
-    for (const ing of ingredientItems.value) {
+    for (const ing of uncheckedIngredients) {
       lines.push(`- ${ing.label}`)
     }
   }
@@ -82,6 +90,10 @@ function formatGatherForCopy(): string {
 }
 
 async function copyGather(): Promise<void> {
+  if (allItemsChecked.value) {
+    copyBtn.value?.flashCopied('Everything gathered!')
+    return
+  }
   const text = formatGatherForCopy()
   await navigator.clipboard.writeText(text)
   copyBtn.value?.flashCopied()

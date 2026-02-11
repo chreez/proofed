@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import GatherCategory from './GatherCategory.vue'
@@ -19,9 +19,19 @@ vi.mock('@/components/TechniqueText.vue', () => ({
     template: '<span>{{ text }}</span>'
   }
 }))
+vi.mock('lucide-vue-next', () => ({
+  ClipboardList: { name: 'ClipboardList', template: '<svg class="icon-clipboard" />' },
+  Check: { name: 'Check', template: '<svg class="icon-check" />' }
+}))
 vi.mock('@/composables/useScrollToNext', () => ({
   scrollToNextItem: vi.fn()
 }))
+
+// Mock clipboard
+const writeTextMock = vi.fn().mockResolvedValue(undefined)
+Object.assign(navigator, {
+  clipboard: { writeText: writeTextMock }
+})
 
 function makeProgress(checkedIds: string[] = []) {
   return {
@@ -293,5 +303,63 @@ describe('GatherCategory', () => {
     })
 
     expect(wrapper.text()).toContain('Flour')
+  })
+})
+
+describe('GatherCategory per-category copy', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+    writeTextMock.mockClear()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  it('shows copy button when unchecked items exist', () => {
+    const wrapper = mount(GatherCategory, { props: defaultProps })
+
+    const copyBtn = wrapper.find('button[title="Copy List"]')
+    expect(copyBtn.exists()).toBe(true)
+  })
+
+  it('hides copy button when all items are checked', async () => {
+    const progress = makeProgress(['item-1', 'item-2', 'item-3'])
+    const wrapper = mount(GatherCategory, {
+      props: { ...defaultProps, progress }
+    })
+
+    // Expand first (it's collapsed when all checked)
+    const headerRow = wrapper.find('.bg-stone-200')
+    await headerRow.trigger('click')
+
+    const copyBtn = wrapper.find('button[title="Copy List"]')
+    expect(copyBtn.exists()).toBe(false)
+  })
+
+  it('copies unchecked items to clipboard with clean format', async () => {
+    const progress = makeProgress(['item-2'])
+    const wrapper = mount(GatherCategory, {
+      props: { ...defaultProps, progress }
+    })
+
+    const copyBtn = wrapper.find('button[title="Copy List"]')
+    await copyBtn.trigger('click')
+
+    expect(writeTextMock).toHaveBeenCalledTimes(1)
+    const copiedText = writeTextMock.mock.calls[0][0]
+    // Should be plain names, one per line, no headers or bullets
+    expect(copiedText).toBe('All-purpose flour\nDark brown sugar')
+  })
+
+  it('copies all items when none are checked', async () => {
+    const wrapper = mount(GatherCategory, { props: defaultProps })
+
+    const copyBtn = wrapper.find('button[title="Copy List"]')
+    await copyBtn.trigger('click')
+
+    expect(writeTextMock).toHaveBeenCalledTimes(1)
+    const copiedText = writeTextMock.mock.calls[0][0]
+    expect(copiedText).toBe('All-purpose flour\nUnsalted butter\nDark brown sugar')
   })
 })

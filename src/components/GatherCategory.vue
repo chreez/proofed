@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, useTemplateRef } from 'vue'
+import { ClipboardList, Check } from 'lucide-vue-next'
 import CheckableItem from '@/components/CheckableItem.vue'
+import IconButton from '@/components/IconButton.vue'
 import TechniqueText from '@/components/TechniqueText.vue'
 import TempText from '@/components/TempText.vue'
 import { scrollToNextItem } from '@/composables/useScrollToNext'
@@ -11,6 +13,8 @@ const props = defineProps<{
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
   stageId: string
 }>()
+
+const categoryCopyBtn = useTemplateRef<InstanceType<typeof IconButton>>('categoryCopyBtn')
 
 // Manual expand override - user clicked badge to expand
 const manuallyExpanded = ref(false)
@@ -99,6 +103,12 @@ function collapse() {
     manuallyCollapsed.value = true
   }
 }
+
+async function copyCategory(): Promise<void> {
+  const text = uncheckedItems.value.map(item => item.label).join('\n')
+  await navigator.clipboard.writeText(text)
+  categoryCopyBtn.value?.flashCopied()
+}
 </script>
 
 <template>
@@ -141,6 +151,19 @@ function collapse() {
           >
           {{ toggleLabel }}
         </label>
+        <IconButton
+          v-if="uncheckedItems.length > 0"
+          ref="categoryCopyBtn"
+          tooltip="Copy List"
+          size="sm"
+          tooltip-align="right"
+          @click="copyCategory"
+        >
+          <ClipboardList />
+          <template #feedback>
+            <Check />
+          </template>
+        </IconButton>
         <button
           @click.stop="collapse"
           class="text-xs text-stone-400 hover:text-stone-600 px-1.5 py-0.5 transition-colors select-none"
