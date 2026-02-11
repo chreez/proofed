@@ -1,10 +1,10 @@
 ---
 id: PF-62
 title: Use cook log hero photo as recipe card image
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 11:10'
-updated_date: '2026-02-10 08:20'
+updated_date: '2026-02-11 09:52'
 labels:
   - feature
   - ungroomed
@@ -27,3 +27,9 @@ Timeline / bake log layout where the hero image is the latest bake photo:
 - Bake note
 Think timeline layout — each bake entry as a visual card with the hero shot prominent.
 <!-- SECTION:DESCRIPTION:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Resolved — the recipe index page already displays the latest bake's hero photo as a thumbnail on each recipe card (implemented as part of earlier index page work). No additional work needed.
+<!-- SECTION:FINAL_SUMMARY:END -->
