@@ -1,10 +1,10 @@
 ---
 id: PF-118
 title: 'Recipe Feedback Skill — schema support, skill, and UI'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-11 19:26'
-updated_date: '2026-02-11 19:55'
+updated_date: '2026-02-11 20:03'
 labels:
   - feature
   - skill
