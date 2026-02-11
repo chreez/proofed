@@ -250,4 +250,38 @@ describe('StateStep', () => {
     const el = wrapper.find('[data-state-id="mix-dough"]')
     expect(el.exists()).toBe(true)
   })
+
+  it('renders agent-sourced notes with Agent Tip label', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{ text: 'Stretch dough to check gluten development', critical: false, source: 'agent' as const }]
+        }
+      }
+    })
+
+    expect(wrapper.text()).toContain('// Agent Tip')
+    expect(wrapper.text()).toContain('Stretch dough to check gluten development')
+    const noteDiv = wrapper.find('.bg-stone-100.text-stone-600')
+    expect(noteDiv.exists()).toBe(true)
+  })
+
+  it('renders agent-sourced notes without yellow styling even if critical', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{ text: 'Important agent tip', critical: true, source: 'agent' as const }]
+        }
+      }
+    })
+
+    // Should have agent label, not yellow styling
+    expect(wrapper.text()).toContain('// Agent Tip')
+    expect(wrapper.find('.bg-accent-tint').exists()).toBe(false)
+    expect(wrapper.find('.bg-stone-100.text-stone-600').exists()).toBe(true)
+  })
 })

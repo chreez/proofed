@@ -77,9 +77,10 @@ function toggle() {
             v-for="(note, i) in state.notes"
             :key="i"
             class="text-sm p-2"
-            :class="note.critical ? 'bg-accent-tint text-accent border-l-4 border-accent' : 'bg-stone-100 text-stone-600'"
+            :class="note.critical && note.source !== 'agent' ? 'bg-accent-tint text-accent border-l-4 border-accent' : 'bg-stone-100 text-stone-600'"
           >
-            <span v-if="note.critical" class="font-medium">⚠ </span>
+            <div v-if="note.source === 'agent'" class="voice-agent-label mb-1">// Agent Tip</div>
+            <span v-if="note.critical && note.source !== 'agent'" class="font-medium">⚠ </span>
             {{ note.text }}
           </div>
         </div>
