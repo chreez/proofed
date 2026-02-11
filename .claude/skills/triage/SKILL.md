@@ -25,7 +25,7 @@ Build a summary table from backlog data:
 
 1. `task_list` — get all tasks with status, priority, labels
 2. For each **In Progress** task: check git evidence (see Stale Detection below)
-3. Count tasks with no acceptance criteria
+3. Count **active** tasks (To Do / In Progress) with no acceptance criteria — ignore Done tasks (legacy, no action needed)
 
 ### Dashboard Output
 
@@ -40,7 +40,7 @@ Build a summary table from backlog data:
 | In Progress          | XX    |
 | In Progress (stale)  | XX    |
 | Ungroomed (legacy)   | XX    |
-| Missing ACs          | XX    |
+| Missing ACs (active) | XX    |
 | Done (unclosed)      | XX    |
 ```
 
