@@ -65,9 +65,8 @@ Wait for user confirmation before proceeding.
 
 ## Phase 2: Groom Gate
 
-If any tasks need grooming, groom them now using **Intent Translator MAX** (inline, not as a sub-agent — user needs to participate).
+If any tasks need grooming, invoke `/groom {task-id}` for each — user needs to participate in the clarify loop.
 
-- Run the clarify loop per `.claude/rules/grooming.md`
 - After ACs are approved and saved, update the execution plan
 - Then proceed to Phase 3
 
