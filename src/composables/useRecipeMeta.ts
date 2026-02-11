@@ -29,7 +29,23 @@ export function useRecipeMeta(
     return BASE_URL
   })
 
-  const image = `${BASE_URL}/og-image.png`
+  const FALLBACK_IMAGE = `${BASE_URL}/og-image.png`
+
+  const image = computed(() => {
+    const r = recipe()
+    if (!r?.cook_log?.length) return FALLBACK_IMAGE
+
+    // Most recent entry is first in the array
+    const latestEntry = r.cook_log[0]
+    if (!latestEntry.photos?.length) return FALLBACK_IMAGE
+
+    // Hero convention: last photo in the array (800w WebP)
+    const heroPhoto = latestEntry.photos[latestEntry.photos.length - 1]
+    return `${BASE_URL}${heroPhoto.src}`
+  })
+
+  const imageWidth = computed(() => image.value === FALLBACK_IMAGE ? 1200 : 800)
+  const imageHeight = computed(() => image.value === FALLBACK_IMAGE ? 630 : undefined)
 
   useSeoMeta({
     title,
@@ -39,8 +55,8 @@ export function useRecipeMeta(
     ogDescription: description,
     ogUrl: url,
     ogImage: image,
-    ogImageWidth: 1200,
-    ogImageHeight: 630,
+    ogImageWidth: imageWidth,
+    ogImageHeight: imageHeight,
     twitterCard: 'summary_large_image',
     twitterTitle: title,
     twitterDescription: description,

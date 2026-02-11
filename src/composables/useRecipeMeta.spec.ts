@@ -91,15 +91,48 @@ describe('useRecipeMeta', () => {
     expect((capturedInput.title as { value: string }).value).toBe('Test Buns — proofed.')
   })
 
-  it('sets static OG image and dimensions', () => {
+  it('falls back to generic OG image when no cook_log photos', () => {
     const recipe = ref<Recipe | null>(null)
     const recipeId = ref<string | null>(null)
 
     useRecipeMeta(() => recipe.value, () => recipeId.value)
 
-    expect(capturedInput.ogImage).toBe('https://proofeddot.netlify.app/og-image.png')
-    expect(capturedInput.ogImageWidth).toBe(1200)
-    expect(capturedInput.ogImageHeight).toBe(630)
+    const ogImage = (capturedInput.ogImage as { value: string }).value
+    const ogImageWidth = (capturedInput.ogImageWidth as { value: number }).value
+    const ogImageHeight = (capturedInput.ogImageHeight as { value: number | undefined }).value
+
+    expect(ogImage).toBe('https://proofeddot.netlify.app/og-image.png')
+    expect(ogImageWidth).toBe(1200)
+    expect(ogImageHeight).toBe(630)
     expect(capturedInput.twitterCard).toBe('summary_large_image')
+  })
+
+  it('uses hero photo from cook_log for OG image', () => {
+    const recipeWithPhotos = makeRecipe()
+    recipeWithPhotos.cook_log = [
+      {
+        date: '2026-02-10',
+        version: 'v1.0.0',
+        notes: ['Test bake'],
+        photos: [
+          { src: '/images/test/2026-02-10/img-001-800w.webp', thumb: '/images/test/2026-02-10/img-001-400w.webp', alt: 'Process shot' },
+          { src: '/images/test/2026-02-10/img-hero-800w.webp', thumb: '/images/test/2026-02-10/img-hero-400w.webp', alt: 'Hero shot' },
+        ],
+      },
+    ]
+    const recipe = ref<Recipe | null>(recipeWithPhotos)
+    const recipeId = ref<string | null>('test-buns')
+
+    useRecipeMeta(() => recipe.value, () => recipeId.value)
+
+    const ogImage = (capturedInput.ogImage as { value: string }).value
+    const ogImageWidth = (capturedInput.ogImageWidth as { value: number }).value
+    const ogImageHeight = (capturedInput.ogImageHeight as { value: number | undefined }).value
+    const twitterImage = (capturedInput.twitterImage as { value: string }).value
+
+    expect(ogImage).toBe('https://proofeddot.netlify.app/images/test/2026-02-10/img-hero-800w.webp')
+    expect(ogImageWidth).toBe(800)
+    expect(ogImageHeight).toBeUndefined()
+    expect(twitterImage).toBe('https://proofeddot.netlify.app/images/test/2026-02-10/img-hero-800w.webp')
   })
 })
