@@ -33,6 +33,88 @@
   ],
   "cook_log": [
     {
+      "date": "2026-02-10",
+      "version": "v1.2.0",
+      "notes": [
+        "**Second bake** — overnight cold proof, short on milk (~40g replaced with water)",
+        "Dough was tacky not sticky — hard to form into a ball, left unshaped in fridge overnight",
+        "Day 2: waited longer for dough to come to room temp, much easier to shape. Overnight proof removes variance of underworking.",
+        "Rolls hard to keep sealed after cutting — tried thread (not great), need dental floss next time",
+        "Added **nutmeg + espresso** (2 pinches each, ground) to icing. Frosting tasted good but couldn't discern either spice.",
+        "Possible overproof — rolls stuck together, smaller ones overtaken by bigger neighbors",
+        "Bouncy/lighter poke test. Possibly slightly undercooked (no internal temp taken).",
+        "Sweetness much better than v1.0 — tolerable level. Overall a success.",
+        "Made a fresh latte to go with it — coffee pairs well, the bitterness offsets the sweetness.",
+        "Herbert went wild when I opened the cling wrap on the proofed dough — never heard him whine like that before.",
+        "Prediction: this batch will reheat well — planning to try in the air fryer tomorrow."
+      ],
+      "next_time": [
+        { "text": "Check internal temp for doneness" },
+        { "text": "Try dental floss for cleaner roll cuts" },
+        { "text": "Try air fryer directly after cooling phase — still warm, might add a nice crust" },
+        { "text": "Get milk in advance — avoid water sub" },
+        { "text": "Figure out consistent roll sizing" },
+        { "text": "More cream cheese in glaze — love that cream cheese taste" }
+      ],
+      "photos": [
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/fullsizerender-vsco-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/fullsizerender-vsco-400w.webp",
+          "alt": "Herbert really thinks he's getting a roll"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6757-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6757-400w.webp",
+          "alt": "Pulled out of the fridge"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6761-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6761-400w.webp",
+          "alt": "Me patting the rectangle"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6768-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6768-400w.webp",
+          "alt": "Administering the butter filling"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6771-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6771-400w.webp",
+          "alt": "Pressing down on cinnamon mix"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6779-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6779-400w.webp",
+          "alt": "Cutting the roll"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6783-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6783-400w.webp",
+          "alt": "You can see the final roll here is somewhat smaller (on the edges)"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6797-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6797-400w.webp",
+          "alt": "Cinnamon roll isolated on plate"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6798-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6798-400w.webp",
+          "alt": "Side of roll"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6801-vsco-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6801-vsco-400w.webp",
+          "alt": "Cinnamon roll with coffee"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6794-vsco-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6794-vsco-400w.webp",
+          "alt": "Fresh out of the oven (before icing)"
+        }
+      ]
+    },
+    {
       "date": "2026-02-05",
       "version": "v1.0.0",
       "notes": [
