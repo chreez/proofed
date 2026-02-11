@@ -20,7 +20,6 @@ import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import PhotoReview from '@/components/PhotoReview.vue'
-import DemoAgentNotes from '@/components/DemoAgentNotes.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -37,7 +36,6 @@ useRecipeMeta(
 const showIndex = computed(() => route.name === 'index')
 const showAbout = computed(() => route.name === 'about')
 const showPhotoReview = computed(() => route.name === 'photo-review')
-const showDemoAgentNotes = computed(() => route.name === 'demo-agent-notes')
 
 function goToIndex(): void {
   router.push('/')
@@ -362,10 +360,6 @@ function handleTocNavigate(target: string) {
 
       <template v-else-if="showPhotoReview">
         <PhotoReview />
-      </template>
-
-      <template v-else-if="showDemoAgentNotes">
-        <DemoAgentNotes />
       </template>
 
       <template v-else-if="showIndex">

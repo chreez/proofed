@@ -56,9 +56,6 @@ vi.mock('@/components/PhotoLightbox.vue', () => ({
 vi.mock('@/components/PhotoReview.vue', () => ({
   default: { name: 'PhotoReview', template: '<div class="photo-review-stub">Photo Review</div>' }
 }))
-vi.mock('@/components/DemoAgentNotes.vue', () => ({
-  default: { name: 'DemoAgentNotes', template: '<div class="demo-agent-notes-stub">Demo Agent Notes</div>' }
-}))
 // Mock composables
 const mockLoadTechniques = vi.fn()
 vi.mock('@/composables/useTechniques', () => ({
@@ -133,8 +130,7 @@ function makeRouter() {
       { path: '/', name: 'index', component: { template: '<div />' } },
       { path: '/recipe/:recipeId', name: 'recipe', component: { template: '<div />' } },
       { path: '/about', name: 'about', component: { template: '<div />' } },
-      { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } },
-      { path: '/demo/agent-notes', name: 'demo-agent-notes', component: { template: '<div />' } }
+      { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } }
     ]
   })
 }
@@ -268,11 +264,6 @@ describe('App', () => {
     expect(wrapper.text()).toContain('Photo Review')
   })
 
-  it('shows DemoAgentNotes on demo route', async () => {
-    const { wrapper } = await mountApp('/demo/agent-notes')
-    expect(wrapper.find('.demo-agent-notes-stub').exists()).toBe(true)
-    expect(wrapper.text()).toContain('Demo Agent Notes')
-  })
 
   it('shows loading state when loading is true', async () => {
     mockLoading.value = true
