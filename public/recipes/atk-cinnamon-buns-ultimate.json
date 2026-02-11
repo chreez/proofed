@@ -13,8 +13,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.2.0",
+  "version": "v1.3.0",
   "change_log": [
+    {
+      "version": "v1.3.0",
+      "date": "2026-02-11",
+      "summary": "Added internal temp doneness check (190°F / 88°C) to bake step exit condition"
+    },
     {
       "version": "v1.2.0",
       "date": "2026-02-07",
@@ -706,7 +711,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Deep golden brown, filling visibly melted and bubbling",
+      "exit_condition": "Deep golden brown, filling visibly melted and bubbling. Internal temp 190°F (88°C).",
       "notes": [
         {
           "text": "Check at 35 min—ovens vary. Target is golden, not pale.",
