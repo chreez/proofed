@@ -27,13 +27,18 @@
     },
     "yields": "2–3 baguettes",
     "total_time": "~12–16 hrs (2 hrs active)",
-    "description": "The right balance of poolish, increased young leaven, and softer flour blend yields a baguette for the ages. Baked to a deep golden tone, this baguette has the toasty aroma of freshly popped corn."
+    "description": "A hybrid baguette using both poolish (commercial yeast) and leaven (sourdough starter) — the poolish gives reliable lift and extensibility, the leaven adds flavor complexity. Baked to a deep golden tone with the toasty aroma of freshly popped corn."
   },
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-02-11",
+      "summary": "Feedback session: added agent-sourced definition notes to MIX_POOLISH, FEED_LEAVEN, MIX_DOUGH, PREPARE_COUCHE; updated description with hybrid approach explanation"
+    },
     {
       "version": "v1.0.0",
       "date": "2026-02-07",
@@ -287,7 +292,13 @@
         }
       ],
       "exit_condition": "Poolish mixed, no dry flour visible",
-      "notes": null
+      "notes": [
+        {
+          "text": "A poolish is a pre-ferment made with equal parts flour and water plus a small amount of commercial yeast. It develops flavor complexity and improves dough extensibility — a classic French baguette technique.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
     },
     {
       "id": "FERMENT_POOLISH",
@@ -338,6 +349,11 @@
           "text": "Time the leaven so it peaks when the poolish is ready — typically feed leaven 8–12 hours before you plan to mix dough",
           "critical": false,
           "source": "user"
+        },
+        {
+          "text": "A leaven (levain) is an active sourdough preferment — a portion of mature starter fed with flour and water and grown to peak activity before mixing into the final dough.",
+          "critical": false,
+          "source": "agent"
         }
       ]
     },
@@ -415,6 +431,11 @@
           "text": "Save leftover leaven to refresh and maintain your starter",
           "critical": false,
           "source": "user"
+        },
+        {
+          "text": "This recipe uses a hybrid approach: the poolish (yeast-driven) gives reliable lift and extensibility, while the leaven (sourdough-driven) adds flavor complexity and acidity. Together they produce better oven spring than sourdough alone with more depth than straight yeast.",
+          "critical": false,
+          "source": "agent"
         }
       ]
     },
@@ -567,7 +588,13 @@
       "parallel": true,
       "components": null,
       "exit_condition": "Couche prepared with generous rice flour dusting",
-      "notes": null
+      "notes": [
+        {
+          "text": "A couche (French for 'bed') is a stiff cloth used to support baguettes during final proof — the folds between loaves prevent sideways spreading. Bread baskets (bannetons) are for round/oval loaves; baguettes need the couche's elongated support.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
     },
     {
       "id": "SHAPE_BAGUETTE",
