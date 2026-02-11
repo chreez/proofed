@@ -25,5 +25,7 @@ exports[`HTML snapshot > matches snapshot 1`] = `
     </div><!-- Photos: hero layout -->
     <!--v-if-->
   </div>
+  <!--teleport start-->
+  <!--teleport end-->
 </section>"
 `;

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useTemplateRef } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 import { marked } from 'marked'
 import { Link2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
+import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import type { CookLogEntry, CookLogPhoto } from '@/types/recipe'
 
 const props = defineProps<{
@@ -11,6 +12,21 @@ const props = defineProps<{
 }>()
 
 const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
+
+// Lightbox state
+const lightboxOpen = ref(false)
+const lightboxPhotos = ref<CookLogPhoto[]>([])
+const lightboxIndex = ref(0)
+
+function openLightbox(photos: CookLogPhoto[], index: number): void {
+  lightboxPhotos.value = photos
+  lightboxIndex.value = index
+  lightboxOpen.value = true
+}
+
+function closeLightbox(): void {
+  lightboxOpen.value = false
+}
 
 async function copyPermalink(): Promise<void> {
   const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
@@ -100,16 +116,15 @@ function formatDate(dateStr: string): string {
       <!-- Photos: hero layout -->
       <div v-if="entry.photos?.length" class="mt-4">
         <figure class="gallery-figure mb-3">
-          <a :href="heroPhoto(entry.photos).src" target="_blank" class="block">
-            <img
-              :src="heroPhoto(entry.photos).src"
-              :alt="heroPhoto(entry.photos).alt"
-              :title="heroPhoto(entry.photos).alt"
-              loading="lazy"
-              decoding="async"
-              class="max-w-lg w-full h-auto border-2 border-stone-200"
-            />
-          </a>
+          <img
+            :src="heroPhoto(entry.photos).src"
+            :alt="heroPhoto(entry.photos).alt"
+            :title="heroPhoto(entry.photos).alt"
+            loading="lazy"
+            decoding="async"
+            class="max-w-lg w-full h-auto border-2 border-stone-200 cursor-pointer"
+            @click="openLightbox(entry.photos!, entry.photos!.length - 1)"
+          />
         </figure>
         <div v-if="supportingPhotos(entry.photos).length" class="flex gap-2 overflow-x-auto">
           <figure
@@ -117,21 +132,27 @@ function formatDate(dateStr: string): string {
             :key="i"
             class="gallery-figure flex-shrink-0"
           >
-            <a :href="photo.src" target="_blank" class="block">
-              <img
-                :src="photo.thumb"
-                :alt="photo.alt"
-                :title="photo.alt"
-                loading="lazy"
-                decoding="async"
-                class="h-28 w-auto border-2 border-stone-200"
-              />
-            </a>
+            <img
+              :src="photo.thumb"
+              :alt="photo.alt"
+              :title="photo.alt"
+              loading="lazy"
+              decoding="async"
+              class="h-28 w-auto border-2 border-stone-200 cursor-pointer"
+              @click="openLightbox(entry.photos!, i)"
+            />
           </figure>
         </div>
       </div>
 
     </div>
+
+    <PhotoLightbox
+      :photos="lightboxPhotos"
+      :initial-index="lightboxIndex"
+      :open="lightboxOpen"
+      @close="closeLightbox"
+    />
   </section>
 </template>
 

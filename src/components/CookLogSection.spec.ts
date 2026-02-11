@@ -142,6 +142,68 @@ describe('CookLogSection', () => {
   })
 })
 
+describe('Photo lightbox', () => {
+  const photosProps = {
+    cookLog: [{
+      date: '2026-02-05',
+      version: 'v1.0.0',
+      notes: ['Note'],
+      photos: [
+        { src: '/img/a-800.webp', thumb: '/img/a-400.webp', alt: 'Photo A' },
+        { src: '/img/b-800.webp', thumb: '/img/b-400.webp', alt: 'Photo B' },
+        { src: '/img/c-800.webp', thumb: '/img/c-400.webp', alt: 'Photo C' }
+      ]
+    }],
+    sectionId: 'cook-log-section'
+  }
+
+  it('renders hero photo as clickable image (not link)', () => {
+    const wrapper = mount(CookLogSection, { props: photosProps })
+    const heroImg = wrapper.find('.gallery-figure img')
+    expect(heroImg.exists()).toBe(true)
+    // Should NOT be wrapped in an <a> tag
+    expect(wrapper.find('.gallery-figure a').exists()).toBe(false)
+  })
+
+  it('renders supporting photo thumbnails', () => {
+    const wrapper = mount(CookLogSection, { props: photosProps })
+    // 3 photos total: 2 supporting + 1 hero
+    const thumbs = wrapper.findAll('.flex.gap-2 img')
+    expect(thumbs).toHaveLength(2)
+  })
+
+  it('opens lightbox when hero photo is clicked', async () => {
+    const wrapper = mount(CookLogSection, { props: photosProps })
+    const heroImg = wrapper.find('.gallery-figure img')
+    await heroImg.trigger('click')
+    // PhotoLightbox should now be open (teleported to body)
+    const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
+    expect(lightbox.props('open')).toBe(true)
+    expect(lightbox.props('initialIndex')).toBe(2) // hero = last photo
+  })
+
+  it('opens lightbox when supporting photo is clicked', async () => {
+    const wrapper = mount(CookLogSection, { props: photosProps })
+    const thumbs = wrapper.findAll('.flex.gap-2 img')
+    await thumbs[0].trigger('click')
+    const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
+    expect(lightbox.props('open')).toBe(true)
+    expect(lightbox.props('initialIndex')).toBe(0)
+  })
+
+  it('closes lightbox on close event', async () => {
+    const wrapper = mount(CookLogSection, { props: photosProps })
+    // Open it first
+    const heroImg = wrapper.find('.gallery-figure img')
+    await heroImg.trigger('click')
+    // Close it
+    const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
+    lightbox.vm.$emit('close')
+    await wrapper.vm.$nextTick()
+    expect(lightbox.props('open')).toBe(false)
+  })
+})
+
 describe('HTML snapshot', () => {
   it('matches snapshot', () => {
     const wrapper = mount(CookLogSection, {
