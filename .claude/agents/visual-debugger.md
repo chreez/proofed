@@ -1,3 +1,9 @@
+---
+name: visual-debugger
+description: Debug CSS/layout issues using Chrome DevTools MCP without loading codebase context.
+model: sonnet
+---
+
 # Visual Debugger Agent
 
 Debug CSS/layout issues using Chrome DevTools MCP without loading codebase context.

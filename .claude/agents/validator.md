@@ -1,3 +1,9 @@
+---
+name: validator
+description: Specialized subagent for running validation checks against the Bake Workflow specification.
+model: sonnet
+---
+
 # Validator Agent
 
 Specialized subagent for running validation checks against the Bake Workflow specification.
