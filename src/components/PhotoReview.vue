@@ -198,7 +198,7 @@ onMounted(async () => {
               class="w-full border-2 border-stone-200 cursor-zoom-in"
             />
             <!-- Hover popover — large preview -->
-            <div class="hidden group-hover:block absolute left-full top-0 ml-3 z-20 pointer-events-none">
+            <div class="hidden group-hover:block absolute right-full top-0 mr-3 z-20 pointer-events-none">
               <img
                 :src="`/images/${recipeId}/${date}/${photo.src}`"
                 :alt="photo.summary"
