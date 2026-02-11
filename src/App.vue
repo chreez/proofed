@@ -5,7 +5,7 @@ import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
-import type { RecipeState } from '@/types/recipe'
+import type { RecipeState, CookLogPhoto } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import StageCard from '@/components/StageCard.vue'
 import RecipeIndex from '@/components/RecipeIndex.vue'
@@ -18,6 +18,7 @@ import ResearchSection from '@/components/ResearchSection.vue'
 import RecipeSummary from '@/components/RecipeSummary.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
+import PhotoLightbox from '@/components/PhotoLightbox.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -120,6 +121,29 @@ function getStatesForStage(stateIds: string[]) {
   return stateIds
     .map(id => currentRecipe.value!.states.find(s => s.id === id))
     .filter((s): s is RecipeState => s !== undefined)
+}
+
+// Hero banner: latest bake photo
+const latestHeroPhoto = computed(() => {
+  const entry = currentRecipe.value?.cook_log?.[0]
+  if (!entry?.photos?.length) return null
+  return {
+    photo: entry.photos[entry.photos.length - 1],
+    date: entry.date
+  }
+})
+
+// Hero lightbox state
+const heroLightboxOpen = ref(false)
+const heroLightboxPhotos = ref<CookLogPhoto[]>([])
+
+function openHeroLightbox(): void {
+  const entry = currentRecipe.value?.cook_log?.[0]
+  if (!entry?.photos?.length) return
+  const hero = entry.photos[entry.photos.length - 1]
+  const rest = entry.photos.slice(0, -1)
+  heroLightboxPhotos.value = [hero, ...rest]
+  heroLightboxOpen.value = true
 }
 
 // Aggregate step notes from all cook_log entries
@@ -339,6 +363,27 @@ function handleTocNavigate(target: string) {
       <template v-else-if="currentRecipe && progress">
         <div class="md:flex md:gap-6">
           <div class="flex-1 min-w-0">
+            <!-- Hero banner: latest bake photo -->
+            <div
+              v-if="latestHeroPhoto"
+              data-testid="hero-banner"
+              class="card !p-0 overflow-hidden mb-6 cursor-pointer"
+              @click="openHeroLightbox"
+            >
+              <div class="relative w-full h-48 sm:h-64 overflow-hidden">
+                <img
+                  :src="latestHeroPhoto.photo.src"
+                  :alt="latestHeroPhoto.photo.alt"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div class="absolute bottom-3 left-4 text-white">
+                  <span class="font-mono text-xs opacity-80">latest bake</span>
+                  <span class="font-mono text-xs opacity-60 ml-2">{{ latestHeroPhoto.date }}</span>
+                </div>
+              </div>
+            </div>
+
             <RecipeMeta
               :recipe="currentRecipe"
               :has-progress="progress.hasProgress.value"
@@ -421,6 +466,13 @@ function handleTocNavigate(target: string) {
             @navigate="handleTocNavigate"
           />
         </div>
+
+        <PhotoLightbox
+          :photos="heroLightboxPhotos"
+          :initial-index="0"
+          :open="heroLightboxOpen"
+          @close="heroLightboxOpen = false"
+        />
       </template>
 
       <div v-else class="text-center py-12 text-muted">

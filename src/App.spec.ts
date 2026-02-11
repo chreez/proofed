@@ -50,6 +50,9 @@ vi.mock('@/components/SiteFooter.vue', () => ({
 vi.mock('@/components/AboutPage.vue', () => ({
   default: { name: 'AboutPage', template: '<div class="about-page-stub">About</div>' }
 }))
+vi.mock('@/components/PhotoLightbox.vue', () => ({
+  default: { name: 'PhotoLightbox', props: ['photos', 'initialIndex', 'open'], emits: ['close'], template: '<div class="photo-lightbox-stub" v-if="open">Lightbox</div>' }
+}))
 // Mock composables
 const mockLoadTechniques = vi.fn()
 vi.mock('@/composables/useTechniques', () => ({
@@ -158,14 +161,18 @@ function makeRecipe(overrides: Record<string, any> = {}) {
     nutrition: { servings: 8 },
     cook_log: [
       {
+        date: '2026-02-01',
+        notes: 'Second bake',
+        step_notes: { 'mix-dry': 'Better consistency', 'oven-bake': 'Watch closely after 20m' },
+        photos: [
+          { src: '/images/test/process.webp', thumb: '/images/test/process-400w.webp', alt: 'Process shot' },
+          { src: '/images/test/hero.webp', thumb: '/images/test/hero-400w.webp', alt: 'Finished buns' }
+        ]
+      },
+      {
         date: '2026-01-15',
         notes: 'First bake',
         step_notes: { 'mix-dry': 'Very sticky dough' }
-      },
-      {
-        date: '2026-02-01',
-        notes: 'Second bake',
-        step_notes: { 'mix-dry': 'Better consistency', 'oven-bake': 'Watch closely after 20m' }
       }
     ],
     change_log: [
@@ -293,6 +300,81 @@ describe('App', () => {
     await nextTick()
 
     expect(wrapper.find('.version-timeline-stub').exists()).toBe(false)
+  })
+
+  it('renders hero banner when recipe has cook log photos', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    await nextTick()
+
+    const banner = wrapper.find('[data-testid="hero-banner"]')
+    expect(banner.exists()).toBe(true)
+    const img = banner.find('img')
+    expect(img.attributes('src')).toBe('/images/test/hero.webp')
+    expect(img.attributes('alt')).toBe('Finished buns')
+    expect(banner.text()).toContain('latest bake')
+    expect(banner.text()).toContain('2026-02-01')
+  })
+
+  it('does not render hero banner when no cook log photos', async () => {
+    mockCurrentRecipe.value = makeRecipe({
+      cook_log: [{ date: '2026-01-15', notes: 'No photos bake' }]
+    })
+    mockCurrentRecipeId.value = 'test-recipe'
+
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    await nextTick()
+
+    expect(wrapper.find('[data-testid="hero-banner"]').exists()).toBe(false)
+  })
+
+  it('does not render hero banner when cook log is empty', async () => {
+    mockCurrentRecipe.value = makeRecipe({ cook_log: [] })
+    mockCurrentRecipeId.value = 'test-recipe'
+
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    await nextTick()
+
+    expect(wrapper.find('[data-testid="hero-banner"]').exists()).toBe(false)
+  })
+
+  it('opens lightbox when hero banner clicked', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    await nextTick()
+
+    const banner = wrapper.find('[data-testid="hero-banner"]')
+    await banner.trigger('click')
+    await nextTick()
+
+    const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
+    expect(lightbox.props('open')).toBe(true)
+    // Hero (last photo) should be first in lightbox array
+    expect(lightbox.props('photos')[0].alt).toBe('Finished buns')
+  })
+
+  it('closes hero lightbox when PhotoLightbox emits close', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    await nextTick()
+
+    // Open lightbox
+    await wrapper.find('[data-testid="hero-banner"]').trigger('click')
+    await nextTick()
+
+    const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
+    expect(lightbox.props('open')).toBe(true)
+
+    // Close lightbox
+    lightbox.vm.$emit('close')
+    await nextTick()
+    expect(lightbox.props('open')).toBe(false)
   })
 
   it('calls loadManifest and loadTechniques on mount', async () => {

@@ -1,10 +1,10 @@
 ---
 id: PF-117
 title: Show latest bake hero image on recipe detail page
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-11 09:52'
-updated_date: '2026-02-11 12:27'
+updated_date: '2026-02-11 12:31'
 labels:
   - feature
 dependencies: []
@@ -19,14 +19,14 @@ Display the hero photo from the most recent cook log entry prominently on the re
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Recipe detail page renders a full-width hero banner image above RecipeMeta when the recipe has cook log photos
-- [ ] #2 Hero image is sourced from cook_log[0].photos[photos.length - 1] (latest bake, last photo = hero convention)
-- [ ] #3 Banner uses object-cover with height h-48 (mobile) / h-64 (desktop)
-- [ ] #4 Dark gradient overlay (bottom-to-transparent) displays "latest bake" label and bake date in white monospace text
-- [ ] #5 Banner is wrapped in a card container (border-2 border-stone-200 rounded-none) with no padding and overflow-hidden
-- [ ] #6 Recipes with no cook log or no photos in the latest entry render no banner — no placeholder, no empty space
-- [ ] #7 RecipeMeta, stages, TOC sidebar, and all content below the banner are visually unaffected
-- [ ] #8 Clicking the hero banner opens the photo in the existing PhotoLightbox
+- [x] #1 Recipe detail page renders a full-width hero banner image above RecipeMeta when the recipe has cook log photos
+- [x] #2 Hero image is sourced from cook_log[0].photos[photos.length - 1] (latest bake, last photo = hero convention)
+- [x] #3 Banner uses object-cover with height h-48 (mobile) / h-64 (desktop)
+- [x] #4 Dark gradient overlay (bottom-to-transparent) displays "latest bake" label and bake date in white monospace text
+- [x] #5 Banner is wrapped in a card container (border-2 border-stone-200 rounded-none) with no padding and overflow-hidden
+- [x] #6 Recipes with no cook log or no photos in the latest entry render no banner — no placeholder, no empty space
+- [x] #7 RecipeMeta, stages, TOC sidebar, and all content below the banner are visually unaffected
+- [x] #8 Clicking the hero banner opens the photo in the existing PhotoLightbox
 <!-- AC:END -->
 
 ## Implementation Notes
@@ -34,3 +34,9 @@ Display the hero photo from the most recent cook log entry prominently on the re
 <!-- SECTION:NOTES:BEGIN -->
 ## Demo Result (DRAFT-7.1)\n\nUser reviewed 3 placement options in isolation (demo page) and in the real recipe page (A/B toggle).\n\n**Chosen: Option A — Header Banner**\n- Full-width hero image above recipe title/meta\n- Dark gradient overlay (bottom → transparent) with \"latest bake\" + date label\n- Hero from `cook_log[0].photos[last]` (existing convention)\n- Height: h-48 mobile, h-64 desktop\n- Wrapped in card with overflow-hidden (no padding)\n\n**Rejected:**\n- Option B (below title) — clean but less visual punch in real page context\n- Option C (sidebar) — conflicts with existing TocSidebar\n\n**Fallback:** Recipes with no cook log photos → no hero shown (no placeholder block)"
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added full-width hero banner to recipe detail page. Latest bake's hero photo (last in photos array) renders above RecipeMeta with dark gradient overlay showing \"latest bake\" + date. Clicking opens PhotoLightbox with hero first. Recipes without cook log photos render no banner. 5 new tests cover render, fallback, and lightbox integration.
+<!-- SECTION:FINAL_SUMMARY:END -->
