@@ -4,10 +4,12 @@ title: 'Smart copy: grocery-friendly mise en place'
 status: To Do
 assignee: []
 created_date: '2026-02-10 03:10'
+updated_date: '2026-02-10 08:20'
 labels:
   - spike
 dependencies: []
 priority: low
+ordinal: 49000
 ---
 
 ## Description

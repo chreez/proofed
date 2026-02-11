@@ -4,11 +4,13 @@ title: 'Fix README: add live site link, fix SVG visibility'
 status: To Do
 assignee: []
 created_date: '2026-02-10 05:11'
+updated_date: '2026-02-10 08:20'
 labels:
   - bug
   - dx
 dependencies: []
 priority: low
+ordinal: 60000
 ---
 
 ## Description

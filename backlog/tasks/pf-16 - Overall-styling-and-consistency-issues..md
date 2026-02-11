@@ -4,11 +4,12 @@ title: Overall styling and consistency issues.
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:51'
-updated_date: '2026-02-07 01:54'
+updated_date: '2026-02-10 08:20'
 labels:
   - ux
 dependencies: []
 priority: medium
+ordinal: 5000
 ---
 
 ## Description

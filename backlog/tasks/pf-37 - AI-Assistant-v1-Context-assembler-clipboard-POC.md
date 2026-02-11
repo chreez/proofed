@@ -4,11 +4,12 @@ title: 'AI Assistant v1: Context assembler + clipboard (POC)'
 status: To Do
 assignee: []
 created_date: '2026-02-07 01:02'
-updated_date: '2026-02-07 01:18'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
 dependencies: []
 priority: medium
+ordinal: 8000
 ---
 
 ## Description

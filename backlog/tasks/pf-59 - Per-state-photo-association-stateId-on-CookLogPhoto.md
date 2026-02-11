@@ -4,7 +4,7 @@ title: Per-state photo association (stateId on CookLogPhoto)
 status: To Do
 assignee: []
 created_date: '2026-02-07 09:01'
-updated_date: '2026-02-09 22:55'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
 dependencies:
@@ -12,6 +12,7 @@ dependencies:
 references:
   - /Users/chris/workspace/vyra/src/data/article-review-2-data.ts
 priority: low
+ordinal: 19000
 ---
 
 ## Description

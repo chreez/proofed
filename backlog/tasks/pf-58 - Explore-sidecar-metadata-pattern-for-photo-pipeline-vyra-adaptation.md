@@ -4,6 +4,7 @@ title: Explore sidecar metadata pattern for photo pipeline (vyra adaptation)
 status: To Do
 assignee: []
 created_date: '2026-02-07 09:01'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
   - ungroomed
@@ -12,6 +13,7 @@ dependencies: []
 references:
   - '/Users/chris/workspace/vyra/public/data/blog/{slug}/meta.json'
 priority: low
+ordinal: 18000
 ---
 
 ## Description

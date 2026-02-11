@@ -4,11 +4,12 @@ title: Allergy and dietary restriction indicators on recipes
 status: To Do
 assignee: []
 created_date: '2026-02-06 20:25'
-updated_date: '2026-02-07 02:15'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
 dependencies: []
 priority: medium
+ordinal: 6000
 ---
 
 ## Description

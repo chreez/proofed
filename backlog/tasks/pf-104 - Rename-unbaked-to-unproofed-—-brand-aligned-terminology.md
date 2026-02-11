@@ -4,10 +4,12 @@ title: Rename "unbaked" to "unproofed" — brand-aligned terminology
 status: To Do
 assignee: []
 created_date: '2026-02-10 05:07'
+updated_date: '2026-02-10 08:20'
 labels:
   - ungroomed
 dependencies: []
 priority: low
+ordinal: 59000
 ---
 
 ## Description

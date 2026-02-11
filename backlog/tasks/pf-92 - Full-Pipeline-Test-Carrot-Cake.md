@@ -4,10 +4,12 @@ title: 'Full Pipeline Test: Carrot Cake'
 status: To Do
 assignee: []
 created_date: '2026-02-10 01:24'
+updated_date: '2026-02-10 08:20'
 labels:
   - epic
 dependencies: []
 priority: medium
+ordinal: 39000
 ---
 
 ## Description

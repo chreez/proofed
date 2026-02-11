@@ -4,10 +4,12 @@ title: Simplify recipe structure — remove family/variant system
 status: To Do
 assignee: []
 created_date: '2026-02-10 08:10'
+updated_date: '2026-02-10 08:20'
 labels:
   - refactor
 dependencies: []
 priority: medium
+ordinal: 63000
 ---
 
 ## Description

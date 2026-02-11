@@ -4,12 +4,13 @@ title: Cook log photo gallery styling and layout
 status: To Do
 assignee: []
 created_date: '2026-02-07 05:32'
-updated_date: '2026-02-09 22:55'
+updated_date: '2026-02-10 08:20'
 labels:
   - ux
 dependencies: []
 parent_task_id: PF-4
 priority: medium
+ordinal: 14000
 ---
 
 ## Description

@@ -4,11 +4,13 @@ title: 'Audit TOC sidebar styling — rounded corners, iOS native dropdown'
 status: To Do
 assignee: []
 created_date: '2026-02-07 01:32'
+updated_date: '2026-02-10 08:20'
 labels:
   - ux
   - ungroomed
 dependencies: []
 priority: medium
+ordinal: 9000
 ---
 
 ## Description

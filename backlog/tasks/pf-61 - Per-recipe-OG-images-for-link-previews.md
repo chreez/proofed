@@ -4,12 +4,13 @@ title: Per-recipe OG images for link previews
 status: To Do
 assignee: []
 created_date: '2026-02-07 09:14'
-updated_date: '2026-02-07 09:18'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
 dependencies:
   - PF-4
 priority: medium
+ordinal: 21000
 ---
 
 ## Description

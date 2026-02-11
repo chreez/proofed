@@ -4,11 +4,13 @@ title: Use cook log hero photo as recipe card image
 status: To Do
 assignee: []
 created_date: '2026-02-07 11:10'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
   - ungroomed
 dependencies: []
 priority: low
+ordinal: 22000
 ---
 
 ## Description

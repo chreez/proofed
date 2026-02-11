@@ -4,12 +4,14 @@ title: Persist EXIF timestamp data from photo pipeline
 status: To Do
 assignee: []
 created_date: '2026-02-07 09:01'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
   - ungroomed
 dependencies: []
 parent_task_id: PF-4
 priority: low
+ordinal: 17000
 ---
 
 ## Description

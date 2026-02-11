@@ -4,11 +4,13 @@ title: Type the rolling_tips_research field in cook_log
 status: To Do
 assignee: []
 created_date: '2026-02-07 09:01'
+updated_date: '2026-02-10 08:20'
 labels:
   - bug
   - ungroomed
 dependencies: []
 priority: low
+ordinal: 20000
 ---
 
 ## Description

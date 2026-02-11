@@ -4,12 +4,14 @@ title: Video support in photo pipeline (MOV/MP4)
 status: To Do
 assignee: []
 created_date: '2026-02-07 05:23'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
   - ungroomed
 dependencies: []
 parent_task_id: PF-4
 priority: low
+ordinal: 12000
 ---
 
 ## Description

@@ -4,11 +4,12 @@ title: Recipe versioning
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:46'
-updated_date: '2026-02-07 00:26'
+updated_date: '2026-02-10 08:20'
 labels:
   - recipe
 dependencies: []
 priority: low
+ordinal: 2000
 ---
 
 ## Description

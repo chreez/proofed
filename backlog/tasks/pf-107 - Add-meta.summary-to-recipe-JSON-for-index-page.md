@@ -4,10 +4,12 @@ title: Add meta.summary to recipe JSON for index page
 status: To Do
 assignee: []
 created_date: '2026-02-10 08:06'
+updated_date: '2026-02-10 08:20'
 labels:
   - enhancement
 dependencies: []
 priority: low
+ordinal: 62000
 ---
 
 ## Description

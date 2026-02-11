@@ -4,11 +4,13 @@ title: Agentic tooling refresh
 status: To Do
 assignee: []
 created_date: '2026-02-07 19:53'
+updated_date: '2026-02-10 08:20'
 labels:
   - ungroomed
   - dx
 dependencies: []
 priority: medium
+ordinal: 25000
 ---
 
 ## Description

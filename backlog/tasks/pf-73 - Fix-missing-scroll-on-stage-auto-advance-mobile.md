@@ -4,13 +4,14 @@ title: Fix missing scroll on stage auto-advance (mobile)
 status: To Do
 assignee: []
 created_date: '2026-02-08 01:18'
-updated_date: '2026-02-08 01:37'
+updated_date: '2026-02-10 08:20'
 labels:
   - bug
 dependencies: []
 references:
   - 'https://github.com/chreez/proofed/issues/2'
 priority: high
+ordinal: 32000
 ---
 
 ## Description

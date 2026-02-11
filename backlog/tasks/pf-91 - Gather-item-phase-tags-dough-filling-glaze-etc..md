@@ -4,12 +4,14 @@ title: 'Gather item phase tags (dough, filling, glaze, etc.)'
 status: To Do
 assignee: []
 created_date: '2026-02-09 23:48'
+updated_date: '2026-02-10 08:20'
 labels:
   - ungroomed
   - feature
   - ux
 dependencies: []
 priority: medium
+ordinal: 38000
 ---
 
 ## Description

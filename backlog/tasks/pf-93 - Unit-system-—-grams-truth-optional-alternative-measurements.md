@@ -4,11 +4,13 @@ title: Unit system — grams truth + optional alternative measurements
 status: To Do
 assignee: []
 created_date: '2026-02-10 02:17'
+updated_date: '2026-02-10 08:20'
 labels:
   - ungroomed
   - epic
 dependencies: []
 priority: medium
+ordinal: 44000
 ---
 
 ## Description

@@ -4,17 +4,19 @@ title: Demo skill for rapid layout prototyping
 status: To Do
 assignee: []
 created_date: '2026-02-10 03:45'
-updated_date: '2026-02-10 04:04'
+updated_date: '2026-02-10 08:20'
 labels:
   - dx
-dependencies: []
+dependencies:
+  - PF-102
 priority: medium
+ordinal: 52000
 ---
 
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Create a `/demo` skill that streamlines the throwaway demo page workflow. Currently this is a manual loop: create route, create component, wire into App.vue, add test for coverage gate, tear down after. A skill could automate the scaffolding and teardown, letting agents focus on the actual variant code. User has additional ideas to add separately.
+Create a `/demo` skill that streamlines the throwaway demo page workflow. Currently this is a manual loop: create route, create component, wire into App.vue, add test for coverage gate, tear down after. A skill could automate the scaffolding and teardown, letting agents focus on the actual variant code. User has additional ideas to add separately.\n\nDepends on PF-102 (Draft status rework) — skill must reference the new status pipeline, not the deprecated `ungroomed` label.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria

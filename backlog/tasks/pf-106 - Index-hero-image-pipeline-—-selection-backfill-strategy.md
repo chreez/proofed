@@ -4,10 +4,12 @@ title: Index hero image pipeline — selection + backfill strategy
 status: To Do
 assignee: []
 created_date: '2026-02-10 05:23'
+updated_date: '2026-02-10 08:20'
 labels:
   - ungroomed
 dependencies: []
 priority: medium
+ordinal: 61000
 ---
 
 ## Description

@@ -4,11 +4,12 @@ title: Baking log — cross-recipe timeline
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:46'
-updated_date: '2026-02-07 00:16'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
 dependencies: []
 priority: medium
+ordinal: 1000
 ---
 
 ## Description

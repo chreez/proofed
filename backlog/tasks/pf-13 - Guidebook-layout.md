@@ -4,12 +4,13 @@ title: Guidebook layout
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:47'
-updated_date: '2026-02-07 01:54'
+updated_date: '2026-02-10 08:20'
 labels:
   - ux
   - ungroomed
 dependencies: []
 priority: low
+ordinal: 4000
 ---
 
 ## Description

@@ -4,11 +4,12 @@ title: 'Bake log: bake count + variant/version breakdown'
 status: To Do
 assignee: []
 created_date: '2026-02-07 01:42'
-updated_date: '2026-02-07 09:14'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
 dependencies: []
 priority: medium
+ordinal: 10000
 ---
 
 ## Description

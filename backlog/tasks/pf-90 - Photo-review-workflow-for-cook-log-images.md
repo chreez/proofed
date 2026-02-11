@@ -4,11 +4,13 @@ title: Photo review workflow for cook log images
 status: To Do
 assignee: []
 created_date: '2026-02-09 06:42'
+updated_date: '2026-02-10 08:20'
 labels:
   - ux
   - workflow
 dependencies: []
 priority: medium
+ordinal: 37000
 ---
 
 ## Description

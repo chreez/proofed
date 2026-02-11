@@ -4,12 +4,14 @@ title: Expand proofed. beyond cooking — multi-purpose personal site
 status: To Do
 assignee: []
 created_date: '2026-02-10 04:06'
+updated_date: '2026-02-10 08:20'
 labels:
   - ungroomed
   - architecture
   - branding
 dependencies: []
 priority: medium
+ordinal: 56000
 ---
 
 ## Description

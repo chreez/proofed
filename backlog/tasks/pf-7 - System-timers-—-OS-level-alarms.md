@@ -4,11 +4,12 @@ title: System timers — OS-level alarms
 status: To Do
 assignee: []
 created_date: '2026-02-06 18:46'
-updated_date: '2026-02-07 00:29'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
 dependencies: []
 priority: low
+ordinal: 3000
 ---
 
 ## Description

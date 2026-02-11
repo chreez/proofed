@@ -1,15 +1,16 @@
 ---
 id: PF-86
 title: Recipe hero summary section
-status: In Progress
+status: To Do
 assignee: []
 created_date: '2026-02-09 04:18'
-updated_date: '2026-02-09 06:26'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
 dependencies:
   - PF-87
 priority: medium
+ordinal: 64000
 ---
 
 ## Description

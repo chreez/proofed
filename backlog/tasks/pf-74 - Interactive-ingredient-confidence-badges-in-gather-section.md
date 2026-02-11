@@ -4,12 +4,14 @@ title: Interactive ingredient confidence badges in gather section
 status: To Do
 assignee: []
 created_date: '2026-02-08 09:19'
+updated_date: '2026-02-10 08:20'
 labels:
   - ungroomed
   - ux
   - feature
 dependencies: []
 priority: medium
+ordinal: 34000
 ---
 
 ## Description

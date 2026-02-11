@@ -4,11 +4,13 @@ title: End-of-bake completion flow
 status: To Do
 assignee: []
 created_date: '2026-02-07 04:02'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
   - ungroomed
 dependencies: []
 priority: low
+ordinal: 11000
 ---
 
 ## Description

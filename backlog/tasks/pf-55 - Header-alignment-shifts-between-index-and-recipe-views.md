@@ -4,12 +4,14 @@ title: Header alignment shifts between index and recipe views
 status: To Do
 assignee: []
 created_date: '2026-02-07 05:38'
+updated_date: '2026-02-10 08:20'
 labels:
   - bug (styling)
 dependencies: []
 references:
   - 'src/App.vue:266'
 priority: medium
+ordinal: 15000
 ---
 
 ## Description

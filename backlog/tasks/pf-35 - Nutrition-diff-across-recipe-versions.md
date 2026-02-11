@@ -4,11 +4,13 @@ title: Nutrition diff across recipe versions
 status: To Do
 assignee: []
 created_date: '2026-02-07 00:42'
+updated_date: '2026-02-10 08:20'
 labels:
   - feature
   - ungroomed
 dependencies: []
 priority: low
+ordinal: 7000
 ---
 
 ## Description
