@@ -222,7 +222,8 @@ The agent once wrote `"TJ's low-moisture mozzarella was too moist to shred"` whe
 ### Processing
 1. Copy source photos to `photos-source/{recipe-id}/{date}/` with descriptive filenames
 2. Run `npm run photos photos-source/{recipe-id}/{date}/`
-3. Pipeline outputs 800w + 400w WebP to `public/images/{recipe-id}/{date}/`
+3. Pipeline outputs 800w + 400w WebP + `manifest.json` to `public/images/{recipe-id}/{date}/`
+4. Run `/review-photos {recipe-id} {date}` — generates AI summaries and opens review page
 
 ### Hero Image Selection
 - **Hero = last photo in the `photos` array** (CookLogSection renders it full-width)
@@ -231,12 +232,13 @@ The agent once wrote `"TJ's low-moisture mozzarella was too moist to shred"` whe
 - **Properties to match**: subject centered, finished product clearly visible, sharp focus, good color
 - **Not hero material**: process shots, blurry action shots, cluttered backgrounds
 
-### Review Workflow (until PF-90 automates this)
-1. Process all photos through pipeline
-2. Present numbered list to user with alt descriptions
-3. User picks hero, excludes bad shots, reorders
-4. Wire approved photos into cook_log JSON
-5. Open recipe page for visual HITL review before commit
+### Review Workflow
+1. Process photos through pipeline (`npm run photos`)
+2. Run `/review-photos {recipe-id} {date}` — agent generates summaries via vision
+3. User reviews on `/review/photos/{recipe-id}/{date}` — tags hero, step, process, exclude
+4. User clicks "Copy feedback to clipboard" → JSON payload
+5. Wire approved photos into cook_log JSON using feedback payload
+6. Open recipe page for visual HITL review before commit
 
 ### Alt Text
 - Descriptive, first-person context (what the photo shows in the bake)

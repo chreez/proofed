@@ -1,10 +1,10 @@
 ---
 id: PF-119
 title: Review Photos skill — agent-generated summaries via vision
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-11 19:54'
-updated_date: '2026-02-11 19:59'
+updated_date: '2026-02-11 20:30'
 labels:
   - feature
   - skill
@@ -30,3 +30,9 @@ priority: medium
 - [ ] #7 After summaries are written, skill opens the review page URL (/review/photos/{recipeId}/{date}) for user review
 - [ ] #8 npm run build passes
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Demo Spike Result (PF-119.1)\n\n**Winner:** Targeted context + Neutral descriptive\n\n- **Context level:** Targeted — stage names, state descriptions, matching cook_log entry (notes, step_notes, existing photos)\n- **Voice:** Neutral descriptive — factual, describes what's visible, references recipe stage when identifiable. No personal pronouns, no inferred personal details.\n- **Why:** Safe from Mozzarella Rule violations. User adds personal voice during review. Agent describes what it sees + maps to recipe stages using context.\n\n**Example output:** \"Pressing brown sugar–cinnamon filling into buttered dough by hand, spreading to edges.\""
+<!-- SECTION:NOTES:END -->
