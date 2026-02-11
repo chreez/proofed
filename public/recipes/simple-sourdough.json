@@ -1,0 +1,680 @@
+{
+  "meta": {
+    "name": "Simple Sourdough Bread",
+    "source": {
+      "name": "proofed. Research Synthesis",
+      "type": "original",
+      "author": "9-agent parallel research, 100+ sources",
+      "accessed": "2026-02-11"
+    },
+    "yields": "1 loaf (~800g baked)",
+    "total_time": "~20 hrs (15 min active)",
+    "description": "A beginner-friendly overnight sourdough boule. Four ingredients, 70% hydration, stretch-and-fold method, overnight room-temperature bulk ferment, cold proof, Dutch oven bake. Optimized for simplicity without sacrificing quality."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-11",
+      "summary": "Initial recipe from multi-agent research synthesis (9 agents, 100+ sources, 335+ tool uses)"
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Mixing → bulk ferment"
+    },
+    {
+      "id": "V2",
+      "name": "Proofing Bowl (lined with towel)",
+      "reuse": "Shaping → cold proof"
+    },
+    {
+      "id": "V3",
+      "name": "Dutch Oven with Lid"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Mixing Bowl",
+          "Proofing Bowl (lined with towel)",
+          "Dutch Oven with Lid"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Fork or Spatula",
+          "Bench Scraper",
+          "Bread Lame or Sharp Knife",
+          "Parchment Paper",
+          "Plastic Wrap",
+          "Wire Rack",
+          "Clean Linen or Cotton Towel",
+          "Rice Flour (for dusting towel)"
+        ],
+        "ingredients": [
+          {
+            "id": "bread_flour",
+            "name": "Bread Flour",
+            "total": 500,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+            "confidence": "high",
+            "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 350,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+            "confidence": "high",
+            "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Tap water is fine."
+          },
+          {
+            "id": "starter",
+            "name": "Active Sourdough Starter",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+            "confidence": "high",
+            "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Universal consensus across all sources",
+            "confidence": "high",
+            "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+          }
+        ]
+      },
+      "states": [
+        "PREP_WORKSPACE"
+      ]
+    },
+    {
+      "id": "MIX",
+      "title": "Mix Dough",
+      "gather": null,
+      "states": [
+        "COMBINE_INGREDIENTS"
+      ]
+    },
+    {
+      "id": "STRETCH_FOLD",
+      "title": "Stretch & Fold",
+      "gather": null,
+      "states": [
+        "FOLD_1",
+        "REST_1",
+        "FOLD_2",
+        "REST_2",
+        "FOLD_3"
+      ]
+    },
+    {
+      "id": "BULK_FERMENT",
+      "title": "Bulk Ferment (Overnight)",
+      "gather": null,
+      "states": [
+        "OVERNIGHT_BULK"
+      ]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Shape",
+      "gather": null,
+      "states": [
+        "TURN_OUT",
+        "ENVELOPE_FOLD",
+        "BUILD_TENSION",
+        "INTO_BASKET"
+      ]
+    },
+    {
+      "id": "COLD_PROOF",
+      "title": "Cold Proof",
+      "gather": null,
+      "states": [
+        "REFRIGERATE"
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": [
+        "PREHEAT",
+        "SCORE",
+        "BAKE_COVERED",
+        "BAKE_UNCOVERED"
+      ]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "gather": null,
+      "states": [
+        "COOL_ON_RACK"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out bread flour, water, starter, and salt into separate containers.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed, vessels and equipment laid out",
+      "notes": [
+        {
+          "text": "Starter must be active and bubbly — should have doubled within 4-8 hours of its last feeding",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If starter hasn't doubled, add 1/8 tsp instant yeast to the dough as insurance — King Arthur and The Perfect Loaf both endorse this",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "COMBINE_INGREDIENTS",
+      "title": "Combine All Ingredients",
+      "direction": "In the large mixing bowl (V1), combine 350g water and 100g active starter. Stir to dissolve. Add 500g bread flour and 10g salt. Mix with a fork or spatula until no dry flour remains — a shaggy, rough mass.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Water", "amount": "350g" },
+        { "name": "Active Sourdough Starter", "amount": "100g" },
+        { "name": "Bread Flour", "amount": "500g" },
+        { "name": "Fine Sea Salt", "amount": "10g" }
+      ],
+      "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
+      "notes": [
+        {
+          "text": "No autolyse needed — research confirms mixing everything at once produces nearly identical results for a basic white flour loaf at 70% hydration",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Do not knead. Just stir until combined. Gluten will develop through stretch-and-fold and time.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FOLD_1",
+      "title": "Stretch & Fold — Set 1",
+      "direction": "With a wet hand, grab the north side of the dough, stretch it up as far as it will go without tearing, and fold it over the center. Rotate the bowl 90 degrees and repeat for all 4 sides (north, east, south, west). Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 4 sides stretched and folded, dough is in a rough package",
+      "notes": [
+        {
+          "text": "Wet your hand first to prevent sticking — do not flour",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "technique_url": "https://www.theperfectloaf.com/how-to-stretch-and-fold-sourdough-bread-dough/"
+    },
+    {
+      "id": "REST_1",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "FOLD_2",
+      "title": "Stretch & Fold — Set 2",
+      "direction": "Repeat stretch and fold: wet hand, grab one side, stretch up, fold over center. All 4 sides. Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 4 sides stretched and folded, dough feels slightly stronger and smoother",
+      "notes": null
+    },
+    {
+      "id": "REST_2",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "FOLD_3",
+      "title": "Stretch & Fold — Set 3",
+      "direction": "Final stretch and fold: wet hand, all 4 sides. The dough should now feel noticeably smoother and more elastic than the first set. Cover tightly with plastic wrap.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth and elastic, covered tightly for overnight bulk",
+      "notes": [
+        {
+          "text": "3 sets is sufficient — research shows diminishing returns above 3-4 for most doughs. This is 90 seconds of total work.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "OVERNIGHT_BULK",
+      "title": "Overnight Bulk Ferment",
+      "direction": "Leave the covered bowl on the counter at room temperature overnight (8-12 hours). The dough ferments while you sleep.",
+      "duration_min": 600,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has increased 50-75% in volume, surface is domed with visible bubbles, jiggles when bowl is shaken",
+      "notes": [
+        {
+          "text": "Watch the dough, not the clock. At 75°F (24°C) this takes ~8 hours. At 65°F (18°C) it could take 12+ hours. The visual cues matter more than time.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If dough has more than doubled and looks very puffy with large bubbles, it may be over-fermented. Shape immediately and bake sooner. Worst case: flatten into a pan and bake as focaccia.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "TURN_OUT",
+      "title": "Turn Out Dough",
+      "direction": "Lightly flour the counter. Gently scrape the fermented dough out of the bowl onto the floured surface. Sprinkle a light dusting of flour on top of the dough.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is on the floured counter, right-side up",
+      "notes": null
+    },
+    {
+      "id": "ENVELOPE_FOLD",
+      "title": "Envelope Fold",
+      "direction": "Flip the dough over so the sticky side faces up. Fold like an envelope: bottom edge up to center, left side over to center, right side over to center, top edge down to center. Flip the whole package seam-side down onto a clean, UNFLOURED section of counter.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is folded into a rough round, seam-side down on unfloured surface",
+      "notes": null,
+      "technique_url": "https://www.theclevercarrot.com/2020/07/how-to-shape-a-round-sourdough-boule/"
+    },
+    {
+      "id": "BUILD_TENSION",
+      "title": "Build Surface Tension",
+      "direction": "Cup your hands around the dough (palms don't touch the top). Gently drag it toward you in a short motion — the bottom grips the unfloured surface and tucks under, creating tension on top. Rotate a quarter turn. Repeat 4-6 times until the top is smooth and taut, like a stretched balloon.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough surface is smooth, taut, and rounded with visible surface tension",
+      "notes": [
+        {
+          "text": "The unfloured counter is intentional — friction between the dough and counter creates the tension. Do not flour here.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If the dough tears, stop. Let it rest 5 minutes and try again with fewer, gentler drags.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "INTO_BASKET",
+      "title": "Into Proofing Basket",
+      "direction": "Dust the towel-lined proofing bowl (V2) generously with rice flour. Using a bench scraper, lift the shaped dough and place it seam-side UP into the bowl. If the seam has opened, pinch it closed. Cover with plastic wrap.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is seam-side up in floured, towel-lined bowl, covered with plastic wrap",
+      "notes": [
+        {
+          "text": "Rice flour is best for dusting — it's gluten-free so it won't stick to the dough. Regular flour works but rice flour is more reliable.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "No banneton? A medium mixing bowl lined with a thin cotton or linen towel works perfectly.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "REFRIGERATE",
+      "title": "Cold Proof in Fridge",
+      "direction": "Place the covered bowl in the refrigerator. Cold proof for 1-24 hours. The fridge slows fermentation, develops flavor, and makes the dough easier to score.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has been in fridge at least 1 hour (up to 24 hours). Begin preheating oven when ready to bake.",
+      "notes": [
+        {
+          "text": "The fridge is your pause button. Shaped dough can sit 1-48 hours. Bake whenever it's convenient.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Longer cold proof = more tangy, complex flavor. 12-18 hours is the sweet spot for overnight.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT",
+      "title": "Preheat Oven + Dutch Oven",
+      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 450°F (230°C) for at least 45 minutes. The heavy pot needs time to fully saturate with heat.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven at 450°F (230°C) for at least 45 minutes, Dutch oven fully preheated",
+      "notes": [
+        {
+          "text": "Start preheating while the dough is still in the fridge. Do NOT let the dough warm up — bake straight from cold.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "SCORE",
+      "title": "Score the Dough",
+      "direction": "Remove dough from fridge. Turn out onto a sheet of parchment paper (it will release from the floured towel). Using a bread lame or sharp knife, score an X pattern across the top — two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough scored with clean X pattern on parchment paper, ready for Dutch oven",
+      "notes": [
+        {
+          "text": "Score the dough cold — cold dough is firm and scores cleanly. Warm dough drags and tears.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Hold the blade at 90 degrees (straight down) for a boule. Deeper than you think — about 1 cm.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BAKE_COVERED",
+      "title": "Bake — Covered",
+      "direction": "Carefully remove the preheated Dutch oven. Lower the scored dough into the pot using the parchment as a sling. Cover with the lid. Return to oven. Bake at 450°F (230°C) for 20 minutes.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "20 minutes elapsed with lid on",
+      "notes": [
+        {
+          "text": "The lid traps steam from the dough, keeping the crust pliable for maximum oven spring and creating a glossy, blistered crust",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Be extremely careful — the Dutch oven is 450°F. Use oven mitts and move deliberately.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BAKE_UNCOVERED",
+      "title": "Bake — Uncovered",
+      "direction": "Remove the lid from the Dutch oven. Continue baking uncovered at 450°F (230°C) for 20-25 minutes until the crust is deep golden brown.",
+      "duration_min": 22,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Crust is deep golden brown, bread sounds hollow when tapped on the bottom, internal temp 205°F (96°C)",
+      "notes": [
+        {
+          "text": "Don't pull it early because it looks dark — a deep brown crust has the best flavor and crunch. Pale = undercooked.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "COOL_ON_RACK",
+      "title": "Cool on Rack",
+      "direction": "Remove the loaf from the Dutch oven and place on a wire rack. Let cool for at least 1 hour before slicing. The bread is still cooking internally as it cools.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Bread has cooled at least 1 hour, no longer hot to the touch",
+      "notes": [
+        {
+          "text": "Cutting too early = gummy interior. The starches are still setting as the bread cools. This is the hardest part — resist the urge.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "You'll hear the crust crackling as it cools. That's normal — it's called \"singing\" and means the crust is crisping up.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    }
+  ],
+  "nutrition": {
+    "servings": 10,
+    "servingSize": "1 slice",
+    "calculatedDate": "2026-02-11",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 1985.5,
+      "protein": 65.9,
+      "totalFat": 9.1,
+      "saturatedFat": 1.3,
+      "carbohydrates": 399.0,
+      "sugar": 1.5,
+      "fiber": 13.2,
+      "sodium": 3888.3
+    },
+    "perServing": {
+      "calories": 198.6,
+      "protein": 6.6,
+      "totalFat": 0.9,
+      "saturatedFat": 0.1,
+      "carbohydrates": 39.9,
+      "sugar": 0.2,
+      "fiber": 1.3,
+      "sodium": 388.8
+    },
+    "breakdown": [
+      {
+        "ingredientId": "bread_flour",
+        "ingredientName": "Bread Flour",
+        "amount": 500,
+        "fdcId": 168896,
+        "calories": 1805.0,
+        "protein": 59.9,
+        "totalFat": 8.3,
+        "saturatedFat": 1.2,
+        "carbohydrates": 362.7,
+        "sugar": 1.4,
+        "fiber": 12.0,
+        "sodium": 10.0
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 350,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1.4
+      },
+      {
+        "ingredientId": "sourdough_starter",
+        "ingredientName": "Sourdough Starter (100% hydration)",
+        "amount": 100,
+        "fdcId": null,
+        "calories": 180.5,
+        "protein": 6.0,
+        "totalFat": 0.8,
+        "saturatedFat": 0.1,
+        "carbohydrates": 36.3,
+        "sugar": 0.1,
+        "fiber": 1.2,
+        "sodium": 1.0
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 10,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3875.9
+      }
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "name": "The Pantry Mama",
+        "url": "https://www.pantrymama.com/",
+        "type": "adapted",
+        "author": "The Pantry Mama"
+      },
+      {
+        "name": "Alexandra's Kitchen",
+        "url": "https://alexandracooks.com/2017/10/24/artisan-sourdough-made-simple-sourdough-bread-demystified-a-beginners-guide-to-sourdough-baking/",
+        "type": "adapted",
+        "author": "Alexandra Stafford"
+      },
+      {
+        "name": "King Arthur Baking",
+        "url": "https://www.kingarthurbaking.com/learn/guides/sourdough",
+        "type": "adapted"
+      },
+      {
+        "name": "The Perfect Loaf",
+        "url": "https://www.theperfectloaf.com/beginners-sourdough-bread/",
+        "type": "adapted",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "The Clever Carrot",
+        "url": "https://www.theclevercarrot.com/2014/01/sourdough-bread-a-beginners-guide/",
+        "type": "adapted"
+      },
+      {
+        "name": "Feasting at Home",
+        "url": "https://www.feastingathome.com/sourdough-bread/",
+        "type": "adapted"
+      }
+    ],
+    "techniques": [
+      {
+        "name": "70% hydration",
+        "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf",
+        "rationale": "Beginner sweet spot — manageable handling with good open crumb. 8 of 8 beginner-focused sources recommend 70% for first-timers.",
+        "confidence": "high"
+      },
+      {
+        "name": "20% starter inoculation",
+        "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+        "rationale": "Higher than traditional 10% for insurance with potentially sluggish new starter. More predictable fermentation timing.",
+        "confidence": "high"
+      },
+      {
+        "name": "No autolyse (mix all at once)",
+        "sourcedFrom": "Process optimization agent — Grant Bakes, Jenny Blogs, Alexandra's Kitchen",
+        "rationale": "Research confirms mixing everything at once produces nearly identical results for basic white flour at 70% hydration. Eliminates one step.",
+        "confidence": "high"
+      },
+      {
+        "name": "3 stretch-and-fold sets",
+        "sourcedFrom": "The Fresh Loaf, Foodbod, The Perfect Loaf",
+        "rationale": "Diminishing returns above 3-4 sets. 90 seconds total investment for major structural improvement.",
+        "confidence": "high"
+      },
+      {
+        "name": "Overnight room-temp bulk ferment",
+        "sourcedFrom": "Feasting at Home, Country Roads, Pantry Mama",
+        "rationale": "Best fit for evening-mix, morning-shape schedule. 8-12 hours unattended fermentation.",
+        "confidence": "high"
+      },
+      {
+        "name": "Envelope fold + drag shaping",
+        "sourcedFrom": "The Clever Carrot, Challenger Breadware, The Perfect Loaf",
+        "rationale": "Most beginner-friendly boule shaping method. Single shape (no pre-shape) is sufficient at 70% hydration.",
+        "confidence": "high"
+      },
+      {
+        "name": "Cold proof after shaping",
+        "sourcedFrom": "Universal consensus across all 9 research agents",
+        "rationale": "Improves flavor (acetic acid), makes scoring easier (cold dough), increases oven spring (cold-to-hot shock), and provides schedule flexibility.",
+        "confidence": "high"
+      },
+      {
+        "name": "Bake straight from fridge",
+        "sourcedFrom": "Pantry Mama, Alexandra's Kitchen, The Sourdough Journey",
+        "rationale": "Cold dough + hot Dutch oven = maximum oven spring. Cold dough scores cleanly.",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "9-agent parallel research: beginner recipes, overnight proof technique, starter readiness, baking vessel alternatives, technique science, community intel, flour & ingredients, shaping & scoring, process optimization",
+    "sourceCount": 100,
+    "date": "2026-02-11"
+  }
+}
