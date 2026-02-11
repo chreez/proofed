@@ -25,7 +25,7 @@ Each recipe is a standalone JSON file following a strict schema: ingredients in 
 ```
 public/recipes/
 ├── index.json              # recipe manifest
-├── atk-cinnamon-buns.json  # recipe data
+├── atk-cinnamon-buns-ultimate.json  # recipe data
 └── ...
 ```
 

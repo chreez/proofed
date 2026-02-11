@@ -35,7 +35,6 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | D10 | Critical notes styled | `critical: true` notes render with danger styling | `src/components/StateStep.vue` |
 | D11 | Auto-advance works | Stage collapses when complete, next expands | `src/composables/useProgress.ts` |
 | D14 | Version summaries | Every `change_log` entry has non-empty `summary` | `public/recipes/*.json` |
-| D15 | Family variants linked | All `families[].variants[].recipeId` exist in `recipes[]` | `public/recipes/index.json` |
 | D16 | Nutrition required | All recipes must include a `nutrition` block with non-null `totals` and `perServing` | `public/recipes/*.json` |
 
 ## Recipe Accuracy Checks
@@ -134,7 +133,7 @@ When running validation:
 
 1. Read this checklist first
 2. For each check category, spawn appropriate subagent:
-   - **Design checks (D1-D15)**: Read recipe JSON and component files, verify compliance
+   - **Design checks (D1-D14, D16)**: Read recipe JSON and component files, verify compliance
    - **Recipe accuracy (R1-R8)**: Compare recipe JSON against original source text
    - **Source schema (S1-S5)**: Verify structured source fields in recipe JSON
    - **Feature checks (F1-Fn)**: Verify feature implementation in relevant files

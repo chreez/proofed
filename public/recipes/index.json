@@ -1,18 +1,5 @@
 {
-  "families": [
-    {
-      "id": "atk-cinnamon-buns",
-      "name": "ATK Cinnamon Buns",
-      "variants": [
-        { "id": "quick", "recipeId": "atk-cinnamon-buns", "label": "Quick" },
-        { "id": "overnight", "recipeId": "atk-cinnamon-buns-overnight", "label": "Overnight" },
-        { "id": "ultimate", "recipeId": "atk-cinnamon-buns-ultimate", "label": "Ultimate" }
-      ]
-    }
-  ],
   "recipes": [
-    { "id": "atk-cinnamon-buns", "name": "ATK Cinnamon Buns (Quick)", "file": "atk-cinnamon-buns.json" },
-    { "id": "atk-cinnamon-buns-overnight", "name": "ATK Cinnamon Buns (Overnight)", "file": "atk-cinnamon-buns-overnight.json" },
     { "id": "atk-cinnamon-buns-ultimate", "name": "ATK Ultimate Cinnamon Buns", "file": "atk-cinnamon-buns-ultimate.json" },
     { "id": "tartine-baguette", "name": "Tartine Baguette", "file": "tartine-baguette.json" },
     { "id": "coco-curry", "name": "CoCo Ichibanya-Style Japanese Curry", "file": "coco-curry.json" },

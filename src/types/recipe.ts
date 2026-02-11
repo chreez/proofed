@@ -193,22 +193,9 @@ export interface CookLogEntry {
   photos?: CookLogPhoto[]
 }
 
-// Recipe manifest with family grouping
+// Recipe manifest
 export interface RecipeManifest {
-  families?: RecipeFamily[]
   recipes: RecipeEntry[]
-}
-
-export interface RecipeFamily {
-  id: string
-  name: string
-  variants: RecipeFamilyVariant[]
-}
-
-export interface RecipeFamilyVariant {
-  id: string
-  recipeId: string
-  label: string
 }
 
 export interface RecipeEntry {

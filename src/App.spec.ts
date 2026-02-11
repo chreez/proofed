@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
-import { ref, computed, nextTick } from 'vue'
+import { ref, nextTick } from 'vue'
 import { createRouter, createMemoryHistory } from 'vue-router'
 import App from './App.vue'
 
@@ -20,14 +20,6 @@ vi.mock('@/components/RecipeIndex.vue', () => ({
     name: 'RecipeIndex',
     emits: ['select'],
     template: '<div class="recipe-index-stub" @click="$emit(\'select\', \'test-recipe\')">Index</div>'
-  }
-}))
-vi.mock('@/components/VariantTabs.vue', () => ({
-  default: {
-    name: 'VariantTabs',
-    props: ['familyId'],
-    emits: ['select'],
-    template: '<div class="variant-tabs-stub">{{ familyId }}</div>'
   }
 }))
 vi.mock('@/components/CookLogSection.vue', () => ({
@@ -72,7 +64,6 @@ vi.mock('@/composables/useTechniques', () => ({
 
 const mockCurrentRecipe = ref<any>(null)
 const mockCurrentRecipeId = ref<string | null>(null)
-const mockCurrentFamily = ref<any>(null)
 const mockLoading = ref(false)
 const mockLoadManifest = vi.fn()
 const mockLoadRecipe = vi.fn()
@@ -81,7 +72,6 @@ vi.mock('@/composables/useRecipe', () => ({
   useRecipe: () => ({
     currentRecipe: mockCurrentRecipe,
     currentRecipeId: mockCurrentRecipeId,
-    currentFamily: mockCurrentFamily,
     loading: mockLoading,
     loadManifest: mockLoadManifest,
     loadRecipe: mockLoadRecipe
@@ -133,8 +123,7 @@ function makeRouter() {
     routes: [
       { path: '/', name: 'index', component: { template: '<div />' } },
       { path: '/recipe/:recipeId', name: 'recipe', component: { template: '<div />' } },
-      { path: '/about', name: 'about', component: { template: '<div />' } },
-      { path: '/demo/index-variants', name: 'demo-index-variants', component: { template: '<div />' } }
+      { path: '/about', name: 'about', component: { template: '<div />' } }
     ]
   })
 }
@@ -225,7 +214,6 @@ describe('App', () => {
     vi.clearAllMocks()
     mockCurrentRecipe.value = null
     mockCurrentRecipeId.value = null
-    mockCurrentFamily.value = null
     mockLoading.value = false
     mockHasProgress.value = false
     lastObserverInstance = null
@@ -285,28 +273,6 @@ describe('App', () => {
     expect(wrapper.find('.cook-log-stub').exists()).toBe(true)
     expect(wrapper.find('.version-timeline-stub').exists()).toBe(true)
     expect(wrapper.find('.toc-sidebar-stub').exists()).toBe(true)
-  })
-
-  it('does not render VariantTabs when no family', async () => {
-    mockCurrentRecipe.value = makeRecipe()
-    mockCurrentRecipeId.value = 'test-recipe'
-    mockCurrentFamily.value = null
-
-    const { wrapper } = await mountApp('/recipe/test-recipe')
-    await nextTick()
-
-    expect(wrapper.find('.variant-tabs-stub').exists()).toBe(false)
-  })
-
-  it('renders VariantTabs when family exists', async () => {
-    mockCurrentRecipe.value = makeRecipe()
-    mockCurrentRecipeId.value = 'test-recipe'
-    mockCurrentFamily.value = { id: 'cinnamon-buns', variants: [] }
-
-    const { wrapper } = await mountApp('/recipe/test-recipe')
-    await nextTick()
-
-    expect(wrapper.find('.variant-tabs-stub').exists()).toBe(true)
   })
 
   it('does not render CookLogSection when cook_log is empty', async () => {

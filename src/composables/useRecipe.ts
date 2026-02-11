@@ -1,5 +1,5 @@
 import { ref, computed } from 'vue'
-import type { Recipe, RecipeManifest, RecipeFamily, RecipeSource } from '@/types/recipe'
+import type { Recipe, RecipeManifest, RecipeSource } from '@/types/recipe'
 
 /** Normalize meta.source: plain string → { name } object; already-structured passes through. */
 export function normalizeSource(source: unknown): RecipeSource | undefined {
@@ -14,7 +14,6 @@ export function normalizeSource(source: unknown): RecipeSource | undefined {
 const manifest = ref<RecipeManifest | null>(null)
 const currentRecipe = ref<Recipe | null>(null)
 const currentRecipeId = ref<string | null>(null)
-const families = ref<RecipeFamily[]>([])
 const loading = ref(false)
 const error = ref<string | null>(null)
 
@@ -22,24 +21,10 @@ export function useRecipe() {
   const recipeList = computed(() => manifest.value?.recipes ?? [])
   const hasRecipe = computed(() => currentRecipe.value !== null)
 
-  const currentFamily = computed(() => {
-    if (!currentRecipeId.value) return null
-    return families.value.find(family =>
-      family.variants.some(v => v.recipeId === currentRecipeId.value)
-    ) ?? null
-  })
-
-  function getFamilyForRecipe(recipeId: string): RecipeFamily | null {
-    return families.value.find(family =>
-      family.variants.some(v => v.recipeId === recipeId)
-    ) ?? null
-  }
-
   async function loadManifest() {
     try {
       const response = await fetch('/recipes/index.json')
       manifest.value = await response.json()
-      families.value = manifest.value?.families ?? []
     } catch (e) {
       error.value = 'Failed to load recipe list'
     }
@@ -82,15 +67,12 @@ export function useRecipe() {
     manifest,
     currentRecipe,
     currentRecipeId,
-    families,
     loading,
     error,
     recipeList,
     hasRecipe,
-    currentFamily,
     loadManifest,
     loadRecipe,
-    restoreLastRecipe,
-    getFamilyForRecipe
+    restoreLastRecipe
   }
 }

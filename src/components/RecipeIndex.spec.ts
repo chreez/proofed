@@ -4,26 +4,14 @@ import { ref } from 'vue'
 import RecipeIndex from './RecipeIndex.vue'
 
 // Mock the useRecipe composable
-const mockFamilies = ref([
-  {
-    id: 'cinnamon-buns',
-    name: 'ATK Cinnamon Buns',
-    variants: [
-      { id: 'quick', recipeId: 'atk-cinnamon-buns-quick', label: 'Quick (Same Day)' },
-      { id: 'overnight', recipeId: 'atk-cinnamon-buns-overnight', label: 'Overnight' }
-    ]
-  }
-])
-
 const mockRecipeList = ref([
-  { id: 'atk-cinnamon-buns-quick', name: 'ATK Cinnamon Buns (Quick)', file: 'atk-cinnamon-buns-quick.json' },
-  { id: 'atk-cinnamon-buns-overnight', name: 'ATK Cinnamon Buns (Overnight)', file: 'atk-cinnamon-buns-overnight.json' },
+  { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', file: 'atk-cinnamon-buns-ultimate.json' },
+  { id: 'tartine-baguette', name: 'Tartine Baguette', file: 'tartine-baguette.json' },
   { id: 'standalone-recipe', name: 'Standalone Recipe', file: 'standalone.json' }
 ])
 
 vi.mock('@/composables/useRecipe', () => ({
   useRecipe: () => ({
-    families: mockFamilies,
     recipeList: mockRecipeList
   })
 }))
@@ -67,34 +55,18 @@ describe('RecipeIndex', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     global.fetch = makeFetchMock()
-    mockFamilies.value = [
-      {
-        id: 'cinnamon-buns',
-        name: 'ATK Cinnamon Buns',
-        variants: [
-          { id: 'quick', recipeId: 'atk-cinnamon-buns-quick', label: 'Quick (Same Day)' },
-          { id: 'overnight', recipeId: 'atk-cinnamon-buns-overnight', label: 'Overnight' }
-        ]
-      }
-    ]
     mockRecipeList.value = [
-      { id: 'atk-cinnamon-buns-quick', name: 'ATK Cinnamon Buns (Quick)', file: 'atk-cinnamon-buns-quick.json' },
-      { id: 'atk-cinnamon-buns-overnight', name: 'ATK Cinnamon Buns (Overnight)', file: 'atk-cinnamon-buns-overnight.json' },
+      { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', file: 'atk-cinnamon-buns-ultimate.json' },
+      { id: 'tartine-baguette', name: 'Tartine Baguette', file: 'tartine-baguette.json' },
       { id: 'standalone-recipe', name: 'Standalone Recipe', file: 'standalone.json' }
     ]
   })
 
-  it('renders family name as timeline item', async () => {
+  it('renders recipe names as timeline items', async () => {
     const wrapper = mount(RecipeIndex)
     await flushPromises()
 
-    expect(wrapper.text()).toContain('ATK Cinnamon Buns')
-  })
-
-  it('renders standalone recipe as timeline item', async () => {
-    const wrapper = mount(RecipeIndex)
-    await flushPromises()
-
+    expect(wrapper.text()).toContain('ATK Ultimate Cinnamon Buns')
     expect(wrapper.text()).toContain('Standalone Recipe')
   })
 
@@ -117,20 +89,6 @@ describe('RecipeIndex', () => {
     expect(wrapper.emitted('select')).toBeTruthy()
   })
 
-  it('emits first variant recipeId for family items', async () => {
-    const wrapper = mount(RecipeIndex)
-    await flushPromises()
-
-    // Find the family item (ATK Cinnamon Buns)
-    const familyItem = wrapper.findAll('.timeline-item').find(el =>
-      el.text().includes('ATK Cinnamon Buns')
-    )
-    expect(familyItem).toBeTruthy()
-    await familyItem!.trigger('click')
-
-    expect(wrapper.emitted('select')![0]).toEqual(['atk-cinnamon-buns-quick'])
-  })
-
   it('emits recipe id for standalone items', async () => {
     const wrapper = mount(RecipeIndex)
     await flushPromises()
@@ -142,13 +100,6 @@ describe('RecipeIndex', () => {
     await standaloneItem!.trigger('click')
 
     expect(wrapper.emitted('select')![0]).toEqual(['standalone-recipe'])
-  })
-
-  it('shows variant count for families', async () => {
-    const wrapper = mount(RecipeIndex)
-    await flushPromises()
-
-    expect(wrapper.text()).toContain('2 variants')
   })
 
   it('fetches recipe meta for all recipes', async () => {
@@ -169,7 +120,7 @@ describe('RecipeIndex', () => {
     await flushPromises()
 
     // Component should still render without crashing
-    expect(wrapper.text()).toContain('ATK Cinnamon Buns')
+    expect(wrapper.text()).toContain('ATK Ultimate Cinnamon Buns')
   })
 
   it('shows description from meta when available', async () => {
@@ -201,7 +152,6 @@ describe('RecipeIndex', () => {
 
   it('sorts baked recipes before unbaked within category', async () => {
     // Set up two standalone recipes in the same category
-    mockFamilies.value = []
     mockRecipeList.value = [
       { id: 'recipe-a', name: 'Alpha Recipe', file: 'alpha.json' },
       { id: 'recipe-b', name: 'Beta Recipe', file: 'beta.json' }

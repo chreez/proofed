@@ -9,7 +9,6 @@ import type { RecipeState } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import StageCard from '@/components/StageCard.vue'
 import RecipeIndex from '@/components/RecipeIndex.vue'
-import VariantTabs from '@/components/VariantTabs.vue'
 import CookLogSection from '@/components/CookLogSection.vue'
 import VersionTimeline from '@/components/VersionTimeline.vue'
 import TocSidebar from '@/components/TocSidebar.vue'
@@ -24,7 +23,7 @@ const route = useRoute()
 const router = useRouter()
 
 const { loadTechniques } = useTechniques()
-const { currentRecipe, currentRecipeId, currentFamily, loading, loadManifest, loadRecipe } = useRecipe()
+const { currentRecipe, currentRecipeId, loading, loadManifest, loadRecipe } = useRecipe()
 
 useRecipeMeta(
   () => currentRecipe.value,
@@ -353,12 +352,6 @@ function handleTocNavigate(target: string) {
               :summary="currentRecipe.summary"
               :recipe="currentRecipe"
               class="mb-6"
-            />
-
-            <VariantTabs
-              v-if="currentFamily"
-              :family-id="currentFamily.id"
-              @select="handleRecipeSelect"
             />
 
             <div class="space-y-4">

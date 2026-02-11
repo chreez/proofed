@@ -15,7 +15,7 @@ Run comprehensive validation against the Bake Workflow spec.
 
 ```
 /validate                    # Validate all recipes and components
-/validate atk-cinnamon-buns  # Validate specific recipe
+/validate atk-cinnamon-buns-ultimate  # Validate specific recipe
 ```
 
 ## Execution Steps
@@ -78,7 +78,7 @@ If validation reveals missing checks, propose additions to:
 
 ## Arguments
 
-- `$ARGUMENTS[0]` - Optional recipe name to validate (e.g., `atk-cinnamon-buns`)
+- `$ARGUMENTS[0]` - Optional recipe name to validate (e.g., `atk-cinnamon-buns-ultimate`)
 - If blank, validate all recipes
 
 ## Notes

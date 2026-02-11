@@ -7,7 +7,7 @@ const emit = defineEmits<{
   select: [recipeId: string]
 }>()
 
-const { families, recipeList } = useRecipe()
+const { recipeList } = useRecipe()
 
 // --- Types ---
 
@@ -21,7 +21,6 @@ interface TimelineItem {
   id: string
   name: string
   baked: boolean
-  variantCount: number
   heroImage: string | null
   description: string | null
   routeId: string
@@ -41,7 +40,7 @@ const loaded = ref(false)
 // --- Category map (hardcoded — only ~10 recipes, pragmatic for a personal notebook) ---
 
 const categoryMap: Record<string, string> = {
-  'atk-cinnamon-buns': 'baking',
+  'atk-cinnamon-buns-ultimate': 'baking',
   'tartine-baguette': 'baking',
   'carrot-cake': 'baking',
   'ny-style-pizza': 'pizza & dough',
@@ -54,7 +53,7 @@ const categoryMap: Record<string, string> = {
 // --- Description fallbacks for recipes without meta.description ---
 
 const summaryMap: Record<string, string> = {
-  'atk-cinnamon-buns': 'Quick skillet cinnamon buns with cream cheese glaze. Baking powder + yeast hybrid for a 90-minute start-to-finish.',
+  'atk-cinnamon-buns-ultimate': 'Enriched dough, two rises, double cream cheese glaze. Stand mixer method adapted with 25% less sugar. Via America\'s Test Kitchen / Reddit.',
 }
 
 // --- Fetch recipe meta for enrichment ---
@@ -66,7 +65,7 @@ async function fetchRecipeMeta(file: string): Promise<RecipeMeta> {
     const hasCookLog = Array.isArray(data.cook_log) && data.cook_log.length > 0
     let heroThumb: string | null = null
     if (hasCookLog) {
-      const latestEntry = data.cook_log[data.cook_log.length - 1]
+      const latestEntry = data.cook_log[0]
       if (latestEntry.photos?.length) {
         const lastPhoto = latestEntry.photos[latestEntry.photos.length - 1]
         heroThumb = lastPhoto.thumb ?? null
@@ -101,55 +100,18 @@ watch(recipeList, async (list) => {
 const items = computed<TimelineItem[]>(() => {
   if (!loaded.value) return []
 
-  const familyRecipeIds = new Set<string>()
-  for (const family of families.value) {
-    for (const variant of family.variants) {
-      familyRecipeIds.add(variant.recipeId)
-    }
-  }
-
-  const result: TimelineItem[] = []
-
-  // Families: one item per family
-  for (const family of families.value) {
-    const anyBaked = family.variants.some(v => metaCache.value.get(v.recipeId)?.baked)
-    // Pick hero + description from first variant that has one
-    let heroImage: string | null = null
-    let description: string | null = null
-    for (const variant of family.variants) {
-      const meta = metaCache.value.get(variant.recipeId)
-      if (!heroImage && meta?.heroThumb) heroImage = meta.heroThumb
-      if (!description && meta?.description) description = meta.description
-    }
-    result.push({
-      id: family.id,
-      name: family.name,
-      baked: anyBaked,
-      variantCount: family.variants.length,
-      heroImage,
-      description: description ?? summaryMap[family.id] ?? null,
-      routeId: family.variants[0]?.recipeId ?? family.id,
-      category: categoryMap[family.id] ?? 'other',
-    })
-  }
-
-  // Standalone recipes (not in any family)
-  for (const recipe of recipeList.value) {
-    if (familyRecipeIds.has(recipe.id)) continue
+  return recipeList.value.map(recipe => {
     const meta = metaCache.value.get(recipe.id)
-    result.push({
+    return {
       id: recipe.id,
       name: recipe.name,
       baked: meta?.baked ?? false,
-      variantCount: 0,
       heroImage: meta?.heroThumb ?? null,
       description: meta?.description ?? summaryMap[recipe.id] ?? null,
       routeId: recipe.id,
       category: categoryMap[recipe.id] ?? 'other',
-    })
-  }
-
-  return result
+    }
+  })
 })
 
 // --- Category grouping: baked-first, then alphabetical ---
@@ -248,9 +210,6 @@ const labelVariants = {
               </div>
               <div class="timeline-meta">
                 <p v-if="item.description" class="timeline-summary">{{ item.description }}</p>
-                <div v-if="item.variantCount > 0" class="timeline-variants">
-                  {{ item.variantCount }} variant{{ item.variantCount !== 1 ? 's' : '' }}
-                </div>
               </div>
             </div>
           </div>
@@ -410,13 +369,6 @@ const labelVariants = {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.timeline-variants {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--color-stone-400);
-  margin-top: 0.375rem;
 }
 
 /* --- Loading --- */

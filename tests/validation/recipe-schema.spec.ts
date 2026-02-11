@@ -330,22 +330,6 @@ describe('Recipe Manifest Validation', () => {
     recipes = loadAllRecipes()
   })
 
-  // D15: All family variant recipeIds exist in recipes array
-  it('all family variant recipeIds exist in recipes array', () => {
-    const recipeIds = manifest.recipes.map((r) => r.id)
-
-    if (manifest.families) {
-      for (const family of manifest.families) {
-        for (const variant of family.variants) {
-          expect(
-            recipeIds.includes(variant.recipeId),
-            `Family "${family.name}" variant "${variant.label}" references non-existent recipe "${variant.recipeId}"`
-          ).toBe(true)
-        }
-      }
-    }
-  })
-
   // Verify all recipes in manifest have corresponding files
   it('all manifest recipes have corresponding files', () => {
     const loadedRecipeIds = recipes.map((r) => r.id)

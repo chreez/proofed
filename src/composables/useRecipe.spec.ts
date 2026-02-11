@@ -21,13 +21,6 @@ globalThis.fetch = mockFetch
 
 // Mock data
 const mockManifest = {
-  families: [{
-    id: 'test-family',
-    name: 'Test Family',
-    variants: [
-      { id: 'v1', recipeId: 'recipe-a', label: 'Variant A' }
-    ]
-  }],
   recipes: [
     { id: 'recipe-a', name: 'Recipe A', file: 'recipe-a.json' },
     { id: 'recipe-b', name: 'Recipe B', file: 'recipe-b.json' }
@@ -48,11 +41,10 @@ describe('useRecipe', () => {
     store = {}
 
     // Reset module-level refs by clearing them
-    const { manifest, currentRecipe, currentRecipeId, families, error } = useRecipe()
+    const { manifest, currentRecipe, currentRecipeId, error } = useRecipe()
     manifest.value = null
     currentRecipe.value = null
     currentRecipeId.value = null
-    families.value = []
     error.value = null
   })
 
@@ -68,21 +60,6 @@ describe('useRecipe', () => {
     expect(recipeList.value).toHaveLength(2)
     expect(recipeList.value[0]).toEqual({ id: 'recipe-a', name: 'Recipe A', file: 'recipe-a.json' })
     expect(recipeList.value[1]).toEqual({ id: 'recipe-b', name: 'Recipe B', file: 'recipe-b.json' })
-  })
-
-  it('populates families from manifest', async () => {
-    mockFetch.mockResolvedValueOnce({
-      json: () => Promise.resolve(mockManifest)
-    })
-
-    const { loadManifest, families } = useRecipe()
-    await loadManifest()
-
-    expect(families.value).toHaveLength(1)
-    expect(families.value[0].id).toBe('test-family')
-    expect(families.value[0].name).toBe('Test Family')
-    expect(families.value[0].variants).toHaveLength(1)
-    expect(families.value[0].variants[0].recipeId).toBe('recipe-a')
   })
 
   it('loads recipe by id', async () => {
@@ -104,41 +81,6 @@ describe('useRecipe', () => {
     expect(currentRecipe.value).toEqual(mockRecipe)
     expect(currentRecipeId.value).toBe('recipe-a')
     expect(localStorageMock.setItem).toHaveBeenCalledWith('last-recipe-id', 'recipe-a')
-  })
-
-  it('returns currentFamily for recipe in family', async () => {
-    mockFetch.mockResolvedValueOnce({
-      json: () => Promise.resolve(mockManifest)
-    })
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: () => Promise.resolve(mockRecipe)
-    })
-
-    const { loadManifest, loadRecipe, currentFamily } = useRecipe()
-    await loadManifest()
-    await loadRecipe('recipe-a')
-
-    expect(currentFamily.value).not.toBeNull()
-    expect(currentFamily.value?.id).toBe('test-family')
-    expect(currentFamily.value?.name).toBe('Test Family')
-  })
-
-  it('returns null currentFamily for standalone recipe', async () => {
-    mockFetch.mockResolvedValueOnce({
-      json: () => Promise.resolve(mockManifest)
-    })
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: () => Promise.resolve(mockRecipe)
-    })
-
-    const { loadManifest, loadRecipe, currentFamily } = useRecipe()
-    await loadManifest()
-    // recipe-b is not in any family
-    await loadRecipe('recipe-b')
-
-    expect(currentFamily.value).toBeNull()
   })
 
   it('restoreLastRecipe returns true when restored', async () => {
@@ -187,31 +129,6 @@ describe('useRecipe', () => {
     const restored = await restoreLastRecipe()
 
     expect(restored).toBe(false)
-  })
-
-  it('getFamilyForRecipe returns family for known recipe', async () => {
-    mockFetch.mockResolvedValueOnce({
-      json: () => Promise.resolve(mockManifest)
-    })
-
-    const { loadManifest, getFamilyForRecipe } = useRecipe()
-    await loadManifest()
-
-    const family = getFamilyForRecipe('recipe-a')
-    expect(family).not.toBeNull()
-    expect(family?.id).toBe('test-family')
-  })
-
-  it('getFamilyForRecipe returns null for standalone recipe', async () => {
-    mockFetch.mockResolvedValueOnce({
-      json: () => Promise.resolve(mockManifest)
-    })
-
-    const { loadManifest, getFamilyForRecipe } = useRecipe()
-    await loadManifest()
-
-    const family = getFamilyForRecipe('recipe-b')
-    expect(family).toBeNull()
   })
 
   it('sets error when manifest fetch fails', async () => {
@@ -284,16 +201,6 @@ describe('useRecipe', () => {
     expect(hasRecipe.value).toBe(true)
   })
 
-  it('handles manifest with no families property', async () => {
-    mockFetch.mockResolvedValueOnce({
-      json: () => Promise.resolve({ recipes: mockManifest.recipes })
-    })
-
-    const { loadManifest, families } = useRecipe()
-    await loadManifest()
-
-    expect(families.value).toEqual([])
-  })
 })
 
 describe('normalizeSource', () => {

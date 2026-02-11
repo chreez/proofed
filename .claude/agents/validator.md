@@ -35,7 +35,7 @@ Prompt: Read .claude/rules/validation/checklist.md, then verify checks D1-D11 ag
 ```
 Task: Validate recipe accuracy
 Agent: validator
-Prompt: Compare public/recipes/atk-cinnamon-buns.json against the original ATK recipe. Verify gram conversions, butter/salt/sugar allocations, temperature conversions.
+Prompt: Compare public/recipes/atk-cinnamon-buns-ultimate.json against the original ATK recipe. Verify gram conversions, butter/salt/sugar allocations, temperature conversions.
 ```
 
 ## Output Format
