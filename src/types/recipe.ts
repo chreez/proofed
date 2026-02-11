@@ -187,6 +187,7 @@ export interface CookLogEntry {
   date: string
   version: string
   notes: string[]
+  summary?: string
   step_notes?: Record<string, string>
   next_time?: NextTimeEntry[]
   photos?: CookLogPhoto[]

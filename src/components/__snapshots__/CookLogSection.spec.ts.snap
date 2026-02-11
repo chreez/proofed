@@ -10,20 +10,17 @@ exports[`HTML snapshot > matches snapshot 1`] = `
           <line x1="8" x2="16" y1="12" y2="12"></line>
         </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
   </div>
-  <div data-v-f626ec8a="" class="py-4 pr-4 pl-3 border-l-3 border-warning mb-4">
-    <!-- Header: date + version badge -->
-    <div data-v-f626ec8a="" class="flex items-center gap-3 mb-3"><span data-v-f626ec8a="" class="font-semibold text-stone-700">Thursday, February 5, 2026</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">v1.0.0</span></div><!-- Markdown content -->
-    <div data-v-f626ec8a="" class="prose">
-      <ul>
-        <li>Note 1</li>
-        <li>Note 2</li>
-      </ul>
-      <h4>Next Time</h4>
-      <ul>
-        <li>Try this next time</li>
-      </ul>
-    </div><!-- Photos: hero layout -->
-    <!--v-if-->
+  <div data-v-f626ec8a="" id="bake-2026-02-05" class="mb-4 scroll-mt-16 cursor-pointer transition-all">
+    <!-- ============ COLLAPSED: Variant C Hero Banner ============ -->
+    <!-- Hero banner -->
+    <!-- No-photo fallback -->
+    <div data-v-f626ec8a="" class="border-2 border-stone-200 hover:border-stone-300 transition-colors p-3">
+      <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-05 — Thursday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.0</span></div>
+      <!--v-if-->
+      <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">2 notes</span><span data-v-f626ec8a="">1 next-time</span><svg data-v-f626ec8a="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 text-stone-400 ml-auto transition-transform duration-200 lucide-chevron-down-icon lucide-chevron-down w-4 h-4 text-stone-400 ml-auto transition-transform duration-200" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg></div>
+    </div>
   </div>
   <!--teleport start-->
   <!--teleport end-->

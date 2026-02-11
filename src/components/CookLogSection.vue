@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue'
+import { ref, useTemplateRef, onMounted, nextTick } from 'vue'
 import { marked } from 'marked'
-import { Link2, Check } from 'lucide-vue-next'
+import { Link2, Check, ChevronDown } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import type { CookLogEntry, CookLogPhoto } from '@/types/recipe'
@@ -12,6 +12,17 @@ const props = defineProps<{
 }>()
 
 const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
+
+// Collapse state: all collapsed by default
+const expandedEntries = ref<Record<number, boolean>>({})
+
+function isExpanded(index: number): boolean {
+  return !!expandedEntries.value[index]
+}
+
+function toggleEntry(index: number): void {
+  expandedEntries.value[index] = !expandedEntries.value[index]
+}
 
 // Lightbox state
 const lightboxOpen = ref(false)
@@ -41,6 +52,19 @@ async function copyPermalink(): Promise<void> {
   const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
   await navigator.clipboard.writeText(url)
   linkBtn.value?.flashCopied('Copied!')
+}
+
+const entryLinkBtns = ref<Record<number, InstanceType<typeof IconButton>>>({})
+
+function setEntryLinkRef(index: number, el: unknown): void {
+  if (el) entryLinkBtns.value[index] = el as InstanceType<typeof IconButton>
+}
+
+async function copyEntryPermalink(event: MouseEvent, date: string, index: number): Promise<void> {
+  event.stopPropagation()
+  const url = `${window.location.origin}${window.location.pathname}#bake-${date}`
+  await navigator.clipboard.writeText(url)
+  entryLinkBtns.value[index]?.flashCopied('Copied!')
 }
 
 function heroPhoto(photos: CookLogPhoto[]): CookLogPhoto {
@@ -75,14 +99,31 @@ function renderNotes(entry: CookLogEntry): string {
 function formatDate(dateStr: string): string {
   const [y, m, d] = dateStr.split('-').map(Number)
   const date = new Date(y, m - 1, d)
-  return date.toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  const weekday = date.toLocaleDateString('en-US', { weekday: 'long' })
+  return `${dateStr} — ${weekday}`
 }
 
+function entryId(date: string): string {
+  return `bake-${date}`
+}
+
+// Auto-expand entry matching URL hash on mount
+onMounted(() => {
+  const hash = window.location.hash?.slice(1)
+  if (!hash?.startsWith('bake-')) return
+
+  const targetDate = hash.replace('bake-', '')
+  const index = props.cookLog.findIndex(e => e.date === targetDate)
+  if (index >= 0) {
+    expandedEntries.value[index] = true
+    nextTick(() => {
+      const el = document.getElementById(hash)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    })
+  }
+})
 </script>
 
 <template>
@@ -107,53 +148,124 @@ function formatDate(dateStr: string): string {
     <div
       v-for="(entry, index) in cookLog"
       :key="index"
-      class="py-4 pr-4 pl-3 border-l-3 border-warning mb-4"
+      :id="entryId(entry.date)"
+      class="mb-4 scroll-mt-16 cursor-pointer transition-all"
+      @click="toggleEntry(index)"
     >
-      <!-- Header: date + version badge -->
-      <div class="flex items-center gap-3 mb-3">
-        <span class="font-semibold text-stone-700">
-          {{ formatDate(entry.date) }}
-        </span>
-        <span class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">
-          {{ entry.version }}
-        </span>
-      </div>
-
-      <!-- Markdown content -->
-      <div class="prose" v-html="renderNotes(entry)" />
-
-      <!-- Photos: hero layout -->
-      <div v-if="entry.photos?.length" class="mt-4">
-        <figure class="gallery-figure mb-3">
+      <!-- ============ COLLAPSED: Variant C Hero Banner ============ -->
+      <template v-if="!isExpanded(index)">
+        <!-- Hero banner -->
+        <div
+          v-if="entry.photos?.length"
+          class="relative border-2 border-stone-200 hover:border-stone-300 transition-colors"
+        >
           <img
             :src="heroPhoto(entry.photos).src"
             :alt="heroPhoto(entry.photos).alt"
-            :title="heroPhoto(entry.photos).alt"
             loading="lazy"
             decoding="async"
-            class="max-w-lg w-full h-auto border-2 border-stone-200 cursor-pointer"
-            @click="openLightboxFromHero(entry.photos!)"
+            class="w-full h-36 object-cover"
           />
-        </figure>
-        <div v-if="supportingPhotos(entry.photos).length" class="flex gap-2 overflow-x-auto">
-          <figure
-            v-for="(photo, i) in supportingPhotos(entry.photos)"
-            :key="i"
-            class="gallery-figure flex-shrink-0"
-          >
-            <img
-              :src="photo.thumb"
-              :alt="photo.alt"
-              :title="photo.alt"
-              loading="lazy"
-              decoding="async"
-              class="h-28 w-auto border-2 border-stone-200 cursor-pointer"
-              @click="openLightbox(entry.photos!, i)"
-            />
-          </figure>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div class="absolute bottom-0 left-0 right-0 p-3">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-white">{{ formatDate(entry.date) }}</span>
+              <span class="text-xs bg-white/20 text-white px-2 py-0.5 backdrop-blur-sm">{{ entry.version }}</span>
+            </div>
+          </div>
+          <!-- Summary + counts below banner -->
+          <div class="p-3 bg-surface">
+            <p v-if="entry.summary" class="text-sm text-stone-600 line-clamp-2">{{ entry.summary }}</p>
+            <div class="flex items-center gap-3 text-xs text-stone-400" :class="entry.summary ? 'mt-2' : ''">
+              <span>{{ entry.notes.length }} notes</span>
+              <span>{{ entry.photos.length }} photos</span>
+              <span v-if="entry.next_time?.length">{{ entry.next_time.length }} next-time</span>
+              <ChevronDown class="w-4 h-4 text-stone-400 ml-auto transition-transform duration-200" />
+            </div>
+          </div>
         </div>
-      </div>
 
+        <!-- No-photo fallback -->
+        <div
+          v-else
+          class="border-2 border-stone-200 hover:border-stone-300 transition-colors p-3"
+        >
+          <div class="flex items-center gap-3">
+            <span class="font-semibold text-sm text-stone-700">{{ formatDate(entry.date) }}</span>
+            <span class="text-xs bg-stone-200 px-2 py-0.5">{{ entry.version }}</span>
+          </div>
+          <p v-if="entry.summary" class="text-sm text-stone-500 mt-1.5 line-clamp-2">{{ entry.summary }}</p>
+          <div class="flex items-center gap-3 text-xs text-stone-400 mt-2">
+            <span>{{ entry.notes.length }} notes</span>
+            <span v-if="entry.next_time?.length">{{ entry.next_time.length }} next-time</span>
+            <ChevronDown class="w-4 h-4 text-stone-400 ml-auto transition-transform duration-200" />
+          </div>
+        </div>
+      </template>
+
+      <!-- ============ EXPANDED: Full bake entry ============ -->
+      <template v-else>
+        <div class="py-4 pr-4 pl-3 border-l-3 border-warning bg-warning-tint">
+          <!-- Header: date + version badge + permalink -->
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-semibold text-stone-700">
+              {{ formatDate(entry.date) }}
+            </span>
+            <span class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">
+              {{ entry.version }}
+            </span>
+            <IconButton
+              :ref="(el: unknown) => setEntryLinkRef(index, el)"
+              tooltip="Copy link"
+              size="sm"
+              tooltip-align="right"
+              class="ml-auto text-stone-300"
+              @click="copyEntryPermalink($event, entry.date, index)"
+            >
+              <Link2 />
+              <template #feedback>
+                <Check />
+              </template>
+            </IconButton>
+            <ChevronDown class="w-4 h-4 text-stone-400 transition-transform duration-200 rotate-180" />
+          </div>
+
+          <!-- Markdown content -->
+          <div class="prose" v-html="renderNotes(entry)" />
+
+          <!-- Photos: hero layout -->
+          <div v-if="entry.photos?.length" class="mt-4">
+            <figure class="gallery-figure mb-3">
+              <img
+                :src="heroPhoto(entry.photos).src"
+                :alt="heroPhoto(entry.photos).alt"
+                :title="heroPhoto(entry.photos).alt"
+                loading="lazy"
+                decoding="async"
+                class="max-w-lg w-full h-auto border-2 border-stone-200 cursor-pointer"
+                @click.stop="openLightboxFromHero(entry.photos!)"
+              />
+            </figure>
+            <div v-if="supportingPhotos(entry.photos).length" class="flex gap-2 overflow-x-auto">
+              <figure
+                v-for="(photo, i) in supportingPhotos(entry.photos)"
+                :key="i"
+                class="gallery-figure flex-shrink-0"
+              >
+                <img
+                  :src="photo.thumb"
+                  :alt="photo.alt"
+                  :title="photo.alt"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-28 w-auto border-2 border-stone-200 cursor-pointer"
+                  @click.stop="openLightbox(entry.photos!, i)"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </template>
     </div>
 
     <PhotoLightbox
@@ -210,5 +322,12 @@ function formatDate(dateStr: string): string {
 
 .gallery-figure {
   margin: 0;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 </style>

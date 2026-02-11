@@ -1,9 +1,10 @@
 ---
 id: PF-113
 title: Collapsible cook log entries with AI summary
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-11 04:01'
+updated_date: '2026-02-11 04:28'
 labels:
   - feature
   - ux
@@ -27,3 +28,21 @@ Cook log bake entries collapsed by default. Collapsed card shows: formatted cook
 - [ ] #6 When summary field is missing/empty, collapsed card renders gracefully (date + version + photos, no summary text)
 - [ ] #7 Summary authoring follows HITL flow: agent generates candidate summary, presents to user for approval before writing to JSON
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Design Decision
+User chose **Variant C — Hero Banner** from PF-113.1 spike demo.
+- Hero photo as ~144px tall banner with gradient overlay
+- Date + version badge overlaid in white at bottom of banner
+- Summary text + note/photo/next-time counts below banner
+- Expands on click to full notes, next-time, photo gallery
+- Collapses back on click
+<!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented collapsible cook log entries with Variant C hero banner design. Entries collapse by default showing hero photo with gradient overlay (date + version in white), AI summary, and note/photo/next-time counts with ChevronDown indicator. Click to expand shows full markdown notes, photo gallery with lightbox, and per-entry permalink (IconButton with copy feedback). Date format: ISO-first (2026-02-05 — Thursday). All styling aligned to site conventions: ChevronDown matching ResearchSection, IconButton for permalinks matching all sections, copyPermalink naming convention.
+<!-- SECTION:FINAL_SUMMARY:END -->
