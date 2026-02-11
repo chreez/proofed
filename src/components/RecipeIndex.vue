@@ -13,6 +13,7 @@ const { recipeList } = useRecipe()
 
 interface RecipeMeta {
   baked: boolean
+  bakeCount: number
   description: string | null
   heroThumb: string | null
 }
@@ -21,6 +22,7 @@ interface TimelineItem {
   id: string
   name: string
   baked: boolean
+  bakeCount: number
   heroImage: string | null
   description: string | null
   routeId: string
@@ -62,7 +64,8 @@ async function fetchRecipeMeta(file: string): Promise<RecipeMeta> {
   try {
     const res = await fetch(`/recipes/${file}`)
     const data = await res.json()
-    const hasCookLog = Array.isArray(data.cook_log) && data.cook_log.length > 0
+    const cookLog = Array.isArray(data.cook_log) ? data.cook_log : []
+    const hasCookLog = cookLog.length > 0
     let heroThumb: string | null = null
     if (hasCookLog) {
       const latestEntry = data.cook_log[0]
@@ -73,11 +76,12 @@ async function fetchRecipeMeta(file: string): Promise<RecipeMeta> {
     }
     return {
       baked: hasCookLog,
+      bakeCount: cookLog.length,
       description: data.meta?.description ?? null,
       heroThumb,
     }
   } catch {
-    return { baked: false, description: null, heroThumb: null }
+    return { baked: false, bakeCount: 0, description: null, heroThumb: null }
   }
 }
 
@@ -106,6 +110,7 @@ const items = computed<TimelineItem[]>(() => {
       id: recipe.id,
       name: recipe.name,
       baked: meta?.baked ?? false,
+      bakeCount: meta?.bakeCount ?? 0,
       heroImage: meta?.heroThumb ?? null,
       description: meta?.description ?? summaryMap[recipe.id] ?? null,
       routeId: recipe.id,
@@ -197,6 +202,7 @@ const labelVariants = {
           <div class="timeline-content">
             <div class="timeline-row">
               <span class="timeline-name">{{ item.name }}</span>
+              <span v-if="item.bakeCount > 0" class="timeline-bake-count">{{ item.bakeCount }} bake{{ item.bakeCount !== 1 ? 's' : '' }}</span>
             </div>
 
             <div class="timeline-detail">
@@ -326,6 +332,15 @@ const labelVariants = {
   flex: 1;
   min-width: 0;
   transition: color 150ms ease;
+}
+
+/* --- Bake count badge --- */
+.timeline-bake-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-stone-400);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* --- Detail layout --- */

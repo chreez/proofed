@@ -180,6 +180,32 @@ describe('RecipeIndex', () => {
     expect(items[1].text()).toContain('Alpha Recipe')
   })
 
+  it('shows bake count when cook_log has entries', async () => {
+    global.fetch = makeFetchMock({
+      cook_log: [
+        { date: '2026-01-01', photos: [] },
+        { date: '2026-01-15', photos: [] }
+      ]
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const badge = wrapper.find('.timeline-bake-count')
+    expect(badge.exists()).toBe(true)
+    expect(badge.text()).toBe('2 bakes')
+  })
+
+  it('hides bake count when cook_log is empty', async () => {
+    global.fetch = makeFetchMock({ cook_log: [] })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const badges = wrapper.findAll('.timeline-bake-count')
+    expect(badges.length).toBe(0)
+  })
+
   it('shows loading state before meta is fetched', () => {
     // Mock recipeList as empty to prevent immediate loading
     mockRecipeList.value = []
