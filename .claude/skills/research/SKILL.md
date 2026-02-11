@@ -184,7 +184,9 @@ Do NOT save artifacts or create recipe JSON until the user confirms the synthesi
 Save to: `photos-source/{recipe-id}/research/{recipe-id}-research-synthesis.md`
 
 ### Recipe JSON
-If the research produces enough confidence for a recipe, create: `public/recipes/{recipe-id}.json`
+If the research produces enough confidence for a recipe, use `/create-recipe {recipe-id}` to build the recipe JSON. The create-recipe skill handles ID confirmation, JSON assembly with validation checks, index wiring, category assignment, and nutrition subtask creation. It will read the synthesis from `photos-source/{recipe-id}/research/` automatically (Path A).
+
+If creating the recipe manually instead:
 - Follow the recipe JSON contract in CLAUDE.md
 - Include structured source data (PF-38 schema)
 - Add provenance metadata when PF-66 schema is available
@@ -216,3 +218,4 @@ The methodology above was developed during the CoCo Ichibanya curry research (20
 - Quality depends on the dish having enough online presence. Obscure regional dishes may not yield enough cross-referencing.
 - The overnight rest between research and recipe writing improves synthesis quality — but is not required.
 - Always attribute sources. This is a personal notebook, not plagiarism.
+- **Next step after research**: Once synthesis is approved and saved, run `/create-recipe {recipe-id}` to convert the synthesis into a fully validated recipe JSON with all wiring (index, categories, nutrition subtask).

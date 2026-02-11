@@ -1,10 +1,10 @@
 ---
 id: PF-121
 title: Create /create-recipe Claude skill
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-11 21:11'
-updated_date: '2026-02-11 21:25'
+updated_date: '2026-02-11 21:39'
 labels:
   - skill
   - dx
@@ -36,3 +36,18 @@ Covers: recipe JSON creation from synthesis/source, index.json manifest entry, R
 - [ ] #12 Skill is user-invocable — callable via `/create-recipe <id-or-subject>`
 - [ ] #13 Cross-skill awareness — `/research` SKILL.md updated to mention `/create-recipe` as the natural next step after synthesis approval
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Skill file created at `.claude/skills/create-recipe/SKILL.md` — 522 lines covering 7 phases:
+1. Input & ID Confirmation (two entry paths)
+2. Source Preservation (4 source types)
+3. Recipe JSON Assembly (full Recipe interface walkthrough with D1-D9, D12, D14 reminders)
+4. HITL Review (breakdown sum verification table)
+5. Wiring (JSON + index.json + categoryMap)
+6. Nutrition Subtask (always created, never inline)
+7. Gates (build + validate)
+
+Research SKILL.md updated in two places for cross-skill awareness (line 187: primary recommendation, line 221: notes section).
+<!-- SECTION:NOTES:END -->
