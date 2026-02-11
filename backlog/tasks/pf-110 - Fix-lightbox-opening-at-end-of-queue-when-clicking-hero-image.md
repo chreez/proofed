@@ -1,9 +1,10 @@
 ---
 id: PF-110
 title: Fix lightbox opening at end of queue when clicking hero image
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-11 03:23'
+updated_date: '2026-02-11 03:29'
 labels:
   - bug (ux)
 dependencies: []

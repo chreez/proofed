@@ -179,7 +179,12 @@ describe('Photo lightbox', () => {
     // PhotoLightbox should now be open (teleported to body)
     const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
     expect(lightbox.props('open')).toBe(true)
-    expect(lightbox.props('initialIndex')).toBe(2) // hero = last photo
+    expect(lightbox.props('initialIndex')).toBe(0) // hero reordered to front
+    // Verify photos are reordered: hero (C) first, then supporting (A, B)
+    const photos = lightbox.props('photos')
+    expect(photos[0].alt).toBe('Photo C')
+    expect(photos[1].alt).toBe('Photo A')
+    expect(photos[2].alt).toBe('Photo B')
   })
 
   it('opens lightbox when supporting photo is clicked', async () => {

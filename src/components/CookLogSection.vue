@@ -24,6 +24,15 @@ function openLightbox(photos: CookLogPhoto[], index: number): void {
   lightboxOpen.value = true
 }
 
+function openLightboxFromHero(photos: CookLogPhoto[]): void {
+  // Reorder so hero (last in array) becomes first — forward navigation is intuitive
+  const hero = photos[photos.length - 1]
+  const rest = photos.slice(0, -1)
+  lightboxPhotos.value = [hero, ...rest]
+  lightboxIndex.value = 0
+  lightboxOpen.value = true
+}
+
 function closeLightbox(): void {
   lightboxOpen.value = false
 }
@@ -123,7 +132,7 @@ function formatDate(dateStr: string): string {
             loading="lazy"
             decoding="async"
             class="max-w-lg w-full h-auto border-2 border-stone-200 cursor-pointer"
-            @click="openLightbox(entry.photos!, entry.photos!.length - 1)"
+            @click="openLightboxFromHero(entry.photos!)"
           />
         </figure>
         <div v-if="supportingPhotos(entry.photos).length" class="flex gap-2 overflow-x-auto">
