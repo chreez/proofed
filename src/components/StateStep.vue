@@ -53,9 +53,11 @@ function toggle() {
           <span v-if="state.parallel" class="text-xs bg-stone-200 text-stone-600 px-2 py-0.5">
             parallel
           </span>
-          <span v-if="state.duration_min && !state.timer" class="text-xs text-stone-400">
-            ~{{ state.duration_min }} min
-          </span>
+          <TimerDisplay
+            v-if="state.duration_min"
+            :duration-min="state.duration_min"
+            :passive="!!state.timer"
+          />
         </div>
 
         <p class="text-body text-sm mb-3">{{ state.direction }}</p>
@@ -69,12 +71,6 @@ function toggle() {
             <TempText :text="comp.name" />: {{ comp.amount }}
           </span>
         </div>
-
-        <TimerDisplay
-          v-if="state.timer && state.duration_min"
-          :duration-min="state.duration_min"
-          :early-check-percent="config.early_check_percent"
-        />
 
         <div v-if="state.notes?.length" class="mt-3 space-y-2">
           <div

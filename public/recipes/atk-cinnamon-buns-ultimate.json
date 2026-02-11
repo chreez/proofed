@@ -699,7 +699,7 @@
       "title": "Preheat Oven",
       "direction": "Remove buns from oven if proofing inside. Heat oven to 350°F (175°C) with rack in middle position. Remove plastic wrap from buns.",
       "duration_min": 15,
-      "timer": false,
+      "timer": true,
       "parallel": false,
       "components": null,
       "exit_condition": "Oven preheated, plastic removed from buns",

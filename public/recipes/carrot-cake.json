@@ -313,9 +313,11 @@
       "id": "PREHEAT",
       "title": "Preheat Oven",
       "direction": "Adjust oven rack to middle position and preheat to 350°F (175°C).",
-      "timer": false,
+      "duration_min": 15,
+      "timer": true,
+      "parallel": false,
       "components": null,
-      "exit_condition": "Oven preheating",
+      "exit_condition": "Oven preheated to 350°F (175°C)",
       "notes": null
     },
     {

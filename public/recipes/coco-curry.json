@@ -557,7 +557,7 @@
       "title": "Simmer in Broth",
       "direction": "Add 1200g beef broth and 240g water. Add fried onion crisps (if using), 40g mango chutney, and 16g peanut butter. Bring to a boil, then reduce to a gentle simmer. Cook 15-20 minutes.",
       "duration_min": 20,
-      "timer": false,
+      "timer": true,
       "parallel": false,
       "components": [
         {

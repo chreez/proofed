@@ -125,7 +125,7 @@ describe('StateStep', () => {
     expect(wrapper.text()).not.toContain('parallel')
   })
 
-  it('renders duration when state has duration_min and no timer', () => {
+  it('renders TimerDisplay in header when state has duration_min', () => {
     const wrapper = mount(StateStep, {
       props: {
         ...defaultProps,
@@ -133,18 +133,12 @@ describe('StateStep', () => {
       }
     })
 
-    expect(wrapper.text()).toContain('~5 min')
+    expect(wrapper.find('.timer-stub').exists()).toBe(true)
   })
 
-  it('does not render duration when timer is true', () => {
-    const wrapper = mount(StateStep, {
-      props: {
-        ...defaultProps,
-        state: { ...defaultState, duration_min: 5, timer: true }
-      }
-    })
-
-    expect(wrapper.text()).not.toContain('~5 min')
+  it('does not render TimerDisplay when no duration_min', () => {
+    const wrapper = mount(StateStep, { props: defaultProps })
+    expect(wrapper.find('.timer-stub').exists()).toBe(false)
   })
 
   it('renders components list', () => {
@@ -171,7 +165,7 @@ describe('StateStep', () => {
     expect(componentBadges.length).toBe(0)
   })
 
-  it('renders TimerDisplay when timer is true and duration_min exists', () => {
+  it('renders TimerDisplay with passive for timer:true steps', () => {
     const wrapper = mount(StateStep, {
       props: {
         ...defaultProps,
@@ -180,11 +174,6 @@ describe('StateStep', () => {
     })
 
     expect(wrapper.find('.timer-stub').exists()).toBe(true)
-  })
-
-  it('does not render TimerDisplay when timer is false', () => {
-    const wrapper = mount(StateStep, { props: defaultProps })
-    expect(wrapper.find('.timer-stub').exists()).toBe(false)
   })
 
   it('renders non-critical notes with neutral styling', () => {

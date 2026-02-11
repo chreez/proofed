@@ -1,138 +1,73 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { mount, flushPromises } from '@vue/test-utils'
-import { nextTick } from 'vue'
+import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils'
 import TimerDisplay from './TimerDisplay.vue'
 
-// Mock onUnmounted since we're testing a component that uses useTimer
-vi.mock('vue', async () => {
-  const actual = await vi.importActual('vue')
-  return {
-    ...actual as object,
-    onUnmounted: vi.fn()
-  }
-})
-
 describe('TimerDisplay', () => {
-  beforeEach(() => {
-    vi.useFakeTimers()
-  })
-
-  afterEach(() => {
-    vi.useRealTimers()
-  })
-
-  it('renders initial time display', () => {
+  it('renders duration in minutes', () => {
     const wrapper = mount(TimerDisplay, {
-      props: { durationMin: 5, earlyCheckPercent: 0.7 }
+      props: { durationMin: 25 }
     })
 
-    expect(wrapper.text()).toContain('5:00')
-    expect(wrapper.text()).toContain('Start')
+    expect(wrapper.text()).toContain('25 min')
   })
 
-  it('starts timer on Start button click', async () => {
+  it('formats hours and minutes', () => {
     const wrapper = mount(TimerDisplay, {
-      props: { durationMin: 1, earlyCheckPercent: 0.7 }
+      props: { durationMin: 90 }
     })
 
-    await wrapper.find('button').trigger('click') // Start
-
-    vi.advanceTimersByTime(5000)
-    await nextTick()
-
-    expect(wrapper.text()).toContain('0:55')
-    expect(wrapper.text()).toContain('Pause')
+    expect(wrapper.text()).toContain('1 hr 30 min')
   })
 
-  it('pauses timer on Pause button click', async () => {
+  it('formats exact hours without min', () => {
     const wrapper = mount(TimerDisplay, {
-      props: { durationMin: 1, earlyCheckPercent: 0.7 }
+      props: { durationMin: 120 }
     })
 
-    // Start
-    await wrapper.find('button').trigger('click')
-    vi.advanceTimersByTime(5000)
-    await nextTick()
-
-    // Pause
-    const pauseBtn = wrapper.findAll('button').find(b => b.text() === 'Pause')
-    await pauseBtn?.trigger('click')
-    await nextTick()
-
-    expect(wrapper.text()).toContain('Resume')
-    expect(wrapper.text()).toContain('Reset')
+    expect(wrapper.text()).toContain('2 hr')
+    expect(wrapper.text()).not.toContain('min')
   })
 
-  it('resets timer on Reset button click', async () => {
+  it('formats short durations', () => {
     const wrapper = mount(TimerDisplay, {
-      props: { durationMin: 1, earlyCheckPercent: 0.7 }
+      props: { durationMin: 1 }
     })
 
-    // Start
-    await wrapper.find('button').trigger('click')
-    vi.advanceTimersByTime(5000)
-    await nextTick()
-
-    // Pause first
-    const pauseBtn = wrapper.findAll('button').find(b => b.text() === 'Pause')
-    await pauseBtn?.trigger('click')
-    await nextTick()
-
-    // Reset
-    const resetBtn = wrapper.findAll('button').find(b => b.text() === 'Reset')
-    await resetBtn?.trigger('click')
-    await nextTick()
-
-    expect(wrapper.text()).toContain('1:00')
-    expect(wrapper.text()).toContain('Start')
+    expect(wrapper.text()).toContain('1 min')
   })
 
-  it('shows early check warning', async () => {
+  it('renders flame icon for active steps (default)', () => {
     const wrapper = mount(TimerDisplay, {
-      props: { durationMin: 1, earlyCheckPercent: 0.5 } // 50% of 60s = 30s
+      props: { durationMin: 5 }
     })
 
-    await wrapper.find('button').trigger('click')
-    vi.advanceTimersByTime(31000) // past 30s threshold
-    await nextTick()
-
-    expect(wrapper.text()).toContain('Check progress soon!')
+    // Default passive=false → Flame icon
+    const svg = wrapper.find('svg')
+    expect(svg.exists()).toBe(true)
   })
 
-  it('shows completion message', async () => {
+  it('renders hourglass icon for passive steps', () => {
     const wrapper = mount(TimerDisplay, {
-      props: { durationMin: 1, earlyCheckPercent: 0.7 }
+      props: { durationMin: 5, passive: true }
     })
 
-    await wrapper.find('button').trigger('click')
-    vi.advanceTimersByTime(60000) // complete 1 minute
-    await nextTick()
-
-    expect(wrapper.text()).toContain('Timer complete!')
+    const svg = wrapper.find('svg')
+    expect(svg.exists()).toBe(true)
   })
 
-  it('shows progress bar', () => {
+  it('uses monospace font for duration text', () => {
     const wrapper = mount(TimerDisplay, {
-      props: { durationMin: 1, earlyCheckPercent: 0.7 }
+      props: { durationMin: 5 }
     })
 
-    const progressBar = wrapper.find('.h-2.bg-stone-200')
-    expect(progressBar.exists()).toBe(true)
+    expect(wrapper.find('.font-mono').exists()).toBe(true)
   })
 
-  it('applies correct color to timer display based on status', async () => {
+  it('renders as inline span', () => {
     const wrapper = mount(TimerDisplay, {
-      props: { durationMin: 1, earlyCheckPercent: 0.7 }
+      props: { durationMin: 5 }
     })
 
-    // Idle: text-stone-700
-    const timeDisplay = wrapper.find('.text-3xl')
-    expect(timeDisplay.classes()).toContain('text-stone-700')
-
-    // Start: text-ink
-    await wrapper.find('button').trigger('click')
-    await nextTick()
-
-    expect(timeDisplay.classes()).toContain('text-ink')
+    expect(wrapper.element.tagName).toBe('SPAN')
   })
 })
