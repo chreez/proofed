@@ -40,6 +40,12 @@ const router = createRouter({
       name: 'photo-review',
       component: EmptyRouteView,
       meta: { showIndex: false }
+    },
+    {
+      path: '/demo/agent-notes',
+      name: 'demo-agent-notes',
+      component: EmptyRouteView,
+      meta: { showIndex: false }
     }
   ]
 })

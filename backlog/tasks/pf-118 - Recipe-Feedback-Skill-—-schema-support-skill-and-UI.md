@@ -4,7 +4,7 @@ title: 'Recipe Feedback Skill — schema support, skill, and UI'
 status: To Do
 assignee: []
 created_date: '2026-02-11 19:26'
-updated_date: '2026-02-11 19:49'
+updated_date: '2026-02-11 19:55'
 labels:
   - feature
   - skill
@@ -53,4 +53,16 @@ When a `/feedback` session concludes with a version bump, the `change_log` entry
 - Summary format: `"Added agent-sourced notes: {list of state IDs}"` e.g. `"Added agent-sourced technique notes to RISE_1, ADD_BUTTER"`
 - If user also made changes: `"Feedback session: updated directions for MIX_DRY; added agent-sourced notes to RISE_1, ADD_BUTTER"`
 - Always distinguish user changes from agent additions in the summary
+
+## Design Decision: Agent Note Rendering (PF-118.2 Outcome)
+
+**Chosen: Option A — Monospace Label**
+- Agent notes get a `// Agent Tip` label above the text, mirroring the `// My Note` cook log pattern
+- Keeps the developer-comment visual language consistent
+
+**Critical rule: Yellow is user-only**
+- The accent-tint/yellow critical styling (`bg-accent-tint text-accent border-l-4 border-accent`) is reserved exclusively for user-authored callouts
+- Agent notes NEVER get critical/yellow styling, even if the content is important
+- Agent notes always render with `bg-stone-100 text-stone-600` base + the `// Agent Tip` label
+- This means `critical` on agent-sourced notes should either not be set, or be ignored in rendering
 <!-- SECTION:NOTES:END -->
