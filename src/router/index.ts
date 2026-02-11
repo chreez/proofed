@@ -40,7 +40,7 @@ const router = createRouter({
       name: 'photo-review',
       component: EmptyRouteView,
       meta: { showIndex: false }
-    }
+    },
   ]
 })
 

@@ -51,6 +51,17 @@ function makeFetchMock(overrides: Record<string, unknown> = {}) {
   )
 }
 
+// Per-file fetch mock: returns different data per recipe file
+function makeFetchMockByFile(fileMap: Record<string, Record<string, unknown>>) {
+  return vi.fn((url: string) => {
+    const file = String(url).split('/').pop() ?? ''
+    const data = fileMap[file] ?? { meta: { description: 'Test description' }, cook_log: [] }
+    return Promise.resolve({
+      json: () => Promise.resolve(data)
+    } as Response)
+  })
+}
+
 describe('RecipeIndex', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -212,5 +223,83 @@ describe('RecipeIndex', () => {
     const wrapper = mount(RecipeIndex)
 
     expect(wrapper.find('.timeline-loading').exists()).toBe(true)
+  })
+
+  it('shows provenance icon for synthesized (original) recipes', async () => {
+    mockRecipeList.value = [
+      { id: 'coco-curry', name: 'Coco Curry', file: 'coco-curry.json' }
+    ]
+    global.fetch = makeFetchMockByFile({
+      'coco-curry.json': {
+        meta: {
+          description: 'A curry recipe',
+          source: { type: 'original', author: 'proofed. research (9 agents, 60+ sources)' }
+        },
+        cook_log: []
+      }
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const icon = wrapper.find('.timeline-provenance-icon')
+    expect(icon.exists()).toBe(true)
+    expect(icon.attributes('data-tooltip')).toBe('AI-synthesized: proofed. research (9 agents, 60+ sources)')
+    expect(icon.find('svg').exists()).toBe(true)
+  })
+
+  it('does not show provenance icon for adapted recipes', async () => {
+    mockRecipeList.value = [
+      { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Cinnamon Buns', file: 'atk-cinnamon-buns-ultimate.json' }
+    ]
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        meta: {
+          description: 'Cinnamon buns',
+          source: { type: 'adapted', author: "America's Test Kitchen" }
+        },
+        cook_log: []
+      }
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const icon = wrapper.find('.timeline-provenance-icon')
+    expect(icon.exists()).toBe(false)
+  })
+
+  it('does not show provenance icon when source is missing', async () => {
+    global.fetch = makeFetchMock({ meta: { description: 'No source' }, cook_log: [] })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const icons = wrapper.findAll('.timeline-provenance-icon')
+    expect(icons.length).toBe(0)
+  })
+
+  it('provenance icon click does not trigger recipe selection', async () => {
+    mockRecipeList.value = [
+      { id: 'coco-curry', name: 'Coco Curry', file: 'coco-curry.json' }
+    ]
+    global.fetch = makeFetchMockByFile({
+      'coco-curry.json': {
+        meta: {
+          description: 'A curry recipe',
+          source: { type: 'original', author: 'proofed. research' }
+        },
+        cook_log: []
+      }
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const icon = wrapper.find('.timeline-provenance-icon')
+    await icon.trigger('click')
+
+    // The @click.stop should prevent the parent click handler from firing
+    expect(wrapper.emitted('select')).toBeFalsy()
   })
 })

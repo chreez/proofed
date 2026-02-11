@@ -130,7 +130,7 @@ function makeRouter() {
       { path: '/', name: 'index', component: { template: '<div />' } },
       { path: '/recipe/:recipeId', name: 'recipe', component: { template: '<div />' } },
       { path: '/about', name: 'about', component: { template: '<div />' } },
-      { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } }
+      { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } },
     ]
   })
 }
@@ -263,7 +263,6 @@ describe('App', () => {
     expect(wrapper.find('.photo-review-stub').exists()).toBe(true)
     expect(wrapper.text()).toContain('Photo Review')
   })
-
 
   it('shows loading state when loading is true', async () => {
     mockLoading.value = true

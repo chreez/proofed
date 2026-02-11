@@ -16,6 +16,8 @@ interface RecipeMeta {
   bakeCount: number
   description: string | null
   heroThumb: string | null
+  sourceType: 'original' | 'adapted' | null
+  sourceAuthor: string | null
 }
 
 interface TimelineItem {
@@ -27,6 +29,8 @@ interface TimelineItem {
   description: string | null
   routeId: string
   category: string
+  sourceType: 'original' | 'adapted' | null
+  sourceAuthor: string | null
 }
 
 interface CategoryGroup {
@@ -75,14 +79,18 @@ async function fetchRecipeMeta(file: string): Promise<RecipeMeta> {
         heroThumb = lastPhoto.thumb ?? null
       }
     }
+    const sourceType = data.meta?.source?.type ?? null
+    const sourceAuthor = data.meta?.source?.author ?? null
     return {
       baked: hasCookLog,
       bakeCount: cookLog.length,
       description: data.meta?.description ?? null,
       heroThumb,
+      sourceType: sourceType === 'original' || sourceType === 'adapted' ? sourceType : null,
+      sourceAuthor,
     }
   } catch {
-    return { baked: false, bakeCount: 0, description: null, heroThumb: null }
+    return { baked: false, bakeCount: 0, description: null, heroThumb: null, sourceType: null, sourceAuthor: null }
   }
 }
 
@@ -116,6 +124,8 @@ const items = computed<TimelineItem[]>(() => {
       description: meta?.description ?? summaryMap[recipe.id] ?? null,
       routeId: recipe.id,
       category: categoryMap[recipe.id] ?? 'other',
+      sourceType: meta?.sourceType ?? null,
+      sourceAuthor: meta?.sourceAuthor ?? null,
     }
   })
 })
@@ -203,6 +213,14 @@ const labelVariants = {
           <div class="timeline-content">
             <div class="timeline-row">
               <span class="timeline-name">{{ item.name }}</span>
+              <span
+                v-if="item.sourceType === 'original'"
+                class="timeline-provenance-icon"
+                :data-tooltip="`AI-synthesized: ${item.sourceAuthor}`"
+                @click.stop
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8" /></svg>
+              </span>
               <span v-if="item.bakeCount > 0" class="timeline-bake-count">{{ item.bakeCount }} bake{{ item.bakeCount !== 1 ? 's' : '' }}</span>
             </div>
 
@@ -333,6 +351,44 @@ const labelVariants = {
   flex: 1;
   min-width: 0;
   transition: color 150ms ease;
+}
+
+/* --- Provenance indicator --- */
+.timeline-provenance-icon {
+  flex-shrink: 0;
+  color: var(--color-stone-400);
+  cursor: help;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.timeline-provenance-icon:hover {
+  color: var(--color-accent);
+}
+
+.timeline-provenance-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.5rem;
+  background: var(--color-ink);
+  color: var(--color-stone-50);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  line-height: 1.3;
+  padding: 0.375rem 0.5rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 100ms ease;
+  z-index: 10;
+}
+
+.timeline-provenance-icon:hover::after {
+  opacity: 1;
 }
 
 /* --- Bake count badge --- */
