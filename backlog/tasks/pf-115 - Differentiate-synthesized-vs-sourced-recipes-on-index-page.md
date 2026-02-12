@@ -1,10 +1,10 @@
 ---
 id: PF-115
 title: Differentiate synthesized vs sourced recipes on index page
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-11 05:01'
-updated_date: '2026-02-11 22:12'
+updated_date: '2026-02-11 22:20'
 labels:
   - ux
 dependencies: []

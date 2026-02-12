@@ -1,10 +1,10 @@
 ---
 id: PF-123
 title: Per-recipe OG hero image for link previews
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-11 22:04'
-updated_date: '2026-02-11 22:16'
+updated_date: '2026-02-11 22:21'
 labels:
   - feature
   - ux
