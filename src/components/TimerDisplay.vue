@@ -23,8 +23,8 @@ const formattedDuration = computed(() => {
 </script>
 
 <template>
-  <span class="inline-flex items-center gap-1 text-xs text-stone-400">
-    <component :is="icon" class="w-3 h-3" />
+  <span class="inline-flex items-center gap-1 text-sm text-stone-600">
+    <component :is="icon" class="w-3.5 h-3.5" />
     <span class="font-mono">{{ formattedDuration }}</span>
   </span>
 </template>
