@@ -4,10 +4,10 @@ title: QR code share system for bake gifts
 status: To Do
 assignee: []
 created_date: '2026-02-13 01:46'
-updated_date: '2026-02-13 03:20'
+updated_date: '2026-02-13 04:38'
 labels: []
 dependencies:
-  - DRAFT-6
+  - PF-130
 priority: high
 ---
 
