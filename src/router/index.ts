@@ -41,6 +41,18 @@ const router = createRouter({
       component: EmptyRouteView,
       meta: { showIndex: false }
     },
+    {
+      path: '/demo/bake-detail',
+      name: 'bake-detail-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
+    {
+      path: '/demo/bake-detail/route-view',
+      name: 'bake-detail-route-view',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
   ]
 })
 

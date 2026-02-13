@@ -1,10 +1,10 @@
 ---
 id: DRAFT-6.1
 title: 'Demo: Bake detail view — popover vs route vs panel'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-13 03:19'
-updated_date: '2026-02-13 03:22'
+updated_date: '2026-02-13 03:38'
 labels:
   - demo
   - spike
@@ -46,3 +46,9 @@ Throwaway demo page showing three bake detail view patterns side-by-side, using 
 - [ ] #8 Demo is self-contained — no changes to production components
 - [ ] #9 npm run build passes
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+User leaning toward Pattern B (separate route) but undecided. Reheat styling deferred to PF-128.
+<!-- SECTION:NOTES:END -->
