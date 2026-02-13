@@ -13,8 +13,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-02-13",
+      "summary": "Feedback session: added roux consistency tips to DISSOLVE_ROUX (agent); added user note to COOL_AND_REST"
+    },
     {
       "version": "v1.0.0",
       "date": "2026-02-08",
@@ -640,6 +645,16 @@
           "text": "Use chopsticks to stir inside the ladle until each piece is fully dissolved before adding more",
           "critical": false,
           "source": "user"
+        },
+        {
+          "text": "If roux goes pasty, the liquid was too hot — flour creates a protective film in boiling liquid that blocks smooth incorporation. Ensure bubbling has fully stopped before adding pieces.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "To rescue roux that's gone too thick: add warm broth 50–100ml at a time while stirring on low heat. For extra smoothness, strain through a fine mesh sieve.",
+          "critical": false,
+          "source": "agent"
         }
       ]
     },
@@ -820,6 +835,11 @@
         },
         {
           "text": "For even deeper flavor, rest 2-3 days. Some sources suggest freeze-thaw cycling to partially replicate CoCo's industrial aging.",
+          "critical": false,
+          "source": "user"
+        },
+        {
+          "text": "This is how you know the recipe was synthesized by a robot — it expects you to wait a full day.",
           "critical": false,
           "source": "user"
         }
