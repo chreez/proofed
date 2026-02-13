@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { ArrowLeft, X, Share2, Copy, Check } from 'lucide-vue-next'
+import QRCodeStyling from 'qr-code-styling'
 import type { CookLogEntry } from '@/types/recipe'
 
 const props = defineProps<{
@@ -13,11 +14,17 @@ const emit = defineEmits<{
   close: []
 }>()
 
+// Brand colors
+const ACCENT = '#a65d45'
+const INK = '#1a1816'
+
 // Modal state
 const isOpen = ref(false)
 const step = ref<'pick' | 'share'>('pick')
 const selectedBake = ref<CookLogEntry | null>(null)
 const copied = ref(false)
+const qrContainer = ref<HTMLDivElement | null>(null)
+const qrImageSrc = ref<string | null>(null)
 
 // Sort entries newest first
 const sortedEntries = computed(() => {
@@ -36,6 +43,7 @@ function open(): void {
   step.value = 'pick'
   selectedBake.value = null
   copied.value = false
+  qrImageSrc.value = null
   document.body.style.overflow = 'hidden'
 }
 
@@ -49,12 +57,66 @@ function selectBake(entry: CookLogEntry): void {
   selectedBake.value = entry
   step.value = 'share'
   copied.value = false
+  qrImageSrc.value = null
+  nextTick(() => renderQrLabel())
 }
 
 function goBackToPicker(): void {
   step.value = 'pick'
   selectedBake.value = null
   copied.value = false
+}
+
+function renderQrLabel(): void {
+  if (!qrContainer.value || !shareUrl.value) return
+  qrContainer.value.innerHTML = ''
+
+  const qrCode = new QRCodeStyling({
+    width: 256,
+    height: 256,
+    type: 'canvas',
+    data: shareUrl.value,
+    margin: 8,
+    dotsOptions: { color: INK, type: 'rounded' },
+    cornersSquareOptions: { color: ACCENT, type: 'extra-rounded' },
+    cornersDotOptions: { color: ACCENT, type: 'dot' },
+    backgroundOptions: { color: '#ffffff' },
+    qrOptions: { errorCorrectionLevel: 'M' }
+  })
+
+  qrCode.append(qrContainer.value)
+
+  setTimeout(() => {
+    const qrCanvas = qrContainer.value?.querySelector('canvas')
+    if (!qrCanvas) return
+
+    const qrSize = 256
+    const pad = 24
+    const brandWidth = 200
+    const labelWidth = pad + qrSize + pad + brandWidth + pad
+    const labelHeight = qrSize + pad * 2
+
+    const label = document.createElement('canvas')
+    label.width = labelWidth
+    label.height = labelHeight
+    const ctx = label.getContext('2d')
+    if (!ctx) return
+
+    ctx.fillStyle = '#ffffff'
+    ctx.fillRect(0, 0, labelWidth, labelHeight)
+    ctx.drawImage(qrCanvas, pad, pad, qrSize, qrSize)
+
+    const textX = pad + qrSize + pad
+    ctx.font = 'bold 48px "JetBrains Mono", monospace'
+    ctx.textBaseline = 'middle'
+    ctx.fillStyle = INK
+    ctx.fillText('proofed', textX, labelHeight / 2)
+    const w = ctx.measureText('proofed').width
+    ctx.fillStyle = ACCENT
+    ctx.fillText('.', textX + w, labelHeight / 2)
+
+    qrImageSrc.value = label.toDataURL('image/png')
+  }, 300)
 }
 
 async function copyLink(): Promise<void> {
@@ -165,6 +227,20 @@ defineExpose({ open, close, isOpen })
         <div v-if="step === 'share'" class="p-4">
           <p class="text-muted mb-1">{{ recipeName }}</p>
           <p class="font-mono text-xs text-ink mb-4">{{ selectedBake ? formatDate(selectedBake.date) : '' }}</p>
+
+          <!-- Hidden canvas for QR generation -->
+          <div ref="qrContainer" class="hidden" />
+
+          <!-- Branded QR label image -->
+          <div v-if="qrImageSrc" class="flex justify-center mb-4">
+            <img
+              :src="qrImageSrc"
+              :alt="`QR label for ${recipeName}`"
+              class="w-full"
+              style="-webkit-touch-callout: default;"
+              data-testid="share-qr-label"
+            />
+          </div>
 
           <!-- Link preview -->
           <div class="bg-stone-100 border-2 border-stone-200 p-3 mb-4">

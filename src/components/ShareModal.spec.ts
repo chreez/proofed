@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach, beforeAll, afterAll } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import ShareModal from './ShareModal.vue'
@@ -11,6 +11,19 @@ vi.mock('lucide-vue-next', () => ({
   Share2: { name: 'Share2', props: ['size'], template: '<svg class="share2-icon" />' },
   Copy: { name: 'Copy', props: ['size'], template: '<svg class="copy-icon" />' },
   Check: { name: 'Check', props: ['size'], template: '<svg class="check-icon" />' }
+}))
+
+// Mock qr-code-styling — inject a canvas element so branded label compositing runs
+const mockAppend = vi.fn((container: HTMLElement) => {
+  const canvas = document.createElement('canvas')
+  canvas.width = 256
+  canvas.height = 256
+  container.appendChild(canvas)
+})
+vi.mock('qr-code-styling', () => ({
+  default: class MockQRCodeStyling {
+    append = mockAppend
+  }
 }))
 
 const baseCookLog: CookLogEntry[] = [
@@ -37,6 +50,25 @@ function mountModal(cookLog: CookLogEntry[] = baseCookLog) {
     }
   })
 }
+
+// Mock canvas 2d context for branded label compositing
+const mockCtx = {
+  fillStyle: '',
+  font: '',
+  textBaseline: '',
+  fillRect: vi.fn(),
+  drawImage: vi.fn(),
+  fillText: vi.fn(),
+  measureText: vi.fn(() => ({ width: 100 }))
+}
+const origGetContext = HTMLCanvasElement.prototype.getContext
+beforeAll(() => {
+  HTMLCanvasElement.prototype.getContext = vi.fn(() => mockCtx) as unknown as typeof origGetContext
+  HTMLCanvasElement.prototype.toDataURL = vi.fn(() => 'data:image/png;base64,mock')
+})
+afterAll(() => {
+  HTMLCanvasElement.prototype.getContext = origGetContext
+})
 
 describe('ShareModal', () => {
   beforeEach(() => {
@@ -198,6 +230,58 @@ describe('ShareModal', () => {
       await wrapper.find('[data-testid="share-copy-btn"]').trigger('click')
       await nextTick()
       expect(wrapper.text()).toContain('Copied!')
+    })
+
+    it('calls QRCodeStyling append when bake selected', async () => {
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+      expect(mockAppend).toHaveBeenCalled()
+    })
+
+    it('renders branded QR label image after delay', async () => {
+      vi.useFakeTimers()
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+      // Advance past the 300ms setTimeout for canvas compositing
+      vi.advanceTimersByTime(350)
+      await nextTick()
+      const qrLabel = wrapper.find('[data-testid="share-qr-label"]')
+      expect(qrLabel.exists()).toBe(true)
+      vi.useRealTimers()
+    })
+
+    it('does not show QR label before render completes', async () => {
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+      // Before setTimeout fires, no image yet
+      expect(wrapper.find('[data-testid="share-qr-label"]').exists()).toBe(false)
+    })
+
+    it('handles missing canvas gracefully during QR render', async () => {
+      // Mock append to NOT insert a canvas element
+      mockAppend.mockImplementationOnce(() => { /* no canvas */ })
+      vi.useFakeTimers()
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+      vi.advanceTimersByTime(350)
+      await nextTick()
+      // Should not crash, no QR label rendered
+      expect(wrapper.find('[data-testid="share-qr-label"]').exists()).toBe(false)
+      vi.useRealTimers()
+    })
+
+    it('handles null canvas context gracefully', async () => {
+      const origMock = HTMLCanvasElement.prototype.getContext
+      // Return null for getContext to hit the !ctx branch
+      HTMLCanvasElement.prototype.getContext = vi.fn(() => null) as unknown as typeof origMock
+      vi.useFakeTimers()
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+      vi.advanceTimersByTime(350)
+      await nextTick()
+      expect(wrapper.find('[data-testid="share-qr-label"]').exists()).toBe(false)
+      vi.useRealTimers()
+      HTMLCanvasElement.prototype.getContext = vi.fn(() => mockCtx) as unknown as typeof origMock
     })
 
     it('has back button that returns to picker', async () => {
