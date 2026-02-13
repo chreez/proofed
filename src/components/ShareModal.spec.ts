@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { mount, flushPromises } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import ShareModal from './ShareModal.vue'
 import type { CookLogEntry } from '@/types/recipe'
@@ -7,21 +7,11 @@ import type { CookLogEntry } from '@/types/recipe'
 // Mock lucide-vue-next
 vi.mock('lucide-vue-next', () => ({
   ArrowLeft: { name: 'ArrowLeft', props: ['size'], template: '<svg class="arrow-left-icon" />' },
-  X: { name: 'X', props: ['size'], template: '<svg class="x-icon" />' }
+  X: { name: 'X', props: ['size'], template: '<svg class="x-icon" />' },
+  Share2: { name: 'Share2', props: ['size'], template: '<svg class="share2-icon" />' },
+  Copy: { name: 'Copy', props: ['size'], template: '<svg class="copy-icon" />' },
+  Check: { name: 'Check', props: ['size'], template: '<svg class="check-icon" />' }
 }))
-
-// Mock qr-code-styling
-const mockAppend = vi.fn()
-vi.mock('qr-code-styling', () => {
-  return {
-    default: class MockQRCodeStyling {
-      constructor() {
-        // no-op
-      }
-      append = mockAppend
-    }
-  }
-})
 
 const baseCookLog: CookLogEntry[] = [
   {
@@ -111,7 +101,6 @@ describe('ShareModal', () => {
       await nextTick()
       const entries = wrapper.findAll('[data-testid="bake-picker-entry"]')
       expect(entries).toHaveLength(2)
-      // First entry should be newest (2026-02-10)
       expect(entries[0].text()).toContain('Feb 10, 2026')
       expect(entries[1].text()).toContain('Feb 5, 2026')
     })
@@ -140,18 +129,18 @@ describe('ShareModal', () => {
       expect(wrapper.text()).toContain('No summary')
     })
 
-    it('advances to QR step when entry is clicked', async () => {
+    it('advances to share step when entry is clicked', async () => {
       const wrapper = mountModal()
       wrapper.vm.open()
       await nextTick()
       const entries = wrapper.findAll('[data-testid="bake-picker-entry"]')
       await entries[0].trigger('click')
       await nextTick()
-      expect(wrapper.text()).toContain('QR Code')
+      expect(wrapper.text()).toContain('Share Link')
     })
   })
 
-  describe('QR code display (step 2)', () => {
+  describe('share actions (step 2)', () => {
     async function openAndSelectBake(wrapper: ReturnType<typeof mountModal>) {
       wrapper.vm.open()
       await nextTick()
@@ -172,23 +161,43 @@ describe('ShareModal', () => {
       expect(wrapper.text()).toContain('Feb 10, 2026')
     })
 
-    it('renders QR code container', async () => {
+    it('shows share URL', async () => {
       const wrapper = mountModal()
       await openAndSelectBake(wrapper)
-      expect(wrapper.find('[data-testid="qr-code-container"]').exists()).toBe(true)
+      const urlEl = wrapper.find('[data-testid="share-url"]')
+      expect(urlEl.exists()).toBe(true)
+      expect(urlEl.text()).toContain('proofeddot.netlify.app/recipe/atk-cinnamon-buns/bake/2026-02-10')
     })
 
-    it('calls QRCodeStyling append', async () => {
+    it('has copy link button', async () => {
       const wrapper = mountModal()
       await openAndSelectBake(wrapper)
-      expect(mockAppend).toHaveBeenCalled()
+      const copyBtn = wrapper.find('[data-testid="share-copy-btn"]')
+      expect(copyBtn.exists()).toBe(true)
+      expect(copyBtn.text()).toContain('Copy Link')
     })
 
-    it('shows save instruction', async () => {
+    it('copies URL to clipboard on copy click', async () => {
+      const writeText = vi.fn().mockResolvedValue(undefined)
+      Object.assign(navigator, { clipboard: { writeText } })
+
       const wrapper = mountModal()
       await openAndSelectBake(wrapper)
-      expect(wrapper.text()).toContain('Long-press')
-      expect(wrapper.text()).toContain('right-click')
+      await wrapper.find('[data-testid="share-copy-btn"]').trigger('click')
+      expect(writeText).toHaveBeenCalledWith(
+        'https://proofeddot.netlify.app/recipe/atk-cinnamon-buns/bake/2026-02-10?shared=true'
+      )
+    })
+
+    it('shows "Copied!" after copy', async () => {
+      const writeText = vi.fn().mockResolvedValue(undefined)
+      Object.assign(navigator, { clipboard: { writeText } })
+
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+      await wrapper.find('[data-testid="share-copy-btn"]').trigger('click')
+      await nextTick()
+      expect(wrapper.text()).toContain('Copied!')
     })
 
     it('has back button that returns to picker', async () => {
@@ -199,6 +208,51 @@ describe('ShareModal', () => {
       await backBtn.trigger('click')
       await nextTick()
       expect(wrapper.text()).toContain('Share a Bake')
+    })
+
+    it('calls navigator.share with URL when share button clicked', async () => {
+      const shareFn = vi.fn().mockResolvedValue(undefined)
+      Object.defineProperty(navigator, 'share', { value: shareFn, writable: true, configurable: true })
+
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+
+      const nativeBtn = wrapper.find('[data-testid="share-native-btn"]')
+      if (nativeBtn.exists()) {
+        await nativeBtn.trigger('click')
+        expect(shareFn).toHaveBeenCalledWith(
+          expect.objectContaining({
+            url: 'https://proofeddot.netlify.app/recipe/atk-cinnamon-buns/bake/2026-02-10?shared=true'
+          })
+        )
+      }
+    })
+
+    it('handles share cancellation gracefully', async () => {
+      const shareFn = vi.fn().mockRejectedValue(new Error('User cancelled'))
+      Object.defineProperty(navigator, 'share', { value: shareFn, writable: true, configurable: true })
+
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+
+      const nativeBtn = wrapper.find('[data-testid="share-native-btn"]')
+      if (nativeBtn.exists()) {
+        // Should not throw
+        await nativeBtn.trigger('click')
+      }
+    })
+
+    it('handles clipboard failure gracefully', async () => {
+      const writeText = vi.fn().mockRejectedValue(new Error('Not allowed'))
+      Object.assign(navigator, { clipboard: { writeText } })
+
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+      // Should not throw
+      await wrapper.find('[data-testid="share-copy-btn"]').trigger('click')
+      await nextTick()
+      // Should still show Copy Link (not Copied)
+      expect(wrapper.text()).toContain('Copy Link')
     })
   })
 
@@ -237,6 +291,17 @@ describe('ShareModal', () => {
       await wrapper.find('[data-testid="share-modal-overlay"]').trigger('click')
       await nextTick()
       expect(wrapper.find('[data-testid="share-modal-overlay"]').exists()).toBe(false)
+    })
+  })
+
+  describe('cleanup', () => {
+    it('restores body scroll if unmounted while open', async () => {
+      const wrapper = mountModal()
+      wrapper.vm.open()
+      await nextTick()
+      expect(document.body.style.overflow).toBe('hidden')
+      wrapper.unmount()
+      expect(document.body.style.overflow).toBe('')
     })
   })
 

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import { ArrowLeft, X } from 'lucide-vue-next'
-import QRCodeStyling from 'qr-code-styling'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ArrowLeft, X, Share2, Copy, Check } from 'lucide-vue-next'
 import type { CookLogEntry } from '@/types/recipe'
 
 const props = defineProps<{
@@ -14,25 +13,29 @@ const emit = defineEmits<{
   close: []
 }>()
 
-// Brand colors
-const ACCENT = '#a65d45'
-const INK = '#1a1816'
-
 // Modal state
 const isOpen = ref(false)
-const step = ref<'pick' | 'qr'>('pick')
+const step = ref<'pick' | 'share'>('pick')
 const selectedBake = ref<CookLogEntry | null>(null)
-const qrContainer = ref<HTMLDivElement | null>(null)
+const copied = ref(false)
 
 // Sort entries newest first
 const sortedEntries = computed(() => {
   return [...props.cookLog].sort((a, b) => b.date.localeCompare(a.date))
 })
 
+const shareUrl = computed(() => {
+  if (!selectedBake.value) return ''
+  return `https://proofeddot.netlify.app/recipe/${props.recipeId}/bake/${selectedBake.value.date}?shared=true`
+})
+
+const hasNativeShare = computed(() => typeof navigator !== 'undefined' && !!navigator.share)
+
 function open(): void {
   isOpen.value = true
   step.value = 'pick'
   selectedBake.value = null
+  copied.value = false
   document.body.style.overflow = 'hidden'
 }
 
@@ -44,50 +47,37 @@ function close(): void {
 
 function selectBake(entry: CookLogEntry): void {
   selectedBake.value = entry
-  step.value = 'qr'
-  nextTick(() => renderQrCode())
+  step.value = 'share'
+  copied.value = false
 }
 
 function goBackToPicker(): void {
   step.value = 'pick'
   selectedBake.value = null
+  copied.value = false
 }
 
-function renderQrCode(): void {
-  if (!qrContainer.value || !selectedBake.value) return
+async function copyLink(): Promise<void> {
+  if (!shareUrl.value) return
+  try {
+    await navigator.clipboard.writeText(shareUrl.value)
+    copied.value = true
+    setTimeout(() => { copied.value = false }, 2000)
+  } catch {
+    // Clipboard API not available — ignore
+  }
+}
 
-  // Clear previous QR
-  qrContainer.value.innerHTML = ''
-
-  const url = `https://proofeddot.netlify.app/recipe/${props.recipeId}/bake/${selectedBake.value.date}?shared=true`
-
-  const qrCode = new QRCodeStyling({
-    width: 256,
-    height: 256,
-    type: 'canvas',
-    data: url,
-    margin: 8,
-    dotsOptions: {
-      color: INK,
-      type: 'rounded'
-    },
-    cornersSquareOptions: {
-      color: ACCENT,
-      type: 'extra-rounded'
-    },
-    cornersDotOptions: {
-      color: ACCENT,
-      type: 'dot'
-    },
-    backgroundOptions: {
-      color: '#ffffff'
-    },
-    qrOptions: {
-      errorCorrectionLevel: 'M'
-    }
-  })
-
-  qrCode.append(qrContainer.value)
+async function shareLink(): Promise<void> {
+  if (!shareUrl.value || !selectedBake.value) return
+  try {
+    await navigator.share({
+      title: `${props.recipeName} — ${formatDate(selectedBake.value.date)}`,
+      url: shareUrl.value
+    })
+  } catch {
+    // User cancelled share sheet — not an error
+  }
 }
 
 function formatDate(dateStr: string): string {
@@ -128,7 +118,7 @@ defineExpose({ open, close, isOpen })
         <div class="flex items-center justify-between p-4 border-b-2 border-stone-200">
           <div class="flex items-center gap-2">
             <button
-              v-if="step === 'qr'"
+              v-if="step === 'share'"
               class="icon-btn-inline"
               title="Back"
               data-testid="share-back-btn"
@@ -137,7 +127,7 @@ defineExpose({ open, close, isOpen })
               <ArrowLeft :size="16" />
             </button>
             <h3 class="font-mono text-sm text-ink font-semibold">
-              {{ step === 'pick' ? 'Share a Bake' : 'QR Code' }}
+              {{ step === 'pick' ? 'Share a Bake' : 'Share Link' }}
             </h3>
           </div>
           <button
@@ -171,21 +161,38 @@ defineExpose({ open, close, isOpen })
           </div>
         </div>
 
-        <!-- Step 2: QR Code Display -->
-        <div v-if="step === 'qr'" class="p-4">
+        <!-- Step 2: Share Actions -->
+        <div v-if="step === 'share'" class="p-4">
           <p class="text-muted mb-1">{{ recipeName }}</p>
           <p class="font-mono text-xs text-ink mb-4">{{ selectedBake ? formatDate(selectedBake.date) : '' }}</p>
 
-          <!-- QR Code -->
-          <div
-            ref="qrContainer"
-            class="flex justify-center mb-4 [&>canvas]:border-2 [&>canvas]:border-stone-200"
-            data-testid="qr-code-container"
-          />
+          <!-- Link preview -->
+          <div class="bg-stone-100 border-2 border-stone-200 p-3 mb-4">
+            <p class="font-mono text-xs text-stone-500 break-all" data-testid="share-url">{{ shareUrl }}</p>
+          </div>
 
-          <p class="text-xs text-stone-400 text-center">
-            Long-press (mobile) or right-click (desktop) to save image.
-          </p>
+          <!-- Actions -->
+          <div class="space-y-2">
+            <button
+              class="w-full flex items-center justify-center gap-2 py-3 border-2 border-stone-200 hover:bg-stone-50 transition-colors font-mono text-sm text-ink"
+              data-testid="share-copy-btn"
+              @click="copyLink"
+            >
+              <Check v-if="copied" :size="16" class="text-green-600" />
+              <Copy v-else :size="16" />
+              {{ copied ? 'Copied!' : 'Copy Link' }}
+            </button>
+
+            <button
+              v-if="hasNativeShare"
+              class="w-full flex items-center justify-center gap-2 py-3 bg-ink text-surface font-mono text-sm transition-colors hover:bg-stone-700"
+              data-testid="share-native-btn"
+              @click="shareLink"
+            >
+              <Share2 :size="16" />
+              Share
+            </button>
+          </div>
         </div>
       </div>
     </div>
