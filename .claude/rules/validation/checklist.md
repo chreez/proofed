@@ -102,6 +102,7 @@ Add checks here for new features:
 | F23 | Photo paths valid | All cook_log photo src/thumb paths exist on disk | 2026-02-07 |
 | F24 | Photo alt text | All cook_log photos have non-empty alt text | 2026-02-07 |
 | F25 | Note source field | All `StateNote` entries in recipe JSON have `source: 'user' \| 'agent'` | 2026-02-11 |
+| F26 | Bake detail back link | Bake detail page (`/recipe/:id/bake/:date`) has working link back to recipe page | 2026-02-13 |
 
 ## Build Validation (MANDATORY)
 

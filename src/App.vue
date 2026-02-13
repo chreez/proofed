@@ -23,6 +23,7 @@ import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import PhotoReview from '@/components/PhotoReview.vue'
 import DemoBakeDetail from '@/components/DemoBakeDetail.vue'
 import DemoQrTest from '@/components/DemoQrTest.vue'
+import DemoSharedMode from '@/components/DemoSharedMode.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 
 const route = useRoute()
@@ -360,6 +361,7 @@ function handleTocNavigate(target: string) {
 
       <template v-else-if="route.meta.demoPage">
         <DemoQrTest v-if="route.name === 'qr-test-demo'" />
+        <DemoSharedMode v-else-if="route.name === 'shared-mode-demo'" />
         <DemoBakeDetail v-else />
       </template>
 
