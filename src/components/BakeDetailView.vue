@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { marked } from 'marked'
-import { ArrowLeft } from 'lucide-vue-next'
+import { ArrowLeft, Bot } from 'lucide-vue-next'
 import { useRecipe } from '@/composables/useRecipe'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
-import type { CookLogEntry, CookLogPhoto } from '@/types/recipe'
+import type { CookLogEntry, CookLogPhoto, ReheatMethod } from '@/types/recipe'
 
 const route = useRoute()
 const router = useRouter()
@@ -100,6 +100,39 @@ function goBack(): void {
     router.back()
   }
 }
+
+// --- Shared mode popover ---
+const isSharedMode = computed(() => route.query.shared === 'true')
+const popoverVisible = ref(false)
+
+const reheatMethods = computed<ReheatMethod[]>(() => {
+  return currentRecipe.value?.reheat?.methods ?? []
+})
+
+const hasReheat = computed(() => reheatMethods.value.length > 0)
+
+// Initialize popover visibility when in shared mode
+onMounted(() => {
+  if (isSharedMode.value) {
+    popoverVisible.value = true
+    document.body.style.overflow = 'hidden'
+  }
+})
+
+onUnmounted(() => {
+  if (popoverVisible.value) {
+    document.body.style.overflow = ''
+  }
+})
+
+function dismissPopover(): void {
+  popoverVisible.value = false
+  document.body.style.overflow = ''
+  // Remove ?shared=true from URL without triggering navigation
+  const query = { ...route.query }
+  delete query.shared
+  router.replace({ query })
+}
 </script>
 
 <template>
@@ -113,18 +146,18 @@ function goBack(): void {
     <div v-else-if="notFound" class="text-center py-12">
       <p class="text-heading text-lg font-mono mb-2">Bake not found</p>
       <p class="text-muted mb-6">No cook log entry for {{ bakeDate }}</p>
-      <button class="btn-secondary flex items-center gap-2 mx-auto" @click="goBack">
+      <button class="back-link" @click="goBack">
         <ArrowLeft :size="16" />
-        Back to recipe
+        <span class="font-mono text-sm">Back to recipe</span>
       </button>
     </div>
 
     <!-- Bake detail -->
     <template v-else-if="entry && currentRecipe">
-      <!-- Back button -->
-      <button class="btn-secondary mb-6 flex items-center gap-2" @click="goBack">
+      <!-- Back link -->
+      <button class="back-link" @click="goBack">
         <ArrowLeft :size="16" />
-        {{ currentRecipe.meta.name }}
+        <span class="font-mono text-sm">Back to recipe</span>
       </button>
 
       <!-- Header -->
@@ -181,9 +214,9 @@ function goBack(): void {
 
       <!-- Bottom nav -->
       <div class="border-t-2 border-stone-200 pt-4 mt-8">
-        <button class="btn-secondary flex items-center gap-2" @click="goBack">
+        <button class="back-link" @click="goBack">
           <ArrowLeft :size="16" />
-          Back to recipe
+          <span class="font-mono text-sm">Back to recipe</span>
         </button>
       </div>
     </template>
@@ -194,10 +227,102 @@ function goBack(): void {
       :open="lightboxOpen"
       @close="closeLightbox"
     />
+
+    <!-- Shared mode welcome popover -->
+    <Transition name="popover-fade">
+      <div
+        v-if="popoverVisible && entry && currentRecipe"
+        class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
+        data-testid="shared-popover-overlay"
+        @click.self="dismissPopover"
+      >
+        <div class="popover-card bg-surface border-2 border-stone-200 w-full max-w-md max-h-[90vh] overflow-y-auto">
+          <!-- Greeting -->
+          <div class="p-5 pb-0">
+            <h2 class="font-mono text-lg text-ink mb-1">
+              Hey, I'm Chris<span class="text-accent">.</span>
+            </h2>
+            <p class="text-body text-sm whitespace-nowrap overflow-hidden">
+              I baked these for you. Here's how to reheat them.
+            </p>
+          </div>
+
+          <!-- Hero photo (cropped preview) -->
+          <div v-if="heroPhoto" class="px-5 pt-3">
+            <div class="w-full h-32 overflow-hidden border-2 border-stone-200">
+              <img
+                :src="heroPhoto.src"
+                :alt="heroPhoto.alt"
+                loading="eager"
+                decoding="async"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <p class="text-muted text-xs mt-1 font-mono">{{ currentRecipe.meta.name }} — {{ entry.date }}</p>
+          </div>
+
+          <!-- Reheat instructions -->
+          <div v-if="hasReheat" class="mx-5 mt-4 border-2 border-stone-200 bg-stone-50">
+            <div class="px-4 py-3 border-b-2 border-stone-200">
+              <h3 class="font-mono text-sm text-ink font-semibold">Reheat — {{ currentRecipe.meta.name }}</h3>
+            </div>
+            <div class="px-4 py-3 space-y-3">
+              <div
+                v-for="(item, i) in reheatMethods"
+                :key="i"
+                class="text-sm"
+              >
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-accent font-medium">{{ item.method }}</span>
+                </div>
+                <p class="text-stone-600 mt-0.5">{{ item.detail }}</p>
+                <p v-if="item.source === 'agent'" class="text-stone-400 text-xs mt-0.5 flex items-center gap-1">
+                  <Bot class="w-3 h-3 flex-shrink-0" />
+                  <span>{{ item.method }} tip is ai generated, not from Chris</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- No reheat fallback -->
+          <div v-else class="mx-5 mt-4 border-2 border-stone-200 bg-stone-50">
+            <div class="px-4 py-3">
+              <p class="text-stone-400 text-sm flex items-center gap-1.5">
+                <Bot class="w-3.5 h-3.5 flex-shrink-0" />
+                <span>No specific reheat instructions yet — check the recipe for serving suggestions.</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Dismiss button -->
+          <div class="p-5">
+            <button
+              class="btn-primary w-full font-mono text-sm"
+              data-testid="shared-popover-dismiss"
+              @click="dismissPopover"
+            >
+              View Full Bake Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <style scoped>
+/* Popover fade transition */
+.popover-fade-enter-active {
+  transition: opacity 200ms ease-out;
+}
+.popover-fade-leave-active {
+  transition: opacity 150ms ease-in;
+}
+.popover-fade-enter-from,
+.popover-fade-leave-to {
+  opacity: 0;
+}
+
 .bake-prose {
   font-size: 0.875rem;
   color: var(--color-stone-600);
@@ -221,6 +346,29 @@ function goBack(): void {
 
 .bake-prose :deep(em) {
   color: var(--color-stone-500);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-radius: 0;
+  padding: 0 12px 0 8px;
+  margin-left: -8px;
+}
+
+.back-link:hover {
+  background: var(--color-stone-200);
+}
+
+.back-link:active {
+  background: var(--color-stone-300);
 }
 
 .bake-prose :deep(code) {

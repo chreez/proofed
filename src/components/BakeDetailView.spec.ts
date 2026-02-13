@@ -1,21 +1,25 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount } from '@vue/test-utils'
-import { ref } from 'vue'
+import { mount, flushPromises } from '@vue/test-utils'
+import { ref, nextTick } from 'vue'
 import BakeDetailView from './BakeDetailView.vue'
 import type { Recipe } from '@/types/recipe'
 
 // Mock vue-router
 const mockRouteParams = ref<Record<string, string>>({})
+const mockRouteQuery = ref<Record<string, string>>({})
 const mockPush = vi.fn()
 const mockBack = vi.fn()
+const mockReplace = vi.fn()
 
 vi.mock('vue-router', () => ({
   useRoute: () => ({
-    params: mockRouteParams.value
+    params: mockRouteParams.value,
+    query: mockRouteQuery.value
   }),
   useRouter: () => ({
     push: mockPush,
-    back: mockBack
+    back: mockBack,
+    replace: mockReplace
   })
 }))
 
@@ -32,7 +36,8 @@ vi.mock('@/composables/useRecipe', () => ({
 
 // Mock lucide-vue-next
 vi.mock('lucide-vue-next', () => ({
-  ArrowLeft: { name: 'ArrowLeft', props: ['size'], template: '<svg class="arrow-left-icon" />' }
+  ArrowLeft: { name: 'ArrowLeft', props: ['size'], template: '<svg class="arrow-left-icon" />' },
+  Bot: { name: 'Bot', props: ['size'], template: '<svg class="bot-icon" />' }
 }))
 
 // Stub PhotoLightbox
@@ -93,6 +98,7 @@ describe('BakeDetailView', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: '2026-02-05' }
+    mockRouteQuery.value = {}
     mockCurrentRecipe.value = makeRecipe()
     mockLoading.value = false
   })
@@ -123,8 +129,8 @@ describe('BakeDetailView', () => {
     it('shows back button in not-found state', () => {
       mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: '2099-01-01' }
       const wrapper = mountComponent()
-      const backBtn = wrapper.find('button')
-      expect(backBtn.text()).toContain('Back to recipe')
+      const backBtn = wrapper.find('button.back-link')
+      expect(backBtn.exists()).toBe(true)
     })
 
     it('navigates back to recipe on back button click in not-found state', async () => {
@@ -156,10 +162,10 @@ describe('BakeDetailView', () => {
       expect(wrapper.text()).toContain('Quick Cinnamon Buns')
     })
 
-    it('renders recipe name in back button', () => {
+    it('renders back link button', () => {
       const wrapper = mountComponent()
-      const buttons = wrapper.findAll('button')
-      expect(buttons[0].text()).toContain('Quick Cinnamon Buns')
+      const backBtn = wrapper.find('button.back-link')
+      expect(backBtn.exists()).toBe(true)
     })
 
     it('renders formatted date with weekday', () => {
@@ -210,11 +216,10 @@ describe('BakeDetailView', () => {
       expect(nextTimeHeading).toBeDefined()
     })
 
-    it('renders bottom nav back button', () => {
+    it('renders bottom nav back link', () => {
       const wrapper = mountComponent()
-      const buttons = wrapper.findAll('button')
-      const lastBtn = buttons[buttons.length - 1]
-      expect(lastBtn.text()).toContain('Back to recipe')
+      const backLinks = wrapper.findAll('button.back-link')
+      expect(backLinks.length).toBeGreaterThanOrEqual(2)
     })
   })
 
@@ -555,6 +560,149 @@ describe('BakeDetailView', () => {
       const headings = wrapper.findAll('h4')
       const nextTimeHeading = headings.find(h => h.text() === 'Next Time')
       expect(nextTimeHeading).toBeUndefined()
+    })
+  })
+
+  describe('shared mode popover', () => {
+    it('does not show popover when shared=true is not in query', async () => {
+      const wrapper = mountComponent()
+      await flushPromises()
+      expect(wrapper.find('[data-testid="shared-popover-overlay"]').exists()).toBe(false)
+    })
+
+    it('shows popover when shared=true is in query', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      expect(wrapper.find('[data-testid="shared-popover-overlay"]').exists()).toBe(true)
+    })
+
+    it('popover displays greeting text', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      expect(wrapper.text()).toContain("Hey, I'm Chris")
+      expect(wrapper.text()).toContain('I baked these for you')
+    })
+
+    it('popover displays recipe name and date', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
+      expect(popover.text()).toContain('Quick Cinnamon Buns')
+      expect(popover.text()).toContain('2026-02-05')
+    })
+
+    it('popover displays hero photo', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
+      const heroImg = popover.find('img')
+      expect(heroImg.exists()).toBe(true)
+      expect(heroImg.attributes('src')).toBe('/img/hero-800.webp')
+    })
+
+    it('popover displays reheat instructions when recipe has reheat data', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      mockCurrentRecipe.value = makeRecipe({
+        reheat: {
+          methods: [
+            { method: 'Air Fryer', detail: '300F 5 min', source: 'user' as const },
+            { method: 'Storage', detail: 'Room temp 2 days', source: 'agent' as const }
+          ]
+        }
+      })
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
+      expect(popover.text()).toContain('Reheat')
+      expect(popover.text()).toContain('Air Fryer')
+      expect(popover.text()).toContain('300F 5 min')
+      expect(popover.text()).toContain('Storage')
+    })
+
+    it('popover shows agent attribution for agent-sourced methods', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      mockCurrentRecipe.value = makeRecipe({
+        reheat: {
+          methods: [
+            { method: 'Storage', detail: 'Room temp', source: 'agent' as const }
+          ]
+        }
+      })
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
+      expect(popover.text()).toContain('ai generated')
+      expect(popover.text()).toContain('not from Chris')
+    })
+
+    it('popover does not show agent attribution for user-sourced methods', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      mockCurrentRecipe.value = makeRecipe({
+        reheat: {
+          methods: [
+            { method: 'Air Fryer', detail: '300F 5 min', source: 'user' as const }
+          ]
+        }
+      })
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
+      expect(popover.text()).not.toContain('ai generated')
+    })
+
+    it('popover shows fallback when no reheat data', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      // Default recipe has no reheat field
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
+      expect(popover.text()).toContain('No specific reheat instructions yet')
+    })
+
+    it('dismisses popover on button click', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      expect(wrapper.find('[data-testid="shared-popover-overlay"]').exists()).toBe(true)
+
+      await wrapper.find('[data-testid="shared-popover-dismiss"]').trigger('click')
+      await nextTick()
+      expect(wrapper.find('[data-testid="shared-popover-overlay"]').exists()).toBe(false)
+      expect(mockReplace).toHaveBeenCalledWith({ query: {} })
+    })
+
+    it('dismisses popover on overlay click', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      expect(wrapper.find('[data-testid="shared-popover-overlay"]').exists()).toBe(true)
+
+      await wrapper.find('[data-testid="shared-popover-overlay"]').trigger('click')
+      await nextTick()
+      expect(wrapper.find('[data-testid="shared-popover-overlay"]').exists()).toBe(false)
+    })
+
+    it('has dismiss button with correct text', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const dismissBtn = wrapper.find('[data-testid="shared-popover-dismiss"]')
+      expect(dismissBtn.text()).toBe('View Full Bake Details')
     })
   })
 })

@@ -1,10 +1,10 @@
 ---
 id: PF-128
 title: QR code share system for bake gifts
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-13 01:46'
-updated_date: '2026-02-13 05:15'
+updated_date: '2026-02-13 06:11'
 labels: []
 dependencies:
   - PF-130

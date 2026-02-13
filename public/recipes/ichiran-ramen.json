@@ -2795,5 +2795,11 @@
         "sodium": 2.4
       }
     ]
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Stovetop", "detail": "Reheat broth separately on medium heat. Cook fresh noodles at serving time — do not store cooked noodles.", "source": "agent" },
+      { "method": "Storage", "detail": "Broth, tare, and red sauce keep 5 days in fridge. Broth and tare freeze well (1 month+).", "source": "agent" }
+    ]
   }
 }

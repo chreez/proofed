@@ -3,6 +3,16 @@ export interface RecipeSummary {
   mode: 'dictated' | 'auto'
 }
 
+export interface ReheatMethod {
+  method: string
+  detail: string
+  source: 'user' | 'agent'
+}
+
+export interface Reheat {
+  methods: ReheatMethod[]
+}
+
 export interface Recipe {
   meta: RecipeMeta
   config: RecipeConfig
@@ -15,6 +25,7 @@ export interface Recipe {
   cook_log?: CookLogEntry[]
   nutrition?: RecipeNutrition
   research?: Research
+  reheat?: Reheat
 }
 
 export interface NutrientTotals {

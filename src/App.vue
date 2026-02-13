@@ -6,8 +6,11 @@ import { useProgress } from '@/composables/useProgress'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import { latestCookLogEntry } from '@/composables/useCookLog'
+import { QrCode } from 'lucide-vue-next'
 import type { RecipeState, CookLogPhoto } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
+import ShareModal from '@/components/ShareModal.vue'
+import IconButton from '@/components/IconButton.vue'
 import StageCard from '@/components/StageCard.vue'
 import RecipeIndex from '@/components/RecipeIndex.vue'
 import CookLogSection from '@/components/CookLogSection.vue'
@@ -139,6 +142,13 @@ const latestHeroPhoto = computed(() => {
     date: entry.date
   }
 })
+
+// Share modal ref
+const shareModalRef = ref<InstanceType<typeof ShareModal> | null>(null)
+
+function openShareModal(): void {
+  shareModalRef.value?.open()
+}
 
 // Hero lightbox state
 const heroLightboxOpen = ref(false)
@@ -337,20 +347,32 @@ function handleTocNavigate(target: string) {
       :class="isScrolled ? 'py-2' : 'py-4'"
     >
       <div class="max-w-4xl mx-auto flex items-center justify-between">
-        <h1
-          class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out cursor-pointer whitespace-nowrap"
-          :class="isScrolled ? 'text-lg' : 'text-2xl'"
-          @click="goToIndex"
-        ><span class="brand-text">proofed</span><span class="brand-dot text-accent">.</span></h1>
-        <Transition name="title-poof">
-          <div
-            v-if="isScrolled && currentRecipe && !showIndex && !showAbout"
-            class="flex items-center gap-3 ml-4 min-w-0"
-          >
-            <span class="text-sm text-muted truncate cursor-pointer" @click="scrollToTop">{{ currentRecipe.meta.name }}</span>
-            <span v-if="currentRecipe.version" class="text-sm text-muted font-mono flex-shrink-0 cursor-pointer" @click="scrollToTop">{{ formatVersionShort(currentRecipe.version) }}</span>
-          </div>
-        </Transition>
+        <div class="flex items-center min-w-0">
+          <h1
+            class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out cursor-pointer whitespace-nowrap"
+            :class="isScrolled ? 'text-lg' : 'text-2xl'"
+            @click="goToIndex"
+          ><span class="brand-text">proofed</span><span class="brand-dot text-accent">.</span></h1>
+          <Transition name="title-poof">
+            <div
+              v-if="isScrolled && currentRecipe && !showIndex && !showAbout"
+              class="flex items-center gap-3 ml-4 min-w-0"
+            >
+              <span class="text-sm text-muted truncate cursor-pointer" @click="scrollToTop">{{ currentRecipe.meta.name }}</span>
+              <span v-if="currentRecipe.version" class="text-sm text-muted font-mono flex-shrink-0 cursor-pointer" @click="scrollToTop">{{ formatVersionShort(currentRecipe.version) }}</span>
+            </div>
+          </Transition>
+        </div>
+        <IconButton
+          v-if="currentRecipe?.cook_log?.length && !showIndex && !showAbout && !showBakeDetail"
+          tooltip="Share"
+          tooltip-align="right"
+          size="sm"
+          data-testid="share-btn"
+          @click="openShareModal"
+        >
+          <QrCode />
+        </IconButton>
       </div>
     </header>
 
@@ -502,6 +524,14 @@ function handleTocNavigate(target: string) {
     </main>
 
     <SiteFooter />
+
+    <ShareModal
+      v-if="currentRecipe && currentRecipeId && currentRecipe.cook_log?.length"
+      ref="shareModalRef"
+      :recipe-name="currentRecipe.meta.name"
+      :recipe-id="currentRecipeId"
+      :cook-log="currentRecipe.cook_log"
+    />
   </div>
 </template>
 

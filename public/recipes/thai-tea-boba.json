@@ -831,5 +831,11 @@
         "sodium": 11.2
       }
     ]
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Serving", "detail": "Best fresh. Boba hardens in the fridge — make only what you'll drink.", "source": "agent" },
+      { "method": "Tea Only", "detail": "Tea concentrate keeps 2–3 days in the fridge. Pour over fresh ice and milk to serve.", "source": "agent" }
+    ]
   }
 }

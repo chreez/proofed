@@ -676,5 +676,12 @@
     "strategy": "9-agent parallel research: beginner recipes, overnight proof technique, starter readiness, baking vessel alternatives, technique science, community intel, flour & ingredients, shaping & scoring, process optimization",
     "sourceCount": 100,
     "date": "2026-02-11"
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Oven", "detail": "350°F (175°C), 5–10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.", "source": "agent" },
+      { "method": "Toaster", "detail": "Slice and toast directly — best for day-old bread.", "source": "agent" },
+      { "method": "Storage", "detail": "Cut-side down on a board, room temp, same day. Freeze sliced in zip-lock for up to 1 month.", "source": "agent" }
+    ]
   }
 }

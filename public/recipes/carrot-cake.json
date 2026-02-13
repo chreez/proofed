@@ -1456,5 +1456,11 @@
         "confidence": "high"
       }
     ]
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Room Temp", "detail": "Pull from fridge 30 min before serving — cream cheese frosting tastes best at room temp.", "source": "agent" },
+      { "method": "Storage", "detail": "Fridge up to 5 days, covered. Unfrosted layers freeze well (wrap tightly, up to 1 month).", "source": "agent" }
+    ]
   }
 }

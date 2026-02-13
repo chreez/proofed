@@ -2629,5 +2629,11 @@
         "sodium": 9.6
       }
     ]
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Stovetop", "detail": "Reheat dipping broth separately on medium heat until simmering. Serve noodles cold (or briefly dip in hot water to warm).", "source": "agent" },
+      { "method": "Storage", "detail": "Broth and tare keep 5 days in fridge. Freeze broth in portions for up to 1 month. Cook fresh noodles at serving time.", "source": "agent" }
+    ]
   }
 }

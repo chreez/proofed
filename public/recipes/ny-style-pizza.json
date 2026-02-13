@@ -874,5 +874,12 @@
         "sodium": 3081.8
       }
     ]
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Oven", "detail": "400°F (205°C), 5–7 min on a rack or preheated sheet pan.", "source": "agent" },
+      { "method": "Skillet", "detail": "Medium heat, 2–3 min covered with a lid to melt cheese.", "source": "agent" },
+      { "method": "Storage", "detail": "Fridge up to 3 days, wrapped in foil.", "source": "agent" }
+    ]
   }
 }

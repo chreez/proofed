@@ -1660,5 +1660,12 @@
         "sodium": 4.8
       }
     ]
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Stovetop", "detail": "Medium-low heat, stir frequently. Add a splash of water or stock if too thick.", "source": "agent" },
+      { "method": "Microwave", "detail": "Cover, 2–3 min, stir halfway through.", "source": "agent" },
+      { "method": "Storage", "detail": "Fridge up to 5 days (sauce only — store rice separately). Freezes well for 1 month.", "source": "agent" }
+    ]
   }
 }

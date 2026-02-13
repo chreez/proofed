@@ -1054,5 +1054,12 @@
         "sodium": 0.5
       }
     ]
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Air Fryer", "detail": "300°F (150°C), 5 min. Loosely wrap in foil — cover top if dried out.", "source": "user" },
+      { "method": "Microwave", "detail": "Damp paper towel, 20–30 sec.", "source": "user" },
+      { "method": "Storage", "detail": "Room temp, covered. Best within 2 days.", "source": "agent" }
+    ]
   }
 }
