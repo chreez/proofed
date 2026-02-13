@@ -14,8 +14,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.2.0",
+  "version": "v1.3.0",
   "change_log": [
+    {
+      "version": "v1.3.0",
+      "date": "2026-02-12",
+      "summary": "Feedback session: added agent tips on sugar reduction at high temps (ADD_ENRICHMENTS) and parm flavor bridge layering (TOP_PIZZA)."
+    },
     {
       "version": "v1.2.0",
       "date": "2026-02-09",
@@ -457,6 +462,11 @@
           "text": "Olive oil adds extensibility and browning to the crust. Sugar promotes Maillard browning.",
           "critical": false,
           "source": "user"
+        },
+        {
+          "text": "At 550°F with a preheated steel/stone, the 19g sugar may cause excessive browning. Consider reducing to 10g or omitting entirely if your oven runs hot — the Maillard reaction on the flour proteins provides sufficient browning at these temperatures.",
+          "critical": false,
+          "source": "agent"
         }
       ]
     },
@@ -649,6 +659,11 @@
           "text": "Pepperoni goes on top of the cheese — this is intentional so it browns, crisps, and cups up during baking",
           "critical": false,
           "source": "user"
+        },
+        {
+          "text": "Layering sauce → grated Parmigiano-Reggiano → mozzarella → pepperoni adds a savory base layer under the mozz. The parm melts into the sauce and creates a flavor bridge between the two.",
+          "critical": false,
+          "source": "agent"
         },
         {
           "text": "Do not overload with sauce or the center will be soggy and the pizza will not slide off the peel",
