@@ -30,6 +30,12 @@ const router = createRouter({
       meta: { showIndex: false }
     },
     {
+      path: '/recipe/:recipeId/bake/:date',
+      name: 'bake-detail',
+      component: EmptyRouteView,
+      meta: { showIndex: false, bakeDetail: true }
+    },
+    {
       path: '/about',
       name: 'about',
       component: EmptyRouteView,
@@ -50,6 +56,12 @@ const router = createRouter({
     {
       path: '/demo/bake-detail/route-view',
       name: 'bake-detail-route-view',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
+    {
+      path: '/demo/qr-test',
+      name: 'qr-test-demo',
       component: EmptyRouteView,
       meta: { showIndex: false, demoPage: true }
     },

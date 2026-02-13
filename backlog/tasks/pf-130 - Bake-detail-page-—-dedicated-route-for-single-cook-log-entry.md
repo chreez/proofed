@@ -1,9 +1,10 @@
 ---
 id: PF-130
 title: Bake detail page — dedicated route for single cook log entry
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-13 04:38'
+updated_date: '2026-02-13 05:15'
 labels:
   - feature
 dependencies: []
@@ -31,3 +32,9 @@ PF-128 (QR sharing) depends on this for the shared/QR recipient landing page.
 - [ ] #9 No changes to the existing inline cook log expand in CookLogSection (coexistence — navigation model decided later)
 - [ ] #10 npm run build passes
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Implementation\n\nNew `BakeDetailView.vue` component at `/recipe/:recipeId/bake/:date`.\n\n**Pattern**: Separate route (Pattern B from DRAFT-6.1 spike).\n**Data flow**: Uses shared `useRecipe()` composable — App.vue's watcher loads recipe automatically.\n**Back nav**: Returns to `/recipe/:recipeId#cook-log-section`.\n**Photos**: Hero (last in array) full-width, supporting photos as horizontal scroll thumbnails, PhotoLightbox on click.\n**Notes**: Markdown rendering via `marked.parse()` matching CookLogSection.\n**Not found**: Shows bake-not-found state with back button.\n\nUser approved visual review on iPhone + desktop."
+<!-- SECTION:NOTES:END -->

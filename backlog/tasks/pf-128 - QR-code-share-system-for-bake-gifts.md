@@ -4,7 +4,7 @@ title: QR code share system for bake gifts
 status: To Do
 assignee: []
 created_date: '2026-02-13 01:46'
-updated_date: '2026-02-13 04:38'
+updated_date: '2026-02-13 05:15'
 labels: []
 dependencies:
   - PF-130
@@ -30,3 +30,9 @@ Generate a QR code permalink for each recipe that can be printed on a label make
 - [ ] #9 Dismissing the popover reveals the full recipe page underneath (normal recipe view, no disruption)
 - [ ] #10 QR codes use `proofeddot.netlify.app` as the base URL
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## QR Library Decision\n\n`qr-code-styling` (MIT, ~50KB) — user-tested on iPhone, chosen for brand-matchable styling (rounded dots, accent corners). See PF-128.1 spike notes for full evaluation."
+<!-- SECTION:NOTES:END -->

@@ -22,6 +22,8 @@ import AboutPage from '@/components/AboutPage.vue'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import PhotoReview from '@/components/PhotoReview.vue'
 import DemoBakeDetail from '@/components/DemoBakeDetail.vue'
+import DemoQrTest from '@/components/DemoQrTest.vue'
+import BakeDetailView from '@/components/BakeDetailView.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -38,6 +40,7 @@ useRecipeMeta(
 const showIndex = computed(() => route.name === 'index')
 const showAbout = computed(() => route.name === 'about')
 const showPhotoReview = computed(() => route.name === 'photo-review')
+const showBakeDetail = computed(() => route.name === 'bake-detail')
 function goToIndex(): void {
   router.push('/')
 }
@@ -356,7 +359,12 @@ function handleTocNavigate(target: string) {
       </div>
 
       <template v-else-if="route.meta.demoPage">
-        <DemoBakeDetail />
+        <DemoQrTest v-if="route.name === 'qr-test-demo'" />
+        <DemoBakeDetail v-else />
+      </template>
+
+      <template v-else-if="showBakeDetail">
+        <BakeDetailView />
       </template>
 
       <template v-else-if="showAbout">

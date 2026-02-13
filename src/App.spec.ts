@@ -56,6 +56,15 @@ vi.mock('@/components/PhotoLightbox.vue', () => ({
 vi.mock('@/components/PhotoReview.vue', () => ({
   default: { name: 'PhotoReview', template: '<div class="photo-review-stub">Photo Review</div>' }
 }))
+vi.mock('@/components/BakeDetailView.vue', () => ({
+  default: { name: 'BakeDetailView', template: '<div class="bake-detail-stub">Bake Detail</div>' }
+}))
+vi.mock('@/components/DemoBakeDetail.vue', () => ({
+  default: { name: 'DemoBakeDetail', template: '<div class="demo-bake-detail-stub">Demo Bake Detail</div>' }
+}))
+vi.mock('@/components/DemoQrTest.vue', () => ({
+  default: { name: 'DemoQrTest', template: '<div class="demo-qr-test-stub">Demo QR Test</div>' }
+}))
 // Mock composables
 const mockLoadTechniques = vi.fn()
 vi.mock('@/composables/useTechniques', () => ({
@@ -131,6 +140,9 @@ function makeRouter() {
       { path: '/recipe/:recipeId', name: 'recipe', component: { template: '<div />' } },
       { path: '/about', name: 'about', component: { template: '<div />' } },
       { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } },
+      { path: '/recipe/:recipeId/bake/:date', name: 'bake-detail', component: { template: '<div />' }, meta: { bakeDetail: true } },
+      { path: '/demo/bake-detail', name: 'bake-detail-demo', component: { template: '<div />' }, meta: { demoPage: true } },
+      { path: '/demo/qr-test', name: 'qr-test-demo', component: { template: '<div />' }, meta: { demoPage: true } },
     ]
   })
 }
@@ -262,6 +274,24 @@ describe('App', () => {
     const { wrapper } = await mountApp('/review/photos/test-recipe/2026-02-10')
     expect(wrapper.find('.photo-review-stub').exists()).toBe(true)
     expect(wrapper.text()).toContain('Photo Review')
+  })
+
+  it('shows BakeDetailView on bake-detail route', async () => {
+    const { wrapper } = await mountApp('/recipe/test-recipe/bake/2026-02-10')
+    expect(wrapper.find('.bake-detail-stub').exists()).toBe(true)
+    expect(wrapper.text()).toContain('Bake Detail')
+  })
+
+  it('shows DemoBakeDetail on demo/bake-detail route', async () => {
+    const { wrapper } = await mountApp('/demo/bake-detail')
+    expect(wrapper.find('.demo-bake-detail-stub').exists()).toBe(true)
+    expect(wrapper.text()).toContain('Demo Bake Detail')
+  })
+
+  it('shows DemoQrTest on demo/qr-test route', async () => {
+    const { wrapper } = await mountApp('/demo/qr-test')
+    expect(wrapper.find('.demo-qr-test-stub').exists()).toBe(true)
+    expect(wrapper.text()).toContain('Demo QR Test')
   })
 
   it('shows loading state when loading is true', async () => {
