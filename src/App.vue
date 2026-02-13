@@ -5,6 +5,7 @@ import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
+import { latestCookLogEntry } from '@/composables/useCookLog'
 import type { RecipeState, CookLogPhoto } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import StageCard from '@/components/StageCard.vue'
@@ -127,7 +128,7 @@ function getStatesForStage(stateIds: string[]) {
 
 // Hero banner: latest bake photo
 const latestHeroPhoto = computed(() => {
-  const entry = currentRecipe.value?.cook_log?.[0]
+  const entry = latestCookLogEntry(currentRecipe.value?.cook_log)
   if (!entry?.photos?.length) return null
   return {
     photo: entry.photos[entry.photos.length - 1],
@@ -140,7 +141,7 @@ const heroLightboxOpen = ref(false)
 const heroLightboxPhotos = ref<CookLogPhoto[]>([])
 
 function openHeroLightbox(): void {
-  const entry = currentRecipe.value?.cook_log?.[0]
+  const entry = latestCookLogEntry(currentRecipe.value?.cook_log)
   if (!entry?.photos?.length) return
   const hero = entry.photos[entry.photos.length - 1]
   const rest = entry.photos.slice(0, -1)

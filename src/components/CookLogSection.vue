@@ -5,6 +5,7 @@ import { Link2, Check, ChevronDown } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import type { CookLogEntry, CookLogPhoto } from '@/types/recipe'
+import { sortedCookLog } from '@/composables/useCookLog'
 
 const props = defineProps<{
   cookLog: CookLogEntry[]
@@ -146,7 +147,7 @@ onMounted(() => {
     </div>
 
     <div
-      v-for="(entry, index) in cookLog"
+      v-for="(entry, index) in sortedCookLog(cookLog)"
       :key="index"
       :id="entryId(entry.date)"
       class="mb-4 scroll-mt-16 cursor-pointer transition-all"
