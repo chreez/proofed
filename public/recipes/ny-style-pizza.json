@@ -119,6 +119,75 @@
           "text": "Use Trader Joe's low-moisture mozz next time — the HEB whole milk was too wet to shred"
         }
       ]
+    },
+    {
+      "date": "2026-02-12",
+      "version": "v1.2.0",
+      "notes": [
+        "Hydration mixup during mise en place — weighed 288g flour (the water amount) instead of 463g. Dough was very watery. Added extra flour to compensate but the result was the densest pizza dough ever — gluten never developed properly from the two-stage flour addition",
+        "Bulk fermented overnight in the fridge. Pulled out next day, split into 2 balls, room temp proof ~5 hours total (4 hours + 1 hour during final oven preheat)",
+        "Poke test passed — dough balls sprang back after second ferment",
+        "Preheated oven to 550°F with pizza steel for ~2 hours. Steel clocked in at ~520°F at bake time",
+        "Dough stretched out much better than Try 1 — reviewed a YouTube stretching tutorial beforehand. Not afraid of it tearing this time, better size overall",
+        "Bake: 4 min on steel, rotated, 4 more min, then ~2 min under high broil",
+        "Crust was pretty burned — likely from the sugar in the dough. Oven at 550 + pizza steel may be hot enough to not need sugar for browning",
+        "Topping order: sauce → fresh grated Parmigiano-Reggiano (generous) → HEB low-moisture whole milk mozz (bagged) → pepperoni",
+        "HEB low-moisture mozz melted perfectly and didn't need shredding — much more convenient than Try 1's block mozz. Trade-off: less tangy flavor",
+        "Second pizza: ran out of pepperoni, did half pepperoni / half extra cheese. Cheesier side bubbled nicely",
+        "Sauce was jarred pizza sauce (not San Marzano) — want to get Sclafani next time",
+        "Forgot to measure dough ball yield",
+        "Bigger pizza size meant better pepperoni distribution compared to Try 1",
+        "Despite the char and dense crumb, good crunch and taste overall",
+        "Broiler is a separate drawer under the main oven — transferred pizza to a tray (not the steel) to avoid further bottom char. Two rack positions in the drawer; first pizza on upper rack (very close to flame), second pizza on lower rack. Broiler bubbled the cheese nicely. The crust burning was from the sugar, not the broiler"
+      ],
+      "photos": [
+        {
+          "src": "/images/ny-style-pizza/2026-02-12/img-6808-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-12/img-6808-400w.webp",
+          "alt": "Assembled pepperoni pizza on wooden peel, pre-bake — stretched dough topped with sauce, shredded mozzarella, and pepperoni slices with clean raised cornicione"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-12/img-6810-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-12/img-6810-400w.webp",
+          "alt": "Stretched dough on wooden peel with sauce spread in a spiral, pre-topping — grated parmesan bowl and microplane on counter alongside sauce"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-12/img-6812-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-12/img-6812-400w.webp",
+          "alt": "Slice held up showing crumb cross-section — dense, tight crumb with minimal air pockets. Significant charring on crust edges, cupped pepperoni on top"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-12/img-6814-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-12/img-6814-400w.webp",
+          "alt": "Finished pepperoni pizza close-up — heavy char on crust rim and cheese surface with dark blisters, pepperoni partially buried under melted browned cheese"
+        }
+      ],
+      "references": [
+        {
+          "title": "Pizza stretching tutorial",
+          "url": "https://youtu.be/9f9-xTcKzZo?si=8iox3pLevUAsExH4"
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Consider lowering or removing sugar — oven at 550 + pizza steel provides enough heat for browning without it"
+        },
+        {
+          "text": "Get Sclafani crushed tomatoes for proper sauce"
+        },
+        {
+          "text": "Add Parmigiano-Reggiano as an ingredient in the recipe (sauce → parm → mozz → pepperoni layer order)"
+        },
+        {
+          "text": "Try TJ's low-moisture mozz (carried over from Try 1 — still haven't tried it)"
+        },
+        {
+          "text": "Measure dough ball yield after portioning"
+        },
+        {
+          "text": "Try the 2-3 day cold proof (carried over — did overnight this time, still want to try longer)"
+        }
+      ]
     }
   ],
   "vessels": [

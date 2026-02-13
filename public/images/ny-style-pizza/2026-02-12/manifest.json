@@ -1,0 +1,31 @@
+{
+  "recipeId": "ny-style-pizza",
+  "date": "2026-02-12",
+  "processedAt": "2026-02-13T02:24:05.968Z",
+  "photos": [
+    {
+      "name": "img-6808",
+      "thumb": "img-6808-400w.webp",
+      "src": "img-6808-800w.webp",
+      "summary": "Assembled pepperoni pizza on a wooden peel, pre-bake. Stretched dough topped with sauce, shredded mozzarella, and pepperoni slices, with a clean raised cornicione visible around the edge."
+    },
+    {
+      "name": "img-6810",
+      "thumb": "img-6810-400w.webp",
+      "src": "img-6810-800w.webp",
+      "summary": "Stretched dough on a wooden peel with sauce spread in a spiral, pre-topping. A small bowl of grated parmesan and a microplane grater sit on the counter alongside a bowl of sauce."
+    },
+    {
+      "name": "img-6812",
+      "thumb": "img-6812-400w.webp",
+      "src": "img-6812-800w.webp",
+      "summary": "Sliced pepperoni pizza with a piece held up to show the crumb cross-section — dense, tight crumb with minimal air pockets. Significant charring visible along the crust edges and bottom, with cupped pepperoni on top."
+    },
+    {
+      "name": "img-6814",
+      "thumb": "img-6814-400w.webp",
+      "src": "img-6814-800w.webp",
+      "summary": "Close-up of a finished pepperoni pizza showing heavy char on the crust rim and cheese surface with scattered dark blisters. Pepperoni pieces partially buried under melted, browned cheese."
+    }
+  ]
+}
