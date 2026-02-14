@@ -1,10 +1,10 @@
 ---
 id: PF-137
 title: Clean up committed demo/spike pages
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-14 03:57'
-updated_date: '2026-02-14 21:15'
+updated_date: '2026-02-14 21:16'
 labels:
   - cleanup
 dependencies: []
