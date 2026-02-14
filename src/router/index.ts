@@ -77,6 +77,12 @@ const router = createRouter({
       component: EmptyRouteView,
       meta: { showIndex: false, demoPage: true }
     },
+    {
+      path: '/demo/favicon',
+      name: 'favicon-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
   ]
 })
 

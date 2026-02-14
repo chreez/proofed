@@ -28,6 +28,7 @@ import DemoBakeDetail from '@/components/DemoBakeDetail.vue'
 import DemoQrTest from '@/components/DemoQrTest.vue'
 import DemoSharedMode from '@/components/DemoSharedMode.vue'
 import DemoQrPrintTest from '@/components/DemoQrPrintTest.vue'
+import DemoFavicon from '@/components/DemoFavicon.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 
 const route = useRoute()
@@ -387,6 +388,7 @@ function handleTocNavigate(target: string) {
         <DemoQrPrintTest v-if="route.name === 'qr-print-test-demo'" />
         <DemoQrTest v-else-if="route.name === 'qr-test-demo'" />
         <DemoSharedMode v-else-if="route.name === 'shared-mode-demo'" />
+        <DemoFavicon v-else-if="route.name === 'favicon-demo'" />
         <DemoBakeDetail v-else />
       </template>
 
