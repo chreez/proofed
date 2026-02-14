@@ -1,10 +1,10 @@
 ---
 id: PF-133
 title: Bake scratchpad - structured note capture during bake
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-13 18:44'
-updated_date: '2026-02-14 21:38'
+updated_date: '2026-02-14 22:12'
 labels: []
 dependencies: []
 priority: high
@@ -32,14 +32,14 @@ Structured note-taking and reminder system during active bakes. Two related feat
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Per-step reminder icons appear on completed steps when reminders are configured
-- [ ] #2 Reminders are defined per-step during recipe generation
-- [ ] #3 Note capture popover with prompted questions is accessible from each step
-- [ ] #4 Floating notepad button available for general bake notes
-- [ ] #5 Output is structured JSON blob consumable by /feedback skill
-- [ ] #6 Data shape supports input/output/result tracking per step
-- [ ] #7 UI does not clutter the bake view — minimal unless interacted with
-- [ ] #8 JSON export available for external use (excel-style)
+- [x] #1 Per-step reminder icons appear on completed steps when reminders are configured
+- [x] #2 Reminders are defined per-step during recipe generation
+- [x] #3 Note capture popover with prompted questions is accessible from each step
+- [x] #4 Floating notepad button available for general bake notes
+- [x] #5 Output is structured JSON blob consumable by /feedback skill
+- [x] #6 Data shape supports input/output/result tracking per step
+- [x] #7 UI does not clutter the bake view — minimal unless interacted with
+- [x] #8 JSON export available for external use (excel-style)
 <!-- AC:END -->
 
 ## Implementation Notes
