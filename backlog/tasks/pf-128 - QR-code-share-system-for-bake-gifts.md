@@ -4,7 +4,7 @@ title: QR code share system for bake gifts
 status: In Progress
 assignee: []
 created_date: '2026-02-13 01:46'
-updated_date: '2026-02-13 18:29'
+updated_date: '2026-02-14 03:27'
 labels: []
 dependencies:
   - PF-130
@@ -277,4 +277,8 @@ Netlify uses credit-based pricing (since Sept 2025):
 - [Credit-Based Plans](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/)
 - [How Credits Work](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/how-credits-work/)
 - [Netlify Pricing](https://www.netlify.com/pricing/)
+
+## QR Label Dot Fix (d211eda)
+
+Canvas `fillText('.')` at 48px JetBrains Mono rendered a distorted/cropped period on mobile. Replaced with explicit `arc()` circle (radius 5px, accent color). Also widened brand area from 200px to 240px to prevent clipping.
 <!-- SECTION:NOTES:END -->
