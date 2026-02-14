@@ -1001,4 +1001,6 @@ describe('App', () => {
       expect(wrapper.find('.text-sm.text-muted').exists()).toBe(false)
     })
   })
+
+
 })
