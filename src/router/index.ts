@@ -48,18 +48,6 @@ const router = createRouter({
       meta: { showIndex: false }
     },
     {
-      path: '/demo/bake-detail',
-      name: 'bake-detail-demo',
-      component: EmptyRouteView,
-      meta: { showIndex: false, demoPage: true }
-    },
-    {
-      path: '/demo/bake-detail/route-view',
-      name: 'bake-detail-route-view',
-      component: EmptyRouteView,
-      meta: { showIndex: false, demoPage: true }
-    },
-    {
       path: '/demo/qr-test',
       name: 'qr-test-demo',
       component: EmptyRouteView,
@@ -78,8 +66,8 @@ const router = createRouter({
       meta: { showIndex: false, demoPage: true }
     },
     {
-      path: '/demo/favicon',
-      name: 'favicon-demo',
+      path: '/demo/scratchpad',
+      name: 'scratchpad-demo',
       component: EmptyRouteView,
       meta: { showIndex: false, demoPage: true }
     },

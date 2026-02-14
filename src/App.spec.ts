@@ -59,9 +59,6 @@ vi.mock('@/components/PhotoReview.vue', () => ({
 vi.mock('@/components/BakeDetailView.vue', () => ({
   default: { name: 'BakeDetailView', template: '<div class="bake-detail-stub">Bake Detail</div>' }
 }))
-vi.mock('@/components/DemoBakeDetail.vue', () => ({
-  default: { name: 'DemoBakeDetail', template: '<div class="demo-bake-detail-stub">Demo Bake Detail</div>' }
-}))
 vi.mock('@/components/DemoQrTest.vue', () => ({
   default: { name: 'DemoQrTest', template: '<div class="demo-qr-test-stub">Demo QR Test</div>' }
 }))
@@ -142,7 +139,6 @@ function makeRouter() {
       { path: '/about', name: 'about', component: { template: '<div />' } },
       { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } },
       { path: '/recipe/:recipeId/bake/:date', name: 'bake-detail', component: { template: '<div />' }, meta: { bakeDetail: true } },
-      { path: '/demo/bake-detail', name: 'bake-detail-demo', component: { template: '<div />' }, meta: { demoPage: true } },
       { path: '/demo/qr-test', name: 'qr-test-demo', component: { template: '<div />' }, meta: { demoPage: true } },
     ]
   })
@@ -307,12 +303,6 @@ describe('App', () => {
 
     const bakeDateGetter = lastCall[2] as () => string | undefined
     expect(bakeDateGetter()).toBeUndefined()
-  })
-
-  it('shows DemoBakeDetail on demo/bake-detail route', async () => {
-    const { wrapper } = await mountApp('/demo/bake-detail')
-    expect(wrapper.find('.demo-bake-detail-stub').exists()).toBe(true)
-    expect(wrapper.text()).toContain('Demo Bake Detail')
   })
 
   it('shows DemoQrTest on demo/qr-test route', async () => {

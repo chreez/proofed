@@ -24,11 +24,10 @@ import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import PhotoReview from '@/components/PhotoReview.vue'
-import DemoBakeDetail from '@/components/DemoBakeDetail.vue'
 import DemoQrTest from '@/components/DemoQrTest.vue'
 import DemoSharedMode from '@/components/DemoSharedMode.vue'
 import DemoQrPrintTest from '@/components/DemoQrPrintTest.vue'
-import DemoFavicon from '@/components/DemoFavicon.vue'
+import DemoScratchpad from '@/components/DemoScratchpad.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 
 const route = useRoute()
@@ -387,9 +386,8 @@ function handleTocNavigate(target: string) {
       <template v-else-if="route.meta.demoPage">
         <DemoQrPrintTest v-if="route.name === 'qr-print-test-demo'" />
         <DemoQrTest v-else-if="route.name === 'qr-test-demo'" />
-        <DemoSharedMode v-else-if="route.name === 'shared-mode-demo'" />
-        <DemoFavicon v-else-if="route.name === 'favicon-demo'" />
-        <DemoBakeDetail v-else />
+        <DemoScratchpad v-else-if="route.name === 'scratchpad-demo'" />
+        <DemoSharedMode v-else />
       </template>
 
       <template v-else-if="showBakeDetail">
