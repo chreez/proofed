@@ -11,7 +11,7 @@ vi.mock('@unhead/vue', () => ({
 }))
 
 // Import after mocking
-import { useRecipeMeta } from './useRecipeMeta'
+import { useRecipeMeta, formatBakeDate } from './useRecipeMeta'
 
 const makeRecipe = (overrides: Partial<Recipe['meta']> = {}): Recipe => ({
   meta: {
@@ -134,5 +134,155 @@ describe('useRecipeMeta', () => {
     expect(ogImageWidth).toBe(800)
     expect(ogImageHeight).toBeUndefined()
     expect(twitterImage).toBe('https://proofeddot.netlify.app/images/test/2026-02-10/img-hero-800w.webp')
+  })
+
+  describe('bake-specific meta (with bakeDate)', () => {
+    const makeBakeRecipe = (): Recipe => {
+      const r = makeRecipe()
+      r.cook_log = [
+        {
+          date: '2026-02-10',
+          version: 'v2.0.0',
+          notes: ['Great oven spring this time'],
+          summary: 'Best bake yet — perfect crumb structure and even browning across all eight buns.',
+          photos: [
+            { src: '/images/test/2026-02-10/img-001-800w.webp', thumb: '/images/test/2026-02-10/img-001-400w.webp', alt: 'Dough rising' },
+            { src: '/images/test/2026-02-10/img-002-800w.webp', thumb: '/images/test/2026-02-10/img-002-400w.webp', alt: 'Finished buns' },
+          ],
+        },
+        {
+          date: '2026-01-15',
+          version: 'v1.0.0',
+          notes: ['First attempt'],
+        },
+      ]
+      return r
+    }
+
+    it('sets bake-specific title with formatted date', () => {
+      const recipe = ref<Recipe | null>(makeBakeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+      const bakeDate = ref<string | undefined>('2026-02-10')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => bakeDate.value)
+
+      const title = (capturedInput.title as { value: string }).value
+      expect(title).toBe('Test Buns — Feb 10, 2026 Bake')
+    })
+
+    it('sets bake-specific URL with date', () => {
+      const recipe = ref<Recipe | null>(makeBakeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+      const bakeDate = ref<string | undefined>('2026-02-10')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => bakeDate.value)
+
+      const ogUrl = (capturedInput.ogUrl as { value: string }).value
+      expect(ogUrl).toBe('https://proofeddot.netlify.app/recipe/test-buns/bake/2026-02-10')
+    })
+
+    it('uses cook_log summary as og:description', () => {
+      const recipe = ref<Recipe | null>(makeBakeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+      const bakeDate = ref<string | undefined>('2026-02-10')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => bakeDate.value)
+
+      const ogDescription = (capturedInput.ogDescription as { value: string }).value
+      expect(ogDescription).toBe('Best bake yet — perfect crumb structure and even browning across all eight buns.')
+    })
+
+    it('truncates long summary to ~150 chars', () => {
+      const r = makeBakeRecipe()
+      r.cook_log![0].summary = 'A'.repeat(200)
+      const recipe = ref<Recipe | null>(r)
+      const recipeId = ref<string | null>('test-buns')
+      const bakeDate = ref<string | undefined>('2026-02-10')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => bakeDate.value)
+
+      const ogDescription = (capturedInput.ogDescription as { value: string }).value
+      expect(ogDescription.length).toBe(150)
+      expect(ogDescription.endsWith('\u2026')).toBe(true)
+    })
+
+    it('falls back to recipe description when bake has no summary', () => {
+      const r = makeBakeRecipe()
+      r.meta.description = 'A classic recipe for cinnamon buns'
+      // Use the entry without summary
+      const recipe = ref<Recipe | null>(r)
+      const recipeId = ref<string | null>('test-buns')
+      const bakeDate = ref<string | undefined>('2026-01-15')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => bakeDate.value)
+
+      const ogDescription = (capturedInput.ogDescription as { value: string }).value
+      expect(ogDescription).toBe('A classic recipe for cinnamon buns')
+    })
+
+    it('uses hero photo from specific bake entry', () => {
+      const recipe = ref<Recipe | null>(makeBakeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+      const bakeDate = ref<string | undefined>('2026-02-10')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => bakeDate.value)
+
+      const ogImage = (capturedInput.ogImage as { value: string }).value
+      const twitterImage = (capturedInput.twitterImage as { value: string }).value
+
+      // Hero = last photo in that bake's array
+      expect(ogImage).toBe('https://proofeddot.netlify.app/images/test/2026-02-10/img-002-800w.webp')
+      expect(twitterImage).toBe('https://proofeddot.netlify.app/images/test/2026-02-10/img-002-800w.webp')
+    })
+
+    it('falls back to og-image.png when bake has no photos', () => {
+      const recipe = ref<Recipe | null>(makeBakeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+      const bakeDate = ref<string | undefined>('2026-01-15')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => bakeDate.value)
+
+      const ogImage = (capturedInput.ogImage as { value: string }).value
+      expect(ogImage).toBe('https://proofeddot.netlify.app/og-image.png')
+    })
+
+    it('mirrors OG values in twitter tags', () => {
+      const recipe = ref<Recipe | null>(makeBakeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+      const bakeDate = ref<string | undefined>('2026-02-10')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => bakeDate.value)
+
+      const ogTitle = (capturedInput.ogTitle as { value: string }).value
+      const twitterTitle = (capturedInput.twitterTitle as { value: string }).value
+      const ogDesc = (capturedInput.ogDescription as { value: string }).value
+      const twitterDesc = (capturedInput.twitterDescription as { value: string }).value
+
+      expect(twitterTitle).toBe(ogTitle)
+      expect(twitterDesc).toBe(ogDesc)
+      expect(capturedInput.twitterCard).toBe('summary_large_image')
+    })
+
+    it('behaves like recipe meta when bakeDate returns undefined', () => {
+      const recipe = ref<Recipe | null>(makeBakeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => undefined)
+
+      const title = (capturedInput.title as { value: string }).value
+      const ogUrl = (capturedInput.ogUrl as { value: string }).value
+
+      // Should act as normal recipe meta, not bake-specific
+      expect(title).toBe('Test Buns — proofed.')
+      expect(ogUrl).toBe('https://proofeddot.netlify.app/recipe/test-buns')
+    })
+  })
+
+  describe('formatBakeDate', () => {
+    it('formats YYYY-MM-DD as Mon DD, YYYY', () => {
+      expect(formatBakeDate('2026-02-10')).toBe('Feb 10, 2026')
+      expect(formatBakeDate('2026-01-15')).toBe('Jan 15, 2026')
+      expect(formatBakeDate('2025-12-25')).toBe('Dec 25, 2025')
+    })
   })
 })

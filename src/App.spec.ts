@@ -93,8 +93,9 @@ vi.mock('@/composables/useRecipe', () => ({
   })
 }))
 
+const mockUseRecipeMeta = vi.fn()
 vi.mock('@/composables/useRecipeMeta', () => ({
-  useRecipeMeta: vi.fn()
+  useRecipeMeta: (...args: unknown[]) => mockUseRecipeMeta(...args)
 }))
 
 // Mock useProgress
@@ -280,6 +281,32 @@ describe('App', () => {
     const { wrapper } = await mountApp('/recipe/test-recipe/bake/2026-02-10')
     expect(wrapper.find('.bake-detail-stub').exists()).toBe(true)
     expect(wrapper.text()).toContain('Bake Detail')
+  })
+
+  it('passes bakeDate getter to useRecipeMeta that returns date from route params', async () => {
+    await mountApp('/recipe/test-recipe/bake/2026-02-10')
+
+    // useRecipeMeta should have been called with 3 arguments
+    expect(mockUseRecipeMeta).toHaveBeenCalled()
+    const lastCall = mockUseRecipeMeta.mock.calls[mockUseRecipeMeta.mock.calls.length - 1]
+    expect(lastCall).toHaveLength(3)
+
+    // Third argument is the bakeDate getter — exercise it
+    const bakeDateGetter = lastCall[2] as () => string | undefined
+    expect(typeof bakeDateGetter).toBe('function')
+    const result = bakeDateGetter()
+    expect(result).toBe('2026-02-10')
+  })
+
+  it('bakeDate getter returns undefined when not on bake route', async () => {
+    await mountApp('/recipe/test-recipe')
+
+    expect(mockUseRecipeMeta).toHaveBeenCalled()
+    const lastCall = mockUseRecipeMeta.mock.calls[mockUseRecipeMeta.mock.calls.length - 1]
+    expect(lastCall).toHaveLength(3)
+
+    const bakeDateGetter = lastCall[2] as () => string | undefined
+    expect(bakeDateGetter()).toBeUndefined()
   })
 
   it('shows DemoBakeDetail on demo/bake-detail route', async () => {
