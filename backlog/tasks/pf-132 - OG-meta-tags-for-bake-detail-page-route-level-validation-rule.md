@@ -1,10 +1,10 @@
 ---
 id: PF-132
 title: OG meta tags for bake detail page + route-level validation rule
-status: Done
+status: In Progress
 assignee: []
 created_date: '2026-02-13 18:39'
-updated_date: '2026-02-14 02:37'
+updated_date: '2026-02-14 02:47'
 labels:
   - feature
   - validation
@@ -23,6 +23,7 @@ priority: medium
 - [x] #7 Validation checklist gets a new check: "Every route in the router must call `useSeoMeta` or `useRecipeMeta` with route-appropriate values"
 - [x] #8 Existing routes verified against the new validation rule: `/` (index), `/recipe/:id`, `/recipe/:id/bake/:date`, `/about`
 - [x] #9 `npm run build` passes
+- [ ] #10 #10 `prerender-og.ts` generates static HTML for bake detail pages (`recipe/:id/bake/:date/index.html`) with bake-specific OG tags embedded in the HTML — crawlers see correct title, description, and hero image without executing JavaScript
 <!-- AC:END -->
 
 ## Final Summary

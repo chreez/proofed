@@ -1,9 +1,11 @@
 /**
- * Post-build script: inject per-recipe Open Graph meta tags into dist/.
+ * Post-build script: inject per-recipe and per-bake Open Graph meta tags into dist/.
  *
- * For each recipe in the manifest, creates dist/recipe/{id}/index.html
- * with recipe-specific OG tags so crawlers/link unfurlers see the right
- * metadata without needing JavaScript execution.
+ * For each recipe, creates dist/recipe/{id}/index.html with recipe-specific OG tags.
+ * For each cook_log entry, creates dist/recipe/{id}/bake/{date}/index.html with
+ * bake-specific OG tags (title with date, summary, hero photo).
+ *
+ * Crawlers/link unfurlers see the right metadata without executing JavaScript.
  *
  * Usage (appended to build script):
  *   tsx scripts/prerender-og.ts
@@ -40,6 +42,7 @@ interface CookLogPhoto {
 
 interface CookLogEntry {
   date: string
+  summary?: string
   photos?: CookLogPhoto[]
 }
 
@@ -51,6 +54,17 @@ interface RecipeJSON {
 function buildDescription(meta: RecipeMeta): string {
   if (meta.description) return meta.description
   return `A ${SITE_NAME} recipe: ${meta.name} — ${meta.yields}, ${meta.total_time} total`
+}
+
+function formatBakeDate(dateStr: string): string {
+  const [y, m, d] = dateStr.split('-').map(Number)
+  const date = new Date(y, m - 1, d)
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+}
+
+function truncate(text: string, maxLen: number): string {
+  if (text.length <= maxLen) return text
+  return text.slice(0, maxLen - 1).trimEnd() + '\u2026'
 }
 
 /**
@@ -108,6 +122,46 @@ function buildOgTags(recipe: RecipeJSON, recipeId: string): string {
   return tags.join('\n  ')
 }
 
+function buildBakeOgTags(recipe: RecipeJSON, recipeId: string, entry: CookLogEntry): string {
+  const title = `${recipe.meta.name} — ${formatBakeDate(entry.date)} Bake`
+  const description = entry.summary
+    ? truncate(entry.summary, 150)
+    : buildDescription(recipe.meta)
+  const url = `${BASE_URL}/recipe/${recipeId}/bake/${entry.date}`
+
+  let image = `${BASE_URL}/og-image.png`
+  let isHero = false
+  if (entry.photos?.length) {
+    image = `${BASE_URL}${entry.photos[entry.photos.length - 1].src}`
+    isHero = true
+  }
+
+  const imageWidth = isHero ? '800' : '1200'
+
+  const tags = [
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="${SITE_NAME}">`,
+    `<meta property="og:title" content="${escapeHtml(title)}">`,
+    `<meta property="og:description" content="${escapeHtml(description)}">`,
+    `<meta property="og:url" content="${url}">`,
+    `<meta property="og:image" content="${image}">`,
+    `<meta property="og:image:width" content="${imageWidth}">`,
+  ]
+
+  if (!isHero) {
+    tags.push(`<meta property="og:image:height" content="630">`)
+  }
+
+  tags.push(
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:title" content="${escapeHtml(title)}">`,
+    `<meta name="twitter:description" content="${escapeHtml(description)}">`,
+    `<meta name="twitter:image" content="${image}">`,
+  )
+
+  return tags.join('\n  ')
+}
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -131,7 +185,10 @@ function run(): void {
     readFileSync(resolve(publicDir, 'recipes', 'index.json'), 'utf8')
   )
 
-  let count = 0
+  let recipeCount = 0
+  let bakeCount = 0
+
+  const ogRegex = /<!-- Open Graph defaults \(overridden per-route by @unhead\/vue\) -->[\s\S]*?<!-- Twitter Card defaults -->[\s\S]*?<meta name="twitter:image"[^>]*>/
 
   for (const entry of manifest.recipes) {
     const recipeFile = resolve(publicDir, 'recipes', entry.file)
@@ -141,33 +198,41 @@ function run(): void {
     }
 
     const recipe: RecipeJSON = JSON.parse(readFileSync(recipeFile, 'utf8'))
+
+    // Recipe-level page
     const ogTags = buildOgTags(recipe, entry.id)
     const title = `${recipe.meta.name} — ${SITE_NAME}`
 
-    // Replace the default OG block with recipe-specific tags
     let html = indexHtml
-
-    // Replace title
-    html = html.replace(
-      /<title>proofed\.<\/title>/,
-      `<title>${escapeHtml(title)}</title>`
-    )
-
-    // Replace the OG meta block (between the two comment markers isn't available,
-    // so replace individual tags)
-    html = html.replace(
-      /<!-- Open Graph defaults \(overridden per-route by @unhead\/vue\) -->[\s\S]*?<!-- Twitter Card defaults -->[\s\S]*?<meta name="twitter:image"[^>]*>/,
-      ogTags
-    )
+    html = html.replace(/<title>proofed\.<\/title>/, `<title>${escapeHtml(title)}</title>`)
+    html = html.replace(ogRegex, ogTags)
 
     const outDir = resolve(distDir, 'recipe', entry.id)
     mkdirSync(outDir, { recursive: true })
     writeFileSync(resolve(outDir, 'index.html'), html)
-    count++
+    recipeCount++
     console.log(`  wrote: recipe/${entry.id}/index.html`)
+
+    // Bake detail pages
+    if (recipe.cook_log) {
+      for (const logEntry of recipe.cook_log) {
+        const bakeOgTags = buildBakeOgTags(recipe, entry.id, logEntry)
+        const bakeTitle = `${recipe.meta.name} — ${formatBakeDate(logEntry.date)} Bake`
+
+        let bakeHtml = indexHtml
+        bakeHtml = bakeHtml.replace(/<title>proofed\.<\/title>/, `<title>${escapeHtml(bakeTitle)}</title>`)
+        bakeHtml = bakeHtml.replace(ogRegex, bakeOgTags)
+
+        const bakeOutDir = resolve(distDir, 'recipe', entry.id, 'bake', logEntry.date)
+        mkdirSync(bakeOutDir, { recursive: true })
+        writeFileSync(resolve(bakeOutDir, 'index.html'), bakeHtml)
+        bakeCount++
+        console.log(`  wrote: recipe/${entry.id}/bake/${logEntry.date}/index.html`)
+      }
+    }
   }
 
-  console.log(`prerender-og: ${count} recipe pages generated`)
+  console.log(`prerender-og: ${recipeCount} recipe pages + ${bakeCount} bake pages generated`)
 }
 
 run()
