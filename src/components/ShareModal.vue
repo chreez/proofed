@@ -92,7 +92,7 @@ function renderQrLabel(): void {
 
     const qrSize = 256
     const pad = 24
-    const brandWidth = 200
+    const brandWidth = 240
     const labelWidth = pad + qrSize + pad + brandWidth + pad
     const labelHeight = qrSize + pad * 2
 
@@ -112,8 +112,14 @@ function renderQrLabel(): void {
     ctx.fillStyle = INK
     ctx.fillText('proofed', textX, labelHeight / 2)
     const w = ctx.measureText('proofed').width
+    // Draw brand dot as explicit circle — canvas text rendering mangles the glyph
+    const dotRadius = 5
+    const dotX = textX + w + dotRadius + 4
+    const dotY = labelHeight / 2 + 12
+    ctx.beginPath()
+    ctx.arc(dotX, dotY, dotRadius, 0, Math.PI * 2)
     ctx.fillStyle = ACCENT
-    ctx.fillText('.', textX + w, labelHeight / 2)
+    ctx.fill()
 
     qrImageSrc.value = label.toDataURL('image/png')
   }, 300)

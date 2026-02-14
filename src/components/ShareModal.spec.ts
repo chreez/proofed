@@ -59,7 +59,10 @@ const mockCtx = {
   fillRect: vi.fn(),
   drawImage: vi.fn(),
   fillText: vi.fn(),
-  measureText: vi.fn(() => ({ width: 100 }))
+  measureText: vi.fn(() => ({ width: 100 })),
+  beginPath: vi.fn(),
+  arc: vi.fn(),
+  fill: vi.fn()
 }
 const origGetContext = HTMLCanvasElement.prototype.getContext
 beforeAll(() => {
