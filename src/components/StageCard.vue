@@ -3,6 +3,7 @@ import { computed, useTemplateRef } from 'vue'
 import { RotateCcw, Link2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { Stage, RecipeState, RecipeConfig } from '@/types/recipe'
+import type { useScratchpad } from '@/composables/useScratchpad'
 import GatherSection from '@/components/GatherSection.vue'
 import StateStep from '@/components/StateStep.vue'
 import { scrollToNextItem } from '@/composables/useScrollToNext'
@@ -19,6 +20,7 @@ const props = defineProps<{
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
   stepNotes?: Record<string, StepNoteData>
   sectionId: string
+  scratchpad?: ReturnType<typeof useScratchpad>
 }>()
 
 const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
@@ -71,6 +73,13 @@ function handleStateToggled(stateId: string) {
 const stateCount = computed(() => {
   const done = props.states.filter(s => props.progress.isStateChecked(s.id)).length
   return { done, total: props.states.length }
+})
+
+// Active step: first unchecked step in this stage (for reminder banners)
+const activeStepId = computed(() => {
+  if (isCollapsed.value) return null
+  const first = props.states.find(s => !props.progress.isStateChecked(s.id))
+  return first?.id ?? null
 })
 </script>
 
@@ -140,6 +149,8 @@ const stateCount = computed(() => {
             :config="config"
             :progress="progress"
             :step-note="stepNotes?.[state.id]"
+            :scratchpad="scratchpad"
+            :is-active-step="state.id === activeStepId"
             @toggled="handleStateToggled"
           />
         </div>

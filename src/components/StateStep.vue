@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { RecipeState, RecipeConfig } from '@/types/recipe'
+import type { useScratchpad } from '@/composables/useScratchpad'
 import TimerDisplay from '@/components/TimerDisplay.vue'
 import StepNote from '@/components/StepNote.vue'
 import TempText from '@/components/TempText.vue'
+import ScratchpadNote from '@/components/ScratchpadNote.vue'
+import ReminderBanner from '@/components/ReminderBanner.vue'
 
 interface StepNoteData {
   note: string
@@ -16,6 +19,8 @@ const props = defineProps<{
   config: RecipeConfig
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
   stepNote?: StepNoteData
+  scratchpad?: ReturnType<typeof useScratchpad>
+  isActiveStep?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -28,6 +33,30 @@ function toggle() {
   props.progress.toggleState(props.state.id, props.stageId)
   emit('toggled', props.state.id)
 }
+
+// Scratchpad handlers
+function handleAddNote(stepId: string, value: string): void {
+  props.scratchpad?.addNote(stepId, value)
+}
+
+function handleAddRating(stepId: string, rating: 'good' | 'ok' | 'bad'): void {
+  props.scratchpad?.addRating(stepId, rating)
+}
+
+function handleReminderRespond(stepId: string, prompt: string, value: string): void {
+  props.scratchpad?.addReminderResponse(stepId, prompt, value)
+}
+
+function handleReminderDismiss(stepId: string, prompt: string): void {
+  props.scratchpad?.dismissReminder(stepId, prompt)
+}
+
+const stepEntries = computed(() => props.scratchpad?.getEntriesForStep(props.state.id) ?? [])
+const hasEntries = computed(() => stepEntries.value.length > 0)
+const currentRating = computed(() => props.scratchpad?.getRatingForStep(props.state.id) ?? null)
+const showReminders = computed(() =>
+  !!props.state.reminders?.length && props.isActiveStep && !isChecked.value
+)
 </script>
 
 <template>
@@ -36,6 +65,17 @@ function toggle() {
     class="bg-surface p-4 border-2 border-stone-200 transition-opacity scroll-mt-16"
     :class="{ 'opacity-50': isChecked }"
   >
+    <!-- Reminder banner: appears when this step is active and has reminders -->
+    <ReminderBanner
+      v-if="showReminders && scratchpad"
+      :step-id="state.id"
+      :step-title="state.title"
+      :reminders="state.reminders!"
+      :is-reminder-dismissed="scratchpad.isReminderDismissed"
+      @respond="handleReminderRespond"
+      @dismiss="handleReminderDismiss"
+    />
+
     <div class="flex items-start gap-3">
       <button
         @click="toggle"
@@ -50,6 +90,18 @@ function toggle() {
           <h4 class="font-medium text-stone-700" :class="{ 'line-through': isChecked }">
             {{ state.title }}
           </h4>
+          <!-- Scratchpad note icon -->
+          <ScratchpadNote
+            v-if="scratchpad"
+            :step-id="state.id"
+            :reminders="state.reminders"
+            :entries="stepEntries"
+            :has-entries="hasEntries"
+            :current-rating="currentRating"
+            @add-note="handleAddNote"
+            @add-rating="handleAddRating"
+            @respond="handleReminderRespond"
+          />
           <span v-if="state.parallel" class="text-xs bg-stone-200 text-stone-600 px-2 py-0.5">
             parallel
           </span>

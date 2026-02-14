@@ -592,7 +592,13 @@
       "parallel": false,
       "components": null,
       "exit_condition": "Smooth dough ball in covered bowl",
-      "notes": null
+      "notes": null,
+      "reminders": [
+        {
+          "prompt": "Weigh total dough yield (target ~750g)",
+          "type": "measurement"
+        }
+      ]
     },
     {
       "id": "RISE_1",
@@ -608,6 +614,12 @@
           "text": "Start filling during last 15 minutes of rise",
           "critical": false,
           "source": "user"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Check dough temperature before placing in oven",
+          "type": "measurement"
         }
       ]
     },
@@ -753,6 +765,16 @@
           "text": "Check at 35 min—ovens vary. Target is golden, not pale.",
           "critical": false,
           "source": "user"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Rate oven spring and browning",
+          "type": "observation"
+        },
+        {
+          "prompt": "Record internal temperature",
+          "type": "measurement"
         }
       ]
     },

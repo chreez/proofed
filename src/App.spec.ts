@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, computed } from 'vue'
 import { createRouter, createMemoryHistory } from 'vue-router'
 import App from './App.vue'
 
@@ -128,6 +128,42 @@ vi.mock('@/composables/useProgress', () => ({
     resetProgress: mockResetProgress,
     hasProgress: mockHasProgress
   })
+}))
+
+const mockScratchpadLoad = vi.fn()
+const mockScratchpadExportJsonString = vi.fn(() => '{}')
+const mockScratchpadClearAll = vi.fn()
+const mockScratchpadAddGeneralNote = vi.fn()
+
+vi.mock('@/composables/useScratchpad', () => ({
+  useScratchpad: () => ({
+    load: mockScratchpadLoad,
+    addNote: vi.fn(),
+    addRating: vi.fn(),
+    addReminderResponse: vi.fn(),
+    addGeneralNote: mockScratchpadAddGeneralNote,
+    dismissReminder: vi.fn(),
+    isReminderDismissed: vi.fn(() => false),
+    getEntriesForStep: vi.fn(() => []),
+    getRatingForStep: vi.fn(() => null),
+    hasEntriesForStep: vi.fn(() => false),
+    totalEntryCount: ref(0),
+    generalNoteCount: ref(0),
+    generalNotes: ref([]),
+    exportJson: vi.fn(),
+    exportJsonString: mockScratchpadExportJsonString,
+    clearAll: mockScratchpadClearAll,
+    allStepEntries: computed(() => ({}))
+  })
+}))
+
+vi.mock('@/components/GeneralNotesFab.vue', () => ({
+  default: {
+    name: 'GeneralNotesFab',
+    props: ['generalNoteCount', 'totalEntryCount', 'generalNotes'],
+    emits: ['addGeneralNote', 'exportJson', 'clearAll'],
+    template: '<div class="general-notes-fab-stub" />'
+  }
 }))
 
 function makeRouter() {
@@ -992,5 +1028,78 @@ describe('App', () => {
     })
   })
 
+  describe('scratchpad integration', () => {
+    it('initializes scratchpad when recipe loads', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      expect(mockScratchpadLoad).toHaveBeenCalled()
+    })
+
+    it('renders GeneralNotesFab when scratchpad is available', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      expect(wrapper.find('.general-notes-fab-stub').exists()).toBe(true)
+    })
+
+    it('handles scratchpad export by copying JSON to clipboard', async () => {
+      const writeTextMock = vi.fn().mockResolvedValue(undefined)
+      Object.assign(navigator, { clipboard: { writeText: writeTextMock } })
+
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      const fab = wrapper.findComponent({ name: 'GeneralNotesFab' })
+      fab.vm.$emit('exportJson')
+      await nextTick()
+      await flushPromises()
+
+      expect(mockScratchpadExportJsonString).toHaveBeenCalled()
+      expect(writeTextMock).toHaveBeenCalledWith('{}')
+    })
+
+    it('handles addGeneralNote event from FAB', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      const fab = wrapper.findComponent({ name: 'GeneralNotesFab' })
+      fab.vm.$emit('addGeneralNote', 'test note')
+      await nextTick()
+
+      expect(mockScratchpadAddGeneralNote).toHaveBeenCalledWith('test note')
+    })
+
+    it('handles clearAll event from FAB', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      const fab = wrapper.findComponent({ name: 'GeneralNotesFab' })
+      fab.vm.$emit('clearAll')
+      await nextTick()
+
+      expect(mockScratchpadClearAll).toHaveBeenCalled()
+    })
+  })
 
 })

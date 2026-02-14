@@ -151,6 +151,12 @@ export interface IngredientBreakdown {
   amount: number
 }
 
+// Scratchpad: reminders configured per step in recipe JSON
+export interface StepReminder {
+  prompt: string
+  type?: 'measurement' | 'observation' | 'rating'
+}
+
 export interface RecipeState {
   id: string
   title: string
@@ -162,6 +168,7 @@ export interface RecipeState {
   exit_condition: string
   notes: StateNote[] | null
   technique_url?: string
+  reminders?: StepReminder[]
 }
 
 export interface StateComponent {
@@ -214,4 +221,21 @@ export interface RecipeEntry {
   id: string
   name: string
   file: string
+}
+
+// Bake scratchpad — structured note capture during active bakes
+export interface ScratchpadEntry {
+  stepId: string
+  timestamp: string
+  type: 'reminder_response' | 'note' | 'rating'
+  prompt?: string
+  value: string
+  rating?: 'good' | 'ok' | 'bad'
+}
+
+export interface BakeScratchpad {
+  recipeId: string
+  bakeDate: string
+  entries: Record<string, ScratchpadEntry[]>
+  generalNotes: ScratchpadEntry[]
 }

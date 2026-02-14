@@ -13,6 +13,22 @@ vi.mock('@/components/StepNote.vue', () => ({
     template: '<div class="step-note-stub">{{ note }}</div>'
   }
 }))
+vi.mock('@/components/ScratchpadNote.vue', () => ({
+  default: {
+    name: 'ScratchpadNote',
+    props: ['stepId', 'reminders', 'hasEntries', 'currentRating'],
+    emits: ['addNote', 'addRating', 'respond'],
+    template: '<div class="scratchpad-note-stub" />'
+  }
+}))
+vi.mock('@/components/ReminderBanner.vue', () => ({
+  default: {
+    name: 'ReminderBanner',
+    props: ['stepId', 'stepTitle', 'reminders', 'isReminderDismissed'],
+    emits: ['respond', 'dismiss'],
+    template: '<div class="reminder-banner-stub" />'
+  }
+}))
 
 function makeProgress(stateChecked = false) {
   return {
@@ -283,5 +299,127 @@ describe('StateStep', () => {
     expect(wrapper.text()).toContain('// Agent Tip')
     expect(wrapper.find('.bg-accent-tint').exists()).toBe(false)
     expect(wrapper.find('.bg-stone-100.text-stone-600').exists()).toBe(true)
+  })
+})
+
+function makeScratchpad() {
+  return {
+    load: vi.fn(),
+    addNote: vi.fn(),
+    addRating: vi.fn(),
+    addReminderResponse: vi.fn(),
+    addGeneralNote: vi.fn(),
+    dismissReminder: vi.fn(),
+    isReminderDismissed: vi.fn(() => false),
+    getEntriesForStep: vi.fn(() => []),
+    getRatingForStep: vi.fn(() => null),
+    hasEntriesForStep: vi.fn(() => false),
+    totalEntryCount: { value: 0 },
+    generalNoteCount: { value: 0 },
+    generalNotes: { value: [] },
+    exportJson: vi.fn(),
+    exportJsonString: vi.fn(),
+    clearAll: vi.fn()
+  }
+}
+
+describe('StateStep scratchpad integration', () => {
+  it('renders ScratchpadNote when scratchpad prop is provided', () => {
+    const wrapper = mount(StateStep, {
+      props: { ...defaultProps, scratchpad: makeScratchpad() }
+    })
+    expect(wrapper.find('.scratchpad-note-stub').exists()).toBe(true)
+  })
+
+  it('does not render ScratchpadNote when scratchpad is not provided', () => {
+    const wrapper = mount(StateStep, { props: defaultProps })
+    expect(wrapper.find('.scratchpad-note-stub').exists()).toBe(false)
+  })
+
+  it('calls scratchpad.addNote via handleAddNote', async () => {
+    const sp = makeScratchpad()
+    const wrapper = mount(StateStep, {
+      props: { ...defaultProps, scratchpad: sp }
+    })
+    const stub = wrapper.findComponent({ name: 'ScratchpadNote' })
+    stub.vm.$emit('addNote', 'mix-dough', 'test note')
+    await wrapper.vm.$nextTick()
+    expect(sp.addNote).toHaveBeenCalledWith('mix-dough', 'test note')
+  })
+
+  it('calls scratchpad.addRating via handleAddRating', async () => {
+    const sp = makeScratchpad()
+    const wrapper = mount(StateStep, {
+      props: { ...defaultProps, scratchpad: sp }
+    })
+    const stub = wrapper.findComponent({ name: 'ScratchpadNote' })
+    stub.vm.$emit('addRating', 'mix-dough', 'good')
+    await wrapper.vm.$nextTick()
+    expect(sp.addRating).toHaveBeenCalledWith('mix-dough', 'good')
+  })
+
+  it('calls scratchpad.addReminderResponse via handleReminderRespond', async () => {
+    const sp = makeScratchpad()
+    const wrapper = mount(StateStep, {
+      props: { ...defaultProps, scratchpad: sp }
+    })
+    const stub = wrapper.findComponent({ name: 'ScratchpadNote' })
+    stub.vm.$emit('respond', 'mix-dough', 'Weigh dough', '748g')
+    await wrapper.vm.$nextTick()
+    expect(sp.addReminderResponse).toHaveBeenCalledWith('mix-dough', 'Weigh dough', '748g')
+  })
+
+  it('shows reminder banner when step is active and has reminders', () => {
+    const sp = makeScratchpad()
+    const stateWithReminders = {
+      ...defaultState,
+      reminders: [{ prompt: 'Weigh dough', type: 'measurement' as const }]
+    }
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: stateWithReminders,
+        scratchpad: sp,
+        isActiveStep: true
+      }
+    })
+    expect(wrapper.find('.reminder-banner-stub').exists()).toBe(true)
+  })
+
+  it('does not show reminder banner when step is not active', () => {
+    const sp = makeScratchpad()
+    const stateWithReminders = {
+      ...defaultState,
+      reminders: [{ prompt: 'Weigh dough', type: 'measurement' as const }]
+    }
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: stateWithReminders,
+        scratchpad: sp,
+        isActiveStep: false
+      }
+    })
+    expect(wrapper.find('.reminder-banner-stub').exists()).toBe(false)
+  })
+
+  it('calls scratchpad.dismissReminder via reminder banner dismiss', async () => {
+    const sp = makeScratchpad()
+    const stateWithReminders = {
+      ...defaultState,
+      reminders: [{ prompt: 'Weigh dough', type: 'measurement' as const }]
+    }
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: stateWithReminders,
+        scratchpad: sp,
+        isActiveStep: true
+      }
+    })
+    const banner = wrapper.findComponent({ name: 'ReminderBanner' })
+    banner.vm.$emit('dismiss', 'mix-dough', 'Weigh dough')
+    await wrapper.vm.$nextTick()
+    expect(sp.dismissReminder).toHaveBeenCalledWith('mix-dough', 'Weigh dough')
   })
 })

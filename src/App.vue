@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, computed, watch, nextTick } from 'vue'
+import { onMounted, onUnmounted, ref, shallowRef, computed, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
+import { useScratchpad } from '@/composables/useScratchpad'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import { latestCookLogEntry } from '@/composables/useCookLog'
@@ -29,6 +30,7 @@ import DemoSharedMode from '@/components/DemoSharedMode.vue'
 import DemoQrPrintTest from '@/components/DemoQrPrintTest.vue'
 import DemoScratchpad from '@/components/DemoScratchpad.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
+import GeneralNotesFab from '@/components/GeneralNotesFab.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -78,6 +80,8 @@ const progress = computed(() => {
   return useProgress(currentRecipeId.value)
 })
 
+const scratchpad = shallowRef<ReturnType<typeof useScratchpad> | null>(null)
+
 // Track if manifest is loaded
 const manifestLoaded = ref(false)
 
@@ -91,10 +95,17 @@ watch(
   }
 )
 
-// Load progress when recipe ID changes
+// Load progress and scratchpad when recipe ID changes
 watch(currentRecipeId, (newId) => {
   if (newId && progress.value) {
     progress.value.load()
+  }
+  if (newId) {
+    const sp = useScratchpad(newId)
+    sp.load()
+    scratchpad.value = sp
+  } else {
+    scratchpad.value = null
   }
 })
 
@@ -104,6 +115,13 @@ watch(currentRecipe, (recipe) => {
 
   // Load progress state for this recipe
   progress.value.load()
+
+  // Initialize scratchpad for this recipe
+  if (currentRecipeId.value) {
+    const sp = useScratchpad(currentRecipeId.value)
+    sp.load()
+    scratchpad.value = sp
+  }
 
   // Set stage order
   progress.value.setStageOrder(recipe.stages.map(s => s.id))
@@ -150,6 +168,13 @@ const shareModalRef = ref<InstanceType<typeof ShareModal> | null>(null)
 
 function openShareModal(): void {
   shareModalRef.value?.open()
+}
+
+// Scratchpad export handler
+async function handleScratchpadExport(): Promise<void> {
+  if (!scratchpad.value) return
+  const json = scratchpad.value.exportJsonString()
+  await navigator.clipboard.writeText(json)
 }
 
 // Hero lightbox state
@@ -456,6 +481,7 @@ function handleTocNavigate(target: string) {
                 :progress="progress"
                 :step-notes="aggregatedStepNotes"
                 :section-id="`stage-${stage.id}`"
+                :scratchpad="scratchpad ?? undefined"
               />
             </div>
 
@@ -518,6 +544,17 @@ function handleTocNavigate(target: string) {
           :initial-index="0"
           :open="heroLightboxOpen"
           @close="heroLightboxOpen = false"
+        />
+
+        <GeneralNotesFab
+          v-if="scratchpad"
+          :general-note-count="scratchpad.generalNoteCount.value"
+          :total-entry-count="scratchpad.totalEntryCount.value"
+          :general-notes="scratchpad.generalNotes.value"
+          :step-entries="scratchpad.allStepEntries.value"
+          @add-general-note="(v: string) => scratchpad!.addGeneralNote(v)"
+          @export-json="handleScratchpadExport"
+          @clear-all="() => scratchpad!.clearAll()"
         />
       </template>
 
