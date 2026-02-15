@@ -29,6 +29,7 @@ import DemoQrTest from '@/components/DemoQrTest.vue'
 import DemoSharedMode from '@/components/DemoSharedMode.vue'
 import DemoQrPrintTest from '@/components/DemoQrPrintTest.vue'
 import DemoScratchpad from '@/components/DemoScratchpad.vue'
+import DemoCostPicker from '@/components/DemoCostPicker.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import GeneralNotesFab from '@/components/GeneralNotesFab.vue'
 
@@ -412,6 +413,7 @@ function handleTocNavigate(target: string) {
         <DemoQrPrintTest v-if="route.name === 'qr-print-test-demo'" />
         <DemoQrTest v-else-if="route.name === 'qr-test-demo'" />
         <DemoScratchpad v-else-if="route.name === 'scratchpad-demo'" />
+        <DemoCostPicker v-else-if="route.name === 'cost-picker-demo'" />
         <DemoSharedMode v-else />
       </template>
 

@@ -71,6 +71,12 @@ const router = createRouter({
       component: EmptyRouteView,
       meta: { showIndex: false, demoPage: true }
     },
+    {
+      path: '/demo/cost-picker',
+      name: 'cost-picker-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
   ]
 })
 
