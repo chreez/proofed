@@ -4,7 +4,7 @@ title: Cost snapshot - per-bake ingredient cost capture
 status: To Do
 assignee: []
 created_date: '2026-02-14 02:58'
-updated_date: '2026-02-15 00:06'
+updated_date: '2026-02-15 00:50'
 labels: []
 dependencies:
   - PF-133
@@ -48,3 +48,16 @@ Ingredient-level cost capture as a section within the bake review page (PF-138).
 - [ ] #7 Cost data included in structured JSON output
 - [ ] #8 No AI recommendations — data summary only
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Design Decisions from PF-134.2 Demo Review
+
+- **Product picker UX:** Cards (variant B) — larger selectable cards with check mark
+- **Pantry rate mode:** Approved — toggle fresh purchase vs stored rate
+- **Three cost tiers:** supplies total (checkout cost), bake cost (proportional usage), per-serving cost
+- Supplies total = sum of full package prices for everything purchased
+- Bake cost = sum of (package price × amount used / package size) per ingredient
+- Per serving = bake cost ÷ servings
+<!-- SECTION:NOTES:END -->

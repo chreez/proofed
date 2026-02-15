@@ -1,10 +1,10 @@
 ---
-id: DRAFT-14
+id: PF-139
 title: Feedback session - Simple Sourdough first bake
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-02-14 03:50'
-updated_date: '2026-02-14 03:50'
+updated_date: '2026-02-15 00:52'
 labels:
   - feedback
 dependencies: []
@@ -41,3 +41,9 @@ First bake of the Simple Sourdough recipe. Capture cook log notes, lessons learn
 - Photos if taken
 - Full /feedback session once bake is complete
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+First bake feedback session completed for Simple Sourdough. Added cook_log entry with 7 notes covering over-fermentation recovery, pizza steel bake setup (no Dutch oven), scoring lessons, and taste review. 4 next_time items captured. Version bumped v1.0.0 → v1.1.0. Photos not yet processed through pipeline.
+<!-- SECTION:FINAL_SUMMARY:END -->

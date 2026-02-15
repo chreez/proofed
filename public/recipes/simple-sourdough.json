@@ -14,8 +14,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-02-14",
+      "summary": "Feedback session: first bake notes — over-fermentation recovery, pizza steel bake without Dutch oven, scoring and shaping lessons, taste review"
+    },
     {
       "version": "v1.0.0",
       "date": "2026-02-11",
@@ -587,6 +592,28 @@
       }
     ]
   },
+  "cook_log": [
+    {
+      "date": "2026-02-14",
+      "version": "v1.0.0",
+      "notes": [
+        "Used oven with light on for bulk ferment — dough doubled in ~7 hours instead of target 50-75% rise. Over-fermented, dough was slack and wouldn't hold shape.",
+        "Recovery attempt: did another fold, put back in container. Re-attempted shaping later — still slack. Went into proofing basket overnight.",
+        "Didn't track cold proof duration — need to note start time next time.",
+        "Scored directly on pizza steel with razor blade — felt rushed without parchment. Was too gentle, need to be harder and more assertive.",
+        "No Dutch oven. Used pizza steel at 500°F with water pan on bottom for steam. ~40 min total bake. Forgot to remove flour dust layer before placing on steel.",
+        "Slight rise — as expected without Dutch oven. Could have preheated steel hotter for more oven spring. Internal temp ~208°F. 711g final weight.",
+        "Taste was great — more sour than HEB bakery sourdough. Added olive oil and it was excellent. Presentation wasn't all there but flavor delivered."
+      ],
+      "photos": [],
+      "next_time": [
+        { "text": "Get a Dutch oven" },
+        { "text": "Use parchment paper if baking on steel" },
+        { "text": "Preheat steel hotter for more oven spring" },
+        { "text": "Track cold proof start/end time" }
+      ]
+    }
+  ],
   "research": {
     "sources": [
       {
