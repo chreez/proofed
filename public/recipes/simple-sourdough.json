@@ -605,7 +605,28 @@
         "Slight rise — as expected without Dutch oven. Could have preheated steel hotter for more oven spring. Internal temp ~208°F. 711g final weight.",
         "Taste was great — more sour than HEB bakery sourdough. Added olive oil and it was excellent. Presentation wasn't all there but flavor delivered."
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-02-14/04-active-starter-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-14/04-active-starter-400w.webp",
+          "alt": "Active sourdough starter at peak in a tall jar with a timing band, risen to the top and domed above the rim, covered with a cloth cap."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-14/03-dough-after-bulk-ferment-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-14/03-dough-after-bulk-ferment-400w.webp",
+          "alt": "Dough after bulk ferment in a glass mixing bowl, appearing slack and spread out with visible surface bubbles, showing signs of over-fermentation."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-14/01-boule-on-steel-mid-bake-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-14/01-boule-on-steel-mid-bake-400w.webp",
+          "alt": "Sourdough boule mid-bake on a pizza steel inside the oven, showing an X score pattern with modest oven spring and pale crust still developing color."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-14/02-finished-loaf-crust-closeup-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-14/02-finished-loaf-crust-closeup-400w.webp",
+          "alt": "Close-up of the finished loaf cooling on a wire rack, showing a deep golden-brown crust with visible score lines. First sourdough bake."
+        }
+      ],
       "next_time": [
         { "text": "Get a Dutch oven" },
         { "text": "Use parchment paper if baking on steel" },
