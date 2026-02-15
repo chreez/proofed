@@ -128,11 +128,23 @@ function renderQrLabel(): void {
 async function copyLink(): Promise<void> {
   if (!shareUrl.value) return
   try {
-    await navigator.clipboard.writeText(shareUrl.value)
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(shareUrl.value)
+    } else {
+      // Fallback for non-secure contexts (e.g. HTTP on LAN IP)
+      const textarea = document.createElement('textarea')
+      textarea.value = shareUrl.value
+      textarea.style.position = 'fixed'
+      textarea.style.opacity = '0'
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textarea)
+    }
     copied.value = true
     setTimeout(() => { copied.value = false }, 2000)
   } catch {
-    // Clipboard API not available — ignore
+    // Copy failed — ignore
   }
 }
 

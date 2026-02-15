@@ -215,6 +215,7 @@ describe('ShareModal', () => {
     it('copies URL to clipboard on copy click', async () => {
       const writeText = vi.fn().mockResolvedValue(undefined)
       Object.assign(navigator, { clipboard: { writeText } })
+      Object.defineProperty(window, 'isSecureContext', { value: true, writable: true, configurable: true })
 
       const wrapper = mountModal()
       await openAndSelectBake(wrapper)
@@ -227,6 +228,7 @@ describe('ShareModal', () => {
     it('shows "Copied!" after copy', async () => {
       const writeText = vi.fn().mockResolvedValue(undefined)
       Object.assign(navigator, { clipboard: { writeText } })
+      Object.defineProperty(window, 'isSecureContext', { value: true, writable: true, configurable: true })
 
       const wrapper = mountModal()
       await openAndSelectBake(wrapper)
@@ -332,6 +334,7 @@ describe('ShareModal', () => {
     it('handles clipboard failure gracefully', async () => {
       const writeText = vi.fn().mockRejectedValue(new Error('Not allowed'))
       Object.assign(navigator, { clipboard: { writeText } })
+      Object.defineProperty(window, 'isSecureContext', { value: true, writable: true, configurable: true })
 
       const wrapper = mountModal()
       await openAndSelectBake(wrapper)
@@ -340,6 +343,20 @@ describe('ShareModal', () => {
       await nextTick()
       // Should still show Copy Link (not Copied)
       expect(wrapper.text()).toContain('Copy Link')
+    })
+
+    it('uses execCommand fallback in non-secure context', async () => {
+      Object.defineProperty(window, 'isSecureContext', { value: false, writable: true, configurable: true })
+      document.execCommand = vi.fn().mockReturnValue(true)
+
+      const wrapper = mountModal()
+      await openAndSelectBake(wrapper)
+      await wrapper.find('[data-testid="share-copy-btn"]').trigger('click')
+      await nextTick()
+
+      expect(document.execCommand).toHaveBeenCalledWith('copy')
+      expect(wrapper.text()).toContain('Copied!')
+      Object.defineProperty(window, 'isSecureContext', { value: true, writable: true, configurable: true })
     })
   })
 
