@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { copyToClipboard } from '@/composables/useClipboard'
 
 interface ManifestPhoto {
   name: string
@@ -105,7 +106,7 @@ async function handleSubmit(): Promise<void> {
   const payload = buildPayload()
   const json = JSON.stringify(payload, null, 2)
   console.log(json)
-  await navigator.clipboard.writeText(json)
+  await copyToClipboard(json)
   copied.value = true
   setTimeout(() => {
     copied.value = false

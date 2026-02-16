@@ -8,6 +8,7 @@ import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import { latestCookLogEntry } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
+import { copyToClipboard } from '@/composables/useClipboard'
 import { QrCode } from 'lucide-vue-next'
 import type { RecipeState, CookLogPhoto } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
@@ -176,7 +177,7 @@ function openShareModal(): void {
 async function handleScratchpadExport(): Promise<void> {
   if (!scratchpad.value) return
   const json = scratchpad.value.exportJsonString()
-  await navigator.clipboard.writeText(json)
+  await copyToClipboard(json)
 }
 
 // Hero lightbox state

@@ -1,7 +1,11 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ResearchSection from './ResearchSection.vue'
 import type { Research } from '@/types/recipe'
+
+vi.mock('@/composables/useClipboard', () => ({
+  copyToClipboard: vi.fn().mockResolvedValue(undefined)
+}))
 
 describe('ResearchSection', () => {
   const defaultResearch: Research = {
@@ -88,5 +92,18 @@ describe('ResearchSection', () => {
     const tag = wrapper.find('.voice-agent-tag')
     expect(tag.exists()).toBe(true)
     expect(tag.text()).toBe('researched')
+  })
+
+  it('calls copyToClipboard when permalink button clicked', async () => {
+    const { copyToClipboard } = await import('@/composables/useClipboard')
+    const wrapper = mount(ResearchSection, { props: defaultProps })
+
+    const linkButton = wrapper.find('button[title="Copy link"]')
+    expect(linkButton.exists()).toBe(true)
+    await linkButton.trigger('click')
+
+    expect(copyToClipboard).toHaveBeenCalledWith(
+      expect.stringContaining('#research-section')
+    )
   })
 })

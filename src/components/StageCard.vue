@@ -7,6 +7,7 @@ import type { useScratchpad } from '@/composables/useScratchpad'
 import GatherSection from '@/components/GatherSection.vue'
 import StateStep from '@/components/StateStep.vue'
 import { scrollToNextItem } from '@/composables/useScrollToNext'
+import { copyToClipboard } from '@/composables/useClipboard'
 
 interface StepNoteData {
   note: string
@@ -28,7 +29,7 @@ const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
 async function copyPermalink(event: MouseEvent): Promise<void> {
   event.stopPropagation()
   const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
-  await navigator.clipboard.writeText(url)
+  await copyToClipboard(url)
   linkBtn.value?.flashCopied('Copied!')
 }
 

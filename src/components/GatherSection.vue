@@ -4,6 +4,7 @@ import { ClipboardList, Check, RotateCcw } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { GatherSection } from '@/types/recipe'
 import GatherCategory from '@/components/GatherCategory.vue'
+import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = defineProps<{
   gather: GatherSection
@@ -95,7 +96,7 @@ async function copyGather(): Promise<void> {
     return
   }
   const text = formatGatherForCopy()
-  await navigator.clipboard.writeText(text)
+  await copyToClipboard(text)
   copyBtn.value?.flashCopied()
 }
 

@@ -2,6 +2,7 @@
 import { useTemplateRef } from 'vue'
 import { ClipboardList, Check, RotateCcw } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
+import { copyToClipboard } from '@/composables/useClipboard'
 import type { Recipe } from '@/types/recipe'
 
 const props = defineProps<{
@@ -67,7 +68,7 @@ function formatRecipeForPaprika(): string {
 
 async function copyRecipe(): Promise<void> {
   const text = formatRecipeForPaprika()
-  await navigator.clipboard.writeText(text)
+  await copyToClipboard(text)
   copyBtn.value?.flashCopied()
 }
 

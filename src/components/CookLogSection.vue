@@ -6,6 +6,7 @@ import IconButton from '@/components/IconButton.vue'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import type { CookLogEntry, CookLogPhoto } from '@/types/recipe'
 import { sortedCookLog } from '@/composables/useCookLog'
+import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = defineProps<{
   cookLog: CookLogEntry[]
@@ -51,7 +52,7 @@ function closeLightbox(): void {
 
 async function copyPermalink(): Promise<void> {
   const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
-  await navigator.clipboard.writeText(url)
+  await copyToClipboard(url)
   linkBtn.value?.flashCopied('Copied!')
 }
 
@@ -64,7 +65,7 @@ function setEntryLinkRef(index: number, el: unknown): void {
 async function copyEntryPermalink(event: MouseEvent, date: string, index: number): Promise<void> {
   event.stopPropagation()
   const url = `${window.location.origin}${window.location.pathname}#bake-${date}`
-  await navigator.clipboard.writeText(url)
+  await copyToClipboard(url)
   entryLinkBtns.value[index]?.flashCopied('Copied!')
 }
 

@@ -3,6 +3,7 @@ import { useTemplateRef } from 'vue'
 import { Link2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { ChangeLogEntry } from '@/types/recipe'
+import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = defineProps<{
   changeLog: ChangeLogEntry[]
@@ -14,7 +15,7 @@ const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
 
 async function copyPermalink(): Promise<void> {
   const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
-  await navigator.clipboard.writeText(url)
+  await copyToClipboard(url)
   linkBtn.value?.flashCopied('Copied!')
 }
 </script>

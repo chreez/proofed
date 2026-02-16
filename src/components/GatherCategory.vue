@@ -6,6 +6,7 @@ import IconButton from '@/components/IconButton.vue'
 import TechniqueText from '@/components/TechniqueText.vue'
 import TempText from '@/components/TempText.vue'
 import { scrollToNextItem } from '@/composables/useScrollToNext'
+import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = defineProps<{
   title: string
@@ -106,7 +107,7 @@ function collapse() {
 
 async function copyCategory(): Promise<void> {
   const text = uncheckedItems.value.map(item => item.label).join('\n')
-  await navigator.clipboard.writeText(text)
+  await copyToClipboard(text)
   categoryCopyBtn.value?.flashCopied()
 }
 </script>

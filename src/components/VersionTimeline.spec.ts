@@ -1,6 +1,10 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import VersionTimeline from './VersionTimeline.vue'
+
+vi.mock('@/composables/useClipboard', () => ({
+  copyToClipboard: vi.fn().mockResolvedValue(undefined)
+}))
 
 describe('VersionTimeline', () => {
   const defaultProps = {
@@ -53,6 +57,19 @@ describe('VersionTimeline', () => {
     expect(wrapper.text()).toContain('v1.0.0')
     expect(wrapper.text()).toContain('2026-02-01')
     expect(wrapper.text()).toContain('Initial release')
+  })
+
+  it('calls copyToClipboard when permalink button clicked', async () => {
+    const { copyToClipboard } = await import('@/composables/useClipboard')
+    const wrapper = mount(VersionTimeline, { props: defaultProps })
+
+    const linkButton = wrapper.find('button[title="Copy link"]')
+    expect(linkButton.exists()).toBe(true)
+    await linkButton.trigger('click')
+
+    expect(copyToClipboard).toHaveBeenCalledWith(
+      expect.stringContaining('#version-history-section')
+    )
   })
 })
 

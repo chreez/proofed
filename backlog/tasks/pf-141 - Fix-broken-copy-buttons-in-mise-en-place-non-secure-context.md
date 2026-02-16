@@ -1,9 +1,10 @@
 ---
 id: PF-141
 title: Fix broken copy buttons in mise en place (non-secure context)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-15 01:11'
+updated_date: '2026-02-16 20:32'
 labels:
   - bug
 dependencies: []
@@ -24,11 +25,11 @@ Root cause: no shared clipboard utility — each component has its own clipboard
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Extract a shared `copyToClipboard(text: string)` utility (composable or plain helper) with secure-context check + `execCommand('copy')` fallback
-- [ ] #2 Refactor GatherSection.vue `copyGather()` to use the shared utility instead of `navigator.clipboard.writeText()`
-- [ ] #3 Refactor GatherCategory.vue `copyCategory()` to use the shared utility instead of `navigator.clipboard.writeText()`
-- [ ] #4 Refactor ShareModal.vue `copyLink()` to use the shared utility (remove inline fallback)
-- [ ] #5 All three copy buttons work on `http://192.168.1.213:5173` (non-secure HTTP context)
-- [ ] #6 All existing tests pass (`npm run build`)
-- [ ] #7 Add checklist entry: clipboard calls must use shared `copyToClipboard` utility, not `navigator.clipboard` directly
+- [x] #1 Extract a shared `copyToClipboard(text: string)` utility (composable or plain helper) with secure-context check + `execCommand('copy')` fallback
+- [x] #2 Refactor GatherSection.vue `copyGather()` to use the shared utility instead of `navigator.clipboard.writeText()`
+- [x] #3 Refactor GatherCategory.vue `copyCategory()` to use the shared utility instead of `navigator.clipboard.writeText()`
+- [x] #4 Refactor ShareModal.vue `copyLink()` to use the shared utility (remove inline fallback)
+- [x] #5 All three copy buttons work on `http://192.168.1.213:5173` (non-secure HTTP context)
+- [x] #6 All existing tests pass (`npm run build`)
+- [x] #7 Add checklist entry: clipboard calls must use shared `copyToClipboard` utility, not `navigator.clipboard` directly
 <!-- AC:END -->

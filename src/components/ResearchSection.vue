@@ -3,6 +3,7 @@ import { ref, useTemplateRef } from 'vue'
 import { Link2, Check, ChevronDown } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { Research, RecipeSource, Confidence } from '@/types/recipe'
+import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = defineProps<{
   research: Research
@@ -14,7 +15,7 @@ const isExpanded = ref(false)
 
 async function copyPermalink(): Promise<void> {
   const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
-  await navigator.clipboard.writeText(url)
+  await copyToClipboard(url)
   linkBtn.value?.flashCopied('Copied!')
 }
 

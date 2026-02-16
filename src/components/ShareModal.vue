@@ -3,6 +3,7 @@ import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { ArrowLeft, X, Share2, Copy, Check } from 'lucide-vue-next'
 import QRCodeStyling from 'qr-code-styling'
 import type { CookLogEntry } from '@/types/recipe'
+import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = defineProps<{
   recipeName: string
@@ -128,19 +129,7 @@ function renderQrLabel(): void {
 async function copyLink(): Promise<void> {
   if (!shareUrl.value) return
   try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(shareUrl.value)
-    } else {
-      // Fallback for non-secure contexts (e.g. HTTP on LAN IP)
-      const textarea = document.createElement('textarea')
-      textarea.value = shareUrl.value
-      textarea.style.position = 'fixed'
-      textarea.style.opacity = '0'
-      document.body.appendChild(textarea)
-      textarea.select()
-      document.execCommand('copy')
-      document.body.removeChild(textarea)
-    }
+    await copyToClipboard(shareUrl.value)
     copied.value = true
     setTimeout(() => { copied.value = false }, 2000)
   } catch {

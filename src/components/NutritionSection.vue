@@ -2,6 +2,7 @@
 import { ref, computed, useTemplateRef, onMounted } from 'vue'
 import { Link2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
+import { copyToClipboard } from '@/composables/useClipboard'
 import type { RecipeNutrition, NutrientTotals } from '@/types/recipe'
 
 interface FdaDvConfig {
@@ -19,7 +20,7 @@ const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
 
 async function copyPermalink(): Promise<void> {
   const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
-  await navigator.clipboard.writeText(url)
+  await copyToClipboard(url)
   linkBtn.value?.flashCopied('Copied!')
 }
 

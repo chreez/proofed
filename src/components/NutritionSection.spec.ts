@@ -1,7 +1,11 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import NutritionSection from './NutritionSection.vue'
 import type { RecipeNutrition } from '@/types/recipe'
+
+vi.mock('@/composables/useClipboard', () => ({
+  copyToClipboard: vi.fn().mockResolvedValue(undefined)
+}))
 
 const mockNutrition: RecipeNutrition = {
   servings: 8,
@@ -228,5 +232,20 @@ describe('NutritionSection', () => {
     const rows = wrapper.findAll('table:first-of-type tr')
     // First row should be Calories with font-semibold
     expect(rows[0].classes()).toContain('font-semibold')
+  })
+
+  it('calls copyToClipboard when permalink button clicked', async () => {
+    const { copyToClipboard } = await import('@/composables/useClipboard')
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
+    })
+
+    const linkButton = wrapper.find('button[title="Copy link"]')
+    expect(linkButton.exists()).toBe(true)
+    await linkButton.trigger('click')
+
+    expect(copyToClipboard).toHaveBeenCalledWith(
+      expect.stringContaining('#nutrition-section')
+    )
   })
 })

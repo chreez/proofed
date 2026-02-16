@@ -104,6 +104,7 @@ Add checks here for new features:
 | F25 | Note source field | All `StateNote` entries in recipe JSON have `source: 'user' \| 'agent'` | 2026-02-11 |
 | F26 | Bake detail back link | Bake detail page (`/recipe/:id/bake/:date`) has working link back to recipe page | 2026-02-13 |
 | F27 | OG meta per route | Every route in the router must call `useSeoMeta` or `useRecipeMeta` with route-appropriate values (index defaults, recipe-specific, bake-specific) | 2026-02-13 |
+| F28 | Clipboard via utility | All clipboard calls must use shared `copyToClipboard` from `useClipboard.ts`, not `navigator.clipboard` directly | 2026-02-16 |
 
 ## Build Validation (MANDATORY)
 

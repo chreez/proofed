@@ -17,6 +17,9 @@ vi.mock('@/components/StateStep.vue', () => ({
 vi.mock('@/composables/useScrollToNext', () => ({
   scrollToNextItem: vi.fn()
 }))
+vi.mock('@/composables/useClipboard', () => ({
+  copyToClipboard: vi.fn().mockResolvedValue(undefined)
+}))
 vi.mock('lucide-vue-next', () => ({
   RotateCcw: { name: 'RotateCcw', template: '<svg class="icon-rotate" />' },
   Link2: { name: 'Link2', template: '<svg class="icon-link" />' },
@@ -265,6 +268,19 @@ describe('Reset button', () => {
     // resetSection should be called but toggleStageCollapse should NOT
     expect(progress.resetSection).toHaveBeenCalledWith('mise-en-place')
     expect(progress.toggleStageCollapse).not.toHaveBeenCalled()
+  })
+
+  it('calls copyToClipboard when permalink button clicked', async () => {
+    const { copyToClipboard } = await import('@/composables/useClipboard')
+    const wrapper = mount(StageCard, { props: defaultProps })
+
+    const linkButton = wrapper.find('button[title="Copy link"]')
+    expect(linkButton.exists()).toBe(true)
+    await linkButton.trigger('click')
+
+    expect(copyToClipboard).toHaveBeenCalledWith(
+      expect.stringContaining('#stage-mise-en-place')
+    )
   })
 })
 
