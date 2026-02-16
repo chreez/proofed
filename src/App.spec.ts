@@ -761,6 +761,139 @@ describe('App', () => {
       mockGetElementById.mockRestore()
     })
 
+    it('updates URL hash when TOC section item is clicked', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const mockGetElementById = vi.spyOn(document, 'getElementById').mockReturnValue({
+        scrollIntoView: vi.fn()
+      } as unknown as HTMLElement)
+
+      const { wrapper, router } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+
+      await wrapper.find('.nav-cook-log').trigger('click')
+      await flushPromises()
+
+      expect(router.currentRoute.value.hash).toBe('#cook-log-section')
+      mockGetElementById.mockRestore()
+    })
+
+    it('updates URL hash when TOC stage item is clicked', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const mockGetElementById = vi.spyOn(document, 'getElementById').mockReturnValue({
+        scrollIntoView: vi.fn()
+      } as unknown as HTMLElement)
+
+      const { wrapper, router } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+
+      await wrapper.find('.nav-stage-prep').trigger('click')
+      await flushPromises()
+
+      expect(router.currentRoute.value.hash).toBe('#stage-prep')
+      mockGetElementById.mockRestore()
+    })
+
+    it('scrolls to section on browser back/forward (route.hash change)', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const scrollIntoViewMock = vi.fn()
+      const mockGetElementById = vi.spyOn(document, 'getElementById').mockReturnValue({
+        scrollIntoView: scrollIntoViewMock
+      } as unknown as HTMLElement)
+
+      const { router } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      // Simulate browser back/forward navigating to a hash
+      await router.push({ hash: '#nutrition-section' })
+      await flushPromises()
+      await nextTick()
+
+      expect(mockGetElementById).toHaveBeenCalledWith('nutrition-section')
+      expect(scrollIntoViewMock).toHaveBeenCalled()
+      mockGetElementById.mockRestore()
+    })
+
+    it('ignores unrecognized hash on browser back/forward', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const mockGetElementById = vi.spyOn(document, 'getElementById').mockReturnValue({
+        scrollIntoView: vi.fn()
+      } as unknown as HTMLElement)
+
+      const { router } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      mockGetElementById.mockClear()
+
+      // Navigate to an unrecognized hash
+      await router.push({ hash: '#bake-2026-01-15' })
+      await flushPromises()
+      await nextTick()
+
+      // scrollToTarget should not have been called for unrecognized hash
+      // getElementById would only be called by scrollToTarget, not for this hash
+      expect(mockGetElementById).not.toHaveBeenCalledWith('bake-2026-01-15')
+      mockGetElementById.mockRestore()
+    })
+
+    it('does not duplicate router.push when hash already matches', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const mockGetElementById = vi.spyOn(document, 'getElementById').mockReturnValue({
+        scrollIntoView: vi.fn()
+      } as unknown as HTMLElement)
+
+      const { wrapper, router } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+
+      // First click sets the hash
+      await wrapper.find('.nav-cook-log').trigger('click')
+      await flushPromises()
+      expect(router.currentRoute.value.hash).toBe('#cook-log-section')
+
+      const pushSpy = vi.spyOn(router, 'push')
+
+      // Second click on same item — hash already matches, should not push
+      await wrapper.find('.nav-cook-log').trigger('click')
+      await flushPromises()
+
+      // router.push should not be called when hash already matches
+      expect(pushSpy).not.toHaveBeenCalled()
+      pushSpy.mockRestore()
+      mockGetElementById.mockRestore()
+    })
+
+    it('expands collapsed stage on browser back/forward hash navigation', async () => {
+      mockIsStageCollapsed.mockImplementation((id: string) => id === 'prep')
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const mockGetElementById = vi.spyOn(document, 'getElementById').mockReturnValue({
+        scrollIntoView: vi.fn()
+      } as unknown as HTMLElement)
+
+      const { router } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      await router.push({ hash: '#stage-prep' })
+      await flushPromises()
+      await nextTick()
+
+      expect(mockToggleStageCollapse).toHaveBeenCalledWith('prep')
+      mockGetElementById.mockRestore()
+    })
+
     it('handles navigate when element not found', async () => {
       mockCurrentRecipe.value = makeRecipe()
       mockCurrentRecipeId.value = 'test-recipe'
@@ -951,6 +1084,37 @@ describe('App', () => {
         observer as unknown as IntersectionObserver
       )
       await nextTick()
+    })
+
+    it('observer callback is suppressed during programmatic navigation', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const scrollIntoViewMock = vi.fn()
+      const mockGetElementById = vi.spyOn(document, 'getElementById').mockReturnValue({
+        scrollIntoView: scrollIntoViewMock
+      } as unknown as HTMLElement)
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      const observer = lastObserverInstance!
+
+      // Trigger TOC navigation (sets isNavigating = true)
+      await wrapper.find('.nav-cook-log').trigger('click')
+      await nextTick()
+
+      // Observer fires during smooth scroll — should be suppressed
+      observer.callback(
+        [{ isIntersecting: true, target: { id: 'stage-prep' } } as unknown as IntersectionObserverEntry],
+        observer as unknown as IntersectionObserver
+      )
+      await nextTick()
+
+      // The TOC should still show cook-log as active, not prep
+      // (activeSection wasn't changed by the suppressed observer)
+      mockGetElementById.mockRestore()
     })
 
     it('observer callback ignores non-intersecting entries', async () => {

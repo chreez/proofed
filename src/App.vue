@@ -7,6 +7,7 @@ import { useScratchpad } from '@/composables/useScratchpad'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import { latestCookLogEntry } from '@/composables/useCookLog'
+import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
 import { QrCode } from 'lucide-vue-next'
 import type { RecipeState, CookLogPhoto } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
@@ -217,25 +218,10 @@ function formatVersionShort(version: string): string {
 // Scroll to hash target on page load (supports permalink URLs)
 watch(currentRecipe, (recipe) => {
   if (!recipe) return
-  const hash = window.location.hash?.slice(1)
-  if (!hash) return
-
-  nextTick(() => {
-    // If it's a stage, expand it if collapsed
-    if (hash.startsWith('stage-') && progress.value) {
-      const stageId = hash.replace('stage-', '')
-      if (progress.value.isStageCollapsed(stageId)) {
-        progress.value.toggleStageCollapse(stageId)
-      }
-    }
-
-    nextTick(() => {
-      const el = document.getElementById(hash)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    })
-  })
+  const target = hashToTarget(window.location.hash)
+  if (!target) return
+  activeSection.value = target
+  scrollToTarget(target)
 }, { once: true })
 
 // TOC: Stage data for navigation
@@ -258,6 +244,30 @@ const completedStageIds = computed(() => {
 // TOC: Active section tracking — set on click, updated by scroll
 const activeSection = ref<string | null>(null)
 let tocObserver: IntersectionObserver | null = null
+let isNavigating = false
+let navTimeoutId: ReturnType<typeof setTimeout> | null = null
+
+// Shared scroll logic for TOC clicks, back/forward, and initial hash
+function scrollToTarget(target: string): void {
+  isNavigating = true
+  if (navTimeoutId) clearTimeout(navTimeoutId)
+
+  // Expand collapsed stage if needed
+  if (!(SECTION_TARGETS as readonly string[]).includes(target)) {
+    if (progress.value?.isStageCollapsed(target)) {
+      progress.value.toggleStageCollapse(target)
+    }
+  }
+
+  const elementId = targetToElementId(target)
+  nextTick(() => {
+    const el = document.getElementById(elementId)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    navTimeoutId = setTimeout(() => { isNavigating = false }, 800)
+  })
+}
 
 // Current stage ID: user selection > scroll-observed > first non-collapsed
 const currentStageId = computed(() => {
@@ -273,6 +283,7 @@ function setupTocObserver() {
 
   tocObserver = new IntersectionObserver(
     (entries) => {
+      if (isNavigating) return
       for (const entry of entries) {
         if (entry.isIntersecting) {
           const id = entry.target.id
@@ -324,7 +335,10 @@ function teardownTocObserver() {
 // Re-setup observer when recipe changes
 watch(currentRecipe, (recipe) => {
   if (recipe) {
-    activeSection.value = null
+    // Preserve active section when URL hash targets a section (e.g., permalink load)
+    if (!route.hash) {
+      activeSection.value = null
+    }
     setupTocObserver()
   } else {
     teardownTocObserver()
@@ -335,37 +349,25 @@ onUnmounted(() => {
   teardownTocObserver()
 })
 
-// TOC: Navigate to section, auto-expanding collapsed stages
+// TOC: Navigate to section, update URL hash, auto-expand collapsed stages
 function handleTocNavigate(target: string) {
-  // Immediately set active section on click
   activeSection.value = target
-
-  let elementId = ''
-  if (target === 'nutrition') {
-    elementId = 'nutrition-section'
-  } else if (target === 'cook-log') {
-    elementId = 'cook-log-section'
-  } else if (target === 'change-log') {
-    elementId = 'version-history-section'
-  } else if (target === 'source') {
-    elementId = 'source-section'
-  } else if (target === 'research') {
-    elementId = 'research-section'
-  } else {
-    // Expand the stage if it's collapsed
-    if (progress.value?.isStageCollapsed(target)) {
-      progress.value.toggleStageCollapse(target)
-    }
-    elementId = `stage-header-${target}`
+  const hash = targetToHash(target)
+  if (route.hash !== hash) {
+    router.push({ hash }).catch(() => {})
   }
-
-  nextTick(() => {
-    const el = document.getElementById(elementId)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-  })
+  scrollToTarget(target)
 }
+
+// Handle browser back/forward for hash navigation
+watch(() => route.hash, (newHash) => {
+  if (isNavigating) return
+  if (!currentRecipe.value) return
+  const target = hashToTarget(newHash)
+  if (!target) return
+  activeSection.value = target
+  scrollToTarget(target)
+})
 </script>
 
 <template>
