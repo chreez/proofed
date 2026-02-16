@@ -1,10 +1,10 @@
 ---
 id: PF-134
 title: Cost snapshot - per-bake ingredient cost capture
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-14 02:58'
-updated_date: '2026-02-16 22:27'
+updated_date: '2026-02-16 23:57'
 labels: []
 dependencies:
   - PF-133
@@ -39,14 +39,14 @@ Ingredient-level cost capture as a section within the bake review page (PF-138).
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Cost section within bake review page (PF-138) iterates recipe ingredients
-- [ ] #2 Each ingredient searches HEB MCP and presents product matches as selectable array
-- [ ] #3 User picks which product they purchased — price mapped from package size to recipe amount
-- [ ] #4 Pantry rate mode for bulk staples — stored cost-per-gram, persists across bakes
-- [ ] #5 'Other' option for manual product + price entry
-- [ ] #6 Total bake cost and per-serving cost calculated from all selections
-- [ ] #7 Cost data included in structured JSON output
-- [ ] #8 No AI recommendations — data summary only
+- [x] #1 Cost section within bake review page (PF-138) iterates recipe ingredients
+- [x] #2 Each ingredient searches HEB MCP and presents product matches as selectable array
+- [x] #3 User picks which product they purchased — price mapped from package size to recipe amount
+- [x] #4 Pantry rate mode for bulk staples — stored cost-per-gram, persists across bakes
+- [x] #5 'Other' option for manual product + price entry
+- [x] #6 Total bake cost and per-serving cost calculated from all selections
+- [x] #7 Cost data included in structured JSON output
+- [x] #8 No AI recommendations — data summary only
 <!-- AC:END -->
 
 ## Implementation Notes

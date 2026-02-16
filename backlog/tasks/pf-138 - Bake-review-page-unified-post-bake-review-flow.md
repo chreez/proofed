@@ -1,10 +1,10 @@
 ---
 id: PF-138
 title: Bake review page - unified post-bake review flow
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-15 00:06'
-updated_date: '2026-02-16 21:56'
+updated_date: '2026-02-16 23:57'
 labels:
   - feature
 dependencies: []
@@ -34,14 +34,14 @@ Evolve the existing photo review page (`/review/photos/{recipe-id}/{date}`) into
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Review page route exists at /review/bake/{recipe-id}/{date}
-- [ ] #2 Photos section preserves existing review-photos functionality (tag, alt text, hero selection)
-- [ ] #3 Cost section searches HEB MCP for each recipe ingredient
-- [ ] #4 Cost section presents product matches as selectable array — user picks which they bought
-- [ ] #5 Pantry rate mode available for bulk/historical ingredients (stored cost-per-gram)
-- [ ] #6 Notes section displays scratchpad entries from bake for review and finalization
-- [ ] #7 Summary section shows total bake cost and per-serving cost
-- [ ] #8 Review page accessible via /review-bake skill or direct URL
+- [x] #1 Review page route exists at /review/bake/{recipe-id}/{date}
+- [x] #2 Photos section preserves existing review-photos functionality (tag, alt text, hero selection)
+- [x] #3 Cost section searches HEB MCP for each recipe ingredient
+- [x] #4 Cost section presents product matches as selectable array — user picks which they bought
+- [x] #5 Pantry rate mode available for bulk/historical ingredients (stored cost-per-gram)
+- [x] #6 Notes section displays scratchpad entries from bake for review and finalization
+- [x] #7 Summary section shows total bake cost and per-serving cost
+- [x] #8 Review page accessible via /review-bake skill or direct URL
 <!-- AC:END -->
 
 ## Implementation Notes
