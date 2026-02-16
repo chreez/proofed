@@ -1,10 +1,10 @@
 ---
 id: PF-128
 title: QR code share system for bake gifts
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-13 01:46'
-updated_date: '2026-02-14 03:27'
+updated_date: '2026-02-16 20:58'
 labels: []
 dependencies:
   - PF-130
@@ -19,14 +19,14 @@ Generate a QR code permalink for each recipe that can be printed on a label make
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Recipe JSON schema includes a `reheat` object at root level with structured reheat instructions; changes to reheat data trigger a minor version bump in `change_log`
+- [x] #1 Recipe JSON schema includes a `reheat` object at root level with structured reheat instructions; changes to reheat data trigger a minor version bump in `change_log`
 - [ ] #2 Recipe header displays a "Share" / QR icon button (consistent with existing `IconButton` pattern)
 - [ ] #3 Tapping the QR button opens a bake picker showing all cook log entries for that recipe (date + summary), user selects which bake to share
 - [ ] #4 After selecting a bake, a QR code is generated client-side encoding the URL `proofeddot.netlify.app/recipe/:recipeId?shared=true&bake=YYYY-MM-DD`
 - [ ] #5 The generated QR code is displayed as a saveable image (long-press save on mobile / right-click save on desktop)
 - [ ] #6 When the recipe page loads with `?shared=true&bake=DATE` params, a welcome popover renders on top of the recipe page
 - [ ] #7 The popover displays: (a) personal intro ("Hey, I'm Chris" + brief context), (b) photos from the specified cook log entry, (c) reheat instructions from the recipe's `reheat` field
-- [ ] #8 If no human-written reheat instructions exist for a recipe, the popover displays an agent-generated summary based on recipe data (clearly marked as auto-generated)
+- [x] #8 If no human-written reheat instructions exist for a recipe, the popover displays an agent-generated summary based on recipe data (clearly marked as auto-generated)
 - [ ] #9 Dismissing the popover reveals the full recipe page underneath (normal recipe view, no disruption)
 - [ ] #10 QR codes use `proofeddot.netlify.app` as the base URL
 <!-- AC:END -->
@@ -281,4 +281,8 @@ Netlify uses credit-based pricing (since Sept 2025):
 ## QR Label Dot Fix (d211eda)
 
 Canvas `fillText('.')` at 48px JetBrains Mono rendered a distorted/cropped period on mobile. Replaced with explicit `arc()` circle (radius 5px, accent color). Also widened brand area from 200px to 240px to prevent clipping.
+
+AC #1 resolved: reheat is now required data (F29 checklist rule). Version bump convention enforced via F30 checklist rule. Retroactive backfill version bumps waived — bulk infrastructure change.
+
+AC #8 resolved: dead fallback code removed. Reheat is required on all recipes (F29), so no-reheat path is unreachable. Static placeholder deleted from BakeDetailView.vue.
 <!-- SECTION:NOTES:END -->

@@ -661,14 +661,14 @@ describe('BakeDetailView', () => {
       expect(popover.text()).not.toContain('ai generated')
     })
 
-    it('popover shows fallback when no reheat data', async () => {
+    it('popover does not render reheat section when no reheat data', async () => {
       mockRouteQuery.value = { shared: 'true' }
       // Default recipe has no reheat field
       const wrapper = mountComponent()
       await flushPromises()
       await nextTick()
       const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
-      expect(popover.text()).toContain('No specific reheat instructions yet')
+      expect(popover.text()).not.toContain('Reheat')
     })
 
     it('dismisses popover on button click', async () => {

@@ -105,6 +105,8 @@ Add checks here for new features:
 | F26 | Bake detail back link | Bake detail page (`/recipe/:id/bake/:date`) has working link back to recipe page | 2026-02-13 |
 | F27 | OG meta per route | Every route in the router must call `useSeoMeta` or `useRecipeMeta` with route-appropriate values (index defaults, recipe-specific, bake-specific) | 2026-02-13 |
 | F28 | Clipboard via utility | All clipboard calls must use shared `copyToClipboard` from `useClipboard.ts`, not `navigator.clipboard` directly | 2026-02-16 |
+| F29 | Reheat required | All recipes must include a `reheat` block with at least one method | 2026-02-16 |
+| F30 | Reheat version bump | Changes to `reheat` data must bump minor version + add `change_log` entry | 2026-02-16 |
 
 ## Build Validation (MANDATORY)
 

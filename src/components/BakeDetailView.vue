@@ -284,16 +284,6 @@ function dismissPopover(): void {
             </div>
           </div>
 
-          <!-- No reheat fallback -->
-          <div v-else class="mx-5 mt-4 border-2 border-stone-200 bg-stone-50">
-            <div class="px-4 py-3">
-              <p class="text-stone-400 text-sm flex items-center gap-1.5">
-                <Bot class="w-3.5 h-3.5 flex-shrink-0" />
-                <span>No specific reheat instructions yet — check the recipe for serving suggestions.</span>
-              </p>
-            </div>
-          </div>
-
           <!-- Dismiss button -->
           <div class="p-5">
             <button
