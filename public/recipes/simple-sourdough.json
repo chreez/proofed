@@ -14,8 +14,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.1.0",
+  "version": "v1.1.1",
   "change_log": [
+    {
+      "version": "v1.1.1",
+      "date": "2026-02-16",
+      "summary": "Bake log: second bake — over-fermented again (oven light too warm), pivoted to focaccia. Research added to next_time."
+    },
     {
       "version": "v1.1.0",
       "date": "2026-02-14",
@@ -632,6 +637,36 @@
         { "text": "Use parchment paper if baking on steel" },
         { "text": "Preheat steel hotter for more oven spring" },
         { "text": "Track cold proof start/end time" }
+      ]
+    },
+    {
+      "date": "2026-02-16",
+      "version": "v1.1.0",
+      "notes": [
+        "Mixed dough in a Cambro container. Bulk fermented in oven with light on starting around 12pm after completing 3 stretch and folds.",
+        "Kitchen temp ~70-74°F; oven with light on likely warmer but didn't measure.",
+        "Tried to shape at ~8pm (~8 hours of bulk). Dough had doubled in size in the Cambro, possibly flat. Dough tore apart during shaping — couldn't hold shape.",
+        "Dutch oven shipment delayed — still don't have one.",
+        "Pivoted to focaccia: flattened dough into Pyrex dish, topped with olive oil, oregano, salt, garlic powder, and shredded parmesan.",
+        "Baked focaccia at 425°F for ~40 minutes. Top didn't brown as well as wanted.",
+        "Served focaccia with chili. Tasted OK — would do focaccia as a deliberate plan B again."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-02-16/focaccia-with-chili-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-16/focaccia-with-chili-400w.webp",
+          "alt": "Piece of sourdough-turned-focaccia held over a bowl of chili — golden-brown bottom crust with parmesan, paler top, dense crumb visible in cross-section."
+        }
+      ],
+      "next_time": [
+        { "text": "Skip the oven light — bulk ferment on counter at room temp (70-74°F is ideal). Oven light runs 78-90°F+, way too hot for 20% inoculation overnight.", "source": "The Perfect Loaf, Baker Bettie, ThermoWorks" },
+        { "text": "Use an aliquot jar: pinch off 30g after first fold, press into a small jar, mark level. End bulk when it hits 50-75% rise.", "source": "Full Proof Baking via The Pantry Mama" },
+        { "text": "Mark starting level on Cambro with tape + calculate target line (e.g., 800mL start → 1200mL for 50% rise)" },
+        { "text": "Consider dropping to 10-15% starter for more overnight margin (12-16 hrs vs 8-12 hrs at 20%)", "source": "The Fresh Loaf, SourdoughTalk" },
+        { "text": "Set a halfway alarm to check progress and catch runaway ferment" },
+        { "text": "Take a photo of dough state before shaping to help diagnose fermentation level" },
+        { "text": "Figure out how to brown focaccia top better (broiler finish?)" },
+        { "text": "Dutch oven still incoming — try a proper boule bake when it arrives" }
       ]
     }
   ],
