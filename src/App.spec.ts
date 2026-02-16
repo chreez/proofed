@@ -59,6 +59,9 @@ vi.mock('@/components/PhotoReview.vue', () => ({
 vi.mock('@/components/BakeDetailView.vue', () => ({
   default: { name: 'BakeDetailView', template: '<div class="bake-detail-stub">Bake Detail</div>' }
 }))
+vi.mock('@/components/BakeReviewPage.vue', () => ({
+  default: { name: 'BakeReviewPage', template: '<div class="bake-review-stub">Bake Review</div>' }
+}))
 vi.mock('@/components/DemoQrTest.vue', () => ({
   default: { name: 'DemoQrTest', template: '<div class="demo-qr-test-stub">Demo QR Test</div>' }
 }))
@@ -175,6 +178,7 @@ function makeRouter() {
       { path: '/about', name: 'about', component: { template: '<div />' } },
       { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } },
       { path: '/recipe/:recipeId/bake/:date', name: 'bake-detail', component: { template: '<div />' }, meta: { bakeDetail: true } },
+      { path: '/review/bake/:recipeId/:date', name: 'bake-review', component: { template: '<div />' } },
       { path: '/demo/qr-test', name: 'qr-test-demo', component: { template: '<div />' }, meta: { demoPage: true } },
     ]
   })
@@ -313,6 +317,12 @@ describe('App', () => {
     const { wrapper } = await mountApp('/recipe/test-recipe/bake/2026-02-10')
     expect(wrapper.find('.bake-detail-stub').exists()).toBe(true)
     expect(wrapper.text()).toContain('Bake Detail')
+  })
+
+  it('shows BakeReviewPage on bake-review route', async () => {
+    const { wrapper } = await mountApp('/review/bake/test-recipe/2026-02-10')
+    expect(wrapper.find('.bake-review-stub').exists()).toBe(true)
+    expect(wrapper.text()).toContain('Bake Review')
   })
 
   it('passes bakeDate getter to useRecipeMeta that returns date from route params', async () => {

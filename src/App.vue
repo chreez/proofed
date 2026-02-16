@@ -33,6 +33,7 @@ import DemoQrPrintTest from '@/components/DemoQrPrintTest.vue'
 import DemoScratchpad from '@/components/DemoScratchpad.vue'
 import DemoCostPicker from '@/components/DemoCostPicker.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
+import BakeReviewPage from '@/components/BakeReviewPage.vue'
 import GeneralNotesFab from '@/components/GeneralNotesFab.vue'
 
 const route = useRoute()
@@ -52,6 +53,7 @@ const showIndex = computed(() => route.name === 'index')
 const showAbout = computed(() => route.name === 'about')
 const showPhotoReview = computed(() => route.name === 'photo-review')
 const showBakeDetail = computed(() => route.name === 'bake-detail')
+const showBakeReview = computed(() => route.name === 'bake-review')
 function goToIndex(): void {
   router.push('/')
 }
@@ -430,6 +432,10 @@ watch(() => route.hash, (newHash) => {
 
       <template v-else-if="showPhotoReview">
         <PhotoReview />
+      </template>
+
+      <template v-else-if="showBakeReview">
+        <BakeReviewPage />
       </template>
 
       <template v-else-if="showIndex">

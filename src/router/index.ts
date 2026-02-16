@@ -48,6 +48,12 @@ const router = createRouter({
       meta: { showIndex: false }
     },
     {
+      path: '/review/bake/:recipeId/:date',
+      name: 'bake-review',
+      component: EmptyRouteView,
+      meta: { showIndex: false }
+    },
+    {
       path: '/demo/qr-test',
       name: 'qr-test-demo',
       component: EmptyRouteView,
