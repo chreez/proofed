@@ -239,3 +239,70 @@ export interface BakeScratchpad {
   entries: Record<string, ScratchpadEntry[]>
   generalNotes: ScratchpadEntry[]
 }
+
+// HEB cost data — agent-populated product search results
+export interface HebProduct {
+  name: string
+  brand: string
+  size: string
+  sizeGrams: number
+  price: number
+  salePrice: number | null
+  unitPrice: string
+  inStock: boolean
+}
+
+export interface HebIngredientResult {
+  ingredientId: string
+  name: string
+  recipeAmount: number
+  recipeUnit: string
+  products: HebProduct[]
+}
+
+export interface HebResultsFile {
+  recipeId: string
+  date: string
+  storeId: number
+  ingredients: HebIngredientResult[]
+}
+
+// Cost selection — user picks for each ingredient
+export type CostSourceType = 'heb' | 'pantry' | 'manual'
+
+export interface CostSelection {
+  ingredientId: string
+  sourceType: CostSourceType
+  // HEB selection
+  productIndex?: number
+  // Pantry rate
+  pantryPurchaseLbs?: number
+  pantryPurchasePrice?: number
+  pantrySource?: string
+  // Manual entry
+  manualProductName?: string
+  manualPrice?: number
+  manualSizeGrams?: number
+}
+
+// Bake cost summary — final output
+export interface CostLineItem {
+  ingredientId: string
+  ingredientName: string
+  sourceType: CostSourceType
+  sourceName: string
+  recipeAmount: number
+  recipeUnit: string
+  packageSize: string
+  packagePrice: number
+  cost: number
+}
+
+export interface BakeCostSummary {
+  recipeId: string
+  date: string
+  costs: CostLineItem[]
+  total: number
+  perServing: number
+  servings: number
+}

@@ -4,7 +4,16 @@ import { useRoute, useRouter } from 'vue-router'
 import { useScratchpad } from '@/composables/useScratchpad'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { ArrowLeft } from 'lucide-vue-next'
-import type { ScratchpadEntry } from '@/types/recipe'
+import type {
+  ScratchpadEntry,
+  HebProduct,
+  HebIngredientResult,
+  HebResultsFile,
+  CostSelection,
+  CostSourceType,
+  CostLineItem,
+  BakeCostSummary
+} from '@/types/recipe'
 
 interface ManifestPhoto {
   name: string
@@ -201,18 +210,271 @@ function typeBadgeLabel(type: string): string {
   }
 }
 
+// --- Cost section state ---
+
+const hebResults = ref<HebResultsFile | null>(null)
+const hebLoading = ref(false)
+const hebError = ref('')
+const costSelections = reactive<Record<string, CostSelection>>({})
+const costCopied = ref(false)
+const recipeServings = ref(1)
+const recipeYields = ref('')
+
+function costStorageKey(): string {
+  return `cost-selections:${recipeId.value}:${date.value}`
+}
+
+function pantryStorageKey(): string {
+  return `pantry-rates:${recipeId.value}`
+}
+
+function saveCostSelections(): void {
+  localStorage.setItem(costStorageKey(), JSON.stringify(costSelections))
+}
+
+function loadCostSelections(): void {
+  const saved = localStorage.getItem(costStorageKey())
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved) as Record<string, CostSelection>
+      Object.assign(costSelections, parsed)
+    } catch { /* ignore corrupt data */ }
+  }
+}
+
+function savePantryRates(): void {
+  const rates: Record<string, { rate: number; source: string; updatedAt: string }> = {}
+  for (const [id, sel] of Object.entries(costSelections)) {
+    if (sel.sourceType === 'pantry' && sel.pantryPurchaseLbs && sel.pantryPurchasePrice) {
+      const grams = sel.pantryPurchaseLbs * 453.592
+      const rate = sel.pantryPurchasePrice / grams
+      rates[id] = {
+        rate,
+        source: sel.pantrySource ?? '',
+        updatedAt: new Date().toISOString().split('T')[0]
+      }
+    }
+  }
+  if (Object.keys(rates).length > 0) {
+    localStorage.setItem(pantryStorageKey(), JSON.stringify(rates))
+  }
+}
+
+function loadPantryRates(): Record<string, { rate: number; source: string; updatedAt: string }> {
+  const saved = localStorage.getItem(pantryStorageKey())
+  if (saved) {
+    try {
+      return JSON.parse(saved) as Record<string, { rate: number; source: string; updatedAt: string }>
+    } catch { /* ignore corrupt data */ }
+  }
+  return {}
+}
+
+function getSelection(ingredientId: string): CostSelection {
+  if (!costSelections[ingredientId]) {
+    costSelections[ingredientId] = {
+      ingredientId,
+      sourceType: 'heb',
+      productIndex: 0
+    }
+  }
+  return costSelections[ingredientId]
+}
+
+function selectProduct(ingredientId: string, productIndex: number): void {
+  const sel = getSelection(ingredientId)
+  sel.sourceType = 'heb'
+  sel.productIndex = productIndex
+}
+
+function setSourceType(ingredientId: string, sourceType: CostSourceType): void {
+  const sel = getSelection(ingredientId)
+  sel.sourceType = sourceType
+  if (sourceType === 'heb') {
+    sel.productIndex = sel.productIndex ?? 0
+  }
+}
+
+function calculateCost(ingredient: HebIngredientResult, selection: CostSelection): number {
+  if (selection.sourceType === 'heb') {
+    const product = ingredient.products[selection.productIndex ?? 0]
+    if (!product || product.sizeGrams <= 0) return 0
+    const price = product.salePrice ?? product.price
+    return (ingredient.recipeAmount / product.sizeGrams) * price
+  }
+  if (selection.sourceType === 'pantry') {
+    const lbs = selection.pantryPurchaseLbs ?? 0
+    const price = selection.pantryPurchasePrice ?? 0
+    if (lbs <= 0 || price <= 0) return 0
+    const grams = lbs * 453.592
+    const rate = price / grams
+    return rate * ingredient.recipeAmount
+  }
+  if (selection.sourceType === 'manual') {
+    const price = selection.manualPrice ?? 0
+    const sizeGrams = selection.manualSizeGrams ?? 0
+    if (sizeGrams <= 0 || price <= 0) return 0
+    return (ingredient.recipeAmount / sizeGrams) * price
+  }
+  return 0
+}
+
+function getSelectedProduct(ingredient: HebIngredientResult, selection: CostSelection): HebProduct | null {
+  if (selection.sourceType !== 'heb') return null
+  return ingredient.products[selection.productIndex ?? 0] ?? null
+}
+
+function sourceBadgeLabel(sourceType: CostSourceType): string {
+  switch (sourceType) {
+    case 'heb': return 'HEB'
+    case 'pantry': return 'PANTRY'
+    case 'manual': return 'MANUAL'
+  }
+}
+
+function sourceBadgeClass(sourceType: CostSourceType): string {
+  switch (sourceType) {
+    case 'heb': return 'bg-stone-200 text-stone-600'
+    case 'pantry': return 'bg-cream text-crust-dark'
+    case 'manual': return 'bg-accent-tint text-accent'
+  }
+}
+
+function parseServings(yields: string): number {
+  const match = yields.match(/(\d+)/)
+  return match ? parseInt(match[1], 10) : 1
+}
+
+const costLineItems = computed<CostLineItem[]>(() => {
+  if (!hebResults.value) return []
+  return hebResults.value.ingredients.map(ingredient => {
+    const selection = getSelection(ingredient.ingredientId)
+    const cost = calculateCost(ingredient, selection)
+    let sourceName = ''
+    let packageSize = ''
+    let packagePrice = 0
+
+    if (selection.sourceType === 'heb') {
+      const product = getSelectedProduct(ingredient, selection)
+      if (product) {
+        sourceName = `${product.brand} ${product.name}`
+        packageSize = product.size
+        packagePrice = product.salePrice ?? product.price
+      }
+    } else if (selection.sourceType === 'pantry') {
+      sourceName = selection.pantrySource ?? 'Pantry rate'
+      packageSize = `${selection.pantryPurchaseLbs ?? 0} lbs`
+      packagePrice = selection.pantryPurchasePrice ?? 0
+    } else if (selection.sourceType === 'manual') {
+      sourceName = selection.manualProductName ?? 'Manual entry'
+      packageSize = `${selection.manualSizeGrams ?? 0}g`
+      packagePrice = selection.manualPrice ?? 0
+    }
+
+    return {
+      ingredientId: ingredient.ingredientId,
+      ingredientName: ingredient.name,
+      sourceType: selection.sourceType,
+      sourceName,
+      recipeAmount: ingredient.recipeAmount,
+      recipeUnit: ingredient.recipeUnit,
+      packageSize,
+      packagePrice,
+      cost: parseFloat(cost.toFixed(2))
+    }
+  })
+})
+
+const totalCost = computed<number>(() => {
+  return costLineItems.value.reduce((sum, item) => sum + item.cost, 0)
+})
+
+const perServingCost = computed<number>(() => {
+  const servings = recipeServings.value || 1
+  return totalCost.value / servings
+})
+
+const costSummaryPayload = computed<BakeCostSummary>(() => ({
+  recipeId: recipeId.value,
+  date: date.value,
+  costs: costLineItems.value,
+  total: parseFloat(totalCost.value.toFixed(2)),
+  perServing: parseFloat(perServingCost.value.toFixed(2)),
+  servings: recipeServings.value
+}))
+
+const hasAnyCostSelections = computed<boolean>(() => {
+  return costLineItems.value.some(item => item.cost > 0)
+})
+
+async function loadHebResults(): Promise<void> {
+  hebLoading.value = true
+  hebError.value = ''
+  try {
+    const res = await fetch(`/review-data/${recipeId.value}/${date.value}/heb-results.json`)
+    if (!res.ok) {
+      hebError.value = 'No HEB data available. Run the review-bake skill to populate product data.'
+      return
+    }
+    hebResults.value = await res.json() as HebResultsFile
+    // Initialize selections with defaults and load persisted ones
+    for (const ingredient of hebResults.value.ingredients) {
+      if (!costSelections[ingredient.ingredientId]) {
+        costSelections[ingredient.ingredientId] = {
+          ingredientId: ingredient.ingredientId,
+          sourceType: 'heb',
+          productIndex: 0
+        }
+      }
+    }
+    // Load saved selections on top of defaults
+    loadCostSelections()
+    // Apply saved pantry rates
+    const pantryRates = loadPantryRates()
+    for (const [id, rate] of Object.entries(pantryRates)) {
+      if (costSelections[id] && costSelections[id].sourceType === 'pantry') {
+        if (!costSelections[id].pantryPurchaseLbs || !costSelections[id].pantryPurchasePrice) {
+          // Back-calculate from rate if the selection doesn't have purchase info
+          costSelections[id].pantrySource = rate.source
+        }
+      }
+    }
+  } catch {
+    hebError.value = 'No HEB data available. Run the review-bake skill to populate product data.'
+  } finally {
+    hebLoading.value = false
+  }
+}
+
+async function handleCopyCost(): Promise<void> {
+  const json = JSON.stringify(costSummaryPayload.value, null, 2)
+  await copyToClipboard(json)
+  costCopied.value = true
+  setTimeout(() => { costCopied.value = false }, 2000)
+}
+
+// Auto-save cost selections on change
+watch(costSelections, () => {
+  if (Object.keys(costSelections).length > 0) {
+    saveCostSelections()
+    savePantryRates()
+  }
+}, { deep: true })
+
 // --- Mount: load manifest, recipe name, and scratchpad ---
 
 onMounted(async () => {
   recipeId.value = route.params.recipeId as string
   date.value = route.params.date as string
 
-  // Load recipe name
+  // Load recipe name and servings
   try {
     const recipeRes = await fetch(`/recipes/${recipeId.value}.json`)
     if (recipeRes.ok) {
       const recipe = await recipeRes.json()
       recipeName.value = recipe.meta?.name ?? recipeId.value
+      recipeYields.value = recipe.meta?.yields ?? ''
+      recipeServings.value = parseServings(recipeYields.value)
     }
   } catch {
     // recipe name will fall back to recipeId
@@ -264,6 +526,9 @@ onMounted(async () => {
     entries: sp.allStepEntries.value,
     generalNotes: sp.generalNotes.value
   }
+
+  // Load HEB results eagerly
+  await loadHebResults()
 })
 </script>
 
@@ -416,11 +681,236 @@ onMounted(async () => {
       </template>
     </section>
 
-    <!-- Cost section (placeholder) -->
+    <!-- Cost section -->
     <section v-if="activeSection === 'cost'" data-testid="cost-section">
-      <div class="card text-center py-12">
-        <p class="text-muted font-mono">Cost capture coming soon</p>
+      <div v-if="hebLoading" class="text-center py-12 text-muted">
+        Loading HEB data...
       </div>
+
+      <div v-else-if="hebError" class="card text-center py-12" data-testid="cost-no-data">
+        <p class="text-muted font-mono">{{ hebError }}</p>
+      </div>
+
+      <template v-else-if="hebResults">
+        <div class="space-y-6">
+          <div
+            v-for="ingredient in hebResults.ingredients"
+            :key="ingredient.ingredientId"
+            class="card"
+            data-testid="cost-ingredient-card"
+          >
+            <!-- Ingredient header -->
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <span class="font-medium text-ink">{{ ingredient.name }}</span>
+                <span class="text-muted ml-2">(recipe needs {{ ingredient.recipeAmount }}{{ ingredient.recipeUnit }})</span>
+              </div>
+            </div>
+
+            <!-- Source type toggle -->
+            <div class="flex gap-0 mb-4">
+              <button
+                class="btn text-xs border-2 border-stone-200"
+                :class="getSelection(ingredient.ingredientId).sourceType === 'heb'
+                  ? 'bg-ink text-stone-100'
+                  : 'bg-surface text-ink hover:bg-stone-100'"
+                data-testid="source-toggle-heb"
+                @click="setSourceType(ingredient.ingredientId, 'heb')"
+              >
+                Fresh Purchase
+              </button>
+              <button
+                class="btn text-xs border-2 border-stone-200"
+                :class="getSelection(ingredient.ingredientId).sourceType === 'pantry'
+                  ? 'bg-ink text-stone-100'
+                  : 'bg-surface text-ink hover:bg-stone-100'"
+                data-testid="source-toggle-pantry"
+                @click="setSourceType(ingredient.ingredientId, 'pantry')"
+              >
+                Use Stored Rate
+              </button>
+              <button
+                class="btn text-xs border-2 border-stone-200"
+                :class="getSelection(ingredient.ingredientId).sourceType === 'manual'
+                  ? 'bg-ink text-stone-100'
+                  : 'bg-surface text-ink hover:bg-stone-100'"
+                data-testid="source-toggle-manual"
+                @click="setSourceType(ingredient.ingredientId, 'manual')"
+              >
+                Other
+              </button>
+            </div>
+
+            <!-- HEB product cards (Variant B) -->
+            <template v-if="getSelection(ingredient.ingredientId).sourceType === 'heb'">
+              <div class="space-y-3">
+                <button
+                  v-for="(product, pIndex) in ingredient.products"
+                  :key="pIndex"
+                  class="w-full text-left p-4 border-2 transition-colors"
+                  :class="getSelection(ingredient.ingredientId).productIndex === pIndex
+                    ? 'border-accent bg-accent-tint'
+                    : 'border-stone-200 bg-surface hover:border-stone-300'"
+                  data-testid="product-card"
+                  @click="selectProduct(ingredient.ingredientId, pIndex)"
+                >
+                  <div class="flex items-start justify-between mb-2">
+                    <div class="min-w-0">
+                      <div class="flex items-center gap-2">
+                        <span class="font-medium text-ink">{{ product.brand }}</span>
+                        <span v-if="product.salePrice" class="font-mono text-[10px] bg-accent text-stone-50 px-1.5 py-0.5">SALE</span>
+                        <span v-if="!product.inStock" class="font-mono text-[10px] bg-stone-300 text-stone-600 px-1.5 py-0.5">OUT OF STOCK</span>
+                      </div>
+                      <p class="text-sm text-stone-600">{{ product.name }}</p>
+                    </div>
+                    <div
+                      class="w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 mt-0.5"
+                      :class="getSelection(ingredient.ingredientId).productIndex === pIndex ? 'border-accent bg-accent' : 'border-stone-300'"
+                    >
+                      <span v-if="getSelection(ingredient.ingredientId).productIndex === pIndex" class="text-stone-50 text-xs">&#10003;</span>
+                    </div>
+                  </div>
+                  <div class="flex items-baseline gap-3">
+                    <span class="text-sm text-stone-500">{{ product.size }}</span>
+                    <span class="text-stone-300">|</span>
+                    <div class="flex items-center gap-1.5">
+                      <span v-if="product.salePrice" class="text-xs text-stone-400 line-through">${{ product.price.toFixed(2) }}</span>
+                      <span class="font-mono font-medium" :class="product.salePrice ? 'text-accent' : 'text-ink'">
+                        ${{ (product.salePrice ?? product.price).toFixed(2) }}
+                      </span>
+                    </div>
+                    <span class="text-stone-300">|</span>
+                    <span class="text-xs text-stone-400 font-mono">{{ product.unitPrice }}</span>
+                  </div>
+                  <div v-if="getSelection(ingredient.ingredientId).productIndex === pIndex" class="mt-2 pt-2 border-t border-stone-200">
+                    <span class="font-mono text-xs text-stone-500">{{ ingredient.recipeAmount }}{{ ingredient.recipeUnit }} used of {{ product.sizeGrams }}g package</span>
+                    <span class="font-mono text-xs text-accent ml-2" data-testid="calculated-cost">
+                      = ${{ calculateCost(ingredient, getSelection(ingredient.ingredientId)).toFixed(2) }}
+                    </span>
+                  </div>
+                </button>
+              </div>
+            </template>
+
+            <!-- Pantry rate mode -->
+            <template v-if="getSelection(ingredient.ingredientId).sourceType === 'pantry'">
+              <div class="space-y-3" data-testid="pantry-rate-form">
+                <div class="flex gap-4 items-end">
+                  <div class="flex-1">
+                    <label class="font-mono text-xs text-stone-500 mb-1 block">Purchase size</label>
+                    <div class="flex items-center gap-2">
+                      <input
+                        :value="getSelection(ingredient.ingredientId).pantryPurchaseLbs ?? ''"
+                        type="text"
+                        inputmode="decimal"
+                        class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                        data-testid="pantry-lbs-input"
+                        @input="getSelection(ingredient.ingredientId).pantryPurchaseLbs = parseFloat(($event.target as HTMLInputElement).value) || 0"
+                      />
+                      <span class="text-sm text-stone-500">lbs</span>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <label class="font-mono text-xs text-stone-500 mb-1 block">Price paid</label>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm text-stone-500">$</span>
+                      <input
+                        :value="getSelection(ingredient.ingredientId).pantryPurchasePrice ?? ''"
+                        type="text"
+                        inputmode="decimal"
+                        class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                        data-testid="pantry-price-input"
+                        @input="getSelection(ingredient.ingredientId).pantryPurchasePrice = parseFloat(($event.target as HTMLInputElement).value) || 0"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Calculated rate display -->
+                <div
+                  v-if="(getSelection(ingredient.ingredientId).pantryPurchaseLbs ?? 0) > 0 && (getSelection(ingredient.ingredientId).pantryPurchasePrice ?? 0) > 0"
+                  class="bg-stone-50 border-2 border-stone-200 p-3"
+                  data-testid="pantry-rate-display"
+                >
+                  <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <span class="font-mono text-xs text-stone-500 block mb-1">Rate</span>
+                      <span class="font-mono text-sm text-ink">${{ ((getSelection(ingredient.ingredientId).pantryPurchasePrice ?? 0) / ((getSelection(ingredient.ingredientId).pantryPurchaseLbs ?? 1) * 453.592)).toFixed(4) }}/g</span>
+                    </div>
+                    <div>
+                      <span class="font-mono text-xs text-stone-500 block mb-1">Recipe uses</span>
+                      <span class="font-mono text-sm text-ink">{{ ingredient.recipeAmount }}{{ ingredient.recipeUnit }}</span>
+                    </div>
+                    <div>
+                      <span class="font-mono text-xs text-stone-500 block mb-1">Cost</span>
+                      <span class="font-mono text-sm text-accent font-medium" data-testid="pantry-calculated-cost">${{ calculateCost(ingredient, getSelection(ingredient.ingredientId)).toFixed(2) }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+
+            <!-- Manual entry mode -->
+            <template v-if="getSelection(ingredient.ingredientId).sourceType === 'manual'">
+              <div class="space-y-3" data-testid="manual-entry-form">
+                <div class="flex gap-4 items-end">
+                  <div class="flex-2">
+                    <label class="font-mono text-xs text-stone-500 mb-1 block">Product name</label>
+                    <input
+                      :value="getSelection(ingredient.ingredientId).manualProductName ?? ''"
+                      type="text"
+                      placeholder="e.g. Store brand butter"
+                      class="w-full border-2 border-stone-200 p-2 text-sm bg-surface"
+                      data-testid="manual-name-input"
+                      @input="getSelection(ingredient.ingredientId).manualProductName = ($event.target as HTMLInputElement).value"
+                    />
+                  </div>
+                </div>
+                <div class="flex gap-4 items-end">
+                  <div class="flex-1">
+                    <label class="font-mono text-xs text-stone-500 mb-1 block">Price</label>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm text-stone-500">$</span>
+                      <input
+                        :value="getSelection(ingredient.ingredientId).manualPrice ?? ''"
+                        type="text"
+                        inputmode="decimal"
+                        class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                        data-testid="manual-price-input"
+                        @input="getSelection(ingredient.ingredientId).manualPrice = parseFloat(($event.target as HTMLInputElement).value) || 0"
+                      />
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <label class="font-mono text-xs text-stone-500 mb-1 block">Package size (grams)</label>
+                    <div class="flex items-center gap-2">
+                      <input
+                        :value="getSelection(ingredient.ingredientId).manualSizeGrams ?? ''"
+                        type="text"
+                        inputmode="decimal"
+                        class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                        data-testid="manual-size-input"
+                        @input="getSelection(ingredient.ingredientId).manualSizeGrams = parseFloat(($event.target as HTMLInputElement).value) || 0"
+                      />
+                      <span class="text-sm text-stone-500">g</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  v-if="(getSelection(ingredient.ingredientId).manualPrice ?? 0) > 0 && (getSelection(ingredient.ingredientId).manualSizeGrams ?? 0) > 0"
+                  class="bg-stone-50 border-2 border-stone-200 p-3"
+                  data-testid="manual-cost-display"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs text-stone-500">{{ ingredient.recipeAmount }}{{ ingredient.recipeUnit }} used of {{ getSelection(ingredient.ingredientId).manualSizeGrams }}g package</span>
+                    <span class="font-mono text-sm text-accent font-medium">${{ calculateCost(ingredient, getSelection(ingredient.ingredientId)).toFixed(2) }}</span>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
     </section>
 
     <!-- Notes section -->
@@ -477,11 +967,71 @@ onMounted(async () => {
       </template>
     </section>
 
-    <!-- Summary section (placeholder) -->
+    <!-- Summary section -->
     <section v-if="activeSection === 'summary'" data-testid="summary-section">
-      <div class="card text-center py-12">
-        <p class="text-muted font-mono">Session summary coming soon</p>
+      <div v-if="!hebResults || !hasAnyCostSelections" class="card text-center py-12">
+        <p class="text-muted font-mono">No cost data yet. Select products in the Cost tab first.</p>
       </div>
+
+      <template v-else>
+        <div class="bg-surface border-2 border-stone-200">
+          <!-- Header -->
+          <div class="flex items-center justify-between p-3 border-b-2 border-stone-200 bg-stone-50">
+            <span class="font-mono text-xs text-stone-600" data-testid="summary-header">{{ recipeName || recipeId }} -- Cost Breakdown</span>
+            <span class="font-mono text-xs text-stone-400">{{ recipeServings }} servings</span>
+          </div>
+
+          <!-- Ingredient rows -->
+          <div class="divide-y divide-stone-100" data-testid="summary-cost-rows">
+            <div
+              v-for="line in costLineItems"
+              :key="line.ingredientId"
+              class="flex items-center gap-3 px-4 py-3"
+              data-testid="summary-cost-row"
+            >
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-medium text-ink">{{ line.ingredientName }}</span>
+                  <span
+                    class="font-mono text-[10px] px-1.5 py-0.5"
+                    :class="sourceBadgeClass(line.sourceType)"
+                    data-testid="source-badge"
+                  >
+                    {{ sourceBadgeLabel(line.sourceType) }}
+                  </span>
+                </div>
+                <p class="text-xs text-stone-400">{{ line.sourceName }}</p>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-xs text-stone-400 font-mono">{{ line.recipeAmount }}{{ line.recipeUnit }}</span>
+                  <span class="text-sm font-mono font-medium text-ink">${{ line.cost.toFixed(2) }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total row -->
+          <div class="border-t-2 border-stone-200 bg-stone-50 px-4 py-3">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs text-stone-500">Total bake cost</span>
+              <span class="text-lg font-mono font-medium text-ink" data-testid="summary-total">${{ totalCost.toFixed(2) }}</span>
+            </div>
+            <div class="flex items-center justify-between mt-1">
+              <span class="font-mono text-xs text-stone-400">Per serving ({{ recipeYields || `${recipeServings} servings` }})</span>
+              <span class="font-mono text-sm text-accent font-medium" data-testid="summary-per-serving">${{ perServingCost.toFixed(2) }}</span>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="btn-primary w-full mt-6"
+          data-testid="copy-cost-btn"
+          @click="handleCopyCost"
+        >
+          {{ costCopied ? 'Copied!' : 'Copy cost data' }}
+        </button>
+      </template>
     </section>
   </div>
 </template>

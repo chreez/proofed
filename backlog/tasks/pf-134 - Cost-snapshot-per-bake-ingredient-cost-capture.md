@@ -1,10 +1,10 @@
 ---
 id: PF-134
 title: Cost snapshot - per-bake ingredient cost capture
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-14 02:58'
-updated_date: '2026-02-15 00:50'
+updated_date: '2026-02-16 22:27'
 labels: []
 dependencies:
   - PF-133
@@ -60,4 +60,6 @@ Ingredient-level cost capture as a section within the bake review page (PF-138).
 - Supplies total = sum of full package prices for everything purchased
 - Bake cost = sum of (package price × amount used / package size) per ingredient
 - Per serving = bake cost ÷ servings
+
+Execution started as part of PF-138. Hybrid architecture chosen: agent writes HEB results to public/review-data/{recipeId}/{date}/heb-results.json, review page fetches and presents picker UI. User chose card-style product picker (Variant B from demo).
 <!-- SECTION:NOTES:END -->

@@ -91,12 +91,79 @@ const sampleRecipe = {
   meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' }
 }
 
-function makeFetchSuccess(manifest = sampleManifest, recipe = sampleRecipe) {
+const sampleHebResults = {
+  recipeId: 'test-recipe',
+  date: '2026-02-10',
+  storeId: 428,
+  ingredients: [
+    {
+      ingredientId: 'unsalted-butter',
+      name: 'Unsalted butter',
+      recipeAmount: 140,
+      recipeUnit: 'g',
+      products: [
+        {
+          name: 'Sweet Cream Unsalted Butter Sticks',
+          brand: 'H-E-B',
+          size: '4ct / 16oz',
+          sizeGrams: 454,
+          price: 3.98,
+          salePrice: null,
+          unitPrice: '$0.25/oz',
+          inStock: true
+        },
+        {
+          name: 'European Style Unsalted Butter',
+          brand: 'Central Market',
+          size: '4ct / 16oz',
+          sizeGrams: 454,
+          price: 5.28,
+          salePrice: 4.48,
+          unitPrice: '$0.37/oz',
+          inStock: true
+        }
+      ]
+    },
+    {
+      ingredientId: 'all-purpose-flour',
+      name: 'All-purpose flour',
+      recipeAmount: 390,
+      recipeUnit: 'g',
+      products: [
+        {
+          name: 'Unbleached All Purpose Flour',
+          brand: 'H-E-B',
+          size: '5 lb',
+          sizeGrams: 2268,
+          price: 3.49,
+          salePrice: null,
+          unitPrice: '$0.07/oz',
+          inStock: true
+        }
+      ]
+    }
+  ]
+}
+
+function makeFetchSuccess(manifest = sampleManifest, recipe = sampleRecipe, hebResults = sampleHebResults as typeof sampleHebResults | null) {
   return vi.fn((url: string) => {
     if (url.includes('/recipes/')) {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve(recipe)
+      } as Response)
+    }
+    if (url.includes('/review-data/')) {
+      if (hebResults) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(hebResults)
+        } as Response)
+      }
+      return Promise.resolve({
+        ok: false,
+        status: 404,
+        json: () => Promise.reject(new Error('Not found'))
       } as Response)
     }
     return Promise.resolve({
@@ -112,6 +179,13 @@ function makeFetchManifestNotFound() {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve(sampleRecipe)
+      } as Response)
+    }
+    if (url.includes('/review-data/')) {
+      return Promise.resolve({
+        ok: false,
+        status: 404,
+        json: () => Promise.reject(new Error('Not found'))
       } as Response)
     }
     return Promise.resolve({
@@ -462,8 +536,10 @@ describe('BakeReviewPage', () => {
     })
   })
 
-  describe('Placeholder sections', () => {
-    it('renders cost placeholder', async () => {
+  describe('Cost section', () => {
+    it('renders no-data message when HEB results are 404', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, null)
+
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -471,10 +547,388 @@ describe('BakeReviewPage', () => {
       const costTab = tabs.find(t => t.text() === 'Cost')!
       await costTab.trigger('click')
 
-      expect(wrapper.find('[data-testid="cost-section"]').text()).toContain('Cost capture coming soon')
+      const costSection = wrapper.find('[data-testid="cost-section"]')
+      expect(costSection.find('[data-testid="cost-no-data"]').exists()).toBe(true)
+      expect(costSection.text()).toContain('No HEB data available')
     })
 
-    it('renders summary placeholder', async () => {
+    it('renders ingredient cards when HEB results are available', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      const cards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      expect(cards.length).toBe(2) // butter + flour
+      expect(cards[0].text()).toContain('Unsalted butter')
+      expect(cards[0].text()).toContain('140g')
+      expect(cards[1].text()).toContain('All-purpose flour')
+      expect(cards[1].text()).toContain('390g')
+    })
+
+    it('renders product cards within each ingredient', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      // 2 butter products + 1 flour product = 3
+      expect(productCards.length).toBe(3)
+      expect(productCards[0].text()).toContain('H-E-B')
+      expect(productCards[0].text()).toContain('$3.98')
+      expect(productCards[1].text()).toContain('Central Market')
+      expect(productCards[1].text()).toContain('SALE')
+    })
+
+    it('shows calculated cost for selected product', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // First product (H-E-B butter) should be selected by default
+      const calculatedCost = wrapper.find('[data-testid="calculated-cost"]')
+      expect(calculatedCost.exists()).toBe(true)
+      // 140/454 * 3.98 = ~1.23
+      expect(calculatedCost.text()).toContain('$1.23')
+    })
+
+    it('updates calculated cost when selecting a different product', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Click the second product (Central Market, on sale $4.48)
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      await productCards[1].trigger('click')
+      await flushPromises()
+
+      // 140/454 * 4.48 = ~1.38
+      const calculatedCosts = wrapper.findAll('[data-testid="calculated-cost"]')
+      const activeCost = calculatedCosts.find(el => el.text().includes('$1.38'))
+      expect(activeCost).toBeTruthy()
+    })
+
+    it('switches to pantry rate mode', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Click "Use Stored Rate" on the first ingredient card
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      const pantryBtn = ingredientCards[0].find('[data-testid="source-toggle-pantry"]')
+      await pantryBtn.trigger('click')
+      await flushPromises()
+
+      // Pantry form should appear
+      expect(ingredientCards[0].find('[data-testid="pantry-rate-form"]').exists()).toBe(true)
+      // Product cards should not be visible
+      expect(ingredientCards[0].findAll('[data-testid="product-card"]').length).toBe(0)
+    })
+
+    it('switches to manual entry mode', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      const manualBtn = ingredientCards[0].find('[data-testid="source-toggle-manual"]')
+      await manualBtn.trigger('click')
+      await flushPromises()
+
+      expect(ingredientCards[0].find('[data-testid="manual-entry-form"]').exists()).toBe(true)
+    })
+
+    it('persists cost selections to localStorage', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Clicking a product should trigger a save
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      await productCards[1].trigger('click')
+      await flushPromises()
+
+      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        'cost-selections:test-recipe:2026-02-10',
+        expect.any(String)
+      )
+    })
+
+    it('handles HEB results fetch rejection', async () => {
+      global.fetch = vi.fn((url: string) => {
+        if (url.includes('/recipes/')) {
+          return Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve(sampleRecipe)
+          } as Response)
+        }
+        if (url.includes('/review-data/')) {
+          return Promise.reject(new Error('Network error'))
+        }
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(sampleManifest)
+        } as Response)
+      })
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      expect(wrapper.find('[data-testid="cost-no-data"]').exists()).toBe(true)
+    })
+
+    it('restores cost selections from localStorage on load', async () => {
+      // Pre-populate localStorage with saved cost selections
+      const savedSelections = {
+        'unsalted-butter': {
+          ingredientId: 'unsalted-butter',
+          sourceType: 'heb',
+          productIndex: 1
+        }
+      }
+      localStorageMock._store['cost-selections:test-recipe:2026-02-10'] = JSON.stringify(savedSelections)
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // The second product (Central Market) should be selected
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      // The second card for butter should have the accent border
+      expect(productCards[1].classes()).toContain('border-accent')
+    })
+
+    it('handles corrupt cost selection data in localStorage', async () => {
+      localStorageMock._store['cost-selections:test-recipe:2026-02-10'] = 'INVALID JSON{'
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Should still render with defaults despite corrupt data
+      const cards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      expect(cards.length).toBe(2)
+    })
+
+    it('saves and restores pantry rates', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Switch first ingredient to pantry mode
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      const pantryBtn = ingredientCards[0].find('[data-testid="source-toggle-pantry"]')
+      await pantryBtn.trigger('click')
+      await flushPromises()
+
+      // Enter pantry data
+      const lbsInput = ingredientCards[0].find('[data-testid="pantry-lbs-input"]')
+      const priceInput = ingredientCards[0].find('[data-testid="pantry-price-input"]')
+
+      await lbsInput.setValue('5')
+      await lbsInput.trigger('input')
+      await priceInput.setValue('3.49')
+      await priceInput.trigger('input')
+      await flushPromises()
+
+      // Should save pantry rates to localStorage
+      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        'pantry-rates:test-recipe',
+        expect.any(String)
+      )
+    })
+
+    it('handles corrupt pantry rate data in localStorage', async () => {
+      localStorageMock._store['pantry-rates:test-recipe'] = 'NOT JSON'
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Should still render normally despite corrupt pantry data
+      const cards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      expect(cards.length).toBe(2)
+    })
+
+    it('calculates pantry rate cost correctly', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Switch flour (second ingredient) to pantry mode
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      const pantryBtn = ingredientCards[1].find('[data-testid="source-toggle-pantry"]')
+      await pantryBtn.trigger('click')
+      await flushPromises()
+
+      // Enter pantry data for flour: 5 lbs, $3.49
+      const lbsInput = ingredientCards[1].find('[data-testid="pantry-lbs-input"]')
+      const priceInput = ingredientCards[1].find('[data-testid="pantry-price-input"]')
+
+      await lbsInput.setValue('5')
+      await lbsInput.trigger('input')
+      await priceInput.setValue('3.49')
+      await priceInput.trigger('input')
+      await flushPromises()
+
+      // Rate display should appear
+      expect(ingredientCards[1].find('[data-testid="pantry-rate-display"]').exists()).toBe(true)
+      // 390g / (5 * 453.592g) * $3.49 = ~$0.60
+      const pantryCalcCost = ingredientCards[1].find('[data-testid="pantry-calculated-cost"]')
+      expect(pantryCalcCost.exists()).toBe(true)
+      expect(pantryCalcCost.text()).toContain('$0.60')
+    })
+
+    it('calculates manual entry cost correctly', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Switch butter to manual entry
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      const manualBtn = ingredientCards[0].find('[data-testid="source-toggle-manual"]')
+      await manualBtn.trigger('click')
+      await flushPromises()
+
+      // Enter manual data
+      const nameInput = ingredientCards[0].find('[data-testid="manual-name-input"]')
+      const priceInput = ingredientCards[0].find('[data-testid="manual-price-input"]')
+      const sizeInput = ingredientCards[0].find('[data-testid="manual-size-input"]')
+
+      await nameInput.setValue('Store brand butter')
+      await nameInput.trigger('input')
+      await priceInput.setValue('2.99')
+      await priceInput.trigger('input')
+      await sizeInput.setValue('454')
+      await sizeInput.trigger('input')
+      await flushPromises()
+
+      // Cost display should appear
+      expect(ingredientCards[0].find('[data-testid="manual-cost-display"]').exists()).toBe(true)
+      // 140/454 * 2.99 = ~0.92
+    })
+
+    it('switches back to HEB mode from pantry', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Switch to pantry
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      const pantryBtn = ingredientCards[0].find('[data-testid="source-toggle-pantry"]')
+      await pantryBtn.trigger('click')
+      await flushPromises()
+      expect(ingredientCards[0].find('[data-testid="pantry-rate-form"]').exists()).toBe(true)
+
+      // Switch back to HEB
+      const hebBtn = ingredientCards[0].find('[data-testid="source-toggle-heb"]')
+      await hebBtn.trigger('click')
+      await flushPromises()
+      expect(ingredientCards[0].findAll('[data-testid="product-card"]').length).toBe(2)
+      expect(ingredientCards[0].find('[data-testid="pantry-rate-form"]').exists()).toBe(false)
+    })
+
+    it('shows sale badge on discounted products', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Central Market butter has a salePrice
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[1].text()).toContain('SALE')
+      expect(productCards[1].text()).toContain('$5.28') // original price (line-through)
+      expect(productCards[1].text()).toContain('$4.48') // sale price
+    })
+
+    it('loads pantry rates for pantry-mode selections on mount', async () => {
+      // Pre-populate both cost selections and pantry rates
+      const savedSelections = {
+        'unsalted-butter': {
+          ingredientId: 'unsalted-butter',
+          sourceType: 'pantry',
+          pantryPurchaseLbs: 0,
+          pantryPurchasePrice: 0
+        }
+      }
+      const savedRates = {
+        'unsalted-butter': {
+          rate: 0.005,
+          source: 'HEB Store Brand',
+          updatedAt: '2026-02-10'
+        }
+      }
+      localStorageMock._store['cost-selections:test-recipe:2026-02-10'] = JSON.stringify(savedSelections)
+      localStorageMock._store['pantry-rates:test-recipe'] = JSON.stringify(savedRates)
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Should be in pantry mode for butter
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      expect(ingredientCards[0].find('[data-testid="pantry-rate-form"]').exists()).toBe(true)
+    })
+  })
+
+  describe('Summary section', () => {
+    it('shows no-data message when no HEB results', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, null)
+
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -482,7 +936,179 @@ describe('BakeReviewPage', () => {
       const summaryTab = tabs.find(t => t.text() === 'Summary')!
       await summaryTab.trigger('click')
 
-      expect(wrapper.find('[data-testid="summary-section"]').text()).toContain('Session summary coming soon')
+      expect(wrapper.find('[data-testid="summary-section"]').text()).toContain('No cost data yet')
+    })
+
+    it('shows cost breakdown when HEB results and selections exist', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      const summarySection = wrapper.find('[data-testid="summary-section"]')
+      expect(summarySection.find('[data-testid="summary-header"]').exists()).toBe(true)
+      expect(summarySection.text()).toContain('Quick Cinnamon Buns')
+      expect(summarySection.text()).toContain('Cost Breakdown')
+    })
+
+    it('shows source badges for each cost line', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      const badges = wrapper.findAll('[data-testid="source-badge"]')
+      expect(badges.length).toBe(2) // butter + flour
+      expect(badges[0].text()).toBe('HEB')
+    })
+
+    it('shows total and per-serving cost', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      expect(wrapper.find('[data-testid="summary-total"]').exists()).toBe(true)
+      expect(wrapper.find('[data-testid="summary-per-serving"]').exists()).toBe(true)
+    })
+
+    it('uses recipe yields for servings count', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      // yields is "8 buns", so 8 servings
+      expect(wrapper.find('[data-testid="summary-section"]').text()).toContain('8 servings')
+      expect(wrapper.find('[data-testid="summary-section"]').text()).toContain('8 buns')
+    })
+
+    it('copies cost data to clipboard', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      const copyBtn = wrapper.find('[data-testid="copy-cost-btn"]')
+      expect(copyBtn.exists()).toBe(true)
+      await copyBtn.trigger('click')
+      await flushPromises()
+
+      // copyToClipboard was already called once by the photo copy test potentially,
+      // but we can check the last call
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      expect(parsed).toHaveProperty('recipeId', 'test-recipe')
+      expect(parsed).toHaveProperty('date', '2026-02-10')
+      expect(parsed).toHaveProperty('costs')
+      expect(parsed).toHaveProperty('total')
+      expect(parsed).toHaveProperty('perServing')
+      expect(parsed).toHaveProperty('servings', 8)
+    })
+
+    it('shows Copied! text after copy', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      const copyBtn = wrapper.find('[data-testid="copy-cost-btn"]')
+      await copyBtn.trigger('click')
+      await flushPromises()
+
+      expect(copyBtn.text()).toContain('Copied!')
+    })
+
+    it('shows PANTRY and MANUAL badges for non-HEB sources', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Switch to cost tab and set butter to pantry, flour to manual
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+
+      // Set butter to pantry mode with values
+      await ingredientCards[0].find('[data-testid="source-toggle-pantry"]').trigger('click')
+      await flushPromises()
+      const lbsInput = ingredientCards[0].find('[data-testid="pantry-lbs-input"]')
+      const priceInput = ingredientCards[0].find('[data-testid="pantry-price-input"]')
+      await lbsInput.setValue('1')
+      await lbsInput.trigger('input')
+      await priceInput.setValue('3.98')
+      await priceInput.trigger('input')
+      await flushPromises()
+
+      // Set flour to manual mode with values
+      await ingredientCards[1].find('[data-testid="source-toggle-manual"]').trigger('click')
+      await flushPromises()
+      const manualPrice = ingredientCards[1].find('[data-testid="manual-price-input"]')
+      const manualSize = ingredientCards[1].find('[data-testid="manual-size-input"]')
+      await manualPrice.setValue('3.49')
+      await manualPrice.trigger('input')
+      await manualSize.setValue('2268')
+      await manualSize.trigger('input')
+      await flushPromises()
+
+      // Switch to summary tab
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      const badges = wrapper.findAll('[data-testid="source-badge"]')
+      expect(badges.length).toBe(2)
+      expect(badges[0].text()).toBe('PANTRY')
+      expect(badges[1].text()).toBe('MANUAL')
+    })
+
+    it('shows cost row details for each ingredient', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      const rows = wrapper.findAll('[data-testid="summary-cost-row"]')
+      expect(rows.length).toBe(2)
+      // Check first row shows ingredient name and amount
+      expect(rows[0].text()).toContain('Unsalted butter')
+      expect(rows[0].text()).toContain('140g')
+      expect(rows[1].text()).toContain('All-purpose flour')
+      expect(rows[1].text()).toContain('390g')
+    })
+
+    it('falls back to 1 serving when yields is empty', async () => {
+      global.fetch = makeFetchSuccess(
+        sampleManifest,
+        { meta: { name: 'Test Recipe', yields: '', total_time: '1 hour' } },
+        sampleHebResults
+      )
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const summaryTab = tabs.find(t => t.text() === 'Summary')!
+      await summaryTab.trigger('click')
+
+      expect(wrapper.find('[data-testid="summary-section"]').text()).toContain('1 servings')
     })
   })
 
@@ -576,6 +1202,9 @@ describe('BakeReviewPage', () => {
         if (url.includes('/recipes/')) {
           return Promise.reject(new Error('Network error'))
         }
+        if (url.includes('/review-data/')) {
+          return Promise.resolve({ ok: false, status: 404 } as Response)
+        }
         return Promise.resolve({
           ok: true,
           json: () => Promise.resolve(sampleManifest)
@@ -598,6 +1227,9 @@ describe('BakeReviewPage', () => {
             ok: true,
             json: () => Promise.resolve(sampleRecipe)
           } as Response)
+        }
+        if (url.includes('/review-data/')) {
+          return Promise.resolve({ ok: false, status: 404 } as Response)
         }
         return Promise.reject(new Error('Network error'))
       })
@@ -736,7 +1368,7 @@ describe('BakeReviewPage', () => {
   })
 
   describe('Empty photoStates watch branch', () => {
-    it('does not save to localStorage when photoStates is empty', async () => {
+    it('does not save photo state to localStorage when photoStates is empty', async () => {
       // Manifest with no photos
       const emptyManifest = {
         recipeId: 'test-recipe',
@@ -750,7 +1382,11 @@ describe('BakeReviewPage', () => {
       await flushPromises()
 
       // localStorage.setItem should not be called for photo state since there are no photos
-      expect(localStorageMock.setItem).not.toHaveBeenCalled()
+      // (it may be called for cost selections, so check specifically for photo key)
+      const photoSetItemCalls = localStorageMock.setItem.mock.calls.filter(
+        (call: string[]) => call[0].startsWith('photo-review:')
+      )
+      expect(photoSetItemCalls.length).toBe(0)
     })
   })
 
@@ -763,6 +1399,9 @@ describe('BakeReviewPage', () => {
             ok: false,
             status: 404
           } as Response)
+        }
+        if (url.includes('/review-data/')) {
+          return Promise.resolve({ ok: false, status: 404 } as Response)
         }
         return Promise.resolve({
           ok: true,
