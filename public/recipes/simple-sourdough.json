@@ -667,7 +667,18 @@
         { "text": "Take a photo of dough state before shaping to help diagnose fermentation level" },
         { "text": "Figure out how to brown focaccia top better (broiler finish?)" },
         { "text": "Dutch oven still incoming — try a proper boule bake when it arrives" }
-      ]
+      ],
+      "cost": {
+        "total": 1.34,
+        "perServing": 1.34,
+        "servings": 1,
+        "items": [
+          { "ingredientId": "bread_flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "amount": 500, "unit": "g", "cost": 1.23 },
+          { "ingredientId": "water", "name": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "amount": 350, "unit": "g", "cost": 0 },
+          { "ingredientId": "starter", "name": "Active Sourdough Starter", "sourceType": "rate", "sourceName": "Derived: 50% AP flour rate (flour + water)", "amount": 100, "unit": "g", "cost": 0.06 },
+          { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 10, "unit": "g", "cost": 0.05 }
+        ]
+      }
     }
   ],
   "research": {

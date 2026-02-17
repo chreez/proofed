@@ -616,6 +616,106 @@ describe('Photo lightbox', () => {
   })
 })
 
+describe('Cost one-liner', () => {
+  const costData = {
+    total: 1.29,
+    perServing: 1.29,
+    servings: 1,
+    items: [
+      { ingredientId: 'flour', name: 'Flour', sourceType: 'heb' as const, sourceName: 'KA', amount: 500, unit: 'g', cost: 1.23 }
+    ]
+  }
+
+  it('shows cost one-liner in collapsed no-photo card when entry.cost exists', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          cost: costData
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    expect(wrapper.text()).toContain('$1.29 total')
+    expect(wrapper.text()).toContain('$1.29/serving')
+  })
+
+  it('shows cost one-liner in collapsed photo card when entry.cost exists', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          photos: [
+            { src: '/img/a-800.webp', thumb: '/img/a-400.webp', alt: 'A' }
+          ],
+          cost: costData
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    expect(wrapper.text()).toContain('$1.29 total')
+    expect(wrapper.text()).toContain('$1.29/serving')
+  })
+
+  it('shows cost one-liner in expanded state when entry.cost exists', async () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          cost: costData
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    await wrapper.find('.cursor-pointer').trigger('click')
+
+    expect(wrapper.text()).toContain('$1.29 total')
+    expect(wrapper.text()).toContain('$1.29/serving')
+  })
+
+  it('hides cost line when no cost data in collapsed state', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note']
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    expect(wrapper.text()).not.toContain('total')
+    expect(wrapper.text()).not.toContain('/serving')
+  })
+
+  it('hides cost line when no cost data in expanded state', async () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note']
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    await wrapper.find('.cursor-pointer').trigger('click')
+
+    expect(wrapper.text()).not.toContain('/serving')
+  })
+})
+
 describe('HTML snapshot', () => {
   it('matches snapshot', () => {
     const wrapper = mount(CookLogSection, {

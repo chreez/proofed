@@ -478,6 +478,148 @@ describe('BakeDetailView', () => {
     })
   })
 
+  describe('cost breakdown', () => {
+    const costData = {
+      total: 1.29,
+      perServing: 1.29,
+      servings: 1,
+      items: [
+        { ingredientId: 'bread_flour', name: 'Bread Flour', sourceType: 'heb' as const, sourceName: 'King Arthur Bread Flour, 5 lb', amount: 500, unit: 'g', cost: 1.23 },
+        { ingredientId: 'water', name: 'Water', sourceType: 'rate' as const, sourceName: 'Tap water (negligible)', amount: 350, unit: 'g', cost: 0.00 },
+        { ingredientId: 'salt', name: 'Fine Sea Salt', sourceType: 'manual' as const, sourceName: 'H-E-B Mediterranean Sea Salt', amount: 10, unit: 'g', cost: 0.03 }
+      ]
+    }
+
+    it('renders cost table when entry.cost exists', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: costData
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="cost-breakdown"]').exists()).toBe(true)
+      expect(wrapper.text()).toContain('Cost Breakdown')
+    })
+
+    it('hides cost section when entry.cost is undefined', () => {
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="cost-breakdown"]').exists()).toBe(false)
+    })
+
+    it('shows source badges (HEB, RATE, MANUAL)', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: costData
+        }]
+      })
+      const wrapper = mountComponent()
+      const badges = wrapper.findAll('[data-testid="source-badge"]')
+      const badgeTexts = badges.map(b => b.text())
+      expect(badgeTexts).toContain('HEB')
+      expect(badgeTexts).toContain('RATE')
+      expect(badgeTexts).toContain('MANUAL')
+    })
+
+    it('shows "negligible" for zero-cost rate items', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: costData
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.text()).toContain('negligible')
+    })
+
+    it('does not show "negligible" for non-zero cost items', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: {
+            total: 1.23,
+            perServing: 1.23,
+            servings: 1,
+            items: [
+              { ingredientId: 'flour', name: 'Flour', sourceType: 'heb' as const, sourceName: 'KA', amount: 500, unit: 'g', cost: 1.23 }
+            ]
+          }
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.text()).not.toContain('negligible')
+    })
+
+    it('shows total and per-serving in footer', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: costData
+        }]
+      })
+      const wrapper = mountComponent()
+      const footer = wrapper.find('[data-testid="cost-footer"]')
+      expect(footer.exists()).toBe(true)
+      expect(footer.text()).toContain('$1.29')
+      expect(footer.text()).toContain('Total bake cost')
+      expect(footer.text()).toContain('Per serving')
+    })
+
+    it('shows serving count in header', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: { ...costData, servings: 8 }
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.text()).toContain('8 servings')
+    })
+
+    it('shows singular "serving" for 1 serving', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: costData
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.text()).toContain('1 serving')
+      expect(wrapper.text()).not.toContain('1 servings')
+    })
+
+    it('shows ingredient names and amounts', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: costData
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.text()).toContain('Bread Flour')
+      expect(wrapper.text()).toContain('500g')
+      expect(wrapper.text()).toContain('Water')
+      expect(wrapper.text()).toContain('350g')
+    })
+  })
+
   describe('bakeDate computed', () => {
     it('handles array date param by returning empty string', () => {
       mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: ['2026-02-05'] as unknown as string }

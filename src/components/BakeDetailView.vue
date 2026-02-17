@@ -5,7 +5,7 @@ import { marked } from 'marked'
 import { ArrowLeft, Bot } from 'lucide-vue-next'
 import { useRecipe } from '@/composables/useRecipe'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
-import type { CookLogEntry, CookLogPhoto, ReheatMethod } from '@/types/recipe'
+import type { CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType } from '@/types/recipe'
 
 const route = useRoute()
 const router = useRouter()
@@ -99,6 +99,34 @@ function goBack(): void {
   } else {
     router.back()
   }
+}
+
+// --- Cost breakdown helpers ---
+function sourceBadgeLabel(sourceType: CostSourceType): string {
+  switch (sourceType) {
+    case 'heb': return 'HEB'
+    case 'rate': return 'RATE'
+    case 'pantry': return 'PANTRY'
+    case 'manual': return 'MANUAL'
+  }
+}
+
+function sourceBadgeClass(sourceType: CostSourceType): string {
+  switch (sourceType) {
+    case 'heb': return 'bg-stone-200 text-stone-600'
+    case 'rate': return 'bg-cream text-crust-dark'
+    case 'pantry': return 'bg-cream text-crust-dark'
+    case 'manual': return 'bg-accent-tint text-accent'
+  }
+}
+
+function isNegligible(item: CookLogCostItem): boolean {
+  return item.cost === 0 && item.sourceType === 'rate'
+}
+
+function formatCost(cost: number, negligible: boolean): string {
+  if (negligible) return 'negligible'
+  return `$${cost.toFixed(2)}`
 }
 
 // --- Shared mode popover ---
@@ -204,6 +232,63 @@ function dismissPopover(): void {
       <div v-if="entry.notes?.length" class="mb-6">
         <h4 class="text-heading font-mono text-sm mb-2">Notes</h4>
         <div class="bake-prose" v-html="renderNotes(entry)" />
+      </div>
+
+      <!-- Cost Breakdown -->
+      <div v-if="entry.cost" class="mb-6" data-testid="cost-breakdown">
+        <div class="bg-surface border-2 border-stone-200">
+          <!-- Header -->
+          <div class="flex items-center justify-between p-3 border-b-2 border-stone-200 bg-stone-50">
+            <h4 class="font-mono text-sm text-heading font-semibold">Cost Breakdown</h4>
+            <span class="font-mono text-xs text-stone-400">{{ entry.cost.servings }} serving{{ entry.cost.servings !== 1 ? 's' : '' }}</span>
+          </div>
+
+          <!-- Ingredient rows -->
+          <div class="divide-y divide-stone-100">
+            <div
+              v-for="item in entry.cost.items"
+              :key="item.ingredientId"
+              class="flex items-center gap-3 px-4 py-3"
+            >
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-medium text-ink">{{ item.name }}</span>
+                  <span
+                    class="font-mono text-[10px] px-1.5 py-0.5"
+                    :class="sourceBadgeClass(item.sourceType)"
+                    data-testid="source-badge"
+                  >
+                    {{ sourceBadgeLabel(item.sourceType) }}
+                  </span>
+                </div>
+                <p class="text-xs text-stone-400">{{ item.sourceName }}</p>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-xs text-stone-400 font-mono">{{ item.amount }}{{ item.unit }}</span>
+                  <span
+                    class="text-sm font-mono font-medium"
+                    :class="isNegligible(item) ? 'text-stone-400 italic' : 'text-ink'"
+                  >
+                    {{ formatCost(item.cost, isNegligible(item)) }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total row -->
+          <div class="border-t-2 border-stone-200 bg-stone-50 px-4 py-3" data-testid="cost-footer">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs text-stone-500">Total bake cost</span>
+              <span class="text-lg font-mono font-medium text-ink">${{ entry.cost.total.toFixed(2) }}</span>
+            </div>
+            <div class="flex items-center justify-between mt-1">
+              <span class="font-mono text-xs text-stone-400">Per serving</span>
+              <span class="font-mono text-sm text-accent font-medium">${{ entry.cost.perServing.toFixed(2) }}</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Next Time -->

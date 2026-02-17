@@ -182,6 +182,7 @@ onMounted(() => {
               <span>{{ entry.notes.length }} notes</span>
               <span>{{ entry.photos.length }} photos</span>
               <span v-if="entry.next_time?.length">{{ entry.next_time.length }} next-time</span>
+              <span v-if="entry.cost" class="font-mono">${{ entry.cost.total.toFixed(2) }} total · ${{ entry.cost.perServing.toFixed(2) }}/serving</span>
               <ChevronDown class="w-4 h-4 text-stone-400 ml-auto transition-transform duration-200" />
             </div>
           </div>
@@ -200,6 +201,7 @@ onMounted(() => {
           <div class="flex items-center gap-3 text-xs text-stone-400 mt-2">
             <span>{{ entry.notes.length }} notes</span>
             <span v-if="entry.next_time?.length">{{ entry.next_time.length }} next-time</span>
+            <span v-if="entry.cost" class="font-mono">${{ entry.cost.total.toFixed(2) }} total · ${{ entry.cost.perServing.toFixed(2) }}/serving</span>
             <ChevronDown class="w-4 h-4 text-stone-400 ml-auto transition-transform duration-200" />
           </div>
         </div>
@@ -234,6 +236,13 @@ onMounted(() => {
 
           <!-- Markdown content -->
           <div class="prose" v-html="renderNotes(entry)" />
+
+          <!-- Cost one-liner -->
+          <div v-if="entry.cost" class="flex items-center gap-2 pt-3 border-t border-stone-200/60 mt-3">
+            <span class="font-mono text-xs text-stone-400">${{ entry.cost.total.toFixed(2) }} total</span>
+            <span class="text-stone-300">&middot;</span>
+            <span class="font-mono text-xs text-stone-400">${{ entry.cost.perServing.toFixed(2) }}/serving</span>
+          </div>
 
           <!-- Photos: hero layout -->
           <div v-if="entry.photos?.length" class="mt-4">

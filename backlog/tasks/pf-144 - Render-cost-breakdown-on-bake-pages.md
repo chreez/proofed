@@ -1,9 +1,10 @@
 ---
 id: PF-144
 title: Render cost breakdown on bake pages
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-17 04:02'
+updated_date: '2026-02-17 04:33'
 labels:
   - ux
 dependencies: []
@@ -30,3 +31,9 @@ Two render points:
 - [ ] #6 CookLogSection hides cost line when no cost data
 - [ ] #7 Negligible items (e.g. water $0.00) render but show negligible instead of $0.00
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Implementation complete. BakeDetailView: full cost table between Notes and Next Time. CookLogSection: one-liner in collapsed + expanded cards. 13 new tests. 1 snapshot updated. Build passes.
+<!-- SECTION:NOTES:END -->
