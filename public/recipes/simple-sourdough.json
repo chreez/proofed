@@ -679,6 +679,70 @@
           { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 10, "unit": "g", "cost": 0.05 }
         ]
       }
+    },
+    {
+      "date": "2026-02-17",
+      "version": "v1.1.1",
+      "notes": [
+        "Used 300g bread flour + 200g AP flour instead of 500g bread flour — mix-up from prepping Tartine baguettes simultaneously.",
+        "Dough temp tracked across folds: 75°F → 74°F → 73°F.",
+        "Used wrist technique for stretch and folds — dough held together well.",
+        "Third fold may have been one too many — dough seemed to flip inside out of itself.",
+        "Bulk fermented overnight on counter (~11 hrs, ambient ~74°F). No oven light this time.",
+        "Dough at 72°F at end of bulk. Pre-shaped, rested 20 min, final shaped into proofing basket at 12:10 PM.",
+        "Cold proofed ~2.75 hours in fridge.",
+        "First bake with Le Creuset Dutch oven (Sur La Table, on sale). Preheated at 500°F, verified Dutch oven internal temp before loading.",
+        "Scored deeper — got a nice effect. Made side patterns but silicone sling caused dough to stick to counter. Had to transfer to parchment paper mid-load.",
+        "Baked at 450°F: ~15 min covered, ~20 min uncovered.",
+        "Forgot to measure internal temp out of oven. Read 181°F after 15 min of cooling. Likely higher out of oven but unknown.",
+        "Pre-shaped, let it rest, then final shaped into proofing basket. Shape wasn't perfect but worked. Short cold proof (~2.75 hrs) may not have firmed the dough enough — lost some shape during scoring and transfer."
+      ],
+      "step_notes": {
+        "COMBINE_INGREDIENTS": "300g bread + 200g AP (mix-up from Tartine baguette prep)",
+        "FOLD_2": "Wrist technique for stretch — dough holding well",
+        "FOLD_3": "May have over-folded — dough flipped inside out"
+      },
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-02-17/img-6875-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-17/img-6875-400w.webp",
+          "alt": "Dough ball resting in a large glass mixing bowl after final fold, showing a smooth, slightly glossy surface with visible fold lines."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-17/img-6876-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-17/img-6876-400w.webp",
+          "alt": "Finished sourdough boule on a round wire cooling rack, viewed from the front. A deep score line has opened dramatically with a dark, caramelized ear, and decorative side scoring is visible on the flour-dusted crust."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-17/img-6877-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-17/img-6877-400w.webp",
+          "alt": "Top-down angled view of the finished boule on a wire cooling rack, showing the flour-dusted crust surface with decorative score marks and small blisters across the top."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-17/fullsizerender-vsco-2-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-17/fullsizerender-vsco-2-400w.webp",
+          "alt": "Finished sourdough boule cooling on a wire rack, shot close-up with shallow depth of field and warm lighting. Deep golden-brown crust with prominent flour dusting and a bold score that opened wide during the bake."
+        }
+      ],
+      "next_time": [
+        { "text": "Use parchment paper instead of silicone sling for Dutch oven loading" },
+        { "text": "Measure internal temp immediately out of oven (target 205°F)" },
+        { "text": "Try aliquot jar — any small straight-sided jar works" },
+        { "text": "Consider making two dough balls for experimentation" },
+        { "text": "Try 500g bread flour (no AP) to compare with this bake's 300/200 split" },
+        { "text": "Research optimal cold proof duration after overnight room-temp bulk — does longer cold proof (4-8 hrs) improve dough firmness for scoring and handling?" }
+      ],
+      "cost": {
+        "total": 1.32,
+        "perServing": 1.32,
+        "servings": 1,
+        "items": [
+          { "ingredientId": "bread_flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour 10 lb", "amount": 500, "unit": "g", "cost": 1.21 },
+          { "ingredientId": "water", "name": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "amount": 350, "unit": "g", "cost": 0 },
+          { "ingredientId": "starter", "name": "Active Sourdough Starter", "sourceType": "rate", "sourceName": "Derived: 50% AP flour rate (flour + water)", "amount": 100, "unit": "g", "cost": 0.06 },
+          { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 10, "unit": "g", "cost": 0.05 }
+        ]
+      }
     }
   ],
   "research": {

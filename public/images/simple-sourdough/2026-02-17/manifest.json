@@ -1,0 +1,31 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-02-17",
+  "processedAt": "2026-02-17T21:58:20.111Z",
+  "photos": [
+    {
+      "name": "fullsizerender-vsco-2",
+      "thumb": "fullsizerender-vsco-2-400w.webp",
+      "src": "fullsizerender-vsco-2-800w.webp",
+      "summary": "Finished sourdough boule cooling on a wire rack, shot close-up with shallow depth of field and warm lighting. The crust shows deep golden-brown color with prominent flour dusting and a bold score that opened wide during the bake."
+    },
+    {
+      "name": "img-6875",
+      "thumb": "img-6875-400w.webp",
+      "src": "img-6875-800w.webp",
+      "summary": "Dough ball resting in a large glass mixing bowl after folding, showing a smooth, slightly glossy surface with visible fold lines. Corresponds to the BULK stage."
+    },
+    {
+      "name": "img-6876",
+      "thumb": "img-6876-400w.webp",
+      "src": "img-6876-800w.webp",
+      "summary": "Finished sourdough boule on a round wire cooling rack, viewed from the front. A deep score line has opened dramatically with a dark, caramelized ear, and decorative side scoring is visible on the flour-dusted crust."
+    },
+    {
+      "name": "img-6877",
+      "thumb": "img-6877-400w.webp",
+      "src": "img-6877-800w.webp",
+      "summary": "Top-down angled view of the finished boule on a wire cooling rack, showing the flour-dusted crust surface with decorative score marks and small blisters across the top."
+    }
+  ]
+}
