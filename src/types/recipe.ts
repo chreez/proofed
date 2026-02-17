@@ -202,6 +202,23 @@ export interface CookLogPhoto {
 }
 
 // Cook log with step-specific notes
+export interface CookLogCostItem {
+  ingredientId: string
+  name: string
+  sourceType: CostSourceType
+  sourceName: string
+  amount: number
+  unit: string
+  cost: number
+}
+
+export interface CookLogCost {
+  total: number
+  perServing: number
+  servings: number
+  items: CookLogCostItem[]
+}
+
 export interface CookLogEntry {
   date: string
   version: string
@@ -210,6 +227,7 @@ export interface CookLogEntry {
   step_notes?: Record<string, string>
   next_time?: NextTimeEntry[]
   photos?: CookLogPhoto[]
+  cost?: CookLogCost
 }
 
 // Recipe manifest
