@@ -138,7 +138,65 @@ If the user provided photos:
 
 If no photos provided, skip this phase entirely.
 
-## Phase 6: Version Bump + Commit
+## Phase 6: Cost Data + Bake Review Page
+
+Populate HEB product data so the bake review page can show the cost picker.
+
+1. **Read recipe ingredients** from the recipe JSON's `stages[].gather.ingredients[]`
+2. **For each ingredient**, call `heb_product_search` MCP tool:
+   - Query: ingredient name (e.g., "unsalted butter")
+   - StoreId: 428 (default H-E-B store)
+   - Limit: 5 results per ingredient
+3. **Convert package sizes to grams** where possible (oz × 28.35, lbs × 453.59)
+4. **Write results** to `public/review-data/{recipe-id}/{date}/heb-results.json`:
+
+```json
+{
+  "recipeId": "{recipe-id}",
+  "date": "{bake-date}",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "{ingredient.id}",
+      "name": "{ingredient.name}",
+      "recipeAmount": {ingredient.total},
+      "recipeUnit": "{ingredient.unit}",
+      "products": [
+        {
+          "name": "{product name}",
+          "brand": "{brand}",
+          "size": "{size string}",
+          "sizeGrams": {converted grams},
+          "price": {inStorePrice},
+          "salePrice": {salePrice or null},
+          "unitPrice": "{unitPrice string}",
+          "inStock": {boolean}
+        }
+      ]
+    }
+  ]
+}
+```
+
+5. **Create directory** if needed: `mkdir -p public/review-data/{recipe-id}/{date}/`
+6. **Open the bake review page**: `open http://192.168.1.213:5173/review/bake/{recipe-id}/{date}`
+7. **Tell the user**:
+
+```
+HEB product data loaded for {ingredient count} ingredients.
+Bake review page opened — switch to the Cost tab to select products and enter pantry rates.
+
+When done, switch to the Summary tab and click "Copy cost data" to get the JSON.
+Paste it back here to wire cost data into the cook_log entry.
+```
+
+8. When user pastes cost JSON back, merge it into the cook_log entry.
+
+**Skip conditions:**
+- If user says "skip cost" or "no cost" — skip this phase entirely
+- If HEB MCP server is unavailable (tool errors) — warn and skip gracefully
+
+## Phase 7: Version Bump + Commit
 
 1. **Propose version bump** (patch for notes-only, minor if photos or significant changes):
 
@@ -156,7 +214,7 @@ Confirm version bump?
 4. **Stage and commit**: recipe JSON + task file (if any) + photo manifest (if any)
 5. Commit message: `feat: {recipe-name} bake log {date} (PF-XX)`
 
-## Phase 7: Update Backlog
+## Phase 8: Update Backlog
 
 If a draft/task existed for this bake session:
 - Mark it Done with final summary
@@ -177,8 +235,8 @@ If a draft/task existed for this bake session:
 
 | Skill | Purpose | Writes to |
 |---|---|---|
-| `/bake-log` | Post-bake capture (what happened) | `cook_log[]` entry |
+| `/bake-log` | Post-bake capture (what happened) | `cook_log[]` entry + HEB results JSON |
 | `/feedback` | Recipe review (improve the recipe) | `states[].notes[]` (StateNotes) |
 | `/review-photos` | Photo processing + tagging | `manifest.json` + `cook_log[].photos[]` |
 
-`/bake-log` may invoke `/review-photos` as a sub-step. `/feedback` is always separate.
+`/bake-log` invokes `/review-photos` for photo tagging and opens the bake review page (`/review/bake/`) for cost capture. `/feedback` is always separate.
