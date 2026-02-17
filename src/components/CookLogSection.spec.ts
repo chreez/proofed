@@ -223,7 +223,7 @@ describe('CookLogSection', () => {
     expect(wrapper.find('#bake-2026-02-05').exists()).toBe(true)
   })
 
-  it('shows no-photo fallback in collapsed state when entry has no photos', () => {
+  it('shows no thumbnail in collapsed state when entry has no photos', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -236,8 +236,8 @@ describe('CookLogSection', () => {
       }
     })
 
-    // No hero banner — should use text-only fallback
-    expect(wrapper.find('.h-36').exists()).toBe(false)
+    // No thumbnail — unified card without photo
+    expect(wrapper.find('.w-20').exists()).toBe(false)
     expect(wrapper.text()).toContain('v1.0.0')
     expect(wrapper.text()).toContain('A summary.')
     expect(wrapper.text()).toContain('1 notes')
@@ -531,12 +531,12 @@ describe('Photo lightbox', () => {
     sectionId: 'cook-log-section'
   }
 
-  it('shows hero banner in collapsed state', () => {
+  it('shows hero thumbnail in collapsed state', () => {
     const wrapper = mount(CookLogSection, { props: photosProps })
-    // Hero is last photo (Photo C) shown as banner
-    const bannerImg = wrapper.find('.h-36')
-    expect(bannerImg.exists()).toBe(true)
-    expect(bannerImg.attributes('alt')).toBe('Photo C')
+    // Hero is last photo (Photo C) shown as small thumbnail
+    const thumbImg = wrapper.find('.w-20')
+    expect(thumbImg.exists()).toBe(true)
+    expect(thumbImg.attributes('alt')).toBe('Photo C')
   })
 
   it('shows photo count in collapsed state', () => {

@@ -154,55 +154,32 @@ onMounted(() => {
       class="mb-4 scroll-mt-16 cursor-pointer transition-all"
       @click="toggleEntry(index)"
     >
-      <!-- ============ COLLAPSED: Variant C Hero Banner ============ -->
+      <!-- ============ COLLAPSED: Unified card ============ -->
       <template v-if="!isExpanded(index)">
-        <!-- Hero banner -->
-        <div
-          v-if="entry.photos?.length"
-          class="relative border-2 border-stone-200 hover:border-stone-300 transition-colors"
-        >
+        <div class="border-2 border-stone-200 hover:border-stone-300 transition-colors p-3 flex gap-3">
+          <!-- Optional hero thumbnail -->
           <img
-            :src="heroPhoto(entry.photos).src"
+            v-if="entry.photos?.length"
+            :src="heroPhoto(entry.photos).thumb"
             :alt="heroPhoto(entry.photos).alt"
             loading="lazy"
             decoding="async"
-            class="w-full h-36 object-cover"
+            class="w-20 h-20 object-cover flex-shrink-0 border-2 border-stone-200"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div class="absolute bottom-0 left-0 right-0 p-3">
-            <div class="flex items-center gap-2">
-              <span class="text-sm font-semibold text-white">{{ formatDate(entry.date) }}</span>
-              <span class="text-xs bg-white/20 text-white px-2 py-0.5 backdrop-blur-sm">{{ entry.version }}</span>
+          <!-- Text content -->
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-3">
+              <span class="font-semibold text-sm text-stone-700">{{ formatDate(entry.date) }}</span>
+              <span class="text-xs bg-stone-200 px-2 py-0.5">{{ entry.version }}</span>
             </div>
-          </div>
-          <!-- Summary + counts below banner -->
-          <div class="p-3 bg-surface">
-            <p v-if="entry.summary" class="text-sm text-stone-600 line-clamp-2">{{ entry.summary }}</p>
-            <div class="flex items-center gap-3 text-xs text-stone-400" :class="entry.summary ? 'mt-2' : ''">
+            <p v-if="entry.summary" class="text-sm text-stone-500 mt-1.5 line-clamp-2">{{ entry.summary }}</p>
+            <div class="flex items-center gap-3 text-xs text-stone-400 mt-2">
               <span>{{ entry.notes.length }} notes</span>
-              <span>{{ entry.photos.length }} photos</span>
+              <span v-if="entry.photos?.length">{{ entry.photos.length }} photos</span>
               <span v-if="entry.next_time?.length">{{ entry.next_time.length }} next-time</span>
               <span v-if="entry.cost" class="font-mono">${{ entry.cost.total.toFixed(2) }} total · ${{ entry.cost.perServing.toFixed(2) }}/serving</span>
               <ChevronDown class="w-4 h-4 text-stone-400 ml-auto transition-transform duration-200" />
             </div>
-          </div>
-        </div>
-
-        <!-- No-photo fallback -->
-        <div
-          v-else
-          class="border-2 border-stone-200 hover:border-stone-300 transition-colors p-3"
-        >
-          <div class="flex items-center gap-3">
-            <span class="font-semibold text-sm text-stone-700">{{ formatDate(entry.date) }}</span>
-            <span class="text-xs bg-stone-200 px-2 py-0.5">{{ entry.version }}</span>
-          </div>
-          <p v-if="entry.summary" class="text-sm text-stone-500 mt-1.5 line-clamp-2">{{ entry.summary }}</p>
-          <div class="flex items-center gap-3 text-xs text-stone-400 mt-2">
-            <span>{{ entry.notes.length }} notes</span>
-            <span v-if="entry.next_time?.length">{{ entry.next_time.length }} next-time</span>
-            <span v-if="entry.cost" class="font-mono">${{ entry.cost.total.toFixed(2) }} total · ${{ entry.cost.perServing.toFixed(2) }}/serving</span>
-            <ChevronDown class="w-4 h-4 text-stone-400 ml-auto transition-transform duration-200" />
           </div>
         </div>
       </template>

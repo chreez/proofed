@@ -1,10 +1,10 @@
 ---
 id: PF-146
 title: Simplify in-recipe bake log card styling
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-17 04:35'
-updated_date: '2026-02-17 04:44'
+updated_date: '2026-02-17 04:50'
 labels:
   - ux
   - bug (styling)
@@ -35,4 +35,6 @@ Current CookLogSection card styling feels overworked. User wants to simplify the
 
 <!-- SECTION:NOTES:BEGIN -->
 Additional detail: title text overlaps/covers content in the collapsed cook log card on the recipe page. Visible on simple-sourdough #cook-log-section with the 2026-02-16 entry.
+
+Replaced two collapsed card variants (photo banner + no-photo fallback) with single unified layout: border card with optional small thumbnail, date/version/summary/metadata row. Removed gradient overlay, text-on-image, absolute positioning. Files: CookLogSection.vue, CookLogSection.spec.ts, snapshot.
 <!-- SECTION:NOTES:END -->
