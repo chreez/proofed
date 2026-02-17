@@ -32,6 +32,7 @@ import DemoSharedMode from '@/components/DemoSharedMode.vue'
 import DemoQrPrintTest from '@/components/DemoQrPrintTest.vue'
 import DemoScratchpad from '@/components/DemoScratchpad.vue'
 import DemoCostPicker from '@/components/DemoCostPicker.vue'
+import DemoCostRender from '@/components/DemoCostRender.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
 import GeneralNotesFab from '@/components/GeneralNotesFab.vue'
@@ -419,6 +420,7 @@ watch(() => route.hash, (newHash) => {
         <DemoQrTest v-else-if="route.name === 'qr-test-demo'" />
         <DemoScratchpad v-else-if="route.name === 'scratchpad-demo'" />
         <DemoCostPicker v-else-if="route.name === 'cost-picker-demo'" />
+        <DemoCostRender v-else-if="route.name === 'cost-render-demo'" />
         <DemoSharedMode v-else />
       </template>
 

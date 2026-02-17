@@ -83,6 +83,12 @@ const router = createRouter({
       component: EmptyRouteView,
       meta: { showIndex: false, demoPage: true }
     },
+    {
+      path: '/demo/cost-render',
+      name: 'cost-render-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
   ]
 })
 
