@@ -14,8 +14,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.1.1",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-02-17",
+      "summary": "Recipe improvements from 3 bakes: oven light fermentation warning (critical), pre-shape + bench rest step, parchment sling note, tightened exit conditions, added reminders for temp/fermentation tracking"
+    },
     {
       "version": "v1.1.1",
       "date": "2026-02-16",
@@ -150,6 +155,8 @@
       "gather": null,
       "states": [
         "TURN_OUT",
+        "PRE_SHAPE",
+        "BENCH_REST",
         "ENVELOPE_FOLD",
         "BUILD_TENSION",
         "INTO_BASKET"
@@ -249,7 +256,10 @@
           "source": "agent"
         }
       ],
-      "technique_url": "https://www.theperfectloaf.com/how-to-stretch-and-fold-sourdough-bread-dough/"
+      "technique_url": "https://www.theperfectloaf.com/how-to-stretch-and-fold-sourdough-bread-dough/",
+      "reminders": [
+        { "prompt": "Record dough temperature", "type": "measurement" }
+      ]
     },
     {
       "id": "REST_1",
@@ -304,12 +314,12 @@
     {
       "id": "OVERNIGHT_BULK",
       "title": "Overnight Bulk Ferment",
-      "direction": "Leave the covered bowl on the counter at room temperature overnight (8-12 hours). The dough ferments while you sleep.",
+      "direction": "Leave the covered bowl on the counter at room temperature (70-74°F / 21-23°C) overnight (10-12 hours). Do not use the oven with light on — it runs too warm. The dough ferments while you sleep.",
       "duration_min": 600,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has increased 50-75% in volume, surface is domed with visible bubbles, jiggles when bowl is shaken",
+      "exit_condition": "Dough has increased 50-75% in volume (NOT doubled), surface is domed with visible bubbles, jiggles when bowl is shaken. If dough has doubled or is flat/slack, it is over-fermented — shape immediately or pivot to focaccia.",
       "notes": [
         {
           "text": "Watch the dough, not the clock. At 75°F (24°C) this takes ~8 hours. At 65°F (18°C) it could take 12+ hours. The visual cues matter more than time.",
@@ -317,10 +327,19 @@
           "source": "agent"
         },
         {
-          "text": "If dough has more than doubled and looks very puffy with large bubbles, it may be over-fermented. Shape immediately and bake sooner. Worst case: flatten into a pan and bake as focaccia.",
+          "text": "If dough has more than doubled and looks very puffy with large bubbles, it is over-fermented. Shape immediately and bake sooner. If dough tears during shaping, pivot to focaccia: flatten into an oiled dish, top with olive oil, herbs, salt, and parmesan. Bake at 425°F (220°C) for ~40 min.",
           "critical": false,
-          "source": "agent"
+          "source": "user"
+        },
+        {
+          "text": "Do NOT use oven with light on for bulk ferment — oven light runs 78-90°F+, far too warm for 20% inoculation. Counter at 70-74°F is ideal. Two bakes over-fermented using oven light before switching to counter.",
+          "critical": true,
+          "source": "user"
         }
+      ],
+      "reminders": [
+        { "prompt": "Note kitchen ambient temperature", "type": "measurement" },
+        { "prompt": "Check dough volume rise %", "type": "observation" }
       ]
     },
     {
@@ -332,6 +351,34 @@
       "parallel": false,
       "components": null,
       "exit_condition": "Dough is on the floured counter, right-side up",
+      "notes": null
+    },
+    {
+      "id": "PRE_SHAPE",
+      "title": "Pre-Shape",
+      "direction": "Using a bench scraper, gently form the dough into a loose round — tuck the edges under to create a rough ball. Don't worry about perfection. The goal is a general round shape with some surface tension.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is in a loose round shape on the counter",
+      "notes": [
+        {
+          "text": "Pre-shaping relaxes the gluten before final shaping, making it much easier to build tension in the envelope fold. Only bake that shaped successfully across 3 bakes used this step.",
+          "critical": false,
+          "source": "user"
+        }
+      ]
+    },
+    {
+      "id": "BENCH_REST",
+      "title": "Bench Rest",
+      "direction": "Leave the pre-shaped round uncovered on the counter for 15-20 minutes. The gluten relaxes, making final shaping easier.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has rested 15-20 minutes, slightly spread but still holding general shape",
       "notes": null
     },
     {
@@ -448,6 +495,11 @@
           "text": "Hold the blade at 90 degrees (straight down) for a boule. Deeper than you think — about 1 cm.",
           "critical": false,
           "source": "agent"
+        },
+        {
+          "text": "Use parchment paper as scoring and loading surface — score directly on parchment, then use it as a sling to lower into Dutch oven. Silicone slings cause sticking.",
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -488,6 +540,9 @@
           "critical": false,
           "source": "agent"
         }
+      ],
+      "reminders": [
+        { "prompt": "Record internal temperature immediately out of oven (target 205°F / 96°C)", "type": "measurement" }
       ]
     },
     {
@@ -510,6 +565,9 @@
           "critical": false,
           "source": "agent"
         }
+      ],
+      "reminders": [
+        { "prompt": "Rate crust color and ear", "type": "observation" }
       ]
     }
   ],

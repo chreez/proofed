@@ -1,9 +1,10 @@
 ---
-id: DRAFT-14
+id: PF-148
 title: 'Bake log: Simple Sourdough 2026-02-17'
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-02-17 08:24'
+updated_date: '2026-02-17 22:12'
 labels:
   - bake-log
 dependencies: []
@@ -70,3 +71,9 @@ Scratchpad notes from bake session. Run `/bake-log simple-sourdough` after bake 
 }
 ```
 <!-- SECTION:DESCRIPTION:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Bake log captured: 12 notes, 3 step_notes, 6 next_time items, 4 photos, cost $1.32. Committed as dbf0aa7.
+<!-- SECTION:FINAL_SUMMARY:END -->
