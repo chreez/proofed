@@ -267,8 +267,22 @@ export interface HebResultsFile {
   ingredients: HebIngredientResult[]
 }
 
+// Stored cost rates — proofed-specific pantry staple rates
+export interface CostRate {
+  name: string
+  ratePerGram: number
+  sourceProduct: string
+  updatedAt: string
+}
+
+export interface CostRatesFile {
+  updatedAt: string
+  source: string
+  rates: Record<string, CostRate>
+}
+
 // Cost selection — user picks for each ingredient
-export type CostSourceType = 'heb' | 'pantry' | 'manual'
+export type CostSourceType = 'heb' | 'pantry' | 'manual' | 'rate'
 
 export interface CostSelection {
   ingredientId: string

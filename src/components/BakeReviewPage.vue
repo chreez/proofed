@@ -9,6 +9,8 @@ import type {
   HebProduct,
   HebIngredientResult,
   HebResultsFile,
+  CostRate,
+  CostRatesFile,
   CostSelection,
   CostSourceType,
   CostLineItem,
@@ -215,6 +217,7 @@ function typeBadgeLabel(type: string): string {
 const hebResults = ref<HebResultsFile | null>(null)
 const hebLoading = ref(false)
 const hebError = ref('')
+const costRates = ref<CostRatesFile | null>(null)
 const costSelections = reactive<Record<string, CostSelection>>({})
 const costCopied = ref(false)
 const recipeServings = ref(1)
@@ -295,7 +298,21 @@ function setSourceType(ingredientId: string, sourceType: CostSourceType): void {
   }
 }
 
+function getCostRate(ingredientId: string): CostRate | null {
+  return costRates.value?.rates[ingredientId] ?? null
+}
+
+function isNegligibleCost(ingredientId: string): boolean {
+  const rate = getCostRate(ingredientId)
+  return rate !== null && rate.ratePerGram === 0
+}
+
 function calculateCost(ingredient: HebIngredientResult, selection: CostSelection): number {
+  if (selection.sourceType === 'rate') {
+    const rate = getCostRate(ingredient.ingredientId)
+    if (!rate) return 0
+    return rate.ratePerGram * ingredient.recipeAmount
+  }
   if (selection.sourceType === 'heb') {
     const product = ingredient.products[selection.productIndex ?? 0]
     if (!product || product.sizeGrams <= 0) return 0
@@ -327,6 +344,7 @@ function getSelectedProduct(ingredient: HebIngredientResult, selection: CostSele
 function sourceBadgeLabel(sourceType: CostSourceType): string {
   switch (sourceType) {
     case 'heb': return 'HEB'
+    case 'rate': return 'RATE'
     case 'pantry': return 'PANTRY'
     case 'manual': return 'MANUAL'
   }
@@ -335,6 +353,7 @@ function sourceBadgeLabel(sourceType: CostSourceType): string {
 function sourceBadgeClass(sourceType: CostSourceType): string {
   switch (sourceType) {
     case 'heb': return 'bg-stone-200 text-stone-600'
+    case 'rate': return 'bg-cream text-crust-dark'
     case 'pantry': return 'bg-cream text-crust-dark'
     case 'manual': return 'bg-accent-tint text-accent'
   }
@@ -354,7 +373,14 @@ const costLineItems = computed<CostLineItem[]>(() => {
     let packageSize = ''
     let packagePrice = 0
 
-    if (selection.sourceType === 'heb') {
+    if (selection.sourceType === 'rate') {
+      const rate = getCostRate(ingredient.ingredientId)
+      if (rate) {
+        sourceName = rate.sourceProduct
+        packageSize = isNegligibleCost(ingredient.ingredientId) ? 'negligible' : `$${rate.ratePerGram.toFixed(4)}/g`
+        packagePrice = 0
+      }
+    } else if (selection.sourceType === 'heb') {
       const product = getSelectedProduct(ingredient, selection)
       if (product) {
         sourceName = `${product.brand} ${product.name}`
@@ -404,26 +430,53 @@ const costSummaryPayload = computed<BakeCostSummary>(() => ({
 }))
 
 const hasAnyCostSelections = computed<boolean>(() => {
-  return costLineItems.value.some(item => item.cost > 0)
+  return costLineItems.value.some(item => item.cost > 0 || item.sourceType === 'rate')
 })
+
+async function loadCostRates(): Promise<void> {
+  try {
+    const res = await fetch('/cost-rates.json')
+    if (res.ok) {
+      costRates.value = await res.json() as CostRatesFile
+    }
+  } catch { /* cost rates are optional */ }
+}
 
 async function loadHebResults(): Promise<void> {
   hebLoading.value = true
   hebError.value = ''
   try {
+    // Load cost rates first so we can use them for smart defaults
+    await loadCostRates()
+
     const res = await fetch(`/review-data/${recipeId.value}/${date.value}/heb-results.json`)
     if (!res.ok) {
-      hebError.value = 'No HEB data available. Run the review-bake skill to populate product data.'
+      hebError.value = 'No HEB data available. Run /bake-log to populate product data.'
       return
     }
     hebResults.value = await res.json() as HebResultsFile
-    // Initialize selections with defaults and load persisted ones
+    // Initialize selections with smart defaults
     for (const ingredient of hebResults.value.ingredients) {
       if (!costSelections[ingredient.ingredientId]) {
-        costSelections[ingredient.ingredientId] = {
-          ingredientId: ingredient.ingredientId,
-          sourceType: 'heb',
-          productIndex: 0
+        if (ingredient.products.length > 0) {
+          // Has HEB products → default to store product picker
+          costSelections[ingredient.ingredientId] = {
+            ingredientId: ingredient.ingredientId,
+            sourceType: 'heb',
+            productIndex: 0
+          }
+        } else if (getCostRate(ingredient.ingredientId) !== null) {
+          // No products but has a stored rate → auto-apply rate
+          costSelections[ingredient.ingredientId] = {
+            ingredientId: ingredient.ingredientId,
+            sourceType: 'rate'
+          }
+        } else {
+          // No products, no rate → manual entry
+          costSelections[ingredient.ingredientId] = {
+            ingredientId: ingredient.ingredientId,
+            sourceType: 'manual'
+          }
         }
       }
     }
@@ -434,13 +487,12 @@ async function loadHebResults(): Promise<void> {
     for (const [id, rate] of Object.entries(pantryRates)) {
       if (costSelections[id] && costSelections[id].sourceType === 'pantry') {
         if (!costSelections[id].pantryPurchaseLbs || !costSelections[id].pantryPurchasePrice) {
-          // Back-calculate from rate if the selection doesn't have purchase info
           costSelections[id].pantrySource = rate.source
         }
       }
     }
   } catch {
-    hebError.value = 'No HEB data available. Run the review-bake skill to populate product data.'
+    hebError.value = 'No HEB data available. Run /bake-log to populate product data.'
   } finally {
     hebLoading.value = false
   }
@@ -708,8 +760,9 @@ onMounted(async () => {
             </div>
 
             <!-- Source type toggle -->
-            <div class="flex gap-0 mb-4">
+            <div class="flex gap-0 mb-4 flex-wrap">
               <button
+                v-if="ingredient.products.length > 0"
                 class="btn text-xs border-2 border-stone-200"
                 :class="getSelection(ingredient.ingredientId).sourceType === 'heb'
                   ? 'bg-ink text-stone-100'
@@ -717,7 +770,18 @@ onMounted(async () => {
                 data-testid="source-toggle-heb"
                 @click="setSourceType(ingredient.ingredientId, 'heb')"
               >
-                Fresh Purchase
+                Store Product
+              </button>
+              <button
+                v-if="getCostRate(ingredient.ingredientId)"
+                class="btn text-xs border-2 border-stone-200"
+                :class="getSelection(ingredient.ingredientId).sourceType === 'rate'
+                  ? 'bg-ink text-stone-100'
+                  : 'bg-surface text-ink hover:bg-stone-100'"
+                data-testid="source-toggle-rate"
+                @click="setSourceType(ingredient.ingredientId, 'rate')"
+              >
+                Stored Rate
               </button>
               <button
                 class="btn text-xs border-2 border-stone-200"
@@ -727,7 +791,7 @@ onMounted(async () => {
                 data-testid="source-toggle-pantry"
                 @click="setSourceType(ingredient.ingredientId, 'pantry')"
               >
-                Use Stored Rate
+                Custom Rate
               </button>
               <button
                 class="btn text-xs border-2 border-stone-200"
@@ -740,6 +804,37 @@ onMounted(async () => {
                 Other
               </button>
             </div>
+
+            <!-- Stored rate display -->
+            <template v-if="getSelection(ingredient.ingredientId).sourceType === 'rate'">
+              <div class="bg-stone-50 border-2 border-stone-200 p-4" data-testid="stored-rate-display">
+                <template v-if="isNegligibleCost(ingredient.ingredientId)">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <span class="font-mono text-xs text-stone-500">{{ getCostRate(ingredient.ingredientId)?.sourceProduct }}</span>
+                    </div>
+                    <span class="font-mono text-sm text-stone-400 italic">negligible</span>
+                  </div>
+                </template>
+                <template v-else>
+                  <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <span class="font-mono text-xs text-stone-500 block mb-1">Rate</span>
+                      <span class="font-mono text-sm text-ink">${{ getCostRate(ingredient.ingredientId)?.ratePerGram.toFixed(4) }}/g</span>
+                    </div>
+                    <div>
+                      <span class="font-mono text-xs text-stone-500 block mb-1">Recipe uses</span>
+                      <span class="font-mono text-sm text-ink">{{ ingredient.recipeAmount }}{{ ingredient.recipeUnit }}</span>
+                    </div>
+                    <div>
+                      <span class="font-mono text-xs text-stone-500 block mb-1">Cost</span>
+                      <span class="font-mono text-sm text-accent font-medium" data-testid="rate-calculated-cost">${{ calculateCost(ingredient, getSelection(ingredient.ingredientId)).toFixed(2) }}</span>
+                    </div>
+                  </div>
+                  <p class="font-mono text-xs text-stone-400 mt-3 pt-2 border-t border-stone-200">{{ getCostRate(ingredient.ingredientId)?.sourceProduct }}</p>
+                </template>
+              </div>
+            </template>
 
             <!-- HEB product cards (Variant B) -->
             <template v-if="getSelection(ingredient.ingredientId).sourceType === 'heb'">

@@ -145,8 +145,23 @@ const sampleHebResults = {
   ]
 }
 
+const sampleCostRates = {
+  updatedAt: '2026-02-16',
+  source: 'Test Store',
+  rates: {
+    water: { name: 'Water', ratePerGram: 0, sourceProduct: 'Tap water (negligible)', updatedAt: '2026-02-16' },
+    starter: { name: 'Sourdough Starter', ratePerGram: 0.00057, sourceProduct: 'Derived: 50% AP flour rate', updatedAt: '2026-02-16' }
+  }
+}
+
 function makeFetchSuccess(manifest = sampleManifest, recipe = sampleRecipe, hebResults = sampleHebResults as typeof sampleHebResults | null) {
   return vi.fn((url: string) => {
+    if (url.includes('/cost-rates.json')) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(sampleCostRates)
+      } as Response)
+    }
     if (url.includes('/recipes/')) {
       return Promise.resolve({
         ok: true,
@@ -175,6 +190,12 @@ function makeFetchSuccess(manifest = sampleManifest, recipe = sampleRecipe, hebR
 
 function makeFetchManifestNotFound() {
   return vi.fn((url: string) => {
+    if (url.includes('/cost-rates.json')) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(sampleCostRates)
+      } as Response)
+    }
     if (url.includes('/recipes/')) {
       return Promise.resolve({
         ok: true,
@@ -922,6 +943,223 @@ describe('BakeReviewPage', () => {
       // Should be in pantry mode for butter
       const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
       expect(ingredientCards[0].find('[data-testid="pantry-rate-form"]').exists()).toBe(true)
+    })
+  })
+
+  describe('Cost rates integration', () => {
+    const hebWithRateIngredients = {
+      recipeId: 'test-recipe',
+      date: '2026-02-10',
+      storeId: 428,
+      ingredients: [
+        {
+          ingredientId: 'unsalted-butter',
+          name: 'Unsalted butter',
+          recipeAmount: 140,
+          recipeUnit: 'g',
+          products: [
+            {
+              name: 'Sweet Cream Unsalted Butter Sticks',
+              brand: 'H-E-B',
+              size: '4ct / 16oz',
+              sizeGrams: 454,
+              price: 3.98,
+              salePrice: null,
+              unitPrice: '$0.25/oz',
+              inStock: true
+            }
+          ]
+        },
+        {
+          ingredientId: 'water',
+          name: 'Water',
+          recipeAmount: 350,
+          recipeUnit: 'g',
+          products: []
+        },
+        {
+          ingredientId: 'starter',
+          name: 'Sourdough Starter',
+          recipeAmount: 100,
+          recipeUnit: 'g',
+          products: []
+        },
+        {
+          ingredientId: 'unknown-ingredient',
+          name: 'Unknown Ingredient',
+          recipeAmount: 50,
+          recipeUnit: 'g',
+          products: []
+        }
+      ]
+    }
+
+    it('auto-applies stored rate for ingredients without HEB products', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      // water and starter should show stored rate display
+      expect(ingredientCards[1].find('[data-testid="stored-rate-display"]').exists()).toBe(true)
+      expect(ingredientCards[2].find('[data-testid="stored-rate-display"]').exists()).toBe(true)
+    })
+
+    it('shows negligible label for zero-rate ingredients like water', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      expect(ingredientCards[1].text()).toContain('negligible')
+    })
+
+    it('shows calculated cost for stored rate ingredients', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      // starter: 100g * 0.00057 = $0.06
+      const rateCost = ingredientCards[2].find('[data-testid="rate-calculated-cost"]')
+      expect(rateCost.exists()).toBe(true)
+      expect(rateCost.text()).toBe('$0.06')
+    })
+
+    it('shows Stored Rate button only for ingredients with cost rates', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      // butter has no stored rate → no rate button
+      expect(ingredientCards[0].find('[data-testid="source-toggle-rate"]').exists()).toBe(false)
+      // water has stored rate → shows rate button
+      expect(ingredientCards[1].find('[data-testid="source-toggle-rate"]').exists()).toBe(true)
+      // starter has stored rate → shows rate button
+      expect(ingredientCards[2].find('[data-testid="source-toggle-rate"]').exists()).toBe(true)
+    })
+
+    it('shows Store Product button only for ingredients with HEB products', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      // butter has products → shows heb button
+      expect(ingredientCards[0].find('[data-testid="source-toggle-heb"]').exists()).toBe(true)
+      // water has no products → no heb button
+      expect(ingredientCards[1].find('[data-testid="source-toggle-heb"]').exists()).toBe(false)
+    })
+
+    it('defaults to manual entry for ingredients without products or rates', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      // unknown-ingredient has no products and no rate → manual mode
+      expect(ingredientCards[3].find('[data-testid="manual-entry-form"]').exists()).toBe(true)
+    })
+
+    it('shows RATE badge in summary for stored rate ingredients', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Summary')!.trigger('click')
+
+      const badges = wrapper.findAll('[data-testid="source-badge"]')
+      // butter=HEB, water=RATE, starter=RATE, unknown=MANUAL
+      const badgeTexts = badges.map(b => b.text())
+      expect(badgeTexts).toContain('RATE')
+      expect(badgeTexts).toContain('HEB')
+    })
+
+    it('shows source product info in rate display', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      // starter card should show source product
+      expect(ingredientCards[2].text()).toContain('Derived: 50% AP flour rate')
+    })
+
+    it('can switch from stored rate to custom rate mode', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      // starter starts in rate mode
+      expect(ingredientCards[2].find('[data-testid="stored-rate-display"]').exists()).toBe(true)
+
+      // Switch to custom rate
+      await ingredientCards[2].find('[data-testid="source-toggle-pantry"]').trigger('click')
+      await flushPromises()
+      expect(ingredientCards[2].find('[data-testid="pantry-rate-form"]').exists()).toBe(true)
+      expect(ingredientCards[2].find('[data-testid="stored-rate-display"]').exists()).toBe(false)
+    })
+
+    it('handles missing cost-rates.json gracefully', async () => {
+      global.fetch = vi.fn((url: string) => {
+        if (url.includes('/cost-rates.json')) {
+          return Promise.resolve({ ok: false, status: 404 } as Response)
+        }
+        if (url.includes('/recipes/')) {
+          return Promise.resolve({ ok: true, json: () => Promise.resolve(sampleRecipe) } as Response)
+        }
+        if (url.includes('/review-data/')) {
+          return Promise.resolve({ ok: true, json: () => Promise.resolve(hebWithRateIngredients) } as Response)
+        }
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(sampleManifest) } as Response)
+      })
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // Without cost rates, water/starter should default to manual
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      expect(ingredientCards[1].find('[data-testid="source-toggle-rate"]').exists()).toBe(false)
+      expect(ingredientCards[1].find('[data-testid="manual-entry-form"]').exists()).toBe(true)
     })
   })
 

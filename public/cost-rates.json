@@ -1,0 +1,48 @@
+{
+  "updatedAt": "2026-02-16",
+  "source": "H-E-B Store #428 (Austin, TX)",
+  "rates": {
+    "all_purpose_flour": {
+      "name": "All-Purpose Flour",
+      "ratePerGram": 0.00114,
+      "sourceProduct": "Hill Country Fare AP Flour, 5 lb @ $2.58",
+      "updatedAt": "2026-02-16"
+    },
+    "bread_flour": {
+      "name": "Bread Flour",
+      "ratePerGram": 0.00246,
+      "sourceProduct": "King Arthur Bread Flour, 5 lb @ $5.58",
+      "updatedAt": "2026-02-16"
+    },
+    "starter": {
+      "name": "Sourdough Starter",
+      "ratePerGram": 0.00057,
+      "sourceProduct": "Derived: 50% AP flour rate (flour + water)",
+      "updatedAt": "2026-02-16"
+    },
+    "water": {
+      "name": "Water",
+      "ratePerGram": 0,
+      "sourceProduct": "Tap water (negligible)",
+      "updatedAt": "2026-02-16"
+    },
+    "salt": {
+      "name": "Salt",
+      "ratePerGram": 0.00317,
+      "sourceProduct": "H-E-B Fine Mediterranean Sea Salt, 26.5 oz @ $2.38",
+      "updatedAt": "2026-02-16"
+    },
+    "granulated_sugar": {
+      "name": "Granulated Sugar",
+      "ratePerGram": 0.00236,
+      "sourceProduct": "H-E-B Pure Cane Sugar, 4 lb @ $4.28",
+      "updatedAt": "2026-02-16"
+    },
+    "yeast": {
+      "name": "Instant Yeast",
+      "ratePerGram": 0.0353,
+      "sourceProduct": "Red Star Platinum Yeast, 4 oz @ $4.00 (est)",
+      "updatedAt": "2026-02-16"
+    }
+  }
+}
