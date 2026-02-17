@@ -51,6 +51,7 @@ const categoryMap: Record<string, string> = {
   'tartine-baguette': 'baking',
   'carrot-cake': 'baking',
   'simple-sourdough': 'baking',
+  'sourdough-cinnamon-buns': 'baking',
   'ny-style-pizza': 'pizza & dough',
   'coco-curry': 'mains',
   'ichiran-ramen': 'mains',

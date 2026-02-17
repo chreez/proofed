@@ -1,0 +1,855 @@
+{
+  "meta": {
+    "name": "Sourdough Cinnamon Buns",
+    "source": {
+      "name": "Adapted from ATK Ultimate Cinnamon Buns + multi-source sourdough research",
+      "type": "adapted",
+      "author": "proofed. research synthesis"
+    },
+    "yields": "8 buns",
+    "total_time": "~18 hrs (1 hr active), two-day schedule",
+    "description": "ATK Ultimate Cinnamon Buns rebuilt on a sourdough chassis. Active levain replaces commercial yeast, overnight cold retard develops complex flavor. Same reduced-sugar filling and cream-cheese-forward glaze (v1.2.0). Heavy cream pour before baking for caramel bottom."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-16",
+      "summary": "Initial recipe adapted from ATK Ultimate Cinnamon Buns v1.3.0 with sourdough levain, overnight cold retard, springform pan, and heavy cream pour. Based on 7-agent research synthesis (100+ sources)."
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Levain Jar",
+      "reuse": "Build levain → freed after adding to mixer"
+    },
+    {
+      "id": "V2",
+      "name": "Stand Mixer Bowl",
+      "reuse": "Dough mix → bulk ferment → cold retard → freed after shaping"
+    },
+    {
+      "id": "V3",
+      "name": "Small Bowl",
+      "reuse": "Filling mixture → freed → glaze"
+    },
+    {
+      "id": "V4",
+      "name": "23cm Springform Pan",
+      "reuse": "Line → arrange rolls → proof → bake → serve"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP_LEVAIN",
+      "title": "Build Levain",
+      "gather": {
+        "ingredients": [
+          {
+            "id": "starter",
+            "name": "Ripe Sourdough Starter",
+            "total": 34,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "17-20% PFF is consensus for enriched sourdough dough"
+          },
+          {
+            "id": "levain_flour",
+            "name": "All-Purpose Flour (levain)",
+            "total": 84,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "levain_water",
+            "name": "Water (room temp, levain)",
+            "total": 84,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": [
+        "BUILD_LEVAIN",
+        "FERMENT_LEVAIN"
+      ]
+    },
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Levain Jar",
+          "Stand Mixer Bowl",
+          "Small Bowl",
+          "23cm Springform Pan"
+        ],
+        "equipment": [
+          "Stand Mixer + Dough Hook",
+          "Rolling Pin",
+          "Bench Scraper",
+          "Plastic Wrap",
+          "Wire Rack",
+          "Parchment Paper",
+          "Aluminum Foil",
+          "Kitchen Thermometer"
+        ],
+        "ingredients": [
+          {
+            "id": "flour",
+            "name": "All-Purpose Flour",
+            "total": 430,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "531g original minus ~100g contributed by levain"
+          },
+          {
+            "id": "cornstarch",
+            "name": "Cornstarch",
+            "total": 64,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Unchanged from ATK — gluten dilution for tenderness, resistant to sourdough enzymatic degradation"
+          },
+          {
+            "id": "granulated_sugar",
+            "name": "Granulated Sugar",
+            "total": 75,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "brown_sugar",
+            "name": "Light Brown Sugar",
+            "total": 240,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "powdered_sugar",
+            "name": "Confectioners' Sugar",
+            "total": 128,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "butter",
+            "name": "Unsalted Butter",
+            "total": 227,
+            "unit": "g",
+            "breakdown": [
+              { "label": "dough (softened)", "amount": 170 },
+              { "label": "filling (softened)", "amount": 57 }
+            ],
+            "confidence": "high",
+            "rationale": "Unchanged from ATK v1.3.0. 29% baker's % matches Perfect Loaf enrichment level."
+          },
+          {
+            "id": "milk",
+            "name": "Whole Milk",
+            "total": 95,
+            "unit": "g",
+            "breakdown": [
+              { "label": "dough (warm to 95-100°F)", "amount": 80 },
+              { "label": "glaze (room temp)", "amount": 15 }
+            ],
+            "confidence": "high",
+            "rationale": "Reduced from 192g — levain contributes ~100g water"
+          },
+          {
+            "id": "cream_cheese",
+            "name": "Cream Cheese (softened)",
+            "total": 150,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "v1.2.0 amount (bumped from 113g for cream-cheese-forward glaze)"
+          },
+          {
+            "id": "eggs",
+            "name": "Large Eggs (room temp)",
+            "total": 3,
+            "unit": "whole",
+            "breakdown": null,
+            "confidence": "medium",
+            "rationale": "ATK and Perfect Loaf both use 3. Most sourdough recipes use 1. Keeping 3 for ATK DNA."
+          },
+          {
+            "id": "cinnamon",
+            "name": "Ground Cinnamon",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 11,
+            "unit": "g",
+            "breakdown": [
+              { "label": "dough", "amount": 9 },
+              { "label": "filling", "amount": 1.5 },
+              { "label": "glaze (pinch)", "amount": 0.5 }
+            ]
+          },
+          {
+            "id": "vanilla",
+            "name": "Vanilla Extract",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "heavy_cream",
+            "name": "Heavy Cream",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "medium",
+            "rationale": "Poured over rolls before baking. Multiple sourdough recipes endorse 60-120ml range."
+          }
+        ]
+      },
+      "states": [
+        "PREP_PAN"
+      ]
+    },
+    {
+      "id": "DOUGH",
+      "title": "Mix Dough (Stand Mixer)",
+      "gather": null,
+      "states": [
+        "COMBINE_DOUGH",
+        "REST_DOUGH",
+        "ADD_BUTTER"
+      ]
+    },
+    {
+      "id": "BULK",
+      "title": "Bulk Ferment + Cold Retard",
+      "gather": null,
+      "states": [
+        "BULK_FERMENT",
+        "COLD_RETARD"
+      ]
+    },
+    {
+      "id": "FILL",
+      "title": "Make Filling",
+      "gather": null,
+      "states": [
+        "MIX_FILLING"
+      ]
+    },
+    {
+      "id": "ASSEMBLE",
+      "title": "Roll, Fill, Shape",
+      "gather": null,
+      "states": [
+        "ROLL_DOUGH",
+        "APPLY_FILLING",
+        "ROLL_CYLINDER",
+        "CUT_ARRANGE"
+      ]
+    },
+    {
+      "id": "PROOF",
+      "title": "Final Proof",
+      "gather": null,
+      "states": [
+        "RISE_FINAL",
+        "PREHEAT"
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": [
+        "POUR_CREAM",
+        "BAKE"
+      ]
+    },
+    {
+      "id": "FINISH",
+      "title": "Cool and Glaze",
+      "gather": null,
+      "states": [
+        "COOL",
+        "MAKE_GLAZE",
+        "FIRST_GLAZE",
+        "UNMOLD",
+        "FINAL_GLAZE"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "BUILD_LEVAIN",
+      "title": "Mix Levain",
+      "direction": "In a clean jar, combine 34g ripe starter, 84g flour, and 84g water. Stir until no dry flour remains. Cover loosely and place at room temperature (~75°F (24°C)).",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Sourdough Starter", "amount": "34g" },
+        { "name": "Flour (levain)", "amount": "84g" },
+        { "name": "Water", "amount": "84g" }
+      ],
+      "exit_condition": "All ingredients combined, no dry flour, covered in jar at room temp",
+      "notes": [
+        {
+          "text": "Build 6-8 hours before you plan to mix dough. Evening bake: build at 2-4pm. Morning bake: build the night before.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Starter must be active and recently fed — doubled or tripled within 6-8 hours of last feeding.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Record starter temperature", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "FERMENT_LEVAIN",
+      "title": "Ferment Levain",
+      "direction": "Let levain ferment at room temperature until doubled in volume and bubbly throughout. Should pass the float test.",
+      "duration_min": 420,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Levain doubled, bubbly, domed top, passes float test (small spoonful floats in water)",
+      "notes": [
+        {
+          "text": "Timing varies: 6 hrs in warm kitchen (78°F+ (26°C+)), 8+ hrs in cool kitchen (68°F (20°C)). Watch the levain, not the clock.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PREP_PAN",
+      "title": "Line Springform Pan",
+      "direction": "Place a parchment circle on the base of the 23cm (9-inch) springform pan. Grease sides with butter. Wrap outside bottom in aluminum foil to catch any filling leaks.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Parchment on base, sides greased, foil wrapped on exterior bottom",
+      "notes": [
+        {
+          "text": "Place a sheet pan on the rack below during baking to catch any drips.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "COMBINE_DOUGH",
+      "title": "Combine Dough",
+      "direction": "In stand mixer bowl, add 430g flour, 64g cornstarch, 75g sugar, and 9g salt. Whisk briefly by hand to combine. Add 200g ripe levain, 80g warm milk (95-100°F (35-38°C)), and 3 eggs. Attach dough hook. Mix on low until dough is cohesive and wraps around hook, 3-4 minutes.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Flour", "amount": "430g" },
+        { "name": "Cornstarch", "amount": "64g" },
+        { "name": "Sugar", "amount": "75g" },
+        { "name": "Salt", "amount": "9g" },
+        { "name": "Levain (ripe)", "amount": "200g" },
+        { "name": "Milk (warm)", "amount": "80g" },
+        { "name": "Eggs", "amount": "3 whole" }
+      ],
+      "exit_condition": "Shaggy dough formed, no dry flour visible, dough wraps around hook",
+      "notes": [
+        {
+          "text": "Milk should be 95-100°F (35-38°C) — warm enough to help activate levain but not hot enough to kill it. Do not exceed 110°F (43°C).",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Optional hybrid: add 1g instant yeast with the dry ingredients for scheduling insurance. Preserves full sourdough flavor at this amount (0.2% baker's %).",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "REST_DOUGH",
+      "title": "Rest Dough",
+      "direction": "Stop mixer. Cover bowl with plastic wrap or towel. Let dough rest to relax gluten before adding butter.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "10 minutes elapsed, dough relaxed",
+      "notes": [
+        {
+          "text": "This rest makes butter incorporation dramatically easier. Don't skip.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "ADD_BUTTER",
+      "title": "Incorporate Butter",
+      "direction": "With dough hook on low speed, add 170g softened butter ONE PAT AT A TIME. Wait for each pat to fully incorporate before adding the next. Once all butter is absorbed, increase to medium speed and mix until dough is smooth, glossy, and pulls away from bowl sides.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter (softened)", "amount": "170g" }
+      ],
+      "exit_condition": "Dough is smooth, glossy, elastic, and cleanly pulls from bowl sides. No visible butter streaks.",
+      "notes": [
+        {
+          "text": "Butter must be softened, not melted. Finger-press test: leaves indentation but holds shape.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Fat coats gluten strands and prevents cross-linking. Adding butter AFTER gluten development is critical.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If dough is very sticky after all butter is in, continue mixing on medium for 2-3 more minutes. Do not add extra flour.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BULK_FERMENT",
+      "title": "Bulk Ferment with Folds",
+      "direction": "Cover dough in bowl. Ferment at room temperature (~75°F (24°C)). At 30 minutes and 60 minutes, perform a set of stretch and folds: pull dough from one side, stretch up and fold over center, rotate 90° and repeat 3 more times. Re-cover after each set.",
+      "duration_min": 90,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough shows 20-30% volume increase. Wobbles when container is shaken (jiggle test). Surface is smooth and slightly domed.",
+      "notes": [
+        {
+          "text": "Target 20-30% rise, NOT doubled. Enriched dough rises less during bulk than lean dough.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Stretch and fold at 30 min and 60 min. These supplement the mixer kneading — they equalize temperature and redistribute fermentation gases.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If kitchen is cold (<70°F (21°C)), bulk may take 2-3 hours. Watch the dough, not the clock.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Check dough temperature before starting", "type": "measurement" },
+        { "prompt": "Note kitchen ambient temperature", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "COLD_RETARD",
+      "title": "Overnight Cold Retard",
+      "direction": "Cover bowl tightly with plastic wrap. Place in refrigerator at 37-40°F (3-4°C). Retard overnight, minimum 8 hours.",
+      "duration_min": 480,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Minimum 8 hours in fridge. Dough is cold and firm. Can hold up to 48 hours.",
+      "notes": [
+        {
+          "text": "Fridge must be below 40°F (4°C). Check with thermometer. Above 40°F risks overproofing.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Most fermentation happens in the first 3-4 hours while dough cools. Flavor develops throughout the retard.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If using hybrid yeast (1g instant), do not retard longer than 24 hours. Commercial yeast is more cold-tolerant than wild cultures.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Cold retard shifts acid balance toward acetic acid (sharper tang). Butter, sugar, and eggs moderate the tanginess — expect subtle complexity, not aggressive sour.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "MIX_FILLING",
+      "title": "Make Filling",
+      "direction": "In small bowl, combine 240g brown sugar, 10g cinnamon, and 1.5g salt. Mix until uniform.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Brown Sugar", "amount": "240g" },
+        { "name": "Cinnamon", "amount": "10g" },
+        { "name": "Salt", "amount": "1.5g" }
+      ],
+      "exit_condition": "Filling mixture evenly combined, no clumps",
+      "notes": [
+        {
+          "text": "Can be made the evening before or morning of. Shelf-stable — cover and set aside.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "ROLL_DOUGH",
+      "title": "Roll Dough into Square",
+      "direction": "Pull cold dough from fridge. Pat into rough square shape with hands on lightly floured surface. Roll from center diagonally toward corners, rotating 90° every few rolls. Target: 46x46cm (18x18 inch) square.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Even square with consistent thickness throughout. Run hand over surface to check for hills/valleys.",
+      "notes": [
+        {
+          "text": "Cold dough from the fridge rolls cleanly — this is a feature of the overnight retard. No sticking, sharp cuts.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If dough resists rolling, let rest 5-10 min at room temp. Cold enriched dough can be stiff.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Use guides (rulers, dowels) alongside dough for even thickness.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "technique_url": "https://www.roadtopastry.com/blog/hints-tips/tip-how-to-roll-out-tart-dough-into-a-square"
+    },
+    {
+      "id": "APPLY_FILLING",
+      "title": "Apply Butter and Filling",
+      "direction": "Spread 57g softened butter evenly over dough, leaving 1cm border at far edge. Sprinkle filling mixture over butter, pressing lightly to adhere.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter (softened)", "amount": "57g" },
+        { "name": "Filling mixture", "amount": "all" }
+      ],
+      "exit_condition": "Butter and filling evenly distributed, filling pressed into butter, 1cm bare border at far edge",
+      "notes": null
+    },
+    {
+      "id": "ROLL_CYLINDER",
+      "title": "Roll Into Cylinder",
+      "direction": "Starting from edge nearest you, roll dough away into tight cylinder, keeping roll taut by tucking as you go. Pinch seam closed. If necessary, gently reshape to even diameter.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Tight, even cylinder with sealed seam, ~46cm long",
+      "notes": [
+        {
+          "text": "Keep tension consistent — loose rolls create gaps in the spiral.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "CUT_ARRANGE",
+      "title": "Cut and Arrange",
+      "direction": "Using bench scraper, cut cylinder in half. Cut each half into 4 equal pieces (8 total). Arrange cut-side up in prepared springform: 7 around the edge, 1 in the center. Cover loosely with plastic wrap.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "8 buns arranged cut-side up in springform, covered",
+      "notes": [
+        {
+          "text": "Rolls should have ~1cm spacing — they expand to touch during final proof.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Try dental floss for cleaner cuts if bench scraper drags the filling.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "RISE_FINAL",
+      "title": "Final Proof",
+      "direction": "Let rolls proof at room temperature until doubled, puffy, and touching each other.",
+      "duration_min": 120,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Rolls doubled, puffy, touching each other. Gentle poke springs back slowly.",
+      "notes": [
+        {
+          "text": "1.5-2 hours at 75°F (24°C). Cooler kitchen = longer. Rolls should look pillowy and jiggly.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Start preheating oven 20-30 minutes before proof ends.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT",
+      "title": "Preheat Oven",
+      "direction": "Heat oven to 375°F (190°C) with rack in middle position.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven fully preheated to 375°F (190°C)",
+      "notes": null
+    },
+    {
+      "id": "POUR_CREAM",
+      "title": "Pour Heavy Cream",
+      "direction": "Warm 100g heavy cream slightly (microwave 20 sec or stovetop). Pour evenly over proofed rolls, letting it seep between them.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Heavy Cream (warmed)", "amount": "100g" }
+      ],
+      "exit_condition": "Cream distributed over and between rolls",
+      "notes": [
+        {
+          "text": "The cream combines with brown sugar filling during baking to create a caramel sauce bottom.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Warm the cream slightly so it settles into the dough rather than pooling on top.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "direction": "Place springform on middle rack (sheet pan on rack below to catch drips). Bake until deep golden brown and filling is bubbling.",
+      "duration_min": 23,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Deep golden brown, filling visibly bubbling. Internal temp 190°F (88°C).",
+      "notes": [
+        {
+          "text": "Check at 20 min. Springform's higher sides may require 23-25 min total. Rotate pan if browning unevenly.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If top browns too fast, tent loosely with foil for remaining bake time.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Rate oven spring and browning", "type": "observation" },
+        { "prompt": "Record internal temperature", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "direction": "Transfer springform to wire rack. Let cool in pan.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns warm but not molten-hot. Filling has set slightly.",
+      "notes": [
+        {
+          "text": "Filling and caramel bottom are extremely hot — wait the full time.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Cooling in the springform lets butter reabsorb into the dough.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "MAKE_GLAZE",
+      "title": "Make Glaze",
+      "direction": "In small bowl (V3, now empty), whisk cream cheese, 15g milk, vanilla, confectioners' sugar, and 0.5g salt until smooth.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Cream Cheese", "amount": "150g" },
+        { "name": "Milk", "amount": "15g" },
+        { "name": "Vanilla", "amount": "5g" },
+        { "name": "Confectioners' Sugar", "amount": "128g" },
+        { "name": "Salt", "amount": "0.5g" }
+      ],
+      "exit_condition": "Smooth, spreadable glaze with no lumps",
+      "notes": [
+        {
+          "text": "Make during COOL step to save time.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FIRST_GLAZE",
+      "title": "First Glaze Application",
+      "direction": "Spread HALF the glaze evenly over warm buns while still in springform.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "First layer of glaze applied, melting slightly into warm buns",
+      "notes": null
+    },
+    {
+      "id": "UNMOLD",
+      "title": "Unmold Buns",
+      "direction": "Unlatch the springform ring and carefully lift it away. Use a large spatula to slide buns (on parchment) to a serving platter or cutting board.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns transferred to serving surface, springform removed",
+      "notes": [
+        {
+          "text": "The caramel bottom from the heavy cream should be set enough to hold together. If still liquid, let cool 5 more minutes.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FINAL_GLAZE",
+      "title": "Final Glaze",
+      "direction": "Spread remaining glaze over top. Serve warm.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns fully glazed and ready to serve",
+      "notes": null
+    }
+  ],
+  "nutrition": {
+    "servings": 8,
+    "servingSize": "1 bun",
+    "calculatedDate": "pending",
+    "dataSource": "pending — USDA FDC lookup required",
+    "totals": {
+      "calories": 0,
+      "protein": 0,
+      "totalFat": 0,
+      "saturatedFat": 0,
+      "carbohydrates": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 0
+    },
+    "perServing": {
+      "calories": 0,
+      "protein": 0,
+      "totalFat": 0,
+      "saturatedFat": 0,
+      "carbohydrates": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 0
+    },
+    "breakdown": []
+  },
+  "reheat": {
+    "methods": [
+      { "method": "Air Fryer", "detail": "300°F (150°C), 5 min. Loosely wrap in foil.", "source": "agent" },
+      { "method": "Microwave", "detail": "Damp paper towel, 20-30 sec.", "source": "agent" },
+      { "method": "Storage", "detail": "Room temp, covered. Expected 2-3 day softness (sourdough anti-staling).", "source": "agent" }
+    ]
+  },
+  "research": {
+    "sources": [
+      { "name": "The Perfect Loaf — Sourdough Cinnamon Rolls", "url": "https://www.theperfectloaf.com/sourdough-cinnamon-rolls/", "type": "adapted", "author": "Maurizio Leo" },
+      { "name": "King Arthur — Sourdough Cinnamon Rolls", "url": "https://www.kingarthurbaking.com/recipes/sourdough-cinnamon-rolls-recipe", "type": "adapted", "author": "King Arthur Baking" },
+      { "name": "The Clever Carrot — Soft Sourdough Cinnamon Rolls", "url": "https://www.theclevercarrot.com/2017/12/how-to-make-sourdough-cinnamon-rolls-step-by-step-guide/", "type": "adapted" },
+      { "name": "King Arthur — Adding Yeast to Sourdough", "url": "https://www.kingarthurbaking.com/blog/2022/01/13/adding-yeast-to-your-sourdough-bread", "type": "adapted", "author": "PJ Hamel" },
+      { "name": "The Perfect Loaf — Hybrid Doughs", "url": "https://www.theperfectloaf.com/hybrid-dough/", "type": "adapted", "author": "Maurizio Leo" },
+      { "name": "King Arthur — Pull-Apart Rolls in Dutch Oven", "url": "https://www.kingarthurbaking.com/blog/2024/11/21/pull-apart-rolls-dutch-oven", "type": "adapted" },
+      { "name": "Farmhouse on Boone — Sourdough Cinnamon Rolls", "url": "https://www.farmhouseonboone.com/sourdough-cinnamon-rolls-with-cream-cheese-topping/", "type": "adapted" },
+      { "name": "Little Spoon Farm — Overnight Sourdough Cinnamon Rolls", "url": "https://littlespoonfarm.com/sourdough-cinnamon-rolls/", "type": "adapted" },
+      { "name": "ATK Ultimate Cinnamon Buns v1.3.0", "url": "https://www.americastestkitchen.com/recipes/7582-quicker-cinnamon-buns", "type": "adapted", "author": "America's Test Kitchen" },
+      { "name": "Buttermilk by Sam — Sourdough Cinnamon Rolls", "url": "https://buttermilkbysam.com/sourdough-cinnamon-rolls/", "type": "adapted" }
+    ],
+    "techniques": [
+      {
+        "name": "Sourdough levain for enriched dough",
+        "sourcedFrom": "The Perfect Loaf, King Arthur Baking",
+        "rationale": "17-20% PFF (pre-fermented flour) is the consensus for enriched sourdough. Provides flavor complexity without over-acidifying.",
+        "confidence": "high"
+      },
+      {
+        "name": "Hybrid leavening (optional commercial yeast)",
+        "sourcedFrom": "King Arthur, The Perfect Loaf, Professor Calvel, French pain au levain regulations",
+        "rationale": "0.2% instant yeast provides scheduling insurance while preserving full sourdough character. Flavor-indistinguishable from pure sourdough at this threshold.",
+        "confidence": "high"
+      },
+      {
+        "name": "Overnight cold retard (bulk)",
+        "sourcedFrom": "The Perfect Loaf, Grant Bakes, Heartbeet Kitchen, Little Spoon Farm",
+        "rationale": "Cold dough is easier to shape, flavor develops during retard, and the schedule is convenient for morning baking. Bulk retard preferred over shaped retard for enriched dough.",
+        "confidence": "high"
+      },
+      {
+        "name": "Delayed butter incorporation",
+        "sourcedFrom": "The Perfect Loaf, Pastry School 101, The Pantry Mama",
+        "rationale": "Fat coats gluten strands and prevents cross-linking. Developing gluten before adding butter is universally recommended for enriched sourdough.",
+        "confidence": "high"
+      },
+      {
+        "name": "Heavy cream pour before baking",
+        "sourcedFrom": "Farmhouse on Boone, Country Roads Sourdough",
+        "rationale": "Cream combines with brown sugar filling to create caramel sauce bottom. Keeps rolls ultra-moist during bake.",
+        "confidence": "medium"
+      },
+      {
+        "name": "Springform pan for sourdough cinnamon rolls",
+        "sourcedFrom": "The Clever Carrot, Cuisine at Home, Hostess at Heart",
+        "rationale": "Higher sides retain moisture during long proof. Easy unmolding preserves spiral tops. 23cm fits 8 rolls in 7+1 arrangement.",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "7-agent parallel research: enriched dough science, King Arthur hybrid methodology, cross-reference top recipes, pure vs hybrid debate, tangzhong + sourdough, pan options, overnight scheduling",
+    "sourceCount": 100,
+    "date": "2026-02-16"
+  }
+}
