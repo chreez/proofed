@@ -207,23 +207,23 @@ Paste the combined JSON back here to wire into the cook_log entry.
 - If user says "skip cost" or "no cost" — skip this phase entirely
 - If HEB MCP server is unavailable (tool errors) — warn and skip gracefully
 
-## Phase 7: Version Bump + Commit
+## Phase 7: Commit (No Version Bump)
 
-1. **Propose version bump** (patch for notes-only, minor if photos or significant changes):
+Cook log entries are **observational data** — they do NOT change the recipe itself. Therefore:
 
-```
-Version bump: v1.0.0 -> v1.0.1
+- **No version bump** for adding cook_log entries (notes, photos, cost)
+- **No change_log entry** for cook_log additions
+- Commit message: `feat: {recipe-name} bake log {date} (PF-XX)`
 
-Proposed changelog entry:
-"Bake log: {one-line summary of bake}"
+Recipe changes *informed by* bake data (e.g., adding StateNotes, updating directions, tightening exit conditions) are a **separate action** with their own version bump and commit. These are typically done via `/feedback` or manual recipe editing after reviewing accumulated cook_log data.
 
-Confirm version bump?
-```
+| Action | Version Bump? | Commit |
+|--------|--------------|--------|
+| Adding cook_log entry | No | `feat: {recipe} bake log {date}` |
+| Recipe changes from bake learnings | Yes (minor for new states/directions, patch for notes-only) | `feat: {recipe} improvements from bake data` |
 
-2. **Only write version bump after explicit user confirmation**
-3. **Run `npm run build`** to verify
-4. **Stage and commit**: recipe JSON + task file (if any) + photo manifest (if any)
-5. Commit message: `feat: {recipe-name} bake log {date} (PF-XX)`
+1. **Run `npm run build`** to verify
+2. **Stage and commit**: recipe JSON + task file (if any) + photo manifest (if any)
 
 ## Phase 8: Update Backlog
 

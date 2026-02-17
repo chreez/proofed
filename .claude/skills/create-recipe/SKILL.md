@@ -273,7 +273,8 @@ Present this verification table to the user during HITL review.
     { "name": "baking powder", "amount": "10g" }
   ],
   "exit_condition": "Dry ingredients evenly combined, no visible pockets of flour",
-  "notes": null             // or array of StateNote
+  "notes": null,            // or array of StateNote
+  "reminders": null         // or array of StepReminder (see 3g-reminders)
 }
 ```
 
@@ -297,6 +298,27 @@ If adding notes from the source or agent knowledge:
 ```
 
 **Check F25**: Every StateNote must have `source: 'user' | 'agent'`.
+
+### 3g-reminders. StepReminder format
+
+Reminders are per-state prompts that appear as bell-icon banners during a bake, prompting the user to record a measurement, observation, or rating. They feed into the scratchpad system.
+
+```typescript
+{
+  "prompt": "Record dough temperature",
+  "type": "measurement"    // "measurement" | "observation" | "rating"
+}
+```
+
+- `measurement` — numeric data: temps, weights, times (placeholder: "e.g. 748g")
+- `observation` — freeform notes: what does it look/feel like (placeholder: "Your observation...")
+- `rating` — quick assessment (placeholder: "good / ok / bad")
+
+Add reminders to states where bake data has been inconsistently captured or where tracking improves future bakes. Common uses:
+- Dough temperature at key stages (folds, pre-bulk, post-bulk)
+- Ambient/kitchen temperature during fermentation
+- Internal bread temperature out of the oven
+- Visual assessments (oven spring, crust color, crumb)
 
 ### 3h. nutrition (placeholder)
 
