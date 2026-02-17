@@ -58,7 +58,7 @@ const loading = ref(true)
 const error = ref('')
 const recipeName = ref('')
 const photoStates = reactive<PhotoState[]>([])
-const copied = ref(false)
+const allCopied = ref(false)
 const activeSection = ref<SectionId>('photos')
 
 // Scratchpad state
@@ -135,11 +135,13 @@ function savePhotoState(): void {
   localStorage.setItem(photoStorageKey(), JSON.stringify(data))
 }
 
-function buildPayload(): object {
-  return {
+function buildCombinedPayload(): object {
+  const payload: Record<string, unknown> = {
     recipeId: recipeId.value,
-    date: date.value,
-    photos: photoStates.map(p => ({
+    date: date.value
+  }
+  if (photoStates.length > 0) {
+    payload.photos = photoStates.map(p => ({
       name: p.name,
       src: p.src,
       thumb: p.thumb,
@@ -148,15 +150,28 @@ function buildPayload(): object {
       usage: { ...p.usage }
     }))
   }
+  if (hasAnyCostSelections.value) {
+    payload.cost = {
+      costs: costSummaryPayload.value.costs,
+      total: costSummaryPayload.value.total,
+      perServing: costSummaryPayload.value.perServing,
+      servings: costSummaryPayload.value.servings
+    }
+  }
+  return payload
 }
 
-async function handleSubmit(): Promise<void> {
-  const payload = buildPayload()
+const canCopy = computed<boolean>(() => {
+  return photoStates.length > 0 || hasAnyCostSelections.value
+})
+
+async function handleCopyAll(): Promise<void> {
+  const payload = buildCombinedPayload()
   const json = JSON.stringify(payload, null, 2)
   await copyToClipboard(json)
-  copied.value = true
+  allCopied.value = true
   setTimeout(() => {
-    copied.value = false
+    allCopied.value = false
   }, 2000)
 }
 
@@ -219,7 +234,6 @@ const hebLoading = ref(false)
 const hebError = ref('')
 const costRates = ref<CostRatesFile | null>(null)
 const costSelections = reactive<Record<string, CostSelection>>({})
-const costCopied = ref(false)
 const recipeServings = ref(1)
 const recipeYields = ref('')
 
@@ -498,13 +512,6 @@ async function loadHebResults(): Promise<void> {
   }
 }
 
-async function handleCopyCost(): Promise<void> {
-  const json = JSON.stringify(costSummaryPayload.value, null, 2)
-  await copyToClipboard(json)
-  costCopied.value = true
-  setTimeout(() => { costCopied.value = false }, 2000)
-}
-
 // Auto-save cost selections on change
 watch(costSelections, () => {
   if (Object.keys(costSelections).length > 0) {
@@ -723,13 +730,6 @@ onMounted(async () => {
           </div>
         </div>
 
-        <button
-          class="btn-primary w-full mt-6"
-          data-testid="copy-feedback-btn"
-          @click="handleSubmit"
-        >
-          {{ copied ? 'Copied!' : 'Copy feedback to clipboard' }}
-        </button>
       </template>
     </section>
 
@@ -1119,14 +1119,18 @@ onMounted(async () => {
           </div>
         </div>
 
-        <button
-          class="btn-primary w-full mt-6"
-          data-testid="copy-cost-btn"
-          @click="handleCopyCost"
-        >
-          {{ costCopied ? 'Copied!' : 'Copy cost data' }}
-        </button>
       </template>
     </section>
+
+    <!-- Copy all button (outside tab sections) -->
+    <button
+      class="btn-primary w-full mt-6"
+      :class="{ 'opacity-40 cursor-not-allowed': !canCopy }"
+      :disabled="!canCopy"
+      data-testid="copy-all-btn"
+      @click="handleCopyAll"
+    >
+      {{ allCopied ? 'Copied!' : 'Copy review data' }}
+    </button>
   </div>
 </template>

@@ -339,12 +339,11 @@ describe('BakeReviewPage', () => {
       expect(checkboxes.length).toBe(8)
     })
 
-    it('renders submit/copy button', async () => {
+    it('does not render per-tab copy button in photos section', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
-      const btn = wrapper.find('[data-testid="copy-feedback-btn"]')
-      expect(btn.text()).toContain('Copy feedback to clipboard')
+      expect(wrapper.find('[data-testid="copy-feedback-btn"]').exists()).toBe(false)
     })
 
     it('shows error when manifest not found', async () => {
@@ -415,32 +414,109 @@ describe('BakeReviewPage', () => {
     })
   })
 
-  describe('Photo submit copies JSON', () => {
-    it('copies JSON payload to clipboard on submit', async () => {
+  describe('Copy all button', () => {
+    it('renders copy all button', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const btn = wrapper.find('[data-testid="copy-all-btn"]')
+      expect(btn.exists()).toBe(true)
+      expect(btn.text()).toContain('Copy review data')
+    })
+
+    it('is enabled when photos are loaded', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const btn = wrapper.find('[data-testid="copy-all-btn"]')
+      expect((btn.element as HTMLButtonElement).disabled).toBe(false)
+    })
+
+    it('is disabled when no photos and no cost selections', async () => {
+      const emptyManifest = {
+        recipeId: 'test-recipe',
+        date: '2026-02-10',
+        processedAt: '2026-02-10T00:00:00.000Z',
+        photos: []
+      }
+      global.fetch = makeFetchSuccess(emptyManifest, sampleRecipe, null)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const btn = wrapper.find('[data-testid="copy-all-btn"]')
+      expect((btn.element as HTMLButtonElement).disabled).toBe(true)
+    })
+
+    it('copies combined JSON payload to clipboard', async () => {
       const { copyToClipboard } = await import('@/composables/useClipboard')
 
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
-      await wrapper.find('[data-testid="copy-feedback-btn"]').trigger('click')
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
       await flushPromises()
 
-      expect(copyToClipboard).toHaveBeenCalledTimes(1)
-      const calledWith = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls[0][0]
-      const parsed = JSON.parse(calledWith)
+      expect(copyToClipboard).toHaveBeenCalled()
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
       expect(parsed).toHaveProperty('recipeId', 'test-recipe')
       expect(parsed).toHaveProperty('date', '2026-02-10')
       expect(parsed.photos).toHaveLength(2)
     })
 
-    it('shows Copied! text after submit', async () => {
+    it('includes cost data in combined payload when cost selections exist', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
-      await wrapper.find('[data-testid="copy-feedback-btn"]').trigger('click')
+      // Cost selections are initialized by default from HEB results
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
       await flushPromises()
 
-      expect(wrapper.find('[data-testid="copy-feedback-btn"]').text()).toContain('Copied!')
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      expect(parsed).toHaveProperty('cost')
+      expect(parsed.cost).toHaveProperty('costs')
+      expect(parsed.cost).toHaveProperty('total')
+      expect(parsed.cost).toHaveProperty('perServing')
+      expect(parsed.cost).toHaveProperty('servings', 8)
+    })
+
+    it('shows Copied! text after click', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      expect(wrapper.find('[data-testid="copy-all-btn"]').text()).toContain('Copied!')
+    })
+
+    it('omits photos key when no photos loaded', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+      const emptyManifest = {
+        recipeId: 'test-recipe',
+        date: '2026-02-10',
+        processedAt: '2026-02-10T00:00:00.000Z',
+        photos: []
+      }
+      global.fetch = makeFetchSuccess(emptyManifest, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      expect(parsed).not.toHaveProperty('photos')
+      expect(parsed).toHaveProperty('cost')
     })
   })
 
@@ -1229,9 +1305,7 @@ describe('BakeReviewPage', () => {
       expect(wrapper.find('[data-testid="summary-section"]').text()).toContain('8 buns')
     })
 
-    it('copies cost data to clipboard', async () => {
-      const { copyToClipboard } = await import('@/composables/useClipboard')
-
+    it('does not render per-tab copy button in summary section', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -1239,37 +1313,7 @@ describe('BakeReviewPage', () => {
       const summaryTab = tabs.find(t => t.text() === 'Summary')!
       await summaryTab.trigger('click')
 
-      const copyBtn = wrapper.find('[data-testid="copy-cost-btn"]')
-      expect(copyBtn.exists()).toBe(true)
-      await copyBtn.trigger('click')
-      await flushPromises()
-
-      // copyToClipboard was already called once by the photo copy test potentially,
-      // but we can check the last call
-      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
-      const lastCall = calls[calls.length - 1][0]
-      const parsed = JSON.parse(lastCall)
-      expect(parsed).toHaveProperty('recipeId', 'test-recipe')
-      expect(parsed).toHaveProperty('date', '2026-02-10')
-      expect(parsed).toHaveProperty('costs')
-      expect(parsed).toHaveProperty('total')
-      expect(parsed).toHaveProperty('perServing')
-      expect(parsed).toHaveProperty('servings', 8)
-    })
-
-    it('shows Copied! text after copy', async () => {
-      const wrapper = mount(BakeReviewPage)
-      await flushPromises()
-
-      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
-      const summaryTab = tabs.find(t => t.text() === 'Summary')!
-      await summaryTab.trigger('click')
-
-      const copyBtn = wrapper.find('[data-testid="copy-cost-btn"]')
-      await copyBtn.trigger('click')
-      await flushPromises()
-
-      expect(copyBtn.text()).toContain('Copied!')
+      expect(wrapper.find('[data-testid="copy-cost-btn"]').exists()).toBe(false)
     })
 
     it('shows PANTRY and MANUAL badges for non-HEB sources', async () => {

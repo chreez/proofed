@@ -1,10 +1,10 @@
 ---
 id: PF-147
 title: Bake review page — unified copy/submit UX
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-17 04:37'
-updated_date: '2026-02-17 04:45'
+updated_date: '2026-02-17 04:50'
 labels:
   - ux
 dependencies: []
@@ -26,3 +26,9 @@ Current UX requires navigating to each tab and copying separately (photos tab ha
 - [ ] #5 /bake-log skill parses the combined payload format (update skill doc if needed)
 - [ ] #6 Summary tab still shows the cost breakdown table for review, just without its own copy button
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Replaced per-tab copy buttons with single 'Copy review data' button outside tab sections. Combined payload merges photos + cost. Button disabled when no data. Removed handleSubmit/handleCopyCost, added buildCombinedPayload/handleCopyAll/canCopy. Updated bake-log skill doc. Files: BakeReviewPage.vue, BakeReviewPage.spec.ts, bake-log/skill.md.
+<!-- SECTION:NOTES:END -->

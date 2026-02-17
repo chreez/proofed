@@ -133,8 +133,8 @@ If the user provided photos:
 1. **Copy source photos** to `photos-source/{recipe-id}/{date}/` with descriptive filenames
 2. **Run pipeline**: `npm run photos photos-source/{recipe-id}/{date}/`
 3. **Run `/review-photos`**: `{recipe-id} {date}` — generates AI summaries and opens review page
-4. Remind user: "Tag your photos on the review page, then copy feedback JSON back here to wire into cook_log"
-5. When user pastes feedback JSON, wire approved photos into the cook_log entry
+4. Remind user: "Tag your photos on the review page, select cost products, then click 'Copy review data' and paste the JSON back here"
+5. When user pastes combined review JSON, extract `photos` and `cost` sections to wire into the cook_log entry
 
 If no photos provided, skip this phase entirely.
 
@@ -184,13 +184,24 @@ Populate HEB product data so the bake review page can show the cost picker.
 
 ```
 HEB product data loaded for {ingredient count} ingredients.
-Bake review page opened — switch to the Cost tab to select products and enter pantry rates.
-
-When done, switch to the Summary tab and click "Copy cost data" to get the JSON.
-Paste it back here to wire cost data into the cook_log entry.
+Bake review page opened — tag photos, select cost products, then click "Copy review data" at the bottom of the page.
+Paste the combined JSON back here to wire into the cook_log entry.
 ```
 
-8. When user pastes cost JSON back, merge it into the cook_log entry.
+8. When user pastes combined review JSON back, extract the `cost` section and merge it into the cook_log entry. The combined payload format is:
+```json
+{
+  "recipeId": "...",
+  "date": "...",
+  "photos": [ ... ],
+  "cost": {
+    "costs": [ ... ],
+    "total": 1.34,
+    "perServing": 1.34,
+    "servings": 1
+  }
+}
+```
 
 **Skip conditions:**
 - If user says "skip cost" or "no cost" — skip this phase entirely
