@@ -1,10 +1,10 @@
 ---
 id: PF-146
 title: Simplify in-recipe bake log card styling
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-17 04:35'
-updated_date: '2026-02-17 04:50'
+updated_date: '2026-02-17 04:54'
 labels:
   - ux
   - bug (styling)
@@ -22,13 +22,13 @@ Current CookLogSection card styling feels overworked. User wants to simplify the
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Collapsed cards use a single consistent layout for both photo and no-photo entries (no gradient overlay, no text-on-image)
-- [ ] #2 Date, version badge, and metadata (note count, photo count, cost) are always readable — no overlap or clipping
-- [ ] #3 If photos exist, hero thumbnail is shown as a small fixed-size preview (not a full-width banner)
-- [ ] #4 Expand/collapse interaction preserved (click toggles, chevron indicator, hash-link auto-expand)
-- [ ] #5 Expanded state unchanged (border-left warning style, full notes + photos)
-- [ ] #6 Cost one-liner renders correctly in simplified collapsed layout
-- [ ] #7 Snapshot test updated to match new collapsed markup
+- [x] #1 Collapsed cards use a single consistent layout for both photo and no-photo entries (no gradient overlay, no text-on-image)
+- [x] #2 Date, version badge, and metadata (note count, photo count, cost) are always readable — no overlap or clipping
+- [x] #3 If photos exist, hero thumbnail is shown as a small fixed-size preview (not a full-width banner)
+- [x] #4 Expand/collapse interaction preserved (click toggles, chevron indicator, hash-link auto-expand)
+- [x] #5 Expanded state unchanged (border-left warning style, full notes + photos)
+- [x] #6 Cost one-liner renders correctly in simplified collapsed layout
+- [x] #7 Snapshot test updated to match new collapsed markup
 <!-- AC:END -->
 
 ## Implementation Notes

@@ -1,10 +1,10 @@
 ---
 id: PF-144
 title: Render cost breakdown on bake pages
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-17 04:02'
-updated_date: '2026-02-17 04:33'
+updated_date: '2026-02-17 04:40'
 labels:
   - ux
 dependencies: []
@@ -23,13 +23,13 @@ Two render points:
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 BakeDetailView renders cost breakdown table when entry.cost exists
-- [ ] #2 BakeDetailView hides cost section when entry.cost is undefined
-- [ ] #3 Cost table shows ingredient name, source badge (HEB/RATE/PANTRY/MANUAL), amount, and cost per ingredient
-- [ ] #4 Cost table shows total and per-serving footer
-- [ ] #5 CookLogSection card shows one-line cost summary when entry.cost exists
-- [ ] #6 CookLogSection hides cost line when no cost data
-- [ ] #7 Negligible items (e.g. water $0.00) render but show negligible instead of $0.00
+- [x] #1 BakeDetailView renders cost breakdown table when entry.cost exists
+- [x] #2 BakeDetailView hides cost section when entry.cost is undefined
+- [x] #3 Cost table shows ingredient name, source badge (HEB/RATE/PANTRY/MANUAL), amount, and cost per ingredient
+- [x] #4 Cost table shows total and per-serving footer
+- [x] #5 CookLogSection card shows one-line cost summary when entry.cost exists
+- [x] #6 CookLogSection hides cost line when no cost data
+- [x] #7 Negligible items (e.g. water $0.00) render but show negligible instead of $0.00
 <!-- AC:END -->
 
 ## Implementation Notes

@@ -1,10 +1,10 @@
 ---
 id: PF-147
 title: Bake review page — unified copy/submit UX
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-17 04:37'
-updated_date: '2026-02-17 04:50'
+updated_date: '2026-02-17 04:54'
 labels:
   - ux
 dependencies: []
@@ -19,12 +19,12 @@ Current UX requires navigating to each tab and copying separately (photos tab ha
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Single Copy all button visible at the bottom of the page regardless of active tab
-- [ ] #2 Combined payload includes both photo feedback and cost data in one JSON object
-- [ ] #3 Button is disabled/muted until at least one section has data (photos loaded or cost selections made)
-- [ ] #4 Individual per-tab copy buttons removed (photos tab, summary tab)
-- [ ] #5 /bake-log skill parses the combined payload format (update skill doc if needed)
-- [ ] #6 Summary tab still shows the cost breakdown table for review, just without its own copy button
+- [x] #1 Single Copy all button visible at the bottom of the page regardless of active tab
+- [x] #2 Combined payload includes both photo feedback and cost data in one JSON object
+- [x] #3 Button is disabled/muted until at least one section has data (photos loaded or cost selections made)
+- [x] #4 Individual per-tab copy buttons removed (photos tab, summary tab)
+- [x] #5 /bake-log skill parses the combined payload format (update skill doc if needed)
+- [x] #6 Summary tab still shows the cost breakdown table for review, just without its own copy button
 <!-- AC:END -->
 
 ## Implementation Notes
