@@ -84,6 +84,8 @@ Before writing anything, present the full organized capture:
 ```
 ## Echo Check
 
+**Summary:** {1-2 sentence first-person headline of the bake — what was tried, what happened}
+
 **Notes ({count}):**
 1. {note 1}
 2. {note 2}
@@ -96,7 +98,7 @@ Before writing anything, present the full organized capture:
 **Photos:** {count} received (not yet processed)
 **Version:** {current} (bake recorded against this version)
 
-Confirm notes are accurate?
+Confirm notes and summary are accurate?
 ```
 
 Wait for explicit user confirmation. If they correct anything, update and re-echo.
@@ -111,6 +113,7 @@ After user confirms:
 {
   "date": "{bake-date}",
   "version": "{current recipe version}",
+  "summary": "{1-2 sentence first-person bake headline}",
   "notes": [
     "{note 1}",
     "{note 2}"
@@ -233,6 +236,7 @@ If a draft/task existed for this bake session:
 
 ## Rules
 
+- **Every entry needs a summary.** Draft a 1-2 sentence first-person headline after notes are captured. Captures what was tried and what happened — like a commit message for the bake. User approves it in the echo check.
 - **Scribe, not author.** Record what was said. Never embellish. The Mozzarella Rule is law.
 - **Clarify before recording.** If ambiguous, ask. Wrong data is worse than missing data.
 - **Echo back is mandatory.** Never write to JSON without user confirmation.
