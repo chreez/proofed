@@ -1,9 +1,10 @@
 ---
 id: PF-151
 title: Backfill cook_log summaries for 5 existing bake entries
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-18 21:46'
+updated_date: '2026-02-18 21:51'
 labels:
   - chore
 dependencies: []
@@ -24,8 +25,14 @@ Reference ATK cinnamon buns entries for tone/style — first-person, captures wh
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 All 5 cook_log entries have non-empty `summary` field
-- [ ] #2 Summaries are 1-2 sentences, first-person, capturing bake headline
-- [ ] #3 Each summary echoed back to user before writing to JSON
-- [ ] #4 npm run build passes after changes
+- [x] #1 All 5 cook_log entries have non-empty `summary` field
+- [x] #2 Summaries are 1-2 sentences, first-person, capturing bake headline
+- [x] #3 Each summary echoed back to user before writing to JSON
+- [x] #4 npm run build passes after changes
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Backfilled `summary` field on all 5 cook_log entries missing it: simple-sourdough (3 bakes) and ny-style-pizza (2 bakes). First-person headlines matching ATK cinnamon buns tone. All echoed back and approved by user before writing.
+<!-- SECTION:FINAL_SUMMARY:END -->
