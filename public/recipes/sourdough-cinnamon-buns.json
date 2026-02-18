@@ -13,8 +13,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-02-18",
+      "summary": "Feedback session: clarified flour type in dough components; added user note on using active starter directly in place of levain build"
+    },
     {
       "version": "v1.0.0",
       "date": "2026-02-16",
@@ -362,7 +367,7 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Flour", "amount": "430g" },
+        { "name": "All-Purpose Flour", "amount": "430g" },
         { "name": "Cornstarch", "amount": "64g" },
         { "name": "Sugar", "amount": "75g" },
         { "name": "Salt", "amount": "9g" },
@@ -381,6 +386,11 @@
           "text": "Optional hybrid: add 1g instant yeast with the dry ingredients for scheduling insurance. Preserves full sourdough flavor at this amount (0.2% baker's %).",
           "critical": false,
           "source": "agent"
+        },
+        {
+          "text": "If your starter is active and recently fed (1:1:1, 100% hydration), you can skip the levain build and use 200g starter directly. The flour/water contribution is the same — the dough is already calibrated for it.",
+          "critical": false,
+          "source": "user"
         }
       ]
     },
