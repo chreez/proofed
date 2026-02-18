@@ -69,3 +69,37 @@ Whisk all ingredients together in bowl until smooth. Being careful of hot skille
 | 110°F | 43°C | Milk temp |
 | 12×9 inch | 30×23 cm | Dough rectangle |
 | 10 inch | 25 cm | Skillet |
+
+---
+
+## NY Pizza Sauce
+
+**Original Source:** r/Pizza Wiki
+**Links:**
+- Wiki: https://www.reddit.com/r/Pizza/wiki/recipe/sauce
+
+### Original Ingredients
+
+- 28 oz Sclafani crushed tomatoes (use water to clean out can)
+- 2 oz water
+- 1.5 very small basil leaves — very finely chopped
+- 0.5 t. salt
+- 1 scant dash (1/8 t.) oregano (measured then crushed in the palm of the hand)
+- 1 t. sugar
+- 1 very small clove garlic (about the size of a pinky fingernail) pressed
+
+### Original Instructions
+
+Hand blend the tomatoes and then mix in everything else and let sit for at least an hour for the flavors to develop.
+
+### Conversion Reference
+
+| Original | Metric | Notes |
+|----------|--------|-------|
+| 28 oz | 794g | Crushed tomatoes (one 28oz can) |
+| 2 oz | 57g | Water (can rinse) |
+| 0.5 tsp | 3g | Salt |
+| 1 tsp | 4g | Sugar |
+| 1/8 tsp (scant) | 0.5g | Oregano — sub-gram, volume is practical measure |
+| 1.5 small leaves | 1g | Fresh basil — count-based in original |
+| 1 very small clove | 3g | Garlic — "pinky fingernail size" |

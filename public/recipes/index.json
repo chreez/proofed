@@ -6,6 +6,7 @@
     { "id": "thai-tea-boba", "name": "Thai Tea Boba", "file": "thai-tea-boba.json" },
     { "id": "ichiran-ramen", "name": "Ichiran-Style Tonkotsu Ramen", "file": "ichiran-ramen.json" },
     { "id": "tomita-tsukemen", "name": "Tomita/Fuunji-Style Gyokai-Tonkotsu Tsukemen", "file": "tomita-tsukemen.json" },
+    { "id": "ny-pizza-sauce", "name": "NY Pizza Sauce", "file": "ny-pizza-sauce.json" },
     { "id": "ny-style-pizza", "name": "NY-Style Pizza Dough", "file": "ny-style-pizza.json" },
     { "id": "carrot-cake", "name": "Carrot Cake with Brown Butter Cream Cheese Frosting", "file": "carrot-cake.json" },
     { "id": "simple-sourdough", "name": "Simple Sourdough Bread", "file": "simple-sourdough.json" },
