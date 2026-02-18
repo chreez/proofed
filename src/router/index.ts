@@ -24,6 +24,12 @@ const router = createRouter({
       meta: { showIndex: true }
     },
     {
+      path: '/bake-log',
+      name: 'bake-log',
+      component: EmptyRouteView,
+      meta: { showIndex: false }
+    },
+    {
       path: '/recipe/:recipeId',
       name: 'recipe',
       component: EmptyRouteView,

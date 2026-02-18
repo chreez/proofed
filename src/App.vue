@@ -35,6 +35,7 @@ import DemoCostPicker from '@/components/DemoCostPicker.vue'
 import DemoCostRender from '@/components/DemoCostRender.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
+import BakeLogPage from '@/components/BakeLogPage.vue'
 import GeneralNotesFab from '@/components/GeneralNotesFab.vue'
 
 const route = useRoute()
@@ -55,6 +56,7 @@ const showAbout = computed(() => route.name === 'about')
 const showPhotoReview = computed(() => route.name === 'photo-review')
 const showBakeDetail = computed(() => route.name === 'bake-detail')
 const showBakeReview = computed(() => route.name === 'bake-review')
+const showBakeLog = computed(() => route.name === 'bake-log')
 function goToIndex(): void {
   router.push('/')
 }
@@ -375,10 +377,10 @@ watch(() => route.hash, (newHash) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-stone-50 font-sans">
+  <div class="min-h-screen bg-stone-50 font-sans flex flex-col">
     <header
-      class="bg-stone-200 border-b-2 border-ink px-6 sticky top-0 z-10 transition-all duration-200 ease-out"
-      :class="isScrolled ? 'py-2' : 'py-4'"
+      class="bg-stone-200 px-6 sticky top-0 z-10 transition-all duration-200 ease-out"
+      :class="[isScrolled ? 'py-2' : 'py-4', (showIndex || showBakeLog) ? '' : 'border-b-2 border-ink']"
     >
       <div class="max-w-4xl mx-auto flex items-center justify-between">
         <div class="flex items-center min-w-0">
@@ -410,7 +412,22 @@ watch(() => route.hash, (newHash) => {
       </div>
     </header>
 
-    <main :class="[showIndex ? 'pb-6' : 'py-6', !showIndex && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
+    <nav v-if="showIndex || showBakeLog" class="tab-bar">
+      <div class="tab-bar-inner">
+        <button
+          class="tab-item"
+          :class="{ 'tab-active': showIndex }"
+          @click="router.push('/')"
+        >Recipes</button>
+        <button
+          class="tab-item"
+          :class="{ 'tab-active': showBakeLog }"
+          @click="router.push('/bake-log')"
+        >Bake Log</button>
+      </div>
+    </nav>
+
+    <main :class="['flex-1', (showIndex || showBakeLog) ? 'pb-6' : 'py-6', !showIndex && !showBakeLog && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
@@ -425,11 +442,15 @@ watch(() => route.hash, (newHash) => {
       </template>
 
       <template v-else-if="showBakeDetail">
-        <BakeDetailView />
+        <div class="page-settle">
+          <BakeDetailView />
+        </div>
       </template>
 
       <template v-else-if="showAbout">
-        <AboutPage />
+        <div class="page-settle">
+          <AboutPage />
+        </div>
       </template>
 
       <template v-else-if="showPhotoReview">
@@ -440,12 +461,15 @@ watch(() => route.hash, (newHash) => {
         <BakeReviewPage />
       </template>
 
-      <template v-else-if="showIndex">
-        <RecipeIndex @select="handleRecipeSelect" />
+      <template v-else-if="showBakeLog || showIndex">
+        <Transition name="tab-cross" mode="out-in">
+          <BakeLogPage v-if="showBakeLog" key="bake-log" />
+          <RecipeIndex v-else key="recipes" @select="handleRecipeSelect" />
+        </Transition>
       </template>
 
       <template v-else-if="currentRecipe && progress">
-        <div class="md:flex md:gap-6">
+        <div class="md:flex md:gap-6 page-settle-deep">
           <div class="flex-1 min-w-0">
             <!-- Hero banner: latest bake photo -->
             <div
@@ -576,7 +600,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </main>
 
-    <SiteFooter />
+    <SiteFooter :sticky="showIndex || showBakeLog" />
 
     <ShareModal
       v-if="currentRecipe && currentRecipeId && currentRecipe.cook_log?.length"
@@ -650,6 +674,110 @@ watch(() => route.hash, (newHash) => {
   .brand-text,
   .brand-dot {
     animation: none;
+  }
+}
+
+/* --- Tab bar navigation --- */
+.tab-bar {
+  background: var(--color-stone-200);
+  border-bottom: 2px solid var(--color-ink);
+  padding: 0 1.5rem;
+}
+
+.tab-bar-inner {
+  max-width: 56rem;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+}
+
+.tab-item {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-stone-400);
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 150ms ease;
+}
+
+.tab-item:hover {
+  color: var(--color-ink);
+}
+
+.tab-active {
+  color: var(--color-ink);
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+/* --- Page transitions --- */
+
+/* Tab crossfade: Recipes ↔ Bake Log */
+.tab-cross-enter-active {
+  transition: opacity 120ms ease-out;
+}
+.tab-cross-leave-active {
+  transition: opacity 80ms ease-in;
+}
+.tab-cross-enter-from,
+.tab-cross-leave-to {
+  opacity: 0;
+}
+
+/* Content entrance: settles into place */
+@keyframes page-settle {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-settle {
+  animation: page-settle 200ms ease-out both;
+}
+
+/* Recipe detail: deeper entrance for depth feel */
+@keyframes page-settle-deep {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-settle-deep {
+  animation: page-settle-deep 250ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-settle,
+  .page-settle-deep {
+    animation: none;
+  }
+  .tab-cross-enter-active,
+  .tab-cross-leave-active {
+    transition: none;
   }
 }
 </style>

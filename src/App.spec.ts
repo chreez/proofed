@@ -62,6 +62,9 @@ vi.mock('@/components/BakeDetailView.vue', () => ({
 vi.mock('@/components/BakeReviewPage.vue', () => ({
   default: { name: 'BakeReviewPage', template: '<div class="bake-review-stub">Bake Review</div>' }
 }))
+vi.mock('@/components/BakeLogPage.vue', () => ({
+  default: { name: 'BakeLogPage', template: '<div class="bake-log-page-stub">Bake Log</div>' }
+}))
 vi.mock('@/components/DemoQrTest.vue', () => ({
   default: { name: 'DemoQrTest', template: '<div class="demo-qr-test-stub">Demo QR Test</div>' }
 }))
@@ -180,6 +183,7 @@ function makeRouter() {
       { path: '/recipe/:recipeId/bake/:date', name: 'bake-detail', component: { template: '<div />' }, meta: { bakeDetail: true } },
       { path: '/review/bake/:recipeId/:date', name: 'bake-review', component: { template: '<div />' } },
       { path: '/demo/qr-test', name: 'qr-test-demo', component: { template: '<div />' }, meta: { demoPage: true } },
+      { path: '/bake-log', name: 'bake-log', component: { template: '<div />' } },
     ]
   })
 }
@@ -323,6 +327,63 @@ describe('App', () => {
     const { wrapper } = await mountApp('/review/bake/test-recipe/2026-02-10')
     expect(wrapper.find('.bake-review-stub').exists()).toBe(true)
     expect(wrapper.text()).toContain('Bake Review')
+  })
+
+  it('shows BakeLogPage on bake-log route', async () => {
+    const { wrapper } = await mountApp('/bake-log')
+    expect(wrapper.find('.bake-log-page-stub').exists()).toBe(true)
+    expect(wrapper.text()).toContain('Bake Log')
+  })
+
+  it('shows tab bar on index route', async () => {
+    const { wrapper } = await mountApp('/')
+    expect(wrapper.find('.tab-bar').exists()).toBe(true)
+    const tabs = wrapper.findAll('.tab-item')
+    expect(tabs.length).toBe(2)
+    expect(tabs[0].text()).toBe('Recipes')
+    expect(tabs[1].text()).toBe('Bake Log')
+  })
+
+  it('shows tab bar on bake-log route', async () => {
+    const { wrapper } = await mountApp('/bake-log')
+    expect(wrapper.find('.tab-bar').exists()).toBe(true)
+  })
+
+  it('hides tab bar on recipe route', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    expect(wrapper.find('.tab-bar').exists()).toBe(false)
+  })
+
+  it('marks Recipes tab active on index route', async () => {
+    const { wrapper } = await mountApp('/')
+    const tabs = wrapper.findAll('.tab-item')
+    expect(tabs[0].classes()).toContain('tab-active')
+    expect(tabs[1].classes()).not.toContain('tab-active')
+  })
+
+  it('marks Bake Log tab active on bake-log route', async () => {
+    const { wrapper } = await mountApp('/bake-log')
+    const tabs = wrapper.findAll('.tab-item')
+    expect(tabs[0].classes()).not.toContain('tab-active')
+    expect(tabs[1].classes()).toContain('tab-active')
+  })
+
+  it('navigates to bake-log when Bake Log tab clicked', async () => {
+    const { wrapper, router } = await mountApp('/')
+    const tabs = wrapper.findAll('.tab-item')
+    await tabs[1].trigger('click')
+    await flushPromises()
+    expect(router.currentRoute.value.name).toBe('bake-log')
+  })
+
+  it('navigates to index when Recipes tab clicked from bake-log', async () => {
+    const { wrapper, router } = await mountApp('/bake-log')
+    const tabs = wrapper.findAll('.tab-item')
+    await tabs[0].trigger('click')
+    await flushPromises()
+    expect(router.currentRoute.value.name).toBe('index')
   })
 
   it('passes bakeDate getter to useRecipeMeta that returns date from route params', async () => {
