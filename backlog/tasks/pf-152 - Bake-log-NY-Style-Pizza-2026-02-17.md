@@ -1,9 +1,10 @@
 ---
-id: DRAFT-15
+id: PF-152
 title: 'Bake log: NY-Style Pizza 2026-02-17'
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-02-17 08:24'
+updated_date: '2026-02-19 03:18'
 labels:
   - bake-log
 dependencies: []
@@ -60,3 +61,9 @@ Scratchpad notes from bake session. Run `/bake-log ny-style-pizza` after bake is
 }
 ```
 <!-- SECTION:DESCRIPTION:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Bake log captured for NY-Style Pizza 2026-02-18 (third bake). 16 notes, 4 next_time items, 6 photos, cost data from HEB/TJ/Amazon. Key findings: removed all sugar, 3-day cold proof, TJ's mozz + Sclafani sauce = best pizza yet. Total cost: $13.14 ($6.57/pizza, $0.82/slice).
+<!-- SECTION:FINAL_SUMMARY:END -->
