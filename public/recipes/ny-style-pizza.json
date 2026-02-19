@@ -251,110 +251,19 @@
         }
       ],
       "cost": {
-        "costs": [
-          {
-            "ingredientId": "bread_flour",
-            "ingredientName": "Bread Flour",
-            "sourceType": "heb",
-            "sourceName": "King Arthur Unbleached Bread Flour",
-            "recipeAmount": 463,
-            "recipeUnit": "g",
-            "packageSize": "5 lbs",
-            "packageGrams": 2268,
-            "packagePrice": 5.58,
-            "cost": 1.14
-          },
-          {
-            "ingredientId": "instant_yeast",
-            "ingredientName": "Instant Yeast",
-            "sourceType": "heb",
-            "sourceName": "Red Star Quick-Rise Instant Dry Yeast",
-            "recipeAmount": 6,
-            "recipeUnit": "g",
-            "packageSize": "3 ct (21g)",
-            "packageGrams": 21,
-            "packagePrice": 1.76,
-            "cost": 0.50
-          },
-          {
-            "ingredientId": "olive_oil",
-            "ingredientName": "Olive Oil",
-            "sourceType": "heb",
-            "sourceName": "H-E-B Organics Extra Virgin Olive Oil",
-            "recipeAmount": 18,
-            "recipeUnit": "g",
-            "packageSize": "25.5 oz",
-            "packageGrams": 723,
-            "packagePrice": 10.58,
-            "cost": 0.26
-          },
-          {
-            "ingredientId": "salt",
-            "ingredientName": "Salt",
-            "sourceType": "heb",
-            "sourceName": "Morton Fine Sea Salt",
-            "recipeAmount": 8,
-            "recipeUnit": "g",
-            "packageSize": "17.6 oz",
-            "packageGrams": 499,
-            "packagePrice": 2.62,
-            "cost": 0.04
-          },
-          {
-            "ingredientId": "cornmeal",
-            "ingredientName": "Cornmeal",
-            "sourceType": "heb",
-            "sourceName": "Pioneer Enriched Yellow Corn Meal",
-            "recipeAmount": 13,
-            "recipeUnit": "g",
-            "packageSize": "2 lbs",
-            "packageGrams": 907,
-            "packagePrice": 2.28,
-            "cost": 0.03
-          },
-          {
-            "ingredientId": "san_marzano_sauce",
-            "ingredientName": "Crushed Tomatoes (Sclafani)",
-            "sourceType": "amazon",
-            "sourceName": "Sclafani Crushed Tomatoes",
-            "recipeAmount": 175,
-            "recipeUnit": "g",
-            "packageSize": "28 oz can",
-            "packageGrams": 794,
-            "packagePrice": 4.71,
-            "priceUnit": "per lb",
-            "cost": 1.82
-          },
-          {
-            "ingredientId": "mozzarella",
-            "ingredientName": "Mozzarella Cheese",
-            "sourceType": "tj",
-            "sourceName": "Trader Joe's Whole Milk Low-Moisture Mozzarella",
-            "recipeAmount": 350,
-            "recipeUnit": "g",
-            "packageSize": "16 oz",
-            "packageGrams": 454,
-            "packagePrice": 5.49,
-            "cost": 4.23
-          },
-          {
-            "ingredientId": "pepperoni",
-            "ingredientName": "Pepperoni",
-            "sourceType": "heb",
-            "sourceName": "Boar's Head Pepperoni",
-            "recipeAmount": 175,
-            "recipeUnit": "g",
-            "packageSize": "6 oz",
-            "packageGrams": 170,
-            "packagePrice": 4.97,
-            "cost": 5.12
-          }
-        ],
         "total": 13.14,
-        "perPizza": 6.57,
-        "perSlice": 0.82,
-        "pizzas": 2,
-        "slicesPerPizza": 8
+        "perServing": 6.57,
+        "servings": 2,
+        "items": [
+          { "ingredientId": "bread_flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour (5 lb)", "amount": 463, "unit": "g", "cost": 1.14 },
+          { "ingredientId": "instant_yeast", "name": "Instant Yeast", "sourceType": "heb", "sourceName": "Red Star Quick-Rise (3 ct / 21g)", "amount": 6, "unit": "g", "cost": 0.50 },
+          { "ingredientId": "olive_oil", "name": "Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Organics Extra Virgin (25.5 oz)", "amount": 18, "unit": "g", "cost": 0.26 },
+          { "ingredientId": "salt", "name": "Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt (17.6 oz)", "amount": 8, "unit": "g", "cost": 0.04 },
+          { "ingredientId": "cornmeal", "name": "Cornmeal", "sourceType": "heb", "sourceName": "Pioneer Enriched Yellow Corn Meal (2 lb)", "amount": 13, "unit": "g", "cost": 0.03 },
+          { "ingredientId": "san_marzano_sauce", "name": "Crushed Tomatoes", "sourceType": "amazon", "sourceName": "Sclafani Crushed Tomatoes ($4.71/lb)", "amount": 175, "unit": "g", "cost": 1.82 },
+          { "ingredientId": "mozzarella", "name": "Mozzarella", "sourceType": "tj", "sourceName": "TJ's Whole Milk Low-Moisture Mozz (16 oz)", "amount": 350, "unit": "g", "cost": 4.23 },
+          { "ingredientId": "pepperoni", "name": "Pepperoni", "sourceType": "heb", "sourceName": "Boar's Head Pepperoni (6 oz)", "amount": 175, "unit": "g", "cost": 5.12 }
+        ]
       },
       "next_time": [
         { "text": "Make sauce the night before to let flavors develop overnight" },
