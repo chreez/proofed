@@ -373,6 +373,7 @@ function dismissPopover(): void {
                       target="_blank"
                       rel="noopener noreferrer"
                       class="text-accent text-xs font-mono mt-1 inline-block hover:underline"
+                      @click.stop
                     >
                       source &rarr;
                     </a>
