@@ -7,15 +7,20 @@
       "author": "9-agent parallel research, 100+ sources",
       "accessed": "2026-02-11"
     },
-    "yields": "1 loaf (~800g baked)",
-    "total_time": "~20 hrs (15 min active)",
-    "description": "A beginner-friendly overnight sourdough boule. Four ingredients, 70% hydration, stretch-and-fold method, overnight room-temperature bulk ferment, cold proof, Dutch oven bake. Optimized for simplicity without sacrificing quality."
+    "yields": "2 loaves (~800g each baked)",
+    "total_time": "~21 hrs (25 min active)",
+    "description": "A beginner-friendly overnight sourdough recipe yielding two boules. Four ingredients, 70% hydration, stretch-and-fold method, overnight room-temperature bulk ferment, cold proof, sequential Dutch oven bake. Optimized for simplicity without sacrificing quality."
   },
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.2.0",
+  "version": "v2.0.0",
   "change_log": [
+    {
+      "version": "v2.0.0",
+      "date": "2026-02-19",
+      "summary": "Scaled to 2-loaf yield with sequential Dutch oven bake. Same ratios and technique (70% hydration, 20% inoculation). Added dough divide step, second proofing basket, and starter % reduction notes for troubleshooting."
+    },
     {
       "version": "v1.2.0",
       "date": "2026-02-17",
@@ -44,9 +49,14 @@
       "reuse": "Mixing → bulk ferment"
     },
     {
-      "id": "V2",
-      "name": "Proofing Bowl (lined with towel)",
-      "reuse": "Shaping → cold proof"
+      "id": "V2a",
+      "name": "Proofing Basket 1 (lined with towel)",
+      "reuse": "Shaping → cold proof (loaf 1)"
+    },
+    {
+      "id": "V2b",
+      "name": "Proofing Basket 2 (lined with towel)",
+      "reuse": "Shaping → cold proof (loaf 2)"
     },
     {
       "id": "V3",
@@ -60,7 +70,8 @@
       "gather": {
         "vessels": [
           "Large Mixing Bowl",
-          "Proofing Bowl (lined with towel)",
+          "Proofing Basket 1 (lined with towel)",
+          "Proofing Basket 2 (lined with towel)",
           "Dutch Oven with Lid"
         ],
         "equipment": [
@@ -78,7 +89,7 @@
           {
             "id": "bread_flour",
             "name": "Bread Flour",
-            "total": 500,
+            "total": 1000,
             "unit": "g",
             "breakdown": null,
             "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
@@ -88,7 +99,7 @@
           {
             "id": "water",
             "name": "Water",
-            "total": 350,
+            "total": 700,
             "unit": "g",
             "breakdown": null,
             "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
@@ -98,7 +109,7 @@
           {
             "id": "starter",
             "name": "Active Sourdough Starter",
-            "total": 100,
+            "total": 200,
             "unit": "g",
             "breakdown": null,
             "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
@@ -108,7 +119,7 @@
           {
             "id": "salt",
             "name": "Fine Sea Salt",
-            "total": 10,
+            "total": 20,
             "unit": "g",
             "breakdown": null,
             "sourcedFrom": "Universal consensus across all sources",
@@ -155,6 +166,7 @@
       "gather": null,
       "states": [
         "TURN_OUT",
+        "DIVIDE",
         "PRE_SHAPE",
         "BENCH_REST",
         "ENVELOPE_FOLD",
@@ -216,15 +228,15 @@
     {
       "id": "COMBINE_INGREDIENTS",
       "title": "Combine All Ingredients",
-      "direction": "In the large mixing bowl (V1), combine 350g water and 100g active starter. Stir to dissolve. Add 500g bread flour and 10g salt. Mix with a fork or spatula until no dry flour remains — a shaggy, rough mass.",
+      "direction": "In the large mixing bowl (V1), combine 700g water and 200g active starter. Stir to dissolve. Add 1000g bread flour and 20g salt. Mix with a fork or spatula until no dry flour remains — a shaggy, rough mass.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Water", "amount": "350g" },
-        { "name": "Active Sourdough Starter", "amount": "100g" },
-        { "name": "Bread Flour", "amount": "500g" },
-        { "name": "Fine Sea Salt", "amount": "10g" }
+        { "name": "Water", "amount": "700g" },
+        { "name": "Active Sourdough Starter", "amount": "200g" },
+        { "name": "Bread Flour", "amount": "1000g" },
+        { "name": "Fine Sea Salt", "amount": "20g" }
       ],
       "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
       "notes": [
@@ -335,6 +347,11 @@
           "text": "Do NOT use oven with light on for bulk ferment — oven light runs 78-90°F+, far too warm for 20% inoculation. Counter at 70-74°F is ideal. Two bakes over-fermented using oven light before switching to counter.",
           "critical": true,
           "source": "user"
+        },
+        {
+          "text": "If over-fermentation recurs with the doubled batch, consider reducing starter to 15% (150g) or 10% (100g) for a wider overnight window. Lower inoculation also develops more complex sour flavor.",
+          "critical": false,
+          "source": "agent"
         }
       ],
       "reminders": [
@@ -354,14 +371,31 @@
       "notes": null
     },
     {
-      "id": "PRE_SHAPE",
-      "title": "Pre-Shape",
-      "direction": "Using a bench scraper, gently form the dough into a loose round — tuck the edges under to create a rough ball. Don't worry about perfection. The goal is a general round shape with some surface tension.",
+      "id": "DIVIDE",
+      "title": "Divide Dough",
+      "direction": "Using a bench scraper, divide the dough in half — each piece should be roughly 480g. Don't fuss over exact weight. Use the bench scraper in one decisive motion; avoid sawing.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough is in a loose round shape on the counter",
+      "exit_condition": "Two roughly equal dough pieces (~480g each) on the counter",
+      "notes": [
+        {
+          "text": "A scale helps if you want even loaves, but eyeballing is fine — sourdough is forgiving.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PRE_SHAPE",
+      "title": "Pre-Shape",
+      "direction": "Using a bench scraper, gently form each piece into a loose round — tuck the edges under to create a rough ball. Don't worry about perfection. The goal is a general round shape with some surface tension. Repeat for both pieces.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both pieces are in loose round shapes on the counter",
       "notes": [
         {
           "text": "Pre-shaping relaxes the gluten before final shaping, making it much easier to build tension in the envelope fold. Only bake that shaped successfully across 3 bakes used this step.",
@@ -373,35 +407,35 @@
     {
       "id": "BENCH_REST",
       "title": "Bench Rest",
-      "direction": "Leave the pre-shaped round uncovered on the counter for 15-20 minutes. The gluten relaxes, making final shaping easier.",
+      "direction": "Leave both pre-shaped rounds uncovered on the counter for 15-20 minutes. The gluten relaxes, making final shaping easier.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has rested 15-20 minutes, slightly spread but still holding general shape",
+      "exit_condition": "Both rounds have rested 15-20 minutes, slightly spread but still holding general shape",
       "notes": null
     },
     {
       "id": "ENVELOPE_FOLD",
       "title": "Envelope Fold",
-      "direction": "Flip the dough over so the sticky side faces up. Fold like an envelope: bottom edge up to center, left side over to center, right side over to center, top edge down to center. Flip the whole package seam-side down onto a clean, UNFLOURED section of counter.",
+      "direction": "One piece at a time: flip the dough over so the sticky side faces up. Fold like an envelope: bottom edge up to center, left side over to center, right side over to center, top edge down to center. Flip the whole package seam-side down onto a clean, UNFLOURED section of counter. Repeat for the second piece.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough is folded into a rough round, seam-side down on unfloured surface",
+      "exit_condition": "Both pieces are folded into rough rounds, seam-side down on unfloured surface",
       "notes": null,
       "technique_url": "https://www.theclevercarrot.com/2020/07/how-to-shape-a-round-sourdough-boule/"
     },
     {
       "id": "BUILD_TENSION",
       "title": "Build Surface Tension",
-      "direction": "Cup your hands around the dough (palms don't touch the top). Gently drag it toward you in a short motion — the bottom grips the unfloured surface and tucks under, creating tension on top. Rotate a quarter turn. Repeat 4-6 times until the top is smooth and taut, like a stretched balloon.",
+      "direction": "One piece at a time: cup your hands around the dough (palms don't touch the top). Gently drag it toward you in a short motion — the bottom grips the unfloured surface and tucks under, creating tension on top. Rotate a quarter turn. Repeat 4-6 times until the top is smooth and taut, like a stretched balloon. Repeat for the second piece.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough surface is smooth, taut, and rounded with visible surface tension",
+      "exit_condition": "Both pieces have smooth, taut, rounded surfaces with visible surface tension",
       "notes": [
         {
           "text": "The unfloured counter is intentional — friction between the dough and counter creates the tension. Do not flour here.",
@@ -418,12 +452,12 @@
     {
       "id": "INTO_BASKET",
       "title": "Into Proofing Basket",
-      "direction": "Dust the towel-lined proofing bowl (V2) generously with rice flour. Using a bench scraper, lift the shaped dough and place it seam-side UP into the bowl. If the seam has opened, pinch it closed. Cover with plastic wrap.",
+      "direction": "Dust both towel-lined proofing baskets (V2a, V2b) generously with rice flour. Using a bench scraper, lift each shaped dough and place seam-side UP into a basket. If seams have opened, pinch closed. Cover both with plastic wrap.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough is seam-side up in floured, towel-lined bowl, covered with plastic wrap",
+      "exit_condition": "Both loaves are seam-side up in floured, towel-lined baskets, covered with plastic wrap",
       "notes": [
         {
           "text": "Rice flour is best for dusting — it's gluten-free so it won't stick to the dough. Regular flour works but rice flour is more reliable.",
@@ -440,12 +474,12 @@
     {
       "id": "REFRIGERATE",
       "title": "Cold Proof in Fridge",
-      "direction": "Place the covered bowl in the refrigerator. Cold proof for 1-24 hours. The fridge slows fermentation, develops flavor, and makes the dough easier to score.",
+      "direction": "Place both covered baskets in the refrigerator. Cold proof for 1-24 hours. The fridge slows fermentation, develops flavor, and makes the dough easier to score.",
       "duration_min": 60,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has been in fridge at least 1 hour (up to 24 hours). Begin preheating oven when ready to bake.",
+      "exit_condition": "Both loaves have been in fridge at least 1 hour (up to 24 hours). Begin preheating oven when ready to bake.",
       "notes": [
         {
           "text": "The fridge is your pause button. Shaped dough can sit 1-48 hours. Bake whenever it's convenient.",
@@ -479,12 +513,12 @@
     {
       "id": "SCORE",
       "title": "Score the Dough",
-      "direction": "Remove dough from fridge. Turn out onto a sheet of parchment paper (it will release from the floured towel). Using a bread lame or sharp knife, score an X pattern across the top — two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
+      "direction": "Remove the first loaf from fridge (leave the second in the fridge). Turn out onto a sheet of parchment paper (it will release from the floured towel). Using a bread lame or sharp knife, score an X pattern across the top — two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough scored with clean X pattern on parchment paper, ready for Dutch oven",
+      "exit_condition": "First loaf scored with clean X pattern on parchment paper, ready for Dutch oven",
       "notes": [
         {
           "text": "Score the dough cold — cold dough is firm and scores cleanly. Warm dough drags and tears.",
@@ -506,7 +540,7 @@
     {
       "id": "BAKE_COVERED",
       "title": "Bake — Covered",
-      "direction": "Carefully remove the preheated Dutch oven. Lower the scored dough into the pot using the parchment as a sling. Cover with the lid. Return to oven. Bake at 450°F (230°C) for 20 minutes.",
+      "direction": "Carefully remove the preheated Dutch oven. Lower the first scored loaf into the pot using the parchment as a sling. Cover with the lid. Return to oven. Bake at 450°F (230°C) for 20 minutes.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
@@ -528,12 +562,12 @@
     {
       "id": "BAKE_UNCOVERED",
       "title": "Bake — Uncovered",
-      "direction": "Remove the lid from the Dutch oven. Continue baking uncovered at 450°F (230°C) for 20-25 minutes until the crust is deep golden brown.",
+      "direction": "Remove the lid from the Dutch oven. Continue baking first loaf uncovered at 450°F (230°C) for 20-25 minutes until the crust is deep golden brown. When done, transfer to cooling rack. Score the second loaf (from fridge), load into the still-hot Dutch oven, and repeat the covered + uncovered bake.",
       "duration_min": 22,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Crust is deep golden brown, bread sounds hollow when tapped on the bottom, internal temp 205°F (96°C)",
+      "exit_condition": "Both loaves baked — deep golden brown crust, hollow sound when tapped, internal temp 205°F (96°C)",
       "notes": [
         {
           "text": "Don't pull it early because it looks dark — a deep brown crust has the best flavor and crunch. Pale = undercooked.",
@@ -548,7 +582,7 @@
     {
       "id": "COOL_ON_RACK",
       "title": "Cool on Rack",
-      "direction": "Remove the loaf from the Dutch oven and place on a wire rack. Let cool for at least 1 hour before slicing. The bread is still cooking internally as it cools.",
+      "direction": "Place both loaves on a wire rack. The first loaf gets extra cooling time while the second bakes. Let each loaf cool for at least 1 hour before slicing. The bread is still cooking internally as it cools.",
       "duration_min": 60,
       "timer": true,
       "parallel": false,
@@ -573,7 +607,7 @@
   ],
   "nutrition": {
     "servings": 10,
-    "servingSize": "1 slice",
+    "servingSize": "1 slice (per loaf, 10 slices each)",
     "calculatedDate": "2026-02-11",
     "dataSource": "USDA FoodData Central",
     "totals": {
