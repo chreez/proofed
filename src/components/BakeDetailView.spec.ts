@@ -91,7 +91,9 @@ function makeRecipe(overrides: Partial<Recipe> = {}): Recipe {
 }
 
 function mountComponent() {
-  return mount(BakeDetailView)
+  return mount(BakeDetailView, {
+    global: { stubs: { Teleport: true } }
+  })
 }
 
 describe('BakeDetailView', () => {
@@ -811,6 +813,21 @@ describe('BakeDetailView', () => {
       await nextTick()
       const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
       expect(popover.text()).not.toContain('Reheat')
+    })
+
+    it('popover renders without hero photo when entry has no photos', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [
+          { date: '2026-02-05', version: 'v1.1.0', notes: ['No photos this time'], next_time: [] }
+        ]
+      })
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
+      expect(popover.exists()).toBe(true)
+      expect(popover.findAll('img')).toHaveLength(0)
     })
 
     it('dismisses popover on button click', async () => {

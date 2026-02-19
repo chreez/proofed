@@ -313,75 +313,77 @@ function dismissPopover(): void {
       @close="closeLightbox"
     />
 
-    <!-- Shared mode welcome popover -->
-    <Transition name="popover-fade">
-      <div
-        v-if="popoverVisible && entry && currentRecipe"
-        class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
-        data-testid="shared-popover-overlay"
-        @click.self="dismissPopover"
-      >
-        <div class="popover-card bg-surface border-2 border-stone-200 w-full max-w-md max-h-[90vh] overflow-y-auto">
-          <!-- Greeting -->
-          <div class="p-5 pb-0">
-            <h2 class="font-mono text-lg text-ink mb-1">
-              Hey, I'm Chris<span class="text-accent">.</span>
-            </h2>
-            <p class="text-body text-sm whitespace-nowrap overflow-hidden">
-              I baked these for you. Here's how to reheat them.
-            </p>
-          </div>
-
-          <!-- Hero photo (cropped preview) -->
-          <div v-if="heroPhoto" class="px-5 pt-3">
-            <div class="w-full h-32 overflow-hidden border-2 border-stone-200">
-              <img
-                :src="heroPhoto.src"
-                :alt="heroPhoto.alt"
-                loading="eager"
-                decoding="async"
-                class="w-full h-full object-cover object-center"
-              />
+    <!-- Shared mode welcome popover — Teleport to body to escape page-settle transform context -->
+    <Teleport to="body">
+      <Transition name="popover-fade">
+        <div
+          v-if="popoverVisible && entry && currentRecipe"
+          class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
+          data-testid="shared-popover-overlay"
+          @click.self="dismissPopover"
+        >
+          <div class="popover-card bg-surface border-2 border-stone-200 w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <!-- Greeting -->
+            <div class="p-5 pb-0">
+              <h2 class="font-mono text-lg text-ink mb-1">
+                Hey, I'm Chris<span class="text-accent">.</span>
+              </h2>
+              <p class="text-body text-sm whitespace-nowrap overflow-hidden">
+                I baked these for you. Here's how to reheat them.
+              </p>
             </div>
-            <p class="text-muted text-xs mt-1 font-mono">{{ currentRecipe.meta.name }} — {{ entry.date }}</p>
-          </div>
 
-          <!-- Reheat instructions -->
-          <div v-if="hasReheat" class="mx-5 mt-4 border-2 border-stone-200 bg-stone-50">
-            <div class="px-4 py-3 border-b-2 border-stone-200">
-              <h3 class="font-mono text-sm text-ink font-semibold">Reheat — {{ currentRecipe.meta.name }}</h3>
+            <!-- Hero photo (cropped preview) -->
+            <div v-if="heroPhoto" class="px-5 pt-3">
+              <div class="w-full h-32 overflow-hidden border-2 border-stone-200">
+                <img
+                  :src="heroPhoto.src"
+                  :alt="heroPhoto.alt"
+                  loading="eager"
+                  decoding="async"
+                  class="w-full h-full object-cover object-center"
+                />
+              </div>
+              <p class="text-muted text-xs mt-1 font-mono">{{ currentRecipe.meta.name }} — {{ entry.date }}</p>
             </div>
-            <div class="px-4 py-3 space-y-3">
-              <div
-                v-for="(item, i) in reheatMethods"
-                :key="i"
-                class="text-sm"
-              >
-                <div class="flex items-center gap-1.5">
-                  <span class="font-mono text-xs text-accent font-medium">{{ item.method }}</span>
+
+            <!-- Reheat instructions -->
+            <div v-if="hasReheat" class="mx-5 mt-4 border-2 border-stone-200 bg-stone-50">
+              <div class="px-4 py-3 border-b-2 border-stone-200">
+                <h3 class="font-mono text-sm text-ink font-semibold">Reheat — {{ currentRecipe.meta.name }}</h3>
+              </div>
+              <div class="px-4 py-3 space-y-3">
+                <div
+                  v-for="(item, i) in reheatMethods"
+                  :key="i"
+                  class="text-sm"
+                >
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-mono text-xs text-accent font-medium">{{ item.method }}</span>
+                  </div>
+                  <p class="text-stone-600 mt-0.5">{{ item.detail }}</p>
+                  <p v-if="item.source === 'agent'" class="text-stone-400 text-xs mt-0.5 flex items-center gap-1">
+                    <Bot class="w-3 h-3 flex-shrink-0" />
+                    <span>{{ item.method }} tip is ai generated, not from Chris</span>
+                  </p>
                 </div>
-                <p class="text-stone-600 mt-0.5">{{ item.detail }}</p>
-                <p v-if="item.source === 'agent'" class="text-stone-400 text-xs mt-0.5 flex items-center gap-1">
-                  <Bot class="w-3 h-3 flex-shrink-0" />
-                  <span>{{ item.method }} tip is ai generated, not from Chris</span>
-                </p>
               </div>
             </div>
-          </div>
 
-          <!-- Dismiss button -->
-          <div class="p-5">
-            <button
-              class="btn-primary w-full font-mono text-sm"
-              data-testid="shared-popover-dismiss"
-              @click="dismissPopover"
-            >
-              View Full Bake Details
-            </button>
+            <!-- Dismiss button -->
+            <div class="p-5">
+              <button
+                class="btn-primary w-full font-mono text-sm"
+                data-testid="shared-popover-dismiss"
+                @click="dismissPopover"
+              >
+                View Full Bake Details
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </Transition>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
