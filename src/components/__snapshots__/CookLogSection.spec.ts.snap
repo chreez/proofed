@@ -17,7 +17,9 @@ exports[`HTML snapshot > matches snapshot 1`] = `
       <!--v-if-->
       <!-- Text content -->
       <div data-v-f626ec8a="" class="flex-1 min-w-0">
-        <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-05 — Thursday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.0</span></div>
+        <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-05 — Thursday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.0</span>
+          <!--v-if-->
+        </div>
         <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">2 notes</span>
           <!--v-if--><span data-v-f626ec8a="">1 next-time</span>

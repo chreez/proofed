@@ -13,6 +13,7 @@ interface BakeEntry {
   date: string
   version: string
   summary: string | null
+  status?: 'in_progress' | 'complete'
 }
 
 const loaded = ref(false)
@@ -35,6 +36,7 @@ async function fetchCookLogs(): Promise<void> {
             date: entry.date,
             version: entry.version,
             summary: entry.summary ?? null,
+            status: entry.status,
           })
         }
       } catch {
@@ -82,13 +84,14 @@ const hasEntries = computed(() => entries.value.length > 0)
         class="bake-log-item"
         @click="navigateToBake(entry)"
       >
-        <span class="bake-log-dot" />
+        <span class="bake-log-dot" :class="{ 'bake-log-dot--active': entry.status === 'in_progress' }" />
 
         <div class="bake-log-content">
           <div class="bake-log-row-top">
             <span class="bake-log-date">{{ formatDate(entry.date) }}</span>
             <span class="bake-log-name">{{ entry.recipeName }}</span>
             <span class="bake-log-version">{{ entry.version }}</span>
+            <span v-if="entry.status === 'in_progress'" class="bake-log-status">In Progress</span>
           </div>
           <p v-if="entry.summary" class="bake-log-summary">{{ entry.summary }}</p>
         </div>
@@ -210,6 +213,33 @@ const hasEntries = computed(() => entries.value.length > 0)
   color: var(--color-stone-400);
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.bake-log-status {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  padding: 1px 6px;
+  background: var(--color-warning-tint);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* --- Active (in-progress) dot --- */
+.bake-log-dot--active {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.bake-log-item:hover .bake-log-dot--active {
+  background: var(--color-warning);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .bake-log-summary {

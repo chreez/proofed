@@ -171,6 +171,9 @@ onMounted(() => {
             <div class="flex items-center gap-3">
               <span class="font-semibold text-sm text-stone-700">{{ formatDate(entry.date) }}</span>
               <span class="text-xs bg-stone-200 px-2 py-0.5">{{ entry.version }}</span>
+              <span v-if="entry.status === 'in_progress'" class="text-xs font-mono px-2 py-0.5 bg-warning-tint text-warning border border-warning">
+                In Progress
+              </span>
             </div>
             <p v-if="entry.summary" class="text-sm text-stone-500 mt-1.5 line-clamp-2">{{ entry.summary }}</p>
             <div class="flex items-center gap-3 text-xs text-stone-400 mt-2">
@@ -194,6 +197,9 @@ onMounted(() => {
             </span>
             <span class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">
               {{ entry.version }}
+            </span>
+            <span v-if="entry.status === 'in_progress'" class="text-xs font-mono px-2 py-0.5 bg-warning-tint text-warning border border-warning">
+              In Progress
             </span>
             <IconButton
               :ref="(el: unknown) => setEntryLinkRef(index, el)"

@@ -195,6 +195,9 @@ function dismissPopover(): void {
         <div class="flex items-center gap-3">
           <span class="text-muted font-mono">{{ formatDate(entry.date) }}</span>
           <span class="text-xs bg-stone-200 px-2 py-0.5">{{ entry.version }}</span>
+          <span v-if="entry.status === 'in_progress'" class="text-xs font-mono px-2 py-0.5 bg-warning-tint text-warning border border-warning">
+            In Progress
+          </span>
         </div>
       </div>
 
@@ -233,6 +236,10 @@ function dismissPopover(): void {
       <div v-if="entry.notes?.length" class="mb-6">
         <h4 class="text-heading font-mono text-sm mb-2">Notes</h4>
         <div class="bake-prose" v-html="renderNotes(entry)" />
+      </div>
+      <div v-else-if="entry.status === 'in_progress'" class="mb-6">
+        <h4 class="text-heading font-mono text-sm mb-2">Notes</h4>
+        <p class="text-muted text-sm italic">Notes will appear here as the bake progresses.</p>
       </div>
 
       <!-- Cost Breakdown -->

@@ -229,6 +229,7 @@ export interface CookLogEntry {
   next_time?: NextTimeEntry[]
   photos?: CookLogPhoto[]
   cost?: CookLogCost
+  status?: 'in_progress' | 'complete'
 }
 
 // Recipe manifest
