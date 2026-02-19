@@ -1,9 +1,10 @@
 ---
 id: PF-154
 title: Fix shared popover not visible on bake detail page
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-19 03:43'
+updated_date: '2026-02-19 04:03'
 labels:
   - bug
 dependencies: []
@@ -22,8 +23,14 @@ The shared mode popover (`?shared=true`) on bake detail pages is invisible becau
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Shared popover renders centered in viewport on bake detail page with `?shared=true`
-- [ ] #2 Popover dismiss button works and removes `?shared=true` from URL
-- [ ] #3 Page-settle animation still works for bake detail content
-- [ ] #4 Build passes (npm run build)
+- [x] #1 Shared popover renders centered in viewport on bake detail page with `?shared=true`
+- [x] #2 Popover dismiss button works and removes `?shared=true` from URL
+- [x] #3 Page-settle animation still works for bake detail content
+- [x] #4 Build passes (npm run build)
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Fixed shared popover visibility by wrapping in `<Teleport to=\"body\">` to escape `page-settle` transform context. Redesigned popover with hero photo + gradient overlay title, \"I made this.\" greeting, truncate/expand reheat methods with reference links and agent attribution, scrollable content area with sticky footer. Added `reference?: string` to `ReheatMethod` type. All 981 tests pass, diff-coverage 88% branch.
+<!-- SECTION:FINAL_SUMMARY:END -->

@@ -727,18 +727,35 @@ describe('BakeDetailView', () => {
       const wrapper = mountComponent()
       await flushPromises()
       await nextTick()
-      expect(wrapper.text()).toContain("Hey, I'm Chris")
-      expect(wrapper.text()).toContain('I baked these for you')
+      expect(wrapper.text()).toContain('I made this')
+      expect(wrapper.text()).toContain("Here's how to reheat it:")
     })
 
-    it('popover displays recipe name and date', async () => {
+    it('popover reheat methods expand on click', async () => {
       mockRouteQuery.value = { shared: 'true' }
+      mockCurrentRecipe.value = makeRecipe({
+        reheat: {
+          methods: [
+            { method: 'Oven', detail: '350F 10 min on a rack', source: 'user' as const },
+            { method: 'Skillet', detail: 'Medium heat covered', source: 'user' as const }
+          ]
+        }
+      })
       const wrapper = mountComponent()
       await flushPromises()
       await nextTick()
       const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
-      expect(popover.text()).toContain('Quick Cinnamon Buns')
-      expect(popover.text()).toContain('2026-02-05')
+      const methods = popover.findAll('.cursor-pointer')
+      expect(methods).toHaveLength(2)
+      // Both methods start collapsed
+      expect(methods[0].find('p').classes()).toContain('truncate')
+      expect(methods[1].find('p').classes()).toContain('truncate')
+      // Click first method to expand
+      await methods[0].trigger('click')
+      expect(methods[0].find('p').classes()).not.toContain('truncate')
+      // Click first method again to collapse
+      await methods[0].trigger('click')
+      expect(methods[0].find('p').classes()).toContain('truncate')
     })
 
     it('popover displays hero photo', async () => {
@@ -766,7 +783,6 @@ describe('BakeDetailView', () => {
       await flushPromises()
       await nextTick()
       const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
-      expect(popover.text()).toContain('Reheat')
       expect(popover.text()).toContain('Air Fryer')
       expect(popover.text()).toContain('300F 5 min')
       expect(popover.text()).toContain('Storage')
@@ -786,7 +802,6 @@ describe('BakeDetailView', () => {
       await nextTick()
       const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
       expect(popover.text()).toContain('ai generated')
-      expect(popover.text()).toContain('not from Chris')
     })
 
     it('popover does not show agent attribution for user-sourced methods', async () => {
@@ -803,6 +818,37 @@ describe('BakeDetailView', () => {
       await nextTick()
       const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
       expect(popover.text()).not.toContain('ai generated')
+    })
+
+    it('popover shows reference link when reheat method is expanded', async () => {
+      mockRouteQuery.value = { shared: 'true' }
+      mockCurrentRecipe.value = makeRecipe({
+        reheat: {
+          methods: [
+            { method: 'Oven', detail: '350F 10 min on a rack', source: 'user' as const, reference: 'https://example.com/reheat' },
+            { method: 'Skillet', detail: 'Medium heat covered', source: 'user' as const }
+          ]
+        }
+      })
+      const wrapper = mountComponent()
+      await flushPromises()
+      await nextTick()
+      const popover = wrapper.find('[data-testid="shared-popover-overlay"]')
+      const methods = popover.findAll('.cursor-pointer')
+
+      // Reference link hidden when collapsed
+      expect(methods[0].find('a').exists()).toBe(false)
+
+      // Expand the method with reference
+      await methods[0].trigger('click')
+      const link = methods[0].find('a')
+      expect(link.exists()).toBe(true)
+      expect(link.attributes('href')).toBe('https://example.com/reheat')
+      expect(link.text()).toContain('source')
+
+      // Method without reference has no link even when expanded
+      await methods[1].trigger('click')
+      expect(methods[1].find('a').exists()).toBe(false)
     })
 
     it('popover does not render reheat section when no reheat data', async () => {

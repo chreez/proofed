@@ -7,6 +7,7 @@ export interface ReheatMethod {
   method: string
   detail: string
   source: 'user' | 'agent'
+  reference?: string
 }
 
 export interface Reheat {

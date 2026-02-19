@@ -138,6 +138,7 @@ const reheatMethods = computed<ReheatMethod[]>(() => {
 })
 
 const hasReheat = computed(() => reheatMethods.value.length > 0)
+const expandedReheat = ref<Set<number>>(new Set())
 
 // Initialize popover visibility when in shared mode
 onMounted(() => {
@@ -322,56 +323,70 @@ function dismissPopover(): void {
           data-testid="shared-popover-overlay"
           @click.self="dismissPopover"
         >
-          <div class="popover-card bg-surface border-2 border-stone-200 w-full max-w-md max-h-[90vh] overflow-y-auto">
-            <!-- Greeting -->
-            <div class="p-5 pb-0">
-              <h2 class="font-mono text-lg text-ink mb-1">
-                Hey, I'm Chris<span class="text-accent">.</span>
-              </h2>
-              <p class="text-body text-sm whitespace-nowrap overflow-hidden">
-                I baked these for you. Here's how to reheat them.
-              </p>
+          <div class="popover-card bg-surface border-2 border-stone-200 w-full max-w-md max-h-[90vh] flex flex-col">
+            <!-- Hero photo with overlay title -->
+            <div v-if="heroPhoto" class="relative w-full h-40 overflow-hidden flex-shrink-0">
+              <img
+                :src="heroPhoto.src"
+                :alt="heroPhoto.alt"
+                loading="eager"
+                decoding="async"
+                class="w-full h-full object-cover object-center"
+              />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 pb-3 pt-8">
+                <p class="font-mono text-sm text-white font-medium">{{ currentRecipe.meta.name }}</p>
+                <p class="font-mono text-xs text-white/70">{{ formatDate(entry.date) }}</p>
+              </div>
             </div>
 
-            <!-- Hero photo (cropped preview) -->
-            <div v-if="heroPhoto" class="px-5 pt-3">
-              <div class="w-full h-32 overflow-hidden border-2 border-stone-200">
-                <img
-                  :src="heroPhoto.src"
-                  :alt="heroPhoto.alt"
-                  loading="eager"
-                  decoding="async"
-                  class="w-full h-full object-cover object-center"
-                />
+            <!-- Scrollable content -->
+            <div class="flex-1 overflow-y-auto">
+              <!-- Greeting -->
+              <div class="p-5 pb-0">
+                <h2 class="font-mono text-lg text-ink mb-1">
+                  I made this<span class="text-accent">.</span>
+                </h2>
+                <p class="text-body text-sm text-stone-500">
+                  Here's how to reheat it:
+                </p>
               </div>
-              <p class="text-muted text-xs mt-1 font-mono">{{ currentRecipe.meta.name }} — {{ entry.date }}</p>
-            </div>
 
-            <!-- Reheat instructions -->
-            <div v-if="hasReheat" class="mx-5 mt-4 border-2 border-stone-200 bg-stone-50">
-              <div class="px-4 py-3 border-b-2 border-stone-200">
-                <h3 class="font-mono text-sm text-ink font-semibold">Reheat — {{ currentRecipe.meta.name }}</h3>
-              </div>
-              <div class="px-4 py-3 space-y-3">
-                <div
-                  v-for="(item, i) in reheatMethods"
-                  :key="i"
-                  class="text-sm"
-                >
-                  <div class="flex items-center gap-1.5">
+              <!-- Reheat instructions -->
+              <div v-if="hasReheat" class="mx-5 mt-4 border-2 border-stone-200 bg-stone-50">
+                <div class="divide-y divide-stone-200">
+                  <div
+                    v-for="(item, i) in reheatMethods"
+                    :key="i"
+                    class="px-4 py-3 cursor-pointer"
+                    @click="expandedReheat.has(i) ? expandedReheat.delete(i) : expandedReheat.add(i)"
+                  >
                     <span class="font-mono text-xs text-accent font-medium">{{ item.method }}</span>
+                    <p
+                      class="text-sm text-stone-600 mt-0.5"
+                      :class="expandedReheat.has(i) ? '' : 'truncate'"
+                    >
+                      {{ item.detail }}
+                    </p>
+                    <a
+                      v-if="item.reference && expandedReheat.has(i)"
+                      :href="item.reference"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-accent text-xs font-mono mt-1 inline-block hover:underline"
+                    >
+                      source &rarr;
+                    </a>
+                    <p v-if="item.source === 'agent'" class="text-stone-400 text-xs mt-0.5 flex items-center gap-1">
+                      <Bot class="w-3 h-3 flex-shrink-0" />
+                      <span>ai generated</span>
+                    </p>
                   </div>
-                  <p class="text-stone-600 mt-0.5">{{ item.detail }}</p>
-                  <p v-if="item.source === 'agent'" class="text-stone-400 text-xs mt-0.5 flex items-center gap-1">
-                    <Bot class="w-3 h-3 flex-shrink-0" />
-                    <span>{{ item.method }} tip is ai generated, not from Chris</span>
-                  </p>
                 </div>
               </div>
             </div>
 
-            <!-- Dismiss button -->
-            <div class="p-5">
+            <!-- Sticky footer -->
+            <div class="p-5 border-t-2 border-stone-200 flex-shrink-0">
               <button
                 class="btn-primary w-full font-mono text-sm"
                 data-testid="shared-popover-dismiss"
