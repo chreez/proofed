@@ -195,6 +195,173 @@
           "text": "Try the 2-3 day cold proof (carried over — did overnight this time, still want to try longer)"
         }
       ]
+    },
+    {
+      "date": "2026-02-18",
+      "version": "v1.3.0",
+      "summary": "Third bake — removed all sugar, 3-day cold proof, first time with TJ's mozz and homemade Sclafani sauce. Best pizza yet. No extra flour needed for shaping — dough handled like a dream.",
+      "notes": [
+        "Removed all sugar from the dough (0g instead of recipe's 19g)",
+        "Rounded dough built nicely — patience paid off, let it sit before manipulating",
+        "No extra flour needed for rounding or shaping — stretched and worked dough into a ball completely flour-free",
+        "Dough was warm from washing machine running nearby — measured 77°F with laser thermometer (unsure of accuracy)",
+        "Dough volume in greased Cambro: ~1 quart at base, ~1.5 quart at peak",
+        "1 hour counter rest before overnight cold bulk ferment (into fridge ~12:30am)",
+        "Divided next day at ~12:24pm — total dough weight 765g, split nearly perfectly (~382g each). Portions back in fridge",
+        "Taken out ~11:45am on bake day (Feb 18) — effectively a 3-day process (mixed evening of Feb 16)",
+        "Pizza stone at 520°F at bake time, dough at 77°F after stretching",
+        "Used homemade NY pizza sauce (proofed Sclafani recipe) — much better than jarred. Wished I'd made it the night before to let flavors develop",
+        "Finally used Trader Joe's low-moisture mozz — better flavor, more depth than HEB",
+        "Toppings: sauce → fresh grated Parmigiano-Reggiano → TJ's mozz → Boar's Head pepperoni → fresh jalapeño slices (pre-bake)",
+        "1st pizza: 4 min on steel, rotate, 4 min, then broiler — broiler slightly too long at 1.5 min, aim for ~1 min. Crust less burned than last time, a little fractured and crunchy",
+        "2nd pizza: stone slightly cooler at 500°F. Dough ball sat out longer — incredibly malleable, almost scared it would rip but the dough held strong",
+        "Pepperoni shifted to one side when launching into oven — toppings not as evenly distributed after launch",
+        "Only light burn on crust this time — wonders if olive oil should also be removed for a leaner dough at these temps"
+      ],
+      "photos": [
+        {
+          "src": "/images/ny-style-pizza/2026-02-18/00-dough-in-cambro-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-18/00-dough-in-cambro-400w.webp",
+          "alt": "Dough ball in greased Cambro container marked 'BREAD - 77°' — sitting at the 1 quart line before overnight cold bulk ferment"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-18/01-tj-mozz-shopping-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-18/01-tj-mozz-shopping-400w.webp",
+          "alt": "Trader Joe's whole milk low-moisture mozzarella (454g bag) held over a red TJ's shopping basket in the cheese aisle"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-18/03-both-pizzas-overhead-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-18/03-both-pizzas-overhead-400w.webp",
+          "alt": "Both pizzas overhead — pepperoni pie on wire rack with cupped Boar's Head pepperoni, jalapeño-pepperoni slices on white plate in background"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-18/04-crumb-shot-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-18/04-crumb-shot-400w.webp",
+          "alt": "Crumb cross-section of a torn slice — open, airy structure with large irregular holes from 3-day cold proof, thin crisp base transitioning to puffy edge"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-18/05-underside-char-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-18/05-underside-char-400w.webp",
+          "alt": "Underside of a slice — even golden-brown leopard char pattern from the baking steel, thin crisp base"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-18/02-pizza-one-closeup-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-18/02-pizza-one-closeup-400w.webp",
+          "alt": "Close-up of finished pepperoni and jalapeño pizza — fresh jalapeño rings over cupped pepperoni, leopard-spotted cornicione, melted TJ's mozz with good browning"
+        }
+      ],
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "bread_flour",
+            "ingredientName": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "recipeAmount": 463,
+            "recipeUnit": "g",
+            "packageSize": "5 lbs",
+            "packageGrams": 2268,
+            "packagePrice": 5.58,
+            "cost": 1.14
+          },
+          {
+            "ingredientId": "instant_yeast",
+            "ingredientName": "Instant Yeast",
+            "sourceType": "heb",
+            "sourceName": "Red Star Quick-Rise Instant Dry Yeast",
+            "recipeAmount": 6,
+            "recipeUnit": "g",
+            "packageSize": "3 ct (21g)",
+            "packageGrams": 21,
+            "packagePrice": 1.76,
+            "cost": 0.50
+          },
+          {
+            "ingredientId": "olive_oil",
+            "ingredientName": "Olive Oil",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Organics Extra Virgin Olive Oil",
+            "recipeAmount": 18,
+            "recipeUnit": "g",
+            "packageSize": "25.5 oz",
+            "packageGrams": 723,
+            "packagePrice": 10.58,
+            "cost": 0.26
+          },
+          {
+            "ingredientId": "salt",
+            "ingredientName": "Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "recipeAmount": 8,
+            "recipeUnit": "g",
+            "packageSize": "17.6 oz",
+            "packageGrams": 499,
+            "packagePrice": 2.62,
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "cornmeal",
+            "ingredientName": "Cornmeal",
+            "sourceType": "heb",
+            "sourceName": "Pioneer Enriched Yellow Corn Meal",
+            "recipeAmount": 13,
+            "recipeUnit": "g",
+            "packageSize": "2 lbs",
+            "packageGrams": 907,
+            "packagePrice": 2.28,
+            "cost": 0.03
+          },
+          {
+            "ingredientId": "san_marzano_sauce",
+            "ingredientName": "Crushed Tomatoes (Sclafani)",
+            "sourceType": "amazon",
+            "sourceName": "Sclafani Crushed Tomatoes",
+            "recipeAmount": 175,
+            "recipeUnit": "g",
+            "packageSize": "28 oz can",
+            "packageGrams": 794,
+            "packagePrice": 4.71,
+            "priceUnit": "per lb",
+            "cost": 1.82
+          },
+          {
+            "ingredientId": "mozzarella",
+            "ingredientName": "Mozzarella Cheese",
+            "sourceType": "tj",
+            "sourceName": "Trader Joe's Whole Milk Low-Moisture Mozzarella",
+            "recipeAmount": 350,
+            "recipeUnit": "g",
+            "packageSize": "16 oz",
+            "packageGrams": 454,
+            "packagePrice": 5.49,
+            "cost": 4.23
+          },
+          {
+            "ingredientId": "pepperoni",
+            "ingredientName": "Pepperoni",
+            "sourceType": "heb",
+            "sourceName": "Boar's Head Pepperoni",
+            "recipeAmount": 175,
+            "recipeUnit": "g",
+            "packageSize": "6 oz",
+            "packageGrams": 170,
+            "packagePrice": 4.97,
+            "cost": 5.12
+          }
+        ],
+        "total": 13.14,
+        "perPizza": 6.57,
+        "perSlice": 0.82,
+        "pizzas": 2,
+        "slicesPerPizza": 8
+      },
+      "next_time": [
+        { "text": "Make sauce the night before to let flavors develop overnight" },
+        { "text": "Aim for ~1 min under broiler (1.5 min was slightly too long)" },
+        { "text": "Consider removing olive oil from dough — may not need enrichments at 550°F + steel temps" },
+        { "text": "Work on peel launch technique to keep toppings evenly distributed" }
+      ]
     }
   ],
   "vessels": [

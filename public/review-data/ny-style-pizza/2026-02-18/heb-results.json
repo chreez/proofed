@@ -1,0 +1,501 @@
+{
+  "recipeId": "ny-style-pizza",
+  "date": "2026-02-18",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "bread_flour",
+      "name": "Bread Flour",
+      "recipeAmount": 463,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 5.58,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Unbleached Bread Flour",
+          "brand": "H-E-B Organics",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "10 lbs",
+          "sizeGrams": 4536,
+          "price": 10.99,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Organic Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 7.87,
+          "salePrice": null,
+          "unitPrice": "$0.10/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Unbleached All Purpose Flour",
+          "brand": "H-E-B Organics",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "instant_yeast",
+      "name": "Instant Yeast",
+      "recipeAmount": 6,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Red Star Quick-Rise Instant Dry Yeast - Original",
+          "brand": "Red Star",
+          "size": "3 ct",
+          "sizeGrams": 21,
+          "price": 1.76,
+          "salePrice": null,
+          "unitPrice": "$0.59/pack",
+          "inStock": true
+        },
+        {
+          "name": "Fleischmann's RapidRise Fast-Acting Instant Yeast",
+          "brand": "Fleischmann's",
+          "size": "3 ct",
+          "sizeGrams": 21,
+          "price": 1.88,
+          "salePrice": null,
+          "unitPrice": "$2.51/oz",
+          "inStock": true
+        },
+        {
+          "name": "Fleischmann's Bread Machine Instant Yeast",
+          "brand": "Fleischmann's",
+          "size": "4 oz",
+          "sizeGrams": 113,
+          "price": 5.48,
+          "salePrice": null,
+          "unitPrice": "$1.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "Red Star Active Dry Yeast - Original",
+          "brand": "Red Star",
+          "size": "3 ct",
+          "sizeGrams": 21,
+          "price": 1.76,
+          "salePrice": null,
+          "unitPrice": "$0.59/pack",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Fast-Rise Instant Yeast",
+          "brand": "Hill Country Fare",
+          "size": "3 pk",
+          "sizeGrams": 21,
+          "price": 0.98,
+          "salePrice": null,
+          "unitPrice": "$1.31/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "olive_oil",
+      "name": "Olive Oil",
+      "recipeAmount": 18,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Organics Extra Virgin Olive Oil",
+          "brand": "H-E-B Organics",
+          "size": "25.5 oz",
+          "sizeGrams": 723,
+          "price": 10.58,
+          "salePrice": null,
+          "unitPrice": "$0.42/fl oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Extra Virgin Olive Oil",
+          "brand": "H-E-B",
+          "size": "17 oz",
+          "sizeGrams": 482,
+          "price": 6.68,
+          "salePrice": null,
+          "unitPrice": "$0.39/fl oz",
+          "inStock": true
+        },
+        {
+          "name": "Bertolli Rich-Tasting Cold Pressed Extra Virgin Olive Oil",
+          "brand": "Bertolli",
+          "size": "25.4 oz",
+          "sizeGrams": 720,
+          "price": 11.97,
+          "salePrice": null,
+          "unitPrice": "$0.47/fl oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Extra Virgin Olive Oil",
+          "brand": "H-E-B",
+          "size": "1.5 L",
+          "sizeGrams": 1380,
+          "price": 16.98,
+          "salePrice": null,
+          "unitPrice": "$0.33/fl oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Salt",
+      "recipeAmount": 8,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Iodized Salt",
+          "brand": "H-E-B",
+          "size": "26 oz",
+          "sizeGrams": 737,
+          "price": 0.68,
+          "salePrice": null,
+          "unitPrice": "$0.03/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Mediterranean Sea Salt Grinder",
+          "brand": "H-E-B",
+          "size": "9.5 oz",
+          "sizeGrams": 269,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$0.52/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Salt",
+          "brand": "Morton",
+          "size": "26 oz",
+          "sizeGrams": 737,
+          "price": 1.58,
+          "salePrice": null,
+          "unitPrice": "$0.06/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Mediterranean Sea Salt Grinder",
+          "brand": "H-E-B",
+          "size": "3.7 oz",
+          "sizeGrams": 105,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.52/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Fine Himalayan Pink Salt Refill",
+          "brand": "H-E-B",
+          "size": "12.5 oz",
+          "sizeGrams": 354,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.24/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "cornmeal",
+      "name": "Cornmeal",
+      "recipeAmount": 13,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Quaker Yellow Corn Meal",
+          "brand": "Quaker",
+          "size": "1.5 lbs",
+          "sizeGrams": 680,
+          "price": 3.12,
+          "salePrice": null,
+          "unitPrice": "$0.13/oz",
+          "inStock": true
+        },
+        {
+          "name": "Pioneer Enriched Yellow Corn Meal",
+          "brand": "Pioneer",
+          "size": "2 lbs",
+          "sizeGrams": 907,
+          "price": 2.28,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "Bob's Red Mill Gluten Free Medium Grind Cornmeal",
+          "brand": "Bob's Red Mill",
+          "size": "1.5 lbs",
+          "sizeGrams": 680,
+          "price": 4.19,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        },
+        {
+          "name": "Lamb's Stone Ground Yellow Cornmeal",
+          "brand": "Lamb's",
+          "size": "2 lbs",
+          "sizeGrams": 907,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Martha White Gladiola Self-Rising Yellow Corn Meal Mix",
+          "brand": "Martha White",
+          "size": "2 lbs",
+          "sizeGrams": 907,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "san_marzano_sauce",
+      "name": "Crushed Tomatoes (for sauce)",
+      "recipeAmount": 175,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Crushed Tomatoes",
+          "brand": "H-E-B",
+          "size": "15 oz",
+          "sizeGrams": 425,
+          "price": 0.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "Red Gold Crushed Tomatoes",
+          "brand": "Red Gold",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 1.96,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "San Merican Crushed Tomatoes",
+          "brand": "San Merican",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 6.48,
+          "salePrice": null,
+          "unitPrice": "$0.23/oz",
+          "inStock": true
+        },
+        {
+          "name": "Cento All Purpose Crushed Tomatoes",
+          "brand": "Cento",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 2.82,
+          "salePrice": null,
+          "unitPrice": "$0.10/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics No Salt Added Crushed Tomatoes",
+          "brand": "H-E-B Organics",
+          "size": "15 oz",
+          "sizeGrams": 425,
+          "price": 1.98,
+          "salePrice": null,
+          "unitPrice": "$0.13/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "mozzarella",
+      "name": "Mozzarella Cheese",
+      "recipeAmount": 350,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "16 oz",
+          "sizeGrams": 454,
+          "price": 4.99,
+          "salePrice": null,
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Cheese",
+          "brand": "H-E-B",
+          "size": "16 oz",
+          "sizeGrams": 454,
+          "price": 4.99,
+          "salePrice": null,
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "32 oz",
+          "sizeGrams": 907,
+          "price": 8.99,
+          "salePrice": null,
+          "unitPrice": "$0.28/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "Hill Country Fare",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 1.97,
+          "salePrice": null,
+          "unitPrice": "$0.25/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 2.98,
+          "salePrice": 2.50,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Whole Milk Fresh Mozzarella Ciliegine",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 4.68,
+          "salePrice": null,
+          "unitPrice": "$0.58/oz",
+          "inStock": true
+        },
+        {
+          "name": "Tillamook Whole Milk Mozzarella Shredded Cheese",
+          "brand": "Tillamook",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 4.29,
+          "salePrice": null,
+          "unitPrice": "$0.54/oz",
+          "inStock": true
+        },
+        {
+          "name": "Miceli's Whole Milk Fresh Mozzarella Cheese Ball",
+          "brand": "Miceli's",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 3.99,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Deli Whole Milk Mozzarella Cheese, Custom Sliced",
+          "brand": "H-E-B",
+          "size": "1 lb",
+          "sizeGrams": 454,
+          "price": 7.99,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "pepperoni",
+      "name": "Pepperoni",
+      "recipeAmount": 175,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Premium Uncured Pepperoni Slices - Original",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Deli #1 Sliced Uncured Pepperoni",
+          "brand": "H-E-B",
+          "size": "0.5 lb",
+          "sizeGrams": 227,
+          "price": 4.25,
+          "salePrice": null,
+          "unitPrice": "$8.49/lb",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Deli Charcuterie Uncured Pepperoni, Custom Sliced",
+          "brand": "H-E-B",
+          "size": "1 lb",
+          "sizeGrams": 454,
+          "price": 8.49,
+          "salePrice": null,
+          "unitPrice": "$0.53/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Premium Uncured Pepperoni Slices - Thick Cut",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "Boar's Head Pepperoni",
+          "brand": "Boar's Head",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 4.97,
+          "salePrice": null,
+          "unitPrice": "$0.83/oz",
+          "inStock": true
+        }
+      ]
+    }
+  ]
+}

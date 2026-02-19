@@ -1,0 +1,43 @@
+{
+  "recipeId": "ny-style-pizza",
+  "date": "2026-02-18",
+  "processedAt": "2026-02-18T23:07:43.941Z",
+  "photos": [
+    {
+      "name": "00-dough-in-cambro",
+      "thumb": "00-dough-in-cambro-400w.webp",
+      "src": "00-dough-in-cambro-800w.webp",
+      "summary": ""
+    },
+    {
+      "name": "01-tj-mozz-shopping",
+      "thumb": "01-tj-mozz-shopping-400w.webp",
+      "src": "01-tj-mozz-shopping-800w.webp",
+      "summary": ""
+    },
+    {
+      "name": "02-pizza-one-closeup",
+      "thumb": "02-pizza-one-closeup-400w.webp",
+      "src": "02-pizza-one-closeup-800w.webp",
+      "summary": ""
+    },
+    {
+      "name": "03-both-pizzas-overhead",
+      "thumb": "03-both-pizzas-overhead-400w.webp",
+      "src": "03-both-pizzas-overhead-800w.webp",
+      "summary": ""
+    },
+    {
+      "name": "04-crumb-shot",
+      "thumb": "04-crumb-shot-400w.webp",
+      "src": "04-crumb-shot-800w.webp",
+      "summary": ""
+    },
+    {
+      "name": "05-underside-char",
+      "thumb": "05-underside-char-400w.webp",
+      "src": "05-underside-char-800w.webp",
+      "summary": ""
+    }
+  ]
+}
