@@ -1072,5 +1072,65 @@
     "strategy": "7-agent parallel research: enriched dough science, King Arthur hybrid methodology, cross-reference top recipes, pure vs hybrid debate, tangzhong + sourdough, pan options, overnight scheduling",
     "sourceCount": 100,
     "date": "2026-02-16"
-  }
+  },
+  "cook_log": [
+    {
+      "date": "2026-02-19",
+      "version": "v1.1.0",
+      "summary": "First sourdough cinnamon bun bake — hand-mixed, used active starter directly (failed float test) with 1g yeast insurance, glass Pyrex, no heavy cream pour. Hit 190°F at 22 min. Pretty good.",
+      "notes": [
+        "Starter did not pass float test — past peak, roughly 20% drop. Used 200g active starter directly instead of building levain.",
+        "Added 1g instant yeast as hybrid insurance.",
+        "Hand-mixed entire dough — no stand mixer. Slap and fold technique for development.",
+        "Rested dough 20 minutes before incorporating butter by hand.",
+        "Dough temp 83°F at start of bulk ferment. Kitchen ambient 76°F.",
+        "First stretch and fold set at 6:14pm after butter incorporation.",
+        "Second fold set at 6:48pm — dough reading 79°F.",
+        "Third fold at 7:21pm — dough at 82°F. Did slap and fold per recipe, then one additional set.",
+        "At 7:58pm dough at 79°F. Left on top of dishwasher to keep warm. Checked elasticity.",
+        "Added 1 hour room-temp rest before cold retard for more gluten development. Dough ~80°F going in.",
+        "Into fridge around 9pm for overnight cold retard.",
+        "Used glass Pyrex instead of springform pan. No heavy cream pour — kept first bake simple.",
+        "Dough may have sat out too long before filling. Considering a pre-shape step before rolling for better distribution.",
+        "Baking spray under parchment in Pyrex to prevent slipping, butter on top of parchment.",
+        "Internal temp 190°F at 22 minutes — close to spot on per recipe target.",
+        "Unmolding was easy — grabbed both sides of parchment paper and lifted out."
+      ],
+      "photos": [
+        {
+          "src": "/images/sourdough-cinnamon-buns/2026-02-19/buns-fresh-from-oven-800w.webp",
+          "thumb": "/images/sourdough-cinnamon-buns/2026-02-19/buns-fresh-from-oven-400w.webp",
+          "alt": "Eight sourdough cinnamon buns fresh out of the oven in a glass Pyrex dish lined with parchment paper, showing golden tops with defined cinnamon swirl spirals and caramelized filling visible at the edges.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/sourdough-cinnamon-buns/2026-02-19/buns-glazed-closeup-800w.webp",
+          "thumb": "/images/sourdough-cinnamon-buns/2026-02-19/buns-glazed-closeup-400w.webp",
+          "alt": "Close-up of glazed cinnamon buns coated in a thick, glossy cream cheese glaze, with the soft swirled tops partially obscured under a generous layer of icing.",
+          "usage": "hero"
+        }
+      ],
+      "cost": {
+        "costs": [
+          { "ingredientId": "flour", "name": "H-E-B Organics Unbleached All Purpose Flour", "recipeAmount": 514, "packageSize": "5 lbs", "packagePrice": 5.98, "cost": 1.36 },
+          { "ingredientId": "cornstarch", "name": "Cornstarch (avg estimate)", "recipeAmount": 64, "packageSize": null, "packagePrice": null, "cost": 0 },
+          { "ingredientId": "granulated_sugar", "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "recipeAmount": 75, "packageSize": "4 lbs", "packagePrice": 3.48, "cost": 0.14 },
+          { "ingredientId": "brown_sugar", "name": "H-E-B Organics Light Brown Sugar", "recipeAmount": 240, "packageSize": "24 oz", "packagePrice": 3.09, "cost": 1.09 },
+          { "ingredientId": "powdered_sugar", "name": "H-E-B Organics Powdered Sugar", "recipeAmount": 128, "packageSize": "24 oz", "packagePrice": 3.48, "cost": 0.66 },
+          { "ingredientId": "butter", "name": "Trader Joe's butter (receipt pending)", "recipeAmount": 227, "packageSize": null, "packagePrice": null, "cost": 0 },
+          { "ingredientId": "milk", "name": "Whole Milk (small bottle)", "recipeAmount": 95, "packageSize": null, "packagePrice": null, "cost": 0 },
+          { "ingredientId": "cream_cheese", "name": "Hill Country Fare Cream Cheese", "recipeAmount": 150, "packageSize": "8 oz", "packagePrice": 1.49, "cost": 0.98 },
+          { "ingredientId": "eggs", "name": "H-E-B Cage Free Large Brown Eggs", "recipeAmount": 3, "packageSize": "12 ct", "packagePrice": 2.96, "cost": 0 },
+          { "ingredientId": "cinnamon", "name": "McCormick Ground Cinnamon", "recipeAmount": 10, "packageSize": "4.12 oz", "packagePrice": 4.18, "cost": 0.36 },
+          { "ingredientId": "salt", "name": "Morton Salt", "recipeAmount": 11, "packageSize": "26 oz", "packagePrice": 1.58, "cost": 0.02 },
+          { "ingredientId": "vanilla", "name": "H-E-B Pure Madagascar Bourbon Vanilla Extract", "recipeAmount": 5, "packageSize": "4 oz", "packagePrice": 9.98, "cost": 0.44 },
+          { "ingredientId": "heavy_cream", "name": "Not used this bake", "recipeAmount": 0, "packageSize": null, "packagePrice": null, "cost": 0 }
+        ],
+        "total": 5.05,
+        "perServing": 0.63,
+        "servings": 8
+      },
+      "next_time": []
+    }
+  ]
 }

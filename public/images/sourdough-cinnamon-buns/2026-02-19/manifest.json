@@ -1,0 +1,19 @@
+{
+  "recipeId": "sourdough-cinnamon-buns",
+  "date": "2026-02-19",
+  "processedAt": "2026-02-20T02:17:45.036Z",
+  "photos": [
+    {
+      "name": "buns-fresh-from-oven",
+      "thumb": "buns-fresh-from-oven-400w.webp",
+      "src": "buns-fresh-from-oven-800w.webp",
+      "summary": "Eight sourdough cinnamon buns fresh out of the oven in a glass Pyrex dish lined with parchment paper, showing golden tops with defined cinnamon swirl spirals and caramelized filling visible at the edges."
+    },
+    {
+      "name": "buns-glazed-closeup",
+      "thumb": "buns-glazed-closeup-400w.webp",
+      "src": "buns-glazed-closeup-800w.webp",
+      "summary": "Close-up of glazed cinnamon buns coated in a thick, glossy cream cheese glaze, with the soft swirled tops partially obscured under a generous layer of icing."
+    }
+  ]
+}
