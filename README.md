@@ -2,6 +2,10 @@
   <img src="assets/wordmark.svg" alt="proofed." width="200">
 </p>
 
+<p align="center">
+  <a href="https://proofeddot.netlify.app"><strong>Live Site →</strong></a>
+</p>
+
 A developer's personal cooking notebook. Recipes as structured JSON — precise, version-tracked, and built to bake from.
 
 ## Tech Stack
