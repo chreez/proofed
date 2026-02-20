@@ -20,7 +20,7 @@ export interface Recipe {
   vessels: Vessel[]
   stages: Stage[]
   states: RecipeState[]
-  version?: string
+  version: string
   summary?: RecipeSummary
   change_log?: ChangeLogEntry[]
   cook_log?: CookLogEntry[]
