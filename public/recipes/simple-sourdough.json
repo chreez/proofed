@@ -838,6 +838,30 @@
           { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 10, "unit": "g", "cost": 0.05 }
         ]
       }
+    },
+    {
+      "date": "2026-02-19",
+      "version": "v2.0.0",
+      "status": "in_progress",
+      "summary": null,
+      "notes": [
+        "Fed starter in the morning, noticed strong growth, decided to bake while prepping sourdough cinnamon buns. First 2-loaf bake (v2.0.0).",
+        "Mixed dough at 4:26pm. Estimated 10-hour bulk (~2am), but ended much earlier.",
+        "Took aliquot sample after first stretch and fold. Used The Sourdough Journey bulk fermentation chart to target 50% rise based on dough temp.",
+        "Dough temp 76°F at mix. First stretch and fold at ~4:26pm.",
+        "78°F after first rest. Slap and fold.",
+        "Second stretch and fold at 4:58pm — dough 78-79°F.",
+        "Third stretch and fold at 5:32pm — dough 78-79°F.",
+        "Last stretch and fold at 6:05-6:08pm — dough 76.6°F.",
+        "Average dough temp across 4 readings: 77.15°F.",
+        "Aliquot hadn't moved after ~2 hours of bulk. Hit 50% target around 8:30pm (~4 hours).",
+        "Pre-shape started around 8:30pm. Used flour per recipe steps — considering wet hand + scraper only next time.",
+        "Dough at 50% rise felt like a marshmallow — could feel the gases inside. Good rise.",
+        "Pre-shaped, waited ~10 min (couldn't find timer), then final shaped two doughs. Rice flour in baskets.",
+        "Rested 20 min at 9pm, stitched, into fridge around 9:15pm for overnight cold retard."
+      ],
+      "photos": [],
+      "next_time": []
     }
   ],
   "research": {
