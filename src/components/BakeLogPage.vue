@@ -14,6 +14,8 @@ interface BakeEntry {
   version: string
   summary: string | null
   status?: 'in_progress' | 'complete'
+  heroThumb: string | null
+  heroAlt: string | null
 }
 
 const loaded = ref(false)
@@ -30,6 +32,8 @@ async function fetchCookLogs(): Promise<void> {
         const cookLog: CookLogEntry[] = Array.isArray(data.cook_log) ? data.cook_log : []
 
         for (const entry of cookLog) {
+          const photos = entry.photos ?? []
+          const hero = photos.length ? photos[photos.length - 1] : null
           allEntries.push({
             recipeId: recipe.id,
             recipeName: recipe.name,
@@ -37,6 +41,8 @@ async function fetchCookLogs(): Promise<void> {
             version: entry.version,
             summary: entry.summary ?? null,
             status: entry.status,
+            heroThumb: hero?.thumb ?? null,
+            heroAlt: hero?.alt ?? null,
           })
         }
       } catch {
@@ -87,13 +93,27 @@ const hasEntries = computed(() => entries.value.length > 0)
         <span class="bake-log-dot" :class="{ 'bake-log-dot--active': entry.status === 'in_progress' }" />
 
         <div class="bake-log-content">
+          <!-- Row 1: date + name + version inline -->
           <div class="bake-log-row-top">
             <span class="bake-log-date">{{ formatDate(entry.date) }}</span>
+            <span class="bake-log-separator">&middot;</span>
             <span class="bake-log-name">{{ entry.recipeName }}</span>
+            <span class="bake-log-separator">&middot;</span>
             <span class="bake-log-version">{{ entry.version }}</span>
             <span v-if="entry.status === 'in_progress'" class="bake-log-status">In Progress</span>
           </div>
-          <p v-if="entry.summary" class="bake-log-summary">{{ entry.summary }}</p>
+          <!-- Row 2: thumb + summary -->
+          <div v-if="entry.heroThumb || entry.summary" class="bake-log-row-bottom">
+            <img
+              v-if="entry.heroThumb"
+              :src="entry.heroThumb"
+              :alt="entry.heroAlt ?? ''"
+              loading="lazy"
+              decoding="async"
+              class="bake-log-thumb"
+            />
+            <p v-if="entry.summary" class="bake-log-summary">{{ entry.summary }}</p>
+          </div>
         </div>
       </li>
     </ul>
@@ -182,7 +202,28 @@ const hasEntries = computed(() => entries.value.length > 0)
 .bake-log-row-top {
   display: flex;
   align-items: baseline;
+  gap: 0.5rem;
+}
+
+.bake-log-separator {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-stone-300);
+  flex-shrink: 0;
+}
+
+.bake-log-row-bottom {
+  display: flex;
   gap: 0.75rem;
+  margin-top: 0.375rem;
+}
+
+.bake-log-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--color-stone-200);
 }
 
 .bake-log-date {
@@ -191,7 +232,6 @@ const hasEntries = computed(() => entries.value.length > 0)
   color: var(--color-stone-400);
   white-space: nowrap;
   flex-shrink: 0;
-  min-width: 3rem;
 }
 
 .bake-log-name {
@@ -257,19 +297,24 @@ const hasEntries = computed(() => entries.value.length > 0)
 
 /* Mobile: stack layout */
 @media (max-width: 480px) {
+  .bake-log-thumb {
+    width: 64px;
+    height: 64px;
+  }
+
   .bake-log-row-top {
     flex-wrap: wrap;
     gap: 0.25rem 0.5rem;
-  }
-
-  .bake-log-date {
-    min-width: auto;
   }
 
   .bake-log-name {
     flex-basis: 100%;
     order: -1;
     white-space: normal;
+  }
+
+  .bake-log-separator {
+    display: none;
   }
 
   .bake-log-summary {

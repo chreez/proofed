@@ -271,6 +271,26 @@
         { "text": "Consider removing olive oil from dough — may not need enrichments at 550°F + steel temps" },
         { "text": "Work on peel launch technique to keep toppings evenly distributed" }
       ]
+    },
+    {
+      "date": "2026-02-20",
+      "version": "v1.3.0",
+      "status": "in_progress",
+      "summary": null,
+      "notes": [
+        "Remember to use a measuring glass (the easier to pour one) for recipes involving a stand mixer — much easier to incorporate water",
+        "Forgot to measure dough temp before autolyse",
+        "Autolyse started around 19:00, ~20 min",
+        "86.4°F dough temp at 19:15 — started adding olive oil and salt",
+        "80°F dough at ~19:20 after incorporating salt and olive oil",
+        "Stopped mixer ~20 seconds early on first knead pass — dough was looking like it was getting overworked",
+        "19:24 — let dough rest, planned to check back in ~13 minutes",
+        "82°F at 19:48 after running mixer for another ~4 minutes (second knead pass)",
+        "78°F approx surface temp — shaped and placed in Cambro. Forgot to weigh dough again",
+        "20:00 — letting dough sit at room temp before fridge, ~43 min remaining (wanted a full hour but forgot to log start time)"
+      ],
+      "photos": [],
+      "next_time": []
     }
   ],
   "vessels": [

@@ -69,16 +69,16 @@ function formatDate(dateStr: string): string {
 <template>
   <div class="demo-page">
     <div class="demo-header">
-      <h2 class="font-mono text-lg text-ink font-medium mb-1">Bake Log Photo Treatment</h2>
-      <p class="text-sm text-stone-400 font-mono">DRAFT-24.1 — compare thumb vs hero</p>
+      <h2 class="font-mono text-lg text-ink font-medium mb-1">Bake Log Layout Options</h2>
+      <p class="text-sm text-stone-400 font-mono">DRAFT-24.1 — compare 3 layout treatments</p>
     </div>
 
     <div v-if="!loaded" class="font-mono text-sm text-stone-400 text-center py-8">Loading bake data...</div>
 
     <div v-else class="demo-columns">
-      <!-- ============ OPTION A: Compact Thumb ============ -->
+      <!-- ============ LAYOUT A: Date Header Row ============ -->
       <div class="demo-col">
-        <div class="demo-col-label">Option A: Compact Thumb</div>
+        <div class="demo-col-label">A: Date Header</div>
         <ul class="timeline">
           <li
             v-for="entry in entries"
@@ -88,19 +88,102 @@ function formatDate(dateStr: string): string {
             <span class="timeline-dot" :class="{ 'timeline-dot--active': entry.status === 'in_progress' }" />
 
             <div class="timeline-content">
-              <div class="option-a-layout">
-                <!-- Small thumb -->
+              <!-- Date on its own line as a subtle header -->
+              <div class="layout-a-date-row">
+                <span class="timeline-date">{{ formatDate(entry.date) }}</span>
+                <span v-if="entry.status === 'in_progress'" class="timeline-status">In Progress</span>
+              </div>
+              <!-- Thumb + name/version/summary below -->
+              <div class="layout-a-body">
                 <img
                   v-if="entry.heroPhoto"
                   :src="entry.heroPhoto.thumb"
                   :alt="entry.heroPhoto.alt"
                   loading="lazy"
                   decoding="async"
-                  class="option-a-thumb"
+                  class="layout-thumb"
                 />
-                <div class="option-a-text">
-                  <div class="timeline-row-top">
-                    <span class="timeline-date">{{ formatDate(entry.date) }}</span>
+                <div class="layout-a-text">
+                  <div class="layout-a-meta">
+                    <span class="timeline-name">{{ entry.recipeName }}</span>
+                    <span class="timeline-version">{{ entry.version }}</span>
+                  </div>
+                  <p v-if="entry.summary" class="timeline-summary">{{ entry.summary }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ============ LAYOUT C: Two-Row Stacked ============ -->
+      <div class="demo-col">
+        <div class="demo-col-label">C: Two-Row Stacked</div>
+        <ul class="timeline">
+          <li
+            v-for="entry in entries"
+            :key="`c-${entry.recipeId}-${entry.date}`"
+            class="timeline-item"
+          >
+            <span class="timeline-dot" :class="{ 'timeline-dot--active': entry.status === 'in_progress' }" />
+
+            <div class="timeline-content">
+              <!-- Row 1: date + name + version inline -->
+              <div class="layout-c-row-top">
+                <span class="timeline-date">{{ formatDate(entry.date) }}</span>
+                <span class="layout-c-separator">&middot;</span>
+                <span class="timeline-name">{{ entry.recipeName }}</span>
+                <span class="layout-c-separator">&middot;</span>
+                <span class="timeline-version">{{ entry.version }}</span>
+                <span v-if="entry.status === 'in_progress'" class="timeline-status">In Progress</span>
+              </div>
+              <!-- Row 2: thumb + summary -->
+              <div v-if="entry.heroPhoto || entry.summary" class="layout-c-row-bottom">
+                <img
+                  v-if="entry.heroPhoto"
+                  :src="entry.heroPhoto.thumb"
+                  :alt="entry.heroPhoto.alt"
+                  loading="lazy"
+                  decoding="async"
+                  class="layout-thumb"
+                />
+                <p v-if="entry.summary" class="timeline-summary">{{ entry.summary }}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ============ LAYOUT D: Date Left Column ============ -->
+      <div class="demo-col">
+        <div class="demo-col-label">D: Date Left Column</div>
+        <ul class="layout-d-timeline">
+          <li
+            v-for="entry in entries"
+            :key="`d-${entry.recipeId}-${entry.date}`"
+            class="layout-d-item"
+          >
+            <!-- Left: date column -->
+            <span class="layout-d-date">{{ formatDate(entry.date) }}</span>
+
+            <!-- Center: spine + dot -->
+            <span class="layout-d-spine-cell">
+              <span class="layout-d-dot" :class="{ 'layout-d-dot--active': entry.status === 'in_progress' }" />
+            </span>
+
+            <!-- Right: content -->
+            <div class="layout-d-content">
+              <div class="layout-d-body">
+                <img
+                  v-if="entry.heroPhoto"
+                  :src="entry.heroPhoto.thumb"
+                  :alt="entry.heroPhoto.alt"
+                  loading="lazy"
+                  decoding="async"
+                  class="layout-thumb"
+                />
+                <div class="layout-d-text">
+                  <div class="layout-d-meta">
                     <span class="timeline-name">{{ entry.recipeName }}</span>
                     <span class="timeline-version">{{ entry.version }}</span>
                     <span v-if="entry.status === 'in_progress'" class="timeline-status">In Progress</span>
@@ -112,46 +195,13 @@ function formatDate(dateStr: string): string {
           </li>
         </ul>
       </div>
-
-      <!-- ============ OPTION B: Larger Hero ============ -->
-      <div class="demo-col">
-        <div class="demo-col-label">Option B: Hero Image</div>
-        <ul class="timeline">
-          <li
-            v-for="entry in entries"
-            :key="`b-${entry.recipeId}-${entry.date}`"
-            class="timeline-item"
-          >
-            <span class="timeline-dot" :class="{ 'timeline-dot--active': entry.status === 'in_progress' }" />
-
-            <div class="timeline-content">
-              <!-- Hero image above text -->
-              <img
-                v-if="entry.heroPhoto"
-                :src="entry.heroPhoto.thumb"
-                :alt="entry.heroPhoto.alt"
-                loading="lazy"
-                decoding="async"
-                class="option-b-hero"
-              />
-              <div class="timeline-row-top">
-                <span class="timeline-date">{{ formatDate(entry.date) }}</span>
-                <span class="timeline-name">{{ entry.recipeName }}</span>
-                <span class="timeline-version">{{ entry.version }}</span>
-                <span v-if="entry.status === 'in_progress'" class="timeline-status">In Progress</span>
-              </div>
-              <p v-if="entry.summary" class="timeline-summary">{{ entry.summary }}</p>
-            </div>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .demo-page {
-  max-width: 72rem;
+  max-width: 80rem;
   margin: 0 auto;
   padding: 1.5rem 1rem;
 }
@@ -162,10 +212,10 @@ function formatDate(dateStr: string): string {
   border-bottom: 2px solid var(--color-stone-200);
 }
 
-/* --- Two-column layout --- */
+/* --- Three-column layout --- */
 .demo-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
 }
 
@@ -191,7 +241,9 @@ function formatDate(dateStr: string): string {
   border-bottom: 2px solid var(--color-stone-200);
 }
 
-/* --- Timeline spine (matches BakeLogPage) --- */
+/* ============================================================
+   SHARED: Timeline spine + dot (Layouts A & C)
+   ============================================================ */
 .timeline {
   list-style: none;
   margin: 0;
@@ -222,7 +274,6 @@ function formatDate(dateStr: string): string {
   background: var(--color-accent);
 }
 
-/* --- Dot (matches BakeLogPage) --- */
 .timeline-dot {
   position: absolute;
   left: 0;
@@ -252,7 +303,7 @@ function formatDate(dateStr: string): string {
   50% { opacity: 0.4; }
 }
 
-/* --- Content area --- */
+/* --- Content area (shared for A & C) --- */
 .timeline-content {
   border-bottom: 1px solid var(--color-stone-300);
   padding: 0.625rem 0;
@@ -262,19 +313,15 @@ function formatDate(dateStr: string): string {
   border-bottom: none;
 }
 
-.timeline-row-top {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-}
-
+/* ============================================================
+   SHARED: Text elements
+   ============================================================ */
 .timeline-date {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   color: var(--color-stone-400);
   white-space: nowrap;
   flex-shrink: 0;
-  min-width: 2.5rem;
 }
 
 .timeline-name {
@@ -282,7 +329,6 @@ function formatDate(dateStr: string): string {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-ink);
-  flex: 1;
   min-width: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -321,13 +367,8 @@ function formatDate(dateStr: string): string {
   -webkit-box-orient: vertical;
 }
 
-/* ============ OPTION A: Compact Thumb ============ */
-.option-a-layout {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.option-a-thumb {
+/* --- Shared thumb style --- */
+.layout-thumb {
   width: 80px;
   height: 80px;
   object-fit: cover;
@@ -335,39 +376,215 @@ function formatDate(dateStr: string): string {
   border: 2px solid var(--color-stone-200);
 }
 
-.option-a-text {
+/* ============================================================
+   LAYOUT A: Date Header Row
+   ============================================================ */
+.layout-a-date-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.375rem;
+}
+
+.layout-a-body {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.layout-a-text {
   flex: 1;
   min-width: 0;
 }
 
-/* ============ OPTION B: Larger Hero ============ */
-.option-b-hero {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border: 2px solid var(--color-stone-200);
-  margin-bottom: 0.5rem;
+.layout-a-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
 }
 
-/* Mobile: smaller option A thumb */
+/* ============================================================
+   LAYOUT C: Two-Row Stacked
+   ============================================================ */
+.layout-c-row-top {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.layout-c-separator {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-stone-300);
+  flex-shrink: 0;
+}
+
+.layout-c-row-bottom {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.375rem;
+}
+
+/* ============================================================
+   LAYOUT D: Date Left Column (git-log style)
+   ============================================================ */
+.layout-d-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0 0;
+  position: relative;
+}
+
+.layout-d-item {
+  display: grid;
+  grid-template-columns: 3.5rem 1rem 1fr;
+  gap: 0;
+  position: relative;
+  min-height: 2rem;
+}
+
+.layout-d-item:hover .timeline-name {
+  color: var(--color-accent);
+}
+
+.layout-d-item:hover .layout-d-dot {
+  background: var(--color-accent);
+}
+
+/* Date column (left) */
+.layout-d-date {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-stone-400);
+  white-space: nowrap;
+  text-align: right;
+  padding-top: 0.625rem;
+  padding-right: 0.25rem;
+}
+
+/* Spine cell (center) */
+.layout-d-spine-cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Vertical spine line through center column */
+.layout-d-spine-cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-stone-300);
+}
+
+/* Dot */
+.layout-d-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  background: var(--color-surface, #fff);
+  z-index: 1;
+  margin-top: 0.75rem;
+  flex-shrink: 0;
+  transition: background-color 200ms ease;
+}
+
+.layout-d-dot--active {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  animation: pulse-d 2s ease-in-out infinite;
+}
+
+.layout-d-item:hover .layout-d-dot--active {
+  background: var(--color-warning);
+}
+
+@keyframes pulse-d {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Content (right of spine) */
+.layout-d-content {
+  padding: 0.625rem 0 0.625rem 0.5rem;
+  border-bottom: 1px solid var(--color-stone-300);
+}
+
+.layout-d-item:last-child .layout-d-content {
+  border-bottom: none;
+}
+
+.layout-d-body {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.layout-d-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.layout-d-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+/* ============================================================
+   MOBILE ADJUSTMENTS
+   ============================================================ */
 @media (max-width: 480px) {
-  .option-a-thumb {
+  .layout-thumb {
     width: 64px;
     height: 64px;
   }
 
-  .option-b-hero {
-    height: 120px;
-  }
-
-  .timeline-row-top {
+  /* Layout A: wrap name above date/version on small screens */
+  .layout-a-meta {
     flex-wrap: wrap;
     gap: 0.25rem 0.5rem;
   }
 
-  .timeline-name {
+  .layout-a-meta .timeline-name {
+    flex-basis: 100%;
+    white-space: normal;
+  }
+
+  /* Layout C: wrap metadata row */
+  .layout-c-row-top {
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+  }
+
+  .layout-c-row-top .timeline-name {
     flex-basis: 100%;
     order: -1;
+    white-space: normal;
+  }
+
+  .layout-c-separator {
+    display: none;
+  }
+
+  /* Layout D: narrower date column */
+  .layout-d-item {
+    grid-template-columns: 3rem 1rem 1fr;
+  }
+
+  .layout-d-date {
+    font-size: 0.625rem;
+  }
+
+  .layout-d-meta {
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+  }
+
+  .layout-d-meta .timeline-name {
+    flex-basis: 100%;
     white-space: normal;
   }
 }

@@ -205,4 +205,111 @@ describe('BakeLogPage', () => {
     expect(rows[0].text()).toContain('Feb 10')
     expect(rows[1].text()).toContain('Jan 20')
   })
+
+  it('shows hero thumbnail when entry has photos', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: 'v1.2.0',
+            summary: 'Bake with photos',
+            notes: [],
+            photos: [
+              { src: '/images/photo-1-800w.webp', thumb: '/images/photo-1-400w.webp', alt: 'Process shot' },
+              { src: '/images/photo-2-800w.webp', thumb: '/images/photo-2-400w.webp', alt: 'Finished buns' }
+            ]
+          }
+        ]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    const thumb = wrapper.find('.bake-log-thumb')
+    expect(thumb.exists()).toBe(true)
+    // Hero = last photo in array
+    expect(thumb.attributes('src')).toBe('/images/photo-2-400w.webp')
+    expect(thumb.attributes('alt')).toBe('Finished buns')
+  })
+
+  it('does not show thumbnail when entry has no photos', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [
+          { date: '2026-02-10', version: 'v1.2.0', summary: 'No photos bake', notes: [] }
+        ]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    expect(wrapper.find('.bake-log-thumb').exists()).toBe(false)
+    // Text content still renders
+    expect(wrapper.find('.bake-log-name').text()).toBe('ATK Ultimate Cinnamon Buns')
+  })
+
+  it('shows thumb for entries with photos and no thumb for entries without', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: 'v1.2.0',
+            summary: 'Has photos',
+            notes: [],
+            photos: [
+              { src: '/images/hero-800w.webp', thumb: '/images/hero-400w.webp', alt: 'Hero shot' }
+            ]
+          }
+        ]
+      },
+      'tartine-baguette.json': {
+        cook_log: [
+          { date: '2026-02-09', version: 'v1.0.0', summary: 'No photos', notes: [] }
+        ]
+      }
+    })
+
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    const rows = wrapper.findAll('.bake-log-item')
+    expect(rows.length).toBe(2)
+
+    // First row (Feb 10) has photo
+    expect(rows[0].find('.bake-log-thumb').exists()).toBe(true)
+    // Second row (Feb 9) has no photo
+    expect(rows[1].find('.bake-log-thumb').exists()).toBe(false)
+  })
+
+  it('uses hero thumb from single-photo entry', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: 'v1.2.0',
+            notes: [],
+            photos: [
+              { src: '/images/only-800w.webp', thumb: '/images/only-400w.webp', alt: 'Only photo' }
+            ]
+          }
+        ]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    const thumb = wrapper.find('.bake-log-thumb')
+    expect(thumb.exists()).toBe(true)
+    expect(thumb.attributes('src')).toBe('/images/only-400w.webp')
+    expect(thumb.attributes('alt')).toBe('Only photo')
+  })
 })
