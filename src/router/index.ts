@@ -95,6 +95,12 @@ const router = createRouter({
       component: EmptyRouteView,
       meta: { showIndex: false, demoPage: true }
     },
+    {
+      path: '/demo/bake-log-photos',
+      name: 'bake-log-photos-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
   ]
 })
 
