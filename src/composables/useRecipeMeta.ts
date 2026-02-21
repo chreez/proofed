@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import type { Recipe } from '@/types/recipe'
+import { latestCookLogEntryWithPhotos } from '@/composables/useCookLog'
 
 const BASE_URL = 'https://proofeddot.netlify.app'
 const SITE_NAME = 'proofed.'
@@ -79,9 +80,9 @@ export function useRecipeMeta(
 
     if (!r?.cook_log?.length) return FALLBACK_IMAGE
 
-    // Recipe-level: most recent entry's hero
-    const latestEntry = r.cook_log[0]
-    if (!latestEntry.photos?.length) return FALLBACK_IMAGE
+    // Recipe-level: most recent entry with photos (skips in-progress entries with no photos)
+    const latestEntry = latestCookLogEntryWithPhotos(r.cook_log)
+    if (!latestEntry?.photos?.length) return FALLBACK_IMAGE
 
     // Hero convention: last photo in the array (800w WebP)
     const heroPhoto = latestEntry.photos[latestEntry.photos.length - 1]

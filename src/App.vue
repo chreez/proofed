@@ -6,7 +6,7 @@ import { useProgress } from '@/composables/useProgress'
 import { useScratchpad } from '@/composables/useScratchpad'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
-import { latestCookLogEntry } from '@/composables/useCookLog'
+import { latestCookLogEntryWithPhotos } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { QrCode } from 'lucide-vue-next'
@@ -33,6 +33,7 @@ import DemoQrPrintTest from '@/components/DemoQrPrintTest.vue'
 import DemoScratchpad from '@/components/DemoScratchpad.vue'
 import DemoCostPicker from '@/components/DemoCostPicker.vue'
 import DemoCostRender from '@/components/DemoCostRender.vue'
+import DemoBakeLogPhotos from '@/components/DemoBakeLogPhotos.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
 import BakeLogPage from '@/components/BakeLogPage.vue'
@@ -161,9 +162,9 @@ function getStatesForStage(stateIds: string[]) {
     .filter((s): s is RecipeState => s !== undefined)
 }
 
-// Hero banner: latest bake photo
+// Hero banner: latest bake photo (skips in-progress entries with no photos)
 const latestHeroPhoto = computed(() => {
-  const entry = latestCookLogEntry(currentRecipe.value?.cook_log)
+  const entry = latestCookLogEntryWithPhotos(currentRecipe.value?.cook_log)
   if (!entry?.photos?.length) return null
   return {
     photo: entry.photos[entry.photos.length - 1],
@@ -190,7 +191,7 @@ const heroLightboxOpen = ref(false)
 const heroLightboxPhotos = ref<CookLogPhoto[]>([])
 
 function openHeroLightbox(): void {
-  const entry = latestCookLogEntry(currentRecipe.value?.cook_log)
+  const entry = latestCookLogEntryWithPhotos(currentRecipe.value?.cook_log)
   if (!entry?.photos?.length) return
   const hero = entry.photos[entry.photos.length - 1]
   const rest = entry.photos.slice(0, -1)
@@ -438,6 +439,7 @@ watch(() => route.hash, (newHash) => {
         <DemoScratchpad v-else-if="route.name === 'scratchpad-demo'" />
         <DemoCostPicker v-else-if="route.name === 'cost-picker-demo'" />
         <DemoCostRender v-else-if="route.name === 'cost-render-demo'" />
+        <DemoBakeLogPhotos v-else-if="route.name === 'bake-log-photos-demo'" />
         <DemoSharedMode v-else />
       </template>
 

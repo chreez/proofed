@@ -136,6 +136,50 @@ describe('useRecipeMeta', () => {
     expect(twitterImage).toBe('https://proofeddot.netlify.app/images/test/2026-02-10/img-hero-800w.webp')
   })
 
+  it('skips in-progress entry with no photos and uses older entry with photos for OG image', () => {
+    const recipeWithMixed = makeRecipe()
+    recipeWithMixed.cook_log = [
+      {
+        date: '2026-02-10',
+        version: 'v1.0.0',
+        notes: ['Good bake'],
+        photos: [
+          { src: '/images/test/2026-02-10/img-001-800w.webp', thumb: '/images/test/2026-02-10/img-001-400w.webp', alt: 'Process shot' },
+          { src: '/images/test/2026-02-10/img-hero-800w.webp', thumb: '/images/test/2026-02-10/img-hero-400w.webp', alt: 'Hero shot' },
+        ],
+      },
+      {
+        date: '2026-02-19',
+        version: 'v1.0.0',
+        notes: ['In progress'],
+        photos: [],
+      },
+    ]
+    const recipe = ref<Recipe | null>(recipeWithMixed)
+    const recipeId = ref<string | null>('test-buns')
+
+    useRecipeMeta(() => recipe.value, () => recipeId.value)
+
+    const ogImage = (capturedInput.ogImage as { value: string }).value
+    // Should use 02-10 entry (has photos), not 02-19 (no photos)
+    expect(ogImage).toBe('https://proofeddot.netlify.app/images/test/2026-02-10/img-hero-800w.webp')
+  })
+
+  it('falls back to og-image.png when all cook_log entries have no photos', () => {
+    const recipeNoPhotos = makeRecipe()
+    recipeNoPhotos.cook_log = [
+      { date: '2026-02-10', version: 'v1.0.0', notes: ['No photos'] },
+      { date: '2026-02-19', version: 'v1.0.0', notes: ['Also no photos'], photos: [] },
+    ]
+    const recipe = ref<Recipe | null>(recipeNoPhotos)
+    const recipeId = ref<string | null>('test-buns')
+
+    useRecipeMeta(() => recipe.value, () => recipeId.value)
+
+    const ogImage = (capturedInput.ogImage as { value: string }).value
+    expect(ogImage).toBe('https://proofeddot.netlify.app/og-image.png')
+  })
+
   describe('bake-specific meta (with bakeDate)', () => {
     const makeBakeRecipe = (): Recipe => {
       const r = makeRecipe()

@@ -1,9 +1,10 @@
 ---
 id: PF-155
 title: 'Fix: hero photo missing when latest bake is in-progress with no photos'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-20 19:16'
+updated_date: '2026-02-21 00:47'
 labels:
   - bug
 dependencies: []
@@ -18,12 +19,12 @@ When the most recent cook_log entry is an in-progress bake with no photos, the h
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Index page shows hero thumbnail from most recent bake WITH photos, even when a newer in-progress entry has no photos
-- [ ] #2 Recipe detail page hero banner shows photo from most recent bake WITH photos, even when a newer in-progress entry has no photos
-- [ ] #3 OG meta image (useRecipeMeta.ts) uses the most recent bake entry with photos, not cook_log[0] (oldest)
-- [ ] #4 New `latestCookLogEntryWithPhotos()` helper in useCookLog.ts — returns latest entry where photos array is non-empty
-- [ ] #5 All three call sites (RecipeIndex, App.vue hero, useRecipeMeta) use the new helper
-- [ ] #6 Existing behavior unchanged when latest entry already has photos
-- [ ] #7 Existing behavior unchanged when no entries have photos (graceful fallback)
-- [ ] #8 npm run build passes
+- [x] #1 Index page shows hero thumbnail from most recent bake WITH photos, even when a newer in-progress entry has no photos
+- [x] #2 Recipe detail page hero banner shows photo from most recent bake WITH photos, even when a newer in-progress entry has no photos
+- [x] #3 OG meta image (useRecipeMeta.ts) uses the most recent bake entry with photos, not cook_log[0] (oldest)
+- [x] #4 New `latestCookLogEntryWithPhotos()` helper in useCookLog.ts — returns latest entry where photos array is non-empty
+- [x] #5 All three call sites (RecipeIndex, App.vue hero, useRecipeMeta) use the new helper
+- [x] #6 Existing behavior unchanged when latest entry already has photos
+- [x] #7 Existing behavior unchanged when no entries have photos (graceful fallback)
+- [x] #8 npm run build passes
 <!-- AC:END -->
