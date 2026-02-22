@@ -1,0 +1,49 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-02-19",
+  "processedAt": "2026-02-22T03:54:17.469Z",
+  "photos": [
+    {
+      "name": "aliquot-jar-starting-level",
+      "thumb": "aliquot-jar-starting-level-400w.webp",
+      "src": "aliquot-jar-starting-level-800w.webp",
+      "summary": "Aliquot jar filled with a dough sample at its starting level, sitting on the stovetop next to a red-lidded container. Used to track bulk ferment rise percentage."
+    },
+    {
+      "name": "first-loaf-leaf-score-closeup",
+      "thumb": "first-loaf-leaf-score-closeup-400w.webp",
+      "src": "first-loaf-leaf-score-closeup-800w.webp",
+      "summary": "Close-up of the first loaf cooling on a wire rack, showing a decorative leaf score pattern with well-opened cuts and a flour-dusted crust with deep golden color."
+    },
+    {
+      "name": "first-loaf-leaf-score-on-rack",
+      "thumb": "first-loaf-leaf-score-on-rack-400w.webp",
+      "src": "first-loaf-leaf-score-on-rack-800w.webp",
+      "summary": "First loaf on a copper wire cooling rack, displaying the full leaf score pattern with good oven spring and an ear visible along the top edge."
+    },
+    {
+      "name": "first-loaf-leaf-score-vsco",
+      "thumb": "first-loaf-leaf-score-vsco-400w.webp",
+      "src": "first-loaf-leaf-score-vsco-800w.webp",
+      "summary": "Stylized close-up of the first loaf's leaf score with warm, saturated tones. The opened cuts show a branching stem-and-leaf pattern against the flour-dusted crust."
+    },
+    {
+      "name": "first-loaf-wide-angle-on-rack",
+      "thumb": "first-loaf-wide-angle-on-rack-400w.webp",
+      "src": "first-loaf-wide-angle-on-rack-800w.webp",
+      "summary": "Wide-angle view of the first loaf centered on a round copper cooling rack, showing the full leaf score pattern from above with kitchen counter and gooseneck kettle in the background."
+    },
+    {
+      "name": "second-loaf-internal-temp-209f",
+      "thumb": "second-loaf-internal-temp-209f-400w.webp",
+      "src": "second-loaf-internal-temp-209f-800w.webp",
+      "summary": "Second loaf on a cooling rack with a digital thermometer inserted reading 209 degrees F. A single slash score with moderate spring is visible on the golden-brown crust."
+    },
+    {
+      "name": "two-loaves-in-proofing-baskets",
+      "thumb": "two-loaves-in-proofing-baskets-400w.webp",
+      "src": "two-loaves-in-proofing-baskets-800w.webp",
+      "summary": "Two shaped dough rounds resting seam-side up in cloth-lined oval proofing baskets on the counter, ready for cold proofing overnight."
+    }
+  ]
+}

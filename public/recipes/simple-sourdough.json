@@ -842,8 +842,7 @@
     {
       "date": "2026-02-19",
       "version": "v2.0.0",
-      "status": "in_progress",
-      "summary": null,
+      "summary": "First 2-loaf bake with v2.0.0 — used aliquot jar and Challenger bread pan for the first time. Hit 50% rise in ~4 hours on counter, cold proofed overnight. First loaf had great spring and score pattern, 209°F internal temp.",
       "notes": [
         "Fed starter in the morning, noticed strong growth, decided to bake while prepping sourdough cinnamon buns. First 2-loaf bake (v2.0.0).",
         "Mixed dough at 4:26pm. Estimated 10-hour bulk (~2am), but ended much earlier.",
@@ -865,10 +864,47 @@
         "Used Challenger bread pan for the first time. Had trouble getting it to temp — read 300°F after an hour, preheated ~1.5 hours total before loading.",
         "Used parchment paper for loading into Challenger.",
         "First loaf: great oven spring, rice flour highlighted the score pattern on the crust. Internal temp 209°F.",
-        "Second loaf: came out alright but not as good — possibly a shaping issue from the night before or the oven running hotter from being rushed. Haven't tasted it yet."
+        "Second loaf: came out alright but not as good — possibly a shaping issue from the night before or the oven running hotter from being rushed. Haven't tasted it yet.",
+        "Used an ice cube on the second loaf — wondering if it hurt the rise. Also no rice flour on top of the second loaf.",
+        "Shaping felt satisfying this time."
       ],
-      "photos": [],
-      "next_time": []
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-02-19/aliquot-jar-starting-level-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-19/aliquot-jar-starting-level-400w.webp",
+          "alt": "Aliquot jar filled with a dough sample at its starting level, sitting on the stovetop next to a red-lidded container. Used to track bulk ferment rise percentage."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-19/two-loaves-in-proofing-baskets-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-19/two-loaves-in-proofing-baskets-400w.webp",
+          "alt": "Two shaped dough rounds resting seam-side up in cloth-lined oval proofing baskets on the counter, ready for cold proofing overnight."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-19/second-loaf-internal-temp-209f-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-19/second-loaf-internal-temp-209f-400w.webp",
+          "alt": "Second loaf on a cooling rack with a digital thermometer inserted reading 209°F. A single slash score with moderate spring is visible on the golden-brown crust."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-19/first-loaf-leaf-score-vsco-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-19/first-loaf-leaf-score-vsco-400w.webp",
+          "alt": "Stylized close-up of the first loaf's leaf score with warm, saturated tones. The opened cuts show a branching stem-and-leaf pattern against the flour-dusted crust."
+        }
+      ],
+      "next_time": [
+        { "text": "Try wet hand + scraper only for pre-shape instead of flour" },
+        { "text": "Preheat Challenger longer — took 1.5 hours and was still only at 300°F" }
+      ],
+      "cost": {
+        "total": 2.68,
+        "perServing": 1.34,
+        "servings": 2,
+        "items": [
+          { "ingredientId": "bread_flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour 5 lb", "amount": 1000, "unit": "g", "cost": 2.46 },
+          { "ingredientId": "water", "name": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "amount": 700, "unit": "g", "cost": 0 },
+          { "ingredientId": "starter", "name": "Active Sourdough Starter", "sourceType": "rate", "sourceName": "Derived: 50% AP flour rate (flour + water)", "amount": 200, "unit": "g", "cost": 0.11 },
+          { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 20, "unit": "g", "cost": 0.11 }
+        ]
+      }
     }
   ],
   "research": {
