@@ -85,11 +85,24 @@ function renderNextTime(e: CookLogEntry): string {
   return marked.parse(md) as string
 }
 
-function formatDate(dateStr: string): string {
+function formatDateStr(dateStr: string): string {
   const [y, m, d] = dateStr.split('-').map(Number)
   const date = new Date(y, m - 1, d)
   const weekday = date.toLocaleDateString('en-US', { weekday: 'long' })
   return `${dateStr} — ${weekday}`
+}
+
+function formatDate(e: { date: string }): string {
+  return formatDateStr(e.date)
+}
+
+function statusLabel(e: { start_date?: string }): string {
+  if (e.start_date) {
+    const [, m, d] = e.start_date.split('-').map(Number)
+    const date = new Date(2026, m - 1, d)
+    return `In Progress (since ${date.toLocaleDateString('en-US', { month: 'short' })} ${d})`
+  }
+  return 'In Progress'
 }
 
 function goBack(): void {
@@ -193,10 +206,10 @@ function dismissPopover(): void {
       <div class="mb-4">
         <h2 class="text-heading text-2xl font-mono mb-1">{{ currentRecipe.meta.name }}</h2>
         <div class="flex items-center gap-3">
-          <span class="text-muted font-mono">{{ formatDate(entry.date) }}</span>
+          <span class="text-muted font-mono">{{ formatDate(entry) }}</span>
           <span class="text-xs bg-stone-200 px-2 py-0.5">{{ entry.version }}</span>
           <span v-if="entry.status === 'in_progress'" class="text-xs font-mono px-2 py-0.5 bg-warning-tint text-warning border border-warning">
-            In Progress
+            {{ statusLabel(entry) }}
           </span>
         </div>
       </div>
@@ -342,7 +355,7 @@ function dismissPopover(): void {
               />
               <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 pb-3 pt-8">
                 <p class="font-mono text-sm text-white font-medium">{{ currentRecipe.meta.name }}</p>
-                <p class="font-mono text-xs text-white/70">{{ formatDate(entry.date) }}</p>
+                <p class="font-mono text-xs text-white/70">{{ formatDate(entry) }}</p>
               </div>
             </div>
 

@@ -312,4 +312,69 @@ describe('BakeLogPage', () => {
     expect(thumb.attributes('src')).toBe('/images/only-400w.webp')
     expect(thumb.attributes('alt')).toBe('Only photo')
   })
+
+  it('shows end date only when start_date differs from date', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [
+          { date: '2026-02-20', start_date: '2026-02-19', version: 'v2.0.0', summary: 'Multi-day bake', notes: [] }
+        ]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    // Always shows end date, never a range
+    expect(wrapper.find('.bake-log-date').text()).toBe('Feb 20')
+  })
+
+  it('shows single date when start_date is absent', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [
+          { date: '2026-02-10', version: 'v1.2.0', notes: [] }
+        ]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    expect(wrapper.find('.bake-log-date').text()).toBe('Feb 10')
+  })
+
+  it('shows "since" in in-progress status when start_date exists', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [
+          { date: '2026-02-20', start_date: '2026-02-19', version: 'v2.0.0', status: 'in_progress', notes: [] }
+        ]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    expect(wrapper.find('.bake-log-status').text()).toContain('In Progress (since Feb 19)')
+  })
+
+  it('shows plain "In Progress" when in-progress entry has no start_date', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [
+          { date: '2026-02-20', version: 'v2.0.0', status: 'in_progress', notes: [] }
+        ]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    expect(wrapper.find('.bake-log-status').text()).toBe('In Progress')
+  })
 })

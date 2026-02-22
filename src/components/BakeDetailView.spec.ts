@@ -654,6 +654,76 @@ describe('BakeDetailView', () => {
       // 2026-01-20 is a Tuesday
       expect(wrapper.text()).toContain('2026-01-20 \u2014 Tuesday')
     })
+
+    it('shows end date only when start_date differs from date', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-20',
+          start_date: '2026-02-19',
+          version: 'v1.1.0',
+          notes: ['Multi-day bake'],
+          next_time: []
+        }]
+      })
+      mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: '2026-02-20' }
+      const wrapper = mountComponent()
+      // Always shows end date, never a range
+      expect(wrapper.text()).toContain('2026-02-20 \u2014 Friday')
+      expect(wrapper.text()).not.toContain('Feb 19\u201320')
+    })
+
+    it('shows single date when start_date equals date', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-20',
+          start_date: '2026-02-20',
+          version: 'v1.1.0',
+          notes: ['Same-day bake'],
+          next_time: []
+        }]
+      })
+      mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: '2026-02-20' }
+      const wrapper = mountComponent()
+      expect(wrapper.text()).toContain('2026-02-20 \u2014 Friday')
+    })
+
+    it('shows single date when start_date is absent', () => {
+      const wrapper = mountComponent()
+      // Default entry has no start_date
+      expect(wrapper.text()).toContain('2026-02-05 \u2014 Thursday')
+    })
+
+    it('shows "since" in in-progress badge when start_date exists', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-20',
+          start_date: '2026-02-19',
+          version: 'v1.1.0',
+          status: 'in_progress' as const,
+          notes: ['In progress bake'],
+          next_time: []
+        }]
+      })
+      mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: '2026-02-20' }
+      const wrapper = mountComponent()
+      expect(wrapper.text()).toContain('In Progress (since Feb 19)')
+    })
+
+    it('shows plain "In Progress" when no start_date on in-progress entry', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-20',
+          version: 'v1.1.0',
+          status: 'in_progress' as const,
+          notes: ['In progress bake'],
+          next_time: []
+        }]
+      })
+      mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: '2026-02-20' }
+      const wrapper = mountComponent()
+      expect(wrapper.text()).toContain('In Progress')
+      expect(wrapper.text()).not.toContain('since')
+    })
   })
 
   describe('renderNotes', () => {

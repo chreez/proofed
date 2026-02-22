@@ -98,11 +98,24 @@ function renderNotes(entry: CookLogEntry): string {
   return marked.parse(md) as string
 }
 
-function formatDate(dateStr: string): string {
+function formatDateStr(dateStr: string): string {
   const [y, m, d] = dateStr.split('-').map(Number)
   const date = new Date(y, m - 1, d)
   const weekday = date.toLocaleDateString('en-US', { weekday: 'long' })
   return `${dateStr} — ${weekday}`
+}
+
+function formatDate(entry: { date: string }): string {
+  return formatDateStr(entry.date)
+}
+
+function statusLabel(entry: { status?: string; start_date?: string }): string {
+  if (entry.start_date) {
+    const [, m, d] = entry.start_date.split('-').map(Number)
+    const date = new Date(2026, m - 1, d)
+    return `In Progress (since ${date.toLocaleDateString('en-US', { month: 'short' })} ${d})`
+  }
+  return 'In Progress'
 }
 
 function entryId(date: string): string {
@@ -169,10 +182,10 @@ onMounted(() => {
           <!-- Text content -->
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-3">
-              <span class="font-semibold text-sm text-stone-700">{{ formatDate(entry.date) }}</span>
+              <span class="font-semibold text-sm text-stone-700">{{ formatDate(entry) }}</span>
               <span class="text-xs bg-stone-200 px-2 py-0.5">{{ entry.version }}</span>
               <span v-if="entry.status === 'in_progress'" class="text-xs font-mono px-2 py-0.5 bg-warning-tint text-warning border border-warning">
-                In Progress
+                {{ statusLabel(entry) }}
               </span>
             </div>
             <p v-if="entry.summary" class="text-sm text-stone-500 mt-1.5 line-clamp-2">{{ entry.summary }}</p>
@@ -193,13 +206,13 @@ onMounted(() => {
           <!-- Header: date + version badge + permalink -->
           <div class="flex items-center gap-3 mb-3">
             <span class="font-semibold text-stone-700">
-              {{ formatDate(entry.date) }}
+              {{ formatDate(entry) }}
             </span>
             <span class="text-xs bg-stone-200 px-2 py-0.5 rounded-none">
               {{ entry.version }}
             </span>
             <span v-if="entry.status === 'in_progress'" class="text-xs font-mono px-2 py-0.5 bg-warning-tint text-warning border border-warning">
-              In Progress
+              {{ statusLabel(entry) }}
             </span>
             <IconButton
               :ref="(el: unknown) => setEntryLinkRef(index, el)"

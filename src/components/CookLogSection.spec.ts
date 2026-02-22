@@ -175,6 +175,118 @@ describe('CookLogSection', () => {
     expect(wrapper.text()).toContain('2026')
   })
 
+  it('shows end date only when start_date differs from date', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-20',
+          start_date: '2026-02-19',
+          version: 'v2.0.0',
+          notes: ['Multi-day'],
+          next_time: []
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    // Always shows end date, never a range
+    expect(wrapper.text()).toContain('2026-02-20')
+    expect(wrapper.text()).not.toContain('Feb 19\u201320')
+  })
+
+  it('shows "since" in in-progress badge when start_date exists', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-20',
+          start_date: '2026-02-19',
+          version: 'v2.0.0',
+          status: 'in_progress' as const,
+          notes: ['In progress bake'],
+          next_time: []
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    expect(wrapper.text()).toContain('In Progress (since Feb 19)')
+  })
+
+  it('shows plain "In Progress" when no start_date on in-progress entry', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-20',
+          version: 'v2.0.0',
+          status: 'in_progress' as const,
+          notes: ['In progress bake'],
+          next_time: []
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    expect(wrapper.text()).toContain('In Progress')
+    expect(wrapper.text()).not.toContain('since')
+  })
+
+  it('shows "since" in expanded in-progress badge when start_date exists', async () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-20',
+          start_date: '2026-02-19',
+          version: 'v2.0.0',
+          status: 'in_progress' as const,
+          notes: ['In progress bake'],
+          next_time: []
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    // Click to expand
+    await wrapper.find('.mb-4').trigger('click')
+    expect(wrapper.text()).toContain('In Progress (since Feb 19)')
+  })
+
+  it('shows plain "In Progress" in expanded view when no start_date', async () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-20',
+          version: 'v2.0.0',
+          status: 'in_progress' as const,
+          notes: ['In progress bake'],
+          next_time: []
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    // Click to expand
+    await wrapper.find('.mb-4').trigger('click')
+    expect(wrapper.text()).toContain('In Progress')
+    expect(wrapper.text()).not.toContain('since')
+  })
+
+  it('shows standard date when start_date is absent', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          next_time: []
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    // Should show full date with weekday, not range
+    expect(wrapper.text()).toContain('2026-02-05')
+  })
+
   it('shows summary text in collapsed state when present', () => {
     const wrapper = mount(CookLogSection, {
       props: {

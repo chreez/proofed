@@ -222,6 +222,7 @@ export interface CookLogCost {
 
 export interface CookLogEntry {
   date: string
+  start_date?: string
   version: string
   notes: string[]
   summary?: string

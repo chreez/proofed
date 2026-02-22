@@ -11,6 +11,7 @@ interface BakeEntry {
   recipeId: string
   recipeName: string
   date: string
+  start_date?: string
   version: string
   summary: string | null
   status?: 'in_progress' | 'complete'
@@ -38,6 +39,7 @@ async function fetchCookLogs(): Promise<void> {
             recipeId: recipe.id,
             recipeName: recipe.name,
             date: entry.date,
+            start_date: entry.start_date,
             version: entry.version,
             summary: entry.summary ?? null,
             status: entry.status,
@@ -64,10 +66,19 @@ watch(recipeList, (list) => {
 }, { immediate: true })
 
 function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-').map(Number)
-  const date = new Date(year, month - 1, day)
-  const monthShort = date.toLocaleDateString('en-US', { month: 'short' })
-  return `${monthShort} ${day}`
+  const [, month, day] = dateStr.split('-').map(Number)
+  const date = new Date(2026, month - 1, day)
+  const monthName = date.toLocaleDateString('en-US', { month: 'short' })
+  return `${monthName} ${day}`
+}
+
+function statusLabel(entry: BakeEntry): string {
+  if (entry.start_date) {
+    const [, m, d] = entry.start_date.split('-').map(Number)
+    const date = new Date(2026, m - 1, d)
+    return `In Progress (since ${date.toLocaleDateString('en-US', { month: 'short' })} ${d})`
+  }
+  return 'In Progress'
 }
 
 function navigateToBake(entry: BakeEntry): void {
@@ -100,7 +111,7 @@ const hasEntries = computed(() => entries.value.length > 0)
             <span class="bake-log-name">{{ entry.recipeName }}</span>
             <span class="bake-log-separator">&middot;</span>
             <span class="bake-log-version">{{ entry.version }}</span>
-            <span v-if="entry.status === 'in_progress'" class="bake-log-status">In Progress</span>
+            <span v-if="entry.status === 'in_progress'" class="bake-log-status">{{ statusLabel(entry) }}</span>
           </div>
           <!-- Row 2: thumb + summary -->
           <div v-if="entry.heroThumb || entry.summary" class="bake-log-row-bottom">
