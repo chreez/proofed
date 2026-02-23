@@ -1,9 +1,10 @@
 ---
 id: PF-157
 title: Add start/end date to cook_log entries
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-22 04:07'
+updated_date: '2026-02-22 04:23'
 labels:
   - schema
   - cook-log
@@ -29,3 +30,9 @@ Backwards compat: entries without `start_date` are single-day bakes where start 
 - [ ] #6 Validation schema test updated to accept start_date
 - [ ] #7 Build passes
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added optional `start_date` field to CookLogEntry type. UX always displays end date — no date ranges shown. In-progress entries show "In Progress (since Feb 19)" when start_date exists. Updated CookLogSection, BakeDetailView, and BakeLogPage with statusLabel helper. Applied to simple-sourdough 2026-02-20 entry (start_date: 2026-02-19). Fully backwards compatible — recipes without start_date work unchanged.
+<!-- SECTION:FINAL_SUMMARY:END -->

@@ -1,0 +1,25 @@
+{
+  "recipeId": "ny-style-pizza",
+  "date": "2026-02-20",
+  "processedAt": "2026-02-23T00:41:37.109Z",
+  "photos": [
+    {
+      "name": "kitchenaid-mix-day",
+      "thumb": "kitchenaid-mix-day-400w.webp",
+      "src": "kitchenaid-mix-day-800w.webp",
+      "summary": ""
+    },
+    {
+      "name": "pepperoni-pizza-sliced-vsco",
+      "thumb": "pepperoni-pizza-sliced-vsco-400w.webp",
+      "src": "pepperoni-pizza-sliced-vsco-800w.webp",
+      "summary": ""
+    },
+    {
+      "name": "sclafani-cans",
+      "thumb": "sclafani-cans-400w.webp",
+      "src": "sclafani-cans-800w.webp",
+      "summary": ""
+    }
+  ]
+}

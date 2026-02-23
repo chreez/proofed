@@ -273,10 +273,10 @@
       ]
     },
     {
-      "date": "2026-02-20",
+      "start_date": "2026-02-20",
+      "date": "2026-02-22",
       "version": "v1.3.0",
-      "status": "in_progress",
-      "summary": null,
+      "summary": "Fourth bake — dough accidentally sat at room temp ~4 hours before fridging, stuck to Cambro on removal. Second ball collapsed during shaping but recovered after re-rounding with 15 min rest. Both pies stretched easily and turned out great despite the mishaps.",
       "notes": [
         "Remember to use a measuring glass (the easier to pour one) for recipes involving a stand mixer — much easier to incorporate water",
         "Forgot to measure dough temp before autolyse",
@@ -287,10 +287,35 @@
         "19:24 — let dough rest, planned to check back in ~13 minutes",
         "82°F at 19:48 after running mixer for another ~4 minutes (second knead pass)",
         "78°F approx surface temp — shaped and placed in Cambro. Forgot to weigh dough again",
-        "20:00 — letting dough sit at room temp before fridge, ~43 min remaining (wanted a full hour but forgot to log start time)"
+        "20:00 — letting dough sit at room temp before fridge, ~43 min remaining (wanted a full hour but forgot to log start time)",
+        "383.5g target for each dough ball",
+        "Forgot to place dough in fridge — it was 00:13, dough sat at room temp ~4 hours instead of planned 1 hour",
+        "Dough sticking on bottom of Cambro — probably because didn't bulk ferment in fridge overnight this time",
+        "Preheated oven Feb 22 at ~11:30, letting dough come to room temp",
+        "Started making pizza at ~1:30pm on Feb 22",
+        "Second dough ball collapsed — re-rounded with tension and let sit 15 minutes, made second pizza at ~14:00",
+        "Result was great for both pies — both stretched out easily. One scare on second dough where it nearly tore but held strong"
       ],
-      "photos": [],
-      "next_time": []
+      "photos": [
+        {
+          "src": "/images/ny-style-pizza/2026-02-20/sclafani-cans-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-20/sclafani-cans-400w.webp",
+          "alt": "Two cans of Sclafani crushed tomatoes (28 oz) on a shelf liner"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-20/kitchenaid-mix-day-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-20/kitchenaid-mix-day-400w.webp",
+          "alt": "KitchenAid stand mixer with dough hook, bowl covered with towel during autolyse"
+        },
+        {
+          "src": "/images/ny-style-pizza/2026-02-20/pepperoni-pizza-sliced-vsco-800w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-20/pepperoni-pizza-sliced-vsco-400w.webp",
+          "alt": "Pepperoni pizza on parchment with slices on cutting board, hand lifting one to show airy crumb structure"
+        }
+      ],
+      "next_time": [
+        { "text": "Always bulk ferment overnight in the fridge — room temp bulk led to dough sticking to Cambro" }
+      ]
     }
   ],
   "vessels": [
