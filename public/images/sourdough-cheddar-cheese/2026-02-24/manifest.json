@@ -1,0 +1,25 @@
+{
+  "recipeId": "sourdough-cheddar-cheese",
+  "date": "2026-02-24",
+  "processedAt": "2026-02-24T21:12:32.609Z",
+  "photos": [
+    {
+      "name": "crumb-shot-sparse-cheese",
+      "thumb": "crumb-shot-sparse-cheese-400w.webp",
+      "src": "crumb-shot-sparse-cheese-800w.webp",
+      "summary": "Crumb shot of the sliced boule held up to camera with second half on cutting board behind it. Open, airy crumb structure with large irregular holes throughout. Only a couple small melted cheddar pockets visible near the bottom of the slice — cheese distribution is sparse. Thin, well-colored crust visible on the edges. White cutting board and purple-handled bread knife on stone countertop."
+    },
+    {
+      "name": "crust-closeup-cheese-patches",
+      "thumb": "crust-closeup-cheese-patches-400w.webp",
+      "src": "crust-closeup-cheese-patches-800w.webp",
+      "summary": "Close-up top-down view of the boule crust still on wire cooling rack. Melted cheddar has oozed out through small openings in the crust surface, creating caramelized golden-brown cheese patches scattered across the top. Flour dusting visible between the score marks. The X-score pattern is visible with cheese bubbling up through the cuts. Shows how the cheese migrated to the surface during baking despite sparse distribution inside."
+    },
+    {
+      "name": "finished-boule-cooling-rack",
+      "thumb": "finished-boule-cooling-rack-400w.webp",
+      "src": "finished-boule-cooling-rack-800w.webp",
+      "summary": "Finished sourdough cheddar boule cooling on a round wire rack on stone countertop. VSCO edit with warm tones. Deep golden-brown crust with good oven spring and a bold X-score that opened up well. Flour dusting on the score flaps contrasts against the dark caramelized crust. Decent rise for a first bake — round, tall shape with no blowouts. Some darkening along the top edges from the Dutch oven lid."
+    }
+  ]
+}

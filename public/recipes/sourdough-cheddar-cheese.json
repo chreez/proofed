@@ -882,7 +882,102 @@
       }
     ]
   },
-  "cook_log": [],
+  "cook_log": [
+    {
+      "date": "2026-02-24",
+      "start_date": "2026-02-23",
+      "version": "v1.0.0",
+      "summary": "First cheddar sourdough bake — decent rise and great taste but cheese distribution was sparse and didn't taste enough cheese. Used 700g water instead of recipe's 670g, forgot salt on fold 1, did 5 S&F sets. ~12 hr cold proof. Forgot butter brush. Want smaller cubes and possibly more cheese next time.",
+      "notes": [
+        "Used 700g water (simple-sourdough ratio) instead of recipe's 670g — running at 70% hydration vs intended 67%.",
+        "Did a ~30-minute autolyse (flour + water only) instead of mixing everything at once.",
+        "76°F dough temp after initial flour + water mix.",
+        "Forgot to add salt on first stretch and fold. Added salt at fold 2 along with cheese.",
+        "~20:08 — 77°F after fold 1. 30 min rest.",
+        "~20:39 — 75°F. Added salt and cheese at fold 2. Incorporating cheese was awkward.",
+        "21:04 — 71°F. Dough noticeably cooler, felt chilled on one fold. Moved bowl to top of stove for warmth.",
+        "21:28 — 76°F. Small stretch and fold (fold 4).",
+        "22:04 — 74°F. Final stretch and fold (fold 5) before bulk. Did 5 total S&F sets (recipe calls for 4).",
+        "Average dough temp across readings: ~75°F. Aliquot jar placed in wrong spot — couldn't accurately track rise %.",
+        "01:00 AM (Feb 24) — preshaped. 76°F one dough, 74°F other. ~1100g per piece. Let preshape rest 5 minutes before final shaping.",
+        "~12-hour cold proof in fridge after shaping at 01:00 AM.",
+        "13:32 — pulled first loaf from oven. Decent rise. Both loaves baked.",
+        "Cheese distribution was sparse and uneven — not enough cheese visible in crumb, not enough even distribution.",
+        "Did not dust flour over cheese cubes before folding.",
+        "Considering shredded cheese for better background coverage, but worried about dough workability.",
+        "Forgot butter brush on hot loaves.",
+        "Taste was great but didn't taste too much cheese. Thinks it will taste better in a few hours. Could spread with butter and oil."
+      ],
+      "photos": [
+        {
+          "src": "/images/sourdough-cheddar-cheese/2026-02-24/crumb-shot-sparse-cheese-800w.webp",
+          "thumb": "/images/sourdough-cheddar-cheese/2026-02-24/crumb-shot-sparse-cheese-400w.webp",
+          "alt": "Crumb shot of the sliced boule held up to camera with second half on cutting board behind it. Open, airy crumb structure with large irregular holes throughout. Only a couple small melted cheddar pockets visible near the bottom of the slice — cheese distribution is sparse."
+        },
+        {
+          "src": "/images/sourdough-cheddar-cheese/2026-02-24/crust-closeup-cheese-patches-800w.webp",
+          "thumb": "/images/sourdough-cheddar-cheese/2026-02-24/crust-closeup-cheese-patches-400w.webp",
+          "alt": "Close-up top-down view of the boule crust on wire cooling rack. Melted cheddar oozed through the crust surface creating caramelized golden-brown cheese patches. X-score pattern visible with cheese bubbling up through the cuts."
+        },
+        {
+          "src": "/images/sourdough-cheddar-cheese/2026-02-24/finished-boule-cooling-rack-800w.webp",
+          "thumb": "/images/sourdough-cheddar-cheese/2026-02-24/finished-boule-cooling-rack-400w.webp",
+          "alt": "Finished sourdough cheddar boule cooling on a round wire rack. Deep golden-brown crust with good oven spring and a bold X-score that opened up well. Decent rise for a first bake — round, tall shape with no blowouts."
+        }
+      ],
+      "cost": {
+        "total": 5.98,
+        "perServing": 2.99,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 18,
+            "unit": "g",
+            "cost": 0.09
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Tillamook Sharp Cheddar",
+            "sourceType": "heb",
+            "sourceName": "Tillamook Sharp Cheddar Cheese",
+            "amount": 226,
+            "unit": "g",
+            "cost": 3.47
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter",
+            "sourceType": "manual",
+            "sourceName": "Did not use",
+            "amount": 14,
+            "unit": "g",
+            "cost": 0
+          }
+        ]
+      },
+      "next_time": [
+        { "text": "Reduce water to 670g per recipe (compensates for cheese moisture)" },
+        { "text": "Add salt at initial mix — don't rely on remembering during folds" },
+        { "text": "Dust flour over cold cheese cubes before fold 2" },
+        { "text": "Try smaller cubes for better cheese distribution" },
+        { "text": "Consider more cheese and/or mixing shredded + cubed for background flavor plus pockets" },
+        { "text": "Butter brush the hot loaves (forgot this bake)" }
+      ]
+    }
+  ],
   "research": {
     "sources": [
       {
