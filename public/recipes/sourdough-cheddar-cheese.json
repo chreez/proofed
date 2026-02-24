@@ -1,0 +1,1058 @@
+{
+  "meta": {
+    "name": "Sourdough Cheddar Cheese Bread",
+    "source": {
+      "name": "proofed. Research Synthesis",
+      "type": "original",
+      "author": "8-agent parallel research, 60+ sources",
+      "accessed": "2026-02-23"
+    },
+    "yields": "2 loaves (~900g each baked)",
+    "total_time": "~22 hrs (30 min active)",
+    "description": "A cheddar-enriched variant of our simple sourdough. 226g Tillamook sharp cheddar folded in at set 2, 67% hydration, 1.8% salt, overnight bulk, cold proof, 400°F uncovered bake. Cheese fat provides built-in over-fermentation insurance and 3-day shelf life."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-23",
+      "summary": "Initial recipe from 8-agent parallel research synthesis (60+ sources). Adapted from simple-sourdough base with cheese-specific hydration, salt, temperature, and timing adjustments."
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Mixing → bulk ferment"
+    },
+    {
+      "id": "V2a",
+      "name": "Proofing Basket 1 (lined with towel)",
+      "reuse": "Shaping → cold proof (loaf 1)"
+    },
+    {
+      "id": "V2b",
+      "name": "Proofing Basket 2 (lined with towel)",
+      "reuse": "Shaping → cold proof (loaf 2)"
+    },
+    {
+      "id": "V3",
+      "name": "Dutch Oven with Lid"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Mixing Bowl",
+          "Proofing Basket 1 (lined with towel)",
+          "Proofing Basket 2 (lined with towel)",
+          "Dutch Oven with Lid"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Fork or Spatula",
+          "Bench Scraper",
+          "Bread Lame or Sharp Knife",
+          "Parchment Paper",
+          "Plastic Wrap",
+          "Wire Rack",
+          "Clean Linen or Cotton Towel",
+          "Rice Flour (for dusting towel)",
+          "Pastry Brush"
+        ],
+        "ingredients": [
+          {
+            "id": "bread_flour",
+            "name": "Bread Flour",
+            "total": 1000,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Cross-source consensus (8/8 agents)",
+            "confidence": "high",
+            "rationale": "Same base as simple sourdough. 12-13% protein for strong gluten network."
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 670,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Food science agent, TheYeastWeCando, JennyBlogs",
+            "confidence": "high",
+            "rationale": "67% hydration — reduced 3% from lean recipe. Cheese adds ~97g bound moisture; without reduction, dough becomes too slack."
+          },
+          {
+            "id": "starter",
+            "name": "Active Sourdough Starter",
+            "total": 200,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Cross-source consensus, same as simple-sourdough base",
+            "confidence": "high",
+            "rationale": "20% inoculation unchanged — cheese fat slows fermentation, so maintaining the higher inoculation rate compensates."
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 18,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "The Perfect Loaf, The Fresh Loaf (alfanso), Sourdough Geeks",
+            "confidence": "high",
+            "rationale": "1.8% of flour weight — reduced from 2% because 226g cheddar adds ~1.4g sodium. Prevents over-salting."
+          },
+          {
+            "id": "cheddar",
+            "name": "Tillamook Sharp Cheddar",
+            "total": 226,
+            "unit": "g",
+            "breakdown": [
+              { "label": "loaf 1", "amount": 113 },
+              { "label": "loaf 2", "amount": 113 }
+            ],
+            "sourcedFrom": "Poetry & Pies, Little Spoon Farm, The Perfect Loaf, 8/8 agents",
+            "confidence": "high",
+            "rationale": "22.6% of flour weight — dead center of 20-25% consensus range. One 8oz/226g Tillamook block, split evenly."
+          },
+          {
+            "id": "butter",
+            "name": "Unsalted Butter (melted)",
+            "total": 14,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Multiple community bakers, Reddit consensus",
+            "confidence": "medium",
+            "rationale": "Post-bake brush only (~7g per loaf). Achieves butter flavor and golden crust without disrupting dough. No butter IN the dough — cheese already contributes 72g fat."
+          }
+        ]
+      },
+      "states": [
+        "PREP_WORKSPACE",
+        "PREP_CHEESE"
+      ]
+    },
+    {
+      "id": "MIX",
+      "title": "Mix Dough",
+      "gather": null,
+      "states": [
+        "COMBINE_INGREDIENTS"
+      ]
+    },
+    {
+      "id": "STRETCH_FOLD",
+      "title": "Stretch & Fold",
+      "gather": null,
+      "states": [
+        "FOLD_1",
+        "REST_1",
+        "FOLD_2_CHEESE",
+        "REST_2",
+        "FOLD_3",
+        "REST_3",
+        "FOLD_4"
+      ]
+    },
+    {
+      "id": "BULK_FERMENT",
+      "title": "Bulk Ferment (Overnight)",
+      "gather": null,
+      "states": [
+        "OVERNIGHT_BULK"
+      ]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Shape",
+      "gather": null,
+      "states": [
+        "TURN_OUT",
+        "DIVIDE",
+        "PRE_SHAPE",
+        "BENCH_REST",
+        "ENVELOPE_FOLD",
+        "BUILD_TENSION",
+        "INTO_BASKET"
+      ]
+    },
+    {
+      "id": "COLD_PROOF",
+      "title": "Cold Proof",
+      "gather": null,
+      "states": [
+        "REFRIGERATE"
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": [
+        "PREHEAT",
+        "SCORE",
+        "BAKE_COVERED",
+        "BAKE_UNCOVERED",
+        "BUTTER_BRUSH"
+      ]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "gather": null,
+      "states": [
+        "COOL_ON_RACK"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out bread flour, water, starter, and salt into separate containers.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed, vessels and equipment laid out",
+      "notes": [
+        {
+          "text": "Starter must be active and bubbly — should have doubled within 4-8 hours of its last feeding",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If starter hasn't doubled, add 1/8 tsp instant yeast to the dough as insurance — King Arthur and The Perfect Loaf both endorse this",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PREP_CHEESE",
+      "title": "Prepare Cheese",
+      "direction": "Cut 226g Tillamook sharp cheddar into 12mm (½ inch) cubes. Divide into two equal portions (113g each). Return to refrigerator until needed at stretch-and-fold set 2.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Tillamook Sharp Cheddar", "amount": "226g (cut into 12mm cubes)" }
+      ],
+      "exit_condition": "226g cheddar cubed into 12mm pieces, split into two 113g portions, refrigerated",
+      "notes": [
+        {
+          "text": "Cold cubes are critical — warm cheese smears into the dough instead of creating defined pockets. Keep refrigerated until fold 2.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "12mm cubes create the best melt pockets — smaller cubes disappear into the crumb, larger cubes leave holes when they melt.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "COMBINE_INGREDIENTS",
+      "title": "Combine All Ingredients",
+      "direction": "In the large mixing bowl (V1), combine 670g water and 200g active starter. Stir to dissolve. Add 1000g bread flour and 18g salt. Mix with a fork or spatula until no dry flour remains — a shaggy, rough mass.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Water", "amount": "670g" },
+        { "name": "Active Sourdough Starter", "amount": "200g" },
+        { "name": "Bread Flour", "amount": "1000g" },
+        { "name": "Fine Sea Salt", "amount": "18g" }
+      ],
+      "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
+      "notes": [
+        {
+          "text": "No autolyse needed — same as simple sourdough. Mix everything at once.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Do NOT add cheese here. Cheese goes in at fold 2 — gluten needs time to develop first.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FOLD_1",
+      "title": "Stretch & Fold — Set 1",
+      "direction": "With a wet hand, grab the north side of the dough, stretch it up as far as it will go without tearing, and fold it over the center. Rotate the bowl 90 degrees and repeat for all 4 sides (north, east, south, west). Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 4 sides stretched and folded, dough is in a rough package",
+      "notes": [
+        {
+          "text": "Wet your hand first to prevent sticking — do not flour",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "technique_url": "https://www.theperfectloaf.com/how-to-stretch-and-fold-sourdough-bread-dough/",
+      "reminders": [
+        { "prompt": "Record dough temperature", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "REST_1",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "FOLD_2_CHEESE",
+      "title": "Stretch & Fold — Set 2 (Add Cheese)",
+      "direction": "Scatter one portion of cold cheddar cubes (113g) evenly across the top of the dough — this is for the first loaf. Scatter the second portion (113g) on top. Perform stretch and fold: wet hand, grab one side, stretch up and over the cheese, fold to center. All 4 sides. The cheese will be messy and try to escape — that's normal. Tuck stray cubes back into folds. Cover.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Tillamook Sharp Cheddar (cold cubes)", "amount": "226g" }
+      ],
+      "exit_condition": "All cheese incorporated into dough via stretch and fold. Cubes mostly enclosed, some poking through is fine.",
+      "notes": [
+        {
+          "text": "Cheese goes in at fold 2 — after one set of gluten development. Adding at mix disrupts initial gluten formation. Adding later doesn't distribute well.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Don't worry about perfect distribution — subsequent folds will redistribute the cheese. It will look messy after this fold.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Keep the cheese cold until this moment. Cold cubes maintain their shape and create defined pockets when baked. Room-temp cheese smears.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "REST_2",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "FOLD_3",
+      "title": "Stretch & Fold — Set 3",
+      "direction": "Repeat stretch and fold: wet hand, all 4 sides. The cheese should be distributing more evenly through the dough. Tuck any escaped cubes back in. Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 4 sides stretched and folded. Cheese is distributing more evenly through the dough.",
+      "notes": [
+        {
+          "text": "4 sets compensates for cheese disrupting gluten development. The extra folds help redistribute cheese and rebuild structure.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "REST_3",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "FOLD_4",
+      "title": "Stretch & Fold — Set 4 (Final)",
+      "direction": "Final stretch and fold: wet hand, all 4 sides. The dough should feel smoother and more cohesive than after the cheese fold, though not as elastic as lean sourdough. Cover tightly with plastic wrap.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is reasonably smooth and cohesive, covered tightly for overnight bulk",
+      "notes": [
+        {
+          "text": "Don't expect the same elasticity as lean sourdough — cheese fat and casein weaken the gluten network. A slightly slacker dough is normal and expected at 22% cheese inclusion.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "OVERNIGHT_BULK",
+      "title": "Overnight Bulk Ferment",
+      "direction": "Leave the covered bowl on the counter at room temperature (70-74°F / 21-23°C) overnight (10-14 hours). Do not use the oven with light on — it runs too warm. The dough ferments while you sleep.",
+      "duration_min": 720,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has increased 50-75% in volume (NOT doubled), surface is domed with visible bubbles, jiggles when bowl is shaken. If dough has doubled or is flat/slack, it is over-fermented — shape immediately or pivot to focaccia.",
+      "notes": [
+        {
+          "text": "Watch the dough, not the clock. At 75°F (24°C) this takes ~8 hours. At 65°F (18°C) it could take 12+ hours. The visual cues matter more than time.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Cheese fat slows fermentation — expect 10-20% longer bulk than lean sourdough. At 70-74°F, plan for 11-14 hours. The fat actually gives you more margin against over-fermentation.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If dough has more than doubled and looks very puffy with large bubbles, it is over-fermented. Shape immediately and bake sooner. If dough tears during shaping, pivot to focaccia: flatten into an oiled dish, top with olive oil, herbs, salt, and parmesan. Bake at 425°F (220°C) for ~40 min.",
+          "critical": false,
+          "source": "user"
+        },
+        {
+          "text": "Do NOT use oven with light on for bulk ferment — oven light runs 78-90°F+, far too warm for 20% inoculation. Counter at 70-74°F is ideal. Two bakes over-fermented using oven light before switching to counter.",
+          "critical": true,
+          "source": "user"
+        },
+        {
+          "text": "If using an aliquot jar, sample from a cheese-free area of the dough for accurate tracking.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Note kitchen ambient temperature", "type": "measurement" },
+        { "prompt": "Check dough volume rise %", "type": "observation" }
+      ]
+    },
+    {
+      "id": "TURN_OUT",
+      "title": "Turn Out Dough",
+      "direction": "Lightly flour the counter. Gently scrape the fermented dough out of the bowl onto the floured surface. Sprinkle a light dusting of flour on top of the dough.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is on the floured counter, right-side up",
+      "notes": [
+        {
+          "text": "You may see cheese cubes near the surface — this is fine. They'll get tucked in during shaping.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "DIVIDE",
+      "title": "Divide Dough",
+      "direction": "Using a bench scraper, divide the dough in half — each piece should be roughly 545g. Don't fuss over exact weight. Use the bench scraper in one decisive motion; avoid sawing.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Two roughly equal dough pieces (~545g each) on the counter",
+      "notes": [
+        {
+          "text": "A scale helps if you want even loaves, but eyeballing is fine — sourdough is forgiving.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PRE_SHAPE",
+      "title": "Pre-Shape",
+      "direction": "Using a bench scraper, gently form each piece into a loose round — tuck the edges under to create a rough ball. Don't worry about perfection. The goal is a general round shape with some surface tension. Repeat for both pieces.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both pieces are in loose round shapes on the counter",
+      "notes": [
+        {
+          "text": "Pre-shaping relaxes the gluten before final shaping, making it much easier to build tension in the envelope fold.",
+          "critical": false,
+          "source": "user"
+        },
+        {
+          "text": "If cheese cubes are poking out, gently push them back in and pinch the dough over them.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BENCH_REST",
+      "title": "Bench Rest",
+      "direction": "Leave both pre-shaped rounds uncovered on the counter for 15-20 minutes. The gluten relaxes, making final shaping easier.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both rounds have rested 15-20 minutes, slightly spread but still holding general shape",
+      "notes": [
+        {
+          "text": "If dough feels too warm or slack after bench rest, refrigerate for 20-30 minutes before final shaping. Cold dough is easier to handle with cheese inclusions.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "ENVELOPE_FOLD",
+      "title": "Envelope Fold",
+      "direction": "One piece at a time: flip the dough over so the sticky side faces up. Fold like an envelope: bottom edge up to center, left side over to center, right side over to center, top edge down to center. Flip the whole package seam-side down onto a clean, UNFLOURED section of counter. Repeat for the second piece.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both pieces are folded into rough rounds, seam-side down on unfloured surface",
+      "notes": [
+        {
+          "text": "Keep a 2-inch cheese-free border before the final fold. Cheese at the seam prevents sealing.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If cheese is poking through the surface during folding, push it back in and pinch the dough closed over it.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "technique_url": "https://www.theclevercarrot.com/2020/07/how-to-shape-a-round-sourdough-boule/"
+    },
+    {
+      "id": "BUILD_TENSION",
+      "title": "Build Surface Tension",
+      "direction": "One piece at a time: cup your hands around the dough (palms don't touch the top). Gently drag it toward you in a short motion — the bottom grips the unfloured surface and tucks under, creating tension on top. Rotate a quarter turn. Repeat 4-6 times until the top is smooth and taut, like a stretched balloon. Repeat for the second piece.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both pieces have smooth, taut, rounded surfaces with visible surface tension",
+      "notes": [
+        {
+          "text": "The unfloured counter is intentional — friction between the dough and counter creates the tension. Do not flour here.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Harder to build tension with cheese — fat makes dough slicker. Use bench scraper aggressively. If cheese pokes through surface, push it back in and pinch dough over it.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If the dough tears, stop. Let it rest 5 minutes and try again with fewer, gentler drags.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "INTO_BASKET",
+      "title": "Into Proofing Basket",
+      "direction": "Dust both towel-lined proofing baskets (V2a, V2b) generously with rice flour. Using a bench scraper, lift each shaped dough and place seam-side UP into a basket. If seams have opened, pinch closed. Cover both with plastic wrap.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both loaves are seam-side up in floured, towel-lined baskets, covered with plastic wrap",
+      "notes": [
+        {
+          "text": "Rice flour is best for dusting — it's gluten-free so it won't stick to the dough. Regular flour works but rice flour is more reliable.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Check that no cheese cubes are exposed on the bottom (which will be the top when turned out). Tuck any surface cheese inside and pinch closed — exposed cheese chars during baking.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "REFRIGERATE",
+      "title": "Cold Proof in Fridge",
+      "direction": "Place both covered baskets in the refrigerator. Cold proof for 1-24 hours. The fridge slows fermentation, develops flavor, and makes the dough easier to score. Cold also firms the cheese in place.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both loaves have been in fridge at least 1 hour (up to 24 hours). Begin preheating oven when ready to bake.",
+      "notes": [
+        {
+          "text": "The fridge is your pause button. Shaped dough can sit 1-48 hours. Bake whenever it's convenient.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Longer cold proof = more tangy, complex flavor. 12-18 hours is the sweet spot for overnight.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Cold firms the cheese cubes in place — they won't shift or ooze during scoring and loading. Bake straight from cold.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT",
+      "title": "Preheat Oven + Dutch Oven",
+      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 450°F (230°C) for at least 45 minutes. The heavy pot needs time to fully saturate with heat.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven at 450°F (230°C) for at least 45 minutes, Dutch oven fully preheated",
+      "notes": [
+        {
+          "text": "Start preheating while the dough is still in the fridge. Do NOT let the dough warm up — bake straight from cold.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Melt 14g butter in a small saucepan or microwave while preheating — have it ready for brushing after bake.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "SCORE",
+      "title": "Score the Dough",
+      "direction": "Remove the first loaf from fridge (leave the second in the fridge). Turn out onto a sheet of parchment paper (it will release from the floured towel). Using a bread lame or sharp knife, score an X pattern across the top — two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "First loaf scored with clean X pattern on parchment paper, ready for Dutch oven",
+      "notes": [
+        {
+          "text": "Score the dough cold — cold dough is firm and scores cleanly. Warm dough drags and tears.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Keep scoring simple — single slash or cross. Don't chase an ear with cheese inclusions; cheese disrupts the controlled expansion an ear requires.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Use parchment paper as scoring and loading surface — score directly on parchment, then use it as a sling to lower into Dutch oven. Parchment is mandatory for cheese bread — melted cheese bonds to bare Dutch oven.",
+          "critical": true,
+          "source": "user"
+        }
+      ]
+    },
+    {
+      "id": "BAKE_COVERED",
+      "title": "Bake — Covered",
+      "direction": "Carefully remove the preheated Dutch oven. Lower the first scored loaf into the pot using the parchment as a sling. Cover with the lid. Return to oven. Bake at 450°F (230°C) for 20 minutes.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "20 minutes elapsed with lid on",
+      "notes": [
+        {
+          "text": "The lid traps steam from the dough, keeping the crust pliable for maximum oven spring and creating a glossy, blistered crust.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Be extremely careful — the Dutch oven is 450°F. Use oven mitts and move deliberately.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Expect slightly less dramatic oven spring than lean sourdough — cheese inclusions weigh down the dough and disrupt gluten. This is normal, not a failure.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BAKE_UNCOVERED",
+      "title": "Bake — Uncovered",
+      "direction": "Remove the lid from the Dutch oven. Reduce oven temperature to 400°F (205°C). Continue baking first loaf uncovered for 20-25 minutes until deep golden brown. Cheese proteins accelerate browning — monitor closely and tent with foil if darkening too fast. When done, transfer to cooling rack. Score the second loaf, load, and repeat.",
+      "duration_min": 22,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both loaves baked — deep golden brown crust, hollow sound when tapped, internal temp 200°F (93°C)",
+      "notes": [
+        {
+          "text": "Drop temp for uncovered phase — cheese proteins and lactose accelerate Maillard browning. At 450°F uncovered, cheese bread can burn.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Internal temp target is 200°F (93°C), lower than lean sourdough's 205°F. Cheese fat retains more moisture — don't need to drive off as much water.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If any cheese has oozed onto the parchment or Dutch oven surface, it will be very hot and sticky. Don't try to scrape it off — let it cool and it peels off easily.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Record internal temperature immediately out of oven (target 200°F / 93°C)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "BUTTER_BRUSH",
+      "title": "Brush with Butter",
+      "direction": "Immediately brush the top and sides of each hot loaf with melted butter (~7g per loaf). The residual heat absorbs the butter into the crust.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Unsalted Butter (melted)", "amount": "14g total" }
+      ],
+      "exit_condition": "Both loaves brushed with melted butter, butter absorbed into hot crust",
+      "notes": [
+        {
+          "text": "Brush immediately while loaves are still very hot — the heat draws the butter into the crust for flavor and a golden sheen.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "COOL_ON_RACK",
+      "title": "Cool on Rack",
+      "direction": "Place both loaves on a wire rack. The first loaf gets extra cooling time while the second bakes. Let each loaf cool for at least 2 hours before slicing. The bread is still cooking internally and the cheese inside must fully set.",
+      "duration_min": 120,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Bread has cooled at least 2 hours. Cheese inside must fully set — cutting early means gummy crumb and oozing cheese.",
+      "notes": [
+        {
+          "text": "2 hours minimum, not 1. Cheese inside the loaf is molten at bake end. Cutting too early = gummy interior with cheese oozing everywhere instead of set, defined pockets.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "You'll hear the crust crackling as it cools. That's normal — it's called \"singing\" and means the crust is crisping up.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Expect slight deflation as cheese pockets contract on cooling — cosmetic, not structural. Shelf life is better than lean sourdough because cheese fat inhibits staling.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Rate crust color and ear", "type": "observation" }
+      ]
+    }
+  ],
+  "nutrition": {
+    "servings": 10,
+    "servingSize": "1 slice (per loaf, ~10 slices each)",
+    "calculatedDate": "2026-02-23",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 2479.7,
+      "protein": 94.3,
+      "totalFat": 51.1,
+      "saturatedFat": 25.1,
+      "carbohydrates": 401.0,
+      "sugar": 2.0,
+      "fiber": 13.2,
+      "sodium": 4227.9
+    },
+    "perServing": {
+      "calories": 248.0,
+      "protein": 9.4,
+      "totalFat": 5.1,
+      "saturatedFat": 2.5,
+      "carbohydrates": 40.1,
+      "sugar": 0.2,
+      "fiber": 1.3,
+      "sodium": 422.8
+    },
+    "breakdown": [
+      {
+        "ingredientId": "bread_flour",
+        "ingredientName": "Bread Flour",
+        "amount": 500,
+        "fdcId": 168896,
+        "calories": 1805.0,
+        "protein": 59.9,
+        "totalFat": 8.3,
+        "saturatedFat": 1.2,
+        "carbohydrates": 362.7,
+        "sugar": 1.4,
+        "fiber": 12.0,
+        "sodium": 10.0
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 335,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1.3
+      },
+      {
+        "ingredientId": "starter",
+        "ingredientName": "Sourdough Starter (100% hydration)",
+        "amount": 100,
+        "fdcId": null,
+        "calories": 180.5,
+        "protein": 6.0,
+        "totalFat": 0.8,
+        "saturatedFat": 0.1,
+        "carbohydrates": 36.3,
+        "sugar": 0.1,
+        "fiber": 1.2,
+        "sodium": 1.0
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Fine Sea Salt",
+        "amount": 9,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3488.3
+      },
+      {
+        "ingredientId": "cheddar",
+        "ingredientName": "Tillamook Sharp Cheddar",
+        "amount": 113,
+        "fdcId": 399213,
+        "calories": 444.0,
+        "protein": 28.3,
+        "totalFat": 36.3,
+        "saturatedFat": 20.2,
+        "carbohydrates": 2.0,
+        "sugar": 0.5,
+        "fiber": 0,
+        "sodium": 726.5
+      },
+      {
+        "ingredientId": "butter",
+        "ingredientName": "Unsalted Butter (melted)",
+        "amount": 7,
+        "fdcId": 173010,
+        "calories": 50.2,
+        "protein": 0.1,
+        "totalFat": 5.7,
+        "saturatedFat": 3.6,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.8
+      }
+    ]
+  },
+  "cook_log": [],
+  "research": {
+    "sources": [
+      {
+        "name": "The Perfect Loaf",
+        "url": "https://www.theperfectloaf.com/jalapeno-cheddar-sourdough-bread/",
+        "type": "adapted",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "Poetry & Pies",
+        "url": "https://www.poetryandpies.com/home/sharp-cheddar-sourdough",
+        "type": "adapted"
+      },
+      {
+        "name": "Little Spoon Farm",
+        "url": "https://littlespoonfarm.com/jalapeno-cheddar-sourdough-bread-recipe/",
+        "type": "adapted"
+      },
+      {
+        "name": "TheYeastWeCando",
+        "url": "https://theyeastwecando.com/incorporate-cheese-in-sourdough-bread/",
+        "type": "adapted"
+      },
+      {
+        "name": "The Fresh Loaf Community",
+        "url": "https://www.thefreshloaf.com/node/50907/how-do-you-mix-cheese-sourdough-bread",
+        "type": "adapted"
+      },
+      {
+        "name": "Pantry Mama",
+        "url": "https://www.pantrymama.com/sourdough-cheese-bread/",
+        "type": "adapted"
+      },
+      {
+        "name": "King Arthur Baking",
+        "url": "https://www.kingarthurbaking.com/recipes/savory-cheddar-cheese-bread-recipe",
+        "type": "adapted"
+      },
+      {
+        "name": "JennyBlogs — Sourdough Inclusions",
+        "url": "https://jennyblogs.com/blog/2024/9/28/how-much-inclusions-can-you-add-to-sourdough-bread",
+        "type": "adapted"
+      },
+      {
+        "name": "Challenger Breadware — Lamination Method",
+        "url": "https://challengerbreadware.com/bread-techniques/inclusions-the-lamination-method/",
+        "type": "adapted"
+      },
+      {
+        "name": "Sourdough Geeks — Inclusion Rules",
+        "url": "https://www.sourdoughgeeks.com/blog/bake-any-sourdough-loaf-rules-ratios-for-every-inclusion",
+        "type": "adapted"
+      },
+      {
+        "name": "The Perfect Loaf — Butter in Bread",
+        "url": "https://www.theperfectloaf.com/what-does-butter-do-to-bread-dough/",
+        "type": "adapted",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "Modernist Cuisine — Enriched Breads",
+        "url": "https://modernistcuisine.com/mbah/all-about-enriched-breads/",
+        "type": "adapted"
+      },
+      {
+        "name": "Wouters et al. (2016) — Casein + Gluten",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25704643/",
+        "type": "adapted"
+      },
+      {
+        "name": "Nutritionvalue.org — Tillamook Sharp",
+        "url": "https://www.nutritionvalue.org/Tillamook%2C_sharp_cheddar_cheese_by_TILLAMOOK_399213_nutritional_value.html",
+        "type": "adapted"
+      }
+    ],
+    "techniques": [
+      {
+        "name": "67% hydration (reduced from 70%)",
+        "sourcedFrom": "Food science agent, TheYeastWeCando, JennyBlogs",
+        "rationale": "Cheese adds ~97g bound moisture. 2-3% hydration reduction recommended by multiple sources.",
+        "confidence": "high"
+      },
+      {
+        "name": "1.8% salt (reduced from 2%)",
+        "sourcedFrom": "The Perfect Loaf, The Fresh Loaf (alfanso), Sourdough Geeks",
+        "rationale": "226g cheddar adds ~1.4g sodium. TPL uses 1.8% for their cheese sourdough.",
+        "confidence": "high"
+      },
+      {
+        "name": "22.6% cheese inclusion",
+        "sourcedFrom": "Poetry & Pies, Little Spoon Farm, The Perfect Loaf, 8/8 agents",
+        "rationale": "Dead center of 20-25% consensus range. Well-tested by multiple published recipes.",
+        "confidence": "high"
+      },
+      {
+        "name": "Add cheese at 2nd stretch-and-fold",
+        "sourcedFrom": "TheYeastWeCando, Poetry & Pies, Challenger Breadware, Simplicityandastarter",
+        "rationale": "Gives gluten time to develop before cheese fat interferes. Consensus across 6+ sources.",
+        "confidence": "high"
+      },
+      {
+        "name": "4 stretch-and-fold sets",
+        "sourcedFrom": "JennyBlogs, TheYeastWeCando, enrichment safety checks",
+        "rationale": "Extra set compensates for cheese disrupting gluten structure and helps with distribution.",
+        "confidence": "medium"
+      },
+      {
+        "name": "No butter in dough",
+        "sourcedFrom": "13 of 16 lean recipes, community consensus, food science",
+        "rationale": "Cheese alone contributes 72g fat (7.2% of flour weight). Butter is unnecessary and risks greasy loaf.",
+        "confidence": "high"
+      },
+      {
+        "name": "Butter brushed post-bake",
+        "sourcedFrom": "Multiple community bakers, Reddit",
+        "rationale": "Achieves butter flavor and crust softening without dough disruption.",
+        "confidence": "medium"
+      },
+      {
+        "name": "Uncovered bake at 400°F (not 450°F)",
+        "sourcedFrom": "Poetry & Pies, EatHealthy365, Gardners Wisconsin Cheese",
+        "rationale": "Cheese proteins + lactose accelerate Maillard browning. 450°F uncovered risks burning.",
+        "confidence": "high"
+      },
+      {
+        "name": "Internal temp target 200°F",
+        "sourcedFrom": "King Arthur, KitchPrep, EatHealthy365",
+        "rationale": "Fat retains moisture — don't need to drive off as much water as lean bread.",
+        "confidence": "medium"
+      },
+      {
+        "name": "2+ hour cooling",
+        "sourcedFrom": "Summit Sourdough, Busby's Bakery, Poetry & Pies",
+        "rationale": "Molten cheese must set. Cutting early = gummy crumb + oozing cheese.",
+        "confidence": "high"
+      },
+      {
+        "name": "Cold cheese cubes (12mm)",
+        "sourcedFrom": "TheYeastWeCando, Poetry & Pies, The Fresh Loaf",
+        "rationale": "Cold prevents smearing. 12mm cubes create defined melted pockets without disappearing into the crumb.",
+        "confidence": "high"
+      },
+      {
+        "name": "Parchment mandatory for cheese bread",
+        "sourcedFrom": "Multiple community sources, practical consensus",
+        "rationale": "Melted cheese bonds to bare Dutch oven surfaces. Parchment is non-negotiable.",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "8-agent parallel research: copycat recipes, serious bakers, Reddit/community, cheese technique, butter technique, food science, Tillamook product, enrichment safety checks",
+    "sourceCount": 60,
+    "date": "2026-02-23"
+  },
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "350°F (175°C), 5-10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.",
+        "source": "agent"
+      },
+      {
+        "method": "Toaster",
+        "detail": "Slice and toast directly — the cheese re-melts slightly and creates crispy edges.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Cut-side down on a board, room temp, up to 2 days (longer than lean sourdough due to cheese fat). Freeze sliced in zip-lock for up to 1 month.",
+        "source": "agent"
+      }
+    ]
+  }
+}
