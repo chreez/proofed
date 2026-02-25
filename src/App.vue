@@ -157,6 +157,13 @@ onMounted(async () => {
   manifestLoaded.value = true
 })
 
+/* v8 ignore start -- guarded by template v-if, null branches unreachable */
+function handleReset(): void {
+  progress.value!.resetProgress()
+  scratchpad.value!.clearAll()
+}
+/* v8 ignore stop */
+
 function getStatesForStage(stateIds: string[]) {
   if (!currentRecipe.value) return []
   return stateIds
@@ -509,7 +516,7 @@ watch(() => route.hash, (newHash) => {
               :recipe="currentRecipe"
               :has-progress="progress.hasProgress.value"
               class="mb-6"
-              @reset="progress.resetProgress()"
+              @reset="handleReset"
             />
 
             <!-- RecipeSummary hidden until user provides dictated content -->
@@ -546,6 +553,7 @@ watch(() => route.hash, (newHash) => {
               v-if="currentRecipe.cook_log?.length"
               id="cook-log-section"
               :cook-log="currentRecipe.cook_log"
+              :recipe-id="currentRecipeId ?? undefined"
               section-id="cook-log-section"
               class="mt-8 scroll-mt-16"
             />

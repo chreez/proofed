@@ -6,7 +6,7 @@ import App from './App.vue'
 
 // Mock all child components
 vi.mock('@/components/RecipeMeta.vue', () => ({
-  default: { name: 'RecipeMeta', props: ['recipe', 'hasProgress'], emits: ['reset'], template: '<div class="recipe-meta-stub">{{ recipe?.meta?.name }}</div>' }
+  default: { name: 'RecipeMeta', props: ['recipe', 'hasProgress'], emits: ['reset'], template: '<div class="recipe-meta-stub"><button class="reset-btn" @click="$emit(\'reset\')">Reset</button>{{ recipe?.meta?.name }}</div>' }
 }))
 vi.mock('@/components/StageCard.vue', () => ({
   default: {
@@ -751,6 +751,22 @@ describe('App', () => {
         [],
         ['oven-bake']
       )
+    })
+
+    it('reset clears both progress and scratchpad', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      // Trigger reset via RecipeMeta stub
+      await wrapper.find('.reset-btn').trigger('click')
+      await nextTick()
+
+      expect(mockResetProgress).toHaveBeenCalled()
+      expect(mockScratchpadClearAll).toHaveBeenCalled()
     })
   })
 
