@@ -65,6 +65,9 @@ vi.mock('@/components/BakeReviewPage.vue', () => ({
 vi.mock('@/components/BakeLogPage.vue', () => ({
   default: { name: 'BakeLogPage', template: '<div class="bake-log-page-stub">Bake Log</div>' }
 }))
+vi.mock('@/components/DemoStats.vue', () => ({
+  default: { name: 'DemoStats', template: '<div class="demo-stats-stub">Stats</div>' }
+}))
 vi.mock('@/components/DemoQrTest.vue', () => ({
   default: { name: 'DemoQrTest', template: '<div class="demo-qr-test-stub">Demo QR Test</div>' }
 }))
@@ -184,6 +187,7 @@ function makeRouter() {
       { path: '/review/bake/:recipeId/:date', name: 'bake-review', component: { template: '<div />' } },
       { path: '/demo/qr-test', name: 'qr-test-demo', component: { template: '<div />' }, meta: { demoPage: true } },
       { path: '/bake-log', name: 'bake-log', component: { template: '<div />' } },
+      { path: '/demo/stats', name: 'stats-demo', component: { template: '<div />' }, meta: { showStats: true } },
     ]
   })
 }
@@ -339,14 +343,32 @@ describe('App', () => {
     const { wrapper } = await mountApp('/')
     expect(wrapper.find('.tab-bar').exists()).toBe(true)
     const tabs = wrapper.findAll('.tab-item')
-    expect(tabs.length).toBe(2)
+    expect(tabs.length).toBe(3)
     expect(tabs[0].text()).toBe('Recipes')
     expect(tabs[1].text()).toBe('Bake Log')
+    expect(tabs[2].text()).toBe('Dashboard')
   })
 
   it('shows tab bar on bake-log route', async () => {
     const { wrapper } = await mountApp('/bake-log')
     expect(wrapper.find('.tab-bar').exists()).toBe(true)
+  })
+
+  it('shows tab bar on stats demo route', async () => {
+    const { wrapper } = await mountApp('/demo/stats')
+    expect(wrapper.find('.tab-bar').exists()).toBe(true)
+    const tabs = wrapper.findAll('.tab-item')
+    expect(tabs[2].classes()).toContain('tab-active')
+    expect(wrapper.find('.demo-stats-stub').text()).toBe('Stats')
+  })
+
+  it('navigates to stats when Dashboard tab clicked', async () => {
+    const { wrapper, router } = await mountApp('/')
+    const tabs = wrapper.findAll('.tab-item')
+    await tabs[2].trigger('click')
+    await flushPromises()
+    await nextTick()
+    expect(router.currentRoute.value.path).toBe('/demo/stats')
   })
 
   it('hides tab bar on recipe route', async () => {

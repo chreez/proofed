@@ -34,6 +34,7 @@ import DemoScratchpad from '@/components/DemoScratchpad.vue'
 import DemoCostPicker from '@/components/DemoCostPicker.vue'
 import DemoCostRender from '@/components/DemoCostRender.vue'
 import DemoBakeLogPhotos from '@/components/DemoBakeLogPhotos.vue'
+import DemoStats from '@/components/DemoStats.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
 import BakeLogPage from '@/components/BakeLogPage.vue'
@@ -58,6 +59,7 @@ const showPhotoReview = computed(() => route.name === 'photo-review')
 const showBakeDetail = computed(() => route.name === 'bake-detail')
 const showBakeReview = computed(() => route.name === 'bake-review')
 const showBakeLog = computed(() => route.name === 'bake-log')
+const showStats = computed(() => route.name === 'stats-demo')
 function goToIndex(): void {
   router.push('/')
 }
@@ -413,7 +415,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </header>
 
-    <nav v-if="showIndex || showBakeLog" class="tab-bar">
+    <nav v-if="showIndex || showBakeLog || showStats" class="tab-bar">
       <div class="tab-bar-inner">
         <button
           class="tab-item"
@@ -425,10 +427,15 @@ watch(() => route.hash, (newHash) => {
           :class="{ 'tab-active': showBakeLog }"
           @click="router.push('/bake-log')"
         >Bake Log</button>
+        <button
+          class="tab-item"
+          :class="{ 'tab-active': showStats }"
+          @click="router.push('/demo/stats')"
+        >Dashboard</button>
       </div>
     </nav>
 
-    <main :class="['flex-1', (showIndex || showBakeLog) ? 'pb-6' : 'py-6', !showIndex && !showBakeLog && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
+    <main :class="['flex-1', (showIndex || showBakeLog || showStats) ? 'pb-6' : 'py-6', !showIndex && !showBakeLog && !showStats && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
@@ -441,6 +448,10 @@ watch(() => route.hash, (newHash) => {
         <DemoCostRender v-else-if="route.name === 'cost-render-demo'" />
         <DemoBakeLogPhotos v-else-if="route.name === 'bake-log-photos-demo'" />
         <DemoSharedMode v-else />
+      </template>
+
+      <template v-else-if="showStats">
+        <DemoStats />
       </template>
 
       <template v-else-if="showBakeDetail">
