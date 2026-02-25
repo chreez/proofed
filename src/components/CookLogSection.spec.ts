@@ -2,6 +2,15 @@ import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import CookLogSection from './CookLogSection.vue'
 
+// Mock vue-router
+const mockPush = vi.fn()
+
+vi.mock('vue-router', () => ({
+  useRouter: () => ({
+    push: mockPush
+  })
+}))
+
 describe('CookLogSection', () => {
   const defaultProps = {
     cookLog: [{
@@ -21,62 +30,18 @@ describe('CookLogSection', () => {
     expect(wrapper.find('h3').text()).toBe('Cook Log')
   })
 
-  it('renders entries collapsed by default', () => {
+  it('renders entries with stats in card view', () => {
     const wrapper = mount(CookLogSection, {
       props: defaultProps
     })
 
-    // Should show note count (collapsed state)
+    // Should show note count
     expect(wrapper.text()).toContain('2 notes')
-    // Should NOT show full note text in collapsed state
+    // Should NOT show full note text (notes only on bake detail page now)
     expect(wrapper.text()).not.toContain('Note 1')
   })
 
-  it('expands entry on click to show full notes', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: defaultProps
-    })
-
-    // Click to expand
-    const entry = wrapper.find('.cursor-pointer')
-    await entry.trigger('click')
-
-    // Now should show notes
-    expect(wrapper.text()).toContain('Note 1')
-    expect(wrapper.text()).toContain('Note 2')
-  })
-
-  it('shows next_time section when expanded', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: defaultProps
-    })
-
-    // Click to expand
-    const entry = wrapper.find('.cursor-pointer')
-    await entry.trigger('click')
-
-    expect(wrapper.text()).toContain('Next Time')
-    expect(wrapper.text()).toContain('Try this next time')
-  })
-
-  it('collapses entry on second click', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: defaultProps
-    })
-
-    const entry = wrapper.find('.cursor-pointer')
-
-    // Expand
-    await entry.trigger('click')
-    expect(wrapper.text()).toContain('Note 1')
-
-    // Collapse
-    await entry.trigger('click')
-    expect(wrapper.text()).not.toContain('Note 1')
-    expect(wrapper.text()).toContain('2 notes')
-  })
-
-  it('renders all cook log entries collapsed', () => {
+  it('renders all cook log entries', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [
@@ -97,32 +62,12 @@ describe('CookLogSection', () => {
       }
     })
 
-    // Both entries show version badges in collapsed state
+    // Both entries show version badges
     expect(wrapper.text()).toContain('v1.0.0')
     expect(wrapper.text()).toContain('v0.9.0')
-    // Notes should NOT be visible (collapsed)
+    // Notes should NOT be visible (only on bake detail page)
     expect(wrapper.text()).not.toContain('First note')
     expect(wrapper.text()).not.toContain('Second note')
-  })
-
-  it('renders markdown formatting in notes when expanded', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['**Bold text** and *italic*'],
-          next_time: []
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    // Expand
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    expect(wrapper.html()).toContain('<strong>Bold text</strong>')
-    expect(wrapper.html()).toContain('<em>italic</em>')
   })
 
   it('handles entry with empty notes array', () => {
@@ -138,7 +83,7 @@ describe('CookLogSection', () => {
       }
     })
 
-    // Collapsed state should show counts
+    // Should show counts
     expect(wrapper.text()).toContain('0 notes')
     expect(wrapper.text()).toContain('1 next-time')
   })
@@ -230,46 +175,6 @@ describe('CookLogSection', () => {
     expect(wrapper.text()).not.toContain('since')
   })
 
-  it('shows "since" in expanded in-progress badge when start_date exists', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-20',
-          start_date: '2026-02-19',
-          version: 'v2.0.0',
-          status: 'in_progress' as const,
-          notes: ['In progress bake'],
-          next_time: []
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    // Click to expand
-    await wrapper.find('.mb-4').trigger('click')
-    expect(wrapper.text()).toContain('In Progress (since Feb 19)')
-  })
-
-  it('shows plain "In Progress" in expanded view when no start_date', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-20',
-          version: 'v2.0.0',
-          status: 'in_progress' as const,
-          notes: ['In progress bake'],
-          next_time: []
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    // Click to expand
-    await wrapper.find('.mb-4').trigger('click')
-    expect(wrapper.text()).toContain('In Progress')
-    expect(wrapper.text()).not.toContain('since')
-  })
-
   it('shows standard date when start_date is absent', () => {
     const wrapper = mount(CookLogSection, {
       props: {
@@ -287,7 +192,7 @@ describe('CookLogSection', () => {
     expect(wrapper.text()).toContain('2026-02-05')
   })
 
-  it('shows summary text in collapsed state when present', () => {
+  it('shows summary text when present', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -335,7 +240,7 @@ describe('CookLogSection', () => {
     expect(wrapper.find('#bake-2026-02-05').exists()).toBe(true)
   })
 
-  it('shows no thumbnail in collapsed state when entry has no photos', () => {
+  it('shows no thumbnail when entry has no photos', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -348,107 +253,14 @@ describe('CookLogSection', () => {
       }
     })
 
-    // No thumbnail — unified card without photo
+    // No thumbnail — card without photo
     expect(wrapper.find('.w-20').exists()).toBe(false)
     expect(wrapper.text()).toContain('v1.0.0')
     expect(wrapper.text()).toContain('A summary.')
     expect(wrapper.text()).toContain('1 notes')
   })
 
-  it('shows permalink button in expanded state', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Note']
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    const permalinkBtn = wrapper.find('button[title="Copy link"]')
-    expect(permalinkBtn.exists()).toBe(true)
-  })
-
-  it('does not toggle collapse when permalink button is clicked', async () => {
-    // Mock clipboard API
-    Object.assign(navigator, {
-      clipboard: { writeText: vi.fn().mockResolvedValue(undefined) }
-    })
-
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Note']
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    // Expand
-    await wrapper.find('.cursor-pointer').trigger('click')
-    expect(wrapper.text()).toContain('Note')
-
-    // Click permalink button — should NOT collapse (stopPropagation)
-    const permalinkBtn = wrapper.find('button[title="Copy link"]')
-    await permalinkBtn.trigger('click')
-    // Still expanded
-    expect(wrapper.text()).toContain('Note')
-  })
-
-  it('copies entry permalink and shows feedback when entry link button is clicked', async () => {
-    const writeText = vi.fn().mockResolvedValue(undefined)
-    Object.assign(navigator, { clipboard: { writeText } })
-
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Note']
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    // Expand
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    // Click the entry-level permalink IconButton
-    const entryLinkBtns = wrapper.findAll('button[title="Copy link"]')
-    // Second "Copy link" button is the entry-level one (first is section header)
-    await entryLinkBtns[1].trigger('click')
-
-    expect(writeText).toHaveBeenCalledWith(
-      expect.stringContaining('#bake-2026-02-05')
-    )
-  })
-
-  it('renders entry permalink as IconButton with feedback slot', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Note']
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    // Should have 2 IconButton instances: section header + entry
-    const iconBtns = wrapper.findAllComponents({ name: 'IconButton' })
-    expect(iconBtns.length).toBeGreaterThanOrEqual(2)
-  })
-
-  it('hides next_time count in collapsed state when not present', () => {
+  it('hides next_time count when not present', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -490,88 +302,7 @@ describe('CookLogSection', () => {
     )
   })
 
-  it('auto-expands entry matching URL hash on mount', async () => {
-    // Set hash before mounting
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { ...window.location, hash: '#bake-2026-02-05' }
-    })
-
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Auto-expanded note']
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    // Entry should be auto-expanded
-    await wrapper.vm.$nextTick()
-    expect(wrapper.text()).toContain('Auto-expanded note')
-
-    // Reset
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { ...window.location, hash: '' }
-    })
-  })
-
-  it('does not auto-expand when hash does not match any entry', () => {
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { ...window.location, hash: '#bake-2099-01-01' }
-    })
-
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Should stay collapsed']
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    // Should remain collapsed — no matching date
-    expect(wrapper.text()).not.toContain('Should stay collapsed')
-    expect(wrapper.text()).toContain('1 notes')
-
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { ...window.location, hash: '' }
-    })
-  })
-
-  it('stays collapsed when hash is not a bake permalink', () => {
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { ...window.location, hash: '#cook-log-section' }
-    })
-
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Should stay collapsed']
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    expect(wrapper.text()).not.toContain('Should stay collapsed')
-
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { ...window.location, hash: '' }
-    })
-  })
-
-  it('shows summary in collapsed state with photo banner', () => {
+  it('shows summary with photo banner', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -590,25 +321,7 @@ describe('CookLogSection', () => {
     expect(wrapper.text()).toContain('Great bake this time.')
   })
 
-  it('renders next_time source attribution when expanded', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Note'],
-          next_time: [{ text: 'Try X', source: 'ATK' }]
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    await wrapper.find('.cursor-pointer').trigger('click')
-    expect(wrapper.text()).toContain('Try X')
-    expect(wrapper.html()).toContain('(ATK)')
-  })
-
-  it('shows next_time count in collapsed state with photos', () => {
+  it('shows next_time count with photos', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -628,7 +341,136 @@ describe('CookLogSection', () => {
   })
 })
 
-describe('Photo lightbox', () => {
+describe('Summary expand', () => {
+  it('summary starts with line-clamp-2 class', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          summary: 'A long summary that could be truncated.'
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    const summary = wrapper.find('.text-sm.text-stone-500')
+    expect(summary.classes()).toContain('line-clamp-2')
+  })
+
+  it('removes line-clamp-2 when summary is clicked', async () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          summary: 'A long summary that could be truncated.'
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    const summary = wrapper.find('.text-sm.text-stone-500')
+    await summary.trigger('click')
+
+    expect(summary.classes()).not.toContain('line-clamp-2')
+  })
+
+  it('re-applies line-clamp-2 on second click', async () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          summary: 'A long summary that could be truncated.'
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    const summary = wrapper.find('.text-sm.text-stone-500')
+    await summary.trigger('click')
+    await summary.trigger('click')
+
+    expect(summary.classes()).toContain('line-clamp-2')
+  })
+
+  it('summary has cursor-pointer class', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note'],
+          summary: 'A summary.'
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    const summary = wrapper.find('.text-sm.text-stone-500')
+    expect(summary.classes()).toContain('cursor-pointer')
+  })
+})
+
+describe('Bake detail link', () => {
+  it('shows "View bake" link when recipeId is provided', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note']
+        }],
+        sectionId: 'cook-log-section',
+        recipeId: 'test-recipe'
+      }
+    })
+
+    expect(wrapper.text()).toContain('View bake')
+  })
+
+  it('does not show "View bake" link when recipeId is not provided', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note']
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    expect(wrapper.text()).not.toContain('View bake')
+  })
+
+  it('navigates to bake detail page when "View bake" is clicked', async () => {
+    mockPush.mockClear()
+
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-02-05',
+          version: 'v1.0.0',
+          notes: ['Note']
+        }],
+        sectionId: 'cook-log-section',
+        recipeId: 'test-recipe'
+      }
+    })
+
+    const viewBakeLink = wrapper.find('.ml-auto.flex.items-center')
+    await viewBakeLink.trigger('click')
+
+    expect(mockPush).toHaveBeenCalledWith('/recipe/test-recipe/bake/2026-02-05')
+  })
+})
+
+describe('Photo thumbnail', () => {
   const photosProps = {
     cookLog: [{
       date: '2026-02-05',
@@ -643,7 +485,7 @@ describe('Photo lightbox', () => {
     sectionId: 'cook-log-section'
   }
 
-  it('shows hero thumbnail in collapsed state', () => {
+  it('shows hero thumbnail when entry has photos', () => {
     const wrapper = mount(CookLogSection, { props: photosProps })
     // Hero is last photo (Photo C) shown as small thumbnail
     const thumbImg = wrapper.find('.w-20')
@@ -651,80 +493,9 @@ describe('Photo lightbox', () => {
     expect(thumbImg.attributes('alt')).toBe('Photo C')
   })
 
-  it('shows photo count in collapsed state', () => {
+  it('shows photo count', () => {
     const wrapper = mount(CookLogSection, { props: photosProps })
     expect(wrapper.text()).toContain('3 photos')
-  })
-
-  it('renders hero photo when expanded', async () => {
-    const wrapper = mount(CookLogSection, { props: photosProps })
-
-    // Expand
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    const heroImg = wrapper.find('.gallery-figure img')
-    expect(heroImg.exists()).toBe(true)
-  })
-
-  it('renders supporting photo thumbnails when expanded', async () => {
-    const wrapper = mount(CookLogSection, { props: photosProps })
-
-    // Expand
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    // 3 photos total: 2 supporting + 1 hero
-    const thumbs = wrapper.findAll('.flex.gap-2 img')
-    expect(thumbs).toHaveLength(2)
-  })
-
-  it('opens lightbox when hero photo is clicked in expanded state', async () => {
-    const wrapper = mount(CookLogSection, { props: photosProps })
-
-    // Expand first
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    // Click hero image
-    const heroImg = wrapper.find('.gallery-figure img')
-    await heroImg.trigger('click')
-
-    const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
-    expect(lightbox.props('open')).toBe(true)
-    expect(lightbox.props('initialIndex')).toBe(0) // hero reordered to front
-    // Verify photos are reordered: hero (C) first, then supporting (A, B)
-    const photos = lightbox.props('photos')
-    expect(photos[0].alt).toBe('Photo C')
-    expect(photos[1].alt).toBe('Photo A')
-    expect(photos[2].alt).toBe('Photo B')
-  })
-
-  it('opens lightbox when supporting photo is clicked in expanded state', async () => {
-    const wrapper = mount(CookLogSection, { props: photosProps })
-
-    // Expand first
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    const thumbs = wrapper.findAll('.flex.gap-2 img')
-    await thumbs[0].trigger('click')
-    const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
-    expect(lightbox.props('open')).toBe(true)
-    expect(lightbox.props('initialIndex')).toBe(0)
-  })
-
-  it('closes lightbox on close event', async () => {
-    const wrapper = mount(CookLogSection, { props: photosProps })
-
-    // Expand first
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    // Open lightbox
-    const heroImg = wrapper.find('.gallery-figure img')
-    await heroImg.trigger('click')
-
-    // Close it
-    const lightbox = wrapper.findComponent({ name: 'PhotoLightbox' })
-    lightbox.vm.$emit('close')
-    await wrapper.vm.$nextTick()
-    expect(lightbox.props('open')).toBe(false)
   })
 })
 
@@ -738,7 +509,7 @@ describe('Cost one-liner', () => {
     ]
   }
 
-  it('shows cost one-liner in collapsed no-photo card when entry.cost exists', () => {
+  it('shows cost one-liner when entry.cost exists', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -755,7 +526,7 @@ describe('Cost one-liner', () => {
     expect(wrapper.text()).toContain('$1.29/serving')
   })
 
-  it('shows cost one-liner in collapsed photo card when entry.cost exists', () => {
+  it('shows cost one-liner with photo card when entry.cost exists', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -775,26 +546,7 @@ describe('Cost one-liner', () => {
     expect(wrapper.text()).toContain('$1.29/serving')
   })
 
-  it('shows cost one-liner in expanded state when entry.cost exists', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Note'],
-          cost: costData
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    await wrapper.find('.cursor-pointer').trigger('click')
-
-    expect(wrapper.text()).toContain('$1.29 total')
-    expect(wrapper.text()).toContain('$1.29/serving')
-  })
-
-  it('hides cost line when no cost data in collapsed state', () => {
+  it('hides cost line when no cost data', () => {
     const wrapper = mount(CookLogSection, {
       props: {
         cookLog: [{
@@ -807,23 +559,6 @@ describe('Cost one-liner', () => {
     })
 
     expect(wrapper.text()).not.toContain('total')
-    expect(wrapper.text()).not.toContain('/serving')
-  })
-
-  it('hides cost line when no cost data in expanded state', async () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{
-          date: '2026-02-05',
-          version: 'v1.0.0',
-          notes: ['Note']
-        }],
-        sectionId: 'cook-log-section'
-      }
-    })
-
-    await wrapper.find('.cursor-pointer').trigger('click')
-
     expect(wrapper.text()).not.toContain('/serving')
   })
 })

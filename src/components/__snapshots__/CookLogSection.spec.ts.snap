@@ -10,9 +10,8 @@ exports[`HTML snapshot > matches snapshot 1`] = `
           <line x1="8" x2="16" y1="12" y2="12"></line>
         </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
   </div>
-  <div data-v-f626ec8a="" id="bake-2026-02-05" class="mb-4 scroll-mt-16 cursor-pointer transition-all">
-    <!-- ============ COLLAPSED: Unified card ============ -->
-    <div data-v-f626ec8a="" class="border-2 border-stone-200 hover:border-stone-300 transition-colors p-3 flex gap-3">
+  <div data-v-f626ec8a="" id="bake-2026-02-05" class="mb-4 scroll-mt-16">
+    <div data-v-f626ec8a="" class="border-2 border-stone-200 p-3 flex gap-3">
       <!-- Optional hero thumbnail -->
       <!--v-if-->
       <!-- Text content -->
@@ -23,14 +22,11 @@ exports[`HTML snapshot > matches snapshot 1`] = `
         <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">2 notes</span>
           <!--v-if--><span data-v-f626ec8a="">1 next-time</span>
-          <!--v-if--><svg data-v-f626ec8a="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 text-stone-400 ml-auto transition-transform duration-200 lucide-chevron-down-icon lucide-chevron-down w-4 h-4 text-stone-400 ml-auto transition-transform duration-200" aria-hidden="true">
-            <path d="m6 9 6 6 6-6"></path>
-          </svg>
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
     </div>
   </div>
-  <!--teleport start-->
-  <!--teleport end-->
 </section>"
 `;

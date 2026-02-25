@@ -1,9 +1,10 @@
 ---
 id: PF-131
 title: Cook log cards link to bake detail page
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-02-13 06:15'
+updated_date: '2026-02-25 05:01'
 labels:
   - feature
 dependencies:
@@ -27,3 +28,16 @@ Add forward navigation from collapsed cook log cards in CookLogSection to the ba
 - [ ] #6 No changes to BakeDetailView.vue
 - [ ] #7 npm run build passes
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Implementation
+
+Added "View bake →" link on collapsed cook log cards in CookLogSection.vue. Uses router.push with stopPropagation to coexist with expand/collapse. Styled with text-stone-400, hover:text-accent, ArrowRight icon (12px). Hidden when recipeId not available.
+
+**Files changed:**
+- `src/components/CookLogSection.vue` — added view bake link on collapsed cards
+
+**GATE: Visual review required before commit.**
+<!-- SECTION:NOTES:END -->
