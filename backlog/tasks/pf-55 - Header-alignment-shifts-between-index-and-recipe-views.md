@@ -1,10 +1,10 @@
 ---
 id: PF-55
 title: Header alignment shifts between index and recipe views
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-07 05:38'
-updated_date: '2026-02-10 08:20'
+updated_date: '2026-02-25 01:02'
 labels:
   - bug (styling)
 dependencies: []
@@ -26,3 +26,9 @@ Header inner div uses different max-w and px-4 combinations on index vs recipe p
 - [ ] #2 Consistent padding between header and main content in both views
 - [ ] #3 No visual shift on mobile
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Marked done by user — issue resolved or no longer relevant.
+<!-- SECTION:FINAL_SUMMARY:END -->

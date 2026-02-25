@@ -1,10 +1,10 @@
 ---
 id: PF-142
 title: Reset bake should clear all session state (notes + reminders)
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-16 22:26'
-updated_date: '2026-02-25 05:01'
+updated_date: '2026-02-25 05:09'
 labels:
   - bug
 dependencies: []
@@ -25,10 +25,10 @@ Currently resetProgress() only clears progress (items, states, stages). scratchp
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Reset bake clears progress state (items, states, stages) — existing behavior preserved
-- [ ] #2 Reset bake clears all scratchpad entries (step notes + general notes)
-- [ ] #3 Reset bake clears dismissed reminders (dismissedReminders state)
-- [ ] #4 After reset, recipe page shows zero notes, zero progress, all reminders re-enabled
+- [x] #1 Reset bake clears progress state (items, states, stages) — existing behavior preserved
+- [x] #2 Reset bake clears all scratchpad entries (step notes + general notes)
+- [x] #3 Reset bake clears dismissed reminders (dismissedReminders state)
+- [x] #4 After reset, recipe page shows zero notes, zero progress, all reminders re-enabled
 <!-- AC:END -->
 
 ## Implementation Notes
