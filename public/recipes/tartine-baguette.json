@@ -30,7 +30,11 @@
     "description": "A hybrid baguette using both poolish (commercial yeast) and leaven (sourdough starter) — the poolish gives reliable lift and extensibility, the leaven adds flavor complexity. Baked to a deep golden tone with the toasty aroma of freshly popped corn."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "baguettes",
+      "yieldMultiplier": 1
+    }
   },
   "version": "v1.1.0",
   "change_log": [

@@ -12,7 +12,11 @@
     "description": "Red Lobster's iconic garlic-cheddar drop biscuits adapted for sourdough. 130g discard replaces most of the buttermilk, adding tang and tenderness while baking powder and baking soda handle the rise. Sharp cheddar at 68% baker's percentage, finished with a non-negotiable garlic herb butter brush."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "biscuits",
+      "yieldMultiplier": 1
+    }
   },
   "version": "v1.0.0",
   "change_log": [

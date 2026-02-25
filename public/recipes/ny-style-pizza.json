@@ -12,7 +12,11 @@
     "description": "Classic NY-style pizza dough with a 30-minute autolyse and stand mixer knead. A 62% hydration dough that stretches thin with a puffy, foldable crust."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "slices",
+      "yieldMultiplier": 8
+    }
   },
   "version": "v1.3.0",
   "change_log": [

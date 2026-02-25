@@ -12,7 +12,11 @@
     "description": "A cheddar-enriched variant of our simple sourdough. 226g Tillamook sharp cheddar folded in at set 2, 67% hydration, 1.8% salt, overnight bulk, cold proof, 400°F uncovered bake. Cheese fat provides built-in over-fermentation insurance and 3-day shelf life."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "slices",
+      "yieldMultiplier": 10
+    }
   },
   "version": "v1.0.0",
   "change_log": [

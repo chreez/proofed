@@ -12,7 +12,11 @@
     "description": "A beginner-friendly overnight sourdough recipe yielding two boules. Four ingredients, 70% hydration, stretch-and-fold method, overnight room-temperature bulk ferment, cold proof, sequential Dutch oven bake. Optimized for simplicity without sacrificing quality."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "slices",
+      "yieldMultiplier": 10
+    }
   },
   "version": "v2.0.0",
   "change_log": [

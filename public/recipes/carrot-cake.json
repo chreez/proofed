@@ -11,7 +11,11 @@
     "description": "A research-backed carrot cake synthesized from 64 sources — Michelin-star chefs, JBF award winners, food science, and competition bake-off data. Oil-based for moisture, with spices bloomed in warm oil for amplified flavor. Finished with a brown butter cream cheese frosting using Nancy Silverton's cold-cream-cheese technique. Designed for exceptional results with one-bowl simplicity."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "slices",
+      "yieldMultiplier": 12
+    }
   },
   "version": "v1.0.0",
   "change_log": [

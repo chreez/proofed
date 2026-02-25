@@ -11,7 +11,11 @@
     "description": "A smooth, pourable Japanese curry modeled after CoCo Ichibanya — the world's largest curry chain. Built from 60+ sources including factory tours, retail product labels, and copycat recipes. The sauce is completely chunk-free (sara-sara style), with layers of hidden flavor from caramelized onions, grated apple, mango chutney, instant coffee, and dark chocolate. Mandatory overnight rest transforms it."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "servings",
+      "yieldMultiplier": 1
+    }
   },
   "version": "v1.1.0",
   "change_log": [

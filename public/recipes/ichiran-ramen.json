@@ -11,7 +11,11 @@
     "description": "A clean, odor-free tonkotsu ramen modeled after Ichiran — Fukuoka's iconic single-menu ramen chain. Built from 92 sources including 7 official product labels, factory documentation, and the Umakara Kokumashi 'Rosetta Stone' that revealed the red sauce profile. Features a double-soup technique (pure pork bone broth + dashi), proprietary-style red sauce (sweet-first, umami-second, spicy-third), and ultra-thin Hakata noodles at 29% hydration."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "servings",
+      "yieldMultiplier": 1
+    }
   },
   "version": "v1.0.0",
   "change_log": [

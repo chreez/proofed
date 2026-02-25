@@ -11,7 +11,11 @@
     "description": "ATK Ultimate Cinnamon Buns rebuilt on a sourdough chassis. Active levain replaces commercial yeast, overnight cold retard develops complex flavor. Same reduced-sugar filling and cream-cheese-forward glaze (v1.2.0). Heavy cream pour before baking for caramel bottom."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "buns",
+      "yieldMultiplier": 1
+    }
   },
   "version": "v1.1.0",
   "change_log": [

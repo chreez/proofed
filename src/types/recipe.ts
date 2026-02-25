@@ -113,8 +113,14 @@ export interface RecipeMeta {
   description?: string
 }
 
+export interface RecipeStats {
+  yieldUnit: string
+  yieldMultiplier: number
+}
+
 export interface RecipeConfig {
   early_check_percent: number
+  stats?: RecipeStats
 }
 
 export interface Vessel {
@@ -220,6 +226,12 @@ export interface CookLogCost {
   items: CookLogCostItem[]
 }
 
+export interface CookLogYield {
+  value: number
+  unit: string
+  notes?: string
+}
+
 export interface CookLogEntry {
   date: string
   start_date?: string
@@ -231,6 +243,7 @@ export interface CookLogEntry {
   photos?: CookLogPhoto[]
   cost?: CookLogCost
   status?: 'in_progress' | 'complete'
+  actual_yield?: CookLogYield
 }
 
 // Recipe manifest

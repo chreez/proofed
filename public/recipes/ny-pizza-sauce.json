@@ -11,7 +11,11 @@
     "description": "No-cook pizza sauce. Sclafani crushed tomatoes hand-blended with garlic, basil, oregano, and sugar. Rest an hour to let flavors develop."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "servings",
+      "yieldMultiplier": 1
+    }
   },
   "version": "v1.0.0",
   "change_log": [

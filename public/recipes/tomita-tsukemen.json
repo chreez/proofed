@@ -11,7 +11,11 @@
     "description": "An ultra-concentrated dipping ramen inspired by Tomita (Matsudo) and Fuunji (Shinjuku) — the pinnacle of second-generation tsukemen. Built from 74 sources including Tomita's official site, Fuunji owner interviews, the Ramen Heads documentary, and Ramen_Lord's Tomita clone recipe. Features a double soup method (animal broth + fish dashi), three-mechanism thickness (collagen extraction + blended bone solids + emulsification), temperature-controlled fish extraction, fat wheat noodles served cold (shimeru), and the soup-wari finishing ritual."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "servings",
+      "yieldMultiplier": 1
+    }
   },
   "version": "v1.0.0",
   "change_log": [

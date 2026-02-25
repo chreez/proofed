@@ -11,7 +11,11 @@
     "description": "A from-scratch Thai iced tea with chewy boba, built from a 16-source synthesis. ChaTraMue tea mix brewed strong, strained twice, and chilled, then layered over warm sugar-coated tapioca pearls with a condensed-and-evaporated milk blend poured over a spoon for the signature ombré effect. Hot variation notes included inline."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "yieldUnit": "drinks",
+      "yieldMultiplier": 1
+    }
   },
   "version": "v1.0.0",
   "change_log": [
