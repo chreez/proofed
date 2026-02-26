@@ -727,6 +727,7 @@
     {
       "date": "2026-02-14",
       "version": "v1.0.0",
+      "actual_yield": { "value": 1, "unit": "loaves" },
       "summary": "First sourdough bake — over-fermented from using the oven light for bulk, dough was slack and wouldn't hold shape. Baked on pizza steel without a Dutch oven, got modest spring but great sour flavor with olive oil.",
       "notes": [
         "Used oven with light on for bulk ferment — dough doubled in ~7 hours instead of target 50-75% rise. Over-fermented, dough was slack and wouldn't hold shape.",
@@ -872,6 +873,7 @@
     {
       "date": "2026-02-17",
       "version": "v1.1.1",
+      "actual_yield": { "value": 1, "unit": "loaves" },
       "summary": "Third bake with the new Le Creuset Dutch oven, counter-fermented overnight without oven light. Accidental 300/200 bread-AP flour split from prepping baguettes simultaneously, but got great oven spring and a nice score ear.",
       "notes": [
         "Used 300g bread flour + 200g AP flour instead of 500g bread flour — mix-up from prepping Tartine baguettes simultaneously.",

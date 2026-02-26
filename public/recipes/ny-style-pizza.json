@@ -48,6 +48,7 @@
     {
       "date": "2026-02-08",
       "version": "v1.0.0",
+      "actual_yield": { "value": 2, "unit": "pizzas", "notes": "Smaller pizzas, ~4 slices each — roughly half normal yield" },
       "summary": "First pizza bake — 1-day cold proof was underproofed, dough was tough to stretch. Good char on the baking steel but HEB whole milk mozz was too moist to shred.",
       "notes": [
         "1-day cold proof was underproofed — dough was hard to stretch, kept springing back",
