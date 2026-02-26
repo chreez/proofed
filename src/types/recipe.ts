@@ -114,8 +114,11 @@ export interface RecipeMeta {
 }
 
 export interface RecipeStats {
-  yieldUnit: string
-  yieldMultiplier: number
+  group: string
+  defaultYield: number
+  unit: string
+  servingsPerItem: number
+  servingUnit: string
 }
 
 export interface RecipeConfig {
@@ -244,6 +247,8 @@ export interface CookLogEntry {
   cost?: CookLogCost
   status?: 'in_progress' | 'complete'
   actual_yield?: CookLogYield
+  aberration?: boolean
+  aberration_note?: string
 }
 
 // Recipe manifest

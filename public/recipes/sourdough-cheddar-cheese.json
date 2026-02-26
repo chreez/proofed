@@ -14,8 +14,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "slices",
-      "yieldMultiplier": 10
+      "group": "Sourdough Breads",
+      "defaultYield": 2,
+      "unit": "loaves",
+      "servingsPerItem": 10,
+      "servingUnit": "slices"
     }
   },
   "version": "v1.0.0",
@@ -117,8 +120,14 @@
             "total": 226,
             "unit": "g",
             "breakdown": [
-              { "label": "loaf 1", "amount": 113 },
-              { "label": "loaf 2", "amount": 113 }
+              {
+                "label": "loaf 1",
+                "amount": 113
+              },
+              {
+                "label": "loaf 2",
+                "amount": 113
+              }
             ],
             "sourcedFrom": "Poetry & Pies, Little Spoon Farm, The Perfect Loaf, 8/8 agents",
             "confidence": "high",
@@ -245,7 +254,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Tillamook Sharp Cheddar", "amount": "226g (cut into 12mm cubes)" }
+        {
+          "name": "Tillamook Sharp Cheddar",
+          "amount": "226g (cut into 12mm cubes)"
+        }
       ],
       "exit_condition": "226g cheddar cubed into 12mm pieces, split into two 113g portions, refrigerated",
       "notes": [
@@ -269,10 +281,22 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Water", "amount": "670g" },
-        { "name": "Active Sourdough Starter", "amount": "200g" },
-        { "name": "Bread Flour", "amount": "1000g" },
-        { "name": "Fine Sea Salt", "amount": "18g" }
+        {
+          "name": "Water",
+          "amount": "670g"
+        },
+        {
+          "name": "Active Sourdough Starter",
+          "amount": "200g"
+        },
+        {
+          "name": "Bread Flour",
+          "amount": "1000g"
+        },
+        {
+          "name": "Fine Sea Salt",
+          "amount": "18g"
+        }
       ],
       "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
       "notes": [
@@ -306,7 +330,10 @@
       ],
       "technique_url": "https://www.theperfectloaf.com/how-to-stretch-and-fold-sourdough-bread-dough/",
       "reminders": [
-        { "prompt": "Record dough temperature", "type": "measurement" }
+        {
+          "prompt": "Record dough temperature",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -328,7 +355,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Tillamook Sharp Cheddar (cold cubes)", "amount": "226g" }
+        {
+          "name": "Tillamook Sharp Cheddar (cold cubes)",
+          "amount": "226g"
+        }
       ],
       "exit_condition": "All cheese incorporated into dough via stretch and fold. Cubes mostly enclosed, some poking through is fine.",
       "notes": [
@@ -442,8 +472,14 @@
         }
       ],
       "reminders": [
-        { "prompt": "Note kitchen ambient temperature", "type": "measurement" },
-        { "prompt": "Check dough volume rise %", "type": "observation" }
+        {
+          "prompt": "Note kitchen ambient temperature",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Check dough volume rise %",
+          "type": "observation"
+        }
       ]
     },
     {
@@ -721,7 +757,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Record internal temperature immediately out of oven (target 200°F / 93°C)", "type": "measurement" }
+        {
+          "prompt": "Record internal temperature immediately out of oven (target 200°F / 93°C)",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -732,7 +771,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Unsalted Butter (melted)", "amount": "14g total" }
+        {
+          "name": "Unsalted Butter (melted)",
+          "amount": "14g total"
+        }
       ],
       "exit_condition": "Both loaves brushed with melted butter, butter absorbed into hot crust",
       "notes": [
@@ -770,7 +812,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Rate crust color and ear", "type": "observation" }
+        {
+          "prompt": "Rate crust color and ear",
+          "type": "observation"
+        }
       ]
     }
   ],
@@ -973,12 +1018,24 @@
         ]
       },
       "next_time": [
-        { "text": "Reduce water to 670g per recipe (compensates for cheese moisture)" },
-        { "text": "Add salt at initial mix — don't rely on remembering during folds" },
-        { "text": "Dust flour over cold cheese cubes before fold 2" },
-        { "text": "Try smaller cubes for better cheese distribution" },
-        { "text": "Consider more cheese and/or mixing shredded + cubed for background flavor plus pockets" },
-        { "text": "Butter brush the hot loaves (forgot this bake)" }
+        {
+          "text": "Reduce water to 670g per recipe (compensates for cheese moisture)"
+        },
+        {
+          "text": "Add salt at initial mix — don't rely on remembering during folds"
+        },
+        {
+          "text": "Dust flour over cold cheese cubes before fold 2"
+        },
+        {
+          "text": "Try smaller cubes for better cheese distribution"
+        },
+        {
+          "text": "Consider more cheese and/or mixing shredded + cubed for background flavor plus pockets"
+        },
+        {
+          "text": "Butter brush the hot loaves (forgot this bake)"
+        }
       ]
     }
   ],

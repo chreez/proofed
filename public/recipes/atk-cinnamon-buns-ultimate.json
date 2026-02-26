@@ -13,8 +13,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "buns",
-      "yieldMultiplier": 1
+      "group": "Buns & Rolls",
+      "defaultYield": 8,
+      "unit": "buns",
+      "servingsPerItem": 1,
+      "servingUnit": "buns"
     }
   },
   "version": "v1.3.0",
@@ -1083,9 +1086,21 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Air Fryer", "detail": "300°F (150°C), 5 min. Loosely wrap in foil — cover top if dried out.", "source": "user" },
-      { "method": "Microwave", "detail": "Damp paper towel, 20–30 sec.", "source": "user" },
-      { "method": "Storage", "detail": "Room temp, covered. Best within 2 days.", "source": "agent" }
+      {
+        "method": "Air Fryer",
+        "detail": "300°F (150°C), 5 min. Loosely wrap in foil — cover top if dried out.",
+        "source": "user"
+      },
+      {
+        "method": "Microwave",
+        "detail": "Damp paper towel, 20–30 sec.",
+        "source": "user"
+      },
+      {
+        "method": "Storage",
+        "detail": "Room temp, covered. Best within 2 days.",
+        "source": "agent"
+      }
     ]
   }
 }

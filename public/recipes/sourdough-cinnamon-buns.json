@@ -13,8 +13,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "buns",
-      "yieldMultiplier": 1
+      "group": "Buns & Rolls",
+      "defaultYield": 8,
+      "unit": "buns",
+      "servingsPerItem": 1,
+      "servingUnit": "buns"
     }
   },
   "version": "v1.1.0",
@@ -154,8 +157,14 @@
             "total": 227,
             "unit": "g",
             "breakdown": [
-              { "label": "dough (softened)", "amount": 170 },
-              { "label": "filling (softened)", "amount": 57 }
+              {
+                "label": "dough (softened)",
+                "amount": 170
+              },
+              {
+                "label": "filling (softened)",
+                "amount": 57
+              }
             ],
             "confidence": "high",
             "rationale": "Unchanged from ATK v1.3.0. 29% baker's % matches Perfect Loaf enrichment level."
@@ -166,8 +175,14 @@
             "total": 95,
             "unit": "g",
             "breakdown": [
-              { "label": "dough (warm to 95-100°F)", "amount": 80 },
-              { "label": "glaze (room temp)", "amount": 15 }
+              {
+                "label": "dough (warm to 95-100°F)",
+                "amount": 80
+              },
+              {
+                "label": "glaze (room temp)",
+                "amount": 15
+              }
             ],
             "confidence": "high",
             "rationale": "Reduced from 192g — levain contributes ~100g water"
@@ -203,9 +218,18 @@
             "total": 11,
             "unit": "g",
             "breakdown": [
-              { "label": "dough", "amount": 9 },
-              { "label": "filling", "amount": 1.5 },
-              { "label": "glaze (pinch)", "amount": 0.5 }
+              {
+                "label": "dough",
+                "amount": 9
+              },
+              {
+                "label": "filling",
+                "amount": 1.5
+              },
+              {
+                "label": "glaze (pinch)",
+                "amount": 0.5
+              }
             ]
           },
           {
@@ -308,9 +332,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Sourdough Starter", "amount": "34g" },
-        { "name": "Flour (levain)", "amount": "84g" },
-        { "name": "Water", "amount": "84g" }
+        {
+          "name": "Sourdough Starter",
+          "amount": "34g"
+        },
+        {
+          "name": "Flour (levain)",
+          "amount": "84g"
+        },
+        {
+          "name": "Water",
+          "amount": "84g"
+        }
       ],
       "exit_condition": "All ingredients combined, no dry flour, covered in jar at room temp",
       "notes": [
@@ -326,7 +359,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Record starter temperature", "type": "measurement" }
+        {
+          "prompt": "Record starter temperature",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -371,13 +407,34 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "All-Purpose Flour", "amount": "430g" },
-        { "name": "Cornstarch", "amount": "64g" },
-        { "name": "Sugar", "amount": "75g" },
-        { "name": "Salt", "amount": "9g" },
-        { "name": "Levain (ripe)", "amount": "200g" },
-        { "name": "Milk (warm)", "amount": "80g" },
-        { "name": "Eggs", "amount": "3 whole" }
+        {
+          "name": "All-Purpose Flour",
+          "amount": "430g"
+        },
+        {
+          "name": "Cornstarch",
+          "amount": "64g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "75g"
+        },
+        {
+          "name": "Salt",
+          "amount": "9g"
+        },
+        {
+          "name": "Levain (ripe)",
+          "amount": "200g"
+        },
+        {
+          "name": "Milk (warm)",
+          "amount": "80g"
+        },
+        {
+          "name": "Eggs",
+          "amount": "3 whole"
+        }
       ],
       "exit_condition": "Shaggy dough formed, no dry flour visible, dough wraps around hook",
       "notes": [
@@ -423,7 +480,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (softened)", "amount": "170g" }
+        {
+          "name": "Butter (softened)",
+          "amount": "170g"
+        }
       ],
       "exit_condition": "Dough is smooth, glossy, elastic, and cleanly pulls from bowl sides. No visible butter streaks.",
       "notes": [
@@ -471,8 +531,14 @@
         }
       ],
       "reminders": [
-        { "prompt": "Check dough temperature before starting", "type": "measurement" },
-        { "prompt": "Note kitchen ambient temperature", "type": "measurement" }
+        {
+          "prompt": "Check dough temperature before starting",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Note kitchen ambient temperature",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -515,9 +581,18 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Brown Sugar", "amount": "240g" },
-        { "name": "Cinnamon", "amount": "10g" },
-        { "name": "Salt", "amount": "1.5g" }
+        {
+          "name": "Brown Sugar",
+          "amount": "240g"
+        },
+        {
+          "name": "Cinnamon",
+          "amount": "10g"
+        },
+        {
+          "name": "Salt",
+          "amount": "1.5g"
+        }
       ],
       "exit_condition": "Filling mixture evenly combined, no clumps",
       "notes": [
@@ -564,8 +639,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (softened)", "amount": "57g" },
-        { "name": "Filling mixture", "amount": "all" }
+        {
+          "name": "Butter (softened)",
+          "amount": "57g"
+        },
+        {
+          "name": "Filling mixture",
+          "amount": "all"
+        }
       ],
       "exit_condition": "Butter and filling evenly distributed, filling pressed into butter, 1cm bare border at far edge",
       "notes": null
@@ -650,7 +731,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Heavy Cream (warmed)", "amount": "100g" }
+        {
+          "name": "Heavy Cream (warmed)",
+          "amount": "100g"
+        }
       ],
       "exit_condition": "Cream distributed over and between rolls",
       "notes": [
@@ -688,8 +772,14 @@
         }
       ],
       "reminders": [
-        { "prompt": "Rate oven spring and browning", "type": "observation" },
-        { "prompt": "Record internal temperature", "type": "measurement" }
+        {
+          "prompt": "Rate oven spring and browning",
+          "type": "observation"
+        },
+        {
+          "prompt": "Record internal temperature",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -722,11 +812,26 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Cream Cheese", "amount": "150g" },
-        { "name": "Milk", "amount": "15g" },
-        { "name": "Vanilla", "amount": "5g" },
-        { "name": "Confectioners' Sugar", "amount": "128g" },
-        { "name": "Salt", "amount": "0.5g" }
+        {
+          "name": "Cream Cheese",
+          "amount": "150g"
+        },
+        {
+          "name": "Milk",
+          "amount": "15g"
+        },
+        {
+          "name": "Vanilla",
+          "amount": "5g"
+        },
+        {
+          "name": "Confectioners' Sugar",
+          "amount": "128g"
+        },
+        {
+          "name": "Salt",
+          "amount": "0.5g"
+        }
       ],
       "exit_condition": "Smooth, spreadable glaze with no lumps",
       "notes": [
@@ -1017,23 +1122,80 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Air Fryer", "detail": "300°F (150°C), 5 min. Loosely wrap in foil.", "source": "agent" },
-      { "method": "Microwave", "detail": "Damp paper towel, 20-30 sec.", "source": "agent" },
-      { "method": "Storage", "detail": "Room temp, covered. Expected 2-3 day softness (sourdough anti-staling).", "source": "agent" }
+      {
+        "method": "Air Fryer",
+        "detail": "300°F (150°C), 5 min. Loosely wrap in foil.",
+        "source": "agent"
+      },
+      {
+        "method": "Microwave",
+        "detail": "Damp paper towel, 20-30 sec.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Room temp, covered. Expected 2-3 day softness (sourdough anti-staling).",
+        "source": "agent"
+      }
     ]
   },
   "research": {
     "sources": [
-      { "name": "The Perfect Loaf — Sourdough Cinnamon Rolls", "url": "https://www.theperfectloaf.com/sourdough-cinnamon-rolls/", "type": "adapted", "author": "Maurizio Leo" },
-      { "name": "King Arthur — Sourdough Cinnamon Rolls", "url": "https://www.kingarthurbaking.com/recipes/sourdough-cinnamon-rolls-recipe", "type": "adapted", "author": "King Arthur Baking" },
-      { "name": "The Clever Carrot — Soft Sourdough Cinnamon Rolls", "url": "https://www.theclevercarrot.com/2017/12/how-to-make-sourdough-cinnamon-rolls-step-by-step-guide/", "type": "adapted" },
-      { "name": "King Arthur — Adding Yeast to Sourdough", "url": "https://www.kingarthurbaking.com/blog/2022/01/13/adding-yeast-to-your-sourdough-bread", "type": "adapted", "author": "PJ Hamel" },
-      { "name": "The Perfect Loaf — Hybrid Doughs", "url": "https://www.theperfectloaf.com/hybrid-dough/", "type": "adapted", "author": "Maurizio Leo" },
-      { "name": "King Arthur — Pull-Apart Rolls in Dutch Oven", "url": "https://www.kingarthurbaking.com/blog/2024/11/21/pull-apart-rolls-dutch-oven", "type": "adapted" },
-      { "name": "Farmhouse on Boone — Sourdough Cinnamon Rolls", "url": "https://www.farmhouseonboone.com/sourdough-cinnamon-rolls-with-cream-cheese-topping/", "type": "adapted" },
-      { "name": "Little Spoon Farm — Overnight Sourdough Cinnamon Rolls", "url": "https://littlespoonfarm.com/sourdough-cinnamon-rolls/", "type": "adapted" },
-      { "name": "ATK Ultimate Cinnamon Buns v1.3.0", "url": "https://www.americastestkitchen.com/recipes/7582-quicker-cinnamon-buns", "type": "adapted", "author": "America's Test Kitchen" },
-      { "name": "Buttermilk by Sam — Sourdough Cinnamon Rolls", "url": "https://buttermilkbysam.com/sourdough-cinnamon-rolls/", "type": "adapted" }
+      {
+        "name": "The Perfect Loaf — Sourdough Cinnamon Rolls",
+        "url": "https://www.theperfectloaf.com/sourdough-cinnamon-rolls/",
+        "type": "adapted",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "King Arthur — Sourdough Cinnamon Rolls",
+        "url": "https://www.kingarthurbaking.com/recipes/sourdough-cinnamon-rolls-recipe",
+        "type": "adapted",
+        "author": "King Arthur Baking"
+      },
+      {
+        "name": "The Clever Carrot — Soft Sourdough Cinnamon Rolls",
+        "url": "https://www.theclevercarrot.com/2017/12/how-to-make-sourdough-cinnamon-rolls-step-by-step-guide/",
+        "type": "adapted"
+      },
+      {
+        "name": "King Arthur — Adding Yeast to Sourdough",
+        "url": "https://www.kingarthurbaking.com/blog/2022/01/13/adding-yeast-to-your-sourdough-bread",
+        "type": "adapted",
+        "author": "PJ Hamel"
+      },
+      {
+        "name": "The Perfect Loaf — Hybrid Doughs",
+        "url": "https://www.theperfectloaf.com/hybrid-dough/",
+        "type": "adapted",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "King Arthur — Pull-Apart Rolls in Dutch Oven",
+        "url": "https://www.kingarthurbaking.com/blog/2024/11/21/pull-apart-rolls-dutch-oven",
+        "type": "adapted"
+      },
+      {
+        "name": "Farmhouse on Boone — Sourdough Cinnamon Rolls",
+        "url": "https://www.farmhouseonboone.com/sourdough-cinnamon-rolls-with-cream-cheese-topping/",
+        "type": "adapted"
+      },
+      {
+        "name": "Little Spoon Farm — Overnight Sourdough Cinnamon Rolls",
+        "url": "https://littlespoonfarm.com/sourdough-cinnamon-rolls/",
+        "type": "adapted"
+      },
+      {
+        "name": "ATK Ultimate Cinnamon Buns v1.3.0",
+        "url": "https://www.americastestkitchen.com/recipes/7582-quicker-cinnamon-buns",
+        "type": "adapted",
+        "author": "America's Test Kitchen"
+      },
+      {
+        "name": "Buttermilk by Sam — Sourdough Cinnamon Rolls",
+        "url": "https://buttermilkbysam.com/sourdough-cinnamon-rolls/",
+        "type": "adapted"
+      }
     ],
     "techniques": [
       {
@@ -1116,19 +1278,110 @@
       ],
       "cost": {
         "costs": [
-          { "ingredientId": "flour", "name": "H-E-B Organics Unbleached All Purpose Flour", "recipeAmount": 514, "packageSize": "5 lbs", "packagePrice": 5.98, "cost": 1.36 },
-          { "ingredientId": "cornstarch", "name": "Cornstarch (avg estimate)", "recipeAmount": 64, "packageSize": null, "packagePrice": null, "cost": 0 },
-          { "ingredientId": "granulated_sugar", "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "recipeAmount": 75, "packageSize": "4 lbs", "packagePrice": 3.48, "cost": 0.14 },
-          { "ingredientId": "brown_sugar", "name": "H-E-B Organics Light Brown Sugar", "recipeAmount": 240, "packageSize": "24 oz", "packagePrice": 3.09, "cost": 1.09 },
-          { "ingredientId": "powdered_sugar", "name": "H-E-B Organics Powdered Sugar", "recipeAmount": 128, "packageSize": "24 oz", "packagePrice": 3.48, "cost": 0.66 },
-          { "ingredientId": "butter", "name": "Trader Joe's butter (receipt pending)", "recipeAmount": 227, "packageSize": null, "packagePrice": null, "cost": 0 },
-          { "ingredientId": "milk", "name": "Whole Milk (small bottle)", "recipeAmount": 95, "packageSize": null, "packagePrice": null, "cost": 0 },
-          { "ingredientId": "cream_cheese", "name": "Hill Country Fare Cream Cheese", "recipeAmount": 150, "packageSize": "8 oz", "packagePrice": 1.49, "cost": 0.98 },
-          { "ingredientId": "eggs", "name": "H-E-B Cage Free Large Brown Eggs", "recipeAmount": 3, "packageSize": "12 ct", "packagePrice": 2.96, "cost": 0 },
-          { "ingredientId": "cinnamon", "name": "McCormick Ground Cinnamon", "recipeAmount": 10, "packageSize": "4.12 oz", "packagePrice": 4.18, "cost": 0.36 },
-          { "ingredientId": "salt", "name": "Morton Salt", "recipeAmount": 11, "packageSize": "26 oz", "packagePrice": 1.58, "cost": 0.02 },
-          { "ingredientId": "vanilla", "name": "H-E-B Pure Madagascar Bourbon Vanilla Extract", "recipeAmount": 5, "packageSize": "4 oz", "packagePrice": 9.98, "cost": 0.44 },
-          { "ingredientId": "heavy_cream", "name": "Not used this bake", "recipeAmount": 0, "packageSize": null, "packagePrice": null, "cost": 0 }
+          {
+            "ingredientId": "flour",
+            "name": "H-E-B Organics Unbleached All Purpose Flour",
+            "recipeAmount": 514,
+            "packageSize": "5 lbs",
+            "packagePrice": 5.98,
+            "cost": 1.36
+          },
+          {
+            "ingredientId": "cornstarch",
+            "name": "Cornstarch (avg estimate)",
+            "recipeAmount": 64,
+            "packageSize": null,
+            "packagePrice": null,
+            "cost": 0
+          },
+          {
+            "ingredientId": "granulated_sugar",
+            "name": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "recipeAmount": 75,
+            "packageSize": "4 lbs",
+            "packagePrice": 3.48,
+            "cost": 0.14
+          },
+          {
+            "ingredientId": "brown_sugar",
+            "name": "H-E-B Organics Light Brown Sugar",
+            "recipeAmount": 240,
+            "packageSize": "24 oz",
+            "packagePrice": 3.09,
+            "cost": 1.09
+          },
+          {
+            "ingredientId": "powdered_sugar",
+            "name": "H-E-B Organics Powdered Sugar",
+            "recipeAmount": 128,
+            "packageSize": "24 oz",
+            "packagePrice": 3.48,
+            "cost": 0.66
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Trader Joe's butter (receipt pending)",
+            "recipeAmount": 227,
+            "packageSize": null,
+            "packagePrice": null,
+            "cost": 0
+          },
+          {
+            "ingredientId": "milk",
+            "name": "Whole Milk (small bottle)",
+            "recipeAmount": 95,
+            "packageSize": null,
+            "packagePrice": null,
+            "cost": 0
+          },
+          {
+            "ingredientId": "cream_cheese",
+            "name": "Hill Country Fare Cream Cheese",
+            "recipeAmount": 150,
+            "packageSize": "8 oz",
+            "packagePrice": 1.49,
+            "cost": 0.98
+          },
+          {
+            "ingredientId": "eggs",
+            "name": "H-E-B Cage Free Large Brown Eggs",
+            "recipeAmount": 3,
+            "packageSize": "12 ct",
+            "packagePrice": 2.96,
+            "cost": 0
+          },
+          {
+            "ingredientId": "cinnamon",
+            "name": "McCormick Ground Cinnamon",
+            "recipeAmount": 10,
+            "packageSize": "4.12 oz",
+            "packagePrice": 4.18,
+            "cost": 0.36
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Morton Salt",
+            "recipeAmount": 11,
+            "packageSize": "26 oz",
+            "packagePrice": 1.58,
+            "cost": 0.02
+          },
+          {
+            "ingredientId": "vanilla",
+            "name": "H-E-B Pure Madagascar Bourbon Vanilla Extract",
+            "recipeAmount": 5,
+            "packageSize": "4 oz",
+            "packagePrice": 9.98,
+            "cost": 0.44
+          },
+          {
+            "ingredientId": "heavy_cream",
+            "name": "Not used this bake",
+            "recipeAmount": 0,
+            "packageSize": null,
+            "packagePrice": null,
+            "cost": 0
+          }
         ],
         "total": 5.05,
         "perServing": 0.63,

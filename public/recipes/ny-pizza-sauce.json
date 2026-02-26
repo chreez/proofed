@@ -13,8 +13,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "servings",
-      "yieldMultiplier": 1
+      "group": "Sauces & Condiments",
+      "defaultYield": 1,
+      "unit": "batch",
+      "servingsPerItem": 10,
+      "servingUnit": "servings"
     }
   },
   "version": "v1.0.0",
@@ -26,26 +29,80 @@
     }
   ],
   "vessels": [
-    { "id": "V1", "name": "Large Bowl" }
+    {
+      "id": "V1",
+      "name": "Large Bowl"
+    }
   ],
   "stages": [
     {
       "id": "PREP",
       "title": "Make Sauce",
       "gather": {
-        "vessels": ["Large Bowl"],
-        "equipment": ["Immersion Blender", "Can Opener"],
+        "vessels": [
+          "Large Bowl"
+        ],
+        "equipment": [
+          "Immersion Blender",
+          "Can Opener"
+        ],
         "ingredients": [
-          { "id": "crushed_tomatoes", "name": "Sclafani Crushed Tomatoes", "total": 794, "unit": "g", "breakdown": null },
-          { "id": "water", "name": "Water", "total": 57, "unit": "g", "breakdown": null },
-          { "id": "basil", "name": "Fresh Basil", "total": 1, "unit": "g", "breakdown": null },
-          { "id": "salt", "name": "Salt", "total": 3, "unit": "g", "breakdown": null },
-          { "id": "oregano", "name": "Dried Oregano", "total": 0.5, "unit": "g", "breakdown": null },
-          { "id": "sugar", "name": "Sugar", "total": 4, "unit": "g", "breakdown": null },
-          { "id": "garlic", "name": "Garlic", "total": 3, "unit": "g", "breakdown": null }
+          {
+            "id": "crushed_tomatoes",
+            "name": "Sclafani Crushed Tomatoes",
+            "total": 794,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 57,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "basil",
+            "name": "Fresh Basil",
+            "total": 1,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "oregano",
+            "name": "Dried Oregano",
+            "total": 0.5,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "sugar",
+            "name": "Sugar",
+            "total": 4,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "garlic",
+            "name": "Garlic",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null
+          }
         ]
       },
-      "states": ["blend-tomatoes", "mix-seasonings", "rest"]
+      "states": [
+        "blend-tomatoes",
+        "mix-seasonings",
+        "rest"
+      ]
     }
   ],
   "states": [
@@ -57,8 +114,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Sclafani Crushed Tomatoes", "amount": "794g (one 28oz can)" },
-        { "name": "Water", "amount": "57g (2oz, to rinse can)" }
+        {
+          "name": "Sclafani Crushed Tomatoes",
+          "amount": "794g (one 28oz can)"
+        },
+        {
+          "name": "Water",
+          "amount": "57g (2oz, to rinse can)"
+        }
       ],
       "exit_condition": "Tomatoes blended to desired consistency, can rinsed clean",
       "notes": null
@@ -71,11 +134,26 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Salt", "amount": "3g (½ tsp)" },
-        { "name": "Sugar", "amount": "4g (1 tsp)" },
-        { "name": "Dried Oregano", "amount": "0.5g (⅛ tsp, scant)" },
-        { "name": "Garlic", "amount": "3g (1 very small clove, pressed)" },
-        { "name": "Fresh Basil", "amount": "1g (1.5 small leaves)" }
+        {
+          "name": "Salt",
+          "amount": "3g (½ tsp)"
+        },
+        {
+          "name": "Sugar",
+          "amount": "4g (1 tsp)"
+        },
+        {
+          "name": "Dried Oregano",
+          "amount": "0.5g (⅛ tsp, scant)"
+        },
+        {
+          "name": "Garlic",
+          "amount": "3g (1 very small clove, pressed)"
+        },
+        {
+          "name": "Fresh Basil",
+          "amount": "1g (1.5 small leaves)"
+        }
       ],
       "exit_condition": "All seasonings incorporated, no visible clumps of sugar or salt",
       "notes": null

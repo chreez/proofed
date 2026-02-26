@@ -187,6 +187,7 @@ function makeRouter() {
       { path: '/review/bake/:recipeId/:date', name: 'bake-review', component: { template: '<div />' } },
       { path: '/demo/qr-test', name: 'qr-test-demo', component: { template: '<div />' }, meta: { demoPage: true } },
       { path: '/bake-log', name: 'bake-log', component: { template: '<div />' } },
+      { path: '/stats', name: 'stats', component: { template: '<div />' }, meta: { showStats: true } },
       { path: '/demo/stats', name: 'stats-demo', component: { template: '<div />' }, meta: { showStats: true } },
     ]
   })
@@ -368,7 +369,7 @@ describe('App', () => {
     await tabs[2].trigger('click')
     await flushPromises()
     await nextTick()
-    expect(router.currentRoute.value.path).toBe('/demo/stats')
+    expect(router.currentRoute.value.path).toBe('/stats')
   })
 
   it('hides tab bar on recipe route', async () => {

@@ -35,6 +35,7 @@ import DemoCostPicker from '@/components/DemoCostPicker.vue'
 import DemoCostRender from '@/components/DemoCostRender.vue'
 import DemoBakeLogPhotos from '@/components/DemoBakeLogPhotos.vue'
 import DemoStats from '@/components/DemoStats.vue'
+import StatsPage from '@/components/StatsPage.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
 import BakeLogPage from '@/components/BakeLogPage.vue'
@@ -59,7 +60,7 @@ const showPhotoReview = computed(() => route.name === 'photo-review')
 const showBakeDetail = computed(() => route.name === 'bake-detail')
 const showBakeReview = computed(() => route.name === 'bake-review')
 const showBakeLog = computed(() => route.name === 'bake-log')
-const showStats = computed(() => route.name === 'stats-demo')
+const showStats = computed(() => route.name === 'stats' || route.name === 'stats-demo')
 function goToIndex(): void {
   router.push('/')
 }
@@ -437,7 +438,7 @@ watch(() => route.hash, (newHash) => {
         <button
           class="tab-item"
           :class="{ 'tab-active': showStats }"
-          @click="router.push('/demo/stats')"
+          @click="router.push('/stats')"
         >Dashboard</button>
       </div>
     </nav>
@@ -458,7 +459,8 @@ watch(() => route.hash, (newHash) => {
       </template>
 
       <template v-else-if="showStats">
-        <DemoStats />
+        <StatsPage v-if="route.name === 'stats'" />
+        <DemoStats v-else />
       </template>
 
       <template v-else-if="showBakeDetail">

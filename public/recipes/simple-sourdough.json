@@ -14,8 +14,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "slices",
-      "yieldMultiplier": 10
+      "group": "Sourdough Breads",
+      "defaultYield": 2,
+      "unit": "loaves",
+      "servingsPerItem": 10,
+      "servingUnit": "slices"
     }
   },
   "version": "v2.0.0",
@@ -237,10 +240,22 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Water", "amount": "700g" },
-        { "name": "Active Sourdough Starter", "amount": "200g" },
-        { "name": "Bread Flour", "amount": "1000g" },
-        { "name": "Fine Sea Salt", "amount": "20g" }
+        {
+          "name": "Water",
+          "amount": "700g"
+        },
+        {
+          "name": "Active Sourdough Starter",
+          "amount": "200g"
+        },
+        {
+          "name": "Bread Flour",
+          "amount": "1000g"
+        },
+        {
+          "name": "Fine Sea Salt",
+          "amount": "20g"
+        }
       ],
       "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
       "notes": [
@@ -274,7 +289,10 @@
       ],
       "technique_url": "https://www.theperfectloaf.com/how-to-stretch-and-fold-sourdough-bread-dough/",
       "reminders": [
-        { "prompt": "Record dough temperature", "type": "measurement" }
+        {
+          "prompt": "Record dough temperature",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -359,8 +377,14 @@
         }
       ],
       "reminders": [
-        { "prompt": "Note kitchen ambient temperature", "type": "measurement" },
-        { "prompt": "Check dough volume rise %", "type": "observation" }
+        {
+          "prompt": "Note kitchen ambient temperature",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Check dough volume rise %",
+          "type": "observation"
+        }
       ]
     },
     {
@@ -580,7 +604,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Record internal temperature immediately out of oven (target 205°F / 96°C)", "type": "measurement" }
+        {
+          "prompt": "Record internal temperature immediately out of oven (target 205°F / 96°C)",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -605,7 +632,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Rate crust color and ear", "type": "observation" }
+        {
+          "prompt": "Rate crust color and ear",
+          "type": "observation"
+        }
       ]
     }
   ],
@@ -730,10 +760,18 @@
         }
       ],
       "next_time": [
-        { "text": "Get a Dutch oven" },
-        { "text": "Use parchment paper if baking on steel" },
-        { "text": "Preheat steel hotter for more oven spring" },
-        { "text": "Track cold proof start/end time" }
+        {
+          "text": "Get a Dutch oven"
+        },
+        {
+          "text": "Use parchment paper if baking on steel"
+        },
+        {
+          "text": "Preheat steel hotter for more oven spring"
+        },
+        {
+          "text": "Track cold proof start/end time"
+        }
       ]
     },
     {
@@ -757,26 +795,79 @@
         }
       ],
       "next_time": [
-        { "text": "Skip the oven light — bulk ferment on counter at room temp (70-74°F is ideal). Oven light runs 78-90°F+, way too hot for 20% inoculation overnight.", "source": "The Perfect Loaf, Baker Bettie, ThermoWorks" },
-        { "text": "Use an aliquot jar: pinch off 30g after first fold, press into a small jar, mark level. End bulk when it hits 50-75% rise.", "source": "Full Proof Baking via The Pantry Mama" },
-        { "text": "Mark starting level on Cambro with tape + calculate target line (e.g., 800mL start → 1200mL for 50% rise)" },
-        { "text": "Consider dropping to 10-15% starter for more overnight margin (12-16 hrs vs 8-12 hrs at 20%)", "source": "The Fresh Loaf, SourdoughTalk" },
-        { "text": "Set a halfway alarm to check progress and catch runaway ferment" },
-        { "text": "Take a photo of dough state before shaping to help diagnose fermentation level" },
-        { "text": "Figure out how to brown focaccia top better (broiler finish?)" },
-        { "text": "Dutch oven still incoming — try a proper boule bake when it arrives" }
+        {
+          "text": "Skip the oven light — bulk ferment on counter at room temp (70-74°F is ideal). Oven light runs 78-90°F+, way too hot for 20% inoculation overnight.",
+          "source": "The Perfect Loaf, Baker Bettie, ThermoWorks"
+        },
+        {
+          "text": "Use an aliquot jar: pinch off 30g after first fold, press into a small jar, mark level. End bulk when it hits 50-75% rise.",
+          "source": "Full Proof Baking via The Pantry Mama"
+        },
+        {
+          "text": "Mark starting level on Cambro with tape + calculate target line (e.g., 800mL start → 1200mL for 50% rise)"
+        },
+        {
+          "text": "Consider dropping to 10-15% starter for more overnight margin (12-16 hrs vs 8-12 hrs at 20%)",
+          "source": "The Fresh Loaf, SourdoughTalk"
+        },
+        {
+          "text": "Set a halfway alarm to check progress and catch runaway ferment"
+        },
+        {
+          "text": "Take a photo of dough state before shaping to help diagnose fermentation level"
+        },
+        {
+          "text": "Figure out how to brown focaccia top better (broiler finish?)"
+        },
+        {
+          "text": "Dutch oven still incoming — try a proper boule bake when it arrives"
+        }
       ],
       "cost": {
         "total": 1.34,
         "perServing": 1.34,
         "servings": 1,
         "items": [
-          { "ingredientId": "bread_flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "amount": 500, "unit": "g", "cost": 1.23 },
-          { "ingredientId": "water", "name": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "amount": 350, "unit": "g", "cost": 0 },
-          { "ingredientId": "starter", "name": "Active Sourdough Starter", "sourceType": "rate", "sourceName": "Derived: 50% AP flour rate (flour + water)", "amount": 100, "unit": "g", "cost": 0.06 },
-          { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 10, "unit": "g", "cost": 0.05 }
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 500,
+            "unit": "g",
+            "cost": 1.23
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 350,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 100,
+            "unit": "g",
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.05
+          }
         ]
-      }
+      },
+      "aberration": true,
+      "aberration_note": "Focaccia (from failed sourdough)"
     },
     {
       "date": "2026-02-17",
@@ -824,22 +915,66 @@
         }
       ],
       "next_time": [
-        { "text": "Use parchment paper instead of silicone sling for Dutch oven loading" },
-        { "text": "Measure internal temp immediately out of oven (target 205°F)" },
-        { "text": "Try aliquot jar — any small straight-sided jar works" },
-        { "text": "Consider making two dough balls for experimentation" },
-        { "text": "Try 500g bread flour (no AP) to compare with this bake's 300/200 split" },
-        { "text": "Research optimal cold proof duration after overnight room-temp bulk — does longer cold proof (4-8 hrs) improve dough firmness for scoring and handling?" }
+        {
+          "text": "Use parchment paper instead of silicone sling for Dutch oven loading"
+        },
+        {
+          "text": "Measure internal temp immediately out of oven (target 205°F)"
+        },
+        {
+          "text": "Try aliquot jar — any small straight-sided jar works"
+        },
+        {
+          "text": "Consider making two dough balls for experimentation"
+        },
+        {
+          "text": "Try 500g bread flour (no AP) to compare with this bake's 300/200 split"
+        },
+        {
+          "text": "Research optimal cold proof duration after overnight room-temp bulk — does longer cold proof (4-8 hrs) improve dough firmness for scoring and handling?"
+        }
       ],
       "cost": {
         "total": 1.32,
         "perServing": 1.32,
         "servings": 1,
         "items": [
-          { "ingredientId": "bread_flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour 10 lb", "amount": 500, "unit": "g", "cost": 1.21 },
-          { "ingredientId": "water", "name": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "amount": 350, "unit": "g", "cost": 0 },
-          { "ingredientId": "starter", "name": "Active Sourdough Starter", "sourceType": "rate", "sourceName": "Derived: 50% AP flour rate (flour + water)", "amount": 100, "unit": "g", "cost": 0.06 },
-          { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 10, "unit": "g", "cost": 0.05 }
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 500,
+            "unit": "g",
+            "cost": 1.21
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 350,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 100,
+            "unit": "g",
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.05
+          }
         ]
       }
     },
@@ -896,18 +1031,54 @@
         }
       ],
       "next_time": [
-        { "text": "Try wet hand + scraper only for pre-shape instead of flour" },
-        { "text": "Preheat Challenger longer — took 1.5 hours and was still only at 300°F" }
+        {
+          "text": "Try wet hand + scraper only for pre-shape instead of flour"
+        },
+        {
+          "text": "Preheat Challenger longer — took 1.5 hours and was still only at 300°F"
+        }
       ],
       "cost": {
         "total": 2.68,
         "perServing": 1.34,
         "servings": 2,
         "items": [
-          { "ingredientId": "bread_flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour 5 lb", "amount": 1000, "unit": "g", "cost": 2.46 },
-          { "ingredientId": "water", "name": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "amount": 700, "unit": "g", "cost": 0 },
-          { "ingredientId": "starter", "name": "Active Sourdough Starter", "sourceType": "rate", "sourceName": "Derived: 50% AP flour rate (flour + water)", "amount": 200, "unit": "g", "cost": 0.11 },
-          { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 20, "unit": "g", "cost": 0.11 }
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 5 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.46
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.11
+          }
         ]
       }
     }
@@ -1004,9 +1175,21 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Oven", "detail": "350°F (175°C), 5–10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.", "source": "agent" },
-      { "method": "Toaster", "detail": "Slice and toast directly — best for day-old bread.", "source": "agent" },
-      { "method": "Storage", "detail": "Cut-side down on a board, room temp, same day. Freeze sliced in zip-lock for up to 1 month.", "source": "agent" }
+      {
+        "method": "Oven",
+        "detail": "350°F (175°C), 5–10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.",
+        "source": "agent"
+      },
+      {
+        "method": "Toaster",
+        "detail": "Slice and toast directly — best for day-old bread.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Cut-side down on a board, room temp, same day. Freeze sliced in zip-lock for up to 1 month.",
+        "source": "agent"
+      }
     ]
   }
 }

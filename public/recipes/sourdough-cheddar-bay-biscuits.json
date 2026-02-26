@@ -14,8 +14,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "biscuits",
-      "yieldMultiplier": 1
+      "group": "Buns & Rolls",
+      "defaultYield": 10,
+      "unit": "biscuits",
+      "servingsPerItem": 1,
+      "servingUnit": "biscuits"
     }
   },
   "version": "v1.0.0",
@@ -104,8 +107,14 @@
             "total": 160,
             "unit": "g",
             "breakdown": [
-              { "label": "dough (cold, cubed)", "amount": 115 },
-              { "label": "garlic herb butter brush", "amount": 45 }
+              {
+                "label": "dough (cold, cubed)",
+                "amount": 115
+              },
+              {
+                "label": "garlic herb butter brush",
+                "amount": 45
+              }
             ],
             "sourcedFrom": "Unanimous across 10+ conventional copycats — 115g dough, 45g brush",
             "confidence": "high",
@@ -147,8 +156,14 @@
             "total": 7.5,
             "unit": "g",
             "breakdown": [
-              { "label": "dough", "amount": 6 },
-              { "label": "garlic herb butter brush", "amount": 1.5 }
+              {
+                "label": "dough",
+                "amount": 6
+              },
+              {
+                "label": "garlic herb butter brush",
+                "amount": 1.5
+              }
             ],
             "sourcedFrom": "Official Red Lobster seasoning packet + copycat consensus",
             "confidence": "high",
@@ -273,7 +288,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Sharp Cheddar (block)", "amount": "150g" }
+        {
+          "name": "Sharp Cheddar (block)",
+          "amount": "150g"
+        }
       ],
       "exit_condition": "150g cheddar shredded on large holes, refrigerated",
       "notes": [
@@ -297,13 +315,34 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "All-Purpose Flour", "amount": "220g" },
-        { "name": "Baking Powder", "amount": "14g" },
-        { "name": "Granulated Sugar", "amount": "8g" },
-        { "name": "Garlic Powder", "amount": "6g" },
-        { "name": "Onion Powder", "amount": "3g" },
-        { "name": "Kosher Salt", "amount": "5g" },
-        { "name": "Cayenne Pepper", "amount": "0.3g (1/8 tsp)" }
+        {
+          "name": "All-Purpose Flour",
+          "amount": "220g"
+        },
+        {
+          "name": "Baking Powder",
+          "amount": "14g"
+        },
+        {
+          "name": "Granulated Sugar",
+          "amount": "8g"
+        },
+        {
+          "name": "Garlic Powder",
+          "amount": "6g"
+        },
+        {
+          "name": "Onion Powder",
+          "amount": "3g"
+        },
+        {
+          "name": "Kosher Salt",
+          "amount": "5g"
+        },
+        {
+          "name": "Cayenne Pepper",
+          "amount": "0.3g (1/8 tsp)"
+        }
       ],
       "exit_condition": "Dry ingredients evenly combined, no visible clumps of spices or leavener",
       "notes": null
@@ -316,7 +355,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Cold Unsalted Butter", "amount": "115g (cubed or grated from frozen)" }
+        {
+          "name": "Cold Unsalted Butter",
+          "amount": "115g (cubed or grated from frozen)"
+        }
       ],
       "exit_condition": "Butter pieces are pea-sized with some larger flakes, evenly distributed through flour",
       "notes": [
@@ -340,7 +382,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Sharp Cheddar (shredded)", "amount": "150g" }
+        {
+          "name": "Sharp Cheddar (shredded)",
+          "amount": "150g"
+        }
       ],
       "exit_condition": "Cheese evenly distributed and coated in flour — no clumps of bare cheese",
       "notes": [
@@ -359,9 +404,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Sourdough Discard (cold)", "amount": "130g" },
-        { "name": "Cold Buttermilk", "amount": "150g" },
-        { "name": "Baking Soda", "amount": "3g" }
+        {
+          "name": "Sourdough Discard (cold)",
+          "amount": "130g"
+        },
+        {
+          "name": "Cold Buttermilk",
+          "amount": "150g"
+        },
+        {
+          "name": "Baking Soda",
+          "amount": "3g"
+        }
       ],
       "exit_condition": "Wet ingredients combined, baking soda dissolved and fizzing slightly",
       "notes": [
@@ -394,7 +448,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Rate dough consistency — should be wet and shaggy", "type": "observation" }
+        {
+          "prompt": "Rate dough consistency — should be wet and shaggy",
+          "type": "observation"
+        }
       ]
     },
     {
@@ -431,7 +488,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Record internal temperature of center biscuit", "type": "measurement" }
+        {
+          "prompt": "Record internal temperature of center biscuit",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -442,10 +502,22 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "Unsalted Butter (melted)", "amount": "45g" },
-        { "name": "Garlic Powder", "amount": "1.5g (1/2 tsp)" },
-        { "name": "Fresh Italian Parsley", "amount": "4g (1 Tbsp chopped)" },
-        { "name": "Salt", "amount": "pinch" }
+        {
+          "name": "Unsalted Butter (melted)",
+          "amount": "45g"
+        },
+        {
+          "name": "Garlic Powder",
+          "amount": "1.5g (1/2 tsp)"
+        },
+        {
+          "name": "Fresh Italian Parsley",
+          "amount": "4g (1 Tbsp chopped)"
+        },
+        {
+          "name": "Salt",
+          "amount": "pinch"
+        }
       ],
       "exit_condition": "Garlic herb butter melted and combined, parsley evenly distributed, ready for brushing",
       "notes": [
@@ -473,7 +545,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Rate overall biscuit quality", "type": "rating" }
+        {
+          "prompt": "Rate overall biscuit quality",
+          "type": "rating"
+        }
       ]
     }
   ],
@@ -689,22 +764,89 @@
   },
   "research": {
     "sources": [
-      { "name": "Red Lobster At Home (official box mix)", "url": "https://redlobsterathome.com/products/cheddar-bay-biscuit-mix", "type": "original" },
-      { "name": "Joshua Weissman", "url": "https://www.joshuaweissman.com/recipes/best-red-lobster-cheddar-biscuits-recipe", "type": "adapted", "author": "Joshua Weissman" },
-      { "name": "Serious Eats", "url": "https://www.seriouseats.com/garlic-cheddar-drop-biscuits-recipe", "type": "adapted", "author": "Stella Parks" },
-      { "name": "America's Test Kitchen", "url": "https://www.americastestkitchen.com/recipes/15501-cheddar-chive-biscuits", "type": "adapted" },
-      { "name": "King Arthur Baking", "url": "https://www.kingarthurbaking.com/recipes/buttery-sourdough-biscuits-recipe", "type": "adapted" },
-      { "name": "Little Spoon Farm", "url": "https://littlespoonfarm.com/red-lobster-cheddar-bay-biscuits-recipe/", "type": "adapted" },
-      { "name": "Pantry Mama", "url": "https://www.pantrymama.com/sourdough-cheddar-biscuits/", "type": "adapted" },
-      { "name": "Amy Bakes Bread", "url": "https://amybakesbread.com/sourdough-cheddar-biscuits/", "type": "adapted" },
-      { "name": "The Clever Carrot", "url": "https://www.theclevercarrot.com/2024/11/easy-sourdough-discard-biscuits-recipe-cheddar-scallions/", "type": "adapted" },
-      { "name": "Plum Branch Home", "url": "https://plumbranchhome.com/sourdough-cheddar-bay-biscuits-better-than-red-lobsters/", "type": "adapted" },
-      { "name": "Natasha's Baking", "url": "https://natashasbaking.com/red-lobster-cheddar-biscuits-with-sourdough-discard/", "type": "adapted" },
-      { "name": "Damn Delicious", "url": "https://damndelicious.net/2014/02/03/red-lobster-cheddar-bay-biscuits/", "type": "adapted" },
-      { "name": "The Cozy Cook", "url": "https://thecozycook.com/copycat-red-lobster-cheddar-bay-biscuits/", "type": "adapted" },
-      { "name": "Once Upon a Chef", "url": "https://www.onceuponachef.com/recipes/cheddar-bay-biscuits.html", "type": "adapted" },
-      { "name": "Wordloaf (Andrew Janjigian)", "url": "https://newsletter.wordloaf.org/class-time-sourdough-discard-101/", "type": "adapted", "author": "Andrew Janjigian" },
-      { "name": "Milk Street", "url": "https://www.177milkstreet.com/stories/07-2020-best-biscuits-frozen-butter", "type": "adapted" }
+      {
+        "name": "Red Lobster At Home (official box mix)",
+        "url": "https://redlobsterathome.com/products/cheddar-bay-biscuit-mix",
+        "type": "original"
+      },
+      {
+        "name": "Joshua Weissman",
+        "url": "https://www.joshuaweissman.com/recipes/best-red-lobster-cheddar-biscuits-recipe",
+        "type": "adapted",
+        "author": "Joshua Weissman"
+      },
+      {
+        "name": "Serious Eats",
+        "url": "https://www.seriouseats.com/garlic-cheddar-drop-biscuits-recipe",
+        "type": "adapted",
+        "author": "Stella Parks"
+      },
+      {
+        "name": "America's Test Kitchen",
+        "url": "https://www.americastestkitchen.com/recipes/15501-cheddar-chive-biscuits",
+        "type": "adapted"
+      },
+      {
+        "name": "King Arthur Baking",
+        "url": "https://www.kingarthurbaking.com/recipes/buttery-sourdough-biscuits-recipe",
+        "type": "adapted"
+      },
+      {
+        "name": "Little Spoon Farm",
+        "url": "https://littlespoonfarm.com/red-lobster-cheddar-bay-biscuits-recipe/",
+        "type": "adapted"
+      },
+      {
+        "name": "Pantry Mama",
+        "url": "https://www.pantrymama.com/sourdough-cheddar-biscuits/",
+        "type": "adapted"
+      },
+      {
+        "name": "Amy Bakes Bread",
+        "url": "https://amybakesbread.com/sourdough-cheddar-biscuits/",
+        "type": "adapted"
+      },
+      {
+        "name": "The Clever Carrot",
+        "url": "https://www.theclevercarrot.com/2024/11/easy-sourdough-discard-biscuits-recipe-cheddar-scallions/",
+        "type": "adapted"
+      },
+      {
+        "name": "Plum Branch Home",
+        "url": "https://plumbranchhome.com/sourdough-cheddar-bay-biscuits-better-than-red-lobsters/",
+        "type": "adapted"
+      },
+      {
+        "name": "Natasha's Baking",
+        "url": "https://natashasbaking.com/red-lobster-cheddar-biscuits-with-sourdough-discard/",
+        "type": "adapted"
+      },
+      {
+        "name": "Damn Delicious",
+        "url": "https://damndelicious.net/2014/02/03/red-lobster-cheddar-bay-biscuits/",
+        "type": "adapted"
+      },
+      {
+        "name": "The Cozy Cook",
+        "url": "https://thecozycook.com/copycat-red-lobster-cheddar-bay-biscuits/",
+        "type": "adapted"
+      },
+      {
+        "name": "Once Upon a Chef",
+        "url": "https://www.onceuponachef.com/recipes/cheddar-bay-biscuits.html",
+        "type": "adapted"
+      },
+      {
+        "name": "Wordloaf (Andrew Janjigian)",
+        "url": "https://newsletter.wordloaf.org/class-time-sourdough-discard-101/",
+        "type": "adapted",
+        "author": "Andrew Janjigian"
+      },
+      {
+        "name": "Milk Street",
+        "url": "https://www.177milkstreet.com/stories/07-2020-best-biscuits-frozen-butter",
+        "type": "adapted"
+      }
     ],
     "techniques": [
       {

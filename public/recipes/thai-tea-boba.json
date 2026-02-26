@@ -13,8 +13,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "drinks",
-      "yieldMultiplier": 1
+      "group": "Drinks",
+      "defaultYield": 2,
+      "unit": "drinks",
+      "servingsPerItem": 1,
+      "servingUnit": "drinks"
     }
   },
   "version": "v1.0.0",
@@ -838,8 +841,16 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Serving", "detail": "Best fresh. Boba hardens in the fridge — make only what you'll drink.", "source": "agent" },
-      { "method": "Tea Only", "detail": "Tea concentrate keeps 2–3 days in the fridge. Pour over fresh ice and milk to serve.", "source": "agent" }
+      {
+        "method": "Serving",
+        "detail": "Best fresh. Boba hardens in the fridge — make only what you'll drink.",
+        "source": "agent"
+      },
+      {
+        "method": "Tea Only",
+        "detail": "Tea concentrate keeps 2–3 days in the fridge. Pour over fresh ice and milk to serve.",
+        "source": "agent"
+      }
     ]
   }
 }

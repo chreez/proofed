@@ -13,8 +13,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "servings",
-      "yieldMultiplier": 1
+      "group": "Noodles & Soups",
+      "defaultYield": 6,
+      "unit": "servings",
+      "servingsPerItem": 1,
+      "servingUnit": "servings"
     }
   },
   "version": "v1.1.0",
@@ -1667,9 +1670,21 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Stovetop", "detail": "Medium-low heat, stir frequently. Add a splash of water or stock if too thick.", "source": "agent" },
-      { "method": "Microwave", "detail": "Cover, 2–3 min, stir halfway through.", "source": "agent" },
-      { "method": "Storage", "detail": "Fridge up to 5 days (sauce only — store rice separately). Freezes well for 1 month.", "source": "agent" }
+      {
+        "method": "Stovetop",
+        "detail": "Medium-low heat, stir frequently. Add a splash of water or stock if too thick.",
+        "source": "agent"
+      },
+      {
+        "method": "Microwave",
+        "detail": "Cover, 2–3 min, stir halfway through.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Fridge up to 5 days (sauce only — store rice separately). Freezes well for 1 month.",
+        "source": "agent"
+      }
     ]
   }
 }

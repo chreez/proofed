@@ -14,8 +14,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "slices",
-      "yieldMultiplier": 8
+      "group": "Pizza",
+      "defaultYield": 2,
+      "unit": "pizzas",
+      "servingsPerItem": 8,
+      "servingUnit": "slices"
     }
   },
   "version": "v1.3.0",
@@ -259,21 +262,93 @@
         "perServing": 6.57,
         "servings": 2,
         "items": [
-          { "ingredientId": "bread_flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour (5 lb)", "amount": 463, "unit": "g", "cost": 1.14 },
-          { "ingredientId": "instant_yeast", "name": "Instant Yeast", "sourceType": "heb", "sourceName": "Red Star Quick-Rise (3 ct / 21g)", "amount": 6, "unit": "g", "cost": 0.50 },
-          { "ingredientId": "olive_oil", "name": "Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Organics Extra Virgin (25.5 oz)", "amount": 18, "unit": "g", "cost": 0.26 },
-          { "ingredientId": "salt", "name": "Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt (17.6 oz)", "amount": 8, "unit": "g", "cost": 0.04 },
-          { "ingredientId": "cornmeal", "name": "Cornmeal", "sourceType": "heb", "sourceName": "Pioneer Enriched Yellow Corn Meal (2 lb)", "amount": 13, "unit": "g", "cost": 0.03 },
-          { "ingredientId": "san_marzano_sauce", "name": "Crushed Tomatoes", "sourceType": "amazon", "sourceName": "Sclafani Crushed Tomatoes ($4.71/lb)", "amount": 175, "unit": "g", "cost": 1.82 },
-          { "ingredientId": "mozzarella", "name": "Mozzarella", "sourceType": "tj", "sourceName": "TJ's Whole Milk Low-Moisture Mozz (16 oz)", "amount": 350, "unit": "g", "cost": 4.23 },
-          { "ingredientId": "pepperoni", "name": "Pepperoni", "sourceType": "heb", "sourceName": "Boar's Head Pepperoni (6 oz)", "amount": 175, "unit": "g", "cost": 5.12 }
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour (5 lb)",
+            "amount": 463,
+            "unit": "g",
+            "cost": 1.14
+          },
+          {
+            "ingredientId": "instant_yeast",
+            "name": "Instant Yeast",
+            "sourceType": "heb",
+            "sourceName": "Red Star Quick-Rise (3 ct / 21g)",
+            "amount": 6,
+            "unit": "g",
+            "cost": 0.5
+          },
+          {
+            "ingredientId": "olive_oil",
+            "name": "Olive Oil",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Organics Extra Virgin (25.5 oz)",
+            "amount": 18,
+            "unit": "g",
+            "cost": 0.26
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt (17.6 oz)",
+            "amount": 8,
+            "unit": "g",
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "cornmeal",
+            "name": "Cornmeal",
+            "sourceType": "heb",
+            "sourceName": "Pioneer Enriched Yellow Corn Meal (2 lb)",
+            "amount": 13,
+            "unit": "g",
+            "cost": 0.03
+          },
+          {
+            "ingredientId": "san_marzano_sauce",
+            "name": "Crushed Tomatoes",
+            "sourceType": "amazon",
+            "sourceName": "Sclafani Crushed Tomatoes ($4.71/lb)",
+            "amount": 175,
+            "unit": "g",
+            "cost": 1.82
+          },
+          {
+            "ingredientId": "mozzarella",
+            "name": "Mozzarella",
+            "sourceType": "tj",
+            "sourceName": "TJ's Whole Milk Low-Moisture Mozz (16 oz)",
+            "amount": 350,
+            "unit": "g",
+            "cost": 4.23
+          },
+          {
+            "ingredientId": "pepperoni",
+            "name": "Pepperoni",
+            "sourceType": "heb",
+            "sourceName": "Boar's Head Pepperoni (6 oz)",
+            "amount": 175,
+            "unit": "g",
+            "cost": 5.12
+          }
         ]
       },
       "next_time": [
-        { "text": "Make sauce the night before to let flavors develop overnight" },
-        { "text": "Aim for ~1 min under broiler (1.5 min was slightly too long)" },
-        { "text": "Consider removing olive oil from dough — may not need enrichments at 550°F + steel temps" },
-        { "text": "Work on peel launch technique to keep toppings evenly distributed" }
+        {
+          "text": "Make sauce the night before to let flavors develop overnight"
+        },
+        {
+          "text": "Aim for ~1 min under broiler (1.5 min was slightly too long)"
+        },
+        {
+          "text": "Consider removing olive oil from dough — may not need enrichments at 550°F + steel temps"
+        },
+        {
+          "text": "Work on peel launch technique to keep toppings evenly distributed"
+        }
       ]
     },
     {
@@ -318,7 +393,9 @@
         }
       ],
       "next_time": [
-        { "text": "Always bulk ferment overnight in the fridge — room temp bulk led to dough sticking to Cambro" }
+        {
+          "text": "Always bulk ferment overnight in the fridge — room temp bulk led to dough sticking to Cambro"
+        }
       ]
     }
   ],

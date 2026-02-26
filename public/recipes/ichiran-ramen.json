@@ -13,8 +13,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "servings",
-      "yieldMultiplier": 1
+      "group": "Noodles & Soups",
+      "defaultYield": 8,
+      "unit": "servings",
+      "servingsPerItem": 1,
+      "servingUnit": "servings"
     }
   },
   "version": "v1.0.0",
@@ -2802,8 +2805,16 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Stovetop", "detail": "Reheat broth separately on medium heat. Cook fresh noodles at serving time — do not store cooked noodles.", "source": "agent" },
-      { "method": "Storage", "detail": "Broth, tare, and red sauce keep 5 days in fridge. Broth and tare freeze well (1 month+).", "source": "agent" }
+      {
+        "method": "Stovetop",
+        "detail": "Reheat broth separately on medium heat. Cook fresh noodles at serving time — do not store cooked noodles.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Broth, tare, and red sauce keep 5 days in fridge. Broth and tare freeze well (1 month+).",
+        "source": "agent"
+      }
     ]
   }
 }

@@ -13,8 +13,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "slices",
-      "yieldMultiplier": 12
+      "group": "Cakes",
+      "defaultYield": 1,
+      "unit": "cake",
+      "servingsPerItem": 12,
+      "servingUnit": "slices"
     }
   },
   "version": "v1.0.0",
@@ -1463,8 +1466,16 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Room Temp", "detail": "Pull from fridge 30 min before serving — cream cheese frosting tastes best at room temp.", "source": "agent" },
-      { "method": "Storage", "detail": "Fridge up to 5 days, covered. Unfrosted layers freeze well (wrap tightly, up to 1 month).", "source": "agent" }
+      {
+        "method": "Room Temp",
+        "detail": "Pull from fridge 30 min before serving — cream cheese frosting tastes best at room temp.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Fridge up to 5 days, covered. Unfrosted layers freeze well (wrap tightly, up to 1 month).",
+        "source": "agent"
+      }
     ]
   }
 }

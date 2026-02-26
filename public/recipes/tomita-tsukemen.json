@@ -13,8 +13,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "servings",
-      "yieldMultiplier": 1
+      "group": "Noodles & Soups",
+      "defaultYield": 8,
+      "unit": "servings",
+      "servingsPerItem": 1,
+      "servingUnit": "servings"
     }
   },
   "version": "v1.0.0",
@@ -2636,8 +2639,16 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Stovetop", "detail": "Reheat dipping broth separately on medium heat until simmering. Serve noodles cold (or briefly dip in hot water to warm).", "source": "agent" },
-      { "method": "Storage", "detail": "Broth and tare keep 5 days in fridge. Freeze broth in portions for up to 1 month. Cook fresh noodles at serving time.", "source": "agent" }
+      {
+        "method": "Stovetop",
+        "detail": "Reheat dipping broth separately on medium heat until simmering. Serve noodles cold (or briefly dip in hot water to warm).",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Broth and tare keep 5 days in fridge. Freeze broth in portions for up to 1 month. Cook fresh noodles at serving time.",
+        "source": "agent"
+      }
     ]
   }
 }

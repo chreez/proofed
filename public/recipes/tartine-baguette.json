@@ -32,8 +32,11 @@
   "config": {
     "early_check_percent": 0.8,
     "stats": {
-      "yieldUnit": "baguettes",
-      "yieldMultiplier": 1
+      "group": "Sourdough Breads",
+      "defaultYield": 3,
+      "unit": "baguettes",
+      "servingsPerItem": 6,
+      "servingUnit": "slices"
     }
   },
   "version": "v1.1.0",
@@ -884,8 +887,16 @@
   },
   "reheat": {
     "methods": [
-      { "method": "Oven", "detail": "350°F (175°C), 5–10 min. Spritz crust with water before reheating for crispness.", "source": "agent" },
-      { "method": "Storage", "detail": "Paper bag at room temp, same day. Freeze sliced in zip-lock for longer storage.", "source": "agent" }
+      {
+        "method": "Oven",
+        "detail": "350°F (175°C), 5–10 min. Spritz crust with water before reheating for crispness.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Paper bag at room temp, same day. Freeze sliced in zip-lock for longer storage.",
+        "source": "agent"
+      }
     ]
   }
 }
