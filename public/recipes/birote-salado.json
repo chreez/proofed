@@ -20,8 +20,13 @@
       "servingUnit": "roll"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-02-26",
+      "summary": "Feedback session: replaced lava rock steam method with dutch oven (sheet pan alternative). Added salt-in-levain rationale note to BUILD_LEVAIN with source citations."
+    },
     {
       "version": "v1.0.0",
       "date": "2026-02-26",
@@ -41,7 +46,8 @@
     },
     {
       "id": "V3",
-      "name": "Cast Iron Skillet with Lava Rocks"
+      "name": "Dutch Oven (5-7 qt)",
+      "reuse": "Steam trap for baking"
     }
   ],
   "stages": [
@@ -49,7 +55,7 @@
       "id": "PREP",
       "title": "Build Levain",
       "gather": {
-        "vessels": ["Medium Mixing Bowl", "Large Mixing Bowl", "Cast Iron Skillet with Lava Rocks"],
+        "vessels": ["Medium Mixing Bowl", "Large Mixing Bowl", "Dutch Oven (5-7 qt)"],
         "equipment": [
           "Kitchen Scale",
           "Fork or Whisk",
@@ -222,6 +228,11 @@
         },
         {
           "text": "This is the only sourdough starter in the Puratos World Sourdough Library (#72 of 133) fed with beer, egg, and lime juice. It cultivates Torulaspora delbrueckii, a rare yeast that produces fruity esters.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "The 1g salt is intentional — both Stellanspice and Breadtopia include salt in the levain build. At 0.4% of levain weight, it mildly boosts LAB activity without meaningfully inhibiting yeast (inhibition starts at 2%+). Lesaffre Mexico's professional formula includes salt in the esponja at an even higher ratio.",
           "critical": false,
           "source": "agent"
         }
@@ -492,15 +503,20 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven and Steam Setup",
-      "direction": "Place the baking steel on the upper-middle rack. Place the cast iron skillet with lava rocks (V3) on the oven floor or lowest rack. Preheat to 450°F (230°C) for at least 30 minutes. Meanwhile, boil water in the kettle. Roll 2-3 kitchen towels tightly, place in an oven-safe dish, and saturate with boiling water.",
+      "direction": "Place the baking steel on the upper-middle rack. Place the dutch oven (V3) with lid on the same rack or one below. Preheat to 450°F (230°C) for at least 30 minutes.",
       "duration_min": 30,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven at 450°F (230°C) for at least 30 minutes, baking steel and lava rocks fully preheated, wet towels ready, kettle boiled",
+      "exit_condition": "Oven at 450°F (230°C) for at least 30 minutes, baking steel and dutch oven fully preheated",
       "notes": [
         {
-          "text": "The wet towels go in the oven alongside the lava rocks for sustained steam. The lava rocks get a burst of boiling water for immediate steam.",
+          "text": "The dutch oven traps steam from the dough itself — no boiling water or wet towels needed. Preheat it with the lid on so it's ripping hot when you load the rolls.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Alternative: if you don't have a dutch oven, place a sheet pan on the lowest rack. After loading rolls on the steel, pour 1-2 cups boiling water into the sheet pan for steam. Use the oven-off method (see STEAM_REST notes) for gas ovens.",
           "critical": false,
           "source": "agent"
         }
@@ -509,12 +525,12 @@
     {
       "id": "SCORE_AND_LOAD",
       "title": "Score and Load",
-      "direction": "Transfer proofed rolls from the couche to parchment paper on an inverted baking sheet. Using a bread lame, score each roll with a single slash down the center, about 1 cm deep. Spray the rolls with room-temperature water from a spray bottle. Slide the rolls (on parchment) onto the preheated baking steel.",
+      "direction": "Transfer proofed rolls from the couche to parchment paper. Using a bread lame, score each roll with a single slash down the center, about 1 cm deep. Spray the rolls with room-temperature water from a spray bottle. Load 2-3 rolls into the preheated dutch oven on a parchment sling. Set remaining rolls aside (covered) for the second batch.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "All 5 rolls scored, sprayed, and loaded onto the baking steel on parchment",
+      "exit_condition": "First batch (2-3 rolls) scored, sprayed, and loaded into dutch oven with lid on. Remaining rolls covered and waiting.",
       "notes": [
         {
           "text": "Spanish-language sources say score transversally (across, perpendicular to length). English sources say lengthwise. Both patterns exist on authentic birotes — try both and see which opens better.",
@@ -536,27 +552,22 @@
     },
     {
       "id": "STEAM_REST",
-      "title": "Steam Rest — Oven OFF",
-      "direction": "Place the wet towel dish near the lava rocks. TURN THE OVEN OFF. Quickly pour 1-2 cups of boiling water onto the lava rocks. Shut the door immediately — avoid the steam blast. If using a gas oven, drape a dry towel over the door gap to trap steam. Keep the oven OFF for 20 minutes. The residual heat allows maximum oven spring without the crust hardening prematurely.",
+      "title": "Steam Phase — Lid On",
+      "direction": "With the dutch oven lid on, bake at 450°F (230°C) for 20 minutes. The lid traps moisture from the dough, creating the steam environment needed for oven spring and crust development.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "20 minutes elapsed with oven off, rolls should show significant oven spring",
+      "exit_condition": "20 minutes elapsed with lid on, rolls should show significant oven spring when you peek",
       "notes": [
         {
-          "text": "This 'oven off' method is the breakthrough that Stellanspice discovered after 3 years of failed birote attempts. Gas ovens vent steam through combustion exhaust — turning the oven off closes the gas valve and retains steam.",
+          "text": "Do NOT open the lid during this phase — you'll release all the trapped steam. Trust the process.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Electric oven users may be able to skip the oven-off step — electric ovens hold steam better. You can try keeping the oven on at 450°F (230°C) with the steam apparatus.",
+          "text": "Sheet pan alternative: if baking all 5 rolls on the steel at once, pour 1-2 cups boiling water into the preheated sheet pan below. For gas ovens, turn the oven OFF for this 20-minute phase — gas ovens vent steam through combustion exhaust. This 'oven off' method was the breakthrough Stellanspice discovered after 3 years of failed birote attempts.",
           "critical": false,
-          "source": "agent"
-        },
-        {
-          "text": "Be very careful with the boiling water on lava rocks — the steam burst is intense. Keep face away from the oven when opening.",
-          "critical": true,
           "source": "agent"
         }
       ]
@@ -564,7 +575,7 @@
     {
       "id": "FINISH_BAKE",
       "title": "Bake to Dark Crust",
-      "direction": "Remove the steam apparatus (wet towel dish). If rolls are touching, spread them apart. Turn oven ON to 425°F (220°C). Bake for 15-20 minutes until deep golden-brown. For the last 3-5 minutes, move the rolls to the highest rack position — this develops the traditional dark, hi-bake crust that defines Guadalajara birotes.",
+      "direction": "Remove the dutch oven lid. If rolls are touching, spread them apart. Reduce oven to 425°F (220°C). Bake uncovered for 15-20 minutes until deep golden-brown. For the last 3-5 minutes, transfer rolls directly to the baking steel on the highest rack position — this develops the traditional dark, hi-bake crust that defines Guadalajara birotes. Repeat SCORE_AND_LOAD through FINISH_BAKE for the second batch.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
