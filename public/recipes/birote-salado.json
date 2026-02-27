@@ -625,83 +625,111 @@
     "servings": 5,
     "servingSize": "1 roll (~190g baked)",
     "calculatedDate": "2026-02-26",
-    "dataSource": "USDA FoodData Central (estimated — pending full calculation)",
+    "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 1742,
-      "protein": 52.8,
-      "totalFat": 7.3,
-      "saturatedFat": 1.9,
-      "carbohydrates": 347.6,
-      "sugar": 10.2,
-      "fiber": 12.5,
-      "sodium": 4318
+      "calories": 1986.4,
+      "protein": 57.7,
+      "totalFat": 8.0,
+      "saturatedFat": 1.7,
+      "carbohydrates": 407.3,
+      "sugar": 9.7,
+      "fiber": 14.1,
+      "sodium": 4318.3
     },
     "perServing": {
-      "calories": 348.4,
-      "protein": 10.6,
-      "totalFat": 1.5,
-      "saturatedFat": 0.4,
-      "carbohydrates": 69.5,
-      "sugar": 2.0,
-      "fiber": 2.5,
-      "sodium": 863.6
+      "calories": 397.3,
+      "protein": 11.5,
+      "totalFat": 1.6,
+      "saturatedFat": 0.3,
+      "carbohydrates": 81.5,
+      "sugar": 1.9,
+      "fiber": 2.8,
+      "sodium": 863.7
     },
     "breakdown": [
+      {
+        "ingredientId": "starter",
+        "ingredientName": "Active Sourdough Starter",
+        "amount": 80,
+        "fdcId": 169761,
+        "calories": 145.6,
+        "protein": 4.1,
+        "totalFat": 0.4,
+        "saturatedFat": 0.1,
+        "carbohydrates": 30.5,
+        "sugar": 0.1,
+        "fiber": 1.1,
+        "sodium": 0.8
+      },
       {
         "ingredientId": "ap_flour",
         "ingredientName": "All-Purpose Flour",
         "amount": 480,
         "fdcId": 169761,
-        "calories": 1742,
-        "protein": 48.5,
+        "calories": 1747.2,
+        "protein": 49.6,
         "totalFat": 4.7,
         "saturatedFat": 0.7,
-        "carbohydrates": 364.3,
+        "carbohydrates": 366.3,
         "sugar": 1.3,
-        "fiber": 12.5,
-        "sodium": 10
+        "fiber": 13.0,
+        "sodium": 9.6
       },
       {
         "ingredientId": "beer",
         "ingredientName": "Mexican Lager Beer",
         "amount": 40,
         "fdcId": 168746,
-        "calories": 17,
+        "calories": 17.2,
         "protein": 0.2,
         "totalFat": 0,
         "saturatedFat": 0,
         "carbohydrates": 1.4,
         "sugar": 0,
         "fiber": 0,
-        "sodium": 2
+        "sodium": 1.6
       },
       {
         "ingredientId": "egg",
         "ingredientName": "Egg (whisked)",
         "amount": 30,
         "fdcId": 171287,
-        "calories": 43,
+        "calories": 42.9,
         "protein": 3.8,
         "totalFat": 2.9,
         "saturatedFat": 0.9,
         "carbohydrates": 0.2,
         "sugar": 0.1,
         "fiber": 0,
-        "sodium": 43
+        "sodium": 42.6
+      },
+      {
+        "ingredientId": "lime_juice",
+        "ingredientName": "Fresh Lime Juice",
+        "amount": 10,
+        "fdcId": 169097,
+        "calories": 2.5,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.8,
+        "sugar": 0.2,
+        "fiber": 0,
+        "sodium": 0.2
       },
       {
         "ingredientId": "sugar",
         "ingredientName": "Sugar",
         "amount": 8,
         "fdcId": 169655,
-        "calories": 31,
+        "calories": 31.0,
         "protein": 0,
         "totalFat": 0,
         "saturatedFat": 0,
         "carbohydrates": 8.0,
         "sugar": 8.0,
         "fiber": 0,
-        "sodium": 0
+        "sodium": 0.1
       },
       {
         "ingredientId": "salt",
@@ -715,7 +743,7 @@
         "carbohydrates": 0,
         "sugar": 0,
         "fiber": 0,
-        "sodium": 4263
+        "sodium": 4263.4
       }
     ]
   },
