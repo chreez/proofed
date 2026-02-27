@@ -412,16 +412,20 @@ describe('App', () => {
   it('passes bakeDate getter to useRecipeMeta that returns date from route params', async () => {
     await mountApp('/recipe/test-recipe/bake/2026-02-10')
 
-    // useRecipeMeta should have been called with 3 arguments
+    // useRecipeMeta should have been called with 4 arguments
     expect(mockUseRecipeMeta).toHaveBeenCalled()
     const lastCall = mockUseRecipeMeta.mock.calls[mockUseRecipeMeta.mock.calls.length - 1]
-    expect(lastCall).toHaveLength(3)
+    expect(lastCall).toHaveLength(4)
 
     // Third argument is the bakeDate getter — exercise it
     const bakeDateGetter = lastCall[2] as () => string | undefined
     expect(typeof bakeDateGetter).toBe('function')
     const result = bakeDateGetter()
     expect(result).toBe('2026-02-10')
+
+    // Fourth argument is the routeName getter
+    const routeNameGetter = lastCall[3] as () => string | undefined
+    expect(routeNameGetter()).toBe('bake-detail')
   })
 
   it('bakeDate getter returns undefined when not on bake route', async () => {
@@ -429,10 +433,14 @@ describe('App', () => {
 
     expect(mockUseRecipeMeta).toHaveBeenCalled()
     const lastCall = mockUseRecipeMeta.mock.calls[mockUseRecipeMeta.mock.calls.length - 1]
-    expect(lastCall).toHaveLength(3)
+    expect(lastCall).toHaveLength(4)
 
     const bakeDateGetter = lastCall[2] as () => string | undefined
     expect(bakeDateGetter()).toBeUndefined()
+
+    // routeName getter should return 'recipe'
+    const routeNameGetter = lastCall[3] as () => string | undefined
+    expect(routeNameGetter()).toBe('recipe')
   })
 
   it('shows DemoQrTest on demo/qr-test route', async () => {

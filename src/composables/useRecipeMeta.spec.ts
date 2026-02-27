@@ -322,6 +322,91 @@ describe('useRecipeMeta', () => {
     })
   })
 
+  describe('route-based titles', () => {
+    it('sets index title when routeName is "index" (even with recipe loaded)', () => {
+      const recipe = ref<Recipe | null>(makeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => undefined, () => 'index')
+
+      const title = (capturedInput.title as { value: string }).value
+      expect(title).toBe('proofed.')
+    })
+
+    it('sets About title when routeName is "about"', () => {
+      const recipe = ref<Recipe | null>(makeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => undefined, () => 'about')
+
+      const title = (capturedInput.title as { value: string }).value
+      expect(title).toBe('About — proofed.')
+    })
+
+    it('sets Dashboard title when routeName is "stats"', () => {
+      const recipe = ref<Recipe | null>(makeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => undefined, () => 'stats')
+
+      const title = (capturedInput.title as { value: string }).value
+      expect(title).toBe('Dashboard — proofed.')
+    })
+
+    it('sets Cook Log title when routeName is "bake-log"', () => {
+      const recipe = ref<Recipe | null>(null)
+      const recipeId = ref<string | null>(null)
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => undefined, () => 'bake-log')
+
+      const title = (capturedInput.title as { value: string }).value
+      expect(title).toBe('Cook Log — proofed.')
+    })
+
+    it('uses default description and correct URL for non-recipe pages', () => {
+      const recipe = ref<Recipe | null>(makeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => undefined, () => 'about')
+
+      const ogDescription = (capturedInput.ogDescription as { value: string }).value
+      const ogUrl = (capturedInput.ogUrl as { value: string }).value
+
+      expect(ogDescription).toBe('A personal cooking notebook. Recipes as structured data.')
+      expect(ogUrl).toBe('https://proofeddot.netlify.app/about')
+    })
+
+    it('falls through to recipe title when routeName is "recipe"', () => {
+      const recipe = ref<Recipe | null>(makeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => undefined, () => 'recipe')
+
+      const title = (capturedInput.title as { value: string }).value
+      expect(title).toBe('Test Buns — proofed.')
+    })
+
+    it('reacts to routeName changes', async () => {
+      const recipe = ref<Recipe | null>(makeRecipe())
+      const recipeId = ref<string | null>('test-buns')
+      const routeName = ref<string | undefined>('recipe')
+
+      useRecipeMeta(() => recipe.value, () => recipeId.value, () => undefined, () => routeName.value)
+
+      expect((capturedInput.title as { value: string }).value).toBe('Test Buns — proofed.')
+
+      routeName.value = 'index'
+      await nextTick()
+
+      expect((capturedInput.title as { value: string }).value).toBe('proofed.')
+
+      routeName.value = 'about'
+      await nextTick()
+
+      expect((capturedInput.title as { value: string }).value).toBe('About — proofed.')
+    })
+  })
+
   describe('formatBakeDate', () => {
     it('formats YYYY-MM-DD as Mon DD, YYYY', () => {
       expect(formatBakeDate('2026-02-10')).toBe('Feb 10, 2026')

@@ -24,12 +24,26 @@ function truncate(text: string, maxLen: number): string {
   return text.slice(0, maxLen - 1).trimEnd() + '\u2026'
 }
 
+/** Map route names to page titles for non-recipe pages. */
+const PAGE_TITLES: Record<string, string> = {
+  index: SITE_NAME,
+  about: `About — ${SITE_NAME}`,
+  stats: `Dashboard — ${SITE_NAME}`,
+  'stats-demo': `Dashboard — ${SITE_NAME}`,
+  'bake-log': `Cook Log — ${SITE_NAME}`,
+}
+
 export function useRecipeMeta(
   recipe: () => Recipe | null,
   recipeId: () => string | null,
-  bakeDate?: () => string | undefined
+  bakeDate?: () => string | undefined,
+  routeName?: () => string | undefined
 ): void {
   const title = computed(() => {
+    // Check for non-recipe pages first
+    const rn = routeName?.()
+    if (rn && rn in PAGE_TITLES) return PAGE_TITLES[rn]
+
     const r = recipe()
     const date = bakeDate?.()
     if (r && date) {
@@ -39,7 +53,14 @@ export function useRecipeMeta(
     return SITE_NAME
   })
 
+  const isNonRecipePage = computed(() => {
+    const rn = routeName?.()
+    return rn != null && rn in PAGE_TITLES
+  })
+
   const description = computed(() => {
+    if (isNonRecipePage.value) return DEFAULT_DESCRIPTION
+
     const r = recipe()
     const date = bakeDate?.()
 
@@ -54,7 +75,19 @@ export function useRecipeMeta(
     return `A ${SITE_NAME} recipe: ${r.meta.name} — ${r.meta.yields}, ${r.meta.total_time} total`
   })
 
+  /** Map route names to URL paths for non-recipe pages. */
+  const PAGE_URLS: Record<string, string> = {
+    index: BASE_URL,
+    about: `${BASE_URL}/about`,
+    stats: `${BASE_URL}/stats`,
+    'stats-demo': `${BASE_URL}/stats`,
+    'bake-log': `${BASE_URL}/bake-log`,
+  }
+
   const url = computed(() => {
+    const rn = routeName?.()
+    if (rn && rn in PAGE_URLS) return PAGE_URLS[rn]
+
     const id = recipeId()
     const date = bakeDate?.()
     if (id && date) return `${BASE_URL}/recipe/${id}/bake/${date}`

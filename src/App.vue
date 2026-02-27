@@ -50,7 +50,8 @@ const { currentRecipe, currentRecipeId, loading, loadManifest, loadRecipe } = us
 useRecipeMeta(
   () => currentRecipe.value,
   () => currentRecipeId.value,
-  () => typeof route.params.date === 'string' ? route.params.date : undefined
+  () => typeof route.params.date === 'string' ? route.params.date : undefined,
+  () => typeof route.name === 'string' ? route.name : undefined
 )
 
 // Derive page state from route
