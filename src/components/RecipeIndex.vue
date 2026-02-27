@@ -48,6 +48,7 @@ const loaded = ref(false)
 
 const categoryMap: Record<string, string> = {
   'atk-cinnamon-buns-ultimate': 'baking',
+  'birote-salado': 'baking',
   'tartine-baguette': 'baking',
   'carrot-cake': 'baking',
   'simple-sourdough': 'baking',

@@ -1,0 +1,829 @@
+{
+  "meta": {
+    "name": "Birote Salado",
+    "source": {
+      "name": "proofed. Research Synthesis",
+      "type": "adapted",
+      "author": "7-agent parallel research, 31 sources"
+    },
+    "yields": "5 rolls (~190g each)",
+    "total_time": "~20 hrs (30 min active, 12–48 hrs levain ferment)",
+    "description": "Guadalajara's 160-year-old sourdough bread — the only culture in the Puratos World Sourdough Library fed with beer, lime juice, and egg. Shattering crust, sour-salty-bitter flavor, engineered to survive drowning in salsa for tortas ahogadas. Texas-adapted with water treatment and fermentation compensation."
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Sourdough Breads",
+      "defaultYield": 5,
+      "unit": "rolls",
+      "servingsPerItem": 1,
+      "servingUnit": "roll"
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-26",
+      "summary": "Initial recipe from multi-agent research synthesis (7 agents, 31 sources). Texas-adapted from Stellanspice, Breadtopia, Lesaffre Mexico, and Grupo La Florida professional formulas."
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Medium Mixing Bowl",
+      "reuse": "Levain build → clean → available"
+    },
+    {
+      "id": "V2",
+      "name": "Large Mixing Bowl",
+      "reuse": "Dough mix → bulk ferment"
+    },
+    {
+      "id": "V3",
+      "name": "Cast Iron Skillet with Lava Rocks"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Build Levain",
+      "gather": {
+        "vessels": ["Medium Mixing Bowl", "Large Mixing Bowl", "Cast Iron Skillet with Lava Rocks"],
+        "equipment": [
+          "Kitchen Scale",
+          "Fork or Whisk",
+          "Rubber Spatula",
+          "Bench Scraper",
+          "Baker's Couche or Linen Towel",
+          "Baking Steel",
+          "Parchment Paper",
+          "Bread Lame or Sharp Knife",
+          "Spray Bottle",
+          "Wire Rack",
+          "Kettle"
+        ],
+        "ingredients": [
+          {
+            "id": "starter",
+            "name": "Active Sourdough Starter",
+            "total": 80,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Stellanspice formula, Puratos Library #72",
+            "confidence": "high",
+            "rationale": "1:1 ratio with levain flour. Must be active and bubbly — doubled within 4-8 hours of last feeding."
+          },
+          {
+            "id": "ap_flour",
+            "name": "All-Purpose Flour",
+            "total": 480,
+            "unit": "g",
+            "breakdown": [
+              { "label": "levain", "amount": 80 },
+              { "label": "dough", "amount": 400 }
+            ],
+            "sourcedFrom": "Cross-source consensus (7/7 agents)",
+            "confidence": "high",
+            "rationale": "Mexican flour is 9% protein — US AP flour (10-12%) is closer than bread flour. An 80/20 AP/bread blend also works for more structure."
+          },
+          {
+            "id": "beer",
+            "name": "Mexican Lager Beer",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Stellanspice, Breadtopia, Grupo La Florida (7/7 agents)",
+            "confidence": "high",
+            "rationale": "Slows fermentation via hops antimicrobial, adds malt character, creates selection pressure for T. delbrueckii yeast. Modelo Especial or Pacifico."
+          },
+          {
+            "id": "egg",
+            "name": "Egg (whisked)",
+            "total": 30,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Stellanspice, Breadtopia, Puratos Library #72 (6/7 agents)",
+            "confidence": "high",
+            "rationale": "~1/2 large egg. Lecithin emulsifies, protein adds structure. Only sourdough in the Puratos collection fed with egg."
+          },
+          {
+            "id": "lime_juice",
+            "name": "Fresh Lime Juice",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Stellanspice, Breadtopia, Puratos Library #72 (6/7 agents)",
+            "confidence": "high",
+            "rationale": "Immediately acidifies the levain, supports LAB, adds citrus tang. May historically compensate for alkaline water."
+          },
+          {
+            "id": "sugar",
+            "name": "Sugar",
+            "total": 8,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Stellanspice, Breadtopia (5/7 agents)",
+            "confidence": "high",
+            "rationale": "Feeds yeast, balances acidity in the hostile levain environment."
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 11,
+            "unit": "g",
+            "breakdown": [
+              { "label": "levain", "amount": 1 },
+              { "label": "dough", "amount": 10 }
+            ],
+            "sourcedFrom": "Cross-source consensus (7/7 agents)",
+            "confidence": "high",
+            "rationale": "2.3% of total flour. 'Salado' means salted — birote is intentionally saltier than standard bread."
+          },
+          {
+            "id": "water",
+            "name": "Filtered Water",
+            "total": 250,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Professional GDL formulas (Lesaffre 63%, Grupo La Florida 62%)",
+            "confidence": "high",
+            "rationale": "62.5% hydration. Carbon-filtered Austin tap diluted 50/50 with distilled water to reduce hardness and alkalinity."
+          }
+        ]
+      },
+      "states": ["BUILD_LEVAIN", "FERMENT_LEVAIN"]
+    },
+    {
+      "id": "MIX",
+      "title": "Mix Dough",
+      "gather": null,
+      "states": ["MIX_DOUGH", "AUTOLYSE", "ADD_SALT"]
+    },
+    {
+      "id": "BULK",
+      "title": "Bulk Fermentation",
+      "gather": null,
+      "states": ["COIL_FOLD_1", "REST_1", "COIL_FOLD_2", "REST_2", "COIL_FOLD_3", "REST_3", "COIL_FOLD_4", "BULK_RISE"]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Shape",
+      "gather": null,
+      "states": ["DIVIDE_PRESHAPE", "BENCH_REST", "FINAL_SHAPE"]
+    },
+    {
+      "id": "PROOF",
+      "title": "Final Proof",
+      "gather": null,
+      "states": ["FINAL_PROOF"]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": ["PREHEAT", "SCORE_AND_LOAD", "STEAM_REST", "FINISH_BAKE"]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "gather": null,
+      "states": ["COOL_ON_RACK"]
+    }
+  ],
+  "states": [
+    {
+      "id": "BUILD_LEVAIN",
+      "title": "Mix Birote Levain",
+      "direction": "In the medium bowl (V1), combine 80g active sourdough starter, 80g AP flour, 40g Mexican lager beer, 30g whisked egg (~1/2 large), 10g fresh lime juice, 8g sugar, and 1g salt. Stir vigorously until smooth and well combined.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Active Sourdough Starter", "amount": "80g" },
+        { "name": "All-Purpose Flour", "amount": "80g" },
+        { "name": "Mexican Lager Beer", "amount": "40g" },
+        { "name": "Egg (whisked)", "amount": "30g" },
+        { "name": "Fresh Lime Juice", "amount": "10g" },
+        { "name": "Sugar", "amount": "8g" },
+        { "name": "Fine Sea Salt", "amount": "1g" }
+      ],
+      "exit_condition": "Levain is smooth and homogeneous, all ingredients fully incorporated",
+      "notes": [
+        {
+          "text": "Beer must be at room temperature — cold beer will shock the starter culture. Any pale Mexican lager works: Modelo Especial, Pacifico, Victoria, Sol.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "The levain will smell unusual — beery, limey, eggy. This is the authentic birote protocol used in Guadalajara for 160 years. Trust the process.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "This is the only sourdough starter in the Puratos World Sourdough Library (#72 of 133) fed with beer, egg, and lime juice. It cultivates Torulaspora delbrueckii, a rare yeast that produces fruity esters.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FERMENT_LEVAIN",
+      "title": "Cold Ferment Levain",
+      "direction": "Cover the bowl and let the levain rise ~50% at room temperature (about 2 hours). Then transfer to the refrigerator and cold ferment for 12-48 hours. Longer cold ferment develops more sour tang.",
+      "duration_min": 720,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Levain has been cold-fermented for at least 12 hours. Should be bubbly, smell tangy and beery, and have visibly risen.",
+      "notes": [
+        {
+          "text": "Same-day option: skip the fridge and let the levain double at room temp (~4 hours), then use immediately. You'll get less tang but it works.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "At sea level in Texas, the cold retard is especially important — it develops the sour character that altitude-accelerated fermentation produces naturally in Guadalajara.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "MIX_DOUGH",
+      "title": "Combine Levain and Dough",
+      "direction": "Remove levain from fridge. In the large bowl (V2), combine all levain (~250g) with 250g filtered water. Stir to dissolve and loosen. Add 400g AP flour. Mix with a rubber spatula until no dry flour remains — a shaggy, sticky mass.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Birote Levain", "amount": "~250g (all)" },
+        { "name": "Filtered Water", "amount": "250g" },
+        { "name": "All-Purpose Flour", "amount": "400g" }
+      ],
+      "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
+      "notes": [
+        {
+          "text": "Use carbon-filtered Austin tap water diluted 50/50 with distilled. Austin's water (pH 8.82, 290 mg/L hardness) is too alkaline and hard for optimal sourdough.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record dough temperature after mixing",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "AUTOLYSE",
+      "title": "Autolyse Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes. The flour hydrates and gluten begins developing passively.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed, dough is slightly smoother and more cohesive than when first mixed",
+      "notes": null
+    },
+    {
+      "id": "ADD_SALT",
+      "title": "Add Salt",
+      "direction": "Sprinkle 5g salt over the dough. With wet hands, perform 4 stretch-and-folds. Sprinkle remaining 5g salt. Continue folding until salt is fully distributed — no gritty texture when you pinch the dough.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Fine Sea Salt", "amount": "10g" }
+      ],
+      "exit_condition": "Salt fully incorporated, no gritty texture when pinching dough",
+      "notes": null
+    },
+    {
+      "id": "COIL_FOLD_1",
+      "title": "Coil Fold — Set 1",
+      "direction": "With wet hands, release the dough from the sides of the bowl. Slide hands under the center, lift the dough up and let each end fold under itself from gravity. Rotate the bowl 90° and repeat. The dough drapes over your hands and tucks under.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has been coil-folded from both directions, sitting in a loose package",
+      "notes": [
+        {
+          "text": "Coil folds are gentler than stretch-and-folds and better for this hydration level. Wet hands prevent sticking.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "technique_url": "https://www.theperfectloaf.com/how-to-do-a-set-of-coil-folds/",
+      "reminders": [
+        {
+          "prompt": "Record dough temperature",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "REST_1",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest at room temperature for 30 minutes.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "COIL_FOLD_2",
+      "title": "Coil Fold — Set 2",
+      "direction": "Repeat coil fold: wet hands, slide under center, lift and let ends fold under. Rotate 90°, repeat. Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is slightly stronger and smoother than set 1",
+      "notes": null
+    },
+    {
+      "id": "REST_2",
+      "title": "Rest",
+      "direction": "Cover and rest 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "COIL_FOLD_3",
+      "title": "Coil Fold — Set 3",
+      "direction": "Repeat coil fold: wet hands, slide under center, lift and let ends fold under. Rotate 90°, repeat. Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough feels noticeably more elastic and holds its shape better",
+      "notes": null
+    },
+    {
+      "id": "REST_3",
+      "title": "Rest",
+      "direction": "Cover and rest 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "COIL_FOLD_4",
+      "title": "Coil Fold — Set 4 (Final)",
+      "direction": "Final coil fold: wet hands, slide under, lift, let ends fold. Rotate 90°, repeat. The dough should now be smooth, elastic, and hold its shape when folded. Cover tightly.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth and elastic, holds shape after folding, covered for bulk rise",
+      "notes": null
+    },
+    {
+      "id": "BULK_RISE",
+      "title": "Bulk Rise",
+      "direction": "Leave covered at room temperature (75-78°F / 24-26°C) until the dough has risen ~75%. Watch for visual cues: domed surface, bubbles at top and sides, jiggles when bowl is shaken.",
+      "duration_min": 180,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has increased ~75% in volume, surface is domed with visible bubbles, jiggles when bowl is shaken",
+      "notes": [
+        {
+          "text": "At Texas sea level, expect 2-4 additional hours AFTER the coil folds (4-6 hours total bulk including folds). Guadalajara recipes claim 2 hours — that's at 5,138 ft altitude where CO2 is 17% less soluble.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Watch the dough, not the clock. The beer in the levain slows fermentation further at sea level — a double deceleration effect (higher pressure + hops).",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Note ambient kitchen temperature",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Estimate dough volume rise %",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "DIVIDE_PRESHAPE",
+      "title": "Divide and Preshape",
+      "direction": "Generously flour the work surface — Guadalajara bakeries use a mound of flour for shaping. Turn the dough out onto the floured surface. Using a bench scraper, divide into 5 pieces (~190g each). For each piece, pull edges to center creating tension, then flip seam-side down. Use a push-and-pull motion to tighten into a ball.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "5 roughly equal dough balls (~190g each) with light surface tension, seam-side down on floured surface",
+      "notes": [
+        {
+          "text": "Be generous with flour — this is a lower-hydration dough but the fermented surface can still be tacky. Watch GDL bakery videos: they work fast in a cloud of flour.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BENCH_REST",
+      "title": "Bench Rest",
+      "direction": "Cover the preshaped rounds with a towel and let rest on the counter for 20 minutes. The gluten relaxes, making final shaping easier.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "20 minutes elapsed, dough rounds have slightly spread but still hold general shape",
+      "notes": null
+    },
+    {
+      "id": "FINAL_SHAPE",
+      "title": "Shape Torpedoes",
+      "direction": "One at a time: gently flatten a dough round. Roll it into itself with tension, creating a tight cylinder. Pinch the seam closed. Roll into a tapered torpedo shape — fatter in the middle, pointed at both ends, about 15-18 cm long. Flour the surface after seaming. Place seam-side UP on a well-floured baker's couche or linen towel, folding the cloth between rolls for support.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "5 torpedo-shaped rolls with tapered ends, seam-up on floured couche, cloth folded between each for support",
+      "notes": [
+        {
+          "text": "Birote shape is NOT a baguette — it's shorter (15-18 cm / 6-7 in), fatter in the middle, with tapered ends like a football or submarine.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Flour again after seaming to prevent sticking during proof. The couche or towel should be well-floured with AP flour or rice flour.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FINAL_PROOF",
+      "title": "Final Proof",
+      "direction": "Cover the rolls on the couche and let proof at room temperature for 45-90 minutes. Use the poke test to check readiness.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Poke test: lightly flour a finger, press gently into dough — it slowly springs back about halfway. If it springs back quickly, proof longer. If it stays indented, it's over-proofed.",
+      "notes": [
+        {
+          "text": "Start preheating the oven 30 minutes before the rolls are ready — the baking steel and lava rocks need time to fully heat.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT",
+      "title": "Preheat Oven and Steam Setup",
+      "direction": "Place the baking steel on the upper-middle rack. Place the cast iron skillet with lava rocks (V3) on the oven floor or lowest rack. Preheat to 450°F (230°C) for at least 30 minutes. Meanwhile, boil water in the kettle. Roll 2-3 kitchen towels tightly, place in an oven-safe dish, and saturate with boiling water.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven at 450°F (230°C) for at least 30 minutes, baking steel and lava rocks fully preheated, wet towels ready, kettle boiled",
+      "notes": [
+        {
+          "text": "The wet towels go in the oven alongside the lava rocks for sustained steam. The lava rocks get a burst of boiling water for immediate steam.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "SCORE_AND_LOAD",
+      "title": "Score and Load",
+      "direction": "Transfer proofed rolls from the couche to parchment paper on an inverted baking sheet. Using a bread lame, score each roll with a single slash down the center, about 1 cm deep. Spray the rolls with room-temperature water from a spray bottle. Slide the rolls (on parchment) onto the preheated baking steel.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 5 rolls scored, sprayed, and loaded onto the baking steel on parchment",
+      "notes": [
+        {
+          "text": "Spanish-language sources say score transversally (across, perpendicular to length). English sources say lengthwise. Both patterns exist on authentic birotes — try both and see which opens better.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Score decisively with one swift stroke. Hesitation causes dragging.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Note scoring direction used (lengthwise vs transversal)",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "STEAM_REST",
+      "title": "Steam Rest — Oven OFF",
+      "direction": "Place the wet towel dish near the lava rocks. TURN THE OVEN OFF. Quickly pour 1-2 cups of boiling water onto the lava rocks. Shut the door immediately — avoid the steam blast. If using a gas oven, drape a dry towel over the door gap to trap steam. Keep the oven OFF for 20 minutes. The residual heat allows maximum oven spring without the crust hardening prematurely.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "20 minutes elapsed with oven off, rolls should show significant oven spring",
+      "notes": [
+        {
+          "text": "This 'oven off' method is the breakthrough that Stellanspice discovered after 3 years of failed birote attempts. Gas ovens vent steam through combustion exhaust — turning the oven off closes the gas valve and retains steam.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Electric oven users may be able to skip the oven-off step — electric ovens hold steam better. You can try keeping the oven on at 450°F (230°C) with the steam apparatus.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Be very careful with the boiling water on lava rocks — the steam burst is intense. Keep face away from the oven when opening.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FINISH_BAKE",
+      "title": "Bake to Dark Crust",
+      "direction": "Remove the steam apparatus (wet towel dish). If rolls are touching, spread them apart. Turn oven ON to 425°F (220°C). Bake for 15-20 minutes until deep golden-brown. For the last 3-5 minutes, move the rolls to the highest rack position — this develops the traditional dark, hi-bake crust that defines Guadalajara birotes.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Rolls are deep golden-brown to dark brown, internal temperature reaches 205°F (96°C), hollow sound when tapped on bottom",
+      "notes": [
+        {
+          "text": "Don't pull early because they look dark — the hard, dark crust is the whole point. This bread needs to survive being drowned in salsa. Pale = undercooked for birote.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Professional Guadalajara bakeries bake at 475-500°F (250°C) for 15 minutes. Our lower temp with longer time compensates for sea-level baking conditions.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record internal temperature (target 205°F / 96°C)",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Rate crust color and oven spring",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "COOL_ON_RACK",
+      "title": "Cool on Rack",
+      "direction": "Transfer rolls to a wire rack. Let cool for at least 20 minutes before eating — the crumb is still setting as it cools.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Rolls have cooled at least 20 minutes, crust should be audibly crackly when tapped",
+      "notes": [
+        {
+          "text": "Store in a paper bag with small holes punched throughout — this maintains crustiness. Never plastic. Best eaten same-day, especially for tortas ahogadas.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "For tortas ahogadas: split the birote lengthwise, spread with refried beans, fill with carnitas and pickled red onions, then drown in chile de arbol salsa and tomato broth.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Freeze extras in a zip-lock bag. Reheat from frozen at 400°F (200°C) for 8-10 minutes to revive the crust.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    }
+  ],
+  "nutrition": {
+    "servings": 5,
+    "servingSize": "1 roll (~190g baked)",
+    "calculatedDate": "2026-02-26",
+    "dataSource": "USDA FoodData Central (estimated — pending full calculation)",
+    "totals": {
+      "calories": 1742,
+      "protein": 52.8,
+      "totalFat": 7.3,
+      "saturatedFat": 1.9,
+      "carbohydrates": 347.6,
+      "sugar": 10.2,
+      "fiber": 12.5,
+      "sodium": 4318
+    },
+    "perServing": {
+      "calories": 348.4,
+      "protein": 10.6,
+      "totalFat": 1.5,
+      "saturatedFat": 0.4,
+      "carbohydrates": 69.5,
+      "sugar": 2.0,
+      "fiber": 2.5,
+      "sodium": 863.6
+    },
+    "breakdown": [
+      {
+        "ingredientId": "ap_flour",
+        "ingredientName": "All-Purpose Flour",
+        "amount": 480,
+        "fdcId": 169761,
+        "calories": 1742,
+        "protein": 48.5,
+        "totalFat": 4.7,
+        "saturatedFat": 0.7,
+        "carbohydrates": 364.3,
+        "sugar": 1.3,
+        "fiber": 12.5,
+        "sodium": 10
+      },
+      {
+        "ingredientId": "beer",
+        "ingredientName": "Mexican Lager Beer",
+        "amount": 40,
+        "fdcId": 168746,
+        "calories": 17,
+        "protein": 0.2,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 1.4,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 2
+      },
+      {
+        "ingredientId": "egg",
+        "ingredientName": "Egg (whisked)",
+        "amount": 30,
+        "fdcId": 171287,
+        "calories": 43,
+        "protein": 3.8,
+        "totalFat": 2.9,
+        "saturatedFat": 0.9,
+        "carbohydrates": 0.2,
+        "sugar": 0.1,
+        "fiber": 0,
+        "sodium": 43
+      },
+      {
+        "ingredientId": "sugar",
+        "ingredientName": "Sugar",
+        "amount": 8,
+        "fdcId": 169655,
+        "calories": 31,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 8.0,
+        "sugar": 8.0,
+        "fiber": 0,
+        "sodium": 0
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Fine Sea Salt",
+        "amount": 11,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 4263
+      }
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "name": "Stellanspice",
+        "url": "https://stellanspice.com/birote-salado/",
+        "type": "adapted",
+        "author": "Stellanspice"
+      },
+      {
+        "name": "Breadtopia",
+        "url": "https://breadtopia.com/birotes-salados-mexican-sourdough-bread/",
+        "type": "adapted",
+        "author": "Melissa Johnson"
+      },
+      {
+        "name": "Lesaffre Mexico (Professional Formula)",
+        "url": "https://lesaffre.com.mx/recetas-profesionales/birote/",
+        "type": "adapted"
+      },
+      {
+        "name": "Grupo La Florida (Commercial Formula)",
+        "url": "https://grupolaflorida.com/receta/birote",
+        "type": "adapted"
+      },
+      {
+        "name": "Puratos Sourdough Library (#72)",
+        "url": "https://www.puratos.us/en/about-puratos/our-commitments/next-generation/product-heritage/sourdough-library",
+        "type": "original"
+      },
+      {
+        "name": "The Fresh Loaf — Birotes Salados Thread",
+        "url": "https://www.thefreshloaf.com/node/64286/birotes-salados",
+        "type": "adapted"
+      },
+      {
+        "name": "El Ciudadano Jalisco",
+        "url": "https://elciudadanojalisco.mx/el-birote-salado-mucho-mas-que-una-simple-pieza-de-pan/",
+        "type": "original"
+      },
+      {
+        "name": "Vice/Munchies — Primera Taza Profile",
+        "url": "https://www.vice.com/en_us/article/mgkgeb/meet-the-mexican-sandwich-that-has-brought-fully-grown-men-to-tears",
+        "type": "original"
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Beer/lime/egg levain (Puratos #72 protocol)",
+        "sourcedFrom": "Puratos Library, Stellanspice, Breadtopia, Grupo La Florida",
+        "rationale": "The only sourdough starter among 133 in the Puratos collection fed with this combination. Creates selection pressure for T. delbrueckii yeast via hops antimicrobial, low pH, and ethanol tolerance.",
+        "confidence": "high"
+      },
+      {
+        "name": "62.5% hydration (professional formula)",
+        "sourcedFrom": "Lesaffre Mexico (63%), Grupo La Florida (62%)",
+        "rationale": "Professional GDL bakery hydration. Lower than home-baker recipes (73-80%+) but produces the dense, sauce-resistant crumb that defines authentic birote.",
+        "confidence": "high"
+      },
+      {
+        "name": "Oven-off steam method",
+        "sourcedFrom": "Stellanspice (3-year development)",
+        "rationale": "Turn oven off during initial 20-min steam phase. Residual heat allows maximum oven spring without premature crust set. Critical for gas ovens that vent steam.",
+        "confidence": "high"
+      },
+      {
+        "name": "Dark hi-bake finish",
+        "sourcedFrom": "Bread Club 20, multiple GDL sources",
+        "rationale": "Move to top rack for final 3-5 minutes. Authentic birotes are darker than typical sourdough — the thick, hard crust must survive sauce submersion.",
+        "confidence": "high"
+      },
+      {
+        "name": "Cold levain retard (12-48 hrs)",
+        "sourcedFrom": "Stellanspice, adaptation for sea-level baking",
+        "rationale": "Develops sour tang that altitude-accelerated fermentation produces naturally in Guadalajara. Longer retard = more tang.",
+        "confidence": "high"
+      },
+      {
+        "name": "Water treatment for Austin",
+        "sourcedFrom": "Austin Water Authority data, baking science literature",
+        "rationale": "Austin water (pH 8.82, 290 mg/L hardness, chloramine) is too alkaline and hard. Carbon filter + 50/50 dilution with distilled brings closer to Guadalajara's volcanic Na-HCO3 water profile.",
+        "confidence": "medium"
+      }
+    ],
+    "strategy": "7-agent parallel research: Stellanspice deep dive, sourdough community recipes, Spanish-language sources, sourdough science, torta ahogada context, Reddit/forum replication attempts, water/altitude compensation",
+    "sourceCount": 31,
+    "date": "2026-02-26"
+  },
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "400°F (200°C), 5-8 min. Spritz with water before reheating to revive the shattering crust. From frozen: 8-10 min at 400°F (200°C).",
+        "source": "agent"
+      },
+      {
+        "method": "Torta Ahogada",
+        "detail": "Split lengthwise, spread with refried beans, fill with carnitas and pickled red onions. Drown in chile de arbol salsa and tomato broth. Eat with hands (gloves optional).",
+        "source": "agent",
+        "reference": "https://stellanspice.com/tortas-ahogadas/"
+      },
+      {
+        "method": "Storage",
+        "detail": "Paper bag with pin holes punched throughout — never plastic. Best same-day. Freeze in zip-lock for up to 1 month. Austin humidity will soften the crust faster than in Guadalajara.",
+        "source": "agent"
+      }
+    ]
+  }
+}

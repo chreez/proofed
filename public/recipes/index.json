@@ -1,6 +1,7 @@
 {
   "recipes": [
     { "id": "atk-cinnamon-buns-ultimate", "name": "ATK Ultimate Cinnamon Buns", "file": "atk-cinnamon-buns-ultimate.json" },
+    { "id": "birote-salado", "name": "Birote Salado", "file": "birote-salado.json" },
     { "id": "tartine-baguette", "name": "Tartine Baguette", "file": "tartine-baguette.json" },
     { "id": "coco-curry", "name": "CoCo Ichibanya-Style Japanese Curry", "file": "coco-curry.json" },
     { "id": "thai-tea-boba", "name": "Thai Tea Boba", "file": "thai-tea-boba.json" },
