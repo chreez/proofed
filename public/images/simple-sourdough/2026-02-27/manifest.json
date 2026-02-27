@@ -1,0 +1,31 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-02-27",
+  "processedAt": "2026-02-27T17:11:31.520Z",
+  "photos": [
+    {
+      "name": "finished-boule-in-hand",
+      "thumb": "finished-boule-in-hand-400w.webp",
+      "src": "finished-boule-in-hand-800w.webp",
+      "summary": "Finished sourdough boule on a wire cooling rack, held up by hand to show scale. Deep golden crust with a bold cross score that opened wide, revealing a blistered ear and flour-dusted surface."
+    },
+    {
+      "name": "finished-boule-leaf-score",
+      "thumb": "finished-boule-leaf-score-400w.webp",
+      "src": "finished-boule-leaf-score-800w.webp",
+      "summary": "Finished sourdough boule cooling on a wire rack, featuring a decorative leaf score pattern on a flour-dusted crust. The ear opened cleanly along the main score line with even golden browning."
+    },
+    {
+      "name": "starter-on-scale",
+      "thumb": "starter-on-scale-400w.webp",
+      "src": "starter-on-scale-800w.webp",
+      "summary": "Active sourdough starter weighed in a glass mixing bowl on a digital kitchen scale reading 204g, showing visible bubbles and a loose consistency indicating readiness."
+    },
+    {
+      "name": "two-loaves-crumb-shot",
+      "thumb": "two-loaves-crumb-shot-400w.webp",
+      "src": "two-loaves-crumb-shot-800w.webp",
+      "summary": "Both finished loaves side by side -- the leaf-scored boule on a wire rack in the foreground, and the second smaller loaf cut into quarters on a cutting board behind it, showing an open, airy crumb with even hole structure."
+    }
+  ]
+}

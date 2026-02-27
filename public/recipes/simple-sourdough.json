@@ -1083,6 +1083,95 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-02-27",
+      "start_date": "2026-02-26",
+      "version": "v2.0.0",
+      "summary": "Fifth bake, first time doing 4 stretch & folds. Targeted 60% aliquot rise, dough was hard to pre-shape. May have weighed loaves unevenly — second loaf came out smaller and flatter. Mouthfeel is great but want more sour tang and complexity.",
+      "notes": [
+        "Mixed at 13:55, dough temp 79°F. Did 4 stretch & folds with temps: 79.0°F (14:26), 80.0°F (15:04), 79.7°F (15:33), 79.0°F (16:02).",
+        "Bulk fermented on counter targeting 60% aliquot rise.",
+        "Pre-shaped around 20:30, dough temp 76.8°F. Dough was really hard to work with during pre-shape.",
+        "Let pre-shape rest about an hour.",
+        "Final shaped into baskets at 20:35, stitched at 20:40.",
+        "Room-temp rest before fridge (standard practice). Into fridge at 21:40.",
+        "May have messed up weighing the two loaves during shaping — second dough was noticeably smaller.",
+        "Cold proofed overnight ~11 hours (21:40 to ~9:00am).",
+        "Challenger preheated same duration as last bake, read 350°F on the readout.",
+        "Baked ~20 min covered, ~22 min uncovered. Could go a few more minutes for darker crust but worked well.",
+        "Internal temp 209-210°F.",
+        "Second loaf slightly flatter with less spring — also used a different score pattern instead of the cross method. Cross method gives better spring.",
+        "Mouthfeel is very good. Want more sour tang and interested in more complexity from different flours.",
+        "Need more patience when the dough isn't cooperating after bulk ferment.",
+        "Won't cut into second loaf in future — preserve shelf life.",
+        "First time sourdough starter floated — proper starter prep."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-02-27/starter-on-scale-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-27/starter-on-scale-400w.webp",
+          "alt": "Active sourdough starter weighed in a glass mixing bowl on a digital kitchen scale reading 204g, showing visible bubbles and a loose consistency indicating readiness."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-27/finished-boule-leaf-score-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-27/finished-boule-leaf-score-400w.webp",
+          "alt": "Finished sourdough boule cooling on a wire rack, featuring a decorative leaf score pattern on a flour-dusted crust. The ear opened cleanly along the main score line with even golden browning."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-02-27/two-loaves-crumb-shot-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-02-27/two-loaves-crumb-shot-400w.webp",
+          "alt": "Both finished loaves side by side — the leaf-scored boule on a wire rack in the foreground, and the second smaller loaf cut into quarters on a cutting board behind it, showing an open, airy crumb with even hole structure."
+        }
+      ],
+      "next_time": [
+        { "text": "Try different flours for more complexity (whole wheat, rye blend)" },
+        { "text": "Explore ways to get more sour tang (longer cold proof, lower inoculation, or both)" },
+        { "text": "Stick with cross score method for best spring" }
+      ],
+      "cost": {
+        "total": 2.64,
+        "perServing": 1.32,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.11
+          }
+        ]
+      }
     }
   ],
   "research": {
