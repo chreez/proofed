@@ -109,7 +109,7 @@
     {
       "id": "add-wet",
       "title": "Add Wet Ingredients",
-      "direction": "Add eggs one at a time, beating well after each addition. Then add oil, sourdough starter, milk, and vanilla. Mix until fully incorporated.",
+      "direction": "To the stand mixer, add eggs one at a time, beating well after each addition. Then add oil, sourdough starter, milk, and vanilla. Mix until fully incorporated.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -132,7 +132,7 @@
     {
       "id": "combine-dough",
       "title": "Combine Dough",
-      "direction": "Add the dry ingredients to the wet mixture in 2-3 batches, mixing on low speed until just combined after each addition.",
+      "direction": "Add the dry ingredients from the medium bowl to the stand mixer in 2-3 batches, mixing on low speed until just combined after each addition.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
