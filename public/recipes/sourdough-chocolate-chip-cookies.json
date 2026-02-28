@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "name": "Sourdough Chocolate Chip Cookies",
+    "source": {
+      "name": "The Clever Carrot",
+      "url": "https://www.theclevercarrot.com/2020/05/sourdough-chocolate-chip-cookies-soft-chewy/",
+      "type": "adapted",
+      "author": "Emilie Raffa"
+    },
+    "yields": "~50 cookies",
+    "total_time": "~1.5 hrs (30 min active, 1 hr chill)",
+    "description": "Soft and chewy chocolate chip cookies using sourdough starter for depth and tang. Butter plus oil for maximum chewiness."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-02-27",
+      "summary": "Initial recipe adapted from The Clever Carrot sourdough chocolate chip cookies"
+    }
+  ],
+  "vessels": [
+    { "id": "V1", "name": "Stand Mixer Bowl" },
+    { "id": "V2", "name": "Medium Mixing Bowl" },
+    { "id": "V3", "name": "Baking Sheets (2)", "reuse": "Rotate between batches" }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mix Dough",
+      "gather": {
+        "vessels": ["Stand Mixer Bowl", "Medium Mixing Bowl", "Baking Sheets (2)"],
+        "equipment": ["Stand Mixer with Paddle", "Kitchen Scale", "Whisk", "Rubber Spatula", "Cookie Scoop", "Parchment Paper", "Wire Rack"],
+        "ingredients": [
+          { "id": "butter", "name": "Unsalted Butter (softened)", "total": 115, "unit": "g", "breakdown": null },
+          { "id": "brown-sugar", "name": "Light Brown Sugar", "total": 210, "unit": "g", "breakdown": null },
+          { "id": "granulated-sugar", "name": "Granulated Sugar", "total": 96, "unit": "g", "breakdown": null },
+          { "id": "eggs", "name": "Large Eggs", "total": 100, "unit": "g", "breakdown": null },
+          { "id": "oil", "name": "Neutral Oil (sunflower or canola)", "total": 145, "unit": "g", "breakdown": null },
+          { "id": "starter", "name": "Sourdough Starter (100% hydration)", "total": 100, "unit": "g", "breakdown": null },
+          { "id": "milk", "name": "Whole Milk", "total": 15, "unit": "g", "breakdown": null },
+          { "id": "vanilla", "name": "Vanilla Extract", "total": 13, "unit": "g", "breakdown": null },
+          { "id": "ap-flour", "name": "All-Purpose Flour", "total": 238, "unit": "g", "breakdown": null },
+          { "id": "bread-flour", "name": "Bread Flour", "total": 204, "unit": "g", "breakdown": null },
+          { "id": "baking-powder", "name": "Baking Powder", "total": 4, "unit": "g", "breakdown": null },
+          { "id": "baking-soda", "name": "Baking Soda", "total": 5, "unit": "g", "breakdown": null },
+          { "id": "sea-salt", "name": "Fine Sea Salt", "total": 7, "unit": "g", "breakdown": null },
+          { "id": "chocolate", "name": "Chopped Chocolate (dark, semi-sweet, or milk)", "total": 300, "unit": "g", "breakdown": null },
+          { "id": "flaky-salt", "name": "Flaky Sea Salt (garnish)", "total": 1, "unit": "g", "breakdown": null }
+        ]
+      },
+      "states": ["whisk-dry", "cream-butter-sugar", "add-wet", "combine-dough", "fold-chocolate"]
+    },
+    {
+      "id": "CHILL",
+      "title": "Chill",
+      "gather": null,
+      "states": ["chill-dough"]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": ["preheat-oven", "scoop-cookies", "bake-cookies", "cool"]
+    }
+  ],
+  "states": [
+    {
+      "id": "whisk-dry",
+      "title": "Whisk Dry Ingredients",
+      "direction": "In a medium bowl, whisk together all-purpose flour, bread flour, baking powder, baking soda, and fine sea salt.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "all-purpose flour", "amount": "238g" },
+        { "name": "bread flour", "amount": "204g" },
+        { "name": "baking powder", "amount": "4g" },
+        { "name": "baking soda", "amount": "5g" },
+        { "name": "fine sea salt", "amount": "7g" }
+      ],
+      "exit_condition": "Dry ingredients evenly combined with no visible clumps",
+      "notes": [
+        {
+          "text": "The blend of AP and bread flour gives structure from bread flour's higher protein while keeping cookies tender from the AP flour.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "cream-butter-sugar",
+      "title": "Cream Butter and Sugars",
+      "direction": "In the stand mixer with paddle attachment, beat softened butter with brown sugar and granulated sugar on medium speed until light and fluffy, about 4 minutes.",
+      "duration_min": 4,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "unsalted butter", "amount": "115g (softened)" },
+        { "name": "light brown sugar", "amount": "210g" },
+        { "name": "granulated sugar", "amount": "96g" }
+      ],
+      "exit_condition": "Mixture is light in color, fluffy, and increased in volume",
+      "notes": null
+    },
+    {
+      "id": "add-wet",
+      "title": "Add Wet Ingredients",
+      "direction": "Add eggs one at a time, beating well after each addition. Then add oil, sourdough starter, milk, and vanilla. Mix until fully incorporated.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "eggs", "amount": "100g (2 large)" },
+        { "name": "neutral oil", "amount": "145g" },
+        { "name": "sourdough starter", "amount": "100g" },
+        { "name": "whole milk", "amount": "15g" },
+        { "name": "vanilla extract", "amount": "13g" }
+      ],
+      "exit_condition": "Wet ingredients fully incorporated into a smooth, slightly loose batter",
+      "notes": [
+        {
+          "text": "Works with either active bubbly starter or refrigerated discard. Active starter adds slight leavening; discard adds mainly flavor.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "combine-dough",
+      "title": "Combine Dough",
+      "direction": "Add the dry ingredients to the wet mixture in 2-3 batches, mixing on low speed until just combined after each addition.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "No visible dry flour streaks remain; dough is cohesive but not overworked",
+      "notes": [
+        {
+          "text": "Do not overmix. Overmixing develops too much gluten, making cookies tough. Stop as soon as flour disappears.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "fold-chocolate",
+      "title": "Fold in Chocolate",
+      "direction": "Using a wooden spoon or rubber spatula, fold the chopped chocolate into the dough until evenly distributed.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "chopped chocolate", "amount": "300g" }
+      ],
+      "exit_condition": "Chocolate evenly distributed throughout dough",
+      "notes": null
+    },
+    {
+      "id": "chill-dough",
+      "title": "Chill Dough",
+      "direction": "Cover the bowl with plastic wrap and refrigerate for 1 hour.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is firm and cold to the touch, holds shape when scooped",
+      "notes": [
+        {
+          "text": "You can skip the chill for a quicker bake — cookies will spread more and be thinner/chewier.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Dough can also be chilled overnight for more developed sourdough flavor.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "preheat-oven",
+      "title": "Preheat Oven",
+      "direction": "Position rack in upper third of oven, about 15cm from heat source. Preheat to 350°F (175°C). Line baking sheets with parchment paper.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven reaches 350°F (175°C) and baking sheets are lined",
+      "notes": null
+    },
+    {
+      "id": "scoop-cookies",
+      "title": "Scoop Cookies",
+      "direction": "Using a cookie scoop, portion dough into ~30g balls. Roll gently and place on parchment-lined baking sheets, spaced 5cm apart.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough portioned into uniform ~30g balls on lined sheets",
+      "notes": [
+        {
+          "text": "Freeze extra dough balls on a sheet, then transfer to a zip bag. Bake from frozen — add 1-2 minutes to bake time.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "bake-cookies",
+      "title": "Bake",
+      "direction": "Bake one sheet at a time for 11-12 minutes, until edges are light golden brown and centers appear slightly underbaked.",
+      "duration_min": 12,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Edges light golden, centers look slightly underbaked and puffy",
+      "notes": [
+        {
+          "text": "Cookies firm up significantly as they cool. Pull them when they still look underdone in the center.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "cool",
+      "title": "Cool and Garnish",
+      "direction": "Let cookies cool on the baking sheet for 15 minutes. Sprinkle with flaky sea salt while still warm, then transfer to a wire rack.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        { "name": "flaky sea salt", "amount": "garnish" }
+      ],
+      "exit_condition": "Cookies are set and cool enough to handle; salt adhered to surface",
+      "notes": null
+    }
+  ],
+  "nutrition": {
+    "servings": 50,
+    "servingSize": "1 cookie (~30g)",
+    "calculatedDate": "2026-02-27",
+    "dataSource": "Placeholder — pending USDA FDC calculation",
+    "totals": {
+      "calories": 0,
+      "protein": 0,
+      "totalFat": 0,
+      "saturatedFat": 0,
+      "carbohydrates": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 0
+    },
+    "perServing": {
+      "calories": 0,
+      "protein": 0,
+      "totalFat": 0,
+      "saturatedFat": 0,
+      "carbohydrates": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 0
+    },
+    "breakdown": []
+  },
+  "reheat": {
+    "methods": [
+      {
+        "method": "Microwave",
+        "detail": "10-15 seconds on a plate. Warms through and re-softens the center.",
+        "source": "agent"
+      },
+      {
+        "method": "Oven",
+        "detail": "350°F (175°C) for 3-4 minutes on a baking sheet. Refreshes the crisp edges.",
+        "source": "agent"
+      }
+    ]
+  }
+}

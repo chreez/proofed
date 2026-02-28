@@ -103,3 +103,64 @@ Hand blend the tomatoes and then mix in everything else and let sit for at least
 | 1/8 tsp (scant) | 0.5g | Oregano — sub-gram, volume is practical measure |
 | 1.5 small leaves | 1g | Fresh basil — count-based in original |
 | 1 very small clove | 3g | Garlic — "pinky fingernail size" |
+
+---
+
+## Sourdough Chocolate Chip Cookies
+
+**Original Source:** The Clever Carrot (Emilie Raffa)
+**Links:**
+- Recipe: https://www.theclevercarrot.com/2020/05/sourdough-chocolate-chip-cookies-soft-chewy/
+
+### Original Ingredients
+
+**Wet Ingredients:**
+- 8 tbsp (115 g) unsalted butter
+- 1 cup (210 g) light brown sugar, packed
+- 1/2 cup (96 g) granulated sugar
+- 2 large eggs, room temperature
+- 2/3 cup (158 ml) sunflower seed oil or neutral oil
+- 1/2 cup (100 g) bubbly, active sourdough starter OR leftover sourdough discard (100% hydration)
+- 1 tbsp milk, room temperature
+- 1 tbsp real vanilla extract
+
+**Dry Ingredients:**
+- 1 3/4 cups (238 g) all-purpose flour
+- 1 1/2 cups (204 g) bread flour
+- 1 tsp baking powder
+- 1 tsp baking soda
+- 1 1/4 tsp fine sea salt
+- 2 1/2 cups (300 g) chopped dark, semi-sweet, or milk chocolate
+
+### Original Instructions
+
+1. Cream butter, brown sugar, and granulated sugar until light and fluffy, about 4 minutes.
+2. Add eggs one at a time, beating well after each addition; incorporate oil, sourdough starter, milk, and vanilla.
+3. Whisk together dry ingredients separately, then add to wet mixture in batches on low speed until just combined.
+4. Fold in chocolate chunks with a wooden spoon, ensuring complete blending.
+5. Cover and chill dough for 1 hour (can bake straight from fridge).
+6. Preheat oven to 350°F with rack positioned in top third, about 6 inches from heat source; line baking sheets with parchment paper.
+7. Portion dough into 2 heaping tbsp balls (approximately 30 g each), roll gently, and space 2 inches apart.
+8. Bake one pan at a time for 11-12 minutes until light golden brown; cool on baking sheet for 15 minutes, then transfer to wire rack.
+
+### Conversion Reference
+
+| Original | Metric | Notes |
+|----------|--------|-------|
+| 8 tbsp butter | 115g | Given in original |
+| 1 cup brown sugar | 210g | Given in original |
+| 1/2 cup granulated sugar | 96g | Given in original |
+| 2 large eggs | 100g | ~50g each without shell |
+| 2/3 cup (158 ml) oil | 145g | Sunflower oil density ~0.92 g/ml |
+| 1/2 cup starter | 100g | Given in original |
+| 1 tbsp milk | 15g | Standard dairy milk density |
+| 1 tbsp vanilla | 13g | Extract density slightly less than water |
+| 1 3/4 cups AP flour | 238g | Given in original |
+| 1 1/2 cups bread flour | 204g | Given in original |
+| 1 tsp baking powder | 4g | Standard conversion |
+| 1 tsp baking soda | 5g | Standard conversion |
+| 1 1/4 tsp fine sea salt | 7g | ~5.5g per tsp fine sea salt |
+| 2 1/2 cups chocolate | 300g | Given in original |
+| 350°F | 175°C | Oven temp |
+| 6 inches | 15cm | Rack position from heat source |
+| 2 inches | 5cm | Cookie spacing |
