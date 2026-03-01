@@ -1178,8 +1178,7 @@
       "date": "2026-03-01",
       "start_date": "2026-02-28",
       "version": "v2.0.0",
-      "in_progress": true,
-      "summary": "In progress — sixth bake, 2-loaf. Used fermentolyse method. Targeted 30% aliquot rise per Sourdough Journey chart for 80°F dough.",
+      "summary": "Sixth bake, 2-loaf. First time using fermentolyse — dough was noticeably stronger at first stretch and fold. Followed Sourdough Journey chart targeting 30% aliquot rise for 80°F dough. Warm kitchen made shaping harder. Cross score continues to give best spring vs decorative patterns. Tasted great.",
       "notes": [
         "Mixed at 14:40, dough temp 78.4°F. Water, flour, sourdough (fermentolyse — salt added later).",
         "Added salt at 15:20, dough temp 82°F.",
@@ -1195,11 +1194,77 @@
         "Into fridge at 19:49 for overnight cold retard. Warm kitchen made dough harder to work with.",
         "Oven preheat started ~08:00. Fell back asleep.",
         "Cold retard ~15 hours (19:49–10:38).",
-        "First loaf loaded at ~10:38. 20 min covered, 23 min uncovered.",
+        "First loaf loaded at ~10:38. 20 min covered, 23 min uncovered. Out ~11:21.",
+        "Oven reheated at 500°F for ~30 min. Second loaf loaded at ~11:54. Lid off at 12:14 (20 min covered).",
+        "Fermentolyse made dough noticeably stronger at first stretch and fold — will use every time going forward.",
+        "Cross score gives better spring than decorative patterns on round dough. Decorative scoring seems to affect rise and final dimensions.",
         "Followed The Sourdough Journey V2.0 bulk fermentation chart — at 80°F, 30% rise is the target because warm dough continues fermenting aggressively during shaping and cold retard."
       ],
-      "photos": [],
-      "next_time": []
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-03-01/second-loaf-mid-bake-challenger-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-01/second-loaf-mid-bake-challenger-400w.webp",
+          "alt": "Second loaf mid-bake in the Challenger bread pan with the lid removed, sitting on parchment paper inside the oven, with a decorative wheat-stalk score beginning to open along the surface."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-01/first-loaf-cross-score-cooling-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-01/first-loaf-cross-score-cooling-400w.webp",
+          "alt": "First loaf cooling on a wire rack after bake, showing a cross score with strong oven spring and a deep golden-brown crust dusted with flour."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-01/first-loaf-cross-score-vsco-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-01/first-loaf-cross-score-vsco-400w.webp",
+          "alt": "Both finished loaves on display: the cross-scored first loaf in the foreground on a plate and the decorative-scored second loaf cooling on a wire rack behind it, with paper bags in the background."
+        }
+      ],
+      "next_time": [
+        { "text": "Fermentolyse every time — delayed salt made a noticeable strength difference" },
+        { "text": "Stick with cross score on round loaves — decorative patterns affect rise/dimensions" },
+        { "text": "Try different flours for more complexity (whole wheat, rye blend)" }
+      ],
+      "cost": {
+        "total": 2.64,
+        "perServing": 1.32,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.11
+          }
+        ]
+      }
     }
   ],
   "research": {

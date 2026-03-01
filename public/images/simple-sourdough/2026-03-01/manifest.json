@@ -1,0 +1,25 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-03-01",
+  "processedAt": "2026-03-01T19:42:18.006Z",
+  "photos": [
+    {
+      "name": "first-loaf-cross-score-cooling",
+      "thumb": "first-loaf-cross-score-cooling-400w.webp",
+      "src": "first-loaf-cross-score-cooling-800w.webp",
+      "summary": "First loaf cooling on a wire rack after bake, showing a cross score with strong oven spring and a deep golden-brown crust dusted with flour."
+    },
+    {
+      "name": "first-loaf-cross-score-vsco",
+      "thumb": "first-loaf-cross-score-vsco-400w.webp",
+      "src": "first-loaf-cross-score-vsco-800w.webp",
+      "summary": "Both finished loaves on display: the cross-scored first loaf in the foreground on a plate and the decorative-scored second loaf cooling on a wire rack behind it, with paper bags in the background."
+    },
+    {
+      "name": "second-loaf-mid-bake-challenger",
+      "thumb": "second-loaf-mid-bake-challenger-400w.webp",
+      "src": "second-loaf-mid-bake-challenger-800w.webp",
+      "summary": "Second loaf mid-bake in the Challenger bread pan with the lid removed, sitting on parchment paper inside the oven, with a decorative wheat-stalk score beginning to open along the surface."
+    }
+  ]
+}
