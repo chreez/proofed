@@ -282,19 +282,22 @@ After user confirms:
 2. **Append to existing `cook_log[]` array** (do not replace)
 3. If `cook_log` doesn't exist yet, create it
 
-## Phase 5: Photo Pipeline (if photos provided)
+## Phase 5+6: Photos, Cost & Bake Review Page (COMBINED)
 
-If the user provided photos:
+Photo processing and cost lookup happen together. The user reviews BOTH on the bake review page in a single pass — never open the photo review page separately.
+
+**IMPORTANT:** Do NOT invoke `/review-photos` as a separate skill with its own review page. Instead, generate photo summaries inline (spawn a sub-agent to read photos via vision and write summaries to manifest.json), then proceed directly to cost lookup and open the combined bake review page.
+
+### Photo Pipeline (if photos provided)
 
 1. **Copy source photos** to `photos-source/{recipe-id}/{date}/` with descriptive filenames
 2. **Run pipeline**: `npm run photos photos-source/{recipe-id}/{date}/`
-3. **Run `/review-photos`**: `{recipe-id} {date}` — generates AI summaries and opens review page
-4. Remind user: "Tag your photos on the review page, select cost products, then click 'Copy review data' and paste the JSON back here"
-5. When user pastes combined review JSON, extract `photos` and `cost` sections to wire into the cook_log entry
+3. **Generate summaries** — spawn a sub-agent to read each processed photo via multimodal vision and write summaries to `manifest.json` (see Sub-Agent Prompt in `/review-photos` skill for voice rules)
+4. Continue to cost lookup below — do NOT open a separate review page
 
-If no photos provided, skip this phase entirely.
+If no photos provided, skip the photo steps but still run cost lookup.
 
-## Phase 6: Cost Data + Bake Review Page
+### Cost Data
 
 Populate HEB product data so the bake review page can show the cost picker.
 
@@ -335,7 +338,7 @@ Populate HEB product data so the bake review page can show the cost picker.
 ```
 
 5. **Create directory** if needed: `mkdir -p public/review-data/{recipe-id}/{date}/`
-6. **Open the bake review page**: `open http://192.168.1.213:5173/review/bake/{recipe-id}/{date}`
+6. **ALWAYS open the bake review page** — this is the single review surface for BOTH photos and cost: `open http://192.168.1.213:5173/review/bake/{recipe-id}/{date}`
 7. **Tell the user**:
 
 ```
