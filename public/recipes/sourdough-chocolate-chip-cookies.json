@@ -2,63 +2,69 @@
   "meta": {
     "name": "Sourdough Chocolate Chip Cookies",
     "source": {
-      "name": "The Clever Carrot",
-      "url": "https://www.theclevercarrot.com/2020/05/sourdough-chocolate-chip-cookies-soft-chewy/",
+      "name": "Research Synthesis (40 sources)",
       "type": "adapted",
-      "author": "Emilie Raffa"
+      "author": "Primary influences: Caroline Schiff (King Arthur Baking), Edd Kimber (The Boy Who Bakes)"
     },
-    "yields": "~50 cookies",
-    "total_time": "~1.5 hrs (30 min active, 1 hr chill)",
-    "description": "Soft and chewy chocolate chip cookies using sourdough starter for depth and tang. Butter plus oil for maximum chewiness."
+    "yields": "~22-24 cookies",
+    "total_time": "~17 hrs (30 min active Day 1, 16-24 hr overnight rest, 30 min active Day 2)",
+    "description": "Brown butter sourdough chocolate chip cookies with overnight ferment. All-butter (no oil), egg yolks only, hand-chopped chocolate. The sourdough tang pairs with brown butter's nuttiness and dark chocolate's bitterness."
   },
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v2.0.0",
   "change_log": [
     {
       "version": "v1.0.0",
       "date": "2026-02-27",
       "summary": "Initial recipe adapted from The Clever Carrot sourdough chocolate chip cookies"
+    },
+    {
+      "version": "v2.0.0",
+      "date": "2026-03-01",
+      "summary": "Complete recipe redesign: replaced oil+butter with all brown butter, switched to egg yolks only, added mandatory overnight ferment, increased cookie size to 57g, hand-chopped bar chocolate. Based on 7-agent research synthesis across 40 sources."
     }
   ],
   "vessels": [
-    { "id": "V1", "name": "Stand Mixer Bowl" },
-    { "id": "V2", "name": "Medium Mixing Bowl" },
-    { "id": "V3", "name": "Baking Sheets (2)", "reuse": "Rotate between batches" }
+    { "id": "V1", "name": "Light-Colored Saucepan" },
+    { "id": "V2", "name": "Large Mixing Bowl" },
+    { "id": "V3", "name": "Medium Mixing Bowl" },
+    { "id": "V4", "name": "Baking Sheets (2)", "reuse": "Rotate between batches; cool completely between uses" }
   ],
   "stages": [
     {
       "id": "PREP",
-      "title": "Mix Dough",
+      "title": "Brown Butter & Mix Dough",
       "gather": {
-        "vessels": ["Stand Mixer Bowl", "Medium Mixing Bowl", "Baking Sheets (2)"],
-        "equipment": ["Stand Mixer with Paddle", "Kitchen Scale", "Whisk", "Rubber Spatula", "Cookie Scoop", "Parchment Paper", "Wire Rack"],
+        "vessels": ["Light-Colored Saucepan", "Large Mixing Bowl", "Medium Mixing Bowl", "Baking Sheets (2)"],
+        "equipment": ["Kitchen Scale", "Whisk", "Rubber Spatula", "Cookie Scoop", "Parchment Paper", "Wire Rack"],
         "ingredients": [
-          { "id": "butter", "name": "Unsalted Butter (softened)", "total": 115, "unit": "g", "breakdown": null },
-          { "id": "brown-sugar", "name": "Light Brown Sugar", "total": 210, "unit": "g", "breakdown": null },
-          { "id": "granulated-sugar", "name": "Granulated Sugar", "total": 96, "unit": "g", "breakdown": null },
-          { "id": "eggs", "name": "Large Eggs", "total": 100, "unit": "g", "breakdown": null },
-          { "id": "oil", "name": "Neutral Oil (sunflower or canola)", "total": 145, "unit": "g", "breakdown": null },
-          { "id": "starter", "name": "Sourdough Starter (100% hydration)", "total": 100, "unit": "g", "breakdown": null },
-          { "id": "milk", "name": "Whole Milk", "total": 15, "unit": "g", "breakdown": null },
-          { "id": "vanilla", "name": "Vanilla Extract", "total": 13, "unit": "g", "breakdown": null },
-          { "id": "ap-flour", "name": "All-Purpose Flour", "total": 238, "unit": "g", "breakdown": null },
-          { "id": "bread-flour", "name": "Bread Flour", "total": 204, "unit": "g", "breakdown": null },
-          { "id": "baking-powder", "name": "Baking Powder", "total": 4, "unit": "g", "breakdown": null },
-          { "id": "baking-soda", "name": "Baking Soda", "total": 5, "unit": "g", "breakdown": null },
-          { "id": "sea-salt", "name": "Fine Sea Salt", "total": 7, "unit": "g", "breakdown": null },
-          { "id": "chocolate", "name": "Chopped Chocolate (dark, semi-sweet, or milk)", "total": 300, "unit": "g", "breakdown": null },
-          { "id": "flaky-salt", "name": "Flaky Sea Salt (garnish)", "total": 1, "unit": "g", "breakdown": null }
+          { "id": "butter", "name": "Unsalted Butter", "total": 225, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "6/7 agents confirmed 225-227g browned butter as consensus" },
+          { "id": "dark-brown-sugar", "name": "Dark Brown Sugar", "total": 210, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "Universal across sources; 2:1 brown-to-white ratio" },
+          { "id": "granulated-sugar", "name": "Granulated Sugar", "total": 96, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "Provides crispness and spread balance" },
+          { "id": "egg-yolks", "name": "Egg Yolks (large)", "total": 54, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "Yolks only removes excess moisture; validated by JennyBlogs bake-off winner" },
+          { "id": "sourdough-discard", "name": "Sourdough Discard (100% hydration)", "total": 150, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "100-150g sweet spot for overnight ferment; discard preferred over active" },
+          { "id": "vanilla", "name": "Vanilla Extract", "total": 13, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "1 tbsp; bean paste upgrade recommended" },
+          { "id": "ap-flour", "name": "All-Purpose Flour", "total": 200, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "AP-dominant blend" },
+          { "id": "bread-flour", "name": "Bread Flour", "total": 120, "unit": "g", "breakdown": null, "confidence": "medium", "rationale": "AP+bread blend is our v1 differentiator; most blogs use AP only but KAB and Edd Kimber validate the blend" },
+          { "id": "baking-soda", "name": "Baking Soda", "total": 5, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "Reacts with sourdough acid for lift and browning" },
+          { "id": "baking-powder", "name": "Baking Powder", "total": 2, "unit": "g", "breakdown": null, "confidence": "medium", "rationale": "Insurance lift; some recipes omit" },
+          { "id": "fine-sea-salt", "name": "Fine Sea Salt", "total": 6, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "Consistent across sources" },
+          { "id": "chocolate", "name": "Chopped Chocolate (60-66% semisweet)", "total": 350, "unit": "g", "breakdown": [
+            { "label": "fold into dough", "amount": 300 },
+            { "label": "press into tops", "amount": 50 }
+          ], "confidence": "high", "rationale": "Hand-chopped bar, not chips; reserve for surface per Schiff technique" },
+          { "id": "flaky-salt", "name": "Flaky Sea Salt (Maldon)", "total": 2, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "Universal across every source" }
         ]
       },
-      "states": ["whisk-dry", "cream-butter-sugar", "add-wet", "combine-dough", "fold-chocolate"]
+      "states": ["brown-butter", "chill-butter", "mix-butter-sugar", "add-yolks", "add-wet", "whisk-dry", "combine-dough", "fold-chocolate"]
     },
     {
-      "id": "CHILL",
-      "title": "Chill",
+      "id": "FERMENT",
+      "title": "Overnight Rest",
       "gather": null,
-      "states": ["chill-dough"]
+      "states": ["overnight-rest"]
     },
     {
       "id": "BAKE",
@@ -69,61 +75,124 @@
   ],
   "states": [
     {
-      "id": "whisk-dry",
-      "title": "Whisk Dry Ingredients",
-      "direction": "In a medium bowl, whisk together all-purpose flour, bread flour, baking powder, baking soda, and fine sea salt.",
+      "id": "brown-butter",
+      "title": "Brown the Butter",
+      "direction": "In a light-colored saucepan over medium-high heat, melt butter and cook, whisking frequently and scraping the bottom, until a light honey color with brown bits forming on the bottom, 4-6 minutes. Remove from heat and cool 5 minutes.",
+      "duration_min": 6,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "unsalted butter", "amount": "225g" }
+      ],
+      "exit_condition": "Butter is honey-colored with visible brown flecks on the bottom; nutty aroma; yields approximately 185g",
+      "notes": [
+        {
+          "text": "Use a light-colored pan so you can see the color change. Dark pans hide the browning and make it easy to burn.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Pull off heat slightly early — residual heat continues browning. If you smell burnt or acrid notes, start over with fresh butter.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "chill-butter",
+      "title": "Chill Brown Butter",
+      "direction": "Transfer brown butter to a small bowl. Cover and refrigerate until opaque and creamy in consistency, about 1 hour.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Brown butter is opaque, creamy, and holds its shape — not liquid, not rock-hard",
+      "notes": [
+        {
+          "text": "This step is critical. Warm brown butter melts sugar on contact, creating greasy dough that spreads too thin in the oven. The butter should feel like softened butter when ready.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "mix-butter-sugar",
+      "title": "Mix Butter and Sugars",
+      "direction": "In a large mixing bowl, combine the chilled brown butter with dark brown sugar and granulated sugar. Mix with a spatula or wooden spoon until evenly combined, about 2 minutes.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "all-purpose flour", "amount": "238g" },
-        { "name": "bread flour", "amount": "204g" },
-        { "name": "baking powder", "amount": "4g" },
-        { "name": "baking soda", "amount": "5g" },
-        { "name": "fine sea salt", "amount": "7g" }
+        { "name": "chilled brown butter", "amount": "~185g" },
+        { "name": "dark brown sugar", "amount": "210g" },
+        { "name": "granulated sugar", "amount": "96g" }
       ],
-      "exit_condition": "Dry ingredients evenly combined with no visible clumps",
+      "exit_condition": "Butter and sugars are evenly combined with a wet, sandy appearance",
       "notes": [
         {
-          "text": "The blend of AP and bread flour gives structure from bread flour's higher protein while keeping cookies tender from the AP flour.",
+          "text": "No stand mixer needed. Since the brown butter is already pre-melted (just chilled), there is no creaming step — you are simply combining, not aerating.",
           "critical": false,
           "source": "agent"
         }
       ]
     },
     {
-      "id": "cream-butter-sugar",
-      "title": "Cream Butter and Sugars",
-      "direction": "In the stand mixer with paddle attachment, beat softened butter with brown sugar and granulated sugar on medium speed until light and fluffy, about 4 minutes.",
-      "duration_min": 4,
+      "id": "add-yolks",
+      "title": "Add Egg Yolks",
+      "direction": "Add egg yolks one at a time, mixing well after each addition until fully incorporated.",
+      "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "unsalted butter", "amount": "115g (softened)" },
-        { "name": "light brown sugar", "amount": "210g" },
-        { "name": "granulated sugar", "amount": "96g" }
+        { "name": "egg yolks", "amount": "3 large (~54g)" }
       ],
-      "exit_condition": "Mixture is light in color, fluffy, and increased in volume",
-      "notes": null
+      "exit_condition": "Each yolk fully incorporated before adding the next; mixture is smooth and glossy",
+      "notes": [
+        {
+          "text": "Yolks only (no whites). Whites add water and protein structure that makes cookies cakey. Yolks add fat and lecithin for a fudgier, chewier cookie.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
     },
     {
       "id": "add-wet",
-      "title": "Add Wet Ingredients",
-      "direction": "To the stand mixer, add eggs one at a time, beating well after each addition. Then add oil, sourdough starter, milk, and vanilla. Mix until fully incorporated.",
-      "duration_min": 3,
+      "title": "Add Discard and Vanilla",
+      "direction": "Add sourdough discard and vanilla extract. Mix until smooth and fully incorporated.",
+      "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "eggs", "amount": "100g (2 large)" },
-        { "name": "neutral oil", "amount": "145g" },
-        { "name": "sourdough starter", "amount": "100g" },
-        { "name": "whole milk", "amount": "15g" },
+        { "name": "sourdough discard", "amount": "150g" },
         { "name": "vanilla extract", "amount": "13g" }
       ],
-      "exit_condition": "Wet ingredients fully incorporated into a smooth, slightly loose batter",
+      "exit_condition": "Mixture is smooth and homogeneous; no streaks of discard visible",
       "notes": [
         {
-          "text": "Works with either active bubbly starter or refrigerated discard. Active starter adds slight leavening; discard adds mainly flavor.",
+          "text": "Use discard that is 1-5 days old at 100% hydration (by weight). Very old or sour discard can over-acidify the dough. Over-hydrated starter leads to flat, greasy cookies.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "whisk-dry",
+      "title": "Whisk Dry Ingredients",
+      "direction": "In a medium bowl, whisk together all-purpose flour, bread flour, baking soda, baking powder, and fine sea salt.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "all-purpose flour", "amount": "200g" },
+        { "name": "bread flour", "amount": "120g" },
+        { "name": "baking soda", "amount": "5g" },
+        { "name": "baking powder", "amount": "2g" },
+        { "name": "fine sea salt", "amount": "6g" }
+      ],
+      "exit_condition": "Dry ingredients evenly combined with no visible clumps",
+      "notes": [
+        {
+          "text": "The AP + bread flour blend adds chewiness from bread flour's higher protein while keeping cookies tender from the AP flour. Most sourdough CCC blogs use AP only — the blend is our differentiator.",
           "critical": false,
           "source": "agent"
         }
@@ -132,15 +201,15 @@
     {
       "id": "combine-dough",
       "title": "Combine Dough",
-      "direction": "Add the dry ingredients from the medium bowl to the stand mixer in 2-3 batches, mixing on low speed until just combined after each addition.",
+      "direction": "Add the dry ingredients to the wet mixture in 2-3 additions, folding with a rubber spatula until just combined after each addition. Stop as soon as no visible dry flour streaks remain.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "No visible dry flour streaks remain; dough is cohesive but not overworked",
+      "exit_condition": "No visible dry flour streaks; dough is cohesive but not overworked",
       "notes": [
         {
-          "text": "Do not overmix. Overmixing develops too much gluten, making cookies tough. Stop as soon as flour disappears.",
+          "text": "Do not overmix. Overmixing develops too much gluten, making cookies tough and cakey. Stop the moment flour disappears.",
           "critical": true,
           "source": "agent"
         }
@@ -149,33 +218,39 @@
     {
       "id": "fold-chocolate",
       "title": "Fold in Chocolate",
-      "direction": "Using a wooden spoon or rubber spatula, fold the chopped chocolate into the dough until evenly distributed.",
+      "direction": "Using a rubber spatula, fold 300g of the chopped chocolate into the dough until evenly distributed. Reserve the remaining 50g for pressing into tops before baking.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "chopped chocolate", "amount": "300g" }
+        { "name": "chopped chocolate", "amount": "300g (reserve 50g)" }
       ],
-      "exit_condition": "Chocolate evenly distributed throughout dough",
-      "notes": null
+      "exit_condition": "Chocolate evenly distributed throughout dough; reserved chocolate set aside",
+      "notes": [
+        {
+          "text": "Hand-chopped bar chocolate creates irregular pieces — thin shavings melt into pools while larger chunks stay semi-intact. This gives different chocolate experiences in every bite.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
     },
     {
-      "id": "chill-dough",
-      "title": "Chill Dough",
-      "direction": "Cover the bowl with plastic wrap and refrigerate for 1 hour.",
-      "duration_min": 60,
+      "id": "overnight-rest",
+      "title": "Overnight Rest",
+      "direction": "Cover the bowl tightly with plastic wrap pressed directly onto the dough surface. Refrigerate for 16-24 hours.",
+      "duration_min": 960,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough is firm and cold to the touch, holds shape when scooped",
+      "exit_condition": "Dough has rested minimum 16 hours; is firm and cold throughout",
       "notes": [
         {
-          "text": "You can skip the chill for a quicker bake — cookies will spread more and be thinner/chewier.",
-          "critical": false,
+          "text": "The overnight rest is non-negotiable. It serves dual purpose: flour hydration and fat solidification for texture, plus slow sourdough fermentation for flavor depth. The critical inflection point is at 16 hours (Nik Sharma).",
+          "critical": true,
           "source": "agent"
         },
         {
-          "text": "Dough can also be chilled overnight for more developed sourdough flavor.",
+          "text": "Dough can rest up to 48 hours. Beyond that, diminishing returns and potential over-fermentation.",
           "critical": false,
           "source": "agent"
         }
@@ -184,26 +259,33 @@
     {
       "id": "preheat-oven",
       "title": "Preheat Oven",
-      "direction": "Position rack in upper third of oven, about 15cm from heat source. Preheat to 350°F (175°C). Line baking sheets with parchment paper.",
+      "direction": "Position rack in upper third of oven, about 15cm from the top heating element. Preheat to 350\u00b0F (175\u00b0C). Line baking sheets with parchment paper.",
       "duration_min": 15,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven reaches 350°F (175°C) and baking sheets are lined",
+      "exit_condition": "Oven reaches 350\u00b0F (175\u00b0C) and baking sheets are lined with parchment",
       "notes": null
     },
     {
       "id": "scoop-cookies",
-      "title": "Scoop Cookies",
-      "direction": "Using a cookie scoop, portion dough into ~30g balls. Roll gently and place on parchment-lined baking sheets, spaced 5cm apart.",
-      "duration_min": 5,
+      "title": "Scoop and Shape Cookies",
+      "direction": "Using a cookie scoop, portion dough into 57g balls. Roll gently into balls, then press reserved chopped chocolate into the tops. Place on parchment-lined baking sheets, spaced 8cm apart. No more than 6 cookies per sheet.",
+      "duration_min": 10,
       "timer": false,
       "parallel": false,
-      "components": null,
-      "exit_condition": "Dough portioned into uniform ~30g balls on lined sheets",
+      "components": [
+        { "name": "reserved chopped chocolate", "amount": "50g" }
+      ],
+      "exit_condition": "Dough portioned into uniform 57g balls with chocolate pressed into tops; maximum 6 per sheet with 8cm spacing",
       "notes": [
         {
-          "text": "Freeze extra dough balls on a sheet, then transfer to a zip bag. Bake from frozen — add 1-2 minutes to bake time.",
+          "text": "Pressing chocolate into the surface creates visible chocolate puddles on the baked cookie exterior — a signature bakery technique from Caroline Schiff.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Freeze extra dough balls on a sheet, then transfer to a zip bag. Bake from frozen — add 2-3 minutes to bake time. Frozen dough keeps up to 2 months.",
           "critical": false,
           "source": "agent"
         }
@@ -212,60 +294,79 @@
     {
       "id": "bake-cookies",
       "title": "Bake",
-      "direction": "Bake one sheet at a time for 11-12 minutes, until edges are light golden brown and centers appear slightly underbaked.",
-      "duration_min": 12,
+      "direction": "Bake one sheet at a time for 12-14 minutes, until edges are golden brown and centers appear slightly underbaked and puffy.",
+      "duration_min": 14,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Edges light golden, centers look slightly underbaked and puffy",
+      "exit_condition": "Edges golden brown, centers look slightly underbaked and puffy; cookies still soft when gently pressed",
       "notes": [
         {
-          "text": "Cookies firm up significantly as they cool. Pull them when they still look underdone in the center.",
+          "text": "Cookies firm up significantly as they cool. Pull them when they still look underdone in the center — they continue baking on the hot sheet.",
           "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Let baking sheets cool completely between batches. Hot sheets cause immediate spreading.",
+          "critical": false,
           "source": "agent"
         }
       ]
     },
     {
       "id": "cool",
-      "title": "Cool and Garnish",
-      "direction": "Let cookies cool on the baking sheet for 15 minutes. Sprinkle with flaky sea salt while still warm, then transfer to a wire rack.",
+      "title": "Salt and Cool",
+      "direction": "Immediately sprinkle flaky sea salt over the warm cookies. Cool on the baking sheet for 15 minutes, then transfer to a wire rack.",
       "duration_min": 15,
       "timer": true,
       "parallel": false,
       "components": [
-        { "name": "flaky sea salt", "amount": "garnish" }
+        { "name": "flaky sea salt (Maldon)", "amount": "garnish" }
       ],
-      "exit_condition": "Cookies are set and cool enough to handle; salt adhered to surface",
+      "exit_condition": "Cookies are set and firm enough to handle; salt has adhered to warm surface",
       "notes": null
     }
   ],
   "nutrition": {
-    "servings": 50,
-    "servingSize": "1 cookie (~30g)",
-    "calculatedDate": "2026-02-27",
-    "dataSource": "Placeholder — pending USDA FDC calculation",
+    "servings": 23,
+    "servingSize": "1 cookie (~57g)",
+    "calculatedDate": "2026-03-01",
+    "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 0,
-      "protein": 0,
-      "totalFat": 0,
-      "saturatedFat": 0,
-      "carbohydrates": 0,
-      "sugar": 0,
-      "fiber": 0,
-      "sodium": 0
+      "calories": 6100,
+      "protein": 68,
+      "totalFat": 307,
+      "saturatedFat": 184,
+      "carbohydrates": 823,
+      "sugar": 492,
+      "fiber": 30,
+      "sodium": 4860
     },
     "perServing": {
-      "calories": 0,
-      "protein": 0,
-      "totalFat": 0,
-      "saturatedFat": 0,
-      "carbohydrates": 0,
-      "sugar": 0,
-      "fiber": 0,
-      "sodium": 0
+      "calories": 265.2,
+      "protein": 3.0,
+      "totalFat": 13.3,
+      "saturatedFat": 8.0,
+      "carbohydrates": 35.8,
+      "sugar": 21.4,
+      "fiber": 1.3,
+      "sodium": 211.3
     },
-    "breakdown": []
+    "breakdown": [
+      { "ingredientId": "butter", "ingredientName": "Unsalted Butter", "amount": 225, "fdcId": 173430, "calories": 1613, "protein": 2.0, "totalFat": 182.5, "saturatedFat": 115.7, "carbohydrates": 0.2, "sugar": 0.2, "fiber": 0.0, "sodium": 25 },
+      { "ingredientId": "dark-brown-sugar", "ingredientName": "Dark Brown Sugar", "amount": 210, "fdcId": 168833, "calories": 792, "protein": 0.0, "totalFat": 0.0, "saturatedFat": 0.0, "carbohydrates": 204.4, "sugar": 202.0, "fiber": 0.0, "sodium": 82 },
+      { "ingredientId": "granulated-sugar", "ingredientName": "Granulated Sugar", "amount": 96, "fdcId": 169655, "calories": 372, "protein": 0.0, "totalFat": 0.0, "saturatedFat": 0.0, "carbohydrates": 96.0, "sugar": 95.9, "fiber": 0.0, "sodium": 0 },
+      { "ingredientId": "egg-yolks", "ingredientName": "Egg Yolks (large)", "amount": 54, "fdcId": 172183, "calories": 174, "protein": 8.6, "totalFat": 14.3, "saturatedFat": 5.2, "carbohydrates": 1.9, "sugar": 0.3, "fiber": 0.0, "sodium": 26 },
+      { "ingredientId": "sourdough-discard", "ingredientName": "Sourdough Discard (100% hydration)", "amount": 150, "fdcId": 168936, "calories": 273, "protein": 7.8, "totalFat": 0.8, "saturatedFat": 0.2, "carbohydrates": 57.5, "sugar": 0.2, "fiber": 1.8, "sodium": 2 },
+      { "ingredientId": "vanilla", "ingredientName": "Vanilla Extract", "amount": 13, "fdcId": 173471, "calories": 37, "protein": 0.0, "totalFat": 0.0, "saturatedFat": 0.0, "carbohydrates": 1.6, "sugar": 1.6, "fiber": 0.0, "sodium": 1 },
+      { "ingredientId": "ap-flour", "ingredientName": "All-Purpose Flour", "amount": 200, "fdcId": 168936, "calories": 728, "protein": 20.8, "totalFat": 1.9, "saturatedFat": 0.3, "carbohydrates": 153.0, "sugar": 0.5, "fiber": 4.8, "sodium": 2 },
+      { "ingredientId": "bread-flour", "ingredientName": "Bread Flour", "amount": 120, "fdcId": 168896, "calories": 433, "protein": 14.4, "totalFat": 2.0, "saturatedFat": 0.3, "carbohydrates": 87.1, "sugar": 0.4, "fiber": 2.9, "sodium": 2 },
+      { "ingredientId": "baking-soda", "ingredientName": "Baking Soda", "amount": 5, "fdcId": 175040, "calories": 0, "protein": 0.0, "totalFat": 0.0, "saturatedFat": 0.0, "carbohydrates": 0.0, "sugar": 0.0, "fiber": 0.0, "sodium": 1368 },
+      { "ingredientId": "baking-powder", "ingredientName": "Baking Powder", "amount": 2, "fdcId": 172803, "calories": 1, "protein": 0.0, "totalFat": 0.0, "saturatedFat": 0.0, "carbohydrates": 0.6, "sugar": 0.0, "fiber": 0.0, "sodium": 212 },
+      { "ingredientId": "fine-sea-salt", "ingredientName": "Fine Sea Salt", "amount": 6, "fdcId": 173468, "calories": 0, "protein": 0.0, "totalFat": 0.0, "saturatedFat": 0.0, "carbohydrates": 0.0, "sugar": 0.0, "fiber": 0.0, "sodium": 2325 },
+      { "ingredientId": "chocolate", "ingredientName": "Chopped Chocolate (60-66% semisweet)", "amount": 350, "fdcId": 167976, "calories": 1677, "protein": 14.7, "totalFat": 105.0, "saturatedFat": 62.1, "carbohydrates": 220.9, "sugar": 190.8, "fiber": 20.7, "sodium": 39 },
+      { "ingredientId": "flaky-salt", "ingredientName": "Flaky Sea Salt (Maldon)", "amount": 2, "fdcId": 173468, "calories": 0, "protein": 0.0, "totalFat": 0.0, "saturatedFat": 0.0, "carbohydrates": 0.0, "sugar": 0.0, "fiber": 0.0, "sodium": 776 }
+    ]
   },
   "reheat": {
     "methods": [
@@ -276,9 +377,32 @@
       },
       {
         "method": "Oven",
-        "detail": "350°F (175°C) for 3-4 minutes on a baking sheet. Refreshes the crisp edges.",
+        "detail": "350\u00b0F (175\u00b0C) for 3-4 minutes on a baking sheet. Refreshes the crisp edges without over-softening.",
         "source": "agent"
       }
     ]
+  },
+  "research": {
+    "sources": [
+      { "name": "King Arthur Baking / Caroline Schiff", "url": "https://www.kingarthurbaking.com/recipes/sourdough-chocolate-chip-cookies-recipe", "type": "adapted", "author": "Caroline Schiff" },
+      { "name": "The Boy Who Bakes / Edd Kimber", "url": "https://www.theboywhobakes.co.uk/recipes/2020/5/7/sourdough-chocolate-chip-cookie", "type": "adapted", "author": "Edd Kimber" },
+      { "name": "JennyBlogs Bake-Off", "url": "https://jennyblogs.com/blog/2024/5/27/sourdough-discard-chocolate-chip-cookie-recipe-comparison", "type": "adapted" },
+      { "name": "The Perfect Loaf", "url": "https://www.theperfectloaf.com/sourdough-chocolate-chip-cookies/", "type": "adapted", "author": "Maurizio Leo" },
+      { "name": "Sugar Spun Run", "url": "https://sugarspunrun.com/sourdough-chocolate-chip-cookies/", "type": "adapted" },
+      { "name": "The Clever Carrot (v1 source)", "url": "https://www.theclevercarrot.com/2020/05/sourdough-chocolate-chip-cookies-soft-chewy/", "type": "adapted", "author": "Emilie Raffa" },
+      { "name": "Nik Sharma — Cookie Dough Rest Science", "url": "https://niksharma.substack.com/p/what-does-cookie-dough-resting-do", "type": "adapted", "author": "Nik Sharma" },
+      { "name": "KAB Fat Science", "url": "https://www.kingarthurbaking.com/blog/2023/03/31/butter-oil-shortening-which-fat-makes-the-best-chocolate-chip-cookies", "type": "adapted" }
+    ],
+    "techniques": [
+      { "name": "Brown butter (all-butter, no oil)", "sourcedFrom": "7/7 agents", "rationale": "Universal consensus. Browning evaporates ~20% water, creating room for sourdough moisture while adding nutty depth.", "confidence": "high" },
+      { "name": "Egg yolks only", "sourcedFrom": "5/7 agents", "rationale": "Removes water from whites; adds fat and lecithin for fudgier texture. Validated by JennyBlogs bake-off top 2.", "confidence": "high" },
+      { "name": "Overnight ferment (16-24 hrs)", "sourcedFrom": "7/7 agents", "rationale": "Flour hydration, enzymatic sugar breakdown, sourdough flavor development. Nik Sharma: 16hr inflection point.", "confidence": "high" },
+      { "name": "Hand-chopped bar chocolate", "sourcedFrom": "6/7 agents", "rationale": "Bar chocolate has more cocoa butter than chips; irregular pieces create varied melt. Reserve some for surface.", "confidence": "high" },
+      { "name": "Hand mix (no stand mixer)", "sourcedFrom": "4/7 agents", "rationale": "Brown butter is already melted — no creaming step needed. Spatula gives better gluten control.", "confidence": "medium" },
+      { "name": "AP + bread flour blend", "sourcedFrom": "3/7 agents", "rationale": "Most blogs use AP only; KAB and our v1 use the blend. Bread flour adds chew. Our differentiator.", "confidence": "medium" }
+    ],
+    "strategy": "Multi-agent parallel research: 7 agents (KAB deep dive, Perfect Loaf + serious sources, food science, community intel, artisan blog comparison, chocolate & ingredients, Clever Carrot critique)",
+    "sourceCount": 40,
+    "date": "2026-03-01"
   }
 }
