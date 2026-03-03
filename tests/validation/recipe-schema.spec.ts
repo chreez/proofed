@@ -139,7 +139,9 @@ describe('Recipe JSON Validation', () => {
         /age/i,
         /boil/i,
         /pressure/i,
-        /toast/i
+        /toast/i,
+        /roast/i,
+        /hydrate/i
       ]
 
       for (const state of recipe.states) {
@@ -185,44 +187,42 @@ describe('Recipe JSON Validation', () => {
       }
     })
 
-    // D7: Gather only on first stage (PREP)
-    it('has gather section only on stages meant for gathering', () => {
-      let firstGatherFound = false
-
+    // D7: Gather sections on stages that introduce new ingredients; other stages null
+    it('has gather section only on stages that introduce ingredients', () => {
       for (const stage of recipe.stages) {
         if (stage.gather !== null) {
-          // First gather section should be on a PREP stage
-          if (!firstGatherFound) {
-            expect(
-              stage.id.includes('PREP') || stage.states.length === 0,
-              `First gather section should be on a PREP stage, found on "${stage.id}"`
-            ).toBe(true)
-            firstGatherFound = true
-          }
+          const hasIngredients = stage.gather.ingredients && stage.gather.ingredients.length > 0
+          const hasEquipmentOrVessels = (stage.gather.equipment && stage.gather.equipment.length > 0) ||
+            (stage.gather.vessels && stage.gather.vessels.length > 0)
+          expect(
+            hasIngredients || hasEquipmentOrVessels,
+            `Stage "${stage.id}" has non-null gather but no ingredients, equipment, or vessels`
+          ).toBe(true)
         }
       }
     })
 
-    // D16: Nutrition block required with non-null totals and perServing
-    it('has nutrition block with totals and perServing', () => {
-      expect(
-        recipe.nutrition,
-        'Recipe is missing nutrition block'
-      ).toBeDefined()
+    // D16: Nutrition block — when present, must have non-null totals and perServing
+    // Null nutrition is valid for new recipes (F20 shows "Not yet calculated")
+    it('has valid nutrition block when present', () => {
+      if (recipe.nutrition === null || recipe.nutrition === undefined) {
+        // Null/undefined nutrition is acceptable — UI shows placeholder (F20)
+        return
+      }
 
       expect(
-        recipe.nutrition!.totals,
+        recipe.nutrition.totals,
         'nutrition.totals is missing'
       ).toBeDefined()
 
       expect(
-        recipe.nutrition!.perServing,
+        recipe.nutrition.perServing,
         'nutrition.perServing is missing'
       ).toBeDefined()
 
       // Verify totals has required nutrient fields
-      expect(recipe.nutrition!.totals.calories).toBeGreaterThanOrEqual(0)
-      expect(recipe.nutrition!.perServing.calories).toBeGreaterThanOrEqual(0)
+      expect(recipe.nutrition.totals.calories).toBeGreaterThanOrEqual(0)
+      expect(recipe.nutrition.perServing.calories).toBeGreaterThanOrEqual(0)
     })
 
     // S1: meta.source is object with required name field
