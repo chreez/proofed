@@ -50,6 +50,8 @@ const categoryMap: Record<string, string> = {
   'atk-cinnamon-buns-ultimate': 'baking',
   'birote-salado': 'baking',
   'tartine-baguette': 'baking',
+  'candida-focaccia': 'grain-free',
+  'grain-free-bread': 'grain-free',
   'carrot-cake': 'baking',
   'simple-sourdough': 'baking',
   'sourdough-cheddar-bay-biscuits': 'baking',
@@ -139,7 +141,7 @@ const items = computed<TimelineItem[]>(() => {
 
 // --- Category grouping: baked-first, then alphabetical ---
 
-const CATEGORY_ORDER = ['baking', 'pizza & dough', 'mains', 'drinks', 'other']
+const CATEGORY_ORDER = ['baking', 'grain-free', 'pizza & dough', 'mains', 'drinks', 'other']
 
 const groupedItems = computed<CategoryGroup[]>(() => {
   const sorted = [...items.value].sort((a, b) => {

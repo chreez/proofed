@@ -1,0 +1,726 @@
+{
+  "meta": {
+    "name": "Rosemary-Garlic Focaccia (Grain-Free, Candida-Friendly)",
+    "source": {
+      "name": "proofed. Research Synthesis",
+      "type": "original",
+      "author": "Multi-source candida diet research (60+ sources)"
+    },
+    "yields": "One 23cm round focaccia (8-10 slices)",
+    "total_time": "~2 hrs (30 min active, 1.5 hrs passive)",
+    "description": "A savory grain-free focaccia for friends on a candida diet. Blanched almond flour and coconut flour replace wheat, psyllium husk builds structure, and roasted garlic with fresh rosemary carry the flavor. Not diet food — real bread with real character."
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Grain-Free Breads",
+      "defaultYield": 1,
+      "unit": "focaccia",
+      "servingsPerItem": 9,
+      "servingUnit": "slices"
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-03-02",
+      "summary": "Initial recipe from candida diet research synthesis — almond/coconut flour with psyllium, roasted garlic, rosemary, two-temperature bake"
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Dry mix → combine with wet"
+    },
+    {
+      "id": "V2",
+      "name": "Medium Bowl",
+      "reuse": "Psyllium hydration → wet mix"
+    },
+    {
+      "id": "V3",
+      "name": "Stand Mixer Bowl (grease-free)",
+      "reuse": null
+    },
+    {
+      "id": "V4",
+      "name": "Small Bowl"
+    },
+    {
+      "id": "V5",
+      "name": "23cm Round Cake Pan"
+    }
+  ],
+  "stages": [
+    {
+      "id": "ROAST",
+      "title": "Roast Garlic",
+      "gather": {
+        "vessels": ["Small Bowl"],
+        "equipment": ["Aluminum Foil", "Oven"],
+        "ingredients": [
+          {
+            "id": "garlic",
+            "name": "Whole Garlic Head",
+            "total": 50,
+            "unit": "g",
+            "breakdown": [
+              { "label": "mashed into dough", "amount": 25 },
+              { "label": "pressed into dimples", "amount": 25 }
+            ],
+            "sourcedFrom": "Flavor optimization agent consensus",
+            "confidence": "high",
+            "rationale": "Roasted garlic is antifungal and mellows into sweet, buttery cloves — masks any eggy flavor"
+          },
+          {
+            "id": "olive-oil-roast",
+            "name": "Olive Oil (for roasting)",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Standard roasted garlic technique",
+            "confidence": "high",
+            "rationale": "Minimal oil needed to prevent garlic from drying out"
+          }
+        ]
+      },
+      "states": ["preheat-roast", "prep-garlic", "roast-garlic"]
+    },
+    {
+      "id": "PREP",
+      "title": "Prep & Hydrate",
+      "gather": {
+        "vessels": ["Large Mixing Bowl", "Medium Bowl"],
+        "equipment": ["Kitchen Scale", "Whisk"],
+        "ingredients": [
+          {
+            "id": "almond-flour",
+            "name": "Blanched Superfine Almond Flour",
+            "total": 150,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "All 4 research agents",
+            "confidence": "high",
+            "rationale": "5:1 ratio with coconut flour — universal in grain-free bread science"
+          },
+          {
+            "id": "coconut-flour",
+            "name": "Coconut Flour",
+            "total": 30,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "All 4 research agents",
+            "confidence": "high",
+            "rationale": "5:1 ratio with almond flour; absorbs 4-5x its weight in liquid"
+          },
+          {
+            "id": "baking-powder",
+            "name": "Aluminum-Free Baking Powder",
+            "total": 7,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Community intel + food science agents",
+            "confidence": "high",
+            "rationale": "Double-acting for reliable chemical leavening"
+          },
+          {
+            "id": "baking-soda",
+            "name": "Baking Soda",
+            "total": 1.5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Food science agent",
+            "confidence": "high",
+            "rationale": "Reacts with ACV for instant lift — never exceed 1/4 tsp to avoid soapy taste"
+          },
+          {
+            "id": "fine-sea-salt",
+            "name": "Fine Sea Salt",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Standard bread ratio",
+            "confidence": "high",
+            "rationale": "~1.6% of flour weight"
+          },
+          {
+            "id": "rosemary",
+            "name": "Fresh Rosemary",
+            "total": 5,
+            "unit": "g",
+            "breakdown": [
+              { "label": "finely chopped into dough", "amount": 2 },
+              { "label": "whole leaves for dimples", "amount": 3 }
+            ],
+            "sourcedFrom": "Flavor optimization agent",
+            "confidence": "high",
+            "rationale": "Antimicrobial herb — candida-safe and flavor-forward"
+          },
+          {
+            "id": "psyllium",
+            "name": "Psyllium Husk Powder",
+            "total": 25,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Food science agent — key finding",
+            "confidence": "high",
+            "rationale": "Forms gel network mimicking gluten. Increases gas-holding from 84% to 98%. Must be POWDER not whole husks"
+          },
+          {
+            "id": "warm-water",
+            "name": "Warm Water",
+            "total": 120,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Food science agent",
+            "confidence": "high",
+            "rationale": "10:1 water-to-psyllium is too high at 250ml; 120ml tested ratio for focaccia density"
+          }
+        ]
+      },
+      "states": ["hydrate-psyllium", "mix-dry"]
+    },
+    {
+      "id": "MIX",
+      "title": "Mix Batter",
+      "gather": {
+        "vessels": ["Stand Mixer Bowl (grease-free)"],
+        "equipment": ["Stand Mixer (whisk attachment)", "Rubber Spatula", "Fork"],
+        "ingredients": [
+          {
+            "id": "eggs",
+            "name": "Large Eggs (separated)",
+            "total": 168,
+            "unit": "g",
+            "breakdown": [
+              { "label": "yolks (2 only)", "amount": 36 },
+              { "label": "whites (all 4)", "amount": 132 }
+            ],
+            "sourcedFrom": "Food science + community agents",
+            "confidence": "high",
+            "rationale": "2 yolks + 4 whites reduces eggy flavor while maximizing lift from whipped whites"
+          },
+          {
+            "id": "ghee",
+            "name": "Ghee (melted)",
+            "total": 28,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Flavor optimization agent",
+            "confidence": "high",
+            "rationale": "Nutty, rich, high smoke point, essentially zero lactose — better flavor than coconut oil"
+          },
+          {
+            "id": "acv",
+            "name": "Apple Cider Vinegar",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Food science agent",
+            "confidence": "high",
+            "rationale": "Reacts with baking soda + prevents purple psyllium reaction"
+          },
+          {
+            "id": "cream-of-tartar",
+            "name": "Cream of Tartar",
+            "total": 0.5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Food science agent",
+            "confidence": "medium",
+            "rationale": "Stabilizes whipped egg whites for longer hold during folding"
+          }
+        ]
+      },
+      "states": ["separate-eggs", "mix-wet", "combine-batter", "rest-batter"]
+    },
+    {
+      "id": "WHIP",
+      "title": "Whip & Fold",
+      "gather": null,
+      "states": ["whip-whites", "fold-whites"]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Shape & Top",
+      "gather": {
+        "vessels": ["23cm Round Cake Pan"],
+        "equipment": ["Parchment Paper"],
+        "ingredients": [
+          {
+            "id": "olive-oil-topping",
+            "name": "Extra Virgin Olive Oil (topping)",
+            "total": 45,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Flavor optimization agent",
+            "confidence": "high",
+            "rationale": "Generous EVOO is what makes focaccia — fruity, Mediterranean character"
+          },
+          {
+            "id": "flaky-salt",
+            "name": "Flaky Sea Salt (Maldon)",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Flavor optimization agent",
+            "confidence": "high",
+            "rationale": "Visible crystals on top for texture and presentation"
+          },
+          {
+            "id": "black-pepper",
+            "name": "Black Pepper (cracked)",
+            "total": 1,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Flavor optimization agent",
+            "confidence": "medium",
+            "rationale": "Optional finishing touch — to taste"
+          }
+        ]
+      },
+      "states": ["prep-pan", "spread-batter", "dimple-and-top"]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake & Cool",
+      "gather": null,
+      "states": ["bake-high", "bake-low", "cool-in-pan", "cool-on-rack"]
+    }
+  ],
+  "states": [
+    {
+      "id": "preheat-roast",
+      "title": "Preheat Oven for Garlic",
+      "direction": "Preheat oven to 400°F (205°C).",
+      "duration_min": null,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Oven reaches 400°F (205°C)",
+      "notes": null
+    },
+    {
+      "id": "prep-garlic",
+      "title": "Prep Garlic Head",
+      "direction": "Slice top off garlic head to expose cloves. Drizzle cut face with olive oil. Wrap tightly in aluminum foil.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "garlic", "amount": "50g (1 whole head)" },
+        { "name": "olive oil", "amount": "5g" }
+      ],
+      "exit_condition": "Garlic top sliced, oiled, and wrapped in foil packet",
+      "notes": null
+    },
+    {
+      "id": "roast-garlic",
+      "title": "Roast Garlic",
+      "direction": "Place foil packet in oven. Roast 35-40 minutes until cloves are soft, golden, and easily squeezed from skins. Cool until handleable.",
+      "duration_min": 40,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Cloves are golden, soft, and squeeze out easily — sweet aroma, no raw bite",
+      "notes": [
+        {
+          "text": "Start other prep during this time — hydrate psyllium, mix dry ingredients, separate eggs",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "How does the roasted garlic look/smell?",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "hydrate-psyllium",
+      "title": "Hydrate Psyllium",
+      "direction": "Whisk psyllium husk powder into warm water in medium bowl. Let sit 5 minutes until a thick gel forms.",
+      "duration_min": 5,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        { "name": "psyllium husk powder", "amount": "25g" },
+        { "name": "warm water", "amount": "120g" }
+      ],
+      "exit_condition": "Thick, cohesive gel — holds shape when scooped, no dry powder visible",
+      "notes": [
+        {
+          "text": "Must use psyllium husk POWDER, not whole husks. If using whole husks, use half the amount.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "This gel is your gluten substitute — it forms the elastic network that traps gas from leavening.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "mix-dry",
+      "title": "Whisk Dry Ingredients",
+      "direction": "Whisk almond flour, coconut flour, baking powder, baking soda, fine sea salt, and finely chopped rosemary in large mixing bowl.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "blanched almond flour", "amount": "150g" },
+        { "name": "coconut flour", "amount": "30g" },
+        { "name": "baking powder", "amount": "7g" },
+        { "name": "baking soda", "amount": "1.5g" },
+        { "name": "fine sea salt", "amount": "3g" },
+        { "name": "fresh rosemary (chopped)", "amount": "2g" }
+      ],
+      "exit_condition": "Dry ingredients evenly combined, rosemary distributed throughout, no lumps",
+      "notes": null
+    },
+    {
+      "id": "separate-eggs",
+      "title": "Separate Eggs",
+      "direction": "Separate all 4 eggs. Place 2 yolks in medium bowl (with psyllium gel). Place all 4 whites in clean, grease-free stand mixer bowl. Reserve remaining 2 yolks for another use.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "large eggs", "amount": "4 (168g total)" }
+      ],
+      "exit_condition": "2 yolks in wet bowl, 4 whites in clean mixer bowl, no yolk contamination in whites",
+      "notes": [
+        {
+          "text": "Any trace of yolk in the whites will prevent them from whipping to stiff peaks. Separate over a small bowl first.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "mix-wet",
+      "title": "Mix Wet Ingredients",
+      "direction": "To the 2 yolks, add melted ghee, apple cider vinegar, psyllium gel, and half the roasted garlic (mash with a fork). Whisk until smooth.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "egg yolks", "amount": "36g (2 yolks)" },
+        { "name": "ghee (melted)", "amount": "28g" },
+        { "name": "apple cider vinegar", "amount": "5g" },
+        { "name": "psyllium gel", "amount": "all" },
+        { "name": "roasted garlic (mashed)", "amount": "25g (half)" }
+      ],
+      "exit_condition": "Smooth wet mixture with garlic evenly distributed, no lumps of gel",
+      "notes": null
+    },
+    {
+      "id": "combine-batter",
+      "title": "Combine Wet and Dry",
+      "direction": "Pour wet mixture into dry ingredients. Stir with rubber spatula until just combined — do not overmix.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Batter is uniformly mixed with no dry pockets, thick and cohesive",
+      "notes": [
+        {
+          "text": "Overmixing with an electric mixer creates hollow air pockets. Use a spatula and stop when just combined.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "rest-batter",
+      "title": "Rest Batter",
+      "direction": "Let batter rest 5 minutes. Coconut flour continues absorbing liquid during this time.",
+      "duration_min": 5,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Batter has thickened slightly and holds shape better than when first mixed",
+      "notes": [
+        {
+          "text": "Coconut flour absorbs 4-5x its weight in liquid and continues absorbing for 5-10 minutes after mixing. Don't judge batter consistency until after this rest.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "whip-whites",
+      "title": "Whip Egg Whites",
+      "direction": "Add cream of tartar to all 4 egg whites in stand mixer bowl. Whip on high speed to stiff peaks, about 2-3 minutes.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "egg whites", "amount": "132g (4 whites)" },
+        { "name": "cream of tartar", "amount": "0.5g" }
+      ],
+      "exit_condition": "Stiff peaks — whites hold their shape when whisk is lifted, tips point straight up",
+      "notes": [
+        {
+          "text": "True stiff peaks are critical for lift. Under-whipped whites = dense bread.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Rate the egg white peaks",
+          "type": "rating"
+        }
+      ]
+    },
+    {
+      "id": "fold-whites",
+      "title": "Fold in Whites (Two Additions)",
+      "direction": "First addition: scoop half the whipped whites into the batter. Fold aggressively to lighten the mixture. Second addition: gently fold in remaining whites — cut down through center, sweep up sides. Stop when no white streaks remain.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "No white streaks visible, batter is uniformly lightened and airy",
+      "notes": [
+        {
+          "text": "The first aggressive fold sacrifices some volume to make the batter workable. The second gentle fold preserves the air that gives the focaccia its rise.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "prep-pan",
+      "title": "Prep Pan",
+      "direction": "Line 23cm round cake pan with parchment paper. Grease parchment with a thin layer of ghee or olive oil.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Pan lined with parchment, lightly greased and ready for batter",
+      "notes": null
+    },
+    {
+      "id": "spread-batter",
+      "title": "Spread Batter in Pan",
+      "direction": "Gently transfer batter to prepared pan. Spread evenly with an offset spatula or the back of a spoon, keeping as much air as possible.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Batter evenly distributed in pan, surface roughly level",
+      "notes": null
+    },
+    {
+      "id": "dimple-and-top",
+      "title": "Dimple and Add Toppings",
+      "direction": "Oil your fingers. Press dimples all over the surface. Push reserved roasted garlic cloves and whole rosemary leaves into dimples. Drizzle generously with EVOO. Sprinkle flaky salt and cracked pepper.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "roasted garlic (reserved half)", "amount": "25g" },
+        { "name": "fresh rosemary (whole leaves)", "amount": "3g" },
+        { "name": "extra virgin olive oil", "amount": "45g" },
+        { "name": "flaky sea salt", "amount": "3g" },
+        { "name": "black pepper", "amount": "1g" }
+      ],
+      "exit_condition": "Dimples pressed across entire surface, garlic and rosemary nestled in, generous oil pooling in dimples, salt and pepper visible",
+      "notes": [
+        {
+          "text": "Be generous with the EVOO — it pools in the dimples and fries the surface during baking, creating the signature focaccia crust.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "bake-high",
+      "title": "Bake at High Temperature",
+      "direction": "Place pan in oven at 375°F (190°C). Bake 10 minutes to set the crust.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Surface has begun to set and lightly color, edges starting to pull from pan",
+      "notes": [
+        {
+          "text": "Reduce oven temperature BEFORE the garlic roast step ends. The two-temperature bake starts hot to set crust, then drops to finish gently.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "bake-low",
+      "title": "Bake at Reduced Temperature",
+      "direction": "Reduce oven to 350°F (175°C). Continue baking 25-30 minutes until golden brown and internal temperature reaches 200-205°F (93-96°C).",
+      "duration_min": 28,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Golden brown top, internal temperature 200-205°F (93-96°C), edges pulling from pan",
+      "notes": null,
+      "reminders": [
+        {
+          "prompt": "Record internal temperature",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Rate the crust color",
+          "type": "rating"
+        }
+      ]
+    },
+    {
+      "id": "cool-in-pan",
+      "title": "Cool in Pan",
+      "direction": "Transfer pan to wire rack. Cool in pan for 10 minutes.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Focaccia has firmed enough to lift from pan without breaking",
+      "notes": null
+    },
+    {
+      "id": "cool-on-rack",
+      "title": "Cool Completely on Rack",
+      "direction": "Remove focaccia from pan and transfer to wire rack. Cool COMPLETELY before slicing — minimum 1 hour, overnight is better.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Focaccia is room temperature throughout — no warm spots when pressed. Structure is fully set.",
+      "notes": [
+        {
+          "text": "Slicing while warm = gummy interior. The structure sets as it cools. This is non-negotiable.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "How does the crumb look after slicing?",
+          "type": "observation"
+        }
+      ]
+    }
+  ],
+  "nutrition": null,
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "350°F (175°C) for 5-7 minutes until warmed through and crust re-crisps",
+        "source": "agent",
+        "reference": "candida-focaccia research synthesis"
+      },
+      {
+        "method": "Skillet",
+        "detail": "Pan-fry slices in ghee over medium heat until golden and crisp on each side, about 2 minutes per side",
+        "source": "agent",
+        "reference": "candida-focaccia research synthesis"
+      },
+      {
+        "method": "From frozen",
+        "detail": "Toast slices directly from frozen — no thawing needed. 350°F (175°C) for 8-10 minutes or in a toaster",
+        "source": "agent",
+        "reference": "Community consensus — slice before freezing, freeze on sheet pan, then bag"
+      }
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "name": "Anti Candida Kitchen Baguette",
+        "url": "https://anticandidakitchen.com/candida-diet-bread-baguette-recipe-gluten-free-and-yeast-free/",
+        "type": "adapted",
+        "author": "Anti Candida Kitchen"
+      },
+      {
+        "name": "Wholesome Yum Almond Flour Bread",
+        "url": "https://www.wholesomeyum.com/recipes/low-carb-bread-recipe-almond-flour-bread-paleo-gluten-free/",
+        "type": "inspired",
+        "author": "Wholesome Yum"
+      },
+      {
+        "name": "Natural Tasty Chef Garlic Rosemary Bread",
+        "url": "https://naturaltastychef.com/candida-diet-garlic-rosemary-paleo-bread/",
+        "type": "inspired",
+        "author": "Natural Tasty Chef"
+      },
+      {
+        "name": "The Candida Diet Coconut Bread",
+        "url": "https://www.thecandidadiet.com/recipe/coconut-bread/",
+        "type": "inspired",
+        "author": "The Candida Diet"
+      },
+      {
+        "name": "Elana's Pantry Paleo Bread",
+        "url": "https://elanaspantry.com/paleo-bread/",
+        "type": "inspired",
+        "author": "Elana's Pantry"
+      },
+      {
+        "name": "Diet Doctor Keto Bread",
+        "url": "https://www.dietdoctor.com/recipes/the-keto-bread",
+        "type": "inspired",
+        "author": "Diet Doctor"
+      },
+      {
+        "name": "Jessica in the Kitchen — GF Focaccia",
+        "url": "https://jessicainthekitchen.com/gluten-free-focaccia-bread-garlic-rosemary-tomatoes/",
+        "type": "inspired",
+        "author": "Jessica in the Kitchen"
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Psyllium husk pre-hydration",
+        "sourcedFrom": "Food science agent — 10:1 warm water ratio, 5-min gel formation",
+        "rationale": "Increases gas-holding capacity from 84% to 98.5%, boosts volume ~50%, reduces firmness 65-75%",
+        "confidence": "high"
+      },
+      {
+        "name": "Separated egg white whipping",
+        "sourcedFrom": "Food science + community agents — 2 yolks + 4 whites",
+        "rationale": "Reduces eggy flavor while maximizing mechanical leavening from whipped whites",
+        "confidence": "high"
+      },
+      {
+        "name": "Two-temperature bake",
+        "sourcedFrom": "Best recipes agent — 375°F then 350°F",
+        "rationale": "High initial temp sets crust and triggers Maillard reaction; reduced temp finishes interior without over-browning",
+        "confidence": "high"
+      },
+      {
+        "name": "Dual leavening system",
+        "sourcedFrom": "Food science agent — chemical (baking powder + ACV/soda) + mechanical (whipped whites)",
+        "rationale": "Chemical leavening provides initial lift; whipped whites provide structure and airiness",
+        "confidence": "high"
+      },
+      {
+        "name": "Complete cooling before slicing",
+        "sourcedFrom": "Community consensus — unanimous",
+        "rationale": "Structure sets as it cools; slicing warm produces gummy interior. Minimum 1 hour, overnight ideal.",
+        "confidence": "high"
+      },
+      {
+        "name": "Roasted garlic integration",
+        "sourcedFrom": "Flavor optimization agent",
+        "rationale": "Half mashed into dough for flavor base, half pressed into dimples for visual and textural interest",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "4-agent parallel research: best recipes, food science, community intel, flavor optimization",
+    "sourceCount": 60,
+    "date": "2026-02-27"
+  }
+}

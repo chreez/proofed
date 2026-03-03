@@ -2,8 +2,10 @@
   "recipes": [
     { "id": "atk-cinnamon-buns-ultimate", "name": "ATK Ultimate Cinnamon Buns", "file": "atk-cinnamon-buns-ultimate.json" },
     { "id": "birote-salado", "name": "Birote Salado", "file": "birote-salado.json" },
+    { "id": "candida-focaccia", "name": "Rosemary-Garlic Focaccia (Grain-Free, Candida-Friendly)", "file": "candida-focaccia.json" },
     { "id": "tartine-baguette", "name": "Tartine Baguette", "file": "tartine-baguette.json" },
     { "id": "coco-curry", "name": "CoCo Ichibanya-Style Japanese Curry", "file": "coco-curry.json" },
+    { "id": "grain-free-bread", "name": "Grain-Free Bread", "file": "grain-free-bread.json" },
     { "id": "thai-tea-boba", "name": "Thai Tea Boba", "file": "thai-tea-boba.json" },
     { "id": "ichiran-ramen", "name": "Ichiran-Style Tonkotsu Ramen", "file": "ichiran-ramen.json" },
     { "id": "tomita-tsukemen", "name": "Tomita/Fuunji-Style Gyokai-Tonkotsu Tsukemen", "file": "tomita-tsukemen.json" },
