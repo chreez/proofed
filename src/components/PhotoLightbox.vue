@@ -566,7 +566,6 @@ onUnmounted(() => {
   object-fit: contain;
   user-select: none;
   -webkit-user-select: none;
-  pointer-events: none;
 }
 
 .lightbox-caption {
