@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import BottomSheet from '@/components/BottomSheet.vue'
 
 const props = defineProps<{
   stages: { id: string; title: string }[]
@@ -34,45 +35,6 @@ function openSheet(): void {
 
 function closeSheet(): void {
   isSheetOpen.value = false
-}
-
-// Handle bottom sheet drag to dismiss
-const sheetRef = ref<HTMLElement | null>(null)
-const dragStartY = ref(0)
-const currentTranslateY = ref(0)
-const isDragging = ref(false)
-
-function handleDragStart(e: TouchEvent | MouseEvent): void {
-  isDragging.value = true
-  dragStartY.value = 'touches' in e ? e.touches[0].clientY : e.clientY
-  currentTranslateY.value = 0
-}
-
-function handleDragMove(e: TouchEvent | MouseEvent): void {
-  if (!isDragging.value) return
-  const currentY = 'touches' in e ? e.touches[0].clientY : e.clientY
-  const delta = currentY - dragStartY.value
-  // Only allow dragging down
-  if (delta > 0) {
-    currentTranslateY.value = delta
-    if (sheetRef.value) {
-      sheetRef.value.style.transform = `translateY(${delta}px)`
-    }
-  }
-}
-
-function handleDragEnd(): void {
-  if (!isDragging.value) return
-  isDragging.value = false
-  // If dragged more than 100px, close the sheet
-  if (currentTranslateY.value > 100) {
-    closeSheet()
-  }
-  // Reset transform
-  if (sheetRef.value) {
-    sheetRef.value.style.transform = ''
-  }
-  currentTranslateY.value = 0
 }
 </script>
 
@@ -169,154 +131,92 @@ function handleDragEnd(): void {
     </svg>
   </button>
 
-  <!-- Mobile Bottom Sheet Backdrop -->
-  <Teleport to="body">
-    <Transition name="fade">
-      <div
-        v-if="isSheetOpen"
-        class="md:hidden fixed inset-0 bg-black/40 z-50"
-        @click="closeSheet"
-      />
-    </Transition>
+  <!-- Mobile Bottom Sheet -->
+  <BottomSheet :open="isSheetOpen" title="Contents" @close="closeSheet">
+    <nav>
+      <ul class="py-2">
+        <li v-for="stage in stages" :key="stage.id">
+          <button
+            @click="handleNavigate(stage.id)"
+            class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+            :class="{
+              'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === stage.id && !isCompleted(stage.id),
+              'text-stone-400 line-through': isCompleted(stage.id),
+              'text-ink active:bg-stone-100': currentStageId !== stage.id && !isCompleted(stage.id)
+            }"
+          >
+            {{ stage.title }}
+          </button>
+        </li>
 
-    <!-- Mobile Bottom Sheet -->
-    <Transition name="slide-up">
-      <div
-        v-if="isSheetOpen"
-        ref="sheetRef"
-        class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t-2 border-stone-200 z-50 max-h-[70vh] overflow-hidden"
-        @touchstart="handleDragStart"
-        @touchmove="handleDragMove"
-        @touchend="handleDragEnd"
-        @mousedown="handleDragStart"
-        @mousemove="handleDragMove"
-        @mouseup="handleDragEnd"
-        @mouseleave="handleDragEnd"
-      >
-        <!-- Drag handle -->
-        <div class="flex justify-center py-3 cursor-grab active:cursor-grabbing">
-          <div class="w-10 h-1 bg-stone-300 rounded-full" />
-        </div>
+        <!-- Divider before extras -->
+        <li v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource || hasResearch" class="my-2 mx-4 h-px bg-stone-200" />
 
-        <!-- Header -->
-        <div class="px-4 pb-2 border-b-2 border-stone-200">
-          <span class="text-xs uppercase text-stone-400 font-medium">Contents</span>
-        </div>
+        <li v-if="hasNutrition">
+          <button
+            @click="handleNavigate('nutrition')"
+            class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+            :class="{
+              'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'nutrition',
+              'text-ink active:bg-stone-100': currentStageId !== 'nutrition'
+            }"
+          >
+            Nutrition
+          </button>
+        </li>
 
-        <!-- Scrollable content -->
-        <nav class="overflow-y-auto max-h-[calc(70vh-60px)]">
-          <ul class="py-2">
-            <li v-for="stage in stages" :key="stage.id">
-              <button
-                @click="handleNavigate(stage.id)"
-                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
-                :class="{
-                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === stage.id && !isCompleted(stage.id),
-                  'text-stone-400 line-through': isCompleted(stage.id),
-                  'text-ink active:bg-stone-100': currentStageId !== stage.id && !isCompleted(stage.id)
-                }"
-              >
-                {{ stage.title }}
-              </button>
-            </li>
+        <li v-if="hasCookLog">
+          <button
+            @click="handleNavigate('cook-log')"
+            class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+            :class="{
+              'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'cook-log',
+              'text-ink active:bg-stone-100': currentStageId !== 'cook-log'
+            }"
+          >
+            Cook Log
+          </button>
+        </li>
 
-            <!-- Divider before extras -->
-            <li v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource || hasResearch" class="my-2 mx-4 h-px bg-stone-200" />
+        <li v-if="hasChangeLog">
+          <button
+            @click="handleNavigate('change-log')"
+            class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+            :class="{
+              'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'change-log',
+              'text-ink active:bg-stone-100': currentStageId !== 'change-log'
+            }"
+          >
+            Version History
+          </button>
+        </li>
 
-            <li v-if="hasNutrition">
-              <button
-                @click="handleNavigate('nutrition')"
-                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
-                :class="{
-                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'nutrition',
-                  'text-ink active:bg-stone-100': currentStageId !== 'nutrition'
-                }"
-              >
-                Nutrition
-              </button>
-            </li>
+        <li v-if="hasSource">
+          <button
+            @click="handleNavigate('source')"
+            class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+            :class="{
+              'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'source',
+              'text-ink active:bg-stone-100': currentStageId !== 'source'
+            }"
+          >
+            Source
+          </button>
+        </li>
 
-            <li v-if="hasCookLog">
-              <button
-                @click="handleNavigate('cook-log')"
-                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
-                :class="{
-                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'cook-log',
-                  'text-ink active:bg-stone-100': currentStageId !== 'cook-log'
-                }"
-              >
-                Cook Log
-              </button>
-            </li>
-
-            <li v-if="hasChangeLog">
-              <button
-                @click="handleNavigate('change-log')"
-                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
-                :class="{
-                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'change-log',
-                  'text-ink active:bg-stone-100': currentStageId !== 'change-log'
-                }"
-              >
-                Version History
-              </button>
-            </li>
-
-            <li v-if="hasSource">
-              <button
-                @click="handleNavigate('source')"
-                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
-                :class="{
-                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'source',
-                  'text-ink active:bg-stone-100': currentStageId !== 'source'
-                }"
-              >
-                Source
-              </button>
-            </li>
-
-            <li v-if="hasResearch">
-              <button
-                @click="handleNavigate('research')"
-                class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
-                :class="{
-                  'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'research',
-                  'text-ink active:bg-stone-100': currentStageId !== 'research'
-                }"
-              >
-                Research
-              </button>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Safe area padding for mobile -->
-        <div class="h-6" />
-      </div>
-    </Transition>
-  </Teleport>
+        <li v-if="hasResearch">
+          <button
+            @click="handleNavigate('research')"
+            class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+            :class="{
+              'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'research',
+              'text-ink active:bg-stone-100': currentStageId !== 'research'
+            }"
+          >
+            Research
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </BottomSheet>
 </template>
-
-<style scoped>
-/* Fade transition for backdrop */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-/* Slide up transition for bottom sheet */
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: transform 0.3s ease;
-}
-
-.slide-up-enter-from,
-.slide-up-leave-to {
-  transform: translateY(100%);
-}
-</style>

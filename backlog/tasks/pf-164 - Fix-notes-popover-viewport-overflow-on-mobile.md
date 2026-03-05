@@ -1,10 +1,10 @@
 ---
 id: PF-164
 title: Fix notes popover viewport overflow on mobile
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-05 05:03'
-updated_date: '2026-03-05 05:21'
+updated_date: '2026-03-05 05:32'
 labels:
   - bug (styling)
   - ux

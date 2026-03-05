@@ -77,6 +77,23 @@ function hideTooltip() {
   text-decoration: none;
 }
 
+/* On mobile, constrain tooltip to viewport width */
+@media (max-width: 767px) {
+  .technique-tooltip {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: auto;
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+
+  .technique-tooltip::after {
+    display: none;
+  }
+}
+
 .technique-tooltip::after {
   content: '';
   position: absolute;
