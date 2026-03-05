@@ -1,0 +1,31 @@
+{
+  "recipeId": "birote-salado",
+  "date": "2026-03-05",
+  "processedAt": "2026-03-05T02:55:06.272Z",
+  "photos": [
+    {
+      "name": "baking-in-dutch-oven",
+      "thumb": "baking-in-dutch-oven-400w.webp",
+      "src": "baking-in-dutch-oven-800w.webp",
+      "summary": "Two birote rolls baking in a dutch oven on parchment paper during the uncovered browning phase. Rolls show good oven spring with lengthwise scores opened wide. Crust is light golden, still developing color."
+    },
+    {
+      "name": "cooling-on-rack",
+      "thumb": "cooling-on-rack-400w.webp",
+      "src": "cooling-on-rack-800w.webp",
+      "summary": "Two finished birote rolls cooling on a round wire rack, shot from above. Deep golden-brown to dark crust with heavy flour dusting. Lengthwise scores opened cleanly showing dark caramelized interior. Torpedo shape with tapered ends visible."
+    },
+    {
+      "name": "crumb-shot",
+      "thumb": "crumb-shot-400w.webp",
+      "src": "crumb-shot-800w.webp",
+      "summary": "Hand holding a broken birote roll showing the crumb structure. Open, irregular holes throughout with a mix of large and medium alveoli. Crumb is light and airy with a thin but defined crust edge. Second roll visible on wire rack in background."
+    },
+    {
+      "name": "dipping-in-sauce",
+      "thumb": "dipping-in-sauce-400w.webp",
+      "src": "dipping-in-sauce-800w.webp",
+      "summary": "Birote roll being dipped into a small bowl of dark chile salsa on a white plate — torta ahogada style. Crust shows golden-brown color with flour dusting. The bread is holding its structure against the sauce."
+    }
+  ]
+}

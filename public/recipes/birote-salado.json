@@ -864,5 +864,151 @@
         "source": "agent"
       }
     ]
-  }
+  },
+  "cook_log": [
+    {
+      "date": "2026-03-05",
+      "version": "v1.1.0",
+      "summary": "First bake of birote salado — made 4 rolls instead of 5, shaped more like baguettes than torpedoes due to shaping difficulty. Surprisingly good results with strong sour tang that lingered ~10 minutes after eating.",
+      "notes": [
+        "Levain cold fermented overnight in fridge, pulled out in the morning",
+        "Used Modelo Especial for the beer",
+        "Used Zero Water filtered water — no 50/50 distilled dilution, never had issues with water",
+        "Dough temp after mixing: 74.3°F",
+        "Coil fold 1 temp: 75.6°F",
+        "Coil fold 2 temp: 78.3°F",
+        "Coil fold 3 temp: 78.6°F",
+        "Coil fold 4 temp: 79.4°F",
+        "Divided into 4 rolls (~230g each) instead of 5 — didn't want to run a full dutch oven steam/cook cycle for one single roll, can only fit 2 at a time",
+        "Had trouble getting the torpedo shape — ended up more baguette-shaped, not uniform yet",
+        "Forgot to log pre-shape timing and shaping details",
+        "Baked in dutch oven in batches of 2. Set uncovered phase timer to 16 min to check at 15. Very good results — strong sour tang that lingered ~10 minutes after eating. Ate the bread by itself."
+      ],
+      "photos": [
+        {
+          "src": "/images/birote-salado/2026-03-05/baking-in-dutch-oven-800w.webp",
+          "thumb": "/images/birote-salado/2026-03-05/baking-in-dutch-oven-400w.webp",
+          "alt": "Two birote rolls baking in a dutch oven on parchment paper during the uncovered browning phase. Rolls show good oven spring with lengthwise scores opened wide.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/birote-salado/2026-03-05/cooling-on-rack-800w.webp",
+          "thumb": "/images/birote-salado/2026-03-05/cooling-on-rack-400w.webp",
+          "alt": "Two finished birote rolls cooling on a round wire rack. Deep golden-brown to dark crust with heavy flour dusting, lengthwise scores opened cleanly.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/birote-salado/2026-03-05/dipping-in-sauce-800w.webp",
+          "thumb": "/images/birote-salado/2026-03-05/dipping-in-sauce-400w.webp",
+          "alt": "Birote roll being dipped into a small bowl of birria consommé on a white plate. Crust shows golden-brown color with flour dusting.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/birote-salado/2026-03-05/crumb-shot-800w.webp",
+          "thumb": "/images/birote-salado/2026-03-05/crumb-shot-400w.webp",
+          "alt": "Hand holding a broken birote roll showing open, irregular crumb structure with a mix of large and medium alveoli. Light and airy interior with a thin but defined crust edge.",
+          "usage": "hero"
+        }
+      ],
+      "next_time": [
+        { "text": "Find better shaping instructions — ideally a YouTube video with timestamped torpedo technique" },
+        { "text": "Work on getting more uniform, professional-looking shape" }
+      ],
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "ap_flour",
+            "ingredientName": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Enriched Unbleached All-Purpose Flour",
+            "recipeAmount": 480,
+            "recipeUnit": "g",
+            "packageSize": "5 lbs",
+            "packagePrice": 2.58,
+            "cost": 0.55
+          },
+          {
+            "ingredientId": "starter",
+            "ingredientName": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "recipeAmount": 80,
+            "recipeUnit": "g",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0.05
+          },
+          {
+            "ingredientId": "beer",
+            "ingredientName": "Mexican Lager Beer",
+            "sourceType": "heb",
+            "sourceName": "Modelo Especial Mexican Lager Import Beer",
+            "recipeAmount": 40,
+            "recipeUnit": "g",
+            "packageSize": "32 oz",
+            "packagePrice": 4.67,
+            "cost": 0.21
+          },
+          {
+            "ingredientId": "egg",
+            "ingredientName": "Egg (whisked)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs",
+            "recipeAmount": 30,
+            "recipeUnit": "g",
+            "packageSize": "12 ct",
+            "packagePrice": 2.17,
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "lime_juice",
+            "ingredientName": "Fresh Lime Juice",
+            "sourceType": "heb",
+            "sourceName": "Fresh Lime",
+            "recipeAmount": 10,
+            "recipeUnit": "g",
+            "packageSize": "Each",
+            "packagePrice": 0.19,
+            "cost": 0.03
+          },
+          {
+            "ingredientId": "sugar",
+            "ingredientName": "Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "recipeAmount": 8,
+            "recipeUnit": "g",
+            "packageSize": "4 lbs",
+            "packagePrice": 3.48,
+            "cost": 0.02
+          },
+          {
+            "ingredientId": "salt",
+            "ingredientName": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals",
+            "recipeAmount": 11,
+            "recipeUnit": "g",
+            "packageSize": "26.5 oz",
+            "packagePrice": 2.38,
+            "cost": 0.03
+          },
+          {
+            "ingredientId": "water",
+            "ingredientName": "Filtered Water",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Distilled Water",
+            "recipeAmount": 250,
+            "recipeUnit": "g",
+            "packageSize": "1 gal",
+            "packagePrice": 1.37,
+            "cost": 0.09
+          }
+        ],
+        "total": 1.09,
+        "perServing": 0.27,
+        "servings": 4
+      }
+    }
+  ]
 }
