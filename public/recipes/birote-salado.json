@@ -1009,6 +1009,139 @@
         "perServing": 0.27,
         "servings": 4
       }
+    },
+    {
+      "date": "2026-03-07",
+      "version": "v1.1.0",
+      "summary": "Second birote bake — levain cold-fermented overnight, made 4 rolls at ~235g each. Baked all 4 in dutch oven at once due to time constraints. Gave all rolls away before tasting or seeing the crumb.",
+      "notes": [
+        "Built levain evening of March 5, into fridge by ~8:15 PM for overnight cold ferment",
+        "Mixed dough next day (Mar 6) after ~18 hours cold ferment",
+        "Dough temp after mixing: 71.2°F",
+        "Dough temp at salt stage: 76°F — dough felt a bit watery",
+        "Coil fold 2 temp: 77.5°F",
+        "Coil fold 3 temp: 78.6°F",
+        "Coil fold 4 temp: 80.6°F",
+        "940g total dough, divided into 4 rolls (~235g each)",
+        "All 4 rolls placed in dutch oven at once due to time constraints — single batch instead of two batches of 2",
+        "Baked ~20 minutes with lid on, then removed lid to finish",
+        "Starting at 9 AM wasn't early enough to finish by 2:30 PM target",
+        "Gave all rolls away without tasting or seeing crumb"
+      ],
+      "photos": [
+        {
+          "src": "/images/birote-salado/2026-03-07/mise-en-place-800w.webp",
+          "thumb": "/images/birote-salado/2026-03-07/mise-en-place-400w.webp",
+          "alt": "Overhead mise en place on granite counter — glass bowl with tan levain, bowl of AP flour, small dish of salt, large empty glass mixing bowl with red lid. Scale and bench scraper visible.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/birote-salado/2026-03-07/finished-rolls-in-car-800w.webp",
+          "thumb": "/images/birote-salado/2026-03-07/finished-rolls-in-car-400w.webp",
+          "alt": "Four finished birote rolls on a round wire cooling rack wrapped in a white cloth towel, sitting on a car seat for transport. Golden-brown crust with flour dusting and lengthwise scores.",
+          "usage": "hero"
+        }
+      ],
+      "next_time": [
+        { "text": "Reserve ~25g water from the mix and add it at the salt stage instead — dough was too watery" },
+        { "text": "Start earlier than 9 AM for a same-day bake to hit afternoon deadlines" },
+        { "text": "Still need to try/taste one — no crumb or flavor assessment this bake" }
+      ],
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "ap_flour",
+            "ingredientName": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached All-Purpose Flour",
+            "recipeAmount": 480,
+            "recipeUnit": "g",
+            "packageSize": "5 lbs",
+            "packagePrice": 5.24,
+            "cost": 1.11
+          },
+          {
+            "ingredientId": "starter",
+            "ingredientName": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "recipeAmount": 80,
+            "recipeUnit": "g",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "beer",
+            "ingredientName": "Mexican Lager Beer",
+            "sourceType": "heb",
+            "sourceName": "Modelo Especial Mexican Lager Import Beer",
+            "recipeAmount": 40,
+            "recipeUnit": "g",
+            "packageSize": "32 oz",
+            "packagePrice": 4.67,
+            "cost": 0.21
+          },
+          {
+            "ingredientId": "egg",
+            "ingredientName": "Egg (whisked)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs",
+            "recipeAmount": 30,
+            "recipeUnit": "g",
+            "packageSize": "12 ct",
+            "packagePrice": 2.17,
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "lime_juice",
+            "ingredientName": "Fresh Lime Juice",
+            "sourceType": "heb",
+            "sourceName": "Fresh Lime",
+            "recipeAmount": 10,
+            "recipeUnit": "g",
+            "packageSize": "Each",
+            "packagePrice": 0.24,
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "sugar",
+            "ingredientName": "Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "recipeAmount": 8,
+            "recipeUnit": "g",
+            "packageSize": "4 lbs",
+            "packagePrice": 3.48,
+            "cost": 0.02
+          },
+          {
+            "ingredientId": "salt",
+            "ingredientName": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals",
+            "recipeAmount": 11,
+            "recipeUnit": "g",
+            "packageSize": "26.5 oz",
+            "packagePrice": 2.38,
+            "cost": 0.03
+          },
+          {
+            "ingredientId": "water",
+            "ingredientName": "Filtered Water",
+            "sourceType": "manual",
+            "sourceName": "Manual entry",
+            "recipeAmount": 250,
+            "recipeUnit": "g",
+            "packageSize": "0g",
+            "packagePrice": 0,
+            "cost": 0
+          }
+        ],
+        "total": 1.52,
+        "perServing": 0.38,
+        "servings": 4
+      }
     }
   ]
 }

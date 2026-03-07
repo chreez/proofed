@@ -1,0 +1,231 @@
+{
+  "recipeId": "birote-salado",
+  "date": "2026-03-07",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "ap_flour",
+      "name": "All-Purpose Flour",
+      "recipeAmount": 480,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Hill Country Fare Enriched Unbleached All-Purpose Unbleached Flour",
+          "brand": "Hill Country Fare",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 2.58,
+          "salePrice": null,
+          "unitPrice": "$0.03/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour",
+          "brand": "H-E-B",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 3.78,
+          "salePrice": null,
+          "unitPrice": "$0.05/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached All-Purpose Flour",
+          "brand": "King Arthur",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 5.24,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "starter",
+      "name": "Active Sourdough Starter",
+      "recipeAmount": 80,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Derived: 50% AP flour rate (flour + water)",
+          "brand": "Home",
+          "size": "$0.0006/g",
+          "sizeGrams": null,
+          "price": 0,
+          "salePrice": null,
+          "unitPrice": "$0.0006/g",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "beer",
+      "name": "Mexican Lager Beer",
+      "recipeAmount": 40,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Modelo Especial Mexican Lager Import Beer",
+          "brand": "Modelo Especial",
+          "size": "32 oz",
+          "sizeGrams": 907,
+          "price": 4.67,
+          "salePrice": null,
+          "unitPrice": "$0.15/fl oz",
+          "inStock": true
+        },
+        {
+          "name": "Modelo Especial Mexican Lager Import Beer 6 pk Bottles",
+          "brand": "Modelo Especial",
+          "size": "12 oz",
+          "sizeGrams": 340,
+          "price": 10.87,
+          "salePrice": null,
+          "unitPrice": "$0.15/oz",
+          "inStock": true
+        },
+        {
+          "name": "Modelo Especial Mexican Lager Import Beer, 12 pk",
+          "brand": "Modelo",
+          "size": "12 oz",
+          "sizeGrams": 340,
+          "price": 18.27,
+          "salePrice": null,
+          "unitPrice": "$0.13/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "egg",
+      "name": "Egg (whisked)",
+      "recipeAmount": 30,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Hill Country Fare Grade A Large White Eggs",
+          "brand": "Hill Country Fare",
+          "size": "12 ct",
+          "sizeGrams": 600,
+          "price": 2.17,
+          "salePrice": null,
+          "unitPrice": "$0.18/ct",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Grade A Large White Eggs",
+          "brand": "Hill Country Fare",
+          "size": "18 ct",
+          "sizeGrams": 900,
+          "price": 2.92,
+          "salePrice": null,
+          "unitPrice": "$0.16/ct",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "lime_juice",
+      "name": "Fresh Lime Juice",
+      "recipeAmount": 10,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Fresh Lime",
+          "brand": "Fresh",
+          "size": "Each",
+          "sizeGrams": 67,
+          "price": 0.24,
+          "salePrice": null,
+          "unitPrice": "$0.24/ea",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Fresh Extra Large Seedless Limes",
+          "brand": "H-E-B",
+          "size": "4 ct",
+          "sizeGrams": 268,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.74/ct",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "sugar",
+      "name": "Sugar",
+      "recipeAmount": 8,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+          "brand": "H-E-B",
+          "size": "4 lbs",
+          "sizeGrams": 1814,
+          "price": 3.48,
+          "salePrice": null,
+          "unitPrice": "$0.05/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+          "brand": "H-E-B",
+          "size": "2 lbs",
+          "sizeGrams": 907,
+          "price": 2.48,
+          "salePrice": null,
+          "unitPrice": "$0.08/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Fine Sea Salt",
+      "recipeAmount": 11,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
+          "brand": "H-E-B",
+          "size": "26.5 oz",
+          "sizeGrams": 751,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Fine Sea Salt",
+          "brand": "Morton",
+          "size": "17.6 oz",
+          "sizeGrams": 499,
+          "price": 2.62,
+          "salePrice": null,
+          "unitPrice": "$0.15/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "water",
+      "name": "Filtered Water",
+      "recipeAmount": 250,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Hill Country Fare Distilled Water",
+          "brand": "Hill Country Fare",
+          "size": "1 gal",
+          "sizeGrams": 3785,
+          "price": 1.37,
+          "salePrice": null,
+          "unitPrice": "$0.01/fl oz",
+          "inStock": true
+        }
+      ]
+    }
+  ]
+}
