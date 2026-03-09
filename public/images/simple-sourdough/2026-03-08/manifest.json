@@ -1,0 +1,55 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-03-08",
+  "processedAt": "2026-03-09T01:02:27.053Z",
+  "photos": [
+    {
+      "name": "both-loaves-cooling-rack",
+      "thumb": "both-loaves-cooling-rack-400w.webp",
+      "src": "both-loaves-cooling-rack-800w.webp",
+      "summary": "Both loaves cooling on a wire rack, foreground boule showing heavy blistering and a cross score with good ear development."
+    },
+    {
+      "name": "crumb-shot-cross-section",
+      "thumb": "crumb-shot-cross-section-400w.webp",
+      "src": "crumb-shot-cross-section-800w.webp",
+      "summary": "Cross-section of the loaf on a cutting board, showing an open, airy crumb with good hole structure throughout."
+    },
+    {
+      "name": "dough-after-bulk-ferment",
+      "thumb": "dough-after-bulk-ferment-400w.webp",
+      "src": "dough-after-bulk-ferment-800w.webp",
+      "summary": "Dough after bulk fermentation in a clear glass bowl, smooth and domed with visible surface tension."
+    },
+    {
+      "name": "dough-in-banneton-no-linen",
+      "thumb": "dough-in-banneton-no-linen-400w.webp",
+      "src": "dough-in-banneton-no-linen-800w.webp",
+      "summary": "Shaped dough proofing in a round banneton without the linen liner, testing direct contact with the rattan spiral pattern."
+    },
+    {
+      "name": "finished-boule-blistered-crust-vsco",
+      "thumb": "finished-boule-blistered-crust-vsco-400w.webp",
+      "src": "finished-boule-blistered-crust-vsco-800w.webp",
+      "summary": "Finished boule cooling on a wire rack, showing dramatic blistering across the entire crust and a deep cross score with dark caramelized ears."
+    },
+    {
+      "name": "loaf-mid-bake-banneton-pattern",
+      "thumb": "loaf-mid-bake-banneton-pattern-400w.webp",
+      "src": "loaf-mid-bake-banneton-pattern-800w.webp",
+      "summary": "Loaf mid-bake on the oven rack on parchment, visible banneton ring pattern on the crust with the cross score opening up."
+    },
+    {
+      "name": "loaf-mid-bake-challenger",
+      "thumb": "loaf-mid-bake-challenger-400w.webp",
+      "src": "loaf-mid-bake-challenger-800w.webp",
+      "summary": "Loaf mid-bake inside the Challenger bread pan on parchment, early oven spring visible with blisters already forming on the pale crust."
+    },
+    {
+      "name": "two-pre-shaped-rounds",
+      "thumb": "two-pre-shaped-rounds-400w.webp",
+      "src": "two-pre-shaped-rounds-800w.webp",
+      "summary": "Two pre-shaped rounds resting on a silicone baking mat, smooth and taut after the bench rest before final shaping."
+    }
+  ]
+}

@@ -1266,6 +1266,114 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-03-08",
+      "start_date": "2026-03-07",
+      "version": "v2.0.0",
+      "summary": "Seventh bake, 2-loaf. Used fermentolyse again. Tested banneton with and without linen liner for ring pattern on crust. Cross score on both — first loaf had some warping from inconsistent scoring. Heavy blistering on both loaves, tasted great.",
+      "notes": [
+        "Fermentolyse — mixed flour, water, starter first. Added salt ~37 min later.",
+        "Dough temp at mix: 78.6°F. After salt: 76.6°F.",
+        "Stretch & fold temps: 76.8°F (S&F #1), 75.9°F (S&F #2). 76.8°F general reading at ~5:07pm.",
+        "Shaped at ~8pm. Into proofing baskets by ~8:19pm.",
+        "Used proofing baskets differently — one with linen liner, one without linen to get the banneton ring pattern on the crust.",
+        "Noticed something weird with second dough during shaping — possible hole from improper shaping. Planned to verify after bake whether overnight rest would remedy it.",
+        "Into fridge at ~9:27pm for overnight cold retard (~12.5 hours).",
+        "Cross score on both loaves. First loaf had some warping — need more consistent swipe across both crosses.",
+        "Second loaf into oven at ~10am for covered bake. Out at ~11:42am, rested 1 hour.",
+        "Lots of blisters on both loaves. Tasted great.",
+        "100% bread flour."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-03-08/two-pre-shaped-rounds-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-08/two-pre-shaped-rounds-400w.webp",
+          "alt": "Two pre-shaped dough rounds resting on a silicone baking mat, smooth and taut after bench rest before final shaping."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-08/dough-after-bulk-ferment-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-08/dough-after-bulk-ferment-400w.webp",
+          "alt": "Dough after bulk fermentation in a clear glass bowl with thermometer probe, smooth and domed with visible surface tension."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-08/dough-in-banneton-no-linen-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-08/dough-in-banneton-no-linen-400w.webp",
+          "alt": "Shaped dough proofing in a round banneton without the linen liner, testing direct contact with the rattan spiral pattern."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-08/loaf-mid-bake-challenger-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-08/loaf-mid-bake-challenger-400w.webp",
+          "alt": "Loaf mid-bake inside the Challenger bread pan on parchment, early oven spring visible with blisters already forming on the pale crust."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-08/loaf-mid-bake-banneton-pattern-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-08/loaf-mid-bake-banneton-pattern-400w.webp",
+          "alt": "Loaf mid-bake on the oven rack, visible banneton ring pattern on the crust with the cross score opening up."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-08/finished-boule-blistered-crust-vsco-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-08/finished-boule-blistered-crust-vsco-400w.webp",
+          "alt": "Finished boule cooling on a wire rack, showing dramatic blistering across the entire crust and a deep cross score with dark caramelized ears."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-08/crumb-shot-cross-section-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-08/crumb-shot-cross-section-400w.webp",
+          "alt": "Cross-section of the loaf on a cutting board, showing an open airy crumb with good hole structure throughout."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-08/both-loaves-cooling-rack-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-08/both-loaves-cooling-rack-400w.webp",
+          "alt": "Both finished loaves cooling on a wire rack, foreground boule showing heavy blistering and a cross score with good ear development. Banneton ring pattern visible on one loaf."
+        }
+      ],
+      "next_time": [
+        { "text": "Work on consistent cross score swipe to avoid warping" },
+        { "text": "Try different flours for more complexity (whole wheat, rye blend)" }
+      ],
+      "cost": {
+        "total": 2.64,
+        "perServing": 1.32,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.11
+          }
+        ]
+      }
     }
   ],
   "research": {
