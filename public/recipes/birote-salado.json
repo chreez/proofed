@@ -14,10 +14,11 @@
     "early_check_percent": 0.8,
     "stats": {
       "group": "Sourdough Breads",
+      "subgroup": "Rolls",
       "defaultYield": 5,
       "unit": "rolls",
       "servingsPerItem": 1,
-      "servingUnit": "roll"
+      "servingUnit": "rolls"
     }
   },
   "version": "v1.1.0",

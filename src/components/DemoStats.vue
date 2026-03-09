@@ -21,6 +21,7 @@ interface RecipeStats {
   unit: string
   servingsPerItem: number
   servingUnit: string
+  subgroup?: string
   bakes: BakeEntry[]
 }
 
@@ -42,6 +43,7 @@ const groups: ProductGroup[] = [
         name: 'Simple Sourdough',
         defaultYield: 2, unit: 'loaves',
         servingsPerItem: 12, servingUnit: 'slices',
+        subgroup: 'Loaves',
         bakes: [
           { date: '2026-02-14', items: 1 },
           { date: '2026-02-16', items: 1 },
@@ -54,6 +56,7 @@ const groups: ProductGroup[] = [
         name: 'Cheddar Cheese Bread',
         defaultYield: 2, unit: 'loaves',
         servingsPerItem: 10, servingUnit: 'slices',
+        subgroup: 'Loaves',
         bakes: [
           { date: '2026-02-24', items: 2, cost: { total: 5.98, perServing: 0.30 } },
         ],
@@ -143,6 +146,38 @@ function recipeItems(recipe: RecipeStats): number {
 
 function recipeServings(recipe: RecipeStats): number {
   return recipeItems(recipe) * recipe.servingsPerItem
+}
+
+function groupUnit(group: ProductGroup): string {
+  const units = new Set(group.recipes.map(r => r.unit))
+  return units.size === 1 ? group.recipes[0].unit : 'items'
+}
+
+function groupServingUnit(group: ProductGroup): string {
+  const units = new Set(group.recipes.map(r => r.servingUnit))
+  return units.size === 1 ? group.recipes[0].servingUnit : 'servings'
+}
+
+interface SubgroupedRecipes {
+  label: string
+  recipes: RecipeStats[]
+}
+
+function groupSubgroups(group: ProductGroup): SubgroupedRecipes[] | null {
+  const hasSubgroups = group.recipes.some(r => r.subgroup)
+  if (!hasSubgroups) return null
+
+  const map = new Map<string, RecipeStats[]>()
+  const order: string[] = []
+  for (const r of group.recipes) {
+    const key = r.subgroup ?? 'Other'
+    if (!map.has(key)) {
+      map.set(key, [])
+      order.push(key)
+    }
+    map.get(key)!.push(r)
+  }
+  return order.map(label => ({ label, recipes: map.get(label)! }))
 }
 
 const allBakes = computed(() => groups.reduce((s, g) => s + totalBakes(g), 0))
@@ -404,14 +439,14 @@ const groupProportions = computed(() => {
           <span class="ds3-group-title">{{ group.label }}</span>
           <span class="ds3-group-badge">
             {{ totalItems(group) }}
-            {{ group.recipes[0]?.unit ?? 'items' }}
+            {{ groupUnit(group) }}
           </span>
           <span
             v-if="totalServings(group) !== totalItems(group)"
             class="ds3-group-badge ds3-group-badge--muted"
           >
             {{ totalServings(group) }}
-            {{ group.recipes[0]?.servingUnit ?? 'servings' }}
+            {{ groupServingUnit(group) }}
           </span>
           <span class="ds3-group-sessions">
             {{ totalBakes(group) }} session{{ totalBakes(group) !== 1 ? 's' : '' }}
@@ -420,45 +455,97 @@ const groupProportions = computed(() => {
         </div>
 
         <div v-if="expanded.has(group.label)" class="ds3-group-body">
-          <div
-            v-for="recipe in group.recipes"
-            :key="recipe.id"
-            class="ds3-recipe"
-          >
-            <div class="ds3-recipe-name">{{ recipe.name }}</div>
-            <div class="ds3-recipe-bars">
-              <div class="ds3-bar-row">
-                <span class="ds3-bar-label">Sessions</span>
-                <span class="ds3-bar-track">
-                  <span
-                    class="ds3-bar-fill"
-                    :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
-                  />
-                </span>
-                <span class="ds3-bar-value">{{ recipe.bakes.length }}</span>
-              </div>
-              <div class="ds3-bar-row">
-                <span class="ds3-bar-label">{{ recipe.unit.charAt(0).toUpperCase() + recipe.unit.slice(1) }}</span>
-                <span class="ds3-bar-track">
-                  <span
-                    class="ds3-bar-fill"
-                    :style="{ width: (recipeItems(recipe) / maxRecipeItems) * 100 + '%' }"
-                  />
-                </span>
-                <span class="ds3-bar-value">{{ recipeItems(recipe) }}</span>
-              </div>
-              <div v-if="recipe.servingsPerItem > 1" class="ds3-bar-row">
-                <span class="ds3-bar-label">{{ recipe.servingUnit.charAt(0).toUpperCase() + recipe.servingUnit.slice(1) }}</span>
-                <span class="ds3-bar-track">
-                  <span
-                    class="ds3-bar-fill ds3-bar-fill--subtle"
-                    :style="{ width: (recipeServings(recipe) / maxRecipeServings) * 100 + '%' }"
-                  />
-                </span>
-                <span class="ds3-bar-value">~{{ recipeServings(recipe) }}</span>
+          <!-- Subgrouped layout -->
+          <template v-if="groupSubgroups(group)">
+            <div
+              v-for="sub in groupSubgroups(group)!"
+              :key="sub.label"
+              class="ds3-subgroup"
+            >
+              <div class="ds3-subgroup-label">{{ sub.label }}</div>
+              <div
+                v-for="recipe in sub.recipes"
+                :key="recipe.id"
+                class="ds3-recipe"
+              >
+                <div class="ds3-recipe-name">{{ recipe.name }}</div>
+                <div class="ds3-recipe-bars">
+                  <div class="ds3-bar-row">
+                    <span class="ds3-bar-label">Sessions</span>
+                    <span class="ds3-bar-track">
+                      <span
+                        class="ds3-bar-fill"
+                        :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
+                      />
+                    </span>
+                    <span class="ds3-bar-value">{{ recipe.bakes.length }}</span>
+                  </div>
+                  <div class="ds3-bar-row">
+                    <span class="ds3-bar-label">{{ recipe.unit.charAt(0).toUpperCase() + recipe.unit.slice(1) }}</span>
+                    <span class="ds3-bar-track">
+                      <span
+                        class="ds3-bar-fill"
+                        :style="{ width: (recipeItems(recipe) / maxRecipeItems) * 100 + '%' }"
+                      />
+                    </span>
+                    <span class="ds3-bar-value">{{ recipeItems(recipe) }}</span>
+                  </div>
+                  <div v-if="recipe.servingsPerItem > 1" class="ds3-bar-row">
+                    <span class="ds3-bar-label">{{ recipe.servingUnit.charAt(0).toUpperCase() + recipe.servingUnit.slice(1) }}</span>
+                    <span class="ds3-bar-track">
+                      <span
+                        class="ds3-bar-fill ds3-bar-fill--subtle"
+                        :style="{ width: (recipeServings(recipe) / maxRecipeServings) * 100 + '%' }"
+                      />
+                    </span>
+                    <span class="ds3-bar-value">~{{ recipeServings(recipe) }}</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </template>
+          <!-- Flat layout (no subgroups) -->
+          <template v-else>
+            <div
+              v-for="recipe in group.recipes"
+              :key="recipe.id"
+              class="ds3-recipe"
+            >
+              <div class="ds3-recipe-name">{{ recipe.name }}</div>
+              <div class="ds3-recipe-bars">
+                <div class="ds3-bar-row">
+                  <span class="ds3-bar-label">Sessions</span>
+                  <span class="ds3-bar-track">
+                    <span
+                      class="ds3-bar-fill"
+                      :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
+                    />
+                  </span>
+                  <span class="ds3-bar-value">{{ recipe.bakes.length }}</span>
+                </div>
+                <div class="ds3-bar-row">
+                  <span class="ds3-bar-label">{{ recipe.unit.charAt(0).toUpperCase() + recipe.unit.slice(1) }}</span>
+                  <span class="ds3-bar-track">
+                    <span
+                      class="ds3-bar-fill"
+                      :style="{ width: (recipeItems(recipe) / maxRecipeItems) * 100 + '%' }"
+                    />
+                  </span>
+                  <span class="ds3-bar-value">{{ recipeItems(recipe) }}</span>
+                </div>
+                <div v-if="recipe.servingsPerItem > 1" class="ds3-bar-row">
+                  <span class="ds3-bar-label">{{ recipe.servingUnit.charAt(0).toUpperCase() + recipe.servingUnit.slice(1) }}</span>
+                  <span class="ds3-bar-track">
+                    <span
+                      class="ds3-bar-fill ds3-bar-fill--subtle"
+                      :style="{ width: (recipeServings(recipe) / maxRecipeServings) * 100 + '%' }"
+                    />
+                  </span>
+                  <span class="ds3-bar-value">~{{ recipeServings(recipe) }}</span>
+                </div>
+              </div>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -817,6 +904,28 @@ const groupProportions = computed(() => {
 
 .ds3-group-body {
   padding: 0 1rem 1rem;
+}
+
+/* --- Subgroup headers --- */
+
+.ds3-subgroup {
+  margin-top: 0.75rem;
+}
+
+.ds3-subgroup:first-child {
+  margin-top: 0;
+}
+
+.ds3-subgroup-label {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-stone-400);
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid var(--color-stone-100);
+  margin-bottom: 0.125rem;
 }
 
 /* --- Per-recipe detail --- */

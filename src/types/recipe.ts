@@ -115,6 +115,7 @@ export interface RecipeMeta {
 
 export interface RecipeStats {
   group: string
+  subgroup?: string
   defaultYield: number
   unit: string
   servingsPerItem: number

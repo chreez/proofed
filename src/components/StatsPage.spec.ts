@@ -1194,6 +1194,169 @@ describe('StatsPage', () => {
     expect(pct.text()).toBe('0%')
   })
 
+  // --- Subgroups ---
+
+  it('shows "items" in group badge when recipes have mixed units', async () => {
+    const manifest = makeManifest([
+      { id: 'loaf', name: 'Sourdough Loaf', file: 'loaf.json' },
+      { id: 'baguette', name: 'Baguette', file: 'baguette.json' },
+    ])
+    const loaf = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Loaves', defaultYield: 1, unit: 'loaves', servingsPerItem: 10, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-01-15' })],
+    })
+    const baguette = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Baguettes', defaultYield: 3, unit: 'baguettes', servingsPerItem: 6, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'loaf.json': loaf, 'baguette.json': baguette })
+
+    const badge = wrapper.find('.ds3-group-badge')
+    expect(badge.text()).toContain('items')
+  })
+
+  it('shows shared unit in group badge when all recipes have same unit', async () => {
+    const manifest = makeManifest([
+      { id: 'sourdough', name: 'Sourdough', file: 'sourdough.json' },
+      { id: 'cheddar', name: 'Cheddar', file: 'cheddar.json' },
+    ])
+    const sourdough = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Loaves', defaultYield: 2, unit: 'loaves', servingsPerItem: 10, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-01-15' })],
+    })
+    const cheddar = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Loaves', defaultYield: 2, unit: 'loaves', servingsPerItem: 10, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'sourdough.json': sourdough, 'cheddar.json': cheddar })
+
+    const badge = wrapper.find('.ds3-group-badge')
+    expect(badge.text()).toContain('loaves')
+  })
+
+  it('shows "servings" in muted badge when recipes have mixed serving units', async () => {
+    const manifest = makeManifest([
+      { id: 'loaf', name: 'Sourdough Loaf', file: 'loaf.json' },
+      { id: 'rolls', name: 'Rolls', file: 'rolls.json' },
+    ])
+    const loaf = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Loaves', defaultYield: 1, unit: 'loaves', servingsPerItem: 10, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-01-15' })],
+    })
+    const rolls = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Rolls', defaultYield: 5, unit: 'rolls', servingsPerItem: 2, servingUnit: 'pieces' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'loaf.json': loaf, 'rolls.json': rolls })
+
+    const mutedBadge = wrapper.find('.ds3-group-badge--muted')
+    expect(mutedBadge.exists()).toBe(true)
+    expect(mutedBadge.text()).toContain('servings')
+  })
+
+  it('renders subgroup labels when recipes have subgroups', async () => {
+    const manifest = makeManifest([
+      { id: 'loaf', name: 'Sourdough Loaf', file: 'loaf.json' },
+      { id: 'baguette', name: 'Baguette', file: 'baguette.json' },
+    ])
+    const loaf = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Loaves', defaultYield: 1, unit: 'loaves', servingsPerItem: 10, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-01-15' })],
+    })
+    const baguette = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Baguettes', defaultYield: 3, unit: 'baguettes', servingsPerItem: 6, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'loaf.json': loaf, 'baguette.json': baguette })
+
+    const subgroupLabels = wrapper.findAll('.ds3-subgroup-label')
+    expect(subgroupLabels.length).toBe(2)
+    expect(subgroupLabels.map(l => l.text())).toContain('Loaves')
+    expect(subgroupLabels.map(l => l.text())).toContain('Baguettes')
+  })
+
+  it('does not render subgroup labels when no recipes have subgroups', async () => {
+    const manifest = makeManifest([
+      { id: 'bread', name: 'Bread', file: 'bread.json' },
+    ])
+    const bread = makeRecipe({
+      cook_log: [makeCookLogEntry()],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': bread })
+
+    expect(wrapper.find('.ds3-subgroup-label').exists()).toBe(false)
+  })
+
+  it('groups recipes under correct subgroup labels', async () => {
+    const manifest = makeManifest([
+      { id: 'sourdough', name: 'Simple Sourdough', file: 'sourdough.json' },
+      { id: 'cheddar', name: 'Cheddar Bread', file: 'cheddar.json' },
+      { id: 'baguette', name: 'Tartine Baguette', file: 'baguette.json' },
+    ])
+    const sourdough = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Loaves', defaultYield: 2, unit: 'loaves', servingsPerItem: 10, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-01-15' })],
+    })
+    const cheddar = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Loaves', defaultYield: 2, unit: 'loaves', servingsPerItem: 10, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    })
+    const baguette = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Sourdough Breads', subgroup: 'Baguettes', defaultYield: 3, unit: 'baguettes', servingsPerItem: 6, servingUnit: 'slices' },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-02-10' })],
+    })
+    const wrapper = await mountAndLoad(manifest, {
+      'sourdough.json': sourdough,
+      'cheddar.json': cheddar,
+      'baguette.json': baguette,
+    })
+
+    const subgroups = wrapper.findAll('.ds3-subgroup')
+    expect(subgroups.length).toBe(2)
+
+    // First subgroup (Loaves) should have 2 recipes
+    const loavesRecipes = subgroups[0].findAll('.ds3-recipe-name')
+    expect(loavesRecipes.length).toBe(2)
+
+    // Second subgroup (Baguettes) should have 1 recipe
+    const baguetteRecipes = subgroups[1].findAll('.ds3-recipe-name')
+    expect(baguetteRecipes.length).toBe(1)
+    expect(baguetteRecipes[0].text()).toBe('Tartine Baguette')
+  })
+
   // --- Ledger chevron state ---
 
   it('ledger chevron shows + when closed and - when open', async () => {

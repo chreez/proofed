@@ -15,6 +15,7 @@
     "early_check_percent": 0.8,
     "stats": {
       "group": "Sourdough Breads",
+      "subgroup": "Loaves",
       "defaultYield": 2,
       "unit": "loaves",
       "servingsPerItem": 10,
