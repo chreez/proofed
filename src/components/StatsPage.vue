@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
 import type { Recipe, RecipeManifest, CookLogEntry, RecipeStats } from '@/types/recipe'
 
 // --- Internal types ---
@@ -40,19 +41,29 @@ interface LedgerRow {
   servings: number
 }
 
+interface TimelineBakeInfo {
+  recipeId: string
+  recipeName: string
+  heroThumb: string | null
+  date: string
+}
+
 interface TimelineDot {
   date: string
   dayOffset: number
   percent: number
-  recipes: string[]
+  bakes: TimelineBakeInfo[]
   isAberration: boolean
 }
 
 // --- Data loading ---
 
+const router = useRouter()
+
 const isLoading = ref(true)
 const groups = ref<ProductGroup[]>([])
 const allRecipeCount = ref(0)
+const timelineBakeMap = ref(new Map<string, TimelineBakeInfo[]>())
 
 const GROUP_ICONS: Record<string, string> = {
   'Sourdough Breads': '\u{1F35E}',
@@ -100,6 +111,7 @@ async function loadData(): Promise<void> {
 
     const groupMap = new Map<string, StatsRecipe[]>()
     const aberrationRecipes: StatsRecipe[] = []
+    const bakeMap = new Map<string, TimelineBakeInfo[]>()
     let recipeWithBakes = 0
 
     for (const { id, name, recipe } of recipes) {
@@ -111,6 +123,19 @@ async function loadData(): Promise<void> {
       if (completedEntries.length === 0) continue
 
       recipeWithBakes++
+
+      // Populate timeline bake map with hero images
+      for (const entry of completedEntries) {
+        const photos = entry.photos ?? []
+        const heroThumb = photos.length > 0 ? photos[photos.length - 1].thumb : null
+        const info: TimelineBakeInfo = { recipeId: id, recipeName: name, heroThumb, date: entry.date }
+        const existing = bakeMap.get(entry.date)
+        if (existing) {
+          existing.push(info)
+        } else {
+          bakeMap.set(entry.date, [info])
+        }
+      }
 
       // Split entries into normal and aberration
       const normalEntries = completedEntries.filter(e => !e.aberration)
@@ -198,6 +223,7 @@ async function loadData(): Promise<void> {
 
     groups.value = result
     allRecipeCount.value = recipeWithBakes
+    timelineBakeMap.value = bakeMap
   } catch (err) {
     console.error('Failed to load stats data:', err)
   } finally {
@@ -394,34 +420,31 @@ const timelineSpanDays = computed(() => {
 })
 
 const timelineDots = computed<TimelineDot[]>(() => {
-  const dateMap = new Map<string, { recipes: Set<string>; isAberration: boolean }>()
+  const dateSet = new Map<string, boolean>()
   for (const g of groups.value) {
     for (const r of g.recipes) {
       for (const b of r.bakes) {
-        const existing = dateMap.get(b.date)
-        if (existing) {
-          existing.recipes.add(r.name)
-          if (g.label === 'Aberrations') existing.isAberration = true
-        } else {
-          dateMap.set(b.date, {
-            recipes: new Set([r.name]),
-            isAberration: g.label === 'Aberrations',
-          })
+        const existing = dateSet.get(b.date)
+        if (!existing && g.label === 'Aberrations') {
+          dateSet.set(b.date, true)
+        } else if (existing === undefined) {
+          dateSet.set(b.date, g.label === 'Aberrations')
         }
       }
     }
   }
   const dots: TimelineDot[] = []
-  for (const [date, info] of dateMap) {
+  for (const [date, isAberration] of dateSet) {
     const d = new Date(date)
     const dayOffset = Math.round((d.getTime() - timelineStart.value.getTime()) / (1000 * 60 * 60 * 24))
     const percent = (dayOffset / timelineSpanDays.value) * 100
+    const bakes = timelineBakeMap.value.get(date) ?? []
     dots.push({
       date,
       dayOffset,
       percent,
-      recipes: Array.from(info.recipes),
-      isAberration: info.isAberration,
+      bakes,
+      isAberration,
     })
   }
   dots.sort((a, b) => a.dayOffset - b.dayOffset)
@@ -465,8 +488,109 @@ const groupProportions = computed(() => {
   }))
 })
 
+// --- Timeline popover ---
+
+const activeTimelineDot = ref<string | null>(null)
+const popoverPosition = ref<{ left: number; top: number; alignRight: boolean; alignLeft: boolean } | null>(null)
+let hidePopoverTimer: ReturnType<typeof setTimeout> | null = null
+
+const activePopoverBakes = computed<TimelineBakeInfo[]>(() => {
+  if (!activeTimelineDot.value) return []
+  return timelineBakeMap.value.get(activeTimelineDot.value) ?? []
+})
+
+function showPopover(dot: TimelineDot, event: MouseEvent | PointerEvent): void {
+  if (hidePopoverTimer) {
+    clearTimeout(hidePopoverTimer)
+    hidePopoverTimer = null
+  }
+  const el = event.currentTarget as HTMLElement
+  const rect = el.getBoundingClientRect()
+  const viewportWidth = window.innerWidth
+
+  let alignRight = false
+  let alignLeft = false
+  if (rect.left < 120) {
+    alignLeft = true
+  } else if (viewportWidth - rect.right < 120) {
+    alignRight = true
+  }
+
+  popoverPosition.value = {
+    left: rect.left + rect.width / 2,
+    top: rect.top,
+    alignRight,
+    alignLeft,
+  }
+  activeTimelineDot.value = dot.date
+}
+
+function hidePopover(): void {
+  hidePopoverTimer = setTimeout(() => {
+    activeTimelineDot.value = null
+    popoverPosition.value = null
+  }, 150)
+}
+
+function cancelHidePopover(): void {
+  if (hidePopoverTimer) {
+    clearTimeout(hidePopoverTimer)
+    hidePopoverTimer = null
+  }
+}
+
+function togglePopover(dot: TimelineDot, event: MouseEvent | PointerEvent): void {
+  event.stopPropagation()
+  if (activeTimelineDot.value === dot.date) {
+    activeTimelineDot.value = null
+    popoverPosition.value = null
+  } else {
+    showPopover(dot, event)
+  }
+}
+
+function navigateToBake(bake: TimelineBakeInfo): void {
+  activeTimelineDot.value = null
+  popoverPosition.value = null
+  router.push({ name: 'bake-detail', params: { recipeId: bake.recipeId, date: bake.date } })
+}
+
+const popoverStyle = computed(() => {
+  if (!popoverPosition.value) return {}
+  const p = popoverPosition.value
+  const style: Record<string, string> = {
+    position: 'fixed',
+    top: `${p.top - 8}px`,
+    zIndex: '100',
+    transform: 'translateY(-100%)',
+  }
+  if (p.alignLeft) {
+    style.left = `${p.left - 10}px`
+  } else if (p.alignRight) {
+    style.right = `${window.innerWidth - p.left - 10}px`
+  } else {
+    style.left = `${p.left}px`
+    style.transform = 'translate(-50%, -100%)'
+  }
+  return style
+})
+
+function handleClickOutside(): void {
+  if (activeTimelineDot.value) {
+    activeTimelineDot.value = null
+    popoverPosition.value = null
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+  if (hidePopoverTimer) clearTimeout(hidePopoverTimer)
+})
+
 // Watch for data load to initialize expanded state
-import { watchEffect } from 'vue'
 watchEffect(() => {
   if (groups.value.length > 0) {
     initializeExpanded()
@@ -514,16 +638,48 @@ watchEffect(() => {
           v-for="dot in timelineDots"
           :key="dot.date"
           class="ds3-timeline-dot"
-          :class="{ 'ds3-timeline-dot--aberration': dot.isAberration }"
+          :class="{ 'ds3-timeline-dot--aberration': dot.isAberration, 'ds3-timeline-dot--active': activeTimelineDot === dot.date }"
           :style="{ left: dot.percent + '%' }"
-          :title="shortDate(dot.date) + ': ' + dot.recipes.join(', ')"
+          @mouseenter="showPopover(dot, $event)"
+          @mouseleave="hidePopover"
+          @click.stop="togglePopover(dot, $event)"
         >
           <span
-            v-if="dot.recipes.length > 1"
+            v-if="dot.bakes.length > 1"
             class="ds3-timeline-count"
-          >{{ dot.recipes.length }}</span>
+          >{{ dot.bakes.length }}</span>
         </div>
       </div>
+
+      <!-- Timeline popover -->
+      <Teleport to="body">
+        <div
+          v-if="activeTimelineDot && popoverPosition"
+          class="ds3-timeline-popover"
+          :style="popoverStyle"
+          @mouseenter="cancelHidePopover"
+          @mouseleave="hidePopover"
+          @click.stop
+        >
+          <div
+            v-for="bake in activePopoverBakes"
+            :key="bake.recipeId + bake.date"
+            class="ds3-timeline-popover-entry"
+            @click="navigateToBake(bake)"
+          >
+            <img
+              v-if="bake.heroThumb"
+              :src="bake.heroThumb"
+              :alt="bake.recipeName"
+              class="ds3-timeline-popover-img"
+            />
+            <div class="ds3-timeline-popover-info">
+              <span class="ds3-timeline-popover-name">{{ bake.recipeName }}</span>
+              <span class="ds3-timeline-popover-date">{{ shortDate(bake.date) }}</span>
+            </div>
+          </div>
+        </div>
+      </Teleport>
       <div class="ds3-timeline-labels">
         <span v-for="label in timelineLabels" :key="label" class="ds3-timeline-date">{{ label }}</span>
       </div>
@@ -875,7 +1031,7 @@ watchEffect(() => {
   background: var(--color-accent);
   border: 2px solid var(--color-surface);
   transform: translate(-50%, -50%);
-  cursor: default;
+  cursor: pointer;
 }
 
 .ds3-timeline-dot--aberration {
@@ -904,6 +1060,14 @@ watchEffect(() => {
   font-family: var(--font-mono);
   font-size: 0.5625rem;
   color: var(--color-stone-400);
+}
+
+/* --- Timeline popover --- */
+
+.ds3-timeline-dot--active {
+  background: var(--color-ink);
+  border-color: var(--color-surface);
+  z-index: 2;
 }
 
 /* --- Production mix proportions --- */
@@ -1336,5 +1500,63 @@ watchEffect(() => {
   .ds3-group-body {
     padding: 0 0.75rem 0.75rem;
   }
+}
+</style>
+
+<style>
+/* Unscoped: popover is teleported to body */
+.ds3-timeline-popover {
+  background: var(--color-surface);
+  border: 2px solid var(--color-stone-200);
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  max-width: 280px;
+  padding: 0.25rem 0;
+  pointer-events: auto;
+}
+
+.ds3-timeline-popover-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 80ms ease;
+}
+
+.ds3-timeline-popover-entry:hover {
+  background: var(--color-stone-50);
+}
+
+.ds3-timeline-popover-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border: 1px solid var(--color-stone-200);
+  flex-shrink: 0;
+}
+
+.ds3-timeline-popover-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.ds3-timeline-popover-name {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds3-timeline-popover-date {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-stone-400);
 }
 </style>
