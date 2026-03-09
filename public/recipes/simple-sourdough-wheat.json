@@ -1,0 +1,821 @@
+{
+  "meta": {
+    "name": "Whole Wheat Sourdough Bread",
+    "source": {
+      "name": "Simple Sourdough Bread (proofed.)",
+      "type": "adapted",
+      "author": "proofed. Research Synthesis",
+      "accessed": "2026-03-09"
+    },
+    "yields": "2 loaves (~800g each baked)",
+    "total_time": "~21 hrs (25 min active)",
+    "description": "A flavor-focused variant of Simple Sourdough, swapping 20% of the bread flour for whole wheat and rye. Same simple workflow — mix, fold, overnight bulk, shape, cold proof, bake — with deeper, nuttier flavor from whole grains and a touch of rye complexity. Hydration bumped to 74% to compensate for bran absorption, inoculation reduced to 15% to prevent over-fermentation."
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Sourdough Breads",
+      "subgroup": "Loaves",
+      "defaultYield": 2,
+      "unit": "loaves",
+      "servingsPerItem": 10,
+      "servingUnit": "slices"
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-03-09",
+      "summary": "Initial recipe branched from Simple Sourdough v2.0.0. 80/15/5 bread/whole wheat/rye flour blend at 74% hydration and 15% inoculation, based on 18-source research spike."
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Mixing → bulk ferment"
+    },
+    {
+      "id": "V2a",
+      "name": "Proofing Basket 1 (lined with towel)",
+      "reuse": "Shaping → cold proof (loaf 1)"
+    },
+    {
+      "id": "V2b",
+      "name": "Proofing Basket 2 (lined with towel)",
+      "reuse": "Shaping → cold proof (loaf 2)"
+    },
+    {
+      "id": "V3",
+      "name": "Dutch Oven with Lid"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Mixing Bowl",
+          "Proofing Basket 1 (lined with towel)",
+          "Proofing Basket 2 (lined with towel)",
+          "Dutch Oven with Lid"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Fork or Spatula",
+          "Bench Scraper",
+          "Bread Lame or Sharp Knife",
+          "Parchment Paper",
+          "Plastic Wrap",
+          "Wire Rack",
+          "Clean Linen or Cotton Towel",
+          "Rice Flour (for dusting towel)"
+        ],
+        "ingredients": [
+          {
+            "id": "bread_flour",
+            "name": "Bread Flour",
+            "total": 800,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "PF-166.1 research spike — 80% bread flour retains strong gluten network",
+            "confidence": "high",
+            "rationale": "80% bread flour maintains oven spring and open crumb while allowing 20% whole grain for flavor. King Arthur Bread Flour (12.7% protein) recommended."
+          },
+          {
+            "id": "whole_wheat_flour",
+            "name": "Whole Wheat Flour",
+            "total": 150,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "The Perfect Loaf, King Arthur, Tartine, The Clever Carrot consensus",
+            "confidence": "high",
+            "rationale": "15% whole wheat — sweet spot for nutty, earthy flavor without degrading handling. More impactful than Tartine's 10%, more manageable than 25%+."
+          },
+          {
+            "id": "dark_rye_flour",
+            "name": "Dark Rye Flour",
+            "total": 50,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Breadtopia, Grant Bakes, yoursourdoughstart.com, Pain de Campagne tradition",
+            "confidence": "high",
+            "rationale": "5% dark rye adds fruity, spicy complexity that whole wheat alone cannot provide. Traditional country bread accent. Also slows staling via pentosans."
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 740,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "King Arthur, yoursourdoughstart.com, The Perfect Loaf hydration guides",
+            "confidence": "high",
+            "rationale": "74% hydration — +4% over base recipe to compensate for bran absorption. Whole grain bran absorbs 2-3x its weight in water. Conservative start — can go to 75% if dough feels tight."
+          },
+          {
+            "id": "starter",
+            "name": "Active Sourdough Starter",
+            "total": 150,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "The Perfect Loaf, The Sourdough Framework, sourdoughtalk.com",
+            "confidence": "high",
+            "rationale": "15% inoculation — reduced from 20% to offset faster fermentation from whole grains. Whole grain is more enzymatically active. This keeps the same overnight bulk ferment window."
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 20,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Universal consensus",
+            "confidence": "high",
+            "rationale": "2% of flour weight. Non-iodized preferred for clean flavor."
+          }
+        ]
+      },
+      "states": [
+        "PREP_WORKSPACE"
+      ]
+    },
+    {
+      "id": "MIX",
+      "title": "Mix Dough",
+      "gather": null,
+      "states": [
+        "COMBINE_INGREDIENTS"
+      ]
+    },
+    {
+      "id": "STRETCH_FOLD",
+      "title": "Stretch & Fold",
+      "gather": null,
+      "states": [
+        "FOLD_1",
+        "REST_1",
+        "FOLD_2",
+        "REST_2",
+        "FOLD_3"
+      ]
+    },
+    {
+      "id": "BULK_FERMENT",
+      "title": "Bulk Ferment (Overnight)",
+      "gather": null,
+      "states": [
+        "OVERNIGHT_BULK"
+      ]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Shape",
+      "gather": null,
+      "states": [
+        "TURN_OUT",
+        "DIVIDE",
+        "PRE_SHAPE",
+        "BENCH_REST",
+        "ENVELOPE_FOLD",
+        "BUILD_TENSION",
+        "INTO_BASKET"
+      ]
+    },
+    {
+      "id": "COLD_PROOF",
+      "title": "Cold Proof",
+      "gather": null,
+      "states": [
+        "REFRIGERATE"
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": [
+        "PREHEAT",
+        "SCORE",
+        "BAKE_COVERED",
+        "BAKE_UNCOVERED"
+      ]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "gather": null,
+      "states": [
+        "COOL_ON_RACK"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out bread flour, whole wheat flour, dark rye flour, water, starter, and salt into separate containers.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed, vessels and equipment laid out",
+      "notes": [
+        {
+          "text": "Starter must be active and bubbly — should have doubled within 4-8 hours of its last feeding",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If starter hasn't doubled, add 1/8 tsp instant yeast to the dough as insurance — King Arthur and The Perfect Loaf both endorse this",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "COMBINE_INGREDIENTS",
+      "title": "Combine All Ingredients",
+      "direction": "In the large mixing bowl (V1), combine 740g water and 150g active starter. Stir to dissolve. Add 800g bread flour, 150g whole wheat flour, 50g dark rye flour, and 20g salt. Mix with a fork or spatula until no dry flour remains — a shaggy, rough mass.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Water",
+          "amount": "740g"
+        },
+        {
+          "name": "Active Sourdough Starter",
+          "amount": "150g"
+        },
+        {
+          "name": "Bread Flour",
+          "amount": "800g"
+        },
+        {
+          "name": "Whole Wheat Flour",
+          "amount": "150g"
+        },
+        {
+          "name": "Dark Rye Flour",
+          "amount": "50g"
+        },
+        {
+          "name": "Fine Sea Salt",
+          "amount": "20g"
+        }
+      ],
+      "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
+      "notes": [
+        {
+          "text": "The dough will be slightly stickier and darker than 100% bread flour dough — this is normal from the whole wheat and rye bran absorbing water",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Do not knead. Just stir until combined. Gluten will develop through stretch-and-fold and time.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FOLD_1",
+      "title": "Stretch & Fold — Set 1",
+      "direction": "With a wet hand, grab the north side of the dough, stretch it up as far as it will go without tearing, and fold it over the center. Rotate the bowl 90 degrees and repeat for all 4 sides (north, east, south, west). Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 4 sides stretched and folded, dough is in a rough package",
+      "notes": [
+        {
+          "text": "Wet your hand first to prevent sticking — do not flour",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Whole grain dough may feel slightly tackier and less elastic than 100% bread flour — this is expected. The bran particles cut gluten strands, so the dough won't stretch quite as far before resisting.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "technique_url": "https://www.theperfectloaf.com/how-to-stretch-and-fold-sourdough-bread-dough/",
+      "reminders": [
+        {
+          "prompt": "Record dough temperature",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "REST_1",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "FOLD_2",
+      "title": "Stretch & Fold — Set 2",
+      "direction": "Repeat stretch and fold: wet hand, grab one side, stretch up, fold over center. All 4 sides. Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 4 sides stretched and folded, dough feels slightly stronger and smoother",
+      "notes": null
+    },
+    {
+      "id": "REST_2",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes at room temperature.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed",
+      "notes": null
+    },
+    {
+      "id": "FOLD_3",
+      "title": "Stretch & Fold — Set 3",
+      "direction": "Final stretch and fold: wet hand, all 4 sides. The dough should now feel noticeably smoother and more elastic than the first set. Cover tightly with plastic wrap.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth and elastic, covered tightly for overnight bulk",
+      "notes": [
+        {
+          "text": "3 sets is sufficient — research shows diminishing returns above 3-4 for most doughs. This is 90 seconds of total work.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "OVERNIGHT_BULK",
+      "title": "Overnight Bulk Ferment",
+      "direction": "Leave the covered bowl on the counter at room temperature (70-74°F / 21-23°C) overnight (10-12 hours). Do not use the oven with light on — it runs too warm. The dough ferments while you sleep.",
+      "duration_min": 600,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has increased 50-75% in volume (NOT doubled), surface is domed with visible bubbles, jiggles when bowl is shaken. If dough has doubled or is flat/slack, it is over-fermented — shape immediately or pivot to focaccia.",
+      "notes": [
+        {
+          "text": "Watch the dough, not the clock. At 75°F (24°C) this takes ~8 hours. At 65°F (18°C) it could take 12+ hours. The visual cues matter more than time.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "With 20% whole grain and 15% inoculation, fermentation may be slightly faster than 100% bread flour. Watch the dough, not the clock — target 50-75% rise.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If dough has more than doubled and looks very puffy with large bubbles, it is over-fermented. Shape immediately and bake sooner. If dough tears during shaping, pivot to focaccia: flatten into an oiled dish, top with olive oil, herbs, salt, and parmesan. Bake at 425°F (220°C) for ~40 min.",
+          "critical": false,
+          "source": "user"
+        },
+        {
+          "text": "Do NOT use oven with light on for bulk ferment — oven light runs 78-90°F+, far too warm for 15% inoculation with whole grains. Counter at 70-74°F is ideal.",
+          "critical": true,
+          "source": "user"
+        },
+        {
+          "text": "If over-fermentation occurs, consider reducing starter to 10% (100g) for an even wider overnight window. Lower inoculation also develops more complex sour flavor.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Note kitchen ambient temperature",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Check dough volume rise %",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "TURN_OUT",
+      "title": "Turn Out Dough",
+      "direction": "Lightly flour the counter. Gently scrape the fermented dough out of the bowl onto the floured surface. Sprinkle a light dusting of flour on top of the dough.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is on the floured counter, right-side up",
+      "notes": null
+    },
+    {
+      "id": "DIVIDE",
+      "title": "Divide Dough",
+      "direction": "Using a bench scraper, divide the dough in half — each piece should be roughly 480g. Don't fuss over exact weight. Use the bench scraper in one decisive motion; avoid sawing.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Two roughly equal dough pieces (~480g each) on the counter",
+      "notes": [
+        {
+          "text": "A scale helps if you want even loaves, but eyeballing is fine — sourdough is forgiving.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PRE_SHAPE",
+      "title": "Pre-Shape",
+      "direction": "Using a bench scraper, gently form each piece into a loose round — tuck the edges under to create a rough ball. Don't worry about perfection. The goal is a general round shape with some surface tension. Repeat for both pieces.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both pieces are in loose round shapes on the counter",
+      "notes": [
+        {
+          "text": "Pre-shaping relaxes the gluten before final shaping, making it much easier to build tension in the envelope fold. Only bake that shaped successfully across 3 bakes used this step.",
+          "critical": false,
+          "source": "user"
+        }
+      ]
+    },
+    {
+      "id": "BENCH_REST",
+      "title": "Bench Rest",
+      "direction": "Leave both pre-shaped rounds uncovered on the counter for 15-20 minutes. The gluten relaxes, making final shaping easier.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both rounds have rested 15-20 minutes, slightly spread but still holding general shape",
+      "notes": null
+    },
+    {
+      "id": "ENVELOPE_FOLD",
+      "title": "Envelope Fold",
+      "direction": "One piece at a time: flip the dough over so the sticky side faces up. Fold like an envelope: bottom edge up to center, left side over to center, right side over to center, top edge down to center. Flip the whole package seam-side down onto a clean, UNFLOURED section of counter. Repeat for the second piece.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both pieces are folded into rough rounds, seam-side down on unfloured surface",
+      "notes": null,
+      "technique_url": "https://www.theclevercarrot.com/2020/07/how-to-shape-a-round-sourdough-boule/"
+    },
+    {
+      "id": "BUILD_TENSION",
+      "title": "Build Surface Tension",
+      "direction": "One piece at a time: cup your hands around the dough (palms don't touch the top). Gently drag it toward you in a short motion — the bottom grips the unfloured surface and tucks under, creating tension on top. Rotate a quarter turn. Repeat 4-6 times until the top is smooth and taut, like a stretched balloon. Repeat for the second piece.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both pieces have smooth, taut, rounded surfaces with visible surface tension",
+      "notes": [
+        {
+          "text": "The unfloured counter is intentional — friction between the dough and counter creates the tension. Do not flour here.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If the dough tears, stop. Let it rest 5 minutes and try again with fewer, gentler drags.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Whole grain dough benefits from slightly tighter shaping — the bran weakens the gluten network, so you may need a couple extra drag-and-tuck passes to build equivalent tension.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "INTO_BASKET",
+      "title": "Into Proofing Basket",
+      "direction": "Dust both towel-lined proofing baskets (V2a, V2b) generously with rice flour. Using a bench scraper, lift each shaped dough and place seam-side UP into a basket. If seams have opened, pinch closed. Cover both with plastic wrap.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both loaves are seam-side up in floured, towel-lined baskets, covered with plastic wrap",
+      "notes": [
+        {
+          "text": "Rice flour is best for dusting — it's gluten-free so it won't stick to the dough. Regular flour works but rice flour is more reliable.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "No banneton? A medium mixing bowl lined with a thin cotton or linen towel works perfectly.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "REFRIGERATE",
+      "title": "Cold Proof in Fridge",
+      "direction": "Place both covered baskets in the refrigerator. Cold proof for 1-24 hours. The fridge slows fermentation, develops flavor, and makes the dough easier to score.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both loaves have been in fridge at least 1 hour (up to 24 hours). Begin preheating oven when ready to bake.",
+      "notes": [
+        {
+          "text": "The fridge is your pause button. Shaped dough can sit 1-48 hours. Bake whenever it's convenient.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Longer cold proof = more tangy, complex flavor. 12-18 hours is the sweet spot for overnight.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT",
+      "title": "Preheat Oven + Dutch Oven",
+      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 450°F (230°C) for at least 45 minutes. The heavy pot needs time to fully saturate with heat.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven at 450°F (230°C) for at least 45 minutes, Dutch oven fully preheated",
+      "notes": [
+        {
+          "text": "Start preheating while the dough is still in the fridge. Do NOT let the dough warm up — bake straight from cold.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "SCORE",
+      "title": "Score the Dough",
+      "direction": "Remove the first loaf from fridge (leave the second in the fridge). Turn out onto a sheet of parchment paper (it will release from the floured towel). Using a bread lame or sharp knife, score an X pattern across the top — two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "First loaf scored with clean X pattern on parchment paper, ready for Dutch oven",
+      "notes": [
+        {
+          "text": "Score the dough cold — cold dough is firm and scores cleanly. Warm dough drags and tears.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Hold the blade at 90 degrees (straight down) for a boule. Deeper than you think — about 1 cm.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Use parchment paper as scoring and loading surface — score directly on parchment, then use it as a sling to lower into Dutch oven. Silicone slings cause sticking.",
+          "critical": false,
+          "source": "user"
+        },
+        {
+          "text": "Expect slightly less dramatic ear with whole grain dough compared to 100% bread flour — the bran weakens the surface tension that creates the ear. This is normal and does not affect flavor or crumb.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BAKE_COVERED",
+      "title": "Bake — Covered",
+      "direction": "Carefully remove the preheated Dutch oven. Lower the first scored loaf into the pot using the parchment as a sling. Cover with the lid. Return to oven. Bake at 450°F (230°C) for 20 minutes.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "20 minutes elapsed with lid on",
+      "notes": [
+        {
+          "text": "The lid traps steam from the dough, keeping the crust pliable for maximum oven spring and creating a glossy, blistered crust",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Be extremely careful — the Dutch oven is 450°F. Use oven mitts and move deliberately.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BAKE_UNCOVERED",
+      "title": "Bake — Uncovered",
+      "direction": "Remove the lid from the Dutch oven. Continue baking first loaf uncovered at 450°F (230°C) for 20-25 minutes until the crust is deep golden brown. When done, transfer to cooling rack. Score the second loaf (from fridge), load into the still-hot Dutch oven, and repeat the covered + uncovered bake.",
+      "duration_min": 22,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both loaves baked — deep golden brown crust, hollow sound when tapped, internal temp 205°F (96°C)",
+      "notes": [
+        {
+          "text": "Don't pull it early because it looks dark — a deep brown crust has the best flavor and crunch. Pale = undercooked.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record internal temperature immediately out of oven (target 205°F / 96°C)",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "COOL_ON_RACK",
+      "title": "Cool on Rack",
+      "direction": "Place both loaves on a wire rack. The first loaf gets extra cooling time while the second bakes. Let each loaf cool for at least 1 hour before slicing. The bread is still cooking internally as it cools.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Bread has cooled at least 1 hour, no longer hot to the touch",
+      "notes": [
+        {
+          "text": "Cutting too early = gummy interior. The starches are still setting as the bread cools. This is the hardest part — resist the urge.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "You'll hear the crust crackling as it cools. That's normal — it's called \"singing\" and means the crust is crisping up.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Rate crust color and ear",
+          "type": "observation"
+        }
+      ]
+    }
+  ],
+  "nutrition": {
+    "servings": 10,
+    "servingSize": "1 slice (per loaf, 10 slices each)",
+    "calculatedDate": "2026-03-09",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 1916.1,
+      "protein": 65.1,
+      "totalFat": 9.8,
+      "saturatedFat": 1.5,
+      "carbohydrates": 388.9,
+      "sugar": 1.7,
+      "fiber": 22.4,
+      "sodium": 3888.2
+    },
+    "perServing": {
+      "calories": 191.6,
+      "protein": 6.5,
+      "totalFat": 1.0,
+      "saturatedFat": 0.2,
+      "carbohydrates": 38.9,
+      "sugar": 0.2,
+      "fiber": 2.2,
+      "sodium": 388.8
+    },
+    "breakdown": [
+      {
+        "ingredientId": "bread_flour",
+        "ingredientName": "Bread Flour",
+        "amount": 400,
+        "fdcId": 168896,
+        "calories": 1444.0,
+        "protein": 47.9,
+        "totalFat": 6.6,
+        "saturatedFat": 1.0,
+        "carbohydrates": 290.1,
+        "sugar": 1.1,
+        "fiber": 9.6,
+        "sodium": 8.0
+      },
+      {
+        "ingredientId": "whole_wheat_flour",
+        "ingredientName": "Whole Wheat Flour",
+        "amount": 75,
+        "fdcId": 169761,
+        "calories": 255.0,
+        "protein": 9.9,
+        "totalFat": 1.9,
+        "saturatedFat": 0.3,
+        "carbohydrates": 54.4,
+        "sugar": 0.3,
+        "fiber": 8.0,
+        "sodium": 1.5
+      },
+      {
+        "ingredientId": "dark_rye_flour",
+        "ingredientName": "Dark Rye Flour",
+        "amount": 25,
+        "fdcId": 169747,
+        "calories": 81.3,
+        "protein": 2.7,
+        "totalFat": 0.7,
+        "saturatedFat": 0.1,
+        "carbohydrates": 17.2,
+        "sugar": 0.2,
+        "fiber": 3.9,
+        "sodium": 0.5
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 370,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1.5
+      },
+      {
+        "ingredientId": "sourdough_starter",
+        "ingredientName": "Sourdough Starter (100% hydration)",
+        "amount": 75,
+        "fdcId": null,
+        "calories": 135.8,
+        "protein": 4.5,
+        "totalFat": 0.6,
+        "saturatedFat": 0.1,
+        "carbohydrates": 27.2,
+        "sugar": 0.1,
+        "fiber": 0.9,
+        "sodium": 0.8
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 10,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3875.9
+      }
+    ]
+  },
+  "cook_log": [],
+  "research": {
+    "sources": [
+      { "name": "The Perfect Loaf", "url": "https://www.theperfectloaf.com/", "type": "adapted", "author": "Maurizio Leo" },
+      { "name": "King Arthur Baking", "url": "https://www.kingarthurbaking.com/", "type": "adapted" },
+      { "name": "Tartine Bread", "url": "https://www.thefreshloaf.com/node/64305/tartine-basic-country-bread", "type": "adapted", "author": "Chad Robertson" },
+      { "name": "Breadtopia", "url": "https://breadtopia.com/sourdough-rye-country-bread/", "type": "adapted" },
+      { "name": "The Clever Carrot", "url": "https://www.theclevercarrot.com/2020/06/whole-wheat-sourdough-bread/", "type": "adapted" },
+      { "name": "Simple Sourdough Bread (proofed.)", "type": "adapted" }
+    ],
+    "techniques": [
+      { "name": "80/15/5 flour blend", "sourcedFrom": "PF-166.1 spike — The Perfect Loaf, King Arthur, Tartine, Breadtopia", "rationale": "Pain de campagne sweet spot: 15% whole wheat for nutty earthiness, 5% dark rye for fruity spice complexity. Maximum flavor per unit of complexity added.", "confidence": "high" },
+      { "name": "74% hydration", "sourcedFrom": "King Arthur, yoursourdoughstart.com, The Perfect Loaf", "rationale": "+4% over base to compensate for bran absorption. Whole grain bran absorbs 2-3x its weight in water.", "confidence": "high" },
+      { "name": "15% starter inoculation", "sourcedFrom": "The Perfect Loaf, The Sourdough Framework, sourdoughtalk.com", "rationale": "Reduced from 20% to offset faster whole grain fermentation. Keeps same overnight window without over-proofing risk.", "confidence": "high" }
+    ],
+    "strategy": "Research spike (PF-166.1): 18 sources across baker blogs, flour manufacturer guides, sourdough community forums",
+    "sourceCount": 18,
+    "date": "2026-03-09"
+  },
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "350°F (175°C), 5–10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.",
+        "source": "agent"
+      },
+      {
+        "method": "Toaster",
+        "detail": "Slice and toast directly — best for day-old bread.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Cut-side down on a board, room temp, same day. Freeze sliced in zip-lock for up to 1 month.",
+        "source": "agent"
+      }
+    ]
+  }
+}

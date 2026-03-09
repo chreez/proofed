@@ -13,6 +13,7 @@
     { "id": "ny-style-pizza", "name": "NY-Style Pizza Dough", "file": "ny-style-pizza.json" },
     { "id": "carrot-cake", "name": "Carrot Cake with Brown Butter Cream Cheese Frosting", "file": "carrot-cake.json" },
     { "id": "simple-sourdough", "name": "Simple Sourdough Bread", "file": "simple-sourdough.json" },
+    { "id": "simple-sourdough-wheat", "name": "Whole Wheat Sourdough Bread", "file": "simple-sourdough-wheat.json" },
     { "id": "sourdough-cheddar-bay-biscuits", "name": "Sourdough Cheddar Bay Biscuits", "file": "sourdough-cheddar-bay-biscuits.json" },
     { "id": "sourdough-cheddar-cheese", "name": "Sourdough Cheddar Cheese Bread", "file": "sourdough-cheddar-cheese.json" },
     { "id": "sourdough-chocolate-chip-cookies", "name": "Sourdough Chocolate Chip Cookies", "file": "sourdough-chocolate-chip-cookies.json" },
