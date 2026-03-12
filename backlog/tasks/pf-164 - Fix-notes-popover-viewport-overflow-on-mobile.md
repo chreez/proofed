@@ -1,10 +1,10 @@
 ---
 id: PF-164
 title: Fix notes popover viewport overflow on mobile
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-03-05 05:03'
-updated_date: '2026-03-05 05:32'
+updated_date: '2026-03-05 06:01'
 labels:
   - bug (styling)
   - ux
@@ -25,11 +25,11 @@ ScratchpadNote popover (sticky note icon on each recipe step) frequently overflo
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 ScratchpadNote popover content is fully readable within viewport bounds on iPhone (375px width, no horizontal or vertical clipping)
-- [ ] #2 Popover with reminders (3+ reminder prompts) remains usable — all inputs reachable, all text visible
-- [ ] #3 Popover content is scrollable when it exceeds available viewport space
-- [ ] #4 Existing desktop popover behavior is not regressed
-- [ ] #5 Technique glossary tooltips and IconButton tooltips reviewed for same viewport clipping issues and fixed if affected
+- [x] #1 ScratchpadNote popover content is fully readable within viewport bounds on iPhone (375px width, no horizontal or vertical clipping)
+- [x] #2 Popover with reminders (3+ reminder prompts) remains usable — all inputs reachable, all text visible
+- [x] #3 Popover content is scrollable when it exceeds available viewport space
+- [x] #4 Existing desktop popover behavior is not regressed
+- [x] #5 Technique glossary tooltips and IconButton tooltips reviewed for same viewport clipping issues and fixed if affected
 <!-- AC:END -->
 
 ## Implementation Notes
