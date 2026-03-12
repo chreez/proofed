@@ -8,7 +8,7 @@ JSON-first recipe workflow system. Swap data, not code.
 - Recipes as JSON in `public/recipes/`
 
 ## Commands
-- `npm run dev` - Start dev server at http://localhost:5173
+- `npm run dev` - Start dev server (LAN-accessible, binds 0.0.0.0). Network URL printed on startup.
 - `npm run build` - Coverage + type-check + build (full gate)
 - `npm run coverage` - Run tests with coverage thresholds
 
@@ -57,12 +57,14 @@ Styling and visual tasks require explicit human sign-off before commit. This app
 
 1. **Before committing**, the agent MUST:
    - Ensure dev server is running (check port 5173, start `npm run dev` if needed)
+   - Detect the current LAN IP: `ipconfig getifaddr en0`
+   - Read the dev server output to confirm the Network URL and port (Vite prints it on startup)
    - Construct the most relevant URL for the change:
-     - Recipe page: `http://localhost:5173/recipe/atk-cinnamon-buns-ultimate`
+     - Recipe page: `http://<LAN_IP>:<PORT>/recipe/atk-cinnamon-buns-ultimate`
      - Specific section: append hash `#stage-prep`, `#cook-log-section`, `#version-history-section`
-     - Index page: `http://localhost:5173/`
+     - Index page: `http://<LAN_IP>:<PORT>/`
    - Open the URL with `open <url>` (macOS default browser)
-   - Print the iPhone URL: `http://192.168.1.213:5173/...` (same path)
+   - Print the iPhone URL using the same LAN IP and port
    - Present a **before/after description** of the visual changes
    - Ask the user to confirm the changes look correct on their device(s)
    - Wait for explicit user approval (e.g., "looks good", "approved", "ship it")

@@ -338,7 +338,7 @@ Populate HEB product data so the bake review page can show the cost picker.
 ```
 
 5. **Create directory** if needed: `mkdir -p public/review-data/{recipe-id}/{date}/`
-6. **ALWAYS open the bake review page** — this is the single review surface for BOTH photos and cost: `open http://192.168.1.213:5173/review/bake/{recipe-id}/{date}`
+6. **ALWAYS open the bake review page** — detect the LAN IP (`ipconfig getifaddr en0`) and open: `open http://<LAN_IP>:<PORT>/review/bake/{recipe-id}/{date}`
 7. **Tell the user**:
 
 ```

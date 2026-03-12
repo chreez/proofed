@@ -21,5 +21,8 @@ export default defineConfig({
   plugins: [vue(), UnoCSS(), devFavicon()],
   resolve: {
     alias: { '@': '/src' }
+  },
+  server: {
+    host: true
   }
 })

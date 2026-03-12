@@ -167,13 +167,11 @@ After each subagent returns, the orchestrator checks: **can more tasks be dispat
 ### Visual Review (2 items)
 1. PF-XX.1: {title}
    Before: {description}  After: {description}
-   Desktop: http://localhost:5173/{path}
-   iPhone: http://192.168.1.213:5173/{path}
+   URL: http://<LAN_IP>:<PORT>/{path}
 
 2. PF-XX.3: {title}
    Before: {description}  After: {description}
-   Desktop: http://localhost:5173/{path}
-   iPhone: http://192.168.1.213:5173/{path}
+   URL: http://<LAN_IP>:<PORT>/{path}
 
 ### Cook Log Clarify (1 item)
 3. PF-XX.2: {question needing clarification}

@@ -1,6 +1,6 @@
 /**
  * Shared clipboard utility with fallback for non-secure contexts.
- * navigator.clipboard requires HTTPS — on HTTP (e.g. LAN IP 192.168.1.213)
+ * navigator.clipboard requires HTTPS — on HTTP (e.g. LAN IP access)
  * we fall back to the legacy execCommand('copy') approach.
  */
 export async function copyToClipboard(text: string): Promise<void> {

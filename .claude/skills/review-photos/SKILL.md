@@ -62,7 +62,7 @@ Automated photo summary generation workflow. Reads processed photos via multimod
 ## Phase 4: Open Review
 
 1. Use `Bash` tool to open the review page: `open http://localhost:5173/review/photos/{recipeId}/{date}`
-2. Print the iPhone URL for user: `http://192.168.1.213:5173/review/photos/{recipeId}/{date}`
+2. Detect the LAN IP (`ipconfig getifaddr en0`) and print the mobile URL: `http://<LAN_IP>:<PORT>/review/photos/{recipeId}/{date}`
 3. Remind user to clear localStorage if they had a previous session:
    ```
    localStorage.removeItem('photo-review:{recipeId}:{date}')
