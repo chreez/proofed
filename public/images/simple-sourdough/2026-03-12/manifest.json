@@ -1,0 +1,31 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-03-12",
+  "processedAt": "2026-03-12T01:31:00.600Z",
+  "photos": [
+    {
+      "name": "both-loaves-finished",
+      "thumb": "both-loaves-finished-400w.webp",
+      "src": "both-loaves-finished-800w.webp",
+      "summary": "Both finished loaves side by side. Second loaf (no linen banneton) on wire rack in foreground with heavy blistering, deep golden-brown crust, and strong cross score. First loaf (linen banneton, ice cube) in background on a white cloth, noticeably paler and flatter."
+    },
+    {
+      "name": "first-loaf-cooling-cross-score",
+      "thumb": "first-loaf-cooling-cross-score-400w.webp",
+      "src": "first-loaf-cooling-cross-score-800w.webp",
+      "summary": "First loaf cooling on a wire rack, top-down view. Cross score with moderate spring, golden but paler crust than recent bakes. This loaf proofed with linen liner and had an ice cube thrown into the Challenger."
+    },
+    {
+      "name": "mixing-dough-closeup-video-frame",
+      "thumb": "mixing-dough-closeup-video-frame-400w.webp",
+      "src": "mixing-dough-closeup-video-frame-800w.webp",
+      "summary": "Dough ball on a silicone baking mat during fermentolyse rest, about 20 minutes after mixing flour, water, and starter. Smooth and cohesive surface with good tension."
+    },
+    {
+      "name": "mixing-dough-video-frame",
+      "thumb": "mixing-dough-video-frame-400w.webp",
+      "src": "mixing-dough-video-frame-800w.webp",
+      "summary": "Dough on a silicone baking mat during fermentolyse rest. Rougher surface with visible fold lines, bench scraper nearby. Pre-salt stage."
+    }
+  ]
+}

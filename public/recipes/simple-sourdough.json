@@ -1374,6 +1374,96 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-03-12",
+      "start_date": "2026-03-10",
+      "version": "v2.0.0",
+      "summary": "Eighth bake, 2-loaf. Tested linen vs no-linen banneton again — no-linen loaf came out much better with heavy blistering and better spring. First loaf felt flat and slack out of the fridge; threw an ice cube in the Challenger for steam but it may have hurt oven spring. Giving the second loaf away so no crumb shot.",
+      "notes": [
+        "Fermentolyse — mixed flour, water, starter at 77.4°F. Salt added ~30 min later at first stretch and fold.",
+        "Dough temp tracked across session: 77.9°F (S&F #1), 77.5°F (S&F #2), 77.4°F, 76.8°F, 76.1°F — steady decline through the evening.",
+        "~3 stretch and folds total. May not have logged every one — was mainly tracking temperature.",
+        "Aliquot hit 30% rise around 12:14am (~4.5 hours after mix).",
+        "One banneton with linen liner, one without — continuing the comparison from last bake.",
+        "First loaf felt flat and slack coming out of the fridge. Scored it but the dough felt lame — weak, not holding shape.",
+        "Threw an ice cube into the Challenger with the first loaf for extra steam. Hunch is that it ruined the oven spring, but still unsure.",
+        "Second loaf (no linen banneton) shaped much better and came out with heavier blistering and better spring.",
+        "Theory: linen liner may be absorbing moisture from the dough during cold proof. Two bakes now show better results without it.",
+        "Preheat 500°F for 30+ min, covered at 450°F for 20 min, uncovered at 425°F for ~22 min per loaf.",
+        "Cross score on both. 100% bread flour.",
+        "Couldn't cut into the second loaf — giving it away."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-03-12/mixing-dough-video-frame-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-12/mixing-dough-video-frame-400w.webp",
+          "alt": "Dough on a silicone baking mat during fermentolyse rest. Rougher surface with visible fold lines, bench scraper nearby. Pre-salt stage."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-12/mixing-dough-closeup-video-frame-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-12/mixing-dough-closeup-video-frame-400w.webp",
+          "alt": "Dough ball on a silicone baking mat during fermentolyse rest, about 20 minutes after mixing flour, water, and starter. Smooth and cohesive surface with good tension."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-12/first-loaf-cooling-cross-score-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-12/first-loaf-cooling-cross-score-400w.webp",
+          "alt": "First loaf cooling on a wire rack, top-down view. Cross score with moderate spring, golden but paler crust than recent bakes. This loaf proofed with linen liner and had an ice cube thrown into the Challenger."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-12/both-loaves-finished-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-12/both-loaves-finished-400w.webp",
+          "alt": "Both finished loaves side by side. Second loaf (no linen banneton) on wire rack in foreground with heavy blistering, deep golden-brown crust, and strong cross score. First loaf (linen banneton, ice cube) in background on a white cloth, noticeably paler and flatter."
+        }
+      ],
+      "next_time": [
+        { "text": "Drop linen liner from banneton — two bakes show better shape without it" },
+        { "text": "Skip ice cube in Challenger — may hurt oven spring (still investigating)" },
+        { "text": "Try different flours for more complexity (whole wheat, rye blend)" }
+      ],
+      "cost": {
+        "total": 2.64,
+        "perServing": 1.32,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.11
+          }
+        ]
+      }
     }
   ],
   "research": {
