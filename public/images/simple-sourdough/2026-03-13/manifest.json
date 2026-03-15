@@ -1,0 +1,31 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-03-13",
+  "processedAt": "2026-03-15T22:11:56.877Z",
+  "photos": [
+    {
+      "name": "img-7077",
+      "thumb": "img-7077-400w.webp",
+      "src": "img-7077-800w.webp",
+      "summary": "Shaggy dough in glass mixing bowl after initial fermentolyse mix. Hand holding a thermometer syringe, aliquot jar nearby, salt in a small prep bowl, bench scraper on counter. Pre-salt stage."
+    },
+    {
+      "name": "img-7079",
+      "thumb": "img-7079-400w.webp",
+      "src": "img-7079-800w.webp",
+      "summary": "Finished boule on a white cutting board — cross score with good spring, golden-brown blistered crust with visible banneton ring pattern from proofing without linen liner."
+    },
+    {
+      "name": "img-7083",
+      "thumb": "img-7083-400w.webp",
+      "src": "img-7083-800w.webp",
+      "summary": "Crumb shot — hand holding half a loaf showing open, airy crumb with large irregular holes and good structure throughout. A heel piece visible on cutting board behind."
+    },
+    {
+      "name": "img-7086",
+      "thumb": "img-7086-400w.webp",
+      "src": "img-7086-800w.webp",
+      "summary": "Both finished loaves on a cutting board — front loaf cut open showing crumb cross-section with even hole structure, second whole loaf behind it with cross score and blistered crust. Dog on couch in background."
+    }
+  ]
+}

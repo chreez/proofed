@@ -1464,6 +1464,91 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-03-13",
+      "start_date": "2026-03-12",
+      "version": "v2.0.0",
+      "actual_yield": { "value": 2, "unit": "loaves" },
+      "summary": "Ninth and final bake of a 2-month stretch. Both bannetons no-linen for the first time — both loaves came out perfect. Used 150g HMart wheat flour when bread flour ran out. One loaf eaten in a day, gave the other to Sam.",
+      "notes": [
+        "Fermentolyse — forgot to measure dough temp before adding salt. 80.8°F after mixing in salt.",
+        "Aliquot sample taken at mix — already at 10% rise, adjusted target accordingly.",
+        "Dough temps across folds: 80.2°F (S&F #1), 79.7°F (S&F #2), ~79°F (S&F #3). Warm kitchen ~80°F, top of dishwasher adding heat.",
+        "Ran out of bread flour — used 150g of a wheat flour from HMart (label said \"wheat flour,\" unsure if whole wheat). ~850g bread flour + 150g HMart flour.",
+        "Dough was noticeably more elastic during folds — warm ambient temps helping.",
+        "Targeted 40% aliquot rise, not strict on schedule.",
+        "Both bannetons without linen liner — first time going all no-linen. Both loaves came out perfect.",
+        "First loaf: uncovered after ~18 min, checked doneness.",
+        "Re-preheated oven at 500°F for 30 min between loaves. Second loaf: covered at 450°F for 20 min.",
+        "Back-to-back bake with the previous session — mixed right after finishing bake #8."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-03-13/img-7077-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-13/img-7077-400w.webp",
+          "alt": "Shaggy dough in glass mixing bowl after initial fermentolyse mix. Hand holding a thermometer syringe, aliquot jar nearby, salt in a small prep bowl, bench scraper on counter. Pre-salt stage."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-13/img-7079-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-13/img-7079-400w.webp",
+          "alt": "Finished boule on a white cutting board — cross score with good spring, golden-brown blistered crust with visible banneton ring pattern from proofing without linen liner."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-13/img-7083-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-13/img-7083-400w.webp",
+          "alt": "Crumb shot — hand holding half a loaf showing open, airy crumb with large irregular holes and good structure throughout. A heel piece visible on cutting board behind."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-13/img-7086-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-13/img-7086-400w.webp",
+          "alt": "Both finished loaves on a cutting board — front loaf cut open showing crumb cross-section with even hole structure, second whole loaf behind it with cross score and blistered crust. Dog on couch in background."
+        }
+      ],
+      "next_time": [],
+      "cost": {
+        "total": 2.64,
+        "perServing": 1.32,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.11
+          }
+        ]
+      }
     }
   ],
   "research": {

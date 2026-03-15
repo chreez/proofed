@@ -1,0 +1,117 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-03-13",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "bread_flour",
+      "name": "Bread Flour",
+      "recipeAmount": 1000,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B The Baker's Scoop Bread Flour",
+          "brand": "H-E-B",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 3.78,
+          "salePrice": null,
+          "unitPrice": "$0.05/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 5.58,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "10 lbs",
+          "sizeGrams": 4536,
+          "price": 10.99,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Unbleached Bread Flour",
+          "brand": "H-E-B Organics",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Organic Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lb",
+          "sizeGrams": 2268,
+          "price": 7.87,
+          "salePrice": null,
+          "unitPrice": "$0.10/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "water",
+      "name": "Water",
+      "recipeAmount": 700,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "starter",
+      "name": "Active Sourdough Starter",
+      "recipeAmount": 200,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Fine Sea Salt",
+      "recipeAmount": 20,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Morton Fine Sea Salt",
+          "brand": "Morton",
+          "size": "17.6 oz",
+          "sizeGrams": 499,
+          "price": 2.62,
+          "salePrice": null,
+          "unitPrice": "$0.15/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
+          "brand": "H-E-B",
+          "size": "26.5 oz",
+          "sizeGrams": 751,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Southern Style Spices Bulk Fine California Sea Salt",
+          "brand": "Southern Style Spices",
+          "size": "1 lb",
+          "sizeGrams": 454,
+          "price": 2.78,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        }
+      ]
+    }
+  ]
+}
