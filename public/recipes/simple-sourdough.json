@@ -1549,6 +1549,81 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-03-18",
+      "start_date": "2026-03-17",
+      "version": "v2.0.0",
+      "actual_yield": { "value": 2, "unit": "loaves" },
+      "summary": "Tenth bake, 2-loaf. Fermentolyse on a chilly day — dough temps ran cool (73-76°F). Hit 30% aliquot rise, standard shaping and cold proof. Both bannetons no-linen. Cross score. Loaves felt lighter than previous bakes.",
+      "notes": [
+        "Fermentolyse — mixed flour, water, starter first. Held back 25g water for salt incorporation.",
+        "Added salt + 25g reserved water. Dough temp ~76°F at salt addition. Aliquot sample taken.",
+        "3 stretch & folds at ~30 min intervals. Dough temps: 75°F (S&F #1), 74°F (S&F #2), ~74°F (S&F #3). Chilly day.",
+        "Bulk hit 30% aliquot rise at 73°F, roughly 2.5 hours after last fold.",
+        "Turned out, pre-shaped, bench rest ~25 min, then final shaped.",
+        "Both bannetons without linen liner.",
+        "Rested room temp ~1 hour after shaping, then into fridge for cold retard.",
+        "Cross score on both loaves. Baked in Challenger — standard covered/uncovered, ~18 min uncovered on one loaf.",
+        "100% bread flour, 700g total water.",
+        "Loaves felt lighter than previous bakes."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-03-18/crumb-shot-quarter-cut-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-18/crumb-shot-quarter-cut-400w.webp",
+          "alt": "Whole loaf on wire rack alongside a quarter-cut piece on a cutting board showing the crumb. Crumb is even with moderate hole structure — tighter than recent bakes. Banneton ring pattern visible on the whole loaf's crust."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-18/finished-boule-on-rack-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-18/finished-boule-on-rack-400w.webp",
+          "alt": "Finished sourdough boule cooling on a wire rack. Golden-brown blistered crust with banneton ring pattern from no-linen proofing. Single score line opened with good spring. Olive oil bottle and grinders in background."
+        }
+      ],
+      "next_time": [],
+      "cost": {
+        "total": 2.64,
+        "perServing": 1.32,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.11
+          }
+        ]
+      }
     }
   ],
   "research": {

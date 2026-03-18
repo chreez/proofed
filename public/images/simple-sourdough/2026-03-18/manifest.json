@@ -1,0 +1,19 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-03-18",
+  "processedAt": "2026-03-18T20:11:35.682Z",
+  "photos": [
+    {
+      "name": "crumb-shot-quarter-cut",
+      "thumb": "crumb-shot-quarter-cut-400w.webp",
+      "src": "crumb-shot-quarter-cut-800w.webp",
+      "summary": "Whole loaf on wire rack alongside a quarter-cut piece on a cutting board showing the crumb. Crumb is even with moderate hole structure — tighter than recent bakes. Banneton ring pattern visible on the whole loaf's crust."
+    },
+    {
+      "name": "finished-boule-on-rack",
+      "thumb": "finished-boule-on-rack-400w.webp",
+      "src": "finished-boule-on-rack-800w.webp",
+      "summary": "Finished sourdough boule cooling on a wire rack. Golden-brown blistered crust with banneton ring pattern from no-linen proofing. Single score line opened with good spring. Olive oil bottle and grinders in background."
+    }
+  ]
+}
