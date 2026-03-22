@@ -8,8 +8,8 @@
       "author": "Jacob Burton"
     },
     "yields": "2 pizzas",
-    "total_time": "~4 hrs (45 min active)",
-    "description": "Classic NY-style pizza dough with a 30-minute autolyse and stand mixer knead. A 62% hydration dough that stretches thin with a puffy, foldable crust."
+    "total_time": "~3 days (45 min active)",
+    "description": "Classic NY-style pizza dough with a 30-minute autolyse and stand mixer knead. A 62% hydration dough that stretches thin with a puffy, foldable crust. 3-day cold ferment for maximum flavor and extensibility."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -21,8 +21,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.3.0",
+  "version": "v1.4.0",
   "change_log": [
+    {
+      "version": "v1.4.0",
+      "date": "2026-03-21",
+      "summary": "Rewrote dough procedure to 3-day cold ferment default (mix → 1h RT rest → overnight cold bulk → divide → 1-2 day cold proof → temper 1h). Removed sugar from formula (optional note for low-temp ovens). Added hard Italian cheese (Parm/Pecorino) to topping order. Updated vessels from pizza stone to baking steel."
+    },
     {
       "version": "v1.3.0",
       "date": "2026-02-12",
@@ -254,7 +259,7 @@
         },
         {
           "src": "/images/ny-style-pizza/2026-02-18/02-pizza-one-closeup-800w.webp",
-          "thumb": "/images/ny-style-pizza/2026-02-18/02-pizza-one-closeup-400w.webp",
+          "thumb": "/images/ny-style-pizza/2026-02-18/02-pizza-one-closeup-800w.webp",
           "alt": "Close-up of finished pepperoni and jalapeño pizza — fresh jalapeño rings over cupped pepperoni, leopard-spotted cornicione, melted TJ's mozz with good browning"
         }
       ],
@@ -417,7 +422,7 @@
     },
     {
       "id": "V4",
-      "name": "Pizza Stone",
+      "name": "Baking Steel",
       "reuse": "Preheat → bake"
     },
     {
@@ -434,7 +439,7 @@
           "Stand Mixer with Dough Hook",
           "Large Bowl",
           "Sheet Tray with Parchment",
-          "Pizza Stone",
+          "Baking Steel",
           "Wooden Pizza Peel"
         ],
         "equipment": [
@@ -481,13 +486,6 @@
             "breakdown": null
           },
           {
-            "id": "sugar",
-            "name": "Sugar",
-            "total": 19,
-            "unit": "g",
-            "breakdown": null
-          },
-          {
             "id": "cornmeal",
             "name": "Cornmeal",
             "total": 13,
@@ -508,6 +506,14 @@
             "unit": "g",
             "breakdown": null,
             "note": "Low-moisture, high-fat, whole milk mozzarella is mandatory — it shreds clean and melts right"
+          },
+          {
+            "id": "hard_cheese",
+            "name": "Parmigiano-Reggiano or Pecorino Romano",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null,
+            "note": "Freshly grated — adds a savory base layer under the mozzarella"
           },
           {
             "id": "pepperoni",
@@ -548,7 +554,8 @@
       "gather": null,
       "states": [
         "ROUND_DOUGH",
-        "BULK_FERMENT_REST"
+        "ROOM_TEMP_REST",
+        "COLD_BULK_FERMENT"
       ]
     },
     {
@@ -558,7 +565,8 @@
       "states": [
         "DIVIDE_PORTIONS",
         "ROUND_PORTIONS",
-        "PROOF_PORTIONS"
+        "COLD_PROOF",
+        "TEMPER_DOUGH"
       ]
     },
     {
@@ -566,7 +574,7 @@
       "title": "Assembly",
       "gather": null,
       "states": [
-        "PREHEAT_STONE",
+        "PREHEAT_STEEL",
         "STRETCH_DOUGH",
         "TOP_PIZZA"
       ]
@@ -585,7 +593,7 @@
     {
       "id": "PREP_WORKSPACE",
       "title": "Prepare Workspace",
-      "direction": "Gather all vessels, equipment, and ingredients. Weigh out bread flour, water, yeast, olive oil, salt, and sugar into separate containers.",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out bread flour, water, yeast, olive oil, and salt into separate containers.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -626,7 +634,7 @@
     {
       "id": "AUTOLYSE_REST",
       "title": "Autolyse Rest",
-      "direction": "Cover the mixer bowl with plastic wrap and let the dough rest for 30 minutes at room temperature. Do not add salt, oil, or sugar yet.",
+      "direction": "Cover the mixer bowl with plastic wrap and let the dough rest for 30 minutes at room temperature. Do not add salt or oil yet.",
       "duration_min": 30,
       "timer": true,
       "parallel": false,
@@ -643,7 +651,7 @@
     {
       "id": "ADD_ENRICHMENTS",
       "title": "Add Enrichments",
-      "direction": "Add 18g olive oil, 19g sugar, and 8g salt to the autolyse dough in the mixer bowl (V1).",
+      "direction": "Add 18g olive oil and 8g salt to the autolyse dough in the mixer bowl (V1).",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -653,23 +661,19 @@
           "amount": "18g"
         },
         {
-          "name": "Sugar",
-          "amount": "19g"
-        },
-        {
           "name": "Salt",
           "amount": "8g"
         }
       ],
-      "exit_condition": "Oil, sugar, and salt added on top of the dough, ready for kneading",
+      "exit_condition": "Oil and salt added on top of the dough, ready for kneading",
       "notes": [
         {
-          "text": "Olive oil adds extensibility and browning to the crust. Sugar promotes Maillard browning.",
+          "text": "Olive oil adds extensibility and browning to the crust.",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "At 550°F with a preheated steel/stone, the 19g sugar may cause excessive browning. Consider reducing to 10g or omitting entirely if your oven runs hot — the Maillard reaction on the flour proteins provides sufficient browning at these temperatures.",
+          "text": "Sugar has been removed from the default formula. At 550°F with a preheated steel, the Maillard reaction on flour proteins provides sufficient browning without added sugar. For ovens below 500°F, consider adding 10-19g sugar for Maillard browning.",
           "critical": false,
           "source": "agent"
         }
@@ -727,17 +731,34 @@
       "notes": null
     },
     {
-      "id": "BULK_FERMENT_REST",
-      "title": "Bulk Ferment",
-      "direction": "Place the rounded dough into a lightly oiled large bowl (V2). Cover with plastic wrap and let ferment at room temperature for 2 hours.",
-      "duration_min": 120,
+      "id": "ROOM_TEMP_REST",
+      "title": "Room Temperature Rest",
+      "direction": "Place the rounded dough into a lightly oiled large bowl (V2). Cover with plastic wrap and let rest at room temperature for 1 hour before transferring to the fridge.",
+      "duration_min": 60,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has roughly doubled in size, approximately 2 hours elapsed",
+      "exit_condition": "1 hour elapsed, dough has begun initial fermentation at room temperature",
       "notes": [
         {
-          "text": "For more complex flavor, skip the room-temperature rise and cold ferment overnight in the fridge (8–16 hours). Remove 1 hour before dividing to take the chill off.",
+          "text": "This hour at room temp lets the yeast activate before the cold slows it down. Skipping this can lead to underfermented dough.",
+          "critical": false,
+          "source": "user"
+        }
+      ]
+    },
+    {
+      "id": "COLD_BULK_FERMENT",
+      "title": "Cold Bulk Ferment",
+      "direction": "Transfer the covered bowl (V2) to the refrigerator. Cold ferment for 8–16 hours (overnight). The dough will rise slowly and develop complex flavor.",
+      "duration_min": 720,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has roughly doubled in size after 8–16 hours in the fridge",
+      "notes": [
+        {
+          "text": "Cold fermentation develops more complex, tangy flavors than a room temperature bulk. The slow rise also strengthens the gluten network for better extensibility.",
           "critical": false,
           "source": "user"
         }
@@ -746,23 +767,23 @@
     {
       "id": "DIVIDE_PORTIONS",
       "title": "Divide Portions",
-      "direction": "Turn the fermented dough out onto a lightly floured surface. Using a bench scraper, divide into 2 equal portions of approximately 388g each.",
+      "direction": "Remove the fermented dough from the fridge. Turn it out onto a lightly floured surface. Using a bench scraper, divide into 2 equal portions of approximately 383g each.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough divided into 2 portions of approximately 388g each",
+      "exit_condition": "Dough divided into 2 portions of approximately 383g each",
       "notes": null
     },
     {
       "id": "ROUND_PORTIONS",
       "title": "Round Portions",
-      "direction": "Flatten each portion into a disc, then tuck the edges underneath to form a tight round ball. Place each ball on a parchment-lined sheet tray (V3) sprayed with non-stick spray. Spray the tops of the dough balls with non-stick spray, then cover loosely with plastic wrap.",
+      "direction": "Flatten each portion into a disc, then tuck the edges underneath to form a tight round ball. Place each ball on a parchment-lined sheet tray (V3) sprayed with non-stick spray. Spray the tops of the dough balls with non-stick spray, then cover loosely with plastic wrap. Return to the refrigerator.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Both portions rounded, placed on parchment-lined tray, sprayed, and covered with plastic wrap",
+      "exit_condition": "Both portions rounded, placed on parchment-lined tray, sprayed, covered with plastic wrap, and returned to fridge",
       "notes": [
         {
           "text": "The non-stick spray on top prevents the plastic wrap from sticking and tearing the dough skin during proofing",
@@ -772,39 +793,56 @@
       ]
     },
     {
-      "id": "PROOF_PORTIONS",
-      "title": "Proof Portions",
-      "direction": "Let the dough balls proof at room temperature for 1 to 1.5 hours. They should puff up and feel light and airy.",
-      "duration_min": 75,
-      "timer": true,
+      "id": "COLD_PROOF",
+      "title": "Cold Proof",
+      "direction": "Let the dough balls proof in the refrigerator for 1 to 2 days. The long cold proof develops flavor and makes the dough incredibly extensible.",
+      "duration_min": 2880,
+      "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough balls are puffy and visibly expanded, spring back slowly when gently poked",
+      "exit_condition": "Dough balls have visibly expanded after 1–2 days in the fridge, surface is smooth and slightly puffy",
       "notes": [
         {
-          "text": "For even more flavor development, proof in the refrigerator for 12–24 hours instead. Remove 30–60 minutes before stretching to take the chill off.",
+          "text": "A 2-day cold proof produces noticeably better flavor and extensibility than 1 day. The dough stretches with almost no spring-back.",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Begin preheating the oven and pizza stone at least 45 minutes before you plan to bake",
+          "text": "Begin preheating the oven and baking steel at least 45 minutes before you plan to bake",
           "critical": true,
           "source": "user"
         }
       ]
     },
     {
-      "id": "PREHEAT_STONE",
-      "title": "Preheat Pizza Stone",
-      "direction": "Place the pizza stone (V4) on the middle oven rack. Preheat the oven to 550°F (288°C). Allow at least 45 minutes for the stone to fully saturate with heat.",
+      "id": "TEMPER_DOUGH",
+      "title": "Temper Dough",
+      "direction": "Remove the dough balls from the refrigerator and let them sit at room temperature for 1 hour. Cold dough is difficult to stretch and will spring back.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Dough balls are at room temperature, relaxed, and easy to press with a finger",
+      "notes": [
+        {
+          "text": "Start preheating the oven during this step — by the time the dough is tempered, the steel will be fully saturated with heat",
+          "critical": false,
+          "source": "user"
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT_STEEL",
+      "title": "Preheat Baking Steel",
+      "direction": "Place the baking steel (V4) on the middle oven rack. Preheat the oven to 550°F (288°C). Allow at least 45 minutes for the steel to fully saturate with heat.",
       "duration_min": 45,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven at 550°F (288°C) and stone fully preheated for at least 45 minutes",
+      "exit_condition": "Oven at 550°F (288°C) and steel fully preheated for at least 45 minutes",
       "notes": [
         {
-          "text": "A fully preheated stone is essential — it provides the intense bottom heat that creates a properly charred NY-style crust",
+          "text": "A fully preheated steel is essential — it provides the intense bottom heat that creates a properly charred NY-style crust",
           "critical": true,
           "source": "user"
         }
@@ -840,7 +878,7 @@
     {
       "id": "TOP_PIZZA",
       "title": "Top Pizza",
-      "direction": "Spread 88g raw San Marzano tomato sauce over the dough, leaving a 2cm border for the crust. Add any non-cheese toppings. Top with 175g low-moisture mozzarella, torn or shredded. Place 88g pepperoni on top of the cheese so it browns and crisps directly.",
+      "direction": "Spread 88g raw San Marzano tomato sauce over the dough, leaving a 2cm border for the crust. Grate 20g Parmigiano-Reggiano or Pecorino Romano evenly over the sauce. Top with 175g low-moisture mozzarella, torn or shredded. Place 88g pepperoni on top of the cheese so it browns and crisps directly.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -848,6 +886,10 @@
         {
           "name": "Raw San Marzano Tomato Sauce",
           "amount": "88g"
+        },
+        {
+          "name": "Parmigiano-Reggiano or Pecorino Romano",
+          "amount": "20g"
         },
         {
           "name": "Low-Moisture Mozzarella",
@@ -858,7 +900,7 @@
           "amount": "88g"
         }
       ],
-      "exit_condition": "Pizza topped with sauce, cheese, and pepperoni (pepperoni on top of cheese)",
+      "exit_condition": "Pizza topped in order: sauce, grated hard cheese, mozzarella, pepperoni on top",
       "notes": [
         {
           "text": "Pepperoni goes on top of the cheese — this is intentional so it browns, crisps, and cups up during baking",
@@ -880,7 +922,7 @@
     {
       "id": "BAKE_PIZZA",
       "title": "Bake Pizza",
-      "direction": "Open the oven and slide the pizza from the peel onto the preheated stone (V4) with a quick forward-and-back motion. Bake at 550°F (288°C) for 8–12 minutes. Repeat the stretch, top, and bake process for the second pizza.",
+      "direction": "Open the oven and slide the pizza from the peel onto the preheated steel (V4) with a quick forward-and-back motion. Bake at 550°F (288°C) for 8–12 minutes. Repeat the stretch, top, and bake process for the second pizza.",
       "duration_min": 10,
       "timer": true,
       "parallel": false,
@@ -915,27 +957,27 @@
   "nutrition": {
     "servings": 2,
     "servingSize": "1 pizza",
-    "calculatedDate": "2026-02-08",
+    "calculatedDate": "2026-03-21",
     "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 3943.2,
-      "protein": 188.2,
-      "totalFat": 173.9,
-      "saturatedFat": 74,
-      "carbohydrates": 394.8,
-      "sugar": 32.4,
+      "calories": 4027.6,
+      "protein": 202.6,
+      "totalFat": 184.5,
+      "saturatedFat": 80.6,
+      "carbohydrates": 377.1,
+      "sugar": 13.7,
       "fiber": 16.2,
-      "sodium": 8847
+      "sodium": 9506.7
     },
     "perServing": {
-      "calories": 1971.6,
-      "protein": 94.1,
-      "totalFat": 87,
-      "saturatedFat": 37,
-      "carbohydrates": 197.4,
-      "sugar": 16.2,
+      "calories": 2013.8,
+      "protein": 101.3,
+      "totalFat": 92.3,
+      "saturatedFat": 40.3,
+      "carbohydrates": 188.6,
+      "sugar": 6.9,
       "fiber": 8.1,
-      "sodium": 4423.5
+      "sodium": 4753.4
     },
     "breakdown": [
       {
@@ -1009,20 +1051,6 @@
         "sodium": 3100.7
       },
       {
-        "ingredientId": "sugar",
-        "ingredientName": "Sugar",
-        "amount": 19,
-        "fdcId": 169655,
-        "calories": 73.6,
-        "protein": 0,
-        "totalFat": 0,
-        "saturatedFat": 0,
-        "carbohydrates": 19,
-        "sugar": 19,
-        "fiber": 0,
-        "sodium": 0.3
-      },
-      {
         "ingredientId": "cornmeal",
         "ingredientName": "Cornmeal",
         "amount": 13,
@@ -1063,6 +1091,20 @@
         "sugar": 3.5,
         "fiber": 0,
         "sodium": 2194.5
+      },
+      {
+        "ingredientId": "hard_cheese",
+        "ingredientName": "Parmigiano-Reggiano",
+        "amount": 40,
+        "fdcId": 170848,
+        "calories": 158,
+        "protein": 14.4,
+        "totalFat": 10.6,
+        "saturatedFat": 6.6,
+        "carbohydrates": 1.3,
+        "sugar": 0.3,
+        "fiber": 0,
+        "sodium": 660
       },
       {
         "ingredientId": "pepperoni",
