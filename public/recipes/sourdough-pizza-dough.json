@@ -21,8 +21,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-03-21",
+      "summary": "Add sugar substitute instruction to fermentolyse step — 5g granulated sugar in place of diastatic malt when unavailable."
+    },
     {
       "version": "v1.0.0",
       "date": "2026-03-21",
@@ -225,7 +230,7 @@
     {
       "id": "MIX_FERMENTOLYSE",
       "title": "Mix Fermentolyse",
-      "direction": "In the large mixing bowl (V1), combine 413g bread flour, 238g water, 100g sourdough starter, and 4g diastatic malt powder. Mix with a wet hand or dough whisk until no dry flour remains. Do not add salt yet.",
+      "direction": "In the large mixing bowl (V1), combine 413g bread flour, 238g water, and 100g sourdough starter. Add 4g diastatic malt powder — or if substituting, add 5g granulated sugar instead. Mix with a wet hand or dough whisk until no dry flour remains. Do not add salt yet.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,

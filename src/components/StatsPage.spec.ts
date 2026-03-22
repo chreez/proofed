@@ -1513,6 +1513,7 @@ describe('StatsPage', () => {
     const entry = document.querySelector('.ds3-timeline-popover-entry') as HTMLElement
     expect(entry).toBeTruthy()
     entry.click()
+    await flushPromises()
     await nextTick()
 
     expect(mockPush).toHaveBeenCalledWith({
