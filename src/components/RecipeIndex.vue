@@ -61,6 +61,7 @@ const categoryMap: Record<string, string> = {
   'sourdough-cinnamon-buns': 'baking',
   'ny-pizza-sauce': 'pizza & dough',
   'ny-style-pizza': 'pizza & dough',
+  'sourdough-pizza-dough': 'pizza & dough',
   'coco-curry': 'mains',
   'ichiran-ramen': 'mains',
   'tomita-tsukemen': 'mains',

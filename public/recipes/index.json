@@ -17,6 +17,7 @@
     { "id": "sourdough-cheddar-bay-biscuits", "name": "Sourdough Cheddar Bay Biscuits", "file": "sourdough-cheddar-bay-biscuits.json" },
     { "id": "sourdough-cheddar-cheese", "name": "Sourdough Cheddar Cheese Bread", "file": "sourdough-cheddar-cheese.json" },
     { "id": "sourdough-chocolate-chip-cookies", "name": "Sourdough Chocolate Chip Cookies", "file": "sourdough-chocolate-chip-cookies.json" },
-    { "id": "sourdough-cinnamon-buns", "name": "Sourdough Cinnamon Buns", "file": "sourdough-cinnamon-buns.json" }
+    { "id": "sourdough-cinnamon-buns", "name": "Sourdough Cinnamon Buns", "file": "sourdough-cinnamon-buns.json" },
+    { "id": "sourdough-pizza-dough", "name": "Sourdough Pizza Dough", "file": "sourdough-pizza-dough.json" }
   ]
 }

@@ -1,0 +1,690 @@
+{
+  "meta": {
+    "name": "Sourdough Pizza Dough",
+    "source": {
+      "name": "Multi-source synthesis",
+      "url": "https://www.theperfectloaf.com/sourdough-pizza-dough-and-recipes/",
+      "type": "adapted",
+      "author": "Primary: Maurizio Leo (The Perfect Loaf)"
+    },
+    "yields": "2 pizzas",
+    "total_time": "~2–3 days (1h active)",
+    "description": "Sourdough variant of the NY-Style Pizza Dough. Replaces commercial yeast with 100g active starter, uses fermentolyse + stretch-and-fold instead of autolyse + stand mixer, and adds diastatic malt powder to compensate for acid-inhibited Maillard browning at 550°F."
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Pizza",
+      "defaultYield": 2,
+      "unit": "pizzas",
+      "servingsPerItem": 8,
+      "servingUnit": "slices"
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-03-21",
+      "summary": "Initial recipe from multi-agent research synthesis. Sourdough variant of NY-Style Pizza Dough v1.4.0 — fermentolyse, stretch-and-fold, diastatic malt, no olive oil."
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Mix dough → bulk ferment"
+    },
+    {
+      "id": "V2",
+      "name": "Sheet Tray with Parchment",
+      "reuse": "Proofing portioned dough balls"
+    },
+    {
+      "id": "V3",
+      "name": "Baking Steel"
+    },
+    {
+      "id": "V4",
+      "name": "Wooden Pizza Peel"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Mixing Bowl",
+          "Sheet Tray with Parchment",
+          "Baking Steel",
+          "Wooden Pizza Peel"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Bench Scraper",
+          "Plastic Wrap",
+          "Non-Stick Spray",
+          "Wire Rack",
+          "Instant-Read Thermometer"
+        ],
+        "ingredients": [
+          {
+            "id": "bread_flour",
+            "name": "Bread Flour",
+            "total": 413,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+            "confidence": "high",
+            "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 238,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Derived: base 288g - 50g starter water",
+            "confidence": "high",
+            "rationale": "Maintains 62% effective hydration when combined with starter water"
+          },
+          {
+            "id": "sourdough_starter",
+            "name": "Sourdough Starter (100% Hydration)",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+            "confidence": "high",
+            "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+          },
+          {
+            "id": "salt",
+            "name": "Salt",
+            "total": 8,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+            "confidence": "high",
+            "rationale": "~1.7% of total flour weight (463g)"
+          },
+          {
+            "id": "diastatic_malt",
+            "name": "Diastatic Malt Powder",
+            "total": 4,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+            "confidence": "medium",
+            "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F",
+            "note": "Substitute: 5g granulated sugar (1% of total flour) if malt is unavailable. Add at the same step. At 1%, sugar won't interfere with gluten development during fermentolyse — that only matters at 15%+. Sugar adds reducing sugars directly but lacks the enzymatic activity of diastatic malt."
+          },
+          {
+            "id": "cornmeal",
+            "name": "Cornmeal",
+            "total": 13,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "san_marzano_sauce",
+            "name": "Raw San Marzano Tomato Sauce",
+            "total": 175,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "mozzarella",
+            "name": "Low-Moisture Mozzarella",
+            "total": 350,
+            "unit": "g",
+            "breakdown": null,
+            "note": "Low-moisture, high-fat, whole milk mozzarella — shreds clean and melts right"
+          },
+          {
+            "id": "hard_cheese",
+            "name": "Parmigiano-Reggiano or Pecorino Romano",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null,
+            "note": "Freshly grated — adds a savory base layer under the mozzarella"
+          },
+          {
+            "id": "pepperoni",
+            "name": "Pepperoni",
+            "total": 175,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": ["PREP_WORKSPACE"]
+    },
+    {
+      "id": "FERMENTOLYSE",
+      "title": "Fermentolyse",
+      "gather": null,
+      "states": ["MIX_FERMENTOLYSE", "FERMENTOLYSE_REST"]
+    },
+    {
+      "id": "DEVELOP",
+      "title": "Develop Dough",
+      "gather": null,
+      "states": ["ADD_SALT"]
+    },
+    {
+      "id": "BULK_FERMENT",
+      "title": "Bulk Ferment",
+      "gather": null,
+      "states": ["STRETCH_FOLD_SETS", "BULK_REST", "ROUND_DOUGH", "COLD_BULK_FERMENT"]
+    },
+    {
+      "id": "DIVIDE_PROOF",
+      "title": "Divide & Proof",
+      "gather": null,
+      "states": ["DIVIDE_PORTIONS", "ROUND_PORTIONS", "COLD_PROOF", "TEMPER_DOUGH"]
+    },
+    {
+      "id": "ASSEMBLY",
+      "title": "Assembly",
+      "gather": null,
+      "states": ["PREHEAT_STEEL", "STRETCH_DOUGH", "TOP_PIZZA"]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": ["BAKE_PIZZA", "COOL_SLICE"]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out bread flour, water, starter, salt, and diastatic malt powder into separate containers. Ensure your sourdough starter is ripe and active.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed, vessels and equipment laid out, starter is ripe and active",
+      "notes": [
+        {
+          "text": "The starter must be at peak activity — doubled in size, domed, and bubbly throughout. Test with a small pinch in water (it should float) before weighing out your 100g. If it's not ready, feed it 4-8 hours before mixing.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record kitchen/ambient temperature",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "MIX_FERMENTOLYSE",
+      "title": "Mix Fermentolyse",
+      "direction": "In the large mixing bowl (V1), combine 413g bread flour, 238g water, 100g sourdough starter, and 4g diastatic malt powder. Mix with a wet hand or dough whisk until no dry flour remains. Do not add salt yet.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Bread Flour", "amount": "413g" },
+        { "name": "Water", "amount": "238g" },
+        { "name": "Sourdough Starter", "amount": "100g" },
+        { "name": "Diastatic Malt Powder", "amount": "4g" }
+      ],
+      "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible. Salt is withheld.",
+      "notes": [
+        {
+          "text": "This is a fermentolyse, not a true autolyse — the starter's enzymes are active during the rest, beginning fermentation and gluten development simultaneously.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FERMENTOLYSE_REST",
+      "title": "Fermentolyse Rest",
+      "direction": "Cover the bowl (V1) with plastic wrap and let the dough rest for 30 minutes at room temperature. The starter begins fermenting while the flour hydrates.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed, dough is more cohesive and slightly extensible",
+      "notes": null
+    },
+    {
+      "id": "ADD_SALT",
+      "title": "Add Salt & Hand Mix",
+      "direction": "Sprinkle 8g salt over the dough. Wet your hands and mix the salt in by squeezing the dough through your fingers and folding it over itself repeatedly for 2-3 minutes until the salt is fully incorporated and no gritty texture remains.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Salt", "amount": "8g" }
+      ],
+      "exit_condition": "Salt fully dissolved into dough, no gritty texture. Dough is slightly tighter than before salt addition.",
+      "notes": [
+        {
+          "text": "Salt strengthens gluten and controls fermentation rate. Adding it after the fermentolyse rest allows the flour to hydrate without interference.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record dough temperature",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "STRETCH_FOLD_SETS",
+      "title": "Stretch & Fold Sets",
+      "direction": "Perform 3 sets of stretch-and-fold at 30-minute intervals. For each set: wet your hands, reach under one side of the dough, pull it up and fold over the top. Rotate the bowl 90° and repeat 3 more times (4 folds per set). Cover between sets and let rest 30 minutes before the next set.",
+      "duration_min": 90,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "3 stretch-and-fold sets complete over ~90 minutes. Dough is noticeably smoother, more elastic, and holds its shape when folded.",
+      "notes": [
+        {
+          "text": "The dough will feel progressively stronger with each set. By set 3, it should feel smooth and billowy.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If the dough feels very tight after set 2, skip set 3 — over-developing gluten in sourdough can lead to excessive snap-back during shaping.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "How does the dough feel after each fold set?",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "BULK_REST",
+      "title": "Bulk Rest",
+      "direction": "After the final stretch-and-fold, cover the bowl and let the dough rest undisturbed at room temperature (75–77°F / 24–25°C) until it shows a 25–50% volume increase with visible bubbles at the periphery. Typically 1–2 hours after the last fold.",
+      "duration_min": 90,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has increased 25–50% in volume with visible bubbles along the edges. Surface appears slightly domed and puffy.",
+      "notes": [
+        {
+          "text": "Do not wait for a full double — sourdough pizza dough should be slightly underproofed at this stage since cold fermentation continues developing it.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record dough volume increase estimate",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "ROUND_DOUGH",
+      "title": "Round Dough",
+      "direction": "Turn the dough out onto a clean surface. Using both hands, cup the dough and pull it toward you repeatedly to build surface tension. Tuck the edges underneath to form a taut ball. Place back into a lightly oiled bowl (V1), cover with plastic wrap.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough shaped into a smooth, taut ball with good surface tension, placed in oiled bowl and covered",
+      "notes": null,
+      "reminders": [
+        {
+          "prompt": "Record total dough weight",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "COLD_BULK_FERMENT",
+      "title": "Cold Bulk Ferment",
+      "direction": "Transfer the covered bowl (V1) to the refrigerator. Cold ferment for 8–16 hours (overnight). The dough will rise slowly and develop complex flavor.",
+      "duration_min": 720,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has risen noticeably after 8–16 hours in the fridge",
+      "notes": [
+        {
+          "text": "Cold fermentation develops complex, tangy flavors. The sourdough LAB remain active at fridge temps, producing lactic and acetic acids.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "DIVIDE_PORTIONS",
+      "title": "Divide Portions",
+      "direction": "Remove the fermented dough from the fridge. Turn it out onto a lightly floured surface. Using a bench scraper, divide into 2 equal portions of approximately 380g each.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough divided into 2 portions of approximately 380g each",
+      "notes": [
+        {
+          "text": "The Perfect Loaf recommends 290g dough balls for 30cm personal pizzas. At 380g, you'll get larger NY-style pizzas. Adjust ball size after your first bake.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "ROUND_PORTIONS",
+      "title": "Round Portions",
+      "direction": "For each portion, pick up the dough and tuck the edges underneath while rotating to form a very tight ball with a completely closed bottom. Drag the ball along the bench to seal the seam. Place each ball on a parchment-lined sheet tray (V2) sprayed with non-stick spray. Spray the tops with non-stick spray, then cover loosely with plastic wrap. Return to the refrigerator.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All portions rounded into tight balls with closed bottoms, on parchment-lined tray, sprayed, covered, and returned to fridge",
+      "notes": [
+        {
+          "text": "Tight shaping is critical for sourdough pizza — the acid-tightened gluten needs strong surface tension to hold its shape during the cold proof.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "COLD_PROOF",
+      "title": "Cold Proof",
+      "direction": "Let the dough balls proof in the refrigerator for 1 to 2 days. Maximum 48 hours — sourdough continues acidifying in the fridge, and beyond 48h risks overacidification and gluten degradation.",
+      "duration_min": 2880,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough balls have visibly expanded after 1–2 days in the fridge, surface is smooth and slightly puffy",
+      "notes": [
+        {
+          "text": "Unlike yeasted dough (which can cold proof up to 72h), sourdough's LAB remain active at fridge temps. Beyond 48h, ongoing acidification degrades gluten structure and depletes browning sugars.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Begin preheating the oven and baking steel at least 45 minutes before you plan to bake.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "TEMPER_DOUGH",
+      "title": "Temper Dough",
+      "direction": "Remove the dough balls from the refrigerator and let them sit at room temperature for approximately 6 hours. Sourdough's acid-tightened gluten needs significantly more time to relax than yeasted dough.",
+      "duration_min": 360,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Dough balls are at room temperature, relaxed, and easy to press with a finger. When poked, the indentation fills back slowly.",
+      "notes": [
+        {
+          "text": "If the dough still resists stretching after 6 hours, let it rest 5-10 more minutes between stretch attempts — don't force cold sourdough dough.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Start preheating the oven during this step — by the time the dough is tempered, the steel will be fully saturated with heat.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record dough ball temperature",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT_STEEL",
+      "title": "Preheat Baking Steel",
+      "direction": "Place the baking steel (V3) on the middle oven rack. Preheat the oven to 550°F (288°C). Allow at least 45 minutes for the steel to fully saturate with heat.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven at 550°F (288°C) and steel fully preheated for at least 45 minutes",
+      "notes": [
+        {
+          "text": "A fully preheated steel is essential — it provides the intense bottom heat that creates a properly charred crust.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "STRETCH_DOUGH",
+      "title": "Stretch Dough",
+      "direction": "Sprinkle the wooden pizza peel (V4) with 7g cornmeal. Place one dough ball on a lightly floured surface. Using your fingertips, press from the center outward, pushing air toward the edges to form the crust rim. Pick up the dough and drape it over your knuckles, gently stretching and rotating until you have a 30–33cm (12–13 inch) disc. Transfer to the cornmeal-dusted peel.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Cornmeal", "amount": "7g" }
+      ],
+      "exit_condition": "Dough stretched to a 30–33cm disc with puffy edge crust, resting on cornmeal-dusted peel",
+      "notes": [
+        {
+          "text": "Sourdough pizza dough may feel tighter than yeasted dough — if it resists stretching, let it rest 5 minutes on the counter and try again.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Never roll pizza dough — rolling pops the gas bubbles that create the airy, puffy crust.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Give the peel a shake before topping to make sure the dough slides freely on the cornmeal.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "TOP_PIZZA",
+      "title": "Top Pizza",
+      "direction": "Spread 88g raw San Marzano tomato sauce over the dough, leaving a 2cm border for the crust. Grate 20g Parmigiano-Reggiano or Pecorino Romano evenly over the sauce. Top with 175g low-moisture mozzarella, torn or shredded. Place 88g pepperoni on top of the cheese.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Raw San Marzano Tomato Sauce", "amount": "88g" },
+        { "name": "Parmigiano-Reggiano or Pecorino Romano", "amount": "20g" },
+        { "name": "Low-Moisture Mozzarella", "amount": "175g" },
+        { "name": "Pepperoni", "amount": "88g" }
+      ],
+      "exit_condition": "Pizza topped in order: sauce, grated hard cheese, mozzarella, pepperoni on top",
+      "notes": [
+        {
+          "text": "Pepperoni goes on top of the cheese so it browns, crisps, and cups up during baking.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Do not overload with sauce or the center will be soggy and the pizza will not slide off the peel.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BAKE_PIZZA",
+      "title": "Bake Pizza",
+      "direction": "Slide the pizza from the peel onto the preheated steel (V3) with a quick forward-and-back motion. Bake at 550°F (288°C) for 4–5 minutes until the bottom is set and beginning to char. Transfer the pizza (not the steel) to the broiler drawer for 30–60 seconds to finish the top. Repeat for the second pizza.",
+      "duration_min": 7,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Cheese is bubbly and lightly browned, crust is puffed and golden with charred spots. Bottom has leopard-spotted char from the steel.",
+      "notes": [
+        {
+          "text": "The broiler finish is especially important for sourdough pizza — the acid-inhibited Maillard reaction means the crust may be paler than yeasted pizza without the broiler's intense radiant heat.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Rotate the pizza halfway through the steel bake if your oven has hot spots.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record total bake time (steel + broiler)",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Rate crust browning",
+          "type": "rating"
+        }
+      ]
+    },
+    {
+      "id": "COOL_SLICE",
+      "title": "Cool & Slice",
+      "direction": "Use the peel to slide the baked pizza onto a wire rack or cutting board. Let it rest for 2–3 minutes. Cut into 8 slices. Serve immediately.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Pizza rested, cut into 8 slices, ready to serve",
+      "notes": [
+        {
+          "text": "A brief rest lets the cheese set slightly so it does not slide off when you pick up a slice.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    }
+  ],
+  "nutrition": null,
+  "research": {
+    "sources": [
+      {
+        "name": "The Perfect Loaf — Sourdough Pizza Dough",
+        "url": "https://www.theperfectloaf.com/sourdough-pizza-dough-and-recipes/",
+        "type": "adapted",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "The Perfect Loaf — Ultimate Sourdough Pizza Guide",
+        "url": "https://www.theperfectloaf.com/guides/sourdough-pizza/",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "The Perfect Loaf — Hybrid Doughs",
+        "url": "https://www.theperfectloaf.com/hybrid-dough/",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "King Arthur Baking — Sourdough Pizza Crust",
+        "url": "https://www.kingarthurbaking.com/recipes/sourdough-pizza-crust-recipe",
+        "author": "Bryan Ford"
+      },
+      {
+        "name": "Alexandra's Kitchen — Simple Sourdough Pizza",
+        "url": "https://alexandracooks.com/2020/05/01/simple-sourdough-pizza-a-step-by-step-guide/"
+      },
+      {
+        "name": "Breadtopia — Sourdough Pizza",
+        "url": "https://breadtopia.com/sourdough-pizza/"
+      },
+      {
+        "name": "Leopard Crust Pizza — Sourdough Pizza Dough",
+        "url": "https://leopardcrustpizza.com/sourdough-pizza-dough/"
+      },
+      {
+        "name": "Vincenzo's Plate — Sourdough Neapolitan (YouTube)",
+        "url": "https://www.youtube.com/watch?v=mCM-lyKPheo",
+        "author": "Vincenzo's Plate"
+      },
+      {
+        "name": "PizzaBlab — Diastatic Malt Powder",
+        "url": "https://www.pizzablab.com/learning-and-resources/ingredients/malt-powder/"
+      },
+      {
+        "name": "Stadler Made — Maillard Reaction in Pizza",
+        "url": "https://www.stadlermade.com/pizza/maillard-reaction/"
+      },
+      {
+        "name": "Proofit — Convert Yeast Recipe to Sourdough",
+        "url": "https://www.proofit-app.com/en/blog/convert-yeast-recipe-to-sourdough"
+      },
+      {
+        "name": "PizzaMaking.com Forums",
+        "url": "https://www.pizzamaking.com/forum/"
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Fermentolyse (flour + water + starter rest)",
+        "sourcedFrom": "Perfect Loaf, Vincenzo's Plate, user preference",
+        "rationale": "Allows flour hydration and begins fermentation simultaneously. Simpler than true autolyse for pizza.",
+        "confidence": "high"
+      },
+      {
+        "name": "Stretch-and-fold over stand mixer",
+        "sourcedFrom": "4/5 pure SD recipes, community consensus",
+        "rationale": "Sourdough protease enzymes degrade gluten over time — gentler handling prevents over-development.",
+        "confidence": "high"
+      },
+      {
+        "name": "Diastatic malt for browning compensation",
+        "sourcedFrom": "PizzaBlab, King Arthur, food science research",
+        "rationale": "Sourdough pH (3.5-4.5) inhibits Maillard reaction. Malt amylase produces reducing sugars during the bake.",
+        "confidence": "medium"
+      },
+      {
+        "name": "48h cold ferment ceiling",
+        "sourcedFrom": "Virtue Pizza, PizzaMaking.com, food science agent",
+        "rationale": "Sourdough LAB remain active at fridge temps. Beyond 48h: acidification degrades gluten and depletes browning sugars.",
+        "confidence": "high"
+      },
+      {
+        "name": "6-hour temper time",
+        "sourcedFrom": "Perfect Loaf (6h), Leopard Crust (3-8h)",
+        "rationale": "Acetic acid from cold ferment tightens gluten bonds. Cold stiffens proteins. Both compound — SD dough needs more relaxation.",
+        "confidence": "high"
+      },
+      {
+        "name": "Omit olive oil",
+        "sourcedFrom": "4/5 pure SD recipes omit oil",
+        "rationale": "Strong consensus against oil in pure sourdough pizza dough.",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "Multi-agent parallel research with 7 agents (6 initial + 1 follow-up). Strategies: pure sourdough recipes, hybrid recipes, food science, home oven constraints, Reddit community, Perfect Loaf deep dive, broiler drawer research.",
+    "sourceCount": 34,
+    "date": "2026-03-21"
+  },
+  "reheat": {
+    "methods": [
+      {
+        "method": "Skillet Steam",
+        "detail": "Heat a dry pan over medium-high heat. Add 1–3 slices of cold pizza and heat for about 2 minutes until the bottom starts to crisp. Add 1–1.5 tsp water and immediately cover the pan. Steam covered for 30 seconds. Uncover, let remaining water boil off, and continue cooking until the bottom is firm and crispy.",
+        "source": "user",
+        "reference": "https://www.reddit.com/r/Cooking/comments/13k900q/my_mom_introduced_us_to_the_perfect_method_of/"
+      },
+      {
+        "method": "Air Fryer",
+        "detail": "350–400°F (175–200°C) for about 5 minutes. Quick and effective, crisps the bottom well.",
+        "source": "user"
+      }
+    ]
+  }
+}
