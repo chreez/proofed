@@ -22,8 +22,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v2.0.0",
+  "version": "v2.1.0",
   "change_log": [
+    {
+      "version": "v2.1.0",
+      "date": "2026-03-25",
+      "summary": "Update bake temps — preheat 500°F, covered bake 450°F, uncovered bake 425°F for 18-22 min. Stepped-down approach for better crust control."
+    },
     {
       "version": "v2.0.0",
       "date": "2026-02-19",
@@ -525,12 +530,12 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven + Dutch Oven",
-      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 450°F (230°C) for at least 45 minutes. The heavy pot needs time to fully saturate with heat.",
+      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 500°F (260°C) for at least 45 minutes. The heavy pot needs time to fully saturate with heat.",
       "duration_min": 45,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven at 450°F (230°C) for at least 45 minutes, Dutch oven fully preheated",
+      "exit_condition": "Oven at 500°F (260°C) for at least 45 minutes, Dutch oven fully preheated",
       "notes": [
         {
           "text": "Start preheating while the dough is still in the fridge. Do NOT let the dough warm up — bake straight from cold.",
@@ -569,7 +574,7 @@
     {
       "id": "BAKE_COVERED",
       "title": "Bake — Covered",
-      "direction": "Carefully remove the preheated Dutch oven. Lower the first scored loaf into the pot using the parchment as a sling. Cover with the lid. Return to oven. Bake at 450°F (230°C) for 20 minutes.",
+      "direction": "Carefully remove the preheated Dutch oven. Lower the first scored loaf into the pot using the parchment as a sling. Cover with the lid. Return to oven. Reduce temperature to 450°F (230°C). Bake covered for 20 minutes.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
@@ -582,7 +587,7 @@
           "source": "agent"
         },
         {
-          "text": "Be extremely careful — the Dutch oven is 450°F. Use oven mitts and move deliberately.",
+          "text": "Be extremely careful — the Dutch oven is 500°F. Use oven mitts and move deliberately.",
           "critical": true,
           "source": "agent"
         }
@@ -591,8 +596,8 @@
     {
       "id": "BAKE_UNCOVERED",
       "title": "Bake — Uncovered",
-      "direction": "Remove the lid from the Dutch oven. Continue baking first loaf uncovered at 450°F (230°C) for 20-25 minutes until the crust is deep golden brown. When done, transfer to cooling rack. Score the second loaf (from fridge), load into the still-hot Dutch oven, and repeat the covered + uncovered bake.",
-      "duration_min": 22,
+      "direction": "Remove the lid from the Dutch oven. Reduce temperature to 425°F (218°C). Continue baking first loaf uncovered for 18-22 minutes until the crust is deep golden brown. When done, transfer to cooling rack. Score the second loaf (from fridge), load into the still-hot Dutch oven, and repeat the covered + uncovered bake.",
+      "duration_min": 20,
       "timer": true,
       "parallel": false,
       "components": null,
@@ -1638,7 +1643,8 @@
         "Ran out of starter — only had ~170g available, and it wasn't as active as I wanted.",
         "Had water measured for two loaves. Put ~170g starter in before realizing I was running out.",
         "Stopped there — took half the water, half the bread flour, and half the salt to make one loaf instead of two.",
-        "Improvised ratios — more starter relative to flour than the recipe calls for."
+        "Improvised ratios — more starter relative to flour than the recipe calls for.",
+        "Messed up preheat — used 500°F or 550°F (can't remember exactly) for the covered bake instead of 450°F. May have been too hot."
       ],
       "photos": [
         {
