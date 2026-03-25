@@ -1627,6 +1627,75 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-03-24",
+      "version": "v2.0.0",
+      "featured": false,
+      "actual_yield": { "value": 1, "unit": "loaves" },
+      "summary": "Improvised single-loaf bake — ran out of starter mid-mix, halved the recipe. Starter wasn't fully active. Loaf came out well despite the chaos.",
+      "notes": [
+        "Ran out of starter — only had ~170g available, and it wasn't as active as I wanted.",
+        "Had water measured for two loaves. Put ~170g starter in before realizing I was running out.",
+        "Stopped there — took half the water, half the bread flour, and half the salt to make one loaf instead of two.",
+        "Improvised ratios — more starter relative to flour than the recipe calls for."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-03-24/crumb-shot-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-24/crumb-shot-400w.webp",
+          "alt": "Cross-section of the loaf on a bamboo cutting board showing open, irregular crumb with a mix of small and medium holes throughout. Thin, well-browned crust."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-03-24/finished-loaf-closeup-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-03-24/finished-loaf-closeup-400w.webp",
+          "alt": "Close-up of the finished loaf cooling on a round wire rack, showing the golden crust with flour dusting and a single score line down the center. Cookbooks and a blue crock visible in the background."
+        }
+      ],
+      "next_time": [],
+      "cost": {
+        "total": 1.26,
+        "perServing": 1.26,
+        "servings": 1,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 500,
+            "unit": "g",
+            "cost": 1.21
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 350,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Sourdough starter (negligible — maintained culture)",
+            "amount": 170,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.05
+          }
+        ]
+      }
     }
   ],
   "research": {

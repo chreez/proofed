@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 6811",
     "prebuild": "vitest run --coverage && bash scripts/diff-coverage.sh",
     "build": "vue-tsc && vite build && tsx scripts/prerender-og.ts",
     "build:fast": "vue-tsc && vite build",

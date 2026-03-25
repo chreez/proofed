@@ -1,0 +1,43 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-03-24",
+  "processedAt": "2026-03-25T21:23:05.410Z",
+  "photos": [
+    {
+      "name": "crumb-shot",
+      "thumb": "crumb-shot-400w.webp",
+      "src": "crumb-shot-800w.webp",
+      "summary": "Cross-section of the loaf on a bamboo cutting board showing open, irregular crumb with a mix of small and medium holes throughout. Thin, well-browned crust."
+    },
+    {
+      "name": "finished-loaf-closeup",
+      "thumb": "finished-loaf-closeup-400w.webp",
+      "src": "finished-loaf-closeup-800w.webp",
+      "summary": "Close-up of the finished loaf cooling on a round wire rack, showing the golden crust with flour dusting and a single score line down the center. Cookbooks and a blue crock visible in the background."
+    },
+    {
+      "name": "finished-loaf-overhead",
+      "thumb": "finished-loaf-overhead-400w.webp",
+      "src": "finished-loaf-overhead-800w.webp",
+      "summary": "Overhead-angled view of the loaf on the wire cooling rack, showing the full round shape and even golden-brown color across the top crust with scattered flour."
+    },
+    {
+      "name": "finished-loaf-quarter-alt",
+      "thumb": "finished-loaf-quarter-alt-400w.webp",
+      "src": "finished-loaf-quarter-alt-800w.webp",
+      "summary": "Three-quarter front view of the loaf on the cooling rack, showing good oven spring and the cross-score pattern opened up nicely. Dutch oven visible in the background."
+    },
+    {
+      "name": "finished-loaf-quarter",
+      "thumb": "finished-loaf-quarter-400w.webp",
+      "src": "finished-loaf-quarter-800w.webp",
+      "summary": "Three-quarter view highlighting the ear from the score marks and the crisp, blistered crust texture. Loaf has a slightly oblong shape on the wire rack with the Dutch oven behind it."
+    },
+    {
+      "name": "finished-loaf-side",
+      "thumb": "finished-loaf-side-400w.webp",
+      "src": "finished-loaf-side-800w.webp",
+      "summary": "Side profile of the loaf on the wire rack showing the score split open along the top. Gooseneck kettle and olive oil visible on the counter behind it."
+    }
+  ]
+}
