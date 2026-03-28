@@ -1388,6 +1388,37 @@
         "servings": 8
       },
       "next_time": []
+    },
+    {
+      "date": "2026-03-20",
+      "version": "v1.1.0",
+      "summary": "Second sourdough cinnamon bun bake — same approach as first (active starter, pinch of yeast, hand-mixed, glass Pyrex). Short ~4.5 hour cold retard, pulled dough early to warm up before shaping. Tasted great, but starting to think the regular non-sourdough version might just be better.",
+      "notes": [
+        "Same approach as first bake — active starter directly, small sprinkle of instant yeast (not sure it made a difference), hand-mixed, glass Pyrex, no heavy cream pour.",
+        "3:26pm — placed dough in fridge for cold retard.",
+        "~8pm — pulled dough from fridge to let bulk ferment come closer to room temp (~4.5 hour cold retard, well under recipe's 8-hour minimum).",
+        "Dough was still chilled when rolling out — harder to roll but got there.",
+        "~10pm — shaping done (rolled, filled, cut, arranged).",
+        "Used a bread knife to cut rolls into 8 — worked ok but still hard to get perfectly even cuts.",
+        "~2 hour final proof after shaping.",
+        "~12am — into the oven (1:55am logged as just out of the oven).",
+        "Forgot to log individual steps during this bake."
+      ],
+      "photos": [
+        {
+          "src": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-closeup-800w.webp",
+          "thumb": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-closeup-400w.webp",
+          "alt": "Close-up of glazed sourdough cinnamon buns in glass Pyrex — cream cheese glaze pooling into visible spiral layers, golden-brown caramelized edges.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-wide-800w.webp",
+          "thumb": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-wide-400w.webp",
+          "alt": "All eight buns in glass Pyrex dish with cream cheese glaze, tight spiral pattern visible, golden-brown edges showing good oven spring.",
+          "usage": "hero"
+        }
+      ],
+      "next_time": []
     }
   ]
 }
