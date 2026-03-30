@@ -691,5 +691,72 @@
         "source": "user"
       }
     ]
-  }
+  },
+  "cook_log": [
+    {
+      "date": "2026-03-24",
+      "start_date": "2026-03-22",
+      "version": "v1.1.0",
+      "summary": "First bake — 3-day process. Used 5g sugar substitute (no malt). Dough was easy to work with throughout. Didn't do full 6-hour temper but dough still stretched well. ~8 min on steel + 1.5 min broiler per pizza. Really good — thin, droopy, flexible, slight tang.",
+      "notes": [
+        "Sat 3/22 5:09pm — kitchen 76°F.",
+        "Sat 3/22 5:10pm — fermentolyse mixed with 5g sugar substitute, no diastatic malt available.",
+        "Sat 3/22 ~5:42pm — salt added.",
+        "Sat 3/22 6:12pm — first stretch-and-fold set. Dough ball looked small — questioning how big the pizzas would be.",
+        "Completed all 3 S&F sets — dough was easy to work with.",
+        "Into fridge for cold bulk ferment (exact time not logged).",
+        "Sun 3/23 ~12pm — pulled from fridge, divided into 2 balls. Nearly perfectly equal by eyeball — satisfying. Weight not recorded, estimated ~300g each. Back in fridge for cold proof.",
+        "Mon 3/24 — pulled dough to temper. Didn't realize the 6-hour temper was needed. Dough was still a bit chilly but eventually stretched out easily.",
+        "Preheated baking steel at 550°F. ~8 min per pizza on steel + ~1.5 min under broiler, monitored closely so nothing burned.",
+        "Toppings: Sclafani sauce, TJ's pecorino on the sauce, TJ's low-moisture whole milk mozz, Boar's Head pepperoni.",
+        "Really good. A little sourdough tang. Size was good. Very droopy and flexible — thin crust."
+      ],
+      "photos": [
+        {
+          "src": "/images/sourdough-pizza-dough/2026-03-24/both-pizzas-on-counter-800w.webp",
+          "thumb": "/images/sourdough-pizza-dough/2026-03-24/both-pizzas-on-counter-400w.webp",
+          "alt": "Two finished pepperoni pizzas cooling on the counter — one on a wire rack in the foreground, one on a cutting board behind. Both show golden-brown crusts with melted cheese and pepperoni coverage.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/sourdough-pizza-dough/2026-03-24/pizza-overhead-wire-rack-800w.webp",
+          "thumb": "/images/sourdough-pizza-dough/2026-03-24/pizza-overhead-wire-rack-400w.webp",
+          "alt": "Overhead view of a finished pepperoni pizza cooling on a wire rack. Cheese is melted and browned with scattered pepperoni across the surface; the crust edge is thin and lightly charred.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/sourdough-pizza-dough/2026-03-24/slice-bottom-char-800w.webp",
+          "thumb": "/images/sourdough-pizza-dough/2026-03-24/slice-bottom-char-400w.webp",
+          "alt": "Underside of a slice held up to show the bottom crust. Leopard-spotted char pattern from baking on steel, with an even golden-brown base and scattered dark blisters.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/sourdough-pizza-dough/2026-03-24/slice-droop-flex-800w.webp",
+          "thumb": "/images/sourdough-pizza-dough/2026-03-24/slice-droop-flex-400w.webp",
+          "alt": "A slice held from the crust end, drooping significantly under its own weight. The tip bends downward past vertical, demonstrating the thin, flexible character of the crust.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/sourdough-pizza-dough/2026-03-24/slice-top-pepperoni-800w.webp",
+          "thumb": "/images/sourdough-pizza-dough/2026-03-24/slice-top-pepperoni-400w.webp",
+          "alt": "Top-down view of a pepperoni slice held above a cutting board with remaining slices. Pepperoni is lightly crisped and cupped, cheese melted evenly across the surface.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/sourdough-pizza-dough/2026-03-24/slice-side-profile-800w.webp",
+          "thumb": "/images/sourdough-pizza-dough/2026-03-24/slice-side-profile-400w.webp",
+          "alt": "Side profile of a slice showing the thin crust edge-on. The crust is notably thin with a slight cornicione rise at the outer edge and minimal puff through the center.",
+          "usage": "hero"
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Do the full 6-hour temper — dough was still chilly this time."
+        },
+        {
+          "text": "Try a different pecorino — TJ's was just OK."
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,49 @@
+{
+  "recipeId": "sourdough-pizza-dough",
+  "date": "2026-03-24",
+  "processedAt": "2026-03-30T23:31:57.330Z",
+  "photos": [
+    {
+      "name": "both-pizzas-on-counter",
+      "thumb": "both-pizzas-on-counter-400w.webp",
+      "src": "both-pizzas-on-counter-800w.webp",
+      "summary": "Two finished pepperoni pizzas cooling on the counter — one on a wire rack in the foreground, one on a cutting board behind. Both show golden-brown crusts with melted cheese and pepperoni coverage."
+    },
+    {
+      "name": "pizza-overhead-wire-rack",
+      "thumb": "pizza-overhead-wire-rack-400w.webp",
+      "src": "pizza-overhead-wire-rack-800w.webp",
+      "summary": "Overhead view of a finished pepperoni pizza cooling on a wire rack. Cheese is melted and browned with scattered pepperoni across the surface; the crust edge is thin and lightly charred."
+    },
+    {
+      "name": "slice-bottom-char",
+      "thumb": "slice-bottom-char-400w.webp",
+      "src": "slice-bottom-char-800w.webp",
+      "summary": "Underside of a slice held up to show the bottom crust. Leopard-spotted char pattern from baking on steel, with an even golden-brown base and scattered dark blisters."
+    },
+    {
+      "name": "slice-crumb-structure",
+      "thumb": "slice-crumb-structure-400w.webp",
+      "src": "slice-crumb-structure-800w.webp",
+      "summary": "Blurry close-up of a slice held at an angle to show the interior crumb. Open, airy structure visible in the crust cross-section with irregular holes throughout."
+    },
+    {
+      "name": "slice-droop-flex",
+      "thumb": "slice-droop-flex-400w.webp",
+      "src": "slice-droop-flex-800w.webp",
+      "summary": "A slice held from the crust end, drooping significantly under its own weight. The tip bends downward past vertical, demonstrating the thin, flexible character of the crust."
+    },
+    {
+      "name": "slice-side-profile",
+      "thumb": "slice-side-profile-400w.webp",
+      "src": "slice-side-profile-800w.webp",
+      "summary": "Side profile of a slice showing the thin crust edge-on. The crust is notably thin with a slight cornicione rise at the outer edge and minimal puff through the center."
+    },
+    {
+      "name": "slice-top-pepperoni",
+      "thumb": "slice-top-pepperoni-400w.webp",
+      "src": "slice-top-pepperoni-800w.webp",
+      "summary": "Top-down view of a pepperoni slice held above a cutting board with remaining slices. Pepperoni is lightly crisped and cupped, cheese melted evenly across the surface."
+    }
+  ]
+}
