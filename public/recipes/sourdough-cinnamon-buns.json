@@ -1408,17 +1408,156 @@
         {
           "src": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-closeup-800w.webp",
           "thumb": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-closeup-400w.webp",
-          "alt": "Close-up of glazed sourdough cinnamon buns in glass Pyrex — cream cheese glaze pooling into visible spiral layers, golden-brown caramelized edges.",
+          "alt": "Single glazed sourdough cinnamon bun on a decorative plate, held at angle showing height and spiral layers. Cream cheese glaze coating top and sides. Remaining buns in glass Pyrex visible in background.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-wide-800w.webp",
           "thumb": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-wide-400w.webp",
-          "alt": "All eight buns in glass Pyrex dish with cream cheese glaze, tight spiral pattern visible, golden-brown edges showing good oven spring.",
+          "alt": "Angled view into glass Pyrex dish packed with glazed sourdough cinnamon buns — cream cheese glaze glistening across spiral tops, golden-brown caramelized edges visible between buns.",
           "usage": "hero"
         }
       ],
-      "next_time": []
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "starter",
+            "name": "Derived: 50% AP flour rate (flour + water)",
+            "recipeAmount": 34,
+            "packageSize": null,
+            "packagePrice": null,
+            "cost": 0.02
+          },
+          {
+            "ingredientId": "levain_flour",
+            "name": "King Arthur Organic Unbleached All-Purpose Flour",
+            "recipeAmount": 84,
+            "packageSize": "5 lbs",
+            "packagePrice": 7.87,
+            "cost": 0.29
+          },
+          {
+            "ingredientId": "levain_water",
+            "name": "Water (negligible)",
+            "recipeAmount": 84,
+            "packageSize": null,
+            "packagePrice": null,
+            "cost": 0
+          },
+          {
+            "ingredientId": "flour",
+            "name": "King Arthur Organic Unbleached All-Purpose Flour",
+            "recipeAmount": 430,
+            "packageSize": "5 lbs",
+            "packagePrice": 7.87,
+            "cost": 1.49
+          },
+          {
+            "ingredientId": "cornstarch",
+            "name": "Argo Corn Starch",
+            "recipeAmount": 64,
+            "packageSize": "1 lb",
+            "packagePrice": 2.44,
+            "cost": 0.34
+          },
+          {
+            "ingredientId": "granulated_sugar",
+            "name": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "recipeAmount": 75,
+            "packageSize": "4 lbs",
+            "packagePrice": 3.48,
+            "cost": 0.14
+          },
+          {
+            "ingredientId": "brown_sugar",
+            "name": "Wholesome Organic Light Brown Sugar",
+            "recipeAmount": 240,
+            "packageSize": "24 oz",
+            "packagePrice": 3.28,
+            "cost": 1.16
+          },
+          {
+            "ingredientId": "powdered_sugar",
+            "name": "H-E-B Organics Powdered Sugar",
+            "recipeAmount": 128,
+            "packageSize": "24 oz",
+            "packagePrice": 3.48,
+            "cost": 0.66
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Hill Country Fare Unsalted Butter Sticks",
+            "recipeAmount": 227,
+            "packageSize": "4 ct",
+            "packagePrice": 3.18,
+            "cost": 1.59
+          },
+          {
+            "ingredientId": "milk",
+            "name": "H-E-B Whole Milk",
+            "recipeAmount": 95,
+            "packageSize": "1 gal",
+            "packagePrice": 4.16,
+            "cost": 0.10
+          },
+          {
+            "ingredientId": "cream_cheese",
+            "name": "Hill Country Fare Cream Cheese",
+            "recipeAmount": 150,
+            "packageSize": "8 oz",
+            "packagePrice": 1.49,
+            "cost": 0.98
+          },
+          {
+            "ingredientId": "eggs",
+            "name": "H-E-B Grade AA Cage Free Large Brown Eggs",
+            "recipeAmount": 3,
+            "packageSize": "12 ct",
+            "packagePrice": 2.96,
+            "cost": 0.74
+          },
+          {
+            "ingredientId": "cinnamon",
+            "name": "McCormick Ground Cinnamon",
+            "recipeAmount": 10,
+            "packageSize": "4.12 oz",
+            "packagePrice": 4.18,
+            "cost": 0.36
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Sea salt (manual)",
+            "recipeAmount": 11,
+            "packageSize": null,
+            "packagePrice": null,
+            "cost": 0
+          },
+          {
+            "ingredientId": "vanilla",
+            "name": "Spice Islands Pure Vanilla Extract",
+            "recipeAmount": 5,
+            "packageSize": "2 oz",
+            "packagePrice": 8.98,
+            "cost": 0.79
+          },
+          {
+            "ingredientId": "heavy_cream",
+            "name": "Not used this bake",
+            "recipeAmount": 0,
+            "packageSize": null,
+            "packagePrice": null,
+            "cost": 0
+          }
+        ],
+        "total": 8.66,
+        "perServing": 1.08,
+        "servings": 8
+      },
+      "next_time": [
+        {
+          "text": "Not sure the underlying sour flavor works for cinnamon buns, even though it's very minimal. Consider whether the non-sourdough ATK version is just better for this application."
+        }
+      ]
     }
   ]
 }
