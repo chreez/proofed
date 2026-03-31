@@ -1,0 +1,303 @@
+{
+  "meta": {
+    "name": "Sourdough Discard Cheese Crackers",
+    "source": {
+      "name": "Research Synthesis (12 sources)",
+      "type": "adapted",
+      "author": "Primary influences: Wild Thistle Kitchen, King Arthur Baking, Natasha's Kitchen"
+    },
+    "yields": "~80-100 crackers (2 sheet pans)",
+    "total_time": "~1.5 hrs (30 min active, 30 min chill, 20 min bake)",
+    "description": "Sharp cheddar crackers with sourdough tang, smoked paprika, and black pepper. Uses unfed sourdough discard as the base — no waste, maximum flavor. Roll thin and dock well for snappy, Cheez-It-adjacent results."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-03-30",
+      "summary": "Initial recipe from 4-agent research synthesis across 12 sources. Sourdough-forward family with smoked paprika-garlic-black pepper spice profile."
+    }
+  ],
+  "vessels": [
+    { "id": "V1", "name": "Stand Mixer Bowl" },
+    { "id": "V2", "name": "Baking Sheets (2)", "reuse": "Rotate if baking in batches" }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mix Dough",
+      "gather": {
+        "vessels": ["Stand Mixer Bowl", "Baking Sheets (2)"],
+        "equipment": ["Kitchen Scale", "Stand Mixer (paddle attachment)", "Box Grater", "Rolling Pin", "Pizza Cutter", "Fork", "Parchment Paper"],
+        "ingredients": [
+          { "id": "discard", "name": "Sourdough Discard (unfed, 100% hydration)", "total": 200, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents confirmed 200-230g; using 200g for sourdough-forward family" },
+          { "id": "ap-flour", "name": "All-Purpose Flour", "total": 100, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents; provides structure and rollability" },
+          { "id": "sharp-cheddar", "name": "Sharp Cheddar (block, fine-grated)", "total": 170, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents; sharp cheddar (36-39% moisture) browns and crisps reliably" },
+          { "id": "butter", "name": "Unsalted Butter (softened)", "total": 40, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents confirmed 28-57g range; 40g balances richness and crispness" },
+          { "id": "smoked-paprika", "name": "Smoked Paprika", "total": 4, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "3/4 agents; above 1 tsp risks eclipsing cheddar" },
+          { "id": "garlic-powder", "name": "Garlic Powder", "total": 3, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "3/4 agents; rounds out savory profile" },
+          { "id": "black-pepper", "name": "Black Pepper (coarse)", "total": 3, "unit": "g", "breakdown": null, "confidence": "medium", "rationale": "2/4 agents; visible flecks and bite" },
+          { "id": "cayenne", "name": "Cayenne Pepper", "total": 0.5, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "3/4 agents; 1/4 tsp = noticeable warmth. Capsaicin stable at 350\u00b0F" },
+          { "id": "fine-salt", "name": "Fine Salt", "total": 3, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents; sourdough tang demands salt to balance" },
+          { "id": "flaky-salt", "name": "Flaky Salt", "total": 2, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents; topping for texture and visual" }
+        ]
+      },
+      "states": ["grate-cheese", "whisk-dry", "cut-butter", "add-discard-cheese"]
+    },
+    {
+      "id": "CHILL",
+      "title": "Chill Dough",
+      "gather": null,
+      "states": ["chill-dough"]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Roll, Cut & Dock",
+      "gather": null,
+      "states": ["roll-dough", "cut-squares", "dock-and-salt"]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": ["preheat", "bake-crackers", "cool"]
+    }
+  ],
+  "states": [
+    {
+      "id": "grate-cheese",
+      "title": "Grate Cheese",
+      "direction": "Using the fine holes of a box grater, grate the block of sharp cheddar. Set aside.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "sharp cheddar (block)", "amount": "170g" }
+      ],
+      "exit_condition": "170g cheese finely grated with no large chunks remaining",
+      "notes": [
+        {
+          "text": "Block cheese only — pre-shredded cheese contains anti-caking agents (cellulose, potato starch) that prevent proper melting and integration into the dough.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "whisk-dry",
+      "title": "Whisk Dry Ingredients",
+      "direction": "In the stand mixer bowl, whisk together flour, fine salt, smoked paprika, garlic powder, black pepper, and cayenne.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "all-purpose flour", "amount": "100g" },
+        { "name": "fine salt", "amount": "3g" },
+        { "name": "smoked paprika", "amount": "4g" },
+        { "name": "garlic powder", "amount": "3g" },
+        { "name": "black pepper", "amount": "3g" },
+        { "name": "cayenne", "amount": "0.5g" }
+      ],
+      "exit_condition": "Dry ingredients evenly combined with uniform spice color throughout",
+      "notes": null
+    },
+    {
+      "id": "cut-butter",
+      "title": "Cut in Butter",
+      "direction": "Add softened butter to dry ingredients. Using the paddle attachment on low speed, mix until butter is incorporated and mixture resembles coarse crumbs, about 1 minute.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "unsalted butter (softened)", "amount": "40g" }
+      ],
+      "exit_condition": "Butter fully incorporated; mixture has a sandy, coarse crumb texture",
+      "notes": null
+    },
+    {
+      "id": "add-discard-cheese",
+      "title": "Add Discard & Cheese",
+      "direction": "Add sourdough discard and grated cheddar to the bowl. Paddle on low speed until dough just comes together into a cohesive mass, about 1-2 minutes. Do not overmix.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "sourdough discard", "amount": "200g" },
+        { "name": "sharp cheddar (grated)", "amount": "170g" }
+      ],
+      "exit_condition": "Dough is cohesive and holds together when pressed; no loose flour remaining",
+      "notes": [
+        {
+          "text": "Use flat/unfed discard, not active bubbly starter. Active starter causes puffing during baking, working against the flat, crispy cracker texture you want.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "chill-dough",
+      "title": "Chill Dough",
+      "direction": "Shape dough into a flat disc, wrap in plastic wrap, and refrigerate for 30 minutes minimum (up to 2 days).",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is firm and cold, easy to handle without sticking",
+      "notes": [
+        {
+          "text": "Flattening into a disc before chilling speeds up cooling and makes rolling easier.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "roll-dough",
+      "title": "Roll Dough Ultra-Thin",
+      "direction": "Place dough between two sheets of parchment paper. Roll to 0.16cm thickness — as thin as possible without tearing. Work from center outward, rotating 90\u00b0 periodically for even thickness.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is uniformly 0.16cm thick with no visibly thicker areas",
+      "notes": [
+        {
+          "text": "Rolling thin enough is the #1 factor separating great crackers from mediocre ones. If you can't hit 0.16cm, go as thin as you can — thinner is always better for crispness.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If dough becomes too soft and sticky while rolling, return to fridge for 10 minutes, then continue.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "cut-squares",
+      "title": "Cut Squares",
+      "direction": "Using a pizza cutter or sharp knife, cut the rolled dough into 2.5cm squares. No need to separate — they break apart after baking. Transfer parchment with cut dough to a baking sheet.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough cut into uniform 2.5cm grid on parchment-lined baking sheet",
+      "notes": null
+    },
+    {
+      "id": "dock-and-salt",
+      "title": "Dock & Salt",
+      "direction": "Using a fork or toothpick, poke a hole in the center of each cracker square. Sprinkle flaky salt evenly over the tops.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "flaky salt", "amount": "2g" }
+      ],
+      "exit_condition": "Every cracker has at least one dock hole; flaky salt visible on surface",
+      "notes": [
+        {
+          "text": "Docking prevents steam puffing during baking. Without it, crackers puff unevenly.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "preheat",
+      "title": "Preheat Oven",
+      "direction": "Position rack in the middle of the oven. Preheat to 350\u00b0F (175\u00b0C).",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven reaches 350\u00b0F (175\u00b0C)",
+      "notes": null
+    },
+    {
+      "id": "bake-crackers",
+      "title": "Bake Crackers",
+      "direction": "Bake for 15-20 minutes, rotating the sheet halfway through. Watch closely after 12 minutes — edges brown fast.",
+      "duration_min": 18,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Crackers are golden brown at the edges; center crackers have deepened in color but are not dark brown",
+      "notes": [
+        {
+          "text": "Pull slightly early if in doubt — crackers continue to crisp as they cool. Overbaked crackers taste bitter from burnt cheese.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record bake time and color at edges",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "cool",
+      "title": "Cool Completely",
+      "direction": "Leave crackers on the baking sheet to cool completely, at least 15 minutes. They crisp significantly as they cool.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Crackers are room temperature and snap cleanly when broken — no bend or flex",
+      "notes": [
+        {
+          "text": "Do not transfer to a container until fully cooled. Trapped steam from warm crackers creates sogginess.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Store in an airtight container at room temperature for 5-7 days. Glass container extends shelf life.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    }
+  ],
+  "nutrition": null,
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "300\u00b0F (150\u00b0C) for 3-5 minutes to re-crisp if softened. Cool on pan before eating.",
+        "source": "agent"
+      }
+    ]
+  },
+  "research": {
+    "sources": [
+      { "name": "King Arthur Baking", "url": "https://www.kingarthurbaking.com/recipes/sourdough-crackers-recipe", "type": "adapted" },
+      { "name": "Natasha's Kitchen", "url": "https://natashaskitchen.com/sourdough-cheese-crackers/", "type": "adapted" },
+      { "name": "Sourdough Brandon", "url": "https://sourdoughbrandon.com/sourdough-discard-cheese-crackers/", "type": "adapted" },
+      { "name": "Country Roads Sourdough", "url": "https://countryroadssourdough.com/sourdough-cheez-it-crackers/", "type": "adapted" },
+      { "name": "Wild Thistle Kitchen", "url": "https://wildthistlekitchen.com/sourdough-cheese-crackers/", "type": "adapted" },
+      { "name": "ENW / Everyday Homemade", "url": "https://enwnutrition.com/sourdough-discard-cheese-crackers/", "type": "adapted" },
+      { "name": "Heart's Content Farmhouse", "url": "https://heartscontentfarmhouse.com/discard-sourdough-cheddar-crackers/", "type": "adapted" },
+      { "name": "Alton Brown", "url": "https://altonbrown.com/recipes/sourdough-cheese-crackers/", "type": "adapted" },
+      { "name": "Bob's Red Mill (technique)", "url": "https://www.bobsredmill.com/articles/how-to-make-homemade-crackers-crispy", "type": "adapted" },
+      { "name": "DairyCraftPro (cheese science)", "url": "https://dairycraftpro.com/understanding-the-moisture-content-of-different-types-of-cheese/", "type": "adapted" },
+      { "name": "The Hot Pepper Forum (capsaicin)", "url": "https://thehotpepper.com/threads/capsaicinoid-stability-during-cooking.75997/", "type": "adapted" },
+      { "name": "Crumbs & Nibbles (Gruyere variant)", "url": "https://crumbsandnibbles.com/rosemary-gruyere-crackers-aka-grown-up-cheez-its/", "type": "adapted" }
+    ],
+    "techniques": [
+      { "name": "Ultra-thin rolling (0.16cm)", "sourcedFrom": "4/4 agents", "rationale": "Universal consensus. #1 factor for crispy crackers.", "confidence": "high" },
+      { "name": "Full docking", "sourcedFrom": "4/4 agents", "rationale": "Prevents steam puffing. Fork holes or toothpick center hole per cracker.", "confidence": "high" },
+      { "name": "Block cheese, hand-grated", "sourcedFrom": "4/4 agents", "rationale": "Pre-shredded has anti-caking agents that prevent proper melting.", "confidence": "high" },
+      { "name": "Cut before baking", "sourcedFrom": "3/4 agents", "rationale": "Pizza cutter for clean squares. Pre-cutting is simpler than mid-bake scoring.", "confidence": "high" },
+      { "name": "Cool completely on pan", "sourcedFrom": "4/4 agents", "rationale": "Crackers crisp as they cool. Moving early or storing warm = soggy.", "confidence": "high" },
+      { "name": "Stand mixer paddle on low", "sourcedFrom": "3/4 agents", "rationale": "Low speed avoids overworking gluten. Food processor also works.", "confidence": "medium" }
+    ],
+    "strategy": "Multi-agent parallel research: 4 agents (core recipes, cheese science, technique, community intel)",
+    "sourceCount": 12,
+    "date": "2026-03-30"
+  }
+}
