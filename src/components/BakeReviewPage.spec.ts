@@ -141,6 +141,24 @@ const sampleHebResults = {
           inStock: true
         }
       ]
+    },
+    {
+      ingredientId: 'eggs',
+      name: 'Large Eggs',
+      recipeAmount: 3,
+      recipeUnit: 'whole',
+      products: [
+        {
+          name: 'Cage Free Large Brown Eggs',
+          brand: 'H-E-B',
+          size: '12 ct',
+          sizeGrams: 600,
+          price: 2.96,
+          salePrice: null,
+          unitPrice: '$0.25/ct',
+          inStock: true
+        }
+      ]
     }
   ]
 }
@@ -658,7 +676,7 @@ describe('BakeReviewPage', () => {
       await costTab.trigger('click')
 
       const cards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
-      expect(cards.length).toBe(2) // butter + flour
+      expect(cards.length).toBe(3) // butter + flour + eggs
       expect(cards[0].text()).toContain('Unsalted butter')
       expect(cards[0].text()).toContain('140g')
       expect(cards[1].text()).toContain('All-purpose flour')
@@ -674,8 +692,8 @@ describe('BakeReviewPage', () => {
       await costTab.trigger('click')
 
       const productCards = wrapper.findAll('[data-testid="product-card"]')
-      // 2 butter products + 1 flour product = 3
-      expect(productCards.length).toBe(3)
+      // 2 butter products + 1 flour product + 1 eggs product = 4
+      expect(productCards.length).toBe(4)
       expect(productCards[0].text()).toContain('H-E-B')
       expect(productCards[0].text()).toContain('$3.98')
       expect(productCards[1].text()).toContain('Central Market')
@@ -695,6 +713,76 @@ describe('BakeReviewPage', () => {
       expect(calculatedCost.exists()).toBe(true)
       // 140/454 * 3.98 = ~1.23
       expect(calculatedCost.text()).toContain('$1.23')
+    })
+
+    it('calculates count-based cost for whole unit ingredients (eggs)', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      // Find the eggs ingredient card (third card)
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      const eggsCard = ingredientCards[2]
+
+      // Select the first product
+      const productCards = eggsCard.findAll('[data-testid="product-card"]')
+      await productCards[0].trigger('click')
+      await flushPromises()
+
+      // 3/12 * 2.96 = 0.74, NOT 3/600 * 2.96 = 0.01
+      const calculatedCost = eggsCard.find('[data-testid="calculated-cost"]')
+      expect(calculatedCost.exists()).toBe(true)
+      expect(calculatedCost.text()).toContain('$0.74')
+    })
+
+    it('falls back to gram-based cost when whole unit has no count in size', async () => {
+      // Override HEB results with a "whole" unit ingredient whose size has no "ct" pattern
+      const hebWithWeirdSize = {
+        ...sampleHebResults,
+        ingredients: [
+          ...sampleHebResults.ingredients.slice(0, 2),
+          {
+            ingredientId: 'eggs',
+            name: 'Large Eggs',
+            recipeAmount: 3,
+            recipeUnit: 'whole',
+            products: [
+              {
+                name: 'Eggs by weight',
+                brand: 'Test',
+                size: '1 lb',
+                sizeGrams: 600,
+                price: 2.96,
+                salePrice: null,
+                unitPrice: '$0.25/ct',
+                inStock: true
+              }
+            ]
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithWeirdSize)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
+      const eggsCard = ingredientCards[2]
+      const productCards = eggsCard.findAll('[data-testid="product-card"]')
+      await productCards[0].trigger('click')
+      await flushPromises()
+
+      // No "ct" in size, so falls back to gram-based: 3/600 * 2.96 = 0.01
+      const calculatedCost = eggsCard.find('[data-testid="calculated-cost"]')
+      expect(calculatedCost.exists()).toBe(true)
+      expect(calculatedCost.text()).toContain('$0.01')
     })
 
     it('updates calculated cost when selecting a different product', async () => {
@@ -836,7 +924,7 @@ describe('BakeReviewPage', () => {
 
       // Should still render with defaults despite corrupt data
       const cards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
-      expect(cards.length).toBe(2)
+      expect(cards.length).toBe(3)
     })
 
     it('saves and restores pantry rates', async () => {
@@ -883,7 +971,7 @@ describe('BakeReviewPage', () => {
 
       // Should still render normally despite corrupt pantry data
       const cards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
-      expect(cards.length).toBe(2)
+      expect(cards.length).toBe(3)
     })
 
     it('calculates pantry rate cost correctly', async () => {
@@ -1276,7 +1364,7 @@ describe('BakeReviewPage', () => {
       await summaryTab.trigger('click')
 
       const badges = wrapper.findAll('[data-testid="source-badge"]')
-      expect(badges.length).toBe(2) // butter + flour
+      expect(badges.length).toBe(3) // butter + flour + eggs
       expect(badges[0].text()).toBe('HEB')
     })
 
@@ -1354,7 +1442,7 @@ describe('BakeReviewPage', () => {
       await summaryTab.trigger('click')
 
       const badges = wrapper.findAll('[data-testid="source-badge"]')
-      expect(badges.length).toBe(2)
+      expect(badges.length).toBe(3) // pantry butter + manual flour + heb eggs
       expect(badges[0].text()).toBe('PANTRY')
       expect(badges[1].text()).toBe('MANUAL')
     })
@@ -1368,7 +1456,7 @@ describe('BakeReviewPage', () => {
       await summaryTab.trigger('click')
 
       const rows = wrapper.findAll('[data-testid="summary-cost-row"]')
-      expect(rows.length).toBe(2)
+      expect(rows.length).toBe(3) // butter + flour + eggs
       // Check first row shows ingredient name and amount
       expect(rows[0].text()).toContain('Unsalted butter')
       expect(rows[0].text()).toContain('140g')

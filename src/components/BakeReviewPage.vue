@@ -321,7 +321,13 @@ function isNegligibleCost(ingredientId: string): boolean {
   return rate !== null && rate.ratePerGram === 0
 }
 
+function parsePackageCount(size: string): number | null {
+  const match = size.match(/(\d+)\s*ct\b/i)
+  return match ? parseInt(match[1], 10) : null
+}
+
 function calculateCost(ingredient: HebIngredientResult, selection: CostSelection): number {
+  const isCountBased = ingredient.recipeUnit === 'whole'
   if (selection.sourceType === 'rate') {
     const rate = getCostRate(ingredient.ingredientId)
     if (!rate) return 0
@@ -331,6 +337,10 @@ function calculateCost(ingredient: HebIngredientResult, selection: CostSelection
     const product = ingredient.products[selection.productIndex ?? 0]
     if (!product || product.sizeGrams <= 0) return 0
     const price = product.salePrice ?? product.price
+    if (isCountBased) {
+      const count = parsePackageCount(product.size)
+      if (count && count > 0) return (ingredient.recipeAmount / count) * price
+    }
     return (ingredient.recipeAmount / product.sizeGrams) * price
   }
   if (selection.sourceType === 'pantry') {
