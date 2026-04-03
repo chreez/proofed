@@ -1,9 +1,10 @@
 ---
-id: DRAFT-32
+id: PF-172
 title: Simple Sourdough v3.0.0 — codify evolved technique + audit input UX
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-04-03 01:10'
+updated_date: '2026-04-03 01:17'
 labels:
   - recipe-update
   - ux
@@ -41,3 +42,10 @@ User has recipe mostly memorized after 11 bakes. The app is guidance + checklist
 
 Separate from PF-164 (notes popover overflow, Done). When tapping a note input on iPhone, the page zooms in and doesn't restore the viewport. User must manually pinch to zoom back out. Likely iOS Safari auto-zoom on input focus when font-size < 16px. Investigate all input elements in ScratchpadNote, GeneralNotesFab, and any other mobile-facing text inputs.
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Recipe JSON version bumped to v3.0.0 with change_log entry summarizing all procedure changes
+- [ ] #2 All procedure changes grounded in bake log evidence (cite bake # where technique was adopted)
+- [ ] #3 Human review gate completed before any StateNote or reminder is added, modified, or removed
+<!-- AC:END -->
