@@ -1702,6 +1702,93 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-04-01",
+      "start_date": "2026-03-31",
+      "version": "v2.1.0",
+      "actual_yield": { "value": 2, "unit": "loaves" },
+      "summary": "Eleventh bake, 2-loaf for a housewarming party. Fermentolyse, 60% aliquot rise, cross score on both. One dough had too much flour during shaping — struggled with surface tension. Both loaves eaten quickly at the party with solid feedback. Someone suggested crispier crust.",
+      "notes": [
+        "7:52pm — fermentolyse start, dough temp 77.5°F.",
+        "Forgot to log salt addition — incorporated sometime before first stretch and fold.",
+        "9:06pm — S&F #1 (first after salt), 77.4°F.",
+        "9:44pm — S&F #2, 77.5°F.",
+        "10:35pm — S&F #3 (last fold), 77.7°F.",
+        "1:01am — turned out dough, 78.8°F, aliquot at 60% rise.",
+        "1:09am — divided. One piece weighed 936g, didn't weigh the second. Recipe DIVIDE step says ~480g each — wrong for the 2-loaf recipe, should be ~960g.",
+        "2:06am — shaped. Too much flour on first dough, struggled to get surface tension. Second loaf more even.",
+        "Room temp rest ~1 hour after shaping, then stitched and straight to fridge.",
+        "Cold proof ~8 hours (~3am to ~11am).",
+        "~11am — preheat started at 500°F.",
+        "11:58am — first loaf in, covered at 450°F.",
+        "12:19pm — lid off, 425°F for 18 min then check browning.",
+        "~12:40pm — first loaf out.",
+        "Re-preheated 500°F for 30 min after first bake. Second loaf same procedure — covered 450°F, uncovered 425°F for 22 min total. Flipped loaf at ~15 min for even browning.",
+        "~2:02pm — second loaf out.",
+        "Didn't measure internal temp. Target remains 210°F.",
+        "Cross score on both. 100% bread flour. Both loaves served at a housewarming party — eaten quickly, lots of positive feedback. Someone mentioned wanting a crispier crust."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-04-01/mid-bake-challenger-cross-score-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-01/mid-bake-challenger-cross-score-400w.webp",
+          "alt": "Loaf mid-bake in the Challenger bread pan on parchment paper, lid removed. Cross score opening with good oven spring, flour-dusted crust browning. Oven interior visible."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-01/both-loaves-cooling-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-01/both-loaves-cooling-400w.webp",
+          "alt": "Both finished sourdough boules cooling on the kitchen counter. Foreground loaf on a wire rack with cross score, heavy blistering, and banneton ring pattern from no-linen proofing. Second loaf in background on parchment, flour-dusted with cross score visible."
+        }
+      ],
+      "next_time": [
+        { "text": "Experiment with crispier crust techniques" },
+        { "text": "Experiment with less chewy crumb" },
+        { "text": "Weigh both dough pieces at divide" }
+      ],
+      "cost": {
+        "total": 2.65,
+        "perServing": 1.33,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt 17.6 oz",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.12
+          }
+        ]
+      }
     }
   ],
   "research": {
