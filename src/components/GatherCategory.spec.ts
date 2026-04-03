@@ -294,6 +294,38 @@ describe('GatherCategory', () => {
     expect(scrollToNextItem).not.toHaveBeenCalled()
   })
 
+  it('starts collapsed when startCollapsed prop is true', () => {
+    const wrapper = mount(GatherCategory, {
+      props: { ...defaultProps, startCollapsed: true }
+    })
+
+    // Should show collapsed badge UI
+    expect(wrapper.find('.bg-stone-200').exists()).toBe(true)
+    expect(wrapper.text()).toContain('0/3')
+  })
+
+  it('starts expanded by default (startCollapsed false)', () => {
+    const wrapper = mount(GatherCategory, { props: defaultProps })
+
+    // Should NOT show collapsed badge UI
+    expect(wrapper.find('.bg-stone-200').exists()).toBe(false)
+    expect(wrapper.text()).toContain('Complete All')
+  })
+
+  it('expands normally when clicking a start-collapsed category', async () => {
+    const wrapper = mount(GatherCategory, {
+      props: { ...defaultProps, startCollapsed: true }
+    })
+
+    // Click the collapsed header to expand
+    const headerRow = wrapper.find('.bg-stone-200')
+    await headerRow.trigger('click')
+
+    // Should now show expanded UI
+    expect(wrapper.text()).toContain('Complete All')
+    expect(wrapper.text()).toContain('All-purpose flour')
+  })
+
   it('renders items with detail text', () => {
     const items = [
       { id: 'item-1', label: 'Flour', detail: '390g total' }

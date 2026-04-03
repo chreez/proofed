@@ -6,8 +6,8 @@ import GatherSection from './GatherSection.vue'
 vi.mock('@/components/GatherCategory.vue', () => ({
   default: {
     name: 'GatherCategory',
-    props: ['title', 'items', 'progress', 'stageId'],
-    template: '<div class="gather-category-stub">{{ title }}: {{ items.length }} items</div>'
+    props: ['title', 'items', 'progress', 'stageId', 'startCollapsed'],
+    template: '<div class="gather-category-stub" :data-start-collapsed="startCollapsed ?? false">{{ title }}: {{ items.length }} items</div>'
   }
 }))
 
@@ -87,6 +87,22 @@ describe('GatherSection', () => {
     expect(stubs[0].text()).toContain('Vessels: 2 items')
     expect(stubs[1].text()).toContain('Equipment: 2 items')
     expect(stubs[2].text()).toContain('Ingredients: 2 items')
+  })
+
+  it('passes startCollapsed to Vessels and Equipment but not Ingredients', () => {
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: fullGather,
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      }
+    })
+
+    const stubs = wrapper.findAll('.gather-category-stub')
+    expect(stubs[0].attributes('data-start-collapsed')).toBe('true')  // Vessels
+    expect(stubs[1].attributes('data-start-collapsed')).toBe('true')  // Equipment
+    expect(stubs[2].attributes('data-start-collapsed')).toBe('false') // Ingredients
   })
 
   it('hides vessels section when empty', () => {

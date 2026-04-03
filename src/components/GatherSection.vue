@@ -140,6 +140,7 @@ function handleReset(): void {
       :items="vesselItems"
       :progress="progress"
       :stage-id="stageId"
+      :start-collapsed="true"
     />
 
     <GatherCategory
@@ -148,6 +149,7 @@ function handleReset(): void {
       :items="equipmentItems"
       :progress="progress"
       :stage-id="stageId"
+      :start-collapsed="true"
     />
 
     <GatherCategory

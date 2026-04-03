@@ -8,19 +8,22 @@ import TempText from '@/components/TempText.vue'
 import { scrollToNextItem } from '@/composables/useScrollToNext'
 import { copyToClipboard } from '@/composables/useClipboard'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   title: string
   items: { id: string; label: string; detail?: string }[]
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
   stageId: string
-}>()
+  startCollapsed?: boolean
+}>(), {
+  startCollapsed: false
+})
 
 const categoryCopyBtn = useTemplateRef<InstanceType<typeof IconButton>>('categoryCopyBtn')
 
 // Manual expand override - user clicked badge to expand
 const manuallyExpanded = ref(false)
-// Manual collapse - user clicked ▲ to hide a section
-const manuallyCollapsed = ref(false)
+// Manual collapse - user clicked ▲ to hide a section, or starts collapsed via prop
+const manuallyCollapsed = ref(props.startCollapsed)
 
 const checkedItems = computed(() =>
   props.items.filter(item => props.progress.isItemChecked(item.id))

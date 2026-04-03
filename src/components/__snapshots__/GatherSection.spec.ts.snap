@@ -9,8 +9,8 @@ exports[`HTML snapshot > matches snapshot 1`] = `
       <div data-v-f6045c74="" class="icon-btn-wrap"><button data-v-f6045c74="" class="icon-btn icon-btn--sm" title="Copy Mise en Place"><svg class="icon-clipboard"></svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy Mise en Place</span></div>
     </div>
   </div>
-  <div class="gather-category-stub">Vessels: 2 items</div>
-  <div class="gather-category-stub">Equipment: 2 items</div>
-  <div class="gather-category-stub">Ingredients: 2 items</div>
+  <div class="gather-category-stub" data-start-collapsed="true">Vessels: 2 items</div>
+  <div class="gather-category-stub" data-start-collapsed="true">Equipment: 2 items</div>
+  <div class="gather-category-stub" data-start-collapsed="false">Ingredients: 2 items</div>
 </div>"
 `;
