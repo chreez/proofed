@@ -22,8 +22,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v2.1.0",
+  "version": "v3.0.0",
   "change_log": [
+    {
+      "version": "v3.0.0",
+      "date": "2026-04-03",
+      "summary": "Major procedure update codifying 11 bakes of evolved technique: fermentolyse (delayed salt), aliquot jar tracking, room-temp rest after shaping, no-linen banneton default, sequential 2-loaf bake procedure, corrected divide weights, and comprehensive StateNote/reminder audit."
+    },
     {
       "version": "v2.1.0",
       "date": "2026-03-25",
@@ -63,17 +68,17 @@
     },
     {
       "id": "V2a",
-      "name": "Proofing Basket 1 (lined with towel)",
+      "name": "Proofing Basket 1 (floured, no linen)",
       "reuse": "Shaping → cold proof (loaf 1)"
     },
     {
       "id": "V2b",
-      "name": "Proofing Basket 2 (lined with towel)",
+      "name": "Proofing Basket 2 (floured, no linen)",
       "reuse": "Shaping → cold proof (loaf 2)"
     },
     {
       "id": "V3",
-      "name": "Dutch Oven with Lid"
+      "name": "Dutch Oven with Lid (or Challenger Bread Pan)"
     }
   ],
   "stages": [
@@ -83,9 +88,9 @@
       "gather": {
         "vessels": [
           "Large Mixing Bowl",
-          "Proofing Basket 1 (lined with towel)",
-          "Proofing Basket 2 (lined with towel)",
-          "Dutch Oven with Lid"
+          "Proofing Basket 1 (floured, no linen)",
+          "Proofing Basket 2 (floured, no linen)",
+          "Dutch Oven with Lid (or Challenger Bread Pan)"
         ],
         "equipment": [
           "Kitchen Scale",
@@ -95,8 +100,8 @@
           "Parchment Paper",
           "Plastic Wrap",
           "Wire Rack",
-          "Clean Linen or Cotton Towel",
-          "Rice Flour (for dusting towel)"
+          "Aliquot Jar (small clear container for tracking rise %)",
+          "Rice Flour (for dusting banneton)"
         ],
         "ingredients": [
           {
@@ -150,7 +155,9 @@
       "title": "Mix Dough",
       "gather": null,
       "states": [
-        "COMBINE_INGREDIENTS"
+        "FERMENTOLYSE",
+        "REST_FERMENTOLYSE",
+        "ADD_SALT"
       ]
     },
     {
@@ -184,7 +191,9 @@
         "BENCH_REST",
         "ENVELOPE_FOLD",
         "BUILD_TENSION",
-        "INTO_BASKET"
+        "INTO_BASKET",
+        "ROOM_TEMP_REST",
+        "STITCH"
       ]
     },
     {
@@ -239,16 +248,16 @@
       ]
     },
     {
-      "id": "COMBINE_INGREDIENTS",
-      "title": "Combine All Ingredients",
-      "direction": "In the large mixing bowl (V1), combine 700g water and 200g active starter. Stir to dissolve. Add 1000g bread flour and 20g salt. Mix with a fork or spatula until no dry flour remains — a shaggy, rough mass.",
+      "id": "FERMENTOLYSE",
+      "title": "Combine Flour, Water & Starter",
+      "direction": "In the large mixing bowl (V1), combine 700g water (or 675g, holding back 25g for salt incorporation) and 200g active starter. Stir to dissolve. Add 1000g bread flour. Mix with a fork or spatula until no dry flour remains — a shaggy, rough mass. Do NOT add salt yet.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "Water",
-          "amount": "700g"
+          "amount": "675-700g"
         },
         {
           "name": "Active Sourdough Starter",
@@ -257,23 +266,67 @@
         {
           "name": "Bread Flour",
           "amount": "1000g"
-        },
-        {
-          "name": "Fine Sea Salt",
-          "amount": "20g"
         }
       ],
-      "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
+      "exit_condition": "Flour, water, and starter combined into a shaggy mass with no dry flour visible. Salt NOT added yet.",
       "notes": [
-        {
-          "text": "No autolyse needed — research confirms mixing everything at once produces nearly identical results for a basic white flour loaf at 70% hydration",
-          "critical": false,
-          "source": "agent"
-        },
         {
           "text": "Do not knead. Just stir until combined. Gluten will develop through stretch-and-fold and time.",
           "critical": false,
           "source": "agent"
+        },
+        {
+          "text": "Fermentolyse = mixing flour, water, and starter WITHOUT salt, then resting before adding salt. Delayed salt addition allows gluten to begin developing uninhibited. Confirmed across bakes #6-11 — dough is noticeably stronger at first stretch and fold compared to mixing everything at once.",
+          "critical": false,
+          "source": "user"
+        },
+        {
+          "text": "Starter must be active and bubbly — should have doubled within 4-8 hours of its last feeding. If starter hasn't doubled, add 1/8 tsp instant yeast to the dough as insurance.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "REST_FERMENTOLYSE",
+      "title": "Rest",
+      "direction": "Cover the bowl and let the dough rest for 30 minutes at room temperature. The flour hydrates and gluten begins developing without salt inhibiting the process.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed, dough relaxed and slightly cohesive",
+      "notes": null
+    },
+    {
+      "id": "ADD_SALT",
+      "title": "Add Salt & Incorporate",
+      "direction": "Sprinkle 20g fine sea salt over the dough. If you held back 25g water, pour it over the salt. Fold the dough over itself several times to incorporate the salt — squeeze, fold, and press until no salt granules remain.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "Fine Sea Salt",
+          "amount": "20g"
+        },
+        {
+          "name": "Reserved Water (optional)",
+          "amount": "~25g"
+        }
+      ],
+      "exit_condition": "Salt fully incorporated, no granules felt when pressing dough",
+      "notes": [
+        {
+          "text": "The reserved water helps dissolve and distribute the salt evenly. If you used all 700g water in the fermentolyse, just fold the salt in dry — it works fine.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Take aliquot sample after incorporating salt",
+          "type": "measurement"
         }
       ]
     },
@@ -289,6 +342,11 @@
       "notes": [
         {
           "text": "Wet your hand first to prevent sticking — do not flour",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "The Sourdough Journey V2.0 fermentation chart correlates dough temperature to target aliquot rise % — a useful reference for dialing in bulk fermentation.",
           "critical": false,
           "source": "agent"
         }
@@ -321,7 +379,13 @@
       "parallel": false,
       "components": null,
       "exit_condition": "All 4 sides stretched and folded, dough feels slightly stronger and smoother",
-      "notes": null
+      "notes": null,
+      "reminders": [
+        {
+          "prompt": "Record dough temperature",
+          "type": "measurement"
+        }
+      ]
     },
     {
       "id": "REST_2",
@@ -345,9 +409,15 @@
       "exit_condition": "Dough is smooth and elastic, covered tightly for overnight bulk",
       "notes": [
         {
-          "text": "3 sets is sufficient — research shows diminishing returns above 3-4 for most doughs. This is 90 seconds of total work.",
+          "text": "3 is standard — 4th optional if dough feels under-developed. This is 90 seconds of total work.",
           "critical": false,
           "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record dough temperature",
+          "type": "measurement"
         }
       ]
     },
@@ -362,7 +432,7 @@
       "exit_condition": "Dough has increased 50-75% in volume (NOT doubled), surface is domed with visible bubbles, jiggles when bowl is shaken. If dough has doubled or is flat/slack, it is over-fermented — shape immediately or pivot to focaccia.",
       "notes": [
         {
-          "text": "Watch the dough, not the clock. At 75°F (24°C) this takes ~8 hours. At 65°F (18°C) it could take 12+ hours. The visual cues matter more than time.",
+          "text": "Watch the dough, not the clock. Use the aliquot jar to track rise % — visual cues and measured rise matter more than time. At 75°F (24°C) bulk takes ~8 hours. At 65°F (18°C) it could take 12+ hours.",
           "critical": true,
           "source": "agent"
         },
@@ -380,11 +450,16 @@
           "text": "If over-fermentation recurs with the doubled batch, consider reducing starter to 15% (150g) or 10% (100g) for a wider overnight window. Lower inoculation also develops more complex sour flavor.",
           "critical": false,
           "source": "agent"
+        },
+        {
+          "text": "Aliquot targets by dough temperature: ~30% rise at 80°F+ (27°C+), ~40-50% at 75-79°F (24-26°C), ~50-60% at 70-74°F (21-23°C). Warmer dough ferments faster — adjust target down to avoid over-proofing.",
+          "critical": false,
+          "source": "agent"
         }
       ],
       "reminders": [
         {
-          "prompt": "Note kitchen ambient temperature",
+          "prompt": "Record dough temperature (ambient temp optional)",
           "type": "measurement"
         },
         {
@@ -407,12 +482,12 @@
     {
       "id": "DIVIDE",
       "title": "Divide Dough",
-      "direction": "Using a bench scraper, divide the dough in half — each piece should be roughly 480g. Don't fuss over exact weight. Use the bench scraper in one decisive motion; avoid sawing.",
+      "direction": "Using a bench scraper, divide the dough in half — each piece should be roughly 960g. Don't fuss over exact weight. Use the bench scraper in one decisive motion; avoid sawing.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Two roughly equal dough pieces (~480g each) on the counter",
+      "exit_condition": "Two roughly equal dough pieces (~960g each) on the counter",
       "notes": [
         {
           "text": "A scale helps if you want even loaves, but eyeballing is fine — sourdough is forgiving.",
@@ -486,12 +561,12 @@
     {
       "id": "INTO_BASKET",
       "title": "Into Proofing Basket",
-      "direction": "Dust both towel-lined proofing baskets (V2a, V2b) generously with rice flour. Using a bench scraper, lift each shaped dough and place seam-side UP into a basket. If seams have opened, pinch closed. Cover both with plastic wrap.",
+      "direction": "Dust both proofing baskets (V2a, V2b) generously with rice flour — flour the banneton directly, no linen liner. Using a bench scraper, lift each shaped dough and place seam-side UP into a basket. If seams have opened, pinch closed. Cover both with plastic wrap.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Both loaves are seam-side up in floured, towel-lined baskets, covered with plastic wrap",
+      "exit_condition": "Both loaves are seam-side up in floured bannetons (no linen), covered with plastic wrap",
       "notes": [
         {
           "text": "Rice flour is best for dusting — it's gluten-free so it won't stick to the dough. Regular flour works but rice flour is more reliable.",
@@ -499,9 +574,43 @@
           "source": "agent"
         },
         {
-          "text": "No banneton? A medium mixing bowl lined with a thin cotton or linen towel works perfectly.",
+          "text": "Flour banneton directly (no linen liner) — confirmed better blistering and release across multiple bakes. Towel-lined bowl works as a backup.",
           "critical": false,
           "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "ROOM_TEMP_REST",
+      "title": "Room Temperature Rest",
+      "direction": "Leave both covered baskets on the counter at room temperature for approximately 1 hour. The dough settles into the banneton and begins its final rise before cold proofing.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "~1 hour at room temperature, dough has settled in banneton",
+      "notes": [
+        {
+          "text": "Allows the dough to settle before building final tension with a stitch. Standard practice across bakes #5-11.",
+          "critical": false,
+          "source": "user"
+        }
+      ]
+    },
+    {
+      "id": "STITCH",
+      "title": "Stitch for Tension",
+      "direction": "One banneton at a time: with wet fingers, pull opposite edges of the dough toward the center in an overlapping pattern — like lacing a shoe. Work around the top of the dough, pulling each side to the center and pressing gently. This rebuilds surface tension after the room-temp rest. Repeat for the second banneton.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough surface is taut in both bannetons, stitched edges visible on top (this becomes the bottom when turned out)",
+      "notes": [
+        {
+          "text": "Stitching adds tension without deflating the dough. Bakes that included stitching before cold proof showed better shape retention during scoring and loading.",
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -525,6 +634,12 @@
           "critical": false,
           "source": "agent"
         }
+      ],
+      "reminders": [
+        {
+          "prompt": "Note fridge entry time for cold proof tracking",
+          "type": "observation"
+        }
       ]
     },
     {
@@ -547,7 +662,7 @@
     {
       "id": "SCORE",
       "title": "Score the Dough",
-      "direction": "Remove the first loaf from fridge (leave the second in the fridge). Turn out onto a sheet of parchment paper (it will release from the floured towel). Using a bread lame or sharp knife, score an X pattern across the top — two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
+      "direction": "Remove the first loaf from fridge (leave the second in the fridge). Turn out onto a sheet of parchment paper (it will release from the floured banneton). Using a bread lame or sharp knife, score a cross (X) pattern across the top — two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -566,6 +681,11 @@
         },
         {
           "text": "Use parchment paper as scoring and loading surface — score directly on parchment, then use it as a sling to lower into Dutch oven. Silicone slings cause sticking.",
+          "critical": false,
+          "source": "user"
+        },
+        {
+          "text": "Cross score recommended — consistent results with good ear and oven spring across multiple bakes.",
           "critical": false,
           "source": "user"
         }
@@ -590,6 +710,11 @@
           "text": "Be extremely careful — the Dutch oven is 500°F. Use oven mitts and move deliberately.",
           "critical": true,
           "source": "agent"
+        },
+        {
+          "text": "For 2-loaf bakes: after the first loaf finishes, re-preheat oven to 500°F (260°C) for 30 minutes before loading the second loaf. Second loaf may need rotating or flipping at ~15 minutes for even browning.",
+          "critical": false,
+          "source": "user"
         }
       ]
     },
@@ -601,7 +726,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Both loaves baked — deep golden brown crust, hollow sound when tapped, internal temp 205°F (96°C)",
+      "exit_condition": "Both loaves baked — deep golden brown crust, hollow sound when tapped, internal temp 210°F (99°C)",
       "notes": [
         {
           "text": "Don't pull it early because it looks dark — a deep brown crust has the best flavor and crunch. Pale = undercooked.",
@@ -611,7 +736,7 @@
       ],
       "reminders": [
         {
-          "prompt": "Record internal temperature immediately out of oven (target 205°F / 96°C)",
+          "prompt": "(Optional) Record internal temperature out of oven (target 210°F / 99°C)",
           "type": "measurement"
         }
       ]
@@ -639,7 +764,7 @@
       ],
       "reminders": [
         {
-          "prompt": "Rate crust color and ear",
+          "prompt": "Rate crust: color, ear development, blistering",
           "type": "observation"
         }
       ]

@@ -1,10 +1,10 @@
 ---
 id: PF-172
 title: Simple Sourdough v3.0.0 — codify evolved technique + audit input UX
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-03 01:10'
-updated_date: '2026-04-03 01:17'
+updated_date: '2026-04-03 01:41'
 labels:
   - recipe-update
   - ux
@@ -45,7 +45,59 @@ Separate from PF-164 (notes popover overflow, Done). When tapping a note input o
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Recipe JSON version bumped to v3.0.0 with change_log entry summarizing all procedure changes
-- [ ] #2 All procedure changes grounded in bake log evidence (cite bake # where technique was adopted)
-- [ ] #3 Human review gate completed before any StateNote or reminder is added, modified, or removed
+- [x] #1 Recipe JSON version bumped to v3.0.0 with change_log entry summarizing all procedure changes
+- [x] #2 All procedure changes grounded in bake log evidence (cite bake # where technique was adopted)
+- [x] #3 Human review gate completed before any StateNote or reminder is added, modified, or removed
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## PF-172.1 Spike Findings: Reminder & StateNote Audit
+
+### Critical Finding: COMBINE_INGREDIENTS "No autolyse needed" note
+Directly contradicted by 6 consecutive bakes using fermentolyse (#6-11). Highest-priority removal.
+
+### DIVIDE weight bug
+Direction says ~480g each — wrong for 2-loaf recipe (should be ~960g). v1 leftover caught by bake #11.
+
+### Reminder Usage Rates (of 11 bakes)
+- Dough temp (FOLD_1): 9/11 — KEEP + expand to all folds
+- Ambient temp (BULK): 5/11 — MODIFY (merge with dough temp)
+- Volume rise % (BULK): 8/11 — KEEP + enhance with aliquot targets
+- Internal temp (BAKE): 4/11 — DEMOTE to optional
+- Crust rating (COOL): 6/11 — MODIFY to be more specific
+
+### Missing Items (12 additions needed)
+1. PREP: Aliquot jar in equipment, Challenger in vessels, no-linen banneton default
+2. MIX: New fermentolyse states (mix without salt → rest ~30min → add salt + held-back water)
+3. MIX: Aliquot sample reminder at salt addition
+4. STRETCH_FOLD: Temp reminder on FOLD_2 and FOLD_3 (not just FOLD_1)
+5. STRETCH_FOLD: Sourdough Journey V2.0 fermentation chart reference
+6. BULK_FERMENT: Aliquot target by temp (~30% at 80°F+, ~40-50% at 75-79°F, ~50-60% at 70-74°F)
+7. SHAPE: New ROOM_TEMP_REST state (~1 hr at room temp, stitch, then fridge)
+8. COLD_PROOF: Reminder to note fridge entry time
+9. BAKE: Sequential 2-loaf procedure (re-preheat 500°F 30 min between loaves)
+10. BAKE: Cross score recommended over decorative patterns
+
+### Notes to Modify (6 items)
+- Remove: "No autolyse needed" (COMBINE_INGREDIENTS)
+- Soften: "3 sets is sufficient" → "3 is standard, 4th optional"
+- Update: "Watch the dough not the clock" → reference aliquot jar
+- Merge: ambient temp reminder into dough temp tracking
+- Demote: internal temp reminder to optional
+- Specify: crust rating → "color, ear development, blistering"
+
+Full spike report with per-bake evidence available in conversation history.
+
+## Human Review Gate — APPROVED (2026-04-03)
+
+All 22 changes approved by user: 1 remove, 6 modify, 12 add, ~18 keep.
+User will do visual review on the web page after implementation.
+
+Approved changes:
+- R1: Remove "No autolyse needed" note
+- M1-M6: Modify 6 existing notes/reminders
+- A1-A12: Add 12 new items (equipment, states, reminders, notes)
+- All other existing notes kept as-is
+<!-- SECTION:NOTES:END -->
