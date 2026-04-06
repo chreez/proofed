@@ -294,35 +294,12 @@ const allBakes = computed(() => groups.value.reduce((s, g) => s + totalBakes(g),
 const allItems = computed(() => groups.value.reduce((s, g) => s + totalItems(g), 0))
 const allServings = computed(() => groups.value.reduce((s, g) => s + totalServings(g), 0))
 
-// Max values for proportional bars
+// Max sessions for micro-bar proportions
 const maxRecipeSessions = computed(() => {
   let max = 0
   for (const g of groups.value) {
     for (const r of g.recipes) {
-      const count = r.bakes.length
-      if (count > max) max = count
-    }
-  }
-  return max
-})
-
-const maxRecipeItems = computed(() => {
-  let max = 0
-  for (const g of groups.value) {
-    for (const r of g.recipes) {
-      const count = recipeItems(r)
-      if (count > max) max = count
-    }
-  }
-  return max
-})
-
-const maxRecipeServings = computed(() => {
-  let max = 0
-  for (const g of groups.value) {
-    for (const r of g.recipes) {
-      const count = recipeServings(r)
-      if (count > max) max = count
+      if (r.bakes.length > max) max = r.bakes.length
     }
   }
   return max
@@ -687,7 +664,10 @@ watchEffect(() => {
 
     <!-- Production mix -- proportion bars -->
     <div class="ds3-mix">
-      <span class="ds3-section-label">Production Mix</span>
+      <div class="ds3-mix-header">
+        <span class="ds3-section-label">Production Mix</span>
+        <span class="ds3-mix-total">{{ allItems }} items</span>
+      </div>
       <div class="ds3-mix-bars">
         <div
           v-for="gp in groupProportions"
@@ -750,37 +730,22 @@ watchEffect(() => {
                 class="ds3-recipe"
               >
                 <div class="ds3-recipe-name">{{ recipe.name }}</div>
-                <div class="ds3-recipe-bars">
-                  <div class="ds3-bar-row">
-                    <span class="ds3-bar-label">Sessions</span>
-                    <span class="ds3-bar-track">
-                      <span
-                        class="ds3-bar-fill"
-                        :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
-                      />
-                    </span>
-                    <span class="ds3-bar-value">{{ recipe.bakes.length }}</span>
-                  </div>
-                  <div class="ds3-bar-row">
-                    <span class="ds3-bar-label">{{ recipe.unit.charAt(0).toUpperCase() + recipe.unit.slice(1) }}</span>
-                    <span class="ds3-bar-track">
-                      <span
-                        class="ds3-bar-fill"
-                        :style="{ width: (recipeItems(recipe) / maxRecipeItems) * 100 + '%' }"
-                      />
-                    </span>
-                    <span class="ds3-bar-value">{{ recipeItems(recipe) }}</span>
-                  </div>
-                  <div v-if="recipe.servingsPerItem > 1" class="ds3-bar-row">
-                    <span class="ds3-bar-label">{{ recipe.servingUnit.charAt(0).toUpperCase() + recipe.servingUnit.slice(1) }}</span>
-                    <span class="ds3-bar-track">
-                      <span
-                        class="ds3-bar-fill ds3-bar-fill--subtle"
-                        :style="{ width: (recipeServings(recipe) / maxRecipeServings) * 100 + '%' }"
-                      />
-                    </span>
-                    <span class="ds3-bar-value">~{{ recipeServings(recipe) }}</span>
-                  </div>
+                <div class="ds3-recipe-hybrid">
+                  <span class="ds3-micro-bar-wrap">
+                    <span
+                      class="ds3-micro-bar"
+                      :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
+                    />
+                  </span>
+                  <span class="ds3-hybrid-counts">
+                    <span class="ds3-hybrid-value">{{ recipe.bakes.length }}</span> session{{ recipe.bakes.length !== 1 ? 's' : '' }}
+                    <span class="ds3-hybrid-sep">&middot;</span>
+                    <span class="ds3-hybrid-value">{{ recipeItems(recipe) }}</span> {{ recipe.unit }}
+                    <template v-if="recipe.servingsPerItem > 1">
+                      <span class="ds3-hybrid-sep">&middot;</span>
+                      <span class="ds3-hybrid-value">~{{ recipeServings(recipe) }}</span> {{ recipe.servingUnit }}
+                    </template>
+                  </span>
                 </div>
               </div>
             </div>
@@ -793,37 +758,22 @@ watchEffect(() => {
               class="ds3-recipe"
             >
               <div class="ds3-recipe-name">{{ recipe.name }}</div>
-              <div class="ds3-recipe-bars">
-                <div class="ds3-bar-row">
-                  <span class="ds3-bar-label">Sessions</span>
-                  <span class="ds3-bar-track">
-                    <span
-                      class="ds3-bar-fill"
-                      :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
-                    />
-                  </span>
-                  <span class="ds3-bar-value">{{ recipe.bakes.length }}</span>
-                </div>
-                <div class="ds3-bar-row">
-                  <span class="ds3-bar-label">{{ recipe.unit.charAt(0).toUpperCase() + recipe.unit.slice(1) }}</span>
-                  <span class="ds3-bar-track">
-                    <span
-                      class="ds3-bar-fill"
-                      :style="{ width: (recipeItems(recipe) / maxRecipeItems) * 100 + '%' }"
-                    />
-                  </span>
-                  <span class="ds3-bar-value">{{ recipeItems(recipe) }}</span>
-                </div>
-                <div v-if="recipe.servingsPerItem > 1" class="ds3-bar-row">
-                  <span class="ds3-bar-label">{{ recipe.servingUnit.charAt(0).toUpperCase() + recipe.servingUnit.slice(1) }}</span>
-                  <span class="ds3-bar-track">
-                    <span
-                      class="ds3-bar-fill ds3-bar-fill--subtle"
-                      :style="{ width: (recipeServings(recipe) / maxRecipeServings) * 100 + '%' }"
-                    />
-                  </span>
-                  <span class="ds3-bar-value">~{{ recipeServings(recipe) }}</span>
-                </div>
+              <div class="ds3-recipe-hybrid">
+                <span class="ds3-micro-bar-wrap">
+                  <span
+                    class="ds3-micro-bar"
+                    :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
+                  />
+                </span>
+                <span class="ds3-hybrid-counts">
+                  <span class="ds3-hybrid-value">{{ recipe.bakes.length }}</span> session{{ recipe.bakes.length !== 1 ? 's' : '' }}
+                  <span class="ds3-hybrid-sep">&middot;</span>
+                  <span class="ds3-hybrid-value">{{ recipeItems(recipe) }}</span> {{ recipe.unit }}
+                  <template v-if="recipe.servingsPerItem > 1">
+                    <span class="ds3-hybrid-sep">&middot;</span>
+                    <span class="ds3-hybrid-value">~{{ recipeServings(recipe) }}</span> {{ recipe.servingUnit }}
+                  </template>
+                </span>
               </div>
             </div>
           </template>
@@ -1077,6 +1027,18 @@ watchEffect(() => {
   padding: 0 0.25rem;
 }
 
+.ds3-mix-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+}
+
+.ds3-mix-total {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-stone-400);
+}
+
 .ds3-mix-bars {
   margin-top: 0.75rem;
   display: flex;
@@ -1256,60 +1218,46 @@ watchEffect(() => {
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--color-stone-700);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
-.ds3-recipe-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3125rem;
-}
-
-.ds3-bar-row {
+.ds3-recipe-hybrid {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
-.ds3-bar-label {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  color: var(--color-stone-500);
-  width: 4.5rem;
-  flex-shrink: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.ds3-bar-track {
-  flex: 1;
-  height: 6px;
+.ds3-micro-bar-wrap {
+  width: 3rem;
+  height: 4px;
   background: var(--color-stone-100);
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
-.ds3-bar-fill {
+.ds3-micro-bar {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
   height: 100%;
   background: var(--color-accent);
-  transition: width 300ms ease;
 }
 
-.ds3-bar-fill--subtle {
-  background: var(--color-stone-300);
-}
-
-.ds3-bar-value {
+.ds3-hybrid-counts {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.6875rem;
+  color: var(--color-stone-500);
+}
+
+.ds3-hybrid-value {
+  font-weight: 600;
   color: var(--color-ink);
-  width: 2.5rem;
-  text-align: right;
-  flex-shrink: 0;
+}
+
+.ds3-hybrid-sep {
+  color: var(--color-stone-300);
+  margin: 0 0.125rem;
 }
 
 
@@ -1467,11 +1415,6 @@ watchEffect(() => {
   .ds3-group-badge--muted,
   .ds3-group-sessions {
     display: none;
-  }
-
-  .ds3-bar-label {
-    width: 3.5rem;
-    font-size: 0.5625rem;
   }
 
   .ds3-th--bar,

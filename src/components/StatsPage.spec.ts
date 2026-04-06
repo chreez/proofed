@@ -677,7 +677,7 @@ describe('StatsPage', () => {
 
   // --- Per-recipe detail bars ---
 
-  it('renders recipe bars inside expanded group', async () => {
+  it('renders recipe hybrid counts inside expanded group', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [makeCookLogEntry()],
@@ -685,12 +685,13 @@ describe('StatsPage', () => {
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
     expect(wrapper.find('.ds3-recipe-name').text()).toBe('Bread')
-    const barLabels = wrapper.findAll('.ds3-bar-label')
-    expect(barLabels[0].text()).toBe('Sessions')
-    expect(barLabels[1].text()).toBe('Loaves') // capitalized unit
+    expect(wrapper.find('.ds3-micro-bar-wrap').exists()).toBe(true)
+    const counts = wrapper.find('.ds3-hybrid-counts')
+    expect(counts.text()).toContain('session')
+    expect(counts.text()).toContain('loaves')
   })
 
-  it('shows servings bar when servingsPerItem > 1', async () => {
+  it('shows servings in hybrid counts when servingsPerItem > 1', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       config: {
@@ -701,12 +702,11 @@ describe('StatsPage', () => {
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const barLabels = wrapper.findAll('.ds3-bar-label')
-    expect(barLabels.length).toBe(3)
-    expect(barLabels[2].text()).toBe('Slices')
+    const counts = wrapper.find('.ds3-hybrid-counts')
+    expect(counts.text()).toContain('slices')
   })
 
-  it('hides servings bar when servingsPerItem is 1', async () => {
+  it('hides servings in hybrid counts when servingsPerItem is 1', async () => {
     const manifest = makeManifest([{ id: 'sauce', name: 'Sauce', file: 'sauce.json' }])
     const sauce = makeRecipe({
       config: {
@@ -717,11 +717,11 @@ describe('StatsPage', () => {
     })
     const wrapper = await mountAndLoad(manifest, { 'sauce.json': sauce })
 
-    const barLabels = wrapper.findAll('.ds3-bar-label')
-    expect(barLabels.length).toBe(2) // Only sessions + unit, no servings bar
+    const counts = wrapper.find('.ds3-hybrid-counts')
+    expect(counts.text()).not.toContain('~')
   })
 
-  it('bar widths are proportional to max across all recipes', async () => {
+  it('micro-bar width is proportional to max sessions', async () => {
     const manifest = makeManifest([
       { id: 'bread', name: 'Bread', file: 'bread.json' },
       { id: 'pizza', name: 'Pizza', file: 'pizza.json' },
@@ -742,11 +742,24 @@ describe('StatsPage', () => {
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': bread, 'pizza.json': pizza })
 
-    // bread has 3 sessions (max), pizza has 1
-    // bread session bar should be 100%, pizza should be ~33%
-    const barFills = wrapper.findAll('.ds3-bar-fill')
-    // First bar fill is bread sessions -> 100%
-    expect(barFills[0].attributes('style')).toContain('width: 100%')
+    const bars = wrapper.findAll('.ds3-micro-bar')
+    // bread has 3 sessions (max) -> 100%
+    expect(bars[0].attributes('style')).toContain('width: 100%')
+  })
+
+  it('shows production mix total items count', async () => {
+    const manifest = makeManifest([
+      { id: 'bread', name: 'Bread', file: 'bread.json' },
+    ])
+    const bread = makeRecipe({
+      cook_log: [
+        makeCookLogEntry({ date: '2026-01-01' }),
+        makeCookLogEntry({ date: '2026-01-15' }),
+      ],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': bread })
+
+    expect(wrapper.find('.ds3-mix-total').text()).toContain('items')
   })
 
   // --- Pantry Ledger ---
