@@ -1914,6 +1914,94 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-04-06",
+      "start_date": "2026-04-04",
+      "version": "v3.0.0",
+      "actual_yield": { "value": 2, "unit": "loaves" },
+      "summary": "Twelfth bake, 2-loaf. Timing got away — emergency cold retard mid-bulk at 40% aliquot rise. Dough hit ~100% by preshape the next day. Took creative liberties with bake temps and scoring since the dough felt compromised. Higher uncovered temp and extra time produced a noticeably better crust.",
+      "notes": [
+        "~4:04pm Apr 4 — fermentolyse start.",
+        "4:39pm — salt incorporated, 75.4°F.",
+        "5:07pm — fold 1, 75.5°F.",
+        "5:36pm — fold 2, 76.5°F.",
+        "6:12pm — fold 3, 75.9°F.",
+        "~7:00pm — into fridge at ~40% aliquot rise. Timing got away — emergency cold retard to prevent overproofing.",
+        "Apr 5 ~12:59pm — let dough come to room temp. Aliquot was at ~100% by preshape. Not happy with this dough.",
+        "Preshaped, rested ~25 min. Dough balls ~950g each.",
+        "Hazy on exact bake temps — preheated at 550°F. 20 min covered at high temp.",
+        "Tried keeping uncovered temp higher on first loaf (didn't lower it). Crust came out really good.",
+        "Uncovered bake: 9 min, flip, 9 min, flip, then 4 extra min with tray turned 90°. Came out even.",
+        "Cross score on Trevor's loaf (tried and true). Single score on home loaf — had to cut twice to get deep enough, still got a cool bloom.",
+        "Single score / decorative patterns not for me. Keeping it uniform and professional going forward.",
+        "Trevor really liked his loaf. Mentioned possible underbake due to crumb shine — unsure how to interpret.",
+        "Internal temp ~210°F.",
+        "Crust came out better than usual from higher uncovered temp + extra time. Flipped at 9 min intervals.",
+        "Wasn't present enough in the process — didn't log bake temps well. Following the strict schedule makes more sense.",
+        "Took creative liberties because was resigned to thinking the dough was overproofed. It's about adapting."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-04-06/toast-slice-night-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-06/toast-slice-night-400w.webp",
+          "alt": "Grilled cheese made with sourdough slices on a white plate — melted cheddar and tomato between golden-brown toasted sourdough. Late night lazy meal. Dog watching from behind the plate."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-06/crumb-shot-and-loaf-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-06/crumb-shot-and-loaf-400w.webp",
+          "alt": "Finished sourdough boule cut in half on a wire cooling rack. One half held up showing open, airy crumb with good hole distribution. The other half on the rack displays the crust with banneton ring pattern from no-linen proofing and a single score that bloomed well."
+        }
+      ],
+      "next_time": [
+        { "text": "Follow the strict schedule — emergency cold retard threw off the whole process" },
+        { "text": "Log bake temps during the bake (be more present and deliberate)" },
+        { "text": "Investigate crumb shine as underbake indicator — Trevor flagged it" },
+        { "text": "Stick with cross score — single/decorative not worth it for this bread" }
+      ],
+      "cost": {
+        "total": 2.65,
+        "perServing": 1.32,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt 17.6 oz",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.12
+          }
+        ]
+      }
     }
   ],
   "research": {

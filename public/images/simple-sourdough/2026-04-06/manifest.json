@@ -1,0 +1,19 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-04-06",
+  "processedAt": "2026-04-06T09:45:23.863Z",
+  "photos": [
+    {
+      "name": "crumb-shot-and-loaf",
+      "thumb": "crumb-shot-and-loaf-400w.webp",
+      "src": "crumb-shot-and-loaf-800w.webp",
+      "summary": "Finished sourdough boule cut in half on a wire cooling rack. One half held up showing open, airy crumb with good hole distribution. The other half on the rack displays the crust with banneton ring pattern from no-linen proofing and a single score that bloomed well."
+    },
+    {
+      "name": "toast-slice-night",
+      "thumb": "toast-slice-night-400w.webp",
+      "src": "toast-slice-night-800w.webp",
+      "summary": "Grilled cheese made with sourdough slices on a white plate — melted cheddar and tomato between golden-brown toasted sourdough. Late night lazy meal. Dog watching from behind the plate."
+    }
+  ]
+}
