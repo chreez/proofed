@@ -1,17 +1,42 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue'
+import { ref, computed, useTemplateRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { Link2, Check, ArrowRight } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
-import type { CookLogEntry, CookLogPhoto } from '@/types/recipe'
+import type { CookLogEntry, CookLogPhoto, Recipe } from '@/types/recipe'
 import { sortedCookLog } from '@/composables/useCookLog'
+import {
+  sessionCount,
+  itemsCreated,
+  servingsCreated,
+  caloriesCreated,
+} from '@/composables/useCookLogStats'
 import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = defineProps<{
   cookLog: CookLogEntry[]
   sectionId: string
   recipeId?: string
+  recipe?: Recipe
 }>()
+
+// --- Header stats row (PF-41 decision A2) ---
+// Only renders when the parent supplies a `recipe` prop with stats + at least
+// one completed bake. Existing callers that only pass `cookLog` (e.g. specs)
+// render the plain header with no stats row.
+const stats = computed(() => props.recipe?.config?.stats)
+const completedCount = computed(() => sessionCount(props.cookLog))
+const showStatsRow = computed(() => !!stats.value && completedCount.value > 0)
+
+const statsItems = computed(() => itemsCreated(props.cookLog, props.recipe))
+const statsServings = computed(() => servingsCreated(props.cookLog, props.recipe))
+const statsCalories = computed(() => caloriesCreated(props.cookLog, props.recipe))
+
+function formatCalories(cal: number | null): string {
+  if (cal == null) return '—'
+  if (cal >= 1000) return `${(cal / 1000).toFixed(1)}k`
+  return Math.round(cal).toString()
+}
 
 const router = useRouter()
 
@@ -90,6 +115,26 @@ function entryId(date: string): string {
       </IconButton>
     </div>
 
+    <!-- PF-41 decision A2: stacked mini-tiles row (sessions · items · [servings] · calories) -->
+    <div v-if="showStatsRow && stats" class="cook-log-stats">
+      <div class="cook-log-stats-tile">
+        <span class="cook-log-stats-value">{{ completedCount }}</span>
+        <span class="cook-log-stats-label">sessions</span>
+      </div>
+      <div class="cook-log-stats-tile">
+        <span class="cook-log-stats-value">{{ statsItems }}</span>
+        <span class="cook-log-stats-label">{{ stats.unit }}</span>
+      </div>
+      <div v-if="stats.servingsPerItem > 1" class="cook-log-stats-tile">
+        <span class="cook-log-stats-value">~{{ statsServings }}</span>
+        <span class="cook-log-stats-label">{{ stats.servingUnit }}</span>
+      </div>
+      <div class="cook-log-stats-tile">
+        <span class="cook-log-stats-value">{{ formatCalories(statsCalories) }}</span>
+        <span class="cook-log-stats-label">calories</span>
+      </div>
+    </div>
+
     <div
       v-for="(entry, index) in sortedCookLog(cookLog)"
       :key="index"
@@ -146,5 +191,44 @@ function entryId(date: string): string {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* PF-41 A2 header stats row — mirrors the StatsPage ds3-hero tile styling
+   at a smaller recipe-level scale. */
+.cook-log-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  border: 1px solid var(--color-stone-200);
+  background: var(--color-surface);
+  margin-bottom: 1rem;
+}
+
+.cook-log-stats-tile {
+  padding: 0.625rem 0.5rem;
+  text-align: center;
+  border-right: 1px solid var(--color-stone-200);
+}
+
+.cook-log-stats-tile:last-child {
+  border-right: none;
+}
+
+.cook-log-stats-value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-ink);
+}
+
+.cook-log-stats-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-stone-500);
+  margin-top: 0.375rem;
 }
 </style>

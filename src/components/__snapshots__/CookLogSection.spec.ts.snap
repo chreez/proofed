@@ -9,7 +9,8 @@ exports[`HTML snapshot > matches snapshot 1`] = `
           <path d="M15 7h2a5 5 0 1 1 0 10h-2"></path>
           <line x1="8" x2="16" y1="12" y2="12"></line>
         </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
-  </div>
+  </div><!-- PF-41 decision A2: stacked mini-tiles row (sessions · items · [servings] · calories) -->
+  <!--v-if-->
   <div data-v-f626ec8a="" id="bake-2026-02-05" class="mb-4 scroll-mt-16">
     <div data-v-f626ec8a="" class="border-2 border-stone-200 p-3 flex gap-3">
       <!-- Optional hero thumbnail -->

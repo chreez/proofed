@@ -557,6 +557,7 @@ watch(() => route.hash, (newHash) => {
               id="cook-log-section"
               :cook-log="currentRecipe.cook_log"
               :recipe-id="currentRecipeId ?? undefined"
+              :recipe="currentRecipe"
               section-id="cook-log-section"
               class="mt-8 scroll-mt-16"
             />
