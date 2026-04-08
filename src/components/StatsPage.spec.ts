@@ -1728,4 +1728,140 @@ describe('StatsPage', () => {
 
     vi.useRealTimers()
   })
+
+  // -------------------------------------------------------------------------
+  // PF-41 B3: Calories Created accent tile
+  // -------------------------------------------------------------------------
+
+  function makeNutrition(perServingCalories: number): Recipe['nutrition'] {
+    return {
+      servings: 10,
+      calculatedDate: '2026-03-01',
+      dataSource: 'test',
+      totals: {
+        calories: perServingCalories * 10,
+        protein: 0,
+        totalFat: 0,
+        saturatedFat: 0,
+        carbohydrates: 0,
+        sugar: 0,
+        fiber: 0,
+        sodium: 0,
+      },
+      perServing: {
+        calories: perServingCalories,
+        protein: 0,
+        totalFat: 0,
+        saturatedFat: 0,
+        carbohydrates: 0,
+        sugar: 0,
+        fiber: 0,
+        sodium: 0,
+      },
+      breakdown: [],
+    }
+  }
+
+  it('renders B3 accent tile when at least one recipe has nutrition data', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({
+      nutrition: makeNutrition(200),
+      cook_log: [
+        makeCookLogEntry({ date: '2026-02-01' }),
+        makeCookLogEntry({ date: '2026-02-10' }),
+      ],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    const tile = wrapper.find('.ds3-calories')
+    expect(tile.exists()).toBe(true)
+    expect(wrapper.find('.ds3-calories-label').text()).toContain('Calories Created')
+    // 2 bakes × 1 item × 10 servings × 200 cal = 4000 → "4.0k"
+    expect(wrapper.find('.ds3-calories-value').text()).toBe('4.0k')
+  })
+
+  it('hides B3 tile when NO recipes have nutrition data', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({
+      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    expect(wrapper.find('.ds3-calories').exists()).toBe(false)
+  })
+
+  it('silently skips recipes without nutrition when aggregating', async () => {
+    const manifest = makeManifest([
+      { id: 'bread', name: 'Bread', file: 'bread.json' },
+      { id: 'cookies', name: 'Cookies', file: 'cookies.json' },
+    ])
+    const bread = makeRecipe({
+      nutrition: makeNutrition(100),
+      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    })
+    // Cookies recipe has NO nutrition block — should be skipped
+    const cookies = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: {
+          group: 'Cookies',
+          defaultYield: 12,
+          unit: 'cookies',
+          servingsPerItem: 1,
+          servingUnit: 'cookies',
+        },
+      },
+      cook_log: [makeCookLogEntry({ date: '2026-02-05' })],
+    })
+    const wrapper = await mountAndLoad(manifest, {
+      'bread.json': bread,
+      'cookies.json': cookies,
+    })
+
+    // Only bread counts: 1 × 1 × 10 × 100 = 1000 cal → "1.0k"
+    expect(wrapper.find('.ds3-calories-value').text()).toBe('1.0k')
+  })
+
+  it('formatCaloriesK renders M for million+ calorie totals', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    // 10 bakes × 1 item × 10 servings × 12000 cal/serving = 1,200,000 → "1.2M"
+    const recipe = makeRecipe({
+      nutrition: makeNutrition(12000),
+      cook_log: Array.from({ length: 10 }, (_, i) =>
+        makeCookLogEntry({ date: `2026-02-${String(i + 1).padStart(2, '0')}` }),
+      ),
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    expect(wrapper.find('.ds3-calories-value').text()).toBe('1.2M')
+  })
+
+  it('formatCaloriesK renders plain integer for totals < 1000', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    // 1 bake × 1 item × 10 servings × 50 cal = 500 → "500"
+    const recipe = makeRecipe({
+      nutrition: makeNutrition(50),
+      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    expect(wrapper.find('.ds3-calories-value').text()).toBe('500')
+  })
+
+  it('B3 tile accounts for actual_yield when computing items', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({
+      nutrition: makeNutrition(100),
+      cook_log: [
+        makeCookLogEntry({
+          date: '2026-02-01',
+          actual_yield: { value: 3, unit: 'loaves' },
+        }),
+      ],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    // 3 items × 10 servings × 100 cal = 3000 → "3.0k"
+    expect(wrapper.find('.ds3-calories-value').text()).toBe('3.0k')
+  })
 })

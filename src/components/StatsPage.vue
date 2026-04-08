@@ -25,6 +25,12 @@ interface StatsRecipe {
   servingUnit: string
   subgroup?: string
   bakes: BakeEntry[]
+  /**
+   * Calories per serving from recipe.nutrition.perServing.calories.
+   * null when the recipe has no nutrition block — such recipes are silently
+   * skipped in the dashboard calories aggregate (PF-41 AC #11).
+   */
+  caloriesPerServing: number | null
 }
 
 interface ProductGroup {
@@ -124,6 +130,8 @@ async function loadData(): Promise<void> {
 
       recipeWithBakes++
 
+      const caloriesPerServing = recipe.nutrition?.perServing?.calories ?? null
+
       // Populate timeline bake map with hero images
       for (const entry of completedEntries) {
         const photos = entry.photos ?? []
@@ -152,6 +160,7 @@ async function loadData(): Promise<void> {
           servingUnit: stats.servingUnit,
           subgroup: stats.subgroup,
           bakes: normalEntries.map(e => buildBakeEntry(e, stats)),
+          caloriesPerServing,
         }
 
         const existing = groupMap.get(stats.group)
@@ -173,6 +182,9 @@ async function loadData(): Promise<void> {
           servingsPerItem: entry.cost?.servings ?? 1,
           servingUnit: 'pieces',
           bakes: [buildBakeEntry(entry, { ...stats, defaultYield: 1 })],
+          // Aberrations inherit the parent recipe's nutrition — typically null
+          // or not meaningful. Silently skipped in the dashboard aggregate.
+          caloriesPerServing: null,
         }
         aberrationRecipes.push(aberrationRecipe)
       }
@@ -293,6 +305,28 @@ function groupSubgroups(group: ProductGroup): SubgroupedRecipes[] | null {
 const allBakes = computed(() => groups.value.reduce((s, g) => s + totalBakes(g), 0))
 const allItems = computed(() => groups.value.reduce((s, g) => s + totalItems(g), 0))
 const allServings = computed(() => groups.value.reduce((s, g) => s + totalServings(g), 0))
+
+// PF-41 B3: aggregate calories created across all recipes with nutrition data.
+// Recipes without a nutrition block (caloriesPerServing === null) are silently
+// skipped per AC #11.
+const allCalories = computed(() => {
+  let total = 0
+  for (const g of groups.value) {
+    for (const r of g.recipes) {
+      if (r.caloriesPerServing == null) continue
+      const items = r.bakes.reduce((s, b) => s + b.items, 0)
+      const servings = items * r.servingsPerItem
+      total += servings * r.caloriesPerServing
+    }
+  }
+  return total
+})
+
+function formatCaloriesK(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`
+  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}k`
+  return Math.round(n).toString()
+}
 
 // Max sessions for micro-bar proportions
 const maxRecipeSessions = computed(() => {
@@ -601,6 +635,12 @@ watchEffect(() => {
         <span class="ds3-tile-value">{{ allServings }}</span>
         <span class="ds3-tile-label">Total Servings</span>
       </div>
+    </div>
+
+    <!-- PF-41 decision B3: wide accent tile for Calories Created, second row -->
+    <div v-if="allCalories > 0" class="ds3-calories">
+      <span class="ds3-calories-value">{{ formatCaloriesK(allCalories) }}</span>
+      <span class="ds3-calories-label">Calories Created across all bakes</span>
     </div>
 
     <!-- Baking cadence timeline -->
@@ -924,6 +964,35 @@ watchEffect(() => {
   letter-spacing: 0.06em;
   color: var(--color-stone-500);
   margin-top: 0.5rem;
+}
+
+/* --- PF-41 B3: Calories Created accent tile (second row) --- */
+
+.ds3-calories {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
+  border: 2px solid var(--color-stone-200);
+  border-top: none;
+  background: var(--color-stone-50);
+}
+
+.ds3-calories-value {
+  font-family: var(--font-mono);
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.ds3-calories-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-stone-500);
 }
 
 /* --- Section label (reused) --- */
@@ -1427,6 +1496,14 @@ watchEffect(() => {
   }
 }
 
+@media (max-width: 600px) {
+  .ds3-calories {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 400px) {
   .ds3-tile {
     padding: 1rem 0.75rem;
@@ -1434,6 +1511,10 @@ watchEffect(() => {
 
   .ds3-tile-value {
     font-size: 1.5rem;
+  }
+
+  .ds3-calories-value {
+    font-size: 1.75rem;
   }
 
   .ds3-group-header {
