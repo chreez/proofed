@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watchEffect, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Recipe, RecipeManifest, CookLogEntry, RecipeStats } from '@/types/recipe'
+import ContributionCalendar from '@/components/ContributionCalendar.vue'
+import type { CalendarBakeDay } from '@/components/ContributionCalendar.vue'
 
 // --- Internal types ---
 
@@ -54,14 +56,6 @@ interface TimelineBakeInfo {
   date: string
 }
 
-interface TimelineDot {
-  date: string
-  dayOffset: number
-  percent: number
-  bakes: TimelineBakeInfo[]
-  isAberration: boolean
-}
-
 // --- Data loading ---
 
 const router = useRouter()
@@ -70,6 +64,7 @@ const isLoading = ref(true)
 const groups = ref<ProductGroup[]>([])
 const allRecipeCount = ref(0)
 const timelineBakeMap = ref(new Map<string, TimelineBakeInfo[]>())
+const calendarScrollEl = ref<HTMLElement | null>(null)
 
 const GROUP_ICONS: Record<string, string> = {
   'Sourdough Breads': '\u{1F35E}',
@@ -132,8 +127,15 @@ async function loadData(): Promise<void> {
 
       const caloriesPerServing = recipe.nutrition?.perServing?.calories ?? null
 
-      // Populate timeline bake map with hero images
-      for (const entry of completedEntries) {
+      // Split entries into normal and aberration
+      const normalEntries = completedEntries.filter(e => !e.aberration)
+      const aberrationEntries = completedEntries.filter(e => e.aberration)
+
+      // Populate calendar bake map with NORMAL bakes only.
+      // Aberration-only days are tracked separately via aberrationDatesSet
+      // so the calendar can render them in the muted aberration color while
+      // mixed days (normal + aberration on same date) still render as accent.
+      for (const entry of normalEntries) {
         const photos = entry.photos ?? []
         const heroThumb = photos.length > 0 ? photos[photos.length - 1].thumb : null
         const info: TimelineBakeInfo = { recipeId: id, recipeName: name, heroThumb, date: entry.date }
@@ -144,10 +146,6 @@ async function loadData(): Promise<void> {
           bakeMap.set(entry.date, [info])
         }
       }
-
-      // Split entries into normal and aberration
-      const normalEntries = completedEntries.filter(e => !e.aberration)
-      const aberrationEntries = completedEntries.filter(e => e.aberration)
 
       // Build normal bakes
       if (normalEntries.length > 0) {
@@ -240,6 +238,30 @@ async function loadData(): Promise<void> {
     console.error('Failed to load stats data:', err)
   } finally {
     isLoading.value = false
+    // Center the current month in the calendar viewport on mount.
+    // Without this, the user lands on 12-month-old empty cells (default
+    // scrollLeft = 0). The calendar SVG ends at the current week, so we
+    // pull the rightmost month label position and target the middle of
+    // the viewport. The scroll container has right padding (see CSS) so
+    // centering is actually achievable on narrow viewports.
+    //
+    // NOTE: this runs in `finally` AFTER isLoading flips to false because
+    // the calendar lives inside `v-else="isLoading"`. Until isLoading is
+    // false, calendarScrollEl.value is null and the scroll target doesn't
+    // exist in the DOM yet.
+    await nextTick()
+    if (calendarScrollEl.value) {
+      const labels = calendarScrollEl.value.querySelectorAll<SVGTextElement>('.cal-month')
+      const last = labels[labels.length - 1]
+      if (last) {
+        const labelX = parseFloat(last.getAttribute('x') ?? '0')
+        const target = labelX - calendarScrollEl.value.clientWidth / 2
+        // Browser auto-clamps to [0, scrollWidth - clientWidth].
+        calendarScrollEl.value.scrollLeft = target
+      } else {
+        calendarScrollEl.value.scrollLeft = calendarScrollEl.value.scrollWidth
+      }
+    }
   }
 }
 
@@ -388,81 +410,44 @@ const ledgerMaxPerServing = computed(() => {
   return max
 })
 
-// --- Baking timeline ---
+// --- Baking cadence (contribution calendar) ---
 
-const timelineStart = computed(() => {
-  let earliest = ''
+// Set of ISO dates that have at least one aberration entry. The calendar
+// uses this to render aberration-only days as stone-400. Days with both
+// a normal bake and an aberration still render as accent (normal wins)
+// because the cell-fill logic checks bakeMap first.
+const aberrationDatesSet = computed<Set<string>>(() => {
+  const set = new Set<string>()
   for (const g of groups.value) {
+    if (g.label !== 'Aberrations') continue
     for (const r of g.recipes) {
       for (const b of r.bakes) {
-        if (!earliest || b.date < earliest) earliest = b.date
+        set.add(b.date)
       }
     }
   }
-  return earliest ? new Date(earliest) : new Date()
+  return set
 })
 
-const timelineEnd = computed(() => {
-  let latest = ''
-  for (const g of groups.value) {
-    for (const r of g.recipes) {
-      for (const b of r.bakes) {
-        if (!latest || b.date > latest) latest = b.date
-      }
-    }
-  }
-  return latest ? new Date(latest) : new Date()
-})
+// Headline count: number of unique dates within the rolling 12-month window
+// that have at least one bake (normal OR aberration). Mirrors GitHub's
+// "1,323 contributions in the last year" headline.
+const calendarBakeCount = computed(() => {
+  const today = new Date()
+  const startOfDayToday = new Date(today.getFullYear(), today.getMonth(), today.getDate())
+  const windowStart = new Date(startOfDayToday)
+  windowStart.setDate(windowStart.getDate() - 364)
+  const windowStartIso = windowStart.toISOString().slice(0, 10)
+  const todayIso = startOfDayToday.toISOString().slice(0, 10)
 
-const timelineSpanDays = computed(() => {
-  const span = Math.round((timelineEnd.value.getTime() - timelineStart.value.getTime()) / (1000 * 60 * 60 * 24))
-  return Math.max(span, 1)
-})
-
-const timelineDots = computed<TimelineDot[]>(() => {
-  const dateSet = new Map<string, boolean>()
-  for (const g of groups.value) {
-    for (const r of g.recipes) {
-      for (const b of r.bakes) {
-        const existing = dateSet.get(b.date)
-        if (!existing && g.label === 'Aberrations') {
-          dateSet.set(b.date, true)
-        } else if (existing === undefined) {
-          dateSet.set(b.date, g.label === 'Aberrations')
-        }
-      }
-    }
+  const dates = new Set<string>()
+  for (const date of timelineBakeMap.value.keys()) {
+    if (date >= windowStartIso && date <= todayIso) dates.add(date)
   }
-  const dots: TimelineDot[] = []
-  for (const [date, isAberration] of dateSet) {
-    const d = new Date(date)
-    const dayOffset = Math.round((d.getTime() - timelineStart.value.getTime()) / (1000 * 60 * 60 * 24))
-    const percent = (dayOffset / timelineSpanDays.value) * 100
-    const bakes = timelineBakeMap.value.get(date) ?? []
-    dots.push({
-      date,
-      dayOffset,
-      percent,
-      bakes,
-      isAberration,
-    })
+  for (const date of aberrationDatesSet.value) {
+    if (date >= windowStartIso && date <= todayIso) dates.add(date)
   }
-  dots.sort((a, b) => a.dayOffset - b.dayOffset)
-  return dots
-})
-
-// Generate evenly-spaced timeline labels
-const timelineLabels = computed(() => {
-  if (groups.value.length === 0) return []
-  const start = timelineStart.value.getTime()
-  const end = timelineEnd.value.getTime()
-  const labels: string[] = []
-  const count = 5
-  for (let i = 0; i < count; i++) {
-    const t = start + (end - start) * (i / (count - 1))
-    labels.push(shortDate(new Date(t).toISOString().slice(0, 10)))
-  }
-  return labels
+  return dates.size
 })
 
 // Format date for display: "Feb 5"
@@ -490,21 +475,27 @@ const groupProportions = computed(() => {
 
 // --- Timeline popover ---
 
-const activeTimelineDot = ref<string | null>(null)
-const popoverPosition = ref<{ left: number; top: number; alignRight: boolean; alignLeft: boolean } | null>(null)
+const activeCalendarDate = ref<string | null>(null)
+const popoverPosition = ref<{ left: number; top: number; bottom: number; alignRight: boolean; alignLeft: boolean; flipBelow: boolean } | null>(null)
 let hidePopoverTimer: ReturnType<typeof setTimeout> | null = null
 
+// Approximate popover height used for top-edge clipping detection.
+// The popover renders 1-2 entries (each ~64px) plus padding; 200px is a
+// safe upper bound for vertical-flip decision.
+const POPOVER_FLIP_THRESHOLD = 200
+
 const activePopoverBakes = computed<TimelineBakeInfo[]>(() => {
-  if (!activeTimelineDot.value) return []
-  return timelineBakeMap.value.get(activeTimelineDot.value) ?? []
+  if (!activeCalendarDate.value) return []
+  return timelineBakeMap.value.get(activeCalendarDate.value) ?? []
 })
 
-function showPopover(dot: TimelineDot, event: MouseEvent | PointerEvent): void {
+function showPopover(date: string, event: MouseEvent | PointerEvent): void {
   if (hidePopoverTimer) {
     clearTimeout(hidePopoverTimer)
     hidePopoverTimer = null
   }
-  const el = event.currentTarget as HTMLElement
+  const el = event.currentTarget as Element | null
+  if (!el) return
   const rect = el.getBoundingClientRect()
   const viewportWidth = window.innerWidth
 
@@ -516,18 +507,23 @@ function showPopover(dot: TimelineDot, event: MouseEvent | PointerEvent): void {
     alignRight = true
   }
 
+  // If the cell is too close to the top of the viewport, flip the popover below the cell.
+  const flipBelow = rect.top < POPOVER_FLIP_THRESHOLD
+
   popoverPosition.value = {
     left: rect.left + rect.width / 2,
     top: rect.top,
+    bottom: rect.bottom,
     alignRight,
     alignLeft,
+    flipBelow,
   }
-  activeTimelineDot.value = dot.date
+  activeCalendarDate.value = date
 }
 
 function hidePopover(): void {
   hidePopoverTimer = setTimeout(() => {
-    activeTimelineDot.value = null
+    activeCalendarDate.value = null
     popoverPosition.value = null
   }, 150)
 }
@@ -539,18 +535,26 @@ function cancelHidePopover(): void {
   }
 }
 
-function togglePopover(dot: TimelineDot, event: MouseEvent | PointerEvent): void {
+function togglePopover(date: string, event: MouseEvent | PointerEvent): void {
   event.stopPropagation()
-  if (activeTimelineDot.value === dot.date) {
-    activeTimelineDot.value = null
+  if (activeCalendarDate.value === date) {
+    activeCalendarDate.value = null
     popoverPosition.value = null
   } else {
-    showPopover(dot, event)
+    showPopover(date, event)
   }
 }
 
+function onCalendarHover(day: CalendarBakeDay, ev: MouseEvent): void {
+  showPopover(day.date, ev)
+}
+
+function onCalendarClick(day: CalendarBakeDay, ev: MouseEvent): void {
+  togglePopover(day.date, ev)
+}
+
 function navigateToBake(bake: TimelineBakeInfo): void {
-  activeTimelineDot.value = null
+  activeCalendarDate.value = null
   popoverPosition.value = null
   router.push({ name: 'bake-detail', params: { recipeId: bake.recipeId, date: bake.date } })
 }
@@ -560,24 +564,38 @@ const popoverStyle = computed(() => {
   const p = popoverPosition.value
   const style: Record<string, string> = {
     position: 'fixed',
-    top: `${p.top - 8}px`,
     zIndex: '100',
-    transform: 'translateY(-100%)',
   }
-  if (p.alignLeft) {
-    style.left = `${p.left - 10}px`
-  } else if (p.alignRight) {
-    style.right = `${window.innerWidth - p.left - 10}px`
+  if (p.flipBelow) {
+    // Anchor below the cell
+    style.top = `${p.bottom + 8}px`
+    if (p.alignLeft) {
+      style.left = `${p.left - 10}px`
+    } else if (p.alignRight) {
+      style.right = `${window.innerWidth - p.left - 10}px`
+    } else {
+      style.left = `${p.left}px`
+      style.transform = 'translateX(-50%)'
+    }
   } else {
-    style.left = `${p.left}px`
-    style.transform = 'translate(-50%, -100%)'
+    // Anchor above the cell (default)
+    style.top = `${p.top - 8}px`
+    style.transform = 'translateY(-100%)'
+    if (p.alignLeft) {
+      style.left = `${p.left - 10}px`
+    } else if (p.alignRight) {
+      style.right = `${window.innerWidth - p.left - 10}px`
+    } else {
+      style.left = `${p.left}px`
+      style.transform = 'translate(-50%, -100%)'
+    }
   }
   return style
 })
 
 function handleClickOutside(): void {
-  if (activeTimelineDot.value) {
-    activeTimelineDot.value = null
+  if (activeCalendarDate.value) {
+    activeCalendarDate.value = null
     popoverPosition.value = null
   }
 }
@@ -632,35 +650,25 @@ watchEffect(() => {
       <span class="ds3-calories-label">Calories Created across all bakes</span>
     </div>
 
-    <!-- Baking cadence timeline -->
-    <div class="ds3-timeline">
-      <div class="ds3-timeline-header">
+    <!-- Baking cadence (contribution calendar) -->
+    <section id="baking-cadence" class="ds3-calendar-section">
+      <div class="ds3-calendar-header">
         <span class="ds3-section-label">Baking Cadence</span>
-        <span class="ds3-timeline-range">{{ shortDate(timelineStart.toISOString().slice(0, 10)) }} &ndash; {{ shortDate(timelineEnd.toISOString().slice(0, 10)) }}</span>
+        <span class="ds3-calendar-count">{{ calendarBakeCount }} bake sessions in the last 12 months</span>
       </div>
-      <div class="ds3-timeline-track">
-        <div class="ds3-timeline-line" />
-        <div
-          v-for="dot in timelineDots"
-          :key="dot.date"
-          class="ds3-timeline-dot"
-          :class="{ 'ds3-timeline-dot--aberration': dot.isAberration, 'ds3-timeline-dot--active': activeTimelineDot === dot.date }"
-          :style="{ left: dot.percent + '%' }"
-          @mouseenter="showPopover(dot, $event)"
-          @mouseleave="hidePopover"
-          @click.stop="togglePopover(dot, $event)"
-        >
-          <span
-            v-if="dot.bakes.length > 1"
-            class="ds3-timeline-count"
-          >{{ dot.bakes.length }}</span>
-        </div>
+      <div class="ds3-calendar-scroll" ref="calendarScrollEl">
+        <ContributionCalendar
+          :bake-map="timelineBakeMap"
+          :aberration-dates="aberrationDatesSet"
+          @cell-hover="onCalendarHover"
+          @cell-click="onCalendarClick"
+        />
       </div>
 
-      <!-- Timeline popover -->
+      <!-- Calendar popover (Teleported to body, lifted from the old timeline) -->
       <Teleport to="body">
         <div
-          v-if="activeTimelineDot && popoverPosition"
+          v-if="activeCalendarDate && popoverPosition"
           class="ds3-timeline-popover"
           :style="popoverStyle"
           @mouseenter="cancelHidePopover"
@@ -686,10 +694,7 @@ watchEffect(() => {
           </div>
         </div>
       </Teleport>
-      <div class="ds3-timeline-labels">
-        <span v-for="label in timelineLabels" :key="label" class="ds3-timeline-date">{{ label }}</span>
-      </div>
-    </div>
+    </section>
 
     <!-- Production mix -- proportion bars -->
     <div class="ds3-mix">
@@ -983,87 +988,47 @@ watchEffect(() => {
   color: var(--color-stone-500);
 }
 
-/* --- Baking cadence timeline --- */
+/* --- Baking cadence (contribution calendar) --- */
 
-.ds3-timeline {
+.ds3-calendar-section {
   margin-top: 2rem;
   padding: 0 0.25rem;
 }
 
-.ds3-timeline-header {
+.ds3-calendar-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
 }
 
-.ds3-timeline-range {
+.ds3-calendar-count {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   color: var(--color-stone-400);
 }
 
-.ds3-timeline-track {
-  position: relative;
-  height: 2rem;
-  margin: 0 0.5rem;
+/* The calendar SVG is wider than the ds3 container (52rem / 832px) at
+   14px cells / 3px gap. Scope overflow scrolling to the calendar only
+   so the rest of the page stays inside the shell. Scrollbar is hidden:
+   the calendar opens scrolled to center the current month so users
+   rarely need the scrollbar — they can swipe/scroll horizontally to
+   look back at older months. The 22rem right padding gives the scroll
+   logic room to actually center the rightmost month on narrow
+   viewports (without padding, scroll clamps before reaching center). */
+.ds3-calendar-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -0.25rem;
+  padding: 0 22rem 0.25rem 0.25rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/old Edge */
 }
 
-.ds3-timeline-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--color-stone-300);
-  transform: translateY(-50%);
-}
-
-.ds3-timeline-dot {
-  position: absolute;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  background: var(--color-accent);
-  border: 2px solid var(--color-surface);
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-}
-
-.ds3-timeline-dot--aberration {
-  background: var(--color-stone-400);
-  border-color: var(--color-surface);
-}
-
-.ds3-timeline-count {
-  position: absolute;
-  top: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 600;
-  color: var(--color-accent);
-}
-
-.ds3-timeline-labels {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.375rem 0.5rem 0;
-}
-
-.ds3-timeline-date {
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  color: var(--color-stone-400);
-}
-
-/* --- Timeline popover --- */
-
-.ds3-timeline-dot--active {
-  background: var(--color-ink);
-  border-color: var(--color-surface);
-  z-index: 2;
+.ds3-calendar-scroll::-webkit-scrollbar {
+  display: none; /* Chrome / Safari / WebKit */
 }
 
 /* --- Production mix proportions --- */
@@ -1448,10 +1413,6 @@ watchEffect(() => {
 
   .ds3-th--bar,
   .ds3-td--bar {
-    display: none;
-  }
-
-  .ds3-timeline-count {
     display: none;
   }
 }

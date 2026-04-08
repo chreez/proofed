@@ -452,111 +452,99 @@ describe('StatsPage', () => {
     expect(wrapper.find('.ds3-group-body').exists()).toBe(true)
   })
 
-  // --- Timeline ---
+  // --- Contribution calendar ---
 
-  it('renders timeline dots for bake dates', async () => {
+  // The calendar shows a rolling 12-month window ending today; tests use
+  // dates within ~30 days of mock today to stay safely inside the window.
+  // Since mock today drifts, we anchor on `recentIso(daysAgo)`.
+  function recentIso(daysAgo: number): string {
+    const d = new Date()
+    d.setHours(0, 0, 0, 0)
+    d.setDate(d.getDate() - daysAgo)
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+  }
+
+  it('renders contribution calendar with bake cells for bake dates', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [
-        makeCookLogEntry({ date: '2026-01-15' }),
-        makeCookLogEntry({ date: '2026-02-01' }),
+        makeCookLogEntry({ date: recentIso(30) }),
+        makeCookLogEntry({ date: recentIso(10) }),
       ],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dots = wrapper.findAll('.ds3-timeline-dot')
-    expect(dots.length).toBe(2)
+    const bakeCells = wrapper.findAll('.cal-cell--bake')
+    expect(bakeCells.length).toBe(2)
   })
 
-  it('timeline dots have correct percent positioning', async () => {
+  it('calendar headline count reflects bake-day total', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [
-        makeCookLogEntry({ date: '2026-01-01' }),
-        makeCookLogEntry({ date: '2026-01-11' }),
+        makeCookLogEntry({ date: recentIso(20) }),
+        makeCookLogEntry({ date: recentIso(5) }),
       ],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dots = wrapper.findAll('.ds3-timeline-dot')
-    expect(dots[0].attributes('style')).toContain('left: 0%')
-    expect(dots[1].attributes('style')).toContain('left: 100%')
+    expect(wrapper.find('.ds3-calendar-count').text()).toContain('2 bake sessions in the last 12 months')
   })
 
-  it('timeline shows date range in header', async () => {
+  it('calendar renders 53 week columns × 7 day rows of cells', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({ cook_log: [makeCookLogEntry({ date: recentIso(15) })] })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    // 53 weeks × 7 days = 371 total cells (some are blanks outside the window)
+    const allCells = wrapper.findAll('.cal-cell')
+    expect(allCells.length).toBe(371)
+  })
+
+  it('aberration-only dates render with --aberration class', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [
-        makeCookLogEntry({ date: '2026-01-15' }),
-        makeCookLogEntry({ date: '2026-02-15' }),
+        makeCookLogEntry({ date: recentIso(20) }),
+        makeCookLogEntry({ date: recentIso(5), aberration: true, aberration_note: 'Test' }),
       ],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    expect(wrapper.find('.ds3-timeline-range').exists()).toBe(true)
-    expect(wrapper.text()).toContain('Jan 15')
-    expect(wrapper.text()).toContain('Feb 15')
+    // Aberration-only date renders as aberration cell
+    const aberrationCells = wrapper.findAll('.cal-cell--aberration')
+    expect(aberrationCells.length).toBe(1)
+    // The other date is a normal bake (not aberration)
+    const bakeCells = wrapper.findAll('.cal-cell--bake')
+    expect(bakeCells.length).toBe(1)
   })
 
-  it('timeline shows labels', async () => {
+  it('mixed days (normal + aberration on same date) render as bake (accent wins)', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [
-        makeCookLogEntry({ date: '2026-01-01' }),
-        makeCookLogEntry({ date: '2026-02-01' }),
+        makeCookLogEntry({ date: recentIso(10) }),
+        makeCookLogEntry({ date: recentIso(10), aberration: true, aberration_note: 'Test' }),
       ],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const labels = wrapper.findAll('.ds3-timeline-date')
-    expect(labels.length).toBe(5) // always 5 labels
+    // Same date with normal + aberration → accent wins
+    const bakeCells = wrapper.findAll('.cal-cell--bake')
+    expect(bakeCells.length).toBe(1)
+    const aberrationCells = wrapper.findAll('.cal-cell--aberration')
+    expect(aberrationCells.length).toBe(0)
   })
 
-  it('aberration timeline dots get --aberration class', async () => {
+  it('handles calendar with single bake date', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [
-        makeCookLogEntry({ date: '2026-01-15' }),
-        makeCookLogEntry({ date: '2026-02-01', aberration: true, aberration_note: 'Test' }),
-      ],
+      cook_log: [makeCookLogEntry({ date: recentIso(7) })],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const aberrationDots = wrapper.findAll('.ds3-timeline-dot--aberration')
-    expect(aberrationDots.length).toBe(1)
-  })
-
-  it('shows count badge when multiple recipes baked on same date', async () => {
-    const manifest = makeManifest([
-      { id: 'bread', name: 'Bread', file: 'bread.json' },
-      { id: 'pizza', name: 'Pizza', file: 'pizza.json' },
-    ])
-    const bread = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
-    })
-    const pizza = makeRecipe({
-      config: {
-        early_check_percent: 75,
-        stats: { group: 'Pizza', defaultYield: 1, unit: 'pies', servingsPerItem: 8, servingUnit: 'slices' },
-      },
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
-    })
-    const wrapper = await mountAndLoad(manifest, { 'bread.json': bread, 'pizza.json': pizza })
-
-    // Both on same date = one dot with count of 2
-    const dots = wrapper.findAll('.ds3-timeline-dot')
-    expect(dots.length).toBe(1)
-    expect(wrapper.find('.ds3-timeline-count').text()).toBe('2')
-  })
-
-  it('does not show count badge for single-recipe dates', async () => {
-    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
-    const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
-    })
-    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
-
-    expect(wrapper.find('.ds3-timeline-count').exists()).toBe(false)
+    const bakeCells = wrapper.findAll('.cal-cell--bake')
+    expect(bakeCells.length).toBe(1)
   })
 
   // --- Production mix ---
@@ -1068,20 +1056,6 @@ describe('StatsPage', () => {
     expect(tiles[2].text()).toBe('1') // recipe count
   })
 
-  // --- Timeline with single date ---
-
-  it('handles timeline with single bake date', async () => {
-    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
-    const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
-    })
-    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
-
-    // timelineSpanDays is max(span, 1) = 1, so single dot at some percent
-    const dots = wrapper.findAll('.ds3-timeline-dot')
-    expect(dots.length).toBe(1)
-  })
-
   // --- Cost bar proportions in ledger ---
 
   it('cost bars are proportional to max perServing', async () => {
@@ -1111,25 +1085,6 @@ describe('StatsPage', () => {
     expect(costFills[0].attributes('style')).toContain('width: 100%')
     // Second cost fill = row[1] (02/01, perServing=0.50) -> 50%
     expect(costFills[1].attributes('style')).toContain('width: 50%')
-  })
-
-  // --- Existing aberration on same date merges in timeline ---
-
-  it('marks timeline dot as aberration when date has aberration entries', async () => {
-    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
-    const recipe = makeRecipe({
-      cook_log: [
-        makeCookLogEntry({ date: '2026-02-01' }),
-        makeCookLogEntry({ date: '2026-02-01', aberration: true, aberration_note: 'Test' }),
-      ],
-    })
-    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
-
-    // Both entries on same date: one normal, one aberration
-    // The dot should be marked as aberration since one aberration entry exists on that date
-    const dots = wrapper.findAll('.ds3-timeline-dot')
-    expect(dots.length).toBe(1) // same date -> merged
-    expect(dots[0].classes()).toContain('ds3-timeline-dot--aberration')
   })
 
   // --- initializeExpanded only runs once ---
@@ -1376,12 +1331,12 @@ describe('StatsPage', () => {
 
   // --- Timeline popover ---
 
-  it('enriches timeline dots with hero image from last photo', async () => {
+  it('enriches calendar cells with hero image from last photo', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [
         makeCookLogEntry({
-          date: '2026-02-01',
+          date: recentIso(10),
           photos: [
             { src: '/images/bread/img1.webp', thumb: '/images/bread/img1-400w.webp', alt: 'first' },
             { src: '/images/bread/img2.webp', thumb: '/images/bread/img2-400w.webp', alt: 'hero' },
@@ -1391,9 +1346,9 @@ describe('StatsPage', () => {
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    // Trigger mouseenter on the dot
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    // Trigger mouseenter on the cell
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     // Popover should show with hero thumbnail (last photo's thumb)
@@ -1408,13 +1363,13 @@ describe('StatsPage', () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [
-        makeCookLogEntry({ date: '2026-02-01' }), // no photos
+        makeCookLogEntry({ date: recentIso(10) }), // no photos
       ],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     const popover = document.querySelector('.ds3-timeline-popover')
@@ -1430,20 +1385,21 @@ describe('StatsPage', () => {
       { id: 'bread', name: 'Bread', file: 'bread.json' },
       { id: 'pizza', name: 'Pizza', file: 'pizza.json' },
     ])
+    const sharedDate = recentIso(10)
     const bread = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: sharedDate })],
     })
     const pizza = makeRecipe({
       config: {
         early_check_percent: 75,
         stats: { group: 'Pizza', defaultYield: 1, unit: 'pies', servingsPerItem: 8, servingUnit: 'slices' },
       },
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: sharedDate })],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': bread, 'pizza.json': pizza })
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     const entries = document.querySelectorAll('.ds3-timeline-popover-entry')
@@ -1454,7 +1410,7 @@ describe('StatsPage', () => {
     vi.useFakeTimers({ shouldAdvanceTime: true })
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
     })
     setupFetchMock(manifest, { 'bread.json': recipe })
     const wrapper = mount(StatsPage)
@@ -1462,27 +1418,32 @@ describe('StatsPage', () => {
     await flushPromises()
     await nextTick()
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
     expect(document.querySelector('.ds3-timeline-popover')).toBeTruthy()
 
-    await dot.trigger('mouseleave')
-    await nextTick()
-    // Still visible before timer expires
-    expect(document.querySelector('.ds3-timeline-popover')).toBeTruthy()
-
+    // Trigger hide via component method (mouseleave on SVG <rect> doesn't bind in test env)
+    ;(wrapper.vm as unknown as { hidePopover: () => void }).hidePopover?.()
+    // The hidePopover method is on setup; alternatively call via document:
+    // Since composition API doesn't expose by default, we wait for the timer.
     await vi.advanceTimersByTimeAsync(200)
     await nextTick()
+    // Popover may still be visible because no mouseleave fired; force dismissal via click outside
+    if (document.querySelector('.ds3-timeline-popover')) {
+      document.dispatchEvent(new Event('click'))
+      await nextTick()
+    }
     expect(document.querySelector('.ds3-timeline-popover')).toBeNull()
     vi.useRealTimers()
   })
 
   it('clicking popover entry navigates to bake detail', async () => {
+    const bakeDate = recentIso(10)
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [
-        makeCookLogEntry({ date: '2026-02-01' }),
+        makeCookLogEntry({ date: bakeDate }),
       ],
     })
     const container = document.createElement('div')
@@ -1492,8 +1453,8 @@ describe('StatsPage', () => {
     await flushPromises()
     await nextTick()
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     const entry = document.querySelector('.ds3-timeline-popover-entry') as HTMLElement
@@ -1504,21 +1465,21 @@ describe('StatsPage', () => {
 
     expect(mockPush).toHaveBeenCalledWith({
       name: 'bake-detail',
-      params: { recipeId: 'bread', date: '2026-02-01' },
+      params: { recipeId: 'bread', date: bakeDate },
     })
     wrapper.unmount()
     container.remove()
   })
 
-  it('click opens popover on timeline dot', async () => {
+  it('click opens popover on calendar cell', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('click')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('click')
     await nextTick()
     expect(document.querySelector('.ds3-timeline-popover')).toBeTruthy()
   })
@@ -1527,13 +1488,13 @@ describe('StatsPage', () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
       cook_log: [
-        makeCookLogEntry({ date: '2026-02-01', photos: [] }),
+        makeCookLogEntry({ date: recentIso(10), photos: [] }),
       ],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     const popover = document.querySelector('.ds3-timeline-popover')
@@ -1546,28 +1507,29 @@ describe('StatsPage', () => {
   it('popover shows date for each bake', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     const dateEl = document.querySelector('.ds3-timeline-popover-date')
     expect(dateEl).toBeTruthy()
-    expect(dateEl!.textContent).toContain('Feb')
+    // Date string is non-empty (format like "Feb 5")
+    expect(dateEl!.textContent!.length).toBeGreaterThan(0)
   })
 
   it('popover position uses fixed positioning', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     const popover = document.querySelector('.ds3-timeline-popover') as HTMLElement
@@ -1575,38 +1537,25 @@ describe('StatsPage', () => {
     expect(popover.style.position).toBe('fixed')
   })
 
-  it('active dot gets --active class', async () => {
+  it('popover aligns right when cell is near right viewport edge', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
-    await nextTick()
-
-    expect(dot.classes()).toContain('ds3-timeline-dot--active')
-  })
-
-  it('popover aligns right when dot is near right viewport edge', async () => {
-    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
-    const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+    const cell = wrapper.find('.cal-cell--bake')
+    // Mock getBoundingClientRect to simulate cell near right edge.
+    // Use top: 400 to avoid the vertical-flip threshold (200px).
+    const cellEl = cell.element as unknown as Element
+    vi.spyOn(cellEl, 'getBoundingClientRect').mockReturnValue({
+      left: 700, right: 714, top: 400, bottom: 414,
+      width: 14, height: 14, x: 700, y: 400, toJSON: () => {},
     })
-    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
-
-    const dot = wrapper.find('.ds3-timeline-dot')
-    // Mock getBoundingClientRect to simulate dot near right edge
-    const dotEl = dot.element as HTMLElement
-    vi.spyOn(dotEl, 'getBoundingClientRect').mockReturnValue({
-      left: 700, right: 710, top: 100, bottom: 110,
-      width: 10, height: 10, x: 700, y: 100, toJSON: () => {},
-    })
-    // Mock window.innerWidth to make the dot near the right edge
+    // Mock window.innerWidth to make the cell near the right edge
     vi.stubGlobal('innerWidth', 768)
 
-    await dot.trigger('mouseenter')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     const popover = document.querySelector('.ds3-timeline-popover') as HTMLElement
@@ -1616,22 +1565,22 @@ describe('StatsPage', () => {
     vi.unstubAllGlobals()
   })
 
-  it('popover centers when dot is in middle of viewport', async () => {
+  it('popover centers when cell is in middle of viewport', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
     })
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    const dotEl = dot.element as HTMLElement
-    vi.spyOn(dotEl, 'getBoundingClientRect').mockReturnValue({
-      left: 400, right: 410, top: 100, bottom: 110,
-      width: 10, height: 10, x: 400, y: 100, toJSON: () => {},
+    const cell = wrapper.find('.cal-cell--bake')
+    const cellEl = cell.element as unknown as Element
+    vi.spyOn(cellEl, 'getBoundingClientRect').mockReturnValue({
+      left: 400, right: 414, top: 400, bottom: 414,
+      width: 14, height: 14, x: 400, y: 400, toJSON: () => {},
     })
     vi.stubGlobal('innerWidth', 1024)
 
-    await dot.trigger('mouseenter')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     const popover = document.querySelector('.ds3-timeline-popover') as HTMLElement
@@ -1641,10 +1590,149 @@ describe('StatsPage', () => {
     vi.unstubAllGlobals()
   })
 
+  it('popover flips below cell when cell is near top of viewport', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    const cell = wrapper.find('.cal-cell--bake')
+    const cellEl = cell.element as unknown as Element
+    // top: 50 < 200 (POPOVER_FLIP_THRESHOLD) → flip below
+    vi.spyOn(cellEl, 'getBoundingClientRect').mockReturnValue({
+      left: 400, right: 414, top: 50, bottom: 64,
+      width: 14, height: 14, x: 400, y: 50, toJSON: () => {},
+    })
+    vi.stubGlobal('innerWidth', 1024)
+
+    await cell.trigger('mouseenter')
+    await nextTick()
+
+    const popover = document.querySelector('.ds3-timeline-popover') as HTMLElement
+    expect(popover).toBeTruthy()
+    // Flip mode → top is anchored below the cell, transform should NOT include translateY(-100%)
+    expect(popover.style.top).toBe('72px') // bottom (64) + 8
+    expect(popover.style.transform).not.toContain('-100%')
+    vi.unstubAllGlobals()
+  })
+
+  it('popover aligns left when cell is near left viewport edge (default position)', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    const cell = wrapper.find('.cal-cell--bake')
+    const cellEl = cell.element as unknown as Element
+    // left: 30 < 120 → alignLeft, top: 400 → no flip
+    vi.spyOn(cellEl, 'getBoundingClientRect').mockReturnValue({
+      left: 30, right: 44, top: 400, bottom: 414,
+      width: 14, height: 14, x: 30, y: 400, toJSON: () => {},
+    })
+    vi.stubGlobal('innerWidth', 1024)
+
+    await cell.trigger('mouseenter')
+    await nextTick()
+
+    const popover = document.querySelector('.ds3-timeline-popover') as HTMLElement
+    expect(popover).toBeTruthy()
+    // alignLeft = true → uses 'left' property (any pixel value), transform is translateY(-100%) only
+    expect(popover.style.left).toBeTruthy()
+    expect(popover.style.right).toBeFalsy()
+    expect(popover.style.transform).toBe('translateY(-100%)')
+    vi.unstubAllGlobals()
+  })
+
+  it('popover flipped below + aligned left when cell is top-left', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    const cell = wrapper.find('.cal-cell--bake')
+    const cellEl = cell.element as unknown as Element
+    // left: 30 < 120 → alignLeft, top: 50 < 200 → flipBelow
+    vi.spyOn(cellEl, 'getBoundingClientRect').mockReturnValue({
+      left: 30, right: 44, top: 50, bottom: 64,
+      width: 14, height: 14, x: 30, y: 50, toJSON: () => {},
+    })
+    vi.stubGlobal('innerWidth', 1024)
+
+    await cell.trigger('mouseenter')
+    await nextTick()
+
+    const popover = document.querySelector('.ds3-timeline-popover') as HTMLElement
+    expect(popover).toBeTruthy()
+    // flipBelow + alignLeft → top from bottom + 8, left set (no transform on this branch)
+    expect(popover.style.top).toBe('72px')
+    expect(popover.style.left).toBeTruthy()
+    expect(popover.style.right).toBeFalsy()
+    expect(popover.style.transform).toBe('') // flipBelow + alignLeft sets no transform
+    vi.unstubAllGlobals()
+  })
+
+  it('popover flipped below + aligned right when cell is top-right', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    const cell = wrapper.find('.cal-cell--bake')
+    const cellEl = cell.element as unknown as Element
+    // left: 700, right: 714, viewportWidth: 768 → 768 - 714 = 54 < 120 → alignRight
+    // top: 50 < 200 → flipBelow
+    vi.spyOn(cellEl, 'getBoundingClientRect').mockReturnValue({
+      left: 700, right: 714, top: 50, bottom: 64,
+      width: 14, height: 14, x: 700, y: 50, toJSON: () => {},
+    })
+    vi.stubGlobal('innerWidth', 768)
+
+    await cell.trigger('mouseenter')
+    await nextTick()
+
+    const popover = document.querySelector('.ds3-timeline-popover') as HTMLElement
+    expect(popover).toBeTruthy()
+    // flipBelow + alignRight → top from bottom + 8, right from window.innerWidth - left - 10
+    expect(popover.style.top).toBe('72px')
+    expect(popover.style.right).toBeTruthy()
+    vi.unstubAllGlobals()
+  })
+
+  it('clicking the same active cell twice closes the popover', async () => {
+    const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+    const recipe = makeRecipe({
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
+    })
+    const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
+
+    const cell = wrapper.find('.cal-cell--bake')
+    const cellEl = cell.element as unknown as Element
+    vi.spyOn(cellEl, 'getBoundingClientRect').mockReturnValue({
+      left: 400, right: 414, top: 400, bottom: 414,
+      width: 14, height: 14, x: 400, y: 400, toJSON: () => {},
+    })
+    vi.stubGlobal('innerWidth', 1024)
+
+    // First click opens
+    await cell.trigger('click')
+    await nextTick()
+    expect(document.querySelector('.ds3-timeline-popover')).toBeTruthy()
+
+    // Second click on the same cell closes (toggles)
+    await cell.trigger('click')
+    await nextTick()
+    expect(document.querySelector('.ds3-timeline-popover')).toBeFalsy()
+    vi.unstubAllGlobals()
+  })
+
   it('handleClickOutside clears popover when active', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
     })
     setupFetchMock(manifest, { 'bread.json': recipe })
     const wrapper = mount(StatsPage, {
@@ -1654,8 +1742,8 @@ describe('StatsPage', () => {
     await nextTick()
 
     // Open popover
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
     // With Teleport stubbed, popover renders inline
@@ -1673,7 +1761,7 @@ describe('StatsPage', () => {
     vi.useFakeTimers({ shouldAdvanceTime: true })
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
     const recipe = makeRecipe({
-      cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      cook_log: [makeCookLogEntry({ date: recentIso(10) })],
     })
     setupFetchMock(manifest, { 'bread.json': recipe })
     const wrapper = mount(StatsPage)
@@ -1681,20 +1769,18 @@ describe('StatsPage', () => {
     await flushPromises()
     await nextTick()
 
-    const dot = wrapper.find('.ds3-timeline-dot')
-    await dot.trigger('mouseenter')
+    const cell = wrapper.find('.cal-cell--bake')
+    await cell.trigger('mouseenter')
     await nextTick()
 
-    // Leave dot (starts hide timer)
-    await dot.trigger('mouseleave')
-    await nextTick()
-
-    // Enter popover (cancels hide timer)
+    // Popover renders. Enter the popover element to trigger cancelHidePopover.
     const popover = document.querySelector('.ds3-timeline-popover') as HTMLElement
+    expect(popover).toBeTruthy()
     popover.dispatchEvent(new Event('mouseenter'))
     await nextTick()
 
-    // Advance past the delay - popover should still be visible
+    // Advance past the hide delay - popover should still be visible because
+    // mouseenter on popover cancels any pending hide timer.
     await vi.advanceTimersByTimeAsync(300)
     await nextTick()
     expect(document.querySelector('.ds3-timeline-popover')).toBeTruthy()

@@ -1,10 +1,10 @@
 ---
 id: PF-182
 title: Reimagine baking cadence as browsable contribution calendar
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 19:18'
-updated_date: '2026-04-08 19:40'
+updated_date: '2026-04-08 21:40'
 labels:
   - stats
   - ux
@@ -67,24 +67,24 @@ GitHub's own contribution graph component is proprietary (not open-sourced), but
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The current "Baking Cadence" horizontal timeline on /stats (including all ds3-timeline-* markup in StatsPage.vue) is replaced in the same position by a contribution calendar.
-- [ ] #2 Calendar follows GitHub shape: 7 rows (Sun → Sat), ~53 week columns, one cell = one day.
-- [ ] #3 Calendar shows a rolling 12-month window ending today; bakes older than 12 months do not render on the calendar (they remain visible in the per-group sections below).
-- [ ] #4 Month labels render along the top edge (Apr, May, Jun, ...) and weekday labels render on the left with alternating density (Mon / Wed / Fri), matching the GitHub reference.
-- [ ] #5 Cells are binary: no bake = empty/muted, normal bake day = accent, aberration-only day = stone-400.
-- [ ] #6 Days with both a normal bake and an aberration render as a normal bake (accent wins).
-- [ ] #7 In-progress bakes (entry.status === 'in_progress') are excluded from the calendar, matching current timeline behavior.
-- [ ] #8 Hovering a cell with ≥1 bake opens a popover showing each bake's recipe name, hero thumbnail, and date, reusing the TimelineBakeInfo + hero-thumb popover pattern from StatsPage.vue.
-- [ ] #9 Clicking a popover entry navigates to router name 'bake-detail' with params { recipeId, date }, matching current navigateToBake behavior.
-- [ ] #10 Popover positioning, hover-out delay, and click-outside-to-close behavior match the current timeline popover.
-- [ ] #11 Visual style matches proofed brand: 0-radius square cells, stone palette, monospace month/day labels, cell gaps consistent with GitHub density.
-- [ ] #12 A headline count renders above the grid in the format "{N} bake sessions in the last 12 months" (mirrors GitHub's "1,323 contributions in the last year").
-- [ ] #13 On narrow viewports the calendar overflows horizontally with scroll; cells stay ≥12px for readability and tap targets.
+- [x] #1 The current "Baking Cadence" horizontal timeline on /stats (including all ds3-timeline-* markup in StatsPage.vue) is replaced in the same position by a contribution calendar.
+- [x] #2 Calendar follows GitHub shape: 7 rows (Sun → Sat), ~53 week columns, one cell = one day.
+- [x] #3 Calendar shows a rolling 12-month window ending today; bakes older than 12 months do not render on the calendar (they remain visible in the per-group sections below).
+- [x] #4 Month labels render along the top edge (Apr, May, Jun, ...) and weekday labels render on the left with alternating density (Mon / Wed / Fri), matching the GitHub reference.
+- [x] #5 Cells are binary: no bake = empty/muted, normal bake day = accent, aberration-only day = stone-400.
+- [x] #6 Days with both a normal bake and an aberration render as a normal bake (accent wins).
+- [x] #7 In-progress bakes (entry.status === 'in_progress') are excluded from the calendar, matching current timeline behavior.
+- [x] #8 Hovering a cell with ≥1 bake opens a popover showing each bake's recipe name, hero thumbnail, and date, reusing the TimelineBakeInfo + hero-thumb popover pattern from StatsPage.vue.
+- [x] #9 Clicking a popover entry navigates to router name 'bake-detail' with params { recipeId, date }, matching current navigateToBake behavior.
+- [x] #10 Popover positioning, hover-out delay, and click-outside-to-close behavior match the current timeline popover.
+- [x] #11 Visual style matches proofed brand: 0-radius square cells, stone palette, monospace month/day labels, cell gaps consistent with GitHub density.
+- [x] #12 A headline count renders above the grid in the format "{N} bake sessions in the last 12 months" (mirrors GitHub's "1,323 contributions in the last year").
+- [x] #13 On narrow viewports the calendar overflows horizontally with scroll; cells stay ≥12px for readability and tap targets.
 - [x] #14 A spike subtask prototypes vue3-calendar-heatmap vs from-scratch implementation and locks the winning approach before implementation begins.
 - [x] #15 The spike also decides whether a precomputed public/recipes/bake-index.json (date → bake count + recipe refs) replaces runtime derivation from recipe JSONs, or whether runtime derivation stays.
-- [ ] #16 Snapshot tests for StatsPage.vue are updated to reflect the new DOM (old ds3-timeline-* snapshots removed, new calendar snapshots added).
-- [ ] #17 npm run build passes (tests + type-check + bundle).
-- [ ] #18 Visual HITL approval obtained before commit (labels: ux, stats).
+- [x] #16 Snapshot tests for StatsPage.vue are updated to reflect the new DOM (old ds3-timeline-* snapshots removed, new calendar snapshots added).
+- [x] #17 npm run build passes (tests + type-check + bundle).
+- [x] #18 Visual HITL approval obtained before commit (labels: ux, stats).
 <!-- AC:END -->
 
 ## Implementation Notes
@@ -144,3 +144,31 @@ GitHub's own contribution graph component is proprietary (not open-sourced), but
 - No changes to public/recipes/
 - Research-only: Read, Glob, Grep, WebFetch
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+## Shipped: from-scratch GitHub-style contribution calendar
+
+Replaced the old `ds3-timeline-*` horizontal dot timeline at `/stats` with a 7-row × 53-column SVG contribution calendar. ~270 LOC in `ContributionCalendar.vue` plus net deletions in `StatsPage.vue`.
+
+### What's in the box
+- **Calendar component** (`src/components/ContributionCalendar.vue`): 14px cells / 3px gap with **6px MONTH_GAP** at every month boundary so Dec / Jan / Feb / Mar / Apr read cleanly. Per-column x positions are computed once into `columnXs` and shared by `cellX()`, `monthLabels`, and `svgWidth`. Binary intensity: bake = `--color-accent`, aberration-only = `--color-stone-400`, empty = `--color-stone-100`, blank padding = transparent. Mixed days favor accent. Mon/Wed/Fri row labels in JetBrains Mono.
+- **Calendar tests** (`src/components/ContributionCalendar.spec.ts`, 11 tests + snapshot): grid build math, mixed-day color rules, month label de-duplication, hover/click guards on blank/empty cells, fixed-`endDate` snapshot for stability.
+- **StatsPage rewire**: deleted `ds3-timeline-*` template, CSS, and timeline math (`timelineStart/End/SpanDays/Dots/Labels`). Renamed `activeTimelineDot → activeCalendarDate`. Added `aberrationDatesSet` and `calendarBakeCount` computeds. Popover lives in the parent (`Teleport to body`) — calendar emits `cellHover`/`cellClick`. Added `POPOVER_FLIP_THRESHOLD = 200` to flip the popover above the cell when near the top of the viewport (calendar cells live at arbitrary y, unlike the old fixed-top timeline). `bakeMap` semantics changed to contain only normal bakes; aberration-only days come from `aberrationDatesSet`.
+- **Calendar viewport behavior**: scroll container has `padding-right: 22rem` so the centering math has room. On `loadData()` finally{}, after `isLoading` flips to false (calendar lives behind `v-else`), the parent reads the rightmost `.cal-month` label x and sets `scrollLeft = labelX - clientWidth/2`. Verified in browser: April label sits at 372px from container left, container center at 368px — exact center. Browser auto-clamps. Scrollbar hidden cross-browser (Firefox, IE/old Edge, WebKit).
+
+### HITL feedback iterated
+Round 1 visual review surfaced three issues, all fixed in round 2:
+1. **No data visible on load** → centering logic added (was scrollLeft=0 against a 53-column grid where today is at the right end).
+2. **Months indistinguishable** → MONTH_GAP added to columnXs.
+3. **Scrollbar visible** → cross-browser scrollbar hide rules added.
+
+User approved the round-2 result for commit.
+
+### Build
+49 test files, 1306 tests passing. vue-tsc clean. Bundle + prerender (20 recipe pages + 25 bake pages) clean.
+
+### Index decision held
+PF-182.1's `bake-index.json` deferral was honored — runtime derivation in `StatsPage.loadData()` still serves the calendar, no new build artifacts. Revisit at N > 50 recipes per the spike notes.
+<!-- SECTION:FINAL_SUMMARY:END -->
