@@ -32,6 +32,14 @@ Image support in state notes is spun out as a separate draft for future consider
 
 Look and feel (borders, density, alignment, mobile behavior) is chosen via a demo spike subtask, batched with the PF-177.1 stats block demo for a single user review pass.
 
+**LOCKED 2026-04-08 — Variant B (bottom borders + zebra, editorial feel)** from PF-180.1 demo. Implementation details:
+- Bottom borders only (no grid), 2px header underline
+- Mono uppercase header row, subtle style
+- Zebra striping via `:nth-child(odd)` on body rows
+- Right-aligned numerics with monospace font
+- Caption/source attribution rendered above the table
+- Mobile overflow strategy: same `overflow-x: auto` wrapper approach as Variant C but with Variant B's visual styling on the table itself
+
 ## Context
 
 - `StateStep.vue:127-138` renders state notes as simple text divs today

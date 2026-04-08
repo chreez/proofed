@@ -1,10 +1,10 @@
 ---
 id: PF-41
 title: Cook log stats row + version breakdown + dashboard calories
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-07 01:42'
-updated_date: '2026-04-08 17:55'
+updated_date: '2026-04-08 18:48'
 labels:
   - feature
 dependencies: []
