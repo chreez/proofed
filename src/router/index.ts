@@ -108,6 +108,12 @@ const router = createRouter({
       meta: { showIndex: false, demoPage: true }
     },
     {
+      path: '/demo/bake-stats-shapes',
+      name: 'bake-stats-shapes-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
+    {
       path: '/demo/state-note-tables',
       name: 'state-note-tables-demo',
       component: EmptyRouteView,

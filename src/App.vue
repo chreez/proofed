@@ -36,6 +36,7 @@ import DemoCostRender from '@/components/DemoCostRender.vue'
 import DemoBakeLogPhotos from '@/components/DemoBakeLogPhotos.vue'
 import DemoStats from '@/components/DemoStats.vue'
 import DemoStatsBlock from '@/components/DemoStatsBlock.vue'
+import DemoBakeStatsShapes from '@/components/DemoBakeStatsShapes.vue'
 import DemoStateNoteTables from '@/components/DemoStateNoteTables.vue'
 import StatsPage from '@/components/StatsPage.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
@@ -459,6 +460,7 @@ watch(() => route.hash, (newHash) => {
         <DemoCostRender v-else-if="route.name === 'cost-render-demo'" />
         <DemoBakeLogPhotos v-else-if="route.name === 'bake-log-photos-demo'" />
         <DemoStatsBlock v-else-if="route.name === 'stats-block-demo'" />
+        <DemoBakeStatsShapes v-else-if="route.name === 'bake-stats-shapes-demo'" />
         <DemoStateNoteTables v-else-if="route.name === 'state-note-tables-demo'" />
         <DemoSharedMode v-else />
       </template>
