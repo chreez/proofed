@@ -22,8 +22,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v3.1.0",
+  "version": "v3.2.0",
   "change_log": [
+    {
+      "version": "v3.2.0",
+      "date": "2026-04-08",
+      "summary": "State notes cleanup: removed duplicate starter note, stripped dated bake-count references, strengthened DIVIDE/PRE_SHAPE/SCORE notes with user learnings from 12 bakes, updated BAKE_UNCOVERED direction with flip technique and open temp range."
+    },
     {
       "version": "v3.1.0",
       "date": "2026-04-08",
@@ -281,14 +286,9 @@
           "source": "agent"
         },
         {
-          "text": "Fermentolyse = mixing flour, water, and starter WITHOUT salt, then resting before adding salt. Delayed salt addition allows gluten to begin developing uninhibited. Confirmed across bakes #6-11 — dough is noticeably stronger at first stretch and fold compared to mixing everything at once.",
+          "text": "Fermentolyse = mixing flour, water, and starter WITHOUT salt, then resting before adding salt. Delayed salt addition allows gluten to begin developing uninhibited. Confirmed across multiple bakes — dough is noticeably stronger at first stretch and fold compared to mixing everything at once.",
           "critical": false,
           "source": "user"
-        },
-        {
-          "text": "Starter must be active and bubbly — should have doubled within 4-8 hours of its last feeding. If starter hasn't doubled, add 1/8 tsp instant yeast to the dough as insurance.",
-          "critical": true,
-          "source": "agent"
         }
       ]
     },
@@ -495,9 +495,9 @@
       "exit_condition": "Two roughly equal dough pieces (~960g each) on the counter",
       "notes": [
         {
-          "text": "A scale helps if you want even loaves, but eyeballing is fine — sourdough is forgiving.",
+          "text": "Weigh both pieces — uneven loaves bake unevenly. Target ~960g per piece for a 2-loaf bake.",
           "critical": false,
-          "source": "agent"
+          "source": "user"
         }
       ]
     },
@@ -512,7 +512,7 @@
       "exit_condition": "Both pieces are in loose round shapes on the counter",
       "notes": [
         {
-          "text": "Pre-shaping relaxes the gluten before final shaping, making it much easier to build tension in the envelope fold. Only bake that shaped successfully across 3 bakes used this step.",
+          "text": "Pre-shaping relaxes the gluten before final shaping, making it much easier to build tension in the envelope fold. Standard practice for every bake.",
           "critical": false,
           "source": "user"
         }
@@ -581,7 +581,7 @@
         {
           "text": "Flour banneton directly (no linen liner) — confirmed better blistering and release across multiple bakes. Towel-lined bowl works as a backup.",
           "critical": false,
-          "source": "agent"
+          "source": "user"
         }
       ]
     },
@@ -596,7 +596,7 @@
       "exit_condition": "~1 hour at room temperature, dough has settled in banneton",
       "notes": [
         {
-          "text": "Allows the dough to settle before building final tension with a stitch. Standard practice across bakes #5-11.",
+          "text": "Allows the dough to settle before building final tension with a stitch. Standard practice.",
           "critical": false,
           "source": "user"
         }
@@ -690,7 +690,7 @@
           "source": "user"
         },
         {
-          "text": "Cross score recommended — consistent results with good ear and oven spring across multiple bakes.",
+          "text": "Cross score for production bakes — consistent spring, good ear, uniform look. Single score and decorative patterns add risk without payoff on this dough.",
           "critical": false,
           "source": "user"
         }
@@ -726,7 +726,7 @@
     {
       "id": "BAKE_UNCOVERED",
       "title": "Bake — Uncovered",
-      "direction": "Remove the lid from the Dutch oven. Reduce temperature to 425°F (218°C). Continue baking first loaf uncovered for 18-22 minutes until the crust is deep golden brown. When done, transfer to cooling rack. Score the second loaf (from fridge), load into the still-hot Dutch oven, and repeat the covered + uncovered bake.",
+      "direction": "Remove the lid from the Dutch oven. Reduce temperature to 425-450°F (218-232°C). Bake uncovered 9 minutes, flip the loaf for even browning, bake another 9 minutes. Gauge by look and feel — pull when the crust is deep golden brown and crackling. Transfer to cooling rack. Score the second loaf (from fridge), load into the still-hot Dutch oven, and repeat the covered + uncovered bake.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
