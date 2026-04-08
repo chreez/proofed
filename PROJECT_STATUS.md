@@ -23,6 +23,7 @@ Recipe workflow features (cook logs, photo pipeline, energy-level reading modes)
 
 ## Recent
 
+- PF-182: replaced baking cadence horizontal timeline with from-scratch GitHub-style contribution calendar (centered current month, hidden scrollbar, month-gap separators)
 - PF-182.1 spike: locked contribution calendar approach — from-scratch Vue SVG, no bake-index.json, 14px/3px grid
 - Stats dashboard: replaced per-recipe bars with micro-bar + inline counts, added totals to Production Mix
 - Logged simple sourdough bake 2026-04-06
