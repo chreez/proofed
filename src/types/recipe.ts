@@ -302,6 +302,11 @@ export interface CookLogEntry {
   actual_yield?: CookLogYield
   aberration?: boolean
   aberration_note?: string
+  // Structured per-bake stats (PF-177.3 schema). Populated by /bake-log skill
+  // (PF-177.6) or backfill (PF-177.7). Optional — existing entries omit it.
+  bake_stats?: BakeStatsBlock
+  // Verbatim bake log paste, preserved as-is. Expandable in UI (PF-177.5).
+  raw_notes?: string
 }
 
 // Recipe manifest
