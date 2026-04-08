@@ -328,17 +328,6 @@ function formatCaloriesK(n: number): string {
   return Math.round(n).toString()
 }
 
-// Max sessions for micro-bar proportions
-const maxRecipeSessions = computed(() => {
-  let max = 0
-  for (const g of groups.value) {
-    for (const r of g.recipes) {
-      if (r.bakes.length > max) max = r.bakes.length
-    }
-  }
-  return max
-})
-
 // --- Expand/collapse state ---
 
 const expanded = ref<Set<string>>(new Set())
@@ -771,12 +760,6 @@ watchEffect(() => {
               >
                 <div class="ds3-recipe-name">{{ recipe.name }}</div>
                 <div class="ds3-recipe-hybrid">
-                  <span class="ds3-micro-bar-wrap">
-                    <span
-                      class="ds3-micro-bar"
-                      :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
-                    />
-                  </span>
                   <span class="ds3-hybrid-counts">
                     <span class="ds3-hybrid-value">{{ recipe.bakes.length }}</span> session{{ recipe.bakes.length !== 1 ? 's' : '' }}
                     <span class="ds3-hybrid-sep">&middot;</span>
@@ -799,12 +782,6 @@ watchEffect(() => {
             >
               <div class="ds3-recipe-name">{{ recipe.name }}</div>
               <div class="ds3-recipe-hybrid">
-                <span class="ds3-micro-bar-wrap">
-                  <span
-                    class="ds3-micro-bar"
-                    :style="{ width: (recipe.bakes.length / maxRecipeSessions) * 100 + '%' }"
-                  />
-                </span>
                 <span class="ds3-hybrid-counts">
                   <span class="ds3-hybrid-value">{{ recipe.bakes.length }}</span> session{{ recipe.bakes.length !== 1 ? 's' : '' }}
                   <span class="ds3-hybrid-sep">&middot;</span>
@@ -1294,23 +1271,6 @@ watchEffect(() => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.ds3-micro-bar-wrap {
-  width: 3rem;
-  height: 4px;
-  background: var(--color-stone-100);
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.ds3-micro-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: var(--color-accent);
 }
 
 .ds3-hybrid-counts {

@@ -675,7 +675,7 @@ describe('StatsPage', () => {
     expect(wrapper.find('.ds3-group-sessions').text()).toBe('1 session')
   })
 
-  // --- Per-recipe detail bars ---
+  // --- Per-recipe detail counts ---
 
   it('renders recipe hybrid counts inside expanded group', async () => {
     const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
@@ -685,7 +685,6 @@ describe('StatsPage', () => {
     const wrapper = await mountAndLoad(manifest, { 'bread.json': recipe })
 
     expect(wrapper.find('.ds3-recipe-name').text()).toBe('Bread')
-    expect(wrapper.find('.ds3-micro-bar-wrap').exists()).toBe(true)
     const counts = wrapper.find('.ds3-hybrid-counts')
     expect(counts.text()).toContain('session')
     expect(counts.text()).toContain('loaves')
@@ -719,32 +718,6 @@ describe('StatsPage', () => {
 
     const counts = wrapper.find('.ds3-hybrid-counts')
     expect(counts.text()).not.toContain('~')
-  })
-
-  it('micro-bar width is proportional to max sessions', async () => {
-    const manifest = makeManifest([
-      { id: 'bread', name: 'Bread', file: 'bread.json' },
-      { id: 'pizza', name: 'Pizza', file: 'pizza.json' },
-    ])
-    const bread = makeRecipe({
-      cook_log: [
-        makeCookLogEntry({ date: '2026-01-01' }),
-        makeCookLogEntry({ date: '2026-01-15' }),
-        makeCookLogEntry({ date: '2026-02-01' }),
-      ],
-    })
-    const pizza = makeRecipe({
-      config: {
-        early_check_percent: 75,
-        stats: { group: 'Pizza', defaultYield: 1, unit: 'pies', servingsPerItem: 1, servingUnit: 'slices' },
-      },
-      cook_log: [makeCookLogEntry({ date: '2026-01-20' })],
-    })
-    const wrapper = await mountAndLoad(manifest, { 'bread.json': bread, 'pizza.json': pizza })
-
-    const bars = wrapper.findAll('.ds3-micro-bar')
-    // bread has 3 sessions (max) -> 100%
-    expect(bars[0].attributes('style')).toContain('width: 100%')
   })
 
   it('shows production mix total items count', async () => {
