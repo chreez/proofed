@@ -48,13 +48,14 @@ For multi-day bakes (e.g., sourdough with overnight ferments):
 ## Phase 1: Load Context
 
 1. Read the full recipe JSON from `public/recipes/{recipe-id}.json`
-2. Check for existing `cook_log` entries — show previous bake count and last `next_time` items
-3. **Detect existing in-progress entries:**
+2. **Check `config.bakeStatsSchema`** — determine whether this recipe declares structured bake stats. If present, note which fields are declared (e.g. `["dough_temps","bulk_ambient_temps","bake_phases","stretch_folds","aliquot_rises"]`). If absent, the recipe does not track structured stats — skip all structured prompts in Phase 2b entirely. Cookies, pizza, and other recipes without a schema get zero structured prompts.
+3. Check for existing `cook_log` entries — show previous bake count and last `next_time` items
+4. **Detect existing in-progress entries:**
    - Search for entries with `"status": "in_progress"` in `cook_log[]`
    - If found, surface them: "Found in-progress entry from {date} — use --update to continue or --finalize to complete"
    - If user is NOT using a flag, prompt them to choose: continue the in-progress entry or start a new bake
-4. Check for a backlog draft/task with notes for this bake (search for recipe name + "bake" or "cook")
-5. Present session header:
+5. Check for a backlog draft/task with notes for this bake (search for recipe name + "bake" or "cook")
+6. Present session header:
 
 **Default session (no flags):**
 ```
@@ -183,6 +184,102 @@ User may paste photo paths. When photos are provided:
 
 **For --update:** Photos are optional — can add them incrementally or wait for --finalize.
 
+### Preserve Raw Paste
+
+If the user dumps a structured or timestamped paste (e.g. notepad copy, dictation transcript, voice memo), keep the **verbatim text** exactly as provided. It will be written to `cook_log[entry].raw_notes` alongside the cleaned prose in `notes[]`. Do not reformat, reorder, or strip timestamps from the raw paste — that's the whole point of preserving it.
+
+Structured `bake_stats` (Phase 2b) and prose `notes[]` are **both derived from** the raw paste. All three layers coexist in the final entry.
+
+## Phase 2b: Structured Stats Capture (Optional)
+
+**Gate:** Only run this phase if `recipe.config.bakeStatsSchema?.fields` is present and non-empty. If the recipe has no schema, skip directly to Phase 3 — do not prompt for any structured stats.
+
+**Philosophy:** Non-tedious. One optional ask per declared field group. Each ask is **skippable** — if the user has nothing to record for that group, silently move on. Do not pester. If the user already dumped a structured paste that contains the data, parse it inline and show the user what you captured (Phase 3 echo) instead of re-asking.
+
+**Cook Log Protocol enforcement:**
+- Never infer temps, timestamps, or durations the user didn't state
+- If a paste contains `"9:42pm — fermentolyse done, 76°F"`, parse `9:42pm` → `YYYY-MM-DD - 21:42` and `76°F` → `temp_f: 76`
+- If a paste contains `"around 75°F-ish"` or `"maybe 30 min"`, **ASK** to clarify the exact value before writing a number, or skip the entry entirely. Never guess.
+- If the user says "I didn't take any readings" or similar, record nothing — do not fabricate.
+
+### Time Format
+
+All times in `bake_stats` use the format `YYYY-MM-DD - HH:MM` (24-hour, dash-separated). Example: `2026-04-08 - 21:42`. Derive the date from the bake session context (start date or bake date) unless the user specifies otherwise.
+
+### Field Group Prompts
+
+For **each** field declared in `config.bakeStatsSchema.fields`, present **one** optional prompt. Prompts are context-aware — reference real bake stages, not generic JSON field names.
+
+#### 1. `dough_temps` — "Any dough temp readings?"
+
+Prompt:
+> "Did you take any dough temp readings during the bake? (e.g. after mix, during bulk, at preshape)"
+
+Parse user response into `DoughTemp[]`:
+```json
+{ "time": "YYYY-MM-DD - HH:MM", "temp_f": 76 }
+```
+
+Skip if user says no or has nothing.
+
+#### 2. `bulk_ambient_temps` — "Room temp during bulk?"
+
+Prompt:
+> "What was the room temperature during bulk fermentation? If bulk spanned multiple days, one reading per day is fine."
+
+Parse into `BulkAmbientTemp[]` — **one entry per room-temp day** (AC #4):
+```json
+{ "date": "YYYY-MM-DD", "temp_f": 68, "note": "morning" }
+```
+
+If bulk is a single day, a single entry is fine. If the user mentions bulk started Friday evening and finished Saturday morning, capture **two** entries — one for Friday, one for Saturday — each at whatever temp the user reported. Never collapse multi-day bulks into a single scalar.
+
+#### 3. `bake_phases` — "Bake phase times and temps?"
+
+Prompt:
+> "How did the bake phases go? (preheat, covered, uncovered — temp and duration for each)"
+
+Parse into `BakePhase[]`:
+```json
+{ "stage": "preheat", "temp_f": 500, "duration_min": 60 }
+{ "stage": "covered", "temp_f": 500, "duration_min": 20, "start_time": "2026-04-08 - 08:15" }
+{ "stage": "uncovered", "temp_f": 450, "duration_min": 25 }
+```
+
+`start_time` is optional — only include if the user states it. `temp_f` and `duration_min` are required per phase.
+
+#### 4. `stretch_folds` — "Stretch and fold times?"
+
+Prompt:
+> "When did you do your stretch and folds (or coils)? Times and type if you remember."
+
+Parse into `StretchFold[]`:
+```json
+{ "time": "YYYY-MM-DD - 10:15", "type": "stretch_fold" }
+{ "time": "YYYY-MM-DD - 10:45", "type": "coil", "note": "dough felt tight" }
+```
+
+Skip if user did no folds or can't recall times.
+
+#### 5. `aliquot_rises` — "Aliquot rise checks?"
+
+Prompt:
+> "Did you track aliquot rise percentages during bulk or proof?"
+
+Parse into `AliquotRise[]`:
+```json
+{ "time": "YYYY-MM-DD - 14:00", "rise_pct": 50, "stage": "bulk" }
+{ "time": "YYYY-MM-DD - 17:30", "rise_pct": 75, "stage": "bulk", "note": "domed top" }
+```
+
+### Auto-Parse From Paste (Preferred Path)
+
+If the user's raw paste already contains timestamped readings, **parse inline** and skip the per-field prompts. Present what you extracted in the Phase 3 echo for confirmation. Only fall back to explicit prompts if the paste is prose-only or structured data is missing.
+
+### Skip Entirely
+
+If the user says "just notes" or "no stats today" or similar, skip Phase 2b entirely. Do not prompt for any field groups. `bake_stats` will be omitted from the entry.
+
 ## Phase 3: Echo Back
 
 Before writing anything, present the full organized capture:
@@ -226,13 +323,22 @@ Confirm new notes are accurate? Entry will be updated in-place.
 - {item 1}
 - {item 2}
 
+**bake_stats** (only shown if captured):
+- dough_temps: {count} readings
+- bulk_ambient_temps: {count} days
+- bake_phases: {count} phases
+- stretch_folds: {count} folds
+- aliquot_rises: {count} checks
+{Show the parsed values inline so the user can spot incorrect inferences — do not just show counts.}
+
+**raw_notes:** {yes/no — preserving verbatim paste of N chars}
 **Photos:** {count} received (not yet processed)
 **Version:** {current} (bake recorded against this version)
 
-Confirm notes and summary are accurate?
+Confirm notes, summary, and stats are accurate?
 ```
 
-Wait for explicit user confirmation. If they correct anything, update and re-echo.
+Wait for explicit user confirmation. If they correct anything, update and re-echo. Stats corrections are **critical** — if the user says "no wait, that was 74 not 76" or "that fold was at 10:30 not 10:15", fix the structured data before writing.
 
 **For --update:** Summary is NOT required until --finalize.
 **For --finalize:** Summary is MANDATORY before completing the entry.
@@ -246,6 +352,8 @@ After user confirms:
 2. **Update the entry in-place:**
    - Merge new notes into existing `notes[]` array
    - Merge new `next_time` items if added
+   - Merge any new `bake_stats` arrays into existing ones (append entries to `dough_temps`, `bulk_ambient_temps`, `stretch_folds`, etc. — don't overwrite)
+   - Append new raw paste to `raw_notes` with a separator (`\n\n---\n\n`) if preserving multi-session paste
    - Keep `status: "in_progress"` (DO NOT remove)
    - Summary remains `null` (not required for updates)
 3. **Do NOT append a new entry** — update the existing one
@@ -254,6 +362,8 @@ After user confirms:
 1. **Find the existing in-progress entry** in `cook_log[]` array by matching date
 2. **Update the entry in-place:**
    - Merge any final notes into `notes[]` array
+   - Merge any final `bake_stats` arrays (append to existing)
+   - Append final raw paste to `raw_notes` if provided
    - Add the MANDATORY `summary` field (1-2 sentence first-person headline)
    - **Remove the `status` field entirely** (omitted = complete)
    - Update `next_time` if final items added
@@ -275,12 +385,23 @@ After user confirms:
   "next_time": [
     { "text": "{item 1}" },
     { "text": "{item 2}", "source": "{if from external research}" }
-  ]
+  ],
+  "bake_stats": {
+    "dough_temps": [ { "time": "...", "temp_f": 76 } ],
+    "bulk_ambient_temps": [ { "date": "...", "temp_f": 68 } ],
+    "bake_phases": [ { "stage": "preheat", "temp_f": 500, "duration_min": 60 } ],
+    "stretch_folds": [ { "time": "...", "type": "coil" } ],
+    "aliquot_rises": [ { "time": "...", "rise_pct": 75, "stage": "bulk" } ]
+  },
+  "raw_notes": "{verbatim paste of user's notes, timestamps preserved}"
 }
 ```
 
-2. **Append to existing `cook_log[]` array** (do not replace)
-3. If `cook_log` doesn't exist yet, create it
+2. **Both `bake_stats` and `raw_notes` are optional.** Omit them if not captured:
+   - `bake_stats`: omit entirely if Phase 2b was skipped or yielded nothing. Omit individual field arrays within `bake_stats` if that field was skipped or had no data.
+   - `raw_notes`: omit if the user's input was conversational only (no structured paste to preserve).
+3. **Append to existing `cook_log[]` array** (do not replace)
+4. If `cook_log` doesn't exist yet, create it
 
 ## Phase 5+6: Photos, Cost & Bake Review Page (COMBINED)
 
@@ -419,6 +540,151 @@ If a draft/task existed for this bake session:
 - **Update in-place, don't append** — --update and --finalize modify the existing entry, they don't create new ones
 - **Default (no flags) creates complete entries** — for single-day bakes that don't need multi-session tracking
 - **Detect existing in-progress entries** — always warn if an in-progress entry exists when starting a new default session
+
+### Structured Stats Rules
+- **Schema gates prompts** — only prompt for field groups declared in `config.bakeStatsSchema.fields`. No schema → no structured prompts, ever.
+- **Scribe Protocol applies to stats** — never infer temps, timestamps, or durations the user didn't state. Ask to clarify if ambiguous.
+- **Parse inline from paste** — if the raw paste already contains structured data (timestamped temps, fold times, rise %), parse it directly; don't re-prompt the user.
+- **Skip silently** — if a field group has nothing to record, move on. Do not pester.
+- **Preserve raw** — verbatim paste always goes to `raw_notes` when provided, even if structured data is also extracted. Both layers coexist.
+- **Multi-day bulks → multiple `bulk_ambient_temps` entries** — one per room-temp day, never a single scalar collapsing multiple days.
+- **Stats correction in echo check is critical** — the user must see parsed values (not just counts) and confirm before write.
+
+## Example Session: Structured Capture End-to-End
+
+Realistic simple-sourdough flow. The user pastes dictated notes, the agent parses both prose and structured stats.
+
+### Input (user paste)
+
+```
+Simple sourdough bake — 2026-04-06
+
+Friday 4/5:
+- 8:00pm — fed starter 1:5:5, 50g starter + 250g flour + 250g water
+- 10:30pm — starter peaked, doubled, smelled sweet
+- 10:45pm — mixed dough: 500g bread flour, 350g water (70% hydration),
+  100g levain, 10g salt. Fermentolyse. DDT was 76°F.
+- 11:15pm — first coil fold, dough felt tight
+- 11:45pm — second coil fold, smoother
+- 12:15am (4/6) — third coil, into fridge at 68°F kitchen temp
+- Slept
+
+Saturday 4/6:
+- 7:30am — out of fridge, kitchen was 70°F. Dough looked puffy.
+  Aliquot jar at 75% rise.
+- 8:00am — preshape, 15 min bench rest
+- 8:15am — final shape, into banneton, back in fridge
+- 9:00am — preheat Dutch oven, 500°F for 60 min
+- 10:00am — score + bake covered 500°F, 20 min
+- 10:20am — uncovered, dropped to 450°F, baked 25 more min
+- 10:45am — out of oven. Internal temp 208°F. Loaf sounded hollow.
+- Crumb was open, ear was sharp. Best bake yet.
+
+Next time: try a longer autolyse, maybe 1 hour before adding levain.
+```
+
+### Agent Processing
+
+1. **Read schema** — `simple-sourdough.json` → `config.bakeStatsSchema.fields = ["dough_temps","bulk_ambient_temps","bake_phases","stretch_folds","aliquot_rises"]`. All 5 groups declared.
+2. **Parse raw paste inline** — auto-extract structured data from the timestamped lines instead of re-prompting.
+3. **Clarify gaps** — user mentioned "DDT was 76°F" after mix. User did not state dough temp at any other time. Agent records only the one reading.
+4. **Echo back** — present parsed stats alongside notes and summary for confirmation.
+
+### Agent Echo Check
+
+```
+## Echo Check
+
+**Summary:** Fermentolyse + three coil folds overnight, cold retard, baked
+Saturday morning. Best crumb and ear yet.
+
+**Notes (7):**
+1. Fed starter 1:5:5 Friday 8pm; peaked by 10:30pm, sweet smell
+2. Mixed dough 10:45pm — 500g bread flour, 350g water (70% hydration), 100g
+   levain, 10g salt. Fermentolyse. DDT 76°F.
+3. Three coil folds at 11:15pm, 11:45pm, 12:15am. Dough tightened then smoothed.
+4. Cold retard overnight in 68°F kitchen.
+5. Saturday 7:30am — out of fridge, kitchen 70°F, aliquot at 75% rise.
+6. Preshape 8am, 15 min bench rest, final shape into banneton, back in fridge.
+7. Bake: preheat Dutch oven 500°F/60min, covered 500°F/20min, uncovered
+   450°F/25min. Internal 208°F, hollow sound.
+
+**next_time (1):**
+- Try a longer autolyse, maybe 1 hour before adding levain
+
+**bake_stats:**
+- dough_temps (1):
+  - 2026-04-05 - 22:45 → 76°F
+- bulk_ambient_temps (2):
+  - 2026-04-05 → 68°F (Friday night kitchen, into fridge)
+  - 2026-04-06 → 70°F (Saturday morning kitchen)
+- bake_phases (3):
+  - preheat: 500°F, 60 min
+  - covered: 500°F, 20 min, start 2026-04-06 - 10:00
+  - uncovered: 450°F, 25 min
+- stretch_folds (3):
+  - 2026-04-05 - 23:15 → coil (tight)
+  - 2026-04-05 - 23:45 → coil (smoother)
+  - 2026-04-06 - 00:15 → coil
+- aliquot_rises (1):
+  - 2026-04-06 - 07:30 → 75%, bulk
+
+**raw_notes:** yes — preserving verbatim paste (821 chars)
+**Photos:** 0
+**Version:** 3.2.0
+
+Confirm notes, summary, and stats are accurate?
+```
+
+### Final JSON Write (cook_log[])
+
+```json
+{
+  "date": "2026-04-06",
+  "start_date": "2026-04-05",
+  "version": "3.2.0",
+  "summary": "Fermentolyse + three coil folds overnight, cold retard, baked Saturday morning. Best crumb and ear yet.",
+  "notes": [
+    "Fed starter 1:5:5 Friday 8pm; peaked by 10:30pm, sweet smell",
+    "Mixed dough 10:45pm — 500g bread flour, 350g water (70% hydration), 100g levain, 10g salt. Fermentolyse. DDT 76°F.",
+    "Three coil folds at 11:15pm, 11:45pm, 12:15am. Dough tightened then smoothed.",
+    "Cold retard overnight in 68°F kitchen.",
+    "Saturday 7:30am — out of fridge, kitchen 70°F, aliquot at 75% rise.",
+    "Preshape 8am, 15 min bench rest, final shape into banneton, back in fridge.",
+    "Bake: preheat Dutch oven 500°F/60min, covered 500°F/20min, uncovered 450°F/25min. Internal 208°F, hollow sound."
+  ],
+  "next_time": [
+    { "text": "Try a longer autolyse, maybe 1 hour before adding levain" }
+  ],
+  "bake_stats": {
+    "dough_temps": [
+      { "time": "2026-04-05 - 22:45", "temp_f": 76 }
+    ],
+    "bulk_ambient_temps": [
+      { "date": "2026-04-05", "temp_f": 68, "note": "Friday night kitchen, into fridge" },
+      { "date": "2026-04-06", "temp_f": 70, "note": "Saturday morning kitchen" }
+    ],
+    "bake_phases": [
+      { "stage": "preheat", "temp_f": 500, "duration_min": 60 },
+      { "stage": "covered", "temp_f": 500, "duration_min": 20, "start_time": "2026-04-06 - 10:00" },
+      { "stage": "uncovered", "temp_f": 450, "duration_min": 25 }
+    ],
+    "stretch_folds": [
+      { "time": "2026-04-05 - 23:15", "type": "coil", "note": "tight" },
+      { "time": "2026-04-05 - 23:45", "type": "coil", "note": "smoother" },
+      { "time": "2026-04-06 - 00:15", "type": "coil" }
+    ],
+    "aliquot_rises": [
+      { "time": "2026-04-06 - 07:30", "rise_pct": 75, "stage": "bulk" }
+    ]
+  },
+  "raw_notes": "Simple sourdough bake — 2026-04-06\n\nFriday 4/5:\n- 8:00pm — fed starter 1:5:5, 50g starter + 250g flour + 250g water\n- 10:30pm — starter peaked, doubled, smelled sweet\n- 10:45pm — mixed dough: 500g bread flour, 350g water (70% hydration), 100g levain, 10g salt. Fermentolyse. DDT was 76°F.\n- 11:15pm — first coil fold, dough felt tight\n- 11:45pm — second coil fold, smoother\n- 12:15am (4/6) — third coil, into fridge at 68°F kitchen temp\n- Slept\n\nSaturday 4/6:\n- 7:30am — out of fridge, kitchen was 70°F. Dough looked puffy. Aliquot jar at 75% rise.\n- 8:00am — preshape, 15 min bench rest\n- 8:15am — final shape, into banneton, back in fridge\n- 9:00am — preheat Dutch oven, 500°F for 60 min\n- 10:00am — score + bake covered 500°F, 20 min\n- 10:20am — uncovered, dropped to 450°F, baked 25 more min\n- 10:45am — out of oven. Internal temp 208°F. Loaf sounded hollow.\n- Crumb was open, ear was sharp. Best bake yet.\n\nNext time: try a longer autolyse, maybe 1 hour before adding levain."
+}
+```
+
+### Counter-Example: Prose-Only Bake
+
+If the user provides only conversational input — "cookies came out great, crispier edges this time, used a little more salt" — the recipe (cookies) has no `bakeStatsSchema`. Phase 2b is skipped entirely. No prompts, no `bake_stats`, no `raw_notes` (no structured paste to preserve). The entry writes just `notes[]`, `summary`, and `next_time[]` as before.
 
 ## Relationship to Other Skills
 
