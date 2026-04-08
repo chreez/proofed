@@ -102,6 +102,18 @@ const router = createRouter({
       meta: { showIndex: false, demoPage: true }
     },
     {
+      path: '/demo/stats-block',
+      name: 'stats-block-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
+    {
+      path: '/demo/state-note-tables',
+      name: 'state-note-tables-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
+    {
       path: '/stats',
       name: 'stats',
       component: EmptyRouteView,
