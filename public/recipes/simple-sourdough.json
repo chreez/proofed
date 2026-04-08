@@ -20,6 +20,9 @@
       "unit": "loaves",
       "servingsPerItem": 10,
       "servingUnit": "slices"
+    },
+    "bakeStatsSchema": {
+      "fields": ["dough_temps", "bulk_ambient_temps", "bake_phases", "stretch_folds", "aliquot_rises"]
     }
   },
   "version": "v3.2.0",

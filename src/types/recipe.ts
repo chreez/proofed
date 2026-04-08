@@ -125,6 +125,58 @@ export interface RecipeStats {
 export interface RecipeConfig {
   early_check_percent: number
   stats?: RecipeStats
+  bakeStatsSchema?: BakeStatsSchema
+}
+
+// Per-bake structured stats (Option A — flat scalars + arrays).
+// All fields optional so recipes can omit irrelevant arrays (cookies/pizza
+// just skip bulk_ambient_temps, aliquot_rises, etc.).
+// Time format: `YYYY-MM-DD - HH:MM` (24-hour) — all times stored as strings.
+
+export interface DoughTemp {
+  time: string
+  temp_f: number
+}
+
+export interface BulkAmbientTemp {
+  date: string
+  temp_f: number
+  note?: string
+}
+
+export interface BakePhase {
+  stage: 'preheat' | 'covered' | 'uncovered'
+  start_time?: string
+  temp_f: number
+  duration_min: number
+}
+
+export interface StretchFold {
+  time: string
+  type: 'stretch_fold' | 'coil' | 'lamination'
+  note?: string
+}
+
+export interface AliquotRise {
+  time: string
+  rise_pct: number
+  stage: 'bulk' | 'preshape' | 'final'
+  note?: string
+}
+
+export interface BakeStatsBlock {
+  dough_temps?: DoughTemp[]
+  bulk_ambient_temps?: BulkAmbientTemp[]
+  bake_phases?: BakePhase[]
+  stretch_folds?: StretchFold[]
+  aliquot_rises?: AliquotRise[]
+}
+
+// Per-recipe declaration of which BakeStatsBlock fields the recipe tracks.
+// Lives on RecipeConfig; per-bake data is stored separately on CookLogEntry
+// (wired in PF-177.4).
+export interface BakeStatsSchema {
+  fields: Array<keyof BakeStatsBlock>
 }
 
 export interface Vessel {
