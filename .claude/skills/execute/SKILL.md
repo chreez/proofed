@@ -243,6 +243,19 @@ After all tasks are done:
 Tangents filed: DRAFT-3 (grocery list feature), DRAFT-4 (mobile nav bug)
 ```
 
+### Update PROJECT_STATUS.md
+
+Completion is the **only** point in the execute flow where `PROJECT_STATUS.md` may be touched. Update it now:
+
+1. Read `PROJECT_STATUS.md`
+2. For each task that actually shipped (status Done, commit landed), add a one-line entry under `## Recent` describing what shipped — derive the wording from the commit message, not from the plan
+3. Remove any `## Open Threads` entries that the executed work resolved
+4. Bump the `updated:` front-matter date to today
+5. Do **not** add speculative future work, in-flight tangents, or planning notes — only shipped facts
+6. Stage and commit `PROJECT_STATUS.md` as its own commit: `docs: update PROJECT_STATUS after PF-XX`
+
+If nothing actually shipped (all work reverted, all gates rejected), do not touch `PROJECT_STATUS.md`.
+
 ## Rules
 
 - **Scope is sacred.** The execution plan is the contract. New work goes to tangent handling, not inline.
@@ -254,3 +267,4 @@ Tangents filed: DRAFT-3 (grocery list feature), DRAFT-4 (mobile nav bug)
 - **Stage task files with code.** Every commit includes both `src/` changes and `backlog/tasks/pf-XX*.md` updates.
 - **Build before commit.** `npm run build` must pass before every commit.
 - **Hard gates are non-negotiable.** Visual review, cook log clarify, demo review — these always pause for user.
+- **PROJECT_STATUS.md is post-execution only.** Never update it during planning, grooming, or mid-execution. The Completion phase is the single write point, and only shipped facts go in.
