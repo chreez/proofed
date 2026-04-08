@@ -42,6 +42,29 @@ const router = useRouter()
 
 const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
 
+// Collapse state: newest 4 shown by default when cook_log.length > 4.
+// One-way expand, transient (resets on navigation / reload).
+const COLLAPSE_THRESHOLD = 4
+const expanded = ref(false)
+
+const sortedEntries = computed(() => sortedCookLog(props.cookLog))
+
+const visibleEntries = computed(() =>
+  expanded.value || sortedEntries.value.length <= COLLAPSE_THRESHOLD
+    ? sortedEntries.value
+    : sortedEntries.value.slice(0, COLLAPSE_THRESHOLD)
+)
+
+const hiddenCount = computed(() =>
+  Math.max(0, sortedEntries.value.length - COLLAPSE_THRESHOLD)
+)
+
+const showExpandButton = computed(() => !expanded.value && hiddenCount.value > 0)
+
+function expandAll(): void {
+  expanded.value = true
+}
+
 // Summary expand state: tracks which summaries show full text
 const expandedSummaries = ref<Record<number, boolean>>({})
 
@@ -136,7 +159,7 @@ function entryId(date: string): string {
     </div>
 
     <div
-      v-for="(entry, index) in sortedCookLog(cookLog)"
+      v-for="(entry, index) in visibleEntries"
       :key="index"
       :id="entryId(entry.date)"
       class="mb-4 scroll-mt-16"
@@ -181,6 +204,15 @@ function entryId(date: string): string {
           </div>
         </div>
       </div>
+    </div>
+
+    <div v-if="showExpandButton" class="text-center py-2">
+      <button
+        type="button"
+        data-testid="cook-log-expand-button"
+        class="text-xs text-stone-400 hover:text-accent hover:underline transition-colors cursor-pointer bg-transparent border-0 p-0"
+        @click="expandAll"
+      >Show {{ hiddenCount }} more {{ hiddenCount === 1 ? 'bake' : 'bakes' }}</button>
     </div>
   </section>
 </template>

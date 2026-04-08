@@ -1,5 +1,121 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`HTML snapshot > matches collapsed snapshot (6 entries, newest 4 visible + button) 1`] = `
+"<section>
+  <div class="flex items-center gap-1 mb-4 pb-2 border-b-2 border-stone-200">
+    <h3 class="card-title">Version History</h3>
+    <div data-v-f6045c74="" class="icon-btn-wrap text-stone-300"><button data-v-f6045c74="" class="icon-btn icon-btn--sm" title="Copy link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2" aria-hidden="true">
+          <path d="M9 17H7A5 5 0 0 1 7 7h2"></path>
+          <path d="M15 7h2a5 5 0 1 1 0 10h-2"></path>
+          <line x1="8" x2="16" y1="12" y2="12"></line>
+        </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
+  </div>
+  <div class="relative pl-6">
+    <!-- Vertical connecting line -->
+    <div class="absolute left-[9px] top-0 bottom-0 w-0.5 bg-stone-200"></div><!-- Timeline entries -->
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-success"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.5.0</span><span class="text-xs text-muted ml-2">2026-02-06</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 5</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.4.0</span><span class="text-xs text-muted ml-2">2026-02-05</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 4</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.3.0</span><span class="text-xs text-muted ml-2">2026-02-04</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 3</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.2.0</span><span class="text-xs text-muted ml-2">2026-02-03</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 2</p>
+    </div>
+  </div>
+  <div class="text-center py-2 mt-2"><button type="button" data-testid="version-timeline-expand-button" class="text-xs text-stone-400 hover:text-accent hover:underline transition-colors cursor-pointer bg-transparent border-0 p-0">Show 2 more versions</button></div>
+</section>"
+`;
+
+exports[`HTML snapshot > matches expanded snapshot (6 entries, all visible, no button) 1`] = `
+"<section>
+  <div class="flex items-center gap-1 mb-4 pb-2 border-b-2 border-stone-200">
+    <h3 class="card-title">Version History</h3>
+    <div data-v-f6045c74="" class="icon-btn-wrap text-stone-300"><button data-v-f6045c74="" class="icon-btn icon-btn--sm" title="Copy link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2" aria-hidden="true">
+          <path d="M9 17H7A5 5 0 0 1 7 7h2"></path>
+          <path d="M15 7h2a5 5 0 1 1 0 10h-2"></path>
+          <line x1="8" x2="16" y1="12" y2="12"></line>
+        </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
+  </div>
+  <div class="relative pl-6">
+    <!-- Vertical connecting line -->
+    <div class="absolute left-[9px] top-0 bottom-0 w-0.5 bg-stone-200"></div><!-- Timeline entries -->
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-success"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.5.0</span><span class="text-xs text-muted ml-2">2026-02-06</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 5</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.4.0</span><span class="text-xs text-muted ml-2">2026-02-05</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 4</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.3.0</span><span class="text-xs text-muted ml-2">2026-02-04</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 3</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.2.0</span><span class="text-xs text-muted ml-2">2026-02-03</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 2</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.1.0</span><span class="text-xs text-muted ml-2">2026-02-02</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Fix 1</p>
+    </div>
+    <div class="relative pb-4 last:pb-0">
+      <!-- Dot indicator -->
+      <div class="absolute -left-6 w-5 h-5 flex items-center justify-center top-0">
+        <div class="w-2 h-2 rounded-full bg-accent"></div>
+      </div><!-- Version + date -->
+      <div class="flex items-baseline leading-5"><span class="font-semibold text-sm">v1.0.0</span><span class="text-xs text-muted ml-2">2026-02-01</span></div><!-- Summary -->
+      <p class="text-sm text-stone-600 mt-1">Initial</p>
+    </div>
+  </div>
+  <!--v-if-->
+</section>"
+`;
+
 exports[`HTML snapshot > matches snapshot 1`] = `
 "<section>
   <div class="flex items-center gap-1 mb-4 pb-2 border-b-2 border-stone-200">
@@ -30,5 +146,6 @@ exports[`HTML snapshot > matches snapshot 1`] = `
       <p class="text-sm text-stone-600 mt-1">Initial release</p>
     </div>
   </div>
+  <!--v-if-->
 </section>"
 `;

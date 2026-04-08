@@ -1,10 +1,10 @@
 ---
 id: PF-179
 title: Collapse version history and bake log when more than 4 entries
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 16:44'
-updated_date: '2026-04-08 17:12'
+updated_date: '2026-04-08 17:58'
 labels: []
 dependencies: []
 ---
@@ -29,13 +29,13 @@ When a section has more than 4 entries, only the newest 4 render by default. A "
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 CookLogSection renders only the newest 4 entries when cook_log.length > 4; older entries are hidden
-- [ ] #2 VersionTimeline renders only the newest 4 entries when change_log.length > 4; older entries are hidden
-- [ ] #3 A 'Show N more' button renders below the 4th visible entry when entries are hidden; label shows exact count (e.g. 'Show 8 more bakes', 'Show 3 more versions')
-- [ ] #4 When the section has ≤4 entries, no button is shown and all entries render as today (no visual change)
-- [ ] #5 Clicking 'Show N more' reveals all hidden entries in-place; the button is removed after expanding (one-way)
-- [ ] #6 Expanded state is transient — navigating to a different recipe or reloading the page resets the section back to collapsed (newest 4 visible)
-- [ ] #7 Sort order matches today: CookLogSection uses sortedCookLog(); VersionTimeline uses array order
-- [ ] #8 TOC / anchor-link navigation to #cook-log-section and #version-history-section still works when collapsed (no broken scroll positions)
-- [ ] #9 Snapshot tests for CookLogSection and VersionTimeline are updated to cover both collapsed and expanded states
+- [x] #1 CookLogSection renders only the newest 4 entries when cook_log.length > 4; older entries are hidden
+- [x] #2 VersionTimeline renders only the newest 4 entries when change_log.length > 4; older entries are hidden
+- [x] #3 A 'Show N more' button renders below the 4th visible entry when entries are hidden; label shows exact count (e.g. 'Show 8 more bakes', 'Show 3 more versions')
+- [x] #4 When the section has ≤4 entries, no button is shown and all entries render as today (no visual change)
+- [x] #5 Clicking 'Show N more' reveals all hidden entries in-place; the button is removed after expanding (one-way)
+- [x] #6 Expanded state is transient — navigating to a different recipe or reloading the page resets the section back to collapsed (newest 4 visible)
+- [x] #7 Sort order matches today: CookLogSection uses sortedCookLog(); VersionTimeline uses array order
+- [x] #8 TOC / anchor-link navigation to #cook-log-section and #version-history-section still works when collapsed (no broken scroll positions)
+- [x] #9 Snapshot tests for CookLogSection and VersionTimeline are updated to cover both collapsed and expanded states
 <!-- AC:END -->

@@ -563,6 +563,140 @@ describe('Cost one-liner', () => {
   })
 })
 
+describe('Collapse when > 4 entries', () => {
+  function makeEntry(date: string, version: string) {
+    return {
+      date,
+      version,
+      notes: ['Note'],
+      next_time: []
+    }
+  }
+
+  const sixEntries = [
+    makeEntry('2026-02-06', 'v1.0.5'),
+    makeEntry('2026-02-05', 'v1.0.4'),
+    makeEntry('2026-02-04', 'v1.0.3'),
+    makeEntry('2026-02-03', 'v1.0.2'),
+    makeEntry('2026-02-02', 'v1.0.1'),
+    makeEntry('2026-02-01', 'v1.0.0')
+  ]
+
+  it('renders all entries when count <= 4 (no button)', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: sixEntries.slice(0, 4),
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    // All 4 entries rendered
+    expect(wrapper.findAll('[id^="bake-"]').length).toBe(4)
+    // No show-more button
+    expect(wrapper.text()).not.toContain('Show')
+  })
+
+  it('renders only newest 4 when count > 4 and shows expand button', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: sixEntries,
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    // Only 4 entries rendered
+    const renderedIds = wrapper.findAll('[id^="bake-"]').map(e => e.attributes('id'))
+    expect(renderedIds.length).toBe(4)
+    // Newest 4 should be the first 4 sorted dates
+    expect(renderedIds).toEqual([
+      'bake-2026-02-06',
+      'bake-2026-02-05',
+      'bake-2026-02-04',
+      'bake-2026-02-03'
+    ])
+    // Older entries NOT rendered
+    expect(renderedIds).not.toContain('bake-2026-02-02')
+    expect(renderedIds).not.toContain('bake-2026-02-01')
+    // Button shows exact hidden count and uses plural "bakes"
+    expect(wrapper.text()).toContain('Show 2 more bakes')
+  })
+
+  it('uses singular "bake" when exactly 1 entry is hidden', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: sixEntries.slice(0, 5),
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    expect(wrapper.text()).toContain('Show 1 more bake')
+    expect(wrapper.text()).not.toContain('Show 1 more bakes')
+  })
+
+  it('expands to show all entries when button is clicked (one-way)', async () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: sixEntries,
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    // Before click: 4 visible
+    expect(wrapper.findAll('[id^="bake-"]').length).toBe(4)
+
+    const button = wrapper.find('[data-testid="cook-log-expand-button"]')
+    expect(button.exists()).toBe(true)
+    await button.trigger('click')
+
+    // After click: all 6 visible
+    expect(wrapper.findAll('[id^="bake-"]').length).toBe(6)
+    // Button removed (one-way)
+    expect(wrapper.find('[data-testid="cook-log-expand-button"]').exists()).toBe(false)
+    expect(wrapper.text()).not.toContain('Show')
+  })
+
+  it('sort order matches sortedCookLog (newest-first) in both collapsed and expanded states', async () => {
+    // Intentionally provide entries out of order
+    const outOfOrder = [
+      makeEntry('2026-02-01', 'v1.0.0'),
+      makeEntry('2026-02-06', 'v1.0.5'),
+      makeEntry('2026-02-03', 'v1.0.2'),
+      makeEntry('2026-02-05', 'v1.0.4'),
+      makeEntry('2026-02-02', 'v1.0.1'),
+      makeEntry('2026-02-04', 'v1.0.3')
+    ]
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: outOfOrder,
+        sectionId: 'cook-log-section'
+      }
+    })
+
+    // Collapsed: newest 4 in sorted order
+    let ids = wrapper.findAll('[id^="bake-"]').map(e => e.attributes('id'))
+    expect(ids).toEqual([
+      'bake-2026-02-06',
+      'bake-2026-02-05',
+      'bake-2026-02-04',
+      'bake-2026-02-03'
+    ])
+
+    // Expand
+    await wrapper.find('[data-testid="cook-log-expand-button"]').trigger('click')
+
+    // Expanded: all 6 in sorted order
+    ids = wrapper.findAll('[id^="bake-"]').map(e => e.attributes('id'))
+    expect(ids).toEqual([
+      'bake-2026-02-06',
+      'bake-2026-02-05',
+      'bake-2026-02-04',
+      'bake-2026-02-03',
+      'bake-2026-02-02',
+      'bake-2026-02-01'
+    ])
+  })
+})
+
 describe('HTML snapshot', () => {
   it('matches snapshot', () => {
     const wrapper = mount(CookLogSection, {
@@ -576,6 +710,37 @@ describe('HTML snapshot', () => {
         sectionId: 'cook-log-section'
       }
     })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('matches collapsed snapshot (6 entries, newest 4 visible + button)', () => {
+    const entries = [
+      { date: '2026-02-06', version: 'v1.0.5', notes: ['n'], next_time: [] },
+      { date: '2026-02-05', version: 'v1.0.4', notes: ['n'], next_time: [] },
+      { date: '2026-02-04', version: 'v1.0.3', notes: ['n'], next_time: [] },
+      { date: '2026-02-03', version: 'v1.0.2', notes: ['n'], next_time: [] },
+      { date: '2026-02-02', version: 'v1.0.1', notes: ['n'], next_time: [] },
+      { date: '2026-02-01', version: 'v1.0.0', notes: ['n'], next_time: [] }
+    ]
+    const wrapper = mount(CookLogSection, {
+      props: { cookLog: entries, sectionId: 'cook-log-section' }
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('matches expanded snapshot (6 entries, all visible, no button)', async () => {
+    const entries = [
+      { date: '2026-02-06', version: 'v1.0.5', notes: ['n'], next_time: [] },
+      { date: '2026-02-05', version: 'v1.0.4', notes: ['n'], next_time: [] },
+      { date: '2026-02-04', version: 'v1.0.3', notes: ['n'], next_time: [] },
+      { date: '2026-02-03', version: 'v1.0.2', notes: ['n'], next_time: [] },
+      { date: '2026-02-02', version: 'v1.0.1', notes: ['n'], next_time: [] },
+      { date: '2026-02-01', version: 'v1.0.0', notes: ['n'], next_time: [] }
+    ]
+    const wrapper = mount(CookLogSection, {
+      props: { cookLog: entries, sectionId: 'cook-log-section' }
+    })
+    await wrapper.find('[data-testid="cook-log-expand-button"]').trigger('click')
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
