@@ -1,6 +1,6 @@
 {
   "meta": {
-    "name": "Simple Sourdough Bread",
+    "name": "Sourdough Bread - 70% Hydration",
     "source": {
       "name": "proofed. Research Synthesis",
       "type": "original",
@@ -22,8 +22,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v3.0.0",
+  "version": "v3.1.0",
   "change_log": [
+    {
+      "version": "v3.1.0",
+      "date": "2026-04-08",
+      "summary": "Retitled to reference 70% hydration — the stable identity after 12 bakes. Recipe URL slug unchanged."
+    },
     {
       "version": "v3.0.0",
       "date": "2026-04-03",
