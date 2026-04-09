@@ -636,7 +636,7 @@ watchEffect(() => {
       </div>
       <div class="ds3-tile">
         <span class="ds3-tile-value">{{ allRecipeCount }}</span>
-        <span class="ds3-tile-label">Recipes</span>
+        <span class="ds3-tile-label">Recipes Baked</span>
       </div>
       <div class="ds3-tile">
         <span class="ds3-tile-value">{{ allServings }}</span>
