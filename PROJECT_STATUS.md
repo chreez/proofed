@@ -1,7 +1,7 @@
 ---
 project: Proofed
 status: active
-updated: 2026-04-08
+updated: 2026-04-09
 ---
 
 ## Description
@@ -23,10 +23,12 @@ Recipe workflow features (cook logs, photo pipeline, energy-level reading modes)
 
 ## Recent
 
-- PF-182: replaced baking cadence horizontal timeline with from-scratch GitHub-style contribution calendar (centered current month, hidden scrollbar, month-gap separators)
-- PF-182.1 spike: locked contribution calendar approach — from-scratch Vue SVG, no bake-index.json, 14px/3px grid
-- Stats dashboard: replaced per-recipe bars with micro-bar + inline counts, added totals to Production Mix
-- Logged simple sourdough bake 2026-04-06
+- PF-177.5: full BakeStatsBlock on BakeDetailView — Option C layout (Summary → Hero → Chart → curated Notes → collapsed Raw notes); new `key_notes` field on CookLogEntry; all 13 simple-sourdough bakes backfilled with bake_stats + confidence (9 high / 3 medium / 1 low)
+- PF-180: structured fermentation chart in FOLD_1 state note with clickable source URL (Sourdough Journey V2.0 values)
+- PF-177.9: compact bake stats variants A/B/C wired into CookLogSection with low-confidence fallback to recipe.bake_defaults
+- PF-177.4: extended CookLogEntry with bake_stats and raw_notes fields
+- PF-177.3: bake stats schema contract types (BakeStatsBlock, RecipeBakeDefaults, confidence)
+- PF-182: replaced baking cadence horizontal timeline with from-scratch GitHub-style contribution calendar
 
 ## Related Projects
 
