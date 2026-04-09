@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch, useTemplateRef } from 'vue'
+import { ref, computed, useTemplateRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { Link2, Check, ArrowRight } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
@@ -127,41 +127,9 @@ function entryId(date: string): string {
 }
 
 // ============================================================
-// PF-177.9 — Compact bake stats variant switcher (preview wiring)
-// Three variants cribbed from DemoBakeLogFlow.vue v2:
-//   A = 4-column tiles row
-//   B = pills inline with summary
-//   C = 2x2 mini table
-// Persisted in localStorage under `proofed:compact-variant`.
-// Only rendered when at least one entry has `bake_stats`.
+// PF-177.9 — Compact bake stats (pills inline)
+// Rendered per-entry when `entry.bake_stats` is present.
 // ============================================================
-
-type CompactVariant = 'A' | 'B' | 'C'
-const VARIANT_STORAGE_KEY = 'proofed:compact-variant'
-const variant = ref<CompactVariant>('A')
-
-onMounted(() => {
-  try {
-    const saved = localStorage.getItem(VARIANT_STORAGE_KEY)
-    if (saved === 'A' || saved === 'B' || saved === 'C') {
-      variant.value = saved
-    }
-  } catch {
-    // localStorage unavailable (SSR/private mode) — default is fine
-  }
-})
-
-watch(variant, (v) => {
-  try {
-    localStorage.setItem(VARIANT_STORAGE_KEY, v)
-  } catch {
-    // Swallow — non-critical
-  }
-})
-
-const hasAnyBakeStats = computed(() =>
-  props.cookLog.some((e) => !!e.bake_stats)
-)
 
 // --- Derived stats helpers (PF-177.9 v2 — post HITL feedback) ---
 //
@@ -445,35 +413,6 @@ function compactViewOf(
       </div>
     </div>
 
-    <!-- PF-177.9 — Compact bake stats variant switcher (preview only) -->
-    <div v-if="hasAnyBakeStats" class="cf-variant-switch" data-testid="compact-variant-switch">
-      <span class="cf-variant-label">COMPACT FORM:</span>
-      <button
-        type="button"
-        class="cf-variant-btn"
-        :class="{ 'cf-variant-btn-active': variant === 'A' }"
-        data-variant="A"
-        aria-label="Variant A — tiles row"
-        @click="variant = 'A'"
-      >A</button>
-      <button
-        type="button"
-        class="cf-variant-btn"
-        :class="{ 'cf-variant-btn-active': variant === 'B' }"
-        data-variant="B"
-        aria-label="Variant B — pills inline"
-        @click="variant = 'B'"
-      >B</button>
-      <button
-        type="button"
-        class="cf-variant-btn"
-        :class="{ 'cf-variant-btn-active': variant === 'C' }"
-        data-variant="C"
-        aria-label="Variant C — mini table"
-        @click="variant = 'C'"
-      >C</button>
-    </div>
-
     <div
       v-for="(entry, index) in visibleEntries"
       :key="index"
@@ -506,73 +445,13 @@ function compactViewOf(
             @click="toggleSummary($event, index)"
           >{{ entry.summary }}</p>
 
-          <!-- PF-177.9 — Compact bake stats (selected variant) -->
+          <!-- PF-177.9 — Compact bake stats (pills inline) -->
           <template v-if="entry.bake_stats">
-            <!-- Variant A: Tiles row (3 tiles: bulk · proof · bake) -->
             <div
-              v-if="variant === 'A'"
-              class="cf-tiles cf-tiles-inline cf-tiles-3"
-              data-testid="compact-variant-a"
-            >
-              <template v-for="view in [compactViewOf(entry.bake_stats, props.recipe)]" :key="'va-' + index">
-                <div
-                  class="cf-tile"
-                  :class="{
-                    'bundle-host': view.bulk.hasTooltip,
-                    'cf-low-confidence': view.lowConfidence
-                  }"
-                  :tabindex="view.bulk.hasTooltip ? 0 : undefined"
-                >
-                  <span class="cf-tile-value">{{ view.bulk.duration }}</span>
-                  <span class="cf-tile-label">bulk</span>
-                  <span
-                    v-if="view.bulk.hasTooltip"
-                    class="bundle-tooltip"
-                    role="tooltip"
-                  >{{ view.bulkTooltip }}</span>
-                </div>
-                <div
-                  class="cf-tile"
-                  :class="{
-                    'bundle-host': !!view.proof.detail || view.lowConfidence,
-                    'cf-low-confidence': view.lowConfidence
-                  }"
-                  :tabindex="view.proof.detail || view.lowConfidence ? 0 : undefined"
-                >
-                  <span class="cf-tile-value">{{ view.proof.total }}</span>
-                  <span class="cf-tile-label">proof</span>
-                  <span
-                    v-if="view.proof.detail || view.lowConfidence"
-                    class="bundle-tooltip"
-                    role="tooltip"
-                  >{{ view.proofTooltip }}</span>
-                </div>
-                <div
-                  class="cf-tile"
-                  :class="{
-                    'bundle-host': view.bake.hasTooltip || view.lowConfidence,
-                    'cf-low-confidence': view.lowConfidence
-                  }"
-                  :tabindex="view.bake.hasTooltip || view.lowConfidence ? 0 : undefined"
-                >
-                  <span class="cf-tile-value">{{ view.bake.total }}</span>
-                  <span class="cf-tile-label">bake</span>
-                  <span
-                    v-if="view.bake.hasTooltip || view.lowConfidence"
-                    class="bundle-tooltip"
-                    role="tooltip"
-                  >{{ view.bakeTooltip }}</span>
-                </div>
-              </template>
-            </div>
-
-            <!-- Variant B: Pills inline (winner) — bulk · proof · bake -->
-            <div
-              v-else-if="variant === 'B'"
               class="cf-pills"
-              data-testid="compact-variant-b"
+              data-testid="compact-bake-stats"
             >
-              <template v-for="view in [compactViewOf(entry.bake_stats, props.recipe)]" :key="'vb-' + index">
+              <template v-for="view in [compactViewOf(entry.bake_stats, props.recipe)]" :key="'stats-' + index">
                 <span
                   class="cf-pill"
                   :class="{
@@ -624,65 +503,7 @@ function compactViewOf(
               </template>
             </div>
 
-            <!-- Variant C: 1x3 mini table (3 rows, label left / value right) -->
-            <div
-              v-else
-              class="cf-minitable cf-minitable-3"
-              data-testid="compact-variant-c"
-            >
-              <template v-for="view in [compactViewOf(entry.bake_stats, props.recipe)]" :key="'vc-' + index">
-                <div
-                  class="cf-row"
-                  :class="{
-                    'bundle-host': view.bulk.hasTooltip,
-                    'cf-low-confidence': view.lowConfidence
-                  }"
-                  :tabindex="view.bulk.hasTooltip ? 0 : undefined"
-                >
-                  <span class="cf-row-label">bulk</span>
-                  <span class="cf-row-value">{{ view.bulk.duration }}</span>
-                  <span
-                    v-if="view.bulk.hasTooltip"
-                    class="bundle-tooltip"
-                    role="tooltip"
-                  >{{ view.bulkTooltip }}</span>
-                </div>
-                <div
-                  class="cf-row"
-                  :class="{
-                    'bundle-host': !!view.proof.detail || view.lowConfidence,
-                    'cf-low-confidence': view.lowConfidence
-                  }"
-                  :tabindex="view.proof.detail || view.lowConfidence ? 0 : undefined"
-                >
-                  <span class="cf-row-label">proof</span>
-                  <span class="cf-row-value">{{ view.proof.total }}</span>
-                  <span
-                    v-if="view.proof.detail || view.lowConfidence"
-                    class="bundle-tooltip"
-                    role="tooltip"
-                  >{{ view.proofTooltip }}</span>
-                </div>
-                <div
-                  class="cf-row"
-                  :class="{
-                    'bundle-host': view.bake.hasTooltip || view.lowConfidence,
-                    'cf-low-confidence': view.lowConfidence
-                  }"
-                  :tabindex="view.bake.hasTooltip || view.lowConfidence ? 0 : undefined"
-                >
-                  <span class="cf-row-label">bake</span>
-                  <span class="cf-row-value">{{ view.bake.total }}</span>
-                  <span
-                    v-if="view.bake.hasTooltip || view.lowConfidence"
-                    class="bundle-tooltip"
-                    role="tooltip"
-                  >{{ view.bakeTooltip }}</span>
-                </div>
-              </template>
-            </div>
-
-            <!-- PF-177.9 v4 — "not directly logged" badge (renamed from v3 "low confidence")
+            <!-- PF-177.9 v4 — "not directly logged" badge.
                  Entry shows recipe baseline for bake; bulk/proof unavailable. -->
             <div
               v-if="entry.bake_stats.confidence === 'low'"
@@ -773,100 +594,10 @@ function compactViewOf(
 }
 
 /* ================================================
-   PF-177.9 — Compact bake stats variant switcher
-   Markup + styles cribbed from DemoBakeLogFlow.vue v2
+   PF-177.9 — Compact bake stats (pills inline)
+   Rendered per-entry when `entry.bake_stats` is present.
    ================================================ */
 
-.cf-variant-switch {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-  padding: 0.4375rem 0.625rem;
-  background: var(--color-stone-50);
-  border: 1px dashed var(--color-stone-300);
-}
-
-.cf-variant-label {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-stone-500);
-}
-
-.cf-variant-btn {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: var(--color-ink);
-  background: var(--color-surface);
-  border: 2px solid var(--color-stone-300);
-  padding: 0.1875rem 0.625rem;
-  cursor: pointer;
-  line-height: 1;
-  border-radius: 0;
-}
-
-.cf-variant-btn:hover {
-  border-color: var(--color-accent);
-}
-
-.cf-variant-btn-active {
-  background: var(--color-accent);
-  color: var(--color-stone-50);
-  border-color: var(--color-accent);
-}
-
-/* --- Variant A: Tiles-only row --- */
-.cf-tiles {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border: 1px solid var(--color-stone-200);
-  background: var(--color-surface);
-}
-
-/* 3-tile variant (bulk · proof · bake) — post HITL iteration */
-.cf-tiles-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.cf-tiles-inline {
-  margin-top: 0.5rem;
-}
-
-.cf-tile {
-  padding: 0.4375rem 0.25rem;
-  text-align: center;
-  border-right: 1px solid var(--color-stone-200);
-  position: relative;
-}
-
-.cf-tile:last-child {
-  border-right: none;
-}
-
-.cf-tile-value {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-ink);
-  line-height: 1.15;
-}
-
-.cf-tile-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-stone-400);
-  margin-top: 0.1875rem;
-}
-
-/* --- Variant B: Pills inline --- */
 .cf-pills {
   display: flex;
   flex-wrap: wrap;
@@ -894,49 +625,6 @@ function compactViewOf(
   margin-right: 0.25rem;
 }
 
-/* --- Variant C: Mini table (1x3 stacked rows, post HITL iteration) --- */
-.cf-minitable {
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid var(--color-stone-200);
-  background: var(--color-surface);
-  margin-top: 0.5rem;
-}
-
-.cf-minitable-3 {
-  grid-template-columns: 1fr;
-}
-
-.cf-row {
-  padding: 0.3125rem 0.625rem;
-  border-bottom: 1px solid var(--color-stone-200);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
-  position: relative;
-}
-
-.cf-row:last-child {
-  border-bottom: none;
-}
-
-.cf-row-label {
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-stone-400);
-}
-
-.cf-row-value {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-ink);
-  line-height: 1.15;
-}
-
 /* --- PF-177.9 v3 — Low-confidence treatment ---
    Applied to bulk + proof elements when bake_stats.confidence === 'low'.
    Bake is protected (duration is still reliable per user carve-out). */
@@ -945,8 +633,8 @@ function compactViewOf(
 }
 
 /* Small inline badge annotated near the compact form block for low-conf
-   entries. Subtle monospace caveat styling — aligns with variant switcher
-   aesthetic. Hover/focus reveals the full explanation via bundle-tooltip. */
+   entries. Subtle monospace caveat styling. Hover/focus reveals the full
+   explanation via bundle-tooltip. */
 .cf-low-badge {
   display: inline-flex;
   align-items: center;

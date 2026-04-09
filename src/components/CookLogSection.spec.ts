@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import CookLogSection from './CookLogSection.vue'
 
@@ -698,42 +698,12 @@ describe('Collapse when > 4 entries', () => {
 })
 
 // ============================================================
-// PF-177.9 v2 — Compact bake stats (post HITL iteration)
-// Covers variant switcher + derivation helpers + variant render blocks.
+// PF-177.9 — Compact bake stats (pills inline)
+// Renders unconditionally per entry when `entry.bake_stats` exists.
 // ============================================================
-describe('Compact bake stats (PF-177.9 v2)', () => {
-  // Per-suite localStorage mock. Other specs in the project stub globalThis
-  // with a custom mock that can lack .clear() depending on run order — so we
-  // install a clean mock here and reset the backing store before each test.
-  let store: Record<string, string> = {}
-  const lsMock = {
-    getItem: vi.fn((key: string) => (key in store ? store[key] : null)),
-    setItem: vi.fn((key: string, value: string) => {
-      store[key] = String(value)
-    }),
-    removeItem: vi.fn((key: string) => {
-      delete store[key]
-    }),
-    clear: vi.fn(() => {
-      store = {}
-    }),
-    get length() {
-      return Object.keys(store).length
-    },
-    key: vi.fn((i: number) => Object.keys(store)[i] ?? null)
-  }
-
-  beforeEach(() => {
-    store = {}
-    Object.defineProperty(globalThis, 'localStorage', {
-      value: lsMock,
-      writable: true,
-      configurable: true
-    })
-  })
-
+describe('Compact bake stats (PF-177.9)', () => {
   // Full bake_stats fixture mirroring a real overnight sourdough bake.
-  // bulk = 4h 20m (15:00 → 19:20), avg dough 76.0°F
+  // bulk = 4h 30m (15:00 → 19:30 via bulk aliquot_rise), avg dough 76.0°F
   // proof = 19h 30m (15:00 → next day 10:30 oven entry)
   // bake = 42m (20 covered + 22 uncovered)
   const fullStats = {
@@ -807,47 +777,32 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
     })
   }
 
-  it('renders variant switcher when any entry has bake_stats', () => {
+  it('renders compact bake stats block when entry has bake_stats', () => {
     const wrapper = mountWithStats(fullStats)
-    expect(wrapper.find('[data-testid="compact-variant-switch"]').exists()).toBe(true)
-    expect(wrapper.text()).toContain('COMPACT FORM:')
-    // All three variant buttons are present
-    expect(wrapper.find('[data-variant="A"]').exists()).toBe(true)
-    expect(wrapper.find('[data-variant="B"]').exists()).toBe(true)
-    expect(wrapper.find('[data-variant="C"]').exists()).toBe(true)
-  })
-
-  it('hides variant switcher when no entry has bake_stats', () => {
-    const wrapper = mount(CookLogSection, {
-      props: {
-        cookLog: [{ date: '2026-02-05', version: 'v1.0.0', notes: ['n'] }],
-        sectionId: 'cook-log-section'
-      }
-    })
-    expect(wrapper.find('[data-testid="compact-variant-switch"]').exists()).toBe(false)
-  })
-
-  it('defaults to Variant A and renders tiles row with bulk/proof/bake labels', () => {
-    const wrapper = mountWithStats(fullStats)
-    expect(wrapper.find('[data-testid="compact-variant-a"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="compact-bake-stats"]').exists()).toBe(true)
     const text = wrapper.text()
     expect(text).toContain('bulk')
     expect(text).toContain('proof')
     expect(text).toContain('bake')
   })
 
-  it('Variant A tiles include 3 tiles (not 4) — no peak rise or bulk ambient', () => {
-    const wrapper = mountWithStats(fullStats)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    expect(tiles.length).toBe(3)
-    const text = wrapper.text()
-    // Killed stats per HITL feedback
-    expect(text).not.toContain('peak rise')
-    expect(text).not.toContain('bulk ambient')
-    expect(text).not.toContain('bulk amb')
+  it('does not render compact bake stats block when entry has no bake_stats', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{ date: '2026-02-05', version: 'v1.0.0', notes: ['n'] }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    expect(wrapper.find('[data-testid="compact-bake-stats"]').exists()).toBe(false)
   })
 
-  it('Variant A renders computed bulk duration and bake total', () => {
+  it('renders 3 pills (bulk · proof · bake)', () => {
+    const wrapper = mountWithStats(fullStats)
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    expect(pills.length).toBe(3)
+  })
+
+  it('renders computed bulk duration and bake total', () => {
     const wrapper = mountWithStats(fullStats)
     const text = wrapper.text()
     // bulk window: 15:00 → 19:30 (first bulk aliquot_rise is later than
@@ -857,28 +812,37 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
     expect(text).toContain('42m')
   })
 
-  it('Variant A renders multi-day proof as "Xd Yh"', () => {
+  it('renders multi-day proof as "Xd Yh"', () => {
     const wrapper = mountWithStats(overproofStats)
     const text = wrapper.text()
     // proof: 2026-04-04 16:00 → 2026-04-06 13:45 = 45h 45m = 1d 21h
     expect(text).toContain('1d 21h')
   })
 
-  it('Variant A bulk tile has avg dough temp tooltip', () => {
+  it('renders proof total and bake total in pills', () => {
     const wrapper = mountWithStats(fullStats)
-    const tile = wrapper.find('[data-testid="compact-variant-a"] .cf-tile')
-    const tooltip = tile.find('.bundle-tooltip')
+    const text = wrapper.text()
+    expect(text).toContain('42m')
+    expect(text).toContain('19h 30m')
+  })
+
+  it('bulk pill has avg dough temp tooltip', () => {
+    const wrapper = mountWithStats(fullStats)
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    const bulkPill = pills[0]
+    expect(bulkPill.classes()).toContain('bundle-host')
+    const tooltip = bulkPill.find('.bundle-tooltip')
     expect(tooltip.exists()).toBe(true)
     // avg of 76,76,76,76 = 76.0°F
     expect(tooltip.text()).toContain('avg dough:')
     expect(tooltip.text()).toContain('76.0°F')
   })
 
-  it('Variant A bake tile has preheat/covered/uncovered temp tooltip (no durations)', () => {
+  it('bake pill has preheat/covered/uncovered temp tooltip (no durations)', () => {
     const wrapper = mountWithStats(fullStats)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    const bakeTile = tiles[tiles.length - 1]
-    const tooltip = bakeTile.find('.bundle-tooltip')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    const bakePill = pills[pills.length - 1]
+    const tooltip = bakePill.find('.bundle-tooltip')
     expect(tooltip.exists()).toBe(true)
     const tt = tooltip.text()
     expect(tt).toContain('preheat 550°F')
@@ -889,11 +853,11 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
     expect(tt).not.toContain('22m')
   })
 
-  it('Variant A proof tile shows bulk/retard/final breakdown tooltip when data supports it', () => {
+  it('proof pill shows bulk/retard/final breakdown tooltip when data supports it', () => {
     const wrapper = mountWithStats(fullStats)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    const proofTile = tiles[1]
-    const tooltip = proofTile.find('.bundle-tooltip')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    const proofPill = pills[1]
+    const tooltip = proofPill.find('.bundle-tooltip')
     expect(tooltip.exists()).toBe(true)
     const tt = tooltip.text()
     expect(tt).toContain('bulk')
@@ -901,74 +865,22 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
     expect(tt).toContain('final')
   })
 
-  it('switches to Variant B and renders pills with bulk/proof/bake', async () => {
-    const wrapper = mountWithStats(fullStats)
-    await wrapper.find('[data-variant="B"]').trigger('click')
-    expect(wrapper.find('[data-testid="compact-variant-b"]').exists()).toBe(true)
-    expect(wrapper.find('[data-testid="compact-variant-a"]').exists()).toBe(false)
-    const pills = wrapper.findAll('[data-testid="compact-variant-b"] .cf-pill')
-    expect(pills.length).toBe(3)
-  })
-
-  it('Variant B pills include the redefined bake total 42m and proof time', async () => {
-    const wrapper = mountWithStats(fullStats)
-    await wrapper.find('[data-variant="B"]').trigger('click')
-    const text = wrapper.text()
-    expect(text).toContain('42m')
-    expect(text).toContain('19h 30m')
-  })
-
-  it('switches to Variant C and renders 1x3 mini table', async () => {
-    const wrapper = mountWithStats(fullStats)
-    await wrapper.find('[data-variant="C"]').trigger('click')
-    expect(wrapper.find('[data-testid="compact-variant-c"]').exists()).toBe(true)
-    const rows = wrapper.findAll('[data-testid="compact-variant-c"] .cf-row')
-    expect(rows.length).toBe(3)
-    const text = wrapper.text()
-    expect(text).toContain('bulk')
-    expect(text).toContain('proof')
-    expect(text).toContain('bake')
-  })
-
-  it('persists variant choice in localStorage', async () => {
-    const wrapper = mountWithStats(fullStats)
-    await wrapper.find('[data-variant="B"]').trigger('click')
-    expect(localStorage.getItem('proofed:compact-variant')).toBe('B')
-    await wrapper.find('[data-variant="C"]').trigger('click')
-    expect(localStorage.getItem('proofed:compact-variant')).toBe('C')
-  })
-
-  it('restores variant choice from localStorage on mount', async () => {
-    localStorage.setItem('proofed:compact-variant', 'B')
-    const wrapper = mountWithStats(fullStats)
-    await wrapper.vm.$nextTick()
-    expect(wrapper.find('[data-testid="compact-variant-b"]').exists()).toBe(true)
-    expect(wrapper.find('[data-testid="compact-variant-a"]').exists()).toBe(false)
-  })
-
-  it('ignores invalid localStorage values', () => {
-    localStorage.setItem('proofed:compact-variant', 'Z')
-    const wrapper = mountWithStats(fullStats)
-    // Falls back to default Variant A
-    expect(wrapper.find('[data-testid="compact-variant-a"]').exists()).toBe(true)
-  })
-
   it('renders em-dash for bulk pill when only one dough_temp exists', () => {
     const wrapper = mountWithStats(sparseStats)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    // First tile is bulk — value should be em-dash but tooltip should still exist
-    const bulkValue = tiles[0].find('.cf-tile-value')
-    expect(bulkValue.text()).toBe('—')
-    const tooltip = tiles[0].find('.bundle-tooltip')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    // First pill is bulk — value should be em-dash but tooltip should still exist
+    const bulkPill = pills[0]
+    expect(bulkPill.text()).toContain('—')
+    const tooltip = bulkPill.find('.bundle-tooltip')
     expect(tooltip.exists()).toBe(true)
     expect(tooltip.text()).toContain('78.0°F')
   })
 
-  it('bake tile tooltip on sparse stats skips missing "covered" phase', () => {
+  it('bake pill tooltip on sparse stats skips missing "covered" phase', () => {
     const wrapper = mountWithStats(sparseStats)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    const bakeTile = tiles[2]
-    const tt = bakeTile.find('.bundle-tooltip').text()
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    const bakePill = pills[2]
+    const tt = bakePill.find('.bundle-tooltip').text()
     expect(tt).toContain('preheat 550°F')
     expect(tt).toContain('uncovered 450°F')
     expect(tt).not.toContain('covered 550')
@@ -976,53 +888,27 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
 
   it('bake total on sparse stats is just uncovered (no covered phase)', () => {
     const wrapper = mountWithStats(sparseStats)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    const bakeValue = tiles[2].find('.cf-tile-value')
-    expect(bakeValue.text()).toBe('40m')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    expect(pills[2].text()).toContain('40m')
   })
 
   it('renders all em-dash values for empty bake_stats block', () => {
     const wrapper = mountWithStats(emptyStats)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    expect(tiles.length).toBe(3)
-    for (const t of tiles) {
-      expect(t.find('.cf-tile-value').text()).toBe('—')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    expect(pills.length).toBe(3)
+    for (const p of pills) {
+      expect(p.text()).toContain('—')
     }
-  })
-
-  it('Variant B bulk pill exposes avg dough tooltip on hover target', async () => {
-    const wrapper = mountWithStats(fullStats)
-    await wrapper.find('[data-variant="B"]').trigger('click')
-    const pills = wrapper.findAll('[data-testid="compact-variant-b"] .cf-pill')
-    const bulkPill = pills[0]
-    expect(bulkPill.classes()).toContain('bundle-host')
-    const tooltip = bulkPill.find('.bundle-tooltip')
-    expect(tooltip.exists()).toBe(true)
-    expect(tooltip.text()).toContain('avg dough:')
-  })
-
-  it('Variant C bake row exposes temp-only tooltip', async () => {
-    const wrapper = mountWithStats(fullStats)
-    await wrapper.find('[data-variant="C"]').trigger('click')
-    const rows = wrapper.findAll('[data-testid="compact-variant-c"] .cf-row')
-    const bakeRow = rows[2]
-    expect(bakeRow.classes()).toContain('bundle-host')
-    const tooltip = bakeRow.find('.bundle-tooltip')
-    expect(tooltip.exists()).toBe(true)
-    expect(tooltip.text()).toContain('preheat')
   })
 
   // ----------------------------------------------------------------
   // PF-177.9 v4 — Low-confidence falls back to recipe defaults
   // ----------------------------------------------------------------
   //
-  // v3 behavior: low-conf entries showed stored guesstimate values with
-  // grey opacity + `(low confidence)` tooltip suffix.
-  //
-  // v4 behavior: low-conf entries mean data was NOT DIRECTLY LOGGED by
-  // the user. The UI falls back to `recipe.bake_defaults.bake_phases`
-  // for the bake pill and displays `—` for bulk/proof. Stored bake_stats
-  // data is preserved in JSON for future audit but not shown.
+  // Low-conf entries mean data was NOT DIRECTLY LOGGED by the user.
+  // The UI falls back to `recipe.bake_defaults.bake_phases` for the
+  // bake pill and displays `—` for bulk/proof. Stored bake_stats data
+  // is preserved in JSON for future audit but not shown.
 
   // Low-confidence fixture mirrors 2026-04-06 — stored stats are the
   // v3 guesstimate temps (preheat 550 / covered 500 / uncovered 450).
@@ -1080,50 +966,50 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
     })
   }
 
-  it('v4: low-conf bulk tile gets cf-low-confidence class (not directly logged)', () => {
+  it('v4: low-conf bulk pill gets cf-low-confidence class (not directly logged)', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    expect(tiles[0].classes()).toContain('cf-low-confidence')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    expect(pills[0].classes()).toContain('cf-low-confidence')
   })
 
-  it('v4: low-conf proof tile gets cf-low-confidence class (not directly logged)', () => {
+  it('v4: low-conf proof pill gets cf-low-confidence class (not directly logged)', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    expect(tiles[1].classes()).toContain('cf-low-confidence')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    expect(pills[1].classes()).toContain('cf-low-confidence')
   })
 
-  it('v4: low-conf bake tile ALSO gets cf-low-confidence (showing recipe baseline, still not user-logged)', () => {
+  it('v4: low-conf bake pill ALSO gets cf-low-confidence (showing recipe baseline, still not user-logged)', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    expect(tiles[2].classes()).toContain('cf-low-confidence')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    expect(pills[2].classes()).toContain('cf-low-confidence')
   })
 
-  it('v4: low-conf bulk tile renders "—" and "not directly logged" tooltip', () => {
+  it('v4: low-conf bulk pill renders "—" and "not directly logged" tooltip', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    const bulkTile = tiles[0]
-    expect(bulkTile.find('.cf-tile-value').text()).toBe('—')
-    const tooltip = bulkTile.find('.bundle-tooltip')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    const bulkPill = pills[0]
+    expect(bulkPill.text()).toContain('—')
+    const tooltip = bulkPill.find('.bundle-tooltip')
     expect(tooltip.exists()).toBe(true)
     expect(tooltip.text()).toContain('not directly logged')
     // avg dough must NOT appear (we're not displaying guesstimate data)
     expect(tooltip.text()).not.toContain('avg dough:')
   })
 
-  it('v4: low-conf proof tile renders "—" and "not directly logged" tooltip', () => {
+  it('v4: low-conf proof pill renders "—" and "not directly logged" tooltip', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    const proofTile = tiles[1]
-    expect(proofTile.find('.cf-tile-value').text()).toBe('—')
-    const tooltip = proofTile.find('.bundle-tooltip')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    const proofPill = pills[1]
+    expect(proofPill.text()).toContain('—')
+    const tooltip = proofPill.find('.bundle-tooltip')
     expect(tooltip.exists()).toBe(true)
     expect(tooltip.text()).toContain('not directly logged')
   })
 
-  it('v4: low-conf bake tile shows RECIPE DEFAULT temps, not stored guesstimates', () => {
+  it('v4: low-conf bake pill shows RECIPE DEFAULT temps, not stored guesstimates', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    const tooltip = tiles[2].find('.bundle-tooltip')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    const tooltip = pills[2].find('.bundle-tooltip')
     expect(tooltip.exists()).toBe(true)
     const tt = tooltip.text()
     // Recipe defaults: preheat 500°F, covered 450°F, uncovered 425°F
@@ -1139,44 +1025,44 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
     expect(tt).not.toContain('uncovered 450°F')
   })
 
-  it('v4: low-conf bake tile value uses recipe default durations (covered + uncovered)', () => {
+  it('v4: low-conf bake pill value uses recipe default durations (covered + uncovered)', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
     // Recipe defaults: covered 20m + uncovered 20m = 40m
-    expect(tiles[2].find('.cf-tile-value').text()).toBe('40m')
+    expect(pills[2].text()).toContain('40m')
   })
 
   it('v4: low-conf falls back to "—" when recipe has no bake_defaults', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithoutDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    // All three tiles should show em-dash — no fallback available
-    expect(tiles[0].find('.cf-tile-value').text()).toBe('—')
-    expect(tiles[1].find('.cf-tile-value').text()).toBe('—')
-    expect(tiles[2].find('.cf-tile-value').text()).toBe('—')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    // All three pills should show em-dash — no fallback available
+    expect(pills[0].text()).toContain('—')
+    expect(pills[1].text()).toContain('—')
+    expect(pills[2].text()).toContain('—')
     // Badge still renders (entry is still flagged as not directly logged)
     expect(wrapper.find('[data-testid="compact-low-confidence-badge"]').exists()).toBe(true)
   })
 
   it('v4: low-conf falls back to "—" when no recipe prop is passed at all', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, undefined)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    expect(tiles[0].find('.cf-tile-value').text()).toBe('—')
-    expect(tiles[1].find('.cf-tile-value').text()).toBe('—')
-    expect(tiles[2].find('.cf-tile-value').text()).toBe('—')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    expect(pills[0].text()).toContain('—')
+    expect(pills[1].text()).toContain('—')
+    expect(pills[2].text()).toContain('—')
   })
 
   it('v4: entries with undefined confidence render normally (no fallback applied)', () => {
     // fullStats has no `confidence` field — UI should use its own bake_stats
     // even when the recipe has bake_defaults.
     const wrapper = mountWithStatsAndRecipe(fullStats, recipeWithDefaults)
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    for (const tile of tiles) {
-      expect(tile.classes()).not.toContain('cf-low-confidence')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    for (const pill of pills) {
+      expect(pill.classes()).not.toContain('cf-low-confidence')
     }
     // Uses entry's own bake total (42m), not recipe default (40m)
-    expect(tiles[2].find('.cf-tile-value').text()).toBe('42m')
+    expect(pills[2].text()).toContain('42m')
     // Uses entry's own stored temps (preheat 550 / covered 550 / uncovered 500)
-    const tt = tiles[2].find('.bundle-tooltip').text()
+    const tt = pills[2].find('.bundle-tooltip').text()
     expect(tt).toContain('preheat 550°F')
     expect(tt).toContain('covered 550°F')
     expect(tt).toContain('uncovered 500°F')
@@ -1191,12 +1077,12 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
       { ...fullStats, confidence: 'high' as const } as never,
       recipeWithDefaults
     )
-    const tiles = wrapper.findAll('[data-testid="compact-variant-a"] .cf-tile')
-    for (const tile of tiles) {
-      expect(tile.classes()).not.toContain('cf-low-confidence')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    for (const pill of pills) {
+      expect(pill.classes()).not.toContain('cf-low-confidence')
     }
     // Uses entry's own bake total (42m), not recipe default
-    expect(tiles[2].find('.cf-tile-value').text()).toBe('42m')
+    expect(pills[2].text()).toContain('42m')
     // Badge absent
     expect(wrapper.find('[data-testid="compact-low-confidence-badge"]').exists()).toBe(false)
   })
@@ -1215,12 +1101,10 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
     expect(tooltip.text()).toContain('Bulk and proof are not available')
   })
 
-  it('v4: low-confidence treatment carries across variants B and C with recipe defaults', async () => {
+  it('v4: low-confidence treatment renders correctly on pills with recipe defaults', () => {
     const wrapper = mountWithStatsAndRecipe(lowConfidenceStats, recipeWithDefaults)
 
-    // Variant B pills
-    await wrapper.find('[data-variant="B"]').trigger('click')
-    const pills = wrapper.findAll('[data-testid="compact-variant-b"] .cf-pill')
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
     expect(pills[0].classes()).toContain('cf-low-confidence') // bulk greyed
     expect(pills[1].classes()).toContain('cf-low-confidence') // proof greyed
     expect(pills[2].classes()).toContain('cf-low-confidence') // bake greyed (recipe baseline)
@@ -1228,20 +1112,7 @@ describe('Compact bake stats (PF-177.9 v2)', () => {
     const bakePillTt = pills[2].find('.bundle-tooltip').text()
     expect(bakePillTt).toContain('(recipe baseline)')
     expect(bakePillTt).toContain('preheat 500°F')
-    // Badge still present on variant B
-    expect(wrapper.find('[data-testid="compact-low-confidence-badge"]').exists()).toBe(true)
-
-    // Variant C rows
-    await wrapper.find('[data-variant="C"]').trigger('click')
-    const rows = wrapper.findAll('[data-testid="compact-variant-c"] .cf-row')
-    expect(rows[0].classes()).toContain('cf-low-confidence')
-    expect(rows[1].classes()).toContain('cf-low-confidence')
-    expect(rows[2].classes()).toContain('cf-low-confidence')
-    expect(rows[0].find('.bundle-tooltip').text()).toContain('not directly logged')
-    const bakeRowTt = rows[2].find('.bundle-tooltip').text()
-    expect(bakeRowTt).toContain('(recipe baseline)')
-    expect(bakeRowTt).toContain('covered 450°F')
-    // Badge still present on variant C
+    // Badge still present
     expect(wrapper.find('[data-testid="compact-low-confidence-badge"]').exists()).toBe(true)
   })
 })
