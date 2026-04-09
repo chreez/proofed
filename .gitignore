@@ -20,6 +20,7 @@ Thumbs.db
 # Claude Code local files (not shared)
 CLAUDE.local.md
 .claude/settings.local.json
+.claude/coordinator/
 .mcp.json
 
 # Logs
