@@ -25,8 +25,13 @@
       "fields": ["dough_temps", "bulk_ambient_temps", "bake_phases", "stretch_folds", "aliquot_rises"]
     }
   },
-  "version": "v3.2.0",
+  "version": "v3.3.0",
   "change_log": [
+    {
+      "version": "v3.3.0",
+      "date": "2026-04-08",
+      "summary": "FOLD_1 state note: replaced free-text Sourdough Journey reference with a structured fermentation chart table (dough temp → target aliquot rise %). First use of PF-180 structured tables in state notes."
+    },
     {
       "version": "v3.2.0",
       "date": "2026-04-08",
@@ -354,9 +359,24 @@
           "source": "agent"
         },
         {
-          "text": "The Sourdough Journey V2.0 fermentation chart correlates dough temperature to target aliquot rise % — a useful reference for dialing in bulk fermentation.",
+          "text": "Target aliquot rise depends on the average dough temperature across the entire bulk ferment. Warmer dough cuts off earlier because it keeps fermenting through shaping and cold retard. These are low-end targets — start here and calibrate up 10% if underproofed. At 80°F and warmer, supplement with a full dough-strength check, not just % rise.",
           "critical": false,
-          "source": "agent"
+          "source": "agent",
+          "table": {
+            "caption": "Bulk fermentation guidelines — target rise by average dough temp",
+            "source": "The Sourdough Journey V2.0 — https://thesourdoughjourney.com/the-ultimate-sourdough-bulk-fermentation-guide/",
+            "headers": [
+              { "label": "AVG DOUGH TEMP" },
+              { "label": "TARGET RISE" },
+              { "label": "PLANNING WINDOW" }
+            ],
+            "rows": [
+              ["65°F / 18°C", "100%", "12–16 hrs"],
+              ["70°F / 21°C", "75%", "8–12 hrs"],
+              ["75°F / 24°C", "50%", "5–7 hrs"],
+              ["80°F / 27°C", "30%", "3.5–5.5 hrs"]
+            ]
+          }
         }
       ],
       "technique_url": "https://www.theperfectloaf.com/how-to-stretch-and-fold-sourdough-bread-dough/",

@@ -4,7 +4,7 @@ title: Structured tables in state notes
 status: To Do
 assignee: []
 created_date: '2026-04-08 16:51'
-updated_date: '2026-04-08 17:20'
+updated_date: '2026-04-08 22:04'
 labels: []
 dependencies: []
 ---
@@ -49,15 +49,15 @@ Look and feel (borders, density, alignment, mobile behavior) is chosen via a dem
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 StateNote type gains an optional table field; existing fields (text, critical, source) continue to work unchanged
-- [ ] #2 Table schema supports typed cells — at minimum: text, number, temperature, percent (extensible for duration, weight later)
-- [ ] #3 Temperature cells reuse the existing TempText component so °F/°C formatting matches the rest of the app
-- [ ] #4 Percent and number cells render right-aligned with monospace numerics for scannability
-- [ ] #5 Tables render inside the state note block in StateStep.vue when note.table is present, coexisting with note.text (text acts as lead-in/caption)
-- [ ] #6 Tables support optional caption and source attribution rendered below the table body
-- [ ] #7 A home-made version of the Sourdough Journey V2.0 fermentation chart (dough temp → target aliquot rise %) is added to the FOLD_1 state note on simple-sourdough, citing The Sourdough Journey as the source
-- [ ] #8 JSON schema change is backwards-compatible — existing StateNotes without a table render unchanged; all existing recipes still load without error
-- [ ] #9 Tables are mobile-friendly: either horizontal scroll on overflow or responsive stacking for narrow viewports
-- [ ] #10 Visual direction for table styling is chosen via the batched demo subtask before implementation
-- [ ] #11 Snapshot tests for StateStep.vue cover both table-present and table-absent rendering
+- [x] #1 StateNote type gains an optional table field; existing fields (text, critical, source) continue to work unchanged
+- [x] #2 Table schema supports typed cells — at minimum: text, number, temperature, percent (extensible for duration, weight later)
+- [x] #3 Temperature cells reuse the existing TempText component so °F/°C formatting matches the rest of the app
+- [x] #4 Percent and number cells render right-aligned with monospace numerics for scannability
+- [x] #5 Tables render inside the state note block in StateStep.vue when note.table is present, coexisting with note.text (text acts as lead-in/caption)
+- [x] #6 Tables support optional caption and source attribution rendered below the table body
+- [x] #7 A home-made version of the Sourdough Journey V2.0 fermentation chart (dough temp → target aliquot rise %) is added to the FOLD_1 state note on simple-sourdough, citing The Sourdough Journey as the source
+- [x] #8 JSON schema change is backwards-compatible — existing StateNotes without a table render unchanged; all existing recipes still load without error
+- [x] #9 Tables are mobile-friendly: either horizontal scroll on overflow or responsive stacking for narrow viewports
+- [x] #10 Visual direction for table styling is chosen via the batched demo subtask before implementation
+- [x] #11 Snapshot tests for StateStep.vue cover both table-present and table-absent rendering
 <!-- AC:END -->

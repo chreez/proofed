@@ -29,6 +29,13 @@ vi.mock('@/components/ReminderBanner.vue', () => ({
     template: '<div class="reminder-banner-stub" />'
   }
 }))
+vi.mock('@/components/TempText.vue', () => ({
+  default: {
+    name: 'TempText',
+    props: ['text'],
+    template: '<span class="temp-text-stub">{{ text }}</span>'
+  }
+}))
 
 function makeProgress(stateChecked = false) {
   return {
@@ -299,6 +306,312 @@ describe('StateStep', () => {
     expect(wrapper.text()).toContain('// Agent Tip')
     expect(wrapper.find('.bg-accent-tint').exists()).toBe(false)
     expect(wrapper.find('.bg-stone-100.text-stone-600').exists()).toBe(true)
+  })
+})
+
+describe('StateStep state note tables (PF-180)', () => {
+  const tableNote = {
+    text: 'Fermentation reference — warmer dough needs less aliquot rise.',
+    critical: false,
+    source: 'agent' as const,
+    table: {
+      caption: 'Fermentation chart — adjust target aliquot rise based on dough temperature',
+      source: 'Adapted from The Sourdough Journey',
+      headers: [
+        { label: 'DOUGH TEMP', type: 'temperature' as const },
+        { label: 'TARGET RISE', type: 'percent' as const }
+      ],
+      rows: [
+        ['74°F', 80],
+        ['76°F', 75],
+        ['78°F', 70],
+        ['80°F', 60],
+        ['82°F', 50]
+      ]
+    }
+  }
+
+  it('does not render a table when note.table is absent', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{ text: 'Plain note with no table', critical: false }]
+        }
+      }
+    })
+
+    expect(wrapper.find('.sn-table').exists()).toBe(false)
+    expect(wrapper.find('.sn-table-block').exists()).toBe(false)
+  })
+
+  it('renders a structured table when note.table is present', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [tableNote]
+        }
+      }
+    })
+
+    // Table block rendered
+    expect(wrapper.find('.sn-table').exists()).toBe(true)
+    // Headers
+    const headers = wrapper.findAll('.sn-th')
+    expect(headers.length).toBe(2)
+    expect(headers[0].text()).toBe('DOUGH TEMP')
+    expect(headers[1].text()).toBe('TARGET RISE')
+    // Numeric header right-aligned
+    expect(headers[1].classes()).toContain('sn-th-right')
+    // Rows
+    const rows = wrapper.findAll('tbody tr')
+    expect(rows.length).toBe(5)
+    // Percent cells render with % suffix
+    expect(wrapper.text()).toContain('80%')
+    expect(wrapper.text()).toContain('50%')
+    // Temperature cells delegated to TempText stub
+    const tempStubs = wrapper.findAll('.temp-text-stub')
+    expect(tempStubs.length).toBe(5)
+    expect(tempStubs[0].text()).toBe('74°F')
+    // Caption and source
+    expect(wrapper.text()).toContain('Fermentation chart — adjust target aliquot rise based on dough temperature')
+    expect(wrapper.text()).toContain('Adapted from The Sourdough Journey')
+  })
+
+  it('lead-in text renders above the table', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [tableNote]
+        }
+      }
+    })
+
+    expect(wrapper.text()).toContain('Fermentation reference — warmer dough needs less aliquot rise.')
+    // Block container is present
+    expect(wrapper.find('.sn-table-block').exists()).toBe(true)
+  })
+
+  it('right-aligns percent and number cells via sn-td-right', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [tableNote]
+        }
+      }
+    })
+
+    const cells = wrapper.findAll('.sn-td')
+    // 5 rows * 2 cols = 10 cells. Every odd-index cell (percent col) should be right-aligned + mono.
+    const percentCells = cells.filter((_, i) => i % 2 === 1)
+    percentCells.forEach((cell) => {
+      expect(cell.classes()).toContain('sn-td-right')
+      expect(cell.classes()).toContain('sn-td-mono')
+    })
+  })
+
+  it('wraps table in an overflow-x scroll container for mobile', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [tableNote]
+        }
+      }
+    })
+
+    const scroll = wrapper.find('.sn-table-scroll')
+    expect(scroll.exists()).toBe(true)
+    // Table must live inside the scroll wrapper
+    expect(scroll.find('.sn-table').exists()).toBe(true)
+  })
+
+  it('matches snapshot for note WITHOUT a table', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{ text: 'Plain note with no table', critical: false }]
+        }
+      }
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('matches snapshot for note WITH a fermentation-chart table', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [tableNote]
+        }
+      }
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('renders text and number cell types correctly', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{
+            text: '',
+            critical: false,
+            source: 'agent' as const,
+            table: {
+              headers: [
+                { label: 'STAGE', type: 'text' as const },
+                { label: 'MINUTES', type: 'number' as const }
+              ],
+              rows: [
+                ['Autolyse', 30],
+                ['Bulk', 240]
+              ]
+            }
+          }]
+        }
+      }
+    })
+
+    // Text cells don't get sn-td-right or sn-td-mono
+    const cells = wrapper.findAll('.sn-td')
+    expect(cells.length).toBe(4)
+    // Index 0, 2 are text cells — left aligned regular weight
+    expect(cells[0].classes()).not.toContain('sn-td-right')
+    expect(cells[0].classes()).not.toContain('sn-td-mono')
+    expect(cells[0].text()).toBe('Autolyse')
+    // Index 1, 3 are number cells — right aligned mono
+    expect(cells[1].classes()).toContain('sn-td-right')
+    expect(cells[1].classes()).toContain('sn-td-mono')
+    expect(cells[1].text()).toBe('30')
+    // No caption or source paragraphs
+    expect(wrapper.find('.sn-table-caption').exists()).toBe(false)
+    expect(wrapper.find('.sn-table-source').exists()).toBe(false)
+  })
+
+  it('renders without caption and source when those fields are omitted', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{
+            text: 'Lead-in only',
+            critical: false,
+            source: 'agent' as const,
+            table: {
+              headers: [
+                { label: 'TEMP' },
+                { label: 'NOTE' }
+              ],
+              rows: [['74°F', 'cool']]
+            }
+          }]
+        }
+      }
+    })
+
+    expect(wrapper.find('.sn-table').exists()).toBe(true)
+    expect(wrapper.find('.sn-table-caption').exists()).toBe(false)
+    expect(wrapper.find('.sn-table-source').exists()).toBe(false)
+    // Untyped headers default to no right alignment
+    const headers = wrapper.findAll('.sn-th')
+    expect(headers[0].classes()).not.toContain('sn-th-right')
+    expect(headers[1].classes()).not.toContain('sn-th-right')
+  })
+
+  it('linkifies https URLs inside the table source', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{
+            text: '',
+            critical: false,
+            source: 'agent' as const,
+            table: {
+              source: 'The Sourdough Journey V2.0 — https://thesourdoughjourney.com/the-ultimate-sourdough-bulk-fermentation-guide/',
+              headers: [{ label: 'TEMP' }],
+              rows: [['65°F']]
+            }
+          }]
+        }
+      }
+    })
+
+    const link = wrapper.find('.sn-table-source-link')
+    expect(link.exists()).toBe(true)
+    expect(link.attributes('href')).toBe(
+      'https://thesourdoughjourney.com/the-ultimate-sourdough-bulk-fermentation-guide/'
+    )
+    expect(link.attributes('target')).toBe('_blank')
+    expect(link.attributes('rel')).toBe('noopener noreferrer')
+    // The non-URL prefix should still render as text in the source paragraph
+    expect(wrapper.find('.sn-table-source').text()).toContain('The Sourdough Journey V2.0')
+  })
+
+  it('renders plain text source with no anchor when source has no URL', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{
+            text: '',
+            critical: false,
+            source: 'agent' as const,
+            table: {
+              source: 'Adapted from The Sourdough Journey',
+              headers: [{ label: 'TEMP' }],
+              rows: [['74°F']]
+            }
+          }]
+        }
+      }
+    })
+
+    expect(wrapper.find('.sn-table-source').exists()).toBe(true)
+    expect(wrapper.find('.sn-table-source-link').exists()).toBe(false)
+    expect(wrapper.find('.sn-table-source').text()).toBe('Adapted from The Sourdough Journey')
+  })
+
+  it('linkifies multiple URLs in the same source string', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          notes: [{
+            text: '',
+            critical: false,
+            source: 'agent' as const,
+            table: {
+              source: 'Primary: https://example.com/chart and mirror: https://example.org/backup',
+              headers: [{ label: 'TEMP' }],
+              rows: [['74°F']]
+            }
+          }]
+        }
+      }
+    })
+
+    const links = wrapper.findAll('.sn-table-source-link')
+    expect(links.length).toBe(2)
+    expect(links[0].attributes('href')).toBe('https://example.com/chart')
+    expect(links[1].attributes('href')).toBe('https://example.org/backup')
   })
 })
 

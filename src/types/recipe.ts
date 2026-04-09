@@ -260,10 +260,29 @@ export interface StateComponent {
   amount: string
 }
 
+export type StateNoteTableCellType =
+  | 'text'
+  | 'number'
+  | 'temperature'
+  | 'percent'
+
+export interface StateNoteTableHeader {
+  label: string
+  type?: StateNoteTableCellType
+}
+
+export interface StateNoteTable {
+  caption?: string
+  source?: string
+  headers: StateNoteTableHeader[]
+  rows: Array<Array<string | number>>
+}
+
 export interface StateNote {
   text: string
   critical?: boolean
   source?: 'user' | 'agent'
+  table?: StateNoteTable
 }
 
 export interface NextTimeEntry {

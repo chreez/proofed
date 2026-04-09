@@ -1,0 +1,96 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StateStep state note tables (PF-180) > matches snapshot for note WITH a fermentation-chart table 1`] = `
+"<div data-v-65ab9558="" data-state-id="mix-dough" class="bg-surface p-4 border-2 border-stone-200 transition-opacity scroll-mt-16">
+  <!-- Reminder banner: appears when this step is active and has reminders -->
+  <!--v-if-->
+  <div data-v-65ab9558="" class="flex items-start gap-3"><button data-v-65ab9558="" class="mt-1 w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 transition-colors border-ink hover:bg-stone-100">
+      <!--v-if-->
+    </button>
+    <div data-v-65ab9558="" class="flex-1">
+      <div data-v-65ab9558="" class="flex items-center gap-2 mb-1">
+        <h4 data-v-65ab9558="" class="font-medium text-stone-700">Mix Dough</h4><!-- Scratchpad note icon -->
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <p data-v-65ab9558="" class="text-body text-sm mb-3">Combine dry ingredients in a large bowl</p>
+      <!--v-if-->
+      <div data-v-65ab9558="" class="mt-3 space-y-2">
+        <div data-v-65ab9558="" class="text-sm p-2 bg-stone-100 text-stone-600">
+          <div data-v-65ab9558="" class="voice-agent-label mb-1">// Agent Tip</div>
+          <!--v-if--><span data-v-65ab9558="">Fermentation reference — warmer dough needs less aliquot rise.</span><!-- Optional structured table (PF-180) — Variant B: bottom borders + zebra -->
+          <div data-v-65ab9558="" class="sn-table-block sn-table-block--has-text">
+            <p data-v-65ab9558="" class="sn-table-caption">Fermentation chart — adjust target aliquot rise based on dough temperature</p>
+            <div data-v-65ab9558="" class="sn-table-scroll">
+              <table data-v-65ab9558="" class="sn-table">
+                <thead data-v-65ab9558="">
+                  <tr data-v-65ab9558="">
+                    <th data-v-65ab9558="" scope="col" class="sn-th">DOUGH TEMP</th>
+                    <th data-v-65ab9558="" scope="col" class="sn-th sn-th-right">TARGET RISE</th>
+                  </tr>
+                </thead>
+                <tbody data-v-65ab9558="">
+                  <tr data-v-65ab9558="">
+                    <td data-v-65ab9558="" class="sn-td sn-td-mono"><span data-v-65ab9558="" class="temp-text-stub">74°F</span></td>
+                    <td data-v-65ab9558="" class="sn-td sn-td-right sn-td-mono">80%</td>
+                  </tr>
+                  <tr data-v-65ab9558="">
+                    <td data-v-65ab9558="" class="sn-td sn-td-mono"><span data-v-65ab9558="" class="temp-text-stub">76°F</span></td>
+                    <td data-v-65ab9558="" class="sn-td sn-td-right sn-td-mono">75%</td>
+                  </tr>
+                  <tr data-v-65ab9558="">
+                    <td data-v-65ab9558="" class="sn-td sn-td-mono"><span data-v-65ab9558="" class="temp-text-stub">78°F</span></td>
+                    <td data-v-65ab9558="" class="sn-td sn-td-right sn-td-mono">70%</td>
+                  </tr>
+                  <tr data-v-65ab9558="">
+                    <td data-v-65ab9558="" class="sn-td sn-td-mono"><span data-v-65ab9558="" class="temp-text-stub">80°F</span></td>
+                    <td data-v-65ab9558="" class="sn-td sn-td-right sn-td-mono">60%</td>
+                  </tr>
+                  <tr data-v-65ab9558="">
+                    <td data-v-65ab9558="" class="sn-td sn-td-mono"><span data-v-65ab9558="" class="temp-text-stub">82°F</span></td>
+                    <td data-v-65ab9558="" class="sn-td sn-td-right sn-td-mono">50%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p data-v-65ab9558="" class="sn-table-source">Adapted from The Sourdough Journey</p>
+          </div>
+        </div>
+      </div>
+      <p data-v-65ab9558="" class="text-xs text-stone-400 mt-3 italic"> Done when: Dough comes together and is slightly sticky</p>
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`StateStep state note tables (PF-180) > matches snapshot for note WITHOUT a table 1`] = `
+"<div data-v-65ab9558="" data-state-id="mix-dough" class="bg-surface p-4 border-2 border-stone-200 transition-opacity scroll-mt-16">
+  <!-- Reminder banner: appears when this step is active and has reminders -->
+  <!--v-if-->
+  <div data-v-65ab9558="" class="flex items-start gap-3"><button data-v-65ab9558="" class="mt-1 w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 transition-colors border-ink hover:bg-stone-100">
+      <!--v-if-->
+    </button>
+    <div data-v-65ab9558="" class="flex-1">
+      <div data-v-65ab9558="" class="flex items-center gap-2 mb-1">
+        <h4 data-v-65ab9558="" class="font-medium text-stone-700">Mix Dough</h4><!-- Scratchpad note icon -->
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <p data-v-65ab9558="" class="text-body text-sm mb-3">Combine dry ingredients in a large bowl</p>
+      <!--v-if-->
+      <div data-v-65ab9558="" class="mt-3 space-y-2">
+        <div data-v-65ab9558="" class="text-sm p-2 bg-stone-100 text-stone-600">
+          <!--v-if-->
+          <!--v-if--><span data-v-65ab9558="">Plain note with no table</span><!-- Optional structured table (PF-180) — Variant B: bottom borders + zebra -->
+          <!--v-if-->
+        </div>
+      </div>
+      <p data-v-65ab9558="" class="text-xs text-stone-400 mt-3 italic"> Done when: Dough comes together and is slightly sticky</p>
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;
