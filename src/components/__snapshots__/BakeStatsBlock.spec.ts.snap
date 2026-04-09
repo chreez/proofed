@@ -1,0 +1,123 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BakeStatsBlock — full-data high-confidence > matches HTML snapshot 1`] = `
+"<section data-v-29fbd425="" class="bsb" data-testid="bake-stats-block">
+  <!-- 1. Header pills: bulk / proof / bake -->
+  <div data-v-29fbd425="" class="bsb-pills" data-testid="bsb-pills"><span data-v-29fbd425="" class="bsb-pill bundle-host" tabindex="0" data-testid="bsb-pill-bulk"><span data-v-29fbd425="" class="bsb-pill-label">bulk</span> 9h <span data-v-29fbd425="" class="bsb-tooltip" role="tooltip">avg dough: 76.0°F</span></span><span data-v-29fbd425="" class="bsb-pill bundle-host" tabindex="0" data-testid="bsb-pill-proof"><span data-v-29fbd425="" class="bsb-pill-label">proof</span> 1d <span data-v-29fbd425="" class="bsb-tooltip" role="tooltip">total proof 1d</span></span><span data-v-29fbd425="" class="bsb-pill bundle-host" tabindex="0" data-testid="bsb-pill-bake"><span data-v-29fbd425="" class="bsb-pill-label">bake</span> 40m <span data-v-29fbd425="" class="bsb-tooltip" role="tooltip">preheat 500°F · covered 450°F · uncovered 425°F</span></span></div><!-- 2. Low-confidence callout -->
+  <!--v-if-->
+  <!-- 3. Temperatures -->
+  <div data-v-29fbd425="" class="bsb-block" data-testid="bsb-temps">
+    <h4 data-v-29fbd425="" class="bsb-block-heading">Temperatures</h4>
+    <div data-v-29fbd425="" class="bsb-tiles">
+      <div data-v-29fbd425="" class="bsb-tile"><span data-v-29fbd425="" class="bsb-tile-value">76.0°F</span><span data-v-29fbd425="" class="bsb-tile-label">avg dough</span><span data-v-29fbd425="" class="bsb-tile-label bsb-tile-sublabel">over 9h</span></div>
+      <div data-v-29fbd425="" class="bsb-tile"><span data-v-29fbd425="" class="bsb-tile-value">73°F</span><span data-v-29fbd425="" class="bsb-tile-label">bulk ambient</span></div>
+    </div>
+    <div data-v-29fbd425="" class="bsb-readings" data-testid="bsb-dough-readings"><span data-v-29fbd425="" class="bsb-readings-label">dough readings</span>
+      <div data-v-29fbd425="" class="bsb-readings-list"><span data-v-29fbd425="" class="bsb-reading"><span data-v-29fbd425="" class="bsb-reading-time">08:00</span><span data-v-29fbd425="" class="bsb-reading-val">74°F</span></span><span data-v-29fbd425="" class="bsb-reading"><span data-v-29fbd425="" class="bsb-reading-time">10:30</span><span data-v-29fbd425="" class="bsb-reading-val">76°F</span></span><span data-v-29fbd425="" class="bsb-reading"><span data-v-29fbd425="" class="bsb-reading-time">13:00</span><span data-v-29fbd425="" class="bsb-reading-val">77°F</span></span><span data-v-29fbd425="" class="bsb-reading"><span data-v-29fbd425="" class="bsb-reading-time">15:30</span><span data-v-29fbd425="" class="bsb-reading-val">77°F</span></span><span data-v-29fbd425="" class="bsb-reading"><span data-v-29fbd425="" class="bsb-reading-time">17:00</span><span data-v-29fbd425="" class="bsb-reading-val">76°F</span></span></div>
+    </div>
+    <div data-v-29fbd425="" class="bsb-readings" data-testid="bsb-ambient-readings"><span data-v-29fbd425="" class="bsb-readings-label">ambient readings</span>
+      <div data-v-29fbd425="" class="bsb-readings-list"><span data-v-29fbd425="" class="bsb-reading"><span data-v-29fbd425="" class="bsb-reading-time">2026-04-01</span><span data-v-29fbd425="" class="bsb-reading-val">72°F</span><span data-v-29fbd425="" class="bsb-reading-note">kitchen</span></span><span data-v-29fbd425="" class="bsb-reading"><span data-v-29fbd425="" class="bsb-reading-time">2026-04-01</span><span data-v-29fbd425="" class="bsb-reading-val">74°F</span>
+        <!--v-if--></span>
+      </div>
+    </div>
+  </div><!-- 4. Stretch & Folds -->
+  <div data-v-29fbd425="" class="bsb-block" data-testid="bsb-stretch-folds">
+    <h4 data-v-29fbd425="" class="bsb-block-heading">Stretch &amp; Folds</h4>
+    <div data-v-29fbd425="" class="bsb-grid">
+      <!--v-if-->
+      <div data-v-29fbd425="" class="bsb-row"><span data-v-29fbd425="" class="bsb-row-date">2026-04-01</span><span data-v-29fbd425="" class="bsb-row-time">09:00</span><span data-v-29fbd425="" class="bsb-row-label">stretch fold #1</span><span data-v-29fbd425="" class="bsb-row-note"></span></div>
+      <!--v-if-->
+      <div data-v-29fbd425="" class="bsb-row"><span data-v-29fbd425="" class="bsb-row-date"></span><span data-v-29fbd425="" class="bsb-row-time">09:30</span><span data-v-29fbd425="" class="bsb-row-label">stretch fold #2</span><span data-v-29fbd425="" class="bsb-row-note"></span></div>
+      <!--v-if-->
+      <div data-v-29fbd425="" class="bsb-row"><span data-v-29fbd425="" class="bsb-row-date"></span><span data-v-29fbd425="" class="bsb-row-time">10:00</span><span data-v-29fbd425="" class="bsb-row-label">coil #3</span><span data-v-29fbd425="" class="bsb-row-note">light coil</span></div>
+    </div>
+  </div><!-- 5. Aliquot Rises -->
+  <div data-v-29fbd425="" class="bsb-block" data-testid="bsb-aliquot-rises">
+    <h4 data-v-29fbd425="" class="bsb-block-heading">Aliquot Rises</h4>
+    <div data-v-29fbd425="" class="bsb-aliquot">
+      <!--v-if-->
+      <div data-v-29fbd425="" class="bsb-aliquot-row"><span data-v-29fbd425="" class="bsb-row-date">2026-04-01</span><span data-v-29fbd425="" class="bsb-row-time">13:00</span><span data-v-29fbd425="" class="bsb-aliquot-bar-wrap"><span data-v-29fbd425="" class="bsb-aliquot-bar" style="width: 25%;"></span></span><span data-v-29fbd425="" class="bsb-aliquot-pct">25%</span>
+        <!--v-if-->
+      </div>
+      <div data-v-29fbd425="" class="bsb-day-break" aria-hidden="true"></div>
+      <div data-v-29fbd425="" class="bsb-aliquot-row"><span data-v-29fbd425="" class="bsb-row-date">2026-04-02</span><span data-v-29fbd425="" class="bsb-row-time">07:00</span><span data-v-29fbd425="" class="bsb-aliquot-bar-wrap"><span data-v-29fbd425="" class="bsb-aliquot-bar" style="width: 60%;"></span></span><span data-v-29fbd425="" class="bsb-aliquot-pct">60%</span><span data-v-29fbd425="" class="bsb-aliquot-note">cold retard end</span></div>
+      <!--v-if-->
+      <div data-v-29fbd425="" class="bsb-aliquot-row"><span data-v-29fbd425="" class="bsb-row-date"></span><span data-v-29fbd425="" class="bsb-row-time">09:00</span><span data-v-29fbd425="" class="bsb-aliquot-bar-wrap"><span data-v-29fbd425="" class="bsb-aliquot-bar" style="width: 75%;"></span></span><span data-v-29fbd425="" class="bsb-aliquot-pct">75%</span>
+        <!--v-if-->
+      </div>
+    </div>
+  </div><!-- 6. Bake Phases (falls back to recipe defaults) -->
+  <div data-v-29fbd425="" class="bsb-block" data-testid="bsb-bake-phases">
+    <h4 data-v-29fbd425="" class="bsb-block-heading"> Bake Phases
+      <!--v-if-->
+    </h4>
+    <div data-v-29fbd425="" class="bsb-grid">
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">preheat</span><span data-v-29fbd425="" class="bsb-row-time">08:00</span><span data-v-29fbd425="" class="bsb-row-temp">500°F</span><span data-v-29fbd425="" class="bsb-row-temp">45m</span></div>
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">covered</span><span data-v-29fbd425="" class="bsb-row-time">08:45</span><span data-v-29fbd425="" class="bsb-row-temp">450°F</span><span data-v-29fbd425="" class="bsb-row-temp">20m</span></div>
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">uncovered</span><span data-v-29fbd425="" class="bsb-row-time">09:05</span><span data-v-29fbd425="" class="bsb-row-temp">425°F</span><span data-v-29fbd425="" class="bsb-row-temp">20m</span></div>
+    </div>
+  </div>
+</section>"
+`;
+
+exports[`BakeStatsBlock — low-confidence fallback > matches HTML snapshot 1`] = `
+"<section data-v-29fbd425="" class="bsb" data-testid="bake-stats-block">
+  <!-- 1. Header pills: bulk / proof / bake -->
+  <div data-v-29fbd425="" class="bsb-pills bsb-low-conf" data-testid="bsb-pills"><span data-v-29fbd425="" class="bsb-pill bundle-host" tabindex="0" data-testid="bsb-pill-bulk"><span data-v-29fbd425="" class="bsb-pill-label">bulk</span> — <span data-v-29fbd425="" class="bsb-tooltip" role="tooltip">not directly logged</span></span><span data-v-29fbd425="" class="bsb-pill bundle-host" tabindex="0" data-testid="bsb-pill-proof"><span data-v-29fbd425="" class="bsb-pill-label">proof</span> — <span data-v-29fbd425="" class="bsb-tooltip" role="tooltip">not directly logged</span></span><span data-v-29fbd425="" class="bsb-pill bundle-host" tabindex="0" data-testid="bsb-pill-bake"><span data-v-29fbd425="" class="bsb-pill-label">bake</span> 40m <span data-v-29fbd425="" class="bsb-tooltip" role="tooltip">preheat 500°F · covered 450°F · uncovered 425°F (recipe baseline)</span></span></div><!-- 2. Low-confidence callout -->
+  <div data-v-29fbd425="" class="bsb-callout" data-testid="bsb-low-conf-callout"><span data-v-29fbd425="" class="bsb-callout-label">reconstructed</span>
+    <p data-v-29fbd425="" class="bsb-callout-body"> These stats weren't logged in real time — they've been recalled from memory. Bake phases fall back to the recipe's current baseline; bulk and proof times are not directly comparable to logged bakes. </p>
+  </div><!-- 3. Temperatures -->
+  <!--v-if-->
+  <!-- 4. Stretch & Folds -->
+  <!--v-if-->
+  <!-- 5. Aliquot Rises -->
+  <!--v-if-->
+  <!-- 6. Bake Phases (falls back to recipe defaults) -->
+  <div data-v-29fbd425="" class="bsb-block" data-testid="bsb-bake-phases">
+    <h4 data-v-29fbd425="" class="bsb-block-heading"> Bake Phases <span data-v-29fbd425="" class="bsb-block-subheading">(recipe baseline)</span></h4>
+    <div data-v-29fbd425="" class="bsb-grid">
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">preheat</span><span data-v-29fbd425="" class="bsb-row-time"></span><span data-v-29fbd425="" class="bsb-row-temp">500°F</span><span data-v-29fbd425="" class="bsb-row-temp">45m</span></div>
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">covered</span><span data-v-29fbd425="" class="bsb-row-time"></span><span data-v-29fbd425="" class="bsb-row-temp">450°F</span><span data-v-29fbd425="" class="bsb-row-temp">20m</span></div>
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">uncovered</span><span data-v-29fbd425="" class="bsb-row-time"></span><span data-v-29fbd425="" class="bsb-row-temp">425°F</span><span data-v-29fbd425="" class="bsb-row-temp">20m</span></div>
+    </div>
+  </div>
+</section>"
+`;
+
+exports[`BakeStatsBlock — partial-data medium-confidence > matches HTML snapshot 1`] = `
+"<section data-v-29fbd425="" class="bsb" data-testid="bake-stats-block">
+  <!-- 1. Header pills: bulk / proof / bake -->
+  <div data-v-29fbd425="" class="bsb-pills" data-testid="bsb-pills"><span data-v-29fbd425="" class="bsb-pill bundle-host" tabindex="0" data-testid="bsb-pill-bulk"><span data-v-29fbd425="" class="bsb-pill-label">bulk</span> — <span data-v-29fbd425="" class="bsb-tooltip" role="tooltip">avg dough: 75.0°F</span></span><span data-v-29fbd425="" class="bsb-pill" data-testid="bsb-pill-proof"><span data-v-29fbd425="" class="bsb-pill-label">proof</span> —
+    <!--v-if--></span><span data-v-29fbd425="" class="bsb-pill bundle-host" tabindex="0" data-testid="bsb-pill-bake"><span data-v-29fbd425="" class="bsb-pill-label">bake</span> 40m <span data-v-29fbd425="" class="bsb-tooltip" role="tooltip">preheat 500°F · covered 450°F · uncovered 425°F</span></span>
+  </div><!-- 2. Low-confidence callout -->
+  <!--v-if-->
+  <!-- 3. Temperatures -->
+  <div data-v-29fbd425="" class="bsb-block" data-testid="bsb-temps">
+    <h4 data-v-29fbd425="" class="bsb-block-heading">Temperatures</h4>
+    <div data-v-29fbd425="" class="bsb-tiles">
+      <div data-v-29fbd425="" class="bsb-tile"><span data-v-29fbd425="" class="bsb-tile-value">75.0°F</span><span data-v-29fbd425="" class="bsb-tile-label">avg dough</span>
+        <!--v-if-->
+      </div>
+      <div data-v-29fbd425="" class="bsb-tile"><span data-v-29fbd425="" class="bsb-tile-value">—</span><span data-v-29fbd425="" class="bsb-tile-label">bulk ambient</span></div>
+    </div>
+    <div data-v-29fbd425="" class="bsb-readings" data-testid="bsb-dough-readings"><span data-v-29fbd425="" class="bsb-readings-label">dough readings</span>
+      <div data-v-29fbd425="" class="bsb-readings-list"><span data-v-29fbd425="" class="bsb-reading"><span data-v-29fbd425="" class="bsb-reading-time">10:00</span><span data-v-29fbd425="" class="bsb-reading-val">75°F</span></span></div>
+    </div>
+    <!--v-if-->
+  </div><!-- 4. Stretch & Folds -->
+  <!--v-if-->
+  <!-- 5. Aliquot Rises -->
+  <!--v-if-->
+  <!-- 6. Bake Phases (falls back to recipe defaults) -->
+  <div data-v-29fbd425="" class="bsb-block" data-testid="bsb-bake-phases">
+    <h4 data-v-29fbd425="" class="bsb-block-heading"> Bake Phases
+      <!--v-if-->
+    </h4>
+    <div data-v-29fbd425="" class="bsb-grid">
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">preheat</span><span data-v-29fbd425="" class="bsb-row-time"></span><span data-v-29fbd425="" class="bsb-row-temp">500°F</span><span data-v-29fbd425="" class="bsb-row-temp">45m</span></div>
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">covered</span><span data-v-29fbd425="" class="bsb-row-time"></span><span data-v-29fbd425="" class="bsb-row-temp">450°F</span><span data-v-29fbd425="" class="bsb-row-temp">20m</span></div>
+      <div data-v-29fbd425="" class="bsb-bake-row"><span data-v-29fbd425="" class="bsb-row-label bsb-bake-stage">uncovered</span><span data-v-29fbd425="" class="bsb-row-time"></span><span data-v-29fbd425="" class="bsb-row-temp">425°F</span><span data-v-29fbd425="" class="bsb-row-temp">20m</span></div>
+    </div>
+  </div>
+</section>"
+`;

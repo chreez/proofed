@@ -332,7 +332,29 @@ export interface CookLogEntry {
   date: string
   start_date?: string
   version: string
+  /**
+   * Full raw prose bake log — the complete record of what the user did
+   * during this bake. Source of truth: never trimmed, reworded, or reordered
+   * once captured. Rendered verbatim inside the collapsed "Raw notes"
+   * disclosure on BakeDetailView, and still surfaced in the Notes section as
+   * a fallback when `key_notes` is absent.
+   */
   notes: string[]
+  /**
+   * Curated editorial subset of `notes` — only the narrative lines that are
+   * NOT already captured by the structured `bake_stats` chart (timestamps,
+   * dough temps, aliquot rises, bake phases, stretch & fold timeline, ambient
+   * temps, etc.). Rendered in the main Notes section on BakeDetailView.
+   *
+   * Semantics on BakeDetailView:
+   * - Absent / `undefined`: fall back to rendering full `notes[]` (entry
+   *   hasn't been curated yet).
+   * - Present and non-empty: render these lines as the Notes section.
+   * - Present and empty (`[]`): Notes section renders as silent — used when
+   *   every prose line is already captured by the chart and there is no
+   *   editorial narrative to preserve.
+   */
+  key_notes?: string[]
   summary?: string
   step_notes?: Record<string, string>
   next_time?: NextTimeEntry[]

@@ -980,4 +980,297 @@ describe('BakeDetailView', () => {
       expect(dismissBtn.text()).toBe('View Full Bake Details')
     })
   })
+
+  describe('BakeStatsBlock wiring (PF-177.5)', () => {
+    const bakeStats = {
+      confidence: 'high' as const,
+      dough_temps: [
+        { time: '2026-02-05 - 08:00', temp_f: 74 },
+        { time: '2026-02-05 - 12:00', temp_f: 76 }
+      ],
+      bake_phases: [
+        { stage: 'preheat' as const, temp_f: 500, duration_min: 45 },
+        { stage: 'covered' as const, temp_f: 450, duration_min: 20 },
+        { stage: 'uncovered' as const, temp_f: 425, duration_min: 20 }
+      ]
+    }
+
+    it('renders BakeStatsBlock when the entry has bake_stats', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          bake_stats: bakeStats
+        }]
+      })
+      const wrapper = mountComponent()
+      // The root data-testid passed on <BakeStatsBlock> overrides the
+      // component's internal root testid via inheritAttrs.
+      expect(wrapper.find('[data-testid="bake-detail-stats"]').exists()).toBe(true)
+      // Internal child testids still work (e.g. the pills row).
+      expect(wrapper.find('[data-testid="bsb-pills"]').exists()).toBe(true)
+    })
+
+    it('does NOT render BakeStatsBlock when entry has no bake_stats', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note']
+          // no bake_stats
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="bake-detail-stats"]').exists()).toBe(false)
+      expect(wrapper.find('[data-testid="bsb-pills"]').exists()).toBe(false)
+    })
+
+    it('passes bake_defaults from recipe to BakeStatsBlock for low-conf fallback', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        bake_defaults: {
+          bake_phases: [
+            { stage: 'preheat' as const, temp_f: 500, duration_min: 45 },
+            { stage: 'covered' as const, temp_f: 450, duration_min: 20 },
+            { stage: 'uncovered' as const, temp_f: 425, duration_min: 20 }
+          ]
+        },
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Recalled after the fact'],
+          bake_stats: { confidence: 'low' as const }
+        }]
+      })
+      const wrapper = mountComponent()
+      const block = wrapper.find('[data-testid="bake-detail-stats"]')
+      expect(block.exists()).toBe(true)
+      // Low-conf callout visible + recipe baseline subheading on bake phases
+      expect(wrapper.find('[data-testid="bsb-low-conf-callout"]').exists()).toBe(true)
+      const phases = wrapper.find('[data-testid="bsb-bake-phases"]')
+      expect(phases.exists()).toBe(true)
+      expect(phases.text()).toContain('recipe baseline')
+    })
+
+    it('does NOT render raw notes disclosure inside BakeStatsBlock (moved to BakeDetailView)', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['First note', 'Second note'],
+          bake_stats: bakeStats
+        }]
+      })
+      const wrapper = mountComponent()
+      // The old BakeStatsBlock disclosure is gone — raw notes are now a
+      // BakeDetailView-owned section below the Notes list.
+      expect(wrapper.find('[data-testid="bsb-raw-disclosure"]').exists()).toBe(false)
+    })
+
+    it('renders BakeStatsBlock AFTER the hero photo and BEFORE the Notes section (Option C placement)', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          bake_stats: bakeStats,
+          photos: [
+            { src: '/img/hero-800.webp', thumb: '/img/hero-400.webp', alt: 'Hero shot' }
+          ]
+        }]
+      })
+      const wrapper = mountComponent()
+      const html = wrapper.html()
+      const heroIdx = html.indexOf('/img/hero-800.webp')
+      const statsIdx = html.indexOf('data-testid="bake-detail-stats"')
+      const notesIdx = html.indexOf('data-testid="notes-section"')
+      expect(heroIdx).toBeGreaterThan(-1)
+      expect(statsIdx).toBeGreaterThan(-1)
+      expect(notesIdx).toBeGreaterThan(-1)
+      expect(heroIdx).toBeLessThan(statsIdx)
+      expect(statsIdx).toBeLessThan(notesIdx)
+    })
+  })
+
+  describe('key_notes fallback (PF-177.5)', () => {
+    it('renders full notes[] when key_notes is absent', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Line A', 'Line B', 'Line C']
+        }]
+      })
+      const wrapper = mountComponent()
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.exists()).toBe(true)
+      expect(notesSection.text()).toContain('Line A')
+      expect(notesSection.text()).toContain('Line B')
+      expect(notesSection.text()).toContain('Line C')
+    })
+
+    it('renders curated key_notes[] when present', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Pure chart line: 75°F at 14:00', 'Narrative observation'],
+          key_notes: ['Narrative observation']
+        }]
+      })
+      const wrapper = mountComponent()
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.exists()).toBe(true)
+      expect(notesSection.text()).toContain('Narrative observation')
+      // Excluded chart-data line should NOT render in the curated Notes section.
+      expect(notesSection.text()).not.toContain('Pure chart line')
+    })
+
+    it('renders silent Notes section when key_notes is present but empty', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Everything captured in chart'],
+          key_notes: []
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="notes-section"]').exists()).toBe(false)
+    })
+
+    it('still shows notes[] as raw notes even when key_notes is empty', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Everything captured in chart'],
+          key_notes: []
+        }]
+      })
+      const wrapper = mountComponent()
+      // Raw notes section still exists (anchored to notes[] not key_notes).
+      expect(wrapper.find('[data-testid="raw-notes-section"]').exists()).toBe(true)
+    })
+
+    it('handles entry with both key_notes and notes undefined (nullish fallbacks)', () => {
+      // Exercises the `?? []` branch in keyNotesList and the `?? 0` branch in hasRawNotes
+      // when both fields are absent on the entry object entirely.
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0'
+          // notes and key_notes both intentionally omitted
+        } as unknown as Recipe['cook_log'][number]]
+      })
+      const wrapper = mountComponent()
+      // Neither Notes nor Raw notes sections render when there is nothing to show.
+      expect(wrapper.find('[data-testid="notes-section"]').exists()).toBe(false)
+      expect(wrapper.find('[data-testid="raw-notes-section"]').exists()).toBe(false)
+    })
+  })
+
+  describe('raw notes disclosure (PF-177.5, Option C)', () => {
+    it('renders raw notes section when entry has notes', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Line 1', 'Line 2']
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="raw-notes-section"]').exists()).toBe(true)
+      expect(wrapper.find('[data-testid="raw-notes-toggle"]').exists()).toBe(true)
+    })
+
+    it('starts collapsed — <pre> is not rendered by default', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Line 1', 'Line 2']
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="raw-notes-pre"]').exists()).toBe(false)
+      const toggle = wrapper.find('[data-testid="raw-notes-toggle"]')
+      expect(toggle.attributes('aria-expanded')).toBe('false')
+      expect(toggle.text()).toContain('Raw notes')
+    })
+
+    it('expands on toggle click — <pre> renders full notes[] joined by newlines', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Line 1', 'Line 2', 'Line 3']
+        }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="raw-notes-toggle"]').trigger('click')
+      const pre = wrapper.find('[data-testid="raw-notes-pre"]')
+      expect(pre.exists()).toBe(true)
+      expect(pre.text()).toBe('Line 1\nLine 2\nLine 3')
+      expect(wrapper.find('[data-testid="raw-notes-toggle"]').attributes('aria-expanded')).toBe('true')
+    })
+
+    it('collapses again on second toggle click', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Line 1']
+        }]
+      })
+      const wrapper = mountComponent()
+      const toggle = wrapper.find('[data-testid="raw-notes-toggle"]')
+      await toggle.trigger('click')
+      expect(wrapper.find('[data-testid="raw-notes-pre"]').exists()).toBe(true)
+      await toggle.trigger('click')
+      expect(wrapper.find('[data-testid="raw-notes-pre"]').exists()).toBe(false)
+    })
+
+    it('does NOT render raw notes section when notes is empty', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: []
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="raw-notes-section"]').exists()).toBe(false)
+    })
+
+    it('renders raw notes even when key_notes is set (still anchored to notes[])', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Full line 1', 'Full line 2', 'Full line 3'],
+          key_notes: ['Full line 2']
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="raw-notes-section"]').exists()).toBe(true)
+    })
+
+    it('shows in-progress placeholder when notes/key_notes are empty and status is in_progress', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          status: 'in_progress' as const,
+          notes: [],
+          next_time: []
+        }]
+      })
+      const wrapper = mountComponent()
+      // No curated key_notes and no raw notes → no Notes section but placeholder is shown
+      expect(wrapper.find('[data-testid="notes-section"]').exists()).toBe(false)
+      expect(wrapper.find('[data-testid="raw-notes-section"]').exists()).toBe(false)
+      expect(wrapper.text()).toContain('Notes will appear here as the bake progresses.')
+    })
+  })
 })

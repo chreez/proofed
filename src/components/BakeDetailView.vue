@@ -5,6 +5,7 @@ import { marked } from 'marked'
 import { ArrowLeft, Bot } from 'lucide-vue-next'
 import { useRecipe } from '@/composables/useRecipe'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
+import BakeStatsBlock from '@/components/BakeStatsBlock.vue'
 import type { CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType } from '@/types/recipe'
 
 const route = useRoute()
@@ -66,13 +67,34 @@ function closeLightbox(): void {
   lightboxOpen.value = false
 }
 
-// Render notes as markdown bullet list
+// Render curated key_notes (falling back to raw notes) as markdown bullet list.
+// Semantics (per CookLogEntry type):
+// - key_notes present (any length, including []) → render key_notes
+// - key_notes absent → fall back to the raw notes[]
+function keyNotesList(e: CookLogEntry): string[] {
+  return e.key_notes ?? e.notes ?? []
+}
+
+function hasKeyNotes(e: CookLogEntry): boolean {
+  return keyNotesList(e).length > 0
+}
+
 function renderNotes(e: CookLogEntry): string {
-  let md = ''
-  if (e.notes?.length) {
-    md += e.notes.map(n => `- ${n}`).join('\n')
-  }
+  const md = keyNotesList(e).map(n => `- ${n}`).join('\n')
   return marked.parse(md) as string
+}
+
+// Raw notes disclosure (moved from BakeStatsBlock in Option C restructure).
+// Collapsed by default — full prose notes[] are the source of truth and live
+// at the bottom of the notes area, below the curated key_notes list.
+const showRawNotes = ref(false)
+
+function toggleRawNotes(): void {
+  showRawNotes.value = !showRawNotes.value
+}
+
+function hasRawNotes(e: CookLogEntry): boolean {
+  return (e.notes?.length ?? 0) > 0
 }
 
 // Render next_time as markdown
@@ -245,14 +267,43 @@ function dismissPopover(): void {
         />
       </div>
 
-      <!-- Notes -->
-      <div v-if="entry.notes?.length" class="mb-6">
+      <!-- Structured bake stats (PF-177.5, Option C: between photos and notes) -->
+      <BakeStatsBlock
+        v-if="entry.bake_stats"
+        :bake_stats="entry.bake_stats"
+        :bake_defaults="currentRecipe.bake_defaults"
+        data-testid="bake-detail-stats"
+      />
+
+      <!-- Notes — curated editorial subset (key_notes) with fallback to full notes[] -->
+      <div v-if="hasKeyNotes(entry)" class="mb-6" data-testid="notes-section">
         <h4 class="text-heading font-mono text-sm mb-2">Notes</h4>
         <div class="bake-prose" v-html="renderNotes(entry)" />
       </div>
       <div v-else-if="entry.status === 'in_progress'" class="mb-6">
         <h4 class="text-heading font-mono text-sm mb-2">Notes</h4>
         <p class="text-muted text-sm italic">Notes will appear here as the bake progresses.</p>
+      </div>
+
+      <!-- Raw notes — full prose bake log, collapsed by default (Option C) -->
+      <div v-if="hasRawNotes(entry)" class="mb-6" data-testid="raw-notes-section">
+        <h4 class="text-heading font-mono text-sm mb-2">
+          <button
+            type="button"
+            class="raw-notes-toggle"
+            :aria-expanded="showRawNotes"
+            data-testid="raw-notes-toggle"
+            @click="toggleRawNotes"
+          >
+            <span class="raw-notes-caret">{{ showRawNotes ? '▾' : '▸' }}</span>
+            Raw notes
+          </button>
+        </h4>
+        <pre
+          v-if="showRawNotes"
+          class="raw-notes-pre font-mono text-xs whitespace-pre-wrap bg-stone-50 border-2 border-stone-200 p-3"
+          data-testid="raw-notes-pre"
+        >{{ entry.notes.join('\n') }}</pre>
       </div>
 
       <!-- Cost Breakdown -->
@@ -490,5 +541,38 @@ function dismissPopover(): void {
   border-radius: 0;
   font-size: 0.8125rem;
   font-family: 'JetBrains Mono', monospace;
+}
+
+/* Raw notes disclosure toggle (Option C) */
+.raw-notes-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  color: var(--color-stone-500);
+  cursor: pointer;
+  padding: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: inherit;
+}
+
+.raw-notes-toggle:hover {
+  color: var(--color-ink);
+}
+
+.raw-notes-caret {
+  display: inline-block;
+  width: 0.75rem;
+  color: var(--color-stone-400);
+}
+
+.raw-notes-pre {
+  color: var(--color-stone-600);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 100%;
+  overflow-x: auto;
 }
 </style>
