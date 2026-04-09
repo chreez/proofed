@@ -51,7 +51,7 @@ function handleDismiss(prompt: string): void {
               <div class="flex gap-2">
                 <input
                   v-model="responses[reminder.prompt]"
-                  class="flex-1 border-2 border-stone-200 p-2 text-sm bg-surface rounded-none"
+                  class="flex-1 border-2 border-stone-200 p-2 text-base md:text-sm bg-surface rounded-none"
                   :placeholder="reminder.type === 'measurement' ? 'e.g. 748g' : reminder.type === 'rating' ? 'good / ok / bad' : 'Your observation...'"
                   @keydown.enter="handleRespond(reminder.prompt)"
                 />

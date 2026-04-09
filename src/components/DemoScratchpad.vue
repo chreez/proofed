@@ -261,7 +261,7 @@ const jsonShapeDescriptions: Record<string, string> = {
                       <span class="font-mono text-xs text-crust-dark">prompt:</span> {{ step.reminder }}
                     </div>
                     <textarea
-                      class="w-full border-2 border-stone-200 p-2 text-sm bg-surface resize-none"
+                      class="w-full border-2 border-stone-200 p-2 text-base md:text-sm bg-surface resize-none"
                       rows="2"
                       placeholder="Type your observation..."
                     />
@@ -298,14 +298,14 @@ const jsonShapeDescriptions: Record<string, string> = {
                 <!-- Step selector -->
                 <div class="mb-3">
                   <label class="text-xs text-stone-500 mb-1 block">Attach to step:</label>
-                  <select class="w-full border-2 border-stone-200 p-2 text-sm bg-surface">
+                  <select class="w-full border-2 border-stone-200 p-2 text-base md:text-sm bg-surface">
                     <option value="">General note</option>
                     <option v-for="step in sampleSteps" :key="step.id" :value="step.id">{{ step.title }}</option>
                   </select>
                 </div>
 
                 <textarea
-                  class="w-full border-2 border-stone-200 p-2 text-sm bg-surface resize-none mb-2"
+                  class="w-full border-2 border-stone-200 p-2 text-base md:text-sm bg-surface resize-none mb-2"
                   rows="3"
                   placeholder="What happened? What did you notice?"
                 />
@@ -339,7 +339,7 @@ const jsonShapeDescriptions: Record<string, string> = {
                 <h4 class="font-mono text-xs text-stone-500 mb-3">General Note</h4>
                 <p class="text-xs text-stone-400 mb-2">Use inline icons for step-specific notes. This FAB is for overall bake observations.</p>
                 <textarea
-                  class="w-full border-2 border-stone-200 p-2 text-sm bg-surface resize-none mb-2"
+                  class="w-full border-2 border-stone-200 p-2 text-base md:text-sm bg-surface resize-none mb-2"
                   rows="3"
                   placeholder="Overall bake observation..."
                 />
@@ -423,7 +423,7 @@ const jsonShapeDescriptions: Record<string, string> = {
                   <p class="text-sm text-stone-700 mb-2">Measure yield: weigh total dough (target ~750g)</p>
                   <div class="flex gap-2">
                     <input
-                      class="flex-1 border-2 border-stone-200 p-2 text-sm bg-surface"
+                      class="flex-1 border-2 border-stone-200 p-2 text-base md:text-sm bg-surface"
                       placeholder="Enter weight (e.g. 748g)"
                     />
                     <button class="btn-primary text-xs py-1 px-3">Log</button>
@@ -450,7 +450,7 @@ const jsonShapeDescriptions: Record<string, string> = {
             </div>
             <div class="flex gap-2 flex-shrink-0">
               <input
-                class="w-24 border-2 border-stone-200 p-1 text-sm bg-surface"
+                class="w-24 border-2 border-stone-200 p-1 text-base md:text-sm bg-surface"
                 placeholder="748g"
               />
               <button class="btn-primary text-xs py-1 px-2">Log</button>
@@ -559,7 +559,7 @@ const jsonShapeDescriptions: Record<string, string> = {
             <p class="text-sm text-stone-700 mb-2">Measure yield: weigh total dough</p>
             <input
               v-model="captureYield"
-              class="w-full border-2 border-stone-200 p-2 text-sm bg-surface"
+              class="w-full border-2 border-stone-200 p-2 text-base md:text-sm bg-surface"
               placeholder="e.g. 748g"
             />
           </div>
@@ -573,7 +573,7 @@ const jsonShapeDescriptions: Record<string, string> = {
             <p class="text-sm text-stone-700 mb-2">Dough temperature after kneading?</p>
             <input
               v-model="captureTemp"
-              class="w-full border-2 border-stone-200 p-2 text-sm bg-surface"
+              class="w-full border-2 border-stone-200 p-2 text-base md:text-sm bg-surface"
               placeholder="e.g. 76F"
             />
           </div>
@@ -601,7 +601,7 @@ const jsonShapeDescriptions: Record<string, string> = {
             <span class="font-mono text-xs text-stone-500 mb-2 block">Freeform note</span>
             <textarea
               v-model="captureNoteText"
-              class="w-full border-2 border-stone-200 p-2 text-sm bg-surface resize-none"
+              class="w-full border-2 border-stone-200 p-2 text-base md:text-sm bg-surface resize-none"
               rows="3"
               placeholder="What happened? What did you notice? Texture, color, timing..."
             />

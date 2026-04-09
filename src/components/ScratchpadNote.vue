@@ -158,7 +158,7 @@ const formattedEntries = computed(() => {
               <div class="flex gap-1.5">
                 <input
                   v-model="reminderResponses[reminder.prompt]"
-                  class="flex-1 border-2 border-stone-200 p-1.5 text-xs bg-surface rounded-none"
+                  class="flex-1 border-2 border-stone-200 p-1.5 text-base md:text-xs bg-surface rounded-none"
                   :placeholder="reminder.type === 'measurement' ? 'e.g. 748g' : 'Response...'"
                   @keydown.enter="handleReminderRespond(reminder.prompt)"
                 />
@@ -192,7 +192,7 @@ const formattedEntries = computed(() => {
             <textarea
               ref="noteTextarea"
               v-model="noteText"
-              class="w-full border-2 border-stone-200 p-2 text-xs bg-surface resize-none rounded-none"
+              class="w-full border-2 border-stone-200 p-2 text-base md:text-xs bg-surface resize-none rounded-none"
               rows="2"
               placeholder="What happened? Texture, color, timing..."
               @keydown="handleNoteKeydown"

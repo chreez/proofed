@@ -676,7 +676,7 @@ onMounted(async () => {
                 <textarea
                   v-model="photo.summary"
                   rows="2"
-                  class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-sm text-body font-sans focus:outline-none focus:border-stone-400"
+                  class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-base md:text-sm text-body font-sans focus:outline-none focus:border-stone-400"
                 />
               </label>
 
@@ -686,7 +686,7 @@ onMounted(async () => {
                   v-model="photo.notes"
                   rows="2"
                   placeholder="Additional notes..."
-                  class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-sm text-body font-sans focus:outline-none focus:border-stone-400"
+                  class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-base md:text-sm text-body font-sans focus:outline-none focus:border-stone-400"
                 />
               </label>
 
@@ -908,7 +908,7 @@ onMounted(async () => {
                         :value="getSelection(ingredient.ingredientId).pantryPurchaseLbs ?? ''"
                         type="text"
                         inputmode="decimal"
-                        class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                        class="w-20 border-2 border-stone-200 p-2 text-base md:text-sm bg-surface font-mono text-right"
                         data-testid="pantry-lbs-input"
                         @input="getSelection(ingredient.ingredientId).pantryPurchaseLbs = parseFloat(($event.target as HTMLInputElement).value) || 0"
                       />
@@ -923,7 +923,7 @@ onMounted(async () => {
                         :value="getSelection(ingredient.ingredientId).pantryPurchasePrice ?? ''"
                         type="text"
                         inputmode="decimal"
-                        class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                        class="w-20 border-2 border-stone-200 p-2 text-base md:text-sm bg-surface font-mono text-right"
                         data-testid="pantry-price-input"
                         @input="getSelection(ingredient.ingredientId).pantryPurchasePrice = parseFloat(($event.target as HTMLInputElement).value) || 0"
                       />
@@ -965,7 +965,7 @@ onMounted(async () => {
                       :value="getSelection(ingredient.ingredientId).manualProductName ?? ''"
                       type="text"
                       placeholder="e.g. Store brand butter"
-                      class="w-full border-2 border-stone-200 p-2 text-sm bg-surface"
+                      class="w-full border-2 border-stone-200 p-2 text-base md:text-sm bg-surface"
                       data-testid="manual-name-input"
                       @input="getSelection(ingredient.ingredientId).manualProductName = ($event.target as HTMLInputElement).value"
                     />
@@ -980,7 +980,7 @@ onMounted(async () => {
                         :value="getSelection(ingredient.ingredientId).manualPrice ?? ''"
                         type="text"
                         inputmode="decimal"
-                        class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                        class="w-20 border-2 border-stone-200 p-2 text-base md:text-sm bg-surface font-mono text-right"
                         data-testid="manual-price-input"
                         @input="getSelection(ingredient.ingredientId).manualPrice = parseFloat(($event.target as HTMLInputElement).value) || 0"
                       />
@@ -993,7 +993,7 @@ onMounted(async () => {
                         :value="getSelection(ingredient.ingredientId).manualSizeGrams ?? ''"
                         type="text"
                         inputmode="decimal"
-                        class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                        class="w-20 border-2 border-stone-200 p-2 text-base md:text-sm bg-surface font-mono text-right"
                         data-testid="manual-size-input"
                         @input="getSelection(ingredient.ingredientId).manualSizeGrams = parseFloat(($event.target as HTMLInputElement).value) || 0"
                       />

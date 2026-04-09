@@ -1,9 +1,10 @@
 ---
 id: PF-173
 title: Fix iOS mobile viewport zoom on input focus
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-04-03 01:17'
+updated_date: '2026-04-09 18:10'
 labels:
   - bug (styling)
   - ux
@@ -29,3 +30,9 @@ When tapping a note input on iPhone, the page zooms in and doesn't restore the v
 - [ ] #4 Desktop styling not regressed
 - [ ] #5 npm run build passes
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Subagent complete. 7 files changed: ScratchpadNote.vue, GeneralNotesFab.vue, ReminderBanner.vue, BakeReviewPage.vue, PhotoReview.vue, DemoScratchpad.vue, DemoCostPicker.vue. Approach: `text-base md:text-xs` (16px mobile, 12px desktop) via UnoCSS responsive utilities. Build passes. HITL gate: visual review on iPhone + desktop.
+<!-- SECTION:NOTES:END -->

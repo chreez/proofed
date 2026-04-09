@@ -351,7 +351,7 @@ const sampleJson = computed(() => {
                       v-model="flourPurchaseLbs"
                       type="text"
                       inputmode="decimal"
-                      class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                      class="w-20 border-2 border-stone-200 p-2 text-base md:text-sm bg-surface font-mono text-right"
                     />
                     <span class="text-sm text-stone-500">lbs</span>
                   </div>
@@ -364,7 +364,7 @@ const sampleJson = computed(() => {
                       v-model="flourPurchasePrice"
                       type="text"
                       inputmode="decimal"
-                      class="w-20 border-2 border-stone-200 p-2 text-sm bg-surface font-mono text-right"
+                      class="w-20 border-2 border-stone-200 p-2 text-base md:text-sm bg-surface font-mono text-right"
                     />
                   </div>
                 </div>

@@ -217,7 +217,7 @@ onMounted(async () => {
               <textarea
                 v-model="photo.summary"
                 rows="2"
-                class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-sm text-body font-sans focus:outline-none focus:border-stone-400"
+                class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-base md:text-sm text-body font-sans focus:outline-none focus:border-stone-400"
               />
             </label>
 
@@ -228,7 +228,7 @@ onMounted(async () => {
                 v-model="photo.notes"
                 rows="2"
                 placeholder="Additional notes..."
-                class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-sm text-body font-sans focus:outline-none focus:border-stone-400"
+                class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-base md:text-sm text-body font-sans focus:outline-none focus:border-stone-400"
               />
             </label>
 
