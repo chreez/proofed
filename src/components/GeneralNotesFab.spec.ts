@@ -8,9 +8,7 @@ vi.mock('lucide-vue-next', () => ({
   X: { name: 'X', template: '<svg class="x-icon" />' },
   Download: { name: 'Download', template: '<svg class="download-icon" />' },
   Trash2: { name: 'Trash2', template: '<svg class="trash-icon" />' },
-  Check: { name: 'Check', template: '<svg class="check-icon" />' },
-  ChevronDown: { name: 'ChevronDown', template: '<svg class="chevron-down-icon" />' },
-  ChevronRight: { name: 'ChevronRight', template: '<svg class="chevron-right-icon" />' }
+  Check: { name: 'Check', template: '<svg class="check-icon" />' }
 }))
 
 // Mock IconButton
@@ -163,128 +161,134 @@ describe('GeneralNotesFab', () => {
     })
   })
 
-  describe('general notes display', () => {
-    it('shows general notes when they exist', async () => {
+  describe('flat chronological entries', () => {
+    it('shows entry count label when entries exist', async () => {
       const wrapper = mountWithTeleport({
         ...defaultProps,
         generalNoteCount: 2,
         totalEntryCount: 2,
         generalNotes: [
-          makeEntry({ value: 'First observation' }),
-          makeEntry({ value: 'Second observation' })
+          makeEntry({ value: 'First observation', timestamp: '2026-01-01T12:00:00Z' }),
+          makeEntry({ value: 'Second observation', timestamp: '2026-01-01T13:00:00Z' })
         ]
       })
 
       const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
       await fab.trigger('click')
 
-      expect(wrapper.text()).toContain('notes (2)')
-      expect(wrapper.text()).toContain('First observation')
-      expect(wrapper.text()).toContain('Second observation')
+      expect(wrapper.text()).toContain('entries (2)')
     })
 
-    it('does not show notes section when no general notes', async () => {
+    it('does not show entries section when no entries', async () => {
       const wrapper = mountWithTeleport(defaultProps)
 
       const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
       await fab.trigger('click')
 
-      expect(wrapper.text()).not.toContain('notes (0)')
+      expect(wrapper.text()).not.toContain('entries (')
     })
-  })
 
-  describe('step entries display', () => {
-    it('shows step entry count with expand toggle', async () => {
+    it('mixes general and step entries in chronological order (newest first)', async () => {
       const wrapper = mountWithTeleport({
         ...defaultProps,
-        totalEntryCount: 2,
+        generalNoteCount: 1,
+        totalEntryCount: 3,
+        generalNotes: [
+          makeEntry({ value: 'General middle', timestamp: '2026-01-01T12:00:00Z' })
+        ],
         stepEntries: {
-          'mix-dough': [
-            makeEntry({ stepId: 'mix-dough', value: 'Sticky' }),
-            makeEntry({ stepId: 'mix-dough', value: 'Added more flour' })
+          'MIX_FILLING': [
+            makeEntry({ stepId: 'MIX_FILLING', value: 'Step oldest', timestamp: '2026-01-01T11:00:00Z' }),
+            makeEntry({ stepId: 'MIX_FILLING', value: 'Step newest', timestamp: '2026-01-01T13:00:00Z' })
           ]
-        }
+        },
+        stepNames: { 'MIX_FILLING': 'Mix Filling' }
       })
 
       const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
       await fab.trigger('click')
 
-      expect(wrapper.text()).toContain('2 step-specific entries')
+      expect(wrapper.text()).toContain('entries (3)')
+
+      // All 3 should be visible (within default limit)
+      const entryCards = wrapper.findAll('.bg-stone-50.border.border-stone-200.p-2')
+      expect(entryCards.length).toBe(3)
+
+      // Verify order: newest first
+      expect(entryCards[0].text()).toContain('Step newest')
+      expect(entryCards[1].text()).toContain('General middle')
+      expect(entryCards[2].text()).toContain('Step oldest')
     })
 
-    it('shows singular label for 1 entry', async () => {
+    it('shows origin label "general" for general notes', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 1,
+        totalEntryCount: 1,
+        generalNotes: [makeEntry({ value: 'A general note' })]
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      expect(wrapper.text()).toContain('general')
+      expect(wrapper.text()).toContain('A general note')
+    })
+
+    it('shows step name as origin for step entries', async () => {
       const wrapper = mountWithTeleport({
         ...defaultProps,
         totalEntryCount: 1,
         stepEntries: {
-          'mix-dough': [makeEntry({ stepId: 'mix-dough' })]
-        }
+          'MIX_FILLING': [makeEntry({ stepId: 'MIX_FILLING', value: 'Sticky' })]
+        },
+        stepNames: { 'MIX_FILLING': 'Mix Filling' }
       })
 
       const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
       await fab.trigger('click')
 
-      expect(wrapper.text()).toContain('1 step-specific entry')
+      expect(wrapper.text()).toContain('Mix Filling')
+      expect(wrapper.text()).toContain('Sticky')
     })
 
-    it('expands step entries on toggle click', async () => {
+    it('falls back to stepId when stepNames has no entry', async () => {
       const wrapper = mountWithTeleport({
         ...defaultProps,
         totalEntryCount: 1,
         stepEntries: {
-          'mix-dough': [makeEntry({ stepId: 'mix-dough', value: 'Sticky dough' })]
-        }
+          'UNKNOWN_STEP': [makeEntry({ stepId: 'UNKNOWN_STEP', value: 'Mystery' })]
+        },
+        stepNames: {}
       })
 
       const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
       await fab.trigger('click')
 
-      // Find the expand button
-      const expandBtn = wrapper.findAll('button').find(b => b.text().includes('step-specific'))
-      expect(expandBtn).toBeTruthy()
-
-      // Initially collapsed - should show ChevronRight
-      expect(wrapper.findAll('.chevron-right-icon').length).toBeGreaterThan(0)
-
-      await expandBtn!.trigger('click')
-
-      // Now expanded - should show ChevronDown and step entries
-      expect(wrapper.findAll('.chevron-down-icon').length).toBeGreaterThan(0)
-      expect(wrapper.text()).toContain('mix-dough')
-      expect(wrapper.text()).toContain('Sticky dough')
+      expect(wrapper.text()).toContain('UNKNOWN_STEP')
     })
 
     it('shows entry type labels correctly', async () => {
       const wrapper = mountWithTeleport({
         ...defaultProps,
-        totalEntryCount: 2,
+        totalEntryCount: 3,
         stepEntries: {
           'step-1': [
-            makeEntry({ stepId: 'step-1', type: 'reminder_response', value: '748g', prompt: 'Weigh dough' }),
-            makeEntry({ stepId: 'step-1', type: 'rating', value: 'good' })
+            makeEntry({ stepId: 'step-1', type: 'reminder_response', value: '748g', prompt: 'Weigh dough', timestamp: '2026-01-01T13:00:00Z' }),
+            makeEntry({ stepId: 'step-1', type: 'rating', value: 'good', timestamp: '2026-01-01T12:00:00Z' }),
+            makeEntry({ stepId: 'step-1', type: 'note', value: 'looks great', timestamp: '2026-01-01T11:00:00Z' })
           ]
-        }
+        },
+        stepNames: { 'step-1': 'Step One' }
       })
 
       const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
       await fab.trigger('click')
 
-      // Expand step entries
-      const expandBtn = wrapper.findAll('button').find(b => b.text().includes('step-specific'))
-      await expandBtn!.trigger('click')
-
       expect(wrapper.text()).toContain('reminder') // reminder_response shows as "reminder"
       expect(wrapper.text()).toContain('rating')
+      expect(wrapper.text()).toContain('note')
       expect(wrapper.text()).toContain('Weigh dough') // prompt text
-    })
-
-    it('does not show step entries section when stepEntryCount is 0', async () => {
-      const wrapper = mountWithTeleport(defaultProps)
-
-      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
-      await fab.trigger('click')
-
-      expect(wrapper.text()).not.toContain('step-specific')
     })
 
     it('filters out empty step entry arrays', async () => {
@@ -293,18 +297,173 @@ describe('GeneralNotesFab', () => {
         totalEntryCount: 1,
         stepEntries: {
           'step-1': [makeEntry({ stepId: 'step-1', value: 'has entry' })],
-          'step-2': [] // empty - should not show
-        }
+          'step-2': [] // empty - should not contribute entries
+        },
+        stepNames: { 'step-1': 'Step One', 'step-2': 'Step Two' }
       })
 
       const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
       await fab.trigger('click')
 
-      const expandBtn = wrapper.findAll('button').find(b => b.text().includes('step-specific'))
-      await expandBtn!.trigger('click')
+      expect(wrapper.text()).toContain('entries (1)')
+      expect(wrapper.text()).toContain('Step One')
+      expect(wrapper.text()).not.toContain('Step Two')
+    })
+  })
 
-      expect(wrapper.text()).toContain('step-1')
-      expect(wrapper.text()).not.toContain('step-2')
+  describe('3-latest default with "Show N more"', () => {
+    it('shows only 3 entries by default when more exist', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 5,
+        totalEntryCount: 5,
+        generalNotes: [
+          makeEntry({ value: 'Note 1', timestamp: '2026-01-01T11:00:00Z' }),
+          makeEntry({ value: 'Note 2', timestamp: '2026-01-01T12:00:00Z' }),
+          makeEntry({ value: 'Note 3', timestamp: '2026-01-01T13:00:00Z' }),
+          makeEntry({ value: 'Note 4', timestamp: '2026-01-01T14:00:00Z' }),
+          makeEntry({ value: 'Note 5', timestamp: '2026-01-01T15:00:00Z' })
+        ]
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      // Should show entries (5) header
+      expect(wrapper.text()).toContain('entries (5)')
+
+      // Only 3 entry cards visible
+      const entryCards = wrapper.findAll('.bg-stone-50.border.border-stone-200.p-2')
+      expect(entryCards.length).toBe(3)
+
+      // Newest 3 should be visible (sorted desc)
+      expect(wrapper.text()).toContain('Note 5')
+      expect(wrapper.text()).toContain('Note 4')
+      expect(wrapper.text()).toContain('Note 3')
+      expect(wrapper.text()).not.toContain('Note 2')
+      expect(wrapper.text()).not.toContain('Note 1')
+    })
+
+    it('shows "Show N more" button when entries exceed 3', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 5,
+        totalEntryCount: 5,
+        generalNotes: [
+          makeEntry({ value: 'Note 1', timestamp: '2026-01-01T11:00:00Z' }),
+          makeEntry({ value: 'Note 2', timestamp: '2026-01-01T12:00:00Z' }),
+          makeEntry({ value: 'Note 3', timestamp: '2026-01-01T13:00:00Z' }),
+          makeEntry({ value: 'Note 4', timestamp: '2026-01-01T14:00:00Z' }),
+          makeEntry({ value: 'Note 5', timestamp: '2026-01-01T15:00:00Z' })
+        ]
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      expect(wrapper.text()).toContain('Show 2 more')
+    })
+
+    it('does not show "Show N more" when 3 or fewer entries', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 2,
+        totalEntryCount: 2,
+        generalNotes: [
+          makeEntry({ value: 'Note 1', timestamp: '2026-01-01T11:00:00Z' }),
+          makeEntry({ value: 'Note 2', timestamp: '2026-01-01T12:00:00Z' })
+        ]
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      expect(wrapper.text()).not.toContain('Show')
+      expect(wrapper.text()).not.toContain('more')
+    })
+
+    it('expands all entries on "Show N more" click', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 5,
+        totalEntryCount: 5,
+        generalNotes: [
+          makeEntry({ value: 'Note 1', timestamp: '2026-01-01T11:00:00Z' }),
+          makeEntry({ value: 'Note 2', timestamp: '2026-01-01T12:00:00Z' }),
+          makeEntry({ value: 'Note 3', timestamp: '2026-01-01T13:00:00Z' }),
+          makeEntry({ value: 'Note 4', timestamp: '2026-01-01T14:00:00Z' }),
+          makeEntry({ value: 'Note 5', timestamp: '2026-01-01T15:00:00Z' })
+        ]
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      // Click "Show 2 more"
+      const showMoreBtn = wrapper.findAll('button').find(b => b.text().includes('Show 2 more'))
+      expect(showMoreBtn).toBeTruthy()
+      await showMoreBtn!.trigger('click')
+
+      // Now all 5 should be visible
+      const entryCards = wrapper.findAll('.bg-stone-50.border.border-stone-200.p-2')
+      expect(entryCards.length).toBe(5)
+
+      expect(wrapper.text()).toContain('Note 1')
+      expect(wrapper.text()).toContain('Note 2')
+    })
+
+    it('shows "Show less" after expanding', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 4,
+        totalEntryCount: 4,
+        generalNotes: [
+          makeEntry({ value: 'Note 1', timestamp: '2026-01-01T11:00:00Z' }),
+          makeEntry({ value: 'Note 2', timestamp: '2026-01-01T12:00:00Z' }),
+          makeEntry({ value: 'Note 3', timestamp: '2026-01-01T13:00:00Z' }),
+          makeEntry({ value: 'Note 4', timestamp: '2026-01-01T14:00:00Z' })
+        ]
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      const showMoreBtn = wrapper.findAll('button').find(b => b.text().includes('Show 1 more'))
+      await showMoreBtn!.trigger('click')
+
+      expect(wrapper.text()).toContain('Show less')
+    })
+
+    it('collapses back to 3 on "Show less" click', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 5,
+        totalEntryCount: 5,
+        generalNotes: [
+          makeEntry({ value: 'Note 1', timestamp: '2026-01-01T11:00:00Z' }),
+          makeEntry({ value: 'Note 2', timestamp: '2026-01-01T12:00:00Z' }),
+          makeEntry({ value: 'Note 3', timestamp: '2026-01-01T13:00:00Z' }),
+          makeEntry({ value: 'Note 4', timestamp: '2026-01-01T14:00:00Z' }),
+          makeEntry({ value: 'Note 5', timestamp: '2026-01-01T15:00:00Z' })
+        ]
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      // Expand
+      const showMoreBtn = wrapper.findAll('button').find(b => b.text().includes('Show 2 more'))
+      await showMoreBtn!.trigger('click')
+
+      // Collapse
+      const showLessBtn = wrapper.findAll('button').find(b => b.text().includes('Show less'))
+      await showLessBtn!.trigger('click')
+
+      // Back to 3
+      const entryCards = wrapper.findAll('.bg-stone-50.border.border-stone-200.p-2')
+      expect(entryCards.length).toBe(3)
+
+      expect(wrapper.text()).toContain('Show 2 more')
     })
   })
 

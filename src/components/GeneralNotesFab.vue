@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, useTemplateRef } from 'vue'
-import { MessageSquare, X, Download, Trash2, Check, ChevronDown, ChevronRight } from 'lucide-vue-next'
+import { MessageSquare, X, Download, Trash2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { ScratchpadEntry } from '@/types/recipe'
 
@@ -45,7 +45,8 @@ function handleClear(): void {
   emit('clearAll')
 }
 
-const showStepEntries = ref(false)
+const showAll = ref(false)
+const VISIBLE_COUNT = 3
 
 function formatTimestamp(iso: string): string {
   const d = new Date(iso)
@@ -57,27 +58,43 @@ function formatTimestamp(iso: string): string {
   return `${yyyy}-${mm}-${dd} ${hh}:${min}`
 }
 
-const formattedNotes = computed(() => {
-  return props.generalNotes.map(n => ({
-    ...n,
-    time: formatTimestamp(n.timestamp)
-  }))
+interface FlatEntry extends ScratchpadEntry {
+  time: string
+  origin: string
+}
+
+const allEntries = computed<FlatEntry[]>(() => {
+  const entries: FlatEntry[] = []
+
+  for (const note of props.generalNotes) {
+    entries.push({
+      ...note,
+      time: formatTimestamp(note.timestamp),
+      origin: 'general'
+    })
+  }
+
+  for (const [stepId, stepArr] of Object.entries(props.stepEntries)) {
+    for (const entry of stepArr) {
+      entries.push({
+        ...entry,
+        time: formatTimestamp(entry.timestamp),
+        origin: props.stepNames[stepId] || stepId
+      })
+    }
+  }
+
+  entries.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+  return entries
 })
 
-const stepEntryCount = computed(() => {
-  return Object.values(props.stepEntries).reduce((sum, arr) => sum + arr.length, 0)
+const visibleEntries = computed(() => {
+  if (showAll.value) return allEntries.value
+  return allEntries.value.slice(0, VISIBLE_COUNT)
 })
 
-const formattedStepEntries = computed(() => {
-  return Object.entries(props.stepEntries)
-    .filter(([, entries]) => entries.length > 0)
-    .map(([stepId, entries]) => ({
-      stepId,
-      entries: entries.map(e => ({
-        ...e,
-        time: formatTimestamp(e.timestamp)
-      }))
-    }))
+const hiddenCount = computed(() => {
+  return Math.max(0, allEntries.value.length - VISIBLE_COUNT)
 })
 </script>
 
@@ -168,49 +185,32 @@ const formattedStepEntries = computed(() => {
 
         <!-- Scrollable content -->
         <div class="overflow-y-auto flex-1 p-3 space-y-3">
-          <!-- Existing general notes -->
-          <div v-if="formattedNotes.length" class="space-y-2">
-            <span class="font-mono text-[10px] text-stone-500 block">notes ({{ generalNoteCount }})</span>
+          <!-- Flat chronological entries -->
+          <div v-if="allEntries.length" class="space-y-2">
+            <span class="font-mono text-[10px] text-stone-500 block">entries ({{ allEntries.length }})</span>
             <div
-              v-for="(note, i) in formattedNotes"
+              v-for="(entry, i) in visibleEntries"
               :key="i"
               class="bg-stone-50 border border-stone-200 p-2"
             >
-              <p class="text-xs text-stone-700">{{ note.value }}</p>
-              <span class="font-mono text-[10px] text-stone-400 mt-1 block">{{ note.time }}</span>
-            </div>
-          </div>
-
-          <!-- Step-specific entries (expandable) -->
-          <div v-if="stepEntryCount > 0">
-            <button
-              class="flex items-center gap-1 text-[10px] text-stone-500 font-mono hover:text-accent transition-colors"
-              @click="showStepEntries = !showStepEntries"
-            >
-              <ChevronDown v-if="showStepEntries" class="w-3 h-3" />
-              <ChevronRight v-else class="w-3 h-3" />
-              {{ stepEntryCount }} step-specific {{ stepEntryCount === 1 ? 'entry' : 'entries' }}
-            </button>
-            <div v-if="showStepEntries" class="mt-2 space-y-2">
-              <div v-for="group in formattedStepEntries" :key="group.stepId">
-                <span class="font-mono text-[10px] text-stone-500 block mb-1">{{ stepNames[group.stepId] || group.stepId }}</span>
-                <div
-                  v-for="(entry, i) in group.entries"
-                  :key="i"
-                  class="bg-stone-50 border border-stone-200 p-2 mb-1"
-                >
-                  <div class="flex items-center gap-1.5 mb-0.5">
-                    <span
-                      class="font-mono text-[10px]"
-                      :class="entry.type === 'reminder_response' ? 'text-accent' : entry.type === 'rating' ? 'text-crust-dark' : 'text-stone-400'"
-                    >{{ entry.type === 'reminder_response' ? 'reminder' : entry.type }}</span>
-                    <span class="font-mono text-[10px] text-stone-400">{{ entry.time }}</span>
-                  </div>
-                  <p v-if="entry.prompt" class="text-[10px] text-stone-500 italic mb-0.5">{{ entry.prompt }}</p>
-                  <p class="text-xs text-stone-700">{{ entry.value }}</p>
-                </div>
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <span class="font-mono text-[10px] text-stone-500">{{ entry.origin }}</span>
+                <span
+                  class="font-mono text-[10px]"
+                  :class="entry.type === 'reminder_response' ? 'text-accent' : entry.type === 'rating' ? 'text-crust-dark' : 'text-stone-400'"
+                >{{ entry.type === 'reminder_response' ? 'reminder' : entry.type }}</span>
+                <span class="font-mono text-[10px] text-stone-400">{{ entry.time }}</span>
               </div>
+              <p v-if="entry.prompt" class="text-[10px] text-stone-500 italic mb-0.5">{{ entry.prompt }}</p>
+              <p class="text-xs text-stone-700">{{ entry.value }}</p>
             </div>
+            <button
+              v-if="hiddenCount > 0"
+              class="flex items-center gap-1 font-mono text-[10px] text-stone-500 hover:text-accent transition-colors"
+              @click="showAll = !showAll"
+            >
+              {{ showAll ? 'Show less' : `Show ${hiddenCount} more` }}
+            </button>
           </div>
 
           <!-- New note input -->
@@ -218,7 +218,7 @@ const formattedStepEntries = computed(() => {
             <span class="font-mono text-[10px] text-stone-500 mb-1.5 block">General observation</span>
             <textarea
               v-model="noteText"
-              class="w-full border-2 border-stone-200 p-2 text-xs bg-surface resize-none rounded-none"
+              class="w-full border-2 border-stone-200 p-2 text-base md:text-xs bg-surface resize-none rounded-none"
               rows="3"
               placeholder="Overall bake observation..."
               @keydown.ctrl.enter="handleSave"
