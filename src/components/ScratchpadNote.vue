@@ -108,7 +108,7 @@ const formattedEntries = computed(() => {
         <!-- Header -->
         <div class="flex items-center justify-between p-3 border-b-2 border-stone-200 bg-stone-50">
           <div class="flex flex-col">
-            <span class="font-mono text-xs text-stone-600">scratchpad: {{ stepName }}</span>
+            <span class="font-mono text-xs text-stone-600">{{ stepName }}</span>
             <span class="font-mono text-[10px] text-stone-400">{{ stepId }}</span>
           </div>
           <button @click="close" class="text-stone-400 hover:text-ink">
@@ -191,7 +191,7 @@ const formattedEntries = computed(() => {
     <!-- Mobile: Bottom Sheet (below md) -->
     <BottomSheet
       :open="isOpen && !isDesktop"
-      :title="`scratchpad: ${stepName}`"
+      :title="stepName"
       :subtitle="stepId"
       @close="close"
     >

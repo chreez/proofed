@@ -121,7 +121,7 @@ describe('ScratchpadNote', () => {
       const wrapper = mount(ScratchpadNote, { props: defaultProps })
       await wrapper.find('button').trigger('click')
 
-      expect(wrapper.text()).toContain('scratchpad: Mix the dough')
+      expect(wrapper.text()).toContain('Mix the dough')
       expect(wrapper.text()).toContain('mix-dough')
     })
   })

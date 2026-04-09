@@ -63,7 +63,7 @@ describe('ScratchpadNote mobile (bottom sheet)', () => {
   it('shows stepName in bottom sheet title with stepId as subtitle', async () => {
     const wrapper = mount(ScratchpadNote, { props: defaultProps, ...mountOpts })
     await openSheet(wrapper)
-    expect(wrapper.text()).toContain('scratchpad: Mix the dough')
+    expect(wrapper.text()).toContain('Mix the dough')
     expect(wrapper.text()).toContain('mix-dough')
   })
 
