@@ -1,7 +1,7 @@
 ---
 id: PF-73
 title: Fix missing scroll on stage auto-advance (mobile)
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-02-08 01:18'
 updated_date: '2026-04-09 19:32'
