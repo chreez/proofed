@@ -28,3 +28,7 @@ Add a multiplier control to recipe view that scales all ingredient quantities. C
 - [ ] #8 A validation check (added to checklist) verifies that at any multiplier, ingredient totals equal the sum of their breakdowns and state component amounts reference correct scaled values
 - [ ] #9 npm run build passes
 <!-- AC:END -->
+
+## Note
+
+**Multiplier UI ownership has moved to PF-183** (Recipe scalable flag — research-gated capability for ingredient scaling). PF-183 gates the multiplier control behind a `scaling` block in the recipe schema, requiring research on ingredient behavior (linear vs. non-linear) and process caveats before scaling is allowed. This task (PF-129) now focuses on the generic multiplier implementation, which is used by PF-183 only when a recipe has been fully researched and a scaling block is populated.
