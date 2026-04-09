@@ -1,7 +1,7 @@
 ---
 id: PF-185
 title: 'Spike: Historical weather lookup for bake log entries'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-09 15:32'
 labels:

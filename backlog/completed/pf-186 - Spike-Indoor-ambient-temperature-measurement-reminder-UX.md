@@ -1,7 +1,7 @@
 ---
 id: PF-186
 title: 'Spike: Indoor ambient temperature measurement reminder UX'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-09 15:32'
 labels:

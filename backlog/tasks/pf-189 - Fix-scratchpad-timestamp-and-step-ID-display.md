@@ -1,10 +1,10 @@
 ---
 id: PF-189
 title: Fix scratchpad timestamp and step ID display
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-04-09 16:54'
-updated_date: '2026-04-09 17:48'
+updated_date: '2026-04-09 18:05'
 labels:
   - bug (ux)
 dependencies: []
@@ -30,12 +30,12 @@ Two scratchpad UX issues:
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 All scratchpad entry timestamps display as YYYY-MM-DD HH:MM in local time (ScratchpadNote + GeneralNotesFab)
-- [ ] #2 ScratchpadNote receives a new `stepName` prop from parent (StateStep passes it down from the recipe state)
-- [ ] #3 Desktop popover header shows `scratchpad: {stepName}` with raw stepId as secondary muted text
-- [ ] #4 Mobile bottom sheet title shows `scratchpad: {stepName}` with raw stepId as secondary muted text below
-- [ ] #5 All existing callsites of ScratchpadNote updated to pass the new prop
-- [ ] #6 No changes to scratchpad data storage format — display-only fix
+- [x] #1 All scratchpad entry timestamps display as YYYY-MM-DD HH:MM in local time (ScratchpadNote + GeneralNotesFab)
+- [x] #2 ScratchpadNote receives a new `stepName` prop from parent (StateStep passes it down from the recipe state)
+- [x] #3 Desktop popover header shows `scratchpad: {stepName}` with raw stepId as secondary muted text
+- [x] #4 Mobile bottom sheet title shows `scratchpad: {stepName}` with raw stepId as secondary muted text below
+- [x] #5 All existing callsites of ScratchpadNote updated to pass the new prop
+- [x] #6 No changes to scratchpad data storage format — display-only fix
 <!-- AC:END -->
 
 ## Implementation Notes
