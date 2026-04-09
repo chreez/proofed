@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather + Ambient Temp — Architecture Flow</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #f5f2ec; color: #1a1816; padding: 24px; line-height: 1.5; }
+  h1 { font-family: 'JetBrains Mono', monospace; font-size: 18px; margin-bottom: 8px; }
+  h2 { font-family: 'JetBrains Mono', monospace; font-size: 14px; margin: 32px 0 12px; color: #a65d45; text-transform: uppercase; letter-spacing: 0.5px; }
+  h3 { font-family: 'JetBrains Mono', monospace; font-size: 13px; margin: 20px 0 8px; }
+  .subtitle { font-size: 13px; color: #666; margin-bottom: 32px; }
+  .section { background: #e8e4dc; border: 2px solid #1a1816; padding: 20px; margin-bottom: 24px; }
+  .flow { display: flex; flex-direction: column; gap: 0; }
+  .step { display: flex; align-items: stretch; gap: 0; }
+  .step-num { min-width: 36px; background: #1a1816; color: #e8e4dc; font-family: 'JetBrains Mono', monospace; font-size: 13px; display: flex; align-items: center; justify-content: center; border: 2px solid #1a1816; }
+  .step-content { flex: 1; padding: 12px 16px; border: 2px solid #1a1816; border-left: none; font-size: 13px; }
+  .step-content strong { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .arrow { display: flex; justify-content: center; padding: 4px 0; font-size: 18px; color: #999; }
+  .auto { background: #d4e8d0; }
+  .manual { background: #e8ddd0; }
+  .store { background: #d0d8e8; }
+  .tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 1px 6px; border: 1px solid; margin-left: 8px; vertical-align: middle; }
+  .tag-auto { color: #2d6a2e; border-color: #2d6a2e; background: #d4e8d0; }
+  .tag-manual { color: #8b5e3c; border-color: #8b5e3c; background: #e8ddd0; }
+  .tag-store { color: #3c5e8b; border-color: #3c5e8b; background: #d0d8e8; }
+  .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 700px) { .columns { grid-template-columns: 1fr; } }
+  .note { font-size: 12px; color: #666; margin-top: 8px; font-style: italic; }
+  .api-box { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: #1a1816; color: #e8e4dc; padding: 12px; margin: 8px 0; overflow-x: auto; white-space: pre; }
+  .schema-box { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: #fff; border: 2px solid #1a1816; padding: 12px; margin: 8px 0; overflow-x: auto; white-space: pre; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .legend-swatch { width: 16px; height: 16px; border: 1px solid #1a1816; }
+</style>
+</head>
+<body>
+
+<h1>proofed. weather + ambient temp</h1>
+<p class="subtitle">Architecture flow — combined capture at bake start</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch auto"></div> Automatic (no user action)</div>
+  <div class="legend-item"><div class="legend-swatch manual"></div> Manual (user input)</div>
+  <div class="legend-item"><div class="legend-swatch store"></div> Data stored</div>
+</div>
+
+<!-- FLOW 1: BAKE SESSION -->
+<h2>Flow A: During Bake Session (live)</h2>
+<div class="section">
+  <div class="flow">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content manual">
+        <strong>User starts bake</strong> — clicks first stage or "Start Bake"<br>
+        Scratchpad reminder fires: <em>"Kitchen temp (°F)?"</em>
+        <span class="tag tag-manual">manual</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content auto">
+        <strong>Simultaneous: fetch outdoor weather</strong><br>
+        Browser calls Open-Meteo archive API for today's date + Austin coords.<br>
+        No API key. No CORS issues. ~200ms.
+        <span class="tag tag-auto">auto</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content manual">
+        <strong>User enters kitchen temp</strong> — e.g., "72"<br>
+        Scratchpad captures value + timestamp
+        <span class="tag tag-manual">manual</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content store">
+        <strong>Both values stored in session</strong><br>
+        Indoor: <code>bake_stats.bulk_ambient_temps[0]</code> (from user input)<br>
+        Outdoor: <code>bake_stats.weather</code> (from API, cached in localStorage)
+        <span class="tag tag-store">store</span>
+      </div>
+    </div>
+  </div>
+  <p class="note">User sees one prompt. Weather fetch happens silently in background. Total friction: type one number.</p>
+</div>
+
+<!-- FLOW 2: BACKFILL -->
+<h2>Flow B: Backfill (past bakes via /bake-log)</h2>
+<div class="section">
+  <div class="flow">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content manual">
+        <strong>Agent runs /bake-log session</strong> — user provides bake date<br>
+        Agent knows the date from cook_log entry
+        <span class="tag tag-manual">trigger</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content auto">
+        <strong>Agent fetches weather for bake date</strong><br>
+        Script/composable calls Open-Meteo archive API for that date<br>
+        Can batch: fetch entire month in one call for bulk backfill
+        <span class="tag tag-auto">auto</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content store">
+        <strong>Weather written to cook_log entry</strong><br>
+        Stored in recipe JSON alongside existing bake_stats
+        <span class="tag tag-store">store</span>
+      </div>
+    </div>
+  </div>
+  <p class="note">No indoor temp for backfill — that data is gone. Outdoor weather is always recoverable from the API.</p>
+</div>
+
+<!-- ADMIN VIEW -->
+<h2>Developer/Admin Perspective</h2>
+<div class="columns">
+  <div class="section">
+    <h3>What you set up once</h3>
+    <div class="schema-box">// vite.config.ts — nothing needed
+// No API key, no env vars, no proxy
+
+// recipe.json — per recipe config
+"config": {
+  "ambientTempTracking": {
+    "required": true,
+    "stages": ["FERMENT_BULK"]
+  }
+}
+
+// composable
+useWeather(date, coords)
+→ returns { daily, hourly, loading }</div>
+  </div>
+  <div class="section">
+    <h3>What happens at runtime</h3>
+    <div class="api-box">GET https://archive-api.open-meteo.com
+  /v1/archive
+  ?latitude=30.27
+  &longitude=-97.74
+  &start_date=2026-04-09
+  &end_date=2026-04-09
+  &hourly=temperature_2m,
+    relative_humidity_2m,
+    precipitation,
+    cloud_cover,
+    wind_speed_10m
+  &temperature_unit=fahrenheit
+  &timezone=America/Chicago
+
+→ 200 OK, ~2KB JSON, ~200ms
+→ CORS: Access-Control-Allow-Origin: *
+→ No key required</div>
+  </div>
+</div>
+
+<!-- FRONTEND -->
+<h2>Frontend: What the baker sees</h2>
+<div class="columns">
+  <div class="section">
+    <h3>During bake (recipe page)</h3>
+    <div style="background: #fff; border: 2px solid #1a1816; padding: 16px; font-size: 13px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-size: 20px;">🌤</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #666;">78°F outside · 45% humidity</span>
+      </div>
+      <div style="background: #e8ddd0; border: 2px solid #1a1816; padding: 12px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #a65d45; margin-bottom: 4px;">PRE-BAKE</div>
+        <div style="font-size: 13px; margin-bottom: 8px;">What's your kitchen temperature (°F)?</div>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" value="72" style="border: 2px solid #1a1816; padding: 4px 8px; width: 60px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+          <button style="background: #1a1816; color: #e8e4dc; border: none; padding: 4px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; cursor: pointer;">Save</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Weather pill auto-populates. User only types indoor temp.</p>
+  </div>
+  <div class="section">
+    <h3>On bake detail page (after bake)</h3>
+    <div style="background: #fff; border: 2px solid #1a1816; padding: 16px; font-size: 13px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #a65d45; margin-bottom: 8px;">BAKE CONDITIONS</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div>
+          <div style="font-size: 11px; color: #666;">Indoor</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 16px;">72°F</div>
+          <div style="font-size: 10px; color: #999;">manual reading</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: #666;">Outdoor</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 16px;">78°F</div>
+          <div style="font-size: 10px; color: #999;">🌤 45% humidity</div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Clean two-column layout. Provenance shown (manual vs API).</p>
+  </div>
+</div>
+
+<!-- DATA SHAPE -->
+<h2>Data Shape (cook_log entry)</h2>
+<div class="section">
+<div class="schema-box">{
+  "date": "2026-04-09",
+  "bake_stats": {
+    "bulk_ambient_temps": [
+      { "value": 72, "unit": "F", "timestamp": "2026-04-09T08:30:00" }
+    ],
+    "weather": {
+      "source": "open-meteo",
+      "fetched_at": "2026-04-09T08:30:05",
+      "location": { "lat": 30.27, "lon": -97.74, "name": "Austin, TX" },
+      "daily": {
+        "temp_high_f": 84,
+        "temp_low_f": 62,
+        "humidity_avg_pct": 55,
+        "condition": "Partly Cloudy",
+        "precip_mm": 0
+      }
+    }
+  }
+}
+</div>
+<p class="note">Minimal daily summary. Hourly array optional for future analysis. Weather block is sibling to existing bake_stats fields.</p>
+</div>
+
+<!-- CORS NOTE -->
+<h2>Why this works from the browser</h2>
+<div class="section">
+  <div style="font-size: 13px;">
+    <strong>Open-Meteo</strong> returns <code>Access-Control-Allow-Origin: *</code> on all endpoints. No API key, no proxy, no backend. The browser fetches directly.<br><br>
+    <strong>Visual Crossing</strong> was the original spike recommendation but does NOT support CORS and requires an API key. Rejected for browser-side use.<br><br>
+    <strong>Fallback:</strong> If Open-Meteo is down, weather field is simply absent. No error, no broken UX — the weather pill just doesn't render.
+  </div>
+</div>
+
+</body>
+</html>
