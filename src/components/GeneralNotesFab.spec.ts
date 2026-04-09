@@ -46,7 +46,8 @@ const defaultProps = {
   generalNoteCount: 0,
   totalEntryCount: 0,
   generalNotes: [] as ReturnType<typeof makeEntry>[],
-  stepEntries: {} as Record<string, ReturnType<typeof makeEntry>[]>
+  stepEntries: {} as Record<string, ReturnType<typeof makeEntry>[]>,
+  stepNames: {} as Record<string, string>
 }
 
 // Since GeneralNotesFab uses Teleport, we need a teleport target in the DOM

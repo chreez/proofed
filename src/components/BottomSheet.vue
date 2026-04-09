@@ -4,6 +4,7 @@ import { ref, watch } from 'vue'
 const props = defineProps<{
   open: boolean
   title?: string
+  subtitle?: string
 }>()
 
 const emit = defineEmits<{
@@ -99,6 +100,7 @@ watch(() => props.open, (val) => {
         <!-- Header (optional title) -->
         <div v-if="title" class="px-4 pb-2 border-b-2 border-stone-200 flex-shrink-0">
           <span class="text-xs uppercase text-stone-400 font-medium">{{ title }}</span>
+          <span v-if="subtitle" class="block font-mono text-[10px] text-stone-400 mt-0.5">{{ subtitle }}</span>
         </div>
 
         <!-- Scrollable content -->

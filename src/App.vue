@@ -98,6 +98,8 @@ const progress = computed(() => {
 
 const scratchpad = shallowRef<ReturnType<typeof useScratchpad> | null>(null)
 
+const stepNameMap = ref<Record<string, string>>({})
+
 // Track if manifest is loaded
 const manifestLoaded = ref(false)
 
@@ -128,6 +130,9 @@ watch(currentRecipeId, (newId) => {
 // Register stages for auto-advance when recipe loads
 watch(currentRecipe, (recipe) => {
   if (!recipe || !progress.value) return
+
+  // Build step name map for GeneralNotesFab
+  stepNameMap.value = Object.fromEntries(recipe.states.map(s => [s.id, s.title]))
 
   // Load progress state for this recipe
   progress.value.load()
@@ -620,6 +625,7 @@ watch(() => route.hash, (newHash) => {
           :total-entry-count="scratchpad.totalEntryCount.value"
           :general-notes="scratchpad.generalNotes.value"
           :step-entries="scratchpad.allStepEntries.value"
+          :step-names="stepNameMap"
           @add-general-note="(v: string) => scratchpad!.addGeneralNote(v)"
           @export-json="handleScratchpadExport"
           @clear-all="() => scratchpad!.clearAll()"

@@ -17,6 +17,7 @@ vi.mock('@/composables/useMediaQuery', () => ({
 
 const defaultProps = {
   stepId: 'mix-dough',
+  stepName: 'Mix the dough',
   entries: [],
   hasEntries: false,
   currentRating: null as 'good' | 'ok' | 'bad' | null
@@ -60,10 +61,11 @@ describe('ScratchpadNote mobile (bottom sheet)', () => {
     expect(wrapper.find('[class*="bg-black"]').exists()).toBe(true)
   })
 
-  it('shows stepId in bottom sheet title', async () => {
+  it('shows stepName in bottom sheet title with stepId as subtitle', async () => {
     const wrapper = mount(ScratchpadNote, { props: defaultProps, ...mountOpts })
     await openSheet(wrapper)
-    expect(wrapper.text()).toContain('scratchpad: mix-dough')
+    expect(wrapper.text()).toContain('scratchpad: Mix the dough')
+    expect(wrapper.text()).toContain('mix-dough')
   })
 
   it('renders rating buttons in bottom sheet', async () => {

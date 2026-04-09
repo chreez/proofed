@@ -11,6 +11,7 @@ vi.mock('lucide-vue-next', () => ({
 
 const defaultProps = {
   stepId: 'mix-dough',
+  stepName: 'Mix the dough',
   entries: [],
   hasEntries: false,
   currentRating: null as 'good' | 'ok' | 'bad' | null
@@ -117,11 +118,12 @@ describe('ScratchpadNote', () => {
   })
 
   describe('header', () => {
-    it('shows stepId in header', async () => {
+    it('shows stepName in header with stepId as secondary text', async () => {
       const wrapper = mount(ScratchpadNote, { props: defaultProps })
       await wrapper.find('button').trigger('click')
 
-      expect(wrapper.text()).toContain('scratchpad: mix-dough')
+      expect(wrapper.text()).toContain('scratchpad: Mix the dough')
+      expect(wrapper.text()).toContain('mix-dough')
     })
   })
 

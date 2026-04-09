@@ -7,6 +7,7 @@ import type { StepReminder, ScratchpadEntry } from '@/types/recipe'
 
 const props = defineProps<{
   stepId: string
+  stepName: string
   reminders?: StepReminder[]
   entries: ScratchpadEntry[]
   hasEntries: boolean
@@ -66,10 +67,20 @@ function handleReminderRespond(prompt: string): void {
 
 const hasReminders = computed(() => !!props.reminders?.length)
 
+function formatTimestamp(iso: string): string {
+  const d = new Date(iso)
+  const yyyy = d.getFullYear()
+  const mm = String(d.getMonth() + 1).padStart(2, '0')
+  const dd = String(d.getDate()).padStart(2, '0')
+  const hh = String(d.getHours()).padStart(2, '0')
+  const min = String(d.getMinutes()).padStart(2, '0')
+  return `${yyyy}-${mm}-${dd} ${hh}:${min}`
+}
+
 const formattedEntries = computed(() => {
   return props.entries.map(e => ({
     ...e,
-    time: new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    time: formatTimestamp(e.timestamp)
   }))
 })
 
@@ -102,7 +113,10 @@ const formattedEntries = computed(() => {
       >
         <!-- Header -->
         <div class="flex items-center justify-between p-3 border-b-2 border-stone-200 bg-stone-50">
-          <span class="font-mono text-xs text-stone-600">scratchpad: {{ stepId }}</span>
+          <div class="flex flex-col">
+            <span class="font-mono text-xs text-stone-600">scratchpad: {{ stepName }}</span>
+            <span class="font-mono text-[10px] text-stone-400">{{ stepId }}</span>
+          </div>
           <button @click="close" class="text-stone-400 hover:text-ink">
             <X class="w-3.5 h-3.5" />
           </button>
@@ -199,7 +213,8 @@ const formattedEntries = computed(() => {
     <!-- Mobile: Bottom Sheet (below md) -->
     <BottomSheet
       :open="isOpen && !isDesktop"
-      :title="`scratchpad: ${stepId}`"
+      :title="`scratchpad: ${stepName}`"
+      :subtitle="stepId"
       @close="close"
     >
       <div class="p-4 space-y-4">

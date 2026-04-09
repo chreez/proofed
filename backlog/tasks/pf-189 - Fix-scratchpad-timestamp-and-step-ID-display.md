@@ -1,9 +1,10 @@
 ---
 id: PF-189
 title: Fix scratchpad timestamp and step ID display
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-04-09 16:54'
+updated_date: '2026-04-09 17:48'
 labels:
   - bug (ux)
 dependencies: []
@@ -36,3 +37,9 @@ Two scratchpad UX issues:
 - [ ] #5 All existing callsites of ScratchpadNote updated to pass the new prop
 - [ ] #6 No changes to scratchpad data storage format — display-only fix
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Subagent complete. 7 files changed: ScratchpadNote.vue (timestamp format + stepName prop + header/sheet display), GeneralNotesFab.vue (timestamp format), StateStep.vue (passes stepName prop), BottomSheet.vue (subtitle prop), 3 test files updated. Build passes (1397 tests, type-check clean). HITL gate: visual review required — popover header, bottom sheet title, timestamp formats all changed.
+<!-- SECTION:NOTES:END -->

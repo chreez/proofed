@@ -16,7 +16,7 @@ vi.mock('@/components/StepNote.vue', () => ({
 vi.mock('@/components/ScratchpadNote.vue', () => ({
   default: {
     name: 'ScratchpadNote',
-    props: ['stepId', 'reminders', 'hasEntries', 'currentRating'],
+    props: ['stepId', 'stepName', 'reminders', 'hasEntries', 'currentRating'],
     emits: ['addNote', 'addRating', 'respond'],
     template: '<div class="scratchpad-note-stub" />'
   }

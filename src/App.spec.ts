@@ -169,7 +169,7 @@ vi.mock('@/composables/useScratchpad', () => ({
 vi.mock('@/components/GeneralNotesFab.vue', () => ({
   default: {
     name: 'GeneralNotesFab',
-    props: ['generalNoteCount', 'totalEntryCount', 'generalNotes'],
+    props: ['generalNoteCount', 'totalEntryCount', 'generalNotes', 'stepNames'],
     emits: ['addGeneralNote', 'exportJson', 'clearAll'],
     template: '<div class="general-notes-fab-stub" />'
   }

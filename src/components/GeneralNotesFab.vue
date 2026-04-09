@@ -9,6 +9,7 @@ const props = defineProps<{
   totalEntryCount: number
   generalNotes: ScratchpadEntry[]
   stepEntries: Record<string, ScratchpadEntry[]>
+  stepNames: Record<string, string>
 }>()
 
 const emit = defineEmits<{
@@ -46,10 +47,20 @@ function handleClear(): void {
 
 const showStepEntries = ref(false)
 
+function formatTimestamp(iso: string): string {
+  const d = new Date(iso)
+  const yyyy = d.getFullYear()
+  const mm = String(d.getMonth() + 1).padStart(2, '0')
+  const dd = String(d.getDate()).padStart(2, '0')
+  const hh = String(d.getHours()).padStart(2, '0')
+  const min = String(d.getMinutes()).padStart(2, '0')
+  return `${yyyy}-${mm}-${dd} ${hh}:${min}`
+}
+
 const formattedNotes = computed(() => {
   return props.generalNotes.map(n => ({
     ...n,
-    time: new Date(n.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    time: formatTimestamp(n.timestamp)
   }))
 })
 
@@ -64,7 +75,7 @@ const formattedStepEntries = computed(() => {
       stepId,
       entries: entries.map(e => ({
         ...e,
-        time: new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        time: formatTimestamp(e.timestamp)
       }))
     }))
 })
@@ -182,7 +193,7 @@ const formattedStepEntries = computed(() => {
             </button>
             <div v-if="showStepEntries" class="mt-2 space-y-2">
               <div v-for="group in formattedStepEntries" :key="group.stepId">
-                <span class="font-mono text-[10px] text-stone-500 block mb-1">{{ group.stepId }}</span>
+                <span class="font-mono text-[10px] text-stone-500 block mb-1">{{ stepNames[group.stepId] || group.stepId }}</span>
                 <div
                   v-for="(entry, i) in group.entries"
                   :key="i"

@@ -115,6 +115,7 @@ function parseSourceSegments(src: string): SourceSegment[] {
           <ScratchpadNote
             v-if="scratchpad"
             :step-id="state.id"
+            :step-name="state.title"
             :reminders="state.reminders"
             :entries="stepEntries"
             :has-entries="hasEntries"
