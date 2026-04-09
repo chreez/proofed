@@ -14,6 +14,23 @@ export interface Reheat {
   methods: ReheatMethod[]
 }
 
+export interface ScalingIngredient {
+  id: string
+  behavior: 'linear' | 'non_linear' | 'fixed'
+  note?: string
+}
+
+export interface Scaling {
+  tested_range: {
+    min: number
+    max: number
+  }
+  ingredients: ScalingIngredient[]
+  process_caveats: string[]
+  researched_date: string
+  sources: string[]
+}
+
 export interface Recipe {
   meta: RecipeMeta
   config: RecipeConfig
@@ -28,6 +45,7 @@ export interface Recipe {
   research?: Research
   reheat?: Reheat
   bake_defaults?: RecipeBakeDefaults
+  scaling?: Scaling
 }
 
 /**

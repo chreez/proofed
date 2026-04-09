@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject, ref, type Ref } from 'vue'
 import type { RecipeState, RecipeConfig } from '@/types/recipe'
 import type { useScratchpad } from '@/composables/useScratchpad'
 import TimerDisplay from '@/components/TimerDisplay.vue'
@@ -8,6 +8,7 @@ import TempText from '@/components/TempText.vue'
 import ScratchpadNote from '@/components/ScratchpadNote.vue'
 import ReminderBanner from '@/components/ReminderBanner.vue'
 import { scrollToStageAfterTransition } from '@/composables/useScrollToNext'
+import { SCALING_MULTIPLIER_KEY } from '@/composables/scalingKey'
 
 interface StepNoteData {
   note: string
@@ -30,12 +31,26 @@ const emit = defineEmits<{
 
 const isChecked = computed(() => props.progress.isStateChecked(props.state.id))
 
+// Inject multiplier from App.vue (defaults to 1 if not provided)
+const multiplier = inject<Ref<number>>(SCALING_MULTIPLIER_KEY, ref(1))
+
 function toggle() {
   const advancedTo = props.progress.toggleState(props.state.id, props.stageId)
   if (advancedTo) {
     scrollToStageAfterTransition(advancedTo)
   }
   emit('toggled', props.state.id)
+}
+
+// Scale component amount by parsing and multiplying numeric values
+function scaleComponentAmount(amount: string): string {
+  if (multiplier.value === 1) return amount
+  const match = amount.match(/^([\d.]+)/)
+  if (!match) return amount
+  const num = parseFloat(match[1])
+  const scaled = num * multiplier.value
+  const unit = amount.slice(match[1].length)
+  return `${scaled}${unit}`
 }
 
 // Scratchpad handlers
@@ -139,7 +154,7 @@ function parseSourceSegments(src: string): SourceSegment[] {
             :key="comp.name"
             class="text-xs bg-stone-100 text-stone-700 px-2 py-1"
           >
-            <TempText :text="comp.name" />: {{ comp.amount }}
+            <TempText :text="comp.name" />: {{ scaleComponentAmount(comp.amount) }}
           </span>
         </div>
 

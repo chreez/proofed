@@ -396,3 +396,35 @@ describe('GatherCategory per-category copy', () => {
     expect(copiedText).toBe('All-purpose flour\nUnsalted butter\nDark brown sugar')
   })
 })
+
+describe('GatherCategory scaling badges', () => {
+  it('renders warning badge for items with a note', () => {
+    const wrapper = mount(GatherCategory, {
+      props: {
+        title: 'Ingredients',
+        items: [
+          { id: 'ing-yeast', label: 'Yeast — 7g', note: 'Fixed amount — does not scale linearly' }
+        ],
+        progress: makeProgress(),
+        stageId: 'prep'
+      }
+    })
+    expect(wrapper.text()).toContain('⚠')
+    expect(wrapper.find('[title="Fixed amount — does not scale linearly"]').exists()).toBe(true)
+  })
+
+  it('does not render badge for items without a note', () => {
+    const wrapper = mount(GatherCategory, {
+      props: {
+        title: 'Ingredients',
+        items: [
+          { id: 'ing-flour', label: 'Flour — 390g' }
+        ],
+        progress: makeProgress(),
+        stageId: 'prep'
+      }
+    })
+    const badges = wrapper.findAll('[title]').filter(el => el.text() === '⚠')
+    expect(badges.length).toBe(0)
+  })
+})

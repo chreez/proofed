@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { ref } from 'vue'
 import GatherSection from './GatherSection.vue'
+import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
 
 // Mock child component
 vi.mock('@/components/GatherCategory.vue', () => ({
@@ -339,6 +341,138 @@ describe('GatherSection', () => {
 
     // Should NOT call clipboard
     expect(writeTextMock).not.toHaveBeenCalled()
+  })
+})
+
+describe('GatherSection scaling', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+    writeTextMock.mockClear()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  it('scales ingredient amounts when multiplier > 1', () => {
+    const multiplier = ref(2)
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'flour', name: 'All-purpose flour', total: 390, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+
+    const stub = wrapper.find('.gather-category-stub')
+    expect(stub.text()).toContain('Ingredients: 1 items')
+  })
+
+  it('scales breakdown amounts with multiplier', () => {
+    const multiplier = ref(2)
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            {
+              id: 'butter',
+              name: 'Butter',
+              total: 140,
+              unit: 'g',
+              breakdown: [{ label: 'filling', amount: 14 }, { label: 'dough', amount: 28 }]
+            }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+
+    expect(wrapper.find('.gather-category-stub').exists()).toBe(true)
+  })
+
+  it('shows scaling note for non-linear ingredients when multiplier > 1', () => {
+    const multiplier = ref(2)
+    const scalingIngredients = ref([
+      { id: 'yeast', behavior: 'fixed' as const, note: 'Does not scale linearly' }
+    ])
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'yeast', name: 'Yeast', total: 7, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: {
+        provide: {
+          [SCALING_MULTIPLIER_KEY]: multiplier,
+          [SCALING_INGREDIENTS_KEY]: scalingIngredients
+        }
+      }
+    })
+
+    expect(wrapper.find('.gather-category-stub').exists()).toBe(true)
+  })
+
+  it('does not show scaling note for linear ingredients', () => {
+    const multiplier = ref(2)
+    const scalingIngredients = ref([
+      { id: 'flour', behavior: 'linear' as const, note: 'Scales linearly' }
+    ])
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'flour', name: 'Flour', total: 390, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: {
+        provide: {
+          [SCALING_MULTIPLIER_KEY]: multiplier,
+          [SCALING_INGREDIENTS_KEY]: scalingIngredients
+        }
+      }
+    })
+
+    expect(wrapper.find('.gather-category-stub').exists()).toBe(true)
+  })
+
+  it('copies scaled ingredient amounts in gather text', async () => {
+    const multiplier = ref(2)
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'flour', name: 'All-purpose flour', total: 390, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+
+    await wrapper.find('button[title="Copy Mise en Place"]').trigger('click')
+
+    const copiedText = writeTextMock.mock.calls[0][0]
+    expect(copiedText).toContain('All-purpose flour — 780g')
   })
 })
 

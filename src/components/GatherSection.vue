@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { computed, useTemplateRef } from 'vue'
+import { computed, useTemplateRef, inject, ref, type Ref } from 'vue'
 import { ClipboardList, Check, RotateCcw } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import type { GatherSection } from '@/types/recipe'
 import GatherCategory from '@/components/GatherCategory.vue'
 import { copyToClipboard } from '@/composables/useClipboard'
+import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
+import type { ScalingIngredient } from '@/types/recipe'
 
 const props = defineProps<{
   gather: GatherSection
@@ -15,6 +17,11 @@ const props = defineProps<{
 
 const copyBtn = useTemplateRef<InstanceType<typeof IconButton>>('copyBtn')
 const resetBtn = useTemplateRef<InstanceType<typeof IconButton>>('resetBtn')
+
+// Inject multiplier from App.vue (defaults to 1 if not provided)
+const multiplier = inject<Ref<number>>(SCALING_MULTIPLIER_KEY, ref(1))
+// Inject scaling ingredients for behavior badges (provided as ComputedRef by App.vue)
+const scalingIngredients = inject<Ref<ScalingIngredient[]>>(SCALING_INGREDIENTS_KEY, ref([]))
 
 const vesselItems = computed(() =>
   (props.gather.vessels || []).map(v => ({
@@ -30,15 +37,30 @@ const equipmentItems = computed(() =>
   }))
 )
 
-const ingredientItems = computed(() =>
-  (props.gather.ingredients || []).map(ing => ({
-    id: `ing-${ing.id}`,
-    label: `${ing.name} — ${ing.total}${ing.unit}`,
-    detail: ing.breakdown
-      ? ing.breakdown.map(b => `${b.amount}${ing.unit} ${b.label}`).join(', ')
+const ingredientItems = computed(() => {
+  const mult = multiplier.value
+  return (props.gather.ingredients || []).map(ing => {
+    const scaledTotal = ing.total * mult
+    const label = `${ing.name} — ${scaledTotal}${ing.unit}`
+    const detail = ing.breakdown
+      ? ing.breakdown.map(b => `${b.amount * mult}${ing.unit} ${b.label}`).join(', ')
       : undefined
-  }))
-)
+    // Show behavior note for non-linear/fixed ingredients when scaled
+    let note: string | undefined
+    if (mult > 1) {
+      const scalingInfo = scalingIngredients.value.find(s => s.id === ing.id)
+      if (scalingInfo && scalingInfo.behavior !== 'linear' && scalingInfo.note) {
+        note = scalingInfo.note
+      }
+    }
+    return {
+      id: `ing-${ing.id}`,
+      label,
+      detail,
+      note
+    }
+  })
+})
 
 const allItemIds = computed(() => [
   ...vesselItems.value.map(v => v.id),

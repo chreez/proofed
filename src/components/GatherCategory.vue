@@ -10,7 +10,7 @@ import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = withDefaults(defineProps<{
   title: string
-  items: { id: string; label: string; detail?: string }[]
+  items: { id: string; label: string; detail?: string; note?: string; behaviorIcon?: string }[]
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
   stageId: string
   startCollapsed?: boolean
@@ -196,18 +196,25 @@ async function copyCategory(): Promise<void> {
       <div class="overflow-hidden">
         <div class="flex flex-col gap-0.5">
           <!-- Unchecked items first -->
-          <CheckableItem
-            v-for="item in uncheckedItems"
-            :key="item.id"
-            :id="item.id"
-            :label="item.label"
-            :checked="false"
-            @toggle="handleToggle(item.id)"
-          >
-            <template v-if="item.detail" #detail>
-              <div class="text-xs text-stone-400 ml-8 mt-1"><TempText :text="item.detail" /></div>
-            </template>
-          </CheckableItem>
+          <div v-for="item in uncheckedItems" :key="item.id">
+            <div class="flex items-start gap-2">
+              <CheckableItem
+                :id="item.id"
+                :label="item.label"
+                :checked="false"
+                class="flex-1"
+                @toggle="handleToggle(item.id)"
+              >
+                <template v-if="item.detail" #detail>
+                  <div class="text-xs text-stone-400 ml-8 mt-1"><TempText :text="item.detail" /></div>
+                </template>
+              </CheckableItem>
+              <!-- Behavior note badge for non-linear/fixed ingredients -->
+              <div v-if="item.note" class="text-xs text-warning mt-1.5 px-1.5 py-0.5 bg-warning-tint rounded-sm" :title="item.note">
+                ⚠
+              </div>
+            </div>
+          </div>
 
           <!-- Divider when both exist -->
           <div

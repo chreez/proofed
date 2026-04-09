@@ -1,18 +1,22 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`HTML snapshot > matches snapshot 1`] = `
-"<div class="card">
-  <div class="flex items-start justify-between gap-4">
-    <div>
-      <h2 class="text-2xl text-heading">Quick Cinnamon Buns</h2>
-      <div class="font-mono text-sm text-stone-400 mb-2">v1.0</div>
-      <div class="flex flex-wrap gap-4 text-muted"><span>America's Test Kitchen</span><span>8 buns</span><span>~1.5 hours</span></div>
+"<div>
+  <div class="card">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <h2 class="text-2xl text-heading">Quick Cinnamon Buns</h2>
+        <div class="font-mono text-sm text-stone-400 mb-2">v1.0</div>
+        <div class="flex flex-wrap gap-4 text-muted mb-3"><span>America's Test Kitchen</span><span>8 buns</span><span>~1.5 hours</span></div>
+        <!--v-if-->
+      </div>
+      <div class="flex gap-1 shrink-0">
+        <!--v-if-->
+        <div data-v-f6045c74="" class="icon-btn-wrap"><button data-v-f6045c74="" class="icon-btn" title="Copy Recipe"><svg class="icon-clipboard"></svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy Recipe</span></div>
+      </div>
     </div>
-    <div class="flex gap-1 shrink-0">
-      <!--v-if-->
-      <div data-v-f6045c74="" class="icon-btn-wrap"><button data-v-f6045c74="" class="icon-btn" title="Copy Recipe"><svg class="icon-clipboard"></svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy Recipe</span></div>
-    </div>
-  </div>
+  </div><!-- Process caveats banner when scaled -->
+  <!--v-if-->
 </div>
 <!--teleport start-->
 <!--teleport end-->"

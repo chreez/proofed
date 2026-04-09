@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, shallowRef, computed, watch, nextTick } from 'vue'
+import { onMounted, onUnmounted, ref, shallowRef, computed, watch, nextTick, provide } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
@@ -9,6 +9,7 @@ import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import { latestCookLogEntryWithPhotos } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
 import { copyToClipboard } from '@/composables/useClipboard'
+import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
 import { QrCode } from 'lucide-vue-next'
 import type { RecipeState, CookLogPhoto } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
@@ -56,6 +57,14 @@ useRecipeMeta(
   () => typeof route.params.date === 'string' ? route.params.date : undefined,
   () => typeof route.name === 'string' ? route.name : undefined
 )
+
+// Scaling: multiplier lives at app level so all descendants (RecipeMeta, StageCard, etc.) can inject it
+const scalingMultiplier = ref(1)
+provide(SCALING_MULTIPLIER_KEY, scalingMultiplier)
+provide(SCALING_INGREDIENTS_KEY, computed(() => currentRecipe.value?.scaling?.ingredients ?? []))
+
+// Reset multiplier when switching recipes
+watch(currentRecipeId, () => { scalingMultiplier.value = 1 })
 
 // Derive page state from route
 const showIndex = computed(() => route.name === 'index')

@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { useTemplateRef } from 'vue'
+import { useTemplateRef, ref, computed, inject } from 'vue'
 import { ClipboardList, Check, RotateCcw } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import ResetConfirmDialog from '@/components/ResetConfirmDialog.vue'
+import ScalingControl from '@/components/ScalingControl.vue'
 import { copyToClipboard } from '@/composables/useClipboard'
+import { useScaling } from '@/composables/useScaling'
 import type { Recipe } from '@/types/recipe'
+import { SCALING_MULTIPLIER_KEY } from '@/composables/scalingKey'
 
 const props = defineProps<{
   recipe: Recipe
@@ -22,11 +25,37 @@ const copyBtn = useTemplateRef<InstanceType<typeof IconButton>>('copyBtn')
 const resetBtn = useTemplateRef<InstanceType<typeof IconButton>>('resetBtn')
 const resetDialog = useTemplateRef<InstanceType<typeof ResetConfirmDialog>>('resetDialog')
 
+// Inject app-level multiplier ref (provided by App.vue so all siblings can share it)
+const appMultiplier = inject(SCALING_MULTIPLIER_KEY, ref(1))
+const scaling = useScaling(props.recipe, appMultiplier)
+const dismissedCaveats = ref(new Set<number>())
+
+const visibleCaveats = computed(() => {
+  return scaling.processCaveats.value.filter((_, idx) => !dismissedCaveats.value.has(idx))
+})
+
 // Format version as v{major}.{minor} (drop patch)
 function formatVersion(version: string): string {
   const match = version.match(/^v?(\d+)\.(\d+)/)
   if (!match) return version
   return `v${match[1]}.${match[2]}`
+}
+
+// Get scaled yields display
+function getYieldsDisplay(): string {
+  if (scaling.multiplier.value === 1) return props.recipe.meta.yields
+  const yields = props.recipe.meta.yields
+  const match = yields.match(/^(\d+)/)
+  if (!match) return yields
+  const num = parseInt(match[1])
+  const scaled = num * scaling.multiplier.value
+  const unit = yields.slice(match[1].length)
+  return `${scaled}${unit} (×${scaling.multiplier.value})`
+}
+
+function dismissCaveat(idx: number) {
+  dismissedCaveats.value.add(idx)
+  dismissedCaveats.value = new Set(dismissedCaveats.value)
 }
 
 function formatRecipeForPaprika(): string {
@@ -88,36 +117,60 @@ function handleResetConfirm(): void {
 </script>
 
 <template>
-  <div class="card">
-    <div class="flex items-start justify-between gap-4">
-      <div>
-        <h2 class="text-2xl text-heading">{{ recipe.meta.name }}</h2>
-        <div v-if="recipe.version" class="font-mono text-sm text-stone-400 mb-2">{{ formatVersion(recipe.version) }}</div>
-        <div class="flex flex-wrap gap-4 text-muted">
-          <span v-if="recipe.meta.source">{{ recipe.meta.source.name }}</span>
-          <span>{{ recipe.meta.yields }}</span>
-          <span>{{ recipe.meta.total_time }}</span>
+  <div>
+    <div class="card">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 class="text-2xl text-heading">{{ recipe.meta.name }}</h2>
+          <div v-if="recipe.version" class="font-mono text-sm text-stone-400 mb-2">{{ formatVersion(recipe.version) }}</div>
+          <div class="flex flex-wrap gap-4 text-muted mb-3">
+            <span v-if="recipe.meta.source">{{ recipe.meta.source.name }}</span>
+            <span>{{ getYieldsDisplay() }}</span>
+            <span>{{ recipe.meta.total_time }}</span>
+          </div>
+          <ScalingControl
+            v-if="recipe.scaling"
+            v-model="scaling.multiplier.value"
+            :scaling="recipe.scaling"
+          />
+        </div>
+        <div class="flex gap-1 shrink-0">
+          <IconButton
+            v-if="hasProgress"
+            ref="resetBtn"
+            tooltip="Reset Bake"
+            @click="handleReset"
+          >
+            <RotateCcw />
+          </IconButton>
+          <IconButton
+            ref="copyBtn"
+            tooltip="Copy Recipe"
+            @click="copyRecipe"
+          >
+            <ClipboardList />
+            <template #feedback>
+              <Check />
+            </template>
+          </IconButton>
         </div>
       </div>
-      <div class="flex gap-1 shrink-0">
-        <IconButton
-          v-if="hasProgress"
-          ref="resetBtn"
-          tooltip="Reset Bake"
-          @click="handleReset"
+    </div>
+
+    <!-- Process caveats banner when scaled -->
+    <div v-if="visibleCaveats.length > 0" class="mt-4 space-y-2">
+      <div
+        v-for="(caveat, idx) in visibleCaveats"
+        :key="idx"
+        class="bg-warning-tint border-l-4 border-warning p-3 flex items-start justify-between gap-3"
+      >
+        <p class="text-sm text-ink">{{ caveat }}</p>
+        <button
+          class="text-xs text-stone-500 hover:text-stone-700 shrink-0 font-mono"
+          @click="dismissCaveat(scaling.processCaveats.value.indexOf(caveat))"
         >
-          <RotateCcw />
-        </IconButton>
-        <IconButton
-          ref="copyBtn"
-          tooltip="Copy Recipe"
-          @click="copyRecipe"
-        >
-          <ClipboardList />
-          <template #feedback>
-            <Check />
-          </template>
-        </IconButton>
+          ✕
+        </button>
       </div>
     </div>
   </div>

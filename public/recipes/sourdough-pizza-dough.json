@@ -21,8 +21,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.2.0",
+  "version": "v1.3.0",
   "change_log": [
+    {
+      "version": "v1.3.0",
+      "date": "2026-04-09",
+      "summary": "Add scaling research block with 1–2× tested range, ingredient behavior classification, and process caveats for bulk fermentation timing and vessel size."
+    },
     {
       "version": "v1.2.0",
       "date": "2026-04-09",
@@ -691,6 +696,75 @@
         "detail": "350–400°F (175–200°C) for about 5 minutes. Quick and effective, crisps the bottom well.",
         "source": "user"
       }
+    ]
+  },
+  "scaling": {
+    "tested_range": {
+      "min": 1,
+      "max": 2
+    },
+    "ingredients": [
+      {
+        "id": "bread_flour",
+        "behavior": "linear",
+        "note": "Scales with dough volume; baker's math-based"
+      },
+      {
+        "id": "water",
+        "behavior": "linear",
+        "note": "Maintains 62% hydration at all scales"
+      },
+      {
+        "id": "sourdough_starter",
+        "behavior": "linear",
+        "note": "Maintains ~22% inoculation rate; fermentation timeline scales proportionally"
+      },
+      {
+        "id": "salt",
+        "behavior": "linear",
+        "note": "Scales to maintain ~1.7% salt ratio; crucial for flavor and dough strength"
+      },
+      {
+        "id": "diastatic_malt",
+        "behavior": "linear",
+        "note": "Enzyme activity scales with flour weight; maintains browning compensation"
+      },
+      {
+        "id": "cornmeal",
+        "behavior": "linear",
+        "note": "Primarily prevents sticking; scales proportionally"
+      },
+      {
+        "id": "san_marzano_sauce",
+        "behavior": "linear",
+        "note": "Scales with pizza count; coverage ratio remains consistent"
+      },
+      {
+        "id": "mozzarella",
+        "behavior": "linear",
+        "note": "Scales with pizza count; low-moisture variety essential at all scales"
+      },
+      {
+        "id": "hard_cheese",
+        "behavior": "linear",
+        "note": "Scales with pizza count; maintains umami base layer"
+      },
+      {
+        "id": "pepperoni",
+        "behavior": "linear",
+        "note": "Scales with pizza count; distribution coverage remains consistent"
+      }
+    ],
+    "process_caveats": [
+      "Bulk fermentation timeline scales: at 2× dough mass, room-temperature bulk will complete ~30-50% faster due to increased thermal mass. Monitor dough volume closely — do not rely solely on timer; use visual indicators (25–50% rise) as primary guide.",
+      "Vessel size must increase with dough volume. At 2×, ensure your bulk fermentation bowl is at least 5-6L capacity (a standard large mixing bowl ~8L is adequate). Insufficient headroom prevents proper stretch-and-fold execution.",
+      "Bake sequencing matters: two pizzas cannot bake simultaneously on a single steel. At 2×, plan two separate stretch-and-proofs with staggered loading (pizza 1 while pizza 2 tempers), or use two steels if available. Skipping this causes dough loss or uneven bake results."
+    ],
+    "researched_date": "2026-04-08",
+    "sources": [
+      "The Perfect Loaf - Maurizio Leo on sourdough pizza dough fermentation and scaling (https://www.theperfectloaf.com/sourdough-pizza-dough-and-recipes/)",
+      "Baker's Percentage Reference - flour-based scaling (https://en.wikipedia.org/wiki/Baker%27s_percentage)",
+      "Food Science research on fermentation rate vs. dough mass (Bread Bakers Guild of America resources)"
     ]
   },
   "cook_log": [

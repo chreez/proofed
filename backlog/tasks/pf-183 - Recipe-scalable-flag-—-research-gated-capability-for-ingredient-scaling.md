@@ -1,10 +1,10 @@
 ---
 id: PF-183
 title: Recipe scalable flag — research-gated capability for ingredient scaling
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 21:10'
-updated_date: '2026-04-08 22:10'
+updated_date: '2026-04-09 21:58'
 labels:
   - schema
   - scaling
@@ -54,3 +54,33 @@ Open questions to resolve in grooming:
 - [ ] #18 The previously groomed recipe-multiplier task (PF-129) has its description and acceptance criteria updated to point to this task as the owner of the multiplier UI work, OR is closed with a redirect note. No multiplier UI scope exists in two places after grooming
 - [ ] #19 `npm run build` passes (vitest + vue-tsc + vite build)
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+## Summary
+
+Implemented recipe scaling multiplier with provide/inject architecture rooted at App.vue. Recipes with a `scaling` block get a ScalingControl button bar (1×, 2×, 3×, 4×) in RecipeMeta. Scaling propagates to all descendant components via Vue provide/inject:
+
+- **Ingredients**: GatherSection scales amounts and breakdown values
+- **Components**: StateStep scales component amounts (e.g., `390g` → `780g`)
+- **Nutrition**: NutritionSection scales full-recipe totals and breakdown
+- **Yields**: RecipeMeta shows scaled yields with multiplier badge
+- **Process caveats**: Warning banners for scaled recipes, dismissible per-session
+- **Untested range**: Warning badge when beyond `tested_range`
+- **Scaling notes**: Non-linear/fixed ingredients show ⚠ badge with tooltip
+
+### Schema additions
+- `Recipe.scaling` block with `tested_range`, `ingredients[]` (behavior + note), `process_caveats[]`, `researched_date`, `sources[]`
+- `ScalingIngredient` type with `behavior: 'linear' | 'fixed' | 'sub-linear' | 'super-linear'`
+
+### Files
+- New: `ScalingControl.vue`, `scalingKey.ts`, `useScaling.ts`
+- Modified: `App.vue`, `RecipeMeta.vue`, `GatherSection.vue`, `GatherCategory.vue`, `NutritionSection.vue`, `StateStep.vue`, `recipe.ts`
+- Recipe: `sourdough-pizza-dough.json` (first recipe with scaling block)
+- Tests: 12 new tests across RecipeMeta, StateStep, GatherCategory, GatherSection, NutritionSection specs
+
+### Known gaps (backlogged)
+- DRAFT-52: Free-text note amounts don't scale (needs structured `scalable_amounts` annotations)
+- DRAFT-53: Copy-to-clipboard (Paprika format) uses raw values, cost calculation doesn't account for scaling
+<!-- SECTION:FINAL_SUMMARY:END -->

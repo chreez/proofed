@@ -1,7 +1,9 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { ref } from 'vue'
 import NutritionSection from './NutritionSection.vue'
 import type { RecipeNutrition } from '@/types/recipe'
+import { SCALING_MULTIPLIER_KEY } from '@/composables/scalingKey'
 
 vi.mock('@/composables/useClipboard', () => ({
   copyToClipboard: vi.fn().mockResolvedValue(undefined)
@@ -247,5 +249,51 @@ describe('NutritionSection', () => {
     expect(copyToClipboard).toHaveBeenCalledWith(
       expect.stringContaining('#nutrition-section')
     )
+  })
+})
+
+describe('NutritionSection scaling', () => {
+  it('scales full recipe totals when multiplier > 1', async () => {
+    const multiplier = ref(2)
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+
+    // Switch to Full Recipe view
+    const fullBtn = wrapper.findAll('button').find(b => b.text() === 'Full Recipe')!
+    await fullBtn.trigger('click')
+
+    // Calories should be doubled: 6848 * 2 = 13696
+    expect(wrapper.text()).toContain('13696')
+    // Servings label should also scale
+    expect(wrapper.text()).toContain('Full recipe (16 servings)')
+  })
+
+  it('does not scale per-serving values', () => {
+    const multiplier = ref(2)
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+
+    // Per-serving (default view) should show original values
+    expect(wrapper.text()).toContain('856')
+    expect(wrapper.text()).toContain('1 bun')
+  })
+
+  it('scales breakdown amounts and calories when multiplier > 1', async () => {
+    const multiplier = ref(2)
+    const wrapper = mount(NutritionSection, {
+      props: { nutrition: mockNutrition, sectionId: 'nutrition-section' },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+
+    // Breakdown should show scaled amounts
+    const detailsHtml = wrapper.find('details').html()
+    // Flour amount: 531 * 2 = 1062
+    expect(detailsHtml).toContain('1062g')
+    // Butter amount: 227 * 2 = 454
+    expect(detailsHtml).toContain('454g')
   })
 })

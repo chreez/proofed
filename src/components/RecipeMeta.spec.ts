@@ -291,6 +291,106 @@ describe('Reset Bake button', () => {
   })
 })
 
+describe('Scaling', () => {
+  function makeScalingRecipe(overrides = {}) {
+    return makeRecipe({
+      scaling: {
+        tested_range: { min: 1, max: 2 },
+        ingredients: [
+          { id: 'flour', behavior: 'linear' as const, note: 'Scales linearly' }
+        ],
+        process_caveats: ['Watch vessel size at 2×', 'Fermentation timing changes'],
+        researched_date: '2026-04-08',
+        sources: ['Test source']
+      },
+      ...overrides
+    })
+  }
+
+  it('renders ScalingControl when recipe has scaling block', () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeScalingRecipe() }
+    })
+    expect(wrapper.text()).toContain('Scale:')
+  })
+
+  it('does not render ScalingControl when recipe lacks scaling block', () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeRecipe() }
+    })
+    expect(wrapper.text()).not.toContain('Scale:')
+  })
+
+  it('shows scaled yields when multiplier is changed', async () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeScalingRecipe() }
+    })
+    // Click the 2× button
+    const buttons = wrapper.findAll('button').filter(b => b.text() === '2×')
+    expect(buttons.length).toBeGreaterThan(0)
+    await buttons[0].trigger('click')
+    expect(wrapper.text()).toContain('16 buns')
+    expect(wrapper.text()).toContain('(×2)')
+  })
+
+  it('shows process caveats when multiplier > 1', async () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeScalingRecipe() }
+    })
+    expect(wrapper.text()).not.toContain('Watch vessel size')
+    const btn2x = wrapper.findAll('button').filter(b => b.text() === '2×')
+    await btn2x[0].trigger('click')
+    expect(wrapper.text()).toContain('Watch vessel size at 2×')
+    expect(wrapper.text()).toContain('Fermentation timing changes')
+  })
+
+  it('dismisses a caveat when clicking ✕', async () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeScalingRecipe() }
+    })
+    const btn2x = wrapper.findAll('button').filter(b => b.text() === '2×')
+    await btn2x[0].trigger('click')
+    expect(wrapper.text()).toContain('Watch vessel size at 2×')
+
+    const dismissBtns = wrapper.findAll('button').filter(b => b.text() === '✕')
+    await dismissBtns[0].trigger('click')
+    expect(wrapper.text()).not.toContain('Watch vessel size at 2×')
+    expect(wrapper.text()).toContain('Fermentation timing changes')
+  })
+
+  it('shows untested warning beyond tested range', async () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeScalingRecipe() }
+    })
+    const btn4x = wrapper.findAll('button').filter(b => b.text() === '4×')
+    await btn4x[0].trigger('click')
+    expect(wrapper.text()).toContain('Beyond tested range')
+  })
+
+  it('resets yields when going back to 1×', async () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeScalingRecipe() }
+    })
+    const btn2x = wrapper.findAll('button').filter(b => b.text() === '2×')
+    await btn2x[0].trigger('click')
+    expect(wrapper.text()).toContain('16 buns')
+
+    const btn1x = wrapper.findAll('button').filter(b => b.text() === '1×')
+    await btn1x[0].trigger('click')
+    expect(wrapper.text()).toContain('8 buns')
+    expect(wrapper.text()).not.toContain('(×')
+  })
+
+  it('handles non-parseable yields with multiplier badge', async () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeScalingRecipe({ meta: { name: 'Test', source: { name: 'src' }, yields: 'one batch', total_time: '1h' } }) }
+    })
+    const btn2x = wrapper.findAll('button').filter(b => b.text() === '2×')
+    await btn2x[0].trigger('click')
+    expect(wrapper.text()).toContain('one batch')
+  })
+})
+
 describe('HTML snapshot', () => {
   it('matches snapshot', () => {
     const wrapper = mount(RecipeMeta, {

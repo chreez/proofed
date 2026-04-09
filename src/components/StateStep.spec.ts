@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { ref } from 'vue'
 import StateStep from './StateStep.vue'
+import { SCALING_MULTIPLIER_KEY } from '@/composables/scalingKey'
 
 // Mock child components
 vi.mock('@/components/TimerDisplay.vue', () => ({
@@ -724,5 +726,51 @@ describe('StateStep scratchpad integration', () => {
     banner.vm.$emit('dismiss', 'mix-dough', 'Weigh dough')
     await wrapper.vm.$nextTick()
     expect(sp.dismissReminder).toHaveBeenCalledWith('mix-dough', 'Weigh dough')
+  })
+})
+
+describe('StateStep scaling', () => {
+  it('scales component amounts when multiplier is provided', () => {
+    const multiplier = ref(2)
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          components: [{ name: 'Flour', amount: '390g' }, { name: 'Water', amount: '250ml' }]
+        }
+      },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+    expect(wrapper.text()).toContain('780g')
+    expect(wrapper.text()).toContain('500ml')
+  })
+
+  it('shows original amounts at 1× multiplier', () => {
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          components: [{ name: 'Flour', amount: '390g' }]
+        }
+      }
+    })
+    expect(wrapper.text()).toContain('390g')
+  })
+
+  it('handles non-numeric component amounts gracefully', () => {
+    const multiplier = ref(2)
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          components: [{ name: 'Salt', amount: 'to taste' }]
+        }
+      },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+    expect(wrapper.text()).toContain('to taste')
   })
 })

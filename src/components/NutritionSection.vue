@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, useTemplateRef, onMounted } from 'vue'
+import { ref, computed, useTemplateRef, onMounted, inject, type Ref } from 'vue'
 import { Link2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import { copyToClipboard } from '@/composables/useClipboard'
+import { SCALING_MULTIPLIER_KEY } from '@/composables/scalingKey'
 import type { RecipeNutrition, NutrientTotals } from '@/types/recipe'
 
 interface FdaDvConfig {
@@ -17,6 +18,9 @@ const props = defineProps<{
 }>()
 
 const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
+
+// Inject multiplier from App.vue (defaults to 1 if not provided)
+const multiplier = inject<Ref<number>>(SCALING_MULTIPLIER_KEY, ref(1))
 
 async function copyPermalink(): Promise<void> {
   const url = `${window.location.origin}${window.location.pathname}#${props.sectionId}`
@@ -44,12 +48,30 @@ const showDvColumn = computed<boolean>(() => {
 
 const activeData = computed<NutrientTotals | null>(() => {
   if (!props.nutrition) return null
-  return showFull.value ? props.nutrition.totals : props.nutrition.perServing
+  const data = showFull.value ? props.nutrition.totals : props.nutrition.perServing
+  if (multiplier.value === 1) return data
+  // Scale totals by multiplier; perServing stays same
+  if (showFull.value) {
+    return {
+      calories: data.calories * multiplier.value,
+      protein: data.protein * multiplier.value,
+      totalFat: data.totalFat * multiplier.value,
+      saturatedFat: data.saturatedFat * multiplier.value,
+      carbohydrates: data.carbohydrates * multiplier.value,
+      sugar: data.sugar * multiplier.value,
+      fiber: data.fiber * multiplier.value,
+      sodium: data.sodium * multiplier.value
+    }
+  }
+  return data
 })
 
 const servingLabel = computed<string>(() => {
   if (!props.nutrition) return ''
-  if (showFull.value) return `Full recipe (${props.nutrition.servings} servings)`
+  if (showFull.value) {
+    const scaledServings = props.nutrition.servings * multiplier.value
+    return `Full recipe (${scaledServings} servings)`
+  }
   return props.nutrition.servingSize ?? `1 of ${props.nutrition.servings}`
 })
 
@@ -73,9 +95,17 @@ const nutrientRows: NutrientRow[] = [
 
 const sortedBreakdown = computed(() => {
   if (!props.nutrition) return []
-  return [...props.nutrition.breakdown]
+  const breakdown = [...props.nutrition.breakdown]
     .filter(b => b.calories > 0)
     .sort((a, b) => b.calories - a.calories)
+
+  // Scale amounts and calories if multiplied
+  if (multiplier.value === 1) return breakdown
+  return breakdown.map(item => ({
+    ...item,
+    amount: item.amount * multiplier.value,
+    calories: item.calories * multiplier.value
+  }))
 })
 
 function formatValue(value: number, unit: string): string {
