@@ -11,6 +11,8 @@ exports[`HTML snapshot > matches collapsed snapshot (6 entries, newest 4 visible
         </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
   </div><!-- PF-41 decision A2: stacked mini-tiles row (sessions · items · [servings] · calories) -->
   <!--v-if-->
+  <!-- PF-177.9 — Compact bake stats variant switcher (preview only) -->
+  <!--v-if-->
   <div data-v-f626ec8a="" id="bake-2026-02-06" class="mb-4 scroll-mt-16">
     <div data-v-f626ec8a="" class="border-2 border-stone-200 p-3 flex gap-3">
       <!-- Optional hero thumbnail -->
@@ -20,6 +22,8 @@ exports[`HTML snapshot > matches collapsed snapshot (6 entries, newest 4 visible
         <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-06 — Friday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.5</span>
           <!--v-if-->
         </div>
+        <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
         <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
@@ -40,6 +44,8 @@ exports[`HTML snapshot > matches collapsed snapshot (6 entries, newest 4 visible
           <!--v-if-->
         </div>
         <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
+        <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
           <!--v-if-->
@@ -59,6 +65,8 @@ exports[`HTML snapshot > matches collapsed snapshot (6 entries, newest 4 visible
           <!--v-if-->
         </div>
         <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
+        <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
           <!--v-if-->
@@ -77,6 +85,8 @@ exports[`HTML snapshot > matches collapsed snapshot (6 entries, newest 4 visible
         <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-03 — Tuesday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.2</span>
           <!--v-if-->
         </div>
+        <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
         <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
@@ -102,6 +112,8 @@ exports[`HTML snapshot > matches expanded snapshot (6 entries, all visible, no b
         </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
   </div><!-- PF-41 decision A2: stacked mini-tiles row (sessions · items · [servings] · calories) -->
   <!--v-if-->
+  <!-- PF-177.9 — Compact bake stats variant switcher (preview only) -->
+  <!--v-if-->
   <div data-v-f626ec8a="" id="bake-2026-02-06" class="mb-4 scroll-mt-16">
     <div data-v-f626ec8a="" class="border-2 border-stone-200 p-3 flex gap-3">
       <!-- Optional hero thumbnail -->
@@ -111,6 +123,8 @@ exports[`HTML snapshot > matches expanded snapshot (6 entries, all visible, no b
         <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-06 — Friday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.5</span>
           <!--v-if-->
         </div>
+        <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
         <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
@@ -131,6 +145,8 @@ exports[`HTML snapshot > matches expanded snapshot (6 entries, all visible, no b
           <!--v-if-->
         </div>
         <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
+        <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
           <!--v-if-->
@@ -149,6 +165,8 @@ exports[`HTML snapshot > matches expanded snapshot (6 entries, all visible, no b
         <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-04 — Wednesday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.3</span>
           <!--v-if-->
         </div>
+        <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
         <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
@@ -169,6 +187,8 @@ exports[`HTML snapshot > matches expanded snapshot (6 entries, all visible, no b
           <!--v-if-->
         </div>
         <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
+        <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
           <!--v-if-->
@@ -188,6 +208,8 @@ exports[`HTML snapshot > matches expanded snapshot (6 entries, all visible, no b
           <!--v-if-->
         </div>
         <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
+        <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
           <!--v-if-->
@@ -206,6 +228,8 @@ exports[`HTML snapshot > matches expanded snapshot (6 entries, all visible, no b
         <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-01 — Sunday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.0</span>
           <!--v-if-->
         </div>
+        <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
         <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">1 notes</span>
           <!--v-if-->
@@ -231,6 +255,8 @@ exports[`HTML snapshot > matches snapshot 1`] = `
         </svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy link</span></div>
   </div><!-- PF-41 decision A2: stacked mini-tiles row (sessions · items · [servings] · calories) -->
   <!--v-if-->
+  <!-- PF-177.9 — Compact bake stats variant switcher (preview only) -->
+  <!--v-if-->
   <div data-v-f626ec8a="" id="bake-2026-02-05" class="mb-4 scroll-mt-16">
     <div data-v-f626ec8a="" class="border-2 border-stone-200 p-3 flex gap-3">
       <!-- Optional hero thumbnail -->
@@ -240,6 +266,8 @@ exports[`HTML snapshot > matches snapshot 1`] = `
         <div data-v-f626ec8a="" class="flex items-center gap-3"><span data-v-f626ec8a="" class="font-semibold text-sm text-stone-700">2026-02-05 — Thursday</span><span data-v-f626ec8a="" class="text-xs bg-stone-200 px-2 py-0.5">v1.0.0</span>
           <!--v-if-->
         </div>
+        <!--v-if-->
+        <!-- PF-177.9 — Compact bake stats (selected variant) -->
         <!--v-if-->
         <div data-v-f626ec8a="" class="flex items-center gap-3 text-xs text-stone-400 mt-2"><span data-v-f626ec8a="">2 notes</span>
           <!--v-if--><span data-v-f626ec8a="">1 next-time</span>

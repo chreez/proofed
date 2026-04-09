@@ -27,6 +27,17 @@ export interface Recipe {
   nutrition?: RecipeNutrition
   research?: Research
   reheat?: Reheat
+  bake_defaults?: RecipeBakeDefaults
+}
+
+/**
+ * Recipe-level default bake params. Used as the fallback when a cook log entry
+ * has low-confidence bake_stats (data wasn't directly logged by the user).
+ * These represent "what the recipe prescribes" at the current recipe version.
+ * Historical version snapshots aren't tracked — treat as current baseline.
+ */
+export interface RecipeBakeDefaults {
+  bake_phases?: BakePhase[]
 }
 
 export interface NutrientTotals {
@@ -170,6 +181,16 @@ export interface BakeStatsBlock {
   bake_phases?: BakePhase[]
   stretch_folds?: StretchFold[]
   aliquot_rises?: AliquotRise[]
+  /**
+   * Overall trustworthiness of the stats in this block.
+   * - `high`: logged in real-time, reliable
+   * - `medium`: mix of logged and recalled, directionally accurate
+   * - `low`: recalled or guesstimate — user explicitly flagged as unreliable,
+   *   excluded from comparisons
+   * - `undefined`: unknown (UI should treat as implicitly medium; older entries
+   *   predate this field and should not be rewritten)
+   */
+  confidence?: 'high' | 'medium' | 'low'
 }
 
 // Per-recipe declaration of which BakeStatsBlock fields the recipe tracks.

@@ -868,6 +868,15 @@
       "version": "v1.0.0",
       "actual_yield": { "value": 1, "unit": "loaves" },
       "summary": "First sourdough bake — over-fermented from using the oven light for bulk, dough was slack and wouldn't hold shape. Baked on pizza steel without a Dutch oven, got modest spring but great sour flavor with olive oil.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-02-13 - 18:00", "temp_f": 80 }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-02-14 - 13:00", "temp_f": 500, "duration_min": 30 },
+          { "stage": "uncovered", "start_time": "2026-02-14 - 13:30", "temp_f": 500, "duration_min": 40 }
+        ]
+      },
       "notes": [
         "Used oven with light on for bulk ferment — dough doubled in ~7 hours instead of target 50-75% rise. Over-fermented, dough was slack and wouldn't hold shape.",
         "Recovery attempt: did another fold, put back in container. Re-attempted shaping later — still slack. Went into proofing basket overnight.",
@@ -918,6 +927,20 @@
       "date": "2026-02-16",
       "version": "v1.1.0",
       "summary": "Second attempt over-fermented again from the oven light — dough tore apart during shaping. Pivoted to focaccia in a Pyrex dish, served it with chili.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-02-15 - 12:00", "temp_f": 78 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-02-15 - 12:30", "type": "stretch_fold" },
+          { "time": "2026-02-15 - 13:00", "type": "stretch_fold" },
+          { "time": "2026-02-15 - 13:30", "type": "stretch_fold" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-02-16 - 17:00", "temp_f": 425, "duration_min": 15 },
+          { "stage": "uncovered", "start_time": "2026-02-16 - 17:15", "temp_f": 425, "duration_min": 40 }
+        ]
+      },
       "notes": [
         "Mixed dough in a Cambro container. Bulk fermented in oven with light on starting around 12pm after completing 3 stretch and folds.",
         "Kitchen temp ~70-74°F; oven with light on likely warmer but didn't measure.",
@@ -1014,6 +1037,27 @@
       "version": "v1.1.1",
       "actual_yield": { "value": 1, "unit": "loaves" },
       "summary": "Third bake with the new Le Creuset Dutch oven, counter-fermented overnight without oven light. Accidental 300/200 bread-AP flour split from prepping baguettes simultaneously, but got great oven spring and a nice score ear.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-02-16 - 21:30", "temp_f": 75 },
+          { "time": "2026-02-16 - 22:00", "temp_f": 74 },
+          { "time": "2026-02-16 - 22:30", "temp_f": 73 },
+          { "time": "2026-02-17 - 08:30", "temp_f": 72 }
+        ],
+        "bulk_ambient_temps": [
+          { "date": "2026-02-16", "temp_f": 74, "note": "counter ambient, overnight bulk" }
+        ],
+        "stretch_folds": [
+          { "time": "2026-02-16 - 21:30", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-02-16 - 22:00", "type": "stretch_fold", "note": "fold 2 — wrist technique" },
+          { "time": "2026-02-16 - 22:30", "type": "stretch_fold", "note": "fold 3 — may have over-folded" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-02-17 - 14:30", "temp_f": 500, "duration_min": 45 },
+          { "stage": "covered", "start_time": "2026-02-17 - 15:15", "temp_f": 450, "duration_min": 15 },
+          { "stage": "uncovered", "start_time": "2026-02-17 - 15:30", "temp_f": 450, "duration_min": 20 }
+        ]
+      },
       "notes": [
         "Used 300g bread flour + 200g AP flour instead of 500g bread flour — mix-up from prepping Tartine baguettes simultaneously.",
         "Dough temp tracked across folds: 75°F → 74°F → 73°F.",
@@ -1124,6 +1168,29 @@
       "start_date": "2026-02-19",
       "version": "v2.0.0",
       "summary": "First 2-loaf bake with v2.0.0 — used aliquot jar and Challenger bread pan for the first time. Hit 50% rise in ~4 hours on counter, cold proofed overnight. First loaf had great spring and score pattern, 209°F internal temp.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-02-19 - 16:26", "temp_f": 76 },
+          { "time": "2026-02-19 - 16:58", "temp_f": 78.5 },
+          { "time": "2026-02-19 - 17:32", "temp_f": 78.5 },
+          { "time": "2026-02-19 - 18:05", "temp_f": 76.6 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-02-19 - 16:26", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-02-19 - 16:58", "type": "stretch_fold", "note": "fold 2 — slap and fold" },
+          { "time": "2026-02-19 - 17:32", "type": "stretch_fold", "note": "fold 3" },
+          { "time": "2026-02-19 - 18:05", "type": "stretch_fold", "note": "fold 4" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-02-19 - 18:30", "rise_pct": 0, "stage": "bulk", "note": "hadn't moved after ~2h" },
+          { "time": "2026-02-19 - 20:30", "rise_pct": 50, "stage": "bulk", "note": "50% target hit — preshape" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-02-20 - 11:30", "temp_f": 500, "duration_min": 90 },
+          { "stage": "covered", "start_time": "2026-02-20 - 13:00", "temp_f": 450, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-02-20 - 13:20", "temp_f": 450, "duration_min": 20 }
+        ]
+      },
       "notes": [
         "Fed starter in the morning, noticed strong growth, decided to bake while prepping sourdough cinnamon buns. First 2-loaf bake (v2.0.0).",
         "Mixed dough at 4:26pm. Estimated 10-hour bulk (~2am), but ended much earlier.",
@@ -1228,6 +1295,30 @@
       "start_date": "2026-02-26",
       "version": "v2.0.0",
       "summary": "Fifth bake, first time doing 4 stretch & folds. Targeted 60% aliquot rise, dough was hard to pre-shape. May have weighed loaves unevenly — second loaf came out smaller and flatter. Mouthfeel is great but want more sour tang and complexity.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-02-26 - 13:55", "temp_f": 79 },
+          { "time": "2026-02-26 - 14:26", "temp_f": 79 },
+          { "time": "2026-02-26 - 15:04", "temp_f": 80 },
+          { "time": "2026-02-26 - 15:33", "temp_f": 79.7 },
+          { "time": "2026-02-26 - 16:02", "temp_f": 79 },
+          { "time": "2026-02-26 - 20:30", "temp_f": 76.8 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-02-26 - 14:26", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-02-26 - 15:04", "type": "stretch_fold", "note": "fold 2" },
+          { "time": "2026-02-26 - 15:33", "type": "stretch_fold", "note": "fold 3" },
+          { "time": "2026-02-26 - 16:02", "type": "stretch_fold", "note": "fold 4" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-02-26 - 20:30", "rise_pct": 60, "stage": "bulk", "note": "60% target hit — preshape" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-02-27 - 08:00", "temp_f": 500, "duration_min": 45 },
+          { "stage": "covered", "start_time": "2026-02-27 - 08:45", "temp_f": 450, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-02-27 - 09:05", "temp_f": 450, "duration_min": 22 }
+        ]
+      },
       "notes": [
         "Mixed at 13:55, dough temp 79°F. Did 4 stretch & folds with temps: 79.0°F (14:26), 80.0°F (15:04), 79.7°F (15:33), 79.0°F (16:02).",
         "Bulk fermented on counter targeting 60% aliquot rise.",
@@ -1318,6 +1409,28 @@
       "start_date": "2026-02-28",
       "version": "v2.0.0",
       "summary": "Sixth bake, 2-loaf. First time using fermentolyse — dough was noticeably stronger at first stretch and fold. Followed Sourdough Journey chart targeting 30% aliquot rise for 80°F dough. Warm kitchen made shaping harder. Cross score continues to give best spring vs decorative patterns. Tasted great.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-02-28 - 14:40", "temp_f": 78.4 },
+          { "time": "2026-02-28 - 15:20", "temp_f": 82 },
+          { "time": "2026-02-28 - 16:45", "temp_f": 79 },
+          { "time": "2026-02-28 - 17:19", "temp_f": 79 },
+          { "time": "2026-02-28 - 17:56", "temp_f": 81 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-02-28 - 16:45", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-02-28 - 17:19", "type": "stretch_fold", "note": "fold 2" },
+          { "time": "2026-02-28 - 17:56", "type": "stretch_fold", "note": "fold 3 — last S&F" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-02-28 - 19:00", "rise_pct": 30, "stage": "bulk", "note": "30% target hit — bulk done" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-03-01 - 08:00", "temp_f": 500, "duration_min": 150 },
+          { "stage": "covered", "start_time": "2026-03-01 - 10:38", "temp_f": 450, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-03-01 - 10:58", "temp_f": 450, "duration_min": 23 }
+        ]
+      },
       "notes": [
         "Mixed at 14:40, dough temp 78.4°F. Water, flour, sourdough (fermentolyse — salt added later).",
         "Added salt at 15:20, dough temp 82°F.",
@@ -1410,6 +1523,24 @@
       "start_date": "2026-03-07",
       "version": "v2.0.0",
       "summary": "Seventh bake, 2-loaf. Used fermentolyse again. Tested banneton with and without linen liner for ring pattern on crust. Cross score on both — first loaf had some warping from inconsistent scoring. Heavy blistering on both loaves, tasted great.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-03-07 - 15:30", "temp_f": 78.6 },
+          { "time": "2026-03-07 - 16:07", "temp_f": 76.6 },
+          { "time": "2026-03-07 - 16:30", "temp_f": 76.8 },
+          { "time": "2026-03-07 - 17:07", "temp_f": 76.8 },
+          { "time": "2026-03-07 - 17:30", "temp_f": 75.9 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-03-07 - 16:30", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-03-07 - 17:30", "type": "stretch_fold", "note": "fold 2" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-03-08 - 09:00", "temp_f": 500, "duration_min": 60 },
+          { "stage": "covered", "start_time": "2026-03-08 - 10:00", "temp_f": 450, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-03-08 - 10:20", "temp_f": 425, "duration_min": 22 }
+        ]
+      },
       "notes": [
         "Fermentolyse — mixed flour, water, starter first. Added salt ~37 min later.",
         "Dough temp at mix: 78.6°F. After salt: 76.6°F.",
@@ -1518,6 +1649,29 @@
       "start_date": "2026-03-10",
       "version": "v2.0.0",
       "summary": "Eighth bake, 2-loaf. Tested linen vs no-linen banneton again — no-linen loaf came out much better with heavy blistering and better spring. First loaf felt flat and slack out of the fridge; threw an ice cube in the Challenger for steam but it may have hurt oven spring. Giving the second loaf away so no crumb shot.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-03-10 - 19:30", "temp_f": 77.4 },
+          { "time": "2026-03-10 - 20:00", "temp_f": 77.9 },
+          { "time": "2026-03-10 - 20:45", "temp_f": 77.5 },
+          { "time": "2026-03-10 - 21:30", "temp_f": 77.4 },
+          { "time": "2026-03-10 - 22:30", "temp_f": 76.8 },
+          { "time": "2026-03-10 - 23:30", "temp_f": 76.1 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-03-10 - 20:00", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-03-10 - 20:45", "type": "stretch_fold", "note": "fold 2" },
+          { "time": "2026-03-10 - 21:30", "type": "stretch_fold", "note": "fold 3" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-03-11 - 00:14", "rise_pct": 30, "stage": "bulk", "note": "30% rise ~4.5h after mix" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-03-12 - 09:30", "temp_f": 500, "duration_min": 30 },
+          { "stage": "covered", "start_time": "2026-03-12 - 10:00", "temp_f": 450, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-03-12 - 10:20", "temp_f": 425, "duration_min": 22 }
+        ]
+      },
       "notes": [
         "Fermentolyse — mixed flour, water, starter at 77.4°F. Salt added ~30 min later at first stretch and fold.",
         "Dough temp tracked across session: 77.9°F (S&F #1), 77.5°F (S&F #2), 77.4°F, 76.8°F, 76.1°F — steady decline through the evening.",
@@ -1609,6 +1763,31 @@
       "version": "v2.0.0",
       "actual_yield": { "value": 2, "unit": "loaves" },
       "summary": "Ninth and final bake of a 2-month stretch. Both bannetons no-linen for the first time — both loaves came out perfect. Used 150g HMart wheat flour when bread flour ran out. One loaf eaten in a day, gave the other to Sam.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-03-12 - 14:00", "temp_f": 80.8 },
+          { "time": "2026-03-12 - 14:30", "temp_f": 80.2 },
+          { "time": "2026-03-12 - 15:00", "temp_f": 79.7 },
+          { "time": "2026-03-12 - 15:30", "temp_f": 79 }
+        ],
+        "bulk_ambient_temps": [
+          { "date": "2026-03-12", "temp_f": 80, "note": "warm kitchen, dishwasher adding heat" }
+        ],
+        "stretch_folds": [
+          { "time": "2026-03-12 - 14:30", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-03-12 - 15:00", "type": "stretch_fold", "note": "fold 2" },
+          { "time": "2026-03-12 - 15:30", "type": "stretch_fold", "note": "fold 3" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-03-12 - 14:00", "rise_pct": 10, "stage": "bulk", "note": "already 10% at mix — adjusted target" },
+          { "time": "2026-03-12 - 18:00", "rise_pct": 40, "stage": "bulk", "note": "40% target hit" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-03-13 - 09:30", "temp_f": 500, "duration_min": 45 },
+          { "stage": "covered", "start_time": "2026-03-13 - 10:15", "temp_f": 450, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-03-13 - 10:35", "temp_f": 450, "duration_min": 18 }
+        ]
+      },
       "notes": [
         "Fermentolyse — forgot to measure dough temp before adding salt. 80.8°F after mixing in salt.",
         "Aliquot sample taken at mix — already at 10% rise, adjusted target accordingly.",
@@ -1694,6 +1873,28 @@
       "version": "v2.0.0",
       "actual_yield": { "value": 2, "unit": "loaves" },
       "summary": "Tenth bake, 2-loaf. Fermentolyse on a chilly day — dough temps ran cool (73-76°F). Hit 30% aliquot rise, standard shaping and cold proof. Both bannetons no-linen. Cross score. Loaves felt lighter than previous bakes.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-03-17 - 21:42", "temp_f": 76 },
+          { "time": "2026-03-17 - 22:19", "temp_f": 75 },
+          { "time": "2026-03-17 - 22:53", "temp_f": 74 },
+          { "time": "2026-03-17 - 23:26", "temp_f": 74 },
+          { "time": "2026-03-18 - 02:07", "temp_f": 73 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-03-17 - 22:19", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-03-17 - 22:53", "type": "stretch_fold", "note": "fold 2" },
+          { "time": "2026-03-17 - 23:26", "type": "stretch_fold", "note": "fold 3 — last fold, chilly day" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-03-18 - 02:07", "rise_pct": 30, "stage": "bulk", "note": "30% rise hit at 73°F" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-03-18 - 09:00", "temp_f": 500, "duration_min": 45 },
+          { "stage": "covered", "start_time": "2026-03-18 - 09:45", "temp_f": 450, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-03-18 - 10:05", "temp_f": 425, "duration_min": 18 }
+        ]
+      },
       "notes": [
         "Fermentolyse — mixed flour, water, starter first. Held back 25g water for salt incorporation.",
         "9:42pm — fermentolyse done, dough temp ~76°F. About to add salt, taking aliquot.",
@@ -1772,6 +1973,16 @@
       "featured": false,
       "actual_yield": { "value": 1, "unit": "loaves" },
       "summary": "Improvised single-loaf bake — ran out of starter mid-mix, halved the recipe. Starter wasn't fully active. Loaf came out well despite the chaos.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-03-23 - 15:00", "temp_f": 78 }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-03-24 - 10:00", "temp_f": 550, "duration_min": 45 },
+          { "stage": "covered", "start_time": "2026-03-24 - 10:45", "temp_f": 550, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-03-24 - 11:05", "temp_f": 450, "duration_min": 20 }
+        ]
+      },
       "notes": [
         "Ran out of starter — only had ~170g available, and it wasn't as active as I wanted.",
         "Had water measured for two loaves. Put ~170g starter in before realizing I was running out.",
@@ -1842,6 +2053,28 @@
       "version": "v2.1.0",
       "actual_yield": { "value": 2, "unit": "loaves" },
       "summary": "Eleventh bake, 2-loaf for a housewarming party. Fermentolyse, 60% aliquot rise, cross score on both. One dough had too much flour during shaping — struggled with surface tension. Both loaves eaten quickly at the party with solid feedback. Someone suggested crispier crust.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-03-31 - 19:52", "temp_f": 77.5 },
+          { "time": "2026-03-31 - 21:06", "temp_f": 77.4 },
+          { "time": "2026-03-31 - 21:44", "temp_f": 77.5 },
+          { "time": "2026-03-31 - 22:35", "temp_f": 77.7 },
+          { "time": "2026-04-01 - 01:01", "temp_f": 78.8 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-03-31 - 21:06", "type": "stretch_fold", "note": "fold 1 (first after salt)" },
+          { "time": "2026-03-31 - 21:44", "type": "stretch_fold", "note": "fold 2" },
+          { "time": "2026-03-31 - 22:35", "type": "stretch_fold", "note": "fold 3 (last fold)" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-04-01 - 01:01", "rise_pct": 60, "stage": "bulk", "note": "60% rise — turned out" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-04-01 - 11:00", "temp_f": 500, "duration_min": 58 },
+          { "stage": "covered", "start_time": "2026-04-01 - 11:58", "temp_f": 450, "duration_min": 21 },
+          { "stage": "uncovered", "start_time": "2026-04-01 - 12:19", "temp_f": 425, "duration_min": 18 }
+        ]
+      },
       "notes": [
         "7:52pm — fermentolyse start, dough temp 77.5°F.",
         "Forgot to log salt addition — incorporated sometime before first stretch and fold.",
@@ -1929,6 +2162,29 @@
       "version": "v3.0.0",
       "actual_yield": { "value": 2, "unit": "loaves" },
       "summary": "Twelfth bake, 2-loaf. Timing got away — emergency cold retard mid-bulk at 40% aliquot rise. Dough hit ~100% by preshape the next day. Took creative liberties with bake temps and scoring since the dough felt compromised. Higher uncovered temp and extra time produced a noticeably better crust.",
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-04-04 - 16:39", "temp_f": 75.4 },
+          { "time": "2026-04-04 - 17:07", "temp_f": 75.5 },
+          { "time": "2026-04-04 - 17:36", "temp_f": 76.5 },
+          { "time": "2026-04-04 - 18:12", "temp_f": 75.9 }
+        ],
+        "stretch_folds": [
+          { "time": "2026-04-04 - 17:07", "type": "stretch_fold", "note": "fold 1" },
+          { "time": "2026-04-04 - 17:36", "type": "stretch_fold", "note": "fold 2" },
+          { "time": "2026-04-04 - 18:12", "type": "stretch_fold", "note": "fold 3" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-04-04 - 19:00", "rise_pct": 40, "stage": "bulk", "note": "into fridge — emergency cold retard" },
+          { "time": "2026-04-05 - 12:59", "rise_pct": 100, "stage": "preshape", "note": "overproofed, pulling now" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "start_time": "2026-04-06 - 13:00", "temp_f": 550, "duration_min": 45 },
+          { "stage": "covered", "start_time": "2026-04-06 - 13:45", "temp_f": 500, "duration_min": 20 },
+          { "stage": "uncovered", "start_time": "2026-04-06 - 14:05", "temp_f": 450, "duration_min": 22 }
+        ],
+        "confidence": "low"
+      },
       "notes": [
         "~4:04pm Apr 4 — fermentolyse start.",
         "4:39pm — salt incorporated, 75.4°F.",
@@ -2119,6 +2375,13 @@
         "detail": "Cut-side down on a board, room temp, same day. Freeze sliced in zip-lock for up to 1 month.",
         "source": "agent"
       }
+    ]
+  },
+  "bake_defaults": {
+    "bake_phases": [
+      { "stage": "preheat", "temp_f": 500, "duration_min": 45 },
+      { "stage": "covered", "temp_f": 450, "duration_min": 20 },
+      { "stage": "uncovered", "temp_f": 425, "duration_min": 20 }
     ]
   }
 }
