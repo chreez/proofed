@@ -15,7 +15,8 @@ vi.mock('@/components/StateStep.vue', () => ({
   }
 }))
 vi.mock('@/composables/useScrollToNext', () => ({
-  scrollToNextItem: vi.fn()
+  scrollToNextItem: vi.fn(),
+  scrollToStageAfterTransition: vi.fn()
 }))
 vi.mock('@/composables/useClipboard', () => ({
   copyToClipboard: vi.fn().mockResolvedValue(undefined)

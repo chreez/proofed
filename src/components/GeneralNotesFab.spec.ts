@@ -561,7 +561,7 @@ describe('GeneralNotesFab', () => {
       expect(clearBtn).toBeTruthy()
     })
 
-    it('emits clearAll when clear button clicked', async () => {
+    it('emits clearAll when clear button clicked and confirmed', async () => {
       const wrapper = mountWithTeleport({
         ...defaultProps,
         totalEntryCount: 1,
@@ -573,6 +573,14 @@ describe('GeneralNotesFab', () => {
 
       const clearBtn = wrapper.findAll('.icon-btn-stub').find(b => b.attributes('title') === 'Clear all')
       await clearBtn!.trigger('click')
+
+      // Dialog opens — clearAll not emitted yet
+      expect(wrapper.emitted('clearAll')).toBeFalsy()
+
+      // Confirm in the dialog
+      const confirmBtn = wrapper.find('[data-testid="reset-confirm-btn"]')
+      expect(confirmBtn.exists()).toBe(true)
+      await confirmBtn.trigger('click')
 
       expect(wrapper.emitted('clearAll')).toBeTruthy()
     })

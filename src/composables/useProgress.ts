@@ -63,9 +63,9 @@ export function useProgress(recipeId: string) {
     stageContexts.set(stageId, { stageId, itemIds, stateIds })
   }
 
-  function checkAutoAdvance(currentStageId: string) {
+  function checkAutoAdvance(currentStageId: string): string | null {
     const ctx = stageContexts.get(currentStageId)
-    if (!ctx) return
+    if (!ctx) return null
 
     const allItemsDone = ctx.itemIds.length === 0 || ctx.itemIds.every(id => state.items[id])
     const allStatesDone = ctx.stateIds.length === 0 || ctx.stateIds.every(id => state.states[id])
@@ -79,22 +79,26 @@ export function useProgress(recipeId: string) {
       if (currentIndex >= 0 && currentIndex < stageOrder.length - 1) {
         const nextStageId = stageOrder[currentIndex + 1]
         state.stages[nextStageId] = false
+        return nextStageId
       }
     }
+    return null
   }
 
-  function toggleItem(id: string, stageId?: string) {
+  function toggleItem(id: string, stageId?: string): string | null {
     state.items[id] = !state.items[id]
     if (stageId) {
-      checkAutoAdvance(stageId)
+      return checkAutoAdvance(stageId)
     }
+    return null
   }
 
-  function toggleState(id: string, stageId?: string) {
+  function toggleState(id: string, stageId?: string): string | null {
     state.states[id] = !state.states[id]
     if (stageId) {
-      checkAutoAdvance(stageId)
+      return checkAutoAdvance(stageId)
     }
+    return null
   }
 
   function toggleStageCollapse(id: string) {
@@ -142,6 +146,14 @@ export function useProgress(recipeId: string) {
     return Object.values(state.items).some(Boolean) || Object.values(state.states).some(Boolean)
   })
 
+  const checkedItemCount = computed<number>(() => {
+    return Object.values(state.items).filter(Boolean).length
+  })
+
+  const checkedStateCount = computed<number>(() => {
+    return Object.values(state.states).filter(Boolean).length
+  })
+
   return {
     load,
     setStageOrder,
@@ -155,6 +167,8 @@ export function useProgress(recipeId: string) {
     getCompletionCount,
     resetSection,
     resetProgress,
-    hasProgress
+    hasProgress,
+    checkedItemCount,
+    checkedStateCount
   }
 }

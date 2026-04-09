@@ -2,6 +2,7 @@
 import { ref, computed, useTemplateRef } from 'vue'
 import { MessageSquare, X, Download, Trash2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
+import ResetConfirmDialog from '@/components/ResetConfirmDialog.vue'
 import type { ScratchpadEntry } from '@/types/recipe'
 
 const props = defineProps<{
@@ -19,6 +20,7 @@ const emit = defineEmits<{
 }>()
 
 const exportBtn = useTemplateRef<InstanceType<typeof IconButton>>('exportBtn')
+const clearDialog = useTemplateRef<InstanceType<typeof ResetConfirmDialog>>('clearDialog')
 const isOpen = ref(false)
 const noteText = ref('')
 
@@ -42,6 +44,10 @@ function handleExport(): void {
 }
 
 function handleClear(): void {
+  clearDialog.value?.open()
+}
+
+function handleClearConfirm(): void {
   emit('clearAll')
 }
 
@@ -235,6 +241,15 @@ const hiddenCount = computed(() => {
         </div>
       </div>
     </Transition>
+
+    <ResetConfirmDialog
+      ref="clearDialog"
+      title="Clear Scratchpad?"
+      description="This will delete all your scratchpad notes for this bake. This action cannot be undone."
+      confirm-label="Clear"
+      :scratchpad-note-count="totalEntryCount"
+      @confirm="handleClearConfirm"
+    />
   </Teleport>
 </template>
 

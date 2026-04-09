@@ -2,12 +2,16 @@
 import { useTemplateRef } from 'vue'
 import { ClipboardList, Check, RotateCcw } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
+import ResetConfirmDialog from '@/components/ResetConfirmDialog.vue'
 import { copyToClipboard } from '@/composables/useClipboard'
 import type { Recipe } from '@/types/recipe'
 
 const props = defineProps<{
   recipe: Recipe
   hasProgress?: boolean
+  checkedCount?: number
+  completedStageCount?: number
+  scratchpadNoteCount?: number
 }>()
 
 const emit = defineEmits<{
@@ -16,6 +20,7 @@ const emit = defineEmits<{
 
 const copyBtn = useTemplateRef<InstanceType<typeof IconButton>>('copyBtn')
 const resetBtn = useTemplateRef<InstanceType<typeof IconButton>>('resetBtn')
+const resetDialog = useTemplateRef<InstanceType<typeof ResetConfirmDialog>>('resetDialog')
 
 // Format version as v{major}.{minor} (drop patch)
 function formatVersion(version: string): string {
@@ -74,6 +79,10 @@ async function copyRecipe(): Promise<void> {
 
 function handleReset(): void {
   resetBtn.value?.flashSpin()
+  resetDialog.value?.open()
+}
+
+function handleResetConfirm(): void {
   emit('reset')
 }
 </script>
@@ -112,4 +121,12 @@ function handleReset(): void {
       </div>
     </div>
   </div>
+
+  <ResetConfirmDialog
+    ref="resetDialog"
+    :checked-count="checkedCount"
+    :completed-stage-count="completedStageCount"
+    :scratchpad-note-count="scratchpadNoteCount"
+    @confirm="handleResetConfirm"
+  />
 </template>

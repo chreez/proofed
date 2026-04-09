@@ -7,7 +7,7 @@ exports[`StateStep state note tables (PF-180) > matches snapshot for note WITH a
   <div data-v-65ab9558="" class="flex items-start gap-3"><button data-v-65ab9558="" class="mt-1 w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 transition-colors border-ink hover:bg-stone-100">
       <!--v-if-->
     </button>
-    <div data-v-65ab9558="" class="flex-1">
+    <div data-v-65ab9558="" class="flex-1 min-w-0">
       <div data-v-65ab9558="" class="flex items-center gap-2 mb-1">
         <h4 data-v-65ab9558="" class="font-medium text-stone-700">Mix Dough</h4><!-- Scratchpad note icon -->
         <!--v-if-->
@@ -72,7 +72,7 @@ exports[`StateStep state note tables (PF-180) > matches snapshot for note WITHOU
   <div data-v-65ab9558="" class="flex items-start gap-3"><button data-v-65ab9558="" class="mt-1 w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 transition-colors border-ink hover:bg-stone-100">
       <!--v-if-->
     </button>
-    <div data-v-65ab9558="" class="flex-1">
+    <div data-v-65ab9558="" class="flex-1 min-w-0">
       <div data-v-65ab9558="" class="flex items-center gap-2 mb-1">
         <h4 data-v-65ab9558="" class="font-medium text-stone-700">Mix Dough</h4><!-- Scratchpad note icon -->
         <!--v-if-->

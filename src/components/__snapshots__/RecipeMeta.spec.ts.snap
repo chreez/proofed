@@ -13,5 +13,7 @@ exports[`HTML snapshot > matches snapshot 1`] = `
       <div data-v-f6045c74="" class="icon-btn-wrap"><button data-v-f6045c74="" class="icon-btn" title="Copy Recipe"><svg class="icon-clipboard"></svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy Recipe</span></div>
     </div>
   </div>
-</div>"
+</div>
+<!--teleport start-->
+<!--teleport end-->"
 `;

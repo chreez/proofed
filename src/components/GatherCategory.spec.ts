@@ -24,7 +24,8 @@ vi.mock('lucide-vue-next', () => ({
   Check: { name: 'Check', template: '<svg class="icon-check" />' }
 }))
 vi.mock('@/composables/useScrollToNext', () => ({
-  scrollToNextItem: vi.fn()
+  scrollToNextItem: vi.fn(),
+  scrollToStageAfterTransition: vi.fn()
 }))
 
 // Mock clipboard

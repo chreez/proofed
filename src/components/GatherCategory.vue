@@ -5,7 +5,7 @@ import CheckableItem from '@/components/CheckableItem.vue'
 import IconButton from '@/components/IconButton.vue'
 import TechniqueText from '@/components/TechniqueText.vue'
 import TempText from '@/components/TempText.vue'
-import { scrollToNextItem } from '@/composables/useScrollToNext'
+import { scrollToNextItem, scrollToStageAfterTransition } from '@/composables/useScrollToNext'
 import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = withDefaults(defineProps<{
@@ -61,7 +61,12 @@ const toggleLabel = computed(() => allChecked.value ? 'Clear All' : 'Complete Al
 
 function handleToggle(itemId: string) {
   const wasChecked = props.progress.isItemChecked(itemId)
-  props.progress.toggleItem(itemId, props.stageId)
+  const advancedTo = props.progress.toggleItem(itemId, props.stageId)
+
+  if (advancedTo) {
+    scrollToStageAfterTransition(advancedTo)
+    return
+  }
 
   if (!wasChecked) {
     const idx = props.items.findIndex(item => item.id === itemId)
@@ -87,11 +92,16 @@ function handleCompleteAllClick(event: Event) {
     manuallyExpanded.value = false
   } else {
     // Complete all
+    let advancedTo: string | null = null
     props.items.forEach(item => {
       if (!props.progress.isItemChecked(item.id)) {
-        props.progress.toggleItem(item.id, props.stageId)
+        const result = props.progress.toggleItem(item.id, props.stageId)
+        if (result) advancedTo = result
       }
     })
+    if (advancedTo) {
+      scrollToStageAfterTransition(advancedTo)
+    }
   }
 }
 

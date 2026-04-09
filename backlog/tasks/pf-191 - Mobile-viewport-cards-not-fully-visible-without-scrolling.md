@@ -1,7 +1,7 @@
 ---
 id: PF-191
 title: 'Mobile viewport: cards not fully visible without scrolling'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-09 17:03'
 updated_date: '2026-04-09 17:13'

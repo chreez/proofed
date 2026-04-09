@@ -7,6 +7,7 @@ import StepNote from '@/components/StepNote.vue'
 import TempText from '@/components/TempText.vue'
 import ScratchpadNote from '@/components/ScratchpadNote.vue'
 import ReminderBanner from '@/components/ReminderBanner.vue'
+import { scrollToStageAfterTransition } from '@/composables/useScrollToNext'
 
 interface StepNoteData {
   note: string
@@ -30,7 +31,10 @@ const emit = defineEmits<{
 const isChecked = computed(() => props.progress.isStateChecked(props.state.id))
 
 function toggle() {
-  props.progress.toggleState(props.state.id, props.stageId)
+  const advancedTo = props.progress.toggleState(props.state.id, props.stageId)
+  if (advancedTo) {
+    scrollToStageAfterTransition(advancedTo)
+  }
   emit('toggled', props.state.id)
 }
 
@@ -106,7 +110,7 @@ function parseSourceSegments(src: string): SourceSegment[] {
         <span v-if="isChecked" class="text-xs">✓</span>
       </button>
 
-      <div class="flex-1">
+      <div class="flex-1 min-w-0">
         <div class="flex items-center gap-2 mb-1">
           <h4 class="font-medium text-stone-700" :class="{ 'line-through': isChecked }">
             {{ state.title }}

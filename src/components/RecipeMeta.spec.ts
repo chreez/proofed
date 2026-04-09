@@ -254,14 +254,40 @@ describe('Reset Bake button', () => {
     expect(wrapper.find('button[title="Reset Bake"]').exists()).toBe(true)
   })
 
-  it('emits reset event on click', async () => {
+  it('opens confirmation dialog on click, emits reset on confirm', async () => {
     const wrapper = mount(RecipeMeta, {
-      props: { recipe: makeRecipe(), hasProgress: true }
+      props: { recipe: makeRecipe(), hasProgress: true, checkedCount: 3, completedStageCount: 1, scratchpadNoteCount: 2 },
+      global: { stubs: { Teleport: true } }
     })
     const resetBtn = wrapper.find('button[title="Reset Bake"]')
     expect(resetBtn.exists()).toBe(true)
     await resetBtn.trigger('click')
+
+    // Dialog should be open — no reset emitted yet
+    expect(wrapper.emitted('reset')).toBeUndefined()
+
+    // Find and click the confirm button inside the dialog
+    const confirmBtn = wrapper.find('[data-testid="reset-confirm-btn"]')
+    expect(confirmBtn.exists()).toBe(true)
+    await confirmBtn.trigger('click')
+
     expect(wrapper.emitted('reset')).toHaveLength(1)
+  })
+
+  it('does not emit reset when dialog is cancelled', async () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeRecipe(), hasProgress: true, checkedCount: 1, completedStageCount: 0, scratchpadNoteCount: 0 },
+      global: { stubs: { Teleport: true } }
+    })
+    const resetBtn = wrapper.find('button[title="Reset Bake"]')
+    await resetBtn.trigger('click')
+
+    // Click cancel
+    const cancelBtn = wrapper.find('[data-testid="reset-cancel-btn"]')
+    expect(cancelBtn.exists()).toBe(true)
+    await cancelBtn.trigger('click')
+
+    expect(wrapper.emitted('reset')).toBeUndefined()
   })
 })
 

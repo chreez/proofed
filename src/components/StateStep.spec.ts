@@ -36,6 +36,9 @@ vi.mock('@/components/TempText.vue', () => ({
     template: '<span class="temp-text-stub">{{ text }}</span>'
   }
 }))
+vi.mock('@/composables/useScrollToNext', () => ({
+  scrollToStageAfterTransition: vi.fn()
+}))
 
 function makeProgress(stateChecked = false) {
   return {

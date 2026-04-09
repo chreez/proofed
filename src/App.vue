@@ -452,7 +452,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </nav>
 
-    <main :class="['flex-1', (showIndex || showBakeLog || showStats) ? 'pb-6' : 'py-6', !showIndex && !showBakeLog && !showStats && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
+    <main :class="['flex-1 w-full', (showIndex || showBakeLog || showStats) ? 'pb-6' : 'py-6', !showIndex && !showBakeLog && !showStats && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
@@ -529,6 +529,9 @@ watch(() => route.hash, (newHash) => {
             <RecipeMeta
               :recipe="currentRecipe"
               :has-progress="progress.hasProgress.value"
+              :checked-count="(progress.checkedItemCount?.value ?? 0) + (progress.checkedStateCount?.value ?? 0)"
+              :completed-stage-count="completedStageIds.length"
+              :scratchpad-note-count="scratchpad?.totalEntryCount?.value ?? 0"
               class="mb-6"
               @reset="handleReset"
             />

@@ -1,7 +1,7 @@
 ---
 id: PF-187
 title: Add confirm dialog to reset bake button
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-09 15:44'
 labels:

@@ -162,17 +162,16 @@ describe('useProgress', () => {
     expect(progress.isStageCollapsed('stage-1')).toBe(false)
     expect(progress.isStageCollapsed('stage-2')).toBe(false)
 
-    // Complete some items (not all)
-    progress.toggleItem('item-1', 'stage-1')
+    // Complete some items (not all) — returns null (no advance)
+    expect(progress.toggleItem('item-1', 'stage-1')).toBeNull()
     expect(progress.isStageCollapsed('stage-1')).toBe(false)
 
-    // Complete remaining items
-    progress.toggleItem('item-2', 'stage-1')
-    // Still not collapsed because state-1 is not complete
+    // Complete remaining items — still no advance (state-1 incomplete)
+    expect(progress.toggleItem('item-2', 'stage-1')).toBeNull()
     expect(progress.isStageCollapsed('stage-1')).toBe(false)
 
-    // Complete the state - this should trigger auto-advance
-    progress.toggleState('state-1', 'stage-1')
+    // Complete the state — triggers auto-advance, returns next stage ID
+    expect(progress.toggleState('state-1', 'stage-1')).toBe('stage-2')
 
     // Stage-1 should now be collapsed
     expect(progress.isStageCollapsed('stage-1')).toBe(true)
@@ -188,8 +187,8 @@ describe('useProgress', () => {
     progress.registerStage('stage-1', [], ['state-1']) // no items
     progress.registerStage('stage-2', [], ['state-2'])
 
-    // Complete the only state
-    progress.toggleState('state-1', 'stage-1')
+    // Complete the only state — returns next stage ID
+    expect(progress.toggleState('state-1', 'stage-1')).toBe('stage-2')
 
     expect(progress.isStageCollapsed('stage-1')).toBe(true)
     expect(progress.isStageCollapsed('stage-2')).toBe(false)
@@ -203,8 +202,8 @@ describe('useProgress', () => {
     progress.registerStage('stage-1', ['item-1'], []) // no states
     progress.registerStage('stage-2', ['item-2'], [])
 
-    // Complete the only item
-    progress.toggleItem('item-1', 'stage-1')
+    // Complete the only item — returns next stage ID
+    expect(progress.toggleItem('item-1', 'stage-1')).toBe('stage-2')
 
     expect(progress.isStageCollapsed('stage-1')).toBe(true)
   })
@@ -217,7 +216,8 @@ describe('useProgress', () => {
     progress.setStageOrder([])
     progress.registerStage('stage-1', [], ['state-1'])
 
-    progress.toggleState('state-1', 'stage-1')
+    // Returns null — no next stage
+    expect(progress.toggleState('state-1', 'stage-1')).toBeNull()
 
     // Should collapse but no next stage to expand
     expect(progress.isStageCollapsed('stage-1')).toBe(true)
@@ -230,7 +230,8 @@ describe('useProgress', () => {
     progress.setStageOrder(['stage-1'])
     progress.registerStage('stage-1', [], ['state-1'])
 
-    progress.toggleState('state-1', 'stage-1')
+    // Returns null — last stage, nowhere to go
+    expect(progress.toggleState('state-1', 'stage-1')).toBeNull()
 
     // Should collapse (it's the last stage)
     expect(progress.isStageCollapsed('stage-1')).toBe(true)
@@ -243,9 +244,9 @@ describe('useProgress', () => {
     progress.setStageOrder(['stage-1', 'stage-2'])
     progress.registerStage('stage-1', ['item-1'], ['state-1'])
 
-    // Toggle without stageId — no auto-advance check
-    progress.toggleItem('item-1')
-    progress.toggleState('state-1')
+    // Toggle without stageId — returns null, no auto-advance check
+    expect(progress.toggleItem('item-1')).toBeNull()
+    expect(progress.toggleState('state-1')).toBeNull()
 
     // Stage should NOT be collapsed (no auto-advance was triggered)
     expect(progress.isStageCollapsed('stage-1')).toBe(false)
@@ -389,6 +390,56 @@ describe('useProgress', () => {
       // Should not throw, and should clear the stage collapse
       progress.resetSection('nonexistent')
       expect(progress.isStageCollapsed('nonexistent')).toBe(false)
+    })
+  })
+
+  describe('checkedItemCount', () => {
+    it('is 0 when nothing checked', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+      expect(progress.checkedItemCount.value).toBe(0)
+    })
+
+    it('counts checked items', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+      progress.toggleItem('item-1')
+      progress.toggleItem('item-2')
+      expect(progress.checkedItemCount.value).toBe(2)
+    })
+
+    it('resets to 0 after resetProgress', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+      progress.toggleItem('item-1')
+      expect(progress.checkedItemCount.value).toBe(1)
+      progress.resetProgress()
+      expect(progress.checkedItemCount.value).toBe(0)
+    })
+  })
+
+  describe('checkedStateCount', () => {
+    it('is 0 when nothing checked', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+      expect(progress.checkedStateCount.value).toBe(0)
+    })
+
+    it('counts checked states', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+      progress.toggleState('state-1')
+      progress.toggleState('state-2')
+      expect(progress.checkedStateCount.value).toBe(2)
+    })
+
+    it('resets to 0 after resetProgress', () => {
+      const progress = useProgress('test-recipe')
+      progress.load()
+      progress.toggleState('state-1')
+      expect(progress.checkedStateCount.value).toBe(1)
+      progress.resetProgress()
+      expect(progress.checkedStateCount.value).toBe(0)
     })
   })
 

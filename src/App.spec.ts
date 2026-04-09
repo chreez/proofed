@@ -119,6 +119,8 @@ const mockGetCompletionCount = vi.fn(() => ({ done: 0, total: 0 }))
 const mockResetSection = vi.fn()
 const mockResetProgress = vi.fn()
 const mockHasProgress = ref(false)
+const mockCheckedItemCount = ref(0)
+const mockCheckedStateCount = ref(0)
 
 vi.mock('@/composables/useProgress', () => ({
   useProgress: () => ({
@@ -135,7 +137,9 @@ vi.mock('@/composables/useProgress', () => ({
     getCompletionCount: mockGetCompletionCount,
     resetSection: mockResetSection,
     resetProgress: mockResetProgress,
-    hasProgress: mockHasProgress
+    hasProgress: mockHasProgress,
+    checkedItemCount: mockCheckedItemCount,
+    checkedStateCount: mockCheckedStateCount
   })
 }))
 
