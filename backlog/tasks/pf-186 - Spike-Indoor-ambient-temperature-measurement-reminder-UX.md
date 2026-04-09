@@ -47,11 +47,60 @@ Research the best UX pattern for prompting the baker to measure indoor ambient t
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Evaluate ≥3 UX placement options for the ambient temp prompt (pre-bake checklist, scratchpad reminder, inline stage step, auto-capture); document pros/cons of each
-- [ ] #2 Propose a recipe-level tag schema for flagging which recipes require ambient temp capture
-- [ ] #3 Investigate Ecobee API for auto-capture: auth model, data availability, accuracy, feasibility
-- [ ] #4 Recommend ≥2 dedicated kitchen thermometer/hygrometer options with price and features
-- [ ] #5 Propose how captured value flows into `bake_stats` (field name, auto-populate vs manual entry)
-- [ ] #6 Document interaction with existing scratchpad/reminder system
+- [x] #1 Evaluate ≥3 UX placement options for the ambient temp prompt (pre-bake checklist, scratchpad reminder, inline stage step, auto-capture); document pros/cons of each
+- [x] #2 Propose a recipe-level tag schema for flagging which recipes require ambient temp capture
+- [x] #3 Investigate Ecobee API for auto-capture: auth model, data availability, accuracy, feasibility
+- [x] #4 Recommend ≥2 dedicated kitchen thermometer/hygrometer options with price and features
+- [x] #5 Propose how captured value flows into `bake_stats` (field name, auto-populate vs manual entry)
+- [x] #6 Document interaction with existing scratchpad/reminder system
 - [ ] #7 Demo subtask: mock up the top 2 UX placements in recipe page context
 <!-- AC:END -->
+
+## Spike Findings & Architecture Decision
+
+**Research completed 2026-04-09.** Full notes: `backlog/tasks/pf-186-spike-notes.md`
+
+### User Decisions (2026-04-09)
+
+- **Temperature unit:** °F only. No conversion logic needed.
+- **Capture frequency:** One reading at bake start for MVP. Future consideration for additional data points mid-bake.
+- **Timestamps:** Store UTC, display local timezone. (Scratchpad already uses `new Date().toISOString()` which is UTC — consistent.)
+
+### UX Decision: Scratchpad Reminder (Option B)
+
+Pre-bake scratchpad reminder fires "Kitchen temp (°F)?" before first stage. Non-blocking, dismissible, reuses existing `useScratchpad.addReminderResponse()` with reserved `stepId="_pre_bake"`. No new UI patterns needed.
+
+### Hardware Decision: Shelly H&T (~$35)
+
+Ecobee API is **discontinued** (March 2024). GOVEE H5179 was evaluated but **rejected** — WiFi requires Govee's cloud; HA integration is Bluetooth-only with limited range.
+
+**Selected: Shelly H&T** — fully local WiFi HTTP API, native Home Assistant `shelly` integration, no hub, no cloud, no subscription. Battery ~1yr, permanent kitchen placement. Manual entry for MVP, potential local API integration later.
+
+### Data Flow
+
+1. Bake starts → scratchpad reminder fires
+2. User enters kitchen temp (reads Shelly display or any thermometer)
+3. Value saved to scratchpad via `addReminderResponse()`
+4. Post-bake: extracted to `bake_stats.bulk_ambient_temps[0]`
+
+No schema changes needed — `bulk_ambient_temps` field already exists in `BakeStatsBlock` types.
+
+### Recipe tag: `config.ambientTempTracking`
+
+```typescript
+ambientTempTracking?: {
+  required: boolean      // reminder fires for every bake
+  minReadings: number    // default 1
+  stages: string[]       // stage IDs for capture points
+  note?: string          // custom reminder text
+}
+```
+
+### Combined with PF-185 (Weather)
+
+When the ambient temp reminder fires, the app simultaneously fetches outdoor weather from Open-Meteo in the background. One user prompt, two data captures. See `public/demo/weather-flow.html` for the combined architecture diagram.
+
+### Remaining work
+
+- AC #7 (UX placement demo) deferred to implementation task
+- Implementation task to be created when spike is closed
