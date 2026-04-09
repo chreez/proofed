@@ -21,8 +21,13 @@
       "servingUnit": "biscuits"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-04-09",
+      "summary": "Removed rating-type reminder prompts."
+    },
     {
       "version": "v1.0.0",
       "date": "2026-02-24",
@@ -544,12 +549,7 @@
           "source": "agent"
         }
       ],
-      "reminders": [
-        {
-          "prompt": "Rate overall biscuit quality",
-          "type": "rating"
-        }
-      ]
+      "reminders": null
     }
   ],
   "nutrition": {

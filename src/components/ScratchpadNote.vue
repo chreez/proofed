@@ -11,12 +11,10 @@ const props = defineProps<{
   reminders?: StepReminder[]
   entries: ScratchpadEntry[]
   hasEntries: boolean
-  currentRating: 'good' | 'ok' | 'bad' | null
 }>()
 
 const emit = defineEmits<{
   addNote: [stepId: string, value: string]
-  addRating: [stepId: string, rating: 'good' | 'ok' | 'bad']
   respond: [stepId: string, prompt: string, value: string]
 }>()
 
@@ -51,10 +49,6 @@ function handleSaveNote(): void {
   if (!noteText.value.trim()) return
   emit('addNote', props.stepId, noteText.value)
   noteText.value = ''
-}
-
-function handleRating(rating: 'good' | 'ok' | 'bad'): void {
-  emit('addRating', props.stepId, rating)
 }
 
 function handleReminderRespond(prompt: string): void {
@@ -170,22 +164,6 @@ const formattedEntries = computed(() => {
             </div>
           </div>
 
-          <!-- Quick rating -->
-          <div>
-            <span class="font-mono text-[10px] text-stone-500 mb-1.5 block">Quick rating</span>
-            <div class="flex gap-1.5">
-              <button
-                v-for="r in (['good', 'ok', 'bad'] as const)"
-                :key="r"
-                class="btn text-[10px] py-0.5 px-2 border-2 border-stone-200"
-                :class="currentRating === r
-                  ? (r === 'good' ? 'bg-success text-stone-50 border-success' : r === 'ok' ? 'bg-warning text-ink border-warning' : 'bg-danger text-stone-50 border-danger')
-                  : 'bg-surface text-ink hover:bg-stone-100'"
-                @click="handleRating(r)"
-              >{{ r }}</button>
-            </div>
-          </div>
-
           <!-- Freeform note -->
           <div>
             <span class="font-mono text-[10px] text-stone-500 mb-1.5 block">Note</span>
@@ -262,22 +240,6 @@ const formattedEntries = computed(() => {
                 @click="handleReminderRespond(reminder.prompt)"
               >Log</button>
             </div>
-          </div>
-        </div>
-
-        <!-- Quick rating -->
-        <div>
-          <span class="font-mono text-xs text-stone-500 mb-2 block">Quick rating</span>
-          <div class="flex gap-2">
-            <button
-              v-for="r in (['good', 'ok', 'bad'] as const)"
-              :key="r"
-              class="btn text-sm py-1.5 px-4 border-2 border-stone-200"
-              :class="currentRating === r
-                ? (r === 'good' ? 'bg-success text-stone-50 border-success' : r === 'ok' ? 'bg-warning text-ink border-warning' : 'bg-danger text-stone-50 border-danger')
-                : 'bg-surface text-ink hover:bg-stone-100'"
-              @click="handleRating(r)"
-            >{{ r }}</button>
           </div>
         </div>
 

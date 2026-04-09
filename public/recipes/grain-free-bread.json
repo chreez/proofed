@@ -20,8 +20,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-04-09",
+      "summary": "Removed rating-type reminder prompts."
+    },
     {
       "version": "v1.0.0",
       "date": "2026-03-02",
@@ -488,10 +493,6 @@
         {
           "prompt": "Rate crumb texture (dense, cakey, or bread-like?)",
           "type": "observation"
-        },
-        {
-          "prompt": "Rate egg flavor intensity",
-          "type": "rating"
         }
       ]
     }

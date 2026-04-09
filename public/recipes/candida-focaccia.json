@@ -20,8 +20,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-04-09",
+      "summary": "Removed rating-type reminder prompts."
+    },
     {
       "version": "v1.0.0",
       "date": "2026-03-02",
@@ -471,12 +476,7 @@
           "source": "agent"
         }
       ],
-      "reminders": [
-        {
-          "prompt": "Rate the egg white peaks",
-          "type": "rating"
-        }
-      ]
+      "reminders": null
     },
     {
       "id": "fold-whites",
@@ -571,10 +571,6 @@
         {
           "prompt": "Record internal temperature",
           "type": "measurement"
-        },
-        {
-          "prompt": "Rate the crust color",
-          "type": "rating"
         }
       ]
     },

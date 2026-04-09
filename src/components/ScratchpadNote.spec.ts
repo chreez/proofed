@@ -13,8 +13,7 @@ const defaultProps = {
   stepId: 'mix-dough',
   stepName: 'Mix the dough',
   entries: [],
-  hasEntries: false,
-  currentRating: null as 'good' | 'ok' | 'bad' | null
+  hasEntries: false
 }
 
 describe('ScratchpadNote', () => {
@@ -255,59 +254,6 @@ describe('ScratchpadNote', () => {
       await logBtn!.trigger('click')
 
       expect((reminderInput.element as HTMLInputElement).value).toBe('')
-    })
-  })
-
-  describe('quick rating', () => {
-    it('renders three rating buttons', async () => {
-      const wrapper = mount(ScratchpadNote, { props: defaultProps })
-      await wrapper.find('button').trigger('click')
-
-      expect(wrapper.text()).toContain('Quick rating')
-      expect(wrapper.text()).toContain('good')
-      expect(wrapper.text()).toContain('ok')
-      expect(wrapper.text()).toContain('bad')
-    })
-
-    it('emits addRating on rating click', async () => {
-      const wrapper = mount(ScratchpadNote, { props: defaultProps })
-      await wrapper.find('button').trigger('click')
-
-      const ratingBtns = wrapper.findAll('button').filter(b => b.text() === 'good')
-      await ratingBtns[0].trigger('click')
-
-      expect(wrapper.emitted('addRating')).toBeTruthy()
-      expect(wrapper.emitted('addRating')![0]).toEqual(['mix-dough', 'good'])
-    })
-
-    it('highlights current rating with active styling', async () => {
-      const wrapper = mount(ScratchpadNote, {
-        props: { ...defaultProps, currentRating: 'good' }
-      })
-      await wrapper.find('button').trigger('click')
-
-      const goodBtn = wrapper.findAll('button').find(b => b.text() === 'good')
-      expect(goodBtn!.classes()).toContain('bg-success')
-    })
-
-    it('shows warning styling for ok rating', async () => {
-      const wrapper = mount(ScratchpadNote, {
-        props: { ...defaultProps, currentRating: 'ok' }
-      })
-      await wrapper.find('button').trigger('click')
-
-      const okBtn = wrapper.findAll('button').find(b => b.text() === 'ok')
-      expect(okBtn!.classes()).toContain('bg-warning')
-    })
-
-    it('shows danger styling for bad rating', async () => {
-      const wrapper = mount(ScratchpadNote, {
-        props: { ...defaultProps, currentRating: 'bad' }
-      })
-      await wrapper.find('button').trigger('click')
-
-      const badBtn = wrapper.findAll('button').find(b => b.text() === 'bad')
-      expect(badBtn!.classes()).toContain('bg-danger')
     })
   })
 

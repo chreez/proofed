@@ -19,8 +19,7 @@ const defaultProps = {
   stepId: 'mix-dough',
   stepName: 'Mix the dough',
   entries: [],
-  hasEntries: false,
-  currentRating: null as 'good' | 'ok' | 'bad' | null
+  hasEntries: false
 }
 
 function makeEntry(overrides: Partial<{
@@ -66,27 +65,6 @@ describe('ScratchpadNote mobile (bottom sheet)', () => {
     await openSheet(wrapper)
     expect(wrapper.text()).toContain('scratchpad: Mix the dough')
     expect(wrapper.text()).toContain('mix-dough')
-  })
-
-  it('renders rating buttons in bottom sheet', async () => {
-    const wrapper = mount(ScratchpadNote, { props: defaultProps, ...mountOpts })
-    await openSheet(wrapper)
-    expect(wrapper.text()).toContain('Quick rating')
-    expect(wrapper.text()).toContain('good')
-    expect(wrapper.text()).toContain('ok')
-    expect(wrapper.text()).toContain('bad')
-  })
-
-  it('emits addRating when rating button clicked in bottom sheet', async () => {
-    const wrapper = mount(ScratchpadNote, { props: defaultProps, ...mountOpts })
-    await openSheet(wrapper)
-
-    const ratingBtns = wrapper.findAll('button').filter(b => b.text() === 'good')
-    expect(ratingBtns.length).toBeGreaterThan(0)
-    await ratingBtns[0].trigger('click')
-
-    expect(wrapper.emitted('addRating')).toBeTruthy()
-    expect(wrapper.emitted('addRating')![0]).toEqual(['mix-dough', 'good'])
   })
 
   it('renders textarea in bottom sheet', async () => {
@@ -169,39 +147,6 @@ describe('ScratchpadNote mobile (bottom sheet)', () => {
 
     const input = wrapper.find('input')
     expect(input.attributes('placeholder')).toBe('e.g. 748g')
-  })
-
-  it('highlights active good rating in bottom sheet', async () => {
-    const wrapper = mount(ScratchpadNote, {
-      props: { ...defaultProps, currentRating: 'good' },
-      ...mountOpts
-    })
-    await openSheet(wrapper)
-
-    const goodBtn = wrapper.findAll('button').find(b => b.text() === 'good')
-    expect(goodBtn!.classes()).toContain('bg-success')
-  })
-
-  it('shows warning styling for ok rating in bottom sheet', async () => {
-    const wrapper = mount(ScratchpadNote, {
-      props: { ...defaultProps, currentRating: 'ok' },
-      ...mountOpts
-    })
-    await openSheet(wrapper)
-
-    const okBtn = wrapper.findAll('button').find(b => b.text() === 'ok')
-    expect(okBtn!.classes()).toContain('bg-warning')
-  })
-
-  it('shows danger styling for bad rating in bottom sheet', async () => {
-    const wrapper = mount(ScratchpadNote, {
-      props: { ...defaultProps, currentRating: 'bad' },
-      ...mountOpts
-    })
-    await openSheet(wrapper)
-
-    const badBtn = wrapper.findAll('button').find(b => b.text() === 'bad')
-    expect(badBtn!.classes()).toContain('bg-danger')
   })
 
   it('has scrollable content area in bottom sheet', async () => {

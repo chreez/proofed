@@ -153,51 +153,6 @@ describe('useScratchpad', () => {
     })
   })
 
-  describe('addRating', () => {
-    it('creates a rating entry for a step', () => {
-      const sp = useScratchpad('recipe-a')
-      sp.load()
-
-      sp.addRating('step-1', 'good')
-
-      const rating = sp.getRatingForStep('step-1')
-      expect(rating).toBe('good')
-    })
-
-    it('updates existing rating instead of adding duplicate', () => {
-      const sp = useScratchpad('recipe-a')
-      sp.load()
-
-      sp.addRating('step-1', 'good')
-      sp.addRating('step-1', 'bad')
-
-      const entries = sp.getEntriesForStep('step-1')
-      const ratings = entries.filter(e => e.type === 'rating')
-      expect(ratings).toHaveLength(1)
-      expect(ratings[0].value).toBe('bad')
-      expect(ratings[0].rating).toBe('bad')
-    })
-
-    it('creates entries array if step has no entries yet', () => {
-      const sp = useScratchpad('recipe-a')
-      sp.load()
-
-      sp.addRating('new-step', 'ok')
-
-      expect(sp.hasEntriesForStep('new-step')).toBe(true)
-      expect(sp.getRatingForStep('new-step')).toBe('ok')
-    })
-
-    it('saves to localStorage after rating', () => {
-      const sp = useScratchpad('recipe-a')
-      sp.load()
-
-      sp.addRating('step-1', 'good')
-
-      expect(localStorageMock.setItem).toHaveBeenCalled()
-    })
-  })
-
   describe('addReminderResponse', () => {
     it('creates a reminder_response entry', () => {
       const sp = useScratchpad('recipe-a')
@@ -346,33 +301,6 @@ describe('useScratchpad', () => {
 
       const entries = sp.getEntriesForStep('step-1')
       expect(entries).toHaveLength(1)
-    })
-  })
-
-  describe('getRatingForStep', () => {
-    it('returns null for step with no entries', () => {
-      const sp = useScratchpad('recipe-a')
-      sp.load()
-
-      expect(sp.getRatingForStep('step-1')).toBeNull()
-    })
-
-    it('returns null for step with no rating entries', () => {
-      const sp = useScratchpad('recipe-a')
-      sp.load()
-
-      sp.addNote('step-1', 'just a note')
-
-      expect(sp.getRatingForStep('step-1')).toBeNull()
-    })
-
-    it('returns the rating value', () => {
-      const sp = useScratchpad('recipe-a')
-      sp.load()
-
-      sp.addRating('step-1', 'good')
-
-      expect(sp.getRatingForStep('step-1')).toBe('good')
     })
   })
 

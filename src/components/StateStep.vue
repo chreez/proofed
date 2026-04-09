@@ -43,10 +43,6 @@ function handleAddNote(stepId: string, value: string): void {
   props.scratchpad?.addNote(stepId, value)
 }
 
-function handleAddRating(stepId: string, rating: 'good' | 'ok' | 'bad'): void {
-  props.scratchpad?.addRating(stepId, rating)
-}
-
 function handleReminderRespond(stepId: string, prompt: string, value: string): void {
   props.scratchpad?.addReminderResponse(stepId, prompt, value)
 }
@@ -57,7 +53,6 @@ function handleReminderDismiss(stepId: string, prompt: string): void {
 
 const stepEntries = computed(() => props.scratchpad?.getEntriesForStep(props.state.id) ?? [])
 const hasEntries = computed(() => stepEntries.value.length > 0)
-const currentRating = computed(() => props.scratchpad?.getRatingForStep(props.state.id) ?? null)
 const showReminders = computed(() =>
   !!props.state.reminders?.length && props.isActiveStep && !isChecked.value
 )
@@ -123,9 +118,7 @@ function parseSourceSegments(src: string): SourceSegment[] {
             :reminders="state.reminders"
             :entries="stepEntries"
             :has-entries="hasEntries"
-            :current-rating="currentRating"
             @add-note="handleAddNote"
-            @add-rating="handleAddRating"
             @respond="handleReminderRespond"
           />
           <span v-if="state.parallel" class="text-xs bg-stone-200 text-stone-600 px-2 py-0.5">

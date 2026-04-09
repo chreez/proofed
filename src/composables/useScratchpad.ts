@@ -62,26 +62,6 @@ export function useScratchpad(recipeId: string) {
     save()
   }
 
-  function addRating(stepId: string, rating: 'good' | 'ok' | 'bad'): void {
-    if (!state.entries[stepId]) {
-      state.entries[stepId] = []
-    }
-    const existing = state.entries[stepId].findIndex(e => e.type === 'rating')
-    const entry: ScratchpadEntry = {
-      stepId,
-      timestamp: new Date().toISOString(),
-      type: 'rating',
-      value: rating,
-      rating
-    }
-    if (existing >= 0) {
-      state.entries[stepId][existing] = entry
-    } else {
-      state.entries[stepId].push(entry)
-    }
-    save()
-  }
-
   function addReminderResponse(stepId: string, prompt: string, value: string): void {
     if (!value.trim()) return
     if (!state.entries[stepId]) {
@@ -129,13 +109,6 @@ export function useScratchpad(recipeId: string) {
     return state.entries[stepId] || []
   }
 
-  function getRatingForStep(stepId: string): 'good' | 'ok' | 'bad' | null {
-    const entries = state.entries[stepId]
-    if (!entries) return null
-    const rating = entries.find(e => e.type === 'rating')
-    return rating?.rating ?? null
-  }
-
   const totalEntryCount = computed<number>(() => {
     let count = 0
     for (const entries of Object.values(state.entries)) {
@@ -177,13 +150,11 @@ export function useScratchpad(recipeId: string) {
   return {
     load,
     addNote,
-    addRating,
     addReminderResponse,
     addGeneralNote,
     dismissReminder,
     isReminderDismissed,
     getEntriesForStep,
-    getRatingForStep,
     hasEntriesForStep,
     totalEntryCount,
     generalNoteCount,

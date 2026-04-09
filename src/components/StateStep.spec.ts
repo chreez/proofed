@@ -16,8 +16,8 @@ vi.mock('@/components/StepNote.vue', () => ({
 vi.mock('@/components/ScratchpadNote.vue', () => ({
   default: {
     name: 'ScratchpadNote',
-    props: ['stepId', 'stepName', 'reminders', 'hasEntries', 'currentRating'],
-    emits: ['addNote', 'addRating', 'respond'],
+    props: ['stepId', 'stepName', 'reminders', 'hasEntries'],
+    emits: ['addNote', 'respond'],
     template: '<div class="scratchpad-note-stub" />'
   }
 }))
@@ -622,13 +622,11 @@ function makeScratchpad() {
   return {
     load: vi.fn(),
     addNote: vi.fn(),
-    addRating: vi.fn(),
     addReminderResponse: vi.fn(),
     addGeneralNote: vi.fn(),
     dismissReminder: vi.fn(),
     isReminderDismissed: vi.fn(() => false),
     getEntriesForStep: vi.fn(() => []),
-    getRatingForStep: vi.fn(() => null),
     hasEntriesForStep: vi.fn(() => false),
     totalEntryCount: { value: 0 },
     generalNoteCount: { value: 0 },
@@ -661,17 +659,6 @@ describe('StateStep scratchpad integration', () => {
     stub.vm.$emit('addNote', 'mix-dough', 'test note')
     await wrapper.vm.$nextTick()
     expect(sp.addNote).toHaveBeenCalledWith('mix-dough', 'test note')
-  })
-
-  it('calls scratchpad.addRating via handleAddRating', async () => {
-    const sp = makeScratchpad()
-    const wrapper = mount(StateStep, {
-      props: { ...defaultProps, scratchpad: sp }
-    })
-    const stub = wrapper.findComponent({ name: 'ScratchpadNote' })
-    stub.vm.$emit('addRating', 'mix-dough', 'good')
-    await wrapper.vm.$nextTick()
-    expect(sp.addRating).toHaveBeenCalledWith('mix-dough', 'good')
   })
 
   it('calls scratchpad.addReminderResponse via handleReminderRespond', async () => {
