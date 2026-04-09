@@ -23,6 +23,7 @@ export default defineConfig({
     alias: { '@': '/src' }
   },
   server: {
-    host: true
+    host: true,
+    strictPort: true
   }
 })

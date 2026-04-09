@@ -1,9 +1,10 @@
 ---
 id: PF-190
 title: 'Dev server: error on port collision instead of silent fallback'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-04-09 17:03'
+updated_date: '2026-04-09 17:48'
 labels:
   - dx
 dependencies: []
@@ -31,3 +32,9 @@ Set `server.strictPort: true` in `vite.config.ts`. Vite will error out with EADD
 - [ ] #2 Dev server errors out with a clear message when port 6811 is already in use (no silent fallback to next port)
 - [ ] #3 Verify: start dev server, then start a second instance — second instance must fail with port-in-use error
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Subagent complete: added `strictPort: true` to vite.config.ts server config. Build passes (1397 tests, type-check clean). One-line change, no visual gate.
+<!-- SECTION:NOTES:END -->
