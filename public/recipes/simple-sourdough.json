@@ -25,8 +25,13 @@
       "fields": ["dough_temps", "bulk_ambient_temps", "bake_phases", "stretch_folds", "aliquot_rises"]
     }
   },
-  "version": "v3.5.0",
+  "version": "v3.6.0",
   "change_log": [
+    {
+      "version": "v3.6.0",
+      "date": "2026-04-10",
+      "summary": "Reheat instructions updated with user sign-off: oven method clarified (half-loaf only, wet the bread thoroughly), toaster renamed to toaster/air fryer for slices."
+    },
     {
       "version": "v3.5.0",
       "date": "2026-04-10",
@@ -2521,13 +2526,74 @@
         "Results: similar rise on both loaves. Loaf 2 paler crust from lower uncovered temp. Loaf 1 crumb had good even density and bubble distribution. Shape slightly triangular — possible slight overproof.",
         "Bulk ferment ~4 hrs (salt 11:41am → preshape ~3:38pm). Total proof ~17h 50m for loaf 1 (shape ~4:09pm → oven 9:59am; ~1 hr room temp rest + ~16h 47m cold retard). Loaf 2 ~18h 53m total (~43 min extra room temp warm-up)."
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-04-10/both-loaves-side-by-side-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-10/both-loaves-side-by-side-400w.webp",
+          "alt": "Both sourdough boules on wire racks after baking — loaf 1 (left) shows deeper golden color from 480°F/450°F bake, loaf 2 (right) paler from lower uncovered temp at 425°F."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-10/bread-lame-razor-blade-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-10/bread-lame-razor-blade-400w.webp",
+          "alt": "Bread lame with single-edge razor blade mounted — frustration with the tool's awkward angle and shallow scoring depth on cross patterns."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-10/loaf1-cooling-rack-cross-score-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-10/loaf1-cooling-rack-cross-score-400w.webp",
+          "alt": "Loaf 1 on wire cooling rack after baking — cross score pattern opened well during oven spring, banneton ring pattern visible on sides, blistered crust texture."
+        }
+      ],
       "next_time": [
         { "text": "Settle on bake profile: 500°F preheat 1hr → 450-480°F covered → 425°F uncovered 18 min with inspection and halfway rotations" },
         { "text": "Investigate starter — not passing float test cleanly despite visible activity after 2 days of feeding" },
         { "text": "Revisit recipe's overnight bulk step — targeting rise % then fridge may be better than fixed 10-hour room temp" },
-        { "text": "Skip room-temp dough experiment — cold-from-fridge process preferred, warm dough was flat and harder to score" }
+        { "text": "Skip room-temp dough experiment — cold-from-fridge process preferred, warm dough was flat and harder to score" },
+        { "text": "Try curved angle mode on bread lame — not impressed with straight blade scoring so far" },
+        { "text": "Idea: measure loaf dimensions — ruler, or CV program with depth sensor/3D capture" }
       ],
+      "cost": {
+        "total": 2.65,
+        "perServing": 1.32,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lb",
+            "amount": 1000,
+            "unit": "g",
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 700,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt 17.6 oz",
+            "amount": 20,
+            "unit": "g",
+            "cost": 0.12
+          }
+        ]
+      },
       "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-10\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      { \"timestamp\": \"2026-04-09T16:00:19.696Z\", \"value\": \"ambient internal temp. 76 60% humidity\" },\n      { \"timestamp\": \"2026-04-09T16:02:33.353Z\", \"value\": \"trying to figure out if i'm having starter issues. why is it taking two days for it to get back to float status. it seems bubbly throughout the container. it's almost tripled in size in 6 hours.. should be peaked. will report.\" }\n    ],\n    \"FERMENTOLYSE\": [\n      { \"timestamp\": \"2026-04-09T16:14:49.555Z\", \"value\": \"77.2. finished initial mix about 7 minutes ago.\" }\n    ],\n    \"ADD_SALT\": [\n      { \"timestamp\": \"2026-04-09T16:41:51.650Z\", \"value\": \"done. 76.6 degree dough temp\" }\n    ],\n    \"FOLD_3\": [\n      { \"timestamp\": \"2026-04-09T18:00:19.767Z\", \"value\": \"may not need this. will check in 30\" }\n    ],\n    \"OVERNIGHT_BULK\": [\n      { \"timestamp\": \"2026-04-09T18:01:34.493Z\", \"value\": \"i'm not sure if this direction is correct. i think 10 hour at room temperature will result in underproofing. if anything it should target a rise % then straight to fridge for bulk retard before a divide and preshape the next day. unsure though. will need to study more.\" },\n      { \"timestamp\": \"2026-04-09T20:28:32.351Z\", \"value\": \"77 at end of bulk ferment.\" }\n    ],\n    \"TURN_OUT\": [\n      { \"timestamp\": \"2026-04-09T20:33:06.392Z\", \"value\": \"1925 grams total. target per loaf is 962.5\" },\n      { \"timestamp\": \"2026-04-09T21:08:21.711Z\", \"value\": \"i preshaped dough about 30 minutes ago.\" },\n      { \"timestamp\": \"2026-04-09T21:08:50.042Z\", \"value\": \"taking single dough temp probably unnecessary\" }\n    ],\n    \"ROOM_TEMP_REST\": [\n      { \"timestamp\": \"2026-04-09T22:12:19.860Z\", \"value\": \"in fridge now. will pull out and cook.\" }\n    ]\n  },\n  \"generalNotes\": [\n    { \"timestamp\": \"2026-04-09T17:21:33.040Z\", \"value\": \"aliquot reading 20% this fast seems sketchy. first stretch and fold now.\" },\n    { \"timestamp\": \"2026-04-09T17:21:40.594Z\", \"value\": \"76.5 1st\" },\n    { \"timestamp\": \"2026-04-09T17:56:06.502Z\", \"value\": \"starting second s and fold - 76.5 degrees. aliquot 20%\" },\n    { \"timestamp\": \"2026-04-09T17:59:20.153Z\", \"value\": \"dough seems a little more slack than normal. or i may be comparing to pizza dough i just made.\" },\n    { \"timestamp\": \"2026-04-09T19:02:15.592Z\", \"value\": \"i did my last stretch and fold about 10 minutes ago. will record temp.\" },\n    { \"timestamp\": \"2026-04-09T19:02:26.606Z\", \"value\": \"aliquot at 30%\" },\n    { \"timestamp\": \"2026-04-09T19:03:01.311Z\", \"value\": \"76.6 degrees. for bulk rest. with target of 50-60% rise\" },\n    { \"timestamp\": \"2026-04-09T19:55:20.017Z\", \"value\": \"aliquot is at 50%. checking dough.\" },\n    { \"timestamp\": \"2026-04-09T20:27:16.811Z\", \"value\": \"reading 70% on aliquot\" },\n    { \"timestamp\": \"2026-04-09T20:28:48.481Z\", \"value\": \"turning out dough to rest for 10 minutes on the counter\" },\n    { \"timestamp\": \"2026-04-09T21:09:09.968Z\", \"value\": \"shaping now\" },\n    { \"timestamp\": \"2026-04-09T21:27:50.492Z\", \"value\": \"shaped and resting at room temperature for an hour. started the resting at room temp about 23 minutes ago.\" },\n    { \"timestamp\": \"2026-04-10T14:25:31.635Z\", \"value\": \"preheat started roughly an hour ago. preheating high just to speed up process. 410 degrees reading on dutch oven means i'm not there yet. looking for 450 readout on infrared thermometer before starting bake. preheat is set to 550 on oven. will lower to 480 covered this time per experiment parameters\" },\n    { \"timestamp\": \"2026-04-10T14:59:10.815Z\", \"value\": \"480 covered start\" },\n    { \"timestamp\": \"2026-04-10T14:59:34.548Z\", \"value\": \"dutch oven reading still only 420 but i don't want to waste energy or time. it should be ok.\" },\n    { \"timestamp\": \"2026-04-10T15:19:58.996Z\", \"value\": \"lid off. 450. going to experiment and let second loaf dough sit at room temp for a bit. i want to see if it's easier to score if the dough has settled a little bit.\" },\n    { \"timestamp\": \"2026-04-10T15:29:23.438Z\", \"value\": \"9 minute rotate dough. reading surface temp of 480 on dutch oven. nice.\" },\n    { \"timestamp\": \"2026-04-10T15:37:19.891Z\", \"value\": \"oven off for final four minutes. let's see how the crust turns out\" },\n    { \"timestamp\": \"2026-04-10T15:59:43.783Z\", \"value\": \"second loaf. preheat complete. dutch oven just reading 380.\" },\n    { \"timestamp\": \"2026-04-10T16:02:58.724Z\", \"value\": \"second loaf in 480. dough looked really flat. harder to score. used bread lame. unamused by its functionality at this point.\" },\n    { \"timestamp\": \"2026-04-10T16:23:25.759Z\", \"value\": \"second bread. 425 uncovered this time for 9 minutes. then will flip\" },\n    { \"timestamp\": \"2026-04-10T16:32:53.568Z\", \"value\": \"rotate dough. 9 more minutes. temps 390\" },\n    { \"timestamp\": \"2026-04-10T16:48:16.018Z\", \"value\": \"i did 4 minutes oven off. after 18 minutes at the 425. i think it needs another 4 minutes\" }\n  ]\n}"
     }
   ],
@@ -2625,18 +2691,18 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "350°F (175°C), 5–10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.",
-        "source": "agent"
+        "detail": "350°F (175°C), 15 min for a half-loaf only. Run filtered water over the bread and rub it all around — not soggy, just moist. For slices, use air fryer instead.",
+        "source": "user"
       },
       {
-        "method": "Toaster",
-        "detail": "Slice and toast directly — best for day-old bread.",
-        "source": "agent"
+        "method": "Toaster / Air Fryer",
+        "detail": "Slice and toast or air-fry directly — best for day-old bread and individual slices.",
+        "source": "user"
       },
       {
         "method": "Storage",
         "detail": "Cut-side down on a board, room temp, same day. Freeze sliced in zip-lock for up to 1 month.",
-        "source": "agent"
+        "source": "user"
       }
     ]
   },

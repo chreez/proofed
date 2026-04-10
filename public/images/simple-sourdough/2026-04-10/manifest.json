@@ -1,0 +1,37 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-04-10",
+  "processedAt": "2026-04-10T17:50:19.275Z",
+  "photos": [
+    {
+      "name": "both-loaves-side-by-side",
+      "thumb": "both-loaves-side-by-side-400w.webp",
+      "src": "both-loaves-side-by-side-800w.webp",
+      "summary": "Both sourdough boules on wire racks after baking — loaf 1 (left) shows deeper golden color from 480°F/450°F bake, loaf 2 (right) paler from lower uncovered temp at 425°F."
+    },
+    {
+      "name": "bread-lame-razor-blade",
+      "thumb": "bread-lame-razor-blade-400w.webp",
+      "src": "bread-lame-razor-blade-800w.webp",
+      "summary": "Bread lame with single-edge razor blade mounted — frustration with the tool's awkward angle and shallow scoring depth on cross patterns."
+    },
+    {
+      "name": "loaf1-blistered-crust-detail",
+      "thumb": "loaf1-blistered-crust-detail-400w.webp",
+      "src": "loaf1-blistered-crust-detail-800w.webp",
+      "summary": "Close-up of loaf 1 crust showing pronounced blistering and textured surface — deep golden color from 480°F covered bake, cross score bloom visible."
+    },
+    {
+      "name": "loaf1-cooling-rack-cross-score",
+      "thumb": "loaf1-cooling-rack-cross-score-400w.webp",
+      "src": "loaf1-cooling-rack-cross-score-800w.webp",
+      "summary": "Loaf 1 on wire cooling rack after baking — cross score pattern opened well during oven spring, banneton ring pattern visible on sides, blistered crust texture."
+    },
+    {
+      "name": "loaf1-held-up-profile",
+      "thumb": "loaf1-held-up-profile-400w.webp",
+      "src": "loaf1-held-up-profile-800w.webp",
+      "summary": "Profile view of loaf 1 held on wire rack — showing good dome height and cross score pattern, blistered crust texture from high-heat covered bake."
+    }
+  ]
+}
