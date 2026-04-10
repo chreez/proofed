@@ -508,10 +508,14 @@ Recipe changes *informed by* bake data (e.g., adding StateNotes, updating direct
 | Recipe changes from bake learnings | Yes (minor for new states/directions, patch for notes-only) | `feat: {recipe} improvements from bake data` |
 
 1. **Run `npm run build`** to verify
-2. **Stage and commit**: recipe JSON + task file (if any) + photo manifest (if any)
+2. **Stage and commit**: recipe JSON + task file (if any) + photo manifest (if any) + photo images + review data
+
+**One commit per complete bake log.** A default (no flags) session should produce a single commit that includes the entry text, photos, cost data, and review artifacts all together. Do NOT split the entry write and the photo/cost wiring into separate commits — wait until all data is wired in before committing.
+
+**Exception:** `--start` creates a skeleton commit immediately (the whole point is to get a deployable page fast, e.g., for QR code printing). Subsequent `--update` or `--finalize` sessions are their own commits.
 
 **For --start and --update:** Skip Phase 5-6 (photos/cost). Commit immediately after writing the entry.
-**For --finalize:** Run full Phase 5-6 flow before committing.
+**For --finalize:** Run full Phase 5-6 flow before committing. Single commit with everything.
 
 ## Phase 8: Update Backlog
 
