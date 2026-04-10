@@ -25,8 +25,13 @@
       "fields": ["dough_temps", "bulk_ambient_temps", "bake_phases", "stretch_folds", "aliquot_rises"]
     }
   },
-  "version": "v3.4.0",
+  "version": "v3.5.0",
   "change_log": [
+    {
+      "version": "v3.5.0",
+      "date": "2026-04-10",
+      "summary": "Update preheat duration from 45 to 60 minutes — user preference confirmed across 14 bakes. Longer preheat ensures Dutch oven is fully heat-saturated."
+    },
     {
       "version": "v3.4.0",
       "date": "2026-04-08",
@@ -678,12 +683,12 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven + Dutch Oven",
-      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 500°F (260°C) for at least 45 minutes. The heavy pot needs time to fully saturate with heat.",
-      "duration_min": 45,
+      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 500°F (260°C) for at least 60 minutes. The heavy pot needs time to fully saturate with heat.",
+      "duration_min": 60,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven at 500°F (260°C) for at least 45 minutes, Dutch oven fully preheated",
+      "exit_condition": "Oven at 500°F (260°C) for at least 60 minutes, Dutch oven fully preheated",
       "notes": [
         {
           "text": "Start preheating while the dough is still in the fridge. Do NOT let the dough warm up — bake straight from cold.",
@@ -2572,7 +2577,7 @@
   },
   "bake_defaults": {
     "bake_phases": [
-      { "stage": "preheat", "temp_f": 500, "duration_min": 45 },
+      { "stage": "preheat", "temp_f": 500, "duration_min": 60 },
       { "stage": "covered", "temp_f": 450, "duration_min": 20 },
       { "stage": "uncovered", "temp_f": 425, "duration_min": 20 }
     ]
