@@ -38,13 +38,27 @@ vi.mock('motion-v', () => ({
   })
 }))
 
-// Default fetch mock: returns recipe with cook_log and meta.description
+// Mock localStorage for in-progress detection
+let localStore: Record<string, string> = {}
+
+const localStorageMock = {
+  getItem: vi.fn((key: string) => localStore[key] ?? null),
+  setItem: vi.fn((key: string, value: string) => { localStore[key] = value }),
+  removeItem: vi.fn((key: string) => { delete localStore[key] }),
+  clear: vi.fn(() => { localStore = {} }),
+  get length() { return Object.keys(localStore).length },
+  key: vi.fn((i: number) => Object.keys(localStore)[i] || null)
+}
+
+Object.defineProperty(globalThis, 'localStorage', { value: localStorageMock, writable: true })
+
+// Default fetch mock: returns recipe with cook_log entry (baked by default so items show)
 function makeFetchMock(overrides: Record<string, unknown> = {}) {
   return vi.fn(() =>
     Promise.resolve({
       json: () => Promise.resolve({
         meta: { description: 'Test description' },
-        cook_log: [],
+        cook_log: [{ date: '2026-01-01', photos: [] }],
         ...overrides
       })
     } as Response)
@@ -55,7 +69,7 @@ function makeFetchMock(overrides: Record<string, unknown> = {}) {
 function makeFetchMockByFile(fileMap: Record<string, Record<string, unknown>>) {
   return vi.fn((url: string) => {
     const file = String(url).split('/').pop() ?? ''
-    const data = fileMap[file] ?? { meta: { description: 'Test description' }, cook_log: [] }
+    const data = fileMap[file] ?? { meta: { description: 'Test description' }, cook_log: [{ date: '2026-01-01', photos: [] }] }
     return Promise.resolve({
       json: () => Promise.resolve(data)
     } as Response)
@@ -65,6 +79,7 @@ function makeFetchMockByFile(fileMap: Record<string, Record<string, unknown>>) {
 describe('RecipeIndex', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    localStore = {}
     global.fetch = makeFetchMock()
     mockRecipeList.value = [
       { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', file: 'atk-cinnamon-buns-ultimate.json' },
@@ -130,7 +145,11 @@ describe('RecipeIndex', () => {
     const wrapper = mount(RecipeIndex)
     await flushPromises()
 
-    // Component should still render without crashing
+    // Component should still render without crashing — recipes appear in unbaked reveal
+    expect(wrapper.text()).toContain('+ 3 more recipes')
+
+    // Click reveal to show them
+    await wrapper.find('.timeline-reveal-link').trigger('click')
     expect(wrapper.text()).toContain('ATK Ultimate Cinnamon Buns')
   })
 
@@ -161,7 +180,7 @@ describe('RecipeIndex', () => {
     expect(heroImg.attributes('src')).toBe('/img/hero-400w.webp')
   })
 
-  it('sorts baked recipes before unbaked within category', async () => {
+  it('shows baked recipes by default and hides unbaked', async () => {
     // Set up two standalone recipes in the same category
     mockRecipeList.value = [
       { id: 'recipe-a', name: 'Alpha Recipe', file: 'alpha.json' },
@@ -184,11 +203,19 @@ describe('RecipeIndex', () => {
     const wrapper = mount(RecipeIndex)
     await flushPromises()
 
+    // Only baked recipe visible by default
     const items = wrapper.findAll('.timeline-item')
-    expect(items.length).toBe(2)
-    // Beta (baked) should appear before Alpha (unbaked)
+    expect(items.length).toBe(1)
     expect(items[0].text()).toContain('Beta Recipe')
-    expect(items[1].text()).toContain('Alpha Recipe')
+
+    // Reveal toggle shows unbaked count
+    expect(wrapper.text()).toContain('+ 1 more recipe')
+
+    // Click reveal to show unbaked
+    await wrapper.find('.timeline-reveal-link').trigger('click')
+    const allItems = wrapper.findAll('.timeline-item')
+    expect(allItems.length).toBe(2)
+    expect(wrapper.text()).toContain('Alpha Recipe')
   })
 
   it('shows bake count when cook_log has entries', async () => {
@@ -213,6 +240,9 @@ describe('RecipeIndex', () => {
     const wrapper = mount(RecipeIndex)
     await flushPromises()
 
+    // Unbaked recipes are hidden by default — reveal them first
+    await wrapper.find('.timeline-reveal-link').trigger('click')
+
     const badges = wrapper.findAll('.timeline-bake-count')
     expect(badges.length).toBe(0)
   })
@@ -235,7 +265,7 @@ describe('RecipeIndex', () => {
           description: 'A curry recipe',
           source: { type: 'original', author: 'proofed. research (9 agents, 60+ sources)' }
         },
-        cook_log: []
+        cook_log: [{ date: '2026-01-01', photos: [] }]
       }
     })
 
@@ -258,7 +288,7 @@ describe('RecipeIndex', () => {
           description: 'Cinnamon buns',
           source: { type: 'adapted', author: "America's Test Kitchen" }
         },
-        cook_log: []
+        cook_log: [{ date: '2026-01-01', photos: [] }]
       }
     })
 
@@ -270,7 +300,7 @@ describe('RecipeIndex', () => {
   })
 
   it('does not show provenance icon when source is missing', async () => {
-    global.fetch = makeFetchMock({ meta: { description: 'No source' }, cook_log: [] })
+    global.fetch = makeFetchMock({ meta: { description: 'No source' } })
 
     const wrapper = mount(RecipeIndex)
     await flushPromises()
@@ -289,7 +319,7 @@ describe('RecipeIndex', () => {
           description: 'A curry recipe',
           source: { type: 'original', author: 'proofed. research' }
         },
-        cook_log: []
+        cook_log: [{ date: '2026-01-01', photos: [] }]
       }
     })
 
@@ -301,5 +331,273 @@ describe('RecipeIndex', () => {
 
     // The @click.stop should prevent the parent click handler from firing
     expect(wrapper.emitted('select')).toBeFalsy()
+  })
+
+  it('shows in-progress section for recipes with active scratchpad', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Active Bake', file: 'active.json' },
+      { id: 'recipe-b', name: 'Regular Bake', file: 'regular.json' }
+    ]
+
+    localStore['scratchpad-recipe-a'] = JSON.stringify({
+      entries: { 'step-1': [{ stepId: 'step-1', timestamp: '2026-01-01', type: 'note', value: 'test' }] },
+      generalNotes: []
+    })
+
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    // Should have an in-progress section label
+    const labels = wrapper.findAll('.timeline-section-label')
+    const inProgressLabel = labels.find(l => l.text() === 'in progress')
+    expect(inProgressLabel).toBeTruthy()
+
+    // Should show in-progress badge
+    expect(wrapper.find('.timeline-in-progress-badge').exists()).toBe(true)
+
+    // Should have pulsing dot
+    expect(wrapper.find('.timeline-dot--in-progress').exists()).toBe(true)
+  })
+
+  it('in-progress items do not duplicate in baked section', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Active Bake', file: 'active.json' }
+    ]
+
+    localStore['scratchpad-recipe-a'] = JSON.stringify({
+      entries: { 'step-1': [{ stepId: 'step-1', timestamp: '2026-01-01', type: 'note', value: 'test' }] },
+      generalNotes: []
+    })
+
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    // Only one timeline-item should exist (in the in-progress section)
+    const items = wrapper.findAll('.timeline-item')
+    expect(items.length).toBe(1)
+    expect(items[0].classes()).toContain('timeline-item--in-progress')
+  })
+
+  it('no reveal toggle when all recipes are baked', async () => {
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    expect(wrapper.find('.timeline-reveal-link').exists()).toBe(false)
+  })
+
+  it('unbaked items have dimmed styling class', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Unbaked Recipe', file: 'unbaked.json' }
+    ]
+    global.fetch = makeFetchMock({ cook_log: [] })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    // Click reveal
+    await wrapper.find('.timeline-reveal-link').trigger('click')
+
+    const item = wrapper.find('.timeline-item--unbaked')
+    expect(item.exists()).toBe(true)
+
+    const dot = wrapper.find('.timeline-dot--unbaked')
+    expect(dot.exists()).toBe(true)
+  })
+
+  it('reveal toggle hides unbaked on second click', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Baked Recipe', file: 'baked.json' },
+      { id: 'recipe-b', name: 'Unbaked Recipe', file: 'unbaked.json' }
+    ]
+    global.fetch = makeFetchMockByFile({
+      'baked.json': { meta: { description: 'desc' }, cook_log: [{ date: '2026-01-01', photos: [] }] },
+      'unbaked.json': { meta: { description: 'desc' }, cook_log: [] }
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const revealLink = wrapper.find('.timeline-reveal-link')
+
+    // Show unbaked
+    await revealLink.trigger('click')
+    expect(wrapper.text()).toContain('Unbaked Recipe')
+    expect(wrapper.text()).toContain('- hide unbaked recipes')
+
+    // Hide again
+    await wrapper.find('.timeline-reveal-link').trigger('click')
+    expect(wrapper.text()).not.toContain('Unbaked Recipe')
+    expect(wrapper.text()).toContain('+ 1 more recipe')
+  })
+
+  it('in-progress with only generalNotes is detected', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Notes Bake', file: 'notes.json' }
+    ]
+
+    localStore['scratchpad-recipe-a'] = JSON.stringify({
+      entries: {},
+      generalNotes: [{ stepId: '_general', timestamp: '2026-01-01', type: 'note', value: 'general note' }]
+    })
+
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    expect(wrapper.find('.timeline-item--in-progress').exists()).toBe(true)
+  })
+
+  it('empty scratchpad does not trigger in-progress', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Empty Pad', file: 'empty.json' }
+    ]
+
+    localStore['scratchpad-recipe-a'] = JSON.stringify({
+      entries: {},
+      generalNotes: []
+    })
+
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    expect(wrapper.find('.timeline-item--in-progress').exists()).toBe(false)
+  })
+
+  it('handles invalid JSON in localStorage gracefully', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Bad Storage', file: 'bad.json' }
+    ]
+
+    localStore['scratchpad-recipe-a'] = 'not valid json {{'
+
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    // Should not crash — recipe treated as not in-progress
+    expect(wrapper.find('.timeline-item--in-progress').exists()).toBe(false)
+  })
+
+  it('in-progress items emit select when clicked', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Active Bake', file: 'active.json' }
+    ]
+
+    localStore['scratchpad-recipe-a'] = JSON.stringify({
+      entries: { 'step-1': [{ stepId: 'step-1', timestamp: '2026-01-01', type: 'note', value: 'test' }] },
+      generalNotes: []
+    })
+
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const inProgressItem = wrapper.find('.timeline-item--in-progress')
+    await inProgressItem.trigger('click')
+
+    expect(wrapper.emitted('select')).toBeTruthy()
+    expect(wrapper.emitted('select')![0]).toEqual(['recipe-a'])
+  })
+
+  it('in-progress section shows hero and description when available', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-a', name: 'Active Bake', file: 'active.json' }
+    ]
+
+    localStore['scratchpad-recipe-a'] = JSON.stringify({
+      entries: { 'step-1': [{ stepId: 'step-1', timestamp: '2026-01-01', type: 'note', value: 'test' }] },
+      generalNotes: []
+    })
+
+    global.fetch = makeFetchMock({
+      cook_log: [{
+        date: '2026-01-01',
+        photos: [{ src: '/img/hero-800w.webp', thumb: '/img/hero-400w.webp', alt: 'Hero' }]
+      }]
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const inProgressItem = wrapper.find('.timeline-item--in-progress')
+    expect(inProgressItem.find('.timeline-hero').exists()).toBe(true)
+    expect(inProgressItem.find('.timeline-summary').exists()).toBe(true)
+  })
+
+  it('multiple in-progress items sorted alphabetically', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-z', name: 'Zucchini Bread', file: 'z.json' },
+      { id: 'recipe-a', name: 'Apple Pie', file: 'a.json' }
+    ]
+
+    localStore['scratchpad-recipe-z'] = JSON.stringify({
+      entries: { 'step-1': [{ stepId: 'step-1', timestamp: '2026-01-01', type: 'note', value: 'test' }] },
+      generalNotes: []
+    })
+    localStore['scratchpad-recipe-a'] = JSON.stringify({
+      entries: { 'step-1': [{ stepId: 'step-1', timestamp: '2026-01-01', type: 'note', value: 'test' }] },
+      generalNotes: []
+    })
+
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const inProgressItems = wrapper.findAll('.timeline-item--in-progress')
+    expect(inProgressItems.length).toBe(2)
+    expect(inProgressItems[0].text()).toContain('Apple Pie')
+    expect(inProgressItems[1].text()).toContain('Zucchini Bread')
+  })
+
+  it('unbaked provenance icon shows in revealed section', async () => {
+    mockRecipeList.value = [
+      { id: 'coco-curry', name: 'Coco Curry', file: 'coco-curry.json' }
+    ]
+    global.fetch = makeFetchMockByFile({
+      'coco-curry.json': {
+        meta: {
+          description: 'A curry recipe',
+          source: { type: 'original', author: 'proofed. research' }
+        },
+        cook_log: []
+      }
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    // Reveal unbaked
+    await wrapper.find('.timeline-reveal-link').trigger('click')
+
+    const icon = wrapper.find('.timeline-provenance-icon')
+    expect(icon.exists()).toBe(true)
+  })
+
+  it('hides empty categories in baked section', async () => {
+    // All in "baking" category, none in other categories
+    mockRecipeList.value = [
+      { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Buns', file: 'atk.json' }
+    ]
+    global.fetch = makeFetchMock()
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const labels = wrapper.findAll('.timeline-section-label')
+    // Should only have "baking" label, not other empty categories
+    expect(labels.length).toBe(1)
+    expect(labels[0].text()).toBe('baking')
   })
 })

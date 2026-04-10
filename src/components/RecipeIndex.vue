@@ -25,6 +25,7 @@ interface TimelineItem {
   id: string
   name: string
   baked: boolean
+  inProgress: boolean
   bakeCount: number
   heroImage: string | null
   description: string | null
@@ -43,6 +44,22 @@ interface CategoryGroup {
 
 const metaCache = ref<Map<string, RecipeMeta>>(new Map())
 const loaded = ref(false)
+const showUnbaked = ref(false)
+
+// --- In-progress detection via localStorage scratchpad keys ---
+
+function hasActiveScratchpad(recipeId: string): boolean {
+  try {
+    const raw = localStorage.getItem(`scratchpad-${recipeId}`)
+    if (!raw) return false
+    const parsed = JSON.parse(raw)
+    const hasEntries = parsed.entries && Object.keys(parsed.entries).length > 0
+    const hasNotes = parsed.generalNotes && parsed.generalNotes.length > 0
+    return hasEntries || hasNotes
+  } catch {
+    return false
+  }
+}
 
 // --- Category map (hardcoded — only ~10 recipes, pragmatic for a personal notebook) ---
 
@@ -131,6 +148,7 @@ const items = computed<TimelineItem[]>(() => {
       id: recipe.id,
       name: recipe.name,
       baked: meta?.baked ?? false,
+      inProgress: hasActiveScratchpad(recipe.id),
       bakeCount: meta?.bakeCount ?? 0,
       heroImage: meta?.heroThumb ?? null,
       description: meta?.description ?? summaryMap[recipe.id] ?? null,
@@ -146,14 +164,22 @@ const items = computed<TimelineItem[]>(() => {
 
 const CATEGORY_ORDER = ['baking', 'grain-free', 'pizza & dough', 'mains', 'drinks', 'other']
 
-const groupedItems = computed<CategoryGroup[]>(() => {
-  const sorted = [...items.value].sort((a, b) => {
-    if (a.baked !== b.baked) return a.baked ? -1 : 1
-    return a.name.localeCompare(b.name)
-  })
+// In-progress items (have active scratchpad data)
+const inProgressItems = computed<TimelineItem[]>(() =>
+  items.value
+    .filter(item => item.inProgress)
+    .sort((a, b) => a.name.localeCompare(b.name))
+)
+
+// Baked items grouped by category (excluding in-progress to avoid dupes)
+const bakedGroupedItems = computed<CategoryGroup[]>(() => {
+  const inProgressIds = new Set(inProgressItems.value.map(i => i.id))
+  const bakedItems = items.value
+    .filter(item => item.baked && !inProgressIds.has(item.id))
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   const groups = new Map<string, TimelineItem[]>()
-  for (const item of sorted) {
+  for (const item of bakedItems) {
     if (!groups.has(item.category)) groups.set(item.category, [])
     groups.get(item.category)!.push(item)
   }
@@ -162,6 +188,32 @@ const groupedItems = computed<CategoryGroup[]>(() => {
     .filter(cat => groups.has(cat))
     .map(cat => ({ label: cat, items: groups.get(cat)! }))
 })
+
+// Unbaked items grouped by category (hidden by default)
+const unbakedGroupedItems = computed<CategoryGroup[]>(() => {
+  const inProgressIds = new Set(inProgressItems.value.map(i => i.id))
+  const unbaked = items.value
+    .filter(item => !item.baked && !inProgressIds.has(item.id))
+    .sort((a, b) => a.name.localeCompare(b.name))
+
+  const groups = new Map<string, TimelineItem[]>()
+  for (const item of unbaked) {
+    if (!groups.has(item.category)) groups.set(item.category, [])
+    groups.get(item.category)!.push(item)
+  }
+
+  return CATEGORY_ORDER
+    .filter(cat => groups.has(cat))
+    .map(cat => ({ label: cat, items: groups.get(cat)! }))
+})
+
+const unbakedCount = computed<number>(() =>
+  unbakedGroupedItems.value.reduce((sum, g) => sum + g.items.length, 0)
+)
+
+function toggleUnbaked(): void {
+  showUnbaked.value = !showUnbaked.value
+}
 
 function selectRecipe(item: TimelineItem): void {
   emit('select', item.routeId)
@@ -198,7 +250,56 @@ const labelVariants = {
     <div v-if="!loaded" class="timeline-loading">Loading recipes...</div>
 
     <ul v-else class="timeline-list">
-      <template v-for="group in groupedItems" :key="group.label">
+      <!-- In-progress section -->
+      <template v-if="inProgressItems.length > 0">
+        <motion.li
+          class="timeline-section-label-item"
+          initial="hidden"
+          :whileInView="'visible'"
+          :inViewOptions="{ once: true, amount: 0.1 }"
+          :variants="labelVariants"
+        >
+          <span class="timeline-section-label timeline-section-label--in-progress">in progress</span>
+        </motion.li>
+
+        <motion.li
+          v-for="(item, idx) in inProgressItems"
+          :key="item.id"
+          class="timeline-item timeline-item--in-progress"
+          initial="hidden"
+          :whileInView="'visible'"
+          :inViewOptions="{ once: true, amount: 0.15 }"
+          :variants="itemVariants"
+          :transition="{ duration: 0.3, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }"
+          @click="selectRecipe(item)"
+        >
+          <span class="timeline-dot timeline-dot--in-progress" />
+
+          <div class="timeline-content">
+            <div class="timeline-row">
+              <span class="timeline-name">{{ item.name }}</span>
+              <span class="timeline-in-progress-badge">in progress</span>
+            </div>
+
+            <div v-if="item.heroImage || item.description" class="timeline-detail">
+              <div v-if="item.heroImage" class="timeline-hero-wrap">
+                <img
+                  :src="item.heroImage"
+                  :alt="item.name"
+                  class="timeline-hero"
+                  loading="lazy"
+                />
+              </div>
+              <div class="timeline-meta">
+                <p v-if="item.description" class="timeline-summary">{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        </motion.li>
+      </template>
+
+      <!-- Baked recipes by category -->
+      <template v-for="group in bakedGroupedItems" :key="group.label">
         <motion.li
           class="timeline-section-label-item"
           initial="hidden"
@@ -251,6 +352,62 @@ const labelVariants = {
             </div>
           </div>
         </motion.li>
+      </template>
+
+      <!-- Reveal toggle for unbaked recipes -->
+      <li v-if="unbakedCount > 0" class="timeline-reveal-item">
+        <span class="timeline-reveal-link" @click="toggleUnbaked">
+          {{ showUnbaked ? '- hide unbaked recipes' : `+ ${unbakedCount} more recipe${unbakedCount !== 1 ? 's' : ''}` }}
+        </span>
+      </li>
+
+      <!-- Unbaked recipes (revealed) -->
+      <template v-if="showUnbaked">
+        <template v-for="group in unbakedGroupedItems" :key="'unbaked-' + group.label">
+          <motion.li
+            class="timeline-section-label-item"
+            initial="hidden"
+            :whileInView="'visible'"
+            :inViewOptions="{ once: true, amount: 0.1 }"
+            :variants="labelVariants"
+          >
+            <span class="timeline-section-label">{{ group.label }}</span>
+          </motion.li>
+
+          <motion.li
+            v-for="(item, idx) in group.items"
+            :key="item.id"
+            class="timeline-item timeline-item--unbaked"
+            initial="hidden"
+            :whileInView="'visible'"
+            :inViewOptions="{ once: true, amount: 0.15 }"
+            :variants="itemVariants"
+            :transition="{ duration: 0.3, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }"
+            @click="selectRecipe(item)"
+          >
+            <span class="timeline-dot timeline-dot--unbaked" />
+
+            <div class="timeline-content">
+              <div class="timeline-row">
+                <span class="timeline-name">{{ item.name }}</span>
+                <span
+                  v-if="item.sourceType === 'original'"
+                  class="timeline-provenance-icon"
+                  :data-tooltip="`AI-synthesized: ${item.sourceAuthor}`"
+                  @click.stop
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8" /></svg>
+                </span>
+              </div>
+
+              <div v-if="item.description" class="timeline-detail">
+                <div class="timeline-meta">
+                  <p class="timeline-summary">{{ item.description }}</p>
+                </div>
+              </div>
+            </div>
+          </motion.li>
+        </template>
       </template>
     </ul>
   </div>
@@ -453,6 +610,76 @@ const labelVariants = {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* --- In-progress section label --- */
+.timeline-section-label--in-progress {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent-tint);
+}
+
+/* --- In-progress dot: filled + pulsing --- */
+.timeline-dot--in-progress {
+  background: var(--color-accent);
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* --- In-progress badge --- */
+.timeline-in-progress-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* --- Unbaked items: dimmed, no hero, no bake count --- */
+.timeline-item--unbaked {
+  opacity: 0.45;
+}
+
+.timeline-item--unbaked .timeline-dot {
+  border-color: var(--color-stone-300);
+}
+
+.timeline-item--unbaked:hover {
+  opacity: 0.7;
+}
+
+.timeline-item--unbaked:hover .timeline-dot {
+  background: var(--color-stone-300);
+}
+
+.timeline-dot--unbaked {
+  border-color: var(--color-stone-300);
+}
+
+/* --- Reveal toggle link --- */
+.timeline-reveal-item {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline-reveal-link {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-stone-400);
+  cursor: pointer;
+  padding: 0.75rem 0;
+  text-align: center;
+  transition: color 150ms ease;
+  border-top: 1px dashed var(--color-stone-300);
+}
+
+.timeline-reveal-link:hover {
+  color: var(--color-accent);
 }
 
 /* --- Loading --- */

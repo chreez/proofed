@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PF-196 Demo: Index Reveal Mechanism</title>
+<style>
+  :root {
+    --color-stone-50: #faf9f7;
+    --color-stone-100: #f5f3ef;
+    --color-stone-200: #e8e4dc;
+    --color-stone-300: #d4cdc1;
+    --color-stone-400: #b8ad9c;
+    --color-stone-500: #9c8e78;
+    --color-stone-600: #7d6e58;
+    --color-stone-700: #5f5243;
+    --color-stone-800: #433a2f;
+    --color-stone-900: #2a241e;
+    --color-ink: #1a1816;
+    --color-surface: #ffffff;
+    --color-accent: #a65d45;
+    --color-accent-tint: rgba(166, 93, 69, 0.10);
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-stone-50);
+    color: var(--color-ink);
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .demo-intro {
+    font-size: 0.8125rem;
+    color: var(--color-stone-500);
+    margin-bottom: 2rem;
+    max-width: 36rem;
+    line-height: 1.6;
+  }
+
+  .option {
+    max-width: 36rem;
+    margin-bottom: 3rem;
+    border: 2px solid var(--color-stone-200);
+    background: var(--color-surface);
+    padding: 1.5rem;
+  }
+
+  .option-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-stone-400);
+    margin-bottom: 1rem;
+  }
+
+  .option-desc {
+    font-size: 0.8125rem;
+    color: var(--color-stone-500);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Simulated recipe items */
+  .recipe-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid var(--color-stone-200);
+    cursor: pointer;
+    transition: opacity 200ms ease;
+  }
+
+  .recipe-item:last-child { border-bottom: none; }
+
+  .recipe-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent);
+    background: transparent;
+    flex-shrink: 0;
+  }
+
+  .recipe-name {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .recipe-count {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-stone-400);
+  }
+
+  /* Dimmed unbaked style */
+  .recipe-item.unbaked {
+    opacity: 0.45;
+  }
+
+  .recipe-item.unbaked .recipe-dot {
+    border-color: var(--color-stone-300);
+  }
+
+  .recipe-item.unbaked .recipe-name {
+    color: var(--color-stone-500);
+  }
+
+  /* In-progress style */
+  .recipe-item.in-progress .recipe-dot {
+    background: var(--color-accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .in-progress-badge {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Section label */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-stone-400);
+    border-bottom: 1px solid var(--color-stone-200);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  /* --- Option A: Text link at bottom --- */
+  .reveal-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-stone-400);
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    transition: color 150ms ease;
+    border-top: 1px dashed var(--color-stone-300);
+  }
+
+  .reveal-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* --- Option B: Expandable section with count --- */
+  .expand-section {
+    margin-top: 1rem;
+    border-top: 1px dashed var(--color-stone-300);
+    padding-top: 0.75rem;
+  }
+
+  .expand-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    transition: color 150ms ease;
+  }
+
+  .expand-header:hover { color: var(--color-accent); }
+
+  .expand-chevron {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-stone-400);
+    transition: transform 200ms ease;
+  }
+
+  .expand-chevron.open { transform: rotate(90deg); }
+
+  .expand-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-stone-400);
+  }
+
+  .expand-count {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--color-stone-400);
+    margin-left: auto;
+  }
+
+  .expand-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease;
+  }
+
+  .expand-body.open { max-height: 400px; }
+
+  /* --- Option C: Filter chips --- */
+  .filter-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .filter-chip {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border: 2px solid var(--color-stone-200);
+    background: transparent;
+    color: var(--color-stone-500);
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  .filter-chip.active {
+    border-color: var(--color-ink);
+    color: var(--color-ink);
+    background: var(--color-stone-100);
+  }
+
+  .filter-chip:hover:not(.active) {
+    border-color: var(--color-stone-300);
+    color: var(--color-stone-600);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<h1>PF-196 Demo: Reveal Mechanism Options</h1>
+<p class="demo-intro">
+  The index defaults to showing only baked recipes (those with cook_log entries).
+  Unbaked recipes are hidden. These three options show different ways to reveal them.
+  In-progress bakes (with scratchpad data) float to the top in all options.
+</p>
+
+<!-- ============================================================ -->
+<!-- OPTION A: Simple text link at the bottom -->
+<!-- ============================================================ -->
+<div class="option">
+  <div class="option-label">Option A: Text link at bottom</div>
+  <p class="option-desc">
+    A monospace text link below the last category. Click to reveal unbaked recipes
+    inline (dimmed) within their categories. Minimal, unobtrusive.
+  </p>
+
+  <div id="optionA">
+    <div class="section-label">in progress</div>
+    <div class="recipe-item in-progress">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">Sourdough Cinnamon Buns</span>
+      <span class="in-progress-badge">in progress</span>
+    </div>
+
+    <div class="section-label">baking</div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">ATK Ultimate Cinnamon Buns</span>
+      <span class="recipe-count">4 bakes</span>
+    </div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">Sourdough Chocolate Chip Cookies</span>
+      <span class="recipe-count">2 bakes</span>
+    </div>
+
+    <div class="section-label">pizza & dough</div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">NY-Style Pizza Dough</span>
+      <span class="recipe-count">3 bakes</span>
+    </div>
+
+    <div id="optionA-unbaked" style="display: none;">
+      <div class="section-label">baking</div>
+      <div class="recipe-item unbaked">
+        <span class="recipe-dot"></span>
+        <span class="recipe-name">Carrot Cake</span>
+      </div>
+      <div class="recipe-item unbaked">
+        <span class="recipe-dot"></span>
+        <span class="recipe-name">Birote Salado</span>
+      </div>
+
+      <div class="section-label">mains</div>
+      <div class="recipe-item unbaked">
+        <span class="recipe-dot"></span>
+        <span class="recipe-name">CoCo Ichibanya-Style Japanese Curry</span>
+      </div>
+    </div>
+
+    <div class="reveal-link" id="optionA-toggle" onclick="toggleA()">
+      + 6 more recipes
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- OPTION B: Expandable section with chevron -->
+<!-- ============================================================ -->
+<div class="option">
+  <div class="option-label">Option B: Expandable section with chevron</div>
+  <p class="option-desc">
+    A collapsible section at the bottom with a chevron and count.
+    Slightly more structured than Option A. Unbaked recipes grouped inside.
+  </p>
+
+  <div id="optionB">
+    <div class="section-label">in progress</div>
+    <div class="recipe-item in-progress">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">Sourdough Cinnamon Buns</span>
+      <span class="in-progress-badge">in progress</span>
+    </div>
+
+    <div class="section-label">baking</div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">ATK Ultimate Cinnamon Buns</span>
+      <span class="recipe-count">4 bakes</span>
+    </div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">Sourdough Chocolate Chip Cookies</span>
+      <span class="recipe-count">2 bakes</span>
+    </div>
+
+    <div class="section-label">pizza & dough</div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">NY-Style Pizza Dough</span>
+      <span class="recipe-count">3 bakes</span>
+    </div>
+
+    <div class="expand-section">
+      <div class="expand-header" onclick="toggleB()">
+        <span class="expand-chevron" id="optionB-chevron">&#9654;</span>
+        <span class="expand-label">not yet baked</span>
+        <span class="expand-count">6 recipes</span>
+      </div>
+      <div class="expand-body" id="optionB-body">
+        <div class="recipe-item unbaked">
+          <span class="recipe-dot"></span>
+          <span class="recipe-name">Carrot Cake</span>
+        </div>
+        <div class="recipe-item unbaked">
+          <span class="recipe-dot"></span>
+          <span class="recipe-name">Birote Salado</span>
+        </div>
+        <div class="recipe-item unbaked">
+          <span class="recipe-dot"></span>
+          <span class="recipe-name">CoCo Ichibanya-Style Japanese Curry</span>
+        </div>
+        <div class="recipe-item unbaked">
+          <span class="recipe-dot"></span>
+          <span class="recipe-name">Ichiran-Style Tonkotsu Ramen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- OPTION C: Filter chips at top -->
+<!-- ============================================================ -->
+<div class="option">
+  <div class="option-label">Option C: Filter chips at top</div>
+  <p class="option-desc">
+    Filter chips above the list. "Baked" is active by default. Clicking "All"
+    reveals everything; unbaked items are still dimmed.
+  </p>
+
+  <div id="optionC">
+    <div class="filter-row">
+      <span class="filter-chip active" id="chip-baked" onclick="filterC('baked')">Baked</span>
+      <span class="filter-chip" id="chip-all" onclick="filterC('all')">All</span>
+    </div>
+
+    <div class="section-label">in progress</div>
+    <div class="recipe-item in-progress">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">Sourdough Cinnamon Buns</span>
+      <span class="in-progress-badge">in progress</span>
+    </div>
+
+    <div class="section-label">baking</div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">ATK Ultimate Cinnamon Buns</span>
+      <span class="recipe-count">4 bakes</span>
+    </div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">Sourdough Chocolate Chip Cookies</span>
+      <span class="recipe-count">2 bakes</span>
+    </div>
+
+    <div id="optionC-unbaked" style="display: none;">
+      <div class="recipe-item unbaked">
+        <span class="recipe-dot"></span>
+        <span class="recipe-name">Carrot Cake</span>
+      </div>
+      <div class="recipe-item unbaked">
+        <span class="recipe-dot"></span>
+        <span class="recipe-name">Birote Salado</span>
+      </div>
+    </div>
+
+    <div class="section-label">pizza & dough</div>
+    <div class="recipe-item">
+      <span class="recipe-dot"></span>
+      <span class="recipe-name">NY-Style Pizza Dough</span>
+      <span class="recipe-count">3 bakes</span>
+    </div>
+
+    <div id="optionC-unbaked2" style="display: none;">
+      <div class="recipe-item unbaked">
+        <span class="recipe-dot"></span>
+        <span class="recipe-name">Sourdough Pizza Dough</span>
+      </div>
+    </div>
+
+    <div id="optionC-mains" style="display: none;">
+      <div class="section-label">mains</div>
+      <div class="recipe-item unbaked">
+        <span class="recipe-dot"></span>
+        <span class="recipe-name">CoCo Ichibanya-Style Japanese Curry</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Option A toggle
+  let aOpen = false;
+  function toggleA() {
+    aOpen = !aOpen;
+    document.getElementById('optionA-unbaked').style.display = aOpen ? 'block' : 'none';
+    document.getElementById('optionA-toggle').textContent = aOpen ? '- hide unbaked recipes' : '+ 6 more recipes';
+  }
+
+  // Option B toggle
+  let bOpen = false;
+  function toggleB() {
+    bOpen = !bOpen;
+    document.getElementById('optionB-body').classList.toggle('open', bOpen);
+    document.getElementById('optionB-chevron').classList.toggle('open', bOpen);
+  }
+
+  // Option C filter chips
+  function filterC(mode) {
+    const showAll = mode === 'all';
+    document.getElementById('chip-baked').classList.toggle('active', !showAll);
+    document.getElementById('chip-all').classList.toggle('active', showAll);
+    document.getElementById('optionC-unbaked').style.display = showAll ? 'block' : 'none';
+    document.getElementById('optionC-unbaked2').style.display = showAll ? 'block' : 'none';
+    document.getElementById('optionC-mains').style.display = showAll ? 'block' : 'none';
+  }
+</script>
+
+</body>
+</html>
