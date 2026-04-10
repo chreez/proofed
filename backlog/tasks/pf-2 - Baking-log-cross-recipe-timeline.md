@@ -1,10 +1,10 @@
 ---
 id: PF-2
 title: Baking log - cross-recipe timeline
-status: In Progress
+status: To Do
 assignee: []
 created_date: '2026-02-06 18:46'
-updated_date: '2026-02-17 23:16'
+updated_date: '2026-04-10 14:17'
 labels:
   - feature
 dependencies: []
@@ -49,4 +49,6 @@ Decision: Aggregate from existing `cook_log` arrays in recipe JSONs at runtime.
 4. Link entries to `/recipe/:id/bake/:date`
 5. Match existing timeline dot/spine aesthetic
 6. Mobile responsive
+
+2026-04-10: Demoted from In Progress → To Do during stale task triage. Has been idle since Feb 18. Spike research is done (data model decided); ready for implementation when prioritized.
 <!-- SECTION:NOTES:END -->

@@ -1,10 +1,10 @@
 ---
 id: PF-96
 title: Ensure all recipes have a version field (default v1.0.0)
-status: In Progress
+status: To Do
 assignee: []
 created_date: '2026-02-10 03:13'
-updated_date: '2026-02-19 21:10'
+updated_date: '2026-04-10 14:18'
 labels: []
 dependencies: []
 priority: low
@@ -28,4 +28,6 @@ Data hygiene: all recipe JSON files should have a `version` field. If missing, d
 
 <!-- SECTION:NOTES:BEGIN -->
 ## Implementation\n- Changed `version?: string` to `version: string` in `src/types/recipe.ts:23`\n- All 11 recipe JSON files already had version fields — no data changes needed\n- Harmless `v-if` guards on `recipe.version` left in place (RecipeMeta.vue:86, App.vue:398)\n- Harmless nullish coalesce `?? 'v1.0.0'` in App.vue:544 left in place\n- Build passes: 981 tests, clean type-check, bundle built
+
+2026-04-10: Demoted from In Progress → To Do during stale task triage. Stale 7 weeks. Most recipes already have version fields — implementation notes confirm all 11 recipe JSONs had versions. Remaining work is just the type interface change and build verification.
 <!-- SECTION:NOTES:END -->

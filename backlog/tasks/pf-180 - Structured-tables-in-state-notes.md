@@ -1,10 +1,10 @@
 ---
 id: PF-180
 title: Structured tables in state notes
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 16:51'
-updated_date: '2026-04-08 22:04'
+updated_date: '2026-04-10 14:23'
 labels: []
 dependencies: []
 ---

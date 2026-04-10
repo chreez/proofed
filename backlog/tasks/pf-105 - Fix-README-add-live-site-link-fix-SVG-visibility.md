@@ -1,10 +1,10 @@
 ---
 id: PF-105
 title: 'Fix README: add live site link, fix SVG visibility'
-status: In Progress
+status: To Do
 assignee: []
 created_date: '2026-02-10 05:11'
-updated_date: '2026-02-19 21:10'
+updated_date: '2026-04-10 14:18'
 labels:
   - bug
   - dx
@@ -29,4 +29,6 @@ README.md is missing a link to the live Netlify-hosted site. The wordmark SVG at
 
 <!-- SECTION:NOTES:BEGIN -->
 ## Implementation\n- Added centered live site link `https://proofeddot.netlify.app` to README.md (lines 5-7)\n- Placed below wordmark SVG, matching centered alignment\n- SVG visibility deferred — user will verify on GitHub
+
+2026-04-10: Demoted from In Progress → To Do during stale task triage. Stale 7 weeks. Minor housekeeping — live link already added per implementation notes, SVG visibility deferred.
 <!-- SECTION:NOTES:END -->

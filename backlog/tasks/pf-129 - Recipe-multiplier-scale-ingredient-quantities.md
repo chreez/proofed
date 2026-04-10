@@ -1,10 +1,10 @@
 ---
 id: PF-129
 title: Recipe multiplier - scale ingredient quantities
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-02-13 02:10'
-updated_date: '2026-02-13 03:46'
+updated_date: '2026-04-10 14:18'
 labels: []
 dependencies: []
 priority: medium
@@ -29,6 +29,8 @@ Add a multiplier control to recipe view that scales all ingredient quantities. C
 - [ ] #9 npm run build passes
 <!-- AC:END -->
 
-## Note
+## Implementation Notes
 
-**Multiplier UI ownership has moved to PF-183** (Recipe scalable flag — research-gated capability for ingredient scaling). PF-183 gates the multiplier control behind a `scaling` block in the recipe schema, requiring research on ingredient behavior (linear vs. non-linear) and process caveats before scaling is allowed. This task (PF-129) now focuses on the generic multiplier implementation, which is used by PF-183 only when a recipe has been fully researched and a scaling block is populated.
+<!-- SECTION:NOTES:BEGIN -->
+2026-04-10: Closed as superseded. PF-183 shipped recipe scaling with provide/inject architecture (commit 9cd18f1), which covers the multiplier functionality this task described.
+<!-- SECTION:NOTES:END -->
