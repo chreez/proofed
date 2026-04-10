@@ -4,7 +4,7 @@ title: 'Spike: scratchpad note save UX — eliminate scroll-to-save on mobile'
 status: To Do
 assignee: []
 created_date: '2026-04-09 19:28'
-updated_date: '2026-04-10 14:22'
+updated_date: '2026-04-10 17:01'
 labels:
   - spike
   - ux
@@ -93,4 +93,6 @@ PF-192 (Done) ships flat chronological view in GeneralNotesFab. Save UX choice d
 5. Optional: CSS highlight animation on newly-added entries
 6. Test: type note -> tap backdrop -> verify saved + sheet closes
 7. Test: type note -> Enter -> verify saved + textarea clears
+
+2026-04-10: User feedback — Pattern E (auto-save on blur) approved for mobile. For desktop, ensure shift+enter / enter behavior is consistent across the app. ScratchpadNote.vue already has this pattern (line 42: Enter to save, shift+enter for newline, with hint at line 180). Check GeneralNotesFab and any other text input components for consistency. The desktop UX should clearly communicate that multiline input is supported via shift+enter.
 <!-- SECTION:NOTES:END -->
