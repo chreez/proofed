@@ -1,0 +1,283 @@
+{
+  "recipeId": "sourdough-pizza-dough",
+  "date": "2026-04-11",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "bread_flour",
+      "name": "Bread Flour",
+      "recipeAmount": 413,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B The Baker's Scoop Bread Flour",
+          "brand": "H-E-B",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 3.78,
+          "salePrice": null,
+          "unitPrice": "$0.05/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 5.78,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Unbleached Bread Flour",
+          "brand": "H-E-B Organics",
+          "size": "5 lbs",
+          "sizeGrams": 2268,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "10 lbs",
+          "sizeGrams": 4536,
+          "price": 10.99,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Organic Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lb",
+          "sizeGrams": 2268,
+          "price": 7.73,
+          "salePrice": null,
+          "unitPrice": "$0.10/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "diastatic_malt",
+      "name": "Diastatic Malt Powder",
+      "recipeAmount": 4,
+      "recipeUnit": "g",
+      "products": [],
+      "_note": "No diastatic malt powder found at this store — only malted milk mixes returned. Order online (King Arthur, Bob's Red Mill)."
+    },
+    {
+      "ingredientId": "cornmeal",
+      "name": "Cornmeal",
+      "recipeAmount": 13,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Quaker Yellow Corn Meal",
+          "brand": "Quaker",
+          "size": "1.5 lb",
+          "sizeGrams": 680,
+          "price": 3.12,
+          "salePrice": null,
+          "unitPrice": "$0.13/oz",
+          "inStock": true
+        },
+        {
+          "name": "Pioneer Enriched Yellow Corn Meal",
+          "brand": "Pioneer",
+          "size": "2 lbs",
+          "sizeGrams": 907,
+          "price": 2.28,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "Bob's Red Mill Gluten Free Medium Grind Cornmeal",
+          "brand": "Bob's Red Mill",
+          "size": "1.5 lb",
+          "sizeGrams": 680,
+          "price": 4.19,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        },
+        {
+          "name": "Lamb's Stone Ground Yellow Cornmeal",
+          "brand": "Lamb's",
+          "size": "2 lbs",
+          "sizeGrams": 907,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "san_marzano_sauce",
+      "name": "Raw San Marzano Tomato Sauce",
+      "recipeAmount": 175,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Cento San Marzano Certified Peeled Tomatoes",
+          "brand": "Cento",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 4.27,
+          "salePrice": null,
+          "unitPrice": "$0.15/oz",
+          "inStock": true
+        },
+        {
+          "name": "San Merican Crushed Tomatoes",
+          "brand": "San Merican",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 6.48,
+          "salePrice": null,
+          "unitPrice": "$0.23/oz",
+          "inStock": true
+        },
+        {
+          "name": "Cento San Marzano Organic Peeled Tomato",
+          "brand": "Cento",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 6.68,
+          "salePrice": null,
+          "unitPrice": "$0.24/oz",
+          "inStock": true
+        },
+        {
+          "name": "Alessi Whole Peeled San Marzano Tomatoes with Basil",
+          "brand": "Alessi",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.21/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "mozzarella",
+      "name": "Low-Moisture Mozzarella",
+      "recipeAmount": 350,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Low Moisture Whole Mozzarella Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "SARGENTO Whole Milk Mozzarella Shredded Cheese",
+          "brand": "SARGENTO",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 3.69,
+          "salePrice": null,
+          "unitPrice": "$0.46/oz",
+          "inStock": true
+        },
+        {
+          "name": "Frigo CheeseHeads Whole Milk Low Moisture Mozzarella String Cheese, 12 ct",
+          "brand": "Frigo",
+          "size": "10 oz",
+          "sizeGrams": 284,
+          "price": 4.88,
+          "salePrice": null,
+          "unitPrice": "$0.49/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "hard_cheese",
+      "name": "Parmigiano-Reggiano or Pecorino Romano",
+      "recipeAmount": 40,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Galli Parmigiano Reggiano",
+          "brand": "Galli",
+          "size": "Avg. 0.43 lb",
+          "sizeGrams": 195,
+          "price": 10.31,
+          "salePrice": null,
+          "unitPrice": "$23.98/lb",
+          "inStock": true
+        },
+        {
+          "name": "Galli Parmigiano Reggiano Shredded Cheese",
+          "brand": "Galli",
+          "size": "Avg. 0.35 lb",
+          "sizeGrams": 159,
+          "price": 8.74,
+          "salePrice": null,
+          "unitPrice": "$24.98/lb",
+          "inStock": true
+        },
+        {
+          "name": "Galli Parmigiano Reggiano Grated Cheese",
+          "brand": "Galli",
+          "size": "Avg. 0.45 lb",
+          "sizeGrams": 204,
+          "price": 10.79,
+          "salePrice": null,
+          "unitPrice": "$23.98/lb",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "pepperoni",
+      "name": "Pepperoni",
+      "recipeAmount": 175,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Premium Uncured Pepperoni Slices - Original",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Deli #1.5 Sliced Uncured Pepperoni",
+          "brand": "H-E-B",
+          "size": "Avg. 0.5 lb",
+          "sizeGrams": 227,
+          "price": 4.25,
+          "salePrice": null,
+          "unitPrice": "$8.49/lb",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Premium Uncured Pepperoni Slices - Thick Cut",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        }
+      ]
+    }
+  ]
+}
