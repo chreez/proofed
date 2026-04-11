@@ -307,7 +307,7 @@ function dismissPopover(): void {
       </div>
 
       <!-- Cost Breakdown -->
-      <div v-if="entry.cost" class="mb-6" data-testid="cost-breakdown">
+      <div v-if="entry.cost?.total != null" class="mb-6" data-testid="cost-breakdown">
         <div class="bg-surface border-2 border-stone-200">
           <!-- Header -->
           <div class="flex items-center justify-between p-3 border-b-2 border-stone-200 bg-stone-50">
