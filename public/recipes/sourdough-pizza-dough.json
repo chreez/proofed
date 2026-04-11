@@ -832,6 +832,47 @@
           "text": "Try a different pecorino — TJ's was just OK."
         }
       ]
+    },
+    {
+      "date": "2026-04-11",
+      "start_date": "2026-04-08",
+      "version": "v1.3.0",
+      "summary": "Second bake, doubled to 4 pizzas — first time at this volume. Overall success despite some execution bumps (sauce pizza stuck to peel, dough tear on #3). Flavor felt lacking compared to basic NY dough; may try a shorter proof next time.",
+      "notes": [
+        "4:25pm CDT (Tue 4/8) — fermentolyse start.",
+        "4:33pm — dough temp 79.7°F. Warm day. Doubled recipe for 4 pizzas total.",
+        "4:59pm — dough temp 80.8°F before adding salt.",
+        "~5:05pm — waited 30 min after salt incorporation. Aliquot at 10% (pulled a bit too much dough). Dough super warm; considered preshaping that night.",
+        "~5:53pm — first S&F was late. Dough still pretty stiff, still hot at 79.7°F.",
+        "~6:28pm — second S&F, 80.2°F. Aliquot at 15%.",
+        "~7:30pm — last S&F, 79.7°F. Aliquot at 30%.",
+        "~8:34pm — aliquot ~55% (calling effectively 45% due to extra dough in vessel). Turned out dough.",
+        "~8:38pm — total weight ~1509g (scale unreliable). Into Cambro in fridge for cold bulk ferment, aliquot placed alongside. 78.4°F before fridge.",
+        "Wed 4/9 ~8:28am — total weight 1524g after adding back aliquot. Target 381g per ball.",
+        "~8:33am — divided into 4 balls: 384g, 380g, 387g, 382g.",
+        "~9:10am — shaped 4 balls, into fridge for cold proof.",
+        "Thu 4/10 ~10am — prepped toppings. Made sauce from Sclafani tomatoes following on-file recipe, added chopped fresh basil. Prepared day before to develop flavor.",
+        "Fri 4/11 ~6:30am — pulled dough from fridge. Started baking around 9am (~2.5-hour temper). Did not re-shape on bake day as planned.",
+        "Full 1-hour preheat at 550°F. Used infrared thermometer to confirm steel at ~530–550°F before launching.",
+        "Pizza #1 (Boar's Head pepperoni) — launched perfectly.",
+        "Pizza #2 (sauce only) — stuck to peel, dough launched wrong. Recovered by baking as a focaccia-style square. Really liked the result — lots of sauce was satisfying. Simmered leftover sauce with olive oil after for dipping.",
+        "Cleaned steel and let oven return to temp before Pizza #3.",
+        "Pizza #3 (cheese with fresh basil — vegan) — small dough tear, used basil leaf trick. Overcooked top in broiler, scorched the basil leaves. Best-looking crust of the four.",
+        "Pizza #4 (jalapeño pepperoni) — small hole detected at end of bake. Left some seeds intentionally — cheese absorbs the jalapeño spice and flavor. TJ jalapeños work great for this.",
+        "All 4 pizzas baked at 550°F throughout.",
+        "Cheese: TJ low-moisture whole milk mozz plus Parmigiano Reggiano chunk from HEB (had been in fridge a while). Old TJ parmesan wasn't a fan of; will bring both for guests as extra toppings.",
+        "Flavor felt lacking — possibly tired or not hungry, but also wondering if 3-day (possibly 4-day) proof dulled the flavor. May also be that NY-style ingredients don't pair as well with the sourdough base. Might just prefer the basic recipe.",
+        "Starter was kind of weak this bake — may have affected dough strength."
+      ],
+      "photos": [],
+      "next_time": [
+        { "text": "Use 1.5x sauce on sauce pizza to prevent overflow." },
+        { "text": "Cap broiler at 45 seconds for vegan pizzas (sauce-only and cheese/basil) to avoid scorching." },
+        { "text": "Try 2-day proof — flavor may be better and timing easier to predict." },
+        { "text": "Plan bake day in advance — know how many days ahead to start the dough based on the event." },
+        { "text": "Research pizza transport for events (quarter sheets + parchment in Tupperware, possibly layering)." }
+      ],
+      "raw_notes": "[2026-04-08 CDT] MIX_FERMENTOLYSE: 16:25 fermentolease start\n[2026-04-08 CDT] FERMENTOLYSE_REST: 79.7 warm today\n[2026-04-08 CDT] FERMENTOLYSE_REST: last reading was for dough temp.\n[2026-04-08 CDT] FERMENTOLYSE_REST: note that i am doubling the recipe to make four pizzas total.\n[2026-04-08 CDT] ADD_SALT (reminder - dough temp): 80.8\n[2026-04-08 CDT] ADD_SALT: adding salt now\n[2026-04-08 CDT] STRETCH_FOLD_SETS: waiting for 30 minutes after salt incorporation. i figured that should be a step in the recipe but it's missing. aliquot is at 10% because i pulled a little bit too much dough into vessel. good to note before preshaping. dough is super warm so i may want to consider even preshaping tonight. will revisit.\n[2026-04-08 CDT] _general: first stretch and fold a bit late. dough is still pretty stiff. will report back in second stretch fold. dough is still hot at 79.7\n[2026-04-08 CDT] BULK_REST: 80.2 degree second s and f\n[2026-04-08 CDT] BULK_REST: 15% aliquot\n[2026-04-08 CDT] BULK_REST: 79.7 last s and f. aliquot at 30%\n[2026-04-08 CDT] BULK_REST (reminder - volume increase): aliquot reading about 55% which is effectively 45%. going to turn out dough now\n[2026-04-08 CDT] ROUND_DOUGH (reminder - total weight): could be 1509. scale has issues sometimes. will verify when weighing balls\n[2026-04-08 CDT] COLD_BULK_FERMENT: in fridge now. aliquot will be placed next to it in fridge. it's in cambro for bulk ferment.\n[2026-04-08 CDT] COLD_BULK_FERMENT: 78.4 degrees before fridge.\n[2026-04-09 CDT] ROUND_PORTIONS: total weight estimate is 1524g after adding back aliquot. divide by four is 381g a ball target.\n[2026-04-09 CDT] ROUND_PORTIONS: 384 380 387 382\n[2026-04-09 CDT] ROUND_PORTIONS: in fridge approx 15 minutes ago. shaped four balls\n[2026-04-10 CDT] _general: prepped toppings for tomorrow\n[2026-04-11 CDT] _general: i am checking in now. about 4 minutes into the actual bake of the second pizza. i messed up the launch on the sauce pizza. will need to lookup recovery methods when sticks to peel\n[2026-04-11 CDT] PREHEAT_STEEL: could be worth noting to the user that we shouldn't start baking till an infrared sensor reads close to 450. that's what i do at least. watch steel not clock. watch variables and measurable variables not clock.\n[2026-04-11 CDT] _general: might be a bad bake day for me. first pizza was perfect. did regular pepperoni. the sauce only pizza threw me off just because launching it i had trouble with sticking pizza peel and sauce x2 kinda overflowing. in future 1.5x sauce to prevent production flaws. process should be ironclad to handle bad execution too.\n[2026-04-11 CDT] _general: third pizza i ended up getting a small tear somehow in the dough. i tried the basil leaf trick. will report back on result. wondering why the dough tore in the first place. at this point the dough has been sitting at room temperature for longer than the other two and i took a small break in between the second set of 2x pizzas. to reset from the failure of the sauce pizza. sauce pizza is my foccoccia fallback lol. i also overcooked the top in the final stretch. think i scorched the leaves. cap at 45 seconds in broiler for vegan pizza next time.\n[2026-04-11 CDT] _general: jalapeño pep pizza out. detected small hole in middle of pizza at the end of bake. took care to not expose bottom during final browning in broiler. cheese pizza (number 3) seemed to have best looking crust. number 4 is cooking right now.\n[2026-04-11 CDT] _general: first time doing this many pizzas at once. especially with a newish recipe. my regular new york pizza dough i've done a million times and it seems easier to work with and fault tolerant. issue needed to be addressed in a backlog task. research and collaborate with me to determine best way for transferring pizza for an event. if it's cooked a few hours before hand i want to protect flavor and the texture. considering i dont want to use too much plastic wrap or foil either.\n\nconsidering price and reusability for other types of bakes. using quarter sheets lined with parchment paper and my only two tipper ware big enough to handle all the pizzas flat. might be able to layer actually in a single tupper ware with just baking paper between the layers. shouldn't be too much pressure on bottom slices from weight of the next layer.\n[2026-04-11 CDT] _general: overall success despite minor failures in process. possibly revisit dough proofing schedule. possibly lower down temper step to 4 hours. i didnt actually re shape on bake day as planned. didn't want to risk it but perhaps if i made dough balls it would have been a little easier to work with. starter was actually kind of weak which could have hindered the strength of the dough"
     }
   ]
 }
