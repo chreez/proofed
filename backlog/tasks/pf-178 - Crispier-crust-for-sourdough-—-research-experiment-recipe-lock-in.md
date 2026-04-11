@@ -4,7 +4,7 @@ title: 'Crispier crust for sourdough — research, experiment, recipe lock-in'
 status: In Progress
 assignee: []
 created_date: '2026-04-08 16:54'
-updated_date: '2026-04-08 17:45'
+updated_date: '2026-04-11 17:59'
 labels: []
 dependencies: []
 priority: medium
@@ -250,4 +250,15 @@ Each experiment bake MUST log all 5 metrics in the cook_log entry and reference 
 ### ACs unblocked by this spike
 
 This spike output satisfies PF-178 parent ACs #2 (numbered experiment plan with 3-5 experiments, each isolating a variable) and unblocks #3 (experiment subtask creation).
+
+## User bake experiment results (2026-04-11 sweep)
+
+Tried the planned experiments. Settled on personal preferred method:
+
+- Preheat super hot: 500-550°F
+- Covered bake: 480°F for first 20 minutes
+- Uncovered with rotations: 425°F for 18 minutes + ~4 min buffer to reach desired crust color
+- Note: keeps forgetting to take internal bread temp at pull — could be a gate in a future "start bake" mode
+
+This is the user's chosen method going forward. Differs slightly from the spike experiment plan (which tested 475°F uncovered and finish-cold-in-oven). User went with their own variation based on real bake experience.
 <!-- SECTION:NOTES:END -->
