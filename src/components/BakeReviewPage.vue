@@ -577,7 +577,7 @@ onMounted(async () => {
         name: photo.name,
         src: photo.src,
         thumb: photo.thumb,
-        summary: restored?.summary ?? photo.summary,
+        summary: restored?.summary || photo.summary,
         notes: restored?.notes ?? '',
         usage: restored?.usage ?? { hero: false, step: false, process: false, exclude: false }
       })

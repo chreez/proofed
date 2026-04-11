@@ -1,0 +1,73 @@
+{
+  "recipeId": "sourdough-pizza-dough",
+  "date": "2026-04-11",
+  "processedAt": "2026-04-11T18:27:53.322Z",
+  "photos": [
+    {
+      "name": "cheese-basil-slice-side-crumb",
+      "thumb": "cheese-basil-slice-side-crumb-400w.webp",
+      "src": "cheese-basil-slice-side-crumb-800w.webp",
+      "summary": "Side view of cheese-and-basil slice (#3) — open, airy interior with large irregular holes throughout the crust. Best fermentation bubbles of the four."
+    },
+    {
+      "name": "cheese-basil-slice-top-scorched",
+      "thumb": "cheese-basil-slice-top-scorched-400w.webp",
+      "src": "cheese-basil-slice-top-scorched-800w.webp",
+      "summary": "Top view of cheese-and-basil slice (#3) — browned mozzarella with scorched basil leaf from overcooked broiler. Good crumb visible along the cornicione."
+    },
+    {
+      "name": "dough-ball-after-turnout",
+      "thumb": "dough-ball-after-turnout-400w.webp",
+      "src": "dough-ball-after-turnout-800w.webp",
+      "summary": "Shaped dough ball resting on the countertop after turnout — smooth, taut surface with the glass mixing bowl visible behind it."
+    },
+    {
+      "name": "dough-on-scale-weighing",
+      "thumb": "dough-on-scale-weighing-400w.webp",
+      "src": "dough-on-scale-weighing-800w.webp",
+      "summary": "Bulk dough in a metal bowl on an OXO digital scale — bubbly, fermented surface showing good activity before dividing into 4 balls."
+    },
+    {
+      "name": "jalapeno-pepperoni-slice-side",
+      "thumb": "jalapeno-pepperoni-slice-side-400w.webp",
+      "src": "jalapeno-pepperoni-slice-side-800w.webp",
+      "summary": "Side profile of jalapeño pepperoni slice (#4) — thin, crispy base with visible jalapeño rings and even crumb structure. Not much rise, possibly overproofed."
+    },
+    {
+      "name": "jalapeno-pepperoni-slice-top",
+      "thumb": "jalapeno-pepperoni-slice-top-400w.webp",
+      "src": "jalapeno-pepperoni-slice-top-800w.webp",
+      "summary": "Top view of jalapeño pepperoni slice (#4) — flat pepperoni slices, sliced jalapeño rings, melted cheese with browning."
+    },
+    {
+      "name": "jalapeno-pepperoni-whole-wire-rack",
+      "thumb": "jalapeno-pepperoni-whole-wire-rack-400w.webp",
+      "src": "jalapeno-pepperoni-whole-wire-rack-800w.webp",
+      "summary": "Whole jalapeño pepperoni pizza (#4) cooling on a wire rack — generous pepperoni coverage with scattered jalapeño slices, leopard-spotted charring on the cornicione."
+    },
+    {
+      "name": "pepperoni-slice-side-crumb",
+      "thumb": "pepperoni-slice-side-crumb-400w.webp",
+      "src": "pepperoni-slice-side-crumb-800w.webp",
+      "summary": "Side view of pepperoni slice (#1) showing the crumb — open, well-aerated crust tapering to a thin crispy center."
+    },
+    {
+      "name": "sauce-pizza-on-steel-close",
+      "thumb": "sauce-pizza-on-steel-close-400w.webp",
+      "src": "sauce-pizza-on-steel-close-800w.webp",
+      "summary": "Sauce-only pizza (#2) on the baking steel inside the oven — dough puffing up around the edges, mis-launched but recovering mid-bake."
+    },
+    {
+      "name": "sauce-pizza-overhead-dark",
+      "thumb": "sauce-pizza-overhead-dark-400w.webp",
+      "src": "sauce-pizza-overhead-dark-800w.webp",
+      "summary": "Overhead shot of sliced sauce-and-basil pizza (#2) — mix of square and wedge cuts, charred basil leaves scattered across bright red sauce, no cheese."
+    },
+    {
+      "name": "sauce-pizza-piece-crumb-closeup",
+      "thumb": "sauce-pizza-piece-crumb-closeup-400w.webp",
+      "src": "sauce-pizza-piece-crumb-closeup-800w.webp",
+      "summary": "Closeup of sauce pizza (#2) slice lifted to show the crumb — open, airy interior despite the failed launch. Charred basil on top."
+    }
+  ]
+}

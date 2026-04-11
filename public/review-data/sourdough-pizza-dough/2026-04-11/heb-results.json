@@ -62,12 +62,84 @@
       ]
     },
     {
+      "ingredientId": "water",
+      "name": "Water",
+      "recipeAmount": 238,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "sourdough_starter",
+      "name": "Sourdough Starter (100% Hydration)",
+      "recipeAmount": 100,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Salt",
+      "recipeAmount": 8,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Iodized Salt",
+          "brand": "H-E-B",
+          "size": "26 oz",
+          "sizeGrams": 737,
+          "price": 0.68,
+          "salePrice": null,
+          "unitPrice": "$0.03/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Mediterranean Sea Salt Grinder",
+          "brand": "H-E-B",
+          "size": "9.5 oz",
+          "sizeGrams": 269,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$0.52/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Mediterranean Sea Salt Grinder",
+          "brand": "H-E-B",
+          "size": "3.7 oz",
+          "sizeGrams": 105,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.52/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Fine Himalayan Pink Salt Refill",
+          "brand": "H-E-B",
+          "size": "12.5 oz",
+          "sizeGrams": 354,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.24/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Salt",
+          "brand": "Morton",
+          "size": "26 oz",
+          "sizeGrams": 737,
+          "price": 1.58,
+          "salePrice": null,
+          "unitPrice": "$0.06/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
       "ingredientId": "diastatic_malt",
       "name": "Diastatic Malt Powder",
       "recipeAmount": 4,
       "recipeUnit": "g",
       "products": [],
-      "_note": "No diastatic malt powder found at this store — only malted milk mixes returned. Order online (King Arthur, Bob's Red Mill)."
+      "_note": "No diastatic malt powder found at this store — only malted milk drink mixes returned (Carnation, Ovaltine). These are NOT substitutes. Order online from King Arthur Baking or Bob's Red Mill."
     },
     {
       "ingredientId": "cornmeal",
@@ -113,6 +185,16 @@
           "price": 2.99,
           "salePrice": null,
           "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Martha White Gladiola Self-Rising Yellow Corn Meal Mix",
+          "brand": "Martha White",
+          "size": "2 lbs",
+          "sizeGrams": 907,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
           "inStock": true
         }
       ]
@@ -162,6 +244,16 @@
           "salePrice": null,
           "unitPrice": "$0.21/oz",
           "inStock": true
+        },
+        {
+          "name": "Mutti Polpa Crushed Tomatoes",
+          "brand": "Mutti",
+          "size": "400G",
+          "sizeGrams": 400,
+          "price": 2.68,
+          "salePrice": null,
+          "unitPrice": "$0.19/oz",
+          "inStock": true
         }
       ]
     },
@@ -182,23 +274,43 @@
           "inStock": true
         },
         {
-          "name": "SARGENTO Whole Milk Mozzarella Shredded Cheese",
-          "brand": "SARGENTO",
+          "name": "H-E-B Organics Low Moisture Mozzarella Cheese",
+          "brand": "H-E-B Organics",
           "size": "8 oz",
           "sizeGrams": 227,
-          "price": 3.69,
+          "price": 4.39,
           "salePrice": null,
-          "unitPrice": "$0.46/oz",
+          "unitPrice": "$0.55/oz",
           "inStock": true
         },
         {
-          "name": "Frigo CheeseHeads Whole Milk Low Moisture Mozzarella String Cheese, 12 ct",
-          "brand": "Frigo",
-          "size": "10 oz",
-          "sizeGrams": 284,
-          "price": 4.88,
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "16 oz",
+          "sizeGrams": 454,
+          "price": 4.99,
           "salePrice": null,
-          "unitPrice": "$0.49/oz",
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Cheese",
+          "brand": "H-E-B",
+          "size": "16 oz",
+          "sizeGrams": 454,
+          "price": 4.99,
+          "salePrice": null,
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        },
+        {
+          "name": "Tillamook Whole Milk Mozzarella Shredded Cheese",
+          "brand": "Tillamook",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 3.98,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
           "inStock": true
         }
       ]
@@ -238,6 +350,26 @@
           "salePrice": null,
           "unitPrice": "$23.98/lb",
           "inStock": true
+        },
+        {
+          "name": "Boar's Head Pecorino Romano Grated Cheese",
+          "brand": "Boar's Head",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 6.98,
+          "salePrice": null,
+          "unitPrice": "$1.16/oz",
+          "inStock": true
+        },
+        {
+          "name": "Locatelli Pecorino Romano Shredded Cheese",
+          "brand": "Locatelli",
+          "size": "Avg. 0.4 lb",
+          "sizeGrams": 181,
+          "price": 6.59,
+          "salePrice": null,
+          "unitPrice": "$16.48/lb",
+          "inStock": true
         }
       ]
     },
@@ -248,7 +380,37 @@
       "recipeUnit": "g",
       "products": [
         {
+          "name": "Boar's Head Pepperoni",
+          "brand": "Boar's Head",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 4.99,
+          "salePrice": null,
+          "unitPrice": "$0.83/oz",
+          "inStock": true
+        },
+        {
+          "name": "Boar's Head Traditional Pepperoni",
+          "brand": "Boar's Head",
+          "size": "6.5 oz",
+          "sizeGrams": 184,
+          "price": 5.88,
+          "salePrice": null,
+          "unitPrice": "$0.90/oz",
+          "inStock": true
+        },
+        {
           "name": "H-E-B Premium Uncured Pepperoni Slices - Original",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Premium Uncured Pepperoni Slices - Thick Cut",
           "brand": "H-E-B",
           "size": "6 oz",
           "sizeGrams": 170,
@@ -265,16 +427,6 @@
           "price": 4.25,
           "salePrice": null,
           "unitPrice": "$8.49/lb",
-          "inStock": true
-        },
-        {
-          "name": "H-E-B Premium Uncured Pepperoni Slices - Thick Cut",
-          "brand": "H-E-B",
-          "size": "6 oz",
-          "sizeGrams": 170,
-          "price": 2.99,
-          "salePrice": null,
-          "unitPrice": "$0.50/oz",
           "inStock": true
         }
       ]
