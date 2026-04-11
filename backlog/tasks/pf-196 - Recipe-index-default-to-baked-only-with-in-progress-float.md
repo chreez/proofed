@@ -1,10 +1,10 @@
 ---
 id: PF-196
 title: 'Recipe index: default to baked-only with in-progress float'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-04-09 21:42'
-updated_date: '2026-04-10 14:32'
+updated_date: '2026-04-11 17:58'
 labels:
   - ux
 dependencies: []
