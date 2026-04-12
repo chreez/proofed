@@ -4,6 +4,7 @@ title: Review page cost tab — scrollable product list + preserve manual entrie
 status: To Do
 assignee: []
 created_date: '2026-04-12 17:29'
+updated_date: '2026-04-12 17:32'
 labels:
   - ux
 dependencies: []
@@ -27,3 +28,9 @@ The cost tab on the bake review page needs UX improvements: each ingredient shou
 - [ ] #5 Salt ingredient for sourdough pizza shows Morton Sea Salt as a selectable option with correct cost
 - [ ] #6 Scrollable container uses consistent border/padding with existing review page card styling
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+**Mandatory test case**: Sourdough pizza dough 2026-04-11 review page — Morton Sea Salt must appear as a selectable option for the salt ingredient. Currently invisible, causing $0 cost. Use this bake as the primary validation instance.
+<!-- SECTION:NOTES:END -->

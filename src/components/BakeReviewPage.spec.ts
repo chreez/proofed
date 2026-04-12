@@ -23,55 +23,6 @@ vi.mock('lucide-vue-next', () => ({
   ArrowLeft: { name: 'ArrowLeft', props: ['size'], template: '<svg class="arrow-left-icon" />' }
 }))
 
-// Mock useScratchpad
-const defaultScratchpadEntries: Record<string, unknown[]> = {
-  'knead-dough': [
-    {
-      stepId: 'knead-dough',
-      timestamp: '2026-02-10T14:30:00.000Z',
-      type: 'note' as const,
-      value: 'Dough was sticky'
-    },
-    {
-      stepId: 'knead-dough',
-      timestamp: '2026-02-10T14:35:00.000Z',
-      type: 'rating' as const,
-      value: 'good',
-      rating: 'good' as const
-    }
-  ],
-  'shape-rolls': [
-    {
-      stepId: 'shape-rolls',
-      timestamp: '2026-02-10T15:00:00.000Z',
-      type: 'reminder_response' as const,
-      prompt: 'How tight was the roll?',
-      value: 'Medium tension'
-    }
-  ]
-}
-
-const defaultGeneralNotes = [
-  {
-    stepId: '_general',
-    timestamp: '2026-02-10T16:00:00.000Z',
-    type: 'note' as const,
-    value: 'Overall great bake'
-  }
-]
-
-// Mutable overrides that tests can swap before mounting
-let scratchpadEntriesOverride: Record<string, unknown[]> | null = null
-let generalNotesOverride: unknown[] | null = null
-
-vi.mock('@/composables/useScratchpad', () => ({
-  useScratchpad: () => ({
-    load: vi.fn(),
-    allStepEntries: { value: scratchpadEntriesOverride ?? defaultScratchpadEntries },
-    generalNotes: { value: generalNotesOverride ?? defaultGeneralNotes }
-  })
-}))
-
 // Mock useClipboard
 vi.mock('@/composables/useClipboard', () => ({
   copyToClipboard: vi.fn().mockResolvedValue(undefined)
@@ -88,7 +39,33 @@ const sampleManifest = {
 }
 
 const sampleRecipe = {
-  meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' }
+  meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+  cook_log: [
+    {
+      date: '2026-02-10',
+      version: '1.0',
+      summary: 'Great bake overall, dough was a bit sticky but manageable.',
+      notes: ['Dough was sticky during kneading', 'Proof took 35 minutes', 'Buns rose well in the oven'],
+      key_notes: ['Dough was sticky during kneading', 'Buns rose well in the oven'],
+      raw_notes: '9:00am — mixed dough, very sticky\n9:05am — kneaded 2 min\n9:40am — proof done\n10:10am — baked 28 min at 350F',
+      next_time: [
+        { text: 'Try adding a bit more flour to reduce stickiness' },
+        { text: 'Use parchment paper in skillet', source: 'ATK forum' }
+      ]
+    }
+  ]
+}
+
+// Recipe with no cook_log notes for empty state testing
+const sampleRecipeNoNotes = {
+  meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+  cook_log: [
+    {
+      date: '2026-02-10',
+      version: '1.0',
+      notes: []
+    }
+  ]
 }
 
 const sampleHebResults = {
@@ -254,8 +231,6 @@ describe('BakeReviewPage', () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
-    scratchpadEntriesOverride = null
-    generalNotesOverride = null
     localStorageMock = makeLocalStorageMock()
     Object.defineProperty(window, 'localStorage', {
       value: localStorageMock,
@@ -514,6 +489,71 @@ describe('BakeReviewPage', () => {
       expect(wrapper.find('[data-testid="copy-all-btn"]').text()).toContain('Copied!')
     })
 
+    it('includes notesFeedback in payload when textarea has content', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Navigate to Notes tab and enter feedback
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      const textarea = wrapper.find('[data-testid="notes-feedback-textarea"]')
+      await textarea.setValue('The summary looks good but key_notes #2 needs rewording')
+      await flushPromises()
+
+      // Click the copy-all button
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      expect(parsed).toHaveProperty('notesFeedback', 'The summary looks good but key_notes #2 needs rewording')
+    })
+
+    it('omits notesFeedback from payload when textarea is empty', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Do not enter any feedback — leave textarea empty
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      expect(parsed).not.toHaveProperty('notesFeedback')
+    })
+
+    it('omits notesFeedback from payload when textarea is whitespace-only', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Navigate to Notes tab and enter whitespace-only feedback
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      const textarea = wrapper.find('[data-testid="notes-feedback-textarea"]')
+      await textarea.setValue('   \n  ')
+      await flushPromises()
+
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      expect(parsed).not.toHaveProperty('notesFeedback')
+    })
+
     it('omits photos key when no photos loaded', async () => {
       const { copyToClipboard } = await import('@/composables/useClipboard')
       const emptyManifest = {
@@ -583,22 +623,21 @@ describe('BakeReviewPage', () => {
   })
 
   describe('Notes section', () => {
-    it('renders scratchpad entries when switching to notes tab', async () => {
+    it('shows Curated and Raw Input sub-tabs', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
-      // Switch to notes tab
       const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      const notesSection = wrapper.find('[data-testid="notes-section"]')
-      expect(notesSection.exists()).toBe(true)
-      expect(notesSection.text()).toContain('Dough was sticky')
-      expect(notesSection.text()).toContain('Medium tension')
+      const subTabs = wrapper.find('[data-testid="notes-sub-tabs"]')
+      expect(subTabs.exists()).toBe(true)
+      expect(subTabs.text()).toContain('Curated')
+      expect(subTabs.text()).toContain('Raw Input')
     })
 
-    it('renders general notes', async () => {
+    it('renders summary from cook_log entry on Curated tab', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -606,11 +645,12 @@ describe('BakeReviewPage', () => {
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      expect(wrapper.text()).toContain('General Notes')
-      expect(wrapper.text()).toContain('Overall great bake')
+      const curated = wrapper.find('[data-testid="notes-curated"]')
+      expect(curated.exists()).toBe(true)
+      expect(curated.text()).toContain('Great bake overall, dough was a bit sticky but manageable.')
     })
 
-    it('renders step IDs as group headings', async () => {
+    it('renders key_notes on Curated tab', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -618,11 +658,13 @@ describe('BakeReviewPage', () => {
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      expect(wrapper.text()).toContain('knead-dough')
-      expect(wrapper.text()).toContain('shape-rolls')
+      const keyNotes = wrapper.find('[data-testid="notes-curated-keynotes"]')
+      expect(keyNotes.exists()).toBe(true)
+      expect(keyNotes.text()).toContain('Dough was sticky during kneading')
+      expect(keyNotes.text()).toContain('Buns rose well in the oven')
     })
 
-    it('renders rating badges with color', async () => {
+    it('renders next_time items on Curated tab', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -630,13 +672,14 @@ describe('BakeReviewPage', () => {
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      const ratingBadge = wrapper.find('[data-testid="rating-badge"]')
-      expect(ratingBadge.exists()).toBe(true)
-      expect(ratingBadge.text()).toBe('good')
-      expect(ratingBadge.classes()).toContain('bg-success')
+      const nextTime = wrapper.find('[data-testid="notes-curated-nexttime"]')
+      expect(nextTime.exists()).toBe(true)
+      expect(nextTime.text()).toContain('Try adding a bit more flour to reduce stickiness')
+      expect(nextTime.text()).toContain('Use parchment paper in skillet')
+      expect(nextTime.text()).toContain('ATK forum')
     })
 
-    it('renders type badges for each entry', async () => {
+    it('shows raw notes in a pre block on Raw Input tab', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -644,10 +687,53 @@ describe('BakeReviewPage', () => {
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      // Should have badges for: note, rating, reminder, general note = multiple
-      expect(wrapper.text()).toContain('note')
-      expect(wrapper.text()).toContain('rating')
-      expect(wrapper.text()).toContain('reminder')
+      // Switch to Raw Input sub-tab
+      const rawTab = wrapper.find('[data-testid="notes-tab-raw"]')
+      await rawTab.trigger('click')
+
+      const pre = wrapper.find('[data-testid="notes-raw-pre"]')
+      expect(pre.exists()).toBe(true)
+      expect(pre.text()).toContain('9:00am')
+      expect(pre.text()).toContain('mixed dough, very sticky')
+    })
+
+    it('falls back to notes[] when key_notes is absent', async () => {
+      // Use recipe with notes but no key_notes
+      const recipeNoKeyNotes = {
+        meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: '1.0',
+            notes: ['First fallback note', 'Second fallback note']
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, recipeNoKeyNotes)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      const keyNotes = wrapper.find('[data-testid="notes-curated-keynotes"]')
+      expect(keyNotes.exists()).toBe(true)
+      expect(keyNotes.text()).toContain('First fallback note')
+      expect(keyNotes.text()).toContain('Second fallback note')
+    })
+
+    it('shows feedback textarea on Curated tab (no standalone copy button)', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      expect(wrapper.find('[data-testid="notes-feedback-textarea"]').exists()).toBe(true)
+      expect(wrapper.find('[data-testid="notes-feedback-copy"]').exists()).toBe(false)
     })
   })
 
@@ -1611,15 +1697,8 @@ describe('BakeReviewPage', () => {
     })
   })
 
-  describe('ratingColor branches', () => {
-    it('returns ok color class', async () => {
-      scratchpadEntriesOverride = {
-        'step-1': [
-          { stepId: 'step-1', timestamp: '2026-02-10T14:30:00.000Z', type: 'rating', value: 'ok', rating: 'ok' }
-        ]
-      }
-      generalNotesOverride = []
-
+  describe('Notes section — renderNextTime source citation', () => {
+    it('renders source citation in italics when next_time item has source', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -1627,18 +1706,32 @@ describe('BakeReviewPage', () => {
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      const ratingBadge = wrapper.find('[data-testid="rating-badge"]')
-      expect(ratingBadge.exists()).toBe(true)
-      expect(ratingBadge.classes()).toContain('bg-warning')
+      const nextTime = wrapper.find('[data-testid="notes-curated-nexttime"]')
+      expect(nextTime.exists()).toBe(true)
+      // The second next_time item has source: 'ATK forum'
+      // renderNextTime wraps it in *(source)* which marked parses to <em>
+      const html = nextTime.html()
+      expect(html).toContain('<em>')
+      expect(html).toContain('ATK forum')
     })
 
-    it('returns bad color class', async () => {
-      scratchpadEntriesOverride = {
-        'step-1': [
-          { stepId: 'step-1', timestamp: '2026-02-10T14:30:00.000Z', type: 'rating', value: 'bad', rating: 'bad' }
+    it('does not render italics when next_time item has no source', async () => {
+      // Use recipe where next_time items have NO source at all
+      const recipeNoSource = {
+        meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: '1.0',
+            summary: 'Test bake',
+            next_time: [
+              { text: 'Try more flour' },
+              { text: 'Longer proof time' }
+            ]
+          }
         ]
       }
-      generalNotesOverride = []
+      global.fetch = makeFetchSuccess(sampleManifest, recipeNoSource)
 
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
@@ -1647,35 +1740,17 @@ describe('BakeReviewPage', () => {
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      const ratingBadge = wrapper.find('[data-testid="rating-badge"]')
-      expect(ratingBadge.exists()).toBe(true)
-      expect(ratingBadge.classes()).toContain('bg-danger')
-    })
-
-    it('returns default color for unknown rating', async () => {
-      scratchpadEntriesOverride = {
-        'step-1': [
-          { stepId: 'step-1', timestamp: '2026-02-10T14:30:00.000Z', type: 'rating', value: 'meh', rating: 'meh' }
-        ]
-      }
-      generalNotesOverride = []
-
-      const wrapper = mount(BakeReviewPage)
-      await flushPromises()
-
-      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
-      const notesTab = tabs.find(t => t.text() === 'Notes')!
-      await notesTab.trigger('click')
-
-      const ratingBadge = wrapper.find('[data-testid="rating-badge"]')
-      expect(ratingBadge.exists()).toBe(true)
-      expect(ratingBadge.classes()).toContain('bg-stone-300')
+      const nextTime = wrapper.find('[data-testid="notes-curated-nexttime"]')
+      expect(nextTime.exists()).toBe(true)
+      // No source means no italic markup
+      expect(nextTime.html()).not.toContain('<em>')
+      expect(nextTime.text()).toContain('Try more flour')
+      expect(nextTime.text()).toContain('Longer proof time')
     })
   })
 
-  describe('typeBadgeClass and typeBadgeLabel branches', () => {
-    it('renders rating type badge correctly', async () => {
-      // The existing mock already has a 'rating' type entry in knead-dough
+  describe('Notes section — renderKeyNotes HTML output', () => {
+    it('renders key_notes as markdown bullet list (ul/li elements)', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
@@ -1683,34 +1758,45 @@ describe('BakeReviewPage', () => {
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      // The rating type entry should have 'rating' badge label
-      expect(wrapper.text()).toContain('rating')
-    })
-
-    it('renders default type badge for unknown type', async () => {
-      scratchpadEntriesOverride = {
-        'step-1': [
-          { stepId: 'step-1', timestamp: '2026-02-10T14:30:00.000Z', type: 'custom_type', value: 'test' }
-        ]
-      }
-      generalNotesOverride = []
-
-      const wrapper = mount(BakeReviewPage)
-      await flushPromises()
-
-      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
-      const notesTab = tabs.find(t => t.text() === 'Notes')!
-      await notesTab.trigger('click')
-
-      // Default case in typeBadgeLabel returns the type string itself
-      expect(wrapper.text()).toContain('custom_type')
+      const keyNotes = wrapper.find('[data-testid="notes-curated-keynotes"]')
+      expect(keyNotes.exists()).toBe(true)
+      const html = keyNotes.html()
+      expect(html).toContain('<ul>')
+      expect(html).toContain('<li>')
     })
   })
 
-  describe('Empty scratchpad (no notes)', () => {
-    it('shows no-notes message when scratchpad is empty', async () => {
-      scratchpadEntriesOverride = {}
-      generalNotesOverride = []
+  describe('Notes section — rawNotesContent branches', () => {
+    it('returns raw_notes string when present on entry', async () => {
+      // sampleRecipe already has raw_notes
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      const rawTab = wrapper.find('[data-testid="notes-tab-raw"]')
+      await rawTab.trigger('click')
+
+      const pre = wrapper.find('[data-testid="notes-raw-pre"]')
+      expect(pre.exists()).toBe(true)
+      expect(pre.text()).toContain('9:00am')
+      expect(pre.text()).toContain('mixed dough, very sticky')
+    })
+
+    it('falls back to notes[] joined with newline when raw_notes is absent', async () => {
+      const recipeNoRawNotes = {
+        meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: '1.0',
+            notes: ['Note line one', 'Note line two', 'Note line three']
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, recipeNoRawNotes)
 
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
@@ -1719,7 +1805,184 @@ describe('BakeReviewPage', () => {
       const notesTab = tabs.find(t => t.text() === 'Notes')!
       await notesTab.trigger('click')
 
-      expect(wrapper.text()).toContain('No scratchpad notes for this bake')
+      const rawTab = wrapper.find('[data-testid="notes-tab-raw"]')
+      await rawTab.trigger('click')
+
+      const pre = wrapper.find('[data-testid="notes-raw-pre"]')
+      expect(pre.exists()).toBe(true)
+      // notes joined with \n
+      expect(pre.text()).toContain('Note line one')
+      expect(pre.text()).toContain('Note line two')
+      expect(pre.text()).toContain('Note line three')
+    })
+
+    it('shows empty state when entry has no raw_notes and no notes', async () => {
+      const recipeEmptyNotes = {
+        meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: '1.0',
+            summary: 'Just a summary, no notes'
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, recipeEmptyNotes)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      const rawTab = wrapper.find('[data-testid="notes-tab-raw"]')
+      await rawTab.trigger('click')
+
+      // rawNotesContent returns '' → v-else shows empty state
+      expect(wrapper.find('[data-testid="notes-raw-pre"]').exists()).toBe(false)
+      const rawSection = wrapper.find('[data-testid="notes-raw"]')
+      expect(rawSection.text()).toContain('No notes recorded for this bake.')
+    })
+  })
+
+
+  describe('Notes section — hasNotes with only summary', () => {
+    it('shows notes when only summary exists (no key_notes, no notes, no next_time)', async () => {
+      const recipeSummaryOnly = {
+        meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: '1.0',
+            summary: 'A good bake but nothing else recorded.'
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, recipeSummaryOnly)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      // hasNotes is true because summary exists
+      // So we should NOT see the "No notes recorded" empty state
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.text()).not.toContain('No notes recorded for this bake.')
+
+      // Should show the curated tab with the summary
+      const curated = wrapper.find('[data-testid="notes-curated"]')
+      expect(curated.exists()).toBe(true)
+      expect(curated.text()).toContain('A good bake but nothing else recorded.')
+
+      // No keynotes section since there are none
+      expect(wrapper.find('[data-testid="notes-curated-keynotes"]').exists()).toBe(false)
+      // No nexttime section since there are none
+      expect(wrapper.find('[data-testid="notes-curated-nexttime"]').exists()).toBe(false)
+    })
+
+    it('shows notes when only raw_notes exists (no summary, no key_notes, no next_time)', async () => {
+      const recipeRawOnly = {
+        meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: '1.0',
+            raw_notes: 'Quick paste of my notes from the bake'
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, recipeRawOnly)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      // hasNotes is true because raw_notes exists
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.text()).not.toContain('No notes recorded for this bake.')
+
+      // Sub-tabs should be visible
+      expect(wrapper.find('[data-testid="notes-sub-tabs"]').exists()).toBe(true)
+
+      // Switch to raw tab to see the raw_notes
+      const rawTab = wrapper.find('[data-testid="notes-tab-raw"]')
+      await rawTab.trigger('click')
+
+      const pre = wrapper.find('[data-testid="notes-raw-pre"]')
+      expect(pre.exists()).toBe(true)
+      expect(pre.text()).toContain('Quick paste of my notes from the bake')
+    })
+  })
+
+  describe('Notes section — renderNextTime empty check', () => {
+    it('does not render nexttime section when next_time is empty array', async () => {
+      const recipeEmptyNextTime = {
+        meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: '1.0',
+            summary: 'Good bake',
+            key_notes: ['Note one'],
+            next_time: []
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, recipeEmptyNextTime)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      expect(wrapper.find('[data-testid="notes-curated-nexttime"]').exists()).toBe(false)
+    })
+  })
+
+  describe('Empty notes state', () => {
+    it('shows empty message when cook_log entry has no notes data', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipeNoNotes)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      expect(wrapper.text()).toContain('No notes recorded for this bake.')
+    })
+
+    it('shows empty message when no cook_log entry matches the bake date', async () => {
+      const recipeNoMatchingEntry = {
+        meta: { name: 'Quick Cinnamon Buns', yields: '8 buns', total_time: '~1.5 hours' },
+        cook_log: [
+          {
+            date: '2026-01-01',
+            version: '1.0',
+            notes: ['Different date entry']
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, recipeNoMatchingEntry)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      expect(wrapper.text()).toContain('No notes recorded for this bake.')
     })
   })
 

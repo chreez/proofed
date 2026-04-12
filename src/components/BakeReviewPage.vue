@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useScratchpad } from '@/composables/useScratchpad'
 import { copyToClipboard } from '@/composables/useClipboard'
+import { marked } from 'marked'
 import { ArrowLeft } from 'lucide-vue-next'
 import type {
-  ScratchpadEntry,
+  Recipe,
+  CookLogEntry,
   HebProduct,
   HebIngredientResult,
   HebResultsFile,
@@ -61,11 +62,10 @@ const photoStates = reactive<PhotoState[]>([])
 const allCopied = ref(false)
 const activeSection = ref<SectionId>('photos')
 
-// Scratchpad state
-const scratchpadData = ref<{
-  entries: Record<string, ScratchpadEntry[]>
-  generalNotes: ScratchpadEntry[]
-} | null>(null)
+// Cook log state (replaces scratchpad)
+const recipeData = ref<Recipe | null>(null)
+const notesSubTab = ref<'curated' | 'raw'>('curated')
+const notesFeedback = ref('')
 
 const sections: { id: SectionId; label: string }[] = [
   { id: 'photos', label: 'Photos' },
@@ -158,6 +158,9 @@ function buildCombinedPayload(): object {
       servings: costSummaryPayload.value.servings
     }
   }
+  if (notesFeedback.value.trim()) {
+    payload.notesFeedback = notesFeedback.value.trim()
+  }
   return payload
 }
 
@@ -180,51 +183,51 @@ watch(photoStates, () => {
   if (photoStates.length > 0) savePhotoState()
 }, { deep: true })
 
-// --- Notes section helpers ---
+// --- Notes section helpers (cook_log-based) ---
 
-const stepEntries = computed<[string, ScratchpadEntry[]][]>(() => {
-  if (!scratchpadData.value) return []
-  return Object.entries(scratchpadData.value.entries).filter(([, entries]) => entries.length > 0)
-})
-
-const generalNotes = computed<ScratchpadEntry[]>(() => {
-  return scratchpadData.value?.generalNotes ?? []
+const cookLogEntry = computed<CookLogEntry | null>(() => {
+  if (!recipeData.value?.cook_log || !date.value) return null
+  return recipeData.value.cook_log.find(e => e.date === date.value) ?? null
 })
 
 const hasNotes = computed<boolean>(() => {
-  return stepEntries.value.length > 0 || generalNotes.value.length > 0
+  const entry = cookLogEntry.value
+  if (!entry) return false
+  return !!(
+    entry.summary ||
+    (entry.key_notes && entry.key_notes.length > 0) ||
+    (entry.notes && entry.notes.length > 0) ||
+    entry.raw_notes ||
+    (entry.next_time && entry.next_time.length > 0)
+  )
 })
 
-function formatTimestamp(iso: string): string {
-  const d = new Date(iso)
-  return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+// key_notes with fallback to notes[] — matches BakeDetailView pattern
+function keyNotesList(entry: CookLogEntry): string[] {
+  return entry.key_notes ?? entry.notes ?? []
 }
 
-function ratingColor(rating: string): string {
-  switch (rating) {
-    case 'good': return 'bg-success text-white'
-    case 'ok': return 'bg-warning text-ink'
-    case 'bad': return 'bg-danger text-white'
-    default: return 'bg-stone-300 text-ink'
-  }
+function renderKeyNotes(entry: CookLogEntry): string {
+  const lines = keyNotesList(entry)
+  if (lines.length === 0) return ''
+  const md = lines.map(n => `- ${n}`).join('\n')
+  return marked.parse(md) as string
 }
 
-function typeBadgeClass(type: string): string {
-  switch (type) {
-    case 'note': return 'bg-stone-200 text-stone-600'
-    case 'rating': return 'bg-stone-200 text-stone-600'
-    case 'reminder_response': return 'bg-accent-tint text-accent'
-    default: return 'bg-stone-200 text-stone-600'
-  }
+function renderNextTime(entry: CookLogEntry): string {
+  if (!entry.next_time?.length) return ''
+  const md = entry.next_time.map(n => {
+    const sourceSuffix = n.source ? ` *(${n.source})*` : ''
+    return `- ${n.text}${sourceSuffix}`
+  }).join('\n')
+  return marked.parse(md) as string
 }
 
-function typeBadgeLabel(type: string): string {
-  switch (type) {
-    case 'note': return 'note'
-    case 'rating': return 'rating'
-    case 'reminder_response': return 'reminder'
-    default: return type
-  }
+// Raw notes content — use raw_notes string if available, else join notes[]
+function rawNotesContent(entry: CookLogEntry): string {
+  if (entry.raw_notes) return entry.raw_notes
+  if (entry.notes?.length) return entry.notes.join('\n')
+  return ''
 }
 
 // --- Cost section state ---
@@ -530,17 +533,18 @@ watch(costSelections, () => {
   }
 }, { deep: true })
 
-// --- Mount: load manifest, recipe name, and scratchpad ---
+// --- Mount: load manifest, recipe data, and HEB results ---
 
 onMounted(async () => {
   recipeId.value = route.params.recipeId as string
   date.value = route.params.date as string
 
-  // Load recipe name and servings
+  // Load recipe data (name, servings, cook_log)
   try {
     const recipeRes = await fetch(`/recipes/${recipeId.value}.json`)
     if (recipeRes.ok) {
-      const recipe = await recipeRes.json()
+      const recipe = await recipeRes.json() as Recipe
+      recipeData.value = recipe
       recipeName.value = recipe.meta?.name ?? recipeId.value
       recipeYields.value = recipe.meta?.yields ?? ''
       recipeServings.value = parseServings(recipeYields.value)
@@ -586,14 +590,6 @@ onMounted(async () => {
     error.value = 'Failed to load manifest'
   } finally {
     loading.value = false
-  }
-
-  // Load scratchpad
-  const sp = useScratchpad(recipeId.value)
-  sp.load()
-  scratchpadData.value = {
-    entries: sp.allStepEntries.value,
-    generalNotes: sp.generalNotes.value
   }
 
   // Load HEB results eagerly
@@ -1020,53 +1016,77 @@ onMounted(async () => {
 
     <!-- Notes section -->
     <section v-if="activeSection === 'notes'" data-testid="notes-section">
+      <!-- Empty state -->
       <div v-if="!hasNotes" class="card text-center py-12">
-        <p class="text-muted font-mono">No scratchpad notes for this bake</p>
+        <p class="text-muted font-mono">No notes recorded for this bake.</p>
       </div>
 
-      <template v-else>
-        <!-- General notes -->
-        <div v-if="generalNotes.length > 0" class="mb-6">
-          <h3 class="text-heading text-sm font-mono mb-3">General Notes</h3>
-          <div class="space-y-2">
-            <div
-              v-for="(entry, i) in generalNotes"
-              :key="`general-${i}`"
-              class="card flex items-start gap-3"
-            >
-              <span class="font-mono text-xs text-muted flex-shrink-0 mt-0.5">{{ formatTimestamp(entry.timestamp) }}</span>
-              <span
-                class="text-xs px-1.5 py-0.5 rounded-none font-mono flex-shrink-0"
-                :class="typeBadgeClass(entry.type)"
-              >{{ typeBadgeLabel(entry.type) }}</span>
-              <span class="text-sm text-body">{{ entry.value }}</span>
-            </div>
+      <template v-else-if="cookLogEntry">
+        <!-- Sub-tab navigation -->
+        <nav class="flex gap-0 border-b-2 border-stone-200 mb-6" data-testid="notes-sub-tabs">
+          <button
+            class="px-4 py-2 text-sm font-mono transition-colors cursor-pointer"
+            :class="notesSubTab === 'curated'
+              ? 'text-ink border-b-2 border-ink -mb-[2px] font-semibold'
+              : 'text-muted hover:text-ink'"
+            data-testid="notes-tab-curated"
+            @click="notesSubTab = 'curated'"
+          >
+            Curated
+          </button>
+          <button
+            class="px-4 py-2 text-sm font-mono transition-colors cursor-pointer"
+            :class="notesSubTab === 'raw'
+              ? 'text-ink border-b-2 border-ink -mb-[2px] font-semibold'
+              : 'text-muted hover:text-ink'"
+            data-testid="notes-tab-raw"
+            @click="notesSubTab = 'raw'"
+          >
+            Raw Input
+          </button>
+        </nav>
+
+        <!-- Curated sub-tab -->
+        <div v-if="notesSubTab === 'curated'" data-testid="notes-curated">
+          <!-- Summary -->
+          <p v-if="cookLogEntry.summary" class="text-body mb-4">{{ cookLogEntry.summary }}</p>
+
+          <!-- Key notes (fallback to notes[]) -->
+          <div v-if="keyNotesList(cookLogEntry).length > 0" class="mb-4" data-testid="notes-curated-keynotes">
+            <h4 class="text-heading font-mono text-sm mb-2">Notes</h4>
+            <div class="bake-prose" v-html="renderKeyNotes(cookLogEntry)" />
+          </div>
+
+          <!-- Next time -->
+          <div v-if="cookLogEntry.next_time?.length" class="mb-4" data-testid="notes-curated-nexttime">
+            <h4 class="text-heading font-mono text-sm mb-2 text-accent">Next Time</h4>
+            <div class="bake-prose" v-html="renderNextTime(cookLogEntry)" />
+          </div>
+
+          <!-- Feedback textarea -->
+          <div class="mt-6 border-t-2 border-stone-200 pt-4" data-testid="notes-feedback-section">
+            <label class="block">
+              <span class="text-xs text-heading font-mono block mb-1">Feedback</span>
+              <textarea
+                v-model="notesFeedback"
+                rows="4"
+                placeholder="Note corrections or feedback on the curated notes..."
+                class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-base md:text-sm text-body font-sans focus:outline-none focus:border-stone-400"
+                data-testid="notes-feedback-textarea"
+              />
+            </label>
           </div>
         </div>
 
-        <!-- Step entries -->
-        <div v-for="[stepId, entries] in stepEntries" :key="stepId" class="mb-6">
-          <h3 class="text-heading text-sm font-mono mb-3">{{ stepId }}</h3>
-          <div class="space-y-2">
-            <div
-              v-for="(entry, i) in entries"
-              :key="`${stepId}-${i}`"
-              class="card flex items-start gap-3"
-            >
-              <span class="font-mono text-xs text-muted flex-shrink-0 mt-0.5">{{ formatTimestamp(entry.timestamp) }}</span>
-              <span
-                class="text-xs px-1.5 py-0.5 rounded-none font-mono flex-shrink-0"
-                :class="typeBadgeClass(entry.type)"
-              >{{ typeBadgeLabel(entry.type) }}</span>
-              <template v-if="entry.type === 'rating' && entry.rating">
-                <span
-                  class="text-xs px-2 py-0.5 rounded-none font-mono font-semibold"
-                  :class="ratingColor(entry.rating)"
-                  data-testid="rating-badge"
-                >{{ entry.rating }}</span>
-              </template>
-              <span v-else class="text-sm text-body">{{ entry.value }}</span>
-            </div>
+        <!-- Raw Input sub-tab -->
+        <div v-if="notesSubTab === 'raw'" data-testid="notes-raw">
+          <pre
+            v-if="rawNotesContent(cookLogEntry)"
+            class="font-mono text-xs whitespace-pre-wrap bg-stone-50 border-2 border-stone-200 p-3 text-stone-600 leading-relaxed"
+            data-testid="notes-raw-pre"
+          >{{ rawNotesContent(cookLogEntry) }}</pre>
+          <div v-else class="card text-center py-12">
+            <p class="text-muted font-mono">No notes recorded for this bake.</p>
           </div>
         </div>
       </template>
@@ -1144,3 +1164,30 @@ onMounted(async () => {
     </button>
   </div>
 </template>
+
+<style scoped>
+.bake-prose {
+  font-size: 0.875rem;
+  color: var(--color-stone-600);
+  line-height: 1.6;
+}
+
+.bake-prose :deep(ul) {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.bake-prose :deep(li) {
+  margin-bottom: 0.375rem;
+}
+
+.bake-prose :deep(strong) {
+  color: var(--color-stone-700);
+  font-weight: 600;
+}
+
+.bake-prose :deep(em) {
+  color: var(--color-stone-500);
+}
+</style>
