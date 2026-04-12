@@ -837,6 +837,7 @@
       "date": "2026-04-11",
       "start_date": "2026-04-08",
       "version": "v1.3.0",
+      "actual_yield": { "value": 4, "unit": "pizzas" },
       "summary": "Second bake, doubled to 4 pizzas — first time at this volume. Overall success despite some execution bumps (sauce pizza stuck to peel, dough tear on #3). Flavor felt lacking compared to basic NY dough; may try a shorter proof next time.",
       "notes": [
         "4:25pm CDT (Tue 4/8) — fermentolyse start.",
