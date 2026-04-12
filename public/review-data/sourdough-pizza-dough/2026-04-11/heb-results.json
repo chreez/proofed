@@ -58,6 +58,16 @@
           "salePrice": null,
           "unitPrice": "$0.10/oz",
           "inStock": true
+        },
+        {
+          "name": "Bob's Red Mill Artisan Bread Flour",
+          "brand": "Bob's Red Mill",
+          "size": "5 lb",
+          "sizeGrams": 2268,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
         }
       ]
     },
@@ -66,14 +76,136 @@
       "name": "Water",
       "recipeAmount": 238,
       "recipeUnit": "g",
-      "products": []
+      "products": [
+        {
+          "name": "Hill Country Fare Purified Drinking Water",
+          "brand": "Hill Country Fare",
+          "size": "1 gal",
+          "sizeGrams": 3785,
+          "price": 1.19,
+          "salePrice": null,
+          "unitPrice": "$0.01/fl oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Natural Texas Spring Water",
+          "brand": "Hill Country Fare",
+          "size": "1 gal",
+          "sizeGrams": 3785,
+          "price": 1.34,
+          "salePrice": null,
+          "unitPrice": "$0.01/fl oz",
+          "inStock": true
+        },
+        {
+          "name": "Ozarka 100% Natural Texas Spring Water",
+          "brand": "Ozarka",
+          "size": "1 gal",
+          "sizeGrams": 3785,
+          "price": 2.12,
+          "salePrice": null,
+          "unitPrice": "$0.02/oz",
+          "inStock": true
+        }
+      ]
     },
     {
       "ingredientId": "sourdough_starter",
       "name": "Sourdough Starter (100% Hydration)",
       "recipeAmount": 100,
       "recipeUnit": "g",
-      "products": []
+      "products": [
+        {
+          "name": "H-E-B Bakery Scratch Sourdough Bread",
+          "brand": "H-E-B",
+          "size": "22 oz",
+          "sizeGrams": 624,
+          "price": 4.48,
+          "salePrice": null,
+          "unitPrice": "$4.48/ea",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Bakery Scratch-Made Rosemary Golden Grain Sourdough Bread",
+          "brand": "H-E-B",
+          "size": "22 oz",
+          "sizeGrams": 624,
+          "price": 4.48,
+          "salePrice": null,
+          "unitPrice": "$4.48/ea",
+          "inStock": true
+        },
+        {
+          "name": "Pepperidge Farm Farmhouse Sourdough Sliced Bread",
+          "brand": "Pepperidge Farm",
+          "size": "24 oz",
+          "sizeGrams": 680,
+          "price": 3.84,
+          "salePrice": null,
+          "unitPrice": "$0.16/oz",
+          "inStock": true
+        },
+        {
+          "name": "Central Market Sourdough Loaf",
+          "brand": "Central Market",
+          "size": "15 oz",
+          "sizeGrams": 425,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.19/oz",
+          "inStock": true
+        },
+        {
+          "name": "Easy Tiger Round Sourdough Bread",
+          "brand": "Easy Tiger",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 6.98,
+          "salePrice": null,
+          "unitPrice": "$6.98/ea",
+          "inStock": true
+        },
+        {
+          "name": "The Rustik Oven Sourdough Bread",
+          "brand": "The Rustik Oven",
+          "size": "16 oz",
+          "sizeGrams": 454,
+          "price": 4.68,
+          "salePrice": null,
+          "unitPrice": "$0.29/oz",
+          "inStock": true
+        },
+        {
+          "name": "Oroweat Country Style Sourdough Bread",
+          "brand": "Oroweat",
+          "size": "24 oz",
+          "sizeGrams": 680,
+          "price": 3.84,
+          "salePrice": null,
+          "unitPrice": "$0.16/oz",
+          "inStock": true
+        },
+        {
+          "name": "Oroweat Sourdough English Muffins",
+          "brand": "Oroweat",
+          "size": "6 ct",
+          "sizeGrams": null,
+          "price": 3.84,
+          "salePrice": null,
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        },
+        {
+          "name": "Thomas' Sourdough English Muffins",
+          "brand": "Thomas'",
+          "size": "6 ct",
+          "sizeGrams": null,
+          "price": 3.77,
+          "salePrice": null,
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        }
+      ]
     },
     {
       "ingredientId": "salt",
@@ -89,6 +221,116 @@
           "price": 0.68,
           "salePrice": null,
           "unitPrice": "$0.03/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Salt",
+          "brand": "Morton",
+          "size": "26 oz",
+          "sizeGrams": 737,
+          "price": 1.58,
+          "salePrice": null,
+          "unitPrice": "$0.06/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Natural All-Purpose Sea Salt",
+          "brand": "Morton",
+          "size": "26 oz",
+          "sizeGrams": 737,
+          "price": 3.00,
+          "salePrice": null,
+          "unitPrice": "$0.12/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
+          "brand": "H-E-B",
+          "size": "26.5 oz",
+          "sizeGrams": 751,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Coarse Kosher Salt",
+          "brand": "H-E-B",
+          "size": "4.4 lbs",
+          "sizeGrams": 1996,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.04/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Fine Sea Salt",
+          "brand": "Morton",
+          "size": "17.6 oz",
+          "sizeGrams": 499,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Coarse Kosher Salt",
+          "brand": "Morton",
+          "size": "3 lb",
+          "sizeGrams": 1361,
+          "price": 3.50,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Coarse Kosher Salt",
+          "brand": "Morton",
+          "size": "16 oz",
+          "sizeGrams": 454,
+          "price": 2.12,
+          "salePrice": null,
+          "unitPrice": "$0.13/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Iodized Table Salt",
+          "brand": "Morton",
+          "size": "1.625 lb",
+          "sizeGrams": 737,
+          "price": 1.58,
+          "salePrice": null,
+          "unitPrice": "$0.06/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Salt",
+          "brand": "H-E-B",
+          "size": "26 oz",
+          "sizeGrams": 737,
+          "price": 0.68,
+          "salePrice": null,
+          "unitPrice": "$0.03/oz",
+          "inStock": true
+        },
+        {
+          "name": "Maldon Sea Salt Flakes",
+          "brand": "Maldon",
+          "size": "8.5 oz",
+          "sizeGrams": 241,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.70/oz",
+          "inStock": true
+        },
+        {
+          "name": "Redmond Real Salt Ancient All Natural Sea Salt",
+          "brand": "Redmond Real Salt",
+          "size": "26 oz",
+          "sizeGrams": 737,
+          "price": 8.98,
+          "salePrice": null,
+          "unitPrice": "$0.35/oz",
           "inStock": true
         },
         {
@@ -122,13 +364,43 @@
           "inStock": true
         },
         {
-          "name": "Morton Salt",
-          "brand": "Morton",
-          "size": "26 oz",
-          "sizeGrams": 737,
-          "price": 1.58,
+          "name": "H-E-B Himalayan Pink Salt Grinder",
+          "brand": "H-E-B",
+          "size": "10 oz",
+          "sizeGrams": 283,
+          "price": 4.98,
           "salePrice": null,
-          "unitPrice": "$0.06/oz",
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Coarse Mediterranean Sea Salt Refill",
+          "brand": "H-E-B",
+          "size": "14 oz",
+          "sizeGrams": 397,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.21/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Himalayan Pink Salt Grinder",
+          "brand": "H-E-B",
+          "size": "4.23 oz",
+          "sizeGrams": 120,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.56/oz",
+          "inStock": true
+        },
+        {
+          "name": "McCormick Sea Salt Grinder",
+          "brand": "McCormick",
+          "size": "2.12 oz",
+          "sizeGrams": 60,
+          "price": 2.28,
+          "salePrice": null,
+          "unitPrice": "$1.08/oz",
           "inStock": true
         }
       ]
@@ -138,8 +410,38 @@
       "name": "Diastatic Malt Powder",
       "recipeAmount": 4,
       "recipeUnit": "g",
-      "products": [],
-      "_note": "No diastatic malt powder found at this store — only malted milk drink mixes returned (Carnation, Ovaltine). These are NOT substitutes. Order online from King Arthur Baking or Bob's Red Mill."
+      "products": [
+        {
+          "name": "Nestle Carnation Chocolate Malted Milk Mix",
+          "brand": "Nestle",
+          "size": "13 oz",
+          "sizeGrams": 369,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$0.38/oz",
+          "inStock": true
+        },
+        {
+          "name": "Ovaltine Chocolate Malt Powdered Drink Mix",
+          "brand": "Ovaltine",
+          "size": "12 oz",
+          "sizeGrams": 340,
+          "price": 5.66,
+          "salePrice": null,
+          "unitPrice": "$0.47/oz",
+          "inStock": true
+        },
+        {
+          "name": "Nestle Carnation Original Malted Milk Mix",
+          "brand": "Nestle",
+          "size": "13 oz",
+          "sizeGrams": 369,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$0.38/oz",
+          "inStock": true
+        }
+      ]
     },
     {
       "ingredientId": "cornmeal",
@@ -188,13 +490,43 @@
           "inStock": true
         },
         {
-          "name": "Martha White Gladiola Self-Rising Yellow Corn Meal Mix",
-          "brand": "Martha White",
-          "size": "2 lbs",
-          "sizeGrams": 907,
-          "price": 2.38,
+          "name": "Hill Country Fare Enriched Yellow Cornmeal",
+          "brand": "Hill Country Fare",
+          "size": "5 lb",
+          "sizeGrams": 2268,
+          "price": 3.76,
+          "salePrice": 2.81,
+          "unitPrice": "$0.05/oz",
+          "inStock": true
+        },
+        {
+          "name": "P.A.N. Pre-Cooked White Corn Meal",
+          "brand": "P.A.N.",
+          "size": "35.27 oz",
+          "sizeGrams": 1000,
+          "price": 2.85,
           "salePrice": null,
-          "unitPrice": "$0.07/oz",
+          "unitPrice": "$0.08/oz",
+          "inStock": true
+        },
+        {
+          "name": "P.A.N. Pre-Cooked Yellow Corn Meal",
+          "brand": "P.A.N.",
+          "size": "35.27 oz",
+          "sizeGrams": 1000,
+          "price": 2.86,
+          "salePrice": null,
+          "unitPrice": "$0.08/oz",
+          "inStock": true
+        },
+        {
+          "name": "Maseca Instant Corn Masa Flour",
+          "brand": "Maseca",
+          "size": "4 lbs",
+          "sizeGrams": 1814,
+          "price": 3.98,
+          "salePrice": null,
+          "unitPrice": "$0.06/oz",
           "inStock": true
         }
       ]
@@ -246,6 +578,56 @@
           "inStock": true
         },
         {
+          "name": "Contadina San Marzano Style Whole Tomatoes",
+          "brand": "Contadina",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 3.52,
+          "salePrice": null,
+          "unitPrice": "$0.13/oz",
+          "inStock": true
+        },
+        {
+          "name": "Central Market Organics Italian San Marzano Tomatoes",
+          "brand": "Central Market",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$0.18/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Crushed Tomatoes",
+          "brand": "H-E-B",
+          "size": "15 oz",
+          "sizeGrams": 425,
+          "price": 0.96,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "Red Gold Crushed Tomatoes",
+          "brand": "Red Gold",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 1.96,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "Cento All Purpose Crushed Tomatoes",
+          "brand": "Cento",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 3.14,
+          "salePrice": null,
+          "unitPrice": "$0.11/oz",
+          "inStock": true
+        },
+        {
           "name": "Mutti Polpa Crushed Tomatoes",
           "brand": "Mutti",
           "size": "400G",
@@ -253,6 +635,46 @@
           "price": 2.68,
           "salePrice": null,
           "unitPrice": "$0.19/oz",
+          "inStock": true
+        },
+        {
+          "name": "Alessi Crushed Italian Tomatoes",
+          "brand": "Alessi",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 4.28,
+          "salePrice": null,
+          "unitPrice": "$0.15/oz",
+          "inStock": true
+        },
+        {
+          "name": "Contadina Crushed Tomatoes In Tomato Puree",
+          "brand": "Contadina",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 2.34,
+          "salePrice": null,
+          "unitPrice": "$0.08/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hunt's Crushed Tomatoes",
+          "brand": "Hunt's",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 2.17,
+          "salePrice": null,
+          "unitPrice": "$0.08/oz",
+          "inStock": true
+        },
+        {
+          "name": "Muir Glen Organic Fire Roasted Crushed Tomatoes",
+          "brand": "Muir Glen Organic",
+          "size": "28 oz",
+          "sizeGrams": 794,
+          "price": 4.28,
+          "salePrice": null,
+          "unitPrice": "$0.15/oz",
           "inStock": true
         }
       ]
@@ -304,13 +726,93 @@
           "inStock": true
         },
         {
-          "name": "Tillamook Whole Milk Mozzarella Shredded Cheese",
-          "brand": "Tillamook",
+          "name": "Boar's Head Low Moisture Mozzarella Cheese, Custom Sliced",
+          "brand": "Boar's Head",
+          "size": "lb",
+          "sizeGrams": 454,
+          "price": 9.29,
+          "salePrice": null,
+          "unitPrice": "$0.58/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "H-E-B",
           "size": "8 oz",
           "sizeGrams": 227,
-          "price": 3.98,
+          "price": 2.98,
           "salePrice": null,
-          "unitPrice": "$0.50/oz",
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Cheese",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "32 oz",
+          "sizeGrams": 907,
+          "price": 8.99,
+          "salePrice": null,
+          "unitPrice": "$0.28/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "Hill Country Fare",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 1.97,
+          "salePrice": null,
+          "unitPrice": "$0.25/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese, Thick Cut",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "Hill Country Fare",
+          "size": "32 oz",
+          "sizeGrams": 907,
+          "price": 6.85,
+          "salePrice": null,
+          "unitPrice": "$0.21/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Low Moisture Part-Skim Mozzarella Sliced Cheese",
+          "brand": "H-E-B",
+          "size": "10 ct",
+          "sizeGrams": null,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Reduced Fat Low Moisture Part-Skim Mozzarella Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
           "inStock": true
         }
       ]
@@ -332,16 +834,6 @@
           "inStock": true
         },
         {
-          "name": "Galli Parmigiano Reggiano Shredded Cheese",
-          "brand": "Galli",
-          "size": "Avg. 0.35 lb",
-          "sizeGrams": 159,
-          "price": 8.74,
-          "salePrice": null,
-          "unitPrice": "$24.98/lb",
-          "inStock": true
-        },
-        {
           "name": "Galli Parmigiano Reggiano Grated Cheese",
           "brand": "Galli",
           "size": "Avg. 0.45 lb",
@@ -349,6 +841,16 @@
           "price": 10.79,
           "salePrice": null,
           "unitPrice": "$23.98/lb",
+          "inStock": true
+        },
+        {
+          "name": "Galli Parmigiano Reggiano Shredded Cheese",
+          "brand": "Galli",
+          "size": "Avg. 0.35 lb",
+          "sizeGrams": 159,
+          "price": 8.74,
+          "salePrice": null,
+          "unitPrice": "$24.98/lb",
           "inStock": true
         },
         {
@@ -370,6 +872,156 @@
           "salePrice": null,
           "unitPrice": "$16.48/lb",
           "inStock": true
+        },
+        {
+          "name": "Locatelli Pecorino Romano Grated Cheese",
+          "brand": "Locatelli",
+          "size": "Avg. 0.4 lb",
+          "sizeGrams": 181,
+          "price": 6.63,
+          "salePrice": null,
+          "unitPrice": "$16.58/lb",
+          "inStock": true
+        },
+        {
+          "name": "Locatelli Pecorino Romano",
+          "brand": "Locatelli",
+          "size": "Avg. 0.4 lb",
+          "sizeGrams": 181,
+          "price": 6.39,
+          "salePrice": null,
+          "unitPrice": "$15.98/lb",
+          "inStock": true
+        },
+        {
+          "name": "Sartori Classic Parmesan Cheese Wedge",
+          "brand": "Sartori",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$1.00/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Shaved Parmesan Cheese",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Grated Parmesan Cheese",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Parmesan Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Grated Parmesan Cheese",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 227,
+          "price": 3.49,
+          "salePrice": null,
+          "unitPrice": "$0.44/oz",
+          "inStock": true
+        },
+        {
+          "name": "Sartori Classic Shredded Parmesan Cheese",
+          "brand": "Sartori",
+          "size": "7 oz",
+          "sizeGrams": 198,
+          "price": 5.58,
+          "salePrice": null,
+          "unitPrice": "$0.80/oz",
+          "inStock": true
+        },
+        {
+          "name": "Sartori Classic Grated Parmesan Cheese",
+          "brand": "Sartori",
+          "size": "7 oz",
+          "sizeGrams": 198,
+          "price": 5.58,
+          "salePrice": null,
+          "unitPrice": "$0.80/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Copper Kettle Parmesan Shredded Cheese",
+          "brand": "H-E-B",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 3.29,
+          "salePrice": null,
+          "unitPrice": "$0.66/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Copper Kettle Parmesan Grated Cheese",
+          "brand": "H-E-B",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 3.29,
+          "salePrice": null,
+          "unitPrice": "$0.66/oz",
+          "inStock": true
+        },
+        {
+          "name": "BelGioioso Shredded Parmesan Cheese",
+          "brand": "BelGioioso",
+          "size": "4 oz",
+          "sizeGrams": 113,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$1.24/oz",
+          "inStock": true
+        },
+        {
+          "name": "BelGioioso Grated Parmesan Cheese",
+          "brand": "BelGioioso",
+          "size": "4 oz",
+          "sizeGrams": 113,
+          "price": 2.86,
+          "salePrice": null,
+          "unitPrice": "$0.72/oz",
+          "inStock": true
+        },
+        {
+          "name": "Mama Francesca Parmesan Cheese Wedge",
+          "brand": "Mama Francesca",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.60/oz",
+          "inStock": true
+        },
+        {
+          "name": "Sartori Sarvecchio Parmesan Cheese Wedge",
+          "brand": "Sartori",
+          "size": "Avg. 0.45 lb",
+          "sizeGrams": 204,
+          "price": 8.09,
+          "salePrice": null,
+          "unitPrice": "$17.98/lb",
+          "inStock": true
         }
       ]
     },
@@ -380,37 +1032,7 @@
       "recipeUnit": "g",
       "products": [
         {
-          "name": "Boar's Head Pepperoni",
-          "brand": "Boar's Head",
-          "size": "6 oz",
-          "sizeGrams": 170,
-          "price": 4.99,
-          "salePrice": null,
-          "unitPrice": "$0.83/oz",
-          "inStock": true
-        },
-        {
-          "name": "Boar's Head Traditional Pepperoni",
-          "brand": "Boar's Head",
-          "size": "6.5 oz",
-          "sizeGrams": 184,
-          "price": 5.88,
-          "salePrice": null,
-          "unitPrice": "$0.90/oz",
-          "inStock": true
-        },
-        {
           "name": "H-E-B Premium Uncured Pepperoni Slices - Original",
-          "brand": "H-E-B",
-          "size": "6 oz",
-          "sizeGrams": 170,
-          "price": 2.99,
-          "salePrice": null,
-          "unitPrice": "$0.50/oz",
-          "inStock": true
-        },
-        {
-          "name": "H-E-B Premium Uncured Pepperoni Slices - Thick Cut",
           "brand": "H-E-B",
           "size": "6 oz",
           "sizeGrams": 170,
@@ -427,6 +1049,166 @@
           "price": 4.25,
           "salePrice": null,
           "unitPrice": "$8.49/lb",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Premium Uncured Pepperoni Slices - Thick Cut",
+          "brand": "H-E-B",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.99,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "Boar's Head Pepperoni",
+          "brand": "Boar's Head",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 4.99,
+          "salePrice": null,
+          "unitPrice": "$0.83/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Premium Uncured Turkey Pepperoni Slices",
+          "brand": "H-E-B",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 3.99,
+          "salePrice": null,
+          "unitPrice": "$0.80/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Original Pepperoni Slices",
+          "brand": "Hill Country Fare",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 2.69,
+          "salePrice": null,
+          "unitPrice": "$0.45/oz",
+          "inStock": true
+        },
+        {
+          "name": "Boar's Head Traditional Pepperoni",
+          "brand": "Boar's Head",
+          "size": "6.5 oz",
+          "sizeGrams": 184,
+          "price": 5.88,
+          "salePrice": null,
+          "unitPrice": "$0.90/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hormel Pepperoni Original",
+          "brand": "Hormel",
+          "size": "16 oz",
+          "sizeGrams": 454,
+          "price": 8.99,
+          "salePrice": null,
+          "unitPrice": "$0.56/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hormel Original Sliced Pepperoni",
+          "brand": "Hormel",
+          "size": "6 oz",
+          "sizeGrams": 170,
+          "price": 3.89,
+          "salePrice": null,
+          "unitPrice": "$0.56/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hormel Cup N Crisp Pepperoni Original",
+          "brand": "Hormel",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 3.89,
+          "salePrice": null,
+          "unitPrice": "$0.78/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Sandwich Size Uncured Pepperoni Slices",
+          "brand": "H-E-B",
+          "size": "7 oz",
+          "sizeGrams": 198,
+          "price": 4.49,
+          "salePrice": null,
+          "unitPrice": "$0.64/oz",
+          "inStock": true
+        },
+        {
+          "name": "Applegate Naturals Uncured Turkey Pepperoni",
+          "brand": "Applegate",
+          "size": "4 oz",
+          "sizeGrams": 113,
+          "price": 4.99,
+          "salePrice": null,
+          "unitPrice": "$1.25/oz",
+          "inStock": true
+        },
+        {
+          "name": "Applegate Naturals Pork & Uncured Beef Pepperoni",
+          "brand": "Applegate",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 5.99,
+          "salePrice": null,
+          "unitPrice": "$1.20/oz",
+          "inStock": true
+        },
+        {
+          "name": "Volpi Gourmet Pepperoni",
+          "brand": "Volpi",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 6.98,
+          "salePrice": null,
+          "unitPrice": "$1.40/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Deli Charcuterie Uncured Pepperoni, Custom Sliced",
+          "brand": "H-E-B",
+          "size": "lb",
+          "sizeGrams": 454,
+          "price": 8.49,
+          "salePrice": null,
+          "unitPrice": "$0.53/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Reserve Grande Uncured Pepperoni Lunch Meat",
+          "brand": "H-E-B",
+          "size": "4 oz",
+          "sizeGrams": 113,
+          "price": 4.99,
+          "salePrice": null,
+          "unitPrice": "$1.25/oz",
+          "inStock": true
+        },
+        {
+          "name": "Boar's Head Sandwich-Style Pepperoni, Custom Sliced",
+          "brand": "Boar's Head",
+          "size": "lb",
+          "sizeGrams": 454,
+          "price": 12.29,
+          "salePrice": null,
+          "unitPrice": "$0.77/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hormel Pepperoni Mini's",
+          "brand": "Hormel",
+          "size": "5 oz",
+          "sizeGrams": 142,
+          "price": 5.28,
+          "salePrice": null,
+          "unitPrice": "$1.06/oz",
           "inStock": true
         }
       ]

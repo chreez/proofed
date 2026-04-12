@@ -1386,6 +1386,180 @@ describe('BakeReviewPage', () => {
       expect(ingredientCards[2].find('[data-testid="stored-rate-display"]').exists()).toBe(false)
     })
 
+    it('wraps HEB product list in scrollable container', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const costTab = tabs.find(t => t.text() === 'Cost')!
+      await costTab.trigger('click')
+
+      const scrollContainers = wrapper.findAll('[data-testid="product-list-scroll"]')
+      expect(scrollContainers.length).toBeGreaterThan(0)
+
+      // Verify the scroll container has overflow-y auto styling
+      const firstScroll = scrollContainers[0]
+      expect(firstScroll.classes()).toContain('overflow-y-auto')
+      expect(firstScroll.classes()).toContain('max-h-[300px]')
+    })
+
+    it('shows filter bar when ingredient has >5 products', async () => {
+      const manyProducts = Array.from({ length: 8 }, (_, i) => ({
+        name: `Product ${i + 1}`,
+        brand: i < 4 ? 'H-E-B' : 'Central Market',
+        size: `${i + 1} lb`,
+        sizeGrams: (i + 1) * 454,
+        price: 2 + i,
+        salePrice: null,
+        unitPrice: `$0.0${i}/oz`,
+        inStock: true
+      }))
+      const hebWithMany = {
+        ...sampleHebResults,
+        ingredients: [
+          { ...sampleHebResults.ingredients[0], products: manyProducts }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithMany)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const filterBar = wrapper.find('[data-testid="product-filter-bar"]')
+      expect(filterBar.exists()).toBe(true)
+      expect(wrapper.find('[data-testid="product-filter-input"]').exists()).toBe(true)
+
+      // All 8 products should be visible initially
+      expect(wrapper.findAll('[data-testid="product-card"]').length).toBe(8)
+    })
+
+    it('does not show filter bar when ingredient has <=5 products', async () => {
+      // sampleHebResults has <=5 products per ingredient
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      expect(wrapper.find('[data-testid="product-filter-bar"]').exists()).toBe(false)
+    })
+
+    it('filters products by name when typing in filter input', async () => {
+      const manyProducts = [
+        { name: 'Fine Sea Salt', brand: 'Morton', size: '26 oz', sizeGrams: 737, price: 2.48, salePrice: null, unitPrice: '$0.10/oz', inStock: true },
+        { name: 'Iodized Salt', brand: 'Morton', size: '26 oz', sizeGrams: 737, price: 1.98, salePrice: null, unitPrice: '$0.08/oz', inStock: true },
+        { name: 'Kosher Salt', brand: 'Diamond Crystal', size: '3 lb', sizeGrams: 1361, price: 4.98, salePrice: null, unitPrice: '$0.10/oz', inStock: true },
+        { name: 'Pink Himalayan Salt', brand: 'H-E-B', size: '12 oz', sizeGrams: 340, price: 3.48, salePrice: null, unitPrice: '$0.29/oz', inStock: true },
+        { name: 'Sea Salt Grinder', brand: 'McCormick', size: '2.12 oz', sizeGrams: 60, price: 3.78, salePrice: null, unitPrice: '$1.78/oz', inStock: true },
+        { name: 'Table Salt', brand: 'H-E-B', size: '26 oz', sizeGrams: 737, price: 0.98, salePrice: null, unitPrice: '$0.04/oz', inStock: true },
+      ]
+      const hebWithMany = {
+        ...sampleHebResults,
+        ingredients: [
+          { ingredientId: 'salt', name: 'Salt', recipeAmount: 10, recipeUnit: 'g', products: manyProducts }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithMany)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // All 6 products visible initially
+      expect(wrapper.findAll('[data-testid="product-card"]').length).toBe(6)
+
+      // Type "Morton" in filter
+      const filterInput = wrapper.find('[data-testid="product-filter-input"]')
+      await filterInput.setValue('Morton')
+      await filterInput.trigger('input')
+      await flushPromises()
+
+      // Only Morton products should show (Fine Sea Salt + Iodized Salt)
+      expect(wrapper.findAll('[data-testid="product-card"]').length).toBe(2)
+    })
+
+    it('shows empty message when filter matches nothing', async () => {
+      const manyProducts = Array.from({ length: 6 }, (_, i) => ({
+        name: `Product ${i + 1}`,
+        brand: 'H-E-B',
+        size: `${i + 1} lb`,
+        sizeGrams: (i + 1) * 454,
+        price: 2 + i,
+        salePrice: null,
+        unitPrice: `$0.0${i}/oz`,
+        inStock: true
+      }))
+      const hebWithMany = {
+        ...sampleHebResults,
+        ingredients: [
+          { ...sampleHebResults.ingredients[0], products: manyProducts }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithMany)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const filterInput = wrapper.find('[data-testid="product-filter-input"]')
+      await filterInput.setValue('xyznonexistent')
+      await filterInput.trigger('input')
+      await flushPromises()
+
+      expect(wrapper.findAll('[data-testid="product-card"]').length).toBe(0)
+      expect(wrapper.find('[data-testid="product-filter-empty"]').exists()).toBe(true)
+      expect(wrapper.find('[data-testid="product-filter-empty"]').text()).toContain('xyznonexistent')
+    })
+
+    it('preserves product selection when filtering', async () => {
+      const manyProducts = Array.from({ length: 6 }, (_, i) => ({
+        name: `Product ${i + 1}`,
+        brand: i === 3 ? 'SpecialBrand' : 'H-E-B',
+        size: `${i + 1} lb`,
+        sizeGrams: (i + 1) * 454,
+        price: 2 + i,
+        salePrice: null,
+        unitPrice: `$0.0${i}/oz`,
+        inStock: true
+      }))
+      const hebWithMany = {
+        ...sampleHebResults,
+        ingredients: [
+          { ...sampleHebResults.ingredients[0], products: manyProducts }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithMany)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // Select product at index 3 (SpecialBrand)
+      const cards = wrapper.findAll('[data-testid="product-card"]')
+      await cards[3].trigger('click')
+      await flushPromises()
+
+      // Filter to show only SpecialBrand
+      const filterInput = wrapper.find('[data-testid="product-filter-input"]')
+      await filterInput.setValue('Special')
+      await filterInput.trigger('input')
+      await flushPromises()
+
+      // Should show 1 product, and it should be selected
+      const filteredCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(filteredCards.length).toBe(1)
+      expect(filteredCards[0].classes()).toContain('border-accent')
+    })
+
     it('handles missing cost-rates.json gracefully', async () => {
       global.fetch = vi.fn((url: string) => {
         if (url.includes('/cost-rates.json')) {

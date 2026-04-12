@@ -67,6 +67,9 @@ const recipeData = ref<Recipe | null>(null)
 const notesSubTab = ref<'curated' | 'raw'>('curated')
 const notesFeedback = ref('')
 
+// Per-ingredient product filter text (keyed by ingredientId)
+const productFilters = reactive<Record<string, string>>({})
+
 const sections: { id: SectionId; label: string }[] = [
   { id: 'photos', label: 'Photos' },
   { id: 'cost', label: 'Cost' },
@@ -228,6 +231,21 @@ function rawNotesContent(entry: CookLogEntry): string {
   if (entry.raw_notes) return entry.raw_notes
   if (entry.notes?.length) return entry.notes.join('\n')
   return ''
+}
+
+function getProductFilter(ingredientId: string): string {
+  return productFilters[ingredientId] ?? ''
+}
+
+function filteredProducts(ingredient: HebIngredientResult): { product: HebProduct; originalIndex: number }[] {
+  const filter = getProductFilter(ingredient.ingredientId).toLowerCase().trim()
+  return ingredient.products
+    .map((product, index) => ({ product, originalIndex: index }))
+    .filter(({ product }) => {
+      if (!filter) return true
+      return product.name.toLowerCase().includes(filter) ||
+        product.brand.toLowerCase().includes(filter)
+    })
 }
 
 // --- Cost section state ---
@@ -844,16 +862,28 @@ onMounted(async () => {
 
             <!-- HEB product cards (Variant B) -->
             <template v-if="getSelection(ingredient.ingredientId).sourceType === 'heb'">
+              <!-- Filter bar (shown when >5 products) -->
+              <div v-if="ingredient.products.length > 5" class="mb-3" data-testid="product-filter-bar">
+                <input
+                  :value="getProductFilter(ingredient.ingredientId)"
+                  type="text"
+                  :placeholder="`Filter ${ingredient.products.length} products...`"
+                  class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-base md:text-sm text-body font-sans focus:outline-none focus:border-stone-400"
+                  data-testid="product-filter-input"
+                  @input="productFilters[ingredient.ingredientId] = ($event.target as HTMLInputElement).value"
+                />
+              </div>
+              <div class="max-h-[300px] overflow-y-auto" data-testid="product-list-scroll">
               <div class="space-y-3">
                 <button
-                  v-for="(product, pIndex) in ingredient.products"
-                  :key="pIndex"
+                  v-for="{ product, originalIndex } in filteredProducts(ingredient)"
+                  :key="originalIndex"
                   class="w-full text-left p-4 border-2 transition-colors"
-                  :class="getSelection(ingredient.ingredientId).productIndex === pIndex
+                  :class="getSelection(ingredient.ingredientId).productIndex === originalIndex
                     ? 'border-accent bg-accent-tint'
                     : 'border-stone-200 bg-surface hover:border-stone-300'"
                   data-testid="product-card"
-                  @click="selectProduct(ingredient.ingredientId, pIndex)"
+                  @click="selectProduct(ingredient.ingredientId, originalIndex)"
                 >
                   <div class="flex items-start justify-between mb-2">
                     <div class="min-w-0">
@@ -866,9 +896,9 @@ onMounted(async () => {
                     </div>
                     <div
                       class="w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 mt-0.5"
-                      :class="getSelection(ingredient.ingredientId).productIndex === pIndex ? 'border-accent bg-accent' : 'border-stone-300'"
+                      :class="getSelection(ingredient.ingredientId).productIndex === originalIndex ? 'border-accent bg-accent' : 'border-stone-300'"
                     >
-                      <span v-if="getSelection(ingredient.ingredientId).productIndex === pIndex" class="text-stone-50 text-xs">&#10003;</span>
+                      <span v-if="getSelection(ingredient.ingredientId).productIndex === originalIndex" class="text-stone-50 text-xs">&#10003;</span>
                     </div>
                   </div>
                   <div class="flex items-baseline gap-3">
@@ -883,13 +913,22 @@ onMounted(async () => {
                     <span class="text-stone-300">|</span>
                     <span class="text-xs text-stone-400 font-mono">{{ product.unitPrice }}</span>
                   </div>
-                  <div v-if="getSelection(ingredient.ingredientId).productIndex === pIndex" class="mt-2 pt-2 border-t border-stone-200">
+                  <div v-if="getSelection(ingredient.ingredientId).productIndex === originalIndex" class="mt-2 pt-2 border-t border-stone-200">
                     <span class="font-mono text-xs text-stone-500">{{ ingredient.recipeAmount }}{{ ingredient.recipeUnit }} used of {{ product.sizeGrams }}g package</span>
                     <span class="font-mono text-xs text-accent ml-2" data-testid="calculated-cost">
                       = ${{ calculateCost(ingredient, getSelection(ingredient.ingredientId)).toFixed(2) }}
                     </span>
                   </div>
                 </button>
+                <!-- No results message -->
+                <p
+                  v-if="filteredProducts(ingredient).length === 0"
+                  class="text-muted text-sm font-mono py-4 text-center"
+                  data-testid="product-filter-empty"
+                >
+                  No products match "{{ getProductFilter(ingredient.ingredientId) }}"
+                </p>
+              </div>
               </div>
             </template>
 

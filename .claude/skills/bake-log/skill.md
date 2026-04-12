@@ -426,7 +426,7 @@ Populate HEB product data so the bake review page can show the cost picker.
 2. **For each ingredient**, call `heb_product_search` MCP tool:
    - Query: ingredient name (e.g., "unsalted butter")
    - StoreId: 428 (default H-E-B store)
-   - Limit: 5 results per ingredient
+   - Limit: 20 results per ingredient (show exhaustive results — user filters on review page)
 3. **Convert package sizes to grams** where possible (oz × 28.35, lbs × 453.59)
 4. **Write results** to `public/review-data/{recipe-id}/{date}/heb-results.json`:
 
