@@ -902,12 +902,6 @@
           "usage": "process"
         },
         {
-          "src": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-side-crumb-800w.webp",
-          "thumb": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-side-crumb-400w.webp",
-          "alt": "Side view of cheese-and-basil slice (#3) — open, airy interior with large irregular holes throughout the crust. Best fermentation bubbles of the four.",
-          "usage": "process"
-        },
-        {
           "src": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-top-scorched-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-top-scorched-400w.webp",
           "alt": "Top view of cheese-and-basil slice (#3) — browned mozzarella with scorched basil leaf from overcooked broiler. Good crumb visible along the cornicione.",
@@ -930,6 +924,12 @@
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/jalapeno-pepperoni-slice-side-400w.webp",
           "alt": "Side profile of jalapeño pepperoni slice (#4) — thin, crispy base with visible jalapeño rings and even crumb structure. Not much rise, possibly overproofed.",
           "usage": "process"
+        },
+        {
+          "src": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-side-crumb-800w.webp",
+          "thumb": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-side-crumb-400w.webp",
+          "alt": "Side view of cheese-and-basil slice (#3) — open, airy interior with large irregular holes throughout the crust. Best fermentation bubbles of the four.",
+          "usage": "hero"
         }
       ],
       "next_time": [
@@ -939,7 +939,68 @@
         { "text": "Plan bake day in advance — know how many days ahead to start the dough based on the event." },
         { "text": "Research pizza transport for events (quarter sheets + parchment in Tupperware, possibly layering)." }
       ],
-      "cost": {},
+      "cost": {
+        "total": 2.73,
+        "perServing": 0.09,
+        "servings": 32,
+        "note": "Dough cost only — topping costs excluded due to per-pizza variation.",
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour (10 lbs)",
+            "amount": 826,
+            "unit": "g",
+            "cost": 2.00
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 476,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "sourdough_starter",
+            "name": "Sourdough Starter (100% Hydration)",
+            "sourceType": "rate",
+            "sourceName": "Estimated from flour cost (50% flour at 100% hydration)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.24
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Salt",
+            "sourceType": "manual",
+            "sourceName": "Morton Sea Salt (H-E-B)",
+            "amount": 16,
+            "unit": "g",
+            "cost": 0.05
+          },
+          {
+            "ingredientId": "diastatic_malt",
+            "name": "Diastatic Malt Powder",
+            "sourceType": "manual",
+            "sourceName": "Amazon ($9.90 / $0.99 per oz) — https://www.amazon.com/dp/B0D6L5LFMQ",
+            "amount": 8,
+            "unit": "g",
+            "cost": 0.28
+          },
+          {
+            "ingredientId": "cornmeal",
+            "name": "Cornmeal",
+            "sourceType": "heb",
+            "sourceName": "Bob's Red Mill Gluten Free Medium Grind Cornmeal (1.5 lb)",
+            "amount": 26,
+            "unit": "g",
+            "cost": 0.16
+          }
+        ]
+      },
       "raw_notes": "[2026-04-08 CDT] MIX_FERMENTOLYSE: 16:25 fermentolease start\n[2026-04-08 CDT] FERMENTOLYSE_REST: 79.7 warm today\n[2026-04-08 CDT] FERMENTOLYSE_REST: last reading was for dough temp.\n[2026-04-08 CDT] FERMENTOLYSE_REST: note that i am doubling the recipe to make four pizzas total.\n[2026-04-08 CDT] ADD_SALT (reminder - dough temp): 80.8\n[2026-04-08 CDT] ADD_SALT: adding salt now\n[2026-04-08 CDT] STRETCH_FOLD_SETS: waiting for 30 minutes after salt incorporation. i figured that should be a step in the recipe but it's missing. aliquot is at 10% because i pulled a little bit too much dough into vessel. good to note before preshaping. dough is super warm so i may want to consider even preshaping tonight. will revisit.\n[2026-04-08 CDT] _general: first stretch and fold a bit late. dough is still pretty stiff. will report back in second stretch fold. dough is still hot at 79.7\n[2026-04-08 CDT] BULK_REST: 80.2 degree second s and f\n[2026-04-08 CDT] BULK_REST: 15% aliquot\n[2026-04-08 CDT] BULK_REST: 79.7 last s and f. aliquot at 30%\n[2026-04-08 CDT] BULK_REST (reminder - volume increase): aliquot reading about 55% which is effectively 45%. going to turn out dough now\n[2026-04-08 CDT] ROUND_DOUGH (reminder - total weight): could be 1509. scale has issues sometimes. will verify when weighing balls\n[2026-04-08 CDT] COLD_BULK_FERMENT: in fridge now. aliquot will be placed next to it in fridge. it's in cambro for bulk ferment.\n[2026-04-08 CDT] COLD_BULK_FERMENT: 78.4 degrees before fridge.\n[2026-04-09 CDT] ROUND_PORTIONS: total weight estimate is 1524g after adding back aliquot. divide by four is 381g a ball target.\n[2026-04-09 CDT] ROUND_PORTIONS: 384 380 387 382\n[2026-04-09 CDT] ROUND_PORTIONS: in fridge approx 15 minutes ago. shaped four balls\n[2026-04-10 CDT] _general: prepped toppings for tomorrow\n[2026-04-11 CDT] _general: i am checking in now. about 4 minutes into the actual bake of the second pizza. i messed up the launch on the sauce pizza. will need to lookup recovery methods when sticks to peel\n[2026-04-11 CDT] PREHEAT_STEEL: could be worth noting to the user that we shouldn't start baking till an infrared sensor reads close to 450. that's what i do at least. watch steel not clock. watch variables and measurable variables not clock.\n[2026-04-11 CDT] _general: might be a bad bake day for me. first pizza was perfect. did regular pepperoni. the sauce only pizza threw me off just because launching it i had trouble with sticking pizza peel and sauce x2 kinda overflowing. in future 1.5x sauce to prevent production flaws. process should be ironclad to handle bad execution too.\n[2026-04-11 CDT] _general: third pizza i ended up getting a small tear somehow in the dough. i tried the basil leaf trick. will report back on result. wondering why the dough tore in the first place. at this point the dough has been sitting at room temperature for longer than the other two and i took a small break in between the second set of 2x pizzas. to reset from the failure of the sauce pizza. sauce pizza is my foccoccia fallback lol. i also overcooked the top in the final stretch. think i scorched the leaves. cap at 45 seconds in broiler for vegan pizza next time.\n[2026-04-11 CDT] _general: jalapeño pep pizza out. detected small hole in middle of pizza at the end of bake. took care to not expose bottom during final browning in broiler. cheese pizza (number 3) seemed to have best looking crust. number 4 is cooking right now.\n[2026-04-11 CDT] _general: first time doing this many pizzas at once. especially with a newish recipe. my regular new york pizza dough i've done a million times and it seems easier to work with and fault tolerant. issue needed to be addressed in a backlog task. research and collaborate with me to determine best way for transferring pizza for an event. if it's cooked a few hours before hand i want to protect flavor and the texture. considering i dont want to use too much plastic wrap or foil either.\n\nconsidering price and reusability for other types of bakes. using quarter sheets lined with parchment paper and my only two tipper ware big enough to handle all the pizzas flat. might be able to layer actually in a single tupper ware with just baking paper between the layers. shouldn't be too much pressure on bottom slices from weight of the next layer.\n[2026-04-11 CDT] _general: overall success despite minor failures in process. possibly revisit dough proofing schedule. possibly lower down temper step to 4 hours. i didnt actually re shape on bake day as planned. didn't want to risk it but perhaps if i made dough balls it would have been a little easier to work with. starter was actually kind of weak which could have hindered the strength of the dough"
     }
   ]

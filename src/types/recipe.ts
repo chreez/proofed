@@ -338,6 +338,7 @@ export interface CookLogCost {
   perServing: number
   servings: number
   items: CookLogCostItem[]
+  note?: string
 }
 
 export interface CookLogYield {
