@@ -10,6 +10,8 @@ All new tasks enter as Draft (`status: Draft`) unless groomed in the same sessio
 
 - New ideas enter as Drafts via MCP (`status: Draft`) — they live in `backlog/drafts/` with `DRAFT-X` IDs until groomed
 - Grooming promotes a Draft to a PF- task (status To Do) with agent-verifiable ACs
+- **Use `backlog draft promote DRAFT-X`** to promote — this moves the file from `backlog/drafts/` to `backlog/tasks/` and assigns a PF- ID. Do NOT use `task_edit` to change a draft's status directly, as the file will stay in the wrong directory.
+- **Post-promotion verify:** after promoting, confirm the draft file is gone from `backlog/drafts/` (e.g., `ls backlog/drafts/ | grep -i <id>`). Stage the new task file in `backlog/tasks/`.
 - Legacy: some existing PF- tasks still have `ungroomed` label — groom in place, strip label when done
 
 ## Auto Groom

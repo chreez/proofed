@@ -89,14 +89,17 @@ Only after YES (or after demo review).
 
 After user approves ACs:
 
-1. Update the task via `task_edit`:
-   - Set acceptance criteria
-   - If task was a Draft → set status to `To Do` (promotion)
+1. If task was a Draft:
+   - Run `backlog draft promote DRAFT-X` first (moves file from `backlog/drafts/` → `backlog/tasks/`, assigns PF- ID)
+   - Then `task_edit` the new PF- ID to set acceptance criteria
+   - Verify draft file is gone: `ls backlog/drafts/ | grep -i <id>`
+2. If task is an existing PF- task:
+   - `task_edit` to set acceptance criteria
    - If task has `ungroomed` label → remove it
-2. Stage the task file for commit:
+3. Stage the task file for commit:
    - Draft promoted: stage `backlog/tasks/pf-XX*.md` (new location after promotion)
    - Existing task: stage `backlog/tasks/pf-XX*.md`
-3. Report completion: task ID, new status, AC count
+4. Report completion: task ID, new status, AC count
 
 ## Spike Subtasks
 
