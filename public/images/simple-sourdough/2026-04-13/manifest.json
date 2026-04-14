@@ -1,0 +1,25 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-04-13",
+  "processedAt": "2026-04-14T00:01:51.811Z",
+  "photos": [
+    {
+      "name": "both-loaves-with-crumb-slice",
+      "thumb": "both-loaves-with-crumb-slice-400w.webp",
+      "src": "both-loaves-with-crumb-slice-800w.webp",
+      "summary": "Both sourdough boules cooling on counter — loaf 1 in foreground on wire rack showing cross-score pattern and golden blistered crust, loaf 2 behind. Sliced piece on white cutting board shows open crumb structure. Warm VSCO tones."
+    },
+    {
+      "name": "crumb-shot-hand-held",
+      "thumb": "crumb-shot-hand-held-400w.webp",
+      "src": "crumb-shot-hand-held-800w.webp",
+      "summary": "Crumb shot of loaf 1 held in hand — open, airy structure with mix of medium and larger bubbles, slightly glassy translucent spots in parts. Golden crust ring visible."
+    },
+    {
+      "name": "loaf1-cooling-rack-cross-score",
+      "thumb": "loaf1-cooling-rack-cross-score-400w.webp",
+      "src": "loaf1-cooling-rack-cross-score-800w.webp",
+      "summary": "Loaf 1 on copper wire cooling rack — cross-score pattern opened during oven spring, golden brown blistered crust with flour dusting from banneton. Good height and dome shape visible from slight side angle."
+    }
+  ]
+}
