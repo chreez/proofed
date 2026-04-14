@@ -8,8 +8,9 @@
  *   npx tsx scripts/process-photos.ts --quality 90 photos-source/{recipe-id}/{date}/
  */
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, statSync } from 'fs'
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, statSync, unlinkSync } from 'fs'
 import { join, basename, extname, resolve, relative } from 'path'
+import { execSync } from 'child_process'
 import sharp from 'sharp'
 
 const SIZES = [
@@ -20,6 +21,8 @@ const SIZES = [
 const DEFAULT_QUALITY = 80
 const SUPPORTED_EXTENSIONS = new Set(['.heic', '.heif', '.jpg', '.jpeg', '.png'])
 const HEIC_EXTENSIONS = new Set(['.heic', '.heif'])
+const VIDEO_EXTENSIONS = new Set(['.mov', '.mp4'])
+const FRAME_RATE = 1  // 1 frame per second
 
 interface ProcessOptions {
   dryRun: boolean
@@ -31,6 +34,9 @@ interface ManifestPhoto {
   thumb: string
   src: string
   summary: string
+  source?: 'video'
+  sourceFile?: string
+  frameIndex?: number
 }
 
 function parseArgs(): { sourcePaths: string[]; options: ProcessOptions; all: boolean } {
@@ -77,6 +83,54 @@ function sanitizeName(filename: string): string {
     .replace(/^-|-$/g, '')
 }
 
+function ffmpegAvailable(): boolean {
+  try {
+    execSync('ffmpeg -version', { stdio: 'pipe' })
+    return true
+  } catch {
+    return false
+  }
+}
+
+async function extractVideoFrames(
+  videoPath: string,
+  outputDir: string,
+  options: ProcessOptions
+): Promise<Array<{ filename: string; frameIndex: number }>> {
+  const videoBasename = sanitizeName(videoPath)
+  const framePattern = join(outputDir, `${videoBasename}-frame-%03d.jpg`)
+
+  // Extract frames at 1 FPS to the output directory
+  const ffmpegCmd = `ffmpeg -i "${videoPath}" -vf "fps=${FRAME_RATE}" -q:v 2 "${framePattern}"`
+
+  console.log(`  Extracting frames from ${basename(videoPath)} (${FRAME_RATE} fps)...`)
+
+  if (options.dryRun) {
+    console.log(`    [dry-run] → would extract frames to ${videoBasename}-frame-*.jpg`)
+    return []
+  }
+
+  try {
+    execSync(ffmpegCmd, { stdio: 'pipe' })
+  } catch (err) {
+    console.error(`  Error extracting frames from ${basename(videoPath)}: ${err instanceof Error ? err.message : String(err)}`)
+    return []
+  }
+
+  // Find extracted frames in the output directory
+  const frameFiles = readdirSync(outputDir)
+    .filter(f => f.startsWith(`${videoBasename}-frame-`) && f.endsWith('.jpg'))
+    .sort()
+
+  const result: Array<{ filename: string; frameIndex: number }> = []
+  frameFiles.forEach((filename, index) => {
+    console.log(`    → ${filename}`)
+    result.push({ filename, frameIndex: index })
+  })
+
+  return result
+}
+
 async function extractExifDate(buffer: Buffer): Promise<string | null> {
   try {
     const metadata = await sharp(buffer).metadata()
@@ -102,7 +156,8 @@ async function decodeHeic(sourceBuffer: Buffer): Promise<Buffer> {
 async function processImage(
   filePath: string,
   outputDir: string,
-  options: ProcessOptions
+  options: ProcessOptions,
+  videoProvenance?: { sourceFile: string; frameIndex: number }
 ): Promise<ManifestPhoto | null> {
   const ext = extname(filePath).toLowerCase()
   const name = sanitizeName(filePath)
@@ -144,7 +199,21 @@ async function processImage(
     console.log(`    → ${outputName} (${(stat.size / 1024).toFixed(0)}KB)`)
   }
 
-  return { name, thumb: `${name}-400w.webp`, src: `${name}-800w.webp`, summary: '' }
+  const photo: ManifestPhoto = {
+    name,
+    thumb: `${name}-400w.webp`,
+    src: `${name}-800w.webp`,
+    summary: ''
+  }
+
+  // Add video provenance if this frame came from a video
+  if (videoProvenance) {
+    photo.source = 'video'
+    photo.sourceFile = videoProvenance.sourceFile
+    photo.frameIndex = videoProvenance.frameIndex
+  }
+
+  return photo
 }
 
 async function processDirectory(
@@ -158,25 +227,95 @@ async function processDirectory(
   console.log(`Date:   ${date}`)
   console.log(`Output: ${resolve(outputDir)}\n`)
 
-  const files = readdirSync(absPath)
+  const imageFiles = readdirSync(absPath)
     .filter(f => SUPPORTED_EXTENSIONS.has(extname(f).toLowerCase()))
     .sort()
 
-  if (files.length === 0) {
-    console.log('  No supported images found.')
+  const videoFiles = readdirSync(absPath)
+    .filter(f => VIDEO_EXTENSIONS.has(extname(f).toLowerCase()))
+    .sort()
+
+  let totalProcessed = imageFiles.length
+
+  if (imageFiles.length === 0 && videoFiles.length === 0) {
+    console.log('  No supported images or videos found.')
     return
   }
 
-  console.log(`  ${files.length} images\n`)
+  if (imageFiles.length > 0) {
+    console.log(`  ${imageFiles.length} images`)
+  }
+  if (videoFiles.length > 0) {
+    console.log(`  ${videoFiles.length} videos`)
+  }
+  console.log()
 
   if (!options.dryRun) {
     mkdirSync(outputDir, { recursive: true })
   }
 
+  // Check for ffmpeg if we have video files
+  let ffmpegReady = true
+  if (videoFiles.length > 0 && !ffmpegAvailable()) {
+    console.error('  ERROR: ffmpeg not installed. Install it to extract frames from videos.')
+    console.error('  Videos will be skipped. Photo processing continues for non-video files.\n')
+    ffmpegReady = false
+  }
+
   const photos: ManifestPhoto[] = []
-  for (const file of files) {
+
+  // Track extracted frames for provenance
+  const extractedFrameMetadata: Record<string, { sourceFile: string; frameIndex: number }> = {}
+
+  // Extract frames from videos first
+  if (ffmpegReady && videoFiles.length > 0) {
+    console.log('Extracting video frames...\n')
+    for (const videoFile of videoFiles) {
+      const videoPath = join(absPath, videoFile)
+      const frames = await extractVideoFrames(videoPath, outputDir, options)
+      // Map extracted frame filenames to their provenance
+      frames.forEach(frame => {
+        extractedFrameMetadata[frame.filename] = {
+          sourceFile: videoFile,
+          frameIndex: frame.frameIndex
+        }
+      })
+      totalProcessed += frames.length
+    }
+    if (videoFiles.length > 0 && !options.dryRun) {
+      console.log()
+    }
+  }
+
+  // Process all images (originals + extracted frames)
+  console.log('Processing images...\n')
+  for (const file of imageFiles) {
     const photo = await processImage(join(absPath, file), outputDir, options)
     if (photo) photos.push(photo)
+  }
+
+  // Process extracted video frames
+  const extractedFrames = readdirSync(outputDir)
+    .filter(f => f.endsWith('.jpg') && Object.keys(extractedFrameMetadata).includes(f))
+    .sort()
+
+  for (const frameFile of extractedFrames) {
+    const provenance = extractedFrameMetadata[frameFile]
+    const photo = await processImage(join(outputDir, frameFile), outputDir, options, provenance)
+    if (photo) {
+      photos.push(photo)
+    }
+    // Delete the temporary JPG frame after processing
+    if (!options.dryRun) {
+      try {
+        const jpgPath = join(outputDir, frameFile)
+        if (existsSync(jpgPath)) {
+          unlinkSync(jpgPath)
+        }
+      } catch {
+        // Ignore deletion errors
+      }
+    }
   }
 
   if (!options.dryRun) {
@@ -185,7 +324,7 @@ async function processDirectory(
     console.log(`  manifest.json written (${photos.length} photos)`)
   }
 
-  console.log(`\n✓ ${files.length} images processed → ${outputDir}`)
+  console.log(`\n✓ ${totalProcessed} items processed → ${outputDir}`)
 }
 
 async function processAll(options: ProcessOptions): Promise<void> {
