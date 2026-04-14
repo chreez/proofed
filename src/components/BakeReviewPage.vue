@@ -18,11 +18,20 @@ import type {
   BakeCostSummary
 } from '@/types/recipe'
 
+interface ManifestPhotoVersion {
+  version: number
+  thumb: string
+  src: string
+  editInstruction: string
+  editedAt: string
+}
+
 interface ManifestPhoto {
   name: string
   thumb: string
   src: string
   summary: string
+  versions?: ManifestPhotoVersion[]
 }
 
 interface Manifest {
@@ -39,12 +48,22 @@ interface PhotoUsage {
   exclude: boolean
 }
 
+interface PhotoEditPresets {
+  rotateCW: boolean
+  rotateCCW: boolean
+  flip: boolean
+  cropTighten: boolean
+}
+
 interface PhotoState {
   name: string
   src: string
   thumb: string
   summary: string
   notes: string
+  editExpanded: boolean
+  editPresets: PhotoEditPresets
+  editInstruction: string
   usage: PhotoUsage
 }
 
@@ -133,6 +152,9 @@ function savePhotoState(): void {
     name: p.name,
     summary: p.summary,
     notes: p.notes,
+    editExpanded: p.editExpanded,
+    editPresets: { ...p.editPresets },
+    editInstruction: p.editInstruction,
     usage: { ...p.usage }
   }))
   localStorage.setItem(photoStorageKey(), JSON.stringify(data))
@@ -150,6 +172,8 @@ function buildCombinedPayload(): object {
       thumb: p.thumb,
       summary: p.summary,
       notes: p.notes,
+      editPresets: { ...p.editPresets },
+      editInstruction: p.editInstruction,
       usage: { ...p.usage }
     }))
   }
@@ -583,10 +607,11 @@ onMounted(async () => {
 
     // Restore saved photo state if it exists
     const saved = localStorage.getItem(photoStorageKey())
-    const savedMap = new Map<string, { summary: string; notes: string; usage: PhotoUsage }>()
+    const defaultPresets: PhotoEditPresets = { rotateCW: false, rotateCCW: false, flip: false, cropTighten: false }
+    const savedMap = new Map<string, { summary: string; notes: string; editExpanded?: boolean; editPresets?: PhotoEditPresets; editInstruction?: string; usage: PhotoUsage }>()
     if (saved) {
       try {
-        const parsed = JSON.parse(saved) as Array<{ name: string; summary: string; notes: string; usage: PhotoUsage }>
+        const parsed = JSON.parse(saved) as Array<{ name: string; summary: string; notes: string; editExpanded?: boolean; editPresets?: PhotoEditPresets; editInstruction?: string; usage: PhotoUsage }>
         for (const item of parsed) {
           savedMap.set(item.name, item)
         }
@@ -595,14 +620,44 @@ onMounted(async () => {
 
     for (const photo of manifest.photos) {
       const restored = savedMap.get(photo.name)
+      // Clear editInstruction if it matches the latest applied version
+      // (prevents double-processing on subsequent copy-pastes)
+      let editInstruction = restored?.editInstruction ?? ''
+      const versions = photo.versions ?? []
+      if (editInstruction && versions.length > 0) {
+        const latestVersion = versions[versions.length - 1]
+        if (latestVersion.editInstruction === editInstruction) {
+          editInstruction = ''
+        }
+      }
       photoStates.push({
         name: photo.name,
         src: photo.src,
         thumb: photo.thumb,
         summary: restored?.summary || photo.summary,
         notes: restored?.notes ?? '',
+        editExpanded: restored?.editExpanded ?? false,
+        editPresets: restored?.editPresets ?? { ...defaultPresets },
+        editInstruction,
         usage: restored?.usage ?? { hero: false, step: false, process: false, exclude: false }
       })
+
+      // Flatten versions as standalone photo cards after their parent
+      for (const ver of versions) {
+        const verName = `${photo.name}-v${ver.version}`
+        const restoredVer = savedMap.get(verName)
+        photoStates.push({
+          name: verName,
+          src: ver.src,
+          thumb: ver.thumb,
+          summary: restoredVer?.summary || photo.summary,
+          notes: restoredVer?.notes ?? '',
+          editExpanded: restoredVer?.editExpanded ?? false,
+          editPresets: restoredVer?.editPresets ?? { ...defaultPresets },
+          editInstruction: restoredVer?.editInstruction ?? '',
+          usage: restoredVer?.usage ?? { hero: false, step: false, process: false, exclude: false }
+        })
+      }
     }
   } catch {
     error.value = 'Failed to load manifest'
@@ -704,6 +759,51 @@ onMounted(async () => {
                 />
               </label>
 
+              <!-- Edit image toggle -->
+              <div class="mb-3">
+                <label class="flex items-center gap-1.5 cursor-pointer" data-testid="photo-edit-toggle">
+                  <input
+                    type="checkbox"
+                    v-model="photo.editExpanded"
+                    class="w-3.5 h-3.5"
+                    style="accent-color: var(--color-accent);"
+                  >
+                  <span class="text-xs text-heading">Edit image</span>
+                </label>
+
+                <!-- Edit controls (hidden until toggled) -->
+                <div v-if="photo.editExpanded" class="mt-2 ml-5 space-y-3" data-testid="photo-edit-controls">
+                  <!-- Preset checkboxes -->
+                  <div class="flex flex-wrap gap-3" data-testid="photo-edit-presets">
+                    <label class="flex items-center gap-1.5 cursor-pointer">
+                      <input type="checkbox" v-model="photo.editPresets.rotateCW" class="w-3.5 h-3.5" style="accent-color: var(--color-accent);" />
+                      <span class="text-xs text-body">Rotate 90° CW</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer">
+                      <input type="checkbox" v-model="photo.editPresets.rotateCCW" class="w-3.5 h-3.5" style="accent-color: var(--color-accent);" />
+                      <span class="text-xs text-body">Rotate 90° CCW</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer">
+                      <input type="checkbox" v-model="photo.editPresets.flip" class="w-3.5 h-3.5" style="accent-color: var(--color-accent);" />
+                      <span class="text-xs text-body">Flip</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer">
+                      <input type="checkbox" v-model="photo.editPresets.cropTighten" class="w-3.5 h-3.5" style="accent-color: var(--color-accent);" />
+                      <span class="text-xs text-body">Crop &amp; tighten</span>
+                    </label>
+                  </div>
+
+                  <!-- Custom instruction textarea -->
+                  <textarea
+                    v-model="photo.editInstruction"
+                    rows="2"
+                    placeholder="Additional instructions (optional)..."
+                    class="w-full border-2 border-stone-200 rounded-none bg-surface px-2 py-1.5 text-base md:text-sm text-body font-sans focus:outline-none focus:border-stone-400"
+                    data-testid="photo-edit-instruction"
+                  />
+                </div>
+              </div>
+
               <!-- Usage checkboxes -->
               <div class="flex flex-wrap gap-3">
                 <label class="flex items-center gap-1.5 cursor-pointer">
@@ -751,6 +851,7 @@ onMounted(async () => {
                 </label>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -1229,4 +1330,5 @@ onMounted(async () => {
 .bake-prose :deep(em) {
   color: var(--color-stone-500);
 }
+
 </style>

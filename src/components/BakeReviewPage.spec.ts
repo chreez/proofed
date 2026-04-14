@@ -327,9 +327,9 @@ describe('BakeReviewPage', () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
 
-      // 4 checkboxes per photo * 2 photos = 8
+      // 5 checkboxes per photo (editToggle + hero/step/process/exclude) * 2 photos = 10
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
-      expect(checkboxes.length).toBe(8)
+      expect(checkboxes.length).toBe(10)
     })
 
     it('does not render per-tab copy button in photos section', async () => {
@@ -356,15 +356,15 @@ describe('BakeReviewPage', () => {
 
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
       // Set hero on photo-1
-      await checkboxes[0].trigger('change')
+      await checkboxes[1].trigger('change')
       await flushPromises()
 
       // Set hero on photo-2
-      await checkboxes[4].trigger('change')
+      await checkboxes[6].trigger('change')
       await flushPromises()
 
-      expect((checkboxes[0].element as HTMLInputElement).checked).toBe(false)
-      expect((checkboxes[4].element as HTMLInputElement).checked).toBe(true)
+      expect((checkboxes[1].element as HTMLInputElement).checked).toBe(false)
+      expect((checkboxes[6].element as HTMLInputElement).checked).toBe(true)
     })
 
     it('setting hero clears exclude', async () => {
@@ -374,14 +374,14 @@ describe('BakeReviewPage', () => {
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
 
       // Set exclude on photo-1
-      await checkboxes[3].trigger('change')
+      await checkboxes[4].trigger('change')
       await flushPromises()
 
       // Set hero on photo-1
-      await checkboxes[0].trigger('change')
+      await checkboxes[1].trigger('change')
       await flushPromises()
 
-      expect((checkboxes[3].element as HTMLInputElement).checked).toBe(false)
+      expect((checkboxes[4].element as HTMLInputElement).checked).toBe(false)
     })
 
     it('setting exclude clears hero, step, and process', async () => {
@@ -391,19 +391,19 @@ describe('BakeReviewPage', () => {
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
 
       // Set hero, step, process on photo-1
-      await checkboxes[0].trigger('change') // hero
-      await checkboxes[1].trigger('change') // step
-      await checkboxes[2].trigger('change') // process
+      await checkboxes[1].trigger('change') // hero
+      await checkboxes[2].trigger('change') // step
+      await checkboxes[3].trigger('change') // process
       await flushPromises()
 
       // Now set exclude
-      await checkboxes[3].trigger('change')
+      await checkboxes[4].trigger('change')
       await flushPromises()
 
-      expect((checkboxes[0].element as HTMLInputElement).checked).toBe(false) // hero
-      expect((checkboxes[1].element as HTMLInputElement).checked).toBe(false) // step
-      expect((checkboxes[2].element as HTMLInputElement).checked).toBe(false) // process
-      expect((checkboxes[3].element as HTMLInputElement).checked).toBe(true) // exclude
+      expect((checkboxes[1].element as HTMLInputElement).checked).toBe(false) // hero
+      expect((checkboxes[2].element as HTMLInputElement).checked).toBe(false) // step
+      expect((checkboxes[3].element as HTMLInputElement).checked).toBe(false) // process
+      expect((checkboxes[4].element as HTMLInputElement).checked).toBe(true) // exclude
     })
   })
 
@@ -584,7 +584,7 @@ describe('BakeReviewPage', () => {
       await flushPromises()
 
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
-      await checkboxes[0].trigger('change') // hero-0
+      await checkboxes[1].trigger('change') // hero-0
       await flushPromises()
 
       expect(localStorageMock.setItem).toHaveBeenCalledWith(
@@ -618,7 +618,7 @@ describe('BakeReviewPage', () => {
       expect((textareas[0].element as HTMLTextAreaElement).value).toBe('Saved summary')
 
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
-      expect((checkboxes[0].element as HTMLInputElement).checked).toBe(true) // hero-0
+      expect((checkboxes[1].element as HTMLInputElement).checked).toBe(true) // hero-0
     })
   })
 
@@ -1766,17 +1766,17 @@ describe('BakeReviewPage', () => {
       await flushPromises()
 
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
-      // Toggle step ON for photo-1
-      await checkboxes[1].trigger('change')
+      // Toggle step ON for photo-1 (index 2: editToggle=0, hero=1, step=2)
+      await checkboxes[2].trigger('change')
       await flushPromises()
 
-      expect((checkboxes[1].element as HTMLInputElement).checked).toBe(true)
+      expect((checkboxes[2].element as HTMLInputElement).checked).toBe(true)
 
       // Toggle step OFF for photo-1
-      await checkboxes[1].trigger('change')
+      await checkboxes[2].trigger('change')
       await flushPromises()
 
-      expect((checkboxes[1].element as HTMLInputElement).checked).toBe(false)
+      expect((checkboxes[2].element as HTMLInputElement).checked).toBe(false)
     })
 
     it('toggleProcess OFF does not clear exclude', async () => {
@@ -1784,17 +1784,17 @@ describe('BakeReviewPage', () => {
       await flushPromises()
 
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
-      // Toggle process ON for photo-1
-      await checkboxes[2].trigger('change')
+      // Toggle process ON for photo-1 (index 3: editToggle=0, hero=1, step=2, process=3)
+      await checkboxes[3].trigger('change')
       await flushPromises()
 
-      expect((checkboxes[2].element as HTMLInputElement).checked).toBe(true)
+      expect((checkboxes[3].element as HTMLInputElement).checked).toBe(true)
 
       // Toggle process OFF for photo-1
-      await checkboxes[2].trigger('change')
+      await checkboxes[3].trigger('change')
       await flushPromises()
 
-      expect((checkboxes[2].element as HTMLInputElement).checked).toBe(false)
+      expect((checkboxes[3].element as HTMLInputElement).checked).toBe(false)
     })
 
     it('toggleExclude OFF does not clear hero/step/process', async () => {
@@ -1802,15 +1802,15 @@ describe('BakeReviewPage', () => {
       await flushPromises()
 
       const checkboxes = wrapper.findAll('input[type="checkbox"]')
-      // Toggle exclude ON for photo-1
-      await checkboxes[3].trigger('change')
+      // Toggle exclude ON for photo-1 (index 4: editToggle=0, hero=1, step=2, process=3, exclude=4)
+      await checkboxes[4].trigger('change')
       await flushPromises()
-      expect((checkboxes[3].element as HTMLInputElement).checked).toBe(true)
+      expect((checkboxes[4].element as HTMLInputElement).checked).toBe(true)
 
       // Toggle exclude OFF for photo-1
-      await checkboxes[3].trigger('change')
+      await checkboxes[4].trigger('change')
       await flushPromises()
-      expect((checkboxes[3].element as HTMLInputElement).checked).toBe(false)
+      expect((checkboxes[4].element as HTMLInputElement).checked).toBe(false)
     })
   })
 
@@ -2194,6 +2194,226 @@ describe('BakeReviewPage', () => {
         (call: string[]) => call[0].startsWith('photo-review:')
       )
       expect(photoSetItemCalls.length).toBe(0)
+    })
+  })
+
+  describe('Photo edit instructions', () => {
+    it('edit controls hidden by default, shown on toggle', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Controls should be hidden initially
+      expect(wrapper.findAll('[data-testid="photo-edit-controls"]').length).toBe(0)
+
+      // Toggle first photo's "Edit image" checkbox
+      const toggles = wrapper.findAll('[data-testid="photo-edit-toggle"] input')
+      await toggles[0].setValue(true)
+      await flushPromises()
+
+      // Controls should now be visible for first photo only
+      expect(wrapper.findAll('[data-testid="photo-edit-controls"]').length).toBe(1)
+      expect(wrapper.findAll('[data-testid="photo-edit-presets"]').length).toBe(1)
+      expect(wrapper.findAll('[data-testid="photo-edit-instruction"]').length).toBe(1)
+    })
+
+    it('includes editPresets and editInstruction in clipboard JSON', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Toggle edit, check a preset, add custom instruction
+      const toggles = wrapper.findAll('[data-testid="photo-edit-toggle"] input')
+      await toggles[0].setValue(true)
+      await flushPromises()
+
+      const presetCheckboxes = wrapper.findAll('[data-testid="photo-edit-presets"] input')
+      await presetCheckboxes[0].setValue(true) // rotateCW
+      await presetCheckboxes[2].setValue(true) // flip
+      await presetCheckboxes[3].setValue(true) // cropTighten
+      await flushPromises()
+
+      const textarea = wrapper.find('[data-testid="photo-edit-instruction"]')
+      await textarea.setValue('crop tighter on the bread')
+      await flushPromises()
+
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      expect(parsed.photos[0]).toHaveProperty('editInstruction', 'crop tighter on the bread')
+      expect(parsed.photos[0].editPresets).toEqual({
+        rotateCW: true,
+        rotateCCW: false,
+        flip: true,
+        cropTighten: true
+      })
+    })
+
+    it('includes default editPresets when no edits selected', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      expect(parsed.photos[0].editPresets).toEqual({
+        rotateCW: false,
+        rotateCCW: false,
+        flip: false,
+        cropTighten: false
+      })
+      expect(parsed.photos[0]).toHaveProperty('editInstruction', '')
+    })
+
+    it('persists edit state via localStorage', async () => {
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Toggle edit and check a preset
+      const toggles = wrapper.findAll('[data-testid="photo-edit-toggle"] input')
+      await toggles[0].setValue(true)
+      await flushPromises()
+
+      const presetCheckboxes = wrapper.findAll('[data-testid="photo-edit-presets"] input')
+      await presetCheckboxes[0].setValue(true) // rotateCW
+      await flushPromises()
+
+      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        'photo-review:test-recipe:2026-02-10',
+        expect.stringContaining('"rotateCW":true')
+      )
+    })
+
+    it('restores edit state from localStorage', async () => {
+      const savedState = JSON.stringify([
+        {
+          name: 'photo-1',
+          summary: 'Test photo 1',
+          notes: 'Test note 1',
+          editExpanded: true,
+          editPresets: { rotateCW: false, rotateCCW: true, flip: false, cropTighten: false },
+          editInstruction: 'crop to 500px width',
+          usage: { hero: false, step: false, process: false, exclude: false }
+        },
+        {
+          name: 'photo-2',
+          summary: 'Test photo 2',
+          notes: '',
+          editExpanded: false,
+          editPresets: { rotateCW: false, rotateCCW: false, flip: false, cropTighten: false },
+          editInstruction: '',
+          usage: { hero: false, step: false, process: false, exclude: false }
+        }
+      ])
+      localStorageMock._store['photo-review:test-recipe:2026-02-10'] = savedState
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // First photo should have edit controls visible (editExpanded: true)
+      expect(wrapper.findAll('[data-testid="photo-edit-controls"]').length).toBe(1)
+      const textarea = wrapper.find('[data-testid="photo-edit-instruction"]')
+      expect((textarea.element as HTMLTextAreaElement).value).toBe('crop to 500px width')
+    })
+
+    it('flattens manifest versions as standalone photo cards', async () => {
+      const manifestWithVersions = {
+        recipeId: 'test-recipe',
+        date: '2026-02-10',
+        processedAt: '2026-02-10T00:00:00.000Z',
+        photos: [
+          {
+            name: 'photo-1',
+            thumb: 'photo-1-400w.webp',
+            src: 'photo-1-800w.webp',
+            summary: 'Test photo 1',
+            versions: [
+              {
+                version: 1,
+                thumb: 'photo-1-v1-400w.webp',
+                src: 'photo-1-v1-800w.webp',
+                editInstruction: 'crop tighter',
+                editedAt: '2026-02-10T12:00:00.000Z'
+              }
+            ]
+          },
+          { name: 'photo-2', thumb: 'photo-2-400w.webp', src: 'photo-2-800w.webp', summary: 'Test photo 2' }
+        ]
+      }
+      global.fetch = makeFetchSuccess(manifestWithVersions, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Should have 3 cards: photo-1, photo-1-v1, photo-2
+      const cards = wrapper.findAll('[data-testid="photos-section"] .card')
+      expect(cards.length).toBe(3)
+
+      // Version card should show between parent and next photo
+      const summaryTextareas = wrapper.findAll('[data-testid="photos-section"] textarea')
+      // Each card has summary + notes + (optional edit instruction) = at least 2 textareas per card
+      expect(summaryTextareas.length).toBeGreaterThanOrEqual(6)
+    })
+
+    it('clears editInstruction when it matches latest applied version', async () => {
+      const manifestWithVersions = {
+        recipeId: 'test-recipe',
+        date: '2026-02-10',
+        processedAt: '2026-02-10T00:00:00.000Z',
+        photos: [
+          {
+            name: 'photo-1',
+            thumb: 'photo-1-400w.webp',
+            src: 'photo-1-800w.webp',
+            summary: 'Test photo 1',
+            versions: [
+              {
+                version: 1,
+                thumb: 'photo-1-v1-400w.webp',
+                src: 'photo-1-v1-800w.webp',
+                editInstruction: 'crop tighter',
+                editedAt: '2026-02-10T12:00:00.000Z'
+              }
+            ]
+          },
+          { name: 'photo-2', thumb: 'photo-2-400w.webp', src: 'photo-2-800w.webp', summary: 'Test photo 2' }
+        ]
+      }
+      // Save state with editInstruction matching latest version
+      const savedState = JSON.stringify([
+        {
+          name: 'photo-1',
+          summary: 'Test photo 1',
+          notes: '',
+          editInstruction: 'crop tighter',
+          usage: { hero: false, step: false, process: false, exclude: false }
+        }
+      ])
+      localStorageMock._store['photo-review:test-recipe:2026-02-10'] = savedState
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+      global.fetch = makeFetchSuccess(manifestWithVersions, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Toggle edit expanded on first photo to reveal textarea
+      const editToggle = wrapper.find('[data-testid="photo-edit-toggle"] input')
+      await editToggle.setValue(true)
+      await flushPromises()
+
+      // editInstruction should have been cleared (matches latest applied version)
+      const editTextarea = wrapper.find('[data-testid="photo-edit-instruction"]')
+      expect(editTextarea.exists()).toBe(true)
+      expect((editTextarea.element as HTMLTextAreaElement).value).toBe('')
     })
   })
 
