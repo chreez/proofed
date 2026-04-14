@@ -43,10 +43,14 @@ const sampleRecipe = {
   cook_log: [
     {
       date: '2026-02-10',
+      start_date: '2026-02-09',
       version: '1.0',
       summary: 'Great bake overall, dough was a bit sticky but manageable.',
       notes: ['Dough was sticky during kneading', 'Proof took 35 minutes', 'Buns rose well in the oven'],
-      key_notes: ['Dough was sticky during kneading', 'Buns rose well in the oven'],
+      key_notes: [
+        { text: 'Dough was sticky during kneading', timestamp: '2026-02-09T09:00:00Z' },
+        { text: 'Buns rose well in the oven', timestamp: '2026-02-10T10:10:00Z' }
+      ],
       raw_notes: '9:00am — mixed dough, very sticky\n9:05am — kneaded 2 min\n9:40am — proof done\n10:10am — baked 28 min at 350F',
       next_time: [
         { text: 'Try adding a bit more flour to reduce stickiness' },
@@ -1938,6 +1942,53 @@ describe('BakeReviewPage', () => {
       expect(html).toContain('<ul>')
       expect(html).toContain('<li>')
     })
+
+    it('handles KeyNote[] format with optional timestamps', async () => {
+      // Test that renderKeyNotes works with the new KeyNote interface
+      // This verifies the code path handles objects with text and optional timestamp
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      const keyNotes = wrapper.find('[data-testid="notes-curated-keynotes"]')
+      expect(keyNotes.exists()).toBe(true)
+      // sampleRecipe has key_notes as KeyNote[] now (migrated by test fixture)
+      // Just verify the notes render properly
+      expect(keyNotes.text()).toContain('Dough was sticky during kneading')
+      expect(keyNotes.text()).toContain('Buns rose well in the oven')
+    })
+
+    it('renders notes with fallback when key_notes is absent', async () => {
+      // Test the fallback path when key_notes is not present
+      const recipeNoKeyNotes = {
+        meta: { name: 'Cookies', yields: '24', total_time: '~2 hours' },
+        cook_log: [
+          {
+            date: '2026-02-10',
+            version: '1.0',
+            notes: ['Mixed ingredients', 'Baked at 350F'],
+            // key_notes intentionally absent to trigger fallback
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, recipeNoKeyNotes)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      const notesTab = tabs.find(t => t.text() === 'Notes')!
+      await notesTab.trigger('click')
+
+      const keyNotes = wrapper.find('[data-testid="notes-curated-keynotes"]')
+      expect(keyNotes.exists()).toBe(true)
+      // Should render the fallback notes[]
+      expect(keyNotes.text()).toContain('Mixed ingredients')
+      expect(keyNotes.text()).toContain('Baked at 350F')
+    })
   })
 
   describe('Notes section — rawNotesContent branches', () => {
@@ -2104,7 +2155,7 @@ describe('BakeReviewPage', () => {
             date: '2026-02-10',
             version: '1.0',
             summary: 'Good bake',
-            key_notes: ['Note one'],
+            key_notes: [{ text: 'Note one' }],
             next_time: []
           }
         ]

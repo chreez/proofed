@@ -303,6 +303,11 @@ export interface StateNote {
   table?: StateNoteTable
 }
 
+export interface KeyNote {
+  text: string
+  timestamp?: string  // ISO 8601 datetime
+}
+
 export interface NextTimeEntry {
   text: string
   source?: string
@@ -373,7 +378,7 @@ export interface CookLogEntry {
    *   every prose line is already captured by the chart and there is no
    *   editorial narrative to preserve.
    */
-  key_notes?: string[]
+  key_notes?: KeyNote[]
   summary?: string
   step_notes?: Record<string, string>
   next_time?: NextTimeEntry[]

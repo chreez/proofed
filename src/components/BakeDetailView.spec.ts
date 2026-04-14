@@ -1115,7 +1115,7 @@ describe('BakeDetailView', () => {
           date: '2026-02-05',
           version: 'v1.1.0',
           notes: ['Pure chart line: 75°F at 14:00', 'Narrative observation'],
-          key_notes: ['Narrative observation']
+          key_notes: [{ text: 'Narrative observation' }]
         }]
       })
       const wrapper = mountComponent()
@@ -1249,7 +1249,7 @@ describe('BakeDetailView', () => {
           date: '2026-02-05',
           version: 'v1.1.0',
           notes: ['Full line 1', 'Full line 2', 'Full line 3'],
-          key_notes: ['Full line 2']
+          key_notes: [{ text: 'Full line 2' }]
         }]
       })
       const wrapper = mountComponent()
@@ -1271,6 +1271,100 @@ describe('BakeDetailView', () => {
       expect(wrapper.find('[data-testid="notes-section"]').exists()).toBe(false)
       expect(wrapper.find('[data-testid="raw-notes-section"]').exists()).toBe(false)
       expect(wrapper.text()).toContain('Notes will appear here as the bake progresses.')
+    })
+
+    it('converts key_notes string[] fallback to KeyNote[] when rendering', () => {
+      // Tests that the keyNotesList function properly handles fallback
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Fallback note 1', 'Fallback note 2'],
+          // key_notes intentionally absent to trigger fallback
+        }]
+      })
+      const wrapper = mountComponent()
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.exists()).toBe(true)
+      // Fallback should wrap notes[] as KeyNote objects
+      expect(notesSection.text()).toContain('Fallback note 1')
+      expect(notesSection.text()).toContain('Fallback note 2')
+    })
+
+    it('handles multi-day key_notes with missing timestamps', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          start_date: '2026-02-04',
+          version: 'v1.1.0',
+          notes: [],
+          key_notes: [
+            { text: 'Timestamped note', timestamp: '2026-02-04T10:00:00Z' },
+            { text: 'Note without timestamp' }
+          ]
+        }]
+      })
+      const wrapper = mountComponent()
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.exists()).toBe(true)
+      const proseDiv = notesSection.find('.bake-prose')
+      const html = proseDiv.html()
+      // Should render day header for timestamped note
+      expect(html).toContain('Feb 4')
+      // Should render both notes
+      expect(html).toContain('Timestamped note')
+      expect(html).toContain('Note without timestamp')
+    })
+
+    it('renders flat list when start_date equals date (single-day bake)', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          start_date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: [],
+          key_notes: [
+            { text: 'First note', timestamp: '2026-02-05T10:00:00Z' },
+            { text: 'Second note', timestamp: '2026-02-05T15:00:00Z' }
+          ]
+        }]
+      })
+      const wrapper = mountComponent()
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.exists()).toBe(true)
+      const proseDiv = notesSection.find('.bake-prose')
+      const html = proseDiv.html()
+      // Should NOT render day headers inside prose when start_date === date
+      const h4Count = (html.match(/<h4/g) || []).length
+      expect(h4Count).toBe(0)
+      // Should still render the notes
+      expect(html).toContain('First note')
+      expect(html).toContain('Second note')
+    })
+
+    it('renders flat list when start_date is absent (default behavior)', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: [],
+          key_notes: [
+            { text: 'First note', timestamp: '2026-02-05T10:00:00Z' },
+            { text: 'Second note' }
+          ]
+        }]
+      })
+      const wrapper = mountComponent()
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.exists()).toBe(true)
+      const proseDiv = notesSection.find('.bake-prose')
+      const html = proseDiv.html()
+      // Should NOT render day headers inside prose when start_date is absent
+      const h4Count = (html.match(/<h4/g) || []).length
+      expect(h4Count).toBe(0)
+      // Should still render the notes
+      expect(html).toContain('First note')
+      expect(html).toContain('Second note')
     })
   })
 })

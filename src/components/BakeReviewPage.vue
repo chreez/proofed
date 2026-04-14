@@ -15,7 +15,8 @@ import type {
   CostSelection,
   CostSourceType,
   CostLineItem,
-  BakeCostSummary
+  BakeCostSummary,
+  KeyNote
 } from '@/types/recipe'
 
 interface ManifestPhotoVersion {
@@ -230,15 +231,64 @@ const hasNotes = computed<boolean>(() => {
 })
 
 // key_notes with fallback to notes[] — matches BakeDetailView pattern
-function keyNotesList(entry: CookLogEntry): string[] {
-  return entry.key_notes ?? entry.notes ?? []
+function keyNotesList(entry: CookLogEntry): KeyNote[] {
+  if (entry.key_notes) return entry.key_notes
+  // Fallback: wrap plain notes strings as KeyNote objects
+  return (entry.notes ?? []).map(n => ({ text: n }))
 }
 
 function renderKeyNotes(entry: CookLogEntry): string {
-  const lines = keyNotesList(entry)
-  if (lines.length === 0) return ''
-  const md = lines.map(n => `- ${n}`).join('\n')
-  return marked.parse(md) as string
+  const notes = keyNotesList(entry)
+  if (notes.length === 0) return ''
+
+  // If no start_date or start_date equals date, render flat bullet list
+  if (!entry.start_date || entry.start_date === entry.date) {
+    const md = notes.map(n => `- ${n.text}`).join('\n')
+    return marked.parse(md) as string
+  }
+
+  // Multi-day bake: group notes by calendar date using timestamps
+  const notesByDay: Record<string, string[]> = {}
+  const notesWithoutTimestamp: string[] = []
+
+  notes.forEach(note => {
+    if (note.timestamp) {
+      // Extract date from ISO timestamp (YYYY-MM-DD)
+      const dateStr = note.timestamp.split('T')[0]
+      if (!notesByDay[dateStr]) {
+        notesByDay[dateStr] = []
+      }
+      notesByDay[dateStr].push(note.text)
+    } else {
+      notesWithoutTimestamp.push(note.text)
+    }
+  })
+
+  // Build markdown with day headers
+  const parts: string[] = []
+
+  // Add timestamped notes grouped by day
+  const sortedDates = Object.keys(notesByDay).sort()
+  sortedDates.forEach(dateStr => {
+    const [y, m, d] = dateStr.split('-').map(Number)
+    const date = new Date(y, m - 1, d)
+    const dayHeader = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    parts.push(`#### ${dayHeader}`)
+    parts.push('')
+    notesByDay[dateStr].forEach(text => {
+      parts.push(`- ${text}`)
+    })
+    parts.push('')
+  })
+
+  // Add notes without timestamps at the end
+  if (notesWithoutTimestamp.length > 0) {
+    notesWithoutTimestamp.forEach(text => {
+      parts.push(`- ${text}`)
+    })
+  }
+
+  return marked.parse(parts.join('\n')) as string
 }
 
 function renderNextTime(entry: CookLogEntry): string {
@@ -1329,6 +1379,18 @@ onMounted(async () => {
 
 .bake-prose :deep(em) {
   color: var(--color-stone-500);
+}
+
+.bake-prose :deep(h4) {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--color-stone-400);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.bake-prose :deep(h4:first-child) {
+  margin-top: 0;
 }
 
 </style>

@@ -967,13 +967,27 @@
         "Taste was great — more sour than HEB bakery sourdough. Added olive oil and it was excellent. Presentation wasn't all there but flavor delivered."
       ],
       "key_notes": [
-        "Used oven with light on for bulk ferment — dough doubled in ~7 hours instead of target 50-75% rise. Over-fermented, dough was slack and wouldn't hold shape.",
-        "Recovery attempt: did another fold, put back in container. Re-attempted shaping later — still slack. Went into proofing basket overnight.",
-        "Didn't track cold proof duration — need to note start time next time.",
-        "Scored directly on pizza steel with razor blade — felt rushed without parchment. Was too gentle, need to be harder and more assertive.",
-        "No Dutch oven. Used pizza steel at 500°F with water pan on bottom for steam. ~40 min total bake. Forgot to remove flour dust layer before placing on steel.",
-        "Slight rise — as expected without Dutch oven. Could have preheated steel hotter for more oven spring. Internal temp ~208°F. 711g final weight.",
-        "Taste was great — more sour than HEB bakery sourdough. Added olive oil and it was excellent. Presentation wasn't all there but flavor delivered."
+        {
+          "text": "Used oven with light on for bulk ferment — dough doubled in ~7 hours instead of target 50-75% rise. Over-fermented, dough was slack and wouldn't hold shape."
+        },
+        {
+          "text": "Recovery attempt: did another fold, put back in container. Re-attempted shaping later — still slack. Went into proofing basket overnight."
+        },
+        {
+          "text": "Didn't track cold proof duration — need to note start time next time."
+        },
+        {
+          "text": "Scored directly on pizza steel with razor blade — felt rushed without parchment. Was too gentle, need to be harder and more assertive."
+        },
+        {
+          "text": "No Dutch oven. Used pizza steel at 500°F with water pan on bottom for steam. ~40 min total bake. Forgot to remove flour dust layer before placing on steel."
+        },
+        {
+          "text": "Slight rise — as expected without Dutch oven. Could have preheated steel hotter for more oven spring. Internal temp ~208°F. 711g final weight."
+        },
+        {
+          "text": "Taste was great — more sour than HEB bakery sourdough. Added olive oil and it was excellent. Presentation wasn't all there but flavor delivered."
+        }
       ],
       "photos": [
         {
@@ -1063,13 +1077,27 @@
         "Served focaccia with chili. Tasted OK — would do focaccia as a deliberate plan B again."
       ],
       "key_notes": [
-        "Mixed dough in a Cambro container. Bulk fermented in oven with light on starting around 12pm after completing 3 stretch and folds.",
-        "Kitchen temp ~70-74°F; oven with light on likely warmer but didn't measure.",
-        "Tried to shape at ~8pm (~8 hours of bulk). Dough had doubled in size in the Cambro, possibly flat. Dough tore apart during shaping — couldn't hold shape.",
-        "Dutch oven shipment delayed — still don't have one.",
-        "Pivoted to focaccia: flattened dough into Pyrex dish, topped with olive oil, oregano, salt, garlic powder, and shredded parmesan.",
-        "Baked focaccia at 425°F for ~40 minutes. Top didn't brown as well as wanted.",
-        "Served focaccia with chili. Tasted OK — would do focaccia as a deliberate plan B again."
+        {
+          "text": "Mixed dough in a Cambro container. Bulk fermented in oven with light on starting around 12pm after completing 3 stretch and folds."
+        },
+        {
+          "text": "Kitchen temp ~70-74°F; oven with light on likely warmer but didn't measure."
+        },
+        {
+          "text": "Tried to shape at ~8pm (~8 hours of bulk). Dough had doubled in size in the Cambro, possibly flat. Dough tore apart during shaping — couldn't hold shape."
+        },
+        {
+          "text": "Dutch oven shipment delayed — still don't have one."
+        },
+        {
+          "text": "Pivoted to focaccia: flattened dough into Pyrex dish, topped with olive oil, oregano, salt, garlic powder, and shredded parmesan."
+        },
+        {
+          "text": "Baked focaccia at 425°F for ~40 minutes. Top didn't brown as well as wanted."
+        },
+        {
+          "text": "Served focaccia with chili. Tasted OK — would do focaccia as a deliberate plan B again."
+        }
       ],
       "photos": [
         {
@@ -1241,16 +1269,36 @@
         "Pre-shaped, let it rest, then final shaped into proofing basket. Shape wasn't perfect but worked. Short cold proof (~2.75 hrs) may not have firmed the dough enough — lost some shape during scoring and transfer."
       ],
       "key_notes": [
-        "Used 300g bread flour + 200g AP flour instead of 500g bread flour — mix-up from prepping Tartine baguettes simultaneously.",
-        "Used wrist technique for stretch and folds — dough held together well.",
-        "Third fold may have been one too many — dough seemed to flip inside out of itself.",
-        "Bulk fermented overnight on counter (~11 hrs, ambient ~74°F). No oven light this time.",
-        "Dough at 72°F at end of bulk. Pre-shaped, rested 20 min, final shaped into proofing basket at 12:10 PM.",
-        "Cold proofed ~2.75 hours in fridge.",
-        "First bake with Le Creuset Dutch oven (Sur La Table, on sale). Preheated at 500°F, verified Dutch oven internal temp before loading.",
-        "Scored deeper — got a nice effect. Made side patterns but silicone sling caused dough to stick to counter. Had to transfer to parchment paper mid-load.",
-        "Forgot to measure internal temp out of oven. Read 181°F after 15 min of cooling. Likely higher out of oven but unknown.",
-        "Pre-shaped, let it rest, then final shaped into proofing basket. Shape wasn't perfect but worked. Short cold proof (~2.75 hrs) may not have firmed the dough enough — lost some shape during scoring and transfer."
+        {
+          "text": "Used 300g bread flour + 200g AP flour instead of 500g bread flour — mix-up from prepping Tartine baguettes simultaneously."
+        },
+        {
+          "text": "Used wrist technique for stretch and folds — dough held together well."
+        },
+        {
+          "text": "Third fold may have been one too many — dough seemed to flip inside out of itself."
+        },
+        {
+          "text": "Bulk fermented overnight on counter (~11 hrs, ambient ~74°F). No oven light this time."
+        },
+        {
+          "text": "Dough at 72°F at end of bulk. Pre-shaped, rested 20 min, final shaped into proofing basket at 12:10 PM."
+        },
+        {
+          "text": "Cold proofed ~2.75 hours in fridge."
+        },
+        {
+          "text": "First bake with Le Creuset Dutch oven (Sur La Table, on sale). Preheated at 500°F, verified Dutch oven internal temp before loading."
+        },
+        {
+          "text": "Scored deeper — got a nice effect. Made side patterns but silicone sling caused dough to stick to counter. Had to transfer to parchment paper mid-load."
+        },
+        {
+          "text": "Forgot to measure internal temp out of oven. Read 181°F after 15 min of cooling. Likely higher out of oven but unknown."
+        },
+        {
+          "text": "Pre-shaped, let it rest, then final shaped into proofing basket. Shape wasn't perfect but worked. Short cold proof (~2.75 hrs) may not have firmed the dough enough — lost some shape during scoring and transfer."
+        }
       ],
       "step_notes": {
         "COMBINE_INGREDIENTS": "300g bread + 200g AP (mix-up from Tartine baguette prep)",
@@ -1451,22 +1499,54 @@
         "Shaping felt satisfying this time."
       ],
       "key_notes": [
-        "Fed starter in the morning, noticed strong growth, decided to bake while prepping sourdough cinnamon buns. First 2-loaf bake (v2.0.0).",
-        "Mixed dough at 4:26pm. Estimated 10-hour bulk (~2am), but ended much earlier.",
-        "Took aliquot sample after first stretch and fold. Used The Sourdough Journey bulk fermentation chart to target 50% rise based on dough temp.",
-        "Pre-shape started around 8:30pm. Used flour per recipe steps — considering wet hand + scraper only next time.",
-        "Dough at 50% rise felt like a marshmallow — could feel the gases inside. Good rise.",
-        "Pre-shaped, waited ~10 min (couldn't find timer), then final shaped two doughs. Rice flour in baskets.",
-        "Rested 20 min at 9pm, stitched, into fridge around 9:15pm for overnight cold retard.",
-        "First time using aliquot jar — wasn't sure about technique but it worked to track the 50% rise target.",
-        "Used 100% bread flour this time (no AP split like last bake).",
-        "Cold proofed overnight ~16 hours (9:15pm to ~1pm next day).",
-        "Used Challenger bread pan for the first time. Had trouble getting it to temp — read 300°F after an hour, preheated ~1.5 hours total before loading.",
-        "Used parchment paper for loading into Challenger.",
-        "First loaf: great oven spring, rice flour highlighted the score pattern on the crust. Internal temp 209°F.",
-        "Second loaf: came out alright but not as good — possibly a shaping issue from the night before or the oven running hotter from being rushed. Haven't tasted it yet.",
-        "Used an ice cube on the second loaf — wondering if it hurt the rise. Also no rice flour on top of the second loaf.",
-        "Shaping felt satisfying this time."
+        {
+          "text": "Fed starter in the morning, noticed strong growth, decided to bake while prepping sourdough cinnamon buns. First 2-loaf bake (v2.0.0)."
+        },
+        {
+          "text": "Mixed dough at 4:26pm. Estimated 10-hour bulk (~2am), but ended much earlier."
+        },
+        {
+          "text": "Took aliquot sample after first stretch and fold. Used The Sourdough Journey bulk fermentation chart to target 50% rise based on dough temp."
+        },
+        {
+          "text": "Pre-shape started around 8:30pm. Used flour per recipe steps — considering wet hand + scraper only next time."
+        },
+        {
+          "text": "Dough at 50% rise felt like a marshmallow — could feel the gases inside. Good rise."
+        },
+        {
+          "text": "Pre-shaped, waited ~10 min (couldn't find timer), then final shaped two doughs. Rice flour in baskets."
+        },
+        {
+          "text": "Rested 20 min at 9pm, stitched, into fridge around 9:15pm for overnight cold retard."
+        },
+        {
+          "text": "First time using aliquot jar — wasn't sure about technique but it worked to track the 50% rise target."
+        },
+        {
+          "text": "Used 100% bread flour this time (no AP split like last bake)."
+        },
+        {
+          "text": "Cold proofed overnight ~16 hours (9:15pm to ~1pm next day)."
+        },
+        {
+          "text": "Used Challenger bread pan for the first time. Had trouble getting it to temp — read 300°F after an hour, preheated ~1.5 hours total before loading."
+        },
+        {
+          "text": "Used parchment paper for loading into Challenger."
+        },
+        {
+          "text": "First loaf: great oven spring, rice flour highlighted the score pattern on the crust. Internal temp 209°F."
+        },
+        {
+          "text": "Second loaf: came out alright but not as good — possibly a shaping issue from the night before or the oven running hotter from being rushed. Haven't tasted it yet."
+        },
+        {
+          "text": "Used an ice cube on the second loaf — wondering if it hurt the rise. Also no rice flour on top of the second loaf."
+        },
+        {
+          "text": "Shaping felt satisfying this time."
+        }
       ],
       "photos": [
         {
@@ -1646,19 +1726,45 @@
         "Wife's feedback: favorite loaf so far. Consistency is good and bouncy, light and bubbly. Tasty."
       ],
       "key_notes": [
-        "Pre-shaped around 20:30, dough temp 76.8°F. Dough was really hard to work with during pre-shape.",
-        "Let pre-shape rest about an hour.",
-        "Final shaped into baskets at 20:35, stitched at 20:40.",
-        "Room-temp rest before fridge (standard practice). Into fridge at 21:40.",
-        "May have messed up weighing the two loaves during shaping — second dough was noticeably smaller.",
-        "Challenger preheated same duration as last bake, read 350°F on the readout.",
-        "Internal temp 209-210°F.",
-        "Second loaf slightly flatter with less spring — also used a different score pattern instead of the cross method. Cross method gives better spring.",
-        "Mouthfeel is very good. Want more sour tang and interested in more complexity from different flours.",
-        "Need more patience when the dough isn't cooperating after bulk ferment.",
-        "Won't cut into second loaf in future — preserve shelf life.",
-        "First time sourdough starter floated — proper starter prep.",
-        "Wife's feedback: favorite loaf so far. Consistency is good and bouncy, light and bubbly. Tasty."
+        {
+          "text": "Pre-shaped around 20:30, dough temp 76.8°F. Dough was really hard to work with during pre-shape."
+        },
+        {
+          "text": "Let pre-shape rest about an hour."
+        },
+        {
+          "text": "Final shaped into baskets at 20:35, stitched at 20:40."
+        },
+        {
+          "text": "Room-temp rest before fridge (standard practice). Into fridge at 21:40."
+        },
+        {
+          "text": "May have messed up weighing the two loaves during shaping — second dough was noticeably smaller."
+        },
+        {
+          "text": "Challenger preheated same duration as last bake, read 350°F on the readout."
+        },
+        {
+          "text": "Internal temp 209-210°F."
+        },
+        {
+          "text": "Second loaf slightly flatter with less spring — also used a different score pattern instead of the cross method. Cross method gives better spring."
+        },
+        {
+          "text": "Mouthfeel is very good. Want more sour tang and interested in more complexity from different flours."
+        },
+        {
+          "text": "Need more patience when the dough isn't cooperating after bulk ferment."
+        },
+        {
+          "text": "Won't cut into second loaf in future — preserve shelf life."
+        },
+        {
+          "text": "First time sourdough starter floated — proper starter prep."
+        },
+        {
+          "text": "Wife's feedback: favorite loaf so far. Consistency is good and bouncy, light and bubbly. Tasty."
+        }
       ],
       "photos": [
         {
@@ -1829,20 +1935,48 @@
         "Followed The Sourdough Journey V2.0 bulk fermentation chart — at 80°F, 30% rise is the target because warm dough continues fermenting aggressively during shaping and cold retard."
       ],
       "key_notes": [
-        "Mixed at 14:40, dough temp 78.4°F. Water, flour, sourdough (fermentolyse — salt added later).",
-        "Added salt at 15:20, dough temp 82°F.",
-        "Went to dog park 15:27–16:43.",
-        "Dough weight ~1900g (÷2 = 950g/loaf).",
-        "Handled dough too much before preshape, let it rest.",
-        "Preshape done, bench rest, then final shaped into bannetons at 19:30.",
-        "Into fridge at 19:49 for overnight cold retard. Warm kitchen made dough harder to work with.",
-        "Oven preheat started ~08:00. Fell back asleep.",
-        "Cold retard ~15 hours (19:49–10:38).",
-        "First loaf loaded at ~10:38. 20 min covered, 23 min uncovered. Out ~11:21.",
-        "Oven reheated at 500°F for ~30 min. Second loaf loaded at ~11:54. Lid off at 12:14 (20 min covered).",
-        "Fermentolyse made dough noticeably stronger at first stretch and fold — will use every time going forward.",
-        "Cross score gives better spring than decorative patterns on round dough. Decorative scoring seems to affect rise and final dimensions.",
-        "Followed The Sourdough Journey V2.0 bulk fermentation chart — at 80°F, 30% rise is the target because warm dough continues fermenting aggressively during shaping and cold retard."
+        {
+          "text": "Mixed at 14:40, dough temp 78.4°F. Water, flour, sourdough (fermentolyse — salt added later)."
+        },
+        {
+          "text": "Added salt at 15:20, dough temp 82°F."
+        },
+        {
+          "text": "Went to dog park 15:27–16:43."
+        },
+        {
+          "text": "Dough weight ~1900g (÷2 = 950g/loaf)."
+        },
+        {
+          "text": "Handled dough too much before preshape, let it rest."
+        },
+        {
+          "text": "Preshape done, bench rest, then final shaped into bannetons at 19:30."
+        },
+        {
+          "text": "Into fridge at 19:49 for overnight cold retard. Warm kitchen made dough harder to work with."
+        },
+        {
+          "text": "Oven preheat started ~08:00. Fell back asleep."
+        },
+        {
+          "text": "Cold retard ~15 hours (19:49–10:38)."
+        },
+        {
+          "text": "First loaf loaded at ~10:38. 20 min covered, 23 min uncovered. Out ~11:21."
+        },
+        {
+          "text": "Oven reheated at 500°F for ~30 min. Second loaf loaded at ~11:54. Lid off at 12:14 (20 min covered)."
+        },
+        {
+          "text": "Fermentolyse made dough noticeably stronger at first stretch and fold — will use every time going forward."
+        },
+        {
+          "text": "Cross score gives better spring than decorative patterns on round dough. Decorative scoring seems to affect rise and final dimensions."
+        },
+        {
+          "text": "Followed The Sourdough Journey V2.0 bulk fermentation chart — at 80°F, 30% rise is the target because warm dough continues fermenting aggressively during shaping and cold retard."
+        }
       ],
       "photos": [
         {
@@ -1992,15 +2126,33 @@
         "100% bread flour."
       ],
       "key_notes": [
-        "Fermentolyse — mixed flour, water, starter first. Added salt ~37 min later.",
-        "Shaped at ~8pm. Into proofing baskets by ~8:19pm.",
-        "Used proofing baskets differently — one with linen liner, one without linen to get the banneton ring pattern on the crust.",
-        "Noticed something weird with second dough during shaping — possible hole from improper shaping. Planned to verify after bake whether overnight rest would remedy it.",
-        "Into fridge at ~9:27pm for overnight cold retard (~12.5 hours).",
-        "Cross score on both loaves. First loaf had some warping — need more consistent swipe across both crosses.",
-        "Second loaf into oven at ~10am for covered bake. Out at ~11:42am, rested 1 hour.",
-        "Lots of blisters on both loaves. Tasted great.",
-        "100% bread flour."
+        {
+          "text": "Fermentolyse — mixed flour, water, starter first. Added salt ~37 min later."
+        },
+        {
+          "text": "Shaped at ~8pm. Into proofing baskets by ~8:19pm."
+        },
+        {
+          "text": "Used proofing baskets differently — one with linen liner, one without linen to get the banneton ring pattern on the crust."
+        },
+        {
+          "text": "Noticed something weird with second dough during shaping — possible hole from improper shaping. Planned to verify after bake whether overnight rest would remedy it."
+        },
+        {
+          "text": "Into fridge at ~9:27pm for overnight cold retard (~12.5 hours)."
+        },
+        {
+          "text": "Cross score on both loaves. First loaf had some warping — need more consistent swipe across both crosses."
+        },
+        {
+          "text": "Second loaf into oven at ~10am for covered bake. Out at ~11:42am, rested 1 hour."
+        },
+        {
+          "text": "Lots of blisters on both loaves. Tasted great."
+        },
+        {
+          "text": "100% bread flour."
+        }
       ],
       "photos": [
         {
@@ -2190,15 +2342,33 @@
         "Couldn't cut into the second loaf — giving it away."
       ],
       "key_notes": [
-        "Fermentolyse — mixed flour, water, starter at 77.4°F. Salt added ~30 min later at first stretch and fold.",
-        "~3 stretch and folds total. May not have logged every one — was mainly tracking temperature.",
-        "One banneton with linen liner, one without — continuing the comparison from last bake.",
-        "First loaf felt flat and slack coming out of the fridge. Scored it but the dough felt lame — weak, not holding shape.",
-        "Threw an ice cube into the Challenger with the first loaf for extra steam. Hunch is that it ruined the oven spring, but still unsure.",
-        "Second loaf (no linen banneton) shaped much better and came out with heavier blistering and better spring.",
-        "Theory: linen liner may be absorbing moisture from the dough during cold proof. Two bakes now show better results without it.",
-        "Cross score on both. 100% bread flour.",
-        "Couldn't cut into the second loaf — giving it away."
+        {
+          "text": "Fermentolyse — mixed flour, water, starter at 77.4°F. Salt added ~30 min later at first stretch and fold."
+        },
+        {
+          "text": "~3 stretch and folds total. May not have logged every one — was mainly tracking temperature."
+        },
+        {
+          "text": "One banneton with linen liner, one without — continuing the comparison from last bake."
+        },
+        {
+          "text": "First loaf felt flat and slack coming out of the fridge. Scored it but the dough felt lame — weak, not holding shape."
+        },
+        {
+          "text": "Threw an ice cube into the Challenger with the first loaf for extra steam. Hunch is that it ruined the oven spring, but still unsure."
+        },
+        {
+          "text": "Second loaf (no linen banneton) shaped much better and came out with heavier blistering and better spring."
+        },
+        {
+          "text": "Theory: linen liner may be absorbing moisture from the dough during cold proof. Two bakes now show better results without it."
+        },
+        {
+          "text": "Cross score on both. 100% bread flour."
+        },
+        {
+          "text": "Couldn't cut into the second loaf — giving it away."
+        }
       ],
       "photos": [
         {
@@ -2378,13 +2548,27 @@
         "Back-to-back bake with the previous session — mixed right after finishing bake #8."
       ],
       "key_notes": [
-        "Fermentolyse — forgot to measure dough temp before adding salt. 80.8°F after mixing in salt.",
-        "Aliquot sample taken at mix — already at 10% rise, adjusted target accordingly.",
-        "Ran out of bread flour — used 150g of a wheat flour from HMart (label said \"wheat flour,\" unsure if whole wheat). ~850g bread flour + 150g HMart flour.",
-        "Dough was noticeably more elastic during folds — warm ambient temps helping.",
-        "Targeted 40% aliquot rise, not strict on schedule.",
-        "Both bannetons without linen liner — first time going all no-linen. Both loaves came out perfect.",
-        "Back-to-back bake with the previous session — mixed right after finishing bake #8."
+        {
+          "text": "Fermentolyse — forgot to measure dough temp before adding salt. 80.8°F after mixing in salt."
+        },
+        {
+          "text": "Aliquot sample taken at mix — already at 10% rise, adjusted target accordingly."
+        },
+        {
+          "text": "Ran out of bread flour — used 150g of a wheat flour from HMart (label said \"wheat flour,\" unsure if whole wheat). ~850g bread flour + 150g HMart flour."
+        },
+        {
+          "text": "Dough was noticeably more elastic during folds — warm ambient temps helping."
+        },
+        {
+          "text": "Targeted 40% aliquot rise, not strict on schedule."
+        },
+        {
+          "text": "Both bannetons without linen liner — first time going all no-linen. Both loaves came out perfect."
+        },
+        {
+          "text": "Back-to-back bake with the previous session — mixed right after finishing bake #8."
+        }
       ],
       "photos": [
         {
@@ -2548,16 +2732,36 @@
         "Loaves felt lighter than previous bakes."
       ],
       "key_notes": [
-        "Fermentolyse — mixed flour, water, starter first. Held back 25g water for salt incorporation.",
-        "9:42pm — fermentolyse done, dough temp ~76°F. About to add salt, taking aliquot.",
-        "9:50pm — added salt + 25g reserved water. Resting in 30 min increments for stretch and fold.",
-        "11:26pm — S&F #3 (last fold), ~74°F. Chilly day.",
-        "3:51am — turned out, pre-shaped, bench rest ~25 min, then final shaped.",
-        "4:33am — shaped, resting room temp ~1 hour before fridge.",
-        "Both bannetons without linen liner. Cold retard overnight.",
-        "Cross score on both loaves. Baked in Challenger — standard covered/uncovered, ~18 min uncovered on one loaf.",
-        "100% bread flour, 700g total water.",
-        "Loaves felt lighter than previous bakes."
+        {
+          "text": "Fermentolyse — mixed flour, water, starter first. Held back 25g water for salt incorporation."
+        },
+        {
+          "text": "9:42pm — fermentolyse done, dough temp ~76°F. About to add salt, taking aliquot."
+        },
+        {
+          "text": "9:50pm — added salt + 25g reserved water. Resting in 30 min increments for stretch and fold."
+        },
+        {
+          "text": "11:26pm — S&F #3 (last fold), ~74°F. Chilly day."
+        },
+        {
+          "text": "3:51am — turned out, pre-shaped, bench rest ~25 min, then final shaped."
+        },
+        {
+          "text": "4:33am — shaped, resting room temp ~1 hour before fridge."
+        },
+        {
+          "text": "Both bannetons without linen liner. Cold retard overnight."
+        },
+        {
+          "text": "Cross score on both loaves. Baked in Challenger — standard covered/uncovered, ~18 min uncovered on one loaf."
+        },
+        {
+          "text": "100% bread flour, 700g total water."
+        },
+        {
+          "text": "Loaves felt lighter than previous bakes."
+        }
       ],
       "photos": [
         {
@@ -2624,7 +2828,7 @@
         "value": 1,
         "unit": "loaves"
       },
-      "summary": "Improvised single-loaf bake — ran out of starter mid-mix, halved the recipe. Starter wasn't fully active. Loaf came out well despite the chaos.",
+      "summary": "Eleventh bake, improvised single-loaf — ran out of starter mid-mix, halved the recipe. Starter wasn't fully active. Loaf came out well despite the chaos.",
       "bake_stats": {
         "dough_temps": [
           {
@@ -2662,11 +2866,21 @@
         "Messed up preheat — used 500°F or 550°F (can't remember exactly) for the covered bake instead of 450°F. May have been too hot."
       ],
       "key_notes": [
-        "Ran out of starter — only had ~170g available, and it wasn't as active as I wanted.",
-        "Had water measured for two loaves. Put ~170g starter in before realizing I was running out.",
-        "Stopped there — took half the water, half the bread flour, and half the salt to make one loaf instead of two.",
-        "Improvised ratios — more starter relative to flour than the recipe calls for.",
-        "Messed up preheat — used 500°F or 550°F (can't remember exactly) for the covered bake instead of 450°F. May have been too hot."
+        {
+          "text": "Ran out of starter — only had ~170g available, and it wasn't as active as I wanted."
+        },
+        {
+          "text": "Had water measured for two loaves. Put ~170g starter in before realizing I was running out."
+        },
+        {
+          "text": "Stopped there — took half the water, half the bread flour, and half the salt to make one loaf instead of two."
+        },
+        {
+          "text": "Improvised ratios — more starter relative to flour than the recipe calls for."
+        },
+        {
+          "text": "Messed up preheat — used 500°F or 550°F (can't remember exactly) for the covered bake instead of 450°F. May have been too hot."
+        }
       ],
       "photos": [
         {
@@ -2733,7 +2947,7 @@
         "value": 2,
         "unit": "loaves"
       },
-      "summary": "Eleventh bake, 2-loaf for a housewarming party. Fermentolyse, 60% aliquot rise, cross score on both. One dough had too much flour during shaping — struggled with surface tension. Both loaves eaten quickly at the party with solid feedback. Someone suggested crispier crust.",
+      "summary": "Twelfth bake, 2-loaf for a housewarming party. Fermentolyse, 60% aliquot rise, cross score on both. One dough had too much flour during shaping — struggled with surface tension. Both loaves eaten quickly at the party with solid feedback. Someone suggested crispier crust.",
       "bake_stats": {
         "dough_temps": [
           {
@@ -2825,15 +3039,33 @@
         "Cross score on both. 100% bread flour. Both loaves served at a housewarming party — eaten quickly, lots of positive feedback. Someone mentioned wanting a crispier crust."
       ],
       "key_notes": [
-        "7:52pm — fermentolyse start, dough temp 77.5°F.",
-        "Forgot to log salt addition — incorporated sometime before first stretch and fold.",
-        "1:09am — divided. One piece weighed 936g, didn't weigh the second. Recipe DIVIDE step says ~480g each — wrong for the 2-loaf recipe, should be ~960g.",
-        "2:06am — shaped. Too much flour on first dough, struggled to get surface tension. Second loaf more even.",
-        "Room temp rest ~1 hour after shaping, then stitched and straight to fridge.",
-        "Cold proof ~8 hours (~3am to ~11am).",
-        "Re-preheated 500°F for 30 min after first bake. Second loaf same procedure — covered 450°F, uncovered 425°F for 22 min total. Flipped loaf at ~15 min for even browning.",
-        "Didn't measure internal temp. Target remains 210°F.",
-        "Cross score on both. 100% bread flour. Both loaves served at a housewarming party — eaten quickly, lots of positive feedback. Someone mentioned wanting a crispier crust."
+        {
+          "text": "7:52pm — fermentolyse start, dough temp 77.5°F."
+        },
+        {
+          "text": "Forgot to log salt addition — incorporated sometime before first stretch and fold."
+        },
+        {
+          "text": "1:09am — divided. One piece weighed 936g, didn't weigh the second. Recipe DIVIDE step says ~480g each — wrong for the 2-loaf recipe, should be ~960g."
+        },
+        {
+          "text": "2:06am — shaped. Too much flour on first dough, struggled to get surface tension. Second loaf more even."
+        },
+        {
+          "text": "Room temp rest ~1 hour after shaping, then stitched and straight to fridge."
+        },
+        {
+          "text": "Cold proof ~8 hours (~3am to ~11am)."
+        },
+        {
+          "text": "Re-preheated 500°F for 30 min after first bake. Second loaf same procedure — covered 450°F, uncovered 425°F for 22 min total. Flipped loaf at ~15 min for even browning."
+        },
+        {
+          "text": "Didn't measure internal temp. Target remains 210°F."
+        },
+        {
+          "text": "Cross score on both. 100% bread flour. Both loaves served at a housewarming party — eaten quickly, lots of positive feedback. Someone mentioned wanting a crispier crust."
+        }
       ],
       "photos": [
         {
@@ -2910,7 +3142,7 @@
         "value": 2,
         "unit": "loaves"
       },
-      "summary": "Twelfth bake, 2-loaf. Timing got away — emergency cold retard mid-bulk at 40% aliquot rise. Dough hit ~100% by preshape the next day. Took creative liberties with bake temps and scoring since the dough felt compromised. Higher uncovered temp and extra time produced a noticeably better crust.",
+      "summary": "Thirteenth bake, 2-loaf. Timing got away — emergency cold retard mid-bulk at 40% aliquot rise. Dough hit ~100% by preshape the next day. Took creative liberties with bake temps and scoring since the dough felt compromised. Higher uncovered temp and extra time produced a noticeably better crust.",
       "bake_stats": {
         "dough_temps": [
           {
@@ -3004,20 +3236,48 @@
         "Took creative liberties because was resigned to thinking the dough was overproofed. It's about adapting."
       ],
       "key_notes": [
-        "~4:04pm Apr 4 — fermentolyse start.",
-        "~7:00pm — into fridge at ~40% aliquot rise. Timing got away — emergency cold retard to prevent overproofing.",
-        "Apr 5 ~12:59pm — let dough come to room temp. Aliquot was at ~100% by preshape. Not happy with this dough.",
-        "Preshaped, rested ~25 min. Dough balls ~950g each.",
-        "Hazy on exact bake temps — preheated at 550°F. 20 min covered at high temp.",
-        "Tried keeping uncovered temp higher on first loaf (didn't lower it). Crust came out really good.",
-        "Uncovered bake: 9 min, flip, 9 min, flip, then 4 extra min with tray turned 90°. Came out even.",
-        "Cross score on Trevor's loaf (tried and true). Single score on home loaf — had to cut twice to get deep enough, still got a cool bloom.",
-        "Single score / decorative patterns not for me. Keeping it uniform and professional going forward.",
-        "Trevor really liked his loaf. Mentioned possible underbake due to crumb shine — unsure how to interpret.",
-        "Internal temp ~210°F.",
-        "Crust came out better than usual from higher uncovered temp + extra time. Flipped at 9 min intervals.",
-        "Wasn't present enough in the process — didn't log bake temps well. Following the strict schedule makes more sense.",
-        "Took creative liberties because was resigned to thinking the dough was overproofed. It's about adapting."
+        {
+          "text": "~4:04pm Apr 4 — fermentolyse start."
+        },
+        {
+          "text": "~7:00pm — into fridge at ~40% aliquot rise. Timing got away — emergency cold retard to prevent overproofing."
+        },
+        {
+          "text": "Apr 5 ~12:59pm — let dough come to room temp. Aliquot was at ~100% by preshape. Not happy with this dough."
+        },
+        {
+          "text": "Preshaped, rested ~25 min. Dough balls ~950g each."
+        },
+        {
+          "text": "Hazy on exact bake temps — preheated at 550°F. 20 min covered at high temp."
+        },
+        {
+          "text": "Tried keeping uncovered temp higher on first loaf (didn't lower it). Crust came out really good."
+        },
+        {
+          "text": "Uncovered bake: 9 min, flip, 9 min, flip, then 4 extra min with tray turned 90°. Came out even."
+        },
+        {
+          "text": "Cross score on Trevor's loaf (tried and true). Single score on home loaf — had to cut twice to get deep enough, still got a cool bloom."
+        },
+        {
+          "text": "Single score / decorative patterns not for me. Keeping it uniform and professional going forward."
+        },
+        {
+          "text": "Trevor really liked his loaf. Mentioned possible underbake due to crumb shine — unsure how to interpret."
+        },
+        {
+          "text": "Internal temp ~210°F."
+        },
+        {
+          "text": "Crust came out better than usual from higher uncovered temp + extra time. Flipped at 9 min intervals."
+        },
+        {
+          "text": "Wasn't present enough in the process — didn't log bake temps well. Following the strict schedule makes more sense."
+        },
+        {
+          "text": "Took creative liberties because was resigned to thinking the dough was overproofed. It's about adapting."
+        }
       ],
       "photos": [
         {
@@ -3097,7 +3357,7 @@
         "value": 2,
         "unit": "loaves"
       },
-      "summary": "Fifteenth bake, 2-loaf. Tested 450°F vs 425°F uncovered temps across loaves. Loaf 1 had good even crumb and darker crust. Loaf 2 paler from lower uncovered temp. Slightly triangular shape suggests possible slight overproof. Starter still not cleanly passing float test but performed fine.",
+      "summary": "Fourteenth bake, 2-loaf. Tested 450°F vs 425°F uncovered temps across loaves. Loaf 1 had good even crumb and darker crust. Loaf 2 paler from lower uncovered temp. Slightly triangular shape suggests possible slight overproof. Starter still not cleanly passing float test but performed fine.",
       "bake_stats": {
         "dough_temps": [
           {
@@ -3322,7 +3582,7 @@
         "value": 2,
         "unit": "loaves"
       },
-      "summary": "Sixteenth bake, 2-loaf. Dough felt wet after possible slight over-water during salt incorporation — pushed through without adding flour and it recovered. Slow ferment, starter still suspected sluggish. Both loaves 480°F covered / 425°F uncovered, 20+22 min. 207°F and 210°F internal. Surprising rise and golden color despite concerns — crumb looks good with slightly glassy spots.",
+      "summary": "Fifteenth bake, 2-loaf. Dough felt wet after possible slight over-water during salt incorporation — pushed through without adding flour and it recovered. Slow ferment, starter still suspected sluggish. Both loaves 480°F covered / 425°F uncovered, 20+22 min. 207°F and 210°F internal. Surprising rise and golden color despite concerns — crumb looks good with slightly glassy spots.",
       "bake_stats": {
         "dough_temps": [
           {

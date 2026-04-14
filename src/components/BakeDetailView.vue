@@ -6,7 +6,7 @@ import { ArrowLeft, Bot } from 'lucide-vue-next'
 import { useRecipe } from '@/composables/useRecipe'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import BakeStatsBlock from '@/components/BakeStatsBlock.vue'
-import type { CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType } from '@/types/recipe'
+import type { CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType, KeyNote } from '@/types/recipe'
 
 const route = useRoute()
 const router = useRouter()
@@ -71,8 +71,10 @@ function closeLightbox(): void {
 // Semantics (per CookLogEntry type):
 // - key_notes present (any length, including []) → render key_notes
 // - key_notes absent → fall back to the raw notes[]
-function keyNotesList(e: CookLogEntry): string[] {
-  return e.key_notes ?? e.notes ?? []
+function keyNotesList(e: CookLogEntry): KeyNote[] {
+  if (e.key_notes) return e.key_notes
+  // Fallback: wrap plain notes strings as KeyNote objects
+  return (e.notes ?? []).map(n => ({ text: n }))
 }
 
 function hasKeyNotes(e: CookLogEntry): boolean {
@@ -80,8 +82,56 @@ function hasKeyNotes(e: CookLogEntry): boolean {
 }
 
 function renderNotes(e: CookLogEntry): string {
-  const md = keyNotesList(e).map(n => `- ${n}`).join('\n')
-  return marked.parse(md) as string
+  const notes = keyNotesList(e)
+
+  // If no start_date or start_date equals date, render flat bullet list
+  if (!e.start_date || e.start_date === e.date) {
+    const md = notes.map(n => `- ${n.text}`).join('\n')
+    return marked.parse(md) as string
+  }
+
+  // Multi-day bake: group notes by calendar date using timestamps
+  const notesByDay: Record<string, string[]> = {}
+  const notesWithoutTimestamp: string[] = []
+
+  notes.forEach(note => {
+    if (note.timestamp) {
+      // Extract date from ISO timestamp (YYYY-MM-DD)
+      const dateStr = note.timestamp.split('T')[0]
+      if (!notesByDay[dateStr]) {
+        notesByDay[dateStr] = []
+      }
+      notesByDay[dateStr].push(note.text)
+    } else {
+      notesWithoutTimestamp.push(note.text)
+    }
+  })
+
+  // Build markdown with day headers
+  const parts: string[] = []
+
+  // Add timestamped notes grouped by day
+  const sortedDates = Object.keys(notesByDay).sort()
+  sortedDates.forEach(dateStr => {
+    const [y, m, d] = dateStr.split('-').map(Number)
+    const date = new Date(y, m - 1, d)
+    const dayHeader = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    parts.push(`#### ${dayHeader}`)
+    parts.push('')
+    notesByDay[dateStr].forEach(text => {
+      parts.push(`- ${text}`)
+    })
+    parts.push('')
+  })
+
+  // Add notes without timestamps at the end
+  if (notesWithoutTimestamp.length > 0) {
+    notesWithoutTimestamp.forEach(text => {
+      parts.push(`- ${text}`)
+    })
+  }
+
+  return marked.parse(parts.join('\n')) as string
 }
 
 // Raw notes disclosure (moved from BakeStatsBlock in Option C restructure).
@@ -510,6 +560,18 @@ function dismissPopover(): void {
 
 .bake-prose :deep(em) {
   color: var(--color-stone-500);
+}
+
+.bake-prose :deep(h4) {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--color-stone-400);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.bake-prose :deep(h4:first-child) {
+  margin-top: 0;
 }
 
 .back-link {
