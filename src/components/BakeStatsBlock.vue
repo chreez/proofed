@@ -122,15 +122,16 @@ function computeBulkPill(): PillView {
   }
   const avg = samples.reduce((s, x) => s + x.temp_f, 0) / samples.length
   const avgDough = `${(Math.round(avg * 10) / 10).toFixed(1)}°F`
-  const times = [...samples.map((x) => x.time)].sort()
-  const start = times[0]
-  let end = times[times.length - 1]
-  const bulkRise = (props.bake_stats.aliquot_rises ?? []).find(
-    (a) => a.stage === 'bulk'
-  )
-  if (bulkRise && timeToMin(bulkRise.time) > timeToMin(end)) {
-    end = bulkRise.time
-  }
+  // Collect ALL active bulk timestamps: dough temps + folds + bulk aliquots
+  const allTimes = [
+    ...samples.map((x) => x.time),
+    ...(props.bake_stats.stretch_folds ?? []).map((f) => f.time),
+    ...(props.bake_stats.aliquot_rises ?? [])
+      .filter((a) => a.stage === 'bulk')
+      .map((a) => a.time)
+  ].sort((a, b) => timeToMin(a) - timeToMin(b))
+  const start = allTimes[0]
+  const end = allTimes[allTimes.length - 1]
   const mins = Math.max(0, minutesBetween(start, end))
   if (mins === 0) {
     return {
@@ -166,22 +167,22 @@ function computeProofPill(): PillView {
   const total = minutesBetween(start, oven)
   if (total <= 0) return { duration: '—', tooltip: '', hasTooltip: false }
 
-  // Tooltip: bulk / retard / final breakdown if derivable from rises
+  // Tooltip: bulk / retard breakdown derived from all active bulk timestamps
+  const folds: StretchFold[] = props.bake_stats.stretch_folds ?? []
   const rises: AliquotRise[] = props.bake_stats.aliquot_rises ?? []
   let tooltip = `total proof ${fmtDurationLong(total)}`
-  if (rises.length >= 2) {
-    const sortedRises = [...rises].sort(
-      (a, b) => timeToMin(a.time) - timeToMin(b.time)
-    )
-    const bulkEnd = sortedRises[0].time
-    const retardEnd = sortedRises[sortedRises.length - 1].time
+  // Collect ALL active bulk timestamps: dough temps + folds + bulk aliquots
+  const allActiveTimes = [
+    ...samples.map((x) => x.time),
+    ...folds.map((f) => f.time),
+    ...rises.filter((r) => r.stage === 'bulk').map((r) => r.time)
+  ].sort((a, b) => timeToMin(a) - timeToMin(b))
+  if (allActiveTimes.length >= 2) {
+    const bulkEnd = allActiveTimes[allActiveTimes.length - 1]
     const bulkMin = Math.max(0, minutesBetween(start, bulkEnd))
-    const retardMin = Math.max(0, minutesBetween(bulkEnd, retardEnd))
-    const finalMin = Math.max(0, minutesBetween(retardEnd, oven))
-    if (bulkMin > 0 && retardMin > 0 && finalMin > 0) {
-      tooltip = `bulk ${fmtDurationLong(bulkMin)} · retard ${fmtDurationLong(
-        retardMin
-      )} · final ${fmtDurationLong(finalMin)}`
+    const retardMin = Math.max(0, minutesBetween(bulkEnd, oven))
+    if (bulkMin > 0 && retardMin > 0) {
+      tooltip = `bulk ${fmtDurationLong(bulkMin)} · retard ${fmtDurationLong(retardMin)}`
     }
   }
   return { duration: fmtDurationLong(total), tooltip, hasTooltip: true }
