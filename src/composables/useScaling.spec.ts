@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { ref } from 'vue'
-import { useScaling } from './useScaling'
+import { useScaling, formatMultiplier } from './useScaling'
 import type { Recipe } from '@/types/recipe'
 
 function makeRecipe(overrides = {}): Recipe {
@@ -73,9 +73,21 @@ describe('useScaling', () => {
       expect(scaling.availableMultipliers.value).toEqual([1])
     })
 
-    it('returns range from min to max+2', () => {
+    it('returns integer range from min to max+2 when min >= 1', () => {
       const scaling = useScaling(makeRecipe())
       expect(scaling.availableMultipliers.value).toEqual([1, 2, 3, 4])
+    })
+
+    it('returns 0.5 steps when min < 1', () => {
+      const recipe = makeRecipe({
+        scaling: {
+          tested_range: { min: 0.5, max: 2 },
+          ingredients: [], process_caveats: [],
+          researched_date: '2026-04-08', sources: ['Test']
+        }
+      })
+      const scaling = useScaling(recipe)
+      expect(scaling.availableMultipliers.value).toEqual([0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4])
     })
   })
 
@@ -93,6 +105,12 @@ describe('useScaling', () => {
 
     it('returns true when beyond tested range', () => {
       const ext = ref(3)
+      const scaling = useScaling(makeRecipe(), ext)
+      expect(scaling.isUntested.value).toBe(true)
+    })
+
+    it('returns true when below tested range min', () => {
+      const ext = ref(0.5)
       const scaling = useScaling(makeRecipe(), ext)
       expect(scaling.isUntested.value).toBe(true)
     })
@@ -202,7 +220,13 @@ describe('useScaling', () => {
     it('scales numeric yields with multiplier badge', () => {
       const ext = ref(2)
       const scaling = useScaling(makeRecipe(), ext)
-      expect(scaling.getScaledYields()).toBe('4 pizzas (×2)')
+      expect(scaling.getScaledYields()).toBe('4 pizzas (2×)')
+    })
+
+    it('shows fraction label for fractional multiplier', () => {
+      const ext = ref(0.5)
+      const scaling = useScaling(makeRecipe(), ext)
+      expect(scaling.getScaledYields()).toBe('1 pizzas (½×)')
     })
 
     it('returns original for non-numeric yields', () => {
@@ -261,5 +285,58 @@ describe('useScaling', () => {
       const scaling = useScaling(makeRecipe({ scaling: undefined }), ext)
       expect(scaling.getIngredientNote('yeast')).toBeUndefined()
     })
+  })
+
+  describe('fractional scaling math', () => {
+    it('scales ingredient by 0.5', () => {
+      const ext = ref(0.5)
+      const scaling = useScaling(makeRecipe(), ext)
+      const ing = { id: 'flour', name: 'Flour', total: 390, unit: 'g', breakdown: null }
+      expect(scaling.scaleIngredient(ing).total).toBe(195)
+    })
+
+    it('scales component amount by 0.5', () => {
+      const ext = ref(0.5)
+      const scaling = useScaling(makeRecipe(), ext)
+      expect(scaling.scaleComponentAmount('390g')).toBe('195g')
+    })
+
+    it('scales nutrition by 0.5', () => {
+      const ext = ref(0.5)
+      const scaling = useScaling(makeRecipe(), ext)
+      const totals = { calories: 100, protein: 10, totalFat: 5, saturatedFat: 2, carbohydrates: 20, sugar: 8, fiber: 3, sodium: 500 }
+      expect(scaling.scaleNutrition(totals).calories).toBe(50)
+    })
+
+    it('shows process caveats at fractional multiplier', () => {
+      const ext = ref(0.5)
+      const recipe = makeRecipe({
+        scaling: {
+          tested_range: { min: 0.5, max: 2 },
+          ingredients: [], process_caveats: ['Half batch fits smaller vessel'],
+          researched_date: '2026-04-08', sources: ['Test']
+        }
+      })
+      const scaling = useScaling(recipe, ext)
+      expect(scaling.processCaveats.value).toEqual(['Half batch fits smaller vessel'])
+    })
+  })
+})
+
+describe('formatMultiplier', () => {
+  it('returns fraction for 0.5', () => {
+    expect(formatMultiplier(0.5)).toBe('½')
+  })
+
+  it('returns fraction for 1.5', () => {
+    expect(formatMultiplier(1.5)).toBe('1½')
+  })
+
+  it('returns string number for integers', () => {
+    expect(formatMultiplier(2)).toBe('2')
+  })
+
+  it('returns string for unmapped decimals', () => {
+    expect(formatMultiplier(1.3)).toBe('1.3')
   })
 })

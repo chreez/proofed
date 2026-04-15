@@ -210,7 +210,7 @@ function openShareModal(): void {
 // Scratchpad export handler
 async function handleScratchpadExport(): Promise<void> {
   if (!scratchpad.value) return
-  const json = scratchpad.value.exportJsonString()
+  const json = scratchpad.value.exportJsonString(scalingMultiplier.value)
   await copyToClipboard(json)
 }
 

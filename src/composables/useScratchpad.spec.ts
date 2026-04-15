@@ -391,6 +391,30 @@ describe('useScratchpad', () => {
       // generalNotes array should be a different reference
       expect(exported.generalNotes).not.toBe(sp.generalNotes.value)
     })
+
+    it('includes multiplier when not 1', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const exported = sp.exportJson(0.5)
+      expect(exported.multiplier).toBe(0.5)
+    })
+
+    it('omits multiplier when 1', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const exported = sp.exportJson(1)
+      expect(exported.multiplier).toBeUndefined()
+    })
+
+    it('omits multiplier when not provided', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const exported = sp.exportJson()
+      expect(exported.multiplier).toBeUndefined()
+    })
   })
 
   describe('exportJsonString', () => {
@@ -402,6 +426,16 @@ describe('useScratchpad', () => {
       const parsed = JSON.parse(str)
 
       expect(parsed.recipeId).toBe('recipe-a')
+    })
+
+    it('passes multiplier through to exportJson', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const str = sp.exportJsonString(2)
+      const parsed = JSON.parse(str)
+
+      expect(parsed.multiplier).toBe(2)
     })
   })
 

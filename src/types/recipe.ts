@@ -419,6 +419,7 @@ export interface ScratchpadEntry {
 export interface BakeScratchpad {
   recipeId: string
   bakeDate: string
+  multiplier?: number
   entries: Record<string, ScratchpadEntry[]>
   generalNotes: ScratchpadEntry[]
 }

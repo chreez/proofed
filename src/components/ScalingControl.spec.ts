@@ -51,6 +51,13 @@ describe('ScalingControl', () => {
     expect(wrapper.text()).toContain('Beyond tested range')
   })
 
+  it('shows untested warning when below min', () => {
+    const wrapper = mount(ScalingControl, {
+      props: { scaling: defaultScaling, modelValue: 0.5 }
+    })
+    expect(wrapper.text()).toContain('Beyond tested range')
+  })
+
   it('does not show untested warning within range', () => {
     const wrapper = mount(ScalingControl, {
       props: { scaling: defaultScaling, modelValue: 2 }
@@ -63,5 +70,20 @@ describe('ScalingControl', () => {
       props: { scaling: defaultScaling, modelValue: 1 }
     })
     expect(wrapper.text()).toContain('Scale:')
+  })
+
+  it('renders fractional buttons with fraction labels', () => {
+    const fractionalScaling = {
+      ...defaultScaling,
+      tested_range: { min: 0.5, max: 2 }
+    }
+    const wrapper = mount(ScalingControl, {
+      props: { scaling: fractionalScaling, modelValue: 1 }
+    })
+    const buttons = wrapper.findAll('button')
+    expect(buttons[0].text()).toBe('½×')
+    expect(buttons[1].text()).toBe('1×')
+    expect(buttons[2].text()).toBe('1½×')
+    expect(buttons[3].text()).toBe('2×')
   })
 })

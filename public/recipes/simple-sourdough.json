@@ -4016,5 +4016,21 @@
         "duration_min": 20
       }
     ]
+  },
+  "scaling": {
+    "tested_range": { "min": 0.5, "max": 1 },
+    "ingredients": [
+      { "id": "bread_flour", "behavior": "linear", "note": "Baker's math base — scales with batch size" },
+      { "id": "water", "behavior": "linear", "note": "Maintains 70% hydration at all scales" },
+      { "id": "starter", "behavior": "linear", "note": "20% inoculation ratio preserved" },
+      { "id": "salt", "behavior": "linear", "note": "2% of flour weight" }
+    ],
+    "process_caveats": [
+      "Half batch: single loaf, skip divide/second banneton steps",
+      "Half batch: bulk ferment may complete slightly faster — watch aliquot jar",
+      "Half batch: single Dutch oven bake, no sequential second loaf"
+    ],
+    "researched_date": "2026-04-15",
+    "sources": ["14 bakes at 1× (2-loaf), v2.0.0 was originally 1-loaf before scaling up"]
   }
 }

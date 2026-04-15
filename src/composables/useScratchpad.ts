@@ -125,17 +125,18 @@ export function useScratchpad(recipeId: string) {
     return !!entries && entries.length > 0
   }
 
-  function exportJson(): BakeScratchpad {
+  function exportJson(multiplier?: number): BakeScratchpad {
     return {
       recipeId: recipeId,
       bakeDate: new Date().toISOString().split('T')[0],
+      ...(multiplier != null && multiplier !== 1 ? { multiplier } : {}),
       entries: { ...state.entries },
       generalNotes: [...state.generalNotes]
     }
   }
 
-  function exportJsonString(): string {
-    return JSON.stringify(exportJson(), null, 2)
+  function exportJsonString(multiplier?: number): string {
+    return JSON.stringify(exportJson(multiplier), null, 2)
   }
 
   function clearAll(): void {

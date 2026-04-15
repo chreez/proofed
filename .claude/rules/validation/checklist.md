@@ -71,7 +71,7 @@ This checklist MUST be verified after every feature release. Run `/validate` or 
 | S4 | next_time items structured | `next_time[]` items are objects with required non-empty `text` field | `public/recipes/*.json` |
 | S5 | next_time source non-empty | `next_time[].source` is a non-empty string when present | `public/recipes/*.json` |
 | S6 | Scaling ingredients ref existing | `scaling.ingredients[].id` must reference existing gather section ingredient IDs | `public/recipes/*.json` |
-| S7 | Scaling range & metadata valid | When `scaling` present: `tested_range.min >= 1`, `max >= min`, `researched_date` is valid ISO date, `sources.length >= 1` | `public/recipes/*.json` |
+| S7 | Scaling range & metadata valid | When `scaling` present: `tested_range.min >= 0.5`, `max >= min`, `researched_date` is valid ISO date, `sources.length >= 1` | `public/recipes/*.json` |
 | S8 | Recipes without scaling no multiplier | Recipes WITHOUT `scaling` block must not render multiplier UI; multiplier only shows if `recipe.scaling` exists | `src/components/RecipeMeta.vue`, `src/components/ScalingControl.vue` |
 
 ## Feature-Specific Checks

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Scaling } from '@/types/recipe'
+import { formatMultiplier } from '@/composables/useScaling'
 
 const props = defineProps<{
   scaling?: Scaling
@@ -17,16 +18,18 @@ const availableMultipliers = computed(() => {
   const min = props.scaling.tested_range.min
   const max = props.scaling.tested_range.max
   const options: number[] = []
-  for (let i = min; i <= max + 2; i++) {
-    options.push(i)
+  const step = min < 1 || min % 1 !== 0 ? 0.5 : 1
+  for (let i = min; i <= max + 2; i += step) {
+    options.push(Math.round(i * 100) / 100)
   }
   return options
 })
 
-// Check if current value exceeds tested range
+// Check if current value is outside tested range
 const isUntested = computed(() => {
   if (!props.scaling) return false
   return props.modelValue > props.scaling.tested_range.max
+    || props.modelValue < props.scaling.tested_range.min
 })
 
 function handleSelect(value: number) {
@@ -49,7 +52,7 @@ function handleSelect(value: number) {
         }"
         @click="handleSelect(m)"
       >
-        {{ m }}×
+        {{ formatMultiplier(m) }}×
       </button>
     </div>
     <span v-if="isUntested" class="text-xs text-warning ml-1">
