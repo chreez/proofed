@@ -5,6 +5,7 @@
     { "id": "candida-focaccia", "name": "Rosemary-Garlic Focaccia (Grain-Free, Candida-Friendly)", "file": "candida-focaccia.json" },
     { "id": "tartine-baguette", "name": "Tartine Baguette", "file": "tartine-baguette.json" },
     { "id": "coco-curry", "name": "CoCo Ichibanya-Style Japanese Curry", "file": "coco-curry.json" },
+    { "id": "gochujang-garlic-buns", "name": "Gochujang & Garlic Savoury Buns", "file": "gochujang-garlic-buns.json" },
     { "id": "grain-free-bread", "name": "Grain-Free Bread", "file": "grain-free-bread.json" },
     { "id": "thai-tea-boba", "name": "Thai Tea Boba", "file": "thai-tea-boba.json" },
     { "id": "ichiran-ramen", "name": "Ichiran-Style Tonkotsu Ramen", "file": "ichiran-ramen.json" },

@@ -69,6 +69,7 @@ const categoryMap: Record<string, string> = {
   'tartine-baguette': 'baking',
   'candida-focaccia': 'grain-free',
   'grain-free-bread': 'grain-free',
+  'gochujang-garlic-buns': 'baking',
   'carrot-cake': 'baking',
   'simple-sourdough': 'baking',
   'simple-sourdough-wheat': 'baking',

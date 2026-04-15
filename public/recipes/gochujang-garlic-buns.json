@@ -1,0 +1,859 @@
+{
+  "meta": {
+    "name": "Gochujang & Garlic Savoury Buns",
+    "source": {
+      "name": "Dylan Bachelet / The Great British Bake Off",
+      "url": "https://www.relaxedrecipes.com/all-recipes/gochujang-and-garlic-savoury-buns",
+      "type": "adapted",
+      "author": "Dylan Bachelet"
+    },
+    "yields": "10 buns",
+    "total_time": "~3 hrs active (plus 2 hrs confit garlic, can be done ahead)",
+    "description": "Enriched tangzhong rolls with Korean fermented chili paste and confit garlic. Paul Hollywood handshake recipe from GBBO Season 15 Bread Week."
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Buns & Rolls",
+      "defaultYield": 10,
+      "unit": "buns",
+      "servingsPerItem": 1,
+      "servingUnit": "buns"
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-04-14",
+      "summary": "Initial recipe adapted from Dylan Bachelet's GBBO Season 15 Bread Week buns with science-informed adjustments from multi-agent research"
+    }
+  ],
+  "vessels": [
+    { "id": "V1", "name": "Small Oven-Safe Dish", "reuse": "Confit garlic only" },
+    { "id": "V2", "name": "Small Saucepan", "reuse": "Tangzhong → clean → warm milk for yeast bloom" },
+    { "id": "V3", "name": "Large Mixing Bowl", "reuse": "Mix dough → first rise bowl" },
+    { "id": "V4", "name": "25cm Round Baking Pan", "reuse": "Arrange buns → proof → bake" },
+    { "id": "V5", "name": "Small Bowl", "reuse": "Bloom yeast → clean → egg wash → clean → glaze mix" }
+  ],
+  "stages": [
+    {
+      "id": "CONFIT",
+      "title": "Confit Garlic",
+      "gather": {
+        "vessels": ["Small Oven-Safe Dish"],
+        "equipment": ["Kitchen Scale", "Paring Knife"],
+        "ingredients": [
+          {
+            "id": "garlic",
+            "name": "Garlic Cloves",
+            "total": 25,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: Dylan's official recipe + all recreations",
+            "confidence": "high",
+            "rationale": "4-6 cloves; confit method universal across sources"
+          },
+          {
+            "id": "olive-oil",
+            "name": "Extra Virgin Olive Oil",
+            "total": 240,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Standard confit technique",
+            "confidence": "high",
+            "rationale": "~1 cup, enough to submerge cloves. Leftover oil is garlic-flavored bonus"
+          }
+        ]
+      },
+      "states": ["confit-garlic-setup", "confit-garlic-bake", "chop-confit-garlic"]
+    },
+    {
+      "id": "DOUGH",
+      "title": "Tangzhong & Dough",
+      "gather": {
+        "vessels": ["Small Saucepan", "Large Mixing Bowl", "Small Bowl"],
+        "equipment": ["Kitchen Scale", "Stand Mixer with Dough Hook", "Whisk", "Rubber Spatula", "Instant-Read Thermometer"],
+        "ingredients": [
+          {
+            "id": "bread-flour",
+            "name": "Bread Flour",
+            "total": 416,
+            "unit": "g",
+            "breakdown": [
+              { "label": "tangzhong", "amount": 16 },
+              { "label": "dough", "amount": 400 }
+            ],
+            "sourcedFrom": "Tier 1: 7/8 sources use 400g bread flour + tangzhong flour",
+            "confidence": "high",
+            "rationale": "Universal across Dylan's official and all recreations"
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 90,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Dylan's official tangzhong ratio",
+            "confidence": "high",
+            "rationale": "90ml water for tangzhong (6 tbsp)"
+          },
+          {
+            "id": "instant-yeast",
+            "name": "Instant Yeast (SAF Red)",
+            "total": 7,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: Dylan's official recipe",
+            "confidence": "high",
+            "rationale": "Dylan specifies SAF-Instant Red by brand"
+          },
+          {
+            "id": "whole-milk",
+            "name": "Whole Milk",
+            "total": 120,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: Dylan's official + Delectablediction match exactly",
+            "confidence": "high",
+            "rationale": "Lukewarm for yeast activation"
+          },
+          {
+            "id": "unsalted-butter",
+            "name": "Unsalted Butter",
+            "total": 28,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: Dylan's official + Delectablediction match",
+            "confidence": "high",
+            "rationale": "Melted and cooled, mixed with tangzhong"
+          },
+          {
+            "id": "caster-sugar",
+            "name": "Caster Sugar",
+            "total": 40,
+            "unit": "g",
+            "breakdown": [
+              { "label": "yeast bloom", "amount": 4 },
+              { "label": "dough", "amount": 36 }
+            ],
+            "sourcedFrom": "Tier 1: Dylan's official recipe",
+            "confidence": "high",
+            "rationale": "40g caster sugar; 3/4 copycats agree on ~30-40g range"
+          },
+          {
+            "id": "fine-salt",
+            "name": "Fine Salt",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: Dylan's official recipe",
+            "confidence": "high",
+            "rationale": "5ml (~5g); note gochujang contributes additional salt"
+          },
+          {
+            "id": "gochujang",
+            "name": "Gochujang (CJ Haechandeul Medium Hot)",
+            "total": 30,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: Dylan's official + community consensus",
+            "confidence": "high",
+            "rationale": "2 tbsp (~30g) in dough. ~8% baker's percentage. Brand: CJ Haechandeul Medium Hot recommended"
+          },
+          {
+            "id": "eggs",
+            "name": "Large Eggs",
+            "total": 100,
+            "unit": "g",
+            "breakdown": [
+              { "label": "dough", "amount": 50 },
+              { "label": "egg wash", "amount": 50 }
+            ],
+            "sourcedFrom": "Tier 1: Dylan's official recipe",
+            "confidence": "high",
+            "rationale": "1 in dough + 1 for egg wash"
+          }
+        ]
+      },
+      "states": ["make-tangzhong", "bloom-yeast", "mix-dough", "knead-dough", "first-rise"]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Shape & Proof",
+      "gather": null,
+      "states": ["fold-in-garlic", "divide-and-shape", "second-rise"]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": ["score-and-wash", "bake-buns", "cool"]
+    },
+    {
+      "id": "GLAZE",
+      "title": "Honey-Soy Glaze (Optional)",
+      "gather": {
+        "vessels": ["Small Bowl"],
+        "equipment": ["Pastry Brush"],
+        "ingredients": [
+          {
+            "id": "honey",
+            "name": "Honey",
+            "total": 30,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 3: Sophie Bamford's popular community upgrade",
+            "confidence": "medium",
+            "rationale": "Most tested glaze upgrade to Dylan's original"
+          },
+          {
+            "id": "light-soy-sauce",
+            "name": "Light Soy Sauce",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 3: Sophie Bamford",
+            "confidence": "medium",
+            "rationale": "2 tsp; provides salt + umami to balance honey sweetness"
+          },
+          {
+            "id": "glaze-butter",
+            "name": "Unsalted Butter (melted)",
+            "total": 30,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 3: Sophie Bamford",
+            "confidence": "medium",
+            "rationale": "Brushed after honey-soy to prevent stickiness and add shine"
+          },
+          {
+            "id": "sesame-seeds",
+            "name": "Sesame Seeds (black + white mix)",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 2: Multiple recreations include sesame",
+            "confidence": "medium",
+            "rationale": "Natural Korean flavor pairing, visual contrast"
+          }
+        ]
+      },
+      "states": ["mix-glaze", "apply-glaze"]
+    }
+  ],
+  "states": [
+    {
+      "id": "confit-garlic-setup",
+      "title": "Prep Confit Garlic",
+      "direction": "Peel garlic cloves and place in a small oven-safe dish. Pour olive oil over cloves until fully submerged. Preheat oven to 250°F (120°C).",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "garlic cloves", "amount": "25g (4-6 cloves)" },
+        { "name": "olive oil", "amount": "240g (~1 cup)" }
+      ],
+      "exit_condition": "Garlic cloves fully submerged in oil, oven preheating",
+      "notes": [
+        {
+          "text": "Can be done up to 2 weeks ahead — store confit garlic submerged in oil in the fridge. Flavor improves over the first few days.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Food safety: refrigerate confit garlic within 2 hours. Never store at room temperature. Botulism risk is real with garlic in oil.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "confit-garlic-bake",
+      "title": "Bake Confit Garlic",
+      "direction": "Bake garlic in oil at 250°F (120°C) for 2 hours until cloves are pale golden and completely soft.",
+      "duration_min": 120,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Garlic cloves pale golden, knife slides through with zero resistance",
+      "notes": [
+        {
+          "text": "Stovetop alternative: lowest heat for 30-45 minutes, stirring occasionally. Watch for garlic darkening past pale gold.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "chop-confit-garlic",
+      "title": "Chop Confit Garlic",
+      "direction": "Remove garlic cloves from oil with a slotted spoon. Cool briefly, then rough chop into small pieces. Reserve the garlic-infused oil separately.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Garlic rough chopped, confit oil reserved in separate container",
+      "notes": [
+        {
+          "text": "The confit oil is liquid gold — use 1-2 tbsp in place of some dough butter for extra garlic depth, or save for cooking.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "make-tangzhong",
+      "title": "Make Tangzhong",
+      "direction": "Combine water and bread flour in a small saucepan. Whisk until smooth with no lumps. Heat over medium-low, stirring constantly, until mixture thickens to a thick paste (about 2 minutes). Remove from heat and cool completely.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "water", "amount": "90g" },
+        { "name": "bread flour", "amount": "16g" }
+      ],
+      "exit_condition": "Thick, glossy paste that leaves trails when stirred. Cooled to room temperature.",
+      "notes": [
+        {
+          "text": "Tangzhong gelatinizes starch, trapping moisture for a softer crumb that stays fresh 3-4 days. This is the technique that gives these buns their signature pillowy texture.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "technique_url": "https://www.kingarthurbaking.com/blog/2018/07/23/how-to-convert-a-bread-recipe-to-tangzhong"
+    },
+    {
+      "id": "bloom-yeast",
+      "title": "Bloom Yeast",
+      "direction": "Warm milk to 110°F (43°C). Stir in 4g sugar until dissolved, then sprinkle yeast over surface. Let sit until foamy, about 5 minutes.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "whole milk", "amount": "120g (warmed)" },
+        { "name": "caster sugar", "amount": "4g" },
+        { "name": "instant yeast", "amount": "7g" }
+      ],
+      "exit_condition": "Yeast mixture foamy and actively bubbling",
+      "notes": null
+    },
+    {
+      "id": "mix-dough",
+      "title": "Mix Dough",
+      "direction": "Combine bread flour, remaining sugar, gochujang, and salt in a large bowl. In a separate bowl, stir egg and melted butter into the cooled tangzhong. Add the tangzhong mixture and yeast-milk mixture to the dry ingredients. Stir with a rubber spatula until a shaggy dough forms.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "bread flour", "amount": "400g" },
+        { "name": "caster sugar", "amount": "36g" },
+        { "name": "gochujang", "amount": "30g" },
+        { "name": "fine salt", "amount": "5g" },
+        { "name": "egg", "amount": "50g (1 large)" },
+        { "name": "unsalted butter", "amount": "28g (melted, cooled)" },
+        { "name": "tangzhong", "amount": "all" }
+      ],
+      "exit_condition": "Shaggy dough formed, no dry flour visible. Dough will be sticky — this is expected.",
+      "notes": [
+        {
+          "text": "Gochujang adds hidden water (~44% moisture) and salt (~8%). The dough will feel wetter than typical enriched dough — don't add extra flour yet.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "knead-dough",
+      "title": "Knead Dough",
+      "direction": "Transfer dough to a lightly floured surface and knead until smooth, elastic, and no longer sticky, about 8-10 minutes by hand. Alternatively, use a stand mixer with dough hook on medium-low for 6-8 minutes.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth and elastic, springs back when poked, no longer sticking to hands or counter",
+      "notes": [
+        {
+          "text": "If dough remains very sticky after 5 minutes of kneading, add flour 1 tablespoon at a time. The tangzhong and gochujang both add moisture.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "first-rise",
+      "title": "First Rise",
+      "direction": "Place dough in a lightly oiled bowl, turning once to coat. Cover with plastic wrap and let rise in a warm spot until doubled in size, about 1 hour.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has doubled in volume — poke test: finger indent fills back slowly",
+      "notes": null,
+      "reminders": [
+        {
+          "prompt": "Dough temperature before bulk",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "fold-in-garlic",
+      "title": "Fold in Confit Garlic",
+      "direction": "Turn dough out onto a lightly floured surface. Gently press to deflate. Spread chopped confit garlic evenly over the surface. Fold dough over itself several times to distribute garlic throughout.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "confit garlic", "amount": "all (chopped)" }
+      ],
+      "exit_condition": "Garlic pieces visibly distributed throughout dough, no large unworked pockets",
+      "notes": [
+        {
+          "text": "Don't over-knead — just fold enough to distribute. The garlic pieces should create pockets of flavor in the finished crumb.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "divide-and-shape",
+      "title": "Divide & Shape",
+      "direction": "Divide dough into 75g pieces (about 10 buns). Roll each piece into a tight ball: cup your hand over the dough and roll in a circular motion on an unfloured surface, tucking the dough under to create surface tension.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All buns shaped into smooth, taut balls with visible surface tension",
+      "notes": null
+    },
+    {
+      "id": "second-rise",
+      "title": "Second Rise",
+      "direction": "Arrange buns in prepared pan, leaving small gaps between each. Cover loosely with plastic wrap and let rise until buns are puffy and nearly touching.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns are puffy, nearly doubled, and just touching each other in the pan",
+      "notes": null,
+      "reminders": [
+        {
+          "prompt": "How do the buns look? Puffy and touching?",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "score-and-wash",
+      "title": "Score & Egg Wash",
+      "direction": "Preheat oven to 350°F (175°C). Using a sharp knife or lame, score a simple cross or slash pattern on top of each bun (about 0.5cm deep). Lightly beat the remaining egg and brush over the tops of all buns.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "egg", "amount": "50g (1 large, beaten)" }
+      ],
+      "exit_condition": "All buns scored and evenly coated with egg wash",
+      "notes": [
+        {
+          "text": "Score gently — enriched dough deflates easily. The scores are decorative, not structural.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "bake-buns",
+      "title": "Bake",
+      "direction": "Bake at 350°F (175°C) for 25-30 minutes, rotating pan halfway through, until buns are deep golden brown.",
+      "duration_min": 28,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Deep golden brown on top, internal temperature reads 190°F (88°C)",
+      "notes": [
+        {
+          "text": "Gochujang's sugars accelerate browning — check at 20 minutes and tent with foil if the tops are getting too dark before the interior is done.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Internal temperature",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Crust color and browning",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "cool",
+      "title": "Cool in Pan",
+      "direction": "Transfer pan to a wire rack. Let buns cool in the pan for 10 minutes before applying glaze or serving.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Buns cool enough to handle but still warm — ideal temperature for glaze absorption",
+      "notes": null
+    },
+    {
+      "id": "mix-glaze",
+      "title": "Mix Honey-Soy Glaze",
+      "direction": "Stir together honey and light soy sauce in a small bowl until combined. Melt butter separately.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "honey", "amount": "30g" },
+        { "name": "light soy sauce", "amount": "10g" },
+        { "name": "unsalted butter", "amount": "30g (melted)" }
+      ],
+      "exit_condition": "Honey-soy mixture smooth and uniform, butter melted",
+      "notes": [
+        {
+          "text": "This glaze is optional but community-tested — Sophie Bamford's most popular upgrade to Dylan's original. Sweet-salty-umami without tipping into dessert territory.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "apply-glaze",
+      "title": "Apply Glaze & Finish",
+      "direction": "Brush honey-soy mixture over warm buns. Then brush melted butter on top. Sprinkle sesame seeds over all buns.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "sesame seeds", "amount": "5g" }
+      ],
+      "exit_condition": "All buns coated with glaze, butter, and sesame seeds. Glossy finish visible.",
+      "notes": [
+        {
+          "text": "Order matters: honey-soy first (soaks in), then butter (seals and shines), then sesame seeds (stick to butter).",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If making ahead: store unglazed. Reheat buns, then glaze while hot for best results.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    }
+  ],
+  "nutrition": {
+    "servings": 10,
+    "servingSize": "1 bun",
+    "calculatedDate": "2026-04-14",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 2672,
+      "protein": 76,
+      "totalFat": 86,
+      "saturatedFat": 39,
+      "carbohydrates": 397,
+      "sugar": 77,
+      "fiber": 13,
+      "sodium": 3452
+    },
+    "perServing": {
+      "calories": 267.2,
+      "protein": 7.6,
+      "totalFat": 8.6,
+      "saturatedFat": 3.9,
+      "carbohydrates": 39.7,
+      "sugar": 7.7,
+      "fiber": 1.3,
+      "sodium": 345.2
+    },
+    "breakdown": [
+      {
+        "ingredientId": "garlic",
+        "ingredientName": "Garlic Cloves",
+        "amount": 25,
+        "fdcId": 169230,
+        "calories": 37.3,
+        "protein": 1.6,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 8.3,
+        "sugar": 0.3,
+        "fiber": 0.5,
+        "sodium": 4.3
+      },
+      {
+        "ingredientId": "olive-oil",
+        "ingredientName": "Extra Virgin Olive Oil (15g absorbed)",
+        "amount": 15,
+        "fdcId": 171413,
+        "calories": 132.6,
+        "protein": 0,
+        "totalFat": 15,
+        "saturatedFat": 2.1,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.3
+      },
+      {
+        "ingredientId": "bread-flour",
+        "ingredientName": "Bread Flour",
+        "amount": 416,
+        "fdcId": 168896,
+        "calories": 1501.8,
+        "protein": 49.8,
+        "totalFat": 6.9,
+        "saturatedFat": 1,
+        "carbohydrates": 301.7,
+        "sugar": 1.3,
+        "fiber": 10,
+        "sodium": 8.3
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 90,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0
+      },
+      {
+        "ingredientId": "instant-yeast",
+        "ingredientName": "Instant Yeast (SAF Red)",
+        "amount": 7,
+        "fdcId": 175043,
+        "calories": 20.7,
+        "protein": 2.7,
+        "totalFat": 0.3,
+        "saturatedFat": 0,
+        "carbohydrates": 2.7,
+        "sugar": 0,
+        "fiber": 1.5,
+        "sodium": 3.5
+      },
+      {
+        "ingredientId": "whole-milk",
+        "ingredientName": "Whole Milk",
+        "amount": 120,
+        "fdcId": 171265,
+        "calories": 72,
+        "protein": 3.9,
+        "totalFat": 3.9,
+        "saturatedFat": 2.2,
+        "carbohydrates": 5.4,
+        "sugar": 6.3,
+        "fiber": 0,
+        "sodium": 48
+      },
+      {
+        "ingredientId": "unsalted-butter",
+        "ingredientName": "Unsalted Butter",
+        "amount": 28,
+        "fdcId": 173430,
+        "calories": 200.8,
+        "protein": 0.2,
+        "totalFat": 22.7,
+        "saturatedFat": 14.4,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3.1
+      },
+      {
+        "ingredientId": "caster-sugar",
+        "ingredientName": "Caster Sugar",
+        "amount": 40,
+        "fdcId": 169655,
+        "calories": 154.8,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 40,
+        "sugar": 40,
+        "fiber": 0,
+        "sodium": 0
+      },
+      {
+        "ingredientId": "fine-salt",
+        "ingredientName": "Fine Salt",
+        "amount": 5,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1938
+      },
+      {
+        "ingredientId": "gochujang",
+        "ingredientName": "Gochujang (CJ Haechandeul Medium Hot)",
+        "amount": 30,
+        "calories": 67.5,
+        "protein": 3,
+        "totalFat": 0.8,
+        "saturatedFat": 0,
+        "carbohydrates": 12,
+        "sugar": 4.5,
+        "fiber": 0,
+        "sodium": 750
+      },
+      {
+        "ingredientId": "eggs",
+        "ingredientName": "Large Eggs",
+        "amount": 100,
+        "fdcId": 171287,
+        "calories": 144,
+        "protein": 12.6,
+        "totalFat": 9.5,
+        "saturatedFat": 3.1,
+        "carbohydrates": 0.7,
+        "sugar": 0.4,
+        "fiber": 0,
+        "sodium": 142
+      },
+      {
+        "ingredientId": "honey",
+        "ingredientName": "Honey",
+        "amount": 30,
+        "fdcId": 169640,
+        "calories": 91.2,
+        "protein": 0.1,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 24.7,
+        "sugar": 24.6,
+        "fiber": 0.1,
+        "sodium": 1.2
+      },
+      {
+        "ingredientId": "light-soy-sauce",
+        "ingredientName": "Light Soy Sauce",
+        "amount": 10,
+        "fdcId": 174277,
+        "calories": 5.3,
+        "protein": 0.8,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 0.5,
+        "sugar": 0,
+        "fiber": 0.1,
+        "sodium": 549.3
+      },
+      {
+        "ingredientId": "glaze-butter",
+        "ingredientName": "Unsalted Butter (melted)",
+        "amount": 30,
+        "fdcId": 173430,
+        "calories": 215.1,
+        "protein": 0.3,
+        "totalFat": 24.3,
+        "saturatedFat": 15.4,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3.3
+      },
+      {
+        "ingredientId": "sesame-seeds",
+        "ingredientName": "Sesame Seeds (black + white mix)",
+        "amount": 5,
+        "fdcId": 170150,
+        "calories": 28.7,
+        "protein": 0.9,
+        "totalFat": 2.5,
+        "saturatedFat": 0.3,
+        "carbohydrates": 1.2,
+        "sugar": 0,
+        "fiber": 0.6,
+        "sodium": 0.6
+      }
+    ]
+  },
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "300-325°F (150-160°C) for 5-8 minutes until warmed through. If glazed, tent loosely with foil to prevent over-browning.",
+        "source": "agent"
+      },
+      {
+        "method": "Air Fryer",
+        "detail": "300°F (150°C) for 3-4 minutes. Watch closely — the gochujang sugars brown quickly.",
+        "source": "agent"
+      }
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "name": "Dylan Bachelet / GBBO Official (Relaxed Recipes)",
+        "url": "https://www.relaxedrecipes.com/all-recipes/gochujang-and-garlic-savoury-buns",
+        "type": "original",
+        "author": "Dylan Bachelet"
+      },
+      {
+        "name": "Delectablediction — Cheese Stuffed Gochujang Buns",
+        "url": "https://delectablediction.com/2025/01/20/cheese-stuffed-gochujang-buns/",
+        "type": "adapted"
+      },
+      {
+        "name": "Sophie Bamford — Cheesy Gochujang & Spring Onion Swirls",
+        "url": "https://sophiebamford.substack.com/p/cheesy-gochujang-and-spring-onion",
+        "type": "adapted"
+      },
+      {
+        "name": "Megan Cho — Spicy Cheesy Korean Rolls",
+        "url": "https://confessionsofacakesnob.substack.com/p/spicy-cheesy-korean-rolls-gochujang",
+        "type": "adapted"
+      },
+      {
+        "name": "Foodgeek — Gochujang Sourdough Bread",
+        "url": "https://foodgeek.io/en/gochujang-sourdough-bread-recipe/",
+        "type": "inspired"
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Tangzhong (Water Roux)",
+        "sourcedFrom": "Dylan's official recipe + all 4 copycat recreations",
+        "rationale": "Pre-gelatinized starch doubles moisture retention, producing soft pillowy crumb that stays fresh 3-4 days",
+        "confidence": "high"
+      },
+      {
+        "name": "Gochujang in Dough",
+        "sourcedFrom": "Dylan's official + 3/4 copycats mix into dough, not just filling",
+        "rationale": "Distributes fermented chili flavor and color throughout. ~8% baker's percentage for balanced heat",
+        "confidence": "high"
+      },
+      {
+        "name": "Confit Garlic (folded after first rise)",
+        "sourcedFrom": "Dylan's official method — garlic folded in post-rise to preserve gluten",
+        "rationale": "Mellow, sweet garlic that holds shape as pockets in the crumb. Post-rise fold avoids disrupting gluten network",
+        "confidence": "high"
+      },
+      {
+        "name": "Honey-Soy Post-Bake Glaze",
+        "sourcedFrom": "Sophie Bamford's community-tested upgrade",
+        "rationale": "Sweet-salty-umami finish. Butter layer prevents stickiness. Most popular non-original addition",
+        "confidence": "medium"
+      }
+    ],
+    "strategy": "Multi-agent parallel research with 9 agents (8 initial + 1 follow-up)",
+    "sourceCount": 40,
+    "date": "2026-04-14"
+  }
+}
