@@ -1,0 +1,25 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-04-15",
+  "processedAt": "2026-04-15T18:34:16.055Z",
+  "photos": [
+    {
+      "name": "dough-temp-check-bulk",
+      "thumb": "dough-temp-check-bulk-400w.webp",
+      "src": "dough-temp-check-bulk-800w.webp",
+      "summary": "Dough in glass mixing bowl with instant-read thermometer showing 77.4°F during bulk fermentation. Aliquot jar with red lid visible beside the bowl. Dough looks smooth and cohesive."
+    },
+    {
+      "name": "finished-loaf-closeup-ear",
+      "thumb": "finished-loaf-closeup-ear-400w.webp",
+      "src": "finished-loaf-closeup-ear-800w.webp",
+      "summary": "Close-up of finished sourdough boule on copper wire cooling rack. Deep golden brown crust with heavy blistering across the surface. Single score visible with slight ear lift."
+    },
+    {
+      "name": "finished-loaf-wide-cooling-rack",
+      "thumb": "finished-loaf-wide-cooling-rack-400w.webp",
+      "src": "finished-loaf-wide-cooling-rack-800w.webp",
+      "summary": "Wide shot of finished sourdough boule on copper wire cooling rack. Good dome shape, golden brown with extensive crust blistering. Score visible on the side of the loaf."
+    }
+  ]
+}
