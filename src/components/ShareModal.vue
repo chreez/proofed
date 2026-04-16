@@ -92,9 +92,24 @@ function renderQrLabel(): void {
     if (!qrCanvas) return
 
     const qrSize = 256
-    const pad = 24
-    const brandWidth = 240
-    const labelWidth = pad + qrSize + pad + brandWidth + pad
+    const pad = 20
+    const gap = 16
+    const fontSize = 48
+
+    // Measure text to size the right column
+    const reheatText = 'reheat'
+    const measure = document.createElement('canvas').getContext('2d')
+    let reheatWidth: number
+    if (measure) {
+      measure.font = `bold ${fontSize}px "JetBrains Mono", monospace`
+      reheatWidth = measure.measureText(reheatText).width
+    } else {
+      reheatWidth = fontSize * 0.6 * reheatText.length
+    }
+    const dotRadius = 5
+
+    const rightColWidth = reheatWidth + dotRadius * 2 + 12
+    const labelWidth = pad + qrSize + gap + rightColWidth + pad
     const labelHeight = qrSize + pad * 2
 
     const label = document.createElement('canvas')
@@ -103,20 +118,26 @@ function renderQrLabel(): void {
     const ctx = label.getContext('2d')
     if (!ctx) return
 
+    // White background
     ctx.fillStyle = '#ffffff'
     ctx.fillRect(0, 0, labelWidth, labelHeight)
+
+    // QR code on left
     ctx.drawImage(qrCanvas, pad, pad, qrSize, qrSize)
 
-    const textX = pad + qrSize + pad
-    ctx.font = 'bold 48px "JetBrains Mono", monospace'
+    // "reheat" + accent dot, centered vertically
+    const textX = pad + qrSize + gap
+    const centerY = labelHeight / 2
+    ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`
     ctx.textBaseline = 'middle'
+    ctx.textAlign = 'left'
     ctx.fillStyle = INK
-    ctx.fillText('proofed', textX, labelHeight / 2)
-    const w = ctx.measureText('proofed').width
-    // Draw brand dot as explicit circle — canvas text rendering mangles the glyph
-    const dotRadius = 5
-    const dotX = textX + w + dotRadius + 4
-    const dotY = labelHeight / 2 + 12
+    ctx.fillText(reheatText, textX, centerY)
+
+    // Accent dot after "instructions" (brand dot)
+    // Accent dot after "reheat" (brand dot)
+    const dotX = textX + reheatWidth + dotRadius + 4
+    const dotY = centerY + fontSize * 0.2
     ctx.beginPath()
     ctx.arc(dotX, dotY, dotRadius, 0, Math.PI * 2)
     ctx.fillStyle = ACCENT
@@ -242,7 +263,7 @@ defineExpose({ open, close, isOpen })
           <div v-if="qrImageSrc" class="flex justify-center mb-4">
             <img
               :src="qrImageSrc"
-              :alt="`QR label for ${recipeName}`"
+              :alt="`Reheat instructions QR code for ${recipeName}`"
               class="w-full"
               style="-webkit-touch-callout: default;"
               data-testid="share-qr-label"

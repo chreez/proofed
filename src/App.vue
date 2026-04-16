@@ -39,6 +39,7 @@ import DemoStats from '@/components/DemoStats.vue'
 import DemoStatsBlock from '@/components/DemoStatsBlock.vue'
 import DemoBakeStatsShapes from '@/components/DemoBakeStatsShapes.vue'
 import DemoStateNoteTables from '@/components/DemoStateNoteTables.vue'
+import DemoQrLabelVariants from '@/components/DemoQrLabelVariants.vue'
 import StatsPage from '@/components/StatsPage.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
@@ -476,6 +477,7 @@ watch(() => route.hash, (newHash) => {
         <DemoStatsBlock v-else-if="route.name === 'stats-block-demo'" />
         <DemoBakeStatsShapes v-else-if="route.name === 'bake-stats-shapes-demo'" />
         <DemoStateNoteTables v-else-if="route.name === 'state-note-tables-demo'" />
+        <DemoQrLabelVariants v-else-if="route.name === 'qr-label-variants-demo'" />
         <DemoSharedMode v-else />
       </template>
 

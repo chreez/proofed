@@ -114,6 +114,12 @@ const router = createRouter({
       meta: { showIndex: false, demoPage: true }
     },
     {
+      path: '/demo/qr-label-variants',
+      name: 'qr-label-variants-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
+    {
       path: '/demo/state-note-tables',
       name: 'state-note-tables-demo',
       component: EmptyRouteView,
