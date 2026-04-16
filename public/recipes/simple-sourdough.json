@@ -3959,6 +3959,177 @@
         ]
       },
       "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-15\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-14T19:02:23.928Z\",\n        \"type\": \"note\",\n        \"value\": \"single loaf.  test. 75.4. ambient 54% humidity\"\n      },\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-14T19:03:02.272Z\",\n        \"type\": \"note\",\n        \"value\": \"500 350 grams 10 grams salt. 100g startrr\"\n      }\n    ],\n    \"ADD_SALT\": [\n      {\n        \"stepId\": \"ADD_SALT\",\n        \"timestamp\": \"2026-04-14T19:14:50.300Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Take aliquot sample after incorporating salt\",\n        \"value\": \"77.9 dough temp\"\n      }\n    ],\n    \"FOLD_1\": [\n      {\n        \"stepId\": \"FOLD_1\",\n        \"timestamp\": \"2026-04-14T19:44:38.198Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4 after adding salt waiting 30 minutes. aliquot sample slightly overfilled at 10%\"\n      }\n    ],\n    \"FOLD_2\": [\n      {\n        \"stepId\": \"FOLD_2\",\n        \"timestamp\": \"2026-04-14T20:18:34.476Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4\"\n      },\n      {\n        \"stepId\": \"FOLD_2\",\n        \"timestamp\": \"2026-04-14T20:18:47.688Z\",\n        \"type\": \"note\",\n        \"value\": \"15% aliquot\"\n      }\n    ],\n    \"FOLD_3\": [\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T20:58:14.159Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4\"\n      },\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T21:41:57.423Z\",\n        \"type\": \"note\",\n        \"value\": \"77.2 third s and f\"\n      },\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T21:42:03.422Z\",\n        \"type\": \"note\",\n        \"value\": \"waiting an hour or so\"\n      }\n    ],\n    \"TURN_OUT\": [\n      {\n        \"stepId\": \"TURN_OUT\",\n        \"timestamp\": \"2026-04-14T23:50:12.820Z\",\n        \"type\": \"note\",\n        \"value\": \"70% aliquot reading. turning out dough. fell asleep but dough temp is low enough that 70% is probably fine.\"\n      }\n    ],\n    \"BUILD_TENSION\": [\n      {\n        \"stepId\": \"BUILD_TENSION\",\n        \"timestamp\": \"2026-04-15T00:21:45.184Z\",\n        \"type\": \"note\",\n        \"value\": \"967g one bread. resting for one hour\"\n      }\n    ]\n  },\n  \"generalNotes\": [\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-15T17:21:03.962Z\",\n      \"type\": \"note\",\n      \"value\": \"500 preheat. 480 uncovered started approx 16 minutes ago. pulling out in four minutes for uncovered remainder\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-15T17:50:08.147Z\",\n      \"type\": \"note\",\n      \"value\": \"bread out.  ended up doing spritz of water. 22 minutes total 425\"\n    }\n  ]\n}"
+    },
+    {
+      "date": "2026-04-16",
+      "start_date": "2026-04-15",
+      "version": "v3.6.0",
+      "actual_yield": {
+        "value": 1,
+        "unit": "loaves"
+      },
+      "summary": "Seventeenth bake, single loaf. Starter wouldn't float — biggest difference vs yesterday. Abbreviated fold schedule with slap-and-fold practice instead of full process. Shaped at 70% aliquot. Second attempt at single-side scoring — better placement but flatter loaf and less ear development than yesterday. 208°F internal, good blistering, possible slight crust burn.",
+      "notes": [
+        "Single loaf, half recipe. Ambient 77.8°F, 49% humidity.",
+        "Starter wouldn't float — abnormal compared to yesterday. Still figuring out best timing for starter use.",
+        "80°F DDT after fermentolyse, 79.2°F after adding salt (20min rest).",
+        "Aliquot baseline at 20% (slightly overfilled tube). Still 20% at fold 2.",
+        "Only one formal fold logged (fold 2 at 6:21pm). Practiced slap and fold around 7pm instead of following normal fold schedule — messed around for a while and let dough rest. Acknowledges not following process correctly and being lazy about turning dough out.",
+        "Thinks dough development suffered — could improve by working dough until it feels \"right\" instead of stopping halfway.",
+        "Shaped at 70% aliquot (~10:17pm). Used only small bench scraper, practiced walking dough and tracking top/bottom.",
+        "Fridge ~11pm. Preheat 500°F/1hr, covered 480°F/20min, uncovered 425°F/22min. Single side score — attempt 2, better placement than yesterday.",
+        "208°F internal temp at pull. Noted bread should continue to cook during cooling. Considered boosting uncovered to 430°F, but then noticed possible slight crust burn.",
+        "Result: flatter than yesterday, blistering good, ear development not what he wanted. Unhappy starter likely the biggest factor vs yesterday's bake."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-04-16/finished-loaf-side-angle-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-16/finished-loaf-side-angle-400w.webp",
+          "alt": "Side angle of finished sourdough boule on copper wire cooling rack. Single side score with modest ear lift, deep golden-brown crust with heavy blistering. Banneton flour rings visible. Slightly flatter profile than previous bake.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-16/finished-loaf-top-down-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-16/finished-loaf-top-down-400w.webp",
+          "alt": "Top-down view of finished sourdough boule on copper wire cooling rack. Banneton flour ring pattern clearly visible, heavy blistering throughout. Single side score with better placement than previous attempt. Deep golden-brown color.",
+          "usage": "process"
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Work dough until it feels \"right\" — don't stop halfway through fold development"
+        },
+        {
+          "text": "Figure out best starter timing — float test failed this bake"
+        },
+        {
+          "text": "Find better method for capturing bake notes during the process"
+        }
+      ],
+      "bake_stats": {
+        "dough_temps": [
+          {
+            "time": "2026-04-15 - 17:25",
+            "temp_f": 80
+          },
+          {
+            "time": "2026-04-15 - 17:49",
+            "temp_f": 79.2
+          },
+          {
+            "time": "2026-04-15 - 18:21",
+            "temp_f": 79.7
+          }
+        ],
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-04-15",
+            "temp_f": 77.8,
+            "note": "49% humidity"
+          }
+        ],
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 500,
+            "duration_min": 60
+          },
+          {
+            "stage": "covered",
+            "temp_f": 480,
+            "duration_min": 20
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 22
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-04-15 - 18:21",
+            "type": "stretch_fold",
+            "note": "fold 2 only; informal slap-and-fold practice at 7pm not counted"
+          }
+        ],
+        "aliquot_rises": [
+          {
+            "time": "2026-04-15 - 17:48",
+            "rise_pct": 20,
+            "stage": "bulk",
+            "note": "baseline, slightly overfilled"
+          },
+          {
+            "time": "2026-04-15 - 18:21",
+            "rise_pct": 20,
+            "stage": "bulk",
+            "note": "confirmed baseline"
+          },
+          {
+            "time": "2026-04-15 - 22:17",
+            "rise_pct": 70,
+            "stage": "bulk"
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "duration_min": 43,
+            "note": "Room temp after shaping"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-04-15 - 23:00",
+            "end": "2026-04-16 - 07:20",
+            "duration_hours": 8.3,
+            "note": "Straight from fridge to oven"
+          }
+        ]
+      },
+      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-16\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-15T22:24:50.125Z\",\n        \"type\": \"note\",\n        \"value\": \"ambient kitchen temp is 77.8 49% humidity\"\n      }\n    ],\n    \"REST_FERMENTOLYSE\": [\n      {\n        \"stepId\": \"REST_FERMENTOLYSE\",\n        \"timestamp\": \"2026-04-15T22:25:25.092Z\",\n        \"type\": \"note\",\n        \"value\": \"80 degree dough temp. waiting 20 minutes to add salt\"\n      }\n    ],\n    \"ADD_SALT\": [\n      {\n        \"stepId\": \"ADD_SALT\",\n        \"timestamp\": \"2026-04-15T22:48:43.577Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Take aliquot sample after incorporating salt\",\n        \"value\": \"20% aliquot sample. just pulled a little too much through tube.\"\n      },\n      {\n        \"stepId\": \"ADD_SALT\",\n        \"timestamp\": \"2026-04-16T00:00:16.866Z\",\n        \"type\": \"note\",\n        \"value\": \"practiced slap and folding. letting sit for a bit.\"\n      }\n    ],\n    \"FOLD_2\": [\n      {\n        \"stepId\": \"FOLD_2\",\n        \"timestamp\": \"2026-04-15T23:21:24.608Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"79.7. aliquot baseline at 20%\"\n      }\n    ],\n    \"COOL_ON_RACK\": [\n      {\n        \"stepId\": \"COOL_ON_RACK\",\n        \"timestamp\": \"2026-04-16T14:14:32.770Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Rate crust: color, ear development, blistering\",\n        \"value\": \"ear development perhaps not exactly what i want. blistering for sure. starter was not happy at the start of this bake. perhaps the biggest callout compared to yesterdays.\"\n      }\n    ]\n  },\n  \"generalNotes\": [\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-15T22:49:05.084Z\",\n      \"type\": \"note\",\n      \"value\": \"added salt. 79.2 degrees dough temp\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T03:17:50.280Z\",\n      \"type\": \"note\",\n      \"value\": \"forgot to note when i finished shaping. i'll double check dough and put in fridge by feel. \\n\\ni ended up shaping when aliquot read 70%. just to mess with the dough some more. i practiced walking dough and making note of the top and bottom of the dough. used only the small bench scraper.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T13:39:25.583Z\",\n      \"type\": \"note\",\n      \"value\": \"started the bake process earlier. i'm already at uncover step now. did single score on the side. attempt two of non cross pattern. upon uncover of the bread lowered oven to 425. will cook for 22ish minutes. i baked covered at 480 for 20. preheated at 500 for an hour\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T14:04:34.782Z\",\n      \"type\": \"note\",\n      \"value\": \"compared to yesterdays bake kinda looks flat. but the scoring looks better placed.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T14:04:51.302Z\",\n      \"type\": \"note\",\n      \"value\": \"bread out of the oven. full bake time was 425 for 22 minutes.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T14:05:50.596Z\",\n      \"type\": \"note\",\n      \"value\": \"208 internal temp when pulling it out. but should continue to cook for the next hour. can possibly boost cook temp to 430\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T14:13:51.897Z\",\n      \"type\": \"note\",\n      \"value\": \"perhaps slightly burned crust. unsure\"\n    }\n  ]\n}",
+      "cost": {
+        "total": 1.27,
+        "perServing": 0.64,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lbs",
+            "amount": 500,
+            "unit": "g",
+            "cost": 1.21
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 350,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 100,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt 17.6 oz",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.06
+          }
+        ]
+      }
     }
   ],
   "research": {

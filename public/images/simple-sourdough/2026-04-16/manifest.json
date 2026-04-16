@@ -1,0 +1,19 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-04-16",
+  "processedAt": "2026-04-16T15:44:00.301Z",
+  "photos": [
+    {
+      "name": "finished-loaf-side-angle",
+      "thumb": "finished-loaf-side-angle-400w.webp",
+      "src": "finished-loaf-side-angle-800w.webp",
+      "summary": "Side angle of finished sourdough boule on copper wire cooling rack. Single side score visible with modest ear lift. Deep golden-brown crust with heavy blistering across the surface. Banneton flour ring pattern visible. Slightly flatter profile than previous bake."
+    },
+    {
+      "name": "finished-loaf-top-down",
+      "thumb": "finished-loaf-top-down-400w.webp",
+      "src": "finished-loaf-top-down-800w.webp",
+      "summary": "Top-down view of finished sourdough boule on copper wire cooling rack. Banneton flour ring pattern clearly visible across the surface. Heavy blistering throughout. Single side score line visible from above with better placement than previous attempt. Deep golden-brown color."
+    }
+  ]
+}
