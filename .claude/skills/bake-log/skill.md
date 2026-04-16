@@ -554,6 +554,19 @@ If a draft/task existed for this bake session:
 - **Multi-day bulks → multiple `bulk_ambient_temps` entries** — one per room-temp day, never a single scalar collapsing multiple days.
 - **Stats correction in echo check is critical** — the user must see parsed values (not just counts) and confirm before write.
 
+### Stats Gap Detection (MANDATORY)
+After parsing all structured stats, scan for **time gaps >1 hour** between known timestamps where a trackable phase is missing. Common gaps:
+- **Proof timing** — gap between last fold/turn-out and bake start usually means bench rest + cold retard. Work backwards from bake start to infer.
+- **Bench rest** — gap between shaping and fridge entry
+- **Cold retard** — gap between fridge entry and bake preheat
+
+When a gap is detected:
+1. **Flag it** — notify the user: "I see a ~{N} hour gap between {event A} and {event B}. This is likely {bench rest / cold retard / etc}."
+2. **Best-effort inference** — propose timing based on available timestamps (e.g., "Shaped at 12:21am, baked at ~4:45pm → ~15.5hr cold retard"). Present the inference.
+3. **Quiz the user** — ask to confirm or correct: "Does that sound right? Did you pull from fridge to warm up, or go straight to oven?"
+4. **Record confirmed data** — add the missing phase(s) to `bake_stats` only after user confirms.
+5. **Never silently skip** — untracked phases that would appear as bake stat tags on the recipe page must be surfaced. Missing data is acceptable if the user confirms they don't have it; unasked gaps are not.
+
 ## Example Session: Structured Capture End-to-End
 
 Realistic simple-sourdough flow. The user pastes dictated notes, the agent parses both prose and structured stats.

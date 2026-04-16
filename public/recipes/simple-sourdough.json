@@ -3781,7 +3781,7 @@
         "value": 1,
         "unit": "loaves"
       },
-      "summary": "Sixteenth bake, single loaf (half recipe). Three stretch and folds, fell asleep during bulk and turned out at 70% aliquot. First attempt at single-side scoring — went too far to the side for the full ear effect. Covered 480°F/20min, uncovered 420°F/22min with rotation and water spritz method. Good color with lots of ferment bubbles on the crust — thinking the slightly longer uncovered time is driving the deeper color. Haven't cut yet.",
+      "summary": "Sixteenth bake, single loaf (half recipe). Three stretch and folds, fell asleep during bulk and turned out at 70% aliquot. First attempt at single-side scoring — went too far to the side for the full ear effect. Covered 480°F/20min, uncovered 420°F/22min with rotation and water spritz method. Good color with lots of ferment bubbles on the crust. Open, even crumb with well-distributed hole sizes — one of the best fermentations across all naturally leavened bakes. Side cut may have contributed to the strong oven spring.",
       "notes": [
         "Single loaf, half recipe: 500g flour, 350g water, 10g salt, 100g starter. Ambient 75.4°F, 54% humidity.",
         "77.9°F dough temp after adding salt at 2:14pm.",
@@ -3790,7 +3790,8 @@
         "Fell asleep during bulk — turned out at 6:50pm at 70% aliquot. Dough temp low enough that 70% is probably fine.",
         "967g total dough weight. Rested one hour after shaping.",
         "Single score instead of cross — may have hit too far to the side for the full ear effect. Needs more practice.",
-        "Bake: preheat 500°F, covered 480°F/20min, uncovered 420°F/22min total (9+9+4 with rotations and water spritz between each). Good color, lots of ferment bubbles on outside."
+        "Bake: preheat 500°F, covered 480°F/20min, uncovered 420°F/22min total (9+9+4 with rotations and water spritz between each). Good color, lots of ferment bubbles on outside.",
+        "Crumb: open, even holes with well-distributed sizes. Fluffy texture, good rise and oven spring. Possibly the single side score helped. One of the most successful fermentations for naturally leavened breads."
       ],
       "photos": [
         {
@@ -3800,47 +3801,118 @@
           "usage": "process"
         },
         {
-          "src": "/images/simple-sourdough/2026-04-15/finished-loaf-wide-cooling-rack-800w.webp",
-          "thumb": "/images/simple-sourdough/2026-04-15/finished-loaf-wide-cooling-rack-400w.webp",
-          "alt": "Wide shot of finished sourdough boule on copper wire cooling rack. Good dome shape, golden brown with extensive crust blistering. Score visible on the side.",
-          "usage": "process"
-        },
-        {
           "src": "/images/simple-sourdough/2026-04-15/finished-loaf-closeup-ear-800w.webp",
           "thumb": "/images/simple-sourdough/2026-04-15/finished-loaf-closeup-ear-400w.webp",
           "alt": "Close-up of finished sourdough boule on copper wire cooling rack. Deep golden brown crust with heavy blistering across the surface. Single score visible with slight ear lift.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-15/crumb-cross-section-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-15/crumb-cross-section-400w.webp",
+          "alt": "Cross-section of the loaf cut in half on a cutting board, showing an open, evenly distributed crumb with a mix of medium and small holes and a thin golden crust.",
           "usage": "hero"
         }
       ],
       "next_time": [
-        { "text": "Practice single-side scoring placement — went too far to the side this time" },
-        { "text": "Check internal temp (keep forgetting)" }
+        {
+          "text": "Practice single-side scoring placement — went too far to the side this time"
+        },
+        {
+          "text": "Check internal temp (keep forgetting)"
+        }
       ],
       "bake_stats": {
         "dough_temps": [
-          { "time": "2026-04-14 - 14:14", "temp_f": 77.9 },
-          { "time": "2026-04-14 - 14:44", "temp_f": 77.4 },
-          { "time": "2026-04-14 - 15:18", "temp_f": 77.4 },
-          { "time": "2026-04-14 - 15:58", "temp_f": 77.4 },
-          { "time": "2026-04-14 - 16:41", "temp_f": 77.2 }
+          {
+            "time": "2026-04-14 - 14:14",
+            "temp_f": 77.9
+          },
+          {
+            "time": "2026-04-14 - 14:44",
+            "temp_f": 77.4
+          },
+          {
+            "time": "2026-04-14 - 15:18",
+            "temp_f": 77.4
+          },
+          {
+            "time": "2026-04-14 - 15:58",
+            "temp_f": 77.4
+          },
+          {
+            "time": "2026-04-14 - 16:41",
+            "temp_f": 77.2
+          }
         ],
         "bulk_ambient_temps": [
-          { "date": "2026-04-14", "temp_f": 75.4, "note": "54% humidity" }
+          {
+            "date": "2026-04-14",
+            "temp_f": 75.4,
+            "note": "54% humidity"
+          }
         ],
         "bake_phases": [
-          { "stage": "preheat", "temp_f": 500 },
-          { "stage": "covered", "temp_f": 480, "duration_min": 20 },
-          { "stage": "uncovered", "temp_f": 420, "duration_min": 22, "note": "9+9+4 with rotation and water spritz between each" }
+          {
+            "stage": "preheat",
+            "temp_f": 500
+          },
+          {
+            "stage": "covered",
+            "temp_f": 480,
+            "duration_min": 20
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 420,
+            "duration_min": 22,
+            "note": "9+9+4 with rotation and water spritz between each"
+          }
         ],
         "stretch_folds": [
-          { "time": "2026-04-14 - 14:44", "type": "stretch_fold" },
-          { "time": "2026-04-14 - 15:18", "type": "stretch_fold" },
-          { "time": "2026-04-14 - 16:41", "type": "stretch_fold" }
+          {
+            "time": "2026-04-14 - 14:44",
+            "type": "stretch_fold"
+          },
+          {
+            "time": "2026-04-14 - 15:18",
+            "type": "stretch_fold"
+          },
+          {
+            "time": "2026-04-14 - 16:41",
+            "type": "stretch_fold"
+          }
         ],
         "aliquot_rises": [
-          { "time": "2026-04-14 - 14:44", "rise_pct": 10, "stage": "bulk", "note": "slightly overfilled sample" },
-          { "time": "2026-04-14 - 15:18", "rise_pct": 15, "stage": "bulk" },
-          { "time": "2026-04-14 - 18:50", "rise_pct": 70, "stage": "bulk" }
+          {
+            "time": "2026-04-14 - 14:44",
+            "rise_pct": 10,
+            "stage": "bulk",
+            "note": "slightly overfilled sample"
+          },
+          {
+            "time": "2026-04-14 - 15:18",
+            "rise_pct": 15,
+            "stage": "bulk"
+          },
+          {
+            "time": "2026-04-14 - 18:50",
+            "rise_pct": 70,
+            "stage": "bulk"
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "duration_min": 60,
+            "note": "Room temp after shaping"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-04-15 - 01:21",
+            "end": "2026-04-15 - 16:45",
+            "duration_hours": 15.5,
+            "note": "Straight from fridge to oven, no warmup"
+          }
         ]
       },
       "cost": {
@@ -4018,12 +4090,31 @@
     ]
   },
   "scaling": {
-    "tested_range": { "min": 0.5, "max": 1 },
+    "tested_range": {
+      "min": 0.5,
+      "max": 1
+    },
     "ingredients": [
-      { "id": "bread_flour", "behavior": "linear", "note": "Baker's math base — scales with batch size" },
-      { "id": "water", "behavior": "linear", "note": "Maintains 70% hydration at all scales" },
-      { "id": "starter", "behavior": "linear", "note": "20% inoculation ratio preserved" },
-      { "id": "salt", "behavior": "linear", "note": "2% of flour weight" }
+      {
+        "id": "bread_flour",
+        "behavior": "linear",
+        "note": "Baker's math base — scales with batch size"
+      },
+      {
+        "id": "water",
+        "behavior": "linear",
+        "note": "Maintains 70% hydration at all scales"
+      },
+      {
+        "id": "starter",
+        "behavior": "linear",
+        "note": "20% inoculation ratio preserved"
+      },
+      {
+        "id": "salt",
+        "behavior": "linear",
+        "note": "2% of flour weight"
+      }
     ],
     "process_caveats": [
       "Half batch: single loaf, skip divide/second banneton steps",
@@ -4031,6 +4122,8 @@
       "Half batch: single Dutch oven bake, no sequential second loaf"
     ],
     "researched_date": "2026-04-15",
-    "sources": ["14 bakes at 1× (2-loaf), v2.0.0 was originally 1-loaf before scaling up"]
+    "sources": [
+      "14 bakes at 1× (2-loaf), v2.0.0 was originally 1-loaf before scaling up"
+    ]
   }
 }

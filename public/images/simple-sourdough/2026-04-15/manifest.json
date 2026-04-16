@@ -1,25 +1,31 @@
 {
   "recipeId": "simple-sourdough",
   "date": "2026-04-15",
-  "processedAt": "2026-04-15T18:34:16.055Z",
+  "processedAt": "2026-04-16T14:19:20.476Z",
   "photos": [
+    {
+      "name": "crumb-cross-section",
+      "thumb": "crumb-cross-section-400w.webp",
+      "src": "crumb-cross-section-800w.webp",
+      "summary": "Cross-section of the loaf cut in half on a cutting board, showing an open, evenly distributed crumb with a mix of medium and small holes and a thin golden crust."
+    },
     {
       "name": "dough-temp-check-bulk",
       "thumb": "dough-temp-check-bulk-400w.webp",
       "src": "dough-temp-check-bulk-800w.webp",
-      "summary": "Dough in glass mixing bowl with instant-read thermometer showing 77.4°F during bulk fermentation. Aliquot jar with red lid visible beside the bowl. Dough looks smooth and cohesive."
+      "summary": "Digital thermometer reading 77.4°F inserted into the dough during bulk fermentation, with the dough resting in a glass mixing bowl."
     },
     {
       "name": "finished-loaf-closeup-ear",
       "thumb": "finished-loaf-closeup-ear-400w.webp",
       "src": "finished-loaf-closeup-ear-800w.webp",
-      "summary": "Close-up of finished sourdough boule on copper wire cooling rack. Deep golden brown crust with heavy blistering across the surface. Single score visible with slight ear lift."
+      "summary": "Close-up of the baked loaf on a wire cooling rack, showing a single side score with a lifted ear, deep caramelized crust, and prominent fermentation blisters across the surface."
     },
     {
       "name": "finished-loaf-wide-cooling-rack",
       "thumb": "finished-loaf-wide-cooling-rack-400w.webp",
       "src": "finished-loaf-wide-cooling-rack-800w.webp",
-      "summary": "Wide shot of finished sourdough boule on copper wire cooling rack. Good dome shape, golden brown with extensive crust blistering. Score visible on the side of the loaf."
+      "summary": "Wide shot of the finished boule cooling on a round copper wire rack, showing golden-brown crust covered in fermentation blisters and a subtle score line on top."
     }
   ]
 }
