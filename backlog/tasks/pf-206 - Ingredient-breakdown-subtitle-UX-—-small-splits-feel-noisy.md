@@ -1,10 +1,10 @@
 ---
 id: PF-206
 title: Ingredient breakdown subtitle UX — small splits feel noisy
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-15 22:30'
-updated_date: '2026-04-15 22:39'
+updated_date: '2026-04-16 02:38'
 labels:
   - ux
 dependencies: []
@@ -26,3 +26,9 @@ When an ingredient has a breakdown (e.g., caster sugar: 4g yeast bloom, 36g doug
 - [ ] #5 UI-only change — no modifications to recipe JSON breakdown arrays
 - [ ] #6 All recipes with breakdowns render correctly — no regressions
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Investigated and demoed 4 techniques. User concluded the breakdown subtitle is fine — the initial confusion was situational, not a systemic UX issue. No code changes needed.
+<!-- SECTION:FINAL_SUMMARY:END -->
