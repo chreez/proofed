@@ -103,6 +103,10 @@ HEB {Store Name} (#{store-id}) — {Recipe Name}
 Total: ~${total}
 ```
 
+## Known Limitations
+
+- **HEB MCP returns curbside/online inventory, not shelf stock.** The API uses `shoppingContext: CURBSIDE_PICKUP` — a product showing "in stock" may not be on the physical shelf (and vice versa). Specialty non-food items (cookware, bakeware, gadgets) are especially unreliable. Warn the user: availability is approximate, not guaranteed.
+
 ## Rules
 
 - **User drives the list.** Never assume what they have or need — always ask.
