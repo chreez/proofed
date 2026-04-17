@@ -21,8 +21,13 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-04-16",
+      "summary": "Expanded confit garlic food safety notes with make-ahead overnight workflow and botulism risk clarification"
+    },
     {
       "version": "v1.0.0",
       "date": "2026-04-14",
@@ -262,9 +267,14 @@
           "source": "agent"
         },
         {
-          "text": "Food safety: refrigerate confit garlic within 2 hours. Never store at room temperature. Botulism risk is real with garlic in oil.",
+          "text": "Food safety: refrigerate confit garlic within 2 hours. Never store at room temperature — garlic submerged in oil is anaerobic, exactly what C. botulinum needs. Fridge temps halt toxin production. Safe up to 7 days refrigerated (FDA guideline). Once garlic is removed from oil and chopped, the anaerobic seal is broken and botulism risk is over.",
           "critical": true,
           "source": "agent"
+        },
+        {
+          "text": "Make-ahead overnight: confit evening before, cool, refrigerate submerged in oil. Next morning pull garlic out, chop, fold into dough. Flavor actually improves overnight.",
+          "critical": false,
+          "source": "user"
         }
       ]
     },
