@@ -1,0 +1,25 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-04-17",
+  "processedAt": "2026-04-17T13:17:08.976Z",
+  "photos": [
+    {
+      "name": "dough-in-bowl-during-bulk",
+      "thumb": "dough-in-bowl-during-bulk-400w.webp",
+      "src": "dough-in-bowl-during-bulk-800w.webp",
+      "summary": "Sourdough dough in glass mixing bowl on silicone pastry mat during bulk fermentation. Dough surface is smooth with light flour dusting. Bowl is on a wooden counter with red-ringed measurement guides visible on the mat."
+    },
+    {
+      "name": "focaccia-crumb-shot",
+      "thumb": "focaccia-crumb-shot-400w.webp",
+      "src": "focaccia-crumb-shot-800w.webp",
+      "summary": "Hand holding a cross-section slice of the focaccia showing dense, tight crumb with small uniform holes — white-bread texture throughout. Golden-brown crust visible around the edges. Hardwood floor in background."
+    },
+    {
+      "name": "focaccia-finished-on-rack",
+      "thumb": "focaccia-finished-on-rack-400w.webp",
+      "src": "focaccia-finished-on-rack-800w.webp",
+      "summary": "Finished focaccia loaf cooling on copper wire rack. Golden-brown top crust with visible flaky salt and Italian seasoning. Loaf pan shape, good rise. Living room visible in background with silicone pastry mat on counter."
+    }
+  ]
+}

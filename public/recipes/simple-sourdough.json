@@ -27,7 +27,9 @@
         "bulk_ambient_temps",
         "bake_phases",
         "stretch_folds",
-        "aliquot_rises"
+        "aliquot_rises",
+        "proof_phases",
+        "shape_time"
       ]
     }
   },
@@ -1451,6 +1453,7 @@
             "note": "50% target hit — preshape"
           }
         ],
+        "shape_time": "2026-02-19 - 20:30",
         "bake_phases": [
           {
             "stage": "preheat",
@@ -1684,6 +1687,7 @@
             "note": "60% target hit — preshape"
           }
         ],
+        "shape_time": "2026-02-26 - 20:30",
         "bake_phases": [
           {
             "stage": "preheat",
@@ -2694,6 +2698,7 @@
             "note": "30% rise hit at 73°F"
           }
         ],
+        "shape_time": "2026-03-18 - 03:51",
         "bake_phases": [
           {
             "stage": "preheat",
@@ -2996,6 +3001,7 @@
             "note": "60% rise — turned out"
           }
         ],
+        "shape_time": "2026-04-01 - 01:01",
         "bake_phases": [
           {
             "stage": "preheat",
@@ -3437,6 +3443,7 @@
             "stage": "bulk"
           }
         ],
+        "shape_time": "2026-04-09 - 15:38",
         "bake_phases": [
           {
             "stage": "preheat",
@@ -3652,6 +3659,7 @@
             "note": "holding"
           }
         ],
+        "shape_time": "2026-04-12 - 21:33",
         "bake_phases": [
           {
             "stage": "covered",
@@ -3900,6 +3908,7 @@
             "stage": "bulk"
           }
         ],
+        "shape_time": "2026-04-14 - 18:50",
         "proof_phases": [
           {
             "type": "bench_rest",
@@ -4071,6 +4080,7 @@
             "stage": "bulk"
           }
         ],
+        "shape_time": "2026-04-15 - 22:17",
         "proof_phases": [
           {
             "type": "bench_rest",
@@ -4130,6 +4140,115 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-04-17",
+      "start_date": "2026-04-16",
+      "version": "v3.6.0",
+      "aberration": true,
+      "aberration_note": "Sacrificed dough to practice Bertinet slap-and-fold — dough became unsalvageable, redirected to focaccia",
+      "summary": "Sacrificed dough to practice Bertinet slap-and-fold method. Lost dough progressively during practice — couldn't shape afterward. Redirected remainder to focaccia. Dense crumb, tasted nice.",
+      "notes": [
+        "12:43pm — Fermentolyse started. Ambient 78.8°F, 58% humidity. DDT 80.2°F.",
+        "AFK ~1.5 hours during fermentolyse. Planned to add salt on return.",
+        "2:21pm — Salt added. DDT 80.8°F. Aliquot pulled at 0%.",
+        "Counted salt incorporation stretch-and-fold as S&F 1.",
+        "2:52pm — S&F 2 done. DDT 80.8°F.",
+        "3:43pm — DDT 82.4°F, too warm. Moved dough to cooler area.",
+        "Decided to use dough to practice Bertinet slap-and-fold method. Dough could have become a decent loaf, but chose to sacrifice it for technique practice.",
+        "Practice was difficult — like practicing scales on guitar. Lost dough progressively the more he practiced. Very hard to get any sort of shape out of it afterward.",
+        "6:53pm — Redirected remainder to focaccia.",
+        "Focaccia: oiled pan, oiled fingers, oil on top with salt and Italian seasoning. 350°F for ~30 minutes.",
+        "~8pm — Focaccia out. Dense white-bread crumb, tasted nice."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-04-17/dough-in-bowl-during-bulk-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-17/dough-in-bowl-during-bulk-400w.webp",
+          "alt": "Sourdough dough in glass mixing bowl on silicone pastry mat during bulk fermentation. Dough surface is smooth with light flour dusting.",
+          "usage": "process"
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-17/focaccia-crumb-shot-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-17/focaccia-crumb-shot-400w.webp",
+          "alt": "Cross-section slice of the focaccia showing dense, tight crumb with small uniform holes — white-bread texture throughout. Golden-brown crust visible around the edges."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-17/focaccia-finished-on-rack-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-17/focaccia-finished-on-rack-400w.webp",
+          "alt": "Finished focaccia loaf cooling on copper wire rack. Golden-brown top crust with visible flaky salt and Italian seasoning. Loaf pan shape, good rise.",
+          "usage": "process"
+        }
+      ],
+      "next_time": [
+        { "text": "Practice Bertinet slap-and-fold again, but with commercial or fresh yeast instead of sourdough" },
+        { "text": "Ambient temp was 78.8°F — dough ran warm but wasn't the deciding factor this bake" }
+      ],
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-04-16 - 12:43", "temp_f": 80.2 },
+          { "time": "2026-04-16 - 14:21", "temp_f": 80.8 },
+          { "time": "2026-04-16 - 14:52", "temp_f": 80.8 },
+          { "time": "2026-04-16 - 15:43", "temp_f": 82.4 }
+        ],
+        "bulk_ambient_temps": [
+          { "date": "2026-04-16", "temp_f": 78.8, "note": "58% humidity" }
+        ],
+        "bake_phases": [
+          { "stage": "focaccia_redirect", "temp_f": 350, "duration_min": 30, "note": "Oiled pan, salt and Italian seasoning on top" }
+        ],
+        "stretch_folds": [
+          { "time": "2026-04-16 - 14:21", "type": "stretch_fold", "note": "salt incorporation, counted as S&F 1" },
+          { "time": "2026-04-16 - 14:52", "type": "stretch_fold", "note": "S&F 2" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-04-16 - 14:21", "rise_pct": 0, "stage": "bulk", "note": "baseline after salt" }
+        ]
+      },
+      "cost": {
+        "total": 1.33,
+        "perServing": 0.67,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour 10 lbs",
+            "amount": 500,
+            "unit": "g",
+            "cost": 1.21
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 350,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 100,
+            "unit": "g",
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt 17.6 oz",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.06
+          }
+        ]
+      },
+      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-17\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-16T17:43:14.006Z\",\n        \"type\": \"note\",\n        \"value\": \"ambient. 78.8 58% humidity\"\n      },\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-16T17:43:51.169Z\",\n        \"type\": \"note\",\n        \"value\": \"fermentolease started. will be afking for a bit so may miss direct 30 minute window. should be fine. dough temp 80.2 degrees. will add salt when i get back\"\n      }\n    ],\n    \"FOLD_1\": [\n      {\n        \"stepId\": \"FOLD_1\",\n        \"timestamp\": \"2026-04-16T19:26:07.354Z\",\n        \"type\": \"note\",\n        \"value\": \"i would count the stretching and folding when adding salt as s and f 1\"\n      }\n    ]\n  },\n  \"generalNotes\": [\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T19:21:09.502Z\",\n      \"type\": \"note\",\n      \"value\": \"80.8 degree dough temp after adding salt. aliquot pulled 0%\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T19:52:01.198Z\",\n      \"type\": \"note\",\n      \"value\": \"80.8 dough temp. s and fold done.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T20:43:03.625Z\",\n      \"type\": \"note\",\n      \"value\": \"82.4 degree dough temp. a little too warm. moving to cooler area. needs another stretch fold before resting.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T23:53:24.813Z\",\n      \"type\": \"note\",\n      \"value\": \"could be my first failure in a while. going to cook a foccacia tonight.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-17T02:06:04.610Z\",\n      \"type\": \"note\",\n      \"value\": \"foccaccia out of the oven almost an hour. will check crumb and taste for the hell of it\"\n    }\n  ]\n}"
     }
   ],
   "research": {
