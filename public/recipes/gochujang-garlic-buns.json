@@ -865,5 +865,70 @@
     "strategy": "Multi-agent parallel research with 9 agents (8 initial + 1 follow-up)",
     "sourceCount": 40,
     "date": "2026-04-14"
-  }
+  },
+  "cook_log": [
+    {
+      "date": "2026-04-17",
+      "start_date": "2026-04-16",
+      "version": "v1.1.0",
+      "summary": "First bake — taste was good but crumb was a bit dense. Needs more reps with enriched dough. Confit garlic came out tougher than expected. Lots of recipe step feedback captured for a future version bump.",
+      "notes": [
+        "5:33pm 4/16 — Started confit garlic in oven at 250°F for 2 hours, following a YouTube guide. Confit came out tougher than expected — unsure what target texture should be.",
+        "Made tangzhong at easier ratio: 100g water and 20g flour (yields extra). Referenced a YouTube tangzhong guide.",
+        "Mix-dough step felt overloaded — bouncing between different ingredients, mise en place wasn't helpful for this step's flow.",
+        "Forgot to start first rise timer.",
+        "Chopped confit garlic and folded into dough during first rise — timing made sense but could complicate batch cleaning.",
+        "Divided at ~79g per ball (recipe says 75g). Initially unsure about creating surface tension — let balls rest on mat, then shaped gloveless. Will improve with practice.",
+        "\"Prepared pan\" instruction was unclear — didn't know if it meant oiled, parchment, etc. Never figured it out.",
+        "11:24am — In oven at 350°F. Rotated at 15 min. Pulled at ~25 min — internal temp around 210°F (recipe exit condition says 190°F).",
+        "Applied honey-soy glaze, waited 5 min before butter application.",
+        "Crumb a bit dense but taste was good overall. Needs more reps with enriched dough. Wants confit chopped finer and more evenly distributed.",
+        "Want buns shaped more consistently — similar size and look across all 10. Probably needs more reps."
+      ],
+      "photos": [
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-17/crumb-shot-torn-bun-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-17/crumb-shot-torn-bun-400w.webp",
+          "alt": "Torn bun showing interior crumb — somewhat dense but golden orange from gochujang, visible garlic pieces",
+          "usage": "process"
+        },
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-17/glazed-buns-in-dish-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-17/glazed-buns-in-dish-400w.webp",
+          "alt": "All 10 gochujang garlic buns in glass dish — deep golden with honey-soy glaze and sesame seeds",
+          "usage": "hero"
+        }
+      ],
+      "cost": {
+        "costs": [
+          { "ingredientId": "garlic", "ingredientName": "Garlic Cloves", "sourceType": "heb", "sourceName": "Fresh Garlic", "recipeAmount": 25, "recipeUnit": "g", "packageSize": "Each", "packagePrice": 0.50, "cost": 0.25 },
+          { "ingredientId": "olive-oil", "ingredientName": "Extra Virgin Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Extra Virgin Olive Oil", "recipeAmount": 240, "recipeUnit": "g", "packageSize": "17 oz", "packagePrice": 6.68, "cost": 3.43 },
+          { "ingredientId": "bread-flour", "ingredientName": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "recipeAmount": 416, "recipeUnit": "g", "packageSize": "10 lbs", "packagePrice": 10.99, "cost": 1.01 },
+          { "ingredientId": "water", "ingredientName": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "recipeAmount": 90, "recipeUnit": "g", "packageSize": "negligible", "packagePrice": 0, "cost": 0 },
+          { "ingredientId": "instant-yeast", "ingredientName": "Instant Yeast (SAF Red)", "sourceType": "heb", "sourceName": "Red Star Quick-Rise Instant Dry Yeast", "recipeAmount": 7, "recipeUnit": "g", "packageSize": "3 ct", "packagePrice": 1.76, "cost": 0.59 },
+          { "ingredientId": "whole-milk", "ingredientName": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk", "recipeAmount": 120, "recipeUnit": "g", "packageSize": "1 pt", "packagePrice": 1.00, "cost": 0.25 },
+          { "ingredientId": "unsalted-butter", "ingredientName": "Unsalted Butter (dough + glaze)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "recipeAmount": 58, "recipeUnit": "g", "packageSize": "4 ct", "packagePrice": 3.98, "cost": 0.51 },
+          { "ingredientId": "caster-sugar", "ingredientName": "Caster Sugar", "sourceType": "heb", "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar", "recipeAmount": 40, "recipeUnit": "g", "packageSize": "2 lbs", "packagePrice": 2.48, "cost": 0.11 },
+          { "ingredientId": "fine-salt", "ingredientName": "Fine Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "recipeAmount": 5, "recipeUnit": "g", "packageSize": "17.6 oz", "packagePrice": 2.98, "cost": 0.03 },
+          { "ingredientId": "gochujang", "ingredientName": "Gochujang", "sourceType": "heb", "sourceName": "O'Food Gochujang Brown Rice Red Pepper Paste", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "17.6 oz", "packagePrice": 6.18, "cost": 0.37 },
+          { "ingredientId": "eggs", "ingredientName": "Large Eggs", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "recipeAmount": 100, "recipeUnit": "g", "packageSize": "12 ct", "packagePrice": 2.17, "cost": 0.36 },
+          { "ingredientId": "honey", "ingredientName": "Honey", "sourceType": "heb", "sourceName": "H-E-B Texas Wildflower Honey", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "12 oz", "packagePrice": 4.89, "cost": 0.43 },
+          { "ingredientId": "light-soy-sauce", "ingredientName": "Light Soy Sauce", "sourceType": "heb", "sourceName": "Kikkoman Soy Sauce", "recipeAmount": 10, "recipeUnit": "g", "packageSize": "5 oz", "packagePrice": 1.98, "cost": 0.14 },
+          { "ingredientId": "glaze-butter", "ingredientName": "Unsalted Butter (glaze)", "sourceType": "manual", "sourceName": "Included in dough butter entry", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "0g", "packagePrice": 0, "cost": 0 },
+          { "ingredientId": "sesame-seeds", "ingredientName": "Sesame Seeds", "sourceType": "heb", "sourceName": "H-E-B Sesame Seeds", "recipeAmount": 5, "recipeUnit": "g", "packageSize": "2.4 oz", "packagePrice": 2.78, "cost": 0.20 }
+        ],
+        "total": 7.68,
+        "perServing": 0.77,
+        "servings": 10
+      },
+      "next_time": [
+        { "text": "Chop confit garlic finer, distribute more evenly without overworking dough" },
+        { "text": "Research target texture for confit garlic — current result was tougher than expected", "source": "https://www.youtube.com/watch?v=-HcKWq7WY5E" },
+        { "text": "Consider using full bulb of garlic for better coverage per roll" },
+        { "text": "Consider lowering oven temp — internal hit 210°F at 25 min (recipe target 190°F)" },
+        { "text": "Figure out what \"prepared pan\" means for this recipe" },
+        { "text": "Work on consistent bun shaping — aim for uniform size and appearance across batch" }
+      ]
+    }
+  ]
 }
