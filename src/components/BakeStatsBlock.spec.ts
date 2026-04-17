@@ -209,6 +209,71 @@ describe('BakeStatsBlock — full-data high-confidence', () => {
 })
 
 /* ========================================================================
+ * shape_time / proof_phases bulk end derivation
+ * ====================================================================== */
+
+describe('BakeStatsBlock — bulk end derivation from shape_time', () => {
+  it('uses explicit shape_time for bulk duration', () => {
+    const stats: BakeStatsBlockData = {
+      ...highConfStats,
+      shape_time: '2026-04-01 - 18:00'
+    }
+    const wrapper = mount(BakeStatsBlock, {
+      props: { bake_stats: stats, bake_defaults: recipeDefaults }
+    })
+    const bulkPill = wrapper.find('[data-testid="bsb-pill-bulk"]')
+    // bulk: 08:00 → 18:00 = 10h (not 9h from last active timestamp at 17:00)
+    expect(bulkPill.text()).toContain('10h')
+  })
+
+  it('derives bulk end from proof_phases cold_retard - bench_rest', () => {
+    const stats: BakeStatsBlockData = {
+      ...highConfStats,
+      proof_phases: [
+        { type: 'bench_rest', duration_min: 60 },
+        { type: 'cold_retard', start: '2026-04-01 - 20:00' }
+      ]
+    }
+    const wrapper = mount(BakeStatsBlock, {
+      props: { bake_stats: stats, bake_defaults: recipeDefaults }
+    })
+    const bulkPill = wrapper.find('[data-testid="bsb-pill-bulk"]')
+    // bulk: 08:00 → (20:00 - 60min = 19:00) = 11h
+    expect(bulkPill.text()).toContain('11h')
+  })
+
+  it('uses cold_retard.start when bench_rest has no duration', () => {
+    const stats: BakeStatsBlockData = {
+      ...highConfStats,
+      proof_phases: [
+        { type: 'cold_retard', start: '2026-04-01 - 19:30' }
+      ]
+    }
+    const wrapper = mount(BakeStatsBlock, {
+      props: { bake_stats: stats, bake_defaults: recipeDefaults }
+    })
+    const bulkPill = wrapper.find('[data-testid="bsb-pill-bulk"]')
+    // bulk: 08:00 → 19:30 = 11h 30m
+    expect(bulkPill.text()).toContain('11h 30m')
+  })
+
+  it('proof tooltip uses shape_time for bulk/retard breakdown', () => {
+    const stats: BakeStatsBlockData = {
+      ...highConfStats,
+      shape_time: '2026-04-01 - 18:00'
+    }
+    const wrapper = mount(BakeStatsBlock, {
+      props: { bake_stats: stats, bake_defaults: recipeDefaults }
+    })
+    const proofPill = wrapper.find('[data-testid="bsb-pill-proof"]')
+    const tooltip = proofPill.find('.bsb-tooltip')
+    // bulk: 08:00 → 18:00 = 10h, retard: 18:00 → 08:45 = 14h 45m
+    expect(tooltip.text()).toContain('bulk 10h')
+    expect(tooltip.text()).toContain('retard 14h 45m')
+  })
+})
+
+/* ========================================================================
  * Mode 2 — Partial-data medium-confidence
  * ====================================================================== */
 

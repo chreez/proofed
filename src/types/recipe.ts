@@ -193,12 +193,25 @@ export interface AliquotRise {
   note?: string
 }
 
+export interface ProofPhase {
+  type: 'bench_rest' | 'cold_retard'
+  start?: string
+  end?: string
+  duration_min?: number
+  duration_hours?: number
+  note?: string
+}
+
 export interface BakeStatsBlock {
   dough_temps?: DoughTemp[]
   bulk_ambient_temps?: BulkAmbientTemp[]
   bake_phases?: BakePhase[]
   stretch_folds?: StretchFold[]
   aliquot_rises?: AliquotRise[]
+  proof_phases?: ProofPhase[]
+  /** When dough was turned out / preshaped — marks end of bulk fermentation.
+   * Format: `YYYY-MM-DD - HH:MM` */
+  shape_time?: string
   /**
    * Overall trustworthiness of the stats in this block.
    * - `high`: logged in real-time, reliable

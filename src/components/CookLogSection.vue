@@ -10,7 +10,7 @@ import type {
   BakeStatsBlock,
   DoughTemp,
   BakePhase,
-  AliquotRise
+  ProofPhase
 } from '@/types/recipe'
 import { sortedCookLog } from '@/composables/useCookLog'
 import {
@@ -185,6 +185,28 @@ function fmtBakeDuration(v: number | null | undefined): string {
   return `${v}m`
 }
 
+// --- Bulk end derivation ---
+// Bulk fermentation = leaven addition (first dough_temp) → preshape/turnout.
+// Convention: bulk ends when you divide/preshape the dough.
+//
+// Priority chain for bulk end:
+//   1. explicit shape_time on bake_stats
+//   2. derived from proof_phases (cold_retard.start − bench_rest.duration_min)
+//   3. fallback: last active bulk timestamp (dough_temps + folds + aliquot_rises)
+
+function deriveBulkEndMin(stats: BakeStatsBlock | undefined): number | null {
+  if (!stats) return null
+  if (stats.shape_time) return timeToMin(stats.shape_time)
+  const phases: ProofPhase[] = stats.proof_phases ?? []
+  const coldRetard = phases.find((p) => p.type === 'cold_retard')
+  const benchRest = phases.find((p) => p.type === 'bench_rest')
+  if (coldRetard?.start && benchRest?.duration_min) {
+    return timeToMin(coldRetard.start) - benchRest.duration_min
+  }
+  if (coldRetard?.start) return timeToMin(coldRetard.start)
+  return null
+}
+
 // --- Bulk stat ---
 interface BulkStat {
   duration: string   // display, e.g. "4h 20m"
@@ -200,19 +222,29 @@ function computeBulk(stats: BakeStatsBlock | undefined): BulkStat {
   const avg = samples.reduce((s, x) => s + x.temp_f, 0) / samples.length
   const avgDough = `${(Math.round(avg * 10) / 10).toFixed(1)}°F`
 
-  // Bulk end = last dough_temp OR first bulk aliquot_rise, whichever is later.
-  // Bulk start = first dough_temp (proxy for mix start).
+  // Bulk start = first dough_temp (proxy for leaven/mix time).
   const times = [...samples.map((x) => x.time)].sort()
-  let start = times[0]
-  let end = times[times.length - 1]
-  const bulkRise = (stats?.aliquot_rises ?? []).find((a) => a.stage === 'bulk')
-  if (bulkRise && timeToMin(bulkRise.time) > timeToMin(end)) {
-    end = bulkRise.time
+  const start = times[0]
+  const startMin = timeToMin(start)
+
+  // Bulk end: shape_time → proof_phases derivation → last active timestamp
+  const shapeEndMin = deriveBulkEndMin(stats)
+  let endMin: number
+  if (shapeEndMin !== null) {
+    endMin = shapeEndMin
+  } else {
+    const allBulkTimes = [
+      ...samples.map((x) => x.time),
+      ...(stats?.stretch_folds ?? []).map((f) => f.time),
+      ...(stats?.aliquot_rises ?? [])
+        .filter((a) => a.stage === 'bulk')
+        .map((a) => a.time)
+    ].sort((a, b) => timeToMin(a) - timeToMin(b))
+    endMin = timeToMin(allBulkTimes[allBulkTimes.length - 1])
   }
-  const mins = Math.max(0, minutesBetween(start, end))
+
+  const mins = Math.max(0, endMin - startMin)
   if (mins === 0) {
-    // Only one dough temp sample — no window to derive duration, but we still
-    // have an avg temp to show in the tooltip.
     return { duration: '—', avgDough, hasTooltip: true }
   }
   return { duration: fmtDurationLong(mins), avgDough, hasTooltip: true }
@@ -236,25 +268,28 @@ function computeProof(stats: BakeStatsBlock | undefined): ProofStat {
   const total = minutesBetween(start, oven)
   if (total <= 0) return { total: '—', detail: '' }
 
-  // Tooltip breakdown: bulk (mix → last dough_temp or first bulk aliquot_rise)
-  // · retard (bulk end → last aliquot_rise in fridge or 'preshape'/'final' rise)
-  // · final (retard end → oven)
-  // Only populate when the math is clean — otherwise omit the tooltip.
-  const rises: AliquotRise[] = stats?.aliquot_rises ?? []
+  // Tooltip breakdown: bulk (mix → shape_time) · retard (shape_time → oven)
+  // Uses same deriveBulkEndMin chain as computeBulk.
+  let bulkEndMinProof = deriveBulkEndMin(stats)
+  // Fallback: last active bulk timestamp (for entries without shape data)
+  if (bulkEndMinProof === null) {
+    const allBulkTimes = [
+      ...samples.map((x) => x.time),
+      ...(stats?.stretch_folds ?? []).map((f) => f.time),
+      ...(stats?.aliquot_rises ?? [])
+        .filter((a) => a.stage === 'bulk')
+        .map((a) => a.time)
+    ].sort((a, b) => timeToMin(a) - timeToMin(b))
+    if (allBulkTimes.length >= 2) {
+      bulkEndMinProof = timeToMin(allBulkTimes[allBulkTimes.length - 1])
+    }
+  }
   let detail = ''
-  if (rises.length >= 2) {
-    const sortedRises = [...rises].sort(
-      (a, b) => timeToMin(a.time) - timeToMin(b.time)
-    )
-    const bulkEnd = sortedRises[0].time
-    const retardEnd = sortedRises[sortedRises.length - 1].time
-    const bulkMin = Math.max(0, minutesBetween(start, bulkEnd))
-    const retardMin = Math.max(0, minutesBetween(bulkEnd, retardEnd))
-    const finalMin = Math.max(0, minutesBetween(retardEnd, oven))
-    if (bulkMin > 0 && retardMin > 0 && finalMin > 0) {
-      detail = `bulk ${fmtDurationLong(bulkMin)} · retard ${fmtDurationLong(
-        retardMin
-      )} · final ${fmtDurationLong(finalMin)}`
+  if (bulkEndMinProof !== null) {
+    const bulkMin = Math.max(0, bulkEndMinProof - timeToMin(start))
+    const retardMin = Math.max(0, timeToMin(oven) - bulkEndMinProof)
+    if (bulkMin > 0 && retardMin > 0) {
+      detail = `bulk ${fmtDurationLong(bulkMin)} · retard ${fmtDurationLong(retardMin)}`
     }
   }
   return { total: fmtDurationLong(total), detail }

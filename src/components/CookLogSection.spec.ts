@@ -853,7 +853,7 @@ describe('Compact bake stats (PF-177.9)', () => {
     expect(tt).not.toContain('22m')
   })
 
-  it('proof pill shows bulk/retard/final breakdown tooltip when data supports it', () => {
+  it('proof pill shows bulk/retard breakdown tooltip when data supports it', () => {
     const wrapper = mountWithStats(fullStats)
     const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
     const proofPill = pills[1]
@@ -862,7 +862,6 @@ describe('Compact bake stats (PF-177.9)', () => {
     const tt = tooltip.text()
     expect(tt).toContain('bulk')
     expect(tt).toContain('retard')
-    expect(tt).toContain('final')
   })
 
   it('renders em-dash for bulk pill when only one dough_temp exists', () => {
@@ -899,6 +898,65 @@ describe('Compact bake stats (PF-177.9)', () => {
     for (const p of pills) {
       expect(p.text()).toContain('—')
     }
+  })
+
+  // ----------------------------------------------------------------
+  // shape_time / proof_phases derivation for bulk end
+  // ----------------------------------------------------------------
+
+  it('uses explicit shape_time for bulk duration instead of last aliquot', () => {
+    // shape_time is 30 min after last aliquot — bulk should be longer
+    const statsWithShapeTime = {
+      ...fullStats,
+      shape_time: '2026-04-04 - 20:00'
+    }
+    const wrapper = mountWithStats(statsWithShapeTime)
+    const text = wrapper.text()
+    // bulk: 15:00 → 20:00 = 5h (not 4h 30m from aliquot at 19:30)
+    expect(text).toContain('5h')
+  })
+
+  it('derives bulk end from proof_phases when shape_time absent', () => {
+    const statsWithProofPhases = {
+      ...fullStats,
+      proof_phases: [
+        { type: 'bench_rest' as const, duration_min: 60 },
+        { type: 'cold_retard' as const, start: '2026-04-04 - 22:00' }
+      ]
+    }
+    const wrapper = mountWithStats(statsWithProofPhases)
+    const text = wrapper.text()
+    // bulk: 15:00 → (22:00 - 60min = 21:00) = 6h
+    expect(text).toContain('6h')
+  })
+
+  it('uses cold_retard.start as bulk end when bench_rest has no duration', () => {
+    const statsWithColdRetardOnly = {
+      ...fullStats,
+      proof_phases: [
+        { type: 'cold_retard' as const, start: '2026-04-04 - 21:30' }
+      ]
+    }
+    const wrapper = mountWithStats(statsWithColdRetardOnly)
+    const text = wrapper.text()
+    // bulk: 15:00 → 21:30 = 6h 30m
+    expect(text).toContain('6h 30m')
+  })
+
+  it('proof tooltip uses shape_time for bulk/retard breakdown', () => {
+    const statsWithShapeTime = {
+      ...fullStats,
+      shape_time: '2026-04-04 - 20:00'
+    }
+    const wrapper = mountWithStats(statsWithShapeTime)
+    const pills = wrapper.findAll('[data-testid="compact-bake-stats"] .cf-pill')
+    const proofPill = pills[1]
+    const tooltip = proofPill.find('.bundle-tooltip')
+    expect(tooltip.exists()).toBe(true)
+    const tt = tooltip.text()
+    // bulk: 15:00 → 20:00 = 5h, retard: 20:00 → 10:30 = 14h 30m
+    expect(tt).toContain('bulk 5h')
+    expect(tt).toContain('retard 14h 30m')
   })
 
   // ----------------------------------------------------------------
