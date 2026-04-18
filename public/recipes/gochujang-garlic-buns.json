@@ -21,8 +21,13 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-04-17",
+      "summary": "First bake feedback: tangzhong to round 100g/20g ratio, sheet pan with parchment, full bulb garlic confit, bench rest before shaping, clearer glaze steps"
+    },
     {
       "version": "v1.1.0",
       "date": "2026-04-16",
@@ -38,7 +43,7 @@
     { "id": "V1", "name": "Small Oven-Safe Dish", "reuse": "Confit garlic only" },
     { "id": "V2", "name": "Small Saucepan", "reuse": "Tangzhong → clean → warm milk for yeast bloom" },
     { "id": "V3", "name": "Large Mixing Bowl", "reuse": "Mix dough → first rise bowl" },
-    { "id": "V4", "name": "25cm Round Baking Pan", "reuse": "Arrange buns → proof → bake" },
+    { "id": "V4", "name": "Sheet Pan", "reuse": "Arrange buns → proof → bake" },
     { "id": "V5", "name": "Small Bowl", "reuse": "Bloom yeast → clean → egg wash → clean → glaze mix" }
   ],
   "stages": [
@@ -52,12 +57,12 @@
           {
             "id": "garlic",
             "name": "Garlic Cloves",
-            "total": 25,
+            "total": 50,
             "unit": "g",
             "breakdown": null,
             "sourcedFrom": "Tier 1: Dylan's official recipe + all recreations",
             "confidence": "high",
-            "rationale": "4-6 cloves; confit method universal across sources"
+            "rationale": "1 full bulb (~50g); confit method universal across sources. Use ~25g in dough, save rest for other uses"
           },
           {
             "id": "olive-oil",
@@ -83,10 +88,10 @@
           {
             "id": "bread-flour",
             "name": "Bread Flour",
-            "total": 416,
+            "total": 420,
             "unit": "g",
             "breakdown": [
-              { "label": "tangzhong", "amount": 16 },
+              { "label": "tangzhong", "amount": 20 },
               { "label": "dough", "amount": 400 }
             ],
             "sourcedFrom": "Tier 1: 7/8 sources use 400g bread flour + tangzhong flour",
@@ -96,12 +101,12 @@
           {
             "id": "water",
             "name": "Water",
-            "total": 90,
+            "total": 100,
             "unit": "g",
             "breakdown": null,
             "sourcedFrom": "Dylan's official tangzhong ratio",
             "confidence": "high",
-            "rationale": "90ml water for tangzhong (6 tbsp)"
+            "rationale": "100g water for tangzhong — clean 5:1 ratio with 20g flour"
           },
           {
             "id": "instant-yeast",
@@ -187,7 +192,7 @@
       "id": "SHAPE",
       "title": "Shape & Proof",
       "gather": null,
-      "states": ["fold-in-garlic", "divide-and-shape", "second-rise"]
+      "states": ["fold-in-garlic", "divide-and-shape", "bench-rest", "final-shape", "second-rise"]
     },
     {
       "id": "BAKE",
@@ -256,7 +261,7 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "garlic cloves", "amount": "25g (4-6 cloves)" },
+        { "name": "garlic cloves", "amount": "50g (~1 full bulb)" },
         { "name": "olive oil", "amount": "240g (~1 cup)" }
       ],
       "exit_condition": "Garlic cloves fully submerged in oil, oven preheating",
@@ -315,13 +320,13 @@
     {
       "id": "make-tangzhong",
       "title": "Make Tangzhong",
-      "direction": "Combine water and bread flour in a small saucepan. Whisk until smooth with no lumps. Heat over medium-low, stirring constantly, until mixture thickens to a thick paste (about 2 minutes). Remove from heat and cool completely.",
+      "direction": "Combine water and bread flour in a small saucepan. Whisk until smooth with no lumps. Heat over medium-low, stirring constantly, until mixture thickens to a thick paste (about 2 minutes). Remove from heat and cool completely. Add all tangzhong to dough — do not discard any.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "water", "amount": "90g" },
-        { "name": "bread flour", "amount": "16g" }
+        { "name": "water", "amount": "100g" },
+        { "name": "bread flour", "amount": "20g" }
       ],
       "exit_condition": "Thick, glossy paste that leaves trails when stirred. Cooled to room temperature.",
       "notes": [
@@ -410,17 +415,22 @@
     {
       "id": "fold-in-garlic",
       "title": "Fold in Confit Garlic",
-      "direction": "Turn dough out onto a lightly floured surface. Gently press to deflate. Spread chopped confit garlic evenly over the surface. Fold dough over itself several times to distribute garlic throughout.",
+      "direction": "Turn dough out onto a lightly floured surface. Gently press to deflate. Use ~6 cloves worth (~25g) of the chopped confit garlic — spread evenly over the surface. Save remaining confit garlic for other uses. Fold dough over itself several times to distribute garlic throughout.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "confit garlic", "amount": "all (chopped)" }
+        { "name": "confit garlic", "amount": "~25g (~6 cloves worth)" }
       ],
       "exit_condition": "Garlic pieces visibly distributed throughout dough, no large unworked pockets",
       "notes": [
         {
           "text": "Don't over-knead — just fold enough to distribute. The garlic pieces should create pockets of flavor in the finished crumb.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Save remaining confit garlic — great on toast, stirred into rice, or mixed into compound butter.",
           "critical": false,
           "source": "agent"
         }
@@ -429,18 +439,46 @@
     {
       "id": "divide-and-shape",
       "title": "Divide & Shape",
-      "direction": "Divide dough into 75g pieces (about 10 buns). Roll each piece into a tight ball: cup your hand over the dough and roll in a circular motion on an unfloured surface, tucking the dough under to create surface tension.",
-      "duration_min": 10,
+      "direction": "Divide dough into ~75g pieces (about 10 buns). Lightly pre-round each piece into a rough ball.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All pieces divided and loosely pre-rounded",
+      "notes": null
+    },
+    {
+      "id": "bench-rest",
+      "title": "Bench Rest",
+      "direction": "Cover loosely and let rest 5 minutes. This relaxes the gluten for easier final shaping.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough pieces rested 5 minutes, noticeably more relaxed and pliable",
+      "notes": null
+    },
+    {
+      "id": "final-shape",
+      "title": "Final Shape",
+      "direction": "Roll each piece into a tight ball: cup your hand over the dough and roll in a circular motion on an unfloured surface, tucking under to create surface tension.",
+      "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": null,
       "exit_condition": "All buns shaped into smooth, taut balls with visible surface tension",
-      "notes": null
+      "notes": [
+        {
+          "text": "Shape without gloves — bare hands give better feedback on surface tension.",
+          "critical": false,
+          "source": "user"
+        }
+      ]
     },
     {
       "id": "second-rise",
       "title": "Second Rise",
-      "direction": "Arrange buns in prepared pan, leaving small gaps between each. Cover loosely with plastic wrap and let rise until buns are puffy and nearly touching.",
+      "direction": "Line a sheet pan with parchment paper. Arrange buns leaving small gaps between each. Cover loosely with plastic wrap and let rise until buns are puffy and nearly touching.",
       "duration_min": 45,
       "timer": true,
       "parallel": false,
@@ -514,7 +552,7 @@
     {
       "id": "mix-glaze",
       "title": "Mix Honey-Soy Glaze",
-      "direction": "Stir together honey and light soy sauce in a small bowl until combined. Melt butter separately.",
+      "direction": "Stir together honey and light soy sauce in a small bowl until combined. In a separate container, melt butter. Keep the honey-soy mixture and melted butter separate — they are applied in sequence.",
       "duration_min": 2,
       "timer": false,
       "parallel": true,
@@ -563,21 +601,21 @@
     "calculatedDate": "2026-04-14",
     "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 2672,
-      "protein": 76,
+      "calories": 2686,
+      "protein": 77,
       "totalFat": 86,
       "saturatedFat": 39,
-      "carbohydrates": 397,
+      "carbohydrates": 400,
       "sugar": 77,
       "fiber": 13,
       "sodium": 3452
     },
     "perServing": {
-      "calories": 267.2,
-      "protein": 7.6,
+      "calories": 268.6,
+      "protein": 7.7,
       "totalFat": 8.6,
       "saturatedFat": 3.9,
-      "carbohydrates": 39.7,
+      "carbohydrates": 40.0,
       "sugar": 7.7,
       "fiber": 1.3,
       "sodium": 345.2
@@ -614,21 +652,21 @@
       {
         "ingredientId": "bread-flour",
         "ingredientName": "Bread Flour",
-        "amount": 416,
+        "amount": 420,
         "fdcId": 168896,
-        "calories": 1501.8,
-        "protein": 49.8,
-        "totalFat": 6.9,
-        "saturatedFat": 1,
-        "carbohydrates": 301.7,
+        "calories": 1516.2,
+        "protein": 50.3,
+        "totalFat": 7.0,
+        "saturatedFat": 1.0,
+        "carbohydrates": 304.6,
         "sugar": 1.3,
-        "fiber": 10,
-        "sodium": 8.3
+        "fiber": 10.1,
+        "sodium": 8.4
       },
       {
         "ingredientId": "water",
         "ingredientName": "Water",
-        "amount": 90,
+        "amount": 100,
         "calories": 0,
         "protein": 0,
         "totalFat": 0,
@@ -901,10 +939,10 @@
       ],
       "cost": {
         "costs": [
-          { "ingredientId": "garlic", "ingredientName": "Garlic Cloves", "sourceType": "heb", "sourceName": "Fresh Garlic", "recipeAmount": 25, "recipeUnit": "g", "packageSize": "Each", "packagePrice": 0.50, "cost": 0.25 },
+          { "ingredientId": "garlic", "ingredientName": "Garlic Cloves", "sourceType": "heb", "sourceName": "Fresh Garlic", "recipeAmount": 50, "recipeUnit": "g", "packageSize": "Each", "packagePrice": 0.50, "cost": 0.50 },
           { "ingredientId": "olive-oil", "ingredientName": "Extra Virgin Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Extra Virgin Olive Oil", "recipeAmount": 240, "recipeUnit": "g", "packageSize": "17 oz", "packagePrice": 6.68, "cost": 3.43 },
-          { "ingredientId": "bread-flour", "ingredientName": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "recipeAmount": 416, "recipeUnit": "g", "packageSize": "10 lbs", "packagePrice": 10.99, "cost": 1.01 },
-          { "ingredientId": "water", "ingredientName": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "recipeAmount": 90, "recipeUnit": "g", "packageSize": "negligible", "packagePrice": 0, "cost": 0 },
+          { "ingredientId": "bread-flour", "ingredientName": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "recipeAmount": 420, "recipeUnit": "g", "packageSize": "10 lbs", "packagePrice": 10.99, "cost": 1.02 },
+          { "ingredientId": "water", "ingredientName": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "recipeAmount": 100, "recipeUnit": "g", "packageSize": "negligible", "packagePrice": 0, "cost": 0 },
           { "ingredientId": "instant-yeast", "ingredientName": "Instant Yeast (SAF Red)", "sourceType": "heb", "sourceName": "Red Star Quick-Rise Instant Dry Yeast", "recipeAmount": 7, "recipeUnit": "g", "packageSize": "3 ct", "packagePrice": 1.76, "cost": 0.59 },
           { "ingredientId": "whole-milk", "ingredientName": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk", "recipeAmount": 120, "recipeUnit": "g", "packageSize": "1 pt", "packagePrice": 1.00, "cost": 0.25 },
           { "ingredientId": "unsalted-butter", "ingredientName": "Unsalted Butter (dough + glaze)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "recipeAmount": 58, "recipeUnit": "g", "packageSize": "4 ct", "packagePrice": 3.98, "cost": 0.51 },
@@ -917,8 +955,8 @@
           { "ingredientId": "glaze-butter", "ingredientName": "Unsalted Butter (glaze)", "sourceType": "manual", "sourceName": "Included in dough butter entry", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "0g", "packagePrice": 0, "cost": 0 },
           { "ingredientId": "sesame-seeds", "ingredientName": "Sesame Seeds", "sourceType": "heb", "sourceName": "H-E-B Sesame Seeds", "recipeAmount": 5, "recipeUnit": "g", "packageSize": "2.4 oz", "packagePrice": 2.78, "cost": 0.20 }
         ],
-        "total": 7.68,
-        "perServing": 0.77,
+        "total": 7.94,
+        "perServing": 0.79,
         "servings": 10
       },
       "next_time": [
