@@ -944,22 +944,21 @@
         }
       ],
       "cost": {
-        "costs": [
-          { "ingredientId": "garlic", "ingredientName": "Garlic Cloves", "sourceType": "heb", "sourceName": "Fresh Garlic", "recipeAmount": 50, "recipeUnit": "g", "packageSize": "Each", "packagePrice": 0.50, "cost": 0.50 },
-          { "ingredientId": "olive-oil", "ingredientName": "Extra Virgin Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Extra Virgin Olive Oil", "recipeAmount": 240, "recipeUnit": "g", "packageSize": "17 oz", "packagePrice": 6.68, "cost": 3.43 },
-          { "ingredientId": "bread-flour", "ingredientName": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "recipeAmount": 420, "recipeUnit": "g", "packageSize": "10 lbs", "packagePrice": 10.99, "cost": 1.02 },
-          { "ingredientId": "water", "ingredientName": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "recipeAmount": 100, "recipeUnit": "g", "packageSize": "negligible", "packagePrice": 0, "cost": 0 },
-          { "ingredientId": "instant-yeast", "ingredientName": "Instant Yeast (SAF Red)", "sourceType": "heb", "sourceName": "Red Star Quick-Rise Instant Dry Yeast", "recipeAmount": 7, "recipeUnit": "g", "packageSize": "3 ct", "packagePrice": 1.76, "cost": 0.59 },
-          { "ingredientId": "whole-milk", "ingredientName": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk", "recipeAmount": 120, "recipeUnit": "g", "packageSize": "1 pt", "packagePrice": 1.00, "cost": 0.25 },
-          { "ingredientId": "unsalted-butter", "ingredientName": "Unsalted Butter (dough + glaze)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "recipeAmount": 58, "recipeUnit": "g", "packageSize": "4 ct", "packagePrice": 3.98, "cost": 0.51 },
-          { "ingredientId": "caster-sugar", "ingredientName": "Caster Sugar", "sourceType": "heb", "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar", "recipeAmount": 40, "recipeUnit": "g", "packageSize": "2 lbs", "packagePrice": 2.48, "cost": 0.11 },
-          { "ingredientId": "fine-salt", "ingredientName": "Fine Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "recipeAmount": 5, "recipeUnit": "g", "packageSize": "17.6 oz", "packagePrice": 2.98, "cost": 0.03 },
-          { "ingredientId": "gochujang", "ingredientName": "Gochujang", "sourceType": "heb", "sourceName": "O'Food Gochujang Brown Rice Red Pepper Paste", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "17.6 oz", "packagePrice": 6.18, "cost": 0.37 },
-          { "ingredientId": "eggs", "ingredientName": "Large Eggs", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "recipeAmount": 100, "recipeUnit": "g", "packageSize": "12 ct", "packagePrice": 2.17, "cost": 0.36 },
-          { "ingredientId": "honey", "ingredientName": "Honey", "sourceType": "heb", "sourceName": "H-E-B Texas Wildflower Honey", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "12 oz", "packagePrice": 4.89, "cost": 0.43 },
-          { "ingredientId": "light-soy-sauce", "ingredientName": "Light Soy Sauce", "sourceType": "heb", "sourceName": "Kikkoman Soy Sauce", "recipeAmount": 10, "recipeUnit": "g", "packageSize": "5 oz", "packagePrice": 1.98, "cost": 0.14 },
-          { "ingredientId": "glaze-butter", "ingredientName": "Unsalted Butter (glaze)", "sourceType": "manual", "sourceName": "Included in dough butter entry", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "0g", "packagePrice": 0, "cost": 0 },
-          { "ingredientId": "sesame-seeds", "ingredientName": "Sesame Seeds", "sourceType": "heb", "sourceName": "H-E-B Sesame Seeds", "recipeAmount": 5, "recipeUnit": "g", "packageSize": "2.4 oz", "packagePrice": 2.78, "cost": 0.20 }
+        "items": [
+          { "ingredientId": "garlic", "name": "Garlic Cloves", "sourceType": "heb", "sourceName": "Fresh Garlic", "amount": 50, "unit": "g", "cost": 0.50 },
+          { "ingredientId": "olive-oil", "name": "Extra Virgin Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Extra Virgin Olive Oil", "amount": 240, "unit": "g", "cost": 3.43 },
+          { "ingredientId": "bread-flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "amount": 420, "unit": "g", "cost": 1.02 },
+          { "ingredientId": "water", "name": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "amount": 100, "unit": "g", "cost": 0 },
+          { "ingredientId": "instant-yeast", "name": "Instant Yeast (SAF Red)", "sourceType": "heb", "sourceName": "Red Star Quick-Rise Instant Dry Yeast", "amount": 7, "unit": "g", "cost": 0.59 },
+          { "ingredientId": "whole-milk", "name": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk", "amount": 120, "unit": "g", "cost": 0.25 },
+          { "ingredientId": "unsalted-butter", "name": "Unsalted Butter (dough + glaze)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 58, "unit": "g", "cost": 0.51 },
+          { "ingredientId": "caster-sugar", "name": "Caster Sugar", "sourceType": "heb", "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar", "amount": 40, "unit": "g", "cost": 0.11 },
+          { "ingredientId": "fine-salt", "name": "Fine Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 5, "unit": "g", "cost": 0.03 },
+          { "ingredientId": "gochujang", "name": "Gochujang", "sourceType": "heb", "sourceName": "O'Food Gochujang Brown Rice Red Pepper Paste", "amount": 30, "unit": "g", "cost": 0.37 },
+          { "ingredientId": "eggs", "name": "Large Eggs", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 100, "unit": "g", "cost": 0.36 },
+          { "ingredientId": "honey", "name": "Honey", "sourceType": "heb", "sourceName": "H-E-B Texas Wildflower Honey", "amount": 30, "unit": "g", "cost": 0.43 },
+          { "ingredientId": "light-soy-sauce", "name": "Light Soy Sauce", "sourceType": "heb", "sourceName": "Kikkoman Soy Sauce", "amount": 10, "unit": "g", "cost": 0.14 },
+          { "ingredientId": "sesame-seeds", "name": "Sesame Seeds", "sourceType": "heb", "sourceName": "H-E-B Sesame Seeds", "amount": 5, "unit": "g", "cost": 0.20 }
         ],
         "total": 7.94,
         "perServing": 0.79,
