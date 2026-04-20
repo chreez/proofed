@@ -40,19 +40,44 @@
     }
   ],
   "vessels": [
-    { "id": "V1", "name": "Small Oven-Safe Dish", "reuse": "Confit garlic only" },
-    { "id": "V2", "name": "Small Saucepan", "reuse": "Tangzhong → clean → warm milk for yeast bloom" },
-    { "id": "V3", "name": "Large Mixing Bowl", "reuse": "Mix dough → first rise bowl" },
-    { "id": "V4", "name": "Sheet Pan", "reuse": "Arrange buns → proof → bake" },
-    { "id": "V5", "name": "Small Bowl", "reuse": "Bloom yeast → clean → egg wash → clean → glaze mix" }
+    {
+      "id": "V1",
+      "name": "Small Oven-Safe Dish",
+      "reuse": "Confit garlic only"
+    },
+    {
+      "id": "V2",
+      "name": "Small Saucepan",
+      "reuse": "Tangzhong → clean → warm milk for yeast bloom"
+    },
+    {
+      "id": "V3",
+      "name": "Large Mixing Bowl",
+      "reuse": "Mix dough → first rise bowl"
+    },
+    {
+      "id": "V4",
+      "name": "Sheet Pan",
+      "reuse": "Arrange buns → proof → bake"
+    },
+    {
+      "id": "V5",
+      "name": "Small Bowl",
+      "reuse": "Bloom yeast → clean → egg wash → clean → glaze mix"
+    }
   ],
   "stages": [
     {
       "id": "CONFIT",
       "title": "Confit Garlic",
       "gather": {
-        "vessels": ["Small Oven-Safe Dish"],
-        "equipment": ["Kitchen Scale", "Paring Knife"],
+        "vessels": [
+          "Small Oven-Safe Dish"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Paring Knife"
+        ],
         "ingredients": [
           {
             "id": "garlic",
@@ -76,14 +101,28 @@
           }
         ]
       },
-      "states": ["confit-garlic-setup", "confit-garlic-bake", "chop-confit-garlic"]
+      "states": [
+        "confit-garlic-setup",
+        "confit-garlic-bake",
+        "chop-confit-garlic"
+      ]
     },
     {
       "id": "DOUGH",
       "title": "Tangzhong & Dough",
       "gather": {
-        "vessels": ["Small Saucepan", "Large Mixing Bowl", "Small Bowl"],
-        "equipment": ["Kitchen Scale", "Stand Mixer with Dough Hook", "Whisk", "Rubber Spatula", "Instant-Read Thermometer"],
+        "vessels": [
+          "Small Saucepan",
+          "Large Mixing Bowl",
+          "Small Bowl"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Stand Mixer with Dough Hook",
+          "Whisk",
+          "Rubber Spatula",
+          "Instant-Read Thermometer"
+        ],
         "ingredients": [
           {
             "id": "bread-flour",
@@ -91,8 +130,14 @@
             "total": 420,
             "unit": "g",
             "breakdown": [
-              { "label": "tangzhong", "amount": 20 },
-              { "label": "dough", "amount": 400 }
+              {
+                "label": "tangzhong",
+                "amount": 20
+              },
+              {
+                "label": "dough",
+                "amount": 400
+              }
             ],
             "sourcedFrom": "Tier 1: 7/8 sources use 400g bread flour + tangzhong flour",
             "confidence": "high",
@@ -144,8 +189,14 @@
             "total": 40,
             "unit": "g",
             "breakdown": [
-              { "label": "yeast bloom", "amount": 4 },
-              { "label": "dough", "amount": 36 }
+              {
+                "label": "yeast bloom",
+                "amount": 4
+              },
+              {
+                "label": "dough",
+                "amount": 36
+              }
             ],
             "sourcedFrom": "Tier 1: Dylan's official recipe",
             "confidence": "high",
@@ -177,8 +228,14 @@
             "total": 100,
             "unit": "g",
             "breakdown": [
-              { "label": "dough", "amount": 50 },
-              { "label": "egg wash", "amount": 50 }
+              {
+                "label": "dough",
+                "amount": 50
+              },
+              {
+                "label": "egg wash",
+                "amount": 50
+              }
             ],
             "sourcedFrom": "Tier 1: Dylan's official recipe",
             "confidence": "high",
@@ -186,26 +243,46 @@
           }
         ]
       },
-      "states": ["make-tangzhong", "bloom-yeast", "mix-dough", "knead-dough", "first-rise"]
+      "states": [
+        "make-tangzhong",
+        "bloom-yeast",
+        "mix-dough",
+        "knead-dough",
+        "first-rise"
+      ]
     },
     {
       "id": "SHAPE",
       "title": "Shape & Proof",
       "gather": null,
-      "states": ["fold-in-garlic", "divide-and-shape", "bench-rest", "final-shape", "second-rise"]
+      "states": [
+        "fold-in-garlic",
+        "divide-and-shape",
+        "bench-rest",
+        "final-shape",
+        "second-rise"
+      ]
     },
     {
       "id": "BAKE",
       "title": "Bake",
       "gather": null,
-      "states": ["score-and-wash", "bake-buns", "cool"]
+      "states": [
+        "score-and-wash",
+        "bake-buns",
+        "cool"
+      ]
     },
     {
       "id": "GLAZE",
       "title": "Honey-Soy Glaze (Optional)",
       "gather": {
-        "vessels": ["Small Bowl"],
-        "equipment": ["Pastry Brush"],
+        "vessels": [
+          "Small Bowl"
+        ],
+        "equipment": [
+          "Pastry Brush"
+        ],
         "ingredients": [
           {
             "id": "honey",
@@ -249,7 +326,10 @@
           }
         ]
       },
-      "states": ["mix-glaze", "apply-glaze"]
+      "states": [
+        "mix-glaze",
+        "apply-glaze"
+      ]
     }
   ],
   "states": [
@@ -261,8 +341,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "garlic cloves", "amount": "50g (~1 full bulb)" },
-        { "name": "olive oil", "amount": "240g (~1 cup)" }
+        {
+          "name": "garlic cloves",
+          "amount": "50g (~1 full bulb)"
+        },
+        {
+          "name": "olive oil",
+          "amount": "240g (~1 cup)"
+        }
       ],
       "exit_condition": "Garlic cloves fully submerged in oil, oven preheating",
       "notes": [
@@ -325,8 +411,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "water", "amount": "100g" },
-        { "name": "bread flour", "amount": "20g" }
+        {
+          "name": "water",
+          "amount": "100g"
+        },
+        {
+          "name": "bread flour",
+          "amount": "20g"
+        }
       ],
       "exit_condition": "Thick, glossy paste that leaves trails when stirred. Cooled to room temperature.",
       "notes": [
@@ -346,9 +438,18 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "whole milk", "amount": "120g (warmed)" },
-        { "name": "caster sugar", "amount": "4g" },
-        { "name": "instant yeast", "amount": "7g" }
+        {
+          "name": "whole milk",
+          "amount": "120g (warmed)"
+        },
+        {
+          "name": "caster sugar",
+          "amount": "4g"
+        },
+        {
+          "name": "instant yeast",
+          "amount": "7g"
+        }
       ],
       "exit_condition": "Yeast mixture foamy and actively bubbling",
       "notes": null
@@ -361,13 +462,34 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "bread flour", "amount": "400g" },
-        { "name": "caster sugar", "amount": "36g" },
-        { "name": "gochujang", "amount": "30g" },
-        { "name": "fine salt", "amount": "5g" },
-        { "name": "egg", "amount": "50g (1 large)" },
-        { "name": "unsalted butter", "amount": "28g (melted, cooled)" },
-        { "name": "tangzhong", "amount": "all" }
+        {
+          "name": "bread flour",
+          "amount": "400g"
+        },
+        {
+          "name": "caster sugar",
+          "amount": "36g"
+        },
+        {
+          "name": "gochujang",
+          "amount": "30g"
+        },
+        {
+          "name": "fine salt",
+          "amount": "5g"
+        },
+        {
+          "name": "egg",
+          "amount": "50g (1 large)"
+        },
+        {
+          "name": "unsalted butter",
+          "amount": "28g (melted, cooled)"
+        },
+        {
+          "name": "tangzhong",
+          "amount": "all"
+        }
       ],
       "exit_condition": "Shaggy dough formed, no dry flour visible. Dough will be sticky — this is expected.",
       "notes": [
@@ -420,7 +542,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "confit garlic", "amount": "~25g (~6 cloves worth)" }
+        {
+          "name": "confit garlic",
+          "amount": "~25g (~6 cloves worth)"
+        }
       ],
       "exit_condition": "Garlic pieces visibly distributed throughout dough, no large unworked pockets",
       "notes": [
@@ -500,7 +625,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "egg", "amount": "50g (1 large, beaten)" }
+        {
+          "name": "egg",
+          "amount": "50g (1 large, beaten)"
+        }
       ],
       "exit_condition": "All buns scored and evenly coated with egg wash",
       "notes": [
@@ -557,9 +685,18 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "honey", "amount": "30g" },
-        { "name": "light soy sauce", "amount": "10g" },
-        { "name": "unsalted butter", "amount": "30g (melted)" }
+        {
+          "name": "honey",
+          "amount": "30g"
+        },
+        {
+          "name": "light soy sauce",
+          "amount": "10g"
+        },
+        {
+          "name": "unsalted butter",
+          "amount": "30g (melted)"
+        }
       ],
       "exit_condition": "Honey-soy mixture smooth and uniform, butter melted",
       "notes": [
@@ -578,7 +715,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "sesame seeds", "amount": "5g" }
+        {
+          "name": "sesame seeds",
+          "amount": "5g"
+        }
       ],
       "exit_condition": "All buns coated with glaze, butter, and sesame seeds. Glossy finish visible.",
       "notes": [
@@ -945,32 +1085,157 @@
       ],
       "cost": {
         "items": [
-          { "ingredientId": "garlic", "name": "Garlic Cloves", "sourceType": "heb", "sourceName": "Fresh Garlic", "amount": 50, "unit": "g", "cost": 0.50 },
-          { "ingredientId": "olive-oil", "name": "Extra Virgin Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Extra Virgin Olive Oil", "amount": 240, "unit": "g", "cost": 3.43 },
-          { "ingredientId": "bread-flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "amount": 420, "unit": "g", "cost": 1.02 },
-          { "ingredientId": "water", "name": "Water", "sourceType": "rate", "sourceName": "Tap water (negligible)", "amount": 100, "unit": "g", "cost": 0 },
-          { "ingredientId": "instant-yeast", "name": "Instant Yeast (SAF Red)", "sourceType": "heb", "sourceName": "Red Star Quick-Rise Instant Dry Yeast", "amount": 7, "unit": "g", "cost": 0.59 },
-          { "ingredientId": "whole-milk", "name": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk", "amount": 120, "unit": "g", "cost": 0.25 },
-          { "ingredientId": "unsalted-butter", "name": "Unsalted Butter (dough + glaze)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 58, "unit": "g", "cost": 0.51 },
-          { "ingredientId": "caster-sugar", "name": "Caster Sugar", "sourceType": "heb", "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar", "amount": 40, "unit": "g", "cost": 0.11 },
-          { "ingredientId": "fine-salt", "name": "Fine Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 5, "unit": "g", "cost": 0.03 },
-          { "ingredientId": "gochujang", "name": "Gochujang", "sourceType": "heb", "sourceName": "O'Food Gochujang Brown Rice Red Pepper Paste", "amount": 30, "unit": "g", "cost": 0.37 },
-          { "ingredientId": "eggs", "name": "Large Eggs", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 100, "unit": "g", "cost": 0.36 },
-          { "ingredientId": "honey", "name": "Honey", "sourceType": "heb", "sourceName": "H-E-B Texas Wildflower Honey", "amount": 30, "unit": "g", "cost": 0.43 },
-          { "ingredientId": "light-soy-sauce", "name": "Light Soy Sauce", "sourceType": "heb", "sourceName": "Kikkoman Soy Sauce", "amount": 10, "unit": "g", "cost": 0.14 },
-          { "ingredientId": "sesame-seeds", "name": "Sesame Seeds", "sourceType": "heb", "sourceName": "H-E-B Sesame Seeds", "amount": 5, "unit": "g", "cost": 0.20 }
+          {
+            "ingredientId": "garlic",
+            "name": "Garlic Cloves",
+            "sourceType": "heb",
+            "sourceName": "Fresh Garlic",
+            "amount": 50,
+            "unit": "g",
+            "cost": 0.5
+          },
+          {
+            "ingredientId": "olive-oil",
+            "name": "Extra Virgin Olive Oil",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Extra Virgin Olive Oil",
+            "amount": 240,
+            "unit": "g",
+            "cost": 3.43
+          },
+          {
+            "ingredientId": "bread-flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 420,
+            "unit": "g",
+            "cost": 1.02
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water (negligible)",
+            "amount": 100,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "instant-yeast",
+            "name": "Instant Yeast (SAF Red)",
+            "sourceType": "heb",
+            "sourceName": "Red Star Quick-Rise Instant Dry Yeast",
+            "amount": 7,
+            "unit": "g",
+            "cost": 0.59
+          },
+          {
+            "ingredientId": "whole-milk",
+            "name": "Whole Milk",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Whole Milk",
+            "amount": 120,
+            "unit": "g",
+            "cost": 0.25
+          },
+          {
+            "ingredientId": "unsalted-butter",
+            "name": "Unsalted Butter (dough + glaze)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 58,
+            "unit": "g",
+            "cost": 0.51
+          },
+          {
+            "ingredientId": "caster-sugar",
+            "name": "Caster Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "amount": 40,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "fine-salt",
+            "name": "Fine Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 5,
+            "unit": "g",
+            "cost": 0.03
+          },
+          {
+            "ingredientId": "gochujang",
+            "name": "Gochujang",
+            "sourceType": "heb",
+            "sourceName": "O'Food Gochujang Brown Rice Red Pepper Paste",
+            "amount": 30,
+            "unit": "g",
+            "cost": 0.37
+          },
+          {
+            "ingredientId": "eggs",
+            "name": "Large Eggs",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs",
+            "amount": 100,
+            "unit": "g",
+            "cost": 0.36
+          },
+          {
+            "ingredientId": "honey",
+            "name": "Honey",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Texas Wildflower Honey",
+            "amount": 30,
+            "unit": "g",
+            "cost": 0.43
+          },
+          {
+            "ingredientId": "light-soy-sauce",
+            "name": "Light Soy Sauce",
+            "sourceType": "heb",
+            "sourceName": "Kikkoman Soy Sauce",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.14
+          },
+          {
+            "ingredientId": "sesame-seeds",
+            "name": "Sesame Seeds",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sesame Seeds",
+            "amount": 5,
+            "unit": "g",
+            "cost": 0.2
+          }
         ],
         "total": 7.94,
         "perServing": 0.79,
         "servings": 10
       },
       "next_time": [
-        { "text": "Chop confit garlic finer, distribute more evenly without overworking dough" },
-        { "text": "Research target texture for confit garlic — current result was tougher than expected", "source": "https://www.youtube.com/watch?v=-HcKWq7WY5E" },
-        { "text": "Consider using full bulb of garlic for better coverage per roll" },
-        { "text": "Consider lowering oven temp — internal hit 210°F at 25 min (recipe target 190°F)" },
-        { "text": "Figure out what \"prepared pan\" means for this recipe" },
-        { "text": "Work on consistent bun shaping — aim for uniform size and appearance across batch" }
+        {
+          "text": "Chop confit garlic finer, distribute more evenly without overworking dough"
+        },
+        {
+          "text": "Research target texture for confit garlic — current result was tougher than expected",
+          "source": "https://www.youtube.com/watch?v=-HcKWq7WY5E"
+        },
+        {
+          "text": "Consider using full bulb of garlic for better coverage per roll"
+        },
+        {
+          "text": "Consider lowering oven temp — internal hit 210°F at 25 min (recipe target 190°F)"
+        },
+        {
+          "text": "Figure out what \"prepared pan\" means for this recipe"
+        },
+        {
+          "text": "Work on consistent bun shaping — aim for uniform size and appearance across batch"
+        }
       ]
     },
     {
@@ -991,17 +1256,191 @@
         "Gochujang possibly too much — spicy on back of throat. Considering reducing amount.",
         "One bun bloomed/blistered rather than staying smooth — glaze absorbed deeper into the crumb. Prefers this. Thinking shallower format + more surface area = better glaze saturation."
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-19/dough-balls-in-muffin-tin-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-19/dough-balls-in-muffin-tin-400w.webp",
+          "alt": "12 shaped dough balls in muffin tin, pre-bake — warm orange tint from gochujang, light flour dusting, uniform 68g portions",
+          "usage": "process"
+        },
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-19/buns-proofed-in-oven-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-19/buns-proofed-in-oven-400w.webp",
+          "alt": "12 buns proofed in muffin tin in the oven — puffed well above tin edges, glossy golden-orange from egg wash",
+          "usage": "process"
+        },
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-19/glazed-buns-in-tupperware-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-19/glazed-buns-in-tupperware-400w.webp",
+          "alt": "All 12 finished buns in tupperware — golden brown with glossy honey-soy glaze, tall muffin-tin shape",
+          "usage": "process"
+        },
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-19/crumb-shot-torn-bun-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-19/crumb-shot-torn-bun-400w.webp",
+          "alt": "Torn-open bun showing bright yellow crumb — fine cottony texture with pull-apart strands, sesame seeds on crust",
+          "usage": "process"
+        },
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-19/glazed-bun-plated-sesame-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-19/glazed-bun-plated-sesame-400w.webp",
+          "alt": "Single glazed gochujang bun on decorative plate with black and white sesame seeds — glossy honey-soy glaze, remaining buns in tupperware behind",
+          "usage": "hero"
+        }
+      ],
       "next_time": [
-        { "text": "Use all confit garlic (~100g, both bulbs) — more garlic = more dough flavor" },
-        { "text": "Consider reducing gochujang slightly to tame back-of-throat heat (try 25g?)" },
-        { "text": "Oil cupcake pan or try alternative pan format" },
-        { "text": "Explore blistered/bloomed tops intentionally — more surface area for glaze absorption" },
-        { "text": "Research shallower pan formats for better glaze-to-bread ratio" },
-        { "text": "Try cheese center (brie or other — see PF-209 research)" },
-        { "text": "Try finishing salt sprinkled with sesame seeds" },
-        { "text": "Reconsider density fix direction — firmer bake #1 texture may actually be preferable to pillowy" }
-      ]
+        {
+          "text": "Use all confit garlic (~100g, both bulbs) — more garlic = more dough flavor"
+        },
+        {
+          "text": "Consider reducing gochujang slightly to tame back-of-throat heat (try 25g?)"
+        },
+        {
+          "text": "Oil cupcake pan or try alternative pan format"
+        },
+        {
+          "text": "Explore blistered/bloomed tops intentionally — more surface area for glaze absorption"
+        },
+        {
+          "text": "Research shallower pan formats for better glaze-to-bread ratio"
+        },
+        {
+          "text": "Try cheese center (brie or other — see PF-209 research)"
+        },
+        {
+          "text": "Try finishing salt sprinkled with sesame seeds"
+        },
+        {
+          "text": "Reconsider density fix direction — firmer bake #1 texture may actually be preferable to pillowy"
+        }
+      ],
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "garlic",
+            "ingredientName": "Garlic Cloves",
+            "product": "Fresh Garlic",
+            "packageSize": "Each",
+            "packagePrice": 0.5,
+            "cost": 0.5
+          },
+          {
+            "ingredientId": "olive-oil",
+            "ingredientName": "Extra Virgin Olive Oil",
+            "product": "H-E-B Extra Virgin Olive Oil 17 oz",
+            "packageSize": "17 oz",
+            "packagePrice": 6.68,
+            "cost": 3.61
+          },
+          {
+            "ingredientId": "bread-flour",
+            "ingredientName": "Bread Flour",
+            "product": "H-E-B Baker's Scoop Bread Flour 5 lbs",
+            "packageSize": "5 lbs",
+            "packagePrice": 3.78,
+            "cost": 0.7
+          },
+          {
+            "ingredientId": "water",
+            "ingredientName": "Water",
+            "product": "Tap water",
+            "packageSize": "negligible",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "instant-yeast",
+            "ingredientName": "Instant Yeast",
+            "product": "Hill Country Fare Fast-Rise Instant Yeast 3pk",
+            "packageSize": "3 pk",
+            "packagePrice": 0.98,
+            "cost": 0.33
+          },
+          {
+            "ingredientId": "whole-milk",
+            "ingredientName": "Whole Milk",
+            "product": "H-E-B Whole Milk 1 pt",
+            "packageSize": "1 pt",
+            "packagePrice": 1.0,
+            "cost": 0.24
+          },
+          {
+            "ingredientId": "unsalted-butter",
+            "ingredientName": "Unsalted Butter",
+            "product": "Hill Country Fare Unsalted Butter 4ct",
+            "packageSize": "4 ct",
+            "packagePrice": 2.98,
+            "cost": 0.18
+          },
+          {
+            "ingredientId": "caster-sugar",
+            "ingredientName": "Caster Sugar",
+            "product": "India Tree Superfine Cane Caster Sugar 1 lb",
+            "packageSize": "1 lb",
+            "packagePrice": 5.74,
+            "cost": 0.51
+          },
+          {
+            "ingredientId": "fine-salt",
+            "ingredientName": "Fine Salt",
+            "product": "Morton Fine Sea Salt 17.6 oz",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.03
+          },
+          {
+            "ingredientId": "gochujang",
+            "ingredientName": "Gochujang",
+            "product": "O'Food Gochujang Brown Rice Red Pepper Paste 17.6 oz",
+            "packageSize": "17.6 oz",
+            "packagePrice": 6.18,
+            "cost": 0.37
+          },
+          {
+            "ingredientId": "eggs",
+            "ingredientName": "Large Eggs",
+            "product": "Sunups Grade A Large White Eggs 12ct",
+            "packageSize": "12 ct",
+            "packagePrice": 1.97,
+            "cost": 0.33
+          },
+          {
+            "ingredientId": "honey",
+            "ingredientName": "Honey",
+            "product": "Hill Country Fare Clover Honey Bear 12 oz",
+            "packageSize": "12 oz",
+            "packagePrice": 3.35,
+            "cost": 0.3
+          },
+          {
+            "ingredientId": "light-soy-sauce",
+            "ingredientName": "Light Soy Sauce",
+            "product": "Kikkoman All-Purpose Soy Sauce 10 oz",
+            "packageSize": "10 oz",
+            "packagePrice": 2.94,
+            "cost": 0.1
+          },
+          {
+            "ingredientId": "glaze-butter",
+            "ingredientName": "Unsalted Butter (melted)",
+            "product": "Hill Country Fare Unsalted Butter (shared)",
+            "packageSize": "4 ct",
+            "packagePrice": 2.98,
+            "cost": 0.2
+          },
+          {
+            "ingredientId": "sesame-seeds",
+            "ingredientName": "Sesame Seeds",
+            "product": "Bolner's Fiesta Sesame Seeds 1 oz",
+            "packageSize": "1 oz",
+            "packagePrice": 1.4,
+            "cost": 0.25
+          }
+        ],
+        "total": 7.65,
+        "perServing": 0.64,
+        "servings": 12
+      }
     }
   ]
 }
