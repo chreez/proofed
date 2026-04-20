@@ -1,19 +1,25 @@
 {
   "recipeId": "gochujang-garlic-buns",
   "date": "2026-04-17",
-  "processedAt": "2026-04-17T17:54:58.840Z",
+  "processedAt": "2026-04-19T21:18:56.003Z",
   "photos": [
     {
       "name": "crumb-shot-torn-bun",
       "thumb": "crumb-shot-torn-bun-400w.webp",
       "src": "crumb-shot-torn-bun-800w.webp",
-      "summary": "Torn bun showing interior crumb — somewhat dense but golden orange from gochujang. Visible garlic pieces in the crumb. Held over a white plate."
+      "summary": "Torn bun held in hand showing interior crumb — tight but tender, golden from gochujang, visible confit garlic pockets. Glazed exterior catching light."
     },
     {
       "name": "glazed-buns-in-dish",
       "thumb": "glazed-buns-in-dish-400w.webp",
       "src": "glazed-buns-in-dish-800w.webp",
-      "summary": "All 10 buns in a glass baking dish, deep golden brown with honey-soy glaze and white sesame seeds. Buns touching but varied in size — some larger than others."
+      "summary": "All 10 buns in glass baking dish after honey-soy glaze and sesame seeds. Deep golden-orange from gochujang, glossy finish, cross-scores visible on tops."
+    },
+    {
+      "name": "gochujang-buns-plated-avocado-parmesan",
+      "thumb": "gochujang-buns-plated-avocado-parmesan-400w.webp",
+      "src": "gochujang-buns-plated-avocado-parmesan-800w.webp",
+      "summary": "Three gochujang buns on white plate with halved avocado and parmesan shavings. Overhead shot, clean dark background, sesame seeds visible on crust."
     }
   ]
 }
