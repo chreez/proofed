@@ -972,6 +972,36 @@
         { "text": "Figure out what \"prepared pan\" means for this recipe" },
         { "text": "Work on consistent bun shaping — aim for uniform size and appearance across batch" }
       ]
+    },
+    {
+      "date": "2026-04-19",
+      "version": "v1.2.0",
+      "summary": "Second bake — 12 smaller buns (68g each) in cupcake pan. Better proofing via feel test, improved shaping. Pulled at 20 min but still hit 210°F. Confit super soft but want more — use all garlic next time. Accidental 40g honey was too sweet. Gochujang heat hitting back of throat.",
+      "notes": [
+        "6:14pm — Dough weight 782g pre-confit. Divided into 12 pieces targeting 68g each (5g variance). Cupcake pan experiment.",
+        "6:18pm — Confit totaled ~48g including absorbed oils (~1 full bulb). Dried oil off garlic before chopping.",
+        "6:52pm — Better proofing this time — did feel/poke test before shaping, dough had noticeable air inside.",
+        "6:55pm — Shaping noticeably improved over bake #1. Still too little confit — want to use all garlic next time.",
+        "Confit garlic was super soft this time (vs. tough in bake #1). Now thinking bake #1's firmer texture was more desirable — needs more research on target confit texture.",
+        "7:58pm — Accidental 40g honey in glaze. Too sweet — 30g is the right amount.",
+        "8:01pm — Considered misting tops with water to slow surface browning, didn't try.",
+        "8:08pm — Internal 210°F at 20 min at 350°F. Pulled at 20 min (5 min earlier than bake #1). Crust golden brown.",
+        "8:10pm — Didn't oil cupcake pan (predicted critical miss). Buns came out okay but will try oil next time.",
+        "8:43pm — Only need 4g sesame (recipe says 5g). Rested 30 min before glazing.",
+        "Gochujang possibly too much — spicy on back of throat. Considering reducing amount.",
+        "One bun bloomed/blistered rather than staying smooth — glaze absorbed deeper into the crumb. Prefers this. Thinking shallower format + more surface area = better glaze saturation."
+      ],
+      "photos": [],
+      "next_time": [
+        { "text": "Use all confit garlic (~100g, both bulbs) — more garlic = more dough flavor" },
+        { "text": "Consider reducing gochujang slightly to tame back-of-throat heat (try 25g?)" },
+        { "text": "Oil cupcake pan or try alternative pan format" },
+        { "text": "Explore blistered/bloomed tops intentionally — more surface area for glaze absorption" },
+        { "text": "Research shallower pan formats for better glaze-to-bread ratio" },
+        { "text": "Try cheese center (brie or other — see PF-209 research)" },
+        { "text": "Try finishing salt sprinkled with sesame seeds" },
+        { "text": "Reconsider density fix direction — firmer bake #1 texture may actually be preferable to pillowy" }
+      ]
     }
   ]
 }
