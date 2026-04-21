@@ -1,9 +1,10 @@
 ---
 id: PF-193
 title: Bake environment snapshot — ambient temp + weather capture at bake start
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-09 19:06'
+updated_date: '2026-04-21 14:14'
 labels:
   - feature
   - data
