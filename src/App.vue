@@ -215,6 +215,15 @@ async function handleScratchpadExport(): Promise<void> {
   await copyToClipboard(json)
 }
 
+// Pre-bake kitchen temp — recipe tracks bulk_ambient_temps in bakeStatsSchema
+const tracksBulkAmbient = computed(() => {
+  return currentRecipe.value?.config?.bakeStatsSchema?.fields?.includes('bulk_ambient_temps') ?? false
+})
+
+function handlePreBakeTemp(value: string): void {
+  scratchpad.value?.addReminderResponse('_pre_bake', 'Kitchen temp (°F)?', value)
+}
+
 // Hero lightbox state
 const heroLightboxOpen = ref(false)
 const heroLightboxPhotos = ref<CookLogPhoto[]>([])
@@ -640,7 +649,9 @@ watch(() => route.hash, (newHash) => {
           :general-notes="scratchpad.generalNotes.value"
           :step-entries="scratchpad.allStepEntries.value"
           :step-names="stepNameMap"
+          :tracks-bulk-ambient="tracksBulkAmbient"
           @add-general-note="(v: string) => scratchpad!.addGeneralNote(v)"
+          @pre-bake-temp="handlePreBakeTemp"
           @export-json="handleScratchpadExport"
           @clear-all="() => scratchpad!.clearAll()"
         />

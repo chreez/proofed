@@ -403,6 +403,31 @@ After user confirms:
 3. **Append to existing `cook_log[]` array** (do not replace)
 4. If `cook_log` doesn't exist yet, create it
 
+## Phase 4a: Weather Fetch (PF-193.1)
+
+After writing the cook_log entry (Phase 4), silently fetch outdoor weather for the bake date:
+
+1. **Run** `./scripts/fetch-weather.sh {bake-date}` — returns JSON matching `BakeWeather` type
+2. **Parse the output** — verify it has `temp_high_f`, `temp_low_f`, `humidity_avg_percent`, `condition`
+3. **Add `weather` field** to the cook_log entry just written (edit recipe JSON in-place)
+4. **If the script fails** (network error, API down), skip silently — do not block the pipeline. Log a warning: "Weather fetch failed — weather field omitted."
+5. **Do not prompt the user** — this is a silent background fetch
+
+**Skip conditions:**
+- `--start` flag: skip (skeleton entry, no weather yet)
+- `--update` flag: skip (weather only added on finalize/default)
+- `--finalize` or default: always attempt
+
+### Scratchpad Pre-Bake Kitchen Temp (PF-193.1)
+
+If the user's scratchpad export contains a `_pre_bake` entry (stepId `_pre_bake`, prompt `Kitchen temp (°F)?`), extract the value and wire it into `bake_stats.bulk_ambient_temps[0]`:
+
+```json
+{ "date": "{bake-date}", "temp_f": {value}, "note": "pre-bake" }
+```
+
+Insert as the **first** element of `bulk_ambient_temps` (before any mid-bulk readings). If the user didn't capture a pre-bake temp, do nothing — don't prompt for it here (the scratchpad UI handles the prompt at bake time).
+
 ## Phase 5+6: Photos, Cost & Bake Review Page (COMBINED)
 
 Photo processing and cost lookup happen together. The user reviews BOTH on the bake review page in a single pass — never open the photo review page separately.

@@ -11,10 +11,12 @@ const props = defineProps<{
   generalNotes: ScratchpadEntry[]
   stepEntries: Record<string, ScratchpadEntry[]>
   stepNames: Record<string, string>
+  tracksBulkAmbient?: boolean
 }>()
 
 const emit = defineEmits<{
   addGeneralNote: [value: string]
+  preBakeTemp: [value: string]
   exportJson: []
   clearAll: []
 }>()
@@ -49,6 +51,18 @@ function handleClear(): void {
 
 function handleClearConfirm(): void {
   emit('clearAll')
+}
+
+const preBakeTempValue = ref('')
+
+const showPreBakePrompt = computed(() => {
+  return props.tracksBulkAmbient && !props.stepEntries['_pre_bake']?.length
+})
+
+function handlePreBakeSubmit(): void {
+  if (!preBakeTempValue.value.trim()) return
+  emit('preBakeTemp', preBakeTempValue.value.trim())
+  preBakeTempValue.value = ''
 }
 
 const showAll = ref(false)
@@ -191,6 +205,26 @@ const hiddenCount = computed(() => {
 
         <!-- Scrollable content -->
         <div class="overflow-y-auto flex-1 p-3 space-y-3">
+          <!-- Pre-bake kitchen temp prompt -->
+          <div v-if="showPreBakePrompt" class="bg-crust-light/30 border-2 border-crust-light p-2">
+            <span class="font-mono text-[10px] text-accent block mb-1">pre-bake</span>
+            <label class="text-xs text-stone-700 block mb-1">Kitchen temp (°F)?</label>
+            <div class="flex gap-1.5">
+              <input
+                v-model="preBakeTempValue"
+                type="text"
+                inputmode="decimal"
+                class="flex-1 border-2 border-stone-200 p-1.5 text-base md:text-xs bg-surface rounded-none font-mono"
+                placeholder="e.g. 72"
+                @keydown.enter="handlePreBakeSubmit"
+              />
+              <button
+                class="btn-primary text-[10px] py-0.5 px-2 flex-shrink-0"
+                @click="handlePreBakeSubmit"
+              >Log</button>
+            </div>
+          </div>
+
           <!-- Flat chronological entries -->
           <div v-if="allEntries.length" class="space-y-2">
             <span class="font-mono text-[10px] text-stone-500 block">entries ({{ allEntries.length }})</span>

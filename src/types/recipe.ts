@@ -406,6 +406,22 @@ export interface CookLogEntry {
   bake_stats?: BakeStatsBlock
   // Verbatim bake log paste, preserved as-is. Expandable in UI (PF-177.5).
   raw_notes?: string
+  // Outdoor weather conditions on bake day. Populated by /bake-log skill
+  // (PF-193.1) or backfill (PF-193.2). Optional — existing entries omit it.
+  weather?: BakeWeather
+}
+
+// Outdoor weather snapshot for a bake day (PF-193).
+// Lives on CookLogEntry, not BakeStatsBlock — weather is environmental
+// context, not bake performance data.
+export interface BakeWeather {
+  location: string
+  date: string
+  temp_high_f: number
+  temp_low_f: number
+  humidity_avg_percent: number
+  condition: string
+  source: 'open-meteo'
 }
 
 // Recipe manifest

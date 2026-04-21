@@ -598,4 +598,108 @@ describe('GeneralNotesFab', () => {
       expect(wrapper.text()).not.toContain('Bake Scratchpad')
     })
   })
+
+  describe('pre-bake kitchen temp prompt', () => {
+    it('shows pre-bake prompt when tracksBulkAmbient is true and no _pre_bake entry', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        tracksBulkAmbient: true
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      expect(wrapper.text()).toContain('pre-bake')
+      expect(wrapper.text()).toContain('Kitchen temp (°F)?')
+    })
+
+    it('hides pre-bake prompt when tracksBulkAmbient is false', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        tracksBulkAmbient: false
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      expect(wrapper.text()).not.toContain('Kitchen temp (°F)?')
+    })
+
+    it('hides pre-bake prompt when tracksBulkAmbient not provided', async () => {
+      const wrapper = mountWithTeleport(defaultProps)
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      expect(wrapper.text()).not.toContain('Kitchen temp (°F)?')
+    })
+
+    it('hides pre-bake prompt when _pre_bake entry already exists', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        tracksBulkAmbient: true,
+        stepEntries: {
+          '_pre_bake': [makeEntry({ stepId: '_pre_bake', type: 'reminder_response', prompt: 'Kitchen temp (°F)?', value: '72' })]
+        }
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      // The pre-bake prompt input should not render (the text may appear in the existing entry)
+      expect(wrapper.find('input[inputmode="decimal"]').exists()).toBe(false)
+    })
+
+    it('emits preBakeTemp on Log click with value', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        tracksBulkAmbient: true
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      const input = wrapper.find('input[inputmode="decimal"]')
+      await input.setValue('72')
+
+      const logBtn = wrapper.findAll('button').find(b => b.text() === 'Log')
+      await logBtn!.trigger('click')
+
+      expect(wrapper.emitted('preBakeTemp')).toBeTruthy()
+      expect(wrapper.emitted('preBakeTemp')![0]).toEqual(['72'])
+    })
+
+    it('does not emit preBakeTemp when input is empty', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        tracksBulkAmbient: true
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      const logBtn = wrapper.findAll('button').find(b => b.text() === 'Log')
+      await logBtn!.trigger('click')
+
+      expect(wrapper.emitted('preBakeTemp')).toBeFalsy()
+    })
+
+    it('clears input after successful submit', async () => {
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        tracksBulkAmbient: true
+      })
+
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      const input = wrapper.find('input[inputmode="decimal"]')
+      await input.setValue('68')
+
+      const logBtn = wrapper.findAll('button').find(b => b.text() === 'Log')
+      await logBtn!.trigger('click')
+
+      expect((input.element as HTMLInputElement).value).toBe('')
+    })
+  })
 })
