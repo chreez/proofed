@@ -56,7 +56,11 @@
       "id": "PREP",
       "title": "Build Levain",
       "gather": {
-        "vessels": ["Medium Mixing Bowl", "Large Mixing Bowl", "Dutch Oven (5-7 qt)"],
+        "vessels": [
+          "Medium Mixing Bowl",
+          "Large Mixing Bowl",
+          "Dutch Oven (5-7 qt)"
+        ],
         "equipment": [
           "Kitchen Scale",
           "Fork or Whisk",
@@ -87,8 +91,14 @@
             "total": 480,
             "unit": "g",
             "breakdown": [
-              { "label": "levain", "amount": 80 },
-              { "label": "dough", "amount": 400 }
+              {
+                "label": "levain",
+                "amount": 80
+              },
+              {
+                "label": "dough",
+                "amount": 400
+              }
             ],
             "sourcedFrom": "Cross-source consensus (7/7 agents)",
             "confidence": "high",
@@ -140,8 +150,14 @@
             "total": 11,
             "unit": "g",
             "breakdown": [
-              { "label": "levain", "amount": 1 },
-              { "label": "dough", "amount": 10 }
+              {
+                "label": "levain",
+                "amount": 1
+              },
+              {
+                "label": "dough",
+                "amount": 10
+              }
             ],
             "sourcedFrom": "Cross-source consensus (7/7 agents)",
             "confidence": "high",
@@ -159,43 +175,72 @@
           }
         ]
       },
-      "states": ["BUILD_LEVAIN", "FERMENT_LEVAIN"]
+      "states": [
+        "BUILD_LEVAIN",
+        "FERMENT_LEVAIN"
+      ]
     },
     {
       "id": "MIX",
       "title": "Mix Dough",
       "gather": null,
-      "states": ["MIX_DOUGH", "AUTOLYSE", "ADD_SALT"]
+      "states": [
+        "MIX_DOUGH",
+        "AUTOLYSE",
+        "ADD_SALT"
+      ]
     },
     {
       "id": "BULK",
       "title": "Bulk Fermentation",
       "gather": null,
-      "states": ["COIL_FOLD_1", "REST_1", "COIL_FOLD_2", "REST_2", "COIL_FOLD_3", "REST_3", "COIL_FOLD_4", "BULK_RISE"]
+      "states": [
+        "COIL_FOLD_1",
+        "REST_1",
+        "COIL_FOLD_2",
+        "REST_2",
+        "COIL_FOLD_3",
+        "REST_3",
+        "COIL_FOLD_4",
+        "BULK_RISE"
+      ]
     },
     {
       "id": "SHAPE",
       "title": "Shape",
       "gather": null,
-      "states": ["DIVIDE_PRESHAPE", "BENCH_REST", "FINAL_SHAPE"]
+      "states": [
+        "DIVIDE_PRESHAPE",
+        "BENCH_REST",
+        "FINAL_SHAPE"
+      ]
     },
     {
       "id": "PROOF",
       "title": "Final Proof",
       "gather": null,
-      "states": ["FINAL_PROOF"]
+      "states": [
+        "FINAL_PROOF"
+      ]
     },
     {
       "id": "BAKE",
       "title": "Bake",
       "gather": null,
-      "states": ["PREHEAT", "SCORE_AND_LOAD", "STEAM_REST", "FINISH_BAKE"]
+      "states": [
+        "PREHEAT",
+        "SCORE_AND_LOAD",
+        "STEAM_REST",
+        "FINISH_BAKE"
+      ]
     },
     {
       "id": "COOL",
       "title": "Cool",
       "gather": null,
-      "states": ["COOL_ON_RACK"]
+      "states": [
+        "COOL_ON_RACK"
+      ]
     }
   ],
   "states": [
@@ -207,13 +252,34 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Active Sourdough Starter", "amount": "80g" },
-        { "name": "All-Purpose Flour", "amount": "80g" },
-        { "name": "Mexican Lager Beer", "amount": "40g" },
-        { "name": "Egg (whisked)", "amount": "30g" },
-        { "name": "Fresh Lime Juice", "amount": "10g" },
-        { "name": "Sugar", "amount": "8g" },
-        { "name": "Fine Sea Salt", "amount": "1g" }
+        {
+          "name": "Active Sourdough Starter",
+          "amount": "80g"
+        },
+        {
+          "name": "All-Purpose Flour",
+          "amount": "80g"
+        },
+        {
+          "name": "Mexican Lager Beer",
+          "amount": "40g"
+        },
+        {
+          "name": "Egg (whisked)",
+          "amount": "30g"
+        },
+        {
+          "name": "Fresh Lime Juice",
+          "amount": "10g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "8g"
+        },
+        {
+          "name": "Fine Sea Salt",
+          "amount": "1g"
+        }
       ],
       "exit_condition": "Levain is smooth and homogeneous, all ingredients fully incorporated",
       "notes": [
@@ -269,9 +335,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Birote Levain", "amount": "~250g (all)" },
-        { "name": "Filtered Water", "amount": "250g" },
-        { "name": "All-Purpose Flour", "amount": "400g" }
+        {
+          "name": "Birote Levain",
+          "amount": "~250g (all)"
+        },
+        {
+          "name": "Filtered Water",
+          "amount": "250g"
+        },
+        {
+          "name": "All-Purpose Flour",
+          "amount": "400g"
+        }
       ],
       "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
       "notes": [
@@ -307,7 +382,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Fine Sea Salt", "amount": "10g" }
+        {
+          "name": "Fine Sea Salt",
+          "amount": "10g"
+        }
       ],
       "exit_condition": "Salt fully incorporated, no gritty texture when pinching dough",
       "notes": null
@@ -912,8 +990,12 @@
         }
       ],
       "next_time": [
-        { "text": "Find better shaping instructions — ideally a YouTube video with timestamped torpedo technique" },
-        { "text": "Work on getting more uniform, professional-looking shape" }
+        {
+          "text": "Find better shaping instructions — ideally a YouTube video with timestamped torpedo technique"
+        },
+        {
+          "text": "Work on getting more uniform, professional-looking shape"
+        }
       ],
       "cost": {
         "costs": [
@@ -1009,6 +1091,15 @@
         "total": 1.09,
         "perServing": 0.27,
         "servings": 4
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-05",
+        "temp_high_f": 82.1,
+        "temp_low_f": 67.9,
+        "humidity_avg_percent": 78,
+        "condition": "Rain",
+        "source": "open-meteo"
       }
     },
     {
@@ -1044,9 +1135,15 @@
         }
       ],
       "next_time": [
-        { "text": "Reserve ~25g water from the mix and add it at the salt stage instead — dough was too watery" },
-        { "text": "Start earlier than 9 AM for a same-day bake to hit afternoon deadlines" },
-        { "text": "Still need to try/taste one — no crumb or flavor assessment this bake" }
+        {
+          "text": "Reserve ~25g water from the mix and add it at the salt stage instead — dough was too watery"
+        },
+        {
+          "text": "Start earlier than 9 AM for a same-day bake to hit afternoon deadlines"
+        },
+        {
+          "text": "Still need to try/taste one — no crumb or flavor assessment this bake"
+        }
       ],
       "cost": {
         "costs": [
@@ -1142,6 +1239,15 @@
         "total": 1.52,
         "perServing": 0.38,
         "servings": 4
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-07",
+        "temp_high_f": 77.0,
+        "temp_low_f": 55.2,
+        "humidity_avg_percent": 85,
+        "condition": "Rain",
+        "source": "open-meteo"
       }
     }
   ]

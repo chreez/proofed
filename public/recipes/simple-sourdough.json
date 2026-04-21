@@ -1026,7 +1026,16 @@
         {
           "text": "Track cold proof start/end time"
         }
-      ]
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-14",
+        "temp_high_f": 74.9,
+        "temp_low_f": 57.6,
+        "humidity_avg_percent": 90,
+        "condition": "Rain",
+        "source": "open-meteo"
+      }
     },
     {
       "date": "2026-02-16",
@@ -1181,7 +1190,16 @@
         ]
       },
       "aberration": true,
-      "aberration_note": "Focaccia (from failed sourdough)"
+      "aberration_note": "Focaccia (from failed sourdough)",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-16",
+        "temp_high_f": 73.6,
+        "temp_low_f": 46.4,
+        "humidity_avg_percent": 75,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      }
     },
     {
       "date": "2026-02-17",
@@ -1391,6 +1409,15 @@
             "cost": 0.05
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-17",
+        "temp_high_f": 80.2,
+        "temp_low_f": 55.9,
+        "humidity_avg_percent": 78,
+        "condition": "Drizzle",
+        "source": "open-meteo"
       }
     },
     {
@@ -1623,6 +1650,15 @@
             "cost": 0.11
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-20",
+        "temp_high_f": 69.0,
+        "temp_low_f": 56.0,
+        "humidity_avg_percent": 60,
+        "condition": "Drizzle",
+        "source": "open-meteo"
       }
     },
     {
@@ -1840,6 +1876,15 @@
             "cost": 0.11
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-27",
+        "temp_high_f": 85.2,
+        "temp_low_f": 59.3,
+        "humidity_avg_percent": 47,
+        "condition": "Clear sky",
+        "source": "open-meteo"
       }
     },
     {
@@ -2052,6 +2097,15 @@
             "cost": 0.11
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-01",
+        "temp_high_f": 83.5,
+        "temp_low_f": 63.4,
+        "humidity_avg_percent": 69,
+        "condition": "Drizzle",
+        "source": "open-meteo"
       }
     },
     {
@@ -2250,6 +2304,15 @@
             "cost": 0.11
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-08",
+        "temp_high_f": 66.4,
+        "temp_low_f": 52.2,
+        "humidity_avg_percent": 84,
+        "condition": "Rain",
+        "source": "open-meteo"
       }
     },
     {
@@ -2449,6 +2512,15 @@
             "cost": 0.11
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-12",
+        "temp_high_f": 64.0,
+        "temp_low_f": 45.8,
+        "humidity_avg_percent": 47,
+        "condition": "Clear sky",
+        "source": "open-meteo"
       }
     },
     {
@@ -2639,6 +2711,15 @@
             "cost": 0.11
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-13",
+        "temp_high_f": 75.6,
+        "temp_low_f": 46.5,
+        "humidity_avg_percent": 50,
+        "condition": "Clear sky",
+        "source": "open-meteo"
       }
     },
     {
@@ -2823,6 +2904,15 @@
             "cost": 0.11
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-18",
+        "temp_high_f": 76.0,
+        "temp_low_f": 45.4,
+        "humidity_avg_percent": 46,
+        "condition": "Overcast",
+        "source": "open-meteo"
       }
     },
     {
@@ -2942,6 +3032,15 @@
             "cost": 0.05
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-24",
+        "temp_high_f": 86.2,
+        "temp_low_f": 61.6,
+        "humidity_avg_percent": 58,
+        "condition": "Drizzle",
+        "source": "open-meteo"
       }
     },
     {
@@ -3138,6 +3237,15 @@
             "cost": 0.12
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-01",
+        "temp_high_f": 90.1,
+        "temp_low_f": 68.9,
+        "humidity_avg_percent": 66,
+        "condition": "Drizzle",
+        "source": "open-meteo"
       }
     },
     {
@@ -3353,6 +3461,15 @@
             "cost": 0.12
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-06",
+        "temp_high_f": 70.5,
+        "temp_low_f": 51.2,
+        "humidity_avg_percent": 57,
+        "condition": "Overcast",
+        "source": "open-meteo"
       }
     },
     {
@@ -3579,7 +3696,16 @@
           }
         ]
       },
-      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-10\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      { \"timestamp\": \"2026-04-09T16:00:19.696Z\", \"value\": \"ambient internal temp. 76 60% humidity\" },\n      { \"timestamp\": \"2026-04-09T16:02:33.353Z\", \"value\": \"trying to figure out if i'm having starter issues. why is it taking two days for it to get back to float status. it seems bubbly throughout the container. it's almost tripled in size in 6 hours.. should be peaked. will report.\" }\n    ],\n    \"FERMENTOLYSE\": [\n      { \"timestamp\": \"2026-04-09T16:14:49.555Z\", \"value\": \"77.2. finished initial mix about 7 minutes ago.\" }\n    ],\n    \"ADD_SALT\": [\n      { \"timestamp\": \"2026-04-09T16:41:51.650Z\", \"value\": \"done. 76.6 degree dough temp\" }\n    ],\n    \"FOLD_3\": [\n      { \"timestamp\": \"2026-04-09T18:00:19.767Z\", \"value\": \"may not need this. will check in 30\" }\n    ],\n    \"OVERNIGHT_BULK\": [\n      { \"timestamp\": \"2026-04-09T18:01:34.493Z\", \"value\": \"i'm not sure if this direction is correct. i think 10 hour at room temperature will result in underproofing. if anything it should target a rise % then straight to fridge for bulk retard before a divide and preshape the next day. unsure though. will need to study more.\" },\n      { \"timestamp\": \"2026-04-09T20:28:32.351Z\", \"value\": \"77 at end of bulk ferment.\" }\n    ],\n    \"TURN_OUT\": [\n      { \"timestamp\": \"2026-04-09T20:33:06.392Z\", \"value\": \"1925 grams total. target per loaf is 962.5\" },\n      { \"timestamp\": \"2026-04-09T21:08:21.711Z\", \"value\": \"i preshaped dough about 30 minutes ago.\" },\n      { \"timestamp\": \"2026-04-09T21:08:50.042Z\", \"value\": \"taking single dough temp probably unnecessary\" }\n    ],\n    \"ROOM_TEMP_REST\": [\n      { \"timestamp\": \"2026-04-09T22:12:19.860Z\", \"value\": \"in fridge now. will pull out and cook.\" }\n    ]\n  },\n  \"generalNotes\": [\n    { \"timestamp\": \"2026-04-09T17:21:33.040Z\", \"value\": \"aliquot reading 20% this fast seems sketchy. first stretch and fold now.\" },\n    { \"timestamp\": \"2026-04-09T17:21:40.594Z\", \"value\": \"76.5 1st\" },\n    { \"timestamp\": \"2026-04-09T17:56:06.502Z\", \"value\": \"starting second s and fold - 76.5 degrees. aliquot 20%\" },\n    { \"timestamp\": \"2026-04-09T17:59:20.153Z\", \"value\": \"dough seems a little more slack than normal. or i may be comparing to pizza dough i just made.\" },\n    { \"timestamp\": \"2026-04-09T19:02:15.592Z\", \"value\": \"i did my last stretch and fold about 10 minutes ago. will record temp.\" },\n    { \"timestamp\": \"2026-04-09T19:02:26.606Z\", \"value\": \"aliquot at 30%\" },\n    { \"timestamp\": \"2026-04-09T19:03:01.311Z\", \"value\": \"76.6 degrees. for bulk rest. with target of 50-60% rise\" },\n    { \"timestamp\": \"2026-04-09T19:55:20.017Z\", \"value\": \"aliquot is at 50%. checking dough.\" },\n    { \"timestamp\": \"2026-04-09T20:27:16.811Z\", \"value\": \"reading 70% on aliquot\" },\n    { \"timestamp\": \"2026-04-09T20:28:48.481Z\", \"value\": \"turning out dough to rest for 10 minutes on the counter\" },\n    { \"timestamp\": \"2026-04-09T21:09:09.968Z\", \"value\": \"shaping now\" },\n    { \"timestamp\": \"2026-04-09T21:27:50.492Z\", \"value\": \"shaped and resting at room temperature for an hour. started the resting at room temp about 23 minutes ago.\" },\n    { \"timestamp\": \"2026-04-10T14:25:31.635Z\", \"value\": \"preheat started roughly an hour ago. preheating high just to speed up process. 410 degrees reading on dutch oven means i'm not there yet. looking for 450 readout on infrared thermometer before starting bake. preheat is set to 550 on oven. will lower to 480 covered this time per experiment parameters\" },\n    { \"timestamp\": \"2026-04-10T14:59:10.815Z\", \"value\": \"480 covered start\" },\n    { \"timestamp\": \"2026-04-10T14:59:34.548Z\", \"value\": \"dutch oven reading still only 420 but i don't want to waste energy or time. it should be ok.\" },\n    { \"timestamp\": \"2026-04-10T15:19:58.996Z\", \"value\": \"lid off. 450. going to experiment and let second loaf dough sit at room temp for a bit. i want to see if it's easier to score if the dough has settled a little bit.\" },\n    { \"timestamp\": \"2026-04-10T15:29:23.438Z\", \"value\": \"9 minute rotate dough. reading surface temp of 480 on dutch oven. nice.\" },\n    { \"timestamp\": \"2026-04-10T15:37:19.891Z\", \"value\": \"oven off for final four minutes. let's see how the crust turns out\" },\n    { \"timestamp\": \"2026-04-10T15:59:43.783Z\", \"value\": \"second loaf. preheat complete. dutch oven just reading 380.\" },\n    { \"timestamp\": \"2026-04-10T16:02:58.724Z\", \"value\": \"second loaf in 480. dough looked really flat. harder to score. used bread lame. unamused by its functionality at this point.\" },\n    { \"timestamp\": \"2026-04-10T16:23:25.759Z\", \"value\": \"second bread. 425 uncovered this time for 9 minutes. then will flip\" },\n    { \"timestamp\": \"2026-04-10T16:32:53.568Z\", \"value\": \"rotate dough. 9 more minutes. temps 390\" },\n    { \"timestamp\": \"2026-04-10T16:48:16.018Z\", \"value\": \"i did 4 minutes oven off. after 18 minutes at the 425. i think it needs another 4 minutes\" }\n  ]\n}"
+      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-10\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      { \"timestamp\": \"2026-04-09T16:00:19.696Z\", \"value\": \"ambient internal temp. 76 60% humidity\" },\n      { \"timestamp\": \"2026-04-09T16:02:33.353Z\", \"value\": \"trying to figure out if i'm having starter issues. why is it taking two days for it to get back to float status. it seems bubbly throughout the container. it's almost tripled in size in 6 hours.. should be peaked. will report.\" }\n    ],\n    \"FERMENTOLYSE\": [\n      { \"timestamp\": \"2026-04-09T16:14:49.555Z\", \"value\": \"77.2. finished initial mix about 7 minutes ago.\" }\n    ],\n    \"ADD_SALT\": [\n      { \"timestamp\": \"2026-04-09T16:41:51.650Z\", \"value\": \"done. 76.6 degree dough temp\" }\n    ],\n    \"FOLD_3\": [\n      { \"timestamp\": \"2026-04-09T18:00:19.767Z\", \"value\": \"may not need this. will check in 30\" }\n    ],\n    \"OVERNIGHT_BULK\": [\n      { \"timestamp\": \"2026-04-09T18:01:34.493Z\", \"value\": \"i'm not sure if this direction is correct. i think 10 hour at room temperature will result in underproofing. if anything it should target a rise % then straight to fridge for bulk retard before a divide and preshape the next day. unsure though. will need to study more.\" },\n      { \"timestamp\": \"2026-04-09T20:28:32.351Z\", \"value\": \"77 at end of bulk ferment.\" }\n    ],\n    \"TURN_OUT\": [\n      { \"timestamp\": \"2026-04-09T20:33:06.392Z\", \"value\": \"1925 grams total. target per loaf is 962.5\" },\n      { \"timestamp\": \"2026-04-09T21:08:21.711Z\", \"value\": \"i preshaped dough about 30 minutes ago.\" },\n      { \"timestamp\": \"2026-04-09T21:08:50.042Z\", \"value\": \"taking single dough temp probably unnecessary\" }\n    ],\n    \"ROOM_TEMP_REST\": [\n      { \"timestamp\": \"2026-04-09T22:12:19.860Z\", \"value\": \"in fridge now. will pull out and cook.\" }\n    ]\n  },\n  \"generalNotes\": [\n    { \"timestamp\": \"2026-04-09T17:21:33.040Z\", \"value\": \"aliquot reading 20% this fast seems sketchy. first stretch and fold now.\" },\n    { \"timestamp\": \"2026-04-09T17:21:40.594Z\", \"value\": \"76.5 1st\" },\n    { \"timestamp\": \"2026-04-09T17:56:06.502Z\", \"value\": \"starting second s and fold - 76.5 degrees. aliquot 20%\" },\n    { \"timestamp\": \"2026-04-09T17:59:20.153Z\", \"value\": \"dough seems a little more slack than normal. or i may be comparing to pizza dough i just made.\" },\n    { \"timestamp\": \"2026-04-09T19:02:15.592Z\", \"value\": \"i did my last stretch and fold about 10 minutes ago. will record temp.\" },\n    { \"timestamp\": \"2026-04-09T19:02:26.606Z\", \"value\": \"aliquot at 30%\" },\n    { \"timestamp\": \"2026-04-09T19:03:01.311Z\", \"value\": \"76.6 degrees. for bulk rest. with target of 50-60% rise\" },\n    { \"timestamp\": \"2026-04-09T19:55:20.017Z\", \"value\": \"aliquot is at 50%. checking dough.\" },\n    { \"timestamp\": \"2026-04-09T20:27:16.811Z\", \"value\": \"reading 70% on aliquot\" },\n    { \"timestamp\": \"2026-04-09T20:28:48.481Z\", \"value\": \"turning out dough to rest for 10 minutes on the counter\" },\n    { \"timestamp\": \"2026-04-09T21:09:09.968Z\", \"value\": \"shaping now\" },\n    { \"timestamp\": \"2026-04-09T21:27:50.492Z\", \"value\": \"shaped and resting at room temperature for an hour. started the resting at room temp about 23 minutes ago.\" },\n    { \"timestamp\": \"2026-04-10T14:25:31.635Z\", \"value\": \"preheat started roughly an hour ago. preheating high just to speed up process. 410 degrees reading on dutch oven means i'm not there yet. looking for 450 readout on infrared thermometer before starting bake. preheat is set to 550 on oven. will lower to 480 covered this time per experiment parameters\" },\n    { \"timestamp\": \"2026-04-10T14:59:10.815Z\", \"value\": \"480 covered start\" },\n    { \"timestamp\": \"2026-04-10T14:59:34.548Z\", \"value\": \"dutch oven reading still only 420 but i don't want to waste energy or time. it should be ok.\" },\n    { \"timestamp\": \"2026-04-10T15:19:58.996Z\", \"value\": \"lid off. 450. going to experiment and let second loaf dough sit at room temp for a bit. i want to see if it's easier to score if the dough has settled a little bit.\" },\n    { \"timestamp\": \"2026-04-10T15:29:23.438Z\", \"value\": \"9 minute rotate dough. reading surface temp of 480 on dutch oven. nice.\" },\n    { \"timestamp\": \"2026-04-10T15:37:19.891Z\", \"value\": \"oven off for final four minutes. let's see how the crust turns out\" },\n    { \"timestamp\": \"2026-04-10T15:59:43.783Z\", \"value\": \"second loaf. preheat complete. dutch oven just reading 380.\" },\n    { \"timestamp\": \"2026-04-10T16:02:58.724Z\", \"value\": \"second loaf in 480. dough looked really flat. harder to score. used bread lame. unamused by its functionality at this point.\" },\n    { \"timestamp\": \"2026-04-10T16:23:25.759Z\", \"value\": \"second bread. 425 uncovered this time for 9 minutes. then will flip\" },\n    { \"timestamp\": \"2026-04-10T16:32:53.568Z\", \"value\": \"rotate dough. 9 more minutes. temps 390\" },\n    { \"timestamp\": \"2026-04-10T16:48:16.018Z\", \"value\": \"i did 4 minutes oven off. after 18 minutes at the 425. i think it needs another 4 minutes\" }\n  ]\n}",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-10",
+        "temp_high_f": 81.1,
+        "temp_low_f": 63.8,
+        "humidity_avg_percent": 84,
+        "condition": "Rain",
+        "source": "open-meteo"
+      }
     },
     {
       "date": "2026-04-13",
@@ -3779,6 +3905,15 @@
             "cost": 0.12
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-13",
+        "temp_high_f": 84.5,
+        "temp_low_f": 68.3,
+        "humidity_avg_percent": 82,
+        "condition": "Drizzle",
+        "source": "open-meteo"
       }
     },
     {
@@ -3967,7 +4102,16 @@
           }
         ]
       },
-      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-15\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-14T19:02:23.928Z\",\n        \"type\": \"note\",\n        \"value\": \"single loaf.  test. 75.4. ambient 54% humidity\"\n      },\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-14T19:03:02.272Z\",\n        \"type\": \"note\",\n        \"value\": \"500 350 grams 10 grams salt. 100g startrr\"\n      }\n    ],\n    \"ADD_SALT\": [\n      {\n        \"stepId\": \"ADD_SALT\",\n        \"timestamp\": \"2026-04-14T19:14:50.300Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Take aliquot sample after incorporating salt\",\n        \"value\": \"77.9 dough temp\"\n      }\n    ],\n    \"FOLD_1\": [\n      {\n        \"stepId\": \"FOLD_1\",\n        \"timestamp\": \"2026-04-14T19:44:38.198Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4 after adding salt waiting 30 minutes. aliquot sample slightly overfilled at 10%\"\n      }\n    ],\n    \"FOLD_2\": [\n      {\n        \"stepId\": \"FOLD_2\",\n        \"timestamp\": \"2026-04-14T20:18:34.476Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4\"\n      },\n      {\n        \"stepId\": \"FOLD_2\",\n        \"timestamp\": \"2026-04-14T20:18:47.688Z\",\n        \"type\": \"note\",\n        \"value\": \"15% aliquot\"\n      }\n    ],\n    \"FOLD_3\": [\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T20:58:14.159Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4\"\n      },\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T21:41:57.423Z\",\n        \"type\": \"note\",\n        \"value\": \"77.2 third s and f\"\n      },\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T21:42:03.422Z\",\n        \"type\": \"note\",\n        \"value\": \"waiting an hour or so\"\n      }\n    ],\n    \"TURN_OUT\": [\n      {\n        \"stepId\": \"TURN_OUT\",\n        \"timestamp\": \"2026-04-14T23:50:12.820Z\",\n        \"type\": \"note\",\n        \"value\": \"70% aliquot reading. turning out dough. fell asleep but dough temp is low enough that 70% is probably fine.\"\n      }\n    ],\n    \"BUILD_TENSION\": [\n      {\n        \"stepId\": \"BUILD_TENSION\",\n        \"timestamp\": \"2026-04-15T00:21:45.184Z\",\n        \"type\": \"note\",\n        \"value\": \"967g one bread. resting for one hour\"\n      }\n    ]\n  },\n  \"generalNotes\": [\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-15T17:21:03.962Z\",\n      \"type\": \"note\",\n      \"value\": \"500 preheat. 480 uncovered started approx 16 minutes ago. pulling out in four minutes for uncovered remainder\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-15T17:50:08.147Z\",\n      \"type\": \"note\",\n      \"value\": \"bread out.  ended up doing spritz of water. 22 minutes total 425\"\n    }\n  ]\n}"
+      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-15\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-14T19:02:23.928Z\",\n        \"type\": \"note\",\n        \"value\": \"single loaf.  test. 75.4. ambient 54% humidity\"\n      },\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-14T19:03:02.272Z\",\n        \"type\": \"note\",\n        \"value\": \"500 350 grams 10 grams salt. 100g startrr\"\n      }\n    ],\n    \"ADD_SALT\": [\n      {\n        \"stepId\": \"ADD_SALT\",\n        \"timestamp\": \"2026-04-14T19:14:50.300Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Take aliquot sample after incorporating salt\",\n        \"value\": \"77.9 dough temp\"\n      }\n    ],\n    \"FOLD_1\": [\n      {\n        \"stepId\": \"FOLD_1\",\n        \"timestamp\": \"2026-04-14T19:44:38.198Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4 after adding salt waiting 30 minutes. aliquot sample slightly overfilled at 10%\"\n      }\n    ],\n    \"FOLD_2\": [\n      {\n        \"stepId\": \"FOLD_2\",\n        \"timestamp\": \"2026-04-14T20:18:34.476Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4\"\n      },\n      {\n        \"stepId\": \"FOLD_2\",\n        \"timestamp\": \"2026-04-14T20:18:47.688Z\",\n        \"type\": \"note\",\n        \"value\": \"15% aliquot\"\n      }\n    ],\n    \"FOLD_3\": [\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T20:58:14.159Z\",\n        \"type\": \"reminder_response\",\n        \"prompt\": \"Record dough temperature\",\n        \"value\": \"77.4\"\n      },\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T21:41:57.423Z\",\n        \"type\": \"note\",\n        \"value\": \"77.2 third s and f\"\n      },\n      {\n        \"stepId\": \"FOLD_3\",\n        \"timestamp\": \"2026-04-14T21:42:03.422Z\",\n        \"type\": \"note\",\n        \"value\": \"waiting an hour or so\"\n      }\n    ],\n    \"TURN_OUT\": [\n      {\n        \"stepId\": \"TURN_OUT\",\n        \"timestamp\": \"2026-04-14T23:50:12.820Z\",\n        \"type\": \"note\",\n        \"value\": \"70% aliquot reading. turning out dough. fell asleep but dough temp is low enough that 70% is probably fine.\"\n      }\n    ],\n    \"BUILD_TENSION\": [\n      {\n        \"stepId\": \"BUILD_TENSION\",\n        \"timestamp\": \"2026-04-15T00:21:45.184Z\",\n        \"type\": \"note\",\n        \"value\": \"967g one bread. resting for one hour\"\n      }\n    ]\n  },\n  \"generalNotes\": [\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-15T17:21:03.962Z\",\n      \"type\": \"note\",\n      \"value\": \"500 preheat. 480 uncovered started approx 16 minutes ago. pulling out in four minutes for uncovered remainder\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-15T17:50:08.147Z\",\n      \"type\": \"note\",\n      \"value\": \"bread out.  ended up doing spritz of water. 22 minutes total 425\"\n    }\n  ]\n}",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-15",
+        "temp_high_f": 84.4,
+        "temp_low_f": 69.0,
+        "humidity_avg_percent": 75,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      }
     },
     {
       "date": "2026-04-16",
@@ -4139,6 +4283,15 @@
             "cost": 0.06
           }
         ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-16",
+        "temp_high_f": 85.3,
+        "temp_low_f": 68.4,
+        "humidity_avg_percent": 73,
+        "condition": "Drizzle",
+        "source": "open-meteo"
       }
     },
     {
@@ -4181,28 +4334,66 @@
         }
       ],
       "next_time": [
-        { "text": "Practice Bertinet slap-and-fold again, but with commercial or fresh yeast instead of sourdough" },
-        { "text": "Ambient temp was 78.8°F — dough ran warm but wasn't the deciding factor this bake" }
+        {
+          "text": "Practice Bertinet slap-and-fold again, but with commercial or fresh yeast instead of sourdough"
+        },
+        {
+          "text": "Ambient temp was 78.8°F — dough ran warm but wasn't the deciding factor this bake"
+        }
       ],
       "bake_stats": {
         "dough_temps": [
-          { "time": "2026-04-16 - 12:43", "temp_f": 80.2 },
-          { "time": "2026-04-16 - 14:21", "temp_f": 80.8 },
-          { "time": "2026-04-16 - 14:52", "temp_f": 80.8 },
-          { "time": "2026-04-16 - 15:43", "temp_f": 82.4 }
+          {
+            "time": "2026-04-16 - 12:43",
+            "temp_f": 80.2
+          },
+          {
+            "time": "2026-04-16 - 14:21",
+            "temp_f": 80.8
+          },
+          {
+            "time": "2026-04-16 - 14:52",
+            "temp_f": 80.8
+          },
+          {
+            "time": "2026-04-16 - 15:43",
+            "temp_f": 82.4
+          }
         ],
         "bulk_ambient_temps": [
-          { "date": "2026-04-16", "temp_f": 78.8, "note": "58% humidity" }
+          {
+            "date": "2026-04-16",
+            "temp_f": 78.8,
+            "note": "58% humidity"
+          }
         ],
         "bake_phases": [
-          { "stage": "focaccia_redirect", "temp_f": 350, "duration_min": 30, "note": "Oiled pan, salt and Italian seasoning on top" }
+          {
+            "stage": "focaccia_redirect",
+            "temp_f": 350,
+            "duration_min": 30,
+            "note": "Oiled pan, salt and Italian seasoning on top"
+          }
         ],
         "stretch_folds": [
-          { "time": "2026-04-16 - 14:21", "type": "stretch_fold", "note": "salt incorporation, counted as S&F 1" },
-          { "time": "2026-04-16 - 14:52", "type": "stretch_fold", "note": "S&F 2" }
+          {
+            "time": "2026-04-16 - 14:21",
+            "type": "stretch_fold",
+            "note": "salt incorporation, counted as S&F 1"
+          },
+          {
+            "time": "2026-04-16 - 14:52",
+            "type": "stretch_fold",
+            "note": "S&F 2"
+          }
         ],
         "aliquot_rises": [
-          { "time": "2026-04-16 - 14:21", "rise_pct": 0, "stage": "bulk", "note": "baseline after salt" }
+          {
+            "time": "2026-04-16 - 14:21",
+            "rise_pct": 0,
+            "stage": "bulk",
+            "note": "baseline after salt"
+          }
         ]
       },
       "cost": {
@@ -4248,7 +4439,16 @@
           }
         ]
       },
-      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-17\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-16T17:43:14.006Z\",\n        \"type\": \"note\",\n        \"value\": \"ambient. 78.8 58% humidity\"\n      },\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-16T17:43:51.169Z\",\n        \"type\": \"note\",\n        \"value\": \"fermentolease started. will be afking for a bit so may miss direct 30 minute window. should be fine. dough temp 80.2 degrees. will add salt when i get back\"\n      }\n    ],\n    \"FOLD_1\": [\n      {\n        \"stepId\": \"FOLD_1\",\n        \"timestamp\": \"2026-04-16T19:26:07.354Z\",\n        \"type\": \"note\",\n        \"value\": \"i would count the stretching and folding when adding salt as s and f 1\"\n      }\n    ]\n  },\n  \"generalNotes\": [\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T19:21:09.502Z\",\n      \"type\": \"note\",\n      \"value\": \"80.8 degree dough temp after adding salt. aliquot pulled 0%\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T19:52:01.198Z\",\n      \"type\": \"note\",\n      \"value\": \"80.8 dough temp. s and fold done.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T20:43:03.625Z\",\n      \"type\": \"note\",\n      \"value\": \"82.4 degree dough temp. a little too warm. moving to cooler area. needs another stretch fold before resting.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T23:53:24.813Z\",\n      \"type\": \"note\",\n      \"value\": \"could be my first failure in a while. going to cook a foccacia tonight.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-17T02:06:04.610Z\",\n      \"type\": \"note\",\n      \"value\": \"foccaccia out of the oven almost an hour. will check crumb and taste for the hell of it\"\n    }\n  ]\n}"
+      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough\",\n  \"bakeDate\": \"2026-04-17\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-16T17:43:14.006Z\",\n        \"type\": \"note\",\n        \"value\": \"ambient. 78.8 58% humidity\"\n      },\n      {\n        \"stepId\": \"PREP_WORKSPACE\",\n        \"timestamp\": \"2026-04-16T17:43:51.169Z\",\n        \"type\": \"note\",\n        \"value\": \"fermentolease started. will be afking for a bit so may miss direct 30 minute window. should be fine. dough temp 80.2 degrees. will add salt when i get back\"\n      }\n    ],\n    \"FOLD_1\": [\n      {\n        \"stepId\": \"FOLD_1\",\n        \"timestamp\": \"2026-04-16T19:26:07.354Z\",\n        \"type\": \"note\",\n        \"value\": \"i would count the stretching and folding when adding salt as s and f 1\"\n      }\n    ]\n  },\n  \"generalNotes\": [\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T19:21:09.502Z\",\n      \"type\": \"note\",\n      \"value\": \"80.8 degree dough temp after adding salt. aliquot pulled 0%\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T19:52:01.198Z\",\n      \"type\": \"note\",\n      \"value\": \"80.8 dough temp. s and fold done.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T20:43:03.625Z\",\n      \"type\": \"note\",\n      \"value\": \"82.4 degree dough temp. a little too warm. moving to cooler area. needs another stretch fold before resting.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-16T23:53:24.813Z\",\n      \"type\": \"note\",\n      \"value\": \"could be my first failure in a while. going to cook a foccacia tonight.\"\n    },\n    {\n      \"stepId\": \"_general\",\n      \"timestamp\": \"2026-04-17T02:06:04.610Z\",\n      \"type\": \"note\",\n      \"value\": \"foccaccia out of the oven almost an hour. will check crumb and taste for the hell of it\"\n    }\n  ]\n}",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-17",
+        "temp_high_f": 87.5,
+        "temp_low_f": 69.6,
+        "humidity_avg_percent": 71,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      }
     }
   ],
   "research": {

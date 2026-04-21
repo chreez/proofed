@@ -1037,7 +1037,16 @@
         {
           "text": "Butter brush the hot loaves (forgot this bake)"
         }
-      ]
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-24",
+        "temp_high_f": 72.9,
+        "temp_low_f": 40.2,
+        "humidity_avg_percent": 47,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      }
     }
   ],
   "research": {

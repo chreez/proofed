@@ -1387,7 +1387,16 @@
         "perServing": 0.63,
         "servings": 8
       },
-      "next_time": []
+      "next_time": [],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-19",
+        "temp_high_f": 82.1,
+        "temp_low_f": 64.8,
+        "humidity_avg_percent": 76,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      }
     },
     {
       "date": "2026-03-20",
@@ -1498,7 +1507,7 @@
             "recipeAmount": 95,
             "packageSize": "1 gal",
             "packagePrice": 4.16,
-            "cost": 0.10
+            "cost": 0.1
           },
           {
             "ingredientId": "cream_cheese",
@@ -1557,7 +1566,16 @@
         {
           "text": "Not sure the underlying sour flavor works for cinnamon buns, even though it's very minimal. Consider whether the non-sourdough ATK version is just better for this application."
         }
-      ]
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-03-20",
+        "temp_high_f": 87.1,
+        "temp_low_f": 56.3,
+        "humidity_avg_percent": 53,
+        "condition": "Clear sky",
+        "source": "open-meteo"
+      }
     }
   ]
 }

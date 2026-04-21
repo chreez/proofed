@@ -137,7 +137,16 @@
           "thumb": "/images/atk-cinnamon-buns-ultimate/2026-02-10/img-6794-vsco-400w.webp",
           "alt": "Fresh out of the oven (before icing)"
         }
-      ]
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-10",
+        "temp_high_f": 70.2,
+        "temp_low_f": 60.7,
+        "humidity_avg_percent": 82,
+        "condition": "Rain",
+        "source": "open-meteo"
+      }
     },
     {
       "date": "2026-02-05",
@@ -208,7 +217,16 @@
         {
           "text": "Pyrex with foil lining works great — could skip foil but makes cleanup easier"
         }
-      ]
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-02-05",
+        "temp_high_f": 66.7,
+        "temp_low_f": 38.6,
+        "humidity_avg_percent": 57,
+        "condition": "Clear sky",
+        "source": "open-meteo"
+      }
     }
   ],
   "vessels": [
