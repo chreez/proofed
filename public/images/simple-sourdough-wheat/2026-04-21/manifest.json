@@ -1,0 +1,19 @@
+{
+  "recipeId": "simple-sourdough-wheat",
+  "date": "2026-04-21",
+  "processedAt": "2026-04-22T19:11:00.714Z",
+  "photos": [
+    {
+      "name": "loaf-crumb",
+      "thumb": "loaf-crumb-400w.webp",
+      "src": "loaf-crumb-800w.webp",
+      "summary": "Cross-section of whole wheat sourdough held in hand — moderately open crumb with even small-to-medium bubbles and a few larger holes near the top. Golden-brown crust, banneton ring pattern visible on the uncut half behind. Kitchen scale and banneton in background."
+    },
+    {
+      "name": "loaf-exterior",
+      "thumb": "loaf-exterior-400w.webp",
+      "src": "loaf-exterior-800w.webp",
+      "summary": "Whole wheat sourdough boule on copper wire cooling rack — deep golden crust with heavy flour dusting and banneton spiral pattern. Single score visible with modest ear. Held at angle showing profile and bottom crust color."
+    }
+  ]
+}

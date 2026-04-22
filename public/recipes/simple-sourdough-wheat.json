@@ -780,7 +780,68 @@
       }
     ]
   },
-  "cook_log": [],
+  "cook_log": [
+    {
+      "date": "2026-04-21",
+      "start_date": "2026-04-20",
+      "version": "v1.0.0",
+      "summary": "First bake of whole wheat variant — forgot dark rye, cool kitchen slowed bulk. Denser crumb with even small bubbles, good for toast. Subtle sour, want more depth from longer cold proof next time.",
+      "notes": [
+        "5:22pm — Kitchen 73.9°F, 52% humidity. Cool ambient for bulk.",
+        "Forgot 50g dark rye flour — total flour 950g instead of 1000g, pushing effective hydration to ~78%.",
+        "Made full batch (2 loaves) — wanted one but recipe has no half-scale option.",
+        "5:40pm — DDT 76.8°F after pre-salt mix (~5:30pm).",
+        "6:06pm — DDT 75.7°F after salt add. Aliquot 0%.",
+        "6:41pm — First stretch fold. DDT 75.6°F. Aliquot ~2.5%.",
+        "7:17pm — Second stretch fold. DDT 75.6°F.",
+        "7:51pm — Third and last stretch fold. DDT 75.4°F.",
+        "9:52pm — Aliquot 25% during bulk. Slow rise from cool kitchen.",
+        "11:27pm — Preshape ~940g dough balls. One dough fighting on preshape, waited ~20 min bench rest for final shape.",
+        "Shaped ~11:50pm, into fridge ~midnight.",
+        "Loaf 1 (out 9:45am): single score. Preheat 500°F/1hr, covered 480°F/20min, uncovered 425°F/22min. Crust seemed harder initially but cut cleanly after cooling.",
+        "Loaf 2 (in ~10:16am): preheat 525°F/~30min, covered 500°F/20min, uncovered 425°F/~24min.",
+        "Crumb denser than white sourdough — even, small bubbles throughout. Good for toast. No internal temp taken.",
+        "Sour flavor present but subtle. Lacks depth — shorter cold proof (~8-10 hrs) contributed. Unsure what variables are affecting oven spring with whole wheat."
+      ],
+      "next_time": [
+        { "text": "Start process ~6 hours earlier to get dough in fridge sooner — longer cold proof for more flavor depth" },
+        { "text": "Don't forget the dark rye (50g)" }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-21",
+        "temp_high_f": 66.1,
+        "temp_low_f": 57.1,
+        "humidity_avg_percent": 95,
+        "condition": "Rain",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "costs": [
+          { "ingredientId": "bread_flour", "ingredientName": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "recipeAmount": 800, "recipeUnit": "g", "packageSize": "10 lbs", "packagePrice": 10.99, "cost": 1.94 },
+          { "ingredientId": "whole_wheat_flour", "ingredientName": "Whole Wheat Flour", "sourceType": "heb", "sourceName": "H-E-B The Baker's Scoop Unbleached Whole Wheat Flour", "recipeAmount": 150, "recipeUnit": "g", "packageSize": "5 lbs", "packagePrice": 3.58, "cost": 0.24 },
+          { "ingredientId": "dark_rye_flour", "ingredientName": "Dark Rye Flour", "sourceType": "manual", "sourceName": "did not include in this recipe", "recipeAmount": 50, "recipeUnit": "g", "packageSize": "0g", "packagePrice": 0, "cost": 0 },
+          { "ingredientId": "salt", "ingredientName": "Fine Sea Salt", "sourceType": "heb", "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals", "recipeAmount": 20, "recipeUnit": "g", "packageSize": "26.5 oz", "packagePrice": 2.38, "cost": 0.06 }
+        ],
+        "total": 2.24,
+        "perServing": 1.12,
+        "servings": 2
+      },
+      "photos": [
+        {
+          "src": "/images/simple-sourdough-wheat/2026-04-21/loaf-exterior-800w.webp",
+          "thumb": "/images/simple-sourdough-wheat/2026-04-21/loaf-exterior-400w.webp",
+          "alt": "Whole wheat sourdough boule on copper wire cooling rack — deep golden crust with heavy flour dusting and banneton spiral pattern. Single score visible with modest ear."
+        },
+        {
+          "src": "/images/simple-sourdough-wheat/2026-04-21/loaf-crumb-800w.webp",
+          "thumb": "/images/simple-sourdough-wheat/2026-04-21/loaf-crumb-400w.webp",
+          "alt": "Cross-section of whole wheat sourdough held in hand — moderately open crumb with even small-to-medium bubbles and a few larger holes near the top. Golden-brown crust, banneton ring pattern visible on the uncut half behind."
+        }
+      ],
+      "raw_notes": "{\n  \"recipeId\": \"simple-sourdough-wheat\",\n  \"bakeDate\": \"2026-04-21\",\n  \"entries\": {\n    \"PREP_WORKSPACE\": [\n      {\"stepId\": \"PREP_WORKSPACE\", \"timestamp\": \"2026-04-20T22:22:12.691Z\", \"type\": \"note\", \"value\": \"ambient temp is cold. 73.9\"},\n      {\"stepId\": \"PREP_WORKSPACE\", \"timestamp\": \"2026-04-20T22:22:20.509Z\", \"type\": \"note\", \"value\": \"52 % humidity\"},\n      {\"stepId\": \"PREP_WORKSPACE\", \"timestamp\": \"2026-04-20T22:22:44.816Z\", \"type\": \"note\", \"value\": \"no dark rye. unsure if that will have impact. recipe doesn't have a half scale so making two.\"},\n      {\"stepId\": \"PREP_WORKSPACE\", \"timestamp\": \"2026-04-20T22:40:44.224Z\", \"type\": \"note\", \"value\": \"76.8 dough temp. finished initial pre salt mix about 10 minutes ago\"},\n      {\"stepId\": \"PREP_WORKSPACE\", \"timestamp\": \"2026-04-20T23:06:17.468Z\", \"type\": \"note\", \"value\": \"75.7 after salt add. aliquot 0%\"},\n      {\"stepId\": \"PREP_WORKSPACE\", \"timestamp\": \"2026-04-20T23:41:10.776Z\", \"type\": \"note\", \"value\": \"75.6 first stretch fold. aliquot still around 0%. a little higher. can just put 2.5%\"},\n      {\"stepId\": \"PREP_WORKSPACE\", \"timestamp\": \"2026-04-21T00:17:02.098Z\", \"type\": \"note\", \"value\": \"75.6\"}\n    ]\n  },\n  \"generalNotes\": [\n    {\"stepId\": \"_general\", \"timestamp\": \"2026-04-21T00:51:01.584Z\", \"type\": \"note\", \"value\": \"75.4 last stretch and fold\"},\n    {\"stepId\": \"_general\", \"timestamp\": \"2026-04-21T02:52:45.373Z\", \"type\": \"note\", \"value\": \"25% aliquot during bulk ferment. slow rising today because of temperature\"},\n    {\"stepId\": \"_general\", \"timestamp\": \"2026-04-21T04:27:37.171Z\", \"type\": \"note\", \"value\": \"940~ gram dough balls. these are heavier. one dough is fighting me on preshape. waiting ~20 minutes for final shape\"},\n    {\"stepId\": \"_general\", \"timestamp\": \"2026-04-21T05:50:55.864Z\", \"type\": \"note\", \"value\": \"put into fridge after i shaped them about an hour ago\"},\n    {\"stepId\": \"_general\", \"timestamp\": \"2026-04-21T14:45:14.257Z\", \"type\": \"note\", \"value\": \"pulled out first bread from oven. i did a single score. bread seems a bit hard compared to when i do this normally. bake process was preheat 500 for hour. 20 minutes at 480 covered. and total of 22 minutes at 425 uncovered. not sure what variables are affecting oven spring with this whole wheat recipe\"},\n    {\"stepId\": \"_general\", \"timestamp\": \"2026-04-21T14:46:13.398Z\", \"type\": \"note\", \"value\": \"note on previous note about shaping timing. i shaped at 11pm and then placed in fridge at 12am. could have let this bread proof for longer.. till 1pm if i wanted\"},\n    {\"stepId\": \"_general\", \"timestamp\": \"2026-04-21T15:16:07.546Z\", \"type\": \"note\", \"value\": \"second loaf in after preheat at 525 for about 30 minutes. lowered down to 500 for covered 20 minutes. will assess in 20 minutes what to do with remaining temps when i uncover it\"},\n    {\"stepId\": \"_general\", \"timestamp\": \"2026-04-21T18:23:42.635Z\", \"type\": \"note\", \"value\": \"sour flavor there and subtle. think it lacks the depth that i'd like from the slightly longer proof. my schedule is preferred to get the baking done in the morning so try to start about 6 hours earlier in process to get in fridge asap\"}\n  ]\n}"
+    }
+  ],
   "research": {
     "sources": [
       { "name": "The Perfect Loaf", "url": "https://www.theperfectloaf.com/", "type": "adapted", "author": "Maurizio Leo" },
