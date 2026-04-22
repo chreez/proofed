@@ -1,6 +1,6 @@
 import type { Recipe } from '@/types/recipe'
 import { deriveAllergens } from '@/composables/useAllergens'
-import { getMostRecentCost } from '@/composables/useCost'
+import { getVersionAverageCost } from '@/composables/useCost'
 
 /**
  * Per-section validation status for recipe printout.
@@ -69,8 +69,8 @@ export function validatePrintSections(recipe: Recipe | null): PrintValidation {
   const nutritionValid =
     !!recipe.nutrition?.totals?.calories && recipe.nutrition.totals.calories > 0
 
-  // Cost: Valid if most recent cook_log entry has cost data
-  const costValid = getMostRecentCost(recipe) !== null
+  // Cost: Valid if version-averaged cost data exists for current major version
+  const costValid = getVersionAverageCost(recipe) !== null
 
   // Determine readiness and summary
   const criticalValid = ingredientsValid && allergensValid
