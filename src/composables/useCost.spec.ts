@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getMostRecentCost, getServings, getMostRecentCostDate } from './useCost'
+import { getMostRecentCost, getServings, getMostRecentCostDate, getMajorVersion, getVersionAverageCost } from './useCost'
 import type { Recipe, CookLogCost } from '@/types/recipe'
 
 describe('useCost', () => {
@@ -365,6 +365,106 @@ describe('useCost', () => {
       }
 
       expect(getMostRecentCostDate(recipe)).toBe('2026-02-15')
+    })
+  })
+
+  describe('getMajorVersion', () => {
+    it('extracts major from "v3.6.0"', () => {
+      expect(getMajorVersion('v3.6.0')).toBe(3)
+    })
+
+    it('extracts major from "v1.0.0"', () => {
+      expect(getMajorVersion('v1.0.0')).toBe(1)
+    })
+
+    it('extracts major from "1.0" (no v prefix)', () => {
+      expect(getMajorVersion('1.0')).toBe(1)
+    })
+
+    it('returns 0 for empty string', () => {
+      expect(getMajorVersion('')).toBe(0)
+    })
+  })
+
+  describe('getVersionAverageCost', () => {
+    const baseRecipe: Recipe = {
+      meta: { name: 'Test', source: { name: 'Test' }, yields: '1', total_time: '1h' },
+      config: { early_check_percent: 0.8 },
+      vessels: [],
+      stages: [],
+      states: [],
+      version: 'v3.6.0',
+    }
+
+    it('returns null when no cook_log', () => {
+      expect(getVersionAverageCost(baseRecipe)).toBeNull()
+    })
+
+    it('returns null when no bakes on current major version have cost', () => {
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          { date: '2026-01-01', version: 'v2.0.0', notes: ['old'], cost: { total: 5, perServing: 2.5, servings: 2, items: [] } },
+          { date: '2026-02-01', version: 'v3.0.0', notes: ['no cost'] },
+        ],
+      }
+      expect(getVersionAverageCost(recipe)).toBeNull()
+    })
+
+    it('averages cost across bakes on same major version', () => {
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          { date: '2026-04-13', version: 'v3.6.0', notes: ['a'], cost: { total: 2.65, perServing: 1.32, servings: 2, items: [] } },
+          { date: '2026-04-15', version: 'v3.6.0', notes: ['b'], cost: { total: 1.33, perServing: 1.33, servings: 1, items: [] } },
+          { date: '2026-04-17', version: 'v3.6.0', notes: ['c'], cost: { total: 1.33, perServing: 0.67, servings: 2, items: [] } },
+        ],
+      }
+      const result = getVersionAverageCost(recipe)!
+      expect(result.total).toBeCloseTo(1.77, 2)
+      expect(result.perServing).toBeCloseTo(1.11, 2)
+    })
+
+    it('filters out bakes from different major versions', () => {
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          { date: '2026-02-16', version: 'v1.1.0', notes: ['v1'], cost: { total: 1.34, perServing: 1.34, servings: 1, items: [] } },
+          { date: '2026-02-20', version: 'v2.0.0', notes: ['v2'], cost: { total: 2.68, perServing: 1.34, servings: 2, items: [] } },
+          { date: '2026-04-06', version: 'v3.0.0', notes: ['v3'], cost: { total: 2.65, perServing: 1.32, servings: 2, items: [] } },
+        ],
+      }
+      const result = getVersionAverageCost(recipe)!
+      // Only v3.0.0 entry matches major version 3
+      expect(result.total).toBe(2.65)
+      expect(result.perServing).toBe(1.32)
+    })
+
+    it('includes all minor/patch versions within same major', () => {
+      const recipe: Recipe = {
+        ...baseRecipe,
+        version: 'v1.2.0',
+        cook_log: [
+          { date: '2026-01-01', version: 'v1.0.0', notes: ['a'], cost: { total: 4.00, perServing: 0.50, servings: 8, items: [] } },
+          { date: '2026-02-01', version: 'v1.1.0', notes: ['b'], cost: { total: 6.00, perServing: 0.75, servings: 8, items: [] } },
+          { date: '2026-03-01', version: 'v1.2.0', notes: ['c'], cost: { total: 8.00, perServing: 1.00, servings: 8, items: [] } },
+        ],
+      }
+      const result = getVersionAverageCost(recipe)!
+      expect(result.total).toBe(6.00)
+      expect(result.perServing).toBe(0.75)
+    })
+
+    it('returns single bake cost when only one matches', () => {
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          { date: '2026-04-06', version: 'v3.0.0', notes: ['only one'], cost: { total: 2.65, perServing: 1.32, servings: 2, items: [] } },
+        ],
+      }
+      const result = getVersionAverageCost(recipe)!
+      expect(result.total).toBe(2.65)
+      expect(result.perServing).toBe(1.32)
     })
   })
 })

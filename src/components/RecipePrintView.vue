@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { validatePrintSections } from '@/composables/usePrintValidation'
 import { deriveAllergens } from '@/composables/useAllergens'
+import { getVersionAverageCost } from '@/composables/useCost'
 import NutritionLabel from '@/components/NutritionLabel.vue'
 import * as QRCode from 'qrcode'
 
@@ -116,6 +117,12 @@ const allergenText = computed(() => {
   return allergens.value.join(', ')
 })
 
+// Version-averaged cost
+const avgCost = computed(() => {
+  if (!currentRecipe.value) return null
+  return getVersionAverageCost(currentRecipe.value)
+})
+
 const recipeUrl = computed(() => {
   const id = route.params.recipeId
   return typeof id === 'string' ? `/recipe/${id}` : '/'
@@ -203,6 +210,13 @@ function handlePrint(): void {
       <h2 class="section-title">Allergen Declaration</h2>
       <p class="missing-text">Unable to determine allergens — ingredient lookup incomplete</p>
     </section>
+
+    <!-- Cost (version-averaged, hidden when absent) -->
+    <div v-if="avgCost" class="cost-section">
+      <span class="cost-total">${{ avgCost.total.toFixed(2) }} per bake</span>
+      <span class="cost-divider">&middot;</span>
+      <span class="cost-serving">${{ avgCost.perServing.toFixed(2) }} per serving</span>
+    </div>
 
     <!-- Footer + QR unified section -->
     <footer class="print-footer">
@@ -532,6 +546,30 @@ function handlePrint(): void {
 
 .allergen-value {
   color: var(--color-ink);
+}
+
+/* Cost section */
+.cost-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9pt;
+  color: var(--color-stone-600);
+}
+
+.cost-total {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.cost-divider {
+  color: var(--color-stone-400);
+}
+
+.cost-serving {
+  color: var(--color-stone-600);
 }
 
 /*
