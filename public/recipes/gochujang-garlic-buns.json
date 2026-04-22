@@ -1459,6 +1459,85 @@
         "condition": "Rain",
         "source": "open-meteo"
       }
+    },
+    {
+      "date": "2026-04-22",
+      "start_date": "2026-04-21",
+      "version": "v1.2.0",
+      "summary": "Third bake — A/B test with 6 cinnamon-roll swirls vs 6 standard scored buns. Swirl style was the clear winner for bread flavor and glaze surface. Confit 43g from ~1.5 bulbs made 2 days prior. Swirl approach likely becomes v3 standard shape.",
+      "notes": [
+        "1:52pm — 76.5°F ambient, 56% humidity at mix.",
+        "2:14pm — Dough temp 75°F before bulk.",
+        "3:03pm — Prepped confit during initial proof. 43g after draining oil from confit made two days ago. Felt like almost 1.5 bulbs. More garlic is better for this recipe.",
+        "4:34pm — Split batch: 6 cinnamon-roll style swirls + 6 regular scored buns. Intentional A/B test. Varying swirl sizes helped determine target look — needs uniformity practice.",
+        "4:34pm — Short on butter but had enough for dough step. Made do with minimal butter wash.",
+        "4:35pm — Rotated oven at ~12 min mark. 350°F. Preheated while shaping.",
+        "4:35pm — Sprayed tops with water to prevent scorching.",
+        "4:36pm — For swirl style: added melted butter pat and minced garlic before rolling up. Theory is butter/garlic gelatinizes at bottom of roll.",
+        "4:50pm — Out after 24 min total. Pulled at 20, thought tops could be browner, added 4 more minutes. Internal ~210°F. Center rolls weren't browning evenly — uniformity issue.",
+        "5:34pm — Swirl style is a winner. Better overall bread flavor than standard round buns.",
+        "7:49pm — Swirly variation with melted butter should become standard v3. Consider putting butter/confit directly in the roll-up for more even distribution across all rolls.",
+        "7:50pm — Need to figure out uniform roll sizing for swirl approach. If making 12, even sizes = even cooking."
+      ],
+      "photos": [
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-22/img-7375-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-22/img-7375-400w.webp",
+          "alt": "All 12 buns fresh from oven in muffin tin — mix of 6 standard round buns and 6 cinnamon-roll swirl style, golden brown tops with visible swirl patterns, varying sizes",
+          "usage": "process"
+        },
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-22/img-7379-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-22/img-7379-400w.webp",
+          "alt": "Crumb shot — hand tearing open a swirl bun showing yellow-orange interior from gochujang, fluffy pull-apart texture, glazed buns with sesame seeds in background",
+          "usage": "process"
+        },
+        {
+          "src": "/images/gochujang-garlic-buns/2026-04-22/img-7378-800w.webp",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-22/img-7378-400w.webp",
+          "alt": "Glazed gochujang buns — 3 on white plate, remaining batch in glass dish behind, honey-soy glaze glistening with black and white sesame seeds",
+          "usage": "hero"
+        }
+      ],
+      "next_time": [
+        { "text": "Version bump to v3 with swirl as standard shape — needs recipe step rewrite" },
+        { "text": "Put butter + confit in the roll-up step (like cinnamon roll filling) for even distribution without re-measuring dough" },
+        { "text": "Research keeping swirl buns moist on reheat — may need updated reheat method" },
+        { "text": "Practice uniform swirl roll sizing for even bake" },
+        { "text": "Consider making 4 bulbs confit to reduce waste or double recipe for two practice sessions" }
+      ],
+      "cost": {
+        "costs": [
+          { "ingredientId": "garlic", "ingredientName": "Garlic Cloves", "product": "Fresh Garlic", "packageSize": "Each", "packagePrice": 0.50, "cost": 0 },
+          { "ingredientId": "olive-oil", "ingredientName": "Extra Virgin Olive Oil", "product": "H-E-B Extra Virgin Olive Oil 8.5 oz", "packageSize": "8.5 oz", "packagePrice": 4.38, "cost": 4.74 },
+          { "ingredientId": "bread-flour", "ingredientName": "Bread Flour", "product": "King Arthur Unbleached Bread Flour 10 lbs", "packageSize": "10 lbs", "packagePrice": 10.99, "cost": 1.02 },
+          { "ingredientId": "water", "ingredientName": "Water", "product": "Tap water", "packageSize": "negligible", "packagePrice": 0, "cost": 0 },
+          { "ingredientId": "instant-yeast", "ingredientName": "Instant Yeast", "product": "Red Star Quick-Rise Instant Dry Yeast 3ct", "packageSize": "3 ct", "packagePrice": 1.76, "cost": 0.59 },
+          { "ingredientId": "whole-milk", "ingredientName": "Whole Milk", "product": "H-E-B Whole Milk 1 pt", "packageSize": "1 pt", "packagePrice": 1.00, "cost": 0.24 },
+          { "ingredientId": "unsalted-butter", "ingredientName": "Unsalted Butter", "product": "Hill Country Fare Unsalted Butter Sticks 4ct", "packageSize": "4 ct", "packagePrice": 2.98, "cost": 0.18 },
+          { "ingredientId": "caster-sugar", "ingredientName": "Caster Sugar", "product": "India Tree Superfine Cane Caster Sugar 1 lb", "packageSize": "1 lb", "packagePrice": 5.74, "cost": 0.51 },
+          { "ingredientId": "fine-salt", "ingredientName": "Fine Salt", "product": "H-E-B Fine Mediterranean Sea Salt Crystals 26.5 oz", "packageSize": "26.5 oz", "packagePrice": 2.38, "cost": 0.02 },
+          { "ingredientId": "gochujang", "ingredientName": "Gochujang", "product": "O'Food Gochujang Brown Rice Red Pepper Paste 17.6 oz", "packageSize": "17.6 oz", "packagePrice": 6.18, "cost": 0.37 },
+          { "ingredientId": "eggs", "ingredientName": "Large Eggs", "product": "Hill Country Fare Grade A Large White Eggs 12ct", "packageSize": "12 ct", "packagePrice": 2.17, "cost": 0.36 },
+          { "ingredientId": "honey", "ingredientName": "Honey", "product": "H-E-B Texas Wildflower Honey 24 oz", "packageSize": "24 oz", "packagePrice": 7.98, "cost": 0.35 },
+          { "ingredientId": "light-soy-sauce", "ingredientName": "Light Soy Sauce", "product": "Kikkoman Soy Sauce 5 oz", "packageSize": "5 oz", "packagePrice": 1.98, "cost": 0.14 },
+          { "ingredientId": "glaze-butter", "ingredientName": "Unsalted Butter (melted)", "product": "H-E-B Sweet Cream Unsalted Butter Sticks 4ct", "packageSize": "4 ct", "packagePrice": 3.98, "cost": 0.26 },
+          { "ingredientId": "sesame-seeds", "ingredientName": "Sesame Seeds", "product": "McCormick Sesame Seeds 1 oz", "packageSize": "1 oz", "packagePrice": 2.98, "cost": 0.53 }
+        ],
+        "total": 9.31,
+        "perServing": 0.93,
+        "servings": 10
+      },
+      "raw_notes": "Scratchpad export — Gochujang & Garlic Buns — 2026-04-22\n\nmix-dough @ 2026-04-21T18:52:25Z: 76.5 ambient 56% humidity\nfirst-rise @ 2026-04-21T19:14:37Z: Dough temperature before bulk: 75\n\nGeneral notes:\n2026-04-21T20:03:24Z: prepping confit during initial proof. 43grams after draining oil as much as i could from the confit i made two days ago. notice i probably shortchanged quite a bit the last time i made this. consider making 4 bulbs of garlic to reduce waste or to double recipe for two bake practices sessions\n2026-04-21T21:34:28Z: did 6 \"cinnamon roll\" style rolls to see how it comes out. theory is more exposed sponge to the soy glaze and butter wash\n2026-04-21T21:34:39Z: short on butter. but should suffice for end glaze\n2026-04-21T21:35:13Z: i rotated it in the oven about 2 minutes ago. compute this as 12 minute mark of bake. 350. preheated while i got everything shaped\n2026-04-21T21:35:35Z: sprayed top with water just in case tops can get scorched\n2026-04-21T21:36:00Z: cinna roll style- i added a melted butter pat and some minced garlic. theory is that it should gelatonize a bit at the bottom of the roll\n2026-04-21T21:50:53Z: out after 24 minutes bake time. i pulled out at 20 and thought the tops could be a bit browner. so added 4 minutes\n2026-04-21T22:34:33Z: swirl might be a banger.\n2026-04-22T00:49:44Z: swirly variation with melted butter should be standard v3. also note how much confit was used.\n2026-04-22T00:50:20Z: need to understand how to make more uniform rolls for the swirly approach. if i need 12 of them it would be nice to get them the same size for even cooking",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-22",
+        "temp_high_f": 79.2,
+        "temp_low_f": 63.0,
+        "humidity_avg_percent": 89,
+        "condition": "Rain",
+        "source": "open-meteo"
+      }
     }
   ]
 }
