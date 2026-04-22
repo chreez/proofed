@@ -362,6 +362,102 @@ describe('BakeLogPage', () => {
     expect(wrapper.find('.bake-log-status').text()).toContain('In Progress (since Feb 19)')
   })
 
+  // --- Weather badge (PF-210) ---
+
+  it('shows weather badge when entry has weather data', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [{
+          date: '2026-02-10', version: 'v1.2.0', notes: [],
+          weather: { location: 'Austin, TX', date: '2026-02-10', temp_high_f: 75, temp_low_f: 58, humidity_avg_percent: 90, condition: 'Rain', source: 'open-meteo' }
+        }]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    const badge = wrapper.find('[data-testid="weather-badge"]')
+    expect(badge.exists()).toBe(true)
+    expect(badge.text()).toContain('75°/58°')
+    expect(badge.text()).toContain('90%rh')
+    expect(badge.text()).toContain('🌧️')
+  })
+
+  it('hides weather badge when entry has no weather data', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [{ date: '2026-02-10', version: 'v1.2.0', notes: [] }]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    expect(wrapper.find('[data-testid="weather-badge"]').exists()).toBe(false)
+  })
+
+  it('maps Clear sky condition to sun icon', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [{
+          date: '2026-02-10', version: 'v1.2.0', notes: [],
+          weather: { location: 'Austin, TX', date: '2026-02-10', temp_high_f: 82, temp_low_f: 60, humidity_avg_percent: 45, condition: 'Clear sky', source: 'open-meteo' }
+        }]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+
+    expect(wrapper.find('[data-testid="weather-badge"]').text()).toContain('☀️')
+  })
+
+  it('maps Overcast to cloud icon', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [{
+          date: '2026-02-10', version: 'v1.2.0', notes: [],
+          weather: { location: 'Austin, TX', date: '2026-02-10', temp_high_f: 70, temp_low_f: 55, humidity_avg_percent: 80, condition: 'Overcast', source: 'open-meteo' }
+        }]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+    expect(wrapper.find('[data-testid="weather-badge"]').text()).toContain('☁️')
+  })
+
+  it('maps Drizzle to drizzle icon', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [{
+          date: '2026-02-10', version: 'v1.2.0', notes: [],
+          weather: { location: 'Austin, TX', date: '2026-02-10', temp_high_f: 65, temp_low_f: 52, humidity_avg_percent: 95, condition: 'Drizzle', source: 'open-meteo' }
+        }]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+    expect(wrapper.find('[data-testid="weather-badge"]').text()).toContain('🌦️')
+  })
+
+  it('uses fallback icon for unknown condition', async () => {
+    global.fetch = makeFetchMockByFile({
+      'atk-cinnamon-buns-ultimate.json': {
+        cook_log: [{
+          date: '2026-02-10', version: 'v1.2.0', notes: [],
+          weather: { location: 'Austin, TX', date: '2026-02-10', temp_high_f: 60, temp_low_f: 45, humidity_avg_percent: 50, condition: 'Fog', source: 'open-meteo' }
+        }]
+      },
+      'tartine-baguette.json': { cook_log: [] }
+    })
+    const wrapper = mount(BakeLogPage)
+    await flushPromises()
+    expect(wrapper.find('[data-testid="weather-badge"]').text()).toContain('🌤️')
+  })
+
   it('shows plain "In Progress" when in-progress entry has no start_date', async () => {
     global.fetch = makeFetchMockByFile({
       'atk-cinnamon-buns-ultimate.json': {

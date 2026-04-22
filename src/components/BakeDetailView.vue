@@ -247,6 +247,17 @@ function dismissPopover(): void {
   delete query.shared
   router.replace({ query })
 }
+
+// --- PF-210 — Weather condition icon helper ---
+function weatherIcon(condition: string): string {
+  switch (condition) {
+    case 'Clear sky': return '\u2600\uFE0F'
+    case 'Overcast': return '\u2601\uFE0F'
+    case 'Rain': return '\uD83C\uDF27\uFE0F'
+    case 'Drizzle': return '\uD83C\uDF26\uFE0F'
+    default: return '\uD83C\uDF24\uFE0F'
+  }
+}
 </script>
 
 <template>
@@ -283,6 +294,17 @@ function dismissPopover(): void {
           <span v-if="entry.status === 'in_progress'" class="text-xs font-mono px-2 py-0.5 bg-warning-tint text-warning border border-warning">
             {{ statusLabel(entry) }}
           </span>
+        </div>
+        <!-- PF-210 — Compact weather row (Variant 2) -->
+        <div v-if="entry.weather" class="wx-detail-compact" data-testid="weather-row">
+          <span class="wx-icon">{{ weatherIcon(entry.weather.condition) }}</span>
+          <span class="wx-detail-compact-text wx-detail-compact-condition">{{ entry.weather.condition }}</span>
+          <span class="wx-detail-compact-sep">&middot;</span>
+          <span class="wx-detail-compact-text">{{ entry.weather.temp_high_f }}°F / {{ entry.weather.temp_low_f }}°F</span>
+          <span class="wx-detail-compact-sep">&middot;</span>
+          <span class="wx-detail-compact-text wx-detail-compact-muted">{{ entry.weather.humidity_avg_percent }}% humidity</span>
+          <span class="wx-detail-compact-sep">&middot;</span>
+          <span class="wx-detail-compact-text wx-detail-compact-location">{{ entry.weather.location }}</span>
         </div>
       </div>
 
@@ -636,5 +658,48 @@ function dismissPopover(): void {
   margin: 0;
   max-width: 100%;
   overflow-x: auto;
+}
+
+/* ================================================
+   PF-210 — Compact weather row (Variant 2)
+   ================================================ */
+.wx-detail-compact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-stone-200);
+  background: var(--color-stone-50);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.wx-icon {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.wx-detail-compact-text {
+  color: var(--color-stone-600);
+}
+
+.wx-detail-compact-condition {
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.wx-detail-compact-sep {
+  color: var(--color-stone-300);
+}
+
+.wx-detail-compact-muted {
+  color: var(--color-stone-400);
+}
+
+.wx-detail-compact-location {
+  color: var(--color-stone-400);
+  font-size: 0.625rem;
 }
 </style>

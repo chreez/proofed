@@ -1,7 +1,7 @@
 ---
 id: PF-210
 title: Weather data UI — condition icons + humidity display on bake pages
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-21 14:24'
 labels:

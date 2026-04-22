@@ -407,6 +407,17 @@ function compactViewOf(
     bakeTooltip: bakeBody
   }
 }
+
+// --- PF-210 — Weather condition icon helper ---
+function weatherIcon(condition: string): string {
+  switch (condition) {
+    case 'Clear sky': return '\u2600\uFE0F'
+    case 'Overcast': return '\u2601\uFE0F'
+    case 'Rain': return '\uD83C\uDF27\uFE0F'
+    case 'Drizzle': return '\uD83C\uDF26\uFE0F'
+    default: return '\uD83C\uDF24\uFE0F'
+  }
+}
 </script>
 
 <template>
@@ -466,11 +477,17 @@ function compactViewOf(
         />
         <!-- Text content -->
         <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3 flex-wrap">
             <span class="font-semibold text-sm text-stone-700">{{ formatDate(entry) }}</span>
             <span class="text-xs bg-stone-200 px-2 py-0.5">{{ entry.version }}</span>
             <span v-if="entry.status === 'in_progress'" class="text-xs font-mono px-2 py-0.5 bg-warning-tint text-warning border border-warning">
               {{ statusLabel(entry) }}
+            </span>
+            <span v-if="entry.weather" class="wx-badge" data-testid="weather-badge">
+              <span class="wx-icon">{{ weatherIcon(entry.weather.condition) }}</span>
+              <span class="wx-badge-temp">{{ entry.weather.temp_high_f }}°/{{ entry.weather.temp_low_f }}°</span>
+              <span class="wx-badge-sep">&middot;</span>
+              <span>{{ entry.weather.humidity_avg_percent }}%rh</span>
             </span>
           </div>
           <p
@@ -751,5 +768,32 @@ function compactViewOf(
   transform: translateX(-50%);
   border: 4px solid transparent;
   border-top-color: var(--color-accent);
+}
+
+/* ================================================
+   PF-210 — Weather badge (inline with date/version header)
+   ================================================ */
+.wx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-stone-500);
+  flex-shrink: 0;
+}
+
+.wx-icon {
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.wx-badge-temp {
+  color: var(--color-stone-600);
+  font-weight: 500;
+}
+
+.wx-badge-sep {
+  color: var(--color-stone-300);
 }
 </style>

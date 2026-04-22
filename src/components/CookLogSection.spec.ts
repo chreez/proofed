@@ -1175,6 +1175,147 @@ describe('Compact bake stats (PF-177.9)', () => {
   })
 })
 
+// ============================================================
+// PF-210 — Weather badge (inline with date/version header)
+// ============================================================
+describe('Weather badge (PF-210)', () => {
+  const weatherData = {
+    location: 'Austin, TX',
+    date: '2026-04-06',
+    temp_high_f: 75,
+    temp_low_f: 58,
+    humidity_avg_percent: 45,
+    condition: 'Clear sky',
+    source: 'open-meteo' as const
+  }
+
+  it('renders weather badge when entry has weather data', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-04-06',
+          version: 'v3.2.0',
+          notes: ['Note'],
+          weather: weatherData
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    expect(wrapper.find('[data-testid="weather-badge"]').exists()).toBe(true)
+  })
+
+  it('does not render weather badge when entry has no weather data', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-04-06',
+          version: 'v3.2.0',
+          notes: ['Note']
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    expect(wrapper.find('[data-testid="weather-badge"]').exists()).toBe(false)
+  })
+
+  it('displays temp range and humidity', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-04-06',
+          version: 'v3.2.0',
+          notes: ['Note'],
+          weather: weatherData
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    const badge = wrapper.find('[data-testid="weather-badge"]')
+    expect(badge.text()).toContain('75°/58°')
+    expect(badge.text()).toContain('45%rh')
+  })
+
+  it('maps "Clear sky" to sun icon', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-04-06',
+          version: 'v3.2.0',
+          notes: ['Note'],
+          weather: weatherData
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    const badge = wrapper.find('[data-testid="weather-badge"]')
+    expect(badge.text()).toContain('\u2600\uFE0F')
+  })
+
+  it('maps "Rain" to rain icon', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-04-06',
+          version: 'v3.2.0',
+          notes: ['Note'],
+          weather: { ...weatherData, condition: 'Rain' }
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    const badge = wrapper.find('[data-testid="weather-badge"]')
+    expect(badge.text()).toContain('\uD83C\uDF27\uFE0F')
+  })
+
+  it('maps "Overcast" to cloud icon', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-04-06',
+          version: 'v3.2.0',
+          notes: ['Note'],
+          weather: { ...weatherData, condition: 'Overcast' }
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    const badge = wrapper.find('[data-testid="weather-badge"]')
+    expect(badge.text()).toContain('\u2601\uFE0F')
+  })
+
+  it('maps "Drizzle" to drizzle icon', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-04-06',
+          version: 'v3.2.0',
+          notes: ['Note'],
+          weather: { ...weatherData, condition: 'Drizzle' }
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    const badge = wrapper.find('[data-testid="weather-badge"]')
+    expect(badge.text()).toContain('\uD83C\uDF26\uFE0F')
+  })
+
+  it('maps unknown condition to fallback icon', () => {
+    const wrapper = mount(CookLogSection, {
+      props: {
+        cookLog: [{
+          date: '2026-04-06',
+          version: 'v3.2.0',
+          notes: ['Note'],
+          weather: { ...weatherData, condition: 'Partly cloudy' }
+        }],
+        sectionId: 'cook-log-section'
+      }
+    })
+    const badge = wrapper.find('[data-testid="weather-badge"]')
+    expect(badge.text()).toContain('\uD83C\uDF24\uFE0F')
+  })
+})
+
 describe('HTML snapshot', () => {
   it('matches snapshot', () => {
     const wrapper = mount(CookLogSection, {

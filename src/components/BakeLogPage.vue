@@ -7,6 +7,13 @@ import type { CookLogEntry } from '@/types/recipe'
 const router = useRouter()
 const { recipeList } = useRecipe()
 
+interface BakeWeatherSnapshot {
+  condition: string
+  temp_high_f: number
+  temp_low_f: number
+  humidity_avg_percent: number
+}
+
 interface BakeEntry {
   recipeId: string
   recipeName: string
@@ -17,6 +24,7 @@ interface BakeEntry {
   status?: 'in_progress' | 'complete'
   heroThumb: string | null
   heroAlt: string | null
+  weather: BakeWeatherSnapshot | null
 }
 
 const loaded = ref(false)
@@ -45,6 +53,12 @@ async function fetchCookLogs(): Promise<void> {
             status: entry.status,
             heroThumb: hero?.thumb ?? null,
             heroAlt: hero?.alt ?? null,
+            weather: entry.weather ? {
+              condition: entry.weather.condition,
+              temp_high_f: entry.weather.temp_high_f,
+              temp_low_f: entry.weather.temp_low_f,
+              humidity_avg_percent: entry.weather.humidity_avg_percent,
+            } : null,
           })
         }
       } catch {
@@ -86,6 +100,16 @@ function navigateToBake(entry: BakeEntry): void {
 }
 
 const hasEntries = computed(() => entries.value.length > 0)
+
+function weatherIcon(condition: string): string {
+  switch (condition) {
+    case 'Clear sky': return '☀️'
+    case 'Overcast': return '☁️'
+    case 'Rain': return '🌧️'
+    case 'Drizzle': return '🌦️'
+    default: return '🌤️'
+  }
+}
 </script>
 
 <template>
@@ -113,8 +137,8 @@ const hasEntries = computed(() => entries.value.length > 0)
             <span class="bake-log-version">{{ entry.version }}</span>
             <span v-if="entry.status === 'in_progress'" class="bake-log-status">{{ statusLabel(entry) }}</span>
           </div>
-          <!-- Row 2: thumb + summary -->
-          <div v-if="entry.heroThumb || entry.summary" class="bake-log-row-bottom">
+          <!-- Row 2: thumb + text column (weather + summary) -->
+          <div v-if="entry.heroThumb || entry.summary || entry.weather" class="bake-log-row-bottom">
             <img
               v-if="entry.heroThumb"
               :src="entry.heroThumb"
@@ -123,7 +147,15 @@ const hasEntries = computed(() => entries.value.length > 0)
               decoding="async"
               class="bake-log-thumb"
             />
-            <p v-if="entry.summary" class="bake-log-summary">{{ entry.summary }}</p>
+            <div class="bake-log-text">
+              <div v-if="entry.weather" class="bake-log-wx-row" data-testid="weather-badge">
+                <span class="bake-log-wx-icon">{{ weatherIcon(entry.weather.condition) }}</span>
+                <span class="bake-log-wx-temp">{{ entry.weather.temp_high_f }}°/{{ entry.weather.temp_low_f }}°</span>
+                <span class="bake-log-separator">&middot;</span>
+                <span class="bake-log-wx-rh">{{ entry.weather.humidity_avg_percent }}%rh</span>
+              </div>
+              <p v-if="entry.summary" class="bake-log-summary">{{ entry.summary }}</p>
+            </div>
           </div>
         </div>
       </li>
@@ -305,6 +337,36 @@ const hasEntries = computed(() => entries.value.length > 0)
   -webkit-box-orient: vertical;
   transition: color 150ms ease;
 }
+
+/* --- Weather (PF-210) --- */
+.bake-log-wx-icon {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.bake-log-wx-temp {
+  color: var(--color-stone-600);
+  font-weight: 500;
+}
+
+.bake-log-wx-rh {
+  color: var(--color-stone-400);
+}
+
+.bake-log-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.bake-log-wx-row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-stone-500);
+}
+
 
 /* Mobile: stack layout */
 @media (max-width: 480px) {

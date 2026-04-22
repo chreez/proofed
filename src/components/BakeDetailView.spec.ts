@@ -981,6 +981,114 @@ describe('BakeDetailView', () => {
     })
   })
 
+  describe('weather row (PF-210)', () => {
+    const weatherData = {
+      location: 'Austin, TX',
+      date: '2026-02-05',
+      temp_high_f: 75,
+      temp_low_f: 58,
+      humidity_avg_percent: 45,
+      condition: 'Clear sky',
+      source: 'open-meteo' as const
+    }
+
+    it('renders weather row when entry has weather data', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          weather: weatherData
+        }]
+      })
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="weather-row"]').exists()).toBe(true)
+    })
+
+    it('does not render weather row when entry has no weather data', () => {
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="weather-row"]').exists()).toBe(false)
+    })
+
+    it('displays condition name, temp range, humidity, and location', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          weather: weatherData
+        }]
+      })
+      const wrapper = mountComponent()
+      const row = wrapper.find('[data-testid="weather-row"]')
+      expect(row.text()).toContain('Clear sky')
+      expect(row.text()).toContain('75°F / 58°F')
+      expect(row.text()).toContain('45% humidity')
+      expect(row.text()).toContain('Austin, TX')
+    })
+
+    it('displays correct icon for Clear sky condition', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          weather: weatherData
+        }]
+      })
+      const wrapper = mountComponent()
+      const row = wrapper.find('[data-testid="weather-row"]')
+      expect(row.text()).toContain('\u2600\uFE0F')
+    })
+
+    it('displays correct icon for Rain condition', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          weather: { ...weatherData, condition: 'Rain' }
+        }]
+      })
+      const wrapper = mountComponent()
+      const row = wrapper.find('[data-testid="weather-row"]')
+      expect(row.text()).toContain('\uD83C\uDF27\uFE0F')
+    })
+
+    it('displays fallback icon for unknown condition', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          weather: { ...weatherData, condition: 'Thunderstorm' }
+        }]
+      })
+      const wrapper = mountComponent()
+      const row = wrapper.find('[data-testid="weather-row"]')
+      expect(row.text()).toContain('\uD83C\uDF24\uFE0F')
+    })
+
+    it('weather row appears before summary', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          summary: 'Great bake.',
+          notes: ['A note'],
+          weather: weatherData
+        }]
+      })
+      const wrapper = mountComponent()
+      const html = wrapper.html()
+      const weatherIdx = html.indexOf('data-testid="weather-row"')
+      const summaryIdx = html.indexOf('Great bake.')
+      expect(weatherIdx).toBeGreaterThan(-1)
+      expect(summaryIdx).toBeGreaterThan(-1)
+      expect(weatherIdx).toBeLessThan(summaryIdx)
+    })
+  })
+
   describe('BakeStatsBlock wiring (PF-177.5)', () => {
     const bakeStats = {
       confidence: 'high' as const,
