@@ -80,8 +80,14 @@ function parseHours(s: string): number | null {
 // Format hours back to human-readable
 function formatHours(hrs: number): string {
   if (hrs < 1) return `${Math.round(hrs * 60)} min`
-  if (hrs % 1 === 0) return `${hrs} hrs`
-  return `${hrs} hrs`
+  const whole = Math.floor(hrs)
+  const frac = hrs - whole
+  // Convert fractional hours to minutes if remainder is significant
+  if (frac > 0.08) {
+    const mins = Math.round(frac * 60)
+    return mins > 0 ? `${whole} hrs ${mins} min` : `${whole} hrs`
+  }
+  return `${whole} hrs`
 }
 
 // Time breakdown: total, active, waiting

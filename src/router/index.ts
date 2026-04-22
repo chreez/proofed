@@ -132,6 +132,12 @@ const router = createRouter({
       meta: { showIndex: false, demoPage: true }
     },
     {
+      path: '/demo/print-nav',
+      name: 'print-nav-demo',
+      component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
+    {
       path: '/recipe/:recipeId/print',
       name: 'recipe-print',
       component: EmptyRouteView,

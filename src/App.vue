@@ -41,6 +41,7 @@ import DemoBakeStatsShapes from '@/components/DemoBakeStatsShapes.vue'
 import DemoStateNoteTables from '@/components/DemoStateNoteTables.vue'
 import DemoQrLabelVariants from '@/components/DemoQrLabelVariants.vue'
 import DemoRecipePrintout from '@/components/DemoRecipePrintout.vue'
+import DemoPrintNav from '@/components/DemoPrintNav.vue'
 import StatsPage from '@/components/StatsPage.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
@@ -492,6 +493,7 @@ watch(() => route.hash, (newHash) => {
         <DemoStateNoteTables v-else-if="route.name === 'state-note-tables-demo'" />
         <DemoQrLabelVariants v-else-if="route.name === 'qr-label-variants-demo'" />
         <DemoRecipePrintout v-else-if="route.name === 'recipe-printout-demo'" />
+        <DemoPrintNav v-else-if="route.name === 'print-nav-demo'" />
         <DemoSharedMode v-else />
       </template>
 
