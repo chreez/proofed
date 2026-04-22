@@ -54,7 +54,7 @@ onUnmounted(() => {
   </template>
 
   <!-- Static mode: original full footer -->
-  <footer v-else class="border-t-2 border-stone-200 mt-12 py-6 px-4">
+  <footer v-else class="static-footer border-t-2 border-stone-200 mt-12 py-6 px-4">
     <div class="max-w-3xl mx-auto flex flex-col items-center gap-3 md:flex-row md:justify-between text-xs text-stone-400">
       <span class="font-mono">proofed<span class="text-accent">.</span> &copy; 2026 Chris Palmer</span>
       <div class="flex items-center gap-4">
@@ -164,6 +164,14 @@ onUnmounted(() => {
   .footer-inner,
   .footer-copy {
     transition: none;
+  }
+}
+
+@media print {
+  .site-footer,
+  .static-footer,
+  .footer-sentinel {
+    display: none !important;
   }
 }
 </style>

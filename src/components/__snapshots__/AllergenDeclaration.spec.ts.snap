@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AllergenDeclaration > matches snapshot when rendering allergens 1`] = `
+"<div data-v-8e203d4e="" class="allergen-declaration">
+  <p data-v-8e203d4e="" class="allergen-text">Contains: Milk, Eggs, Wheat.</p>
+</div>"
+`;

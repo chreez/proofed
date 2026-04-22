@@ -140,6 +140,7 @@ export interface RecipeMeta {
   yields: string
   total_time: string
   description?: string
+  allergenOverride?: string[]
 }
 
 export interface RecipeStats {

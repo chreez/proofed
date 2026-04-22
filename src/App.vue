@@ -40,11 +40,13 @@ import DemoStatsBlock from '@/components/DemoStatsBlock.vue'
 import DemoBakeStatsShapes from '@/components/DemoBakeStatsShapes.vue'
 import DemoStateNoteTables from '@/components/DemoStateNoteTables.vue'
 import DemoQrLabelVariants from '@/components/DemoQrLabelVariants.vue'
+import DemoRecipePrintout from '@/components/DemoRecipePrintout.vue'
 import StatsPage from '@/components/StatsPage.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
 import BakeLogPage from '@/components/BakeLogPage.vue'
 import GeneralNotesFab from '@/components/GeneralNotesFab.vue'
+import RecipePrintView from '@/components/RecipePrintView.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -75,6 +77,7 @@ const showBakeDetail = computed(() => route.name === 'bake-detail')
 const showBakeReview = computed(() => route.name === 'bake-review')
 const showBakeLog = computed(() => route.name === 'bake-log')
 const showStats = computed(() => route.name === 'stats' || route.name === 'stats-demo')
+const showPrintMode = computed(() => route.name === 'recipe-print')
 function goToIndex(): void {
   router.push('/')
 }
@@ -418,6 +421,7 @@ watch(() => route.hash, (newHash) => {
 <template>
   <div class="min-h-screen bg-stone-50 font-sans flex flex-col">
     <header
+      v-if="!showPrintMode"
       class="bg-stone-200 px-6 sticky top-0 z-10 transition-all duration-200 ease-out"
       :class="[isScrolled ? 'py-2' : 'py-4', (showIndex || showBakeLog) ? '' : 'border-b-2 border-ink']"
     >
@@ -430,7 +434,7 @@ watch(() => route.hash, (newHash) => {
           ><span class="brand-text">proofed</span><span class="brand-dot text-accent">.</span></h1>
           <Transition name="title-poof">
             <div
-              v-if="isScrolled && currentRecipe && !showIndex && !showAbout"
+              v-if="isScrolled && currentRecipe && !showIndex && !showAbout && !showBakeLog && !showStats && !showBakeDetail && !showBakeReview && !showPhotoReview"
               class="flex items-center gap-3 ml-4 min-w-0"
             >
               <span class="text-sm text-muted truncate cursor-pointer" @click="scrollToTop">{{ currentRecipe.meta.name }}</span>
@@ -451,7 +455,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </header>
 
-    <nav v-if="showIndex || showBakeLog || showStats" class="tab-bar">
+    <nav v-if="(showIndex || showBakeLog || showStats) && !showPrintMode" class="tab-bar">
       <div class="tab-bar-inner">
         <button
           class="tab-item"
@@ -471,7 +475,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </nav>
 
-    <main :class="['flex-1 w-full', (showIndex || showBakeLog || showStats) ? 'pb-6' : 'py-6', !showIndex && !showBakeLog && !showStats && currentRecipe ? 'max-w-4xl mx-auto px-4' : 'max-w-3xl mx-auto px-4']">
+    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showStats) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode ? 'max-w-3xl mx-auto px-4' : '')]">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
@@ -487,12 +491,17 @@ watch(() => route.hash, (newHash) => {
         <DemoBakeStatsShapes v-else-if="route.name === 'bake-stats-shapes-demo'" />
         <DemoStateNoteTables v-else-if="route.name === 'state-note-tables-demo'" />
         <DemoQrLabelVariants v-else-if="route.name === 'qr-label-variants-demo'" />
+        <DemoRecipePrintout v-else-if="route.name === 'recipe-printout-demo'" />
         <DemoSharedMode v-else />
       </template>
 
       <template v-else-if="showStats">
         <StatsPage v-if="route.name === 'stats'" />
         <DemoStats v-else />
+      </template>
+
+      <template v-else-if="showPrintMode">
+        <RecipePrintView />
       </template>
 
       <template v-else-if="showBakeDetail">

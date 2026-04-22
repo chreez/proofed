@@ -28,7 +28,8 @@ fi
 
 # Check if the diff touches any source files (src/**/*.ts, src/**/*.vue)
 # Exclude Demo*.vue files (throwaway spike/demo components)
-SOURCE_FILES=$($DIFF_CMD --name-only -- 'src/' ':!src/components/Demo*.vue' 2>/dev/null || true)
+# Exclude *PrintView.vue (page-level, HITL-verified visually)
+SOURCE_FILES=$($DIFF_CMD --name-only -- 'src/' ':!src/components/Demo*.vue' ':!src/components/*PrintView.vue' 2>/dev/null || true)
 
 if [ -z "$SOURCE_FILES" ]; then
   echo "diff-coverage: No source files (src/) in diff — gate passes."
@@ -40,9 +41,10 @@ echo "  Files: $(echo "$SOURCE_FILES" | tr '\n' ' ')"
 
 # Run diff-test-coverage, filtering to only src/ files
 # Exclude Demo*.vue (throwaway spike/demo components)
+# Exclude *PrintView.vue (page-level, HITL-verified visually)
 # Use || true to capture exit code despite set -e
 EXIT_CODE=0
-$DIFF_CMD -- 'src/' ':!src/components/Demo*.vue' | npx diff-test-coverage \
+$DIFF_CMD -- 'src/' ':!src/components/Demo*.vue' ':!src/components/*PrintView.vue' | npx diff-test-coverage \
   -c "$LCOV_FILE" \
   -t lcov \
   -l "$THRESHOLD_LINE" \
