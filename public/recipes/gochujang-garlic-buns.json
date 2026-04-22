@@ -7,7 +7,7 @@
       "type": "adapted",
       "author": "Dylan Bachelet"
     },
-    "yields": "10 buns",
+    "yields": "12 buns",
     "total_time": "~3 hrs active (plus 2 hrs confit garlic, can be done ahead)",
     "description": "Enriched tangzhong rolls with Korean fermented chili paste and confit garlic. Paul Hollywood handshake recipe from GBBO Season 15 Bread Week."
   },
@@ -15,14 +15,19 @@
     "early_check_percent": 0.8,
     "stats": {
       "group": "Buns & Rolls",
-      "defaultYield": 10,
+      "defaultYield": 12,
       "unit": "buns",
       "servingsPerItem": 1,
       "servingUnit": "buns"
     }
   },
-  "version": "v1.2.0",
+  "version": "v2.0.0",
   "change_log": [
+    {
+      "version": "v2.0.0",
+      "date": "2026-04-22",
+      "summary": "Swirl shape (cinnamon-roll style) becomes standard — roll-out, fill with butter + confit garlic, slice into 12. Replaces round ball shaping. Muffin tin replaces sheet pan. Scoring removed. Rolling difficulty tips added. Reheat updated for layered structure."
+    },
     {
       "version": "v1.2.0",
       "date": "2026-04-17",
@@ -57,7 +62,7 @@
     },
     {
       "id": "V4",
-      "name": "Sheet Pan",
+      "name": "12-Cup Muffin Tin",
       "reuse": "Arrange buns → proof → bake"
     },
     {
@@ -87,7 +92,7 @@
             "breakdown": null,
             "sourcedFrom": "Tier 1: Dylan's official recipe + all recreations",
             "confidence": "high",
-            "rationale": "1 full bulb (~50g); confit method universal across sources. Use ~25g in dough, save rest for other uses"
+            "rationale": "1 full bulb (~50g); confit method universal across sources. Use ~15g folded into dough, ~10g in filling roll-up, save rest for other uses"
           },
           {
             "id": "olive-oil",
@@ -176,12 +181,21 @@
           {
             "id": "unsalted-butter",
             "name": "Unsalted Butter",
-            "total": 28,
+            "total": 43,
             "unit": "g",
-            "breakdown": null,
+            "breakdown": [
+              {
+                "label": "dough",
+                "amount": 28
+              },
+              {
+                "label": "filling",
+                "amount": 15
+              }
+            ],
             "sourcedFrom": "Tier 1: Dylan's official + Delectablediction match",
             "confidence": "high",
-            "rationale": "Melted and cooled, mixed with tangzhong"
+            "rationale": "28g melted and cooled for dough, 15g melted for swirl filling layer"
           },
           {
             "id": "caster-sugar",
@@ -257,9 +271,9 @@
       "gather": null,
       "states": [
         "fold-in-garlic",
-        "divide-and-shape",
-        "bench-rest",
-        "final-shape",
+        "pre-shape-rectangle",
+        "fill-and-roll",
+        "portion-and-pan",
         "second-rise"
       ]
     },
@@ -268,7 +282,7 @@
       "title": "Bake",
       "gather": null,
       "states": [
-        "score-and-wash",
+        "egg-wash",
         "bake-buns",
         "cool"
       ]
@@ -537,17 +551,17 @@
     {
       "id": "fold-in-garlic",
       "title": "Fold in Confit Garlic",
-      "direction": "Turn dough out onto a lightly floured surface. Gently press to deflate. Use ~6 cloves worth (~25g) of the chopped confit garlic — spread evenly over the surface. Save remaining confit garlic for other uses. Fold dough over itself several times to distribute garlic throughout.",
+      "direction": "Turn dough out onto a lightly floured surface. Gently press to deflate. Spread ~15g of the chopped confit garlic evenly over the surface. Reserve ~10g confit garlic for the filling layer. Fold dough over itself several times to distribute garlic throughout.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "confit garlic",
-          "amount": "~25g (~6 cloves worth)"
+          "amount": "~15g (fold into dough)"
         }
       ],
-      "exit_condition": "Garlic pieces visibly distributed throughout dough, no large unworked pockets",
+      "exit_condition": "Garlic pieces visibly distributed throughout dough, no large unworked pockets. ~10g confit garlic reserved for filling.",
       "notes": [
         {
           "text": "Don't over-knead — just fold enough to distribute. The garlic pieces should create pockets of flavor in the finished crumb.",
@@ -555,72 +569,108 @@
           "source": "agent"
         },
         {
-          "text": "Save remaining confit garlic — great on toast, stirred into rice, or mixed into compound butter.",
+          "text": "Save remaining confit garlic beyond the 10g filling reserve — great on toast, stirred into rice, or mixed into compound butter.",
           "critical": false,
           "source": "agent"
         }
       ]
     },
     {
-      "id": "divide-and-shape",
-      "title": "Divide & Shape",
-      "direction": "Divide dough into ~75g pieces (about 10 buns). Lightly pre-round each piece into a rough ball.",
-      "duration_min": 5,
+      "id": "pre-shape-rectangle",
+      "title": "Pre-Shape & Roll Rectangle",
+      "direction": "Pat dough into a rough rectangle on a lightly floured surface. Cover with plastic wrap or a towel and rest 15-20 minutes for gluten relaxation. After resting, roll to a 40x30cm rectangle (~0.6-0.8cm thick). Roll from center outward, flipping and rotating every 3-4 passes with light pressure. If dough springs back more than 1cm during rolling, cover and rest another 10-15 minutes before continuing.",
+      "duration_min": 25,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "All pieces divided and loosely pre-rounded",
-      "notes": null
-    },
-    {
-      "id": "bench-rest",
-      "title": "Bench Rest",
-      "direction": "Cover loosely and let rest 5 minutes. This relaxes the gluten for easier final shaping.",
-      "duration_min": 5,
-      "timer": false,
-      "parallel": false,
-      "components": null,
-      "exit_condition": "Dough pieces rested 5 minutes, noticeably more relaxed and pliable",
-      "notes": null
-    },
-    {
-      "id": "final-shape",
-      "title": "Final Shape",
-      "direction": "Roll each piece into a tight ball: cup your hand over the dough and roll in a circular motion on an unfloured surface, tucking under to create surface tension.",
-      "duration_min": 5,
-      "timer": false,
-      "parallel": false,
-      "components": null,
-      "exit_condition": "All buns shaped into smooth, taut balls with visible surface tension",
+      "exit_condition": "Even rectangle ~40x30cm, no dry spots or tears, uniform thickness",
       "notes": [
         {
-          "text": "Shape without gloves — bare hands give better feedback on surface tension.",
+          "text": "100% bread flour + gochujang's hidden salt tighten gluten significantly — staged bench rests are essential, not optional. Don't fight the dough.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Optional: chill dough 30-60 minutes in fridge before rolling for easier handling. Cold dough relaxes gluten and firms up butter.",
           "critical": false,
-          "source": "user"
+          "source": "agent"
+        },
+        {
+          "text": "Pre-shape by hand first, then refine with rolling pin. Center-outward strokes, light pressure. Flip and rotate every 3-4 passes to prevent sticking and ensure even thickness.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "fill-and-roll",
+      "title": "Fill & Roll",
+      "direction": "Brush ~15g melted butter across the dough surface, leaving a 2.5cm border on the far long edge. Scatter ~10g minced confit garlic over the butter and press lightly to adhere. Starting from the near long edge, roll tightly into a cylinder, tucking under as you go. Pinch the seam firmly along the entire length. Rest seam-side-down for 2 minutes.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "unsalted butter",
+          "amount": "~15g (melted)"
+        },
+        {
+          "name": "confit garlic",
+          "amount": "~10g (minced, reserved)"
+        }
+      ],
+      "exit_condition": "Firm, even cylinder ~30cm long, seam sealed and resting seam-side-down",
+      "notes": [
+        {
+          "text": "The bare border on the sealing edge is critical — butter on that strip prevents the seam from sealing and the roll unravels during proofing.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "portion-and-pan",
+      "title": "Portion & Pan",
+      "direction": "Trim ~1cm off each end of the cylinder. Cut into 12 even pieces using geometric halving: cut in half, then each half into quarters, then each quarter into thirds. Use dental floss or a sharp serrated knife with gentle sawing motion — never press straight down or you'll compress the layers. Target ~67-68g per piece. Lightly grease muffin cups with butter or nonstick spray. Place each slice cut-side-up and press gently to contact the cup bottom.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "12 even portions in greased muffin cups, swirl pattern visible from top, each piece ~67-68g",
+      "notes": [
+        {
+          "text": "Geometric halving (half → quarters → thirds) gives more uniform pieces than measuring-and-cutting from one end.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Dental floss slides through enriched dough without compressing layers. Slide it under the cylinder, cross the ends over the top, and pull to cut cleanly.",
+          "critical": false,
+          "source": "agent"
         }
       ]
     },
     {
       "id": "second-rise",
       "title": "Second Rise",
-      "direction": "Line a sheet pan with parchment paper. Arrange buns leaving small gaps between each. Cover loosely with plastic wrap and let rise until buns are puffy and nearly touching.",
+      "direction": "Cover muffin tin loosely with plastic wrap. Let buns rise in a warm spot until puffy and risen above the cup rims, about 45 minutes.",
       "duration_min": 45,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Buns are puffy, nearly doubled, and just touching each other in the pan",
+      "exit_condition": "Buns puffy, risen above muffin cup rims, swirl layers visibly expanded",
       "notes": null,
       "reminders": [
         {
-          "prompt": "How do the buns look? Puffy and touching?",
+          "prompt": "How do the buns look? Puffy and above the rims?",
           "type": "observation"
         }
       ]
     },
     {
-      "id": "score-and-wash",
-      "title": "Score & Egg Wash",
-      "direction": "Preheat oven to 350°F (175°C). Using a sharp knife or lame, score a simple cross or slash pattern on top of each bun (about 0.5cm deep). Lightly beat the remaining egg and brush over the tops of all buns.",
+      "id": "egg-wash",
+      "title": "Egg Wash",
+      "direction": "Preheat oven to 350°F (175°C). Lightly beat the remaining egg and brush over the tops of all buns, getting into the swirl crevices.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -630,10 +680,10 @@
           "amount": "50g (1 large, beaten)"
         }
       ],
-      "exit_condition": "All buns scored and evenly coated with egg wash",
+      "exit_condition": "All buns evenly coated with egg wash, swirl tops glistening",
       "notes": [
         {
-          "text": "Score gently — enriched dough deflates easily. The scores are decorative, not structural.",
+          "text": "No scoring needed for swirl buns — the spiral pattern provides visual interest and natural expansion points during baking.",
           "critical": false,
           "source": "agent"
         }
@@ -736,29 +786,29 @@
     }
   ],
   "nutrition": {
-    "servings": 10,
+    "servings": 12,
     "servingSize": "1 bun",
-    "calculatedDate": "2026-04-14",
+    "calculatedDate": "2026-04-22",
     "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 2686,
+      "calories": 2794,
       "protein": 77,
-      "totalFat": 86,
-      "saturatedFat": 39,
+      "totalFat": 98,
+      "saturatedFat": 47,
       "carbohydrates": 400,
       "sugar": 77,
       "fiber": 13,
-      "sodium": 3452
+      "sodium": 3454
     },
     "perServing": {
-      "calories": 268.6,
-      "protein": 7.7,
-      "totalFat": 8.6,
+      "calories": 232.8,
+      "protein": 6.4,
+      "totalFat": 8.2,
       "saturatedFat": 3.9,
-      "carbohydrates": 40.0,
-      "sugar": 7.7,
-      "fiber": 1.3,
-      "sodium": 345.2
+      "carbohydrates": 33.3,
+      "sugar": 6.4,
+      "fiber": 1.1,
+      "sodium": 287.8
     },
     "breakdown": [
       {
@@ -847,16 +897,16 @@
       {
         "ingredientId": "unsalted-butter",
         "ingredientName": "Unsalted Butter",
-        "amount": 28,
+        "amount": 43,
         "fdcId": 173430,
-        "calories": 200.8,
-        "protein": 0.2,
-        "totalFat": 22.7,
-        "saturatedFat": 14.4,
+        "calories": 308.3,
+        "protein": 0.3,
+        "totalFat": 34.8,
+        "saturatedFat": 22.1,
         "carbohydrates": 0,
         "sugar": 0,
         "fiber": 0,
-        "sodium": 3.1
+        "sodium": 4.8
       },
       {
         "ingredientId": "caster-sugar",
@@ -975,12 +1025,17 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "300-325°F (150-160°C) for 5-8 minutes until warmed through. If glazed, tent loosely with foil to prevent over-browning.",
+        "detail": "Wrap in foil and heat at 300°F (150°C) for 8-10 minutes. Foil traps steam to keep the swirl layers moist. Unwrap last 2 minutes for a slightly crisp exterior.",
         "source": "agent"
       },
       {
         "method": "Air Fryer",
-        "detail": "300°F (150°C) for 3-4 minutes. Watch closely — the gochujang sugars brown quickly.",
+        "detail": "Wrap loosely in foil, 300°F (150°C) for 3-4 minutes. Without foil the exposed layers dry out fast. Watch the gochujang sugars — they brown quickly.",
+        "source": "agent"
+      },
+      {
+        "method": "Microwave",
+        "detail": "Place damp paper towel over bun, microwave 15-20 seconds on high. Best for single servings — steam from the towel keeps the swirl layers soft. Don't overheat or the butter in the layers will make the bun greasy.",
         "source": "agent"
       }
     ]

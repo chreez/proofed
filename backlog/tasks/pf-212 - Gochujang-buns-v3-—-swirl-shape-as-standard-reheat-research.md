@@ -1,7 +1,7 @@
 ---
 id: PF-212
 title: Gochujang buns v3 — swirl shape as standard + reheat research
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-22'
 labels:
@@ -41,6 +41,6 @@ Bake #3 (2026-04-22) A/B tested 6 cinnamon-roll swirl buns vs 6 standard scored 
 - [ ] #5 Yield updated: `meta.yields` = 12 buns, `nutrition.servings`, `cost.servings`, `config.stats.defaultYield` all updated
 - [ ] #6 Reheat block updated with method validated for layered/swirled structure (moisture retention addressed)
 - [ ] #7 All stage `exit_condition` values still make sense for new swirl process
-- [ ] #8 Version bumped to v3.0.0 with `change_log` entry summarizing shape change
+- [ ] #8 Version bumped to v2.0.0 with `change_log` entry summarizing shape change
 - [ ] #9 `npm run build` passes
 <!-- AC:END -->
