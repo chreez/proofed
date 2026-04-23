@@ -1,7 +1,7 @@
 ---
-id: DRAFT-68
+id: PF-219
 title: Bake-specific QR code on bake detail page
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-04-23 17:08'
 labels:
@@ -26,8 +26,16 @@ Currently the share popover on bake detail page generates a QR code for choosing
 - Colorized QR on print page (swap qrcode → qr-code-styling for accent-colored dots/corners)
 - Consistent QR styling across share modal, bake detail, and print page
 
-## AC
-- [ ] Bake detail page has a QR button that generates a code for the current bake URL
-- [ ] QR code uses qr-code-styling with brand colors (accent corners, ink dots)
-- [ ] No bake picker needed — URL derived from route params
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 QR icon button in bake detail nav row, next to existing printer icon
+- [ ] #2 Tapping QR button opens full modal (same pattern as ShareModal) showing branded QR label for current bake URL
+- [ ] #3 Modal includes: branded QR label image, link preview, copy link button, native share button (when available)
+- [ ] #4 No bake picker step — URL derived from route params (`/recipe/:id/bake/:date`)
+- [ ] #5 QR code styling config (accent corners, ink dots, rounded type, brand colors) extracted into shared composable (e.g., `useQrLabel`)
+- [ ] #6 ShareModal refactored to use shared composable — no behavioral changes to existing share flow
+- [ ] #7 `reheat.` label text is per-context (bake detail modal includes it), composable handles QR rendering only
+- [ ] #8 Shared composable exposes enough flexibility for future print page QR upgrade (no label text, different sizing)
+<!-- AC:END -->
