@@ -7,7 +7,7 @@ import { useRecipe } from '@/composables/useRecipe'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import BakeStatsBlock from '@/components/BakeStatsBlock.vue'
 import BakeQrModal from '@/components/BakeQrModal.vue'
-import type { CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType, KeyNote } from '@/types/recipe'
+import type { CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType, KeyNote, BakeNote } from '@/types/recipe'
 
 const route = useRoute()
 const router = useRouter()
@@ -75,17 +75,73 @@ function closeLightbox(): void {
   lightboxOpen.value = false
 }
 
-// Render curated key_notes (falling back to raw notes) as markdown bullet list.
-// Semantics (per CookLogEntry type):
-// - key_notes present (any length, including []) → render key_notes
-// - key_notes absent → fall back to the raw notes[]
+// --- Note source detection (PF-216 fallback chain) ---
+// Priority: bake_notes → key_notes → notes[]
+// Only one source renders — no duplication.
+
+/** True when bake_notes is the active source for this entry */
+function usesBakeNotes(e: CookLogEntry): boolean {
+  return Array.isArray(e.bake_notes) && e.bake_notes.length > 0
+}
+
+/** Format a UTC ISO timestamp to local time string (e.g. "9:42 PM") */
+function formatLocalTime(iso: string): string {
+  const d = new Date(iso)
+  return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+}
+
+/** Render bake_notes as markdown — notable entries surface curated (or raw) text */
+function renderBakeNotes(e: CookLogEntry): string {
+  const notes = e.bake_notes ?? []
+  const isMultiDay = !!e.start_date && e.start_date !== e.date
+
+  if (!isMultiDay) {
+    // Single-day: flat bullet list with local timestamps
+    const md = notes.map((n: BakeNote) => {
+      const time = formatLocalTime(n.timestamp)
+      const text = n.curated ?? n.raw
+      return `- **${time}** — ${text}`
+    }).join('\n')
+    return marked.parse(md) as string
+  }
+
+  // Multi-day: group by local calendar date
+  const notesByDay: Record<string, BakeNote[]> = {}
+  notes.forEach((note: BakeNote) => {
+    const local = new Date(note.timestamp)
+    const dateStr = `${local.getFullYear()}-${String(local.getMonth() + 1).padStart(2, '0')}-${String(local.getDate()).padStart(2, '0')}`
+    if (!notesByDay[dateStr]) notesByDay[dateStr] = []
+    notesByDay[dateStr].push(note)
+  })
+
+  const parts: string[] = []
+  const sortedDates = Object.keys(notesByDay).sort()
+  sortedDates.forEach(dateStr => {
+    const [y, m, d] = dateStr.split('-').map(Number)
+    const date = new Date(y, m - 1, d)
+    const dayHeader = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    parts.push(`#### ${dayHeader}`)
+    parts.push('')
+    notesByDay[dateStr].forEach((n: BakeNote) => {
+      const time = formatLocalTime(n.timestamp)
+      const text = n.curated ?? n.raw
+      parts.push(`- **${time}** — ${text}`)
+    })
+    parts.push('')
+  })
+  return marked.parse(parts.join('\n')) as string
+}
+
+// Legacy fallback: curated key_notes or raw notes[] as markdown bullet list.
+// Only used when bake_notes is absent.
 function keyNotesList(e: CookLogEntry): KeyNote[] {
   if (e.key_notes) return e.key_notes
   // Fallback: wrap plain notes strings as KeyNote objects
   return (e.notes ?? []).map(n => ({ text: n }))
 }
 
-function hasKeyNotes(e: CookLogEntry): boolean {
+function hasAnyNotes(e: CookLogEntry): boolean {
+  if (usesBakeNotes(e)) return true
   return keyNotesList(e).length > 0
 }
 
@@ -364,8 +420,12 @@ function weatherIcon(condition: string): string {
         data-testid="bake-detail-stats"
       />
 
-      <!-- Notes — curated editorial subset (key_notes) with fallback to full notes[] -->
-      <div v-if="hasKeyNotes(entry)" class="mb-6" data-testid="notes-section">
+      <!-- Notes — PF-216 fallback chain: bake_notes → key_notes → notes[] -->
+      <div v-if="usesBakeNotes(entry)" class="mb-6" data-testid="notes-section">
+        <h4 class="text-heading font-mono text-sm mb-2">Notes</h4>
+        <div class="bake-prose" v-html="renderBakeNotes(entry)" />
+      </div>
+      <div v-else-if="hasAnyNotes(entry)" class="mb-6" data-testid="notes-section">
         <h4 class="text-heading font-mono text-sm mb-2">Notes</h4>
         <div class="bake-prose" v-html="renderNotes(entry)" />
       </div>

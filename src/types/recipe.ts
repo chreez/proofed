@@ -331,6 +331,28 @@ export interface KeyNote {
   timestamp?: string  // ISO 8601 datetime
 }
 
+/**
+ * Unified bake note — one per scratchpad entry or user observation.
+ * Replaces fragmented notes[] / key_notes[] / raw_notes with a single
+ * timestamp-indexed structure. Raw input is never lost.
+ */
+export interface BakeNote {
+  /** ISO 8601 UTC timestamp from scratchpad capture */
+  timestamp: string
+  /** Verbatim user text — never edited, never trimmed */
+  raw: string
+  /** Highlight-worthy observation (surfaces in curated view) */
+  notable: boolean
+  /** Recipe step this note was captured against */
+  stepId?: string
+  /** Scratchpad prompt that triggered this note (e.g. "Record dough temperature") */
+  prompt?: string
+  /** Agent-refined version when different from raw */
+  curated?: string
+  /** Processing stage context (e.g. "bulk_ferment", "bake", "shaping") */
+  processing?: string
+}
+
 export interface NextTimeEntry {
   text: string
   source?: string
@@ -414,8 +436,15 @@ export interface CookLogEntry {
   // Structured per-bake stats (PF-177.3 schema). Populated by /bake-log skill
   // (PF-177.6) or backfill (PF-177.7). Optional — existing entries omit it.
   bake_stats?: BakeStatsBlock
-  // Verbatim bake log paste, preserved as-is. Expandable in UI (PF-177.5).
+  /**
+   * @deprecated Use `bake_notes` instead. Retained for backward compat with
+   * existing data. New entries should omit this field and write BakeNote[]
+   * to `bake_notes`. (PF-216)
+   */
   raw_notes?: string
+  /** Unified per-note array with timestamps, raw text, and optional agent
+   *  curation. Replaces raw_notes + augments notes[]/key_notes[]. (PF-216) */
+  bake_notes?: BakeNote[]
   // Outdoor weather conditions on bake day. Populated by /bake-log skill
   // (PF-193.1) or backfill (PF-193.2). Optional — existing entries omit it.
   weather?: BakeWeather

@@ -571,7 +571,7 @@ function weatherIcon(condition: string): string {
           </template>
 
           <div class="flex items-center gap-3 text-xs text-stone-400 mt-2">
-            <span>{{ entry.notes.length }} notes</span>
+            <span>{{ entry.bake_notes?.length ?? entry.notes.length }} notes</span>
             <span v-if="entry.photos?.length">{{ entry.photos.length }} photos</span>
             <span v-if="entry.next_time?.length">{{ entry.next_time.length }} next-time</span>
             <span v-if="entry.cost" class="font-mono">${{ entry.cost.total.toFixed(2) }} total · ${{ entry.cost.perServing.toFixed(2) }}/serving</span>

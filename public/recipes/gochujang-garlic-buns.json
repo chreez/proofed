@@ -26,7 +26,7 @@
     {
       "version": "v2.0.0",
       "date": "2026-04-22",
-      "summary": "Swirl shape (cinnamon-roll style) becomes standard \u2014 roll-out, fill with butter + confit garlic, slice into 12. Replaces round ball shaping. Muffin tin replaces sheet pan. Scoring removed. Rolling difficulty tips added. Reheat updated for layered structure."
+      "summary": "Swirl shape (cinnamon-roll style) becomes standard — roll-out, fill with butter + confit garlic, slice into 12. Replaces round ball shaping. Muffin tin replaces sheet pan. Scoring removed. Rolling difficulty tips added. Reheat updated for layered structure."
     },
     {
       "version": "v1.2.0",
@@ -53,22 +53,22 @@
     {
       "id": "V2",
       "name": "Small Saucepan",
-      "reuse": "Tangzhong \u2192 clean \u2192 warm milk for yeast bloom"
+      "reuse": "Tangzhong → clean → warm milk for yeast bloom"
     },
     {
       "id": "V3",
       "name": "Large Mixing Bowl",
-      "reuse": "Mix dough \u2192 first rise bowl"
+      "reuse": "Mix dough → first rise bowl"
     },
     {
       "id": "V4",
       "name": "12-Cup Muffin Tin",
-      "reuse": "Arrange buns \u2192 proof \u2192 bake"
+      "reuse": "Arrange buns → proof → bake"
     },
     {
       "id": "V5",
       "name": "Small Bowl",
-      "reuse": "Bloom yeast \u2192 clean \u2192 egg wash \u2192 clean \u2192 glaze mix"
+      "reuse": "Bloom yeast → clean → egg wash → clean → glaze mix"
     }
   ],
   "stages": [
@@ -156,7 +156,7 @@
             "breakdown": null,
             "sourcedFrom": "Dylan's official tangzhong ratio",
             "confidence": "high",
-            "rationale": "100g water for tangzhong \u2014 clean 5:1 ratio with 20g flour"
+            "rationale": "100g water for tangzhong — clean 5:1 ratio with 20g flour"
           },
           {
             "id": "instant-yeast",
@@ -350,7 +350,7 @@
     {
       "id": "confit-garlic-setup",
       "title": "Prep Confit Garlic",
-      "direction": "Peel garlic cloves and place in a small oven-safe dish. Pour olive oil over cloves until fully submerged. Preheat oven to 250\u00b0F (120\u00b0C).",
+      "direction": "Peel garlic cloves and place in a small oven-safe dish. Pour olive oil over cloves until fully submerged. Preheat oven to 250°F (120°C).",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -367,12 +367,12 @@
       "exit_condition": "Garlic cloves fully submerged in oil, oven preheating",
       "notes": [
         {
-          "text": "Can be done up to 2 weeks ahead \u2014 store confit garlic submerged in oil in the fridge. Flavor improves over the first few days.",
+          "text": "Can be done up to 2 weeks ahead — store confit garlic submerged in oil in the fridge. Flavor improves over the first few days.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Food safety: refrigerate confit garlic within 2 hours. Never store at room temperature \u2014 garlic submerged in oil is anaerobic, exactly what C. botulinum needs. Fridge temps halt toxin production. Safe up to 7 days refrigerated (FDA guideline). Once garlic is removed from oil and chopped, the anaerobic seal is broken and botulism risk is over.",
+          "text": "Food safety: refrigerate confit garlic within 2 hours. Never store at room temperature — garlic submerged in oil is anaerobic, exactly what C. botulinum needs. Fridge temps halt toxin production. Safe up to 7 days refrigerated (FDA guideline). Once garlic is removed from oil and chopped, the anaerobic seal is broken and botulism risk is over.",
           "critical": true,
           "source": "agent"
         },
@@ -386,7 +386,7 @@
     {
       "id": "confit-garlic-bake",
       "title": "Bake Confit Garlic",
-      "direction": "Bake garlic in oil at 250\u00b0F (120\u00b0C) for 2 hours until cloves are pale golden and completely soft.",
+      "direction": "Bake garlic in oil at 250°F (120°C) for 2 hours until cloves are pale golden and completely soft.",
       "duration_min": 120,
       "timer": true,
       "parallel": false,
@@ -411,7 +411,7 @@
       "exit_condition": "Garlic rough chopped, confit oil reserved in separate container",
       "notes": [
         {
-          "text": "The confit oil is liquid gold \u2014 use 1-2 tbsp in place of some dough butter for extra garlic depth, or save for cooking.",
+          "text": "The confit oil is liquid gold — use 1-2 tbsp in place of some dough butter for extra garlic depth, or save for cooking.",
           "critical": false,
           "source": "agent"
         }
@@ -420,7 +420,7 @@
     {
       "id": "make-tangzhong",
       "title": "Make Tangzhong",
-      "direction": "Combine water and bread flour in a small saucepan. Whisk until smooth with no lumps. Heat over medium-low, stirring constantly, until mixture thickens to a thick paste (about 2 minutes). Remove from heat and cool completely. Add all tangzhong to dough \u2014 do not discard any.",
+      "direction": "Combine water and bread flour in a small saucepan. Whisk until smooth with no lumps. Heat over medium-low, stirring constantly, until mixture thickens to a thick paste (about 2 minutes). Remove from heat and cool completely. Add all tangzhong to dough — do not discard any.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -447,7 +447,7 @@
     {
       "id": "bloom-yeast",
       "title": "Bloom Yeast",
-      "direction": "Warm milk to 110\u00b0F (43\u00b0C). Stir in 4g sugar until dissolved, then sprinkle yeast over surface. Let sit until foamy, about 5 minutes.",
+      "direction": "Warm milk to 110°F (43°C). Stir in 4g sugar until dissolved, then sprinkle yeast over surface. Let sit until foamy, about 5 minutes.",
       "duration_min": 5,
       "timer": false,
       "parallel": true,
@@ -505,10 +505,10 @@
           "amount": "all"
         }
       ],
-      "exit_condition": "Shaggy dough formed, no dry flour visible. Dough will be sticky \u2014 this is expected.",
+      "exit_condition": "Shaggy dough formed, no dry flour visible. Dough will be sticky — this is expected.",
       "notes": [
         {
-          "text": "Gochujang adds hidden water (~44% moisture) and salt (~8%). The dough will feel wetter than typical enriched dough \u2014 don't add extra flour yet.",
+          "text": "Gochujang adds hidden water (~44% moisture) and salt (~8%). The dough will feel wetter than typical enriched dough — don't add extra flour yet.",
           "critical": false,
           "source": "agent"
         }
@@ -539,7 +539,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has doubled in volume \u2014 poke test: finger indent fills back slowly",
+      "exit_condition": "Dough has doubled in volume — poke test: finger indent fills back slowly",
       "notes": null,
       "reminders": [
         {
@@ -564,12 +564,12 @@
       "exit_condition": "Garlic pieces visibly distributed throughout dough, no large unworked pockets. ~10g confit garlic reserved for filling.",
       "notes": [
         {
-          "text": "Don't over-knead \u2014 just fold enough to distribute. The garlic pieces should create pockets of flavor in the finished crumb.",
+          "text": "Don't over-knead — just fold enough to distribute. The garlic pieces should create pockets of flavor in the finished crumb.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Save remaining confit garlic beyond the 10g filling reserve \u2014 great on toast, stirred into rice, or mixed into compound butter.",
+          "text": "Save remaining confit garlic beyond the 10g filling reserve — great on toast, stirred into rice, or mixed into compound butter.",
           "critical": false,
           "source": "agent"
         }
@@ -586,7 +586,7 @@
       "exit_condition": "Even rectangle ~40x30cm, no dry spots or tears, uniform thickness",
       "notes": [
         {
-          "text": "100% bread flour + gochujang's hidden salt tighten gluten significantly \u2014 staged bench rests are essential, not optional. Don't fight the dough.",
+          "text": "100% bread flour + gochujang's hidden salt tighten gluten significantly — staged bench rests are essential, not optional. Don't fight the dough.",
           "critical": true,
           "source": "agent"
         },
@@ -622,7 +622,7 @@
       "exit_condition": "Firm, even cylinder ~30cm long, seam sealed and resting seam-side-down",
       "notes": [
         {
-          "text": "The bare border on the sealing edge is critical \u2014 butter on that strip prevents the seam from sealing and the roll unravels during proofing.",
+          "text": "The bare border on the sealing edge is critical — butter on that strip prevents the seam from sealing and the roll unravels during proofing.",
           "critical": true,
           "source": "agent"
         }
@@ -631,7 +631,7 @@
     {
       "id": "portion-and-pan",
       "title": "Portion & Pan",
-      "direction": "Trim ~1cm off each end of the cylinder. Cut into 12 even pieces using geometric halving: cut in half, then each half into quarters, then each quarter into thirds. Use dental floss or a sharp serrated knife with gentle sawing motion \u2014 never press straight down or you'll compress the layers. Target ~67-68g per piece. Lightly grease muffin cups with butter or nonstick spray. Place each slice cut-side-up and press gently to contact the cup bottom.",
+      "direction": "Trim ~1cm off each end of the cylinder. Cut into 12 even pieces using geometric halving: cut in half, then each half into quarters, then each quarter into thirds. Use dental floss or a sharp serrated knife with gentle sawing motion — never press straight down or you'll compress the layers. Target ~67-68g per piece. Lightly grease muffin cups with butter or nonstick spray. Place each slice cut-side-up and press gently to contact the cup bottom.",
       "duration_min": 8,
       "timer": false,
       "parallel": false,
@@ -639,7 +639,7 @@
       "exit_condition": "12 even portions in greased muffin cups, swirl pattern visible from top, each piece ~67-68g",
       "notes": [
         {
-          "text": "Geometric halving (half \u2192 quarters \u2192 thirds) gives more uniform pieces than measuring-and-cutting from one end.",
+          "text": "Geometric halving (half → quarters → thirds) gives more uniform pieces than measuring-and-cutting from one end.",
           "critical": false,
           "source": "agent"
         },
@@ -670,7 +670,7 @@
     {
       "id": "egg-wash",
       "title": "Egg Wash",
-      "direction": "Preheat oven to 350\u00b0F (175\u00b0C). Lightly beat the remaining egg and brush over the tops of all buns, getting into the swirl crevices.",
+      "direction": "Preheat oven to 350°F (175°C). Lightly beat the remaining egg and brush over the tops of all buns, getting into the swirl crevices.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -683,7 +683,7 @@
       "exit_condition": "All buns evenly coated with egg wash, swirl tops glistening",
       "notes": [
         {
-          "text": "No scoring needed for swirl buns \u2014 the spiral pattern provides visual interest and natural expansion points during baking.",
+          "text": "No scoring needed for swirl buns — the spiral pattern provides visual interest and natural expansion points during baking.",
           "critical": false,
           "source": "agent"
         }
@@ -692,15 +692,15 @@
     {
       "id": "bake-buns",
       "title": "Bake",
-      "direction": "Bake at 350\u00b0F (175\u00b0C) for 25-30 minutes, rotating pan halfway through, until buns are deep golden brown.",
+      "direction": "Bake at 350°F (175°C) for 25-30 minutes, rotating pan halfway through, until buns are deep golden brown.",
       "duration_min": 28,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Deep golden brown on top, internal temperature reads 190\u00b0F (88\u00b0C)",
+      "exit_condition": "Deep golden brown on top, internal temperature reads 190°F (88°C)",
       "notes": [
         {
-          "text": "Gochujang's sugars accelerate browning \u2014 check at 20 minutes and tent with foil if the tops are getting too dark before the interior is done.",
+          "text": "Gochujang's sugars accelerate browning — check at 20 minutes and tent with foil if the tops are getting too dark before the interior is done.",
           "critical": true,
           "source": "agent"
         }
@@ -724,13 +724,13 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Buns cool enough to handle but still warm \u2014 ideal temperature for glaze absorption",
+      "exit_condition": "Buns cool enough to handle but still warm — ideal temperature for glaze absorption",
       "notes": null
     },
     {
       "id": "mix-glaze",
       "title": "Mix Honey-Soy Glaze",
-      "direction": "Stir together honey and light soy sauce in a small bowl until combined. In a separate container, melt butter. Keep the honey-soy mixture and melted butter separate \u2014 they are applied in sequence.",
+      "direction": "Stir together honey and light soy sauce in a small bowl until combined. In a separate container, melt butter. Keep the honey-soy mixture and melted butter separate — they are applied in sequence.",
       "duration_min": 2,
       "timer": false,
       "parallel": true,
@@ -751,7 +751,7 @@
       "exit_condition": "Honey-soy mixture smooth and uniform, butter melted",
       "notes": [
         {
-          "text": "This glaze is optional but community-tested \u2014 Sophie Bamford's most popular upgrade to Dylan's original. Sweet-salty-umami without tipping into dessert territory.",
+          "text": "This glaze is optional but community-tested — Sophie Bamford's most popular upgrade to Dylan's original. Sweet-salty-umami without tipping into dessert territory.",
           "critical": false,
           "source": "agent"
         }
@@ -846,8 +846,8 @@
         "fdcId": 168896,
         "calories": 1516.2,
         "protein": 50.3,
-        "totalFat": 7.0,
-        "saturatedFat": 1.0,
+        "totalFat": 7,
+        "saturatedFat": 1,
         "carbohydrates": 304.6,
         "sugar": 1.3,
         "fiber": 10.1,
@@ -1025,17 +1025,17 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "Wrap in foil and heat at 300\u00b0F (150\u00b0C) for 8-10 minutes. Foil traps steam to keep the swirl layers moist. Unwrap last 2 minutes for a slightly crisp exterior.",
+        "detail": "Wrap in foil and heat at 300°F (150°C) for 8-10 minutes. Foil traps steam to keep the swirl layers moist. Unwrap last 2 minutes for a slightly crisp exterior.",
         "source": "agent"
       },
       {
         "method": "Air Fryer",
-        "detail": "Wrap loosely in foil, 300\u00b0F (150\u00b0C) for 3-4 minutes. Without foil the exposed layers dry out fast. Watch the gochujang sugars \u2014 they brown quickly.",
+        "detail": "Wrap loosely in foil, 300°F (150°C) for 3-4 minutes. Without foil the exposed layers dry out fast. Watch the gochujang sugars — they brown quickly.",
         "source": "agent"
       },
       {
         "method": "Microwave",
-        "detail": "Place damp paper towel over bun, microwave 15-20 seconds on high. Best for single servings \u2014 steam from the towel keeps the swirl layers soft. Don't overheat or the butter in the layers will make the bun greasy.",
+        "detail": "Place damp paper towel over bun, microwave 15-20 seconds on high. Best for single servings — steam from the towel keeps the swirl layers soft. Don't overheat or the butter in the layers will make the bun greasy.",
         "source": "agent"
       }
     ]
@@ -1049,22 +1049,22 @@
         "author": "Dylan Bachelet"
       },
       {
-        "name": "Delectablediction \u2014 Cheese Stuffed Gochujang Buns",
+        "name": "Delectablediction — Cheese Stuffed Gochujang Buns",
         "url": "https://delectablediction.com/2025/01/20/cheese-stuffed-gochujang-buns/",
         "type": "adapted"
       },
       {
-        "name": "Sophie Bamford \u2014 Cheesy Gochujang & Spring Onion Swirls",
+        "name": "Sophie Bamford — Cheesy Gochujang & Spring Onion Swirls",
         "url": "https://sophiebamford.substack.com/p/cheesy-gochujang-and-spring-onion",
         "type": "adapted"
       },
       {
-        "name": "Megan Cho \u2014 Spicy Cheesy Korean Rolls",
+        "name": "Megan Cho — Spicy Cheesy Korean Rolls",
         "url": "https://confessionsofacakesnob.substack.com/p/spicy-cheesy-korean-rolls-gochujang",
         "type": "adapted"
       },
       {
-        "name": "Foodgeek \u2014 Gochujang Sourdough Bread",
+        "name": "Foodgeek — Gochujang Sourdough Bread",
         "url": "https://foodgeek.io/en/gochujang-sourdough-bread-recipe/",
         "type": "inspired"
       }
@@ -1084,7 +1084,7 @@
       },
       {
         "name": "Confit Garlic (folded after first rise)",
-        "sourcedFrom": "Dylan's official method \u2014 garlic folded in post-rise to preserve gluten",
+        "sourcedFrom": "Dylan's official method — garlic folded in post-rise to preserve gluten",
         "rationale": "Mellow, sweet garlic that holds shape as pockets in the crumb. Post-rise fold avoids disrupting gluten network",
         "confidence": "high"
       },
@@ -1104,37 +1104,37 @@
       "date": "2026-04-17",
       "start_date": "2026-04-16",
       "version": "v1.1.0",
-      "summary": "First bake \u2014 taste was good but crumb was a bit dense. Needs more reps with enriched dough. Confit garlic came out tougher than expected. Lots of recipe step feedback captured for a future version bump.",
+      "summary": "First bake — taste was good but crumb was a bit dense. Needs more reps with enriched dough. Confit garlic came out tougher than expected. Lots of recipe step feedback captured for a future version bump.",
       "notes": [
-        "5:33pm 4/16 \u2014 Started confit garlic in oven at 250\u00b0F for 2 hours, following a YouTube guide. Confit came out tougher than expected \u2014 unsure what target texture should be.",
+        "5:33pm 4/16 — Started confit garlic in oven at 250°F for 2 hours, following a YouTube guide. Confit came out tougher than expected — unsure what target texture should be.",
         "Made tangzhong at easier ratio: 100g water and 20g flour (yields extra). Referenced a YouTube tangzhong guide.",
-        "Mix-dough step felt overloaded \u2014 bouncing between different ingredients, mise en place wasn't helpful for this step's flow.",
+        "Mix-dough step felt overloaded — bouncing between different ingredients, mise en place wasn't helpful for this step's flow.",
         "Forgot to start first rise timer.",
-        "Chopped confit garlic and folded into dough during first rise \u2014 timing made sense but could complicate batch cleaning.",
-        "Divided at ~79g per ball (recipe says 75g). Initially unsure about creating surface tension \u2014 let balls rest on mat, then shaped gloveless. Will improve with practice.",
-        "\"Prepared pan\" instruction was unclear \u2014 didn't know if it meant oiled, parchment, etc. Never figured it out.",
-        "11:24am \u2014 In oven at 350\u00b0F. Rotated at 15 min. Pulled at ~25 min \u2014 internal temp around 210\u00b0F (recipe exit condition says 190\u00b0F).",
+        "Chopped confit garlic and folded into dough during first rise — timing made sense but could complicate batch cleaning.",
+        "Divided at ~79g per ball (recipe says 75g). Initially unsure about creating surface tension — let balls rest on mat, then shaped gloveless. Will improve with practice.",
+        "\"Prepared pan\" instruction was unclear — didn't know if it meant oiled, parchment, etc. Never figured it out.",
+        "11:24am — In oven at 350°F. Rotated at 15 min. Pulled at ~25 min — internal temp around 210°F (recipe exit condition says 190°F).",
         "Applied honey-soy glaze, waited 5 min before butter application.",
         "Crumb a bit dense but taste was good overall. Needs more reps with enriched dough. Wants confit chopped finer and more evenly distributed.",
-        "Want buns shaped more consistently \u2014 similar size and look across all 10. Probably needs more reps."
+        "Want buns shaped more consistently — similar size and look across all 10. Probably needs more reps."
       ],
       "photos": [
         {
           "src": "/images/gochujang-garlic-buns/2026-04-17/crumb-shot-torn-bun-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-17/crumb-shot-torn-bun-400w.webp",
-          "alt": "Torn bun showing interior crumb \u2014 somewhat dense but golden orange from gochujang, visible garlic pieces",
+          "alt": "Torn bun showing interior crumb — somewhat dense but golden orange from gochujang, visible garlic pieces",
           "usage": "process"
         },
         {
           "src": "/images/gochujang-garlic-buns/2026-04-17/glazed-buns-in-dish-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-17/glazed-buns-in-dish-400w.webp",
-          "alt": "All 10 gochujang garlic buns in glass dish \u2014 deep golden with honey-soy glaze and sesame seeds",
+          "alt": "All 10 gochujang garlic buns in glass dish — deep golden with honey-soy glaze and sesame seeds",
           "usage": "process"
         },
         {
           "src": "/images/gochujang-garlic-buns/2026-04-17/gochujang-buns-plated-avocado-parmesan-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-17/gochujang-buns-plated-avocado-parmesan-400w.webp",
-          "alt": "Three gochujang buns on white plate with halved avocado and parmesan shavings \u2014 overhead shot, sesame seeds on crust",
+          "alt": "Three gochujang buns on white plate with halved avocado and parmesan shavings — overhead shot, sesame seeds on crust",
           "usage": "hero"
         }
       ],
@@ -1276,20 +1276,20 @@
           "text": "Chop confit garlic finer, distribute more evenly without overworking dough"
         },
         {
-          "text": "Research target texture for confit garlic \u2014 current result was tougher than expected",
+          "text": "Research target texture for confit garlic — current result was tougher than expected",
           "source": "https://www.youtube.com/watch?v=-HcKWq7WY5E"
         },
         {
           "text": "Consider using full bulb of garlic for better coverage per roll"
         },
         {
-          "text": "Consider lowering oven temp \u2014 internal hit 210\u00b0F at 25 min (recipe target 190\u00b0F)"
+          "text": "Consider lowering oven temp — internal hit 210°F at 25 min (recipe target 190°F)"
         },
         {
           "text": "Figure out what \"prepared pan\" means for this recipe"
         },
         {
-          "text": "Work on consistent bun shaping \u2014 aim for uniform size and appearance across batch"
+          "text": "Work on consistent bun shaping — aim for uniform size and appearance across batch"
         }
       ],
       "weather": {
@@ -1305,56 +1305,56 @@
     {
       "date": "2026-04-19",
       "version": "v1.2.0",
-      "summary": "Second bake \u2014 12 smaller buns (68g each) in cupcake pan. Better proofing via feel test, improved shaping. Pulled at 20 min but still hit 210\u00b0F. Confit super soft but want more \u2014 use all garlic next time. Accidental 40g honey was too sweet. Gochujang heat hitting back of throat.",
+      "summary": "Second bake — 12 smaller buns (68g each) in cupcake pan. Better proofing via feel test, improved shaping. Pulled at 20 min but still hit 210°F. Confit super soft but want more — use all garlic next time. Accidental 40g honey was too sweet. Gochujang heat hitting back of throat.",
       "notes": [
-        "6:14pm \u2014 Dough weight 782g pre-confit. Divided into 12 pieces targeting 68g each (5g variance). Cupcake pan experiment.",
-        "6:18pm \u2014 Confit totaled ~48g including absorbed oils (~1 full bulb). Dried oil off garlic before chopping.",
-        "6:52pm \u2014 Better proofing this time \u2014 did feel/poke test before shaping, dough had noticeable air inside.",
-        "6:55pm \u2014 Shaping noticeably improved over bake #1. Still too little confit \u2014 want to use all garlic next time.",
-        "Confit garlic was super soft this time (vs. tough in bake #1). Now thinking bake #1's firmer texture was more desirable \u2014 needs more research on target confit texture.",
-        "7:58pm \u2014 Accidental 40g honey in glaze. Too sweet \u2014 30g is the right amount.",
-        "8:01pm \u2014 Considered misting tops with water to slow surface browning, didn't try.",
-        "8:08pm \u2014 Internal 210\u00b0F at 20 min at 350\u00b0F. Pulled at 20 min (5 min earlier than bake #1). Crust golden brown.",
-        "8:10pm \u2014 Didn't oil cupcake pan (predicted critical miss). Buns came out okay but will try oil next time.",
-        "8:43pm \u2014 Only need 4g sesame (recipe says 5g). Rested 30 min before glazing.",
-        "Gochujang possibly too much \u2014 spicy on back of throat. Considering reducing amount.",
-        "One bun bloomed/blistered rather than staying smooth \u2014 glaze absorbed deeper into the crumb. Prefers this. Thinking shallower format + more surface area = better glaze saturation."
+        "6:14pm — Dough weight 782g pre-confit. Divided into 12 pieces targeting 68g each (5g variance). Cupcake pan experiment.",
+        "6:18pm — Confit totaled ~48g including absorbed oils (~1 full bulb). Dried oil off garlic before chopping.",
+        "6:52pm — Better proofing this time — did feel/poke test before shaping, dough had noticeable air inside.",
+        "6:55pm — Shaping noticeably improved over bake #1. Still too little confit — want to use all garlic next time.",
+        "Confit garlic was super soft this time (vs. tough in bake #1). Now thinking bake #1's firmer texture was more desirable — needs more research on target confit texture.",
+        "7:58pm — Accidental 40g honey in glaze. Too sweet — 30g is the right amount.",
+        "8:01pm — Considered misting tops with water to slow surface browning, didn't try.",
+        "8:08pm — Internal 210°F at 20 min at 350°F. Pulled at 20 min (5 min earlier than bake #1). Crust golden brown.",
+        "8:10pm — Didn't oil cupcake pan (predicted critical miss). Buns came out okay but will try oil next time.",
+        "8:43pm — Only need 4g sesame (recipe says 5g). Rested 30 min before glazing.",
+        "Gochujang possibly too much — spicy on back of throat. Considering reducing amount.",
+        "One bun bloomed/blistered rather than staying smooth — glaze absorbed deeper into the crumb. Prefers this. Thinking shallower format + more surface area = better glaze saturation."
       ],
       "photos": [
         {
           "src": "/images/gochujang-garlic-buns/2026-04-19/dough-balls-in-muffin-tin-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-19/dough-balls-in-muffin-tin-400w.webp",
-          "alt": "12 shaped dough balls in muffin tin, pre-bake \u2014 warm orange tint from gochujang, light flour dusting, uniform 68g portions",
+          "alt": "12 shaped dough balls in muffin tin, pre-bake — warm orange tint from gochujang, light flour dusting, uniform 68g portions",
           "usage": "process"
         },
         {
           "src": "/images/gochujang-garlic-buns/2026-04-19/buns-proofed-in-oven-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-19/buns-proofed-in-oven-400w.webp",
-          "alt": "12 buns proofed in muffin tin in the oven \u2014 puffed well above tin edges, glossy golden-orange from egg wash",
+          "alt": "12 buns proofed in muffin tin in the oven — puffed well above tin edges, glossy golden-orange from egg wash",
           "usage": "process"
         },
         {
           "src": "/images/gochujang-garlic-buns/2026-04-19/glazed-buns-in-tupperware-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-19/glazed-buns-in-tupperware-400w.webp",
-          "alt": "All 12 finished buns in tupperware \u2014 golden brown with glossy honey-soy glaze, tall muffin-tin shape",
+          "alt": "All 12 finished buns in tupperware — golden brown with glossy honey-soy glaze, tall muffin-tin shape",
           "usage": "process"
         },
         {
           "src": "/images/gochujang-garlic-buns/2026-04-19/crumb-shot-torn-bun-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-19/crumb-shot-torn-bun-400w.webp",
-          "alt": "Torn-open bun showing bright yellow crumb \u2014 fine cottony texture with pull-apart strands, sesame seeds on crust",
+          "alt": "Torn-open bun showing bright yellow crumb — fine cottony texture with pull-apart strands, sesame seeds on crust",
           "usage": "process"
         },
         {
           "src": "/images/gochujang-garlic-buns/2026-04-19/glazed-bun-plated-sesame-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-19/glazed-bun-plated-sesame-400w.webp",
-          "alt": "Single glazed gochujang bun on decorative plate with black and white sesame seeds \u2014 glossy honey-soy glaze, remaining buns in tupperware behind",
+          "alt": "Single glazed gochujang bun on decorative plate with black and white sesame seeds — glossy honey-soy glaze, remaining buns in tupperware behind",
           "usage": "hero"
         }
       ],
       "next_time": [
         {
-          "text": "Use all confit garlic (~100g, both bulbs) \u2014 more garlic = more dough flavor"
+          "text": "Use all confit garlic (~100g, both bulbs) — more garlic = more dough flavor"
         },
         {
           "text": "Consider reducing gochujang slightly to tame back-of-throat heat (try 25g?)"
@@ -1363,19 +1363,19 @@
           "text": "Oil cupcake pan or try alternative pan format"
         },
         {
-          "text": "Explore blistered/bloomed tops intentionally \u2014 more surface area for glaze absorption"
+          "text": "Explore blistered/bloomed tops intentionally — more surface area for glaze absorption"
         },
         {
           "text": "Research shallower pan formats for better glaze-to-bread ratio"
         },
         {
-          "text": "Try cheese center (brie or other \u2014 see PF-209 research)"
+          "text": "Try cheese center (brie or other — see PF-209 research)"
         },
         {
           "text": "Try finishing salt sprinkled with sesame seeds"
         },
         {
-          "text": "Reconsider density fix direction \u2014 firmer bake #1 texture may actually be preferable to pillowy"
+          "text": "Reconsider density fix direction — firmer bake #1 texture may actually be preferable to pillowy"
         }
       ],
       "cost": {
@@ -1425,7 +1425,7 @@
             "ingredientName": "Whole Milk",
             "product": "H-E-B Whole Milk 1 pt",
             "packageSize": "1 pt",
-            "packagePrice": 1.0,
+            "packagePrice": 1,
             "cost": 0.24
           },
           {
@@ -1508,7 +1508,7 @@
       "weather": {
         "location": "Austin, TX",
         "date": "2026-04-19",
-        "temp_high_f": 70.0,
+        "temp_high_f": 70,
         "temp_low_f": 49.9,
         "humidity_avg_percent": 62,
         "condition": "Rain",
@@ -1519,50 +1519,50 @@
       "date": "2026-04-22",
       "start_date": "2026-04-21",
       "version": "v1.2.0",
-      "summary": "Third bake \u2014 A/B test with 6 cinnamon-roll swirls vs 6 standard scored buns. Swirl style was the clear winner for bread flavor and glaze surface. Confit 43g from ~1.5 bulbs made 2 days prior. Swirl approach likely becomes v3 standard shape.",
+      "summary": "Third bake — A/B test with 6 cinnamon-roll swirls vs 6 standard scored buns. Swirl style was the clear winner for bread flavor and glaze surface. Confit 43g from ~1.5 bulbs made 2 days prior. Swirl approach likely becomes v3 standard shape.",
       "notes": [
-        "1:52pm \u2014 76.5\u00b0F ambient, 56% humidity at mix.",
-        "2:14pm \u2014 Dough temp 75\u00b0F before bulk.",
-        "3:03pm \u2014 Prepped confit during initial proof. 43g after draining oil from confit made two days ago. Felt like almost 1.5 bulbs. More garlic is better for this recipe.",
-        "4:34pm \u2014 Split batch: 6 cinnamon-roll style swirls + 6 regular scored buns. Intentional A/B test. Varying swirl sizes helped determine target look \u2014 needs uniformity practice.",
-        "4:34pm \u2014 Short on butter but had enough for dough step. Made do with minimal butter wash.",
-        "4:35pm \u2014 Rotated oven at ~12 min mark. 350\u00b0F. Preheated while shaping.",
-        "4:35pm \u2014 Sprayed tops with water to prevent scorching.",
-        "4:36pm \u2014 For swirl style: added melted butter pat and minced garlic before rolling up. Theory is butter/garlic gelatinizes at bottom of roll.",
-        "4:50pm \u2014 Out after 24 min total. Pulled at 20, thought tops could be browner, added 4 more minutes. Internal ~210\u00b0F. Center rolls weren't browning evenly \u2014 uniformity issue.",
-        "5:34pm \u2014 Swirl style is a winner. Better overall bread flavor than standard round buns.",
-        "7:49pm \u2014 Swirly variation with melted butter should become standard v3. Consider putting butter/confit directly in the roll-up for more even distribution across all rolls.",
-        "7:50pm \u2014 Need to figure out uniform roll sizing for swirl approach. If making 12, even sizes = even cooking."
+        "1:52pm — 76.5°F ambient, 56% humidity at mix.",
+        "2:14pm — Dough temp 75°F before bulk.",
+        "3:03pm — Prepped confit during initial proof. 43g after draining oil from confit made two days ago. Felt like almost 1.5 bulbs. More garlic is better for this recipe.",
+        "4:34pm — Split batch: 6 cinnamon-roll style swirls + 6 regular scored buns. Intentional A/B test. Varying swirl sizes helped determine target look — needs uniformity practice.",
+        "4:34pm — Short on butter but had enough for dough step. Made do with minimal butter wash.",
+        "4:35pm — Rotated oven at ~12 min mark. 350°F. Preheated while shaping.",
+        "4:35pm — Sprayed tops with water to prevent scorching.",
+        "4:36pm — For swirl style: added melted butter pat and minced garlic before rolling up. Theory is butter/garlic gelatinizes at bottom of roll.",
+        "4:50pm — Out after 24 min total. Pulled at 20, thought tops could be browner, added 4 more minutes. Internal ~210°F. Center rolls weren't browning evenly — uniformity issue.",
+        "5:34pm — Swirl style is a winner. Better overall bread flavor than standard round buns.",
+        "7:49pm — Swirly variation with melted butter should become standard v3. Consider putting butter/confit directly in the roll-up for more even distribution across all rolls.",
+        "7:50pm — Need to figure out uniform roll sizing for swirl approach. If making 12, even sizes = even cooking."
       ],
       "photos": [
         {
           "src": "/images/gochujang-garlic-buns/2026-04-22/img-7375-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-22/img-7375-400w.webp",
-          "alt": "All 12 buns fresh from oven in muffin tin \u2014 mix of 6 standard round buns and 6 cinnamon-roll swirl style, golden brown tops with visible swirl patterns, varying sizes",
+          "alt": "All 12 buns fresh from oven in muffin tin — mix of 6 standard round buns and 6 cinnamon-roll swirl style, golden brown tops with visible swirl patterns, varying sizes",
           "usage": "process"
         },
         {
           "src": "/images/gochujang-garlic-buns/2026-04-22/img-7379-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-22/img-7379-400w.webp",
-          "alt": "Crumb shot \u2014 hand tearing open a swirl bun showing yellow-orange interior from gochujang, fluffy pull-apart texture, glazed buns with sesame seeds in background",
+          "alt": "Crumb shot — hand tearing open a swirl bun showing yellow-orange interior from gochujang, fluffy pull-apart texture, glazed buns with sesame seeds in background",
           "usage": "process"
         },
         {
           "src": "/images/gochujang-garlic-buns/2026-04-22/img-7378-800w.webp",
           "thumb": "/images/gochujang-garlic-buns/2026-04-22/img-7378-400w.webp",
-          "alt": "Glazed gochujang buns \u2014 3 on white plate, remaining batch in glass dish behind, honey-soy glaze glistening with black and white sesame seeds",
+          "alt": "Glazed gochujang buns — 3 on white plate, remaining batch in glass dish behind, honey-soy glaze glistening with black and white sesame seeds",
           "usage": "hero"
         }
       ],
       "next_time": [
         {
-          "text": "Version bump to v3 with swirl as standard shape \u2014 needs recipe step rewrite"
+          "text": "Version bump to v3 with swirl as standard shape — needs recipe step rewrite"
         },
         {
           "text": "Put butter + confit in the roll-up step (like cinnamon roll filling) for even distribution without re-measuring dough"
         },
         {
-          "text": "Research keeping swirl buns moist on reheat \u2014 may need updated reheat method"
+          "text": "Research keeping swirl buns moist on reheat — may need updated reheat method"
         },
         {
           "text": "Practice uniform swirl roll sizing for even bake"
@@ -1618,7 +1618,7 @@
             "ingredientName": "Whole Milk",
             "product": "H-E-B Whole Milk 1 pt",
             "packageSize": "1 pt",
-            "packagePrice": 1.0,
+            "packagePrice": 1,
             "cost": 0.24
           },
           {
@@ -1698,16 +1698,80 @@
         "perServing": 0.93,
         "servings": 10
       },
-      "raw_notes": "Scratchpad export \u2014 Gochujang & Garlic Buns \u2014 2026-04-22\n\nmix-dough @ 2026-04-21T18:52:25Z: 76.5 ambient 56% humidity\nfirst-rise @ 2026-04-21T19:14:37Z: Dough temperature before bulk: 75\n\nGeneral notes:\n2026-04-21T20:03:24Z: prepping confit during initial proof. 43grams after draining oil as much as i could from the confit i made two days ago. notice i probably shortchanged quite a bit the last time i made this. consider making 4 bulbs of garlic to reduce waste or to double recipe for two bake practices sessions\n2026-04-21T21:34:28Z: did 6 \"cinnamon roll\" style rolls to see how it comes out. theory is more exposed sponge to the soy glaze and butter wash\n2026-04-21T21:34:39Z: short on butter. but should suffice for end glaze\n2026-04-21T21:35:13Z: i rotated it in the oven about 2 minutes ago. compute this as 12 minute mark of bake. 350. preheated while i got everything shaped\n2026-04-21T21:35:35Z: sprayed top with water just in case tops can get scorched\n2026-04-21T21:36:00Z: cinna roll style- i added a melted butter pat and some minced garlic. theory is that it should gelatonize a bit at the bottom of the roll\n2026-04-21T21:50:53Z: out after 24 minutes bake time. i pulled out at 20 and thought the tops could be a bit browner. so added 4 minutes\n2026-04-21T22:34:33Z: swirl might be a banger.\n2026-04-22T00:49:44Z: swirly variation with melted butter should be standard v3. also note how much confit was used.\n2026-04-22T00:50:20Z: need to understand how to make more uniform rolls for the swirly approach. if i need 12 of them it would be nice to get them the same size for even cooking",
+      "raw_notes": "Scratchpad export — Gochujang & Garlic Buns — 2026-04-22\n\nmix-dough @ 2026-04-21T18:52:25Z: 76.5 ambient 56% humidity\nfirst-rise @ 2026-04-21T19:14:37Z: Dough temperature before bulk: 75\n\nGeneral notes:\n2026-04-21T20:03:24Z: prepping confit during initial proof. 43grams after draining oil as much as i could from the confit i made two days ago. notice i probably shortchanged quite a bit the last time i made this. consider making 4 bulbs of garlic to reduce waste or to double recipe for two bake practices sessions\n2026-04-21T21:34:28Z: did 6 \"cinnamon roll\" style rolls to see how it comes out. theory is more exposed sponge to the soy glaze and butter wash\n2026-04-21T21:34:39Z: short on butter. but should suffice for end glaze\n2026-04-21T21:35:13Z: i rotated it in the oven about 2 minutes ago. compute this as 12 minute mark of bake. 350. preheated while i got everything shaped\n2026-04-21T21:35:35Z: sprayed top with water just in case tops can get scorched\n2026-04-21T21:36:00Z: cinna roll style- i added a melted butter pat and some minced garlic. theory is that it should gelatonize a bit at the bottom of the roll\n2026-04-21T21:50:53Z: out after 24 minutes bake time. i pulled out at 20 and thought the tops could be a bit browner. so added 4 minutes\n2026-04-21T22:34:33Z: swirl might be a banger.\n2026-04-22T00:49:44Z: swirly variation with melted butter should be standard v3. also note how much confit was used.\n2026-04-22T00:50:20Z: need to understand how to make more uniform rolls for the swirly approach. if i need 12 of them it would be nice to get them the same size for even cooking",
       "weather": {
         "location": "Austin, TX",
         "date": "2026-04-22",
         "temp_high_f": 79.2,
-        "temp_low_f": 63.0,
+        "temp_low_f": 63,
         "humidity_avg_percent": 89,
         "condition": "Rain",
         "source": "open-meteo"
-      }
+      },
+      "bake_notes": [
+        {
+          "timestamp": "2026-04-21T18:52:25Z",
+          "raw": "76.5 ambient 56% humidity",
+          "notable": false,
+          "stepId": "MIX_DOUGH"
+        },
+        {
+          "timestamp": "2026-04-21T19:14:37Z",
+          "raw": "Dough temperature before bulk: 75",
+          "notable": false,
+          "stepId": "FIRST_RISE"
+        },
+        {
+          "timestamp": "2026-04-21T20:03:24Z",
+          "raw": "prepping confit during initial proof. 43grams after draining oil as much as i could from the confit i made two days ago. notice i probably shortchanged quite a bit the last time i made this. consider making 4 bulbs of garlic to reduce waste or to double recipe for two bake practices sessions",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-21T21:34:28Z",
+          "raw": "did 6 \"cinnamon roll\" style rolls to see how it comes out. theory is more exposed sponge to the soy glaze and butter wash",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-21T21:34:39Z",
+          "raw": "short on butter. but should suffice for end glaze",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-21T21:35:13Z",
+          "raw": "i rotated it in the oven about 2 minutes ago. compute this as 12 minute mark of bake. 350. preheated while i got everything shaped",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-21T21:35:35Z",
+          "raw": "sprayed top with water just in case tops can get scorched",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-21T21:36:00Z",
+          "raw": "cinna roll style- i added a melted butter pat and some minced garlic. theory is that it should gelatonize a bit at the bottom of the roll",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-21T21:50:53Z",
+          "raw": "out after 24 minutes bake time. i pulled out at 20 and thought the tops could be a bit browner. so added 4 minutes",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-21T22:34:33Z",
+          "raw": "swirl might be a banger.",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-22T00:49:44Z",
+          "raw": "swirly variation with melted butter should be standard v3. also note how much confit was used.",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-04-22T00:50:20Z",
+          "raw": "need to understand how to make more uniform rolls for the swirly approach. if i need 12 of them it would be nice to get them the same size for even cooking",
+          "notable": false
+        }
+      ]
     }
   ],
   "estimatedCost": {
@@ -1750,7 +1814,7 @@
         "sourceName": "Tap water (free)",
         "amount": 100,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "instant-yeast",

@@ -184,11 +184,20 @@ User may paste photo paths. When photos are provided:
 
 **For --update:** Photos are optional — can add them incrementally or wait for --finalize.
 
-### Preserve Raw Paste
+### Preserve Raw Input as BakeNote[]
 
-If the user dumps a structured or timestamped paste (e.g. notepad copy, dictation transcript, voice memo), keep the **verbatim text** exactly as provided. It will be written to `cook_log[entry].raw_notes` alongside the cleaned prose in `notes[]`. Do not reformat, reorder, or strip timestamps from the raw paste — that's the whole point of preserving it.
+If the user dumps a structured or timestamped paste (e.g. notepad copy, dictation transcript, voice memo, scratchpad export), capture each discrete observation as a `BakeNote` in the `bake_notes[]` array. Each note gets:
+- `timestamp`: ISO 8601 UTC (e.g. `2026-04-10T21:42:00Z`)
+- `raw`: verbatim user text — never edited, never trimmed
+- `notable`: `true` if the observation is highlight-worthy (key measurement, deviation, result)
+- `stepId`: recipe step ID if the note was captured against a specific step
+- `prompt`: scratchpad prompt text if this was a prompted response
+- `curated`: agent-refined version when meaningfully different from raw (omit if same)
+- `processing`: stage context (e.g. `"bulk_ferment"`, `"bake"`, `"shaping"`)
 
-Structured `bake_stats` (Phase 2b) and prose `notes[]` are **both derived from** the raw paste. All three layers coexist in the final entry.
+**Legacy field `raw_notes` is deprecated (PF-216).** New entries MUST write `bake_notes[]` instead. Do NOT write `raw_notes` on new entries. Existing entries with `raw_notes` have been backfilled with `bake_notes[]`.
+
+Structured `bake_stats` (Phase 2b) and `bake_notes[]` are **both derived from** the raw input. Both layers coexist in the final entry.
 
 ## Phase 2b: Structured Stats Capture (Optional)
 
@@ -331,11 +340,16 @@ Confirm new notes are accurate? Entry will be updated in-place.
 - aliquot_rises: {count} checks
 {Show the parsed values inline so the user can spot incorrect inferences — do not just show counts.}
 
-**raw_notes:** {yes/no — preserving verbatim paste of N chars}
+**bake_notes ({count}):** (raw → curated where different)
+| # | Time | Raw | Curated | Notable |
+|---|------|-----|---------|---------|
+| 1 | {local time} | {raw text} | {curated or "—"} | {yes/no} |
+| 2 | ... | ... | ... | ... |
+
 **Photos:** {count} received (not yet processed)
 **Version:** {current} (bake recorded against this version)
 
-Confirm notes, summary, and stats are accurate?
+Confirm notes, summary, bake_notes, and stats are accurate?
 ```
 
 Wait for explicit user confirmation. If they correct anything, update and re-echo. Stats corrections are **critical** — if the user says "no wait, that was 74 not 76" or "that fold was at 10:30 not 10:15", fix the structured data before writing.
@@ -353,7 +367,7 @@ After user confirms:
    - Merge new notes into existing `notes[]` array
    - Merge new `next_time` items if added
    - Merge any new `bake_stats` arrays into existing ones (append entries to `dough_temps`, `bulk_ambient_temps`, `stretch_folds`, etc. — don't overwrite)
-   - Append new raw paste to `raw_notes` with a separator (`\n\n---\n\n`) if preserving multi-session paste
+   - Append new `BakeNote` entries to existing `bake_notes[]` array
    - Keep `status: "in_progress"` (DO NOT remove)
    - Summary remains `null` (not required for updates)
 3. **Do NOT append a new entry** — update the existing one
@@ -363,7 +377,7 @@ After user confirms:
 2. **Update the entry in-place:**
    - Merge any final notes into `notes[]` array
    - Merge any final `bake_stats` arrays (append to existing)
-   - Append final raw paste to `raw_notes` if provided
+   - Append new `BakeNote` entries to existing `bake_notes[]` array
    - Add the MANDATORY `summary` field (1-2 sentence first-person headline)
    - **Remove the `status` field entirely** (omitted = complete)
    - Update `next_time` if final items added
@@ -386,20 +400,23 @@ After user confirms:
     { "text": "{item 1}" },
     { "text": "{item 2}", "source": "{if from external research}" }
   ],
+  "bake_notes": [
+    { "timestamp": "2026-04-06T22:45:00Z", "raw": "DDT 76°F after mix", "notable": true, "stepId": "mix", "processing": "mix" },
+    { "timestamp": "2026-04-06T23:15:00Z", "raw": "First coil fold — dough felt tight", "notable": false, "processing": "bulk_ferment" }
+  ],
   "bake_stats": {
     "dough_temps": [ { "time": "...", "temp_f": 76 } ],
     "bulk_ambient_temps": [ { "date": "...", "temp_f": 68 } ],
     "bake_phases": [ { "stage": "preheat", "temp_f": 500, "duration_min": 60 } ],
     "stretch_folds": [ { "time": "...", "type": "coil" } ],
     "aliquot_rises": [ { "time": "...", "rise_pct": 75, "stage": "bulk" } ]
-  },
-  "raw_notes": "{verbatim paste of user's notes, timestamps preserved}"
+  }
 }
 ```
 
-2. **Both `bake_stats` and `raw_notes` are optional.** Omit them if not captured:
+2. **Both `bake_stats` and `bake_notes` are optional.** Omit them if not captured:
    - `bake_stats`: omit entirely if Phase 2b was skipped or yielded nothing. Omit individual field arrays within `bake_stats` if that field was skipped or had no data.
-   - `raw_notes`: omit if the user's input was conversational only (no structured paste to preserve).
+   - `bake_notes`: always write when any notes are captured (replaces deprecated `raw_notes`). Omit only for skeleton `--start` entries with no initial notes.
 3. **Append to existing `cook_log[]` array** (do not replace)
 4. If `cook_log` doesn't exist yet, create it
 
@@ -594,7 +611,7 @@ If a draft/task existed for this bake session:
 - **Scribe Protocol applies to stats** — never infer temps, timestamps, or durations the user didn't state. Ask to clarify if ambiguous.
 - **Parse inline from paste** — if the raw paste already contains structured data (timestamped temps, fold times, rise %), parse it directly; don't re-prompt the user.
 - **Skip silently** — if a field group has nothing to record, move on. Do not pester.
-- **Preserve raw** — verbatim paste always goes to `raw_notes` when provided, even if structured data is also extracted. Both layers coexist.
+- **Preserve raw** — verbatim text always captured as `BakeNote.raw` in `bake_notes[]`. Each discrete observation becomes its own entry with timestamp. Both `bake_notes` and `bake_stats` layers coexist.
 - **Multi-day bulks → multiple `bulk_ambient_temps` entries** — one per room-temp day, never a single scalar collapsing multiple days.
 - **Stats correction in echo check is critical** — the user must see parsed values (not just counts) and confirm before write.
 
@@ -690,11 +707,18 @@ Saturday morning. Best crumb and ear yet.
 - aliquot_rises (1):
   - 2026-04-06 - 07:30 → 75%, bulk
 
-**raw_notes:** yes — preserving verbatim paste (821 chars)
+**bake_notes (12):** (raw → curated where different)
+| # | Time | Raw | Curated | Notable |
+|---|------|-----|---------|---------|
+| 1 | Fri 8:00pm | Fed starter 1:5:5 | — | no |
+| 2 | Fri 10:30pm | Starter peaked, doubled, sweet | — | yes |
+| 3 | Fri 10:45pm | Mixed dough... DDT 76°F | Mixed: 500g BF, 350g H₂O, 100g levain, 10g salt. DDT 76°F | yes |
+| ... | ... | ... | ... | ... |
+
 **Photos:** 0
 **Version:** 3.2.0
 
-Confirm notes, summary, and stats are accurate?
+Confirm notes, summary, bake_notes, and stats are accurate?
 ```
 
 ### Final JSON Write (cook_log[])
@@ -739,13 +763,28 @@ Confirm notes, summary, and stats are accurate?
       { "time": "2026-04-06 - 07:30", "rise_pct": 75, "stage": "bulk" }
     ]
   },
-  "raw_notes": "Simple sourdough bake — 2026-04-06\n\nFriday 4/5:\n- 8:00pm — fed starter 1:5:5, 50g starter + 250g flour + 250g water\n- 10:30pm — starter peaked, doubled, smelled sweet\n- 10:45pm — mixed dough: 500g bread flour, 350g water (70% hydration), 100g levain, 10g salt. Fermentolyse. DDT was 76°F.\n- 11:15pm — first coil fold, dough felt tight\n- 11:45pm — second coil fold, smoother\n- 12:15am (4/6) — third coil, into fridge at 68°F kitchen temp\n- Slept\n\nSaturday 4/6:\n- 7:30am — out of fridge, kitchen was 70°F. Dough looked puffy. Aliquot jar at 75% rise.\n- 8:00am — preshape, 15 min bench rest\n- 8:15am — final shape, into banneton, back in fridge\n- 9:00am — preheat Dutch oven, 500°F for 60 min\n- 10:00am — score + bake covered 500°F, 20 min\n- 10:20am — uncovered, dropped to 450°F, baked 25 more min\n- 10:45am — out of oven. Internal temp 208°F. Loaf sounded hollow.\n- Crumb was open, ear was sharp. Best bake yet.\n\nNext time: try a longer autolyse, maybe 1 hour before adding levain."
+  "bake_notes": [
+    { "timestamp": "2026-04-06T01:00:00Z", "raw": "Fed starter 1:5:5, 50g starter + 250g flour + 250g water", "notable": false, "processing": "prep" },
+    { "timestamp": "2026-04-06T03:30:00Z", "raw": "Starter peaked, doubled, smelled sweet", "notable": true, "processing": "prep" },
+    { "timestamp": "2026-04-06T03:45:00Z", "raw": "Mixed dough: 500g bread flour, 350g water (70% hydration), 100g levain, 10g salt. Fermentolyse. DDT was 76°F.", "notable": true, "processing": "mix" },
+    { "timestamp": "2026-04-06T04:15:00Z", "raw": "First coil fold, dough felt tight", "notable": false, "processing": "bulk_ferment" },
+    { "timestamp": "2026-04-06T04:45:00Z", "raw": "Second coil fold, smoother", "notable": false, "processing": "bulk_ferment" },
+    { "timestamp": "2026-04-06T05:15:00Z", "raw": "Third coil, into fridge at 68°F kitchen temp", "notable": false, "processing": "bulk_ferment" },
+    { "timestamp": "2026-04-06T12:30:00Z", "raw": "Out of fridge, kitchen was 70°F. Dough looked puffy. Aliquot jar at 75% rise.", "notable": true, "processing": "bulk_ferment" },
+    { "timestamp": "2026-04-06T13:00:00Z", "raw": "Preshape, 15 min bench rest", "notable": false, "processing": "shaping" },
+    { "timestamp": "2026-04-06T13:15:00Z", "raw": "Final shape, into banneton, back in fridge", "notable": false, "processing": "shaping" },
+    { "timestamp": "2026-04-06T14:00:00Z", "raw": "Preheat Dutch oven, 500°F for 60 min", "notable": false, "processing": "bake" },
+    { "timestamp": "2026-04-06T15:00:00Z", "raw": "Score + bake covered 500°F, 20 min", "notable": false, "processing": "bake" },
+    { "timestamp": "2026-04-06T15:20:00Z", "raw": "Uncovered, dropped to 450°F, baked 25 more min", "notable": false, "processing": "bake" },
+    { "timestamp": "2026-04-06T15:45:00Z", "raw": "Out of oven. Internal temp 208°F. Loaf sounded hollow.", "notable": true, "processing": "bake" },
+    { "timestamp": "2026-04-06T15:46:00Z", "raw": "Crumb was open, ear was sharp. Best bake yet.", "notable": true, "processing": "result" }
+  ]
 }
 ```
 
 ### Counter-Example: Prose-Only Bake
 
-If the user provides only conversational input — "cookies came out great, crispier edges this time, used a little more salt" — the recipe (cookies) has no `bakeStatsSchema`. Phase 2b is skipped entirely. No prompts, no `bake_stats`, no `raw_notes` (no structured paste to preserve). The entry writes just `notes[]`, `summary`, and `next_time[]` as before.
+If the user provides only conversational input — "cookies came out great, crispier edges this time, used a little more salt" — the recipe (cookies) has no `bakeStatsSchema`. Phase 2b is skipped entirely. No prompts, no `bake_stats`. The entry writes `notes[]`, `summary`, `next_time[]`, and `bake_notes[]` (each conversational observation becomes a BakeNote with approximate timestamp).
 
 ## Relationship to Other Skills
 

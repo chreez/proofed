@@ -1473,4 +1473,149 @@ describe('BakeDetailView', () => {
       expect(html).toContain('Second note')
     })
   })
+
+  describe('bake_notes fallback chain (PF-216)', () => {
+    it('renders bake_notes when present', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['old note'],
+          bake_notes: [
+            { timestamp: '2026-02-05T14:00:00Z', raw: 'Dough temp 76F', notable: true },
+            { timestamp: '2026-02-05T15:00:00Z', raw: 'Good oven spring', notable: false }
+          ]
+        }]
+      })
+      const wrapper = mountComponent()
+      const notesSection = wrapper.find('[data-testid="notes-section"]')
+      expect(notesSection.exists()).toBe(true)
+      const html = notesSection.html()
+      expect(html).toContain('Dough temp 76F')
+      expect(html).toContain('Good oven spring')
+      // Should NOT render old notes[] content
+      expect(html).not.toContain('old note')
+    })
+
+    it('prefers curated text over raw when available', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: [],
+          bake_notes: [
+            { timestamp: '2026-02-05T14:00:00Z', raw: 'temp was 76', notable: true, curated: 'Dough temperature: 76°F' }
+          ]
+        }]
+      })
+      const wrapper = mountComponent()
+      const html = wrapper.find('[data-testid="notes-section"]').html()
+      expect(html).toContain('Dough temperature: 76°F')
+    })
+
+    it('falls back to key_notes when bake_notes absent', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['raw note'],
+          key_notes: [{ text: 'Key observation' }]
+        }]
+      })
+      const wrapper = mountComponent()
+      const html = wrapper.find('[data-testid="notes-section"]').html()
+      expect(html).toContain('Key observation')
+    })
+
+    it('falls back to notes[] when both bake_notes and key_notes absent', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Plain old note']
+        }]
+      })
+      const wrapper = mountComponent()
+      const html = wrapper.find('[data-testid="notes-section"]').html()
+      expect(html).toContain('Plain old note')
+    })
+
+    it('treats empty bake_notes array as absent (falls back)', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['Fallback note'],
+          bake_notes: []
+        }]
+      })
+      const wrapper = mountComponent()
+      const html = wrapper.find('[data-testid="notes-section"]').html()
+      expect(html).toContain('Fallback note')
+    })
+
+    it('renders local time from UTC timestamp', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: [],
+          bake_notes: [
+            { timestamp: '2026-02-05T20:00:00Z', raw: 'Evening note', notable: false }
+          ]
+        }]
+      })
+      const wrapper = mountComponent()
+      const html = wrapper.find('[data-testid="notes-section"]').html()
+      // Should contain a time string (format varies by locale/TZ)
+      expect(html).toContain('Evening note')
+      // The timestamp should be converted to local time (contains AM/PM or hour)
+      expect(html).toMatch(/\d{1,2}:\d{2}/)
+    })
+
+    it('groups multi-day bake notes by date', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-06',
+          start_date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: [],
+          bake_notes: [
+            { timestamp: '2026-02-05T14:00:00Z', raw: 'Day one note', notable: false },
+            { timestamp: '2026-02-06T10:00:00Z', raw: 'Day two note', notable: false }
+          ]
+        }]
+      })
+      mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: '2026-02-06' }
+      const wrapper = mountComponent()
+      const html = wrapper.find('[data-testid="notes-section"]').html()
+      expect(html).toContain('Day one note')
+      expect(html).toContain('Day two note')
+      // Multi-day should have date group headers (h4 elements)
+      const h4Count = (html.match(/<h4/g) || []).length
+      expect(h4Count).toBeGreaterThanOrEqual(2)
+    })
+
+    it('renders single-day as flat list without date headers', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: [],
+          bake_notes: [
+            { timestamp: '2026-02-05T14:00:00Z', raw: 'Note A', notable: false },
+            { timestamp: '2026-02-05T15:00:00Z', raw: 'Note B', notable: false }
+          ]
+        }]
+      })
+      const wrapper = mountComponent()
+      const html = wrapper.find('[data-testid="notes-section"]').html()
+      expect(html).toContain('Note A')
+      expect(html).toContain('Note B')
+      // Single-day should NOT have h4 day headers inside the prose
+      const proseHtml = wrapper.find('.bake-prose').html()
+      const h4Count = (proseHtml.match(/<h4/g) || []).length
+      expect(h4Count).toBe(0)
+    })
+  })
 })
