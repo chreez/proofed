@@ -8,7 +8,7 @@
     },
     "yields": "~80-100 crackers (2 sheet pans)",
     "total_time": "~1.5 hrs (30 min active, 30 min chill, 20 min bake)",
-    "description": "Sharp cheddar crackers with sourdough tang, smoked paprika, and black pepper. Uses unfed sourdough discard as the base \u2014 no waste, maximum flavor. Roll thin and dock well for snappy, Cheez-It-adjacent results."
+    "description": "Sharp cheddar crackers with sourdough tang, smoked paprika, and black pepper. Uses unfed sourdough discard as the base — no waste, maximum flavor. Roll thin and dock well for snappy, Cheez-It-adjacent results."
   },
   "config": {
     "early_check_percent": 0.8
@@ -121,7 +121,7 @@
             "unit": "g",
             "breakdown": null,
             "confidence": "high",
-            "rationale": "3/4 agents; 1/4 tsp = noticeable warmth. Capsaicin stable at 350\u00b0F"
+            "rationale": "3/4 agents; 1/4 tsp = noticeable warmth. Capsaicin stable at 350°F"
           },
           {
             "id": "fine-salt",
@@ -196,7 +196,7 @@
       "exit_condition": "170g cheese finely grated with no large chunks remaining",
       "notes": [
         {
-          "text": "Block cheese only \u2014 pre-shredded cheese contains anti-caking agents (cellulose, potato starch) that prevent proper melting and integration into the dough.",
+          "text": "Block cheese only — pre-shredded cheese contains anti-caking agents (cellulose, potato starch) that prevent proper melting and integration into the dough.",
           "critical": true,
           "source": "agent"
         }
@@ -300,7 +300,7 @@
     {
       "id": "roll-dough",
       "title": "Roll Dough Ultra-Thin",
-      "direction": "Place dough between two sheets of parchment paper. Roll to 0.16cm thickness \u2014 as thin as possible without tearing. Work from center outward, rotating 90\u00b0 periodically for even thickness.",
+      "direction": "Place dough between two sheets of parchment paper. Roll to 0.16cm thickness — as thin as possible without tearing. Work from center outward, rotating 90° periodically for even thickness.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -308,7 +308,7 @@
       "exit_condition": "Dough is uniformly 0.16cm thick with no visibly thicker areas",
       "notes": [
         {
-          "text": "Rolling thin enough is the #1 factor separating great crackers from mediocre ones. If you can't hit 0.16cm, go as thin as you can \u2014 thinner is always better for crispness.",
+          "text": "Rolling thin enough is the #1 factor separating great crackers from mediocre ones. If you can't hit 0.16cm, go as thin as you can — thinner is always better for crispness.",
           "critical": true,
           "source": "agent"
         },
@@ -322,7 +322,7 @@
     {
       "id": "cut-squares",
       "title": "Cut Squares",
-      "direction": "Using a pizza cutter or sharp knife, cut the rolled dough into 2.5cm squares. No need to separate \u2014 they break apart after baking. Transfer parchment with cut dough to a baking sheet.",
+      "direction": "Using a pizza cutter or sharp knife, cut the rolled dough into 2.5cm squares. No need to separate — they break apart after baking. Transfer parchment with cut dough to a baking sheet.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -355,18 +355,18 @@
     {
       "id": "preheat",
       "title": "Preheat Oven",
-      "direction": "Position rack in the middle of the oven. Preheat to 350\u00b0F (175\u00b0C).",
+      "direction": "Position rack in the middle of the oven. Preheat to 350°F (175°C).",
       "duration_min": 15,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven reaches 350\u00b0F (175\u00b0C)",
+      "exit_condition": "Oven reaches 350°F (175°C)",
       "notes": null
     },
     {
       "id": "bake-crackers",
       "title": "Bake Crackers",
-      "direction": "Bake for 15-20 minutes, rotating the sheet halfway through. Watch closely after 12 minutes \u2014 edges brown fast.",
+      "direction": "Bake for 15-20 minutes, rotating the sheet halfway through. Watch closely after 12 minutes — edges brown fast.",
       "duration_min": 18,
       "timer": true,
       "parallel": false,
@@ -374,7 +374,7 @@
       "exit_condition": "Crackers are golden brown at the edges; center crackers have deepened in color but are not dark brown",
       "notes": [
         {
-          "text": "Pull slightly early if in doubt \u2014 crackers continue to crisp as they cool. Overbaked crackers taste bitter from burnt cheese.",
+          "text": "Pull slightly early if in doubt — crackers continue to crisp as they cool. Overbaked crackers taste bitter from burnt cheese.",
           "critical": false,
           "source": "agent"
         }
@@ -394,7 +394,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Crackers are room temperature and snap cleanly when broken \u2014 no bend or flex",
+      "exit_condition": "Crackers are room temperature and snap cleanly when broken — no bend or flex",
       "notes": [
         {
           "text": "Do not transfer to a container until fully cooled. Trapped steam from warm crackers creates sogginess.",
@@ -414,7 +414,7 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "300\u00b0F (150\u00b0C) for 3-5 minutes to re-crisp if softened. Cool on pan before eating.",
+        "detail": "300°F (150°C) for 3-5 minutes to re-crisp if softened. Cool on pan before eating.",
         "source": "agent"
       }
     ]
@@ -534,10 +534,10 @@
         "ingredientId": "discard",
         "name": "Sourdough Discard (unfed, 100% hydration)",
         "sourceType": "rate",
-        "sourceName": "Home-maintained starter discard (free)",
+        "sourceName": "Home-maintained starter discard",
         "amount": 200,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "ap-flour",

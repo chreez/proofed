@@ -9,7 +9,7 @@
     },
     "yields": "2 loaves (~900g each baked)",
     "total_time": "~22 hrs (30 min active)",
-    "description": "A cheddar-enriched variant of our simple sourdough. 226g Tillamook sharp cheddar folded in at set 2, 67% hydration, 1.8% salt, overnight bulk, cold proof, 400\u00b0F uncovered bake. Cheese fat provides built-in over-fermentation insurance and 3-day shelf life."
+    "description": "A cheddar-enriched variant of our simple sourdough. 226g Tillamook sharp cheddar folded in at set 2, 67% hydration, 1.8% salt, overnight bulk, cold proof, 400°F uncovered bake. Cheese fat provides built-in over-fermentation insurance and 3-day shelf life."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -34,17 +34,17 @@
     {
       "id": "V1",
       "name": "Large Mixing Bowl",
-      "reuse": "Mixing \u2192 bulk ferment"
+      "reuse": "Mixing → bulk ferment"
     },
     {
       "id": "V2a",
       "name": "Proofing Basket 1 (lined with towel)",
-      "reuse": "Shaping \u2192 cold proof (loaf 1)"
+      "reuse": "Shaping → cold proof (loaf 1)"
     },
     {
       "id": "V2b",
       "name": "Proofing Basket 2 (lined with towel)",
-      "reuse": "Shaping \u2192 cold proof (loaf 2)"
+      "reuse": "Shaping → cold proof (loaf 2)"
     },
     {
       "id": "V3",
@@ -93,7 +93,7 @@
             "breakdown": null,
             "sourcedFrom": "Food science agent, TheYeastWeCando, JennyBlogs",
             "confidence": "high",
-            "rationale": "67% hydration \u2014 reduced 3% from lean recipe. Cheese adds ~97g bound moisture; without reduction, dough becomes too slack."
+            "rationale": "67% hydration — reduced 3% from lean recipe. Cheese adds ~97g bound moisture; without reduction, dough becomes too slack."
           },
           {
             "id": "starter",
@@ -103,7 +103,7 @@
             "breakdown": null,
             "sourcedFrom": "Cross-source consensus, same as simple-sourdough base",
             "confidence": "high",
-            "rationale": "20% inoculation unchanged \u2014 cheese fat slows fermentation, so maintaining the higher inoculation rate compensates."
+            "rationale": "20% inoculation unchanged — cheese fat slows fermentation, so maintaining the higher inoculation rate compensates."
           },
           {
             "id": "salt",
@@ -113,7 +113,7 @@
             "breakdown": null,
             "sourcedFrom": "The Perfect Loaf, The Fresh Loaf (alfanso), Sourdough Geeks",
             "confidence": "high",
-            "rationale": "1.8% of flour weight \u2014 reduced from 2% because 226g cheddar adds ~1.4g sodium. Prevents over-salting."
+            "rationale": "1.8% of flour weight — reduced from 2% because 226g cheddar adds ~1.4g sodium. Prevents over-salting."
           },
           {
             "id": "cheddar",
@@ -132,7 +132,7 @@
             ],
             "sourcedFrom": "Poetry & Pies, Little Spoon Farm, The Perfect Loaf, 8/8 agents",
             "confidence": "high",
-            "rationale": "22.6% of flour weight \u2014 dead center of 20-25% consensus range. One 8oz/226g Tillamook block, split evenly."
+            "rationale": "22.6% of flour weight — dead center of 20-25% consensus range. One 8oz/226g Tillamook block, split evenly."
           },
           {
             "id": "butter",
@@ -142,7 +142,7 @@
             "breakdown": null,
             "sourcedFrom": "Multiple community bakers, Reddit consensus",
             "confidence": "medium",
-            "rationale": "Post-bake brush only (~7g per loaf). Achieves butter flavor and golden crust without disrupting dough. No butter IN the dough \u2014 cheese already contributes 72g fat."
+            "rationale": "Post-bake brush only (~7g per loaf). Achieves butter flavor and golden crust without disrupting dough. No butter IN the dough — cheese already contributes 72g fat."
           }
         ]
       },
@@ -236,12 +236,12 @@
       "exit_condition": "All ingredients weighed, vessels and equipment laid out",
       "notes": [
         {
-          "text": "Starter must be active and bubbly \u2014 should have doubled within 4-8 hours of its last feeding",
+          "text": "Starter must be active and bubbly — should have doubled within 4-8 hours of its last feeding",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "If starter hasn't doubled, add 1/8 tsp instant yeast to the dough as insurance \u2014 King Arthur and The Perfect Loaf both endorse this",
+          "text": "If starter hasn't doubled, add 1/8 tsp instant yeast to the dough as insurance — King Arthur and The Perfect Loaf both endorse this",
           "critical": false,
           "source": "agent"
         }
@@ -250,7 +250,7 @@
     {
       "id": "PREP_CHEESE",
       "title": "Prepare Cheese",
-      "direction": "Cut 226g Tillamook sharp cheddar into 12mm (\u00bd inch) cubes. Divide into two equal portions (113g each). Return to refrigerator until needed at stretch-and-fold set 2.",
+      "direction": "Cut 226g Tillamook sharp cheddar into 12mm (½ inch) cubes. Divide into two equal portions (113g each). Return to refrigerator until needed at stretch-and-fold set 2.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -263,12 +263,12 @@
       "exit_condition": "226g cheddar cubed into 12mm pieces, split into two 113g portions, refrigerated",
       "notes": [
         {
-          "text": "Cold cubes are critical \u2014 warm cheese smears into the dough instead of creating defined pockets. Keep refrigerated until fold 2.",
+          "text": "Cold cubes are critical — warm cheese smears into the dough instead of creating defined pockets. Keep refrigerated until fold 2.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "12mm cubes create the best melt pockets \u2014 smaller cubes disappear into the crumb, larger cubes leave holes when they melt.",
+          "text": "12mm cubes create the best melt pockets — smaller cubes disappear into the crumb, larger cubes leave holes when they melt.",
           "critical": false,
           "source": "agent"
         }
@@ -277,7 +277,7 @@
     {
       "id": "COMBINE_INGREDIENTS",
       "title": "Combine All Ingredients",
-      "direction": "In the large mixing bowl (V1), combine 670g water and 200g active starter. Stir to dissolve. Add 1000g bread flour and 18g salt. Mix with a fork or spatula until no dry flour remains \u2014 a shaggy, rough mass.",
+      "direction": "In the large mixing bowl (V1), combine 670g water and 200g active starter. Stir to dissolve. Add 1000g bread flour and 18g salt. Mix with a fork or spatula until no dry flour remains — a shaggy, rough mass.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -302,12 +302,12 @@
       "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible",
       "notes": [
         {
-          "text": "No autolyse needed \u2014 same as simple sourdough. Mix everything at once.",
+          "text": "No autolyse needed — same as simple sourdough. Mix everything at once.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Do NOT add cheese here. Cheese goes in at fold 2 \u2014 gluten needs time to develop first.",
+          "text": "Do NOT add cheese here. Cheese goes in at fold 2 — gluten needs time to develop first.",
           "critical": true,
           "source": "agent"
         }
@@ -315,7 +315,7 @@
     },
     {
       "id": "FOLD_1",
-      "title": "Stretch & Fold \u2014 Set 1",
+      "title": "Stretch & Fold — Set 1",
       "direction": "With a wet hand, grab the north side of the dough, stretch it up as far as it will go without tearing, and fold it over the center. Rotate the bowl 90 degrees and repeat for all 4 sides (north, east, south, west). Cover.",
       "duration_min": 1,
       "timer": false,
@@ -324,7 +324,7 @@
       "exit_condition": "All 4 sides stretched and folded, dough is in a rough package",
       "notes": [
         {
-          "text": "Wet your hand first to prevent sticking \u2014 do not flour",
+          "text": "Wet your hand first to prevent sticking — do not flour",
           "critical": false,
           "source": "agent"
         }
@@ -350,8 +350,8 @@
     },
     {
       "id": "FOLD_2_CHEESE",
-      "title": "Stretch & Fold \u2014 Set 2 (Add Cheese)",
-      "direction": "Scatter one portion of cold cheddar cubes (113g) evenly across the top of the dough \u2014 this is for the first loaf. Scatter the second portion (113g) on top. Perform stretch and fold: wet hand, grab one side, stretch up and over the cheese, fold to center. All 4 sides. The cheese will be messy and try to escape \u2014 that's normal. Tuck stray cubes back into folds. Cover.",
+      "title": "Stretch & Fold — Set 2 (Add Cheese)",
+      "direction": "Scatter one portion of cold cheddar cubes (113g) evenly across the top of the dough — this is for the first loaf. Scatter the second portion (113g) on top. Perform stretch and fold: wet hand, grab one side, stretch up and over the cheese, fold to center. All 4 sides. The cheese will be messy and try to escape — that's normal. Tuck stray cubes back into folds. Cover.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -364,12 +364,12 @@
       "exit_condition": "All cheese incorporated into dough via stretch and fold. Cubes mostly enclosed, some poking through is fine.",
       "notes": [
         {
-          "text": "Cheese goes in at fold 2 \u2014 after one set of gluten development. Adding at mix disrupts initial gluten formation. Adding later doesn't distribute well.",
+          "text": "Cheese goes in at fold 2 — after one set of gluten development. Adding at mix disrupts initial gluten formation. Adding later doesn't distribute well.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Don't worry about perfect distribution \u2014 subsequent folds will redistribute the cheese. It will look messy after this fold.",
+          "text": "Don't worry about perfect distribution — subsequent folds will redistribute the cheese. It will look messy after this fold.",
           "critical": false,
           "source": "agent"
         },
@@ -393,7 +393,7 @@
     },
     {
       "id": "FOLD_3",
-      "title": "Stretch & Fold \u2014 Set 3",
+      "title": "Stretch & Fold — Set 3",
       "direction": "Repeat stretch and fold: wet hand, all 4 sides. The cheese should be distributing more evenly through the dough. Tuck any escaped cubes back in. Cover.",
       "duration_min": 1,
       "timer": false,
@@ -421,7 +421,7 @@
     },
     {
       "id": "FOLD_4",
-      "title": "Stretch & Fold \u2014 Set 4 (Final)",
+      "title": "Stretch & Fold — Set 4 (Final)",
       "direction": "Final stretch and fold: wet hand, all 4 sides. The dough should feel smoother and more cohesive than after the cheese fold, though not as elastic as lean sourdough. Cover tightly with plastic wrap.",
       "duration_min": 1,
       "timer": false,
@@ -430,7 +430,7 @@
       "exit_condition": "Dough is reasonably smooth and cohesive, covered tightly for overnight bulk",
       "notes": [
         {
-          "text": "Don't expect the same elasticity as lean sourdough \u2014 cheese fat and casein weaken the gluten network. A slightly slacker dough is normal and expected at 22% cheese inclusion.",
+          "text": "Don't expect the same elasticity as lean sourdough — cheese fat and casein weaken the gluten network. A slightly slacker dough is normal and expected at 22% cheese inclusion.",
           "critical": false,
           "source": "agent"
         }
@@ -439,30 +439,30 @@
     {
       "id": "OVERNIGHT_BULK",
       "title": "Overnight Bulk Ferment",
-      "direction": "Leave the covered bowl on the counter at room temperature (70-74\u00b0F / 21-23\u00b0C) overnight (10-14 hours). Do not use the oven with light on \u2014 it runs too warm. The dough ferments while you sleep.",
+      "direction": "Leave the covered bowl on the counter at room temperature (70-74°F / 21-23°C) overnight (10-14 hours). Do not use the oven with light on — it runs too warm. The dough ferments while you sleep.",
       "duration_min": 720,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has increased 50-75% in volume (NOT doubled), surface is domed with visible bubbles, jiggles when bowl is shaken. If dough has doubled or is flat/slack, it is over-fermented \u2014 shape immediately or pivot to focaccia.",
+      "exit_condition": "Dough has increased 50-75% in volume (NOT doubled), surface is domed with visible bubbles, jiggles when bowl is shaken. If dough has doubled or is flat/slack, it is over-fermented — shape immediately or pivot to focaccia.",
       "notes": [
         {
-          "text": "Watch the dough, not the clock. At 75\u00b0F (24\u00b0C) this takes ~8 hours. At 65\u00b0F (18\u00b0C) it could take 12+ hours. The visual cues matter more than time.",
+          "text": "Watch the dough, not the clock. At 75°F (24°C) this takes ~8 hours. At 65°F (18°C) it could take 12+ hours. The visual cues matter more than time.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Cheese fat slows fermentation \u2014 expect 10-20% longer bulk than lean sourdough. At 70-74\u00b0F, plan for 11-14 hours. The fat actually gives you more margin against over-fermentation.",
+          "text": "Cheese fat slows fermentation — expect 10-20% longer bulk than lean sourdough. At 70-74°F, plan for 11-14 hours. The fat actually gives you more margin against over-fermentation.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "If dough has more than doubled and looks very puffy with large bubbles, it is over-fermented. Shape immediately and bake sooner. If dough tears during shaping, pivot to focaccia: flatten into an oiled dish, top with olive oil, herbs, salt, and parmesan. Bake at 425\u00b0F (220\u00b0C) for ~40 min.",
+          "text": "If dough has more than doubled and looks very puffy with large bubbles, it is over-fermented. Shape immediately and bake sooner. If dough tears during shaping, pivot to focaccia: flatten into an oiled dish, top with olive oil, herbs, salt, and parmesan. Bake at 425°F (220°C) for ~40 min.",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Do NOT use oven with light on for bulk ferment \u2014 oven light runs 78-90\u00b0F+, far too warm for 20% inoculation. Counter at 70-74\u00b0F is ideal. Two bakes over-fermented using oven light before switching to counter.",
+          "text": "Do NOT use oven with light on for bulk ferment — oven light runs 78-90°F+, far too warm for 20% inoculation. Counter at 70-74°F is ideal. Two bakes over-fermented using oven light before switching to counter.",
           "critical": true,
           "source": "user"
         },
@@ -494,7 +494,7 @@
       "exit_condition": "Dough is on the floured counter, right-side up",
       "notes": [
         {
-          "text": "You may see cheese cubes near the surface \u2014 this is fine. They'll get tucked in during shaping.",
+          "text": "You may see cheese cubes near the surface — this is fine. They'll get tucked in during shaping.",
           "critical": false,
           "source": "agent"
         }
@@ -503,7 +503,7 @@
     {
       "id": "DIVIDE",
       "title": "Divide Dough",
-      "direction": "Using a bench scraper, divide the dough in half \u2014 each piece should be roughly 545g. Don't fuss over exact weight. Use the bench scraper in one decisive motion; avoid sawing.",
+      "direction": "Using a bench scraper, divide the dough in half — each piece should be roughly 545g. Don't fuss over exact weight. Use the bench scraper in one decisive motion; avoid sawing.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -511,7 +511,7 @@
       "exit_condition": "Two roughly equal dough pieces (~545g each) on the counter",
       "notes": [
         {
-          "text": "A scale helps if you want even loaves, but eyeballing is fine \u2014 sourdough is forgiving.",
+          "text": "A scale helps if you want even loaves, but eyeballing is fine — sourdough is forgiving.",
           "critical": false,
           "source": "agent"
         }
@@ -520,7 +520,7 @@
     {
       "id": "PRE_SHAPE",
       "title": "Pre-Shape",
-      "direction": "Using a bench scraper, gently form each piece into a loose round \u2014 tuck the edges under to create a rough ball. Don't worry about perfection. The goal is a general round shape with some surface tension. Repeat for both pieces.",
+      "direction": "Using a bench scraper, gently form each piece into a loose round — tuck the edges under to create a rough ball. Don't worry about perfection. The goal is a general round shape with some surface tension. Repeat for both pieces.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -582,7 +582,7 @@
     {
       "id": "BUILD_TENSION",
       "title": "Build Surface Tension",
-      "direction": "One piece at a time: cup your hands around the dough (palms don't touch the top). Gently drag it toward you in a short motion \u2014 the bottom grips the unfloured surface and tucks under, creating tension on top. Rotate a quarter turn. Repeat 4-6 times until the top is smooth and taut, like a stretched balloon. Repeat for the second piece.",
+      "direction": "One piece at a time: cup your hands around the dough (palms don't touch the top). Gently drag it toward you in a short motion — the bottom grips the unfloured surface and tucks under, creating tension on top. Rotate a quarter turn. Repeat 4-6 times until the top is smooth and taut, like a stretched balloon. Repeat for the second piece.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -590,12 +590,12 @@
       "exit_condition": "Both pieces have smooth, taut, rounded surfaces with visible surface tension",
       "notes": [
         {
-          "text": "The unfloured counter is intentional \u2014 friction between the dough and counter creates the tension. Do not flour here.",
+          "text": "The unfloured counter is intentional — friction between the dough and counter creates the tension. Do not flour here.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Harder to build tension with cheese \u2014 fat makes dough slicker. Use bench scraper aggressively. If cheese pokes through surface, push it back in and pinch dough over it.",
+          "text": "Harder to build tension with cheese — fat makes dough slicker. Use bench scraper aggressively. If cheese pokes through surface, push it back in and pinch dough over it.",
           "critical": false,
           "source": "agent"
         },
@@ -617,12 +617,12 @@
       "exit_condition": "Both loaves are seam-side up in floured, towel-lined baskets, covered with plastic wrap",
       "notes": [
         {
-          "text": "Rice flour is best for dusting \u2014 it's gluten-free so it won't stick to the dough. Regular flour works but rice flour is more reliable.",
+          "text": "Rice flour is best for dusting — it's gluten-free so it won't stick to the dough. Regular flour works but rice flour is more reliable.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Check that no cheese cubes are exposed on the bottom (which will be the top when turned out). Tuck any surface cheese inside and pinch closed \u2014 exposed cheese chars during baking.",
+          "text": "Check that no cheese cubes are exposed on the bottom (which will be the top when turned out). Tuck any surface cheese inside and pinch closed — exposed cheese chars during baking.",
           "critical": true,
           "source": "agent"
         }
@@ -649,7 +649,7 @@
           "source": "agent"
         },
         {
-          "text": "Cold firms the cheese cubes in place \u2014 they won't shift or ooze during scoring and loading. Bake straight from cold.",
+          "text": "Cold firms the cheese cubes in place — they won't shift or ooze during scoring and loading. Bake straight from cold.",
           "critical": false,
           "source": "agent"
         }
@@ -658,20 +658,20 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven + Dutch Oven",
-      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 450\u00b0F (230\u00b0C) for at least 45 minutes. The heavy pot needs time to fully saturate with heat.",
+      "direction": "Place the Dutch oven with lid (V3) on the middle rack. Preheat to 450°F (230°C) for at least 45 minutes. The heavy pot needs time to fully saturate with heat.",
       "duration_min": 45,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven at 450\u00b0F (230\u00b0C) for at least 45 minutes, Dutch oven fully preheated",
+      "exit_condition": "Oven at 450°F (230°C) for at least 45 minutes, Dutch oven fully preheated",
       "notes": [
         {
-          "text": "Start preheating while the dough is still in the fridge. Do NOT let the dough warm up \u2014 bake straight from cold.",
+          "text": "Start preheating while the dough is still in the fridge. Do NOT let the dough warm up — bake straight from cold.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Melt 14g butter in a small saucepan or microwave while preheating \u2014 have it ready for brushing after bake.",
+          "text": "Melt 14g butter in a small saucepan or microwave while preheating — have it ready for brushing after bake.",
           "critical": false,
           "source": "agent"
         }
@@ -680,7 +680,7 @@
     {
       "id": "SCORE",
       "title": "Score the Dough",
-      "direction": "Remove the first loaf from fridge (leave the second in the fridge). Turn out onto a sheet of parchment paper (it will release from the floured towel). Using a bread lame or sharp knife, score an X pattern across the top \u2014 two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
+      "direction": "Remove the first loaf from fridge (leave the second in the fridge). Turn out onto a sheet of parchment paper (it will release from the floured towel). Using a bread lame or sharp knife, score an X pattern across the top — two perpendicular cuts about 1 cm deep. Use swift, confident strokes.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -688,17 +688,17 @@
       "exit_condition": "First loaf scored with clean X pattern on parchment paper, ready for Dutch oven",
       "notes": [
         {
-          "text": "Score the dough cold \u2014 cold dough is firm and scores cleanly. Warm dough drags and tears.",
+          "text": "Score the dough cold — cold dough is firm and scores cleanly. Warm dough drags and tears.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Keep scoring simple \u2014 single slash or cross. Don't chase an ear with cheese inclusions; cheese disrupts the controlled expansion an ear requires.",
+          "text": "Keep scoring simple — single slash or cross. Don't chase an ear with cheese inclusions; cheese disrupts the controlled expansion an ear requires.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Use parchment paper as scoring and loading surface \u2014 score directly on parchment, then use it as a sling to lower into Dutch oven. Parchment is mandatory for cheese bread \u2014 melted cheese bonds to bare Dutch oven.",
+          "text": "Use parchment paper as scoring and loading surface — score directly on parchment, then use it as a sling to lower into Dutch oven. Parchment is mandatory for cheese bread — melted cheese bonds to bare Dutch oven.",
           "critical": true,
           "source": "user"
         }
@@ -706,8 +706,8 @@
     },
     {
       "id": "BAKE_COVERED",
-      "title": "Bake \u2014 Covered",
-      "direction": "Carefully remove the preheated Dutch oven. Lower the first scored loaf into the pot using the parchment as a sling. Cover with the lid. Return to oven. Bake at 450\u00b0F (230\u00b0C) for 20 minutes.",
+      "title": "Bake — Covered",
+      "direction": "Carefully remove the preheated Dutch oven. Lower the first scored loaf into the pot using the parchment as a sling. Cover with the lid. Return to oven. Bake at 450°F (230°C) for 20 minutes.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
@@ -720,12 +720,12 @@
           "source": "agent"
         },
         {
-          "text": "Be extremely careful \u2014 the Dutch oven is 450\u00b0F. Use oven mitts and move deliberately.",
+          "text": "Be extremely careful — the Dutch oven is 450°F. Use oven mitts and move deliberately.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Expect slightly less dramatic oven spring than lean sourdough \u2014 cheese inclusions weigh down the dough and disrupt gluten. This is normal, not a failure.",
+          "text": "Expect slightly less dramatic oven spring than lean sourdough — cheese inclusions weigh down the dough and disrupt gluten. This is normal, not a failure.",
           "critical": false,
           "source": "agent"
         }
@@ -733,33 +733,33 @@
     },
     {
       "id": "BAKE_UNCOVERED",
-      "title": "Bake \u2014 Uncovered",
-      "direction": "Remove the lid from the Dutch oven. Reduce oven temperature to 400\u00b0F (205\u00b0C). Continue baking first loaf uncovered for 20-25 minutes until deep golden brown. Cheese proteins accelerate browning \u2014 monitor closely and tent with foil if darkening too fast. When done, transfer to cooling rack. Score the second loaf, load, and repeat.",
+      "title": "Bake — Uncovered",
+      "direction": "Remove the lid from the Dutch oven. Reduce oven temperature to 400°F (205°C). Continue baking first loaf uncovered for 20-25 minutes until deep golden brown. Cheese proteins accelerate browning — monitor closely and tent with foil if darkening too fast. When done, transfer to cooling rack. Score the second loaf, load, and repeat.",
       "duration_min": 22,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Both loaves baked \u2014 deep golden brown crust, hollow sound when tapped, internal temp 200\u00b0F (93\u00b0C)",
+      "exit_condition": "Both loaves baked — deep golden brown crust, hollow sound when tapped, internal temp 200°F (93°C)",
       "notes": [
         {
-          "text": "Drop temp for uncovered phase \u2014 cheese proteins and lactose accelerate Maillard browning. At 450\u00b0F uncovered, cheese bread can burn.",
+          "text": "Drop temp for uncovered phase — cheese proteins and lactose accelerate Maillard browning. At 450°F uncovered, cheese bread can burn.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Internal temp target is 200\u00b0F (93\u00b0C), lower than lean sourdough's 205\u00b0F. Cheese fat retains more moisture \u2014 don't need to drive off as much water.",
+          "text": "Internal temp target is 200°F (93°C), lower than lean sourdough's 205°F. Cheese fat retains more moisture — don't need to drive off as much water.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "If any cheese has oozed onto the parchment or Dutch oven surface, it will be very hot and sticky. Don't try to scrape it off \u2014 let it cool and it peels off easily.",
+          "text": "If any cheese has oozed onto the parchment or Dutch oven surface, it will be very hot and sticky. Don't try to scrape it off — let it cool and it peels off easily.",
           "critical": false,
           "source": "agent"
         }
       ],
       "reminders": [
         {
-          "prompt": "Record internal temperature immediately out of oven (target 200\u00b0F / 93\u00b0C)",
+          "prompt": "Record internal temperature immediately out of oven (target 200°F / 93°C)",
           "type": "measurement"
         }
       ]
@@ -780,7 +780,7 @@
       "exit_condition": "Both loaves brushed with melted butter, butter absorbed into hot crust",
       "notes": [
         {
-          "text": "Brush immediately while loaves are still very hot \u2014 the heat draws the butter into the crust for flavor and a golden sheen.",
+          "text": "Brush immediately while loaves are still very hot — the heat draws the butter into the crust for flavor and a golden sheen.",
           "critical": false,
           "source": "agent"
         }
@@ -794,7 +794,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Bread has cooled at least 2 hours. Cheese inside must fully set \u2014 cutting early means gummy crumb and oozing cheese.",
+      "exit_condition": "Bread has cooled at least 2 hours. Cheese inside must fully set — cutting early means gummy crumb and oozing cheese.",
       "notes": [
         {
           "text": "2 hours minimum, not 1. Cheese inside the loaf is molten at bake end. Cutting too early = gummy interior with cheese oozing everywhere instead of set, defined pockets.",
@@ -802,12 +802,12 @@
           "source": "agent"
         },
         {
-          "text": "You'll hear the crust crackling as it cools. That's normal \u2014 it's called \"singing\" and means the crust is crisping up.",
+          "text": "You'll hear the crust crackling as it cools. That's normal — it's called \"singing\" and means the crust is crisping up.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Expect slight deflation as cheese pockets contract on cooling \u2014 cosmetic, not structural. Shelf life is better than lean sourdough because cheese fat inhibits staling.",
+          "text": "Expect slight deflation as cheese pockets contract on cooling — cosmetic, not structural. Shelf life is better than lean sourdough because cheese fat inhibits staling.",
           "critical": false,
           "source": "agent"
         }
@@ -830,13 +830,13 @@
       "protein": 94.3,
       "totalFat": 51.1,
       "saturatedFat": 25.1,
-      "carbohydrates": 401.0,
-      "sugar": 2.0,
+      "carbohydrates": 401,
+      "sugar": 2,
       "fiber": 13.2,
       "sodium": 4227.9
     },
     "perServing": {
-      "calories": 248.0,
+      "calories": 248,
       "protein": 9.4,
       "totalFat": 5.1,
       "saturatedFat": 2.5,
@@ -851,14 +851,14 @@
         "ingredientName": "Bread Flour",
         "amount": 500,
         "fdcId": 168896,
-        "calories": 1805.0,
+        "calories": 1805,
         "protein": 59.9,
         "totalFat": 8.3,
         "saturatedFat": 1.2,
         "carbohydrates": 362.7,
         "sugar": 1.4,
-        "fiber": 12.0,
-        "sodium": 10.0
+        "fiber": 12,
+        "sodium": 10
       },
       {
         "ingredientId": "water",
@@ -880,13 +880,13 @@
         "amount": 100,
         "fdcId": null,
         "calories": 180.5,
-        "protein": 6.0,
+        "protein": 6,
         "totalFat": 0.8,
         "saturatedFat": 0.1,
         "carbohydrates": 36.3,
         "sugar": 0.1,
         "fiber": 1.2,
-        "sodium": 1.0
+        "sodium": 1
       },
       {
         "ingredientId": "salt",
@@ -907,11 +907,11 @@
         "ingredientName": "Tillamook Sharp Cheddar",
         "amount": 113,
         "fdcId": 399213,
-        "calories": 444.0,
+        "calories": 444,
         "protein": 28.3,
         "totalFat": 36.3,
         "saturatedFat": 20.2,
-        "carbohydrates": 2.0,
+        "carbohydrates": 2,
         "sugar": 0.5,
         "fiber": 0,
         "sodium": 726.5
@@ -937,22 +937,22 @@
       "date": "2026-02-24",
       "start_date": "2026-02-23",
       "version": "v1.0.0",
-      "summary": "First cheddar sourdough bake \u2014 decent rise and great taste but cheese distribution was sparse and didn't taste enough cheese. Used 700g water instead of recipe's 670g, forgot salt on fold 1, did 5 S&F sets. ~12 hr cold proof. Forgot butter brush. Want smaller cubes and possibly more cheese next time.",
+      "summary": "First cheddar sourdough bake — decent rise and great taste but cheese distribution was sparse and didn't taste enough cheese. Used 700g water instead of recipe's 670g, forgot salt on fold 1, did 5 S&F sets. ~12 hr cold proof. Forgot butter brush. Want smaller cubes and possibly more cheese next time.",
       "notes": [
-        "Used 700g water (simple-sourdough ratio) instead of recipe's 670g \u2014 running at 70% hydration vs intended 67%.",
+        "Used 700g water (simple-sourdough ratio) instead of recipe's 670g — running at 70% hydration vs intended 67%.",
         "Did a ~30-minute autolyse (flour + water only) instead of mixing everything at once.",
-        "76\u00b0F dough temp after initial flour + water mix.",
+        "76°F dough temp after initial flour + water mix.",
         "Forgot to add salt on first stretch and fold. Added salt at fold 2 along with cheese.",
-        "~20:08 \u2014 77\u00b0F after fold 1. 30 min rest.",
-        "~20:39 \u2014 75\u00b0F. Added salt and cheese at fold 2. Incorporating cheese was awkward.",
-        "21:04 \u2014 71\u00b0F. Dough noticeably cooler, felt chilled on one fold. Moved bowl to top of stove for warmth.",
-        "21:28 \u2014 76\u00b0F. Small stretch and fold (fold 4).",
-        "22:04 \u2014 74\u00b0F. Final stretch and fold (fold 5) before bulk. Did 5 total S&F sets (recipe calls for 4).",
-        "Average dough temp across readings: ~75\u00b0F. Aliquot jar placed in wrong spot \u2014 couldn't accurately track rise %.",
-        "01:00 AM (Feb 24) \u2014 preshaped. 76\u00b0F one dough, 74\u00b0F other. ~1100g per piece. Let preshape rest 5 minutes before final shaping.",
+        "~20:08 — 77°F after fold 1. 30 min rest.",
+        "~20:39 — 75°F. Added salt and cheese at fold 2. Incorporating cheese was awkward.",
+        "21:04 — 71°F. Dough noticeably cooler, felt chilled on one fold. Moved bowl to top of stove for warmth.",
+        "21:28 — 76°F. Small stretch and fold (fold 4).",
+        "22:04 — 74°F. Final stretch and fold (fold 5) before bulk. Did 5 total S&F sets (recipe calls for 4).",
+        "Average dough temp across readings: ~75°F. Aliquot jar placed in wrong spot — couldn't accurately track rise %.",
+        "01:00 AM (Feb 24) — preshaped. 76°F one dough, 74°F other. ~1100g per piece. Let preshape rest 5 minutes before final shaping.",
         "~12-hour cold proof in fridge after shaping at 01:00 AM.",
-        "13:32 \u2014 pulled first loaf from oven. Decent rise. Both loaves baked.",
-        "Cheese distribution was sparse and uneven \u2014 not enough cheese visible in crumb, not enough even distribution.",
+        "13:32 — pulled first loaf from oven. Decent rise. Both loaves baked.",
+        "Cheese distribution was sparse and uneven — not enough cheese visible in crumb, not enough even distribution.",
         "Did not dust flour over cheese cubes before folding.",
         "Considering shredded cheese for better background coverage, but worried about dough workability.",
         "Forgot butter brush on hot loaves.",
@@ -962,7 +962,7 @@
         {
           "src": "/images/sourdough-cheddar-cheese/2026-02-24/crumb-shot-sparse-cheese-800w.webp",
           "thumb": "/images/sourdough-cheddar-cheese/2026-02-24/crumb-shot-sparse-cheese-400w.webp",
-          "alt": "Crumb shot of the sliced boule held up to camera with second half on cutting board behind it. Open, airy crumb structure with large irregular holes throughout. Only a couple small melted cheddar pockets visible near the bottom of the slice \u2014 cheese distribution is sparse."
+          "alt": "Crumb shot of the sliced boule held up to camera with second half on cutting board behind it. Open, airy crumb structure with large irregular holes throughout. Only a couple small melted cheddar pockets visible near the bottom of the slice — cheese distribution is sparse."
         },
         {
           "src": "/images/sourdough-cheddar-cheese/2026-02-24/crust-closeup-cheese-patches-800w.webp",
@@ -972,7 +972,7 @@
         {
           "src": "/images/sourdough-cheddar-cheese/2026-02-24/finished-boule-cooling-rack-800w.webp",
           "thumb": "/images/sourdough-cheddar-cheese/2026-02-24/finished-boule-cooling-rack-400w.webp",
-          "alt": "Finished sourdough cheddar boule cooling on a round wire rack. Deep golden-brown crust with good oven spring and a bold X-score that opened up well. Decent rise for a first bake \u2014 round, tall shape with no blowouts."
+          "alt": "Finished sourdough cheddar boule cooling on a round wire rack. Deep golden-brown crust with good oven spring and a bold X-score that opened up well. Decent rise for a first bake — round, tall shape with no blowouts."
         }
       ],
       "cost": {
@@ -1023,7 +1023,7 @@
           "text": "Reduce water to 670g per recipe (compensates for cheese moisture)"
         },
         {
-          "text": "Add salt at initial mix \u2014 don't rely on remembering during folds"
+          "text": "Add salt at initial mix — don't rely on remembering during folds"
         },
         {
           "text": "Dust flour over cold cheese cubes before fold 2"
@@ -1088,38 +1088,38 @@
         "type": "adapted"
       },
       {
-        "name": "JennyBlogs \u2014 Sourdough Inclusions",
+        "name": "JennyBlogs — Sourdough Inclusions",
         "url": "https://jennyblogs.com/blog/2024/9/28/how-much-inclusions-can-you-add-to-sourdough-bread",
         "type": "adapted"
       },
       {
-        "name": "Challenger Breadware \u2014 Lamination Method",
+        "name": "Challenger Breadware — Lamination Method",
         "url": "https://challengerbreadware.com/bread-techniques/inclusions-the-lamination-method/",
         "type": "adapted"
       },
       {
-        "name": "Sourdough Geeks \u2014 Inclusion Rules",
+        "name": "Sourdough Geeks — Inclusion Rules",
         "url": "https://www.sourdoughgeeks.com/blog/bake-any-sourdough-loaf-rules-ratios-for-every-inclusion",
         "type": "adapted"
       },
       {
-        "name": "The Perfect Loaf \u2014 Butter in Bread",
+        "name": "The Perfect Loaf — Butter in Bread",
         "url": "https://www.theperfectloaf.com/what-does-butter-do-to-bread-dough/",
         "type": "adapted",
         "author": "Maurizio Leo"
       },
       {
-        "name": "Modernist Cuisine \u2014 Enriched Breads",
+        "name": "Modernist Cuisine — Enriched Breads",
         "url": "https://modernistcuisine.com/mbah/all-about-enriched-breads/",
         "type": "adapted"
       },
       {
-        "name": "Wouters et al. (2016) \u2014 Casein + Gluten",
+        "name": "Wouters et al. (2016) — Casein + Gluten",
         "url": "https://pubmed.ncbi.nlm.nih.gov/25704643/",
         "type": "adapted"
       },
       {
-        "name": "Nutritionvalue.org \u2014 Tillamook Sharp",
+        "name": "Nutritionvalue.org — Tillamook Sharp",
         "url": "https://www.nutritionvalue.org/Tillamook%2C_sharp_cheddar_cheese_by_TILLAMOOK_399213_nutritional_value.html",
         "type": "adapted"
       }
@@ -1168,15 +1168,15 @@
         "confidence": "medium"
       },
       {
-        "name": "Uncovered bake at 400\u00b0F (not 450\u00b0F)",
+        "name": "Uncovered bake at 400°F (not 450°F)",
         "sourcedFrom": "Poetry & Pies, EatHealthy365, Gardners Wisconsin Cheese",
-        "rationale": "Cheese proteins + lactose accelerate Maillard browning. 450\u00b0F uncovered risks burning.",
+        "rationale": "Cheese proteins + lactose accelerate Maillard browning. 450°F uncovered risks burning.",
         "confidence": "high"
       },
       {
-        "name": "Internal temp target 200\u00b0F",
+        "name": "Internal temp target 200°F",
         "sourcedFrom": "King Arthur, KitchPrep, EatHealthy365",
-        "rationale": "Fat retains moisture \u2014 don't need to drive off as much water as lean bread.",
+        "rationale": "Fat retains moisture — don't need to drive off as much water as lean bread.",
         "confidence": "medium"
       },
       {
@@ -1206,12 +1206,12 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "350\u00b0F (175\u00b0C), 5-10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.",
+        "detail": "350°F (175°C), 5-10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.",
         "source": "agent"
       },
       {
         "method": "Toaster",
-        "detail": "Slice and toast directly \u2014 the cheese re-melts slightly and creates crispy edges.",
+        "detail": "Slice and toast directly — the cheese re-melts slightly and creates crispy edges.",
         "source": "agent"
       },
       {
@@ -1240,19 +1240,19 @@
         "ingredientId": "water",
         "name": "Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 670,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "starter",
         "name": "Active Sourdough Starter",
         "sourceType": "rate",
-        "sourceName": "Home-maintained starter (free)",
+        "sourceName": "Home-maintained starter",
         "amount": 200,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "salt",

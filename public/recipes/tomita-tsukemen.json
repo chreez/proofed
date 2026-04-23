@@ -8,7 +8,7 @@
     },
     "yields": "~8 servings",
     "total_time": "~2 days (Day 1: noodles + tare, Day 2: broth + assembly)",
-    "description": "An ultra-concentrated dipping ramen inspired by Tomita (Matsudo) and Fuunji (Shinjuku) \u2014 the pinnacle of second-generation tsukemen. Built from 74 sources including Tomita's official site, Fuunji owner interviews, the Ramen Heads documentary, and Ramen_Lord's Tomita clone recipe. Features a double soup method (animal broth + fish dashi), three-mechanism thickness (collagen extraction + blended bone solids + emulsification), temperature-controlled fish extraction, fat wheat noodles served cold (shimeru), and the soup-wari finishing ritual."
+    "description": "An ultra-concentrated dipping ramen inspired by Tomita (Matsudo) and Fuunji (Shinjuku) — the pinnacle of second-generation tsukemen. Built from 74 sources including Tomita's official site, Fuunji owner interviews, the Ramen Heads documentary, and Ramen_Lord's Tomita clone recipe. Features a double soup method (animal broth + fish dashi), three-mechanism thickness (collagen extraction + blended bone solids + emulsification), temperature-controlled fish extraction, fat wheat noodles served cold (shimeru), and the soup-wari finishing ritual."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -95,7 +95,7 @@
             "total": 1500,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "All 8 agents \u2014 universal for tonkotsu base; Ramen_Lord, Kaonashi, Men to Choujin, Ramen Cook",
+            "sourcedFrom": "All 8 agents — universal for tonkotsu base; Ramen_Lord, Kaonashi, Men to Choujin, Ramen Cook",
             "confidence": "high",
             "rationale": "Femur and neck bones provide the highest collagen yield for thick tonkotsu. 1.5 kg is the standard batch size across 6+ sources for a pressure cooker method."
           },
@@ -105,9 +105,9 @@
             "total": 500,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "7/8 agents \u2014 Ramen_Lord, Kaonashi, RecipeTin, food science sources",
+            "sourcedFrom": "7/8 agents — Ramen_Lord, Kaonashi, RecipeTin, food science sources",
             "confidence": "high",
-            "rationale": "70% pure collagen \u2014 the single most efficient gelatin source. Non-negotiable for proper body. 500g provides backbone collagen without overwhelming pork flavor."
+            "rationale": "70% pure collagen — the single most efficient gelatin source. Non-negotiable for proper body. 500g provides backbone collagen without overwhelming pork flavor."
           },
           {
             "id": "chicken_backs",
@@ -115,7 +115,7 @@
             "total": 1500,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "7/8 agents \u2014 Ramen_Lord, Kaonashi, multiple copycat sources",
+            "sourcedFrom": "7/8 agents — Ramen_Lord, Kaonashi, multiple copycat sources",
             "confidence": "high",
             "rationale": "Secondary animal base that mellows the pork intensity. Added in Phase 2 with the pork belly. 1.5 kg balances the pork bones."
           },
@@ -130,7 +130,7 @@
                 "amount": 1000
               }
             ],
-            "sourcedFrom": "5/8 agents \u2014 dual-purpose technique from Ramen_Lord, Kaonashi, Ramen Cook",
+            "sourcedFrom": "5/8 agents — dual-purpose technique from Ramen_Lord, Kaonashi, Ramen Cook",
             "confidence": "high",
             "rationale": "Skin-on pork belly serves double duty: collagen and fat into the broth during Phase 2, then removed and soaked in chashu marinade. 1 kg yields generous chashu slices for 8 servings."
           },
@@ -140,7 +140,7 @@
             "total": 200,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "4/8 agents \u2014 Kaonashi, Men to Choujin, Ramen_Lord",
+            "sourcedFrom": "4/8 agents — Kaonashi, Men to Choujin, Ramen_Lord",
             "confidence": "medium",
             "rationale": "Aromatic added late (final hour of bone cook). One medium onion quartered provides sweetness without making broth cloudy."
           },
@@ -150,7 +150,7 @@
             "total": 20,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "5/8 agents \u2014 standard aromatic across Japanese broth recipes",
+            "sourcedFrom": "5/8 agents — standard aromatic across Japanese broth recipes",
             "confidence": "medium",
             "rationale": "4 coin-sized slices. Added late to prevent bitterness. Provides clean aromatic note that cuts through heavy pork flavor."
           },
@@ -160,7 +160,7 @@
             "total": 50,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "5/8 agents \u2014 standard aromatic; Ramen_Lord, Kaonashi",
+            "sourcedFrom": "5/8 agents — standard aromatic; Ramen_Lord, Kaonashi",
             "confidence": "medium",
             "rationale": "About 10 cloves. Added late with other aromatics. Contributes depth and rounds out the animal flavor."
           },
@@ -179,7 +179,7 @@
                 "amount": 20
               }
             ],
-            "sourcedFrom": "7/8 agents \u2014 universal glutamic acid foundation; preferred from Hokkaido",
+            "sourcedFrom": "7/8 agents — universal glutamic acid foundation; preferred from Hokkaido",
             "confidence": "high",
             "rationale": "Glutamic acid backbone for umami synergy. Split between tare (cold soak for clean extraction) and dashi (heated steep). Hokkaido rishiri or hidaka preferred."
           },
@@ -202,9 +202,9 @@
                 "amount": 12
               }
             ],
-            "sourcedFrom": "8/8 agents \u2014 primary fish backbone; Setouchi origin preferred (Tomita official site)",
+            "sourcedFrom": "8/8 agents — primary fish backbone; Setouchi origin preferred (Tomita official site)",
             "confidence": "high",
-            "rationale": "The most assertive dried fish \u2014 provides the aggressive sardine punch that defines gyokai-tonkotsu. Used in three ways: cold-soaked in tare for clean umami, steeped in dashi for body, and ground into gyofun for finishing powder."
+            "rationale": "The most assertive dried fish — provides the aggressive sardine punch that defines gyokai-tonkotsu. Used in three ways: cold-soaked in tare for clean umami, steeped in dashi for body, and ground into gyofun for finishing powder."
           },
           {
             "id": "katsuobushi",
@@ -225,9 +225,9 @@
                 "amount": 18
               }
             ],
-            "sourcedFrom": "8/8 agents \u2014 thick-cut (atsukezuri) specified; Kochi origin for premium",
+            "sourcedFrom": "8/8 agents — thick-cut (atsukezuri) specified; Kochi origin for premium",
             "confidence": "high",
-            "rationale": "Smoky, clean umami top notes. Must use thick-cut (atsukezuri) for slow extraction in dashi \u2014 thin flakes would over-extract and turn bitter. Used across tare, dashi, and gyofun."
+            "rationale": "Smoky, clean umami top notes. Must use thick-cut (atsukezuri) for slow extraction in dashi — thin flakes would over-extract and turn bitter. Used across tare, dashi, and gyofun."
           },
           {
             "id": "sababushi",
@@ -244,7 +244,7 @@
                 "amount": 24
               }
             ],
-            "sourcedFrom": "7/8 agents \u2014 Ramen_Lord, Japanese sources, YouTube creators",
+            "sourcedFrom": "7/8 agents — Ramen_Lord, Japanese sources, YouTube creators",
             "confidence": "high",
             "rationale": "Rich, oily fish depth that complements the leaner katsuobushi. Key differentiator for Tomita-style gyokai. 50g in dashi steep + 24g ground into gyofun blend."
           },
@@ -259,7 +259,7 @@
                 "amount": 6
               }
             ],
-            "sourcedFrom": "3/8 agents \u2014 enhancer role; Sweet Post brand on Amazon",
+            "sourcedFrom": "3/8 agents — enhancer role; Sweet Post brand on Amazon",
             "confidence": "medium",
             "rationale": "10% of the gyofun blend. Adds a sweet, delicate fish note that rounds out the more aggressive sardine and mackerel. Optional but recommended."
           },
@@ -282,7 +282,7 @@
                 "amount": 50
               }
             ],
-            "sourcedFrom": "8/8 agents \u2014 universal tare base; Yamasa Marudaizu recommended for whole-soybean depth",
+            "sourcedFrom": "8/8 agents — universal tare base; Yamasa Marudaizu recommended for whole-soybean depth",
             "confidence": "high",
             "rationale": "The backbone of all three marinades. Yamasa whole-soybean soy sauce provides deeper flavor than standard brewed. Tomita uses rare ki-joyu (raw soy) but quality koikuchi is the home approximation."
           },
@@ -305,7 +305,7 @@
                 "amount": 50
               }
             ],
-            "sourcedFrom": "8/8 agents \u2014 universal sweetness component in tare and marinades",
+            "sourcedFrom": "8/8 agents — universal sweetness component in tare and marinades",
             "confidence": "high",
             "rationale": "Must be hon-mirin (true mirin with 14% alcohol), not mirin-fu (mirin-like seasoning). The alcohol carries flavor compounds and tenderizes the chashu."
           },
@@ -315,7 +315,7 @@
             "total": 20,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "5/8 agents \u2014 tare alcohol component for flavor depth",
+            "sourcedFrom": "5/8 agents — tare alcohol component for flavor depth",
             "confidence": "medium",
             "rationale": "Boiled to cook off alcohol before adding to tare. Adds flavor complexity and helps dissolve fat-soluble flavor compounds."
           },
@@ -334,7 +334,7 @@
                 "amount": 50
               }
             ],
-            "sourcedFrom": "5/8 agents \u2014 balances fish bitterness in tare; sweetens chashu marinade",
+            "sourcedFrom": "5/8 agents — balances fish bitterness in tare; sweetens chashu marinade",
             "confidence": "medium",
             "rationale": "Molasses notes in brown sugar complement the deep fish flavors better than white sugar. Split between tare and chashu marinade."
           },
@@ -344,7 +344,7 @@
             "total": 5,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "4/8 agents \u2014 umami booster; standard in professional ramen",
+            "sourcedFrom": "4/8 agents — umami booster; standard in professional ramen",
             "confidence": "medium",
             "rationale": "Optional but standard in professional ramen kitchens. Amplifies the glutamic acid from kombu and soy sauce. Omit if preferred."
           },
@@ -354,7 +354,7 @@
             "total": 940,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Ramen_Lord Tomita clone \u2014 highest confidence noodle formula; Yamato Noodle science",
+            "sourcedFrom": "Ramen_Lord Tomita clone — highest confidence noodle formula; Yamato Noodle science",
             "confidence": "high",
             "rationale": "High-protein bread flour (12.7%) provides the strong gluten network needed for thick, chewy tsukemen noodles. 94% of the flour blend."
           },
@@ -364,7 +364,7 @@
             "total": 60,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Ramen_Lord Tomita clone \u2014 6% whole wheat for color and flavor",
+            "sourcedFrom": "Ramen_Lord Tomita clone — 6% whole wheat for color and flavor",
             "confidence": "high",
             "rationale": "6% whole wheat provides the golden-brown color, earthy wheat aroma, and mineral specks characteristic of Tomita's noodles. Slightly reduces gluten for a more tender bite."
           },
@@ -374,7 +374,7 @@
             "total": 420,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Ramen_Lord Tomita clone \u2014 42% hydration, confirmed sweet spot for tsukemen",
+            "sourcedFrom": "Ramen_Lord Tomita clone — 42% hydration, confirmed sweet spot for tsukemen",
             "confidence": "high",
             "rationale": "42% hydration is the consensus sweet spot for thick tsukemen noodles (range: 38-45%). Higher hydration makes sheeting easier but produces softer noodles."
           },
@@ -384,7 +384,7 @@
             "total": 10,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Ramen_Lord Tomita clone \u2014 reversed ratio confirmed by Yamato Noodle, Myojo USA",
+            "sourcedFrom": "Ramen_Lord Tomita clone — reversed ratio confirmed by Yamato Noodle, Myojo USA",
             "confidence": "high",
             "rationale": "Reversed 80:20 Na:K ratio (opposite of standard ramen's 20:80). Sodium carbonate dominant = softer, more supple texture appropriate for thick noodles. 1% baker's percentage."
           },
@@ -394,7 +394,7 @@
             "total": 10,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Ramen_Lord Tomita clone \u2014 1% baker's percentage",
+            "sourcedFrom": "Ramen_Lord Tomita clone — 1% baker's percentage",
             "confidence": "high",
             "rationale": "Strengthens the gluten network and adds flavor to the noodles. Dissolved with kansui in the water before mixing."
           },
@@ -404,7 +404,7 @@
             "total": 360,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Universal \u2014 standard ramen topping; 6 large eggs ~60g each",
+            "sourcedFrom": "Universal — standard ramen topping; 6 large eggs ~60g each",
             "confidence": "high",
             "rationale": "6 large eggs for 8 servings (allows for breakage). Soft-boiled to jammy center, marinated in soy-mirin solution."
           },
@@ -414,7 +414,7 @@
             "total": 100,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Standard ajitama technique \u2014 dilutes marinade to prevent over-seasoning",
+            "sourcedFrom": "Standard ajitama technique — dilutes marinade to prevent over-seasoning",
             "confidence": "high",
             "rationale": "Dilutes the soy-mirin marinade so eggs absorb flavor gently over 4-12 hours without becoming overly salty."
           },
@@ -424,7 +424,7 @@
             "total": 200,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Synthesis Component 5 \u2014 standard chashu braising liquid ratio",
+            "sourcedFrom": "Synthesis Component 5 — standard chashu braising liquid ratio",
             "confidence": "high",
             "rationale": "Dilutes the soy-mirin-sugar chashu soak so the pork belly absorbs flavor evenly. The belly is already cooked from the broth phase."
           },
@@ -434,7 +434,7 @@
             "total": 4000,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Ramen_Lord, Kaonashi \u2014 standard bone:water ratio ~1:1 (kg:L)",
+            "sourcedFrom": "Ramen_Lord, Kaonashi — standard bone:water ratio ~1:1 (kg:L)",
             "confidence": "high",
             "rationale": "Starting water for the pressure cooker. Will reduce significantly during cooking. Target final volume ~3L after blending solids back in. 4L starting water with ~3.5 kg bones/meat."
           },
@@ -444,9 +444,9 @@
             "total": 1500,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Synthesis master recipe \u2014 fish dashi extraction base",
+            "sourcedFrom": "Synthesis master recipe — fish dashi extraction base",
             "confidence": "high",
-            "rationale": "Water for steeping kombu, niboshi, katsuobushi, and sababushi. Heated to 176\u00b0F (80\u00b0C), never boiled. Yields ~1.2L after straining and pressing."
+            "rationale": "Water for steeping kombu, niboshi, katsuobushi, and sababushi. Heated to 176°F (80°C), never boiled. Yields ~1.2L after straining and pressing."
           },
           {
             "id": "rice_vinegar",
@@ -459,7 +459,7 @@
                 "amount": 10
               }
             ],
-            "sourcedFrom": "7/8 agents \u2014 Ramen_Lord, Kaonashi, Ramen Database, food science",
+            "sourcedFrom": "7/8 agents — Ramen_Lord, Kaonashi, Ramen Database, food science",
             "confidence": "high",
             "rationale": "The acid that prevents palate fatigue. A small splash per bowl brightens the ultra-rich dipping broth. Without it, the richness becomes cloying. Marukan Genuine Brewed recommended."
           },
@@ -469,7 +469,7 @@
             "total": 24,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Universal topping \u2014 2 half-sheets per serving, ~3g total per serving",
+            "sourcedFrom": "Universal topping — 2 half-sheets per serving, ~3g total per serving",
             "confidence": "high",
             "rationale": "Standard tsukemen garnish. 16 half-sheets (2 per bowl). Placed upright in the dipping broth so they soften gradually."
           },
@@ -479,7 +479,7 @@
             "total": 120,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Universal topping \u2014 standard ramen garnish",
+            "sourcedFrom": "Universal topping — standard ramen garnish",
             "confidence": "high",
             "rationale": "About 15g per bowl. Provides crunch and a mild sweetness that contrasts with the intense broth. Use jarred/packaged menma."
           },
@@ -489,7 +489,7 @@
             "total": 60,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Universal topping \u2014 standard ramen garnish",
+            "sourcedFrom": "Universal topping — standard ramen garnish",
             "confidence": "high",
             "rationale": "Fresh, sharp contrast to the rich broth. Sliced thin on the bias. Some reserved for soup-wari finishing."
           }
@@ -501,7 +501,7 @@
     },
     {
       "id": "TARE",
-      "title": "Tare (Day 1 \u2014 Cold Soak)",
+      "title": "Tare (Day 1 — Cold Soak)",
       "gather": null,
       "states": [
         "COLD_SOAK_TARE",
@@ -511,7 +511,7 @@
     },
     {
       "id": "NOODLES",
-      "title": "Noodles (Day 1 \u2014 Must Rest 24h)",
+      "title": "Noodles (Day 1 — Must Rest 24h)",
       "gather": null,
       "states": [
         "DISSOLVE_KANSUI",
@@ -606,12 +606,12 @@
       "exit_condition": "All ingredients weighed, separated into labeled containers by sub-recipe, niboshi cleaned, workspace organized",
       "notes": [
         {
-          "text": "Separating multi-use ingredients now prevents mistakes later \u2014 soy sauce, mirin, kombu, niboshi, katsuobushi, sababushi, and brown sugar all appear in multiple sub-recipes",
+          "text": "Separating multi-use ingredients now prevents mistakes later — soy sauce, mirin, kombu, niboshi, katsuobushi, sababushi, and brown sugar all appear in multiple sub-recipes",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Remove niboshi heads and guts by pinching \u2014 larger sardines carry bitterness from digestive organs. This is the #6 most common mistake.",
+          "text": "Remove niboshi heads and guts by pinching — larger sardines carry bitterness from digestive organs. This is the #6 most common mistake.",
           "critical": true,
           "source": "user"
         },
@@ -650,7 +650,7 @@
       "exit_condition": "Kombu and niboshi have soaked in soy-mirin mixture for minimum 6 hours, liquid has darkened slightly",
       "notes": [
         {
-          "text": "Overnight cold soak develops dramatically cleaner umami vs hot extraction \u2014 don't skip this",
+          "text": "Overnight cold soak develops dramatically cleaner umami vs hot extraction — don't skip this",
           "critical": true,
           "source": "user"
         },
@@ -669,7 +669,7 @@
     {
       "id": "HEAT_TARE",
       "title": "Heat Tare",
-      "direction": "Boil 20g sake in a separate small vessel for 5 minutes to cook off alcohol. Add sake to the cold-soaked tare mixture in V3. Place V3 on stove over medium-low heat. Slowly bring to 175\u00b0F (79\u00b0C) \u2014 do NOT let it boil. Hold at 175\u00b0F (79\u00b0C) for 15 minutes. Remove and discard the kombu.",
+      "direction": "Boil 20g sake in a separate small vessel for 5 minutes to cook off alcohol. Add sake to the cold-soaked tare mixture in V3. Place V3 on stove over medium-low heat. Slowly bring to 175°F (79°C) — do NOT let it boil. Hold at 175°F (79°C) for 15 minutes. Remove and discard the kombu.",
       "duration_min": 25,
       "timer": false,
       "parallel": false,
@@ -683,15 +683,15 @@
           "amount": "all"
         }
       ],
-      "exit_condition": "Tare held at 175\u00b0F (79\u00b0C) for 15 minutes, kombu removed, liquid is fragrant and slightly thickened",
+      "exit_condition": "Tare held at 175°F (79°C) for 15 minutes, kombu removed, liquid is fragrant and slightly thickened",
       "notes": [
         {
-          "text": "Boiling the tare would destroy the clean umami built during the cold soak \u2014 use a thermometer",
+          "text": "Boiling the tare would destroy the clean umami built during the cold soak — use a thermometer",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "The niboshi stay in \u2014 they continue to add depth. Only the kombu is removed to prevent sliminess.",
+          "text": "The niboshi stay in — they continue to add depth. Only the kombu is removed to prevent sliminess.",
           "critical": false,
           "source": "user"
         }
@@ -721,12 +721,12 @@
       "exit_condition": "Tare strained, dark and aromatic, transferred to container for storage",
       "notes": [
         {
-          "text": "The brown sugar balances the bitterness from the dried fish \u2014 taste and adjust if needed",
+          "text": "The brown sugar balances the bitterness from the dried fish — taste and adjust if needed",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Press the katsuobushi firmly in the strainer \u2014 significant flavor remains in the solids",
+          "text": "Press the katsuobushi firmly in the strainer — significant flavor remains in the solids",
           "critical": false,
           "source": "user"
         },
@@ -761,7 +761,7 @@
       "exit_condition": "Kansui and salt fully dissolved, water is slightly yellow, no visible granules",
       "notes": [
         {
-          "text": "If using baked baking soda instead of commercial kansui: bake baking soda at 250\u00b0F (121\u00b0C) for 1 hour, then use 10g of the result as pure sodium carbonate",
+          "text": "If using baked baking soda instead of commercial kansui: bake baking soda at 250°F (121°C) for 1 hour, then use 10g of the result as pure sodium carbonate",
           "critical": false,
           "source": "user"
         },
@@ -775,7 +775,7 @@
     {
       "id": "MIX_DOUGH",
       "title": "Mix Noodle Dough",
-      "direction": "Combine 940g bread flour and 60g whole wheat flour in a large bowl or stand mixer with paddle attachment. With the mixer on low speed, slowly stream in the kansui water over 3-4 minutes. Mix until the flour is evenly hydrated and forms shaggy, crumbly pieces. Do not overmix \u2014 the dough will not form a ball at this stage.",
+      "direction": "Combine 940g bread flour and 60g whole wheat flour in a large bowl or stand mixer with paddle attachment. With the mixer on low speed, slowly stream in the kansui water over 3-4 minutes. Mix until the flour is evenly hydrated and forms shaggy, crumbly pieces. Do not overmix — the dough will not form a ball at this stage.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -793,10 +793,10 @@
           "amount": "all"
         }
       ],
-      "exit_condition": "Flour evenly hydrated, forms crumbly clumps when squeezed \u2014 no dry pockets, no smooth dough ball",
+      "exit_condition": "Flour evenly hydrated, forms crumbly clumps when squeezed — no dry pockets, no smooth dough ball",
       "notes": [
         {
-          "text": "At 42% hydration this dough is very stiff. It will look too dry \u2014 this is normal. The rest period does the work of bringing it together.",
+          "text": "At 42% hydration this dough is very stiff. It will look too dry — this is normal. The rest period does the work of bringing it together.",
           "critical": true,
           "source": "user"
         },
@@ -818,7 +818,7 @@
       "exit_condition": "Dough has rested 30-60 minutes, feels slightly more pliable when pressed through the plastic",
       "notes": [
         {
-          "text": "This rest is critical \u2014 the moisture migrates into dry pockets and the gluten begins to develop without mechanical work",
+          "text": "This rest is critical — the moisture migrates into dry pockets and the gluten begins to develop without mechanical work",
           "critical": false,
           "source": "user"
         }
@@ -827,7 +827,7 @@
     {
       "id": "SHEET_NOODLES",
       "title": "Sheet Noodles (Lamination)",
-      "direction": "Unwrap dough. Pass through pasta machine on the widest setting. The dough will be rough and may crumble \u2014 this is normal. Fold the sheet in thirds (like a letter). Rotate 90 degrees. Pass through widest setting again. Repeat this fold-and-roll process 5-8 times until the dough sheet is smooth, elastic, and has a consistent texture.",
+      "direction": "Unwrap dough. Pass through pasta machine on the widest setting. The dough will be rough and may crumble — this is normal. Fold the sheet in thirds (like a letter). Rotate 90 degrees. Pass through widest setting again. Repeat this fold-and-roll process 5-8 times until the dough sheet is smooth, elastic, and has a consistent texture.",
       "duration_min": 15,
       "timer": false,
       "parallel": false,
@@ -840,7 +840,7 @@
           "source": "user"
         },
         {
-          "text": "Dust with cornstarch or potato starch as needed to prevent sticking. Do not use flour \u2014 it changes the ratio.",
+          "text": "Dust with cornstarch or potato starch as needed to prevent sticking. Do not use flour — it changes the ratio.",
           "critical": false,
           "source": "user"
         },
@@ -871,7 +871,7 @@
     {
       "id": "FINAL_ROLL",
       "title": "Roll to Final Thickness",
-      "direction": "Pass the rested dough through progressively thinner settings on the pasta machine, one setting at a time. Never skip settings \u2014 this tears the gluten network. Target final thickness: approximately 3mm (about setting 3-4 on most machines, depending on brand).",
+      "direction": "Pass the rested dough through progressively thinner settings on the pasta machine, one setting at a time. Never skip settings — this tears the gluten network. Target final thickness: approximately 3mm (about setting 3-4 on most machines, depending on brand).",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -879,7 +879,7 @@
       "exit_condition": "Dough sheet is uniformly 3mm thick, smooth surface with no tears or thin spots",
       "notes": [
         {
-          "text": "3mm is thick for pasta but correct for tsukemen. These are fat, square noodles \u2014 do not roll thinner.",
+          "text": "3mm is thick for pasta but correct for tsukemen. These are fat, square noodles — do not roll thinner.",
           "critical": true,
           "source": "user"
         },
@@ -942,7 +942,7 @@
     {
       "id": "BLANCH_BONES",
       "title": "Blanch Bones",
-      "direction": "Place 1500g pork bones and 500g chicken feet in pressure cooker (V1). Cover with cold water. Bring to a rolling boil over high heat. Boil for 10 minutes \u2014 the water will turn grey and scummy. This removes impurities, blood, and off-flavors.",
+      "direction": "Place 1500g pork bones and 500g chicken feet in pressure cooker (V1). Cover with cold water. Bring to a rolling boil over high heat. Boil for 10 minutes — the water will turn grey and scummy. This removes impurities, blood, and off-flavors.",
       "duration_min": 15,
       "timer": false,
       "parallel": false,
@@ -959,7 +959,7 @@
       "exit_condition": "Water is grey and scummy, bones have been at a rolling boil for 10 minutes",
       "notes": [
         {
-          "text": "This blanching step is non-negotiable \u2014 it removes the 'off' flavors that would make the final broth taste muddy instead of clean and rich",
+          "text": "This blanching step is non-negotiable — it removes the 'off' flavors that would make the final broth taste muddy instead of clean and rich",
           "critical": true,
           "source": "user"
         },
@@ -981,12 +981,12 @@
       "exit_condition": "All bones are clean (no dark spots or scum), pot is clean, bones returned to pot",
       "notes": [
         {
-          "text": "Scrub the bones individually \u2014 any remaining blood or scum will make the broth taste funky even after hours of cooking",
+          "text": "Scrub the bones individually — any remaining blood or scum will make the broth taste funky even after hours of cooking",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Clean the pot thoroughly as well \u2014 residual scum on the pot walls will dissolve back into the fresh broth",
+          "text": "Clean the pot thoroughly as well — residual scum on the pot walls will dissolve back into the fresh broth",
           "critical": false,
           "source": "user"
         }
@@ -1021,7 +1021,7 @@
           "source": "user"
         },
         {
-          "text": "The broth will already look different from typical stock \u2014 cloudier, thicker. This is the collagen emulsifying.",
+          "text": "The broth will already look different from typical stock — cloudier, thicker. This is the collagen emulsifying.",
           "critical": false,
           "source": "user"
         }
@@ -1061,7 +1061,7 @@
     {
       "id": "REMOVE_CHASHU",
       "title": "Remove Pork Belly for Chashu",
-      "direction": "Release pressure. Carefully remove the rolled pork belly from the broth using tongs. It will be very tender \u2014 handle gently to keep it intact. Set aside to cool slightly before transferring to the chashu marinade (see MARINATE_CHASHU). Leave all other bones and meat in the pot.",
+      "direction": "Release pressure. Carefully remove the rolled pork belly from the broth using tongs. It will be very tender — handle gently to keep it intact. Set aside to cool slightly before transferring to the chashu marinade (see MARINATE_CHASHU). Leave all other bones and meat in the pot.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -1074,7 +1074,7 @@
           "source": "user"
         },
         {
-          "text": "If the belly falls apart, that is fine \u2014 it was well-cooked. The chashu will still be delicious, just harder to slice neatly.",
+          "text": "If the belly falls apart, that is fine — it was well-cooked. The chashu will still be delicious, just harder to slice neatly.",
           "critical": false,
           "source": "user"
         }
@@ -1104,7 +1104,7 @@
       "exit_condition": "Broth has boiled uncovered for 1 hour, aromatics are soft, liquid has reduced and is thick and opaque",
       "notes": [
         {
-          "text": "Aromatics are added late deliberately \u2014 early addition during pressure cooking makes them bitter. 45-60 minutes is the consensus window.",
+          "text": "Aromatics are added late deliberately — early addition during pressure cooking makes them bitter. 45-60 minutes is the consensus window.",
           "critical": true,
           "source": "user"
         },
@@ -1123,10 +1123,10 @@
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Broth strained and set aside, solids separated \u2014 large intact bones discarded, soft material retained for blending",
+      "exit_condition": "Broth strained and set aside, solids separated — large intact bones discarded, soft material retained for blending",
       "notes": [
         {
-          "text": "This is NOT a normal straining step. You are keeping the solids \u2014 they become the slurry that makes the broth tsukemen-thick.",
+          "text": "This is NOT a normal straining step. You are keeping the solids — they become the slurry that makes the broth tsukemen-thick.",
           "critical": true,
           "source": "user"
         },
@@ -1140,7 +1140,7 @@
     {
       "id": "BLEND_SLURRY",
       "title": "Blend Bone Slurry (The Secret Technique)",
-      "direction": "Transfer approximately 2/3 of the retained cooked solids (soft bones, meat, cartilage, vegetables) to the blender (V4) with enough strained broth to blend smoothly. Blend on high until completely smooth \u2014 a thick, creamy slurry with no chunks. Return the slurry to the strained broth. Stir to combine. If using an immersion blender, add the solids directly to the broth pot and blend in place. Adjust total volume to approximately 3L by adding water if needed or reducing further if too thin.",
+      "direction": "Transfer approximately 2/3 of the retained cooked solids (soft bones, meat, cartilage, vegetables) to the blender (V4) with enough strained broth to blend smoothly. Blend on high until completely smooth — a thick, creamy slurry with no chunks. Return the slurry to the strained broth. Stir to combine. If using an immersion blender, add the solids directly to the broth pot and blend in place. Adjust total volume to approximately 3L by adding water if needed or reducing further if too thin.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -1148,12 +1148,12 @@
       "exit_condition": "Slurry blended smooth and reincorporated into broth, total volume approximately 3L, broth is thick, opaque, and coats the back of a spoon",
       "notes": [
         {
-          "text": "This is THE signature technique for Tomita-level thickness \u2014 without blending solids back in, you get regular tonkotsu, not tsukemen-thick",
+          "text": "This is THE signature technique for Tomita-level thickness — without blending solids back in, you get regular tonkotsu, not tsukemen-thick",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "The target consistency is 'gravy-thick' \u2014 it should coat a spoon and drip slowly, not run off. If too thin, reduce on the stove. If too thick, add water.",
+          "text": "The target consistency is 'gravy-thick' — it should coat a spoon and drip slowly, not run off. If too thin, reduce on the stove. If too thick, add water.",
           "critical": false,
           "source": "user"
         },
@@ -1167,7 +1167,7 @@
     {
       "id": "HEAT_WATER",
       "title": "Heat Dashi Water",
-      "direction": "In the large pot (V2), heat 1500g water over medium heat. Monitor with a thermometer. Bring to exactly 176\u00b0F (80\u00b0C). Do not let it boil.",
+      "direction": "In the large pot (V2), heat 1500g water over medium heat. Monitor with a thermometer. Bring to exactly 176°F (80°C). Do not let it boil.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -1177,10 +1177,10 @@
           "amount": "1500g"
         }
       ],
-      "exit_condition": "Water is at 176\u00b0F (80\u00b0C), stable, not boiling",
+      "exit_condition": "Water is at 176°F (80°C), stable, not boiling",
       "notes": [
         {
-          "text": "A thermometer is essential here. The difference between 176\u00b0F (80\u00b0C) and 212\u00b0F (100\u00b0C) is the difference between clean umami and bitter fish soup.",
+          "text": "A thermometer is essential here. The difference between 176°F (80°C) and 212°F (100°C) is the difference between clean umami and bitter fish soup.",
           "critical": true,
           "source": "user"
         }
@@ -1189,7 +1189,7 @@
     {
       "id": "STEEP_KOMBU_NIBOSHI",
       "title": "Steep Kombu and Niboshi",
-      "direction": "Add 20g kombu and 80g niboshi to the 176\u00b0F (80\u00b0C) water in V2. Maintain temperature at 176\u00b0F (80\u00b0C) for 20 minutes. Adjust burner as needed to hold temperature. Do NOT let it boil.",
+      "direction": "Add 20g kombu and 80g niboshi to the 176°F (80°C) water in V2. Maintain temperature at 176°F (80°C) for 20 minutes. Adjust burner as needed to hold temperature. Do NOT let it boil.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
@@ -1203,10 +1203,10 @@
           "amount": "80g"
         }
       ],
-      "exit_condition": "Kombu and niboshi have steeped at 176\u00b0F (80\u00b0C) for 20 minutes, liquid is golden and aromatic",
+      "exit_condition": "Kombu and niboshi have steeped at 176°F (80°C) for 20 minutes, liquid is golden and aromatic",
       "notes": [
         {
-          "text": "Boiling fish is the #1 mistake \u2014 it extracts bitter compounds. Steep at 176-194\u00b0F (80-90\u00b0C) only",
+          "text": "Boiling fish is the #1 mistake — it extracts bitter compounds. Steep at 176-194°F (80-90°C) only",
           "critical": true,
           "source": "user"
         },
@@ -1237,7 +1237,7 @@
       "exit_condition": "Katsuobushi and sababushi added, heat turned off, flakes are submerged in the liquid",
       "notes": [
         {
-          "text": "Thick-cut (atsukezuri) is essential \u2014 thin flakes would over-extract in the steep time and turn bitter",
+          "text": "Thick-cut (atsukezuri) is essential — thin flakes would over-extract in the steep time and turn bitter",
           "critical": true,
           "source": "user"
         },
@@ -1251,7 +1251,7 @@
     {
       "id": "STEEP_FISH",
       "title": "Steep Fish Off Heat",
-      "direction": "Let the katsuobushi and sababushi steep in the hot liquid off heat for 15 minutes. Do not stir \u2014 let them settle naturally.",
+      "direction": "Let the katsuobushi and sababushi steep in the hot liquid off heat for 15 minutes. Do not stir — let them settle naturally.",
       "duration_min": 15,
       "timer": true,
       "parallel": false,
@@ -1259,7 +1259,7 @@
       "exit_condition": "Fish flakes have steeped for 15 minutes, liquid is dark golden and intensely fragrant",
       "notes": [
         {
-          "text": "The residual heat (around 158-176\u00b0F / 70-80\u00b0C) is perfect for extracting inosinic acid from the dried fish without bitter compounds",
+          "text": "The residual heat (around 158-176°F / 70-80°C) is perfect for extracting inosinic acid from the dried fish without bitter compounds",
           "critical": false,
           "source": "user"
         }
@@ -1276,7 +1276,7 @@
       "exit_condition": "Dashi is clear golden, strained through fine mesh, fish solids pressed dry and discarded",
       "notes": [
         {
-          "text": "Press firmly \u2014 significant flavor remains in the solids. You should extract at least 1-1.2L of concentrated dashi from the 1.5L starting water.",
+          "text": "Press firmly — significant flavor remains in the solids. You should extract at least 1-1.2L of concentrated dashi from the 1.5L starting water.",
           "critical": false,
           "source": "user"
         },
@@ -1304,10 +1304,10 @@
           "amount": "~700-1000ml"
         }
       ],
-      "exit_condition": "Double soup combined \u2014 animal broth + fish dashi + gyofun \u2014 simmered 5 minutes, thick and intensely aromatic",
+      "exit_condition": "Double soup combined — animal broth + fish dashi + gyofun — simmered 5 minutes, thick and intensely aromatic",
       "notes": [
         {
-          "text": "This is the double soup merger \u2014 the defining moment where animal richness meets fish complexity. The umami synergy between glutamic acid (kombu, soy) and inosinic acid (fish) amplifies perceived umami by approximately 8x.",
+          "text": "This is the double soup merger — the defining moment where animal richness meets fish complexity. The umami synergy between glutamic acid (kombu, soy) and inosinic acid (fish) amplifies perceived umami by approximately 8x.",
           "critical": false,
           "source": "user"
         },
@@ -1347,7 +1347,7 @@
           "source": "user"
         },
         {
-          "text": "Toast each component separately \u2014 they have different moisture levels and burn at different rates",
+          "text": "Toast each component separately — they have different moisture levels and burn at different rates",
           "critical": false,
           "source": "user"
         }
@@ -1373,7 +1373,7 @@
       "exit_condition": "Gyofun ground to fine powder, stored in airtight container, divided: 30g for broth, 30g for garnish",
       "notes": [
         {
-          "text": "This is the signature Fuunji/Tomita finishing powder. The mound of gyofun on top of the dipping broth progressively intensifies as you eat \u2014 it sinks to the bottom and concentrates the final bites.",
+          "text": "This is the signature Fuunji/Tomita finishing powder. The mound of gyofun on top of the dipping broth progressively intensifies as you eat — it sinks to the bottom and concentrates the final bites.",
           "critical": false,
           "source": "user"
         },
@@ -1412,12 +1412,12 @@
       "exit_condition": "Pork belly submerged in marinade, refrigerated for minimum 2 hours, darkened in color",
       "notes": [
         {
-          "text": "The pork belly is already fully cooked from the broth phase \u2014 this marinade is purely for flavoring, not cooking",
+          "text": "The pork belly is already fully cooked from the broth phase — this marinade is purely for flavoring, not cooking",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Save the used chashu marinade \u2014 it can be added to the ajitama marinade or used to season future dishes. Known as 'chashu dare' in ramen shops.",
+          "text": "Save the used chashu marinade — it can be added to the ajitama marinade or used to season future dishes. Known as 'chashu dare' in ramen shops.",
           "critical": false,
           "source": "user"
         }
@@ -1436,10 +1436,10 @@
           "amount": "6 (360g)"
         }
       ],
-      "exit_condition": "Eggs boiled 6.5 minutes, ice-bathed, peeled \u2014 yolks are jammy and just set, not runny or hard",
+      "exit_condition": "Eggs boiled 6.5 minutes, ice-bathed, peeled — yolks are jammy and just set, not runny or hard",
       "notes": [
         {
-          "text": "6.5 minutes from a rolling boil produces the ideal ajitama yolk \u2014 jammy in the center with a thin set outer ring. Adjust by 15-30 seconds depending on altitude and egg size.",
+          "text": "6.5 minutes from a rolling boil produces the ideal ajitama yolk — jammy in the center with a thin set outer ring. Adjust by 15-30 seconds depending on altitude and egg size.",
           "critical": false,
           "source": "user"
         },
@@ -1496,7 +1496,7 @@
       "exit_condition": "All dipping bowls are heated through, water poured out, ready for broth assembly",
       "notes": [
         {
-          "text": "This is critical for tsukemen \u2014 the noodles are cold and will rapidly cool the dipping broth. Starting with a hot bowl extends the window of optimal temperature.",
+          "text": "This is critical for tsukemen — the noodles are cold and will rapidly cool the dipping broth. Starting with a hot bowl extends the window of optimal temperature.",
           "critical": true,
           "source": "user"
         }
@@ -1505,7 +1505,7 @@
     {
       "id": "ASSEMBLE_DIPPING_BROTH",
       "title": "Assemble Dipping Broth",
-      "direction": "In each pre-heated dipping bowl: add 30ml tare (about 2 tablespoons). Ladle in 200ml of the combined broth (reheated to near-boiling). Stir to dissolve tare into broth. Add a splash of rice vinegar (about 1.2g / 1/4 teaspoon). Mound 3-4g gyofun (about 1 teaspoon) on top of the broth \u2014 do not stir it in.",
+      "direction": "In each pre-heated dipping bowl: add 30ml tare (about 2 tablespoons). Ladle in 200ml of the combined broth (reheated to near-boiling). Stir to dissolve tare into broth. Add a splash of rice vinegar (about 1.2g / 1/4 teaspoon). Mound 3-4g gyofun (about 1 teaspoon) on top of the broth — do not stir it in.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -1527,20 +1527,20 @@
           "amount": "3-4g per bowl"
         }
       ],
-      "exit_condition": "Each dipping bowl has tare, hot broth, vinegar, and a mound of gyofun on top \u2014 broth is near-boiling",
+      "exit_condition": "Each dipping bowl has tare, hot broth, vinegar, and a mound of gyofun on top — broth is near-boiling",
       "notes": [
         {
-          "text": "The gyofun sits on top as a mound \u2014 it progressively dissolves as you dip noodles, intensifying the broth over the course of the meal. This is the Fuunji signature.",
+          "text": "The gyofun sits on top as a mound — it progressively dissolves as you dip noodles, intensifying the broth over the course of the meal. This is the Fuunji signature.",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Rice vinegar is essential \u2014 it prevents palate fatigue with this level of richness. Without it, the broth becomes cloying after a few bites.",
+          "text": "Rice vinegar is essential — it prevents palate fatigue with this level of richness. Without it, the broth becomes cloying after a few bites.",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Reheat the broth to near-boiling before ladling \u2014 it must be scorching to compensate for the cold noodles",
+          "text": "Reheat the broth to near-boiling before ladling — it must be scorching to compensate for the cold noodles",
           "critical": true,
           "source": "user"
         }
@@ -1549,7 +1549,7 @@
     {
       "id": "COOK_NOODLES",
       "title": "Cook Noodles",
-      "direction": "Bring a large pot of water to a vigorous rolling boil. Cook one portion (200g) of aged noodles for 7 minutes at a full boil. Do not crowd the pot \u2014 cook 1-2 portions at a time maximum. The noodles should be al dente with a slight chew in the center.",
+      "direction": "Bring a large pot of water to a vigorous rolling boil. Cook one portion (200g) of aged noodles for 7 minutes at a full boil. Do not crowd the pot — cook 1-2 portions at a time maximum. The noodles should be al dente with a slight chew in the center.",
       "duration_min": 7,
       "timer": false,
       "parallel": false,
@@ -1567,7 +1567,7 @@
           "source": "user"
         },
         {
-          "text": "Use a lot of water \u2014 at least 2L per portion. Crowding drops the temperature and makes noodles gummy.",
+          "text": "Use a lot of water — at least 2L per portion. Crowding drops the temperature and makes noodles gummy.",
           "critical": false,
           "source": "user"
         }
@@ -1584,12 +1584,12 @@
       "exit_condition": "Noodles are cold, firm, springy with no residual surface starch",
       "notes": [
         {
-          "text": "This is the shimeru technique \u2014 the cold shock tightens the gluten network, creating the signature springy, bouncy texture of tsukemen noodles. Skipping this turns great noodles into a soggy mess.",
+          "text": "This is the shimeru technique — the cold shock tightens the gluten network, creating the signature springy, bouncy texture of tsukemen noodles. Skipping this turns great noodles into a soggy mess.",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Massage thoroughly \u2014 surface starch makes the noodles slimy and prevents the dipping broth from clinging properly",
+          "text": "Massage thoroughly — surface starch makes the noodles slimy and prevents the dipping broth from clinging properly",
           "critical": false,
           "source": "user"
         },
@@ -1611,7 +1611,7 @@
       "exit_condition": "Noodles arranged neatly on plate, well-drained, glistening but not wet",
       "notes": [
         {
-          "text": "Tsukemen noodle plating is about visual appeal \u2014 a neat twist shows off the thick, golden noodles",
+          "text": "Tsukemen noodle plating is about visual appeal — a neat twist shows off the thick, golden noodles",
           "critical": false,
           "source": "user"
         }
@@ -1646,15 +1646,15 @@
           "amount": "~7g per bowl"
         }
       ],
-      "exit_condition": "Each serving has noodle plate with toppings and a dipping bowl with broth \u2014 ready to serve",
+      "exit_condition": "Each serving has noodle plate with toppings and a dipping bowl with broth — ready to serve",
       "notes": [
         {
-          "text": "Nori can be placed on the noodle plate or stood upright in the dipping broth \u2014 both presentations are traditional",
+          "text": "Nori can be placed on the noodle plate or stood upright in the dipping broth — both presentations are traditional",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Serve immediately \u2014 the clock starts ticking as soon as the hot broth meets the bowl. The dipping broth cools with each noodle dip.",
+          "text": "Serve immediately — the clock starts ticking as soon as the hot broth meets the bowl. The dipping broth cools with each noodle dip.",
           "critical": true,
           "source": "user"
         }
@@ -1663,7 +1663,7 @@
     {
       "id": "HEAT_DILUTION_BROTH",
       "title": "Heat Soup-Wari Broth",
-      "direction": "Heat the reserved 500ml fish dashi (from STRAIN_DASHI step) in a small pot or kettle until steaming hot. Transfer to a serving vessel \u2014 a small teapot, gravy boat, or heated carafe. This is the soup-wari dilution broth.",
+      "direction": "Heat the reserved 500ml fish dashi (from STRAIN_DASHI step) in a small pot or kettle until steaming hot. Transfer to a serving vessel — a small teapot, gravy boat, or heated carafe. This is the soup-wari dilution broth.",
       "duration_min": 5,
       "timer": false,
       "parallel": true,
@@ -1676,7 +1676,7 @@
       "exit_condition": "Fish dashi is steaming hot and in a serving vessel, ready for diners to pour",
       "notes": [
         {
-          "text": "If you did not reserve enough fish dashi, light chicken broth or even hot water works as a substitute \u2014 the remaining dipping sauce is so concentrated it can handle significant dilution.",
+          "text": "If you did not reserve enough fish dashi, light chicken broth or even hot water works as a substitute — the remaining dipping sauce is so concentrated it can handle significant dilution.",
           "critical": false,
           "source": "user"
         }
@@ -1685,7 +1685,7 @@
     {
       "id": "SERVE_SOUP_WARI",
       "title": "Serve Soup-Wari",
-      "direction": "After finishing noodles, provide the hot dilution broth. Each diner pours hot fish dashi into their remaining dipping sauce to dilute to a sippable consistency \u2014 approximately 50% dilution. Add yuzu peel, extra green onion, or leftover chashu bits to the diluted soup.",
+      "direction": "After finishing noodles, provide the hot dilution broth. Each diner pours hot fish dashi into their remaining dipping sauce to dilute to a sippable consistency — approximately 50% dilution. Add yuzu peel, extra green onion, or leftover chashu bits to the diluted soup.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -1698,7 +1698,7 @@
       "exit_condition": "Diners have diluted remaining dipping sauce to sippable consistency and enjoyed the soup-wari",
       "notes": [
         {
-          "text": "Soup-wari is the reward for finishing the noodles \u2014 the dipping sauce transforms into a rich, balanced soup when diluted",
+          "text": "Soup-wari is the reward for finishing the noodles — the dipping sauce transforms into a rich, balanced soup when diluted",
           "critical": false,
           "source": "user"
         },
@@ -1708,7 +1708,7 @@
           "source": "user"
         },
         {
-          "text": "At Fuunji, soup-wari is offered free of charge \u2014 the shop considers it part of the meal, not an extra",
+          "text": "At Fuunji, soup-wari is offered free of charge — the shop considers it part of the meal, not an extra",
           "critical": false,
           "source": "user"
         }
@@ -1721,325 +1721,325 @@
     "date": "2026-02-08",
     "sources": [
       {
-        "name": "Tomita Official Site \u2014 Concept",
+        "name": "Tomita Official Site — Concept",
         "url": "https://www.tomita-cocoro.jp/concept/",
         "type": "original"
       },
       {
-        "name": "Takumen \u2014 Fuunji Owner Interview (2015)",
+        "name": "Takumen — Fuunji Owner Interview (2015)",
         "url": "https://www.takumen.com/magazines/interview-fuunji2015",
         "type": "inspired"
       },
       {
-        "name": "r/ramen \u2014 Ramen_Lord Tomita Tsukemen Clone",
+        "name": "r/ramen — Ramen_Lord Tomita Tsukemen Clone",
         "url": "https://rramen.netlify.app/recipes/tomita-tsukemen",
         "type": "adapted",
         "author": "Ramen_Lord"
       },
       {
-        "name": "r/ramen \u2014 Ramen_Lord Taishoken Tsukemen",
+        "name": "r/ramen — Ramen_Lord Taishoken Tsukemen",
         "url": "https://rramen.netlify.app/recipes/taishoken-tsukemen",
         "type": "adapted",
         "author": "Ramen_Lord"
       },
       {
-        "name": "r/ramen \u2014 Tonkotsu Pressure Cook Method",
+        "name": "r/ramen — Tonkotsu Pressure Cook Method",
         "url": "https://rramen.netlify.app/recipes/tonkotsu-ramen-pressure-cook",
         "type": "adapted",
         "author": "Ramen_Lord"
       },
       {
-        "name": "Men to Choujin \u2014 Tomita/Takei Gyokai-Tonkotsu Tsukemen",
+        "name": "Men to Choujin — Tomita/Takei Gyokai-Tonkotsu Tsukemen",
         "url": "https://www.men-to-choujin.com/entry/gyokai-tonkotsu-noko",
         "type": "adapted"
       },
       {
-        "name": "Men to Choujin \u2014 Ultra-Concentrated Tonkotsu (Doro)",
+        "name": "Men to Choujin — Ultra-Concentrated Tonkotsu (Doro)",
         "url": "https://www.men-to-choujin.com/entry/dotonkotsu-doro",
         "type": "adapted"
       },
       {
-        "name": "Men to Choujin \u2014 Gyokai-Tonkotsu Ramen",
+        "name": "Men to Choujin — Gyokai-Tonkotsu Ramen",
         "url": "https://www.men-to-choujin.com/entry/gyokai-tonkotsu-ramen",
         "type": "adapted"
       },
       {
-        "name": "Men to Choujin \u2014 Noodle Hydration Experiment",
+        "name": "Men to Choujin — Noodle Hydration Experiment",
         "url": "https://www.men-to-choujin.com/entry/2021-10-02",
         "type": "adapted"
       },
       {
-        "name": "Ramen Cook \u2014 Tsukemen Recipe",
+        "name": "Ramen Cook — Tsukemen Recipe",
         "url": "https://ramenchef-japan.com/tsukemen1/",
         "type": "adapted"
       },
       {
-        "name": "Ramen Cook \u2014 Doro Tsukemen",
+        "name": "Ramen Cook — Doro Tsukemen",
         "url": "https://ramenchef-japan.com/doro/",
         "type": "adapted"
       },
       {
-        "name": "Ramen Cook \u2014 Shoyu Tare",
+        "name": "Ramen Cook — Shoyu Tare",
         "url": "https://ramenchef-japan.com/tare1/",
         "type": "adapted"
       },
       {
-        "name": "Ramen Cook \u2014 Fish Powder Guide",
+        "name": "Ramen Cook — Fish Powder Guide",
         "url": "https://ramenchef-japan.com/fishpowder/",
         "type": "adapted"
       },
       {
-        "name": "Ramen Cook \u2014 Gyokai Aromatic Oil",
+        "name": "Ramen Cook — Gyokai Aromatic Oil",
         "url": "https://ramenchef-japan.com/flavoroil4/",
         "type": "adapted"
       },
       {
-        "name": "Ramen Cook \u2014 Forced Emulsification Technique",
+        "name": "Ramen Cook — Forced Emulsification Technique",
         "url": "https://ramenchef-japan.com/nyuuka/",
         "type": "adapted"
       },
       {
-        "name": "Ramen Kaonashi \u2014 Tsukemen (Japanese Dipping Noodle)",
+        "name": "Ramen Kaonashi — Tsukemen (Japanese Dipping Noodle)",
         "url": "https://ramenkaonashi.com/how-to-make-tsukemen-japanese-dipping-noodle/",
         "type": "adapted",
         "author": "Ramen Kaonashi"
       },
       {
-        "name": "Ramen Kaonashi \u2014 Gyokai Tonkotsu Ramen",
+        "name": "Ramen Kaonashi — Gyokai Tonkotsu Ramen",
         "url": "https://ramenkaonashi.com/how-to-make-gyokai-tonkotsu-ramen/",
         "type": "adapted",
         "author": "Ramen Kaonashi"
       },
       {
-        "name": "Ramen Guide Japan \u2014 Menya Itto Style Tsukemen",
+        "name": "Ramen Guide Japan — Menya Itto Style Tsukemen",
         "url": "https://www.ramenguidejapan.com/recipes/2018/10/15/how-to-make-menya-itto-style-tsukemen",
         "type": "adapted"
       },
       {
-        "name": "NoRecipes \u2014 Tsukemen (Simplified)",
+        "name": "NoRecipes — Tsukemen (Simplified)",
         "url": "https://norecipes.com/tsukemen-dipping-ramen/",
         "type": "adapted",
         "author": "Marc Matsumoto"
       },
       {
-        "name": "RecipeTin Japan \u2014 Tsukemen Dipping Ramen",
+        "name": "RecipeTin Japan — Tsukemen Dipping Ramen",
         "url": "https://japan.recipetineats.com/tsukemen-ramen-recipe-dipping-ramen/",
         "type": "adapted"
       },
       {
-        "name": "Just One Cookbook \u2014 Tsukemen Dipping Noodles",
+        "name": "Just One Cookbook — Tsukemen Dipping Noodles",
         "url": "https://www.justonecookbook.com/tsukemen-dipping-noodles/",
         "type": "adapted",
         "author": "Nami Chen"
       },
       {
-        "name": "Adam Witt x Ramen_Lord \u2014 Tsukemen",
+        "name": "Adam Witt x Ramen_Lord — Tsukemen",
         "url": "https://www.adamwitt.co/allrecipes/",
         "type": "adapted",
         "author": "Adam Witt"
       },
       {
-        "name": "Yamato Noodle \u2014 What Is Tsukemen and How to Make Tsukemen Noodles",
+        "name": "Yamato Noodle — What Is Tsukemen and How to Make Tsukemen Noodles",
         "url": "https://www.yamatonoodle.com/noodle-master-labs/what-is-tsukemen-ramen-and-how-to-make-tsukemen-noodles/",
         "type": "original"
       },
       {
-        "name": "Yamato Noodle \u2014 Wheat Flour Ingredients",
+        "name": "Yamato Noodle — Wheat Flour Ingredients",
         "url": "https://www.yamatonoodle.com/noodle-master-labs/ramen-noodle-ingredients-wheat-flour/",
         "type": "original"
       },
       {
-        "name": "Yamato Noodle \u2014 Kansui Science",
+        "name": "Yamato Noodle — Kansui Science",
         "url": "https://www.yamatonoodle.com/noodle-master-labs/ramen-noodle-ingredients-kansui-etc/",
         "type": "original"
       },
       {
-        "name": "Yamato Noodle \u2014 Noodle Resting Stages",
+        "name": "Yamato Noodle — Noodle Resting Stages",
         "url": "https://www.yamatonoodle.com/noodle-master-labs/",
         "type": "original"
       },
       {
-        "name": "Myojo USA \u2014 Kansui Vol. 2",
+        "name": "Myojo USA — Kansui Vol. 2",
         "url": "https://www.myojousa.com/blog/kansui-2/",
         "type": "original"
       },
       {
-        "name": "Myojo USA \u2014 Cutter Numbers",
+        "name": "Myojo USA — Cutter Numbers",
         "url": "https://www.myojousa.com/blog/cutter-number/",
         "type": "original"
       },
       {
-        "name": "Myojo USA \u2014 Dashi in Ramen",
+        "name": "Myojo USA — Dashi in Ramen",
         "url": "https://www.myojousa.com/blog/dashi/",
         "type": "original"
       },
       {
-        "name": "Ramen Supply Company \u2014 Shop",
+        "name": "Ramen Supply Company — Shop",
         "url": "https://shop.ramensupply.co/",
         "type": "inspired"
       },
       {
-        "name": "MasteringRamen \u2014 Shop",
+        "name": "MasteringRamen — Shop",
         "url": "https://masteringramen.com/",
         "type": "inspired"
       },
       {
-        "name": "Mutual Trading \u2014 Gyofun Product Guide",
+        "name": "Mutual Trading — Gyofun Product Guide",
         "url": "https://lamtc.com/latest/gyofun/",
         "type": "original"
       },
       {
-        "name": "Ramen Chemistry \u2014 Tare Guide",
+        "name": "Ramen Chemistry — Tare Guide",
         "url": "http://www.ramenchemistry.com/blog/2015/1/23/ramen-1013-tare",
         "type": "inspired"
       },
       {
-        "name": "Ramen Chemistry \u2014 Dashi Guide",
+        "name": "Ramen Chemistry — Dashi Guide",
         "url": "http://www.ramenchemistry.com/blog/2015/1/18/ramen-basics-dashi",
         "type": "inspired"
       },
       {
-        "name": "The Japanese Food Lab \u2014 Ramen Science",
+        "name": "The Japanese Food Lab — Ramen Science",
         "url": "https://thejapanesefoodlab.com/ramen-science/",
         "type": "inspired"
       },
       {
-        "name": "Ramen Party SF \u2014 How to Tell Broth Thickness",
+        "name": "Ramen Party SF — How to Tell Broth Thickness",
         "url": "https://www.ramenpartysf.com/post/how-to-tell-the-thickness-of-tonkotsu-broth-the-ramen-chef-s-secret-method",
         "type": "inspired"
       },
       {
-        "name": "Ramen Party SF \u2014 Pork Bone Varieties",
+        "name": "Ramen Party SF — Pork Bone Varieties",
         "url": "https://www.ramenpartysf.com/post/unlocking-the-richness-of-tonkotsu-ramen-exploring-the-variety-of-pork-bones",
         "type": "inspired"
       },
       {
-        "name": "Yamachan Ramen \u2014 Tsukemen 101",
+        "name": "Yamachan Ramen — Tsukemen 101",
         "url": "https://www.yamachanramen.com/ramen-blog/tsukemen-101",
         "type": "inspired"
       },
       {
-        "name": "Ramen Samurai \u2014 Ultimate Guide to Tsukemen",
+        "name": "Ramen Samurai — Ultimate Guide to Tsukemen",
         "url": "https://ramen-samurai.com/blogs/blog/the-ultimate-guide-to-tsukemen-history-ingredients-and-japan-s-top-10-shops",
         "type": "inspired"
       },
       {
-        "name": "Ramen Database \u2014 Rice Vinegar in Ramen",
+        "name": "Ramen Database — Rice Vinegar in Ramen",
         "url": "https://ramendatabase.com/ingredients/rice-vinegar/",
         "type": "inspired"
       },
       {
-        "name": "Ramen Database \u2014 Niboshi (Dried Sardines)",
+        "name": "Ramen Database — Niboshi (Dried Sardines)",
         "url": "https://ramendatabase.com/ingredients/niboshi-sardines/",
         "type": "inspired"
       },
       {
-        "name": "Good Luck Trip \u2014 Tomita Ramen Deep Dive",
+        "name": "Good Luck Trip — Tomita Ramen Deep Dive",
         "url": "https://www.gltjp.com/en/article/item/11507/",
         "type": "inspired"
       },
       {
-        "name": "Ramen Guide Japan \u2014 Tomita Menban Review",
+        "name": "Ramen Guide Japan — Tomita Menban Review",
         "url": "https://www.ramenguidejapan.com/reviews/2019/6/11/matsudo-tomita-menban",
         "type": "inspired"
       },
       {
-        "name": "Ramen Guide Japan \u2014 Fuunji Review",
+        "name": "Ramen Guide Japan — Fuunji Review",
         "url": "https://www.ramenguidejapan.com/reviews/fuunji",
         "type": "inspired"
       },
       {
-        "name": "5am Ramen \u2014 Tomita Review",
+        "name": "5am Ramen — Tomita Review",
         "url": "https://www.5amramen.com/post/tomita-ramen",
         "type": "inspired"
       },
       {
-        "name": "5am Ramen \u2014 Fuunji Review",
+        "name": "5am Ramen — Fuunji Review",
         "url": "https://www.5amramen.com/post/fuunji-ramen-tsukemen-shinjuku",
         "type": "inspired"
       },
       {
-        "name": "Umami Mart \u2014 Fuunji (Ramen Shaman)",
+        "name": "Umami Mart — Fuunji (Ramen Shaman)",
         "url": "https://umamimart.com/blogs/main/the-ramen-shaman-fuunji-shinjuku",
         "type": "inspired"
       },
       {
-        "name": "Daniel Food Diary \u2014 Fuunji Review",
+        "name": "Daniel Food Diary — Fuunji Review",
         "url": "https://danielfooddiary.com/2015/09/19/fuunji/",
         "type": "inspired"
       },
       {
-        "name": "Japan Travel \u2014 Tomita Ramen Review",
+        "name": "Japan Travel — Tomita Ramen Review",
         "url": "https://en.japantravel.com/chiba/tomita-ramen/19489",
         "type": "inspired"
       },
       {
-        "name": "Tokyo Ramen Tours \u2014 Tomita",
+        "name": "Tokyo Ramen Tours — Tomita",
         "url": "https://www.tokyoramentours.com/post/tomita-ramen",
         "type": "inspired"
       },
       {
-        "name": "Favy \u2014 Fuunji Review",
+        "name": "Favy — Fuunji Review",
         "url": "https://www.favy.jp/topics/14763",
         "type": "inspired"
       },
       {
-        "name": "Food Republic \u2014 Ramen Heads Documentary Review",
+        "name": "Food Republic — Ramen Heads Documentary Review",
         "url": "https://www.foodrepublic.com/2018/03/29/ramen-heads-documentary/",
         "type": "inspired"
       },
       {
-        "name": "Takumen \u2014 Fuunji Product Page",
+        "name": "Takumen — Fuunji Product Page",
         "url": "https://www.takumen.com/products/6",
         "type": "inspired"
       },
       {
-        "name": "Cookpad \u2014 Gyokai-Tonkotsu Tsukemen Recipe 5243297",
+        "name": "Cookpad — Gyokai-Tonkotsu Tsukemen Recipe 5243297",
         "url": "https://cookpad.com/recipe/5243297",
         "type": "adapted"
       },
       {
-        "name": "Aco-Mom \u2014 Gyokai Tsukemen Recipe",
+        "name": "Aco-Mom — Gyokai Tsukemen Recipe",
         "url": "https://www.aco-mom.com/family/2015-june-13.php",
         "type": "adapted"
       },
       {
-        "name": "Ninben \u2014 Dried Fish Types Guide",
+        "name": "Ninben — Dried Fish Types Guide",
         "url": "https://www.ninben.co.jp/about/katsuo/nakama/",
         "type": "original"
       },
       {
-        "name": "Odashi \u2014 Soda-Katsuo (Frigate Mackerel) Guide",
+        "name": "Odashi — Soda-Katsuo (Frigate Mackerel) Guide",
         "url": "https://odashi.co.jp/sodakatsuo-howto/",
         "type": "inspired"
       },
       {
-        "name": "Kobayashi Foods \u2014 Thick-Shaved Bonito (Atsu-Kezuri) Guide",
+        "name": "Kobayashi Foods — Thick-Shaved Bonito (Atsu-Kezuri) Guide",
         "url": "https://www.kobayashi-foods.co.jp/washoku-no-umami/bonito-thickshaving",
         "type": "original"
       },
       {
-        "name": "Fukushima Katsuo \u2014 Katsuobushi Production",
+        "name": "Fukushima Katsuo — Katsuobushi Production",
         "url": "https://www.fukushima-k.kyoto/en/katsuobushi.html",
         "type": "original"
       },
       {
-        "name": "Okume \u2014 Dashi Materials Guide",
+        "name": "Okume — Dashi Materials Guide",
         "url": "https://okume.us/pages/dashi-materials",
         "type": "inspired"
       },
       {
-        "name": "Oishii Desu \u2014 Katsuobushi Brands Guide",
+        "name": "Oishii Desu — Katsuobushi Brands Guide",
         "url": "https://oishii-desu.com/2021/02/22/all-about-katsuobushi-bonito-flakes/",
         "type": "inspired"
       },
       {
-        "name": "Oishii Desu \u2014 Soy Sauce Brands Guide",
+        "name": "Oishii Desu — Soy Sauce Brands Guide",
         "url": "https://oishii-desu.com/2020/08/04/the-best-japanese-soy-sauce-shoyu-brands/",
         "type": "inspired"
       },
       {
-        "name": "Wikipedia \u2014 Tsukemen",
+        "name": "Wikipedia — Tsukemen",
         "url": "https://en.wikipedia.org/wiki/Tsukemen",
         "type": "inspired"
       },
@@ -2049,53 +2049,53 @@
         "type": "original"
       },
       {
-        "name": "Japan Food Guide \u2014 Tsukemen Guide",
+        "name": "Japan Food Guide — Tsukemen Guide",
         "url": "https://japan-food.guide/en/articles/tsukemen",
         "type": "inspired"
       },
       {
-        "name": "Flavorful Journeys \u2014 Fuunji Tsukemen Review",
+        "name": "Flavorful Journeys — Fuunji Tsukemen Review",
         "url": "https://www.flavorfuljourneys.com/eating-tsukemen-dipping-ramen-fuunji-tokyo/",
         "type": "inspired"
       },
       {
-        "name": "Sun Noodle \u2014 Kaedama Product Page",
+        "name": "Sun Noodle — Kaedama Product Page",
         "url": "https://sunnoodle.com/products/kaedama/",
         "type": "inspired"
       },
       {
-        "name": "Life By Mike G \u2014 Beginner's Guide to Ramen Broth",
+        "name": "Life By Mike G — Beginner's Guide to Ramen Broth",
         "url": "https://lifebymikeg.com/blogs/all/a-beginners-guide-to-ramen-1-broth",
         "type": "inspired"
       },
       {
-        "name": "The Chopping Block \u2014 One Weird Trick for Rich Ramen Broth",
+        "name": "The Chopping Block — One Weird Trick for Rich Ramen Broth",
         "url": "https://www.thechoppingblock.com/blog/one-weird-trick-for-rich-and-silky-ramen-broth",
         "type": "inspired"
       },
       {
-        "name": "Ramen_Lord \u2014 Tsukemen (Tumblr archive)",
+        "name": "Ramen_Lord — Tsukemen (Tumblr archive)",
         "url": "https://hellokelly7.tumblr.com/post/620363420837003264/",
         "type": "adapted",
         "author": "Ramen_Lord"
       },
       {
-        "name": "Kitchen Knife Forums \u2014 Ramen 101 Soup Thread",
+        "name": "Kitchen Knife Forums — Ramen 101 Soup Thread",
         "url": "https://www.kitchenknifeforums.com/threads/ramen-101-soup.47676/",
         "type": "inspired"
       },
       {
-        "name": "Taichou no Ramen Daigaku \u2014 Ramen University Notes",
+        "name": "Taichou no Ramen Daigaku — Ramen University Notes",
         "url": "https://note.com/taichou_men/n/nee041a864e75",
         "type": "inspired"
       },
       {
-        "name": "Menkuru \u2014 Hydration Rate Guide for Noodles",
+        "name": "Menkuru — Hydration Rate Guide for Noodles",
         "url": "https://menkuru.jp/kasui/",
         "type": "inspired"
       },
       {
-        "name": "CooNelNel \u2014 Tsukemen Fish Powder Guide",
+        "name": "CooNelNel — Tsukemen Fish Powder Guide",
         "url": "https://coonelnel.net/tsukemen-gyofun/",
         "type": "inspired"
       }
@@ -2103,67 +2103,67 @@
     "techniques": [
       {
         "name": "Double soup method (animal broth + separate fish dashi)",
-        "sourcedFrom": "All 8 agents \u2014 universal across all tsukemen sources; Tomita, Fuunji, Ramen_Lord, Men to Choujin, Ramen Cook",
-        "rationale": "Animal broth needs rolling boil for hours to extract collagen; fish needs gentle steep at 176-194\u00b0F (80-90\u00b0C) for 15-45 minutes. Boiling fish extracts bitter compounds. Cooking them separately and combining at the end preserves the best qualities of both.",
+        "sourcedFrom": "All 8 agents — universal across all tsukemen sources; Tomita, Fuunji, Ramen_Lord, Men to Choujin, Ramen Cook",
+        "rationale": "Animal broth needs rolling boil for hours to extract collagen; fish needs gentle steep at 176-194°F (80-90°C) for 15-45 minutes. Boiling fish extracts bitter compounds. Cooking them separately and combining at the end preserves the best qualities of both.",
         "confidence": "high"
       },
       {
         "name": "Blending bone solids back into broth (slurry technique)",
-        "sourcedFrom": "All 8 agents \u2014 Ramen_Lord, Men to Choujin (doro), Ramen Cook, Kaonashi; Tomita's 'gravy-thick' profile requires this",
-        "rationale": "THE signature technique for Tomita-level thickness. Blend 2/3 of strained solids into a smooth slurry and return to broth. Without this, you get standard thick tonkotsu \u2014 not the gravy-like consistency that defines tsukemen dipping broth.",
+        "sourcedFrom": "All 8 agents — Ramen_Lord, Men to Choujin (doro), Ramen Cook, Kaonashi; Tomita's 'gravy-thick' profile requires this",
+        "rationale": "THE signature technique for Tomita-level thickness. Blend 2/3 of strained solids into a smooth slurry and return to broth. Without this, you get standard thick tonkotsu — not the gravy-like consistency that defines tsukemen dipping broth.",
         "confidence": "high"
       },
       {
-        "name": "Temperature-controlled fish extraction at 176-194\u00b0F (80-90\u00b0C)",
-        "sourcedFrom": "All 8 agents \u2014 universal consensus; Ramen Chemistry, Myojo USA dashi guide, food science sources",
-        "rationale": "Sub-boiling extraction pulls clean inosinic acid (umami) from dried fish without the bitter compounds released above 194\u00b0F (90\u00b0C). Kombu first (20 min), then katsuobushi/sababushi off heat (15 min). The #1 mistake cited across sources is boiling the fish.",
+        "name": "Temperature-controlled fish extraction at 176-194°F (80-90°C)",
+        "sourcedFrom": "All 8 agents — universal consensus; Ramen Chemistry, Myojo USA dashi guide, food science sources",
+        "rationale": "Sub-boiling extraction pulls clean inosinic acid (umami) from dried fish without the bitter compounds released above 194°F (90°C). Kombu first (20 min), then katsuobushi/sababushi off heat (15 min). The #1 mistake cited across sources is boiling the fish.",
         "confidence": "high"
       },
       {
         "name": "Tare cold soak (kombu + niboshi in soy sauce, 6-24 hours)",
-        "sourcedFrom": "6/8 agents \u2014 Ramen Cook, Men to Choujin, Ramen Chemistry; strong consensus on cold vs hot extraction",
+        "sourcedFrom": "6/8 agents — Ramen Cook, Men to Choujin, Ramen Chemistry; strong consensus on cold vs hot extraction",
         "rationale": "Overnight cold soak in soy sauce extracts glutamic acid from kombu and inosinic acid from niboshi more cleanly than hot extraction. The result is a dramatically cleaner, deeper umami compared to simply simmering the ingredients.",
         "confidence": "high"
       },
       {
         "name": "Noodles served cold (shimeru technique)",
-        "sourcedFrom": "All 8 agents \u2014 universal; defines tsukemen as distinct from ramen",
+        "sourcedFrom": "All 8 agents — universal; defines tsukemen as distinct from ramen",
         "rationale": "Cold water shock after boiling tightens the gluten network, creating springy, bouncy texture and removing surface starch. The temperature contrast with scorching-hot dipping broth is fundamental to the tsukemen experience. Noodle-centric dining.",
         "confidence": "high"
       },
       {
         "name": "Soup-wari finishing dilution system",
-        "sourcedFrom": "All 8 agents \u2014 universal; Wikipedia, Fuunji reviews, Yamachan Ramen 101",
+        "sourcedFrom": "All 8 agents — universal; Wikipedia, Fuunji reviews, Yamachan Ramen 101",
         "rationale": "After finishing noodles, hot dashi dilutes the remaining concentrated dipping sauce into a sippable soup. The recipe must be designed for this dual use: concentrated enough to coat cold noodles, balanced enough to drink when diluted approximately 50%.",
         "confidence": "high"
       },
       {
         "name": "Pressure cooking acceleration (5-6h vs 13-18h stovetop)",
-        "sourcedFrom": "6/8 agents \u2014 Ramen_Lord pressure cook method, Ramen Cook, food science sources",
-        "rationale": "Pressure cooking at 15 PSI raises water temperature to 250\u00b0F (121\u00b0C), accelerating collagen hydrolysis by 3-4x. A phased approach (bones first, then chicken + pork, then aromatics) optimizes extraction from each component.",
+        "sourcedFrom": "6/8 agents — Ramen_Lord pressure cook method, Ramen Cook, food science sources",
+        "rationale": "Pressure cooking at 15 PSI raises water temperature to 250°F (121°C), accelerating collagen hydrolysis by 3-4x. A phased approach (bones first, then chicken + pork, then aromatics) optimizes extraction from each component.",
         "confidence": "medium"
       },
       {
         "name": "Gyofun as finishing garnish (progressive intensification)",
-        "sourcedFrom": "7/8 agents \u2014 Fuunji signature, Ramen_Lord, Mutual Trading, CooNelNel guide",
-        "rationale": "A mound of fish powder on top of the dipping broth that progressively dissolves as you dip noodles \u2014 the broth intensifies with each bite. Fuunji's signature. Also added to the broth base (30g) for foundational fish depth.",
+        "sourcedFrom": "7/8 agents — Fuunji signature, Ramen_Lord, Mutual Trading, CooNelNel guide",
+        "rationale": "A mound of fish powder on top of the dipping broth that progressively dissolves as you dip noodles — the broth intensifies with each bite. Fuunji's signature. Also added to the broth base (30g) for foundational fish depth.",
         "confidence": "high"
       },
       {
         "name": "24-hour minimum noodle rest",
-        "sourcedFrom": "6/8 agents \u2014 Ramen_Lord, Yamato Noodle, Men to Choujin hydration experiment",
+        "sourcedFrom": "6/8 agents — Ramen_Lord, Yamato Noodle, Men to Choujin hydration experiment",
         "rationale": "Refrigerated aging after cutting eliminates air bubbles, develops wheat flavor, and mellows the alkaline taste from kansui. Most sources agree 48h is the sweet spot. Fresh noodles without resting have an unpleasant alkaline bite.",
         "confidence": "medium"
       },
       {
         "name": "Aromatics added late (final 45-60 minutes only)",
-        "sourcedFrom": "6/8 agents \u2014 Ramen_Lord, Kaonashi, Men to Choujin; consistent across pressure cook and stovetop methods",
+        "sourcedFrom": "6/8 agents — Ramen_Lord, Kaonashi, Men to Choujin; consistent across pressure cook and stovetop methods",
         "rationale": "Onion, ginger, and garlic added during the final open-boil phase (last 45-60 minutes). Early addition during pressure cooking extracts bitter compounds from alliums. Late addition provides clean aromatic notes.",
         "confidence": "medium"
       },
       {
         "name": "Forced emulsification via immersion blender",
-        "sourcedFrom": "3/8 agents \u2014 Ramen Cook (nyuuka technique), food science sources",
+        "sourcedFrom": "3/8 agents — Ramen Cook (nyuuka technique), food science sources",
         "rationale": "A hand blender mechanically emulsifies fat into gelatin-rich broth in seconds, shortcutting what 10-20 hours of rolling boil achieves naturally. Optional technique to boost creaminess after combining the double soup.",
         "confidence": "medium"
       },
@@ -2832,10 +2832,10 @@
         "ingredientId": "noodle_water",
         "name": "Water (for noodle dough)",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 420,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "kansui",
@@ -2868,37 +2868,37 @@
         "ingredientId": "ajitama_water",
         "name": "Water (for ajitama marinade)",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 100,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "chashu_water",
         "name": "Water (for chashu marinade)",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 200,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "broth_water",
         "name": "Water (for broth)",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 4000,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "dashi_water",
         "name": "Water (for fish dashi)",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 1500,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "rice_vinegar",

@@ -11,23 +11,23 @@
         {
           "src": "/images/tartine-baguette/source/page-128-800w.webp",
           "thumb": "/images/tartine-baguette/source/page-128-400w.webp",
-          "alt": "Tartine Bread pp. 128 \u2014 Baguette recipe introduction"
+          "alt": "Tartine Bread pp. 128 — Baguette recipe introduction"
         },
         {
           "src": "/images/tartine-baguette/source/page-129-800w.webp",
           "thumb": "/images/tartine-baguette/source/page-129-400w.webp",
-          "alt": "Tartine Bread pp. 129 \u2014 Baguette formula and method"
+          "alt": "Tartine Bread pp. 129 — Baguette formula and method"
         },
         {
           "src": "/images/tartine-baguette/source/page-130-800w.webp",
           "thumb": "/images/tartine-baguette/source/page-130-400w.webp",
-          "alt": "Tartine Bread pp. 130 \u2014 Baguette shaping and baking"
+          "alt": "Tartine Bread pp. 130 — Baguette shaping and baking"
         }
       ]
     },
-    "yields": "2\u20133 baguettes",
-    "total_time": "~12\u201316 hrs (2 hrs active)",
-    "description": "A hybrid baguette using both poolish (commercial yeast) and leaven (sourdough starter) \u2014 the poolish gives reliable lift and extensibility, the leaven adds flavor complexity. Baked to a deep golden tone with the toasty aroma of freshly popped corn."
+    "yields": "2–3 baguettes",
+    "total_time": "~12–16 hrs (2 hrs active)",
+    "description": "A hybrid baguette using both poolish (commercial yeast) and leaven (sourdough starter) — the poolish gives reliable lift and extensibility, the leaven adds flavor complexity. Baked to a deep golden tone with the toasty aroma of freshly popped corn."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -57,7 +57,7 @@
     {
       "id": "V1",
       "name": "Large Mixing Bowl",
-      "reuse": "Poolish \u2192 freed \u2192 dough mixing"
+      "reuse": "Poolish → freed → dough mixing"
     },
     {
       "id": "V2",
@@ -72,12 +72,12 @@
     {
       "id": "V4",
       "name": "Baking Sheet / Cutting Board",
-      "reuse": "Couche support \u2192 freed after loading"
+      "reuse": "Couche support → freed after loading"
     },
     {
       "id": "V5",
       "name": "Baking Stone",
-      "reuse": "Preheat \u2192 bake"
+      "reuse": "Preheat → bake"
     },
     {
       "id": "V6",
@@ -105,7 +105,7 @@
           "Hand Peel (narrow board or rigid cardboard)",
           "Double-Edged Razor in Splint Holder (lame)",
           "Large Kitchen Towel (couche)",
-          "Kitchen Towels for Steam (2\u20133)",
+          "Kitchen Towels for Steam (2–3)",
           "Plastic Wrap",
           "Wire Rack",
           "Rice Flour (for dusting)"
@@ -145,15 +145,15 @@
             "unit": "g",
             "breakdown": [
               {
-                "label": "poolish (75\u00b0F)",
+                "label": "poolish (75°F)",
                 "amount": 200
               },
               {
-                "label": "leaven (80\u00b0F)",
+                "label": "leaven (80°F)",
                 "amount": 220
               },
               {
-                "label": "main dough (74\u201375\u00b0F)",
+                "label": "main dough (74–75°F)",
                 "amount": 500
               }
             ]
@@ -272,7 +272,7 @@
       "exit_condition": "All ingredients weighed, vessels and equipment laid out",
       "notes": [
         {
-          "text": "Rice flour is for dusting only \u2014 it prevents sticking without absorbing into the dough",
+          "text": "Rice flour is for dusting only — it prevents sticking without absorbing into the dough",
           "critical": false,
           "source": "user"
         }
@@ -281,7 +281,7 @@
     {
       "id": "MIX_POOLISH",
       "title": "Mix Poolish",
-      "direction": "In large mixing bowl (V1), combine 200g all-purpose flour, 200g water at 75\u00b0F (24\u00b0C), and 3g active dry yeast. Stir until no dry flour remains.",
+      "direction": "In large mixing bowl (V1), combine 200g all-purpose flour, 200g water at 75°F (24°C), and 3g active dry yeast. Stir until no dry flour remains.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -291,7 +291,7 @@
           "amount": "200g"
         },
         {
-          "name": "Water (75\u00b0F)",
+          "name": "Water (75°F)",
           "amount": "200g"
         },
         {
@@ -302,7 +302,7 @@
       "exit_condition": "Poolish mixed, no dry flour visible",
       "notes": [
         {
-          "text": "A poolish is a pre-ferment made with equal parts flour and water plus a small amount of commercial yeast. It develops flavor complexity and improves dough extensibility \u2014 a classic French baguette technique.",
+          "text": "A poolish is a pre-ferment made with equal parts flour and water plus a small amount of commercial yeast. It develops flavor complexity and improves dough extensibility — a classic French baguette technique.",
           "critical": false,
           "source": "agent"
         }
@@ -311,12 +311,12 @@
     {
       "id": "FERMENT_POOLISH",
       "title": "Ferment Poolish",
-      "direction": "Cover bowl and let poolish stand at warm room temperature 75\u201380\u00b0F (24\u201327\u00b0C) for 3 to 4 hours. Alternatively, ferment overnight in the refrigerator.",
+      "direction": "Cover bowl and let poolish stand at warm room temperature 75–80°F (24–27°C) for 3 to 4 hours. Alternatively, ferment overnight in the refrigerator.",
       "duration_min": 210,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Poolish is bubbly, domed, and passes the float test \u2014 a small spoonful floats in water",
+      "exit_condition": "Poolish is bubbly, domed, and passes the float test — a small spoonful floats in water",
       "notes": [
         {
           "text": "Overnight refrigerator method: mix poolish before bed, use next morning",
@@ -333,7 +333,7 @@
     {
       "id": "FEED_LEAVEN",
       "title": "Feed Leaven",
-      "direction": "In medium bowl (V2), place 15g mature starter. Add 220g all-purpose flour and 220g water at 80\u00b0F (27\u00b0C). Mix thoroughly.",
+      "direction": "In medium bowl (V2), place 15g mature starter. Add 220g all-purpose flour and 220g water at 80°F (27°C). Mix thoroughly.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -347,19 +347,19 @@
           "amount": "220g"
         },
         {
-          "name": "Water (80\u00b0F)",
+          "name": "Water (80°F)",
           "amount": "220g"
         }
       ],
       "exit_condition": "Leaven mixed, no dry flour visible",
       "notes": [
         {
-          "text": "Time the leaven so it peaks when the poolish is ready \u2014 typically feed leaven 8\u201312 hours before you plan to mix dough",
+          "text": "Time the leaven so it peaks when the poolish is ready — typically feed leaven 8–12 hours before you plan to mix dough",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "A leaven (levain) is an active sourdough preferment \u2014 a portion of mature starter fed with flour and water and grown to peak activity before mixing into the final dough.",
+          "text": "A leaven (levain) is an active sourdough preferment — a portion of mature starter fed with flour and water and grown to peak activity before mixing into the final dough.",
           "critical": false,
           "source": "agent"
         }
@@ -376,7 +376,7 @@
       "exit_condition": "Leaven has risen, is bubbly on surface, and passes the float test",
       "notes": [
         {
-          "text": "Can run in parallel with poolish fermentation \u2014 plan timing so both are ready together",
+          "text": "Can run in parallel with poolish fermentation — plan timing so both are ready together",
           "critical": false,
           "source": "user"
         }
@@ -393,7 +393,7 @@
       "exit_condition": "Both poolish and leaven float in water",
       "notes": [
         {
-          "text": "Do not proceed to mixing if either fails the float test \u2014 under-fermented pre-ferments will not produce proper bread",
+          "text": "Do not proceed to mixing if either fails the float test — under-fermented pre-ferments will not produce proper bread",
           "critical": true,
           "source": "user"
         }
@@ -402,13 +402,13 @@
     {
       "id": "MIX_DOUGH",
       "title": "Mix Baguette Dough",
-      "direction": "Pour 500g warm water at 74\u201376\u00b0F (23\u201324\u00b0C) into a large mixing bowl (V1, freed from poolish). Add all the poolish (400g) and 400g of the leaven. Stir to disperse. Add 650g all-purpose flour and 350g bread flour. Mix thoroughly by hand until no dry flour remains. Reserve remaining leaven to refresh your starter.",
+      "direction": "Pour 500g warm water at 74–76°F (23–24°C) into a large mixing bowl (V1, freed from poolish). Add all the poolish (400g) and 400g of the leaven. Stir to disperse. Add 650g all-purpose flour and 350g bread flour. Mix thoroughly by hand until no dry flour remains. Reserve remaining leaven to refresh your starter.",
       "duration_min": 8,
       "timer": false,
       "parallel": false,
       "components": [
         {
-          "name": "Water (74\u201375\u00b0F)",
+          "name": "Water (74–75°F)",
           "amount": "500g"
         },
         {
@@ -431,7 +431,7 @@
       "exit_condition": "Dough is shaggy but cohesive, no dry flour remains",
       "notes": [
         {
-          "text": "Dough will feel stiffer than basic country dough \u2014 it softens during bulk fermentation",
+          "text": "Dough will feel stiffer than basic country dough — it softens during bulk fermentation",
           "critical": false,
           "source": "user"
         },
@@ -455,7 +455,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has rested 25\u201340 minutes, feels slightly more extensible",
+      "exit_condition": "Dough has rested 25–40 minutes, feels slightly more extensible",
       "notes": [
         {
           "text": "Salt is added with the first turn during bulk fermentation, not during mixing",
@@ -466,7 +466,7 @@
     },
     {
       "id": "TURN_1_SALT",
-      "title": "First Turn \u2014 Add Salt",
+      "title": "First Turn — Add Salt",
       "direction": "Transfer dough to clear container (V3). Sprinkle 24g salt over the dough. Perform a series of stretches and folds: reach under the dough, stretch upward, and fold over itself. Rotate the container and repeat around all sides. Work the salt into the dough.",
       "duration_min": 5,
       "timer": false,
@@ -480,7 +480,7 @@
       "exit_condition": "Salt fully incorporated, dough has been stretched and folded from all sides",
       "notes": [
         {
-          "text": "The dough temperature should be about 75\u00b0F (24\u00b0C) throughout bulk fermentation",
+          "text": "The dough temperature should be about 75°F (24°C) throughout bulk fermentation",
           "critical": false,
           "source": "user"
         }
@@ -488,7 +488,7 @@
     },
     {
       "id": "TURN_2",
-      "title": "Ferment \u2014 Second Turn",
+      "title": "Ferment — Second Turn",
       "direction": "After 40 minutes, perform another set of stretch-and-folds from all sides of the container.",
       "duration_min": 40,
       "timer": true,
@@ -499,7 +499,7 @@
     },
     {
       "id": "TURN_3",
-      "title": "Ferment \u2014 Third Turn",
+      "title": "Ferment — Third Turn",
       "direction": "After another 40 minutes, perform another set of stretch-and-folds. Dough should be gaining strength and becoming smoother.",
       "duration_min": 40,
       "timer": true,
@@ -510,8 +510,8 @@
     },
     {
       "id": "TURN_4",
-      "title": "Ferment \u2014 Fourth Turn",
-      "direction": "After another 40 minutes, perform the final set of stretch-and-folds. Handle the dough gently \u2014 it should be airy and billowy.",
+      "title": "Ferment — Fourth Turn",
+      "direction": "After another 40 minutes, perform the final set of stretch-and-folds. Handle the dough gently — it should be airy and billowy.",
       "duration_min": 40,
       "timer": true,
       "parallel": false,
@@ -519,7 +519,7 @@
       "exit_condition": "Dough is airy, billowy, and shows good fermentation activity",
       "notes": [
         {
-          "text": "Be gentle \u2014 the dough has developed significant gas by now",
+          "text": "Be gentle — the dough has developed significant gas by now",
           "critical": false,
           "source": "user"
         }
@@ -533,10 +533,10 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has increased 20\u201330% in volume, feels airy and jiggly, surface shows bubbles",
+      "exit_condition": "Dough has increased 20–30% in volume, feels airy and jiggly, surface shows bubbles",
       "notes": [
         {
-          "text": "Look for the dough to feel alive \u2014 it should jiggle when you move the container",
+          "text": "Look for the dough to feel alive — it should jiggle when you move the container",
           "critical": false,
           "source": "user"
         }
@@ -562,7 +562,7 @@
     {
       "id": "PRE_SHAPE",
       "title": "Pre-shape",
-      "direction": "Shape each piece into a rectangle with rounded corners. Use gentle hands \u2014 preserve as much gas as possible.",
+      "direction": "Shape each piece into a rectangle with rounded corners. Use gentle hands — preserve as much gas as possible.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -598,7 +598,7 @@
       "exit_condition": "Couche prepared with generous rice flour dusting",
       "notes": [
         {
-          "text": "A couche (French for 'bed') is a stiff cloth used to support baguettes during final proof \u2014 the folds between loaves prevent sideways spreading. Bread baskets (bannetons) are for round/oval loaves; baguettes need the couche's elongated support.",
+          "text": "A couche (French for 'bed') is a stiff cloth used to support baguettes during final proof — the folds between loaves prevent sideways spreading. Bread baskets (bannetons) are for round/oval loaves; baguettes need the couche's elongated support.",
           "critical": false,
           "source": "agent"
         }
@@ -615,12 +615,12 @@
       "exit_condition": "Baguettes shaped into tapered cylinders with good surface tension, sized to fit baking stone",
       "notes": [
         {
-          "text": "The shape should resemble a French rolling pin \u2014 tapered at the ends, even in the middle",
+          "text": "The shape should resemble a French rolling pin — tapered at the ends, even in the middle",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Keep the seam tight \u2014 loose seams cause the loaf to open during baking",
+          "text": "Keep the seam tight — loose seams cause the loaf to open during baking",
           "critical": true,
           "source": "user"
         }
@@ -641,7 +641,7 @@
     {
       "id": "PROOF_BAGUETTES",
       "title": "Proof Baguettes",
-      "direction": "Let baguettes rise at warm room temperature 70\u201375\u00b0F (21\u201324\u00b0C) for 2.5 to 3 hours.",
+      "direction": "Let baguettes rise at warm room temperature 70–75°F (21–24°C) for 2.5 to 3 hours.",
       "duration_min": 165,
       "timer": true,
       "parallel": false,
@@ -658,7 +658,7 @@
     {
       "id": "SETUP_STEAM",
       "title": "Set Up Steam",
-      "direction": "Soak 2\u20133 kitchen towels in water. Line a rimmed baking sheet (V6) with the soaked towels. Place on the bottom rack of the oven.",
+      "direction": "Soak 2–3 kitchen towels in water. Line a rimmed baking sheet (V6) with the soaked towels. Place on the bottom rack of the oven.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -666,7 +666,7 @@
       "exit_condition": "Rimmed baking sheet with soaked towels placed on bottom oven rack",
       "notes": [
         {
-          "text": "The wet towels create sustained steam \u2014 they should be thoroughly saturated",
+          "text": "The wet towels create sustained steam — they should be thoroughly saturated",
           "critical": true,
           "source": "user"
         }
@@ -675,15 +675,15 @@
     {
       "id": "PREHEAT_OVEN",
       "title": "Preheat Oven",
-      "direction": "Place baking stone (V5) on the middle rack. Preheat oven to 500\u00b0F (260\u00b0C) with the steam pan already inside. The oven should steam for at least 15 minutes before loading.",
+      "direction": "Place baking stone (V5) on the middle rack. Preheat oven to 500°F (260°C) with the steam pan already inside. The oven should steam for at least 15 minutes before loading.",
       "duration_min": 45,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Oven at 500\u00b0F (260\u00b0C), baking stone fully heated, oven visibly steaming",
+      "exit_condition": "Oven at 500°F (260°C), baking stone fully heated, oven visibly steaming",
       "notes": [
         {
-          "text": "A fully preheated stone is essential for oven spring \u2014 do not rush this step",
+          "text": "A fully preheated stone is essential for oven spring — do not rush this step",
           "critical": true,
           "source": "user"
         }
@@ -692,20 +692,20 @@
     {
       "id": "SCORE_LOAD",
       "title": "Score and Load Baguettes",
-      "direction": "Dust pizza peel with rice flour. Dust the seam side of the baguettes with rice flour. Flip each loaf onto the hand peel using the couche towel, then slide onto the pizza peel. Arrange baguettes about 5cm apart. Score each loaf down the center with a series of slightly overlapping lines using the razor blade lame. Open oven door, slide baguettes onto the baking stone, and quickly shut the door. Immediately reduce oven temperature to 475\u00b0F (246\u00b0C).",
+      "direction": "Dust pizza peel with rice flour. Dust the seam side of the baguettes with rice flour. Flip each loaf onto the hand peel using the couche towel, then slide onto the pizza peel. Arrange baguettes about 5cm apart. Score each loaf down the center with a series of slightly overlapping lines using the razor blade lame. Open oven door, slide baguettes onto the baking stone, and quickly shut the door. Immediately reduce oven temperature to 475°F (246°C).",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Baguettes scored and loaded onto baking stone, oven door shut, temperature reduced to 475\u00b0F (246\u00b0C)",
+      "exit_condition": "Baguettes scored and loaded onto baking stone, oven door shut, temperature reduced to 475°F (246°C)",
       "notes": [
         {
-          "text": "Work quickly \u2014 every second the oven door is open, you lose steam and heat",
+          "text": "Work quickly — every second the oven door is open, you lose steam and heat",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Score with confident, swift strokes \u2014 hesitation tears the dough",
+          "text": "Score with confident, swift strokes — hesitation tears the dough",
           "critical": false,
           "source": "user"
         }
@@ -723,7 +723,7 @@
       "exit_condition": "Baguettes are beginning to color, approximately 15 minutes elapsed",
       "notes": [
         {
-          "text": "Do not open the oven during this phase \u2014 steam retention is critical for crust development",
+          "text": "Do not open the oven during this phase — steam retention is critical for crust development",
           "critical": true,
           "source": "user"
         }
@@ -740,12 +740,12 @@
       "exit_condition": "Baguettes are deep golden brown, loaves sound hollow when tapped on the bottom",
       "notes": [
         {
-          "text": "Use oven mitts \u2014 the steam pan and towels are extremely hot",
+          "text": "Use oven mitts — the steam pan and towels are extremely hot",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Push for deep golden, not pale \u2014 the dark crust is where the toasty corn aroma lives",
+          "text": "Push for deep golden, not pale — the dark crust is where the toasty corn aroma lives",
           "critical": false,
           "source": "user"
         }
@@ -762,12 +762,12 @@
       "exit_condition": "Baguettes on cooling rack, crust is crackling as it cools",
       "notes": [
         {
-          "text": "The crust will soften if cooled on a flat surface \u2014 always use a rack for air circulation",
+          "text": "The crust will soften if cooled on a flat surface — always use a rack for air circulation",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Listen for the crust to crackle and sing as it cools \u2014 a sign of a well-baked loaf",
+          "text": "Listen for the crust to crackle and sing as it cools — a sign of a well-baked loaf",
           "critical": false,
           "source": "user"
         }
@@ -890,7 +890,7 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "350\u00b0F (175\u00b0C), 5\u201310 min. Spritz crust with water before reheating for crispness.",
+        "detail": "350°F (175°C), 5–10 min. Spritz crust with water before reheating for crispness.",
         "source": "agent"
       },
       {
@@ -928,10 +928,10 @@
         "ingredientId": "water",
         "name": "Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 920,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "yeast",
@@ -946,10 +946,10 @@
         "ingredientId": "starter",
         "name": "Mature Starter",
         "sourceType": "rate",
-        "sourceName": "Home-maintained starter (free)",
+        "sourceName": "Home-maintained starter",
         "amount": 15,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "salt",

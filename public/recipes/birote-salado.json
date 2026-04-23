@@ -7,8 +7,8 @@
       "author": "7-agent parallel research, 31 sources"
     },
     "yields": "5 rolls (~190g each)",
-    "total_time": "~20 hrs (30 min active, 12\u201348 hrs levain ferment)",
-    "description": "Guadalajara's 160-year-old sourdough bread \u2014 the only culture in the Puratos World Sourdough Library fed with beer, lime juice, and egg. Shattering crust, sour-salty-bitter flavor, engineered to survive drowning in salsa for tortas ahogadas. Texas-adapted with water treatment and fermentation compensation."
+    "total_time": "~20 hrs (30 min active, 12–48 hrs levain ferment)",
+    "description": "Guadalajara's 160-year-old sourdough bread — the only culture in the Puratos World Sourdough Library fed with beer, lime juice, and egg. Shattering crust, sour-salty-bitter flavor, engineered to survive drowning in salsa for tortas ahogadas. Texas-adapted with water treatment and fermentation compensation."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -38,12 +38,12 @@
     {
       "id": "V1",
       "name": "Medium Mixing Bowl",
-      "reuse": "Levain build \u2192 clean \u2192 available"
+      "reuse": "Levain build → clean → available"
     },
     {
       "id": "V2",
       "name": "Large Mixing Bowl",
-      "reuse": "Dough mix \u2192 bulk ferment"
+      "reuse": "Dough mix → bulk ferment"
     },
     {
       "id": "V3",
@@ -83,7 +83,7 @@
             "breakdown": null,
             "sourcedFrom": "Stellanspice formula, Puratos Library #72",
             "confidence": "high",
-            "rationale": "1:1 ratio with levain flour. Must be active and bubbly \u2014 doubled within 4-8 hours of last feeding."
+            "rationale": "1:1 ratio with levain flour. Must be active and bubbly — doubled within 4-8 hours of last feeding."
           },
           {
             "id": "ap_flour",
@@ -102,7 +102,7 @@
             ],
             "sourcedFrom": "Cross-source consensus (7/7 agents)",
             "confidence": "high",
-            "rationale": "Mexican flour is 9% protein \u2014 US AP flour (10-12%) is closer than bread flour. An 80/20 AP/bread blend also works for more structure."
+            "rationale": "Mexican flour is 9% protein — US AP flour (10-12%) is closer than bread flour. An 80/20 AP/bread blend also works for more structure."
           },
           {
             "id": "beer",
@@ -161,7 +161,7 @@
             ],
             "sourcedFrom": "Cross-source consensus (7/7 agents)",
             "confidence": "high",
-            "rationale": "2.3% of total flour. 'Salado' means salted \u2014 birote is intentionally saltier than standard bread."
+            "rationale": "2.3% of total flour. 'Salado' means salted — birote is intentionally saltier than standard bread."
           },
           {
             "id": "water",
@@ -284,12 +284,12 @@
       "exit_condition": "Levain is smooth and homogeneous, all ingredients fully incorporated",
       "notes": [
         {
-          "text": "Beer must be at room temperature \u2014 cold beer will shock the starter culture. Any pale Mexican lager works: Modelo Especial, Pacifico, Victoria, Sol.",
+          "text": "Beer must be at room temperature — cold beer will shock the starter culture. Any pale Mexican lager works: Modelo Especial, Pacifico, Victoria, Sol.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "The levain will smell unusual \u2014 beery, limey, eggy. This is the authentic birote protocol used in Guadalajara for 160 years. Trust the process.",
+          "text": "The levain will smell unusual — beery, limey, eggy. This is the authentic birote protocol used in Guadalajara for 160 years. Trust the process.",
           "critical": false,
           "source": "agent"
         },
@@ -299,7 +299,7 @@
           "source": "agent"
         },
         {
-          "text": "The 1g salt is intentional \u2014 both Stellanspice and Breadtopia include salt in the levain build. At 0.4% of levain weight, it mildly boosts LAB activity without meaningfully inhibiting yeast (inhibition starts at 2%+). Lesaffre Mexico's professional formula includes salt in the esponja at an even higher ratio.",
+          "text": "The 1g salt is intentional — both Stellanspice and Breadtopia include salt in the levain build. At 0.4% of levain weight, it mildly boosts LAB activity without meaningfully inhibiting yeast (inhibition starts at 2%+). Lesaffre Mexico's professional formula includes salt in the esponja at an even higher ratio.",
           "critical": false,
           "source": "agent"
         }
@@ -321,7 +321,7 @@
           "source": "agent"
         },
         {
-          "text": "At sea level in Texas, the cold retard is especially important \u2014 it develops the sour character that altitude-accelerated fermentation produces naturally in Guadalajara.",
+          "text": "At sea level in Texas, the cold retard is especially important — it develops the sour character that altitude-accelerated fermentation produces naturally in Guadalajara.",
           "critical": false,
           "source": "agent"
         }
@@ -330,7 +330,7 @@
     {
       "id": "MIX_DOUGH",
       "title": "Combine Levain and Dough",
-      "direction": "Remove levain from fridge. In the large bowl (V2), combine all levain (~250g) with 250g filtered water. Stir to dissolve and loosen. Add 400g AP flour. Mix with a rubber spatula until no dry flour remains \u2014 a shaggy, sticky mass.",
+      "direction": "Remove levain from fridge. In the large bowl (V2), combine all levain (~250g) with 250g filtered water. Stir to dissolve and loosen. Add 400g AP flour. Mix with a rubber spatula until no dry flour remains — a shaggy, sticky mass.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -377,7 +377,7 @@
     {
       "id": "ADD_SALT",
       "title": "Add Salt",
-      "direction": "Sprinkle 5g salt over the dough. With wet hands, perform 4 stretch-and-folds. Sprinkle remaining 5g salt. Continue folding until salt is fully distributed \u2014 no gritty texture when you pinch the dough.",
+      "direction": "Sprinkle 5g salt over the dough. With wet hands, perform 4 stretch-and-folds. Sprinkle remaining 5g salt. Continue folding until salt is fully distributed — no gritty texture when you pinch the dough.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -392,8 +392,8 @@
     },
     {
       "id": "COIL_FOLD_1",
-      "title": "Coil Fold \u2014 Set 1",
-      "direction": "With wet hands, release the dough from the sides of the bowl. Slide hands under the center, lift the dough up and let each end fold under itself from gravity. Rotate the bowl 90\u00b0 and repeat. The dough drapes over your hands and tucks under.",
+      "title": "Coil Fold — Set 1",
+      "direction": "With wet hands, release the dough from the sides of the bowl. Slide hands under the center, lift the dough up and let each end fold under itself from gravity. Rotate the bowl 90° and repeat. The dough drapes over your hands and tucks under.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -427,8 +427,8 @@
     },
     {
       "id": "COIL_FOLD_2",
-      "title": "Coil Fold \u2014 Set 2",
-      "direction": "Repeat coil fold: wet hands, slide under center, lift and let ends fold under. Rotate 90\u00b0, repeat. Cover.",
+      "title": "Coil Fold — Set 2",
+      "direction": "Repeat coil fold: wet hands, slide under center, lift and let ends fold under. Rotate 90°, repeat. Cover.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -449,8 +449,8 @@
     },
     {
       "id": "COIL_FOLD_3",
-      "title": "Coil Fold \u2014 Set 3",
-      "direction": "Repeat coil fold: wet hands, slide under center, lift and let ends fold under. Rotate 90\u00b0, repeat. Cover.",
+      "title": "Coil Fold — Set 3",
+      "direction": "Repeat coil fold: wet hands, slide under center, lift and let ends fold under. Rotate 90°, repeat. Cover.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -471,8 +471,8 @@
     },
     {
       "id": "COIL_FOLD_4",
-      "title": "Coil Fold \u2014 Set 4 (Final)",
-      "direction": "Final coil fold: wet hands, slide under, lift, let ends fold. Rotate 90\u00b0, repeat. The dough should now be smooth, elastic, and hold its shape when folded. Cover tightly.",
+      "title": "Coil Fold — Set 4 (Final)",
+      "direction": "Final coil fold: wet hands, slide under, lift, let ends fold. Rotate 90°, repeat. The dough should now be smooth, elastic, and hold its shape when folded. Cover tightly.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -483,7 +483,7 @@
     {
       "id": "BULK_RISE",
       "title": "Bulk Rise",
-      "direction": "Leave covered at room temperature (75-78\u00b0F / 24-26\u00b0C) until the dough has risen ~75%. Watch for visual cues: domed surface, bubbles at top and sides, jiggles when bowl is shaken.",
+      "direction": "Leave covered at room temperature (75-78°F / 24-26°C) until the dough has risen ~75%. Watch for visual cues: domed surface, bubbles at top and sides, jiggles when bowl is shaken.",
       "duration_min": 180,
       "timer": true,
       "parallel": false,
@@ -491,12 +491,12 @@
       "exit_condition": "Dough has increased ~75% in volume, surface is domed with visible bubbles, jiggles when bowl is shaken",
       "notes": [
         {
-          "text": "At Texas sea level, expect 2-4 additional hours AFTER the coil folds (4-6 hours total bulk including folds). Guadalajara recipes claim 2 hours \u2014 that's at 5,138 ft altitude where CO2 is 17% less soluble.",
+          "text": "At Texas sea level, expect 2-4 additional hours AFTER the coil folds (4-6 hours total bulk including folds). Guadalajara recipes claim 2 hours — that's at 5,138 ft altitude where CO2 is 17% less soluble.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Watch the dough, not the clock. The beer in the levain slows fermentation further at sea level \u2014 a double deceleration effect (higher pressure + hops).",
+          "text": "Watch the dough, not the clock. The beer in the levain slows fermentation further at sea level — a double deceleration effect (higher pressure + hops).",
           "critical": false,
           "source": "agent"
         }
@@ -515,7 +515,7 @@
     {
       "id": "DIVIDE_PRESHAPE",
       "title": "Divide and Preshape",
-      "direction": "Generously flour the work surface \u2014 Guadalajara bakeries use a mound of flour for shaping. Turn the dough out onto the floured surface. Using a bench scraper, divide into 5 pieces (~190g each). For each piece, pull edges to center creating tension, then flip seam-side down. Use a push-and-pull motion to tighten into a ball.",
+      "direction": "Generously flour the work surface — Guadalajara bakeries use a mound of flour for shaping. Turn the dough out onto the floured surface. Using a bench scraper, divide into 5 pieces (~190g each). For each piece, pull edges to center creating tension, then flip seam-side down. Use a push-and-pull motion to tighten into a ball.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -523,7 +523,7 @@
       "exit_condition": "5 roughly equal dough balls (~190g each) with light surface tension, seam-side down on floured surface",
       "notes": [
         {
-          "text": "Be generous with flour \u2014 this is a lower-hydration dough but the fermented surface can still be tacky. Watch GDL bakery videos: they work fast in a cloud of flour.",
+          "text": "Be generous with flour — this is a lower-hydration dough but the fermented surface can still be tacky. Watch GDL bakery videos: they work fast in a cloud of flour.",
           "critical": false,
           "source": "agent"
         }
@@ -543,7 +543,7 @@
     {
       "id": "FINAL_SHAPE",
       "title": "Shape Torpedoes",
-      "direction": "One at a time: gently flatten a dough round. Roll it into itself with tension, creating a tight cylinder. Pinch the seam closed. Roll into a tapered torpedo shape \u2014 fatter in the middle, pointed at both ends, about 15-18 cm long. Flour the surface after seaming. Place seam-side UP on a well-floured baker's couche or linen towel, folding the cloth between rolls for support.",
+      "direction": "One at a time: gently flatten a dough round. Roll it into itself with tension, creating a tight cylinder. Pinch the seam closed. Roll into a tapered torpedo shape — fatter in the middle, pointed at both ends, about 15-18 cm long. Flour the surface after seaming. Place seam-side UP on a well-floured baker's couche or linen towel, folding the cloth between rolls for support.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -551,7 +551,7 @@
       "exit_condition": "5 torpedo-shaped rolls with tapered ends, seam-up on floured couche, cloth folded between each for support",
       "notes": [
         {
-          "text": "Birote shape is NOT a baguette \u2014 it's shorter (15-18 cm / 6-7 in), fatter in the middle, with tapered ends like a football or submarine.",
+          "text": "Birote shape is NOT a baguette — it's shorter (15-18 cm / 6-7 in), fatter in the middle, with tapered ends like a football or submarine.",
           "critical": false,
           "source": "agent"
         },
@@ -570,10 +570,10 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Poke test: lightly flour a finger, press gently into dough \u2014 it slowly springs back about halfway. If it springs back quickly, proof longer. If it stays indented, it's over-proofed.",
+      "exit_condition": "Poke test: lightly flour a finger, press gently into dough — it slowly springs back about halfway. If it springs back quickly, proof longer. If it stays indented, it's over-proofed.",
       "notes": [
         {
-          "text": "Start preheating the oven 30 minutes before the rolls are ready \u2014 the baking steel and lava rocks need time to fully heat.",
+          "text": "Start preheating the oven 30 minutes before the rolls are ready — the baking steel and lava rocks need time to fully heat.",
           "critical": true,
           "source": "agent"
         }
@@ -582,15 +582,15 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven and Steam Setup",
-      "direction": "Place the baking steel on the upper-middle rack. Place the dutch oven (V3) with lid on the same rack or one below. Preheat to 450\u00b0F (230\u00b0C) for at least 30 minutes.",
+      "direction": "Place the baking steel on the upper-middle rack. Place the dutch oven (V3) with lid on the same rack or one below. Preheat to 450°F (230°C) for at least 30 minutes.",
       "duration_min": 30,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven at 450\u00b0F (230\u00b0C) for at least 30 minutes, baking steel and dutch oven fully preheated",
+      "exit_condition": "Oven at 450°F (230°C) for at least 30 minutes, baking steel and dutch oven fully preheated",
       "notes": [
         {
-          "text": "The dutch oven traps steam from the dough itself \u2014 no boiling water or wet towels needed. Preheat it with the lid on so it's ripping hot when you load the rolls.",
+          "text": "The dutch oven traps steam from the dough itself — no boiling water or wet towels needed. Preheat it with the lid on so it's ripping hot when you load the rolls.",
           "critical": false,
           "source": "agent"
         },
@@ -612,7 +612,7 @@
       "exit_condition": "First batch (2-3 rolls) scored, sprayed, and loaded into dutch oven with lid on. Remaining rolls covered and waiting.",
       "notes": [
         {
-          "text": "Spanish-language sources say score transversally (across, perpendicular to length). English sources say lengthwise. Both patterns exist on authentic birotes \u2014 try both and see which opens better.",
+          "text": "Spanish-language sources say score transversally (across, perpendicular to length). English sources say lengthwise. Both patterns exist on authentic birotes — try both and see which opens better.",
           "critical": false,
           "source": "agent"
         },
@@ -631,8 +631,8 @@
     },
     {
       "id": "STEAM_REST",
-      "title": "Steam Phase \u2014 Lid On",
-      "direction": "With the dutch oven lid on, bake at 450\u00b0F (230\u00b0C) for 20 minutes. The lid traps moisture from the dough, creating the steam environment needed for oven spring and crust development.",
+      "title": "Steam Phase — Lid On",
+      "direction": "With the dutch oven lid on, bake at 450°F (230°C) for 20 minutes. The lid traps moisture from the dough, creating the steam environment needed for oven spring and crust development.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
@@ -640,12 +640,12 @@
       "exit_condition": "20 minutes elapsed with lid on, rolls should show significant oven spring when you peek",
       "notes": [
         {
-          "text": "Do NOT open the lid during this phase \u2014 you'll release all the trapped steam. Trust the process.",
+          "text": "Do NOT open the lid during this phase — you'll release all the trapped steam. Trust the process.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Sheet pan alternative: if baking all 5 rolls on the steel at once, pour 1-2 cups boiling water into the preheated sheet pan below. For gas ovens, turn the oven OFF for this 20-minute phase \u2014 gas ovens vent steam through combustion exhaust. This 'oven off' method was the breakthrough Stellanspice discovered after 3 years of failed birote attempts.",
+          "text": "Sheet pan alternative: if baking all 5 rolls on the steel at once, pour 1-2 cups boiling water into the preheated sheet pan below. For gas ovens, turn the oven OFF for this 20-minute phase — gas ovens vent steam through combustion exhaust. This 'oven off' method was the breakthrough Stellanspice discovered after 3 years of failed birote attempts.",
           "critical": false,
           "source": "agent"
         }
@@ -654,27 +654,27 @@
     {
       "id": "FINISH_BAKE",
       "title": "Bake to Dark Crust",
-      "direction": "Remove the dutch oven lid. If rolls are touching, spread them apart. Reduce oven to 425\u00b0F (220\u00b0C). Bake uncovered for 15-20 minutes until deep golden-brown. For the last 3-5 minutes, transfer rolls directly to the baking steel on the highest rack position \u2014 this develops the traditional dark, hi-bake crust that defines Guadalajara birotes. Repeat SCORE_AND_LOAD through FINISH_BAKE for the second batch.",
+      "direction": "Remove the dutch oven lid. If rolls are touching, spread them apart. Reduce oven to 425°F (220°C). Bake uncovered for 15-20 minutes until deep golden-brown. For the last 3-5 minutes, transfer rolls directly to the baking steel on the highest rack position — this develops the traditional dark, hi-bake crust that defines Guadalajara birotes. Repeat SCORE_AND_LOAD through FINISH_BAKE for the second batch.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Rolls are deep golden-brown to dark brown, internal temperature reaches 205\u00b0F (96\u00b0C), hollow sound when tapped on bottom",
+      "exit_condition": "Rolls are deep golden-brown to dark brown, internal temperature reaches 205°F (96°C), hollow sound when tapped on bottom",
       "notes": [
         {
-          "text": "Don't pull early because they look dark \u2014 the hard, dark crust is the whole point. This bread needs to survive being drowned in salsa. Pale = undercooked for birote.",
+          "text": "Don't pull early because they look dark — the hard, dark crust is the whole point. This bread needs to survive being drowned in salsa. Pale = undercooked for birote.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Professional Guadalajara bakeries bake at 475-500\u00b0F (250\u00b0C) for 15 minutes. Our lower temp with longer time compensates for sea-level baking conditions.",
+          "text": "Professional Guadalajara bakeries bake at 475-500°F (250°C) for 15 minutes. Our lower temp with longer time compensates for sea-level baking conditions.",
           "critical": false,
           "source": "agent"
         }
       ],
       "reminders": [
         {
-          "prompt": "Record internal temperature (target 205\u00b0F / 96\u00b0C)",
+          "prompt": "Record internal temperature (target 205°F / 96°C)",
           "type": "measurement"
         },
         {
@@ -686,7 +686,7 @@
     {
       "id": "COOL_ON_RACK",
       "title": "Cool on Rack",
-      "direction": "Transfer rolls to a wire rack. Let cool for at least 20 minutes before eating \u2014 the crumb is still setting as it cools.",
+      "direction": "Transfer rolls to a wire rack. Let cool for at least 20 minutes before eating — the crumb is still setting as it cools.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
@@ -694,7 +694,7 @@
       "exit_condition": "Rolls have cooled at least 20 minutes, crust should be audibly crackly when tapped",
       "notes": [
         {
-          "text": "Store in a paper bag with small holes punched throughout \u2014 this maintains crustiness. Never plastic. Best eaten same-day, especially for tortas ahogadas.",
+          "text": "Store in a paper bag with small holes punched throughout — this maintains crustiness. Never plastic. Best eaten same-day, especially for tortas ahogadas.",
           "critical": false,
           "source": "agent"
         },
@@ -704,7 +704,7 @@
           "source": "agent"
         },
         {
-          "text": "Freeze extras in a zip-lock bag. Reheat from frozen at 400\u00b0F (200\u00b0C) for 8-10 minutes to revive the crust.",
+          "text": "Freeze extras in a zip-lock bag. Reheat from frozen at 400°F (200°C) for 8-10 minutes to revive the crust.",
           "critical": false,
           "source": "agent"
         }
@@ -719,7 +719,7 @@
     "totals": {
       "calories": 1986.4,
       "protein": 57.7,
-      "totalFat": 8.0,
+      "totalFat": 8,
       "saturatedFat": 1.7,
       "carbohydrates": 407.3,
       "sugar": 9.7,
@@ -762,7 +762,7 @@
         "saturatedFat": 0.7,
         "carbohydrates": 366.3,
         "sugar": 1.3,
-        "fiber": 13.0,
+        "fiber": 13,
         "sodium": 9.6
       },
       {
@@ -812,12 +812,12 @@
         "ingredientName": "Sugar",
         "amount": 8,
         "fdcId": 169655,
-        "calories": 31.0,
+        "calories": 31,
         "protein": 0,
         "totalFat": 0,
         "saturatedFat": 0,
-        "carbohydrates": 8.0,
-        "sugar": 8.0,
+        "carbohydrates": 8,
+        "sugar": 8,
         "fiber": 0,
         "sodium": 0.1
       },
@@ -867,7 +867,7 @@
         "type": "original"
       },
       {
-        "name": "The Fresh Loaf \u2014 Birotes Salados Thread",
+        "name": "The Fresh Loaf — Birotes Salados Thread",
         "url": "https://www.thefreshloaf.com/node/64286/birotes-salados",
         "type": "adapted"
       },
@@ -877,7 +877,7 @@
         "type": "original"
       },
       {
-        "name": "Vice/Munchies \u2014 Primera Taza Profile",
+        "name": "Vice/Munchies — Primera Taza Profile",
         "url": "https://www.vice.com/en_us/article/mgkgeb/meet-the-mexican-sandwich-that-has-brought-fully-grown-men-to-tears",
         "type": "original"
       }
@@ -904,7 +904,7 @@
       {
         "name": "Dark hi-bake finish",
         "sourcedFrom": "Bread Club 20, multiple GDL sources",
-        "rationale": "Move to top rack for final 3-5 minutes. Authentic birotes are darker than typical sourdough \u2014 the thick, hard crust must survive sauce submersion.",
+        "rationale": "Move to top rack for final 3-5 minutes. Authentic birotes are darker than typical sourdough — the thick, hard crust must survive sauce submersion.",
         "confidence": "high"
       },
       {
@@ -928,7 +928,7 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "400\u00b0F (200\u00b0C), 5-8 min. Spritz with water before reheating to revive the shattering crust. From frozen: 8-10 min at 400\u00b0F (200\u00b0C).",
+        "detail": "400°F (200°C), 5-8 min. Spritz with water before reheating to revive the shattering crust. From frozen: 8-10 min at 400°F (200°C).",
         "source": "agent"
       },
       {
@@ -939,7 +939,7 @@
       },
       {
         "method": "Storage",
-        "detail": "Paper bag with pin holes punched throughout \u2014 never plastic. Best same-day. Freeze in zip-lock for up to 1 month. Austin humidity will soften the crust faster than in Guadalajara.",
+        "detail": "Paper bag with pin holes punched throughout — never plastic. Best same-day. Freeze in zip-lock for up to 1 month. Austin humidity will soften the crust faster than in Guadalajara.",
         "source": "agent"
       }
     ]
@@ -948,20 +948,20 @@
     {
       "date": "2026-03-05",
       "version": "v1.1.0",
-      "summary": "First bake of birote salado \u2014 made 4 rolls instead of 5, shaped more like baguettes than torpedoes due to shaping difficulty. Surprisingly good results with strong sour tang that lingered ~10 minutes after eating.",
+      "summary": "First bake of birote salado — made 4 rolls instead of 5, shaped more like baguettes than torpedoes due to shaping difficulty. Surprisingly good results with strong sour tang that lingered ~10 minutes after eating.",
       "notes": [
         "Levain cold fermented overnight in fridge, pulled out in the morning",
         "Used Modelo Especial for the beer",
-        "Used Zero Water filtered water \u2014 no 50/50 distilled dilution, never had issues with water",
-        "Dough temp after mixing: 74.3\u00b0F",
-        "Coil fold 1 temp: 75.6\u00b0F",
-        "Coil fold 2 temp: 78.3\u00b0F",
-        "Coil fold 3 temp: 78.6\u00b0F",
-        "Coil fold 4 temp: 79.4\u00b0F",
-        "Divided into 4 rolls (~230g each) instead of 5 \u2014 didn't want to run a full dutch oven steam/cook cycle for one single roll, can only fit 2 at a time",
-        "Had trouble getting the torpedo shape \u2014 ended up more baguette-shaped, not uniform yet",
+        "Used Zero Water filtered water — no 50/50 distilled dilution, never had issues with water",
+        "Dough temp after mixing: 74.3°F",
+        "Coil fold 1 temp: 75.6°F",
+        "Coil fold 2 temp: 78.3°F",
+        "Coil fold 3 temp: 78.6°F",
+        "Coil fold 4 temp: 79.4°F",
+        "Divided into 4 rolls (~230g each) instead of 5 — didn't want to run a full dutch oven steam/cook cycle for one single roll, can only fit 2 at a time",
+        "Had trouble getting the torpedo shape — ended up more baguette-shaped, not uniform yet",
         "Forgot to log pre-shape timing and shaping details",
-        "Baked in dutch oven in batches of 2. Set uncovered phase timer to 16 min to check at 15. Very good results \u2014 strong sour tang that lingered ~10 minutes after eating. Ate the bread by itself."
+        "Baked in dutch oven in batches of 2. Set uncovered phase timer to 16 min to check at 15. Very good results — strong sour tang that lingered ~10 minutes after eating. Ate the bread by itself."
       ],
       "photos": [
         {
@@ -979,7 +979,7 @@
         {
           "src": "/images/birote-salado/2026-03-05/dipping-in-sauce-800w.webp",
           "thumb": "/images/birote-salado/2026-03-05/dipping-in-sauce-400w.webp",
-          "alt": "Birote roll being dipped into a small bowl of birria consomm\u00e9 on a white plate. Crust shows golden-brown color with flour dusting.",
+          "alt": "Birote roll being dipped into a small bowl of birria consommé on a white plate. Crust shows golden-brown color with flour dusting.",
           "usage": "process"
         },
         {
@@ -991,7 +991,7 @@
       ],
       "next_time": [
         {
-          "text": "Find better shaping instructions \u2014 ideally a YouTube video with timestamped torpedo technique"
+          "text": "Find better shaping instructions — ideally a YouTube video with timestamped torpedo technique"
         },
         {
           "text": "Work on getting more uniform, professional-looking shape"
@@ -1105,17 +1105,17 @@
     {
       "date": "2026-03-07",
       "version": "v1.1.0",
-      "summary": "Second birote bake \u2014 levain cold-fermented overnight, made 4 rolls at ~235g each. Baked all 4 in dutch oven at once due to time constraints. Gave all rolls away before tasting or seeing the crumb.",
+      "summary": "Second birote bake — levain cold-fermented overnight, made 4 rolls at ~235g each. Baked all 4 in dutch oven at once due to time constraints. Gave all rolls away before tasting or seeing the crumb.",
       "notes": [
         "Built levain evening of March 5, into fridge by ~8:15 PM for overnight cold ferment",
         "Mixed dough next day (Mar 6) after ~18 hours cold ferment",
-        "Dough temp after mixing: 71.2\u00b0F",
-        "Dough temp at salt stage: 76\u00b0F \u2014 dough felt a bit watery",
-        "Coil fold 2 temp: 77.5\u00b0F",
-        "Coil fold 3 temp: 78.6\u00b0F",
-        "Coil fold 4 temp: 80.6\u00b0F",
+        "Dough temp after mixing: 71.2°F",
+        "Dough temp at salt stage: 76°F — dough felt a bit watery",
+        "Coil fold 2 temp: 77.5°F",
+        "Coil fold 3 temp: 78.6°F",
+        "Coil fold 4 temp: 80.6°F",
         "940g total dough, divided into 4 rolls (~235g each)",
-        "All 4 rolls placed in dutch oven at once due to time constraints \u2014 single batch instead of two batches of 2",
+        "All 4 rolls placed in dutch oven at once due to time constraints — single batch instead of two batches of 2",
         "Baked ~20 minutes with lid on, then removed lid to finish",
         "Starting at 9 AM wasn't early enough to finish by 2:30 PM target",
         "Gave all rolls away without tasting or seeing crumb"
@@ -1124,7 +1124,7 @@
         {
           "src": "/images/birote-salado/2026-03-07/mise-en-place-800w.webp",
           "thumb": "/images/birote-salado/2026-03-07/mise-en-place-400w.webp",
-          "alt": "Overhead mise en place on granite counter \u2014 glass bowl with tan levain, bowl of AP flour, small dish of salt, large empty glass mixing bowl with red lid. Scale and bench scraper visible.",
+          "alt": "Overhead mise en place on granite counter — glass bowl with tan levain, bowl of AP flour, small dish of salt, large empty glass mixing bowl with red lid. Scale and bench scraper visible.",
           "usage": "process"
         },
         {
@@ -1136,13 +1136,13 @@
       ],
       "next_time": [
         {
-          "text": "Reserve ~25g water from the mix and add it at the salt stage instead \u2014 dough was too watery"
+          "text": "Reserve ~25g water from the mix and add it at the salt stage instead — dough was too watery"
         },
         {
           "text": "Start earlier than 9 AM for a same-day bake to hit afternoon deadlines"
         },
         {
-          "text": "Still need to try/taste one \u2014 no crumb or flavor assessment this bake"
+          "text": "Still need to try/taste one — no crumb or flavor assessment this bake"
         }
       ],
       "cost": {
@@ -1243,7 +1243,7 @@
       "weather": {
         "location": "Austin, TX",
         "date": "2026-03-07",
-        "temp_high_f": 77.0,
+        "temp_high_f": 77,
         "temp_low_f": 55.2,
         "humidity_avg_percent": 85,
         "condition": "Rain",
@@ -1261,10 +1261,10 @@
         "ingredientId": "starter",
         "name": "Active Sourdough Starter",
         "sourceType": "rate",
-        "sourceName": "Home-maintained starter (free)",
+        "sourceName": "Home-maintained starter",
         "amount": 80,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "ap_flour",
@@ -1324,10 +1324,10 @@
         "ingredientId": "water",
         "name": "Filtered Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 250,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       }
     ]
   }

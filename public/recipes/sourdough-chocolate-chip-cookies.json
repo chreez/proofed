@@ -246,7 +246,7 @@
           "source": "agent"
         },
         {
-          "text": "Pull off heat slightly early \u2014 residual heat continues browning. If you smell burnt or acrid notes, start over with fresh butter.",
+          "text": "Pull off heat slightly early — residual heat continues browning. If you smell burnt or acrid notes, start over with fresh butter.",
           "critical": true,
           "source": "agent"
         }
@@ -260,7 +260,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Brown butter is opaque, creamy, and holds its shape \u2014 not liquid, not rock-hard",
+      "exit_condition": "Brown butter is opaque, creamy, and holds its shape — not liquid, not rock-hard",
       "notes": [
         {
           "text": "This step is critical. Warm brown butter melts sugar on contact, creating greasy dough that spreads too thin in the oven. The butter should feel like softened butter when ready.",
@@ -293,7 +293,7 @@
       "exit_condition": "Butter and sugars are evenly combined with a wet, sandy appearance",
       "notes": [
         {
-          "text": "No stand mixer needed. Since the brown butter is already pre-melted (just chilled), there is no creaming step \u2014 you are simply combining, not aerating.",
+          "text": "No stand mixer needed. Since the brown butter is already pre-melted (just chilled), there is no creaming step — you are simply combining, not aerating.",
           "critical": false,
           "source": "agent"
         }
@@ -379,7 +379,7 @@
       "exit_condition": "Dry ingredients evenly combined with no visible clumps",
       "notes": [
         {
-          "text": "The AP + bread flour blend adds chewiness from bread flour's higher protein while keeping cookies tender from the AP flour. Most sourdough CCC blogs use AP only \u2014 the blend is our differentiator.",
+          "text": "The AP + bread flour blend adds chewiness from bread flour's higher protein while keeping cookies tender from the AP flour. Most sourdough CCC blogs use AP only — the blend is our differentiator.",
           "critical": false,
           "source": "agent"
         }
@@ -418,7 +418,7 @@
       "exit_condition": "Chocolate evenly distributed throughout dough; reserved chocolate set aside",
       "notes": [
         {
-          "text": "Hand-chopped bar chocolate creates irregular pieces \u2014 thin shavings melt into pools while larger chunks stay semi-intact. This gives different chocolate experiences in every bite.",
+          "text": "Hand-chopped bar chocolate creates irregular pieces — thin shavings melt into pools while larger chunks stay semi-intact. This gives different chocolate experiences in every bite.",
           "critical": false,
           "source": "agent"
         }
@@ -449,12 +449,12 @@
     {
       "id": "preheat-oven",
       "title": "Preheat Oven",
-      "direction": "Position rack in upper third of oven, about 15cm from the top heating element. Preheat to 350\u00b0F (175\u00b0C). Line baking sheets with parchment paper.",
+      "direction": "Position rack in upper third of oven, about 15cm from the top heating element. Preheat to 350°F (175°C). Line baking sheets with parchment paper.",
       "duration_min": 15,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven reaches 350\u00b0F (175\u00b0C) and baking sheets are lined with parchment",
+      "exit_condition": "Oven reaches 350°F (175°C) and baking sheets are lined with parchment",
       "notes": null
     },
     {
@@ -473,12 +473,12 @@
       "exit_condition": "Dough portioned into uniform 57g balls with chocolate pressed into tops; maximum 6 per sheet with 8cm spacing",
       "notes": [
         {
-          "text": "Pressing chocolate into the surface creates visible chocolate puddles on the baked cookie exterior \u2014 a signature bakery technique from Caroline Schiff.",
+          "text": "Pressing chocolate into the surface creates visible chocolate puddles on the baked cookie exterior — a signature bakery technique from Caroline Schiff.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Freeze extra dough balls on a sheet, then transfer to a zip bag. Bake from frozen \u2014 add 2-3 minutes to bake time. Frozen dough keeps up to 2 months.",
+          "text": "Freeze extra dough balls on a sheet, then transfer to a zip bag. Bake from frozen — add 2-3 minutes to bake time. Frozen dough keeps up to 2 months.",
           "critical": false,
           "source": "agent"
         }
@@ -495,7 +495,7 @@
       "exit_condition": "Edges golden brown, centers look slightly underbaked and puffy; cookies still soft when gently pressed",
       "notes": [
         {
-          "text": "Cookies firm up significantly as they cool. Pull them when they still look underdone in the center \u2014 they continue baking on the hot sheet.",
+          "text": "Cookies firm up significantly as they cool. Pull them when they still look underdone in the center — they continue baking on the hot sheet.",
           "critical": true,
           "source": "agent"
         },
@@ -540,9 +540,9 @@
     },
     "perServing": {
       "calories": 265.2,
-      "protein": 3.0,
+      "protein": 3,
       "totalFat": 13.3,
-      "saturatedFat": 8.0,
+      "saturatedFat": 8,
       "carbohydrates": 35.8,
       "sugar": 21.4,
       "fiber": 1.3,
@@ -555,12 +555,12 @@
         "amount": 225,
         "fdcId": 173430,
         "calories": 1613,
-        "protein": 2.0,
+        "protein": 2,
         "totalFat": 182.5,
         "saturatedFat": 115.7,
         "carbohydrates": 0.2,
         "sugar": 0.2,
-        "fiber": 0.0,
+        "fiber": 0,
         "sodium": 25
       },
       {
@@ -569,12 +569,12 @@
         "amount": 210,
         "fdcId": 168833,
         "calories": 792,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
         "carbohydrates": 204.4,
-        "sugar": 202.0,
-        "fiber": 0.0,
+        "sugar": 202,
+        "fiber": 0,
         "sodium": 82
       },
       {
@@ -583,12 +583,12 @@
         "amount": 96,
         "fdcId": 169655,
         "calories": 372,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
-        "carbohydrates": 96.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 96,
         "sugar": 95.9,
-        "fiber": 0.0,
+        "fiber": 0,
         "sodium": 0
       },
       {
@@ -602,7 +602,7 @@
         "saturatedFat": 5.2,
         "carbohydrates": 1.9,
         "sugar": 0.3,
-        "fiber": 0.0,
+        "fiber": 0,
         "sodium": 26
       },
       {
@@ -625,12 +625,12 @@
         "amount": 13,
         "fdcId": 173471,
         "calories": 37,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
         "carbohydrates": 1.6,
         "sugar": 1.6,
-        "fiber": 0.0,
+        "fiber": 0,
         "sodium": 1
       },
       {
@@ -642,7 +642,7 @@
         "protein": 20.8,
         "totalFat": 1.9,
         "saturatedFat": 0.3,
-        "carbohydrates": 153.0,
+        "carbohydrates": 153,
         "sugar": 0.5,
         "fiber": 4.8,
         "sodium": 2
@@ -654,7 +654,7 @@
         "fdcId": 168896,
         "calories": 433,
         "protein": 14.4,
-        "totalFat": 2.0,
+        "totalFat": 2,
         "saturatedFat": 0.3,
         "carbohydrates": 87.1,
         "sugar": 0.4,
@@ -667,12 +667,12 @@
         "amount": 5,
         "fdcId": 175040,
         "calories": 0,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
-        "carbohydrates": 0.0,
-        "sugar": 0.0,
-        "fiber": 0.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
         "sodium": 1368
       },
       {
@@ -681,12 +681,12 @@
         "amount": 2,
         "fdcId": 172803,
         "calories": 1,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
         "carbohydrates": 0.6,
-        "sugar": 0.0,
-        "fiber": 0.0,
+        "sugar": 0,
+        "fiber": 0,
         "sodium": 212
       },
       {
@@ -695,12 +695,12 @@
         "amount": 6,
         "fdcId": 173468,
         "calories": 0,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
-        "carbohydrates": 0.0,
-        "sugar": 0.0,
-        "fiber": 0.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
         "sodium": 2325
       },
       {
@@ -710,7 +710,7 @@
         "fdcId": 167976,
         "calories": 1677,
         "protein": 14.7,
-        "totalFat": 105.0,
+        "totalFat": 105,
         "saturatedFat": 62.1,
         "carbohydrates": 220.9,
         "sugar": 190.8,
@@ -723,12 +723,12 @@
         "amount": 2,
         "fdcId": 173468,
         "calories": 0,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
-        "carbohydrates": 0.0,
-        "sugar": 0.0,
-        "fiber": 0.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
         "sodium": 776
       }
     ]
@@ -742,7 +742,7 @@
       },
       {
         "method": "Oven",
-        "detail": "350\u00b0F (175\u00b0C) for 3-4 minutes on a baking sheet. Refreshes the crisp edges without over-softening.",
+        "detail": "350°F (175°C) for 3-4 minutes on a baking sheet. Refreshes the crisp edges without over-softening.",
         "source": "agent"
       }
     ]
@@ -784,7 +784,7 @@
         "author": "Emilie Raffa"
       },
       {
-        "name": "Nik Sharma \u2014 Cookie Dough Rest Science",
+        "name": "Nik Sharma — Cookie Dough Rest Science",
         "url": "https://niksharma.substack.com/p/what-does-cookie-dough-resting-do",
         "type": "adapted",
         "author": "Nik Sharma"
@@ -823,7 +823,7 @@
       {
         "name": "Hand mix (no stand mixer)",
         "sourcedFrom": "4/7 agents",
-        "rationale": "Brown butter is already melted \u2014 no creaming step needed. Spatula gives better gluten control.",
+        "rationale": "Brown butter is already melted — no creaming step needed. Spatula gives better gluten control.",
         "confidence": "medium"
       },
       {
@@ -883,10 +883,10 @@
         "ingredientId": "sourdough-discard",
         "name": "Sourdough Discard (100% hydration)",
         "sourceType": "rate",
-        "sourceName": "Home-maintained starter discard (free)",
+        "sourceName": "Home-maintained starter discard",
         "amount": 150,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "vanilla",

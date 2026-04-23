@@ -8,7 +8,7 @@
     },
     "yields": "One 23cm round focaccia (8-10 slices)",
     "total_time": "~2 hrs (30 min active, 1.5 hrs passive)",
-    "description": "A savory grain-free focaccia for friends on a candida diet. Blanched almond flour and coconut flour replace wheat, psyllium husk builds structure, and roasted garlic with fresh rosemary carry the flavor. Not diet food \u2014 real bread with real character."
+    "description": "A savory grain-free focaccia for friends on a candida diet. Blanched almond flour and coconut flour replace wheat, psyllium husk builds structure, and roasted garlic with fresh rosemary carry the flavor. Not diet food — real bread with real character."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -30,19 +30,19 @@
     {
       "version": "v1.0.0",
       "date": "2026-03-02",
-      "summary": "Initial recipe from candida diet research synthesis \u2014 almond/coconut flour with psyllium, roasted garlic, rosemary, two-temperature bake"
+      "summary": "Initial recipe from candida diet research synthesis — almond/coconut flour with psyllium, roasted garlic, rosemary, two-temperature bake"
     }
   ],
   "vessels": [
     {
       "id": "V1",
       "name": "Large Mixing Bowl",
-      "reuse": "Dry mix \u2192 combine with wet"
+      "reuse": "Dry mix → combine with wet"
     },
     {
       "id": "V2",
       "name": "Medium Bowl",
-      "reuse": "Psyllium hydration \u2192 wet mix"
+      "reuse": "Psyllium hydration → wet mix"
     },
     {
       "id": "V3",
@@ -88,7 +88,7 @@
             ],
             "sourcedFrom": "Flavor optimization agent consensus",
             "confidence": "high",
-            "rationale": "Roasted garlic is antifungal and mellows into sweet, buttery cloves \u2014 masks any eggy flavor"
+            "rationale": "Roasted garlic is antifungal and mellows into sweet, buttery cloves — masks any eggy flavor"
           },
           {
             "id": "olive-oil-roast",
@@ -129,7 +129,7 @@
             "breakdown": null,
             "sourcedFrom": "All 4 research agents",
             "confidence": "high",
-            "rationale": "5:1 ratio with coconut flour \u2014 universal in grain-free bread science"
+            "rationale": "5:1 ratio with coconut flour — universal in grain-free bread science"
           },
           {
             "id": "coconut-flour",
@@ -159,7 +159,7 @@
             "breakdown": null,
             "sourcedFrom": "Food science agent",
             "confidence": "high",
-            "rationale": "Reacts with ACV for instant lift \u2014 never exceed 1/4 tsp to avoid soapy taste"
+            "rationale": "Reacts with ACV for instant lift — never exceed 1/4 tsp to avoid soapy taste"
           },
           {
             "id": "fine-sea-salt",
@@ -188,7 +188,7 @@
             ],
             "sourcedFrom": "Flavor optimization agent",
             "confidence": "high",
-            "rationale": "Antimicrobial herb \u2014 candida-safe and flavor-forward"
+            "rationale": "Antimicrobial herb — candida-safe and flavor-forward"
           },
           {
             "id": "psyllium",
@@ -196,7 +196,7 @@
             "total": 25,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Food science agent \u2014 key finding",
+            "sourcedFrom": "Food science agent — key finding",
             "confidence": "high",
             "rationale": "Forms gel network mimicking gluten. Increases gas-holding from 84% to 98%. Must be POWDER not whole husks"
           },
@@ -257,7 +257,7 @@
             "breakdown": null,
             "sourcedFrom": "Flavor optimization agent",
             "confidence": "high",
-            "rationale": "Nutty, rich, high smoke point, essentially zero lactose \u2014 better flavor than coconut oil"
+            "rationale": "Nutty, rich, high smoke point, essentially zero lactose — better flavor than coconut oil"
           },
           {
             "id": "acv",
@@ -316,7 +316,7 @@
             "breakdown": null,
             "sourcedFrom": "Flavor optimization agent",
             "confidence": "high",
-            "rationale": "Generous EVOO is what makes focaccia \u2014 fruity, Mediterranean character"
+            "rationale": "Generous EVOO is what makes focaccia — fruity, Mediterranean character"
           },
           {
             "id": "flaky-salt",
@@ -336,7 +336,7 @@
             "breakdown": null,
             "sourcedFrom": "Flavor optimization agent",
             "confidence": "medium",
-            "rationale": "Optional finishing touch \u2014 to taste"
+            "rationale": "Optional finishing touch — to taste"
           }
         ]
       },
@@ -362,12 +362,12 @@
     {
       "id": "preheat-roast",
       "title": "Preheat Oven for Garlic",
-      "direction": "Preheat oven to 400\u00b0F (205\u00b0C).",
+      "direction": "Preheat oven to 400°F (205°C).",
       "duration_min": null,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Oven reaches 400\u00b0F (205\u00b0C)",
+      "exit_condition": "Oven reaches 400°F (205°C)",
       "notes": null
     },
     {
@@ -398,10 +398,10 @@
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Cloves are golden, soft, and squeeze out easily \u2014 sweet aroma, no raw bite",
+      "exit_condition": "Cloves are golden, soft, and squeeze out easily — sweet aroma, no raw bite",
       "notes": [
         {
-          "text": "Start other prep during this time \u2014 hydrate psyllium, mix dry ingredients, separate eggs",
+          "text": "Start other prep during this time — hydrate psyllium, mix dry ingredients, separate eggs",
           "critical": false,
           "source": "agent"
         }
@@ -430,7 +430,7 @@
           "amount": "120g"
         }
       ],
-      "exit_condition": "Thick, cohesive gel \u2014 holds shape when scooped, no dry powder visible",
+      "exit_condition": "Thick, cohesive gel — holds shape when scooped, no dry powder visible",
       "notes": [
         {
           "text": "Must use psyllium husk POWDER, not whole husks. If using whole husks, use half the amount.",
@@ -438,7 +438,7 @@
           "source": "agent"
         },
         {
-          "text": "This gel is your gluten substitute \u2014 it forms the elastic network that traps gas from leavening.",
+          "text": "This gel is your gluten substitute — it forms the elastic network that traps gas from leavening.",
           "critical": false,
           "source": "agent"
         }
@@ -537,7 +537,7 @@
     {
       "id": "combine-batter",
       "title": "Combine Wet and Dry",
-      "direction": "Pour wet mixture into dry ingredients. Stir with rubber spatula until just combined \u2014 do not overmix.",
+      "direction": "Pour wet mixture into dry ingredients. Stir with rubber spatula until just combined — do not overmix.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -585,7 +585,7 @@
           "amount": "0.5g"
         }
       ],
-      "exit_condition": "Stiff peaks \u2014 whites hold their shape when whisk is lifted, tips point straight up",
+      "exit_condition": "Stiff peaks — whites hold their shape when whisk is lifted, tips point straight up",
       "notes": [
         {
           "text": "True stiff peaks are critical for lift. Under-whipped whites = dense bread.",
@@ -598,7 +598,7 @@
     {
       "id": "fold-whites",
       "title": "Fold in Whites (Two Additions)",
-      "direction": "First addition: scoop half the whipped whites into the batter. Fold aggressively to lighten the mixture. Second addition: gently fold in remaining whites \u2014 cut down through center, sweep up sides. Stop when no white streaks remain.",
+      "direction": "First addition: scoop half the whipped whites into the batter. Fold aggressively to lighten the mixture. Second addition: gently fold in remaining whites — cut down through center, sweep up sides. Stop when no white streaks remain.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -666,7 +666,7 @@
       "exit_condition": "Dimples pressed across entire surface, garlic and rosemary nestled in, generous oil pooling in dimples, salt and pepper visible",
       "notes": [
         {
-          "text": "Be generous with the EVOO \u2014 it pools in the dimples and fries the surface during baking, creating the signature focaccia crust.",
+          "text": "Be generous with the EVOO — it pools in the dimples and fries the surface during baking, creating the signature focaccia crust.",
           "critical": false,
           "source": "agent"
         }
@@ -675,7 +675,7 @@
     {
       "id": "bake-high",
       "title": "Bake at High Temperature",
-      "direction": "Place pan in oven at 375\u00b0F (190\u00b0C). Bake 10 minutes to set the crust.",
+      "direction": "Place pan in oven at 375°F (190°C). Bake 10 minutes to set the crust.",
       "duration_min": 10,
       "timer": true,
       "parallel": false,
@@ -692,12 +692,12 @@
     {
       "id": "bake-low",
       "title": "Bake at Reduced Temperature",
-      "direction": "Reduce oven to 350\u00b0F (175\u00b0C). Continue baking 25-30 minutes until golden brown and internal temperature reaches 200-205\u00b0F (93-96\u00b0C).",
+      "direction": "Reduce oven to 350°F (175°C). Continue baking 25-30 minutes until golden brown and internal temperature reaches 200-205°F (93-96°C).",
       "duration_min": 28,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Golden brown top, internal temperature 200-205\u00b0F (93-96\u00b0C), edges pulling from pan",
+      "exit_condition": "Golden brown top, internal temperature 200-205°F (93-96°C), edges pulling from pan",
       "notes": null,
       "reminders": [
         {
@@ -720,12 +720,12 @@
     {
       "id": "cool-on-rack",
       "title": "Cool Completely on Rack",
-      "direction": "Remove focaccia from pan and transfer to wire rack. Cool COMPLETELY before slicing \u2014 minimum 1 hour, overnight is better.",
+      "direction": "Remove focaccia from pan and transfer to wire rack. Cool COMPLETELY before slicing — minimum 1 hour, overnight is better.",
       "duration_min": 60,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Focaccia is room temperature throughout \u2014 no warm spots when pressed. Structure is fully set.",
+      "exit_condition": "Focaccia is room temperature throughout — no warm spots when pressed. Structure is fully set.",
       "notes": [
         {
           "text": "Slicing while warm = gummy interior. The structure sets as it cools. This is non-negotiable.",
@@ -746,7 +746,7 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "350\u00b0F (175\u00b0C) for 5-7 minutes until warmed through and crust re-crisps",
+        "detail": "350°F (175°C) for 5-7 minutes until warmed through and crust re-crisps",
         "source": "agent",
         "reference": "candida-focaccia research synthesis"
       },
@@ -758,9 +758,9 @@
       },
       {
         "method": "From frozen",
-        "detail": "Toast slices directly from frozen \u2014 no thawing needed. 350\u00b0F (175\u00b0C) for 8-10 minutes or in a toaster",
+        "detail": "Toast slices directly from frozen — no thawing needed. 350°F (175°C) for 8-10 minutes or in a toaster",
         "source": "agent",
-        "reference": "Community consensus \u2014 slice before freezing, freeze on sheet pan, then bag"
+        "reference": "Community consensus — slice before freezing, freeze on sheet pan, then bag"
       }
     ]
   },
@@ -803,7 +803,7 @@
         "author": "Diet Doctor"
       },
       {
-        "name": "Jessica in the Kitchen \u2014 GF Focaccia",
+        "name": "Jessica in the Kitchen — GF Focaccia",
         "url": "https://jessicainthekitchen.com/gluten-free-focaccia-bread-garlic-rosemary-tomatoes/",
         "type": "inspired",
         "author": "Jessica in the Kitchen"
@@ -812,31 +812,31 @@
     "techniques": [
       {
         "name": "Psyllium husk pre-hydration",
-        "sourcedFrom": "Food science agent \u2014 10:1 warm water ratio, 5-min gel formation",
+        "sourcedFrom": "Food science agent — 10:1 warm water ratio, 5-min gel formation",
         "rationale": "Increases gas-holding capacity from 84% to 98.5%, boosts volume ~50%, reduces firmness 65-75%",
         "confidence": "high"
       },
       {
         "name": "Separated egg white whipping",
-        "sourcedFrom": "Food science + community agents \u2014 2 yolks + 4 whites",
+        "sourcedFrom": "Food science + community agents — 2 yolks + 4 whites",
         "rationale": "Reduces eggy flavor while maximizing mechanical leavening from whipped whites",
         "confidence": "high"
       },
       {
         "name": "Two-temperature bake",
-        "sourcedFrom": "Best recipes agent \u2014 375\u00b0F then 350\u00b0F",
+        "sourcedFrom": "Best recipes agent — 375°F then 350°F",
         "rationale": "High initial temp sets crust and triggers Maillard reaction; reduced temp finishes interior without over-browning",
         "confidence": "high"
       },
       {
         "name": "Dual leavening system",
-        "sourcedFrom": "Food science agent \u2014 chemical (baking powder + ACV/soda) + mechanical (whipped whites)",
+        "sourcedFrom": "Food science agent — chemical (baking powder + ACV/soda) + mechanical (whipped whites)",
         "rationale": "Chemical leavening provides initial lift; whipped whites provide structure and airiness",
         "confidence": "high"
       },
       {
         "name": "Complete cooling before slicing",
-        "sourcedFrom": "Community consensus \u2014 unanimous",
+        "sourcedFrom": "Community consensus — unanimous",
         "rationale": "Structure sets as it cools; slicing warm produces gummy interior. Minimum 1 hour, overnight ideal.",
         "confidence": "high"
       },
@@ -909,7 +909,7 @@
         "sourceName": "Hill Country Fare Baking Soda 16 oz ($0.89)",
         "amount": 1.5,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "fine-sea-salt",
@@ -942,10 +942,10 @@
         "ingredientId": "warm-water",
         "name": "Warm Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 120,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "eggs",

@@ -109,7 +109,7 @@
     {
       "id": "blend-tomatoes",
       "title": "Blend Tomatoes",
-      "direction": "Pour 794g Sclafani crushed tomatoes into the bowl. Rinse the can with 57g water and add to the bowl. Hand blend until broken down \u2014 some texture is good, don't fully puree.",
+      "direction": "Pour 794g Sclafani crushed tomatoes into the bowl. Rinse the can with 57g water and add to the bowl. Hand blend until broken down — some texture is good, don't fully puree.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -129,14 +129,14 @@
     {
       "id": "mix-seasonings",
       "title": "Mix Seasonings",
-      "direction": "Add 3g salt (\u00bd tsp), 4g sugar (1 tsp), 0.5g dried oregano (\u215b tsp scant \u2014 measure, then crush in your palm), 3g garlic (1 very small clove, pinky-fingernail size, pressed), and 1g fresh basil (1.5 very small leaves, very finely chopped). Stir everything together.",
+      "direction": "Add 3g salt (½ tsp), 4g sugar (1 tsp), 0.5g dried oregano (⅛ tsp scant — measure, then crush in your palm), 3g garlic (1 very small clove, pinky-fingernail size, pressed), and 1g fresh basil (1.5 very small leaves, very finely chopped). Stir everything together.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "Salt",
-          "amount": "3g (\u00bd tsp)"
+          "amount": "3g (½ tsp)"
         },
         {
           "name": "Sugar",
@@ -144,7 +144,7 @@
         },
         {
           "name": "Dried Oregano",
-          "amount": "0.5g (\u215b tsp, scant)"
+          "amount": "0.5g (⅛ tsp, scant)"
         },
         {
           "name": "Garlic",
@@ -180,7 +180,7 @@
       "protein": 12.9,
       "totalFat": 2.4,
       "saturatedFat": 0.3,
-      "carbohydrates": 63.0,
+      "carbohydrates": 63,
       "sugar": 38.1,
       "fiber": 15.1,
       "sodium": 2227
@@ -189,7 +189,7 @@
       "calories": 27.3,
       "protein": 1.3,
       "totalFat": 0.2,
-      "saturatedFat": 0.0,
+      "saturatedFat": 0,
       "carbohydrates": 6.3,
       "sugar": 3.8,
       "fiber": 1.5,
@@ -205,7 +205,7 @@
         "protein": 12.7,
         "totalFat": 2.4,
         "saturatedFat": 0.3,
-        "carbohydrates": 58.0,
+        "carbohydrates": 58,
         "sugar": 34.1,
         "fiber": 15.1,
         "sodium": 1048
@@ -216,12 +216,12 @@
         "amount": 4,
         "fdcId": 169655,
         "calories": 15,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
-        "carbohydrates": 4.0,
-        "sugar": 4.0,
-        "fiber": 0.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 4,
+        "sugar": 4,
+        "fiber": 0,
         "sodium": 0
       },
       {
@@ -231,11 +231,11 @@
         "fdcId": 169230,
         "calories": 4,
         "protein": 0.2,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
-        "carbohydrates": 1.0,
-        "sugar": 0.0,
-        "fiber": 0.0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 1,
+        "sugar": 0,
+        "fiber": 0,
         "sodium": 0
       },
       {
@@ -243,12 +243,12 @@
         "ingredientName": "Salt",
         "amount": 3,
         "calories": 0,
-        "protein": 0.0,
-        "totalFat": 0.0,
-        "saturatedFat": 0.0,
-        "carbohydrates": 0.0,
-        "sugar": 0.0,
-        "fiber": 0.0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
         "sodium": 1179
       }
     ]
@@ -257,7 +257,7 @@
     "methods": [
       {
         "method": "Use cold",
-        "detail": "Raw sauce \u2014 use straight from the fridge. The pizza oven does the cooking.",
+        "detail": "Raw sauce — use straight from the fridge. The pizza oven does the cooking.",
         "source": "agent"
       }
     ]
@@ -281,10 +281,10 @@
         "ingredientId": "water",
         "name": "Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 57,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "basil",

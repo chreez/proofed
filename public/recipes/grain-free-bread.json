@@ -30,19 +30,19 @@
     {
       "version": "v1.0.0",
       "date": "2026-03-02",
-      "summary": "Initial recipe from food science research synthesis \u2014 almond/coconut flour blend with psyllium husk binder, dual leavening (whipped whites + baking powder)"
+      "summary": "Initial recipe from food science research synthesis — almond/coconut flour blend with psyllium husk binder, dual leavening (whipped whites + baking powder)"
     }
   ],
   "vessels": [
     {
       "id": "V1",
       "name": "Large Mixing Bowl",
-      "reuse": "Dry mix \u2192 final batter"
+      "reuse": "Dry mix → final batter"
     },
     {
       "id": "V2",
       "name": "Medium Bowl",
-      "reuse": "Psyllium hydration \u2192 wet mix"
+      "reuse": "Psyllium hydration → wet mix"
     },
     {
       "id": "V3",
@@ -80,9 +80,9 @@
             "total": 168,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Cross-source consensus \u2014 3:1 almond-to-coconut ratio",
+            "sourcedFrom": "Cross-source consensus — 3:1 almond-to-coconut ratio",
             "confidence": "high",
-            "rationale": "Provides bulk and lighter texture. Must be blanched and superfine \u2014 almond meal is too coarse and heavy."
+            "rationale": "Provides bulk and lighter texture. Must be blanched and superfine — almond meal is too coarse and heavy."
           },
           {
             "id": "coconut_flour",
@@ -90,9 +90,9 @@
             "total": 56,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Cross-source consensus \u2014 3:1 almond-to-coconut ratio",
+            "sourcedFrom": "Cross-source consensus — 3:1 almond-to-coconut ratio",
             "confidence": "high",
-            "rationale": "Absorbs excess oil from almond flour, provides fiber. Contains 60.9% dietary fiber \u2014 absorbs 4-5x its weight in liquid."
+            "rationale": "Absorbs excess oil from almond flour, provides fiber. Contains 60.9% dietary fiber — absorbs 4-5x its weight in liquid."
           },
           {
             "id": "psyllium_husk",
@@ -102,7 +102,7 @@
             "breakdown": null,
             "sourcedFrom": "PMC/ScienceDirect peer-reviewed research",
             "confidence": "high",
-            "rationale": "The gluten mimic \u2014 forms elastic gel network, increases gas-holding capacity from 84% to 98.5%. Pre-hydration essential."
+            "rationale": "The gluten mimic — forms elastic gel network, increases gas-holding capacity from 84% to 98.5%. Pre-hydration essential."
           },
           {
             "id": "warm_water",
@@ -129,7 +129,7 @@
                 "amount": 68
               }
             ],
-            "sourcedFrom": "Cross-source consensus \u2014 primary structural protein",
+            "sourcedFrom": "Cross-source consensus — primary structural protein",
             "confidence": "high",
             "rationale": "4 eggs separated. Whites provide mechanical leavening (6-8x volume). Yolks contribute flavor, color, and emulsification."
           },
@@ -141,7 +141,7 @@
             "breakdown": null,
             "sourcedFrom": "Standard egg white foam stabilization",
             "confidence": "high",
-            "rationale": "Stabilizes egg white foam \u2014 without it, foam collapses after ~5 minutes."
+            "rationale": "Stabilizes egg white foam — without it, foam collapses after ~5 minutes."
           },
           {
             "id": "baking_powder",
@@ -149,7 +149,7 @@
             "total": 7,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Section 6 research \u2014 double-acting preferred over baking soda alone",
+            "sourcedFrom": "Section 6 research — double-acting preferred over baking soda alone",
             "confidence": "high",
             "rationale": "Releases CO2 in two phases (wet + heat). Combined with ACV for extra acid activation."
           },
@@ -181,7 +181,7 @@
             "breakdown": null,
             "sourcedFrom": "Section 10 synthesis",
             "confidence": "medium",
-            "rationale": "Minimal added fat \u2014 almond flour is already ~50% fat. Adds flavor and moisture."
+            "rationale": "Minimal added fat — almond flour is already ~50% fat. Adds flavor and moisture."
           },
           {
             "id": "xanthan_gum",
@@ -189,7 +189,7 @@
             "total": 1,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Section 7 \u2014 psyllium + xanthan combination approach",
+            "sourcedFrom": "Section 7 — psyllium + xanthan combination approach",
             "confidence": "medium",
             "rationale": "Provides gas-trapping film alongside psyllium's elasticity. ATK says xanthan behaves most like gluten of all replacers."
           }
@@ -253,7 +253,7 @@
     {
       "id": "PREP_WORKSPACE",
       "title": "Prepare Workspace",
-      "direction": "Gather all vessels, equipment, and ingredients. Melt butter. Preheat oven to 350\u00b0F (175\u00b0C). Line the loaf pan with parchment paper or grease thoroughly.",
+      "direction": "Gather all vessels, equipment, and ingredients. Melt butter. Preheat oven to 350°F (175°C). Line the loaf pan with parchment paper or grease thoroughly.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -261,12 +261,12 @@
       "exit_condition": "Oven preheating, loaf pan prepared, all ingredients and equipment laid out",
       "notes": [
         {
-          "text": "Use blanched, superfine almond flour \u2014 not almond meal. Almond meal has skins and is coarser, deflating egg white foam faster.",
+          "text": "Use blanched, superfine almond flour — not almond meal. Almond meal has skins and is coarser, deflating egg white foam faster.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Eggs must be room temperature \u2014 room temp whites whip to greater volume than cold.",
+          "text": "Eggs must be room temperature — room temp whites whip to greater volume than cold.",
           "critical": false,
           "source": "agent"
         }
@@ -288,7 +288,7 @@
       "exit_condition": "4 whites in V3 (no yolk contamination), 4 yolks set aside",
       "notes": [
         {
-          "text": "Separate eggs one at a time over a small bowl first, then transfer clean whites to V3. One broken yolk ruins the whole batch \u2014 even a trace of fat prevents whipping.",
+          "text": "Separate eggs one at a time over a small bowl first, then transfer clean whites to V3. One broken yolk ruins the whole batch — even a trace of fat prevents whipping.",
           "critical": true,
           "source": "agent"
         }
@@ -328,7 +328,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Psyllium has formed a thick, stretchy gel \u2014 5 minutes elapsed",
+      "exit_condition": "Psyllium has formed a thick, stretchy gel — 5 minutes elapsed",
       "notes": null
     },
     {
@@ -390,7 +390,7 @@
     {
       "id": "COMBINE",
       "title": "Combine Wet into Dry",
-      "direction": "Pour the wet mixture from V2 into the dry ingredients in V1. Stir with a rubber spatula until just combined \u2014 a thick, heavy batter.",
+      "direction": "Pour the wet mixture from V2 into the dry ingredients in V1. Stir with a rubber spatula until just combined — a thick, heavy batter.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -398,7 +398,7 @@
       "exit_condition": "Batter is uniformly mixed with no dry pockets",
       "notes": [
         {
-          "text": "The batter will be much heavier and thicker than wheat bread batter. This is normal \u2014 the egg whites will lighten it.",
+          "text": "The batter will be much heavier and thicker than wheat bread batter. This is normal — the egg whites will lighten it.",
           "critical": false,
           "source": "agent"
         }
@@ -407,7 +407,7 @@
     {
       "id": "BATTER_REST",
       "title": "Rest Batter",
-      "direction": "Let the batter rest for 5 minutes. Coconut flour continues absorbing moisture after mixing \u2014 the batter will thicken noticeably.",
+      "direction": "Let the batter rest for 5 minutes. Coconut flour continues absorbing moisture after mixing — the batter will thicken noticeably.",
       "duration_min": 5,
       "timer": true,
       "parallel": false,
@@ -424,7 +424,7 @@
     {
       "id": "WHIP_WHITES",
       "title": "Whip Egg Whites to Stiff Peaks",
-      "direction": "Using a hand mixer or stand mixer, beat the 4 egg whites in V3 on low speed to create small bubbles. Add 0.5g cream of tartar. Increase to medium-high and beat until stiff peaks \u2014 the foam holds its shape when the whisk is lifted.",
+      "direction": "Using a hand mixer or stand mixer, beat the 4 egg whites in V3 on low speed to create small bubbles. Add 0.5g cream of tartar. Increase to medium-high and beat until stiff peaks — the foam holds its shape when the whisk is lifted.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -434,10 +434,10 @@
           "amount": "0.5g (1/8 tsp)"
         }
       ],
-      "exit_condition": "Stiff peaks \u2014 foam holds shape, tips stand straight up, bowl can be inverted",
+      "exit_condition": "Stiff peaks — foam holds shape, tips stand straight up, bowl can be inverted",
       "notes": [
         {
-          "text": "Start slow, then increase speed. Over-beaten whites break into dry chunks when folded \u2014 stop at stiff peaks, not dry peaks.",
+          "text": "Start slow, then increase speed. Over-beaten whites break into dry chunks when folded — stop at stiff peaks, not dry peaks.",
           "critical": true,
           "source": "agent"
         },
@@ -450,8 +450,8 @@
     },
     {
       "id": "FOLD_FIRST",
-      "title": "Fold Whites \u2014 First Addition",
-      "direction": "Add about half the whipped egg whites to the batter in V1. Mix aggressively with the spatula to lighten the heavy batter. Expect to lose about 50% of this volume \u2014 that's intentional.",
+      "title": "Fold Whites — First Addition",
+      "direction": "Add about half the whipped egg whites to the batter in V1. Mix aggressively with the spatula to lighten the heavy batter. Expect to lose about 50% of this volume — that's intentional.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -461,8 +461,8 @@
     },
     {
       "id": "FOLD_SECOND",
-      "title": "Fold Whites \u2014 Second Addition",
-      "direction": "Add remaining whipped whites. Fold gently \u2014 cut down through center, sweep along bottom, fold over top. Rotate bowl a quarter turn and repeat. Preserve as much air as possible.",
+      "title": "Fold Whites — Second Addition",
+      "direction": "Add remaining whipped whites. Fold gently — cut down through center, sweep along bottom, fold over top. Rotate bowl a quarter turn and repeat. Preserve as much air as possible.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -487,7 +487,7 @@
       "exit_condition": "Batter in pan with smooth, even top",
       "notes": [
         {
-          "text": "Get into the oven within 2-3 minutes. The chemical leavening reaction is fast \u2014 delay means lost gas.",
+          "text": "Get into the oven within 2-3 minutes. The chemical leavening reaction is fast — delay means lost gas.",
           "critical": true,
           "source": "agent"
         }
@@ -496,12 +496,12 @@
     {
       "id": "BAKE_LOAF",
       "title": "Bake",
-      "direction": "Bake at 350\u00b0F (175\u00b0C) on the middle rack for 45-55 minutes until a toothpick comes out clean and internal temperature reaches 200-205\u00b0F (93-96\u00b0C).",
+      "direction": "Bake at 350°F (175°C) on the middle rack for 45-55 minutes until a toothpick comes out clean and internal temperature reaches 200-205°F (93-96°C).",
       "duration_min": 50,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Toothpick clean, internal temp 200-205\u00b0F (93-96\u00b0C), top is golden brown",
+      "exit_condition": "Toothpick clean, internal temp 200-205°F (93-96°C), top is golden brown",
       "notes": [
         {
           "text": "If top browns too quickly, tent with foil after 30 minutes.",
@@ -509,7 +509,7 @@
           "source": "agent"
         },
         {
-          "text": "Internal temp MUST reach 200\u00b0F (93\u00b0C) for complete starch gelatinization. Under-baked = gummy interior.",
+          "text": "Internal temp MUST reach 200°F (93°C) for complete starch gelatinization. Under-baked = gummy interior.",
           "critical": true,
           "source": "agent"
         }
@@ -547,7 +547,7 @@
       "exit_condition": "Bread cooled at least 30 minutes, no longer warm to the touch",
       "notes": [
         {
-          "text": "Do not slice until completely cool. Starches are still setting \u2014 cutting early = gummy interior.",
+          "text": "Do not slice until completely cool. Starches are still setting — cutting early = gummy interior.",
           "critical": true,
           "source": "agent"
         }
@@ -565,12 +565,12 @@
     "methods": [
       {
         "method": "Toaster",
-        "detail": "Slice and toast directly \u2014 grain-free bread reheats best this way.",
+        "detail": "Slice and toast directly — grain-free bread reheats best this way.",
         "source": "agent"
       },
       {
         "method": "Oven",
-        "detail": "350\u00b0F (175\u00b0C), 5-8 min for slices.",
+        "detail": "350°F (175°C), 5-8 min for slices.",
         "source": "agent"
       },
       {
@@ -702,10 +702,10 @@
         "ingredientId": "warm_water",
         "name": "Warm Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 90,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "eggs",

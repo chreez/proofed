@@ -8,7 +8,7 @@
     },
     "yields": "2 servings (16 oz each)",
     "total_time": "~1.5 hrs (30 min active, 30+ min chill)",
-    "description": "A from-scratch Thai iced tea with chewy boba, built from a 16-source synthesis. ChaTraMue tea mix brewed strong, strained twice, and chilled, then layered over warm sugar-coated tapioca pearls with a condensed-and-evaporated milk blend poured over a spoon for the signature ombr\u00e9 effect. Hot variation notes included inline."
+    "description": "A from-scratch Thai iced tea with chewy boba, built from a 16-source synthesis. ChaTraMue tea mix brewed strong, strained twice, and chilled, then layered over warm sugar-coated tapioca pearls with a condensed-and-evaporated milk blend poured over a spoon for the signature ombré effect. Hot variation notes included inline."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -32,22 +32,22 @@
     {
       "id": "V1",
       "name": "Medium Saucepan (2L+)",
-      "reuse": "Boil water for tea \u2192 boil water for boba"
+      "reuse": "Boil water for tea → boil water for boba"
     },
     {
       "id": "V2",
       "name": "Heat-Proof Pitcher or Bowl",
-      "reuse": "Steep tea \u2192 strain into \u2192 chill tea"
+      "reuse": "Steep tea → strain into → chill tea"
     },
     {
       "id": "V3",
       "name": "Small Saucepan",
-      "reuse": "Make boba syrup \u2192 toss boba in syrup"
+      "reuse": "Make boba syrup → toss boba in syrup"
     },
     {
       "id": "V4",
       "name": "Fine-Mesh Strainer",
-      "reuse": "Strain tea (2 passes) \u2192 drain boba"
+      "reuse": "Strain tea (2 passes) → drain boba"
     },
     {
       "id": "V5",
@@ -70,7 +70,7 @@
         "equipment": [
           "Kitchen Scale",
           "Serving Glasses (16 oz / 475ml)",
-          "Spoon (for ombr\u00e9 pour)",
+          "Spoon (for ombré pour)",
           "Kettle or Second Pot (optional, for parallel boil)"
         ],
         "ingredients": [
@@ -93,7 +93,7 @@
                 "amount": 15
               }
             ],
-            "sourcedFrom": "All 16 sources \u2014 standard water ratios for strong brew and 5:1+ boba cooking",
+            "sourcedFrom": "All 16 sources — standard water ratios for strong brew and 5:1+ boba cooking",
             "confidence": "high",
             "rationale": "3 cups for tea (strong concentrate that holds up to ice dilution). 4 cups for boba (rolling boil with room to move). 1 Tbsp for syrup."
           },
@@ -103,7 +103,7 @@
             "total": 40,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "S10 (Sharetea), S5 (Carmyy), S1 (The Forked Spoon) \u2014 11/16 sources use pre-made mix",
+            "sourcedFrom": "S10 (Sharetea), S5 (Carmyy), S1 (The Forked Spoon) — 11/16 sources use pre-made mix",
             "confidence": "high",
             "rationale": "Pre-made mix (ChaTraMue or Pantai) is the most reliable path to authentic color and flavor. ChaTraMue (Number One Brand) is the Thai industry standard. 1/2 cup loose mix weighs approximately 40g."
           },
@@ -122,7 +122,7 @@
                 "amount": 26
               }
             ],
-            "sourcedFrom": "S4 (Oh, How Civilized), S5 (Carmyy), S9 (Mountain Rose Herbs) \u2014 brown sugar preferred over white for depth",
+            "sourcedFrom": "S4 (Oh, How Civilized), S5 (Carmyy), S9 (Mountain Rose Herbs) — brown sugar preferred over white for depth",
             "confidence": "high",
             "rationale": "Brown sugar adds molasses depth that complements the tea's malty character. Split between tea brewing and boba syrup coating."
           },
@@ -132,7 +132,7 @@
             "total": 1,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "S6 (Simply Suwanee) \u2014 1/8 tsp salt in tea base",
+            "sourcedFrom": "S6 (Simply Suwanee) — 1/8 tsp salt in tea base",
             "confidence": "medium",
             "rationale": "A pinch of salt rounds out the tea's bitterness and enhances sweetness perception. Standard Thai tea shop technique."
           },
@@ -142,7 +142,7 @@
             "total": 80,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "S1 (The Forked Spoon), S10 (Sharetea) \u2014 10/16 sources use quick-cook; WuFuYuan brand recommended",
+            "sourcedFrom": "S1 (The Forked Spoon), S10 (Sharetea) — 10/16 sources use quick-cook; WuFuYuan brand recommended",
             "confidence": "high",
             "rationale": "Quick-cook pearls (5-7 min) deliver excellent texture with minimal effort. 1/2 cup dry pearls weighs approximately 80g, yielding enough for 2 generous servings."
           },
@@ -152,7 +152,7 @@
             "total": 60,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "S4 (Oh, How Civilized), S6 (Simply Suwanee), S7 (Honest Food Talks) \u2014 9/16 sources use condensed + evaporated combo",
+            "sourcedFrom": "S4 (Oh, How Civilized), S6 (Simply Suwanee), S7 (Honest Food Talks) — 9/16 sources use condensed + evaporated combo",
             "confidence": "high",
             "rationale": "The condensed + evaporated combination is the strongest consensus across sources (9/16). Condensed provides sweetness and body. 3 Tbsp = approximately 60g (dense liquid)."
           },
@@ -162,7 +162,7 @@
             "total": 45,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "S4 (Oh, How Civilized), S6 (Simply Suwanee), S7 (Honest Food Talks) \u2014 evaporated adds creaminess without excessive sweetness",
+            "sourcedFrom": "S4 (Oh, How Civilized), S6 (Simply Suwanee), S7 (Honest Food Talks) — evaporated adds creaminess without excessive sweetness",
             "confidence": "high",
             "rationale": "Evaporated milk adds dairy richness and creaminess without the cloying sweetness of using condensed milk alone. 3 Tbsp = approximately 45g."
           },
@@ -181,7 +181,7 @@
                 "amount": 140
               }
             ],
-            "sourcedFrom": "All 16 sources \u2014 standard iced tea service",
+            "sourcedFrom": "All 16 sources — standard iced tea service",
             "confidence": "high",
             "rationale": "Approximately 1 cup per glass. Tea is brewed as a concentrate specifically to withstand ice dilution."
           }
@@ -242,7 +242,7 @@
     {
       "id": "BOIL_WATER",
       "title": "Boil Water for Tea",
-      "direction": "In medium saucepan (V1), bring 711g water to a rolling boil \u2014 212\u00b0F (100\u00b0C) \u2014 over high heat.",
+      "direction": "In medium saucepan (V1), bring 711g water to a rolling boil — 212°F (100°C) — over high heat.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -252,7 +252,7 @@
           "amount": "711g"
         }
       ],
-      "exit_condition": "Water is at a full rolling boil \u2014 212\u00b0F (100\u00b0C)",
+      "exit_condition": "Water is at a full rolling boil — 212°F (100°C)",
       "notes": null
     },
     {
@@ -289,7 +289,7 @@
     {
       "id": "SIMMER_COVERED",
       "title": "Simmer Covered",
-      "direction": "Cover the saucepan and simmer on low heat for 3 minutes. Do not boil \u2014 a gentle simmer extracts flavor without excessive bitterness.",
+      "direction": "Cover the saucepan and simmer on low heat for 3 minutes. Do not boil — a gentle simmer extracts flavor without excessive bitterness.",
       "duration_min": 3,
       "timer": true,
       "parallel": false,
@@ -297,7 +297,7 @@
       "exit_condition": "3 minutes elapsed, tea is deeply colored and aromatic",
       "notes": [
         {
-          "text": "Keep the lid on \u2014 the steam helps extract more flavor from the tea mix",
+          "text": "Keep the lid on — the steam helps extract more flavor from the tea mix",
           "critical": false,
           "source": "user"
         }
@@ -336,7 +336,7 @@
       "exit_condition": "Tea is strained twice into pitcher, no visible sediment or leaf particles",
       "notes": [
         {
-          "text": "The double strain is what separates good Thai tea from gritty Thai tea \u2014 the mix is very fine and passes through a single strain",
+          "text": "The double strain is what separates good Thai tea from gritty Thai tea — the mix is very fine and passes through a single strain",
           "critical": false,
           "source": "user"
         },
@@ -374,7 +374,7 @@
       "exit_condition": "Tea concentrate is cold to the touch",
       "notes": [
         {
-          "text": "The tea must be cold before assembly \u2014 warm tea melts the ice too fast and dilutes the drink",
+          "text": "The tea must be cold before assembly — warm tea melts the ice too fast and dilutes the drink",
           "critical": true,
           "source": "user"
         },
@@ -405,7 +405,7 @@
       "exit_condition": "Sugar fully dissolved, mixture is a thick, glossy brown syrup",
       "notes": [
         {
-          "text": "The syrup should coat the back of a spoon but still be pourable \u2014 not caramelized to hard crack",
+          "text": "The syrup should coat the back of a spoon but still be pourable — not caramelized to hard crack",
           "critical": false,
           "source": "user"
         },
@@ -419,7 +419,7 @@
     {
       "id": "BOIL_FOR_BOBA",
       "title": "Boil Water for Boba",
-      "direction": "In medium saucepan (V1, rinsed from tea), bring 948g water to a vigorous rolling boil \u2014 212\u00b0F (100\u00b0C) \u2014 over high heat. The water must be at a full boil before adding pearls.",
+      "direction": "In medium saucepan (V1, rinsed from tea), bring 948g water to a vigorous rolling boil — 212°F (100°C) — over high heat. The water must be at a full boil before adding pearls.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -429,10 +429,10 @@
           "amount": "948g"
         }
       ],
-      "exit_condition": "Water is at a vigorous rolling boil \u2014 212\u00b0F (100\u00b0C)",
+      "exit_condition": "Water is at a vigorous rolling boil — 212°F (100°C)",
       "notes": [
         {
-          "text": "The 5:1+ water-to-pearl ratio is critical \u2014 pearls need room to tumble freely without sticking together",
+          "text": "The 5:1+ water-to-pearl ratio is critical — pearls need room to tumble freely without sticking together",
           "critical": true,
           "source": "user"
         }
@@ -451,7 +451,7 @@
           "amount": "80g"
         }
       ],
-      "exit_condition": "Pearls are uniformly translucent throughout \u2014 no opaque white centers visible when held up to light",
+      "exit_condition": "Pearls are uniformly translucent throughout — no opaque white centers visible when held up to light",
       "notes": [
         {
           "text": "Stir immediately after adding to prevent pearls from sinking and fusing to the bottom of the pot",
@@ -459,7 +459,7 @@
           "source": "user"
         },
         {
-          "text": "Test a pearl by biting it in half \u2014 it should be uniformly translucent and chewy throughout with no hard white core",
+          "text": "Test a pearl by biting it in half — it should be uniformly translucent and chewy throughout with no hard white core",
           "critical": false,
           "source": "user"
         }
@@ -476,7 +476,7 @@
       "exit_condition": "All pearls are evenly coated in brown sugar syrup, glossy and warm",
       "notes": [
         {
-          "text": "Boba must be served within 2 hours of cooking \u2014 they harden irreversibly as they cool. This is the single most important timing constraint in the entire recipe.",
+          "text": "Boba must be served within 2 hours of cooking — they harden irreversibly as they cool. This is the single most important timing constraint in the entire recipe.",
           "critical": true,
           "source": "user"
         },
@@ -507,7 +507,7 @@
       "exit_condition": "Milk mixture is smooth and homogeneous, no streaks of condensed milk visible",
       "notes": [
         {
-          "text": "The condensed + evaporated combination is the strongest consensus across sources (9/16) \u2014 it delivers authentic Thai tea shop creaminess",
+          "text": "The condensed + evaporated combination is the strongest consensus across sources (9/16) — it delivers authentic Thai tea shop creaminess",
           "critical": false,
           "source": "user"
         },
@@ -521,7 +521,7 @@
     {
       "id": "BUILD_DRINK",
       "title": "Build the Drink",
-      "direction": "For each glass: spoon warm boba into the bottom. Fill glass with 140g ice. Pour chilled tea concentrate to three-quarters full. Slowly pour half the milk mixture over the back of a spoon held just above the surface to create an ombr\u00e9 layer effect. Serve with a wide boba straw.",
+      "direction": "For each glass: spoon warm boba into the bottom. Fill glass with 140g ice. Pour chilled tea concentrate to three-quarters full. Slowly pour half the milk mixture over the back of a spoon held just above the surface to create an ombré layer effect. Serve with a wide boba straw.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -546,12 +546,12 @@
       "exit_condition": "Two glasses assembled with visible layers: boba on bottom, dark tea in middle, creamy milk floating on top",
       "notes": [
         {
-          "text": "The ombr\u00e9 effect is purely visual \u2014 the drinker stirs before drinking. But it makes for a beautiful presentation.",
+          "text": "The ombré effect is purely visual — the drinker stirs before drinking. But it makes for a beautiful presentation.",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Use a wide boba straw (12mm+) \u2014 standard straws cannot pick up the tapioca pearls",
+          "text": "Use a wide boba straw (12mm+) — standard straws cannot pick up the tapioca pearls",
           "critical": true,
           "source": "user"
         },
@@ -574,88 +574,88 @@
     "date": "2026-02-07",
     "sources": [
       {
-        "name": "The Forked Spoon \u2014 Thai Iced Tea Boba",
+        "name": "The Forked Spoon — Thai Iced Tea Boba",
         "url": "https://theforkedspoon.com/thai-iced-tea-boba/",
         "type": "adapted",
         "author": "Jessica Formicola"
       },
       {
-        "name": "Oh, How Civilized \u2014 Thai Tea Boba",
+        "name": "Oh, How Civilized — Thai Tea Boba",
         "url": "https://www.ohhowcivilized.com/thai-tea-boba/",
         "type": "adapted",
         "author": "Oh, How Civilized"
       },
       {
-        "name": "Simply Suwanee \u2014 Thai Tea Boba",
+        "name": "Simply Suwanee — Thai Tea Boba",
         "url": "https://www.simplysuwanee.com/thai-tea-boba/",
         "type": "adapted",
         "author": "Simply Suwanee"
       },
       {
-        "name": "Sharetea \u2014 Thai Tea Boba Recipe",
+        "name": "Sharetea — Thai Tea Boba Recipe",
         "url": "https://www.sharetea.com/",
         "type": "adapted",
         "author": "Sharetea"
       },
       {
-        "name": "Honest Food Talks \u2014 Thai Iced Tea with Boba",
+        "name": "Honest Food Talks — Thai Iced Tea with Boba",
         "url": "https://honestfoodtalks.com/thai-iced-tea-boba-recipe/",
         "type": "adapted",
         "author": "Honest Food Talks"
       },
       {
-        "name": "Carmyy \u2014 Thai Tea Boba Recipe",
+        "name": "Carmyy — Thai Tea Boba Recipe",
         "url": "https://www.carmyy.com/thai-tea-boba/",
         "type": "adapted",
         "author": "Carmyy"
       },
       {
-        "name": "Wholly Tasteful \u2014 Thai Tea Boba",
+        "name": "Wholly Tasteful — Thai Tea Boba",
         "url": "https://whollytasteful.com/thai-tea-boba/",
         "type": "inspired"
       },
       {
-        "name": "Funky Asian Kitchen \u2014 Thai Tea with Boba",
+        "name": "Funky Asian Kitchen — Thai Tea with Boba",
         "url": "https://funkyasiankitchen.com/thai-tea-boba/",
         "type": "inspired"
       },
       {
-        "name": "Broke Bank Vegan \u2014 Thai Iced Tea from Scratch",
+        "name": "Broke Bank Vegan — Thai Iced Tea from Scratch",
         "url": "https://brokebankvegan.com/thai-iced-tea/",
         "type": "inspired"
       },
       {
-        "name": "Mountain Rose Herbs \u2014 Thai Tea Recipe",
+        "name": "Mountain Rose Herbs — Thai Tea Recipe",
         "url": "https://blog.mountainroseherbs.com/thai-tea-recipe",
         "type": "inspired"
       },
       {
-        "name": "Teak & Thyme \u2014 Thai Tea Boba",
+        "name": "Teak & Thyme — Thai Tea Boba",
         "url": "https://teakandthyme.com/thai-tea-boba/",
         "type": "inspired"
       },
       {
-        "name": "A Beautiful Mess \u2014 Thai Tea Boba",
+        "name": "A Beautiful Mess — Thai Tea Boba",
         "url": "https://abeautifulmess.com/thai-tea-boba/",
         "type": "inspired"
       },
       {
-        "name": "Thai Caliente \u2014 Thai Iced Tea",
+        "name": "Thai Caliente — Thai Iced Tea",
         "url": "https://thaicaliente.com/thai-iced-tea/",
         "type": "inspired"
       },
       {
-        "name": "Pick Up Limes \u2014 Thai Iced Tea with Boba",
+        "name": "Pick Up Limes — Thai Iced Tea with Boba",
         "url": "https://www.pickuplimes.com/recipe/thai-iced-tea-with-boba-903",
         "type": "inspired"
       },
       {
-        "name": "Best Recipe Box \u2014 Thai Tea Boba",
+        "name": "Best Recipe Box — Thai Tea Boba",
         "url": "https://bestrecipebox.com/thai-tea-boba/",
         "type": "inspired"
       },
       {
-        "name": "Arbor Teas \u2014 Thai Iced Tea Recipe",
+        "name": "Arbor Teas — Thai Iced Tea Recipe",
         "url": "https://www.arborteas.com/thai-iced-tea-recipe/",
         "type": "inspired"
       }
@@ -681,20 +681,20 @@
       },
       {
         "name": "5:1+ water ratio for boba cooking",
-        "sourcedFrom": "All 16 sources \u2014 universal consensus",
+        "sourcedFrom": "All 16 sources — universal consensus",
         "rationale": "Pearls need ample room to tumble freely in vigorously boiling water. Insufficient water causes clumping and uneven cooking.",
         "confidence": "high"
       },
       {
         "name": "Serve boba within 2 hours",
-        "sourcedFrom": "All 16 sources \u2014 universal consensus",
-        "rationale": "Tapioca pearls undergo retrogradation as they cool \u2014 starch molecules re-crystallize, creating an irreversibly hard texture. No reheating method fully restores freshly-cooked chewiness.",
+        "sourcedFrom": "All 16 sources — universal consensus",
+        "rationale": "Tapioca pearls undergo retrogradation as they cool — starch molecules re-crystallize, creating an irreversibly hard texture. No reheating method fully restores freshly-cooked chewiness.",
         "confidence": "high"
       },
       {
-        "name": "Ombr\u00e9 pour over spoon",
+        "name": "Ombré pour over spoon",
         "sourcedFrom": "S1 (The Forked Spoon), S4 (Oh, How Civilized)",
-        "rationale": "Pouring milk mixture slowly over the back of a spoon creates a visible layered gradient (dark tea to creamy white). Purely visual \u2014 drinker stirs before consuming.",
+        "rationale": "Pouring milk mixture slowly over the back of a spoon creates a visible layered gradient (dark tea to creamy white). Purely visual — drinker stirs before consuming.",
         "confidence": "medium"
       }
     ]
@@ -843,12 +843,12 @@
     "methods": [
       {
         "method": "Serving",
-        "detail": "Best fresh. Boba hardens in the fridge \u2014 make only what you'll drink.",
+        "detail": "Best fresh. Boba hardens in the fridge — make only what you'll drink.",
         "source": "agent"
       },
       {
         "method": "Tea Only",
-        "detail": "Tea concentrate keeps 2\u20133 days in the fridge. Pour over fresh ice and milk to serve.",
+        "detail": "Tea concentrate keeps 2–3 days in the fridge. Pour over fresh ice and milk to serve.",
         "source": "agent"
       }
     ]
@@ -863,10 +863,10 @@
         "ingredientId": "water",
         "name": "Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 1674,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "thai_tea_mix",
@@ -893,7 +893,7 @@
         "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
         "amount": 1,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "tapioca_pearls",
@@ -926,10 +926,10 @@
         "ingredientId": "ice",
         "name": "Ice",
         "sourceType": "rate",
-        "sourceName": "Tap water frozen (free)",
+        "sourceName": "Tap water frozen",
         "amount": 280,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       }
     ]
   }

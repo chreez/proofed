@@ -5259,7 +5259,7 @@
         "ingredientId": "water",
         "name": "Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 700,
         "unit": "g",
         "cost": 0
@@ -5268,7 +5268,7 @@
         "ingredientId": "starter",
         "name": "Active Sourdough Starter",
         "sourceType": "rate",
-        "sourceName": "Home-maintained starter (free)",
+        "sourceName": "Home-maintained starter",
         "amount": 200,
         "unit": "g",
         "cost": 0

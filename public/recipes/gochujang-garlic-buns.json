@@ -1811,7 +1811,7 @@
         "ingredientId": "water",
         "name": "Water",
         "sourceType": "rate",
-        "sourceName": "Tap water (free)",
+        "sourceName": "Tap water",
         "amount": 100,
         "unit": "g",
         "cost": 0
