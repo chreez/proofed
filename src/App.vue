@@ -88,16 +88,10 @@ function scrollToTop(): void {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-/* v8 ignore start -- else branch unreachable: jsdom always has history.length > 1 */
 function handlePrintBack(): void {
-  if (window.history.length > 1) {
-    router.back()
-  } else {
-    const id = route.params.recipeId
-    router.push(typeof id === 'string' ? `/recipe/${id}` : '/')
-  }
+  const id = route.params.recipeId
+  router.push(typeof id === 'string' ? `/recipe/${id}` : '/')
 }
-/* v8 ignore stop */
 
 function handlePrint(): void {
   window.print()

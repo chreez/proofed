@@ -453,35 +453,26 @@ describe('App', () => {
     expect(wrapper.find('header').exists()).toBe(true)
   })
 
-  it('back-link navigates back from print page', async () => {
+  it('back-link navigates to recipe page from print page', async () => {
     mockCurrentRecipe.value = makeRecipe()
     mockCurrentRecipeId.value = 'test-recipe'
     const { wrapper, router } = await mountApp('/recipe/test-recipe/print')
-    // Push a second route to have history
-    await router.push('/recipe/test-recipe')
-    await flushPromises()
-    await router.push('/recipe/test-recipe/print')
-    await flushPromises()
     const backLink = wrapper.find('.back-link')
     await backLink.trigger('click')
     await flushPromises()
     expect(router.currentRoute.value.path).toBe('/recipe/test-recipe')
   })
 
-  it('back-link falls back to recipe page when no history', async () => {
+  it('back-link navigates to index when recipeId is missing', async () => {
     mockCurrentRecipe.value = makeRecipe()
     mockCurrentRecipeId.value = 'test-recipe'
-    // Mock history.length to simulate no prior navigation
-    const origLength = Object.getOwnPropertyDescriptor(window.history, 'length')
-    Object.defineProperty(window.history, 'length', { value: 1, writable: true, configurable: true })
     const { wrapper, router } = await mountApp('/recipe/test-recipe/print')
+    // Temporarily clear route params to simulate edge case
+    Object.defineProperty(router.currentRoute.value.params, 'recipeId', { value: undefined, configurable: true })
     const backLink = wrapper.find('.back-link')
     await backLink.trigger('click')
     await flushPromises()
-    expect(router.currentRoute.value.path).toBe('/recipe/test-recipe')
-    if (origLength) {
-      Object.defineProperty(window.history, 'length', origLength)
-    }
+    expect(router.currentRoute.value.path).toBe('/')
   })
 
   it('print-action-btn calls window.print', async () => {
