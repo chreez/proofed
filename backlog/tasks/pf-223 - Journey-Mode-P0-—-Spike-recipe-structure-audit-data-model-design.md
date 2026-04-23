@@ -1,7 +1,7 @@
 ---
 id: PF-223
 title: 'Journey Mode P0 — Spike: recipe structure audit + data model design'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-23 21:45'
 updated_date: '2026-04-23 22:19'
