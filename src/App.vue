@@ -10,7 +10,7 @@ import { latestCookLogEntryWithPhotos } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
-import { QrCode, Printer } from 'lucide-vue-next'
+import { QrCode, Printer, ArrowLeft } from 'lucide-vue-next'
 import type { RecipeState, CookLogPhoto } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import ShareModal from '@/components/ShareModal.vue'
@@ -86,6 +86,21 @@ function goToIndex(): void {
 
 function scrollToTop(): void {
   window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+/* v8 ignore start -- else branch unreachable: jsdom always has history.length > 1 */
+function handlePrintBack(): void {
+  if (window.history.length > 1) {
+    router.back()
+  } else {
+    const id = route.params.recipeId
+    router.push(typeof id === 'string' ? `/recipe/${id}` : '/')
+  }
+}
+/* v8 ignore stop */
+
+function handlePrint(): void {
+  window.print()
 }
 
 function handleRecipeSelect(recipeId: string): void {
@@ -424,20 +439,19 @@ watch(() => route.hash, (newHash) => {
 <template>
   <div class="min-h-screen bg-stone-50 font-sans flex flex-col">
     <header
-      v-if="!showPrintMode"
       class="bg-stone-200 px-6 sticky top-0 z-10 transition-all duration-200 ease-out"
-      :class="[isScrolled ? 'py-2' : 'py-4', (showIndex || showBakeLog) ? '' : 'border-b-2 border-ink']"
+      :class="[isScrolled && !showPrintMode ? 'py-2' : 'py-4', (showIndex || showBakeLog) ? '' : 'border-b-2 border-ink']"
     >
       <div class="max-w-4xl mx-auto flex items-center justify-between">
         <div class="flex items-center min-w-0">
           <h1
             class="font-mono font-medium tracking-tight text-ink transition-all duration-200 ease-out cursor-pointer whitespace-nowrap"
-            :class="isScrolled ? 'text-lg' : 'text-2xl'"
+            :class="isScrolled && !showPrintMode ? 'text-lg' : 'text-2xl'"
             @click="goToIndex"
           ><span class="brand-text">proofed</span><span class="brand-dot text-accent">.</span></h1>
           <Transition name="title-poof">
             <div
-              v-if="isScrolled && currentRecipe && !showIndex && !showAbout && !showBakeLog && !showStats && !showBakeDetail && !showBakeReview && !showPhotoReview"
+              v-if="isScrolled && currentRecipe && !showIndex && !showAbout && !showBakeLog && !showStats && !showBakeDetail && !showBakeReview && !showPhotoReview && !showPrintMode"
               class="flex items-center gap-3 ml-4 min-w-0"
             >
               <span class="text-sm text-muted truncate cursor-pointer" @click="scrollToTop">{{ currentRecipe.meta.name }}</span>
@@ -445,7 +459,20 @@ watch(() => route.hash, (newHash) => {
             </div>
           </Transition>
         </div>
-        <div v-if="showHeaderActions" class="flex items-center gap-1">
+        <!-- Print mode: back + print actions -->
+        <div v-if="showPrintMode" class="flex items-center gap-2">
+          <button class="back-link" @click="handlePrintBack">
+            <ArrowLeft :size="16" />
+            <span class="font-mono text-sm">Back to recipe</span>
+          </button>
+          <button
+            v-if="currentRecipe"
+            class="print-action-btn"
+            @click="handlePrint"
+          >Print</button>
+        </div>
+        <!-- Normal mode: printer + share actions -->
+        <div v-else-if="showHeaderActions" class="flex items-center gap-1">
           <IconButton
             v-if="currentRecipeId"
             tooltip="Print bake sheet"
@@ -865,5 +892,45 @@ watch(() => route.hash, (newHash) => {
   .tab-cross-leave-active {
     transition: none;
   }
+}
+
+/* Print mode: back link (matches BakeDetailView pattern) */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-radius: 0;
+  padding: 0 12px 0 8px;
+}
+
+.back-link:hover {
+  background: var(--color-stone-300);
+}
+
+.back-link:active {
+  background: var(--color-stone-400);
+}
+
+/* Print mode: print button */
+.print-action-btn {
+  padding: 0.375rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-surface);
+  background: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  cursor: pointer;
+}
+
+.print-action-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 </style>

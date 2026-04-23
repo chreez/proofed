@@ -435,6 +435,66 @@ describe('App', () => {
     expect(router.currentRoute.value.path).toBe('/recipe/test-recipe/print')
   })
 
+  it('shows back-to-recipe and print button in header on print route', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper } = await mountApp('/recipe/test-recipe/print')
+    expect(wrapper.find('.back-link').exists()).toBe(true)
+    expect(wrapper.find('.print-action-btn').exists()).toBe(true)
+    // Normal actions hidden
+    expect(wrapper.find('[data-testid="print-btn"]').exists()).toBe(false)
+    expect(wrapper.find('[data-testid="share-btn"]').exists()).toBe(false)
+  })
+
+  it('header always visible on print route', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper } = await mountApp('/recipe/test-recipe/print')
+    expect(wrapper.find('header').exists()).toBe(true)
+  })
+
+  it('back-link navigates back from print page', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper, router } = await mountApp('/recipe/test-recipe/print')
+    // Push a second route to have history
+    await router.push('/recipe/test-recipe')
+    await flushPromises()
+    await router.push('/recipe/test-recipe/print')
+    await flushPromises()
+    const backLink = wrapper.find('.back-link')
+    await backLink.trigger('click')
+    await flushPromises()
+    expect(router.currentRoute.value.path).toBe('/recipe/test-recipe')
+  })
+
+  it('back-link falls back to recipe page when no history', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    // Mock history.length to simulate no prior navigation
+    const origLength = Object.getOwnPropertyDescriptor(window.history, 'length')
+    Object.defineProperty(window.history, 'length', { value: 1, writable: true, configurable: true })
+    const { wrapper, router } = await mountApp('/recipe/test-recipe/print')
+    const backLink = wrapper.find('.back-link')
+    await backLink.trigger('click')
+    await flushPromises()
+    expect(router.currentRoute.value.path).toBe('/recipe/test-recipe')
+    if (origLength) {
+      Object.defineProperty(window.history, 'length', origLength)
+    }
+  })
+
+  it('print-action-btn calls window.print', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const printSpy = vi.spyOn(window, 'print').mockImplementation(() => {})
+    const { wrapper } = await mountApp('/recipe/test-recipe/print')
+    const printBtn = wrapper.find('.print-action-btn')
+    await printBtn.trigger('click')
+    expect(printSpy).toHaveBeenCalled()
+    printSpy.mockRestore()
+  })
+
   it('marks Recipes tab active on index route', async () => {
     const { wrapper } = await mountApp('/')
     const tabs = wrapper.findAll('.tab-item')

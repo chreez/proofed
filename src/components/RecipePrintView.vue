@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { ArrowLeft } from 'lucide-vue-next'
+import { useRoute } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { validatePrintSections } from '@/composables/usePrintValidation'
 import { deriveAllergens } from '@/composables/useAllergens'
@@ -11,16 +10,7 @@ import NutritionLabel from '@/components/NutritionLabel.vue'
 import * as QRCode from 'qrcode'
 
 const route = useRoute()
-const router = useRouter()
 const { currentRecipe } = useRecipe()
-
-function goBack(): void {
-  if (window.history.length > 1) {
-    router.back()
-  } else {
-    router.push(`/recipe/${route.params.recipeId}`)
-  }
-}
 
 // Validation
 const validation = computed(() => validatePrintSections(currentRecipe.value))
@@ -191,24 +181,9 @@ const recipeUrl = computed(() => {
   return typeof id === 'string' ? `/recipe/${id}` : '/'
 })
 
-function handlePrint(): void {
-  window.print()
-}
 </script>
 
 <template>
-  <!-- Screen-only navigation bar (hidden in print) -->
-  <nav v-if="currentRecipe" class="print-nav">
-    <div class="print-nav-inner">
-      <button class="back-link" @click="goBack">
-        <ArrowLeft :size="16" />
-        <span class="font-mono text-sm">Back</span>
-      </button>
-      <span class="print-nav-brand">proofed<span class="brand-dot">.</span></span>
-      <button v-if="validation.ready" class="print-btn" @click="handlePrint">Print</button>
-    </div>
-  </nav>
-
   <!-- Not yet generated gate -->
   <div v-if="currentRecipe && !validation.ready" class="print-not-ready">
     <h1 class="not-ready-title">Print View Not Yet Generated</h1>
@@ -458,63 +433,6 @@ function handlePrint(): void {
 .check-detail {
   font-size: 9pt;
   color: var(--color-stone-500);
-}
-
-/* Screen-only nav bar */
-.print-nav {
-  max-width: 8.5in;
-  margin: 0 auto;
-  border-bottom: 2px solid var(--color-stone-200);
-  background: var(--color-surface);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.print-nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.25rem 0.75rem;
-}
-
-.print-nav-brand {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14pt;
-  font-weight: 600;
-  color: var(--color-ink);
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  height: 44px;
-  border: none;
-  background: transparent;
-  color: var(--color-ink);
-  cursor: pointer;
-  padding: 0 12px 0 8px;
-}
-
-.back-link:hover {
-  background: var(--color-stone-200);
-}
-
-.print-btn {
-  padding: 0.375rem 1rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9pt;
-  font-weight: 600;
-  color: var(--color-surface);
-  background: var(--color-ink);
-  border: 2px solid var(--color-ink);
-  cursor: pointer;
-}
-
-.print-btn:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
 }
 
 /* Outer wrapper — no layout, just contains sibling pages */
