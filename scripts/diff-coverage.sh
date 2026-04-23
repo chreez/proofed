@@ -39,13 +39,19 @@ fi
 echo "diff-coverage: Checking coverage on changed source files..."
 echo "  Files: $(echo "$SOURCE_FILES" | tr '\n' ' ')"
 
+# V8 coverage + Vue SFC compilation produces NaN hit counts on some template
+# branches (uninstrumented code paths). Remove these lines so diff-test-coverage
+# doesn't penalise phantom branches that can't be exercised.
+CLEAN_LCOV="coverage/lcov-clean.info"
+grep -v ',NaN$' "$LCOV_FILE" > "$CLEAN_LCOV"
+
 # Run diff-test-coverage, filtering to only src/ files
 # Exclude Demo*.vue (throwaway spike/demo components)
 # Exclude *PrintView.vue (page-level, HITL-verified visually)
 # Use || true to capture exit code despite set -e
 EXIT_CODE=0
 $DIFF_CMD -- 'src/' ':!src/components/Demo*.vue' ':!src/components/*PrintView.vue' | npx diff-test-coverage \
-  -c "$LCOV_FILE" \
+  -c "$CLEAN_LCOV" \
   -t lcov \
   -l "$THRESHOLD_LINE" \
   -b "$THRESHOLD_BRANCH" \
