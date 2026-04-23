@@ -289,6 +289,120 @@ If the user's raw paste already contains timestamped readings, **parse inline** 
 
 If the user says "just notes" or "no stats today" or similar, skip Phase 2b entirely. Do not prompt for any field groups. `bake_stats` will be omitted from the entry.
 
+## Phase 2c: Relative Time Inference
+
+When the user's raw input contains relative time references ("20 minutes ago", "started about an hour ago"), resolve them to absolute timestamps before writing `bake_notes[]` or `bake_stats`. This is a clear inference from stated facts, not speculation — it follows Cook Log Protocol because the user explicitly stated the offset.
+
+### Detection Patterns
+
+Case-insensitive regex patterns to match relative time references in raw note text:
+
+| Pattern | Example | Captures |
+|---------|---------|----------|
+| `(\d+)\s*(minutes?\|mins?)\s*ago` | "placed in oven 20 minutes ago" | amount=20, unit=minutes |
+| `(\d+)\s*(hours?\|hrs?)\s*ago` | "started 2 hours ago" | amount=2, unit=hours |
+| `about\s+an?\s+hour\s+ago` | "started about an hour ago" | amount=1, unit=hours |
+| `half\s+an?\s+hour\s+ago` | "mixed half an hour ago" | amount=30, unit=minutes |
+| `(\d+)\s*(minutes?\|mins?)\s*(prior\|earlier\|before)` | "scored 5 min prior" | amount=5, unit=minutes |
+| `(\d+)\s*(hours?\|hrs?)\s*(prior\|earlier\|before)` | "started 3 hrs earlier" | amount=3, unit=hours |
+| `a\s+few\s+minutes\s+ago` | "checked a few minutes ago" | **AMBIGUOUS** — flag for clarification |
+| `a\s+while\s+ago` | "started a while ago" | **AMBIGUOUS** — flag for clarification |
+
+### Resolution Algorithm
+
+1. **Identify the reference time (T):**
+   - If the note has a scratchpad `timestamp` (ISO 8601 UTC), use that as T.
+   - If the note was typed live in the capture session with no timestamp, use the current session time as T.
+   - If neither is available, **ask the user** for the time the note was made.
+
+2. **Parse the offset:**
+   - Extract the numeric amount and unit from the matched pattern.
+   - Convert to minutes: hours × 60, "half an hour" = 30, "about an hour" = 60.
+
+3. **Compute the absolute timestamp:**
+   - `absolute_time = T - offset_minutes`
+   - Convert to ISO 8601 UTC (e.g., `2026-04-23T19:30:00Z`).
+   - Also compute the `YYYY-MM-DD - HH:MM` format for `bake_stats` fields.
+
+4. **Write the BakeNote:**
+   - `timestamp`: the **computed** absolute time (the event time, not the note time)
+   - `raw`: verbatim user text — never modified
+   - `processing`: include provenance annotation explaining the inference
+     - Format: `"Timestamp inferred: '{original text}' relative to {T} → {computed_time}"`
+     - Example: `"bulk_ferment | Timestamp inferred: '30 minutes ago' relative to 2026-04-23T20:00:00Z → 2026-04-23T19:30:00Z"`
+   - `notable`: set based on content as usual
+
+5. **Write bake_stats entries (if applicable):**
+   - If the inferred event corresponds to a trackable stat (dough temp, fold, bake phase start), write it to the appropriate `bake_stats` array.
+   - Add a `note` annotation on the stat entry with provenance: `"inferred: '20 min ago' at 17:21 UTC → 17:01 UTC"`
+   - Set `bake_stats.confidence` to `'medium'` if the block contains any inferred times (unless already `'low'` for other reasons).
+
+### Confidence Rules
+
+| Input quality | Confidence | Action |
+|---------------|------------|--------|
+| Exact number stated: "20 minutes ago" | `medium` | Resolve and mark provenance |
+| Approximate stated: "about 30 minutes ago" | `medium` | Resolve and mark provenance |
+| Vague/ambiguous: "a few minutes ago", "a while ago", "some time ago" | — | **Do not resolve.** Ask the user to clarify. |
+| Hedged: "probably around 20 minutes", "I think maybe an hour" | — | **Do not resolve.** Ask the user to confirm the number before computing. |
+| Conflicting: note says "30 min ago" but context suggests impossible timing | — | **Flag for user.** Present the computed time and ask if it looks right. |
+
+### Cook Log Protocol Enforcement
+
+- **Only infer from explicitly stated relative times.** The user must have said a number and a unit.
+- **Never guess unstated durations.** If the user says "I put it in the oven earlier" with no time offset, ask: "How long ago did you put it in the oven?"
+- **"About" and "roughly" are acceptable** — the user is stating their best estimate. Mark as `medium` confidence, not `low`.
+- **"Probably" and "maybe" require clarification** — these signal the user is unsure of the number itself, not just rounding. Ask to confirm before resolving.
+- **Stale notes:** If the computed absolute time would be more than 24 hours in the past, flag it for user confirmation — it may indicate the reference time T is wrong (e.g., old notes pasted later).
+
+### Echo Check Display (Phase 3)
+
+During the echo check, any inferred timestamps MUST show both the raw reference and the computed absolute time so the user can verify:
+
+```
+**bake_notes (5):** (raw → curated where different)
+| # | Time | Raw | Curated | Notable | Provenance |
+|---|------|-----|---------|---------|------------|
+| 3 | 7:01pm | Placed in oven 20 minutes ago | — | no | Inferred: "20 minutes ago" at 7:21pm → 7:01pm |
+| 4 | 6:30pm | Started bulk about an hour ago | — | yes | Inferred: "about an hour ago" at 7:30pm → 6:30pm |
+```
+
+The Provenance column appears **only** when at least one note has an inferred timestamp. If all timestamps are direct (from scratchpad or explicit user input), omit the column.
+
+For `bake_stats` entries derived from inferred times, show the provenance inline:
+
+```
+**bake_stats:**
+- bake_phases (1):
+  - covered: 500°F, start 2026-04-23 - 19:01 *(inferred: "20 min ago" at 19:21)*
+```
+
+### Examples
+
+**Example 1: Simple resolution**
+User note at 7:21pm UTC: "Placed in oven 20 minutes ago at 500°F"
+- Pattern match: "20 minutes ago" → offset = 20 min
+- T = 2026-04-23T19:21:00Z
+- Computed: 2026-04-23T19:01:00Z
+- BakeNote: `{ "timestamp": "2026-04-23T19:01:00Z", "raw": "Placed in oven 20 minutes ago at 500°F", "processing": "bake | Timestamp inferred: '20 minutes ago' relative to 2026-04-23T19:21:00Z → 2026-04-23T19:01:00Z" }`
+- bake_stats.bake_phases: `{ "stage": "covered", "temp_f": 500, "start_time": "2026-04-23 - 19:01", "note": "inferred: '20 min ago' at 19:21 UTC → 19:01 UTC" }`
+
+**Example 2: Ambiguous — requires clarification**
+User note: "Started bulk a while ago"
+- Pattern match: "a while ago" → **AMBIGUOUS**
+- Agent response: "How long ago did you start bulk? I need a rough time to record it."
+- User: "Maybe 45 minutes"
+- Agent: "So bulk started about 45 minutes ago — does that sound right?"
+- User: "Yeah"
+- Now resolve: offset = 45 min from confirmation time
+
+**Example 3: Hedged — requires confirmation**
+User note at 3:00pm: "I think I put it in maybe 2 hours ago"
+- Pattern match: "maybe 2 hours ago" → hedged language detected
+- Agent: "You mentioned putting it in about 2 hours ago — so around 1:00pm. Does that sound right?"
+- User: "Actually it was closer to 1:30"
+- Agent records 1:30pm as stated time (no longer inferred)
+
 ## Phase 3: Echo Back
 
 Before writing anything, present the full organized capture:
