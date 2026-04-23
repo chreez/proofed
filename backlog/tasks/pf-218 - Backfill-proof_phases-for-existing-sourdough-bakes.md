@@ -1,7 +1,7 @@
 ---
 id: PF-218
 title: Backfill proof_phases for existing sourdough bakes
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-23 18:40'
 updated_date: '2026-04-23 18:59'
@@ -31,10 +31,10 @@ Pure data task — manual JSON edits to simple-sourdough.json, no code changes.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 **AC1: proof_phases added to 6 bakes** — Feb 20, Feb 27, Mar 18, Apr 1, Apr 9, Apr 12 each get `proof_phases[]` in their `bake_stats` block, using Apr 14/15 entries as structural template.
-- [ ] #2 **AC2: Each entry has bench_rest and cold_retard** — Where notes support both phases, include both as separate ProofPhase entries. Where only cold_retard is derivable, include just that one.
-- [ ] #3 **AC3: Confidence rated per bake** — Each backfilled bake's `bake_stats.confidence` reflects the quality of proof timing data: High (explicit timestamps in notes match calculated gap), Medium (some times inferred or notes conflict slightly with calculated gap).
-- [ ] #4 **AC4: Notes-sourced times annotated** — ProofPhase `note` field documents evidence source (e.g., "Derived from notes: 'into fridge at 21:40'"). Estimates prefixed with "~".
-- [ ] #5 **AC5: No code changes** — Pure JSON data edits to `public/recipes/simple-sourdough.json`. Existing ProofPhase type and BakeStatsBlock renderer already handle the data.
-- [ ] #6 **AC6: Build passes** — `npm run build` exits 0 after edits.
+- [x] #1 **AC1: proof_phases added to 6 bakes** — Feb 20, Feb 27, Mar 18, Apr 1, Apr 9, Apr 12 each get `proof_phases[]` in their `bake_stats` block, using Apr 14/15 entries as structural template.
+- [x] #2 **AC2: Each entry has bench_rest and cold_retard** — Where notes support both phases, include both as separate ProofPhase entries. Where only cold_retard is derivable, include just that one.
+- [x] #3 **AC3: Confidence rated per bake** — Each backfilled bake's `bake_stats.confidence` reflects the quality of proof timing data: High (explicit timestamps in notes match calculated gap), Medium (some times inferred or notes conflict slightly with calculated gap).
+- [x] #4 **AC4: Notes-sourced times annotated** — ProofPhase `note` field documents evidence source (e.g., "Derived from notes: 'into fridge at 21:40'"). Estimates prefixed with "~".
+- [x] #5 **AC5: No code changes** — Pure JSON data edits to `public/recipes/simple-sourdough.json`. Existing ProofPhase type and BakeStatsBlock renderer already handle the data.
+- [x] #6 **AC6: Build passes** — `npm run build` exits 0 after edits.
 <!-- AC:END -->

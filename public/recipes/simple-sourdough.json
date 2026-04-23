@@ -1501,6 +1501,20 @@
             "duration_min": 20
           }
         ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "duration_min": 45,
+            "note": "Derived from notes: 'Rested 20 min at 9pm, stitched, into fridge around 9:15pm' — ~45 min room temp after preshape at ~20:30"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-02-19 - 21:15",
+            "end": "2026-02-20 - 13:00",
+            "duration_hours": 16,
+            "note": "Derived from notes: 'cold proofed ~16 hours (9:15pm to ~1pm)'"
+          }
+        ],
         "confidence": "high"
       },
       "notes": [
@@ -1742,6 +1756,20 @@
             "start_time": "2026-02-27 - 09:05",
             "temp_f": 450,
             "duration_min": 22
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "duration_min": 70,
+            "note": "Derived from notes: 'Final shaped at 20:35, into fridge at 21:40' — ~65-70 min room temp including pre-shape rest (~1 hour) and stitch"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-02-26 - 21:40",
+            "end": "2026-02-27 - 08:45",
+            "duration_hours": 11,
+            "note": "Derived from notes: 'Cold proofed overnight ~11 hours (21:40 to ~9:00am)'"
           }
         ],
         "confidence": "high"
@@ -2800,6 +2828,19 @@
             "duration_min": 18
           }
         ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "duration_min": 85,
+            "note": "Derived from notes: 'bench rest ~25 min, then final shaped' + '4:33am — shaped, resting room temp ~1 hour before fridge' — ~25 min pre-shape rest + ~60 min post-shape room temp"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-03-18 - 05:30",
+            "duration_hours": 4.2,
+            "note": "Derived from notes: 'Cold retard overnight' — ~5:30am into fridge, bake preheat 9:00am, covered at 9:45am"
+          }
+        ],
         "confidence": "high"
       },
       "notes": [
@@ -3119,6 +3160,20 @@
             "start_time": "2026-04-01 - 12:19",
             "temp_f": 425,
             "duration_min": 18
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "duration_min": 60,
+            "note": "Derived from notes: 'Room temp rest ~1 hour after shaping, then stitched and straight to fridge'"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-04-01 - 03:00",
+            "end": "2026-04-01 - 11:00",
+            "duration_hours": 8,
+            "note": "Derived from notes: 'Cold proof ~8 hours (~3am to ~11am)'"
           }
         ],
         "confidence": "high"
@@ -3597,6 +3652,20 @@
             "note": "loaf 2, 9 min rotate (390°F), 9 min, 4+4 min oven off"
           }
         ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "duration_min": 63,
+            "note": "Derived from notes: 'Room temp rest started ~4:04pm. 5:12pm — into fridge' — ~63 min room temp after final shape at ~4:09pm"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-04-09 - 17:12",
+            "end": "2026-04-10 - 09:59",
+            "duration_hours": 16.8,
+            "note": "Derived from notes: user calculated '17h 50m total proof' (shape 4:09pm → oven 9:59am; 1 hr room temp + ~16h 47m cold retard)"
+          }
+        ],
         "confidence": "high"
       },
       "notes": [
@@ -3819,6 +3888,20 @@
             "temp_f": 425,
             "duration_min": 22,
             "note": "loaf 2, 210°F internal"
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "duration_min": 70,
+            "note": "Derived from notes: 'Stitch-shaped 10:43pm, room temp rest, into fridge' — preshape at ~9:33pm, final stitch-shape at 10:43pm, room temp rest before fridge, ~70 min total from preshape"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-04-12 - 23:00",
+            "end": "2026-04-13 - 15:38",
+            "duration_hours": 16.6,
+            "note": "Derived from notes: fridge entry time ~11pm (estimated), bake start 3:38pm Apr 13 — fridge time unclear, ~16.6 hours estimated"
           }
         ],
         "confidence": "high"
