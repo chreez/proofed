@@ -1,0 +1,936 @@
+{
+  "updatedAt": "2026-04-23",
+  "source": "HEB store 428 (Austin, TX)",
+  "rates": {
+    "flour": {
+      "name": "All-Purpose Flour",
+      "ratePerGram": 0.00114,
+      "sourceProduct": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "ap_flour": {
+      "name": "All-Purpose Flour",
+      "ratePerGram": 0.00114,
+      "sourceProduct": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "ap-flour": {
+      "name": "All-Purpose Flour",
+      "ratePerGram": 0.00114,
+      "sourceProduct": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "levain_flour": {
+      "name": "All-Purpose Flour (levain)",
+      "ratePerGram": 0.00114,
+      "sourceProduct": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "bread_flour": {
+      "name": "Bread Flour",
+      "ratePerGram": 0.00167,
+      "sourceProduct": "H-E-B Baker's Scoop Bread Flour 5 lb ($3.78)",
+      "updatedAt": "2026-04-23"
+    },
+    "bread-flour": {
+      "name": "Bread Flour",
+      "ratePerGram": 0.00167,
+      "sourceProduct": "H-E-B Baker's Scoop Bread Flour 5 lb ($3.78)",
+      "updatedAt": "2026-04-23"
+    },
+    "whole_wheat_flour": {
+      "name": "Whole Wheat Flour",
+      "ratePerGram": 0.00158,
+      "sourceProduct": "H-E-B Baker's Scoop Whole Wheat Flour 5 lb ($3.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "dark_rye_flour": {
+      "name": "Dark Rye Flour",
+      "ratePerGram": 0.00614,
+      "sourceProduct": "Bob's Red Mill Dark Rye Flour 1.25 lb ($3.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "almond_flour": {
+      "name": "Almond Flour",
+      "ratePerGram": 0.01539,
+      "sourceProduct": "Higher Harvest by H-E-B Almond Flour 16 oz ($6.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "almond-flour": {
+      "name": "Almond Flour",
+      "ratePerGram": 0.01539,
+      "sourceProduct": "Higher Harvest by H-E-B Almond Flour 16 oz ($6.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "coconut_flour": {
+      "name": "Coconut Flour",
+      "ratePerGram": 0.00767,
+      "sourceProduct": "Higher Harvest by H-E-B Coconut Flour 16 oz ($3.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "coconut-flour": {
+      "name": "Coconut Flour",
+      "ratePerGram": 0.00767,
+      "sourceProduct": "Higher Harvest by H-E-B Coconut Flour 16 oz ($3.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "cornstarch": {
+      "name": "Cornstarch",
+      "ratePerGram": 0.0037,
+      "sourceProduct": "Hill Country Fare Corn Starch 1 lb ($1.68)",
+      "updatedAt": "2026-04-23"
+    },
+    "cornmeal": {
+      "name": "Cornmeal",
+      "ratePerGram": 0.0037,
+      "sourceProduct": "Hill Country Fare Corn Starch 1 lb ($1.68)",
+      "updatedAt": "2026-04-23"
+    },
+    "vital_wheat_gluten": {
+      "name": "Vital Wheat Gluten",
+      "ratePerGram": 0.01462,
+      "sourceProduct": "Bob's Red Mill Vital Wheat Gluten 1.25 lb ($8.29)",
+      "updatedAt": "2026-04-23"
+    },
+    "diastatic_malt": {
+      "name": "Diastatic Malt Powder",
+      "ratePerGram": 0.01351,
+      "sourceProduct": "Nestle Carnation Malted Milk 13 oz ($4.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "sugar": {
+      "name": "Granulated Sugar",
+      "ratePerGram": 0.00192,
+      "sourceProduct": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "granulated_sugar": {
+      "name": "Granulated Sugar",
+      "ratePerGram": 0.00192,
+      "sourceProduct": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "granulated-sugar": {
+      "name": "Granulated Sugar",
+      "ratePerGram": 0.00192,
+      "sourceProduct": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "caster-sugar": {
+      "name": "Caster Sugar",
+      "ratePerGram": 0.00192,
+      "sourceProduct": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "brown_sugar": {
+      "name": "Brown Sugar",
+      "ratePerGram": 0.00203,
+      "sourceProduct": "Hill Country Fare Brown Sugar 32 oz ($1.84)",
+      "updatedAt": "2026-04-23"
+    },
+    "dark-brown-sugar": {
+      "name": "Dark Brown Sugar",
+      "ratePerGram": 0.00203,
+      "sourceProduct": "Hill Country Fare Brown Sugar 32 oz ($1.84)",
+      "updatedAt": "2026-04-23"
+    },
+    "powdered_sugar": {
+      "name": "Confectioners' Sugar",
+      "ratePerGram": 0.00203,
+      "sourceProduct": "Hill Country Fare Confectioners Sugar 32 oz ($1.84)",
+      "updatedAt": "2026-04-23"
+    },
+    "honey": {
+      "name": "Honey",
+      "ratePerGram": 0.01437,
+      "sourceProduct": "H-E-B Texas Wildflower Honey 12 oz ($4.89)",
+      "updatedAt": "2026-04-23"
+    },
+    "butter": {
+      "name": "Unsalted Butter",
+      "ratePerGram": 0.00657,
+      "sourceProduct": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "unsalted-butter": {
+      "name": "Unsalted Butter",
+      "ratePerGram": 0.00657,
+      "sourceProduct": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "glaze-butter": {
+      "name": "Unsalted Butter",
+      "ratePerGram": 0.00657,
+      "sourceProduct": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "eggs": {
+      "name": "Large Eggs",
+      "ratePerGram": 0.00362,
+      "sourceProduct": "Hill Country Fare Large Eggs 12 ct ($2.17)",
+      "updatedAt": "2026-04-23"
+    },
+    "egg": {
+      "name": "Egg",
+      "ratePerGram": 0.00362,
+      "sourceProduct": "Hill Country Fare Large Eggs 12 ct ($2.17)",
+      "updatedAt": "2026-04-23"
+    },
+    "egg-yolks": {
+      "name": "Egg Yolks",
+      "ratePerGram": 0.00362,
+      "sourceProduct": "Hill Country Fare Large Eggs 12 ct ($2.17)",
+      "updatedAt": "2026-04-23"
+    },
+    "milk": {
+      "name": "Whole Milk",
+      "ratePerGram": 0.00116,
+      "sourceProduct": "H-E-B Whole Milk 1 gal ($4.38)",
+      "updatedAt": "2026-04-23"
+    },
+    "whole_milk": {
+      "name": "Whole Milk",
+      "ratePerGram": 0.00116,
+      "sourceProduct": "H-E-B Whole Milk 1 gal ($4.38)",
+      "updatedAt": "2026-04-23"
+    },
+    "whole-milk": {
+      "name": "Whole Milk",
+      "ratePerGram": 0.00116,
+      "sourceProduct": "H-E-B Whole Milk 1 gal ($4.38)",
+      "updatedAt": "2026-04-23"
+    },
+    "buttermilk": {
+      "name": "Buttermilk",
+      "ratePerGram": 0.00266,
+      "sourceProduct": "H-E-B Buttermilk 1 pt ($1.26)",
+      "updatedAt": "2026-04-23"
+    },
+    "heavy_cream": {
+      "name": "Heavy Cream",
+      "ratePerGram": 0.00517,
+      "sourceProduct": "H-E-B Heavy Whipping Cream 32 oz ($4.89)",
+      "updatedAt": "2026-04-23"
+    },
+    "cream_cheese": {
+      "name": "Cream Cheese",
+      "ratePerGram": 0.01014,
+      "sourceProduct": "H-E-B Cream Cheese 8 oz ($2.30)",
+      "updatedAt": "2026-04-23"
+    },
+    "condensed_milk": {
+      "name": "Sweetened Condensed Milk",
+      "ratePerGram": 0.00491,
+      "sourceProduct": "H-E-B Sweetened Condensed Milk 14 oz ($1.95)",
+      "updatedAt": "2026-04-23"
+    },
+    "evaporated_milk": {
+      "name": "Evaporated Milk",
+      "ratePerGram": 0.00291,
+      "sourceProduct": "H-E-B Evaporated Milk 12 oz ($0.99)",
+      "updatedAt": "2026-04-23"
+    },
+    "ghee": {
+      "name": "Ghee",
+      "ratePerGram": 0.03144,
+      "sourceProduct": "Laxmi Ghee 14 oz ($12.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "cheddar": {
+      "name": "Sharp Cheddar",
+      "ratePerGram": 0.011,
+      "sourceProduct": "H-E-B Sharp Cheddar 16 oz ($4.99)",
+      "updatedAt": "2026-04-23"
+    },
+    "sharp-cheddar": {
+      "name": "Sharp Cheddar",
+      "ratePerGram": 0.011,
+      "sourceProduct": "H-E-B Sharp Cheddar 16 oz ($4.99)",
+      "updatedAt": "2026-04-23"
+    },
+    "mozzarella": {
+      "name": "Low-Moisture Mozzarella",
+      "ratePerGram": 0.01936,
+      "sourceProduct": "H-E-B Organics Mozzarella 8 oz ($4.39)",
+      "updatedAt": "2026-04-23"
+    },
+    "hard_cheese": {
+      "name": "Parmigiano-Reggiano",
+      "ratePerGram": 0.05286,
+      "sourceProduct": "Galli Parmigiano Reggiano ~0.43 lb ($10.31)",
+      "updatedAt": "2026-04-23"
+    },
+    "olive_oil": {
+      "name": "Extra Virgin Olive Oil",
+      "ratePerGram": 0.01507,
+      "sourceProduct": "H-E-B Extra Virgin Olive Oil 17 oz ($6.68)",
+      "updatedAt": "2026-04-23"
+    },
+    "olive-oil": {
+      "name": "Extra Virgin Olive Oil",
+      "ratePerGram": 0.01507,
+      "sourceProduct": "H-E-B Extra Virgin Olive Oil 17 oz ($6.68)",
+      "updatedAt": "2026-04-23"
+    },
+    "olive-oil-roast": {
+      "name": "Olive Oil",
+      "ratePerGram": 0.01507,
+      "sourceProduct": "H-E-B Extra Virgin Olive Oil 17 oz ($6.68)",
+      "updatedAt": "2026-04-23"
+    },
+    "olive-oil-topping": {
+      "name": "Extra Virgin Olive Oil",
+      "ratePerGram": 0.01507,
+      "sourceProduct": "H-E-B Extra Virgin Olive Oil 17 oz ($6.68)",
+      "updatedAt": "2026-04-23"
+    },
+    "oil": {
+      "name": "Canola Oil",
+      "ratePerGram": 0.00412,
+      "sourceProduct": "Hill Country Fare Canola Oil 16 oz ($1.72)",
+      "updatedAt": "2026-04-23"
+    },
+    "neutral_oil": {
+      "name": "Neutral Oil",
+      "ratePerGram": 0.00412,
+      "sourceProduct": "Hill Country Fare Canola Oil 16 oz ($1.72)",
+      "updatedAt": "2026-04-23"
+    },
+    "sesame_oil": {
+      "name": "Sesame Oil",
+      "ratePerGram": 0.0135,
+      "sourceProduct": "H-E-B Toasted Sesame Oil 16.9 oz ($5.95)",
+      "updatedAt": "2026-04-23"
+    },
+    "yeast": {
+      "name": "Instant Yeast",
+      "ratePerGram": 0.04667,
+      "sourceProduct": "Hill Country Fare Instant Yeast 3-pack/21g ($0.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "instant_yeast": {
+      "name": "Instant Yeast",
+      "ratePerGram": 0.04667,
+      "sourceProduct": "Hill Country Fare Instant Yeast 3-pack/21g ($0.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "instant-yeast": {
+      "name": "Instant Yeast",
+      "ratePerGram": 0.04667,
+      "sourceProduct": "Hill Country Fare Instant Yeast 3-pack/21g ($0.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "baking_powder": {
+      "name": "Baking Powder",
+      "ratePerGram": 0.00906,
+      "sourceProduct": "Hill Country Fare Baking Powder 8.1 oz ($2.08)",
+      "updatedAt": "2026-04-23"
+    },
+    "baking-powder": {
+      "name": "Baking Powder",
+      "ratePerGram": 0.00906,
+      "sourceProduct": "Hill Country Fare Baking Powder 8.1 oz ($2.08)",
+      "updatedAt": "2026-04-23"
+    },
+    "baking_soda": {
+      "name": "Baking Soda",
+      "ratePerGram": 0.00196,
+      "sourceProduct": "Hill Country Fare Baking Soda 16 oz ($0.89)",
+      "updatedAt": "2026-04-23"
+    },
+    "baking-soda": {
+      "name": "Baking Soda",
+      "ratePerGram": 0.00196,
+      "sourceProduct": "Hill Country Fare Baking Soda 16 oz ($0.89)",
+      "updatedAt": "2026-04-23"
+    },
+    "cream_of_tartar": {
+      "name": "Cream of Tartar",
+      "ratePerGram": 0.08086,
+      "sourceProduct": "H-E-B Cream of Tartar 1.3 oz ($2.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "cream-of-tartar": {
+      "name": "Cream of Tartar",
+      "ratePerGram": 0.08086,
+      "sourceProduct": "H-E-B Cream of Tartar 1.3 oz ($2.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "salt": {
+      "name": "Salt",
+      "ratePerGram": 0.00175,
+      "sourceProduct": "Morton Iodized Salt 26 oz ($1.29)",
+      "updatedAt": "2026-04-23"
+    },
+    "fine-salt": {
+      "name": "Fine Salt",
+      "ratePerGram": 0.00175,
+      "sourceProduct": "Morton Iodized Salt 26 oz ($1.29)",
+      "updatedAt": "2026-04-23"
+    },
+    "fine-sea-salt": {
+      "name": "Fine Sea Salt",
+      "ratePerGram": 0.00175,
+      "sourceProduct": "Morton Iodized Salt 26 oz ($1.29)",
+      "updatedAt": "2026-04-23"
+    },
+    "noodle_salt": {
+      "name": "Salt",
+      "ratePerGram": 0.00175,
+      "sourceProduct": "Morton Iodized Salt 26 oz ($1.29)",
+      "updatedAt": "2026-04-23"
+    },
+    "flaky-salt": {
+      "name": "Maldon Flaky Sea Salt",
+      "ratePerGram": 0.02482,
+      "sourceProduct": "Maldon Sea Salt Flakes 8.5 oz ($5.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "cinnamon": {
+      "name": "Ground Cinnamon",
+      "ratePerGram": 0.04123,
+      "sourceProduct": "McCormick Ground Cinnamon 2.37 oz ($2.77)",
+      "updatedAt": "2026-04-23"
+    },
+    "vanilla": {
+      "name": "Vanilla Extract",
+      "ratePerGram": 0.06867,
+      "sourceProduct": "Adams Best Vanilla Extract 1.5 oz ($2.92)",
+      "updatedAt": "2026-04-23"
+    },
+    "garlic_powder": {
+      "name": "Garlic Powder",
+      "ratePerGram": 0.0325,
+      "sourceProduct": "H-E-B Garlic Powder 2.8 oz ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "garlic-powder": {
+      "name": "Garlic Powder",
+      "ratePerGram": 0.0325,
+      "sourceProduct": "H-E-B Garlic Powder 2.8 oz ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "onion_powder": {
+      "name": "Onion Powder",
+      "ratePerGram": 0.03907,
+      "sourceProduct": "H-E-B Onion Powder 2.6 oz ($2.88)",
+      "updatedAt": "2026-04-23"
+    },
+    "nutmeg": {
+      "name": "Ground Nutmeg",
+      "ratePerGram": 0.04123,
+      "sourceProduct": "McCormick Ground Nutmeg (est.) ($2.77)",
+      "updatedAt": "2026-04-23"
+    },
+    "cloves": {
+      "name": "Ground Cloves",
+      "ratePerGram": 0.04123,
+      "sourceProduct": "McCormick Ground Cloves (est.) ($2.77)",
+      "updatedAt": "2026-04-23"
+    },
+    "oregano": {
+      "name": "Dried Oregano",
+      "ratePerGram": 0.065,
+      "sourceProduct": "H-E-B Dried Oregano (est. from H-E-B spice) ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "black_pepper": {
+      "name": "Black Pepper",
+      "ratePerGram": 0.0325,
+      "sourceProduct": "H-E-B Black Pepper (est.) ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "black-pepper": {
+      "name": "Black Pepper",
+      "ratePerGram": 0.0325,
+      "sourceProduct": "H-E-B Black Pepper (est.) ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "cayenne": {
+      "name": "Cayenne Pepper",
+      "ratePerGram": 0.0325,
+      "sourceProduct": "H-E-B Cayenne Pepper (est.) ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "white_pepper": {
+      "name": "White Pepper",
+      "ratePerGram": 0.0325,
+      "sourceProduct": "H-E-B White Pepper (est.) ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "smoked-paprika": {
+      "name": "Smoked Paprika",
+      "ratePerGram": 0.0325,
+      "sourceProduct": "H-E-B Smoked Paprika (est.) ($2.58)",
+      "updatedAt": "2026-04-23"
+    },
+    "ginger": {
+      "name": "Ginger",
+      "ratePerGram": 0.01,
+      "sourceProduct": "Fresh Ginger ~50g ($0.50 est.)",
+      "updatedAt": "2026-04-23"
+    },
+    "instant_coffee": {
+      "name": "Instant Coffee",
+      "ratePerGram": 0.01351,
+      "sourceProduct": "Nestle Instant Coffee (est.) ($4.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "msg": {
+      "name": "MSG",
+      "ratePerGram": 0.01764,
+      "sourceProduct": "Aji-no-moto MSG 4 oz (est. $2.00)",
+      "updatedAt": "2026-04-23"
+    },
+    "gochugaru": {
+      "name": "Gochugaru",
+      "ratePerGram": 0.01239,
+      "sourceProduct": "Korean red pepper (est. from gochujang)",
+      "updatedAt": "2026-04-23"
+    },
+    "ichimi_togarashi": {
+      "name": "Ichimi Togarashi",
+      "ratePerGram": 0.0325,
+      "sourceProduct": "Japanese chili (est. from H-E-B spice)",
+      "updatedAt": "2026-04-23"
+    },
+    "curry_powder": {
+      "name": "Curry Powder",
+      "ratePerGram": 0.03219,
+      "sourceProduct": "S&B Golden Curry Mix 3.2 oz ($2.92)",
+      "updatedAt": "2026-04-23"
+    },
+    "garlic": {
+      "name": "Fresh Garlic",
+      "ratePerGram": 0.01,
+      "sourceProduct": "Fresh Garlic 2 for $1.00 (~50g each)",
+      "updatedAt": "2026-04-23"
+    },
+    "garlic_paste_red": {
+      "name": "Garlic Paste",
+      "ratePerGram": 0.01,
+      "sourceProduct": "Fresh Garlic 2 for $1.00 (~50g each)",
+      "updatedAt": "2026-04-23"
+    },
+    "onion": {
+      "name": "Yellow Onion",
+      "ratePerGram": 0.00146,
+      "sourceProduct": "H-E-B Yellow Onions 3 lb bag ($1.99)",
+      "updatedAt": "2026-04-23"
+    },
+    "onions": {
+      "name": "Yellow Onions",
+      "ratePerGram": 0.00146,
+      "sourceProduct": "H-E-B Yellow Onions 3 lb bag ($1.99)",
+      "updatedAt": "2026-04-23"
+    },
+    "carrots": {
+      "name": "Carrots",
+      "ratePerGram": 0.00282,
+      "sourceProduct": "Fresh Carrots ~0.75 lb ($0.96)",
+      "updatedAt": "2026-04-23"
+    },
+    "carrot": {
+      "name": "Carrot",
+      "ratePerGram": 0.00282,
+      "sourceProduct": "Fresh Carrots ~0.75 lb ($0.96)",
+      "updatedAt": "2026-04-23"
+    },
+    "apple": {
+      "name": "Fuji Apple",
+      "ratePerGram": 0.0022,
+      "sourceProduct": "H-E-B Fuji Apples 3 lb bag ($2.99)",
+      "updatedAt": "2026-04-23"
+    },
+    "russet_potato": {
+      "name": "Russet Potato",
+      "ratePerGram": 0.00137,
+      "sourceProduct": "H-E-B Russet Potatoes 5 lb ($3.11)",
+      "updatedAt": "2026-04-23"
+    },
+    "scallion_whites": {
+      "name": "Scallion Whites",
+      "ratePerGram": 0.013,
+      "sourceProduct": "Fresh Green Onions ($0.65 ea ~50g)",
+      "updatedAt": "2026-04-23"
+    },
+    "green_onion": {
+      "name": "Green Onions",
+      "ratePerGram": 0.013,
+      "sourceProduct": "Fresh Green Onions ($0.65 ea ~50g)",
+      "updatedAt": "2026-04-23"
+    },
+    "basil": {
+      "name": "Fresh Basil",
+      "ratePerGram": 0.1181,
+      "sourceProduct": "Fresh Basil ~0.75 oz ($2.48 est.)",
+      "updatedAt": "2026-04-23"
+    },
+    "rosemary": {
+      "name": "Fresh Rosemary",
+      "ratePerGram": 0.1181,
+      "sourceProduct": "Fresh Rosemary ~0.75 oz ($2.48 est.)",
+      "updatedAt": "2026-04-23"
+    },
+    "parsley": {
+      "name": "Fresh Parsley",
+      "ratePerGram": 0.035,
+      "sourceProduct": "Fresh Parsley bunch ($0.98 est.)",
+      "updatedAt": "2026-04-23"
+    },
+    "lime_juice": {
+      "name": "Fresh Lime Juice",
+      "ratePerGram": 0.011,
+      "sourceProduct": "Fresh Lime ($0.33 ea, ~30g juice)",
+      "updatedAt": "2026-04-23"
+    },
+    "orange_zest": {
+      "name": "Orange Zest",
+      "ratePerGram": 0.125,
+      "sourceProduct": "Fresh Orange ($0.75 ea, ~6g zest)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork_belly": {
+      "name": "Pork Belly",
+      "ratePerGram": 0.0121,
+      "sourceProduct": "H-E-B Pork Belly ~4.83 lb ($26.52)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork_bones": {
+      "name": "Pork Bones",
+      "ratePerGram": 0.00593,
+      "sourceProduct": "H-E-B Bone-in Pork Butt ~8.5 lb ($22.87)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork_femur_bones": {
+      "name": "Pork Femur Bones",
+      "ratePerGram": 0.00593,
+      "sourceProduct": "H-E-B Bone-in Pork Butt ~8.5 lb ($22.87)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork_neck_bones": {
+      "name": "Pork Neck Bones",
+      "ratePerGram": 0.00593,
+      "sourceProduct": "H-E-B Bone-in Pork Butt ~8.5 lb ($22.87)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork_shoulder": {
+      "name": "Pork Shoulder",
+      "ratePerGram": 0.00637,
+      "sourceProduct": "H-E-B Boneless Pork Butt ~3.3 lb ($9.54)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork": {
+      "name": "Pork Shoulder",
+      "ratePerGram": 0.00637,
+      "sourceProduct": "H-E-B Boneless Pork Butt ~3.3 lb ($9.54)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork_trotters": {
+      "name": "Pork Trotters",
+      "ratePerGram": 0.00657,
+      "sourceProduct": "Pork Split Front Feet ~2.11 lb ($6.29)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork_back_fat": {
+      "name": "Pork Back Fat",
+      "ratePerGram": 0.0121,
+      "sourceProduct": "H-E-B Pork Belly (proxy) ~4.83 lb ($26.52)",
+      "updatedAt": "2026-04-23"
+    },
+    "pork_skin": {
+      "name": "Pork Skin",
+      "ratePerGram": 0.00657,
+      "sourceProduct": "Pork Split Front Feet (proxy) ~2.11 lb ($6.29)",
+      "updatedAt": "2026-04-23"
+    },
+    "chicken_backs": {
+      "name": "Chicken Backs",
+      "ratePerGram": 0.00322,
+      "sourceProduct": "Hill Country Fare Whole Chicken ~5.55 lb ($8.10)",
+      "updatedAt": "2026-04-23"
+    },
+    "chicken_feet": {
+      "name": "Chicken Feet",
+      "ratePerGram": 0.0066,
+      "sourceProduct": "Fresh Chicken Feet ~1.17 lb ($3.50)",
+      "updatedAt": "2026-04-23"
+    },
+    "pepperoni": {
+      "name": "Pepperoni",
+      "ratePerGram": 0.01758,
+      "sourceProduct": "H-E-B Pepperoni Slices 6 oz ($2.99)",
+      "updatedAt": "2026-04-23"
+    },
+    "crushed_tomatoes": {
+      "name": "Crushed Tomatoes",
+      "ratePerGram": 0.00226,
+      "sourceProduct": "H-E-B Crushed Tomatoes 15 oz ($0.96)",
+      "updatedAt": "2026-04-23"
+    },
+    "san_marzano_sauce": {
+      "name": "San Marzano Tomato Sauce",
+      "ratePerGram": 0.00572,
+      "sourceProduct": "Cento San Marzano Tomatoes 28 oz ($4.54)",
+      "updatedAt": "2026-04-23"
+    },
+    "beef_broth": {
+      "name": "Beef Broth",
+      "ratePerGram": 0.00218,
+      "sourceProduct": "H-E-B Reduced Sodium Beef Broth 32 oz ($1.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "soy_sauce": {
+      "name": "Soy Sauce",
+      "ratePerGram": 0.00843,
+      "sourceProduct": "Kikkoman Soy Sauce 20 oz ($4.78)",
+      "updatedAt": "2026-04-23"
+    },
+    "light-soy-sauce": {
+      "name": "Light Soy Sauce",
+      "ratePerGram": 0.00843,
+      "sourceProduct": "Kikkoman Soy Sauce 20 oz ($4.78)",
+      "updatedAt": "2026-04-23"
+    },
+    "mirin": {
+      "name": "Mirin",
+      "ratePerGram": 0.01404,
+      "sourceProduct": "Kikkoman Aji Mirin 10 oz ($3.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "sake": {
+      "name": "Sake (cooking)",
+      "ratePerGram": 0.01404,
+      "sourceProduct": "Cooking sake (est. same as mirin)",
+      "updatedAt": "2026-04-23"
+    },
+    "rice_vinegar": {
+      "name": "Rice Vinegar",
+      "ratePerGram": 0.00628,
+      "sourceProduct": "Kikkoman Rice Vinegar 10 oz ($1.78)",
+      "updatedAt": "2026-04-23"
+    },
+    "gochujang": {
+      "name": "Gochujang",
+      "ratePerGram": 0.01239,
+      "sourceProduct": "O'Food Gochujang 17.6 oz ($6.18)",
+      "updatedAt": "2026-04-23"
+    },
+    "miso": {
+      "name": "Red Miso Paste",
+      "ratePerGram": 0.0108,
+      "sourceProduct": "Miso paste (est. from Japanese aisle)",
+      "updatedAt": "2026-04-23"
+    },
+    "kombu": {
+      "name": "Kombu (dried kelp)",
+      "ratePerGram": 0.05097,
+      "sourceProduct": "Wel-Pac Dashi Kombu 4 oz ($5.78)",
+      "updatedAt": "2026-04-23"
+    },
+    "nori": {
+      "name": "Nori Sheets",
+      "ratePerGram": 0.16528,
+      "sourceProduct": "Honey Bee Sushi Nori 10 ct ($3.28)",
+      "updatedAt": "2026-04-23"
+    },
+    "katsuobushi": {
+      "name": "Katsuobushi (bonito)",
+      "ratePerGram": 0.19963,
+      "sourceProduct": "Yamaki Bonito Flakes 20 ct ($7.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "curry_roux": {
+      "name": "Japanese Curry Roux",
+      "ratePerGram": 0.03219,
+      "sourceProduct": "S&B Golden Curry 3.2 oz ($2.92)",
+      "updatedAt": "2026-04-23"
+    },
+    "rice": {
+      "name": "Short-Grain Rice",
+      "ratePerGram": 0.00437,
+      "sourceProduct": "H-E-B Short Grain Sushi Rice 1 lb ($1.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "chocolate": {
+      "name": "Semisweet Chocolate",
+      "ratePerGram": 0.03086,
+      "sourceProduct": "H-E-B Organics Semi-Sweet Baking Bar 4 oz ($3.50)",
+      "updatedAt": "2026-04-23"
+    },
+    "pecans": {
+      "name": "Pecans",
+      "ratePerGram": 0.02638,
+      "sourceProduct": "H-E-B Pecan Halves 10 oz ($7.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "psyllium_husk": {
+      "name": "Psyllium Husk Powder",
+      "ratePerGram": 0.03175,
+      "sourceProduct": "Central Market Psyllium Husk 12 oz ($10.80)",
+      "updatedAt": "2026-04-23"
+    },
+    "psyllium": {
+      "name": "Psyllium Husk Powder",
+      "ratePerGram": 0.03175,
+      "sourceProduct": "Central Market Psyllium Husk 12 oz ($10.80)",
+      "updatedAt": "2026-04-23"
+    },
+    "xanthan_gum": {
+      "name": "Xanthan Gum",
+      "ratePerGram": 0.05939,
+      "sourceProduct": "Bob's Red Mill Xanthan Gum 8 oz ($13.47)",
+      "updatedAt": "2026-04-23"
+    },
+    "apple_cider_vinegar": {
+      "name": "Apple Cider Vinegar",
+      "ratePerGram": 0.00326,
+      "sourceProduct": "Hill Country Fare Apple Cider Vinegar 16 oz ($1.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "acv": {
+      "name": "Apple Cider Vinegar",
+      "ratePerGram": 0.00326,
+      "sourceProduct": "Hill Country Fare Apple Cider Vinegar 16 oz ($1.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "peanut_butter": {
+      "name": "Peanut Butter",
+      "ratePerGram": 0.00657,
+      "sourceProduct": "H-E-B Peanut Butter 16 oz (est. $2.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "mango_chutney": {
+      "name": "Mango Chutney",
+      "ratePerGram": 0.0156,
+      "sourceProduct": "Patak's Mango Chutney 9 oz (est. $3.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "sesame-seeds": {
+      "name": "Sesame Seeds",
+      "ratePerGram": 0.04374,
+      "sourceProduct": "H-E-B Sesame Seeds 2 oz (est. $2.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "worcestershire": {
+      "name": "Worcestershire Sauce",
+      "ratePerGram": 0.00875,
+      "sourceProduct": "Bull-Dog Worcestershire 10 oz (est. $2.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "chuno_sauce": {
+      "name": "Chuno Sauce",
+      "ratePerGram": 0.00875,
+      "sourceProduct": "Bull-Dog Fruit Sauce 10 oz (est. $2.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "water": {
+      "name": "Water",
+      "ratePerGram": 0.0,
+      "sourceProduct": "Tap water (free)",
+      "updatedAt": "2026-04-23"
+    },
+    "ice": {
+      "name": "Ice",
+      "ratePerGram": 0.0,
+      "sourceProduct": "Tap water frozen (free)",
+      "updatedAt": "2026-04-23"
+    },
+    "starter": {
+      "name": "Sourdough Starter",
+      "ratePerGram": 0.0,
+      "sourceProduct": "Home-maintained starter (free)",
+      "updatedAt": "2026-04-23"
+    },
+    "sourdough_starter": {
+      "name": "Sourdough Starter",
+      "ratePerGram": 0.0,
+      "sourceProduct": "Home-maintained starter (free)",
+      "updatedAt": "2026-04-23"
+    },
+    "sourdough_discard": {
+      "name": "Sourdough Discard",
+      "ratePerGram": 0.0,
+      "sourceProduct": "Home-maintained starter discard (free)",
+      "updatedAt": "2026-04-23"
+    },
+    "sourdough-discard": {
+      "name": "Sourdough Discard",
+      "ratePerGram": 0.0,
+      "sourceProduct": "Home-maintained starter discard (free)",
+      "updatedAt": "2026-04-23"
+    },
+    "discard": {
+      "name": "Sourdough Discard",
+      "ratePerGram": 0.0,
+      "sourceProduct": "Home-maintained starter discard (free)",
+      "updatedAt": "2026-04-23"
+    },
+    "levain_water": {
+      "name": "Water (levain)",
+      "ratePerGram": 0.0,
+      "sourceProduct": "Tap water (free)",
+      "updatedAt": "2026-04-23"
+    },
+    "beer": {
+      "name": "Mexican Lager Beer",
+      "ratePerGram": 0.00559,
+      "sourceProduct": "Modelo Especial 24 oz ($3.97)",
+      "updatedAt": "2026-04-23"
+    },
+    "thai_tea_mix": {
+      "name": "Thai Tea Mix",
+      "ratePerGram": 0.06933,
+      "sourceProduct": "Wang Derm Thai Tea Bags 20 ct ($4.16)",
+      "updatedAt": "2026-04-23"
+    },
+    "tapioca_pearls": {
+      "name": "Tapioca Pearls",
+      "ratePerGram": 0.00767,
+      "sourceProduct": "Just About Foods Tapioca 1 lb ($3.48)",
+      "updatedAt": "2026-04-23"
+    },
+    "dried_shiitake": {
+      "name": "Dried Shiitake Mushrooms",
+      "ratePerGram": 0.1157,
+      "sourceProduct": "Dynasty Dried Shiitake 1 oz ($3.28)",
+      "updatedAt": "2026-04-23"
+    },
+    "menma": {
+      "name": "Menma (bamboo shoots)",
+      "ratePerGram": 0.00873,
+      "sourceProduct": "Polar Sliced Bamboo Shoots 8 oz ($1.98)",
+      "updatedAt": "2026-04-23"
+    },
+    "ribotide": {
+      "name": "Ribotide",
+      "ratePerGram": 0.21164,
+      "sourceProduct": "Ribotide IMP+GMP 2 oz (online est. $12.00)",
+      "updatedAt": "2026-04-23"
+    },
+    "kansui": {
+      "name": "Kansui",
+      "ratePerGram": 0.07055,
+      "sourceProduct": "Kansui alkaline salt 4 oz (online est. $8.00)",
+      "updatedAt": "2026-04-23"
+    },
+    "niboshi": {
+      "name": "Niboshi (dried sardines)",
+      "ratePerGram": 0.08561,
+      "sourceProduct": "Dried sardines (est. from specialty sources ~$8.98/3.7oz)",
+      "updatedAt": "2026-04-23"
+    },
+    "sababushi": {
+      "name": "Sababushi (dried mackerel)",
+      "ratePerGram": 0.08561,
+      "sourceProduct": "Dried mackerel (est. from specialty sources ~$8.98/3.7oz)",
+      "updatedAt": "2026-04-23"
+    },
+    "dried_flounder_powder": {
+      "name": "Dried Flounder Powder",
+      "ratePerGram": 0.08561,
+      "sourceProduct": "Dried flounder (est. from specialty sources ~$8.98/3.7oz)",
+      "updatedAt": "2026-04-23"
+    }
+  }
+}

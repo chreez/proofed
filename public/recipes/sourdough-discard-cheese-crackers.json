@@ -8,7 +8,7 @@
     },
     "yields": "~80-100 crackers (2 sheet pans)",
     "total_time": "~1.5 hrs (30 min active, 30 min chill, 20 min bake)",
-    "description": "Sharp cheddar crackers with sourdough tang, smoked paprika, and black pepper. Uses unfed sourdough discard as the base — no waste, maximum flavor. Roll thin and dock well for snappy, Cheez-It-adjacent results."
+    "description": "Sharp cheddar crackers with sourdough tang, smoked paprika, and black pepper. Uses unfed sourdough discard as the base \u2014 no waste, maximum flavor. Roll thin and dock well for snappy, Cheez-It-adjacent results."
   },
   "config": {
     "early_check_percent": 0.8
@@ -22,48 +22,161 @@
     }
   ],
   "vessels": [
-    { "id": "V1", "name": "Stand Mixer Bowl" },
-    { "id": "V2", "name": "Baking Sheets (2)", "reuse": "Rotate if baking in batches" }
+    {
+      "id": "V1",
+      "name": "Stand Mixer Bowl"
+    },
+    {
+      "id": "V2",
+      "name": "Baking Sheets (2)",
+      "reuse": "Rotate if baking in batches"
+    }
   ],
   "stages": [
     {
       "id": "PREP",
       "title": "Mix Dough",
       "gather": {
-        "vessels": ["Stand Mixer Bowl", "Baking Sheets (2)"],
-        "equipment": ["Kitchen Scale", "Stand Mixer (paddle attachment)", "Box Grater", "Rolling Pin", "Pizza Cutter", "Fork", "Parchment Paper"],
+        "vessels": [
+          "Stand Mixer Bowl",
+          "Baking Sheets (2)"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Stand Mixer (paddle attachment)",
+          "Box Grater",
+          "Rolling Pin",
+          "Pizza Cutter",
+          "Fork",
+          "Parchment Paper"
+        ],
         "ingredients": [
-          { "id": "discard", "name": "Sourdough Discard (unfed, 100% hydration)", "total": 200, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents confirmed 200-230g; using 200g for sourdough-forward family" },
-          { "id": "ap-flour", "name": "All-Purpose Flour", "total": 100, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents; provides structure and rollability" },
-          { "id": "sharp-cheddar", "name": "Sharp Cheddar (block, fine-grated)", "total": 170, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents; sharp cheddar (36-39% moisture) browns and crisps reliably" },
-          { "id": "butter", "name": "Unsalted Butter (softened)", "total": 40, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents confirmed 28-57g range; 40g balances richness and crispness" },
-          { "id": "smoked-paprika", "name": "Smoked Paprika", "total": 4, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "3/4 agents; above 1 tsp risks eclipsing cheddar" },
-          { "id": "garlic-powder", "name": "Garlic Powder", "total": 3, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "3/4 agents; rounds out savory profile" },
-          { "id": "black-pepper", "name": "Black Pepper (coarse)", "total": 3, "unit": "g", "breakdown": null, "confidence": "medium", "rationale": "2/4 agents; visible flecks and bite" },
-          { "id": "cayenne", "name": "Cayenne Pepper", "total": 0.5, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "3/4 agents; 1/4 tsp = noticeable warmth. Capsaicin stable at 350\u00b0F" },
-          { "id": "fine-salt", "name": "Fine Salt", "total": 3, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents; sourdough tang demands salt to balance" },
-          { "id": "flaky-salt", "name": "Flaky Salt", "total": 2, "unit": "g", "breakdown": null, "confidence": "high", "rationale": "4/4 agents; topping for texture and visual" }
+          {
+            "id": "discard",
+            "name": "Sourdough Discard (unfed, 100% hydration)",
+            "total": 200,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "4/4 agents confirmed 200-230g; using 200g for sourdough-forward family"
+          },
+          {
+            "id": "ap-flour",
+            "name": "All-Purpose Flour",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "4/4 agents; provides structure and rollability"
+          },
+          {
+            "id": "sharp-cheddar",
+            "name": "Sharp Cheddar (block, fine-grated)",
+            "total": 170,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "4/4 agents; sharp cheddar (36-39% moisture) browns and crisps reliably"
+          },
+          {
+            "id": "butter",
+            "name": "Unsalted Butter (softened)",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "4/4 agents confirmed 28-57g range; 40g balances richness and crispness"
+          },
+          {
+            "id": "smoked-paprika",
+            "name": "Smoked Paprika",
+            "total": 4,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "3/4 agents; above 1 tsp risks eclipsing cheddar"
+          },
+          {
+            "id": "garlic-powder",
+            "name": "Garlic Powder",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "3/4 agents; rounds out savory profile"
+          },
+          {
+            "id": "black-pepper",
+            "name": "Black Pepper (coarse)",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "medium",
+            "rationale": "2/4 agents; visible flecks and bite"
+          },
+          {
+            "id": "cayenne",
+            "name": "Cayenne Pepper",
+            "total": 0.5,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "3/4 agents; 1/4 tsp = noticeable warmth. Capsaicin stable at 350\u00b0F"
+          },
+          {
+            "id": "fine-salt",
+            "name": "Fine Salt",
+            "total": 3,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "4/4 agents; sourdough tang demands salt to balance"
+          },
+          {
+            "id": "flaky-salt",
+            "name": "Flaky Salt",
+            "total": 2,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "4/4 agents; topping for texture and visual"
+          }
         ]
       },
-      "states": ["grate-cheese", "whisk-dry", "cut-butter", "add-discard-cheese"]
+      "states": [
+        "grate-cheese",
+        "whisk-dry",
+        "cut-butter",
+        "add-discard-cheese"
+      ]
     },
     {
       "id": "CHILL",
       "title": "Chill Dough",
       "gather": null,
-      "states": ["chill-dough"]
+      "states": [
+        "chill-dough"
+      ]
     },
     {
       "id": "SHAPE",
       "title": "Roll, Cut & Dock",
       "gather": null,
-      "states": ["roll-dough", "cut-squares", "dock-and-salt"]
+      "states": [
+        "roll-dough",
+        "cut-squares",
+        "dock-and-salt"
+      ]
     },
     {
       "id": "BAKE",
       "title": "Bake",
       "gather": null,
-      "states": ["preheat", "bake-crackers", "cool"]
+      "states": [
+        "preheat",
+        "bake-crackers",
+        "cool"
+      ]
     }
   ],
   "states": [
@@ -75,12 +188,15 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "sharp cheddar (block)", "amount": "170g" }
+        {
+          "name": "sharp cheddar (block)",
+          "amount": "170g"
+        }
       ],
       "exit_condition": "170g cheese finely grated with no large chunks remaining",
       "notes": [
         {
-          "text": "Block cheese only — pre-shredded cheese contains anti-caking agents (cellulose, potato starch) that prevent proper melting and integration into the dough.",
+          "text": "Block cheese only \u2014 pre-shredded cheese contains anti-caking agents (cellulose, potato starch) that prevent proper melting and integration into the dough.",
           "critical": true,
           "source": "agent"
         }
@@ -94,12 +210,30 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "all-purpose flour", "amount": "100g" },
-        { "name": "fine salt", "amount": "3g" },
-        { "name": "smoked paprika", "amount": "4g" },
-        { "name": "garlic powder", "amount": "3g" },
-        { "name": "black pepper", "amount": "3g" },
-        { "name": "cayenne", "amount": "0.5g" }
+        {
+          "name": "all-purpose flour",
+          "amount": "100g"
+        },
+        {
+          "name": "fine salt",
+          "amount": "3g"
+        },
+        {
+          "name": "smoked paprika",
+          "amount": "4g"
+        },
+        {
+          "name": "garlic powder",
+          "amount": "3g"
+        },
+        {
+          "name": "black pepper",
+          "amount": "3g"
+        },
+        {
+          "name": "cayenne",
+          "amount": "0.5g"
+        }
       ],
       "exit_condition": "Dry ingredients evenly combined with uniform spice color throughout",
       "notes": null
@@ -112,7 +246,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "unsalted butter (softened)", "amount": "40g" }
+        {
+          "name": "unsalted butter (softened)",
+          "amount": "40g"
+        }
       ],
       "exit_condition": "Butter fully incorporated; mixture has a sandy, coarse crumb texture",
       "notes": null
@@ -125,8 +262,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "sourdough discard", "amount": "200g" },
-        { "name": "sharp cheddar (grated)", "amount": "170g" }
+        {
+          "name": "sourdough discard",
+          "amount": "200g"
+        },
+        {
+          "name": "sharp cheddar (grated)",
+          "amount": "170g"
+        }
       ],
       "exit_condition": "Dough is cohesive and holds together when pressed; no loose flour remaining",
       "notes": [
@@ -157,7 +300,7 @@
     {
       "id": "roll-dough",
       "title": "Roll Dough Ultra-Thin",
-      "direction": "Place dough between two sheets of parchment paper. Roll to 0.16cm thickness — as thin as possible without tearing. Work from center outward, rotating 90\u00b0 periodically for even thickness.",
+      "direction": "Place dough between two sheets of parchment paper. Roll to 0.16cm thickness \u2014 as thin as possible without tearing. Work from center outward, rotating 90\u00b0 periodically for even thickness.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -165,7 +308,7 @@
       "exit_condition": "Dough is uniformly 0.16cm thick with no visibly thicker areas",
       "notes": [
         {
-          "text": "Rolling thin enough is the #1 factor separating great crackers from mediocre ones. If you can't hit 0.16cm, go as thin as you can — thinner is always better for crispness.",
+          "text": "Rolling thin enough is the #1 factor separating great crackers from mediocre ones. If you can't hit 0.16cm, go as thin as you can \u2014 thinner is always better for crispness.",
           "critical": true,
           "source": "agent"
         },
@@ -179,7 +322,7 @@
     {
       "id": "cut-squares",
       "title": "Cut Squares",
-      "direction": "Using a pizza cutter or sharp knife, cut the rolled dough into 2.5cm squares. No need to separate — they break apart after baking. Transfer parchment with cut dough to a baking sheet.",
+      "direction": "Using a pizza cutter or sharp knife, cut the rolled dough into 2.5cm squares. No need to separate \u2014 they break apart after baking. Transfer parchment with cut dough to a baking sheet.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -195,7 +338,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "flaky salt", "amount": "2g" }
+        {
+          "name": "flaky salt",
+          "amount": "2g"
+        }
       ],
       "exit_condition": "Every cracker has at least one dock hole; flaky salt visible on surface",
       "notes": [
@@ -220,7 +366,7 @@
     {
       "id": "bake-crackers",
       "title": "Bake Crackers",
-      "direction": "Bake for 15-20 minutes, rotating the sheet halfway through. Watch closely after 12 minutes — edges brown fast.",
+      "direction": "Bake for 15-20 minutes, rotating the sheet halfway through. Watch closely after 12 minutes \u2014 edges brown fast.",
       "duration_min": 18,
       "timer": true,
       "parallel": false,
@@ -228,7 +374,7 @@
       "exit_condition": "Crackers are golden brown at the edges; center crackers have deepened in color but are not dark brown",
       "notes": [
         {
-          "text": "Pull slightly early if in doubt — crackers continue to crisp as they cool. Overbaked crackers taste bitter from burnt cheese.",
+          "text": "Pull slightly early if in doubt \u2014 crackers continue to crisp as they cool. Overbaked crackers taste bitter from burnt cheese.",
           "critical": false,
           "source": "agent"
         }
@@ -248,7 +394,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Crackers are room temperature and snap cleanly when broken — no bend or flex",
+      "exit_condition": "Crackers are room temperature and snap cleanly when broken \u2014 no bend or flex",
       "notes": [
         {
           "text": "Do not transfer to a container until fully cooled. Trapped steam from warm crackers creates sogginess.",
@@ -275,29 +421,205 @@
   },
   "research": {
     "sources": [
-      { "name": "King Arthur Baking", "url": "https://www.kingarthurbaking.com/recipes/sourdough-crackers-recipe", "type": "adapted" },
-      { "name": "Natasha's Kitchen", "url": "https://natashaskitchen.com/sourdough-cheese-crackers/", "type": "adapted" },
-      { "name": "Sourdough Brandon", "url": "https://sourdoughbrandon.com/sourdough-discard-cheese-crackers/", "type": "adapted" },
-      { "name": "Country Roads Sourdough", "url": "https://countryroadssourdough.com/sourdough-cheez-it-crackers/", "type": "adapted" },
-      { "name": "Wild Thistle Kitchen", "url": "https://wildthistlekitchen.com/sourdough-cheese-crackers/", "type": "adapted" },
-      { "name": "ENW / Everyday Homemade", "url": "https://enwnutrition.com/sourdough-discard-cheese-crackers/", "type": "adapted" },
-      { "name": "Heart's Content Farmhouse", "url": "https://heartscontentfarmhouse.com/discard-sourdough-cheddar-crackers/", "type": "adapted" },
-      { "name": "Alton Brown", "url": "https://altonbrown.com/recipes/sourdough-cheese-crackers/", "type": "adapted" },
-      { "name": "Bob's Red Mill (technique)", "url": "https://www.bobsredmill.com/articles/how-to-make-homemade-crackers-crispy", "type": "adapted" },
-      { "name": "DairyCraftPro (cheese science)", "url": "https://dairycraftpro.com/understanding-the-moisture-content-of-different-types-of-cheese/", "type": "adapted" },
-      { "name": "The Hot Pepper Forum (capsaicin)", "url": "https://thehotpepper.com/threads/capsaicinoid-stability-during-cooking.75997/", "type": "adapted" },
-      { "name": "Crumbs & Nibbles (Gruyere variant)", "url": "https://crumbsandnibbles.com/rosemary-gruyere-crackers-aka-grown-up-cheez-its/", "type": "adapted" }
+      {
+        "name": "King Arthur Baking",
+        "url": "https://www.kingarthurbaking.com/recipes/sourdough-crackers-recipe",
+        "type": "adapted"
+      },
+      {
+        "name": "Natasha's Kitchen",
+        "url": "https://natashaskitchen.com/sourdough-cheese-crackers/",
+        "type": "adapted"
+      },
+      {
+        "name": "Sourdough Brandon",
+        "url": "https://sourdoughbrandon.com/sourdough-discard-cheese-crackers/",
+        "type": "adapted"
+      },
+      {
+        "name": "Country Roads Sourdough",
+        "url": "https://countryroadssourdough.com/sourdough-cheez-it-crackers/",
+        "type": "adapted"
+      },
+      {
+        "name": "Wild Thistle Kitchen",
+        "url": "https://wildthistlekitchen.com/sourdough-cheese-crackers/",
+        "type": "adapted"
+      },
+      {
+        "name": "ENW / Everyday Homemade",
+        "url": "https://enwnutrition.com/sourdough-discard-cheese-crackers/",
+        "type": "adapted"
+      },
+      {
+        "name": "Heart's Content Farmhouse",
+        "url": "https://heartscontentfarmhouse.com/discard-sourdough-cheddar-crackers/",
+        "type": "adapted"
+      },
+      {
+        "name": "Alton Brown",
+        "url": "https://altonbrown.com/recipes/sourdough-cheese-crackers/",
+        "type": "adapted"
+      },
+      {
+        "name": "Bob's Red Mill (technique)",
+        "url": "https://www.bobsredmill.com/articles/how-to-make-homemade-crackers-crispy",
+        "type": "adapted"
+      },
+      {
+        "name": "DairyCraftPro (cheese science)",
+        "url": "https://dairycraftpro.com/understanding-the-moisture-content-of-different-types-of-cheese/",
+        "type": "adapted"
+      },
+      {
+        "name": "The Hot Pepper Forum (capsaicin)",
+        "url": "https://thehotpepper.com/threads/capsaicinoid-stability-during-cooking.75997/",
+        "type": "adapted"
+      },
+      {
+        "name": "Crumbs & Nibbles (Gruyere variant)",
+        "url": "https://crumbsandnibbles.com/rosemary-gruyere-crackers-aka-grown-up-cheez-its/",
+        "type": "adapted"
+      }
     ],
     "techniques": [
-      { "name": "Ultra-thin rolling (0.16cm)", "sourcedFrom": "4/4 agents", "rationale": "Universal consensus. #1 factor for crispy crackers.", "confidence": "high" },
-      { "name": "Full docking", "sourcedFrom": "4/4 agents", "rationale": "Prevents steam puffing. Fork holes or toothpick center hole per cracker.", "confidence": "high" },
-      { "name": "Block cheese, hand-grated", "sourcedFrom": "4/4 agents", "rationale": "Pre-shredded has anti-caking agents that prevent proper melting.", "confidence": "high" },
-      { "name": "Cut before baking", "sourcedFrom": "3/4 agents", "rationale": "Pizza cutter for clean squares. Pre-cutting is simpler than mid-bake scoring.", "confidence": "high" },
-      { "name": "Cool completely on pan", "sourcedFrom": "4/4 agents", "rationale": "Crackers crisp as they cool. Moving early or storing warm = soggy.", "confidence": "high" },
-      { "name": "Stand mixer paddle on low", "sourcedFrom": "3/4 agents", "rationale": "Low speed avoids overworking gluten. Food processor also works.", "confidence": "medium" }
+      {
+        "name": "Ultra-thin rolling (0.16cm)",
+        "sourcedFrom": "4/4 agents",
+        "rationale": "Universal consensus. #1 factor for crispy crackers.",
+        "confidence": "high"
+      },
+      {
+        "name": "Full docking",
+        "sourcedFrom": "4/4 agents",
+        "rationale": "Prevents steam puffing. Fork holes or toothpick center hole per cracker.",
+        "confidence": "high"
+      },
+      {
+        "name": "Block cheese, hand-grated",
+        "sourcedFrom": "4/4 agents",
+        "rationale": "Pre-shredded has anti-caking agents that prevent proper melting.",
+        "confidence": "high"
+      },
+      {
+        "name": "Cut before baking",
+        "sourcedFrom": "3/4 agents",
+        "rationale": "Pizza cutter for clean squares. Pre-cutting is simpler than mid-bake scoring.",
+        "confidence": "high"
+      },
+      {
+        "name": "Cool completely on pan",
+        "sourcedFrom": "4/4 agents",
+        "rationale": "Crackers crisp as they cool. Moving early or storing warm = soggy.",
+        "confidence": "high"
+      },
+      {
+        "name": "Stand mixer paddle on low",
+        "sourcedFrom": "3/4 agents",
+        "rationale": "Low speed avoids overworking gluten. Food processor also works.",
+        "confidence": "medium"
+      }
     ],
     "strategy": "Multi-agent parallel research: 4 agents (core recipes, cheese science, technique, community intel)",
     "sourceCount": 12,
     "date": "2026-03-30"
+  },
+  "estimatedCost": {
+    "total": 2.65,
+    "perServing": 2.65,
+    "servings": 1,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "discard",
+        "name": "Sourdough Discard (unfed, 100% hydration)",
+        "sourceType": "rate",
+        "sourceName": "Home-maintained starter discard (free)",
+        "amount": 200,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "ap-flour",
+        "name": "All-Purpose Flour",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+        "amount": 100,
+        "unit": "g",
+        "cost": 0.11
+      },
+      {
+        "ingredientId": "sharp-cheddar",
+        "name": "Sharp Cheddar (block, fine-grated)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Sharp Cheddar 16 oz ($4.99)",
+        "amount": 170,
+        "unit": "g",
+        "cost": 1.87
+      },
+      {
+        "ingredientId": "butter",
+        "name": "Unsalted Butter (softened)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+        "amount": 40,
+        "unit": "g",
+        "cost": 0.26
+      },
+      {
+        "ingredientId": "smoked-paprika",
+        "name": "Smoked Paprika",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Smoked Paprika (est.) ($2.58)",
+        "amount": 4,
+        "unit": "g",
+        "cost": 0.13
+      },
+      {
+        "ingredientId": "garlic-powder",
+        "name": "Garlic Powder",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Garlic Powder 2.8 oz ($2.58)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.1
+      },
+      {
+        "ingredientId": "black-pepper",
+        "name": "Black Pepper (coarse)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Black Pepper (est.) ($2.58)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.1
+      },
+      {
+        "ingredientId": "cayenne",
+        "name": "Cayenne Pepper",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Cayenne Pepper (est.) ($2.58)",
+        "amount": 0.5,
+        "unit": "g",
+        "cost": 0.02
+      },
+      {
+        "ingredientId": "fine-salt",
+        "name": "Fine Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "flaky-salt",
+        "name": "Flaky Salt",
+        "sourceType": "rate",
+        "sourceName": "Maldon Sea Salt Flakes 8.5 oz ($5.98)",
+        "amount": 2,
+        "unit": "g",
+        "cost": 0.05
+      }
+    ]
   }
 }

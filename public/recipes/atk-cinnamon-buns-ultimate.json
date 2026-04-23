@@ -25,12 +25,12 @@
     {
       "version": "v1.3.0",
       "date": "2026-02-11",
-      "summary": "Added internal temp doneness check (190°F / 88°C) to bake step exit condition"
+      "summary": "Added internal temp doneness check (190\u00b0F / 88\u00b0C) to bake step exit condition"
     },
     {
       "version": "v1.2.0",
       "date": "2026-02-07",
-      "summary": "Reduced all sugars ~25% (brown 320→240g, granulated 100→75g, confectioners' 170→128g). Increased cream cheese 113→150g to offset thinner glaze."
+      "summary": "Reduced all sugars ~25% (brown 320\u2192240g, granulated 100\u219275g, confectioners' 170\u2192128g). Increased cream cheese 113\u2192150g to offset thinner glaze."
     },
     {
       "version": "v1.1.0",
@@ -47,19 +47,19 @@
     {
       "date": "2026-02-10",
       "version": "v1.2.0",
-      "summary": "I did an overnight cold proof with the v1.2.0 reduced-sugar recipe, subbing ~40g water for milk I was short on, and added nutmeg and espresso to the icing. The sweetness level was much better than v1.0, but the rolls may have slightly overproofed — uneven sizing with smaller ones overtaken by neighbors — and I couldn't detect the nutmeg or espresso in the glaze.",
+      "summary": "I did an overnight cold proof with the v1.2.0 reduced-sugar recipe, subbing ~40g water for milk I was short on, and added nutmeg and espresso to the icing. The sweetness level was much better than v1.0, but the rolls may have slightly overproofed \u2014 uneven sizing with smaller ones overtaken by neighbors \u2014 and I couldn't detect the nutmeg or espresso in the glaze.",
       "notes": [
-        "**Second bake** — overnight cold proof, short on milk (~40g replaced with water)",
-        "Dough was tacky not sticky — hard to form into a ball, left unshaped in fridge overnight",
+        "**Second bake** \u2014 overnight cold proof, short on milk (~40g replaced with water)",
+        "Dough was tacky not sticky \u2014 hard to form into a ball, left unshaped in fridge overnight",
         "Day 2: waited longer for dough to come to room temp, much easier to shape. Overnight proof removes variance of underworking.",
-        "Rolls hard to keep sealed after cutting — tried thread (not great), need dental floss next time",
+        "Rolls hard to keep sealed after cutting \u2014 tried thread (not great), need dental floss next time",
         "Added **nutmeg + espresso** (2 pinches each, ground) to icing. Frosting tasted good but couldn't discern either spice.",
-        "Possible overproof — rolls stuck together, smaller ones overtaken by bigger neighbors",
+        "Possible overproof \u2014 rolls stuck together, smaller ones overtaken by bigger neighbors",
         "Bouncy/lighter poke test. Possibly slightly undercooked (no internal temp taken).",
-        "Sweetness much better than v1.0 — tolerable level. Overall a success.",
-        "Made a fresh latte to go with it — coffee pairs well, the bitterness offsets the sweetness.",
-        "Herbert went wild when I opened the cling wrap on the proofed dough — never heard him whine like that before.",
-        "Prediction: this batch will reheat well — planning to try in the air fryer tomorrow."
+        "Sweetness much better than v1.0 \u2014 tolerable level. Overall a success.",
+        "Made a fresh latte to go with it \u2014 coffee pairs well, the bitterness offsets the sweetness.",
+        "Herbert went wild when I opened the cling wrap on the proofed dough \u2014 never heard him whine like that before.",
+        "Prediction: this batch will reheat well \u2014 planning to try in the air fryer tomorrow."
       ],
       "next_time": [
         {
@@ -69,16 +69,16 @@
           "text": "Try dental floss for cleaner roll cuts"
         },
         {
-          "text": "Try air fryer directly after cooling phase — still warm, might add a nice crust"
+          "text": "Try air fryer directly after cooling phase \u2014 still warm, might add a nice crust"
         },
         {
-          "text": "Get milk in advance — avoid water sub"
+          "text": "Get milk in advance \u2014 avoid water sub"
         },
         {
           "text": "Figure out consistent roll sizing"
         },
         {
-          "text": "More cream cheese in glaze — love that cream cheese taste"
+          "text": "More cream cheese in glaze \u2014 love that cream cheese taste"
         }
       ],
       "photos": [
@@ -151,11 +151,11 @@
     {
       "date": "2026-02-05",
       "version": "v1.0.0",
-      "summary": "I made the first bake of the ultimate version, using a Pyrex container instead of a foil-sling pan and a blend of AP and bread flour since I was short on AP. The outcome was amazing, but the dough was cold and resistant when rolling — it needs more time at room temp — and uneven rolling caused smaller end pieces.",
+      "summary": "I made the first bake of the ultimate version, using a Pyrex container instead of a foil-sling pan and a blend of AP and bread flour since I was short on AP. The outcome was amazing, but the dough was cold and resistant when rolling \u2014 it needs more time at room temp \u2014 and uneven rolling caused smaller end pieces.",
       "notes": [
-        "**First bake** of Ultimate version — outcome was amazing!",
-        "Used Pyrex container with lid instead of `33×23cm` baking pan with foil sling",
-        "Foil sling: attempted with multiple small sheets — *would have made unmolding difficult*. Pyrex worked better.",
+        "**First bake** of Ultimate version \u2014 outcome was amazing!",
+        "Used Pyrex container with lid instead of `33\u00d723cm` baking pan with foil sling",
+        "Foil sling: attempted with multiple small sheets \u2014 *would have made unmolding difficult*. Pyrex worked better.",
         "Flour: used `278g` AP + `253g` bread flour blend *(was short on AP)*. Worked great.",
         "Yeast: had `5.4g` instant, topped up with `~2g` active dry"
       ],
@@ -167,12 +167,12 @@
         "Shape before rolling: pat dough into rough square/rectangle before using rolling pin.",
         "Cut an X: cut X on dough ball, roll each quadrant outward, they join into rectangle.",
         "Roll from center diagonally toward corners, not just back-and-forth.",
-        "Rotate 90° every few rolls to maintain shape and prevent sticking.",
+        "Rotate 90\u00b0 every few rolls to maintain shape and prevent sticking.",
         "Use guides for even thickness: rulers, dowels, chopsticks alongside dough.",
         "Fix thick spots: lift and scrunch dough to redistribute, then roll toward thin areas.",
-        "Let cold dough rest 10-15 min — stiff dough snaps back.",
+        "Let cold dough rest 10-15 min \u2014 stiff dough snaps back.",
         "Run hand over surface to feel for hills/valleys.",
-        "Keep pressure consistent — uneven pressure = uneven dough."
+        "Keep pressure consistent \u2014 uneven pressure = uneven dough."
       ],
       "photos": [
         {
@@ -203,19 +203,19 @@
       ],
       "next_time": [
         {
-          "text": "Use **all AP flour** — no blending. Reduces variables."
+          "text": "Use **all AP flour** \u2014 no blending. Reduces variables."
         },
         {
-          "text": "Use **single yeast type** — no mixing instant + active dry"
+          "text": "Use **single yeast type** \u2014 no mixing instant + active dry"
         },
         {
-          "text": "Roll dough more evenly into true square — end pieces were smaller due to uneven thickness, not cutting"
+          "text": "Roll dough more evenly into true square \u2014 end pieces were smaller due to uneven thickness, not cutting"
         },
         {
           "text": "Try pasta roller for consistent thickness? *Could be fun.*"
         },
         {
-          "text": "Pyrex with foil lining works great — could skip foil but makes cleanup easier"
+          "text": "Pyrex with foil lining works great \u2014 could skip foil but makes cleanup easier"
         }
       ],
       "weather": {
@@ -233,22 +233,22 @@
     {
       "id": "V1",
       "name": "Stand Mixer Bowl",
-      "reuse": "Dry mix → dough → first rise → freed after punch"
+      "reuse": "Dry mix \u2192 dough \u2192 first rise \u2192 freed after punch"
     },
     {
       "id": "V2",
       "name": "Small Bowl",
-      "reuse": "Filling mixture → freed → glaze"
+      "reuse": "Filling mixture \u2192 freed \u2192 glaze"
     },
     {
       "id": "V3",
-      "name": "33×23cm Baking Pan",
-      "reuse": "Grease → second rise → bake → serve"
+      "name": "33\u00d723cm Baking Pan",
+      "reuse": "Grease \u2192 second rise \u2192 bake \u2192 serve"
     },
     {
       "id": "V4",
       "name": "Liquid Measure",
-      "reuse": "Warm milk/yeast → freed after use"
+      "reuse": "Warm milk/yeast \u2192 freed after use"
     }
   ],
   "stages": [
@@ -259,7 +259,7 @@
         "vessels": [
           "Stand Mixer Bowl",
           "Small Bowl",
-          "33×23cm Baking Pan",
+          "33\u00d723cm Baking Pan",
           "Liquid Measure"
         ],
         "equipment": [
@@ -331,7 +331,7 @@
             "unit": "g",
             "breakdown": [
               {
-                "label": "dough (warm to 110°F)",
+                "label": "dough (warm to 110\u00b0F)",
                 "amount": 177
               },
               {
@@ -475,7 +475,7 @@
     {
       "id": "PREP_OVEN",
       "title": "Create Warm Environment",
-      "direction": "Heat oven to 200°F (95°C), then turn OFF. This creates a warm proofing environment.",
+      "direction": "Heat oven to 200\u00b0F (95\u00b0C), then turn OFF. This creates a warm proofing environment.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -486,7 +486,7 @@
     {
       "id": "PREP_PAN",
       "title": "Make Foil Sling",
-      "direction": "Line 33×23cm pan with a foil sling. Grease foil thoroughly.",
+      "direction": "Line 33\u00d723cm pan with a foil sling. Grease foil thoroughly.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -504,7 +504,7 @@
     {
       "id": "BLOOM_YEAST",
       "title": "Bloom Yeast",
-      "direction": "In liquid measure, heat 177g milk to 110°F (43°C). Whisk in yeast until dissolved. Whisk in eggs.",
+      "direction": "In liquid measure, heat 177g milk to 110\u00b0F (43\u00b0C). Whisk in yeast until dissolved. Whisk in eggs.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -525,12 +525,12 @@
       "exit_condition": "Yeast dissolved, eggs incorporated, mixture homogeneous",
       "notes": [
         {
-          "text": "Milk must be 105-115°F (40-46°C). Too hot kills yeast.",
+          "text": "Milk must be 105-115\u00b0F (40-46\u00b0C). Too hot kills yeast.",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Store leftover yeast in airtight container in freezer — lasts 6+ months. No need to thaw before use.",
+          "text": "Store leftover yeast in airtight container in freezer \u2014 lasts 6+ months. No need to thaw before use.",
           "critical": false,
           "source": "user"
         }
@@ -602,7 +602,7 @@
           "source": "user"
         },
         {
-          "text": "Butter must be softened, not melted—cold butter won't incorporate",
+          "text": "Butter must be softened, not melted\u2014cold butter won't incorporate",
           "critical": true,
           "source": "user"
         }
@@ -675,7 +675,7 @@
     {
       "id": "ROLL_DOUGH",
       "title": "Roll Dough into Square",
-      "direction": "Punch down risen dough. Pat into rough square shape with hands first. Transfer to lightly floured surface. Roll from center diagonally toward corners. Rotate 90° every few rolls. Target: 46×46 cm square (18×18 inch).",
+      "direction": "Punch down risen dough. Pat into rough square shape with hands first. Transfer to lightly floured surface. Roll from center diagonally toward corners. Rotate 90\u00b0 every few rolls. Target: 46\u00d746 cm square (18\u00d718 inch).",
       "duration_min": 8,
       "timer": false,
       "parallel": false,
@@ -683,7 +683,7 @@
       "exit_condition": "Even square with sharp corners, consistent thickness throughout. Run hand over surface to check for hills/valleys.",
       "notes": [
         {
-          "text": "Cold dough? Let rest 10-15 min at room temp — stiff dough snaps back.",
+          "text": "Cold dough? Let rest 10-15 min at room temp \u2014 stiff dough snaps back.",
           "critical": false,
           "source": "user"
         },
@@ -731,7 +731,7 @@
       "exit_condition": "Tight, even cylinder with sealed seam",
       "notes": [
         {
-          "text": "Keep tension consistent—loose rolls create gaps",
+          "text": "Keep tension consistent\u2014loose rolls create gaps",
           "critical": false,
           "source": "user"
         }
@@ -768,7 +768,7 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven",
-      "direction": "Remove buns from oven if proofing inside. Heat oven to 350°F (175°C) with rack in middle position. Remove plastic wrap from buns.",
+      "direction": "Remove buns from oven if proofing inside. Heat oven to 350\u00b0F (175\u00b0C) with rack in middle position. Remove plastic wrap from buns.",
       "duration_min": 15,
       "timer": true,
       "parallel": false,
@@ -784,10 +784,10 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Deep golden brown, filling visibly melted and bubbling. Internal temp 190°F (88°C).",
+      "exit_condition": "Deep golden brown, filling visibly melted and bubbling. Internal temp 190\u00b0F (88\u00b0C).",
       "notes": [
         {
-          "text": "Check at 35 min—ovens vary. Target is golden, not pale.",
+          "text": "Check at 35 min\u2014ovens vary. Target is golden, not pale.",
           "critical": false,
           "source": "user"
         }
@@ -814,7 +814,7 @@
       "exit_condition": "Buns warm but not molten-hot",
       "notes": [
         {
-          "text": "Filling is extremely hot—wait the full time",
+          "text": "Filling is extremely hot\u2014wait the full time",
           "critical": true,
           "source": "user"
         }
@@ -1106,18 +1106,143 @@
     "methods": [
       {
         "method": "Air Fryer",
-        "detail": "300°F (150°C), 5 min. Loosely wrap in foil — cover top if dried out.",
+        "detail": "300\u00b0F (150\u00b0C), 5 min. Loosely wrap in foil \u2014 cover top if dried out.",
         "source": "user"
       },
       {
         "method": "Microwave",
-        "detail": "Damp paper towel, 20–30 sec.",
+        "detail": "Damp paper towel, 20\u201330 sec.",
         "source": "user"
       },
       {
         "method": "Storage",
         "detail": "Room temp, covered. Best within 2 days.",
         "source": "agent"
+      }
+    ]
+  },
+  "estimatedCost": {
+    "total": 6.61,
+    "perServing": 0.83,
+    "servings": 8,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "butter",
+        "name": "Unsalted Butter",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+        "amount": 227,
+        "unit": "g",
+        "cost": 1.49
+      },
+      {
+        "ingredientId": "flour",
+        "name": "All-Purpose Flour",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+        "amount": 531,
+        "unit": "g",
+        "cost": 0.61
+      },
+      {
+        "ingredientId": "cornstarch",
+        "name": "Cornstarch",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Corn Starch 1 lb ($1.68)",
+        "amount": 64,
+        "unit": "g",
+        "cost": 0.24
+      },
+      {
+        "ingredientId": "granulated_sugar",
+        "name": "Granulated Sugar",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+        "amount": 75,
+        "unit": "g",
+        "cost": 0.14
+      },
+      {
+        "ingredientId": "brown_sugar",
+        "name": "Light Brown Sugar",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Brown Sugar 32 oz ($1.84)",
+        "amount": 240,
+        "unit": "g",
+        "cost": 0.49
+      },
+      {
+        "ingredientId": "powdered_sugar",
+        "name": "Confectioners' Sugar",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Confectioners Sugar 32 oz ($1.84)",
+        "amount": 128,
+        "unit": "g",
+        "cost": 0.26
+      },
+      {
+        "ingredientId": "milk",
+        "name": "Whole Milk",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Whole Milk 1 gal ($4.38)",
+        "amount": 192,
+        "unit": "g",
+        "cost": 0.22
+      },
+      {
+        "ingredientId": "cream_cheese",
+        "name": "Cream Cheese (softened)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Cream Cheese 8 oz ($2.30)",
+        "amount": 150,
+        "unit": "g",
+        "cost": 1.52
+      },
+      {
+        "ingredientId": "eggs",
+        "name": "Large Eggs (room temp)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Large Eggs 12 ct ($2.17)",
+        "amount": 3,
+        "unit": "whole",
+        "cost": 0.54
+      },
+      {
+        "ingredientId": "yeast",
+        "name": "Instant Yeast",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Instant Yeast 3-pack/21g ($0.98)",
+        "amount": 7,
+        "unit": "g",
+        "cost": 0.33
+      },
+      {
+        "ingredientId": "cinnamon",
+        "name": "Ground Cinnamon",
+        "sourceType": "rate",
+        "sourceName": "McCormick Ground Cinnamon 2.37 oz ($2.77)",
+        "amount": 10,
+        "unit": "g",
+        "cost": 0.41
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 11,
+        "unit": "g",
+        "cost": 0.02
+      },
+      {
+        "ingredientId": "vanilla",
+        "name": "Vanilla Extract",
+        "sourceType": "rate",
+        "sourceName": "Adams Best Vanilla Extract 1.5 oz ($2.92)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 0.34
       }
     ]
   }

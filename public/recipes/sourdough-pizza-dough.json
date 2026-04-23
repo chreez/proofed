@@ -8,8 +8,8 @@
       "author": "Primary: Maurizio Leo (The Perfect Loaf)"
     },
     "yields": "2 pizzas",
-    "total_time": "~2–3 days (1h active)",
-    "description": "Sourdough variant of the NY-Style Pizza Dough. Replaces commercial yeast with 100g active starter, uses fermentolyse + stretch-and-fold instead of autolyse + stand mixer, and adds diastatic malt powder to compensate for acid-inhibited Maillard browning at 550°F."
+    "total_time": "~2\u20133 days (1h active)",
+    "description": "Sourdough variant of the NY-Style Pizza Dough. Replaces commercial yeast with 100g active starter, uses fermentolyse + stretch-and-fold instead of autolyse + stand mixer, and adds diastatic malt powder to compensate for acid-inhibited Maillard browning at 550\u00b0F."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -26,7 +26,7 @@
     {
       "version": "v1.3.0",
       "date": "2026-04-09",
-      "summary": "Add scaling research block with 1–2× tested range, ingredient behavior classification, and process caveats for bulk fermentation timing and vessel size."
+      "summary": "Add scaling research block with 1\u20132\u00d7 tested range, ingredient behavior classification, and process caveats for bulk fermentation timing and vessel size."
     },
     {
       "version": "v1.2.0",
@@ -36,19 +36,19 @@
     {
       "version": "v1.1.0",
       "date": "2026-03-21",
-      "summary": "Add sugar substitute instruction to fermentolyse step — 5g granulated sugar in place of diastatic malt when unavailable."
+      "summary": "Add sugar substitute instruction to fermentolyse step \u2014 5g granulated sugar in place of diastatic malt when unavailable."
     },
     {
       "version": "v1.0.0",
       "date": "2026-03-21",
-      "summary": "Initial recipe from multi-agent research synthesis. Sourdough variant of NY-Style Pizza Dough v1.4.0 — fermentolyse, stretch-and-fold, diastatic malt, no olive oil."
+      "summary": "Initial recipe from multi-agent research synthesis. Sourdough variant of NY-Style Pizza Dough v1.4.0 \u2014 fermentolyse, stretch-and-fold, diastatic malt, no olive oil."
     }
   ],
   "vessels": [
     {
       "id": "V1",
       "name": "Large Mixing Bowl",
-      "reuse": "Mix dough → bulk ferment"
+      "reuse": "Mix dough \u2192 bulk ferment"
     },
     {
       "id": "V2",
@@ -92,7 +92,7 @@
             "breakdown": null,
             "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
             "confidence": "high",
-            "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            "rationale": "Bread flour (13%+ protein) browns reliably at 550\u00b0F and develops strong gluten for stretch"
           },
           {
             "id": "water",
@@ -132,8 +132,8 @@
             "breakdown": null,
             "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
             "confidence": "medium",
-            "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F",
-            "note": "Substitute: 5g granulated sugar (1% of total flour) if malt is unavailable. Add at the same step. At 1%, sugar won't interfere with gluten development during fermentolyse — that only matters at 15%+. Sugar adds reducing sugars directly but lacks the enzymatic activity of diastatic malt."
+            "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550\u00b0F",
+            "note": "Substitute: 5g granulated sugar (1% of total flour) if malt is unavailable. Add at the same step. At 1%, sugar won't interfere with gluten development during fermentolyse \u2014 that only matters at 15%+. Sugar adds reducing sugars directly but lacks the enzymatic activity of diastatic malt."
           },
           {
             "id": "cornmeal",
@@ -155,7 +155,7 @@
             "total": 350,
             "unit": "g",
             "breakdown": null,
-            "note": "Low-moisture, high-fat, whole milk mozzarella — shreds clean and melts right"
+            "note": "Low-moisture, high-fat, whole milk mozzarella \u2014 shreds clean and melts right"
           },
           {
             "id": "hard_cheese",
@@ -163,7 +163,7 @@
             "total": 40,
             "unit": "g",
             "breakdown": null,
-            "note": "Freshly grated — adds a savory base layer under the mozzarella"
+            "note": "Freshly grated \u2014 adds a savory base layer under the mozzarella"
           },
           {
             "id": "pepperoni",
@@ -249,7 +249,7 @@
       "exit_condition": "All ingredients weighed, vessels and equipment laid out, starter is ripe and active",
       "notes": [
         {
-          "text": "The starter must be at peak activity — doubled in size, domed, and bubbly throughout. Test with a small pinch in water (it should float) before weighing out your 100g. If it's not ready, feed it 4-8 hours before mixing.",
+          "text": "The starter must be at peak activity \u2014 doubled in size, domed, and bubbly throughout. Test with a small pinch in water (it should float) before weighing out your 100g. If it's not ready, feed it 4-8 hours before mixing.",
           "critical": true,
           "source": "agent"
         }
@@ -264,7 +264,7 @@
     {
       "id": "MIX_FERMENTOLYSE",
       "title": "Mix Fermentolyse",
-      "direction": "In the large mixing bowl (V1), combine 413g bread flour, 238g water, and 100g sourdough starter. Add 4g diastatic malt powder — or if substituting, add 5g granulated sugar instead. Mix with a wet hand or dough whisk until no dry flour remains. Do not add salt yet.",
+      "direction": "In the large mixing bowl (V1), combine 413g bread flour, 238g water, and 100g sourdough starter. Add 4g diastatic malt powder \u2014 or if substituting, add 5g granulated sugar instead. Mix with a wet hand or dough whisk until no dry flour remains. Do not add salt yet.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -289,7 +289,7 @@
       "exit_condition": "All ingredients combined into a shaggy mass with no dry flour visible. Salt is withheld.",
       "notes": [
         {
-          "text": "This is a fermentolyse, not a true autolyse — the starter's enzymes are active during the rest, beginning fermentation and gluten development simultaneously.",
+          "text": "This is a fermentolyse, not a true autolyse \u2014 the starter's enzymes are active during the rest, beginning fermentation and gluten development simultaneously.",
           "critical": false,
           "source": "agent"
         }
@@ -337,7 +337,7 @@
     {
       "id": "STRETCH_FOLD_SETS",
       "title": "Stretch & Fold Sets",
-      "direction": "Perform 3 sets of stretch-and-fold at 30-minute intervals. For each set: wet your hands, reach under one side of the dough, pull it up and fold over the top. Rotate the bowl 90° and repeat 3 more times (4 folds per set). Cover between sets and let rest 30 minutes before the next set.",
+      "direction": "Perform 3 sets of stretch-and-fold at 30-minute intervals. For each set: wet your hands, reach under one side of the dough, pull it up and fold over the top. Rotate the bowl 90\u00b0 and repeat 3 more times (4 folds per set). Cover between sets and let rest 30 minutes before the next set.",
       "duration_min": 90,
       "timer": false,
       "parallel": false,
@@ -350,7 +350,7 @@
           "source": "agent"
         },
         {
-          "text": "If the dough feels very tight after set 2, skip set 3 — over-developing gluten in sourdough can lead to excessive snap-back during shaping.",
+          "text": "If the dough feels very tight after set 2, skip set 3 \u2014 over-developing gluten in sourdough can lead to excessive snap-back during shaping.",
           "critical": false,
           "source": "agent"
         }
@@ -365,15 +365,15 @@
     {
       "id": "BULK_REST",
       "title": "Bulk Rest",
-      "direction": "After the final stretch-and-fold, cover the bowl and let the dough rest undisturbed at room temperature (75–77°F / 24–25°C) until it shows a 25–50% volume increase with visible bubbles at the periphery. Typically 1–2 hours after the last fold.",
+      "direction": "After the final stretch-and-fold, cover the bowl and let the dough rest undisturbed at room temperature (75\u201377\u00b0F / 24\u201325\u00b0C) until it shows a 25\u201350% volume increase with visible bubbles at the periphery. Typically 1\u20132 hours after the last fold.",
       "duration_min": 90,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has increased 25–50% in volume with visible bubbles along the edges. Surface appears slightly domed and puffy.",
+      "exit_condition": "Dough has increased 25\u201350% in volume with visible bubbles along the edges. Surface appears slightly domed and puffy.",
       "notes": [
         {
-          "text": "Do not wait for a full double — sourdough pizza dough should be slightly underproofed at this stage since cold fermentation continues developing it.",
+          "text": "Do not wait for a full double \u2014 sourdough pizza dough should be slightly underproofed at this stage since cold fermentation continues developing it.",
           "critical": true,
           "source": "agent"
         }
@@ -405,12 +405,12 @@
     {
       "id": "COLD_BULK_FERMENT",
       "title": "Cold Bulk Ferment",
-      "direction": "Transfer the covered bowl (V1) to the refrigerator. Cold ferment for 8–16 hours (overnight). The dough will rise slowly and develop complex flavor.",
+      "direction": "Transfer the covered bowl (V1) to the refrigerator. Cold ferment for 8\u201316 hours (overnight). The dough will rise slowly and develop complex flavor.",
       "duration_min": 720,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has risen noticeably after 8–16 hours in the fridge",
+      "exit_condition": "Dough has risen noticeably after 8\u201316 hours in the fridge",
       "notes": [
         {
           "text": "Cold fermentation develops complex, tangy flavors. The sourdough LAB remain active at fridge temps, producing lactic and acetic acids.",
@@ -447,7 +447,7 @@
       "exit_condition": "All portions rounded into tight balls with closed bottoms, on parchment-lined tray, sprayed, covered, and returned to fridge",
       "notes": [
         {
-          "text": "Tight shaping is critical for sourdough pizza — the acid-tightened gluten needs strong surface tension to hold its shape during the cold proof.",
+          "text": "Tight shaping is critical for sourdough pizza \u2014 the acid-tightened gluten needs strong surface tension to hold its shape during the cold proof.",
           "critical": true,
           "source": "agent"
         }
@@ -456,12 +456,12 @@
     {
       "id": "COLD_PROOF",
       "title": "Cold Proof",
-      "direction": "Let the dough balls proof in the refrigerator for 1 to 2 days. Maximum 48 hours — sourdough continues acidifying in the fridge, and beyond 48h risks overacidification and gluten degradation.",
+      "direction": "Let the dough balls proof in the refrigerator for 1 to 2 days. Maximum 48 hours \u2014 sourdough continues acidifying in the fridge, and beyond 48h risks overacidification and gluten degradation.",
       "duration_min": 2880,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough balls have visibly expanded after 1–2 days in the fridge, surface is smooth and slightly puffy",
+      "exit_condition": "Dough balls have visibly expanded after 1\u20132 days in the fridge, surface is smooth and slightly puffy",
       "notes": [
         {
           "text": "Unlike yeasted dough (which can cold proof up to 72h), sourdough's LAB remain active at fridge temps. Beyond 48h, ongoing acidification degrades gluten structure and depletes browning sugars.",
@@ -486,12 +486,12 @@
       "exit_condition": "Dough balls are at room temperature, relaxed, and easy to press with a finger. When poked, the indentation fills back slowly.",
       "notes": [
         {
-          "text": "If the dough still resists stretching after 6 hours, let it rest 5-10 more minutes between stretch attempts — don't force cold sourdough dough.",
+          "text": "If the dough still resists stretching after 6 hours, let it rest 5-10 more minutes between stretch attempts \u2014 don't force cold sourdough dough.",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Start preheating the oven during this step — by the time the dough is tempered, the steel will be fully saturated with heat.",
+          "text": "Start preheating the oven during this step \u2014 by the time the dough is tempered, the steel will be fully saturated with heat.",
           "critical": false,
           "source": "agent"
         }
@@ -506,15 +506,15 @@
     {
       "id": "PREHEAT_STEEL",
       "title": "Preheat Baking Steel",
-      "direction": "Place the baking steel (V3) on the middle oven rack. Preheat the oven to 550°F (288°C). Allow at least 45 minutes for the steel to fully saturate with heat.",
+      "direction": "Place the baking steel (V3) on the middle oven rack. Preheat the oven to 550\u00b0F (288\u00b0C). Allow at least 45 minutes for the steel to fully saturate with heat.",
       "duration_min": 45,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven at 550°F (288°C) and steel fully preheated for at least 45 minutes",
+      "exit_condition": "Oven at 550\u00b0F (288\u00b0C) and steel fully preheated for at least 45 minutes",
       "notes": [
         {
-          "text": "A fully preheated steel is essential — it provides the intense bottom heat that creates a properly charred crust.",
+          "text": "A fully preheated steel is essential \u2014 it provides the intense bottom heat that creates a properly charred crust.",
           "critical": true,
           "source": "agent"
         }
@@ -523,7 +523,7 @@
     {
       "id": "STRETCH_DOUGH",
       "title": "Stretch Dough",
-      "direction": "Sprinkle the wooden pizza peel (V4) with 7g cornmeal. Place one dough ball on a lightly floured surface. Using your fingertips, press from the center outward, pushing air toward the edges to form the crust rim. Pick up the dough and drape it over your knuckles, gently stretching and rotating until you have a 30–33cm (12–13 inch) disc. Transfer to the cornmeal-dusted peel.",
+      "direction": "Sprinkle the wooden pizza peel (V4) with 7g cornmeal. Place one dough ball on a lightly floured surface. Using your fingertips, press from the center outward, pushing air toward the edges to form the crust rim. Pick up the dough and drape it over your knuckles, gently stretching and rotating until you have a 30\u201333cm (12\u201313 inch) disc. Transfer to the cornmeal-dusted peel.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -533,15 +533,15 @@
           "amount": "7g"
         }
       ],
-      "exit_condition": "Dough stretched to a 30–33cm disc with puffy edge crust, resting on cornmeal-dusted peel",
+      "exit_condition": "Dough stretched to a 30\u201333cm disc with puffy edge crust, resting on cornmeal-dusted peel",
       "notes": [
         {
-          "text": "Sourdough pizza dough may feel tighter than yeasted dough — if it resists stretching, let it rest 5 minutes on the counter and try again.",
+          "text": "Sourdough pizza dough may feel tighter than yeasted dough \u2014 if it resists stretching, let it rest 5 minutes on the counter and try again.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Never roll pizza dough — rolling pops the gas bubbles that create the airy, puffy crust.",
+          "text": "Never roll pizza dough \u2014 rolling pops the gas bubbles that create the airy, puffy crust.",
           "critical": true,
           "source": "agent"
         },
@@ -594,7 +594,7 @@
     {
       "id": "BAKE_PIZZA",
       "title": "Bake Pizza",
-      "direction": "Slide the pizza from the peel onto the preheated steel (V3) with a quick forward-and-back motion. Bake at 550°F (288°C) for 4–5 minutes until the bottom is set and beginning to char. Transfer the pizza (not the steel) to the broiler drawer for 30–60 seconds to finish the top. Repeat for the second pizza.",
+      "direction": "Slide the pizza from the peel onto the preheated steel (V3) with a quick forward-and-back motion. Bake at 550\u00b0F (288\u00b0C) for 4\u20135 minutes until the bottom is set and beginning to char. Transfer the pizza (not the steel) to the broiler drawer for 30\u201360 seconds to finish the top. Repeat for the second pizza.",
       "duration_min": 7,
       "timer": true,
       "parallel": false,
@@ -602,7 +602,7 @@
       "exit_condition": "Cheese is bubbly and lightly browned, crust is puffed and golden with charred spots. Bottom has leopard-spotted char from the steel.",
       "notes": [
         {
-          "text": "The broiler finish is especially important for sourdough pizza — the acid-inhibited Maillard reaction means the crust may be paler than yeasted pizza without the broiler's intense radiant heat.",
+          "text": "The broiler finish is especially important for sourdough pizza \u2014 the acid-inhibited Maillard reaction means the crust may be paler than yeasted pizza without the broiler's intense radiant heat.",
           "critical": false,
           "source": "agent"
         },
@@ -622,7 +622,7 @@
     {
       "id": "COOL_SLICE",
       "title": "Cool & Slice",
-      "direction": "Use the peel to slide the baked pizza onto a wire rack or cutting board. Let it rest for 2–3 minutes. Cut into 8 slices. Serve immediately.",
+      "direction": "Use the peel to slide the baked pizza onto a wire rack or cutting board. Let it rest for 2\u20133 minutes. Cut into 8 slices. Serve immediately.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -641,53 +641,53 @@
   "research": {
     "sources": [
       {
-        "name": "The Perfect Loaf — Sourdough Pizza Dough",
+        "name": "The Perfect Loaf \u2014 Sourdough Pizza Dough",
         "url": "https://www.theperfectloaf.com/sourdough-pizza-dough-and-recipes/",
         "type": "adapted",
         "author": "Maurizio Leo"
       },
       {
-        "name": "The Perfect Loaf — Ultimate Sourdough Pizza Guide",
+        "name": "The Perfect Loaf \u2014 Ultimate Sourdough Pizza Guide",
         "url": "https://www.theperfectloaf.com/guides/sourdough-pizza/",
         "author": "Maurizio Leo"
       },
       {
-        "name": "The Perfect Loaf — Hybrid Doughs",
+        "name": "The Perfect Loaf \u2014 Hybrid Doughs",
         "url": "https://www.theperfectloaf.com/hybrid-dough/",
         "author": "Maurizio Leo"
       },
       {
-        "name": "King Arthur Baking — Sourdough Pizza Crust",
+        "name": "King Arthur Baking \u2014 Sourdough Pizza Crust",
         "url": "https://www.kingarthurbaking.com/recipes/sourdough-pizza-crust-recipe",
         "author": "Bryan Ford"
       },
       {
-        "name": "Alexandra's Kitchen — Simple Sourdough Pizza",
+        "name": "Alexandra's Kitchen \u2014 Simple Sourdough Pizza",
         "url": "https://alexandracooks.com/2020/05/01/simple-sourdough-pizza-a-step-by-step-guide/"
       },
       {
-        "name": "Breadtopia — Sourdough Pizza",
+        "name": "Breadtopia \u2014 Sourdough Pizza",
         "url": "https://breadtopia.com/sourdough-pizza/"
       },
       {
-        "name": "Leopard Crust Pizza — Sourdough Pizza Dough",
+        "name": "Leopard Crust Pizza \u2014 Sourdough Pizza Dough",
         "url": "https://leopardcrustpizza.com/sourdough-pizza-dough/"
       },
       {
-        "name": "Vincenzo's Plate — Sourdough Neapolitan (YouTube)",
+        "name": "Vincenzo's Plate \u2014 Sourdough Neapolitan (YouTube)",
         "url": "https://www.youtube.com/watch?v=mCM-lyKPheo",
         "author": "Vincenzo's Plate"
       },
       {
-        "name": "PizzaBlab — Diastatic Malt Powder",
+        "name": "PizzaBlab \u2014 Diastatic Malt Powder",
         "url": "https://www.pizzablab.com/learning-and-resources/ingredients/malt-powder/"
       },
       {
-        "name": "Stadler Made — Maillard Reaction in Pizza",
+        "name": "Stadler Made \u2014 Maillard Reaction in Pizza",
         "url": "https://www.stadlermade.com/pizza/maillard-reaction/"
       },
       {
-        "name": "Proofit — Convert Yeast Recipe to Sourdough",
+        "name": "Proofit \u2014 Convert Yeast Recipe to Sourdough",
         "url": "https://www.proofit-app.com/en/blog/convert-yeast-recipe-to-sourdough"
       },
       {
@@ -705,7 +705,7 @@
       {
         "name": "Stretch-and-fold over stand mixer",
         "sourcedFrom": "4/5 pure SD recipes, community consensus",
-        "rationale": "Sourdough protease enzymes degrade gluten over time — gentler handling prevents over-development.",
+        "rationale": "Sourdough protease enzymes degrade gluten over time \u2014 gentler handling prevents over-development.",
         "confidence": "high"
       },
       {
@@ -723,7 +723,7 @@
       {
         "name": "6-hour temper time",
         "sourcedFrom": "Perfect Loaf (6h), Leopard Crust (3-8h)",
-        "rationale": "Acetic acid from cold ferment tightens gluten bonds. Cold stiffens proteins. Both compound — SD dough needs more relaxation.",
+        "rationale": "Acetic acid from cold ferment tightens gluten bonds. Cold stiffens proteins. Both compound \u2014 SD dough needs more relaxation.",
         "confidence": "high"
       },
       {
@@ -741,13 +741,13 @@
     "methods": [
       {
         "method": "Skillet Steam",
-        "detail": "Heat a dry pan over medium-high heat. Add 1–3 slices of cold pizza and heat for about 2 minutes until the bottom starts to crisp. Add 1–1.5 tsp water and immediately cover the pan. Steam covered for 30 seconds. Uncover, let remaining water boil off, and continue cooking until the bottom is firm and crispy.",
+        "detail": "Heat a dry pan over medium-high heat. Add 1\u20133 slices of cold pizza and heat for about 2 minutes until the bottom starts to crisp. Add 1\u20131.5 tsp water and immediately cover the pan. Steam covered for 30 seconds. Uncover, let remaining water boil off, and continue cooking until the bottom is firm and crispy.",
         "source": "user",
         "reference": "https://www.reddit.com/r/Cooking/comments/13k900q/my_mom_introduced_us_to_the_perfect_method_of/"
       },
       {
         "method": "Air Fryer",
-        "detail": "350–400°F (175–200°C) for about 5 minutes. Quick and effective, crisps the bottom well.",
+        "detail": "350\u2013400\u00b0F (175\u2013200\u00b0C) for about 5 minutes. Quick and effective, crisps the bottom well.",
         "source": "user"
       }
     ]
@@ -810,9 +810,9 @@
       }
     ],
     "process_caveats": [
-      "Bulk fermentation timeline scales: at 2× dough mass, room-temperature bulk will complete ~30-50% faster due to increased thermal mass. Monitor dough volume closely — do not rely solely on timer; use visual indicators (25–50% rise) as primary guide.",
-      "Vessel size must increase with dough volume. At 2×, ensure your bulk fermentation bowl is at least 5-6L capacity (a standard large mixing bowl ~8L is adequate). Insufficient headroom prevents proper stretch-and-fold execution.",
-      "Bake sequencing matters: two pizzas cannot bake simultaneously on a single steel. At 2×, plan two separate stretch-and-proofs with staggered loading (pizza 1 while pizza 2 tempers), or use two steels if available. Skipping this causes dough loss or uneven bake results."
+      "Bulk fermentation timeline scales: at 2\u00d7 dough mass, room-temperature bulk will complete ~30-50% faster due to increased thermal mass. Monitor dough volume closely \u2014 do not rely solely on timer; use visual indicators (25\u201350% rise) as primary guide.",
+      "Vessel size must increase with dough volume. At 2\u00d7, ensure your bulk fermentation bowl is at least 5-6L capacity (a standard large mixing bowl ~8L is adequate). Insufficient headroom prevents proper stretch-and-fold execution.",
+      "Bake sequencing matters: two pizzas cannot bake simultaneously on a single steel. At 2\u00d7, plan two separate stretch-and-proofs with staggered loading (pizza 1 while pizza 2 tempers), or use two steels if available. Skipping this causes dough loss or uneven bake results."
     ],
     "researched_date": "2026-04-08",
     "sources": [
@@ -826,25 +826,25 @@
       "date": "2026-03-24",
       "start_date": "2026-03-22",
       "version": "v1.1.0",
-      "summary": "First bake — 3-day process. Used 5g sugar substitute (no malt). Dough was easy to work with throughout. Didn't do full 6-hour temper but dough still stretched well. ~8 min on steel + 1.5 min broiler per pizza. Really good — thin, droopy, flexible, slight tang.",
+      "summary": "First bake \u2014 3-day process. Used 5g sugar substitute (no malt). Dough was easy to work with throughout. Didn't do full 6-hour temper but dough still stretched well. ~8 min on steel + 1.5 min broiler per pizza. Really good \u2014 thin, droopy, flexible, slight tang.",
       "notes": [
-        "Sat 3/22 5:09pm — kitchen 76°F.",
-        "Sat 3/22 5:10pm — fermentolyse mixed with 5g sugar substitute, no diastatic malt available.",
-        "Sat 3/22 ~5:42pm — salt added.",
-        "Sat 3/22 6:12pm — first stretch-and-fold set. Dough ball looked small — questioning how big the pizzas would be.",
-        "Completed all 3 S&F sets — dough was easy to work with.",
+        "Sat 3/22 5:09pm \u2014 kitchen 76\u00b0F.",
+        "Sat 3/22 5:10pm \u2014 fermentolyse mixed with 5g sugar substitute, no diastatic malt available.",
+        "Sat 3/22 ~5:42pm \u2014 salt added.",
+        "Sat 3/22 6:12pm \u2014 first stretch-and-fold set. Dough ball looked small \u2014 questioning how big the pizzas would be.",
+        "Completed all 3 S&F sets \u2014 dough was easy to work with.",
         "Into fridge for cold bulk ferment (exact time not logged).",
-        "Sun 3/23 ~12pm — pulled from fridge, divided into 2 balls. Nearly perfectly equal by eyeball — satisfying. Weight not recorded, estimated ~300g each. Back in fridge for cold proof.",
-        "Mon 3/24 — pulled dough to temper. Didn't realize the 6-hour temper was needed. Dough was still a bit chilly but eventually stretched out easily.",
-        "Preheated baking steel at 550°F. ~8 min per pizza on steel + ~1.5 min under broiler, monitored closely so nothing burned.",
+        "Sun 3/23 ~12pm \u2014 pulled from fridge, divided into 2 balls. Nearly perfectly equal by eyeball \u2014 satisfying. Weight not recorded, estimated ~300g each. Back in fridge for cold proof.",
+        "Mon 3/24 \u2014 pulled dough to temper. Didn't realize the 6-hour temper was needed. Dough was still a bit chilly but eventually stretched out easily.",
+        "Preheated baking steel at 550\u00b0F. ~8 min per pizza on steel + ~1.5 min under broiler, monitored closely so nothing burned.",
         "Toppings: Sclafani sauce, TJ's pecorino on the sauce, TJ's low-moisture whole milk mozz, Boar's Head pepperoni.",
-        "Really good. A little sourdough tang. Size was good. Very droopy and flexible — thin crust."
+        "Really good. A little sourdough tang. Size was good. Very droopy and flexible \u2014 thin crust."
       ],
       "photos": [
         {
           "src": "/images/sourdough-pizza-dough/2026-03-24/both-pizzas-on-counter-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-03-24/both-pizzas-on-counter-400w.webp",
-          "alt": "Two finished pepperoni pizzas cooling on the counter — one on a wire rack in the foreground, one on a cutting board behind. Both show golden-brown crusts with melted cheese and pepperoni coverage.",
+          "alt": "Two finished pepperoni pizzas cooling on the counter \u2014 one on a wire rack in the foreground, one on a cutting board behind. Both show golden-brown crusts with melted cheese and pepperoni coverage.",
           "usage": "process"
         },
         {
@@ -880,10 +880,10 @@
       ],
       "next_time": [
         {
-          "text": "Do the full 6-hour temper — dough was still chilly this time."
+          "text": "Do the full 6-hour temper \u2014 dough was still chilly this time."
         },
         {
-          "text": "Try a different pecorino — TJ's was just OK."
+          "text": "Try a different pecorino \u2014 TJ's was just OK."
         }
       ],
       "weather": {
@@ -904,98 +904,98 @@
         "value": 4,
         "unit": "pizzas"
       },
-      "summary": "Second bake, doubled to 4 pizzas — first time at this volume. Overall success despite some execution bumps (sauce pizza stuck to peel, dough tear on #3). Flavor felt lacking compared to basic NY dough; may try a shorter proof next time.",
+      "summary": "Second bake, doubled to 4 pizzas \u2014 first time at this volume. Overall success despite some execution bumps (sauce pizza stuck to peel, dough tear on #3). Flavor felt lacking compared to basic NY dough; may try a shorter proof next time.",
       "notes": [
-        "4:25pm CDT (Tue 4/8) — fermentolyse start.",
-        "4:33pm — dough temp 79.7°F. Warm day. Doubled recipe for 4 pizzas total.",
-        "4:59pm — dough temp 80.8°F before adding salt.",
-        "~5:05pm — waited 30 min after salt incorporation. Aliquot at 10% (pulled a bit too much dough). Dough super warm; considered preshaping that night.",
-        "~5:53pm — first S&F was late. Dough still pretty stiff, still hot at 79.7°F.",
-        "~6:28pm — second S&F, 80.2°F. Aliquot at 15%.",
-        "~7:30pm — last S&F, 79.7°F. Aliquot at 30%.",
-        "~8:34pm — aliquot ~55% (calling effectively 45% due to extra dough in vessel). Turned out dough.",
-        "~8:38pm — total weight ~1509g (scale unreliable). Into Cambro in fridge for cold bulk ferment, aliquot placed alongside. 78.4°F before fridge.",
-        "Wed 4/9 ~8:28am — total weight 1524g after adding back aliquot. Target 381g per ball.",
-        "~8:33am — divided into 4 balls: 384g, 380g, 387g, 382g.",
-        "~9:10am — shaped 4 balls, into fridge for cold proof.",
-        "Thu 4/10 ~10am — prepped toppings. Made sauce from Sclafani tomatoes following on-file recipe, added chopped fresh basil. Prepared day before to develop flavor.",
-        "Fri 4/11 ~6:30am — pulled dough from fridge. Started baking around 9am (~2.5-hour temper). Did not re-shape on bake day as planned.",
-        "Full 1-hour preheat at 550°F. Used infrared thermometer to confirm steel at ~530–550°F before launching.",
-        "Pizza #1 (Boar's Head pepperoni) — launched perfectly.",
-        "Pizza #2 (sauce only) — stuck to peel, dough launched wrong. Recovered by baking as a focaccia-style square. Really liked the result — lots of sauce was satisfying. Simmered leftover sauce with olive oil after for dipping.",
+        "4:25pm CDT (Tue 4/8) \u2014 fermentolyse start.",
+        "4:33pm \u2014 dough temp 79.7\u00b0F. Warm day. Doubled recipe for 4 pizzas total.",
+        "4:59pm \u2014 dough temp 80.8\u00b0F before adding salt.",
+        "~5:05pm \u2014 waited 30 min after salt incorporation. Aliquot at 10% (pulled a bit too much dough). Dough super warm; considered preshaping that night.",
+        "~5:53pm \u2014 first S&F was late. Dough still pretty stiff, still hot at 79.7\u00b0F.",
+        "~6:28pm \u2014 second S&F, 80.2\u00b0F. Aliquot at 15%.",
+        "~7:30pm \u2014 last S&F, 79.7\u00b0F. Aliquot at 30%.",
+        "~8:34pm \u2014 aliquot ~55% (calling effectively 45% due to extra dough in vessel). Turned out dough.",
+        "~8:38pm \u2014 total weight ~1509g (scale unreliable). Into Cambro in fridge for cold bulk ferment, aliquot placed alongside. 78.4\u00b0F before fridge.",
+        "Wed 4/9 ~8:28am \u2014 total weight 1524g after adding back aliquot. Target 381g per ball.",
+        "~8:33am \u2014 divided into 4 balls: 384g, 380g, 387g, 382g.",
+        "~9:10am \u2014 shaped 4 balls, into fridge for cold proof.",
+        "Thu 4/10 ~10am \u2014 prepped toppings. Made sauce from Sclafani tomatoes following on-file recipe, added chopped fresh basil. Prepared day before to develop flavor.",
+        "Fri 4/11 ~6:30am \u2014 pulled dough from fridge. Started baking around 9am (~2.5-hour temper). Did not re-shape on bake day as planned.",
+        "Full 1-hour preheat at 550\u00b0F. Used infrared thermometer to confirm steel at ~530\u2013550\u00b0F before launching.",
+        "Pizza #1 (Boar's Head pepperoni) \u2014 launched perfectly.",
+        "Pizza #2 (sauce only) \u2014 stuck to peel, dough launched wrong. Recovered by baking as a focaccia-style square. Really liked the result \u2014 lots of sauce was satisfying. Simmered leftover sauce with olive oil after for dipping.",
         "Cleaned steel and let oven return to temp before Pizza #3.",
-        "Pizza #3 (cheese with fresh basil — vegan) — small dough tear, used basil leaf trick. Overcooked top in broiler, scorched the basil leaves. Best-looking crust of the four.",
-        "Pizza #4 (jalapeño pepperoni) — small hole detected at end of bake. Left some seeds intentionally — cheese absorbs the jalapeño spice and flavor. TJ jalapeños work great for this.",
-        "All 4 pizzas baked at 550°F throughout.",
+        "Pizza #3 (cheese with fresh basil \u2014 vegan) \u2014 small dough tear, used basil leaf trick. Overcooked top in broiler, scorched the basil leaves. Best-looking crust of the four.",
+        "Pizza #4 (jalape\u00f1o pepperoni) \u2014 small hole detected at end of bake. Left some seeds intentionally \u2014 cheese absorbs the jalape\u00f1o spice and flavor. TJ jalape\u00f1os work great for this.",
+        "All 4 pizzas baked at 550\u00b0F throughout.",
         "Cheese: TJ low-moisture whole milk mozz plus Parmigiano Reggiano chunk from HEB (had been in fridge a while). Old TJ parmesan wasn't a fan of; will bring both for guests as extra toppings.",
-        "Flavor felt lacking — possibly tired or not hungry, but also wondering if 3-day (possibly 4-day) proof dulled the flavor. May also be that NY-style ingredients don't pair as well with the sourdough base. Might just prefer the basic recipe.",
-        "Starter was kind of weak this bake — may have affected dough strength."
+        "Flavor felt lacking \u2014 possibly tired or not hungry, but also wondering if 3-day (possibly 4-day) proof dulled the flavor. May also be that NY-style ingredients don't pair as well with the sourdough base. Might just prefer the basic recipe.",
+        "Starter was kind of weak this bake \u2014 may have affected dough strength."
       ],
       "photos": [
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/dough-ball-after-turnout-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/dough-ball-after-turnout-400w.webp",
-          "alt": "Shaped dough ball resting on the countertop after turnout — smooth, taut surface with the glass mixing bowl visible behind it.",
+          "alt": "Shaped dough ball resting on the countertop after turnout \u2014 smooth, taut surface with the glass mixing bowl visible behind it.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/dough-on-scale-weighing-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/dough-on-scale-weighing-400w.webp",
-          "alt": "Bulk dough in a metal bowl on an OXO digital scale — bubbly, fermented surface showing good activity before dividing into 4 balls.",
+          "alt": "Bulk dough in a metal bowl on an OXO digital scale \u2014 bubbly, fermented surface showing good activity before dividing into 4 balls.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/sauce-pizza-on-steel-close-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/sauce-pizza-on-steel-close-400w.webp",
-          "alt": "Sauce-only pizza (#2) on the baking steel inside the oven — dough puffing up around the edges, mis-launched but recovering mid-bake.",
+          "alt": "Sauce-only pizza (#2) on the baking steel inside the oven \u2014 dough puffing up around the edges, mis-launched but recovering mid-bake.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/pepperoni-slice-side-crumb-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/pepperoni-slice-side-crumb-400w.webp",
-          "alt": "Side view of a pepperoni slice (#1) showing the crumb — open, well-aerated crust tapering to a thin crispy center.",
+          "alt": "Side view of a pepperoni slice (#1) showing the crumb \u2014 open, well-aerated crust tapering to a thin crispy center.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/sauce-pizza-overhead-dark-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/sauce-pizza-overhead-dark-400w.webp",
-          "alt": "Overhead shot of sliced sauce-and-basil pizza (#2) — mix of square and wedge cuts, charred basil leaves scattered across bright red sauce, no cheese.",
+          "alt": "Overhead shot of sliced sauce-and-basil pizza (#2) \u2014 mix of square and wedge cuts, charred basil leaves scattered across bright red sauce, no cheese.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/sauce-pizza-piece-crumb-closeup-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/sauce-pizza-piece-crumb-closeup-400w.webp",
-          "alt": "Closeup of sauce pizza (#2) slice lifted to show the crumb — open, airy interior despite the failed launch. Charred basil on top.",
+          "alt": "Closeup of sauce pizza (#2) slice lifted to show the crumb \u2014 open, airy interior despite the failed launch. Charred basil on top.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-top-scorched-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-top-scorched-400w.webp",
-          "alt": "Top view of cheese-and-basil slice (#3) — browned mozzarella with scorched basil leaf from overcooked broiler. Good crumb visible along the cornicione.",
+          "alt": "Top view of cheese-and-basil slice (#3) \u2014 browned mozzarella with scorched basil leaf from overcooked broiler. Good crumb visible along the cornicione.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/jalapeno-pepperoni-whole-wire-rack-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/jalapeno-pepperoni-whole-wire-rack-400w.webp",
-          "alt": "Whole jalapeño pepperoni pizza (#4) cooling on a wire rack — generous pepperoni coverage with scattered jalapeño slices, leopard-spotted charring on the cornicione.",
+          "alt": "Whole jalape\u00f1o pepperoni pizza (#4) cooling on a wire rack \u2014 generous pepperoni coverage with scattered jalape\u00f1o slices, leopard-spotted charring on the cornicione.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/jalapeno-pepperoni-slice-top-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/jalapeno-pepperoni-slice-top-400w.webp",
-          "alt": "Top view of jalapeño pepperoni slice (#4) — flat pepperoni slices, sliced jalapeño rings, melted cheese with browning.",
+          "alt": "Top view of jalape\u00f1o pepperoni slice (#4) \u2014 flat pepperoni slices, sliced jalape\u00f1o rings, melted cheese with browning.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/jalapeno-pepperoni-slice-side-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/jalapeno-pepperoni-slice-side-400w.webp",
-          "alt": "Side profile of jalapeño pepperoni slice (#4) — thin, crispy base with visible jalapeño rings and even crumb structure. Not much rise, possibly overproofed.",
+          "alt": "Side profile of jalape\u00f1o pepperoni slice (#4) \u2014 thin, crispy base with visible jalape\u00f1o rings and even crumb structure. Not much rise, possibly overproofed.",
           "usage": "process"
         },
         {
           "src": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-side-crumb-800w.webp",
           "thumb": "/images/sourdough-pizza-dough/2026-04-11/cheese-basil-slice-side-crumb-400w.webp",
-          "alt": "Side view of cheese-and-basil slice (#3) — open, airy interior with large irregular holes throughout the crust. Best fermentation bubbles of the four.",
+          "alt": "Side view of cheese-and-basil slice (#3) \u2014 open, airy interior with large irregular holes throughout the crust. Best fermentation bubbles of the four.",
           "usage": "hero"
         }
       ],
@@ -1007,10 +1007,10 @@
           "text": "Cap broiler at 45 seconds for vegan pizzas (sauce-only and cheese/basil) to avoid scorching."
         },
         {
-          "text": "Try 2-day proof — flavor may be better and timing easier to predict."
+          "text": "Try 2-day proof \u2014 flavor may be better and timing easier to predict."
         },
         {
-          "text": "Plan bake day in advance — know how many days ahead to start the dough based on the event."
+          "text": "Plan bake day in advance \u2014 know how many days ahead to start the dough based on the event."
         },
         {
           "text": "Research pizza transport for events (quarter sheets + parchment in Tupperware, possibly layering)."
@@ -1020,7 +1020,7 @@
         "total": 2.75,
         "perServing": 0.09,
         "servings": 32,
-        "note": "Dough cost only — topping costs excluded due to per-pizza variation.",
+        "note": "Dough cost only \u2014 topping costs excluded due to per-pizza variation.",
         "items": [
           {
             "ingredientId": "bread_flour",
@@ -1062,7 +1062,7 @@
             "ingredientId": "diastatic_malt",
             "name": "Diastatic Malt Powder",
             "sourceType": "manual",
-            "sourceName": "Amazon ($9.90 / $0.99 per oz) — https://www.amazon.com/dp/B0D6L5LFMQ",
+            "sourceName": "Amazon ($9.90 / $0.99 per oz) \u2014 https://www.amazon.com/dp/B0D6L5LFMQ",
             "amount": 8,
             "unit": "g",
             "cost": 0.28
@@ -1078,7 +1078,7 @@
           }
         ]
       },
-      "raw_notes": "[2026-04-08 CDT] MIX_FERMENTOLYSE: 16:25 fermentolease start\n[2026-04-08 CDT] FERMENTOLYSE_REST: 79.7 warm today\n[2026-04-08 CDT] FERMENTOLYSE_REST: last reading was for dough temp.\n[2026-04-08 CDT] FERMENTOLYSE_REST: note that i am doubling the recipe to make four pizzas total.\n[2026-04-08 CDT] ADD_SALT (reminder - dough temp): 80.8\n[2026-04-08 CDT] ADD_SALT: adding salt now\n[2026-04-08 CDT] STRETCH_FOLD_SETS: waiting for 30 minutes after salt incorporation. i figured that should be a step in the recipe but it's missing. aliquot is at 10% because i pulled a little bit too much dough into vessel. good to note before preshaping. dough is super warm so i may want to consider even preshaping tonight. will revisit.\n[2026-04-08 CDT] _general: first stretch and fold a bit late. dough is still pretty stiff. will report back in second stretch fold. dough is still hot at 79.7\n[2026-04-08 CDT] BULK_REST: 80.2 degree second s and f\n[2026-04-08 CDT] BULK_REST: 15% aliquot\n[2026-04-08 CDT] BULK_REST: 79.7 last s and f. aliquot at 30%\n[2026-04-08 CDT] BULK_REST (reminder - volume increase): aliquot reading about 55% which is effectively 45%. going to turn out dough now\n[2026-04-08 CDT] ROUND_DOUGH (reminder - total weight): could be 1509. scale has issues sometimes. will verify when weighing balls\n[2026-04-08 CDT] COLD_BULK_FERMENT: in fridge now. aliquot will be placed next to it in fridge. it's in cambro for bulk ferment.\n[2026-04-08 CDT] COLD_BULK_FERMENT: 78.4 degrees before fridge.\n[2026-04-09 CDT] ROUND_PORTIONS: total weight estimate is 1524g after adding back aliquot. divide by four is 381g a ball target.\n[2026-04-09 CDT] ROUND_PORTIONS: 384 380 387 382\n[2026-04-09 CDT] ROUND_PORTIONS: in fridge approx 15 minutes ago. shaped four balls\n[2026-04-10 CDT] _general: prepped toppings for tomorrow\n[2026-04-11 CDT] _general: i am checking in now. about 4 minutes into the actual bake of the second pizza. i messed up the launch on the sauce pizza. will need to lookup recovery methods when sticks to peel\n[2026-04-11 CDT] PREHEAT_STEEL: could be worth noting to the user that we shouldn't start baking till an infrared sensor reads close to 450. that's what i do at least. watch steel not clock. watch variables and measurable variables not clock.\n[2026-04-11 CDT] _general: might be a bad bake day for me. first pizza was perfect. did regular pepperoni. the sauce only pizza threw me off just because launching it i had trouble with sticking pizza peel and sauce x2 kinda overflowing. in future 1.5x sauce to prevent production flaws. process should be ironclad to handle bad execution too.\n[2026-04-11 CDT] _general: third pizza i ended up getting a small tear somehow in the dough. i tried the basil leaf trick. will report back on result. wondering why the dough tore in the first place. at this point the dough has been sitting at room temperature for longer than the other two and i took a small break in between the second set of 2x pizzas. to reset from the failure of the sauce pizza. sauce pizza is my foccoccia fallback lol. i also overcooked the top in the final stretch. think i scorched the leaves. cap at 45 seconds in broiler for vegan pizza next time.\n[2026-04-11 CDT] _general: jalapeño pep pizza out. detected small hole in middle of pizza at the end of bake. took care to not expose bottom during final browning in broiler. cheese pizza (number 3) seemed to have best looking crust. number 4 is cooking right now.\n[2026-04-11 CDT] _general: first time doing this many pizzas at once. especially with a newish recipe. my regular new york pizza dough i've done a million times and it seems easier to work with and fault tolerant. issue needed to be addressed in a backlog task. research and collaborate with me to determine best way for transferring pizza for an event. if it's cooked a few hours before hand i want to protect flavor and the texture. considering i dont want to use too much plastic wrap or foil either.\n\nconsidering price and reusability for other types of bakes. using quarter sheets lined with parchment paper and my only two tipper ware big enough to handle all the pizzas flat. might be able to layer actually in a single tupper ware with just baking paper between the layers. shouldn't be too much pressure on bottom slices from weight of the next layer.\n[2026-04-11 CDT] _general: overall success despite minor failures in process. possibly revisit dough proofing schedule. possibly lower down temper step to 4 hours. i didnt actually re shape on bake day as planned. didn't want to risk it but perhaps if i made dough balls it would have been a little easier to work with. starter was actually kind of weak which could have hindered the strength of the dough",
+      "raw_notes": "[2026-04-08 CDT] MIX_FERMENTOLYSE: 16:25 fermentolease start\n[2026-04-08 CDT] FERMENTOLYSE_REST: 79.7 warm today\n[2026-04-08 CDT] FERMENTOLYSE_REST: last reading was for dough temp.\n[2026-04-08 CDT] FERMENTOLYSE_REST: note that i am doubling the recipe to make four pizzas total.\n[2026-04-08 CDT] ADD_SALT (reminder - dough temp): 80.8\n[2026-04-08 CDT] ADD_SALT: adding salt now\n[2026-04-08 CDT] STRETCH_FOLD_SETS: waiting for 30 minutes after salt incorporation. i figured that should be a step in the recipe but it's missing. aliquot is at 10% because i pulled a little bit too much dough into vessel. good to note before preshaping. dough is super warm so i may want to consider even preshaping tonight. will revisit.\n[2026-04-08 CDT] _general: first stretch and fold a bit late. dough is still pretty stiff. will report back in second stretch fold. dough is still hot at 79.7\n[2026-04-08 CDT] BULK_REST: 80.2 degree second s and f\n[2026-04-08 CDT] BULK_REST: 15% aliquot\n[2026-04-08 CDT] BULK_REST: 79.7 last s and f. aliquot at 30%\n[2026-04-08 CDT] BULK_REST (reminder - volume increase): aliquot reading about 55% which is effectively 45%. going to turn out dough now\n[2026-04-08 CDT] ROUND_DOUGH (reminder - total weight): could be 1509. scale has issues sometimes. will verify when weighing balls\n[2026-04-08 CDT] COLD_BULK_FERMENT: in fridge now. aliquot will be placed next to it in fridge. it's in cambro for bulk ferment.\n[2026-04-08 CDT] COLD_BULK_FERMENT: 78.4 degrees before fridge.\n[2026-04-09 CDT] ROUND_PORTIONS: total weight estimate is 1524g after adding back aliquot. divide by four is 381g a ball target.\n[2026-04-09 CDT] ROUND_PORTIONS: 384 380 387 382\n[2026-04-09 CDT] ROUND_PORTIONS: in fridge approx 15 minutes ago. shaped four balls\n[2026-04-10 CDT] _general: prepped toppings for tomorrow\n[2026-04-11 CDT] _general: i am checking in now. about 4 minutes into the actual bake of the second pizza. i messed up the launch on the sauce pizza. will need to lookup recovery methods when sticks to peel\n[2026-04-11 CDT] PREHEAT_STEEL: could be worth noting to the user that we shouldn't start baking till an infrared sensor reads close to 450. that's what i do at least. watch steel not clock. watch variables and measurable variables not clock.\n[2026-04-11 CDT] _general: might be a bad bake day for me. first pizza was perfect. did regular pepperoni. the sauce only pizza threw me off just because launching it i had trouble with sticking pizza peel and sauce x2 kinda overflowing. in future 1.5x sauce to prevent production flaws. process should be ironclad to handle bad execution too.\n[2026-04-11 CDT] _general: third pizza i ended up getting a small tear somehow in the dough. i tried the basil leaf trick. will report back on result. wondering why the dough tore in the first place. at this point the dough has been sitting at room temperature for longer than the other two and i took a small break in between the second set of 2x pizzas. to reset from the failure of the sauce pizza. sauce pizza is my foccoccia fallback lol. i also overcooked the top in the final stretch. think i scorched the leaves. cap at 45 seconds in broiler for vegan pizza next time.\n[2026-04-11 CDT] _general: jalape\u00f1o pep pizza out. detected small hole in middle of pizza at the end of bake. took care to not expose bottom during final browning in broiler. cheese pizza (number 3) seemed to have best looking crust. number 4 is cooking right now.\n[2026-04-11 CDT] _general: first time doing this many pizzas at once. especially with a newish recipe. my regular new york pizza dough i've done a million times and it seems easier to work with and fault tolerant. issue needed to be addressed in a backlog task. research and collaborate with me to determine best way for transferring pizza for an event. if it's cooked a few hours before hand i want to protect flavor and the texture. considering i dont want to use too much plastic wrap or foil either.\n\nconsidering price and reusability for other types of bakes. using quarter sheets lined with parchment paper and my only two tipper ware big enough to handle all the pizzas flat. might be able to layer actually in a single tupper ware with just baking paper between the layers. shouldn't be too much pressure on bottom slices from weight of the next layer.\n[2026-04-11 CDT] _general: overall success despite minor failures in process. possibly revisit dough proofing schedule. possibly lower down temper step to 4 hours. i didnt actually re shape on bake day as planned. didn't want to risk it but perhaps if i made dough balls it would have been a little easier to work with. starter was actually kind of weak which could have hindered the strength of the dough",
       "weather": {
         "location": "Austin, TX",
         "date": "2026-04-11",
@@ -1089,5 +1089,103 @@
         "source": "open-meteo"
       }
     }
-  ]
+  ],
+  "estimatedCost": {
+    "total": 13.77,
+    "perServing": 0.86,
+    "servings": 16,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "bread_flour",
+        "name": "Bread Flour",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Baker's Scoop Bread Flour 5 lb ($3.78)",
+        "amount": 413,
+        "unit": "g",
+        "cost": 0.69
+      },
+      {
+        "ingredientId": "water",
+        "name": "Water",
+        "sourceType": "rate",
+        "sourceName": "Tap water (free)",
+        "amount": 238,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "sourdough_starter",
+        "name": "Sourdough Starter (100% Hydration)",
+        "sourceType": "rate",
+        "sourceName": "Home-maintained starter (free)",
+        "amount": 100,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 8,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "diastatic_malt",
+        "name": "Diastatic Malt Powder",
+        "sourceType": "rate",
+        "sourceName": "Nestle Carnation Malted Milk 13 oz ($4.98)",
+        "amount": 4,
+        "unit": "g",
+        "cost": 0.05
+      },
+      {
+        "ingredientId": "cornmeal",
+        "name": "Cornmeal",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Corn Starch 1 lb ($1.68)",
+        "amount": 13,
+        "unit": "g",
+        "cost": 0.05
+      },
+      {
+        "ingredientId": "san_marzano_sauce",
+        "name": "Raw San Marzano Tomato Sauce",
+        "sourceType": "rate",
+        "sourceName": "Cento San Marzano Tomatoes 28 oz ($4.54)",
+        "amount": 175,
+        "unit": "g",
+        "cost": 1.0
+      },
+      {
+        "ingredientId": "mozzarella",
+        "name": "Low-Moisture Mozzarella",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Organics Mozzarella 8 oz ($4.39)",
+        "amount": 350,
+        "unit": "g",
+        "cost": 6.78
+      },
+      {
+        "ingredientId": "hard_cheese",
+        "name": "Parmigiano-Reggiano or Pecorino Romano",
+        "sourceType": "rate",
+        "sourceName": "Galli Parmigiano Reggiano ~0.43 lb ($10.31)",
+        "amount": 40,
+        "unit": "g",
+        "cost": 2.11
+      },
+      {
+        "ingredientId": "pepperoni",
+        "name": "Pepperoni",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pepperoni Slices 6 oz ($2.99)",
+        "amount": 175,
+        "unit": "g",
+        "cost": 3.08
+      }
+    ]
+  }
 }

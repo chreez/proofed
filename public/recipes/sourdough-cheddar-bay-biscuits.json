@@ -31,19 +31,19 @@
     {
       "version": "v1.0.0",
       "date": "2026-02-24",
-      "summary": "Initial recipe from 7-agent parallel research synthesis (60+ sources). Sourdough adaptation of Red Lobster Cheddar Bay Biscuits — discard provides flavor and tenderness, chemical leaveners provide rise."
+      "summary": "Initial recipe from 7-agent parallel research synthesis (60+ sources). Sourdough adaptation of Red Lobster Cheddar Bay Biscuits \u2014 discard provides flavor and tenderness, chemical leaveners provide rise."
     }
   ],
   "vessels": [
     {
       "id": "V1",
       "name": "Large Mixing Bowl",
-      "reuse": "Dry mix → dough"
+      "reuse": "Dry mix \u2192 dough"
     },
     {
       "id": "V2",
       "name": "Small Bowl or Liquid Measure",
-      "reuse": "Wet mix → garlic butter"
+      "reuse": "Wet mix \u2192 garlic butter"
     },
     {
       "id": "V3",
@@ -94,7 +94,7 @@
             "breakdown": null,
             "sourcedFrom": "14 sourdough adaptation recipes, sweet spot analysis",
             "confidence": "high",
-            "rationale": "100-150g is the sweet spot — enough for tang and tenderness without dominating structure. Works interchangeably with active starter at same weight."
+            "rationale": "100-150g is the sweet spot \u2014 enough for tang and tenderness without dominating structure. Works interchangeably with active starter at same weight."
           },
           {
             "id": "buttermilk",
@@ -104,7 +104,7 @@
             "breakdown": null,
             "sourcedFrom": "Adjusted from standard 240ml, compensating for discard liquid",
             "confidence": "high",
-            "rationale": "Reduced from 240ml to 150ml — discard contributes ~65g liquid. Buttermilk adds fat, tang, and tenderizes gluten."
+            "rationale": "Reduced from 240ml to 150ml \u2014 discard contributes ~65g liquid. Buttermilk adds fat, tang, and tenderizes gluten."
           },
           {
             "id": "butter",
@@ -121,7 +121,7 @@
                 "amount": 45
               }
             ],
-            "sourcedFrom": "Unanimous across 10+ conventional copycats — 115g dough, 45g brush",
+            "sourcedFrom": "Unanimous across 10+ conventional copycats \u2014 115g dough, 45g brush",
             "confidence": "high",
             "rationale": "115g cold butter in dough creates flaky pockets via steam. 45g melted for the signature garlic butter brush."
           },
@@ -133,7 +133,7 @@
             "breakdown": null,
             "sourcedFrom": "Stella Parks (67% ratio), cross-source range 100-170g",
             "confidence": "high",
-            "rationale": "150g = 68% baker's percentage. Aggressive but supported by Stella Parks' testing. Block cheese only — pre-shredded anti-caking starch ruins melt."
+            "rationale": "150g = 68% baker's percentage. Aggressive but supported by Stella Parks' testing. Block cheese only \u2014 pre-shredded anti-caking starch ruins melt."
           },
           {
             "id": "baking_powder",
@@ -141,7 +141,7 @@
             "total": 14,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Universal across all 60+ sources — 1 Tbsp per ~240g flour",
+            "sourcedFrom": "Universal across all 60+ sources \u2014 1 Tbsp per ~240g flour",
             "confidence": "high",
             "rationale": "Double-acting provides reliable rise. Aluminum-free (Rumford) avoids metallic aftertaste in simple baked goods."
           },
@@ -212,7 +212,7 @@
             "breakdown": null,
             "sourcedFrom": "Sweet Cayenne, Damn Delicious, Cozy Cook",
             "confidence": "medium",
-            "rationale": "Subtle warmth without identifiable heat. About 1/8 tsp — detectable only as background complexity."
+            "rationale": "Subtle warmth without identifiable heat. About 1/8 tsp \u2014 detectable only as background complexity."
           },
           {
             "id": "parsley",
@@ -222,7 +222,7 @@
             "breakdown": null,
             "sourcedFrom": "Universal in garlic butter brush across all sources",
             "confidence": "high",
-            "rationale": "Fresh flat-leaf for flavor in the brush. Dried parsley is mostly visual — fresh makes a real difference in the butter."
+            "rationale": "Fresh flat-leaf for flavor in the brush. Dried parsley is mostly visual \u2014 fresh makes a real difference in the butter."
           }
         ]
       },
@@ -266,7 +266,7 @@
     {
       "id": "PREP_WORKSPACE",
       "title": "Preheat & Gather",
-      "direction": "Preheat oven to 425°F (220°C). Line baking sheet with parchment paper. Gather all vessels, equipment, and ingredients. Weigh everything out.",
+      "direction": "Preheat oven to 425\u00b0F (220\u00b0C). Line baking sheet with parchment paper. Gather all vessels, equipment, and ingredients. Weigh everything out.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -274,12 +274,12 @@
       "exit_condition": "Oven preheating, baking sheet lined, all ingredients weighed and ready",
       "notes": [
         {
-          "text": "Use sourdough discard straight from the fridge — cold discard keeps butter from melting prematurely in the dough",
+          "text": "Use sourdough discard straight from the fridge \u2014 cold discard keeps butter from melting prematurely in the dough",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "Active starter works interchangeably at the same weight — slightly less tang, marginally more leavening activity (negligible in quick-bake format)",
+          "text": "Active starter works interchangeably at the same weight \u2014 slightly less tang, marginally more leavening activity (negligible in quick-bake format)",
           "critical": false,
           "source": "agent"
         }
@@ -301,7 +301,7 @@
       "exit_condition": "150g cheddar shredded on large holes, refrigerated",
       "notes": [
         {
-          "text": "NEVER use pre-shredded cheese — the anti-caking starch (cellulose, potato starch) prevents smooth melting and dries out the dough. Block cheese only.",
+          "text": "NEVER use pre-shredded cheese \u2014 the anti-caking starch (cellulose, potato starch) prevents smooth melting and dries out the dough. Block cheese only.",
           "critical": true,
           "source": "agent"
         },
@@ -368,12 +368,12 @@
       "exit_condition": "Butter pieces are pea-sized with some larger flakes, evenly distributed through flour",
       "notes": [
         {
-          "text": "Cold butter is essential — it creates steam pockets during baking for a flaky, tender interior. Melted butter produces flat, tough biscuits (Milk Street testing confirmed).",
+          "text": "Cold butter is essential \u2014 it creates steam pockets during baking for a flaky, tender interior. Melted butter produces flat, tough biscuits (Milk Street testing confirmed).",
           "critical": true,
           "source": "agent"
         },
         {
-          "text": "The grated-from-frozen method is faster and produces excellent results — the thin butter shreds distribute evenly and melt into flaky layers.",
+          "text": "The grated-from-frozen method is faster and produces excellent results \u2014 the thin butter shreds distribute evenly and melt into flaky layers.",
           "critical": false,
           "source": "agent"
         }
@@ -392,7 +392,7 @@
           "amount": "150g"
         }
       ],
-      "exit_condition": "Cheese evenly distributed and coated in flour — no clumps of bare cheese",
+      "exit_condition": "Cheese evenly distributed and coated in flour \u2014 no clumps of bare cheese",
       "notes": [
         {
           "text": "Flour coating prevents cheese from clumping and helps it distribute evenly through the biscuits.",
@@ -404,7 +404,7 @@
     {
       "id": "COMBINE_WET",
       "title": "Combine Wet Ingredients",
-      "direction": "In a small bowl or liquid measure (V2), stir together 130g cold sourdough discard and 150g cold buttermilk. Add 3g baking soda and stir briefly — mixture will fizz slightly.",
+      "direction": "In a small bowl or liquid measure (V2), stir together 130g cold sourdough discard and 150g cold buttermilk. Add 3g baking soda and stir briefly \u2014 mixture will fizz slightly.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -425,7 +425,7 @@
       "exit_condition": "Wet ingredients combined, baking soda dissolved and fizzing slightly",
       "notes": [
         {
-          "text": "Add baking soda LAST and bake immediately — it reacts with the sourdough acid on contact. CO2 production starts immediately and you need to get the dough into the oven before it escapes.",
+          "text": "Add baking soda LAST and bake immediately \u2014 it reacts with the sourdough acid on contact. CO2 production starts immediately and you need to get the dough into the oven before it escapes.",
           "critical": true,
           "source": "agent"
         },
@@ -439,7 +439,7 @@
     {
       "id": "FOLD_DOUGH",
       "title": "Fold Dough Together",
-      "direction": "Pour wet ingredients into the dry mixture. Using a rubber spatula, fold until just combined — stop as soon as no dry flour remains. Dough should be wet, shaggy, and lumpy. Do NOT overmix.",
+      "direction": "Pour wet ingredients into the dry mixture. Using a rubber spatula, fold until just combined \u2014 stop as soon as no dry flour remains. Dough should be wet, shaggy, and lumpy. Do NOT overmix.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -447,14 +447,14 @@
       "exit_condition": "Wet, shaggy dough with no dry flour visible. Lumps are expected and desirable.",
       "notes": [
         {
-          "text": "Overmixing is the #1 cause of dense, tough biscuits. Mix less than you think — lumpy is perfect. The sourdough acid is already weakening gluten; overmixing will make them gummy.",
+          "text": "Overmixing is the #1 cause of dense, tough biscuits. Mix less than you think \u2014 lumpy is perfect. The sourdough acid is already weakening gluten; overmixing will make them gummy.",
           "critical": true,
           "source": "agent"
         }
       ],
       "reminders": [
         {
-          "prompt": "Rate dough consistency — should be wet and shaggy",
+          "prompt": "Rate dough consistency \u2014 should be wet and shaggy",
           "type": "observation"
         }
       ]
@@ -462,7 +462,7 @@
     {
       "id": "SCOOP_BISCUITS",
       "title": "Scoop Biscuits",
-      "direction": "Using a 1/4 cup measure or cookie scoop, drop dough portions onto the parchment-lined baking sheet (V3), spacing about 5 cm apart. Do not press down or smooth — ragged tops bake into crispy edges.",
+      "direction": "Using a 1/4 cup measure or cookie scoop, drop dough portions onto the parchment-lined baking sheet (V3), spacing about 5 cm apart. Do not press down or smooth \u2014 ragged tops bake into crispy edges.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -470,7 +470,7 @@
       "exit_condition": "~10 biscuit mounds on baking sheet, evenly spaced, rough and craggy on top",
       "notes": [
         {
-          "text": "Drop biscuit format is authentic to the original Red Lobster style — no rolling, no cutting. The irregular surface creates those signature crispy edges.",
+          "text": "Drop biscuit format is authentic to the original Red Lobster style \u2014 no rolling, no cutting. The irregular surface creates those signature crispy edges.",
           "critical": false,
           "source": "agent"
         }
@@ -479,15 +479,15 @@
     {
       "id": "BAKE_BISCUITS",
       "title": "Bake",
-      "direction": "Bake at 425°F (220°C) for 12-15 minutes until tops are golden brown. Internal temperature should read 200-205°F (93-96°C) when done.",
+      "direction": "Bake at 425\u00b0F (220\u00b0C) for 12-15 minutes until tops are golden brown. Internal temperature should read 200-205\u00b0F (93-96\u00b0C) when done.",
       "duration_min": 14,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Golden brown tops, firm to the touch with slight springback, internal temperature 200-205°F (93-96°C)",
+      "exit_condition": "Golden brown tops, firm to the touch with slight springback, internal temperature 200-205\u00b0F (93-96\u00b0C)",
       "notes": [
         {
-          "text": "Start checking at 12 minutes — cheese adds moisture and fat that can make centers seem underdone even when exterior looks golden.",
+          "text": "Start checking at 12 minutes \u2014 cheese adds moisture and fat that can make centers seem underdone even when exterior looks golden.",
           "critical": false,
           "source": "agent"
         }
@@ -527,7 +527,7 @@
       "exit_condition": "Garlic herb butter melted and combined, parsley evenly distributed, ready for brushing",
       "notes": [
         {
-          "text": "This garlic butter brush is the single most important element of Cheddar Bay Biscuits — it IS the signature flavor. Every source agrees: do not skip this step.",
+          "text": "This garlic butter brush is the single most important element of Cheddar Bay Biscuits \u2014 it IS the signature flavor. Every source agrees: do not skip this step.",
           "critical": true,
           "source": "agent"
         }
@@ -544,7 +544,7 @@
       "exit_condition": "All biscuits glistening with garlic herb butter, butter visibly absorbed into the surface. Serve warm.",
       "notes": [
         {
-          "text": "Brush IMMEDIATELY while biscuits are screaming hot — the residual heat absorbs the butter and garlic into the crust. This is why Red Lobster has a dedicated biscuit person on busy nights.",
+          "text": "Brush IMMEDIATELY while biscuits are screaming hot \u2014 the residual heat absorbs the butter and garlic into the crust. This is why Red Lobster has a dedicated biscuit person on busy nights.",
           "critical": true,
           "source": "agent"
         }
@@ -882,7 +882,7 @@
       {
         "name": "Baking soda added to wet ingredients last",
         "sourcedFrom": "Summit Sourdough, food science agent analysis",
-        "rationale": "Baking soda reacts immediately with sourdough acid — must bake quickly to trap CO2. Adding last minimizes gas loss.",
+        "rationale": "Baking soda reacts immediately with sourdough acid \u2014 must bake quickly to trap CO2. Adding last minimizes gas loss.",
         "confidence": "high"
       }
     ],
@@ -894,7 +894,7 @@
     "methods": [
       {
         "method": "Oven",
-        "detail": "350°F (175°C) for 5-8 minutes. Best results — restores exterior crispness while keeping interior fluffy.",
+        "detail": "350\u00b0F (175\u00b0C) for 5-8 minutes. Best results \u2014 restores exterior crispness while keeping interior fluffy.",
         "source": "agent"
       },
       {
@@ -904,8 +904,133 @@
       },
       {
         "method": "Storage",
-        "detail": "Room temperature in airtight container up to 2 days. Freeze individually wrapped up to 2 months — bake from frozen at 350°F (175°C) for 10-12 minutes.",
+        "detail": "Room temperature in airtight container up to 2 days. Freeze individually wrapped up to 2 months \u2014 bake from frozen at 350\u00b0F (175\u00b0C) for 10-12 minutes.",
         "source": "agent"
+      }
+    ]
+  },
+  "estimatedCost": {
+    "total": 4.03,
+    "perServing": 0.4,
+    "servings": 10,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "ap_flour",
+        "name": "All-Purpose Flour",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+        "amount": 220,
+        "unit": "g",
+        "cost": 0.25
+      },
+      {
+        "ingredientId": "sourdough_discard",
+        "name": "Sourdough Discard (100% hydration, cold)",
+        "sourceType": "rate",
+        "sourceName": "Home-maintained starter discard (free)",
+        "amount": 130,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "buttermilk",
+        "name": "Cold Buttermilk",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Buttermilk 1 pt ($1.26)",
+        "amount": 150,
+        "unit": "g",
+        "cost": 0.4
+      },
+      {
+        "ingredientId": "butter",
+        "name": "Cold Unsalted Butter",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+        "amount": 160,
+        "unit": "g",
+        "cost": 1.05
+      },
+      {
+        "ingredientId": "cheddar",
+        "name": "Sharp Cheddar (block, hand-shredded)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Sharp Cheddar 16 oz ($4.99)",
+        "amount": 150,
+        "unit": "g",
+        "cost": 1.65
+      },
+      {
+        "ingredientId": "baking_powder",
+        "name": "Baking Powder (aluminum-free)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Baking Powder 8.1 oz ($2.08)",
+        "amount": 14,
+        "unit": "g",
+        "cost": 0.13
+      },
+      {
+        "ingredientId": "baking_soda",
+        "name": "Baking Soda",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Baking Soda 16 oz ($0.89)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "garlic_powder",
+        "name": "Garlic Powder",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Garlic Powder 2.8 oz ($2.58)",
+        "amount": 7.5,
+        "unit": "g",
+        "cost": 0.24
+      },
+      {
+        "ingredientId": "onion_powder",
+        "name": "Onion Powder",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Onion Powder 2.6 oz ($2.88)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.12
+      },
+      {
+        "ingredientId": "sugar",
+        "name": "Granulated Sugar",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+        "amount": 8,
+        "unit": "g",
+        "cost": 0.02
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Kosher Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "cayenne",
+        "name": "Cayenne Pepper",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Cayenne Pepper (est.) ($2.58)",
+        "amount": 0.3,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "parsley",
+        "name": "Fresh Italian Parsley (finely chopped)",
+        "sourceType": "rate",
+        "sourceName": "Fresh Parsley bunch ($0.98 est.)",
+        "amount": 4,
+        "unit": "g",
+        "cost": 0.14
       }
     ]
   }

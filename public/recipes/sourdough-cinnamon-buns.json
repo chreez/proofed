@@ -37,22 +37,22 @@
     {
       "id": "V1",
       "name": "Levain Jar",
-      "reuse": "Build levain → freed after adding to mixer"
+      "reuse": "Build levain \u2192 freed after adding to mixer"
     },
     {
       "id": "V2",
       "name": "Stand Mixer Bowl",
-      "reuse": "Dough mix → bulk ferment → cold retard → freed after shaping"
+      "reuse": "Dough mix \u2192 bulk ferment \u2192 cold retard \u2192 freed after shaping"
     },
     {
       "id": "V3",
       "name": "Small Bowl",
-      "reuse": "Filling mixture → freed → glaze"
+      "reuse": "Filling mixture \u2192 freed \u2192 glaze"
     },
     {
       "id": "V4",
       "name": "23cm Springform Pan",
-      "reuse": "Line → arrange rolls → proof → bake → serve"
+      "reuse": "Line \u2192 arrange rolls \u2192 proof \u2192 bake \u2192 serve"
     }
   ],
   "stages": [
@@ -128,7 +128,7 @@
             "unit": "g",
             "breakdown": null,
             "confidence": "high",
-            "rationale": "Unchanged from ATK — gluten dilution for tenderness, resistant to sourdough enzymatic degradation"
+            "rationale": "Unchanged from ATK \u2014 gluten dilution for tenderness, resistant to sourdough enzymatic degradation"
           },
           {
             "id": "granulated_sugar",
@@ -176,7 +176,7 @@
             "unit": "g",
             "breakdown": [
               {
-                "label": "dough (warm to 95-100°F)",
+                "label": "dough (warm to 95-100\u00b0F)",
                 "amount": 80
               },
               {
@@ -185,7 +185,7 @@
               }
             ],
             "confidence": "high",
-            "rationale": "Reduced from 192g — levain contributes ~100g water"
+            "rationale": "Reduced from 192g \u2014 levain contributes ~100g water"
           },
           {
             "id": "cream_cheese",
@@ -327,7 +327,7 @@
     {
       "id": "BUILD_LEVAIN",
       "title": "Mix Levain",
-      "direction": "In a clean jar, combine 34g ripe starter, 84g flour, and 84g water. Stir until no dry flour remains. Cover loosely and place at room temperature (~75°F (24°C)).",
+      "direction": "In a clean jar, combine 34g ripe starter, 84g flour, and 84g water. Stir until no dry flour remains. Cover loosely and place at room temperature (~75\u00b0F (24\u00b0C)).",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -353,7 +353,7 @@
           "source": "agent"
         },
         {
-          "text": "Starter must be active and recently fed — doubled or tripled within 6-8 hours of last feeding.",
+          "text": "Starter must be active and recently fed \u2014 doubled or tripled within 6-8 hours of last feeding.",
           "critical": true,
           "source": "agent"
         }
@@ -376,7 +376,7 @@
       "exit_condition": "Levain doubled, bubbly, domed top, passes float test (small spoonful floats in water)",
       "notes": [
         {
-          "text": "Timing varies: 6 hrs in warm kitchen (78°F+ (26°C+)), 8+ hrs in cool kitchen (68°F (20°C)). Watch the levain, not the clock.",
+          "text": "Timing varies: 6 hrs in warm kitchen (78\u00b0F+ (26\u00b0C+)), 8+ hrs in cool kitchen (68\u00b0F (20\u00b0C)). Watch the levain, not the clock.",
           "critical": false,
           "source": "agent"
         }
@@ -402,7 +402,7 @@
     {
       "id": "COMBINE_DOUGH",
       "title": "Combine Dough",
-      "direction": "In stand mixer bowl, add 430g flour, 64g cornstarch, 75g sugar, and 9g salt. Whisk briefly by hand to combine. Add 200g ripe levain, 80g warm milk (95-100°F (35-38°C)), and 3 eggs. Attach dough hook. Mix on low until dough is cohesive and wraps around hook, 3-4 minutes.",
+      "direction": "In stand mixer bowl, add 430g flour, 64g cornstarch, 75g sugar, and 9g salt. Whisk briefly by hand to combine. Add 200g ripe levain, 80g warm milk (95-100\u00b0F (35-38\u00b0C)), and 3 eggs. Attach dough hook. Mix on low until dough is cohesive and wraps around hook, 3-4 minutes.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -439,7 +439,7 @@
       "exit_condition": "Shaggy dough formed, no dry flour visible, dough wraps around hook",
       "notes": [
         {
-          "text": "Milk should be 95-100°F (35-38°C) — warm enough to help activate levain but not hot enough to kill it. Do not exceed 110°F (43°C).",
+          "text": "Milk should be 95-100\u00b0F (35-38\u00b0C) \u2014 warm enough to help activate levain but not hot enough to kill it. Do not exceed 110\u00b0F (43\u00b0C).",
           "critical": true,
           "source": "agent"
         },
@@ -449,7 +449,7 @@
           "source": "agent"
         },
         {
-          "text": "If your starter is active and recently fed (1:1:1, 100% hydration), you can skip the levain build and use 200g starter directly. The flour/water contribution is the same — the dough is already calibrated for it.",
+          "text": "If your starter is active and recently fed (1:1:1, 100% hydration), you can skip the levain build and use 200g starter directly. The flour/water contribution is the same \u2014 the dough is already calibrated for it.",
           "critical": false,
           "source": "user"
         }
@@ -507,7 +507,7 @@
     {
       "id": "BULK_FERMENT",
       "title": "Bulk Ferment with Folds",
-      "direction": "Cover dough in bowl. Ferment at room temperature (~75°F (24°C)). At 30 minutes and 60 minutes, perform a set of stretch and folds: pull dough from one side, stretch up and fold over center, rotate 90° and repeat 3 more times. Re-cover after each set.",
+      "direction": "Cover dough in bowl. Ferment at room temperature (~75\u00b0F (24\u00b0C)). At 30 minutes and 60 minutes, perform a set of stretch and folds: pull dough from one side, stretch up and fold over center, rotate 90\u00b0 and repeat 3 more times. Re-cover after each set.",
       "duration_min": 90,
       "timer": true,
       "parallel": false,
@@ -520,12 +520,12 @@
           "source": "agent"
         },
         {
-          "text": "Stretch and fold at 30 min and 60 min. These supplement the mixer kneading — they equalize temperature and redistribute fermentation gases.",
+          "text": "Stretch and fold at 30 min and 60 min. These supplement the mixer kneading \u2014 they equalize temperature and redistribute fermentation gases.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "If kitchen is cold (<70°F (21°C)), bulk may take 2-3 hours. Watch the dough, not the clock.",
+          "text": "If kitchen is cold (<70\u00b0F (21\u00b0C)), bulk may take 2-3 hours. Watch the dough, not the clock.",
           "critical": false,
           "source": "agent"
         }
@@ -544,7 +544,7 @@
     {
       "id": "COLD_RETARD",
       "title": "Overnight Cold Retard",
-      "direction": "Cover bowl tightly with plastic wrap. Place in refrigerator at 37-40°F (3-4°C). Retard overnight, minimum 8 hours.",
+      "direction": "Cover bowl tightly with plastic wrap. Place in refrigerator at 37-40\u00b0F (3-4\u00b0C). Retard overnight, minimum 8 hours.",
       "duration_min": 480,
       "timer": true,
       "parallel": false,
@@ -552,7 +552,7 @@
       "exit_condition": "Minimum 8 hours in fridge. Dough is cold and firm. Can hold up to 48 hours.",
       "notes": [
         {
-          "text": "Fridge must be below 40°F (4°C). Check with thermometer. Above 40°F risks overproofing.",
+          "text": "Fridge must be below 40\u00b0F (4\u00b0C). Check with thermometer. Above 40\u00b0F risks overproofing.",
           "critical": true,
           "source": "agent"
         },
@@ -567,7 +567,7 @@
           "source": "agent"
         },
         {
-          "text": "Cold retard shifts acid balance toward acetic acid (sharper tang). Butter, sugar, and eggs moderate the tanginess — expect subtle complexity, not aggressive sour.",
+          "text": "Cold retard shifts acid balance toward acetic acid (sharper tang). Butter, sugar, and eggs moderate the tanginess \u2014 expect subtle complexity, not aggressive sour.",
           "critical": false,
           "source": "agent"
         }
@@ -597,7 +597,7 @@
       "exit_condition": "Filling mixture evenly combined, no clumps",
       "notes": [
         {
-          "text": "Can be made the evening before or morning of. Shelf-stable — cover and set aside.",
+          "text": "Can be made the evening before or morning of. Shelf-stable \u2014 cover and set aside.",
           "critical": false,
           "source": "agent"
         }
@@ -606,7 +606,7 @@
     {
       "id": "ROLL_DOUGH",
       "title": "Roll Dough into Square",
-      "direction": "Pull cold dough from fridge. Pat into rough square shape with hands on lightly floured surface. Roll from center diagonally toward corners, rotating 90° every few rolls. Target: 46x46cm (18x18 inch) square.",
+      "direction": "Pull cold dough from fridge. Pat into rough square shape with hands on lightly floured surface. Roll from center diagonally toward corners, rotating 90\u00b0 every few rolls. Target: 46x46cm (18x18 inch) square.",
       "duration_min": 8,
       "timer": false,
       "parallel": false,
@@ -614,7 +614,7 @@
       "exit_condition": "Even square with consistent thickness throughout. Run hand over surface to check for hills/valleys.",
       "notes": [
         {
-          "text": "Cold dough from the fridge rolls cleanly — this is a feature of the overnight retard. No sticking, sharp cuts.",
+          "text": "Cold dough from the fridge rolls cleanly \u2014 this is a feature of the overnight retard. No sticking, sharp cuts.",
           "critical": false,
           "source": "agent"
         },
@@ -662,7 +662,7 @@
       "exit_condition": "Tight, even cylinder with sealed seam, ~46cm long",
       "notes": [
         {
-          "text": "Keep tension consistent — loose rolls create gaps in the spiral.",
+          "text": "Keep tension consistent \u2014 loose rolls create gaps in the spiral.",
           "critical": false,
           "source": "agent"
         }
@@ -679,7 +679,7 @@
       "exit_condition": "8 buns arranged cut-side up in springform, covered",
       "notes": [
         {
-          "text": "Rolls should have ~1cm spacing — they expand to touch during final proof.",
+          "text": "Rolls should have ~1cm spacing \u2014 they expand to touch during final proof.",
           "critical": false,
           "source": "agent"
         },
@@ -701,7 +701,7 @@
       "exit_condition": "Rolls doubled, puffy, touching each other. Gentle poke springs back slowly.",
       "notes": [
         {
-          "text": "1.5-2 hours at 75°F (24°C). Cooler kitchen = longer. Rolls should look pillowy and jiggly.",
+          "text": "1.5-2 hours at 75\u00b0F (24\u00b0C). Cooler kitchen = longer. Rolls should look pillowy and jiggly.",
           "critical": false,
           "source": "agent"
         },
@@ -715,12 +715,12 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven",
-      "direction": "Heat oven to 375°F (190°C) with rack in middle position.",
+      "direction": "Heat oven to 375\u00b0F (190\u00b0C) with rack in middle position.",
       "duration_min": 20,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven fully preheated to 375°F (190°C)",
+      "exit_condition": "Oven fully preheated to 375\u00b0F (190\u00b0C)",
       "notes": null
     },
     {
@@ -758,7 +758,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Deep golden brown, filling visibly bubbling. Internal temp 190°F (88°C).",
+      "exit_condition": "Deep golden brown, filling visibly bubbling. Internal temp 190\u00b0F (88\u00b0C).",
       "notes": [
         {
           "text": "Check at 20 min. Springform's higher sides may require 23-25 min total. Rotate pan if browning unevenly.",
@@ -793,7 +793,7 @@
       "exit_condition": "Buns warm but not molten-hot. Filling has set slightly.",
       "notes": [
         {
-          "text": "Filling and caramel bottom are extremely hot — wait the full time.",
+          "text": "Filling and caramel bottom are extremely hot \u2014 wait the full time.",
           "critical": true,
           "source": "agent"
         },
@@ -1124,7 +1124,7 @@
     "methods": [
       {
         "method": "Air Fryer",
-        "detail": "300°F (150°C), 5 min. Loosely wrap in foil.",
+        "detail": "300\u00b0F (150\u00b0C), 5 min. Loosely wrap in foil.",
         "source": "agent"
       },
       {
@@ -1142,46 +1142,46 @@
   "research": {
     "sources": [
       {
-        "name": "The Perfect Loaf — Sourdough Cinnamon Rolls",
+        "name": "The Perfect Loaf \u2014 Sourdough Cinnamon Rolls",
         "url": "https://www.theperfectloaf.com/sourdough-cinnamon-rolls/",
         "type": "adapted",
         "author": "Maurizio Leo"
       },
       {
-        "name": "King Arthur — Sourdough Cinnamon Rolls",
+        "name": "King Arthur \u2014 Sourdough Cinnamon Rolls",
         "url": "https://www.kingarthurbaking.com/recipes/sourdough-cinnamon-rolls-recipe",
         "type": "adapted",
         "author": "King Arthur Baking"
       },
       {
-        "name": "The Clever Carrot — Soft Sourdough Cinnamon Rolls",
+        "name": "The Clever Carrot \u2014 Soft Sourdough Cinnamon Rolls",
         "url": "https://www.theclevercarrot.com/2017/12/how-to-make-sourdough-cinnamon-rolls-step-by-step-guide/",
         "type": "adapted"
       },
       {
-        "name": "King Arthur — Adding Yeast to Sourdough",
+        "name": "King Arthur \u2014 Adding Yeast to Sourdough",
         "url": "https://www.kingarthurbaking.com/blog/2022/01/13/adding-yeast-to-your-sourdough-bread",
         "type": "adapted",
         "author": "PJ Hamel"
       },
       {
-        "name": "The Perfect Loaf — Hybrid Doughs",
+        "name": "The Perfect Loaf \u2014 Hybrid Doughs",
         "url": "https://www.theperfectloaf.com/hybrid-dough/",
         "type": "adapted",
         "author": "Maurizio Leo"
       },
       {
-        "name": "King Arthur — Pull-Apart Rolls in Dutch Oven",
+        "name": "King Arthur \u2014 Pull-Apart Rolls in Dutch Oven",
         "url": "https://www.kingarthurbaking.com/blog/2024/11/21/pull-apart-rolls-dutch-oven",
         "type": "adapted"
       },
       {
-        "name": "Farmhouse on Boone — Sourdough Cinnamon Rolls",
+        "name": "Farmhouse on Boone \u2014 Sourdough Cinnamon Rolls",
         "url": "https://www.farmhouseonboone.com/sourdough-cinnamon-rolls-with-cream-cheese-topping/",
         "type": "adapted"
       },
       {
-        "name": "Little Spoon Farm — Overnight Sourdough Cinnamon Rolls",
+        "name": "Little Spoon Farm \u2014 Overnight Sourdough Cinnamon Rolls",
         "url": "https://littlespoonfarm.com/sourdough-cinnamon-rolls/",
         "type": "adapted"
       },
@@ -1192,7 +1192,7 @@
         "author": "America's Test Kitchen"
       },
       {
-        "name": "Buttermilk by Sam — Sourdough Cinnamon Rolls",
+        "name": "Buttermilk by Sam \u2014 Sourdough Cinnamon Rolls",
         "url": "https://buttermilkbysam.com/sourdough-cinnamon-rolls/",
         "type": "adapted"
       }
@@ -1243,24 +1243,24 @@
     {
       "date": "2026-02-19",
       "version": "v1.1.0",
-      "summary": "First sourdough cinnamon bun bake — hand-mixed, used active starter directly (failed float test) with 1g yeast insurance, glass Pyrex, no heavy cream pour. Hit 190°F at 22 min. Pretty good.",
+      "summary": "First sourdough cinnamon bun bake \u2014 hand-mixed, used active starter directly (failed float test) with 1g yeast insurance, glass Pyrex, no heavy cream pour. Hit 190\u00b0F at 22 min. Pretty good.",
       "notes": [
-        "Starter did not pass float test — past peak, roughly 20% drop. Used 200g active starter directly instead of building levain.",
+        "Starter did not pass float test \u2014 past peak, roughly 20% drop. Used 200g active starter directly instead of building levain.",
         "Added 1g instant yeast as hybrid insurance.",
-        "Hand-mixed entire dough — no stand mixer. Slap and fold technique for development.",
+        "Hand-mixed entire dough \u2014 no stand mixer. Slap and fold technique for development.",
         "Rested dough 20 minutes before incorporating butter by hand.",
-        "Dough temp 83°F at start of bulk ferment. Kitchen ambient 76°F.",
+        "Dough temp 83\u00b0F at start of bulk ferment. Kitchen ambient 76\u00b0F.",
         "First stretch and fold set at 6:14pm after butter incorporation.",
-        "Second fold set at 6:48pm — dough reading 79°F.",
-        "Third fold at 7:21pm — dough at 82°F. Did slap and fold per recipe, then one additional set.",
-        "At 7:58pm dough at 79°F. Left on top of dishwasher to keep warm. Checked elasticity.",
-        "Added 1 hour room-temp rest before cold retard for more gluten development. Dough ~80°F going in.",
+        "Second fold set at 6:48pm \u2014 dough reading 79\u00b0F.",
+        "Third fold at 7:21pm \u2014 dough at 82\u00b0F. Did slap and fold per recipe, then one additional set.",
+        "At 7:58pm dough at 79\u00b0F. Left on top of dishwasher to keep warm. Checked elasticity.",
+        "Added 1 hour room-temp rest before cold retard for more gluten development. Dough ~80\u00b0F going in.",
         "Into fridge around 9pm for overnight cold retard.",
-        "Used glass Pyrex instead of springform pan. No heavy cream pour — kept first bake simple.",
+        "Used glass Pyrex instead of springform pan. No heavy cream pour \u2014 kept first bake simple.",
         "Dough may have sat out too long before filling. Considering a pre-shape step before rolling for better distribution.",
         "Baking spray under parchment in Pyrex to prevent slipping, butter on top of parchment.",
-        "Internal temp 190°F at 22 minutes — close to spot on per recipe target.",
-        "Unmolding was easy — grabbed both sides of parchment paper and lifted out."
+        "Internal temp 190\u00b0F at 22 minutes \u2014 close to spot on per recipe target.",
+        "Unmolding was easy \u2014 grabbed both sides of parchment paper and lifted out."
       ],
       "photos": [
         {
@@ -1401,16 +1401,16 @@
     {
       "date": "2026-03-20",
       "version": "v1.1.0",
-      "summary": "Second sourdough cinnamon bun bake — same approach as first (active starter, pinch of yeast, hand-mixed, glass Pyrex). Short ~4.5 hour cold retard, pulled dough early to warm up before shaping. Tasted great, but starting to think the regular non-sourdough version might just be better.",
+      "summary": "Second sourdough cinnamon bun bake \u2014 same approach as first (active starter, pinch of yeast, hand-mixed, glass Pyrex). Short ~4.5 hour cold retard, pulled dough early to warm up before shaping. Tasted great, but starting to think the regular non-sourdough version might just be better.",
       "notes": [
-        "Same approach as first bake — active starter directly, small sprinkle of instant yeast (not sure it made a difference), hand-mixed, glass Pyrex, no heavy cream pour.",
-        "3:26pm — placed dough in fridge for cold retard.",
-        "~8pm — pulled dough from fridge to let bulk ferment come closer to room temp (~4.5 hour cold retard, well under recipe's 8-hour minimum).",
-        "Dough was still chilled when rolling out — harder to roll but got there.",
-        "~10pm — shaping done (rolled, filled, cut, arranged).",
-        "Used a bread knife to cut rolls into 8 — worked ok but still hard to get perfectly even cuts.",
+        "Same approach as first bake \u2014 active starter directly, small sprinkle of instant yeast (not sure it made a difference), hand-mixed, glass Pyrex, no heavy cream pour.",
+        "3:26pm \u2014 placed dough in fridge for cold retard.",
+        "~8pm \u2014 pulled dough from fridge to let bulk ferment come closer to room temp (~4.5 hour cold retard, well under recipe's 8-hour minimum).",
+        "Dough was still chilled when rolling out \u2014 harder to roll but got there.",
+        "~10pm \u2014 shaping done (rolled, filled, cut, arranged).",
+        "Used a bread knife to cut rolls into 8 \u2014 worked ok but still hard to get perfectly even cuts.",
         "~2 hour final proof after shaping.",
-        "~12am — into the oven (1:55am logged as just out of the oven).",
+        "~12am \u2014 into the oven (1:55am logged as just out of the oven).",
         "Forgot to log individual steps during this bake."
       ],
       "photos": [
@@ -1423,7 +1423,7 @@
         {
           "src": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-wide-800w.webp",
           "thumb": "/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-wide-400w.webp",
-          "alt": "Angled view into glass Pyrex dish packed with glazed sourdough cinnamon buns — cream cheese glaze glistening across spiral tops, golden-brown caramelized edges visible between buns.",
+          "alt": "Angled view into glass Pyrex dish packed with glazed sourdough cinnamon buns \u2014 cream cheese glaze glistening across spiral tops, golden-brown caramelized edges visible between buns.",
           "usage": "hero"
         }
       ],
@@ -1577,5 +1577,157 @@
         "source": "open-meteo"
       }
     }
-  ]
+  ],
+  "estimatedCost": {
+    "total": 6.67,
+    "perServing": 0.83,
+    "servings": 8,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "starter",
+        "name": "Ripe Sourdough Starter",
+        "sourceType": "rate",
+        "sourceName": "Home-maintained starter (free)",
+        "amount": 34,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "levain_flour",
+        "name": "All-Purpose Flour (levain)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+        "amount": 84,
+        "unit": "g",
+        "cost": 0.1
+      },
+      {
+        "ingredientId": "levain_water",
+        "name": "Water (room temp, levain)",
+        "sourceType": "rate",
+        "sourceName": "Tap water (free)",
+        "amount": 84,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "flour",
+        "name": "All-Purpose Flour",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+        "amount": 430,
+        "unit": "g",
+        "cost": 0.49
+      },
+      {
+        "ingredientId": "cornstarch",
+        "name": "Cornstarch",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Corn Starch 1 lb ($1.68)",
+        "amount": 64,
+        "unit": "g",
+        "cost": 0.24
+      },
+      {
+        "ingredientId": "granulated_sugar",
+        "name": "Granulated Sugar",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+        "amount": 75,
+        "unit": "g",
+        "cost": 0.14
+      },
+      {
+        "ingredientId": "brown_sugar",
+        "name": "Light Brown Sugar",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Brown Sugar 32 oz ($1.84)",
+        "amount": 240,
+        "unit": "g",
+        "cost": 0.49
+      },
+      {
+        "ingredientId": "powdered_sugar",
+        "name": "Confectioners' Sugar",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Confectioners Sugar 32 oz ($1.84)",
+        "amount": 128,
+        "unit": "g",
+        "cost": 0.26
+      },
+      {
+        "ingredientId": "butter",
+        "name": "Unsalted Butter",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+        "amount": 227,
+        "unit": "g",
+        "cost": 1.49
+      },
+      {
+        "ingredientId": "milk",
+        "name": "Whole Milk",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Whole Milk 1 gal ($4.38)",
+        "amount": 95,
+        "unit": "g",
+        "cost": 0.11
+      },
+      {
+        "ingredientId": "cream_cheese",
+        "name": "Cream Cheese (softened)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Cream Cheese 8 oz ($2.30)",
+        "amount": 150,
+        "unit": "g",
+        "cost": 1.52
+      },
+      {
+        "ingredientId": "eggs",
+        "name": "Large Eggs (room temp)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Large Eggs 12 ct ($2.17)",
+        "amount": 3,
+        "unit": "whole",
+        "cost": 0.54
+      },
+      {
+        "ingredientId": "cinnamon",
+        "name": "Ground Cinnamon",
+        "sourceType": "rate",
+        "sourceName": "McCormick Ground Cinnamon 2.37 oz ($2.77)",
+        "amount": 10,
+        "unit": "g",
+        "cost": 0.41
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 11,
+        "unit": "g",
+        "cost": 0.02
+      },
+      {
+        "ingredientId": "vanilla",
+        "name": "Vanilla Extract",
+        "sourceType": "rate",
+        "sourceName": "Adams Best Vanilla Extract 1.5 oz ($2.92)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 0.34
+      },
+      {
+        "ingredientId": "heavy_cream",
+        "name": "Heavy Cream",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Heavy Whipping Cream 32 oz ($4.89)",
+        "amount": 100,
+        "unit": "g",
+        "cost": 0.52
+      }
+    ]
+  }
 }

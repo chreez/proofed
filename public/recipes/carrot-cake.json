@@ -8,7 +8,7 @@
     },
     "yields": "Two 23cm (9\") layers, 12-16 slices",
     "total_time": "~5 hrs (1 hr active, 4 hrs passive)",
-    "description": "A research-backed carrot cake synthesized from 64 sources — Michelin-star chefs, JBF award winners, food science, and competition bake-off data. Oil-based for moisture, with spices bloomed in warm oil for amplified flavor. Finished with a brown butter cream cheese frosting using Nancy Silverton's cold-cream-cheese technique. Designed for exceptional results with one-bowl simplicity."
+    "description": "A research-backed carrot cake synthesized from 64 sources \u2014 Michelin-star chefs, JBF award winners, food science, and competition bake-off data. Oil-based for moisture, with spices bloomed in warm oil for amplified flavor. Finished with a brown butter cream cheese frosting using Nancy Silverton's cold-cream-cheese technique. Designed for exceptional results with one-bowl simplicity."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -32,17 +32,17 @@
     {
       "id": "V1",
       "name": "Large Mixing Bowl",
-      "reuse": "Wet mix → fold batter → empty into pans → clean → beat frosting"
+      "reuse": "Wet mix \u2192 fold batter \u2192 empty into pans \u2192 clean \u2192 beat frosting"
     },
     {
       "id": "V2",
       "name": "Light-Colored Saucepan",
-      "reuse": "Bloom spices in oil → clean → brown butter"
+      "reuse": "Bloom spices in oil \u2192 clean \u2192 brown butter"
     },
     {
       "id": "V3",
       "name": "Medium Bowl",
-      "reuse": "Dry ingredients → freed → catch brown butter for chilling"
+      "reuse": "Dry ingredients \u2192 freed \u2192 catch brown butter for chilling"
     },
     {
       "id": "V4",
@@ -51,7 +51,7 @@
     {
       "id": "V5",
       "name": "Rimmed Sheet Pan",
-      "reuse": "Toast pecans → freed"
+      "reuse": "Toast pecans \u2192 freed"
     }
   ],
   "stages": [
@@ -84,7 +84,7 @@
             "total": 280,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — universal for carrot cake. AP, not cake flour (too weak for heavy batter with mix-ins)",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 universal for carrot cake. AP, not cake flour (too weak for heavy batter with mix-ins)",
             "confidence": "high",
             "rationale": "Every source surveyed uses all-purpose flour. Cake flour produces too delicate a crumb for the weight of carrots and nuts."
           },
@@ -94,9 +94,9 @@
             "total": 8,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 8/9 agents — primary leavening lift",
+            "sourcedFrom": "Tier 1: 8/9 agents \u2014 primary leavening lift",
             "confidence": "high",
-            "rationale": "Provides the main rise. Used alongside baking soda for insurance — dual leavening is universal in acclaimed recipes."
+            "rationale": "Provides the main rise. Used alongside baking soda for insurance \u2014 dual leavening is universal in acclaimed recipes."
           },
           {
             "id": "baking_soda",
@@ -104,7 +104,7 @@
             "total": 5,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — ATK food science confirms it softens carrots and promotes browning",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 ATK food science confirms it softens carrots and promotes browning",
             "confidence": "high",
             "rationale": "Softens carrot fibers during baking (ATK), promotes Maillard browning, and activates with the acid in brown sugar."
           },
@@ -114,7 +114,7 @@
             "total": 5,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — the defining spice, present in every recipe surveyed",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 the defining spice, present in every recipe surveyed",
             "confidence": "high",
             "rationale": "Universal. Bloom in warm oil for up to 10x flavor amplification (ATK/MasalaBear food science)."
           },
@@ -124,7 +124,7 @@
             "total": 1,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 2: 6/9 agents — third most common spice after cinnamon and nutmeg",
+            "sourcedFrom": "Tier 2: 6/9 agents \u2014 third most common spice after cinnamon and nutmeg",
             "confidence": "medium",
             "rationale": "Warm, peppery heat complements cinnamon. Bloom with other spices in oil."
           },
@@ -134,7 +134,7 @@
             "total": 0.5,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 2: 6/9 agents — second most common spice after cinnamon",
+            "sourcedFrom": "Tier 2: 6/9 agents \u2014 second most common spice after cinnamon",
             "confidence": "medium",
             "rationale": "Warm, slightly sweet. Small amount adds complexity without being identifiable. Bloom in oil."
           },
@@ -144,9 +144,9 @@
             "total": 0.3,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 3: 4/9 agents — potent, easy to overpower",
+            "sourcedFrom": "Tier 3: 4/9 agents \u2014 potent, easy to overpower",
             "confidence": "low",
-            "rationale": "Extremely potent — a pinch adds warmth and depth. Bloom in oil with other spices."
+            "rationale": "Extremely potent \u2014 a pinch adds warmth and depth. Bloom in oil with other spices."
           },
           {
             "id": "salt",
@@ -173,7 +173,7 @@
             "total": 240,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — oil stays liquid when cold, coats gluten, more forgiving than butter",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 oil stays liquid when cold, coats gluten, more forgiving than butter",
             "confidence": "high",
             "rationale": "Oil-based cake is the universal consensus. Stays moist even when cold (butter solidifies). Also serves as the blooming medium for spices."
           },
@@ -183,7 +183,7 @@
             "total": 150,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — roughly 50/50 split with brown sugar, ~300-400g total",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 roughly 50/50 split with brown sugar, ~300-400g total",
             "confidence": "high",
             "rationale": "Provides clean sweetness and structure. Split with brown sugar for depth."
           },
@@ -193,7 +193,7 @@
             "total": 150,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — molasses depth, moisture, acid for baking soda",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 molasses depth, moisture, acid for baking soda",
             "confidence": "high",
             "rationale": "Adds moisture, molasses flavor, and provides acid to activate baking soda."
           },
@@ -203,7 +203,7 @@
             "total": 4,
             "unit": "whole",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — near-universal at 4 large eggs",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 near-universal at 4 large eggs",
             "confidence": "high",
             "rationale": "Structure, moisture, and emulsification. Room temperature for better incorporation into oil-based batter."
           },
@@ -222,7 +222,7 @@
                 "amount": 4
               }
             ],
-            "sourcedFrom": "Tier 2: 6/9 agents — in cake and/or frosting",
+            "sourcedFrom": "Tier 2: 6/9 agents \u2014 in cake and/or frosting",
             "confidence": "medium",
             "rationale": "Rounds out spice flavor in cake, adds warmth to frosting."
           },
@@ -232,7 +232,7 @@
             "total": 2,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 2: 5/9 agents — brightens heavy spice, natural pairing with carrot",
+            "sourcedFrom": "Tier 2: 5/9 agents \u2014 brightens heavy spice, natural pairing with carrot",
             "confidence": "medium",
             "rationale": "Citrus brightness cuts through the richness. A small amount lifts the entire flavor profile."
           },
@@ -242,9 +242,9 @@
             "total": 325,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — NEVER pre-shredded. Small holes of box grater for max moisture and even distribution",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 NEVER pre-shredded. Small holes of box grater for max moisture and even distribution",
             "confidence": "high",
-            "rationale": "The defining ingredient. Fine-grate on the small holes of a box grater — smaller shreds distribute more evenly and release more moisture into the batter."
+            "rationale": "The defining ingredient. Fine-grate on the small holes of a box grater \u2014 smaller shreds distribute more evenly and release more moisture into the batter."
           },
           {
             "id": "pecans",
@@ -252,7 +252,7 @@
             "total": 115,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 8/9 agents — always toasted. Pecans = sweeter/buttery vs walnuts = earthier",
+            "sourcedFrom": "Tier 1: 8/9 agents \u2014 always toasted. Pecans = sweeter/buttery vs walnuts = earthier",
             "confidence": "high",
             "rationale": "Toast before adding for maximum flavor and to reduce sogginess in batter. Pecans chosen over walnuts for their buttery sweetness."
           },
@@ -262,9 +262,9 @@
             "total": 226,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 2: 6/9 agents — brown butter frosting is the #1 elevation move (Silverton, Parks, Saffitz)",
+            "sourcedFrom": "Tier 2: 6/9 agents \u2014 brown butter frosting is the #1 elevation move (Silverton, Parks, Saffitz)",
             "confidence": "high",
-            "rationale": "All butter goes to the frosting. Browned for nutty, caramel depth — independently endorsed by Silverton, Parks, Saffitz, and The Kitchn bake-off winner."
+            "rationale": "All butter goes to the frosting. Browned for nutty, caramel depth \u2014 independently endorsed by Silverton, Parks, Saffitz, and The Kitchn bake-off winner."
           },
           {
             "id": "cream_cheese",
@@ -272,7 +272,7 @@
             "total": 340,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 9/9 agents — cream cheese frosting is the only frosting for carrot cake",
+            "sourcedFrom": "Tier 1: 9/9 agents \u2014 cream cheese frosting is the only frosting for carrot cake",
             "confidence": "high",
             "rationale": "Must be cold from fridge (Silverton technique) for stable frosting. Block-style, not spreadable."
           },
@@ -282,7 +282,7 @@
             "total": 270,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Frosting consensus — sift before adding to prevent lumps",
+            "sourcedFrom": "Frosting consensus \u2014 sift before adding to prevent lumps",
             "confidence": "high",
             "rationale": "Sweetens and stabilizes the frosting. Sifting is essential for smooth texture."
           }
@@ -363,12 +363,12 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven",
-      "direction": "Adjust oven rack to middle position and preheat to 350°F (175°C).",
+      "direction": "Adjust oven rack to middle position and preheat to 350\u00b0F (175\u00b0C).",
       "duration_min": 15,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Oven preheated to 350°F (175°C)",
+      "exit_condition": "Oven preheated to 350\u00b0F (175\u00b0C)",
       "notes": null
     },
     {
@@ -405,7 +405,7 @@
           "source": "user"
         },
         {
-          "text": "Watch carefully past 5 minutes — goes from brown to burnt in seconds",
+          "text": "Watch carefully past 5 minutes \u2014 goes from brown to burnt in seconds",
           "source": "user"
         }
       ]
@@ -431,10 +431,10 @@
       "duration_min": 120,
       "timer": true,
       "components": null,
-      "exit_condition": "Brown butter is completely solid — can be cut into cubes",
+      "exit_condition": "Brown butter is completely solid \u2014 can be cut into cubes",
       "notes": [
         {
-          "text": "Can be done overnight — even better for flavor development",
+          "text": "Can be done overnight \u2014 even better for flavor development",
           "source": "user"
         },
         {
@@ -446,7 +446,7 @@
     {
       "id": "TOAST_PECANS",
       "title": "Toast Pecans",
-      "direction": "Spread 115g pecans on rimmed sheet pan in a single layer. Toast at 350°F (175°C) for 8 minutes until fragrant and slightly darkened.",
+      "direction": "Spread 115g pecans on rimmed sheet pan in a single layer. Toast at 350\u00b0F (175\u00b0C) for 8 minutes until fragrant and slightly darkened.",
       "duration_min": 8,
       "timer": true,
       "components": [
@@ -458,7 +458,7 @@
       "exit_condition": "Pecans fragrant, slightly darkened, oil visible on surface",
       "notes": [
         {
-          "text": "Toasting is critical — develops flavor and prevents sogginess in batter",
+          "text": "Toasting is critical \u2014 develops flavor and prevents sogginess in batter",
           "critical": true,
           "source": "user"
         }
@@ -503,7 +503,7 @@
       "exit_condition": "Oil is fragrant with bloomed spices, removed from heat",
       "notes": [
         {
-          "text": "Do NOT overheat — spices burn quickly. Oil should be warm, not smoking",
+          "text": "Do NOT overheat \u2014 spices burn quickly. Oil should be warm, not smoking",
           "critical": true,
           "source": "user"
         },
@@ -523,7 +523,7 @@
       "exit_condition": "Spiced oil warm but not hot to the touch",
       "notes": [
         {
-          "text": "Hot oil will scramble the eggs — wait until comfortable to touch the outside of the pan",
+          "text": "Hot oil will scramble the eggs \u2014 wait until comfortable to touch the outside of the pan",
           "source": "user"
         }
       ]
@@ -591,13 +591,13 @@
     {
       "id": "FOLD_DRY",
       "title": "Fold Dry into Wet",
-      "direction": "Add dry ingredients to wet mixture. Fold with rubber spatula until just combined — some small streaks of flour are OK.",
+      "direction": "Add dry ingredients to wet mixture. Fold with rubber spatula until just combined \u2014 some small streaks of flour are OK.",
       "timer": false,
       "components": null,
       "exit_condition": "No large flour pockets, batter is thick and slightly lumpy",
       "notes": [
         {
-          "text": "Do NOT overmix — develops gluten and makes cake tough",
+          "text": "Do NOT overmix \u2014 develops gluten and makes cake tough",
           "critical": true,
           "source": "user"
         }
@@ -621,12 +621,12 @@
       "exit_condition": "Carrots and pecans evenly distributed through batter",
       "notes": [
         {
-          "text": "Grate carrots on the small holes of a box grater — not large shreds",
+          "text": "Grate carrots on the small holes of a box grater \u2014 not large shreds",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Batter will be very thick and heavy — this is correct",
+          "text": "Batter will be very thick and heavy \u2014 this is correct",
           "source": "user"
         }
       ]
@@ -648,11 +648,11 @@
     {
       "id": "BAKE_CAKE",
       "title": "Bake",
-      "direction": "Bake at 350°F (175°C) for 35-40 minutes, rotating pans 180° halfway through.",
+      "direction": "Bake at 350\u00b0F (175\u00b0C) for 35-40 minutes, rotating pans 180\u00b0 halfway through.",
       "duration_min": 35,
       "timer": true,
       "components": null,
-      "exit_condition": "Internal temperature 205°F (96°C), or cake springs back when gently pressed",
+      "exit_condition": "Internal temperature 205\u00b0F (96\u00b0C), or cake springs back when gently pressed",
       "notes": [
         {
           "text": "Internal thermometer is more reliable than toothpick for dense cakes with mix-ins",
@@ -690,7 +690,7 @@
       "duration_min": 60,
       "timer": true,
       "components": null,
-      "exit_condition": "Cake layers completely cool to touch — no warmth at center",
+      "exit_condition": "Cake layers completely cool to touch \u2014 no warmth at center",
       "notes": [
         {
           "text": "Frosting warm cake will melt the cream cheese frosting",
@@ -698,7 +698,7 @@
           "source": "user"
         },
         {
-          "text": "For best results, wrap cooled layers in plastic and refrigerate overnight — next-day cake is even better",
+          "text": "For best results, wrap cooled layers in plastic and refrigerate overnight \u2014 next-day cake is even better",
           "source": "user"
         }
       ]
@@ -747,7 +747,7 @@
       "exit_condition": "Mixture is smooth, glossy, and combined",
       "notes": [
         {
-          "text": "Cream cheese MUST be cold from the fridge — room temp cream cheese makes runny frosting",
+          "text": "Cream cheese MUST be cold from the fridge \u2014 room temp cream cheese makes runny frosting",
           "critical": true,
           "source": "user"
         },
@@ -801,7 +801,7 @@
       "direction": "Place second cake layer on top, pressing gently to level. Spread remaining frosting over top and sides.",
       "timer": false,
       "components": null,
-      "exit_condition": "Cake fully frosted — top and sides covered",
+      "exit_condition": "Cake fully frosted \u2014 top and sides covered",
       "notes": null
     },
     {
@@ -1118,237 +1118,237 @@
     ]
   },
   "research": {
-    "strategy": "9 parallel search agents across distinct strategies: Michelin/fine dining chef recipes, competition bake-off winners, critically acclaimed pattern analysis (15 recipes), food science (oil vs butter, spice blooming, leavening), practical consistency (one-bowl methods), cleanup efficiency (vessel minimization), community intel (Reddit, forums), add-ins debate (raisins/pineapple/coconut), and frosting mastery (brown butter technique). Cross-referenced ingredient confidence across all agents. Most similar existing recipe: King Arthur's Carrot Cake (won 2 independent bake-offs), with two key upgrades — bloomed spices and brown butter frosting.",
+    "strategy": "9 parallel search agents across distinct strategies: Michelin/fine dining chef recipes, competition bake-off winners, critically acclaimed pattern analysis (15 recipes), food science (oil vs butter, spice blooming, leavening), practical consistency (one-bowl methods), cleanup efficiency (vessel minimization), community intel (Reddit, forums), add-ins debate (raisins/pineapple/coconut), and frosting mastery (brown butter technique). Cross-referenced ingredient confidence across all agents. Most similar existing recipe: King Arthur's Carrot Cake (won 2 independent bake-offs), with two key upgrades \u2014 bloomed spices and brown butter frosting.",
     "sourceCount": 58,
     "date": "2026-02-10",
     "sources": [
       {
-        "name": "Food Gal — Nancy Silverton's Carrot Cake",
+        "name": "Food Gal \u2014 Nancy Silverton's Carrot Cake",
         "url": "https://www.foodgal.com/2024/05/the-richest-tasting-carrot-cake-ever/",
         "type": "inspired",
         "author": "Nancy Silverton"
       },
       {
-        "name": "Three Ingredients — Silverton's Game-Changing Innovation",
+        "name": "Three Ingredients \u2014 Silverton's Game-Changing Innovation",
         "url": "https://threeingredients.substack.com/p/nancy-silvertons-game-changing-carrot",
         "type": "inspired",
         "author": "Nancy Silverton / Ruth Reichl"
       },
       {
-        "name": "Paris chez Sharon — Matthieu Carlin / Hôtel de Crillon",
+        "name": "Paris chez Sharon \u2014 Matthieu Carlin / H\u00f4tel de Crillon",
         "url": "https://parischezsharon.com/2022/01/the-best-carrot-cake-in-the-world.html",
         "type": "inspired",
         "author": "Matthieu Carlin"
       },
       {
-        "name": "Story of a Kitchen — BraveTart Brown Butter Carrot Cake",
+        "name": "Story of a Kitchen \u2014 BraveTart Brown Butter Carrot Cake",
         "url": "https://www.storyofakitchen.com/dessert-recipes/bravetarts-browned-butter-carrot-cake-with-candied-carrot-flowers-recipe/",
         "type": "inspired",
         "author": "Stella Parks"
       },
       {
-        "name": "From a Small Kitchen — Claire Saffitz Carrot & Pecan Cake",
+        "name": "From a Small Kitchen \u2014 Claire Saffitz Carrot & Pecan Cake",
         "url": "https://fromasmallkitchn.com/2025/04/11/carrot-cake-with-brown-butter-cream-cheese-frosting/",
         "type": "inspired",
         "author": "Claire Saffitz"
       },
       {
-        "name": "Today Show — Milk Bar Carrot Cake",
+        "name": "Today Show \u2014 Milk Bar Carrot Cake",
         "url": "https://www.today.com/recipes/milk-bar-carrot-cake-recipe-t252086",
         "type": "inspired",
         "author": "Christina Tosi"
       },
       {
-        "name": "Food Network — Zac Young Ultimate Carrot Cake",
+        "name": "Food Network \u2014 Zac Young Ultimate Carrot Cake",
         "url": "https://www.foodnetwork.com/recipes/the-ultimate-carrot-cake-22528138",
         "type": "inspired",
         "author": "Zac Young"
       },
       {
-        "name": "Leonard Cheshire — Michael Caines MBE Carrot Cake",
+        "name": "Leonard Cheshire \u2014 Michael Caines MBE Carrot Cake",
         "url": "https://www.leonardcheshire.org/get-involved/do-your-own-fundraising/give-and-bake/give-and-bake-cake-recipes/chef-michael-cainess",
         "type": "inspired",
         "author": "Michael Caines MBE"
       },
       {
-        "name": "Baking Like a Chef — Ottolenghi Carrot Cake",
+        "name": "Baking Like a Chef \u2014 Ottolenghi Carrot Cake",
         "url": "https://www.bakinglikeachef.com/carrot-cake-easy-recipe-yotam-ottolenghi/",
         "type": "inspired",
         "author": "Yotam Ottolenghi"
       },
       {
-        "name": "James Beard Foundation — Natasha Pickowicz Carrot Cake",
+        "name": "James Beard Foundation \u2014 Natasha Pickowicz Carrot Cake",
         "url": "https://www.jamesbeard.org/recipes/natasha-pickowiczs-carrot-cake",
         "type": "inspired",
         "author": "Natasha Pickowicz"
       },
       {
-        "name": "Garden & Gun — Asha Gomez Three Spice Carrot Cake",
+        "name": "Garden & Gun \u2014 Asha Gomez Three Spice Carrot Cake",
         "url": "https://gardenandgun.com/recipe/three-spice-carrot-cake/",
         "type": "inspired",
         "author": "Asha Gomez"
       },
       {
-        "name": "StarChefs — Tess Cunningham / Sarma Carrot Cake",
+        "name": "StarChefs \u2014 Tess Cunningham / Sarma Carrot Cake",
         "url": "https://www.starchefs.com/recipes/carrot-cake",
         "type": "inspired",
         "author": "Tess Cunningham"
       },
       {
-        "name": "Real Baking with Rose — Beranbaum Cake Bible Carrot Cake",
+        "name": "Real Baking with Rose \u2014 Beranbaum Cake Bible Carrot Cake",
         "url": "https://www.realbakingwithrose.com/month/2025/5/3/carrot-cake-from-the-cake-bible-35th-anniversary-edition",
         "type": "inspired",
         "author": "Rose Levy Beranbaum"
       },
       {
-        "name": "VeryVera — Beat Bobby Flay Carrot Cake",
+        "name": "VeryVera \u2014 Beat Bobby Flay Carrot Cake",
         "url": "https://www.veryvera.com/recipes/recipe/veryvera-carrot-cake/",
         "type": "inspired"
       },
       {
-        "name": "King Arthur Baking — Carrot Cake (2x bake-off winner)",
+        "name": "King Arthur Baking \u2014 Carrot Cake (2x bake-off winner)",
         "url": "https://www.kingarthurbaking.com/recipes/king-arthurs-carrot-cake-recipe",
         "type": "inspired"
       },
       {
-        "name": "The Kitchn — Carrot Cake Bake-Off",
+        "name": "The Kitchn \u2014 Carrot Cake Bake-Off",
         "url": "https://www.thekitchn.com/carrot-cake-recipe-reviews-23072888",
         "type": "inspired"
       },
       {
-        "name": "Pancake Princess — Best Carrot Cake Bake Off",
+        "name": "Pancake Princess \u2014 Best Carrot Cake Bake Off",
         "url": "https://www.thepancakeprincess.com/best-carrot-cake-bake-off/",
         "type": "inspired"
       },
       {
-        "name": "Cook's Illustrated — Carrot Layer Cake",
+        "name": "Cook's Illustrated \u2014 Carrot Layer Cake",
         "url": "https://www.food.com/recipe/carrot-layer-cake-cooks-illustrated-487191",
         "type": "inspired"
       },
       {
-        "name": "Unpeeled Journal — Frog Commissary Carrot Cake",
+        "name": "Unpeeled Journal \u2014 Frog Commissary Carrot Cake",
         "url": "https://unpeeledjournal.com/frog-commissary-carrot-cake-recipe/",
         "type": "inspired"
       },
       {
-        "name": "Tasting Table — Oil vs Butter in Carrot Cake",
+        "name": "Tasting Table \u2014 Oil vs Butter in Carrot Cake",
         "url": "https://www.tastingtable.com/1649266/oil-vs-butter-carrot-cake/",
         "type": "inspired"
       },
       {
-        "name": "King Arthur — Should I Be Aging My Cakes?",
+        "name": "King Arthur \u2014 Should I Be Aging My Cakes?",
         "url": "https://www.kingarthurbaking.com/blog/2022/04/25/wait-should-i-be-aging-my-cakes",
         "type": "inspired"
       },
       {
-        "name": "King Arthur — Cake Mixing Methods",
+        "name": "King Arthur \u2014 Cake Mixing Methods",
         "url": "https://www.kingarthurbaking.com/blog/2017/04/28/cake-mixing-methods",
         "type": "inspired"
       },
       {
-        "name": "MasalaBear — Science of Spice Blooming",
+        "name": "MasalaBear \u2014 Science of Spice Blooming",
         "url": "https://www.masalabear.com/blog/spice-blooming-science",
         "type": "inspired"
       },
       {
-        "name": "ATK — Blooming in Oil for Flavor",
+        "name": "ATK \u2014 Blooming in Oil for Flavor",
         "url": "https://www.americastestkitchen.com/cooksillustrated/how_tos/6581-blooming-in-oil-for-flavor",
         "type": "inspired"
       },
       {
-        "name": "Food Republic — Best Way to Grate Carrots for Carrot Cake",
+        "name": "Food Republic \u2014 Best Way to Grate Carrots for Carrot Cake",
         "url": "https://www.foodrepublic.com/1914159/best-way-grate-carrots-for-carrot-cake/",
         "type": "inspired"
       },
       {
-        "name": "American Society of Baking — Carrot Cake",
+        "name": "American Society of Baking \u2014 Carrot Cake",
         "url": "https://asbe.org/article/carrot-cake/",
         "type": "inspired"
       },
       {
-        "name": "PMC — Chemical Composition of Carrots",
+        "name": "PMC \u2014 Chemical Composition of Carrots",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3550877/",
         "type": "inspired"
       },
       {
-        "name": "The Kitchn — When Good Carrots Turn Green",
+        "name": "The Kitchn \u2014 When Good Carrots Turn Green",
         "url": "https://www.thekitchn.com/food-science-when-good-carrots-52210",
         "type": "inspired"
       },
       {
-        "name": "Splendid Table — Stella Parks Cream Cheese Frosting",
+        "name": "Splendid Table \u2014 Stella Parks Cream Cheese Frosting",
         "url": "https://www.splendidtable.org/story/2017/10/02/cream-cheese-frosting",
         "type": "inspired",
         "author": "Stella Parks"
       },
       {
-        "name": "Today — Divorce Carrot Cake Recipe",
+        "name": "Today \u2014 Divorce Carrot Cake Recipe",
         "url": "https://www.today.com/recipes/divorce-carrot-cake-recipe-t194112",
         "type": "inspired"
       },
       {
-        "name": "Cookie Madness — Divorce Cake Review",
+        "name": "Cookie Madness \u2014 Divorce Cake Review",
         "url": "https://www.cookiemadness.net/2020/10/31/divorce-cake/",
         "type": "inspired"
       },
       {
-        "name": "Delish — Costco Carrot Cake Raisin Debate",
+        "name": "Delish \u2014 Costco Carrot Cake Raisin Debate",
         "url": "https://www.delish.com/food-news/a64331413/costco-carrot-cake-raisin-debate/",
         "type": "inspired"
       },
       {
-        "name": "TASTE Cooking — Nonnegotiables of Good Carrot Cake",
+        "name": "TASTE Cooking \u2014 Nonnegotiables of Good Carrot Cake",
         "url": "https://tastecooking.com/non-negotiables-good-carrot-cake/",
         "type": "inspired"
       },
       {
-        "name": "Slate — Carrot Cake Add-In Debate",
+        "name": "Slate \u2014 Carrot Cake Add-In Debate",
         "url": "https://slate.com/culture/2013/11/carrot-cake-should-it-have-raisins-walnuts-coconut-the-answers-with-video.html",
         "type": "inspired"
       },
       {
-        "name": "Handle the Heat — Best Cream Cheese Frosting",
+        "name": "Handle the Heat \u2014 Best Cream Cheese Frosting",
         "url": "https://handletheheat.com/best-cream-cheese-frosting/",
         "type": "inspired"
       },
       {
-        "name": "Scientifically Sweet — Ultimate Moist Carrot Cake",
+        "name": "Scientifically Sweet \u2014 Ultimate Moist Carrot Cake",
         "url": "https://scientificallysweet.com/ultimate-moist-carrot-cake-with-cream-cheese-frosting/",
         "type": "inspired"
       },
       {
-        "name": "Sugarologie — Stable Cream Cheese Buttercream",
+        "name": "Sugarologie \u2014 Stable Cream Cheese Buttercream",
         "url": "https://www.sugarologie.com/recipes/cream-cheese-buttercream",
         "type": "inspired"
       },
       {
-        "name": "Nigella.com — Cream Cheese Icing Troubleshooting",
+        "name": "Nigella.com \u2014 Cream Cheese Icing Troubleshooting",
         "url": "https://www.nigella.com/ask/cream-cheese-icing-turned-runny",
         "type": "inspired"
       },
       {
-        "name": "Carolina Gelen — Goat Cheese Frosting Carrot Cake",
+        "name": "Carolina Gelen \u2014 Goat Cheese Frosting Carrot Cake",
         "url": "https://carolinagelen.substack.com/p/decadent-carrot-cake-with-goat-cheese",
         "type": "inspired",
         "author": "Carolina Gelen"
       },
       {
-        "name": "Cucina by Elena — One Bowl Carrot Cake",
+        "name": "Cucina by Elena \u2014 One Bowl Carrot Cake",
         "url": "https://www.cucinabyelena.com/easy-carrot-cake-recipe-one-bowl-and-super-moist/",
         "type": "inspired"
       },
       {
-        "name": "Baking Bites — One Bowl Carrot Cake",
+        "name": "Baking Bites \u2014 One Bowl Carrot Cake",
         "url": "https://bakingbites.com/2007/04/one-bowl-carrot-cake/",
         "type": "inspired"
       },
       {
-        "name": "How Sweet Eats — Carrot Sheet Cake",
+        "name": "How Sweet Eats \u2014 Carrot Sheet Cake",
         "url": "https://www.howsweeteats.com/2024/03/carrot-cake-sheet-cake/",
         "type": "inspired"
       },
       {
-        "name": "King Arthur — Parchment Paper Sling",
+        "name": "King Arthur \u2014 Parchment Paper Sling",
         "url": "https://www.kingarthurbaking.com/blog/2017/03/27/parchment-paper-sling",
         "type": "inspired"
       },
@@ -1358,69 +1358,69 @@
         "type": "inspired"
       },
       {
-        "name": "Cooking Classy — Best Ever Carrot Cake",
+        "name": "Cooking Classy \u2014 Best Ever Carrot Cake",
         "url": "https://www.cookingclassy.com/best-ever-carrot-cake/",
         "type": "inspired"
       },
       {
-        "name": "Once Upon a Chef — Carrot Cake",
+        "name": "Once Upon a Chef \u2014 Carrot Cake",
         "url": "https://www.onceuponachef.com/recipes/carrot-cake.html",
         "type": "inspired"
       },
       {
-        "name": "Live Well Bake Often — Best Carrot Cake",
+        "name": "Live Well Bake Often \u2014 Best Carrot Cake",
         "url": "https://www.livewellbakeoften.com/the-best-carrot-cake-recipe/",
         "type": "inspired"
       },
       {
-        "name": "Bon Appétit — BA's Best Carrot Cake",
+        "name": "Bon App\u00e9tit \u2014 BA's Best Carrot Cake",
         "url": "https://www.punchfork.com/recipe/BAs-Best-Carrot-Cake-Epicurious",
         "type": "inspired"
       },
       {
-        "name": "Barefoot Contessa — Ginger Mascarpone Carrot Cake",
+        "name": "Barefoot Contessa \u2014 Ginger Mascarpone Carrot Cake",
         "url": "https://barefootcontessa.com/recipes/carrot-cake-with-ginger-mascarpone-frosting",
         "type": "inspired",
         "author": "Ina Garten"
       },
       {
-        "name": "Dorie Greenspan — Carrot Cake",
+        "name": "Dorie Greenspan \u2014 Carrot Cake",
         "url": "https://buttercubed.wordpress.com/2013/06/23/dorie-greenspans-carrot-cake/",
         "type": "inspired",
         "author": "Dorie Greenspan"
       },
       {
-        "name": "Sugar Spun Run — Best Carrot Cake",
+        "name": "Sugar Spun Run \u2014 Best Carrot Cake",
         "url": "https://sugarspunrun.com/best-carrot-cake-recipe/",
         "type": "inspired"
       },
       {
-        "name": "Preppy Kitchen — Carrot and Walnut Cake",
+        "name": "Preppy Kitchen \u2014 Carrot and Walnut Cake",
         "url": "https://preppykitchen.com/carrot-and-walnut-cake/",
         "type": "inspired"
       },
       {
-        "name": "ATK — Carrot Layer Cake",
+        "name": "ATK \u2014 Carrot Layer Cake",
         "url": "https://www.americastestkitchen.com/recipes/6957-carrot-layer-cake",
         "type": "inspired"
       },
       {
-        "name": "Inspired Taste — Carrot Cake",
+        "name": "Inspired Taste \u2014 Carrot Cake",
         "url": "https://www.inspiredtaste.net/25753/carrot-cake-recipe/",
         "type": "inspired"
       },
       {
-        "name": "Sally's Baking Addiction — Carrot Cake",
+        "name": "Sally's Baking Addiction \u2014 Carrot Cake",
         "url": "https://sallysbakingaddiction.com/my-favorite-carrot-cake-recipe/",
         "type": "inspired"
       },
       {
-        "name": "Pioneer Woman — Sigrid's Carrot Cake",
+        "name": "Pioneer Woman \u2014 Sigrid's Carrot Cake",
         "url": "https://www.thepioneerwoman.com/food-cooking/recipes/a11735/sigrids-carrot-cake-perfect-for-easter/",
         "type": "inspired"
       },
       {
-        "name": "Grandbaby Cakes — Carrot Cake",
+        "name": "Grandbaby Cakes \u2014 Carrot Cake",
         "url": "https://grandbaby-cakes.com/carrot-cake-recipe/",
         "type": "inspired"
       }
@@ -1440,26 +1440,26 @@
       },
       {
         "name": "Fine-Grate Carrots (Small Holes)",
-        "sourcedFrom": "Universal — 9/9 agents, Food Republic technique guide",
+        "sourcedFrom": "Universal \u2014 9/9 agents, Food Republic technique guide",
         "rationale": "Small holes of a box grater produce finer shreds that distribute more evenly and release more moisture into the batter. Never use pre-shredded carrots.",
         "confidence": "high"
       },
       {
         "name": "Dual Leavening (Baking Soda + Baking Powder)",
-        "sourcedFrom": "Universal — 9/9 agents, American Society of Baking",
+        "sourcedFrom": "Universal \u2014 9/9 agents, American Society of Baking",
         "rationale": "Baking soda softens carrot fibers and promotes Maillard browning; baking powder provides primary lift. Both together ensure consistent rise in a dense, heavy batter.",
         "confidence": "high"
       },
       {
-        "name": "Internal Temperature for Doneness (205°F / 96°C)",
+        "name": "Internal Temperature for Doneness (205\u00b0F / 96\u00b0C)",
         "sourcedFrom": "Multiple food science sources",
         "rationale": "More reliable than toothpick test for dense cakes with mix-ins that can fool visual checks. Insert thermometer into the center of the cake.",
         "confidence": "medium"
       },
       {
         "name": "Oil-Based (Not Butter) for Moisture",
-        "sourcedFrom": "Universal — 9/9 agents, Tasting Table science",
-        "rationale": "Oil stays liquid when cold (butter solidifies), producing a cake that is moist even straight from the fridge. Also simpler to mix — no creaming step needed.",
+        "sourcedFrom": "Universal \u2014 9/9 agents, Tasting Table science",
+        "rationale": "Oil stays liquid when cold (butter solidifies), producing a cake that is moist even straight from the fridge. Also simpler to mix \u2014 no creaming step needed.",
         "confidence": "high"
       }
     ]
@@ -1468,13 +1468,192 @@
     "methods": [
       {
         "method": "Room Temp",
-        "detail": "Pull from fridge 30 min before serving — cream cheese frosting tastes best at room temp.",
+        "detail": "Pull from fridge 30 min before serving \u2014 cream cheese frosting tastes best at room temp.",
         "source": "agent"
       },
       {
         "method": "Storage",
         "detail": "Fridge up to 5 days, covered. Unfrosted layers freeze well (wrap tightly, up to 1 month).",
         "source": "agent"
+      }
+    ]
+  },
+  "estimatedCost": {
+    "total": 13.19,
+    "perServing": 1.1,
+    "servings": 12,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "flour",
+        "name": "All-Purpose Flour",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare All-Purpose Flour 5 lb ($2.58)",
+        "amount": 280,
+        "unit": "g",
+        "cost": 0.32
+      },
+      {
+        "ingredientId": "baking_powder",
+        "name": "Baking Powder",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Baking Powder 8.1 oz ($2.08)",
+        "amount": 8,
+        "unit": "g",
+        "cost": 0.07
+      },
+      {
+        "ingredientId": "baking_soda",
+        "name": "Baking Soda",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Baking Soda 16 oz ($0.89)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "cinnamon",
+        "name": "Ground Cinnamon",
+        "sourceType": "rate",
+        "sourceName": "McCormick Ground Cinnamon 2.37 oz ($2.77)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 0.21
+      },
+      {
+        "ingredientId": "ginger",
+        "name": "Ground Ginger",
+        "sourceType": "rate",
+        "sourceName": "Fresh Ginger ~50g ($0.50 est.)",
+        "amount": 1,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "nutmeg",
+        "name": "Ground Nutmeg",
+        "sourceType": "rate",
+        "sourceName": "McCormick Ground Nutmeg (est.) ($2.77)",
+        "amount": 0.5,
+        "unit": "g",
+        "cost": 0.02
+      },
+      {
+        "ingredientId": "cloves",
+        "name": "Ground Cloves",
+        "sourceType": "rate",
+        "sourceName": "McCormick Ground Cloves (est.) ($2.77)",
+        "amount": 0.3,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Fine Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 7,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "oil",
+        "name": "Canola Oil",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Canola Oil 16 oz ($1.72)",
+        "amount": 240,
+        "unit": "g",
+        "cost": 0.99
+      },
+      {
+        "ingredientId": "granulated_sugar",
+        "name": "Granulated Sugar",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+        "amount": 150,
+        "unit": "g",
+        "cost": 0.29
+      },
+      {
+        "ingredientId": "brown_sugar",
+        "name": "Dark Brown Sugar (packed)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Brown Sugar 32 oz ($1.84)",
+        "amount": 150,
+        "unit": "g",
+        "cost": 0.3
+      },
+      {
+        "ingredientId": "eggs",
+        "name": "Large Eggs (room temp)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Large Eggs 12 ct ($2.17)",
+        "amount": 4,
+        "unit": "whole",
+        "cost": 0.72
+      },
+      {
+        "ingredientId": "vanilla",
+        "name": "Vanilla Extract",
+        "sourceType": "rate",
+        "sourceName": "Adams Best Vanilla Extract 1.5 oz ($2.92)",
+        "amount": 8,
+        "unit": "g",
+        "cost": 0.55
+      },
+      {
+        "ingredientId": "orange_zest",
+        "name": "Orange Zest",
+        "sourceType": "rate",
+        "sourceName": "Fresh Orange ($0.75 ea, ~6g zest)",
+        "amount": 2,
+        "unit": "g",
+        "cost": 0.25
+      },
+      {
+        "ingredientId": "carrots",
+        "name": "Fresh Carrots (fine-grated)",
+        "sourceType": "rate",
+        "sourceName": "Fresh Carrots ~0.75 lb ($0.96)",
+        "amount": 325,
+        "unit": "g",
+        "cost": 0.92
+      },
+      {
+        "ingredientId": "pecans",
+        "name": "Pecans",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pecan Halves 10 oz ($7.48)",
+        "amount": 115,
+        "unit": "g",
+        "cost": 3.03
+      },
+      {
+        "ingredientId": "butter",
+        "name": "Unsalted Butter",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+        "amount": 226,
+        "unit": "g",
+        "cost": 1.48
+      },
+      {
+        "ingredientId": "cream_cheese",
+        "name": "Cream Cheese (full-fat, block)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Cream Cheese 8 oz ($2.30)",
+        "amount": 340,
+        "unit": "g",
+        "cost": 3.45
+      },
+      {
+        "ingredientId": "powdered_sugar",
+        "name": "Powdered Sugar",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Confectioners Sugar 32 oz ($1.84)",
+        "amount": 270,
+        "unit": "g",
+        "cost": 0.55
       }
     ]
   }

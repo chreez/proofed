@@ -8,7 +8,7 @@
     },
     "yields": "6-8 servings",
     "total_time": "~14 hrs (mostly passive broth simmering)",
-    "description": "A clean, odor-free tonkotsu ramen modeled after Ichiran — Fukuoka's iconic single-menu ramen chain. Built from 92 sources including 7 official product labels, factory documentation, and the Umakara Kokumashi 'Rosetta Stone' that revealed the red sauce profile. Features a double-soup technique (pure pork bone broth + dashi), proprietary-style red sauce (sweet-first, umami-second, spicy-third), and ultra-thin Hakata noodles at 29% hydration."
+    "description": "A clean, odor-free tonkotsu ramen modeled after Ichiran \u2014 Fukuoka's iconic single-menu ramen chain. Built from 92 sources including 7 official product labels, factory documentation, and the Umakara Kokumashi 'Rosetta Stone' that revealed the red sauce profile. Features a double-soup technique (pure pork bone broth + dashi), proprietary-style red sauce (sweet-first, umami-second, spicy-third), and ultra-thin Hakata noodles at 29% hydration."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -338,7 +338,7 @@
             "breakdown": null,
             "sourcedFrom": "6/8 agents; US kit label confirms kelp extract, Samsung Food, Yoshi, Kaonashi, JFL",
             "confidence": "high",
-            "rationale": "One ~10cm square piece for tare dashi. Soaked overnight in cold water, then heated to 175 F (80 C) — never boiled to avoid bitterness."
+            "rationale": "One ~10cm square piece for tare dashi. Soaked overnight in cold water, then heated to 175 F (80 C) \u2014 never boiled to avoid bitterness."
           },
           {
             "id": "dried_shiitake",
@@ -348,7 +348,7 @@
             "breakdown": null,
             "sourcedFrom": "5/8 agents; US kit label confirms shiitake extract, Yoshi, Samsung Food, JFL",
             "confidence": "high",
-            "rationale": "1-2 small dried mushrooms for tare dashi. Soaked with kombu overnight for guanylate (GMP) extraction — synergistic with MSG."
+            "rationale": "1-2 small dried mushrooms for tare dashi. Soaked with kombu overnight for guanylate (GMP) extraction \u2014 synergistic with MSG."
           },
           {
             "id": "katsuobushi",
@@ -446,7 +446,7 @@
             "breakdown": null,
             "sourcedFrom": "4/8 agents; RamenChef, Rakuten, Samsung Food, note.com/shinmr",
             "confidence": "medium",
-            "rationale": "Adds fruity heat and vibrant red color. Coarse flakes, not fine powder. Ichiran says 'finest peppers from around the world' — a multi-chili blend is essential."
+            "rationale": "Adds fruity heat and vibrant red color. Coarse flakes, not fine powder. Ichiran says 'finest peppers from around the world' \u2014 a multi-chili blend is essential."
           },
           {
             "id": "cayenne",
@@ -486,7 +486,7 @@
             "breakdown": null,
             "sourcedFrom": "6/8 agents; Umakara label lists garlic as #4 ingredient, cup ramen label confirms",
             "confidence": "high",
-            "rationale": "Grated or pressed garlic for the red sauce. The Umakara label places garlic at #4 by weight — it's a major flavor component, not just seasoning."
+            "rationale": "Grated or pressed garlic for the red sauce. The Umakara label places garlic at #4 by weight \u2014 it's a major flavor component, not just seasoning."
           },
           {
             "id": "gochujang",
@@ -546,7 +546,7 @@
             "breakdown": null,
             "sourcedFrom": "7/8 agents; 29% hydration confirmed across noodle science sources",
             "confidence": "high",
-            "rationale": "29% hydration (116ml for 400g flour) — low by any standard, creating a very stiff dough that requires mechanical kneading. This is what gives Hakata noodles their distinctive snap."
+            "rationale": "29% hydration (116ml for 400g flour) \u2014 low by any standard, creating a very stiff dough that requires mechanical kneading. This is what gives Hakata noodles their distinctive snap."
           },
           {
             "id": "kansui",
@@ -688,12 +688,12 @@
           "source": "user"
         },
         {
-          "text": "Soy sauce is used in 4 sub-recipes (tare, red sauce, chashu, ajitama) — pre-measure each portion separately",
+          "text": "Soy sauce is used in 4 sub-recipes (tare, red sauce, chashu, ajitama) \u2014 pre-measure each portion separately",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Timeline: Day 1 — broth, tare, aroma oil, red sauce, noodles, chashu, ajitama. Day 2+ — red sauce ages. Day 3+ — assemble bowls.",
+          "text": "Timeline: Day 1 \u2014 broth, tare, aroma oil, red sauce, noodles, chashu, ajitama. Day 2+ \u2014 red sauce ages. Day 3+ \u2014 assemble bowls.",
           "critical": false,
           "source": "user"
         }
@@ -727,7 +727,7 @@
       "exit_condition": "Bones have soaked 6-12 hours, water has been changed 2-3 times, liquid is less bloody than initial soak",
       "notes": [
         {
-          "text": "This passive step draws out blood and impurities, resulting in a cleaner-tasting broth. Skip if short on time — the blanching step handles the essentials.",
+          "text": "This passive step draws out blood and impurities, resulting in a cleaner-tasting broth. Skip if short on time \u2014 the blanching step handles the essentials.",
           "critical": false,
           "source": "user"
         },
@@ -741,7 +741,7 @@
     {
       "id": "BLANCH_BONES",
       "title": "Blanch Bones",
-      "direction": "Drain the soaking water. Cover bones with fresh cold water in the stock pot (V1). Bring to a hard rolling boil over high heat. Boil vigorously for 15-20 minutes — thick grey scum will form and the water will turn dark brown. Drain completely and discard the water.",
+      "direction": "Drain the soaking water. Cover bones with fresh cold water in the stock pot (V1). Bring to a hard rolling boil over high heat. Boil vigorously for 15-20 minutes \u2014 thick grey scum will form and the water will turn dark brown. Drain completely and discard the water.",
       "duration_min": 25,
       "timer": false,
       "parallel": false,
@@ -749,7 +749,7 @@
       "exit_condition": "Bones have been vigorously boiled for 15-20 minutes, all water drained, pot emptied",
       "notes": [
         {
-          "text": "This step is NON-NEGOTIABLE. All 8 research agents agree: aggressive blanching is the foundation of clean, odor-free tonkotsu. The water should look absolutely foul — that is the impurity you are removing.",
+          "text": "This step is NON-NEGOTIABLE. All 8 research agents agree: aggressive blanching is the foundation of clean, odor-free tonkotsu. The water should look absolutely foul \u2014 that is the impurity you are removing.",
           "critical": true,
           "source": "user"
         },
@@ -773,7 +773,7 @@
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Every bone is clean — no visible dark spots, blood, or coagulated protein remaining. Bones should look pale white/cream.",
+      "exit_condition": "Every bone is clean \u2014 no visible dark spots, blood, or coagulated protein remaining. Bones should look pale white/cream.",
       "notes": [
         {
           "text": "This tedious step is what separates restaurant-quality tonkotsu from cloudy, off-flavored home versions. Ichiran's official process emphasizes cleanliness above all else.",
@@ -790,7 +790,7 @@
     {
       "id": "MAIN_COOK",
       "title": "Boil Broth (12 Hours)",
-      "direction": "Return cleaned bones to the stock pot (V1) with 5L fresh cold water. Bring to a rolling boil over high heat. Once boiling, skim scum obsessively for the first 50 minutes using a fine-mesh strainer. After scum subsides, maintain a steady rolling boil — not a gentle simmer, not a volcanic eruption. Replenish with hot water every 30-45 minutes to keep bones fully submerged. Continue for 12 hours minimum.",
+      "direction": "Return cleaned bones to the stock pot (V1) with 5L fresh cold water. Bring to a rolling boil over high heat. Once boiling, skim scum obsessively for the first 50 minutes using a fine-mesh strainer. After scum subsides, maintain a steady rolling boil \u2014 not a gentle simmer, not a volcanic eruption. Replenish with hot water every 30-45 minutes to keep bones fully submerged. Continue for 12 hours minimum.",
       "duration_min": 720,
       "timer": true,
       "parallel": false,
@@ -798,7 +798,7 @@
       "exit_condition": "Broth has boiled for 12+ hours, is creamy white and opaque, bones are soft and crumbling, liquid has reduced to approximately 2-3L",
       "notes": [
         {
-          "text": "The ROLLING BOIL is essential. It mechanically emulsifies fat into the gelatin-rich liquid, creating the white opacity. A gentle simmer produces clear broth — the opposite of what we want.",
+          "text": "The ROLLING BOIL is essential. It mechanically emulsifies fat into the gelatin-rich liquid, creating the white opacity. A gentle simmer produces clear broth \u2014 the opposite of what we want.",
           "critical": true,
           "source": "user"
         },
@@ -856,7 +856,7 @@
           "source": "user"
         },
         {
-          "text": "Leave garlic skin on — it protects the cloves from disintegrating over the long cook and adds subtle flavor.",
+          "text": "Leave garlic skin on \u2014 it protects the cloves from disintegrating over the long cook and adds subtle flavor.",
           "critical": false,
           "source": "user"
         },
@@ -900,12 +900,12 @@
       "exit_condition": "Broth is strained smooth, bones and aromatics discarded, liquid is creamy white and opaque",
       "notes": [
         {
-          "text": "You should have approximately 2-3L of finished broth — enough for 6-8 bowls at 350ml each.",
+          "text": "You should have approximately 2-3L of finished broth \u2014 enough for 6-8 bowls at 350ml each.",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Optional: blend with immersion blender for 30 seconds. Yoshi and Ryuji both recommend this — it creates striking whiteness and mimics the extreme emulsification of a 18+ hour professional cook.",
+          "text": "Optional: blend with immersion blender for 30 seconds. Yoshi and Ryuji both recommend this \u2014 it creates striking whiteness and mimics the extreme emulsification of a 18+ hour professional cook.",
           "critical": false,
           "source": "user"
         },
@@ -924,7 +924,7 @@
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Test sample has set into firm gel that holds its shape when tilted — confirmation of sufficient collagen extraction",
+      "exit_condition": "Test sample has set into firm gel that holds its shape when tilted \u2014 confirmation of sufficient collagen extraction",
       "notes": [
         {
           "text": "If the broth does not gel, it lacks collagen. This usually means the cook time was too short or the bones were not high-quality. The broth will lack body in the bowl.",
@@ -941,7 +941,7 @@
     {
       "id": "MAKE_DASHI",
       "title": "Make Tare Dashi",
-      "direction": "In the medium saucepan (V2), combine 200g water, 10g kombu, and 3g dried shiitake. Soak overnight in the refrigerator (or minimum 2 hours at room temperature). When ready, heat gently to 175°F (80°C) — do NOT let it boil. Remove kombu and shiitake. Add 10g katsuobushi, steep for 15 minutes off heat. Strain through fine-mesh strainer.",
+      "direction": "In the medium saucepan (V2), combine 200g water, 10g kombu, and 3g dried shiitake. Soak overnight in the refrigerator (or minimum 2 hours at room temperature). When ready, heat gently to 175\u00b0F (80\u00b0C) \u2014 do NOT let it boil. Remove kombu and shiitake. Add 10g katsuobushi, steep for 15 minutes off heat. Strain through fine-mesh strainer.",
       "duration_min": 20,
       "timer": false,
       "parallel": true,
@@ -966,7 +966,7 @@
       "exit_condition": "Dashi is strained clear golden, kombu and shiitake removed before boiling, bonito steeped and strained. Yield approximately 160ml.",
       "notes": [
         {
-          "text": "Do NOT boil the kombu — it releases bitter compounds (mannit and alginate) above 175°F (80°C). This is the most common dashi mistake.",
+          "text": "Do NOT boil the kombu \u2014 it releases bitter compounds (mannit and alginate) above 175\u00b0F (80\u00b0C). This is the most common dashi mistake.",
           "critical": true,
           "source": "user"
         },
@@ -1026,7 +1026,7 @@
       "exit_condition": "All tare ingredients dissolved and combined, liquid is clear amber, cooled to room temperature. Yield approximately 200ml.",
       "notes": [
         {
-          "text": "Use LIGHT soy sauce (usukuchi) — darker soy sauce will muddy the white broth color. Higashimaru brand is standard.",
+          "text": "Use LIGHT soy sauce (usukuchi) \u2014 darker soy sauce will muddy the white broth color. Higashimaru brand is standard.",
           "critical": true,
           "source": "user"
         },
@@ -1102,7 +1102,7 @@
           "source": "user"
         },
         {
-          "text": "Keeps refrigerated for weeks. Will solidify when cold — warm gently before use.",
+          "text": "Keeps refrigerated for weeks. Will solidify when cold \u2014 warm gently before use.",
           "critical": false,
           "source": "user"
         }
@@ -1111,7 +1111,7 @@
     {
       "id": "BLOOM_SPICES",
       "title": "Bloom Red Sauce Spices",
-      "direction": "In the small saucepan (V3, now freed from aroma oil), warm 9g sesame oil and 14g neutral oil over very low heat. Add 10g garlic paste and 5g grated ginger, cook 2 minutes until fragrant but not browned. Remove from heat. Add the spice blend: 8g ichimi togarashi, 4g gochugaru, 3g cayenne, 2g white pepper, and 1g black pepper. Stir — the residual heat blooms the spices.",
+      "direction": "In the small saucepan (V3, now freed from aroma oil), warm 9g sesame oil and 14g neutral oil over very low heat. Add 10g garlic paste and 5g grated ginger, cook 2 minutes until fragrant but not browned. Remove from heat. Add the spice blend: 8g ichimi togarashi, 4g gochugaru, 3g cayenne, 2g white pepper, and 1g black pepper. Stir \u2014 the residual heat blooms the spices.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -1161,7 +1161,7 @@
           "source": "user"
         },
         {
-          "text": "The multi-chili blend is essential. Ichiran claims 'finest peppers from around the world' — each chili type contributes different flavor compounds and heat profiles.",
+          "text": "The multi-chili blend is essential. Ichiran claims 'finest peppers from around the world' \u2014 each chili type contributes different flavor compounds and heat profiles.",
           "critical": false,
           "source": "user"
         }
@@ -1244,7 +1244,7 @@
     {
       "id": "MIX_DOUGH",
       "title": "Mix Noodle Dough",
-      "direction": "In a large bowl, combine 400g bread flour and 8g vital wheat gluten, mixing well. In a separate container, dissolve 5g kansui and 5g salt completely in 116g cold water — stir until no grit remains. Add the kansui water to the flour gradually, mixing with chopsticks. The dough will be shaggy crumbs and seem impossibly dry — this is correct at 29% hydration.",
+      "direction": "In a large bowl, combine 400g bread flour and 8g vital wheat gluten, mixing well. In a separate container, dissolve 5g kansui and 5g salt completely in 116g cold water \u2014 stir until no grit remains. Add the kansui water to the flour gradually, mixing with chopsticks. The dough will be shaggy crumbs and seem impossibly dry \u2014 this is correct at 29% hydration.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -1310,7 +1310,7 @@
           "source": "user"
         },
         {
-          "text": "The dough should become slightly yellow from the kansui reaction with flour — this is the characteristic ramen noodle color.",
+          "text": "The dough should become slightly yellow from the kansui reaction with flour \u2014 this is the characteristic ramen noodle color.",
           "critical": false,
           "source": "user"
         }
@@ -1341,7 +1341,7 @@
     {
       "id": "SHEET_NOODLES",
       "title": "Sheet Noodles",
-      "direction": "Cut the rested dough into 4 portions. Working with one portion at a time (keep others wrapped), pass through the pasta machine (V6) at the widest setting. Fold in thirds and pass again. Repeat folding and passing for the first 3 settings to build gluten structure. Then pass without folding, working down to setting 7-8 (Atlas 150) — the sheets should be approximately 1.2mm thick.",
+      "direction": "Cut the rested dough into 4 portions. Working with one portion at a time (keep others wrapped), pass through the pasta machine (V6) at the widest setting. Fold in thirds and pass again. Repeat folding and passing for the first 3 settings to build gluten structure. Then pass without folding, working down to setting 7-8 (Atlas 150) \u2014 the sheets should be approximately 1.2mm thick.",
       "duration_min": 20,
       "timer": false,
       "parallel": false,
@@ -1349,7 +1349,7 @@
       "exit_condition": "All 4 dough portions sheeted to approximately 1.2mm thickness, smooth and even with no tears or holes",
       "notes": [
         {
-          "text": "Fold and pass multiple times at the wider settings — this lamination builds the gluten structure that gives Hakata noodles their characteristic snap.",
+          "text": "Fold and pass multiple times at the wider settings \u2014 this lamination builds the gluten structure that gives Hakata noodles their characteristic snap.",
           "critical": true,
           "source": "user"
         },
@@ -1376,12 +1376,12 @@
       "exit_condition": "Noodles are cut into thin straight strands approximately 1.2mm wide, dusted with cornstarch, portioned into 100-120g bundles",
       "notes": [
         {
-          "text": "Hakata noodles are thin and straight — not wavy. The thin profile is designed to absorb the rich broth quickly and be eaten fast (before they overexpand).",
+          "text": "Hakata noodles are thin and straight \u2014 not wavy. The thin profile is designed to absorb the rich broth quickly and be eaten fast (before they overexpand).",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "100-120g per serving is standard — smaller than most ramen. Ichiran compensates with kaedama (noodle refills at 150 yen).",
+          "text": "100-120g per serving is standard \u2014 smaller than most ramen. Ichiran compensates with kaedama (noodle refills at 150 yen).",
           "critical": false,
           "source": "user"
         }
@@ -1438,12 +1438,12 @@
       "exit_condition": "Pork is evenly coated in marinade, air removed from bag, sealed tightly",
       "notes": [
         {
-          "text": "The water displacement method is the poor-man's vacuum seal. Submerge the bag slowly in a pot of water with the zip partially open — water pressure forces all air out.",
+          "text": "The water displacement method is the poor-man's vacuum seal. Submerge the bag slowly in a pot of water with the zip partially open \u2014 water pressure forces all air out.",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Ichiran's chashu is paper-thin and melt-in-mouth — sous vide achieves this better than traditional braising for home cooks.",
+          "text": "Ichiran's chashu is paper-thin and melt-in-mouth \u2014 sous vide achieves this better than traditional braising for home cooks.",
           "critical": false,
           "source": "user"
         }
@@ -1452,12 +1452,12 @@
     {
       "id": "COOK_CHASHU",
       "title": "Simmer Chashu (Sous Vide or Braise)",
-      "direction": "If using sous vide: cook the sealed bag at 145°F (63°C) for 4 hours. If braising: transfer pork to an oven-safe pot, add 100ml soy sauce, 50ml sake, 50ml mirin, 50ml water, 2 crushed garlic cloves, and 3 ginger slices. Cover and braise at 300°F (150°C) for 2-3 hours.",
+      "direction": "If using sous vide: cook the sealed bag at 145\u00b0F (63\u00b0C) for 4 hours. If braising: transfer pork to an oven-safe pot, add 100ml soy sauce, 50ml sake, 50ml mirin, 50ml water, 2 crushed garlic cloves, and 3 ginger slices. Cover and braise at 300\u00b0F (150\u00b0C) for 2-3 hours.",
       "duration_min": 240,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Pork is tender throughout — a chopstick slides through with no resistance. Internal temperature at least 145°F (63°C).",
+      "exit_condition": "Pork is tender throughout \u2014 a chopstick slides through with no resistance. Internal temperature at least 145\u00b0F (63\u00b0C).",
       "notes": [
         {
           "text": "Sous vide produces the closest texture to Ichiran's thin, tender slices. Traditional braising also works but yields a different (more rustic) texture.",
@@ -1465,7 +1465,7 @@
           "source": "user"
         },
         {
-          "text": "The chashu can cook simultaneously with the broth — it requires far less attention.",
+          "text": "The chashu can cook simultaneously with the broth \u2014 it requires far less attention.",
           "critical": false,
           "source": "user"
         }
@@ -1524,7 +1524,7 @@
           "source": "user"
         },
         {
-          "text": "Peel under gently running cold water — the water gets between the membrane and the white, making peeling much easier.",
+          "text": "Peel under gently running cold water \u2014 the water gets between the membrane and the white, making peeling much easier.",
           "critical": false,
           "source": "user"
         }
@@ -1571,7 +1571,7 @@
     {
       "id": "MARINATE_EGGS",
       "title": "Marinate Eggs (8-24 Hours)",
-      "direction": "Place peeled eggs and cooled marinade in a zip-lock bag (V5). Remove air using the water displacement method — the bag should be snug around the eggs with no air pockets, ensuring full marinade coverage. Refrigerate 8-24 hours.",
+      "direction": "Place peeled eggs and cooled marinade in a zip-lock bag (V5). Remove air using the water displacement method \u2014 the bag should be snug around the eggs with no air pockets, ensuring full marinade coverage. Refrigerate 8-24 hours.",
       "duration_min": 720,
       "timer": true,
       "parallel": true,
@@ -1579,7 +1579,7 @@
       "exit_condition": "Eggs have marinated 8-24 hours, whites are brown/amber colored, yolks are jammy orange when halved",
       "notes": [
         {
-          "text": "The zip-lock bag method uses far less marinade than a container — the bag conforms to the eggs and eliminates air exposure. All surfaces stay in contact with marinade.",
+          "text": "The zip-lock bag method uses far less marinade than a container \u2014 the bag conforms to the eggs and eliminates air exposure. All surfaces stay in contact with marinade.",
           "critical": false,
           "source": "user"
         },
@@ -1598,7 +1598,7 @@
     {
       "id": "HEAT_BOWLS",
       "title": "Heat Serving Bowls",
-      "direction": "Fill serving bowls with boiling water and let them sit for 2 minutes, then empty. Alternatively, place bowls in a 200°F (93°C) oven for 5 minutes. Hot bowls keep the broth at serving temperature longer.",
+      "direction": "Fill serving bowls with boiling water and let them sit for 2 minutes, then empty. Alternatively, place bowls in a 200\u00b0F (93\u00b0C) oven for 5 minutes. Hot bowls keep the broth at serving temperature longer.",
       "duration_min": 5,
       "timer": false,
       "parallel": true,
@@ -1606,7 +1606,7 @@
       "exit_condition": "Serving bowls are hot to the touch, water emptied",
       "notes": [
         {
-          "text": "Cold bowls drop broth temperature by 15-20°F immediately. Ichiran serves in pre-heated bowls to maintain the optimal broth temperature.",
+          "text": "Cold bowls drop broth temperature by 15-20\u00b0F immediately. Ichiran serves in pre-heated bowls to maintain the optimal broth temperature.",
           "critical": false,
           "source": "user"
         }
@@ -1650,7 +1650,7 @@
           "source": "user"
         },
         {
-          "text": "Drain noodles thoroughly — excess water dilutes the carefully calibrated broth concentration.",
+          "text": "Drain noodles thoroughly \u2014 excess water dilutes the carefully calibrated broth concentration.",
           "critical": false,
           "source": "user"
         },
@@ -1689,7 +1689,7 @@
       "exit_condition": "Bowl is fully assembled with all toppings arranged, red sauce placed as central disc on broth surface, served immediately",
       "notes": [
         {
-          "text": "The red sauce disc in the center of the broth surface is Ichiran's visual signature. Place it carefully as a circular pool — do not stir it in. The diner controls how much they mix.",
+          "text": "The red sauce disc in the center of the broth surface is Ichiran's visual signature. Place it carefully as a circular pool \u2014 do not stir it in. The diner controls how much they mix.",
           "critical": true,
           "source": "user"
         },
@@ -1699,7 +1699,7 @@
           "source": "user"
         },
         {
-          "text": "Eat quickly. Hakata noodles are thin and absorb broth rapidly. Kaedama (noodle refill) is the Ichiran tradition — order more noodles into the remaining broth.",
+          "text": "Eat quickly. Hakata noodles are thin and absorb broth rapidly. Kaedama (noodle refill) is the Ichiran tradition \u2014 order more noodles into the remaining broth.",
           "critical": false,
           "source": "user"
         }
@@ -2189,7 +2189,7 @@
       },
       {
         "name": "Rolling boil emulsification",
-        "sourcedFrom": "All 8 agents; universal consensus — the defining tonkotsu technique",
+        "sourcedFrom": "All 8 agents; universal consensus \u2014 the defining tonkotsu technique",
         "rationale": "The vigorous boil mechanically emulsifies fat into gelatin, creating the white opacity. A gentle simmer produces clear broth. Pressure cookers fail here because they suppress the mechanical action.",
         "confidence": "high"
       },
@@ -2208,7 +2208,7 @@
       {
         "name": "100% pork bones (no chicken) for Ichiran authenticity",
         "sourcedFrom": "4/8 agents cite this; Ichiran officially confirms on their website",
-        "rationale": "Ichiran uses 100% pork bone broth with no chicken. Many copycat recipes add chicken — that produces generic tonkotsu, not Ichiran-style. The pure pork flavor is distinctive.",
+        "rationale": "Ichiran uses 100% pork bone broth with no chicken. Many copycat recipes add chicken \u2014 that produces generic tonkotsu, not Ichiran-style. The pure pork flavor is distinctive.",
         "confidence": "high"
       },
       {
@@ -2238,7 +2238,7 @@
       {
         "name": "Red sauce placed as central disc on broth surface",
         "sourcedFrom": "5/8 agents; Ichiran's visual signature documented in reviews and guides",
-        "rationale": "The red sauce is applied as a circular disc floating on the broth surface — not stirred in. The diner controls how much they incorporate with each bite. This is Ichiran's most recognizable visual element.",
+        "rationale": "The red sauce is applied as a circular disc floating on the broth surface \u2014 not stirred in. The diner controls how much they incorporate with each bite. This is Ichiran's most recognizable visual element.",
         "confidence": "high"
       }
     ]
@@ -2807,13 +2807,363 @@
     "methods": [
       {
         "method": "Stovetop",
-        "detail": "Reheat broth separately on medium heat. Cook fresh noodles at serving time — do not store cooked noodles.",
+        "detail": "Reheat broth separately on medium heat. Cook fresh noodles at serving time \u2014 do not store cooked noodles.",
         "source": "agent"
       },
       {
         "method": "Storage",
         "detail": "Broth, tare, and red sauce keep 5 days in fridge. Broth and tare freeze well (1 month+).",
         "source": "agent"
+      }
+    ]
+  },
+  "estimatedCost": {
+    "total": 37.14,
+    "perServing": 4.64,
+    "servings": 8,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "pork_femur_bones",
+        "name": "Pork Femur Bones (genkotsu)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Bone-in Pork Butt ~8.5 lb ($22.87)",
+        "amount": 1500,
+        "unit": "g",
+        "cost": 8.9
+      },
+      {
+        "ingredientId": "pork_trotters",
+        "name": "Pork Trotters (split lengthwise)",
+        "sourceType": "rate",
+        "sourceName": "Pork Split Front Feet ~2.11 lb ($6.29)",
+        "amount": 750,
+        "unit": "g",
+        "cost": 4.93
+      },
+      {
+        "ingredientId": "pork_neck_bones",
+        "name": "Pork Neck Bones",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Bone-in Pork Butt ~8.5 lb ($22.87)",
+        "amount": 500,
+        "unit": "g",
+        "cost": 2.97
+      },
+      {
+        "ingredientId": "pork_skin",
+        "name": "Pork Skin (optional)",
+        "sourceType": "rate",
+        "sourceName": "Pork Split Front Feet (proxy) ~2.11 lb ($6.29)",
+        "amount": 250,
+        "unit": "g",
+        "cost": 1.64
+      },
+      {
+        "ingredientId": "pork_back_fat",
+        "name": "Pork Back Fat",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pork Belly (proxy) ~4.83 lb ($26.52)",
+        "amount": 150,
+        "unit": "g",
+        "cost": 1.81
+      },
+      {
+        "ingredientId": "pork_shoulder",
+        "name": "Pork Shoulder (kata rosu)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Boneless Pork Butt ~3.3 lb ($9.54)",
+        "amount": 500,
+        "unit": "g",
+        "cost": 3.19
+      },
+      {
+        "ingredientId": "eggs",
+        "name": "Eggs (large)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Large Eggs 12 ct ($2.17)",
+        "amount": 300,
+        "unit": "g",
+        "cost": 1.09
+      },
+      {
+        "ingredientId": "soy_sauce",
+        "name": "Soy Sauce",
+        "sourceType": "rate",
+        "sourceName": "Kikkoman Soy Sauce 20 oz ($4.78)",
+        "amount": 186,
+        "unit": "g",
+        "cost": 1.57
+      },
+      {
+        "ingredientId": "sake",
+        "name": "Sake (cooking)",
+        "sourceType": "rate",
+        "sourceName": "Cooking sake (est. same as mirin)",
+        "amount": 137,
+        "unit": "g",
+        "cost": 1.92
+      },
+      {
+        "ingredientId": "mirin",
+        "name": "Mirin (hon mirin)",
+        "sourceType": "rate",
+        "sourceName": "Kikkoman Aji Mirin 10 oz ($3.98)",
+        "amount": 117,
+        "unit": "g",
+        "cost": 1.64
+      },
+      {
+        "ingredientId": "sugar",
+        "name": "Sugar",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+        "amount": 22,
+        "unit": "g",
+        "cost": 0.04
+      },
+      {
+        "ingredientId": "garlic",
+        "name": "Garlic",
+        "sourceType": "rate",
+        "sourceName": "Fresh Garlic 2 for $1.00 (~50g each)",
+        "amount": 60,
+        "unit": "g",
+        "cost": 0.6
+      },
+      {
+        "ingredientId": "ginger",
+        "name": "Ginger",
+        "sourceType": "rate",
+        "sourceName": "Fresh Ginger ~50g ($0.50 est.)",
+        "amount": 20,
+        "unit": "g",
+        "cost": 0.2
+      },
+      {
+        "ingredientId": "onion",
+        "name": "Onion (medium, halved)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Yellow Onions 3 lb bag ($1.99)",
+        "amount": 150,
+        "unit": "g",
+        "cost": 0.22
+      },
+      {
+        "ingredientId": "rice_vinegar",
+        "name": "Rice Vinegar",
+        "sourceType": "rate",
+        "sourceName": "Kikkoman Rice Vinegar 10 oz ($1.78)",
+        "amount": 20,
+        "unit": "g",
+        "cost": 0.13
+      },
+      {
+        "ingredientId": "kombu",
+        "name": "Kombu (dried kelp)",
+        "sourceType": "rate",
+        "sourceName": "Wel-Pac Dashi Kombu 4 oz ($5.78)",
+        "amount": 10,
+        "unit": "g",
+        "cost": 0.51
+      },
+      {
+        "ingredientId": "dried_shiitake",
+        "name": "Dried Shiitake Mushrooms",
+        "sourceType": "rate",
+        "sourceName": "Dynasty Dried Shiitake 1 oz ($3.28)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.35
+      },
+      {
+        "ingredientId": "katsuobushi",
+        "name": "Katsuobushi (dried bonito flakes)",
+        "sourceType": "rate",
+        "sourceName": "Yamaki Bonito Flakes 20 ct ($7.98)",
+        "amount": 10,
+        "unit": "g",
+        "cost": 2.0
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 15,
+        "unit": "g",
+        "cost": 0.03
+      },
+      {
+        "ingredientId": "ribotide",
+        "name": "Ribotide (IMP+GMP nucleotide blend)",
+        "sourceType": "rate",
+        "sourceName": "Ribotide IMP+GMP 2 oz (online est. $12.00)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 1.06
+      },
+      {
+        "ingredientId": "msg",
+        "name": "MSG (Aji-no-moto)",
+        "sourceType": "rate",
+        "sourceName": "Aji-no-moto MSG 4 oz (est. $2.00)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.05
+      },
+      {
+        "ingredientId": "scallion_whites",
+        "name": "Scallion Whites",
+        "sourceType": "rate",
+        "sourceName": "Fresh Green Onions ($0.65 ea ~50g)",
+        "amount": 20,
+        "unit": "g",
+        "cost": 0.26
+      },
+      {
+        "ingredientId": "water_aroma_oil",
+        "name": "Water (aroma oil splash)",
+        "sourceType": "rate",
+        "sourceName": "Tap water (free)",
+        "amount": 15,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "ichimi_togarashi",
+        "name": "Ichimi Togarashi (Japanese chili)",
+        "sourceType": "rate",
+        "sourceName": "Japanese chili (est. from H-E-B spice)",
+        "amount": 8,
+        "unit": "g",
+        "cost": 0.26
+      },
+      {
+        "ingredientId": "gochugaru",
+        "name": "Gochugaru (Korean red pepper flakes)",
+        "sourceType": "rate",
+        "sourceName": "Korean red pepper (est. from gochujang)",
+        "amount": 4,
+        "unit": "g",
+        "cost": 0.05
+      },
+      {
+        "ingredientId": "cayenne",
+        "name": "Cayenne Pepper",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Cayenne Pepper (est.) ($2.58)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.1
+      },
+      {
+        "ingredientId": "white_pepper",
+        "name": "White Pepper",
+        "sourceType": "rate",
+        "sourceName": "H-E-B White Pepper (est.) ($2.58)",
+        "amount": 2,
+        "unit": "g",
+        "cost": 0.07
+      },
+      {
+        "ingredientId": "black_pepper",
+        "name": "Black Pepper",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Black Pepper (est.) ($2.58)",
+        "amount": 1,
+        "unit": "g",
+        "cost": 0.03
+      },
+      {
+        "ingredientId": "garlic_paste_red",
+        "name": "Garlic Paste (for red sauce)",
+        "sourceType": "rate",
+        "sourceName": "Fresh Garlic 2 for $1.00 (~50g each)",
+        "amount": 10,
+        "unit": "g",
+        "cost": 0.1
+      },
+      {
+        "ingredientId": "gochujang",
+        "name": "Gochujang (fermented chili paste)",
+        "sourceType": "rate",
+        "sourceName": "O'Food Gochujang 17.6 oz ($6.18)",
+        "amount": 8,
+        "unit": "g",
+        "cost": 0.1
+      },
+      {
+        "ingredientId": "sesame_oil",
+        "name": "Sesame Oil (toasted)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Toasted Sesame Oil 16.9 oz ($5.95)",
+        "amount": 9,
+        "unit": "g",
+        "cost": 0.12
+      },
+      {
+        "ingredientId": "neutral_oil",
+        "name": "Neutral Oil (for red sauce)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Canola Oil 16 oz ($1.72)",
+        "amount": 14,
+        "unit": "g",
+        "cost": 0.06
+      },
+      {
+        "ingredientId": "bread_flour",
+        "name": "Bread Flour (13%+ protein)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Baker's Scoop Bread Flour 5 lb ($3.78)",
+        "amount": 400,
+        "unit": "g",
+        "cost": 0.67
+      },
+      {
+        "ingredientId": "vital_wheat_gluten",
+        "name": "Vital Wheat Gluten",
+        "sourceType": "rate",
+        "sourceName": "Bob's Red Mill Vital Wheat Gluten 1.25 lb ($8.29)",
+        "amount": 8,
+        "unit": "g",
+        "cost": 0.12
+      },
+      {
+        "ingredientId": "cold_water_noodles",
+        "name": "Cold Water (for noodles)",
+        "sourceType": "rate",
+        "sourceName": "Tap water (free)",
+        "amount": 116,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "kansui",
+        "name": "Kansui Powder (alkaline salt)",
+        "sourceType": "rate",
+        "sourceName": "Kansui alkaline salt 4 oz (online est. $8.00)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 0.35
+      },
+      {
+        "ingredientId": "water_tare_dashi",
+        "name": "Water (for tare dashi)",
+        "sourceType": "rate",
+        "sourceName": "Tap water (free)",
+        "amount": 200,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "water_ajitama",
+        "name": "Water (for ajitama marinade)",
+        "sourceType": "rate",
+        "sourceName": "Tap water (free)",
+        "amount": 60,
+        "unit": "g",
+        "cost": 0.0
       }
     ]
   }

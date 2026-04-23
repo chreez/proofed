@@ -8,7 +8,7 @@
     },
     "yields": "8 buns",
     "total_time": "~3.5 hrs (45 min active, 2.75 hrs passive)",
-    "description": "Soft, squishy, flat potato buns built for smashburgers. Consensus recipe from 15+ sources — bread flour counterbalances potato's gluten-weakening, egg yolk adds natural lecithin for Martin's-like softness. Press flat and proof for the classic 4-inch smashburger shape."
+    "description": "Soft, squishy, flat potato buns built for smashburgers. Consensus recipe from 15+ sources \u2014 bread flour counterbalances potato's gluten-weakening, egg yolk adds natural lecithin for Martin's-like softness. Press flat and proof for the classic 4-inch smashburger shape."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -32,7 +32,7 @@
     {
       "id": "V1",
       "name": "Small Saucepan",
-      "reuse": "Boil potato → melt butter for brushing"
+      "reuse": "Boil potato \u2192 melt butter for brushing"
     },
     {
       "id": "V2",
@@ -76,7 +76,7 @@
             "total": 450,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 8/8 agents — universal base flour",
+            "sourcedFrom": "Tier 1: 8/8 agents \u2014 universal base flour",
             "confidence": "high",
             "rationale": "12-13% protein compensates for potato starch weakening gluten. Consensus across King Arthur, Weissman, Saffitz, Elise, Baking Sense, Andy Cooks."
           },
@@ -86,17 +86,17 @@
             "total": 120,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 8/8 agents — ~27% baker's percentage",
+            "sourcedFrom": "Tier 1: 8/8 agents \u2014 ~27% baker's percentage",
             "confidence": "high",
             "rationale": "120g mashed = 27% of flour weight. Sweet spot from 15+ recipes (range: 20-35%). Russet preferred for starchy, smooth mash. Weight is after cooking and ricing."
           },
           {
             "id": "whole_milk",
-            "name": "Whole Milk (warm, 43°C / 110°F)",
+            "name": "Whole Milk (warm, 43\u00b0C / 110\u00b0F)",
             "total": 200,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 6/8 agents — primary liquid",
+            "sourcedFrom": "Tier 1: 6/8 agents \u2014 primary liquid",
             "confidence": "high",
             "rationale": "Milk provides fat, protein (casein), lactose for browning. Warm to activate yeast. Potato water can substitute part of this."
           },
@@ -106,12 +106,18 @@
             "total": 70,
             "unit": "g",
             "breakdown": [
-              { "label": "dough (softened)", "amount": 55 },
-              { "label": "post-bake brush (melted)", "amount": 15 }
+              {
+                "label": "dough (softened)",
+                "amount": 55
+              },
+              {
+                "label": "post-bake brush (melted)",
+                "amount": 15
+              }
             ],
-            "sourcedFrom": "Tier 1: 7/8 agents — 12% baker's percentage",
+            "sourcedFrom": "Tier 1: 7/8 agents \u2014 12% baker's percentage",
             "confidence": "high",
-            "rationale": "55g in dough (12% of flour) for richness. 15g melted for post-bake brush — softens crust, adds sheen. Range across sources: 8-16%."
+            "rationale": "55g in dough (12% of flour) for richness. 15g melted for post-bake brush \u2014 softens crust, adds sheen. Range across sources: 8-16%."
           },
           {
             "id": "sugar",
@@ -119,9 +125,9 @@
             "total": 30,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 8/8 agents — 7% baker's percentage",
+            "sourcedFrom": "Tier 1: 8/8 agents \u2014 7% baker's percentage",
             "confidence": "high",
-            "rationale": "7% = subtle sweetness for savory burger bun. Martin's uses 10-12% — push higher if you want that Martin's sweetness."
+            "rationale": "7% = subtle sweetness for savory burger bun. Martin's uses 10-12% \u2014 push higher if you want that Martin's sweetness."
           },
           {
             "id": "salt",
@@ -129,7 +135,7 @@
             "total": 9,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: universal — 2% baker's percentage",
+            "sourcedFrom": "Tier 1: universal \u2014 2% baker's percentage",
             "confidence": "high",
             "rationale": "Standard 2% of flour weight. Well-established across all sources."
           },
@@ -139,9 +145,9 @@
             "total": 7,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 1: 8/8 agents — 1.5% baker's percentage",
+            "sourcedFrom": "Tier 1: 8/8 agents \u2014 1.5% baker's percentage",
             "confidence": "high",
-            "rationale": "1 standard packet. Instant preferred — mixes directly into dry ingredients, no proofing needed. SAF Red Label recommended."
+            "rationale": "1 standard packet. Instant preferred \u2014 mixes directly into dry ingredients, no proofing needed. SAF Red Label recommended."
           },
           {
             "id": "eggs",
@@ -149,9 +155,9 @@
             "total": 68,
             "unit": "g",
             "breakdown": null,
-            "sourcedFrom": "Tier 2: 5/8 agents — Weissman's approach",
+            "sourcedFrom": "Tier 2: 5/8 agents \u2014 Weissman's approach",
             "confidence": "high",
-            "rationale": "1 whole egg (50g) for structure + 1 extra yolk (18g) for richness and natural lecithin. Martin's uses no eggs — the egg yolk here substitutes for their commercial emulsifiers."
+            "rationale": "1 whole egg (50g) for structure + 1 extra yolk (18g) for richness and natural lecithin. Martin's uses no eggs \u2014 the egg yolk here substitutes for their commercial emulsifiers."
           },
           {
             "id": "neutral_oil",
@@ -165,25 +171,42 @@
           }
         ]
       },
-      "states": ["boil-potato", "rice-potato"]
+      "states": [
+        "boil-potato",
+        "rice-potato"
+      ]
     },
     {
       "id": "DOUGH",
       "title": "Mix & Knead",
       "gather": null,
-      "states": ["combine-dry", "mix-dough", "knead", "incorporate-butter"]
+      "states": [
+        "combine-dry",
+        "mix-dough",
+        "knead",
+        "incorporate-butter"
+      ]
     },
     {
       "id": "RISE",
       "title": "Bulk Ferment, Shape & Proof",
       "gather": null,
-      "states": ["bulk-ferment", "divide-shape", "flatten", "proof"]
+      "states": [
+        "bulk-ferment",
+        "divide-shape",
+        "flatten",
+        "proof"
+      ]
     },
     {
       "id": "BAKE",
       "title": "Bake & Finish",
       "gather": null,
-      "states": ["milk-wash", "bake", "cool"]
+      "states": [
+        "milk-wash",
+        "bake",
+        "cool"
+      ]
     }
   ],
   "states": [
@@ -195,12 +218,15 @@
       "timer": true,
       "parallel": false,
       "components": [
-        { "name": "russet potato", "amount": "~200g raw → 120g cooked" }
+        {
+          "name": "russet potato",
+          "amount": "~200g raw \u2192 120g cooked"
+        }
       ],
       "exit_condition": "Fork slides through potato cubes with zero resistance, 12-15 min",
       "notes": [
         {
-          "text": "Save the potato cooking water — it contains leached starch that can replace part of the milk for extra softness.",
+          "text": "Save the potato cooking water \u2014 it contains leached starch that can replace part of the milk for extra softness.",
           "source": "agent"
         }
       ],
@@ -222,7 +248,7 @@
       "exit_condition": "Potato is completely lump-free and cooled to room temperature. Weigh out 120g.",
       "notes": [
         {
-          "text": "Lumps in the potato will create pockets in the dough. The ricer or sieve step is not optional — mashing alone leaves lumps.",
+          "text": "Lumps in the potato will create pockets in the dough. The ricer or sieve step is not optional \u2014 mashing alone leaves lumps.",
           "critical": true,
           "source": "agent"
         }
@@ -236,10 +262,22 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "bread flour", "amount": "450g" },
-        { "name": "sugar", "amount": "30g" },
-        { "name": "salt", "amount": "9g" },
-        { "name": "instant yeast", "amount": "7g" }
+        {
+          "name": "bread flour",
+          "amount": "450g"
+        },
+        {
+          "name": "sugar",
+          "amount": "30g"
+        },
+        {
+          "name": "salt",
+          "amount": "9g"
+        },
+        {
+          "name": "instant yeast",
+          "amount": "7g"
+        }
       ],
       "exit_condition": "Dry ingredients evenly distributed, no visible salt or yeast clumps",
       "notes": null
@@ -247,19 +285,28 @@
     {
       "id": "mix-dough",
       "title": "Add Wet Ingredients",
-      "direction": "Add warm milk (200g at 43°C / 110°F), eggs (1 whole + 1 yolk, 68g), and riced potato (120g) to the dry ingredients. Mix on low speed with dough hook until a shaggy dough forms.",
+      "direction": "Add warm milk (200g at 43\u00b0C / 110\u00b0F), eggs (1 whole + 1 yolk, 68g), and riced potato (120g) to the dry ingredients. Mix on low speed with dough hook until a shaggy dough forms.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "whole milk", "amount": "200g (warm)" },
-        { "name": "eggs", "amount": "68g (1 whole + 1 yolk)" },
-        { "name": "riced potato", "amount": "120g" }
+        {
+          "name": "whole milk",
+          "amount": "200g (warm)"
+        },
+        {
+          "name": "eggs",
+          "amount": "68g (1 whole + 1 yolk)"
+        },
+        {
+          "name": "riced potato",
+          "amount": "120g"
+        }
       ],
-      "exit_condition": "All ingredients incorporated into a shaggy, cohesive mass — no dry flour visible",
+      "exit_condition": "All ingredients incorporated into a shaggy, cohesive mass \u2014 no dry flour visible",
       "notes": [
         {
-          "text": "Dough will look rough and sticky at this stage. Don't add extra flour — the potato will continue to hydrate during kneading.",
+          "text": "Dough will look rough and sticky at this stage. Don't add extra flour \u2014 the potato will continue to hydrate during kneading.",
           "source": "agent"
         }
       ]
@@ -267,7 +314,7 @@
     {
       "id": "knead",
       "title": "Knead to Windowpane",
-      "direction": "Increase mixer to medium speed (setting 4-6). Knead 8-10 minutes until dough is smooth, elastic, and passes the windowpane test — a small piece stretches thin enough to see light through without tearing.",
+      "direction": "Increase mixer to medium speed (setting 4-6). Knead 8-10 minutes until dough is smooth, elastic, and passes the windowpane test \u2014 a small piece stretches thin enough to see light through without tearing.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -284,12 +331,15 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "butter (softened)", "amount": "55g" }
+        {
+          "name": "butter (softened)",
+          "amount": "55g"
+        }
       ],
       "exit_condition": "Butter fully incorporated. Dough is smooth, slightly tacky, glossy, and pulls from bowl sides cleanly.",
       "notes": [
         {
-          "text": "Dough will break apart when butter is first added — this is normal. Keep kneading and it will come back together.",
+          "text": "Dough will break apart when butter is first added \u2014 this is normal. Keep kneading and it will come back together.",
           "source": "agent"
         }
       ]
@@ -297,7 +347,7 @@
     {
       "id": "bulk-ferment",
       "title": "Bulk Ferment",
-      "direction": "Transfer dough to lightly oiled large bowl. Cover with plastic wrap or damp towel. Let rise at room temperature ~24°C (75°F) for 90 minutes total. At 45 minutes, perform one stretch-and-fold: pull each side of the dough up and over the center, then flip seam-side down.",
+      "direction": "Transfer dough to lightly oiled large bowl. Cover with plastic wrap or damp towel. Let rise at room temperature ~24\u00b0C (75\u00b0F) for 90 minutes total. At 45 minutes, perform one stretch-and-fold: pull each side of the dough up and over the center, then flip seam-side down.",
       "duration_min": 90,
       "timer": true,
       "parallel": false,
@@ -337,7 +387,7 @@
       "exit_condition": "8 flat disks, 9cm diameter, evenly spaced on sheet pan",
       "notes": [
         {
-          "text": "For the flattest result, place an inverted second sheet pan on top during proofing — the weight forces dough to expand outward rather than upward.",
+          "text": "For the flattest result, place an inverted second sheet pan on top during proofing \u2014 the weight forces dough to expand outward rather than upward.",
           "source": "agent"
         }
       ]
@@ -345,23 +395,23 @@
     {
       "id": "proof",
       "title": "Final Proof",
-      "direction": "Cover buns loosely with plastic wrap (or place inverted sheet pan on top for flattest shape). Let proof at room temperature until puffy and roughly 50% larger, 45-60 minutes. Preheat oven to 190°C (375°F) during the last 15 minutes of proofing.",
+      "direction": "Cover buns loosely with plastic wrap (or place inverted sheet pan on top for flattest shape). Let proof at room temperature until puffy and roughly 50% larger, 45-60 minutes. Preheat oven to 190\u00b0C (375\u00b0F) during the last 15 minutes of proofing.",
       "duration_min": 50,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Buns are visibly puffy, ~50% larger. Gentle poke springs back slowly. Oven preheated to 190°C (375°F).",
+      "exit_condition": "Buns are visibly puffy, ~50% larger. Gentle poke springs back slowly. Oven preheated to 190\u00b0C (375\u00b0F).",
       "notes": null
     },
     {
       "id": "milk-wash",
       "title": "Wash & Bake",
-      "direction": "Gently brush the top of each bun with a thin coat of whole milk. Transfer to oven, middle rack. Bake at 190°C (375°F) for 15-18 minutes, rotating pan halfway through.",
+      "direction": "Gently brush the top of each bun with a thin coat of whole milk. Transfer to oven, middle rack. Bake at 190\u00b0C (375\u00b0F) for 15-18 minutes, rotating pan halfway through.",
       "duration_min": 17,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Buns are golden brown on top. Internal temperature reads 96°C (205°F). Bottom is lightly golden.",
+      "exit_condition": "Buns are golden brown on top. Internal temperature reads 96\u00b0C (205\u00b0F). Bottom is lightly golden.",
       "notes": [
         {
           "text": "Milk wash gives a matte, Martin's-style golden finish. For a shinier result, use egg wash (1 yolk + 1 tsp water) instead.",
@@ -383,9 +433,12 @@
       "timer": true,
       "parallel": false,
       "components": [
-        { "name": "butter (melted)", "amount": "15g" }
+        {
+          "name": "butter (melted)",
+          "amount": "15g"
+        }
       ],
-      "exit_condition": "Buns cooled at least 15 minutes. Crust is soft and tender from butter brush. Interior is set — not gummy when squeezed gently.",
+      "exit_condition": "Buns cooled at least 15 minutes. Crust is soft and tender from butter brush. Interior is set \u2014 not gummy when squeezed gently.",
       "notes": [
         {
           "text": "The post-bake butter brush is key to Martin's-style soft crust. Don't skip it.",
@@ -400,13 +453,13 @@
     "methods": [
       {
         "method": "Griddle Toast (recommended for smashburgers)",
-        "detail": "Slice bun in half. Butter cut sides. Place cut-side down on griddle or cast iron at 190°C (375°F). Toast 30-60 seconds until golden brown. Creates a moisture barrier against burger juice.",
+        "detail": "Slice bun in half. Butter cut sides. Place cut-side down on griddle or cast iron at 190\u00b0C (375\u00b0F). Toast 30-60 seconds until golden brown. Creates a moisture barrier against burger juice.",
         "source": "agent",
         "reference": "George Motz smashburger technique"
       },
       {
         "method": "Oven Refresh",
-        "detail": "Wrap buns loosely in foil. Warm at 150°C (300°F) for 8-10 minutes. Open foil for last 2 minutes if you want slight crispness on top.",
+        "detail": "Wrap buns loosely in foil. Warm at 150\u00b0C (300\u00b0F) for 8-10 minutes. Open foil for last 2 minutes if you want slight crispness on top.",
         "source": "agent"
       },
       {
@@ -418,16 +471,53 @@
   },
   "research": {
     "sources": [
-      { "name": "King Arthur Baking — Potato Buns", "url": "https://www.kingarthurbaking.com/recipes/hamburger-potato-buns-recipe", "type": "adapted" },
-      { "name": "Joshua Weissman — Potato Buns", "url": "https://www.joshuaweissman.com/recipes/best-potato-burger-buns-ever-recipe", "type": "adapted" },
-      { "name": "Claire Saffitz — Potato Buns", "type": "adapted" },
-      { "name": "ATK — Potato Burger Buns", "type": "adapted" },
-      { "name": "Bread By Elise — Potato Buns", "url": "https://breadbyelise.com/potato-burger-buns/", "type": "adapted" },
-      { "name": "Martin's Famous Potato Rolls (label analysis)", "url": "https://potatorolls.com/products/sandwich-potato-rolls/", "type": "inspired" },
-      { "name": "Andrew Janjigian / Wordloaf — Martin's Clone", "url": "https://newsletter.wordloaf.org/martians-potato-bunz-and-bread/", "type": "adapted" },
-      { "name": "Edd Kimber — Martin's Potato Rolls", "url": "https://eddkimber.substack.com/p/homemade-martins-potato-rolls", "type": "adapted" },
-      { "name": "The Fresh Loaf Community", "url": "https://www.thefreshloaf.com/node/68486", "type": "adapted" },
-      { "name": "George Motz — Smashburger Technique", "type": "inspired" }
+      {
+        "name": "King Arthur Baking \u2014 Potato Buns",
+        "url": "https://www.kingarthurbaking.com/recipes/hamburger-potato-buns-recipe",
+        "type": "adapted"
+      },
+      {
+        "name": "Joshua Weissman \u2014 Potato Buns",
+        "url": "https://www.joshuaweissman.com/recipes/best-potato-burger-buns-ever-recipe",
+        "type": "adapted"
+      },
+      {
+        "name": "Claire Saffitz \u2014 Potato Buns",
+        "type": "adapted"
+      },
+      {
+        "name": "ATK \u2014 Potato Burger Buns",
+        "type": "adapted"
+      },
+      {
+        "name": "Bread By Elise \u2014 Potato Buns",
+        "url": "https://breadbyelise.com/potato-burger-buns/",
+        "type": "adapted"
+      },
+      {
+        "name": "Martin's Famous Potato Rolls (label analysis)",
+        "url": "https://potatorolls.com/products/sandwich-potato-rolls/",
+        "type": "inspired"
+      },
+      {
+        "name": "Andrew Janjigian / Wordloaf \u2014 Martin's Clone",
+        "url": "https://newsletter.wordloaf.org/martians-potato-bunz-and-bread/",
+        "type": "adapted"
+      },
+      {
+        "name": "Edd Kimber \u2014 Martin's Potato Rolls",
+        "url": "https://eddkimber.substack.com/p/homemade-martins-potato-rolls",
+        "type": "adapted"
+      },
+      {
+        "name": "The Fresh Loaf Community",
+        "url": "https://www.thefreshloaf.com/node/68486",
+        "type": "adapted"
+      },
+      {
+        "name": "George Motz \u2014 Smashburger Technique",
+        "type": "inspired"
+      }
     ],
     "techniques": [
       {
@@ -439,7 +529,7 @@
       {
         "name": "Post-bake butter brush",
         "sourcedFrom": "King Arthur, Weissman, Janjigian",
-        "rationale": "Melted butter immediately after baking softens the crust — replicates the soft exterior of Martin's without dough conditioners.",
+        "rationale": "Melted butter immediately after baking softens the crust \u2014 replicates the soft exterior of Martin's without dough conditioners.",
         "confidence": "high"
       },
       {
@@ -451,7 +541,7 @@
       {
         "name": "Egg yolk as emulsifier substitute",
         "sourcedFrom": "ChainBaker food science, Martin's ingredient analysis",
-        "rationale": "Martin's uses SSL/DATEM/mono-diglycerides for softness. Egg yolk contains ~9% lecithin — a natural emulsifier that partially replicates these commercial conditioners.",
+        "rationale": "Martin's uses SSL/DATEM/mono-diglycerides for softness. Egg yolk contains ~9% lecithin \u2014 a natural emulsifier that partially replicates these commercial conditioners.",
         "confidence": "medium"
       },
       {
@@ -464,5 +554,94 @@
     "strategy": "8-agent parallel research fleet with distinct strategies: top recipes, Martin's reverse engineering, food science, shaping/baking technique, sourdough hybrid, Reddit community, restaurant/pro approaches, ingredient deep dive",
     "sourceCount": 40,
     "date": "2026-04-14"
+  },
+  "estimatedCost": {
+    "total": 2.28,
+    "perServing": 0.28,
+    "servings": 8,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "bread_flour",
+        "name": "Bread Flour",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Baker's Scoop Bread Flour 5 lb ($3.78)",
+        "amount": 450,
+        "unit": "g",
+        "cost": 0.75
+      },
+      {
+        "ingredientId": "russet_potato",
+        "name": "Russet Potato (1 medium, ~200g raw)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Russet Potatoes 5 lb ($3.11)",
+        "amount": 120,
+        "unit": "g",
+        "cost": 0.16
+      },
+      {
+        "ingredientId": "whole_milk",
+        "name": "Whole Milk (warm, 43\u00b0C / 110\u00b0F)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Whole Milk 1 gal ($4.38)",
+        "amount": 200,
+        "unit": "g",
+        "cost": 0.23
+      },
+      {
+        "ingredientId": "butter",
+        "name": "Unsalted Butter",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz ($2.98)",
+        "amount": 70,
+        "unit": "g",
+        "cost": 0.46
+      },
+      {
+        "ingredientId": "sugar",
+        "name": "Granulated Sugar",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+        "amount": 30,
+        "unit": "g",
+        "cost": 0.06
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Fine Sea Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 9,
+        "unit": "g",
+        "cost": 0.02
+      },
+      {
+        "ingredientId": "yeast",
+        "name": "Instant Yeast",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Instant Yeast 3-pack/21g ($0.98)",
+        "amount": 7,
+        "unit": "g",
+        "cost": 0.33
+      },
+      {
+        "ingredientId": "eggs",
+        "name": "Eggs (1 whole + 1 extra yolk)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Large Eggs 12 ct ($2.17)",
+        "amount": 68,
+        "unit": "g",
+        "cost": 0.25
+      },
+      {
+        "ingredientId": "neutral_oil",
+        "name": "Neutral Oil (for shaping)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Canola Oil 16 oz ($1.72)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 0.02
+      }
+    ]
   }
 }

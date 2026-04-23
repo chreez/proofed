@@ -31,6 +31,14 @@ export interface Scaling {
   sources: string[]
 }
 
+export interface EstimatedCost {
+  total: number
+  perServing: number
+  servings: number
+  items: CookLogCostItem[]
+  estimatedAt: string
+}
+
 export interface Recipe {
   meta: RecipeMeta
   config: RecipeConfig
@@ -46,6 +54,7 @@ export interface Recipe {
   reheat?: Reheat
   bake_defaults?: RecipeBakeDefaults
   scaling?: Scaling
+  estimatedCost?: EstimatedCost
 }
 
 /**

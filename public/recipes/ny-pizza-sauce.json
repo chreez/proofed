@@ -109,7 +109,7 @@
     {
       "id": "blend-tomatoes",
       "title": "Blend Tomatoes",
-      "direction": "Pour 794g Sclafani crushed tomatoes into the bowl. Rinse the can with 57g water and add to the bowl. Hand blend until broken down — some texture is good, don't fully puree.",
+      "direction": "Pour 794g Sclafani crushed tomatoes into the bowl. Rinse the can with 57g water and add to the bowl. Hand blend until broken down \u2014 some texture is good, don't fully puree.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -129,14 +129,14 @@
     {
       "id": "mix-seasonings",
       "title": "Mix Seasonings",
-      "direction": "Add 3g salt (½ tsp), 4g sugar (1 tsp), 0.5g dried oregano (⅛ tsp scant — measure, then crush in your palm), 3g garlic (1 very small clove, pinky-fingernail size, pressed), and 1g fresh basil (1.5 very small leaves, very finely chopped). Stir everything together.",
+      "direction": "Add 3g salt (\u00bd tsp), 4g sugar (1 tsp), 0.5g dried oregano (\u215b tsp scant \u2014 measure, then crush in your palm), 3g garlic (1 very small clove, pinky-fingernail size, pressed), and 1g fresh basil (1.5 very small leaves, very finely chopped). Stir everything together.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "Salt",
-          "amount": "3g (½ tsp)"
+          "amount": "3g (\u00bd tsp)"
         },
         {
           "name": "Sugar",
@@ -144,7 +144,7 @@
         },
         {
           "name": "Dried Oregano",
-          "amount": "0.5g (⅛ tsp, scant)"
+          "amount": "0.5g (\u215b tsp, scant)"
         },
         {
           "name": "Garlic",
@@ -257,8 +257,79 @@
     "methods": [
       {
         "method": "Use cold",
-        "detail": "Raw sauce — use straight from the fridge. The pizza oven does the cooking.",
+        "detail": "Raw sauce \u2014 use straight from the fridge. The pizza oven does the cooking.",
         "source": "agent"
+      }
+    ]
+  },
+  "estimatedCost": {
+    "total": 1.99,
+    "perServing": 0.2,
+    "servings": 10,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "crushed_tomatoes",
+        "name": "Sclafani Crushed Tomatoes",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Crushed Tomatoes 15 oz ($0.96)",
+        "amount": 794,
+        "unit": "g",
+        "cost": 1.79
+      },
+      {
+        "ingredientId": "water",
+        "name": "Water",
+        "sourceType": "rate",
+        "sourceName": "Tap water (free)",
+        "amount": 57,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "basil",
+        "name": "Fresh Basil",
+        "sourceType": "rate",
+        "sourceName": "Fresh Basil ~0.75 oz ($2.48 est.)",
+        "amount": 1,
+        "unit": "g",
+        "cost": 0.12
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "oregano",
+        "name": "Dried Oregano",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Dried Oregano (est. from H-E-B spice) ($2.58)",
+        "amount": 0.5,
+        "unit": "g",
+        "cost": 0.03
+      },
+      {
+        "ingredientId": "sugar",
+        "name": "Sugar",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pure Cane Granulated Sugar 4 lb ($3.48)",
+        "amount": 4,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "garlic",
+        "name": "Garlic",
+        "sourceType": "rate",
+        "sourceName": "Fresh Garlic 2 for $1.00 (~50g each)",
+        "amount": 3,
+        "unit": "g",
+        "cost": 0.03
       }
     ]
   }

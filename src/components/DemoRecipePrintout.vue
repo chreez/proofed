@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import * as QRCode from 'qrcode'
+import { ref, onMounted, nextTick } from 'vue'
+import { renderBrandedQr, generateQrLabelDataUrl } from '@/composables/useQrLabel'
 
 const qrCodeDataUrl = ref<string>('')
+const qrContainer = ref<HTMLDivElement | null>(null)
 
 const TEST_URL = 'https://proofeddot.netlify.app/recipe/atk-cinnamon-buns-ultimate'
 
@@ -71,20 +72,26 @@ const recipeData = {
 }
 
 onMounted(async () => {
-  qrCodeDataUrl.value = await QRCode.toDataURL(TEST_URL, {
-    errorCorrectionLevel: 'M',
-    margin: 4,
-    width: 200,
-    color: {
-      dark: '#1a1816', // proofed ink
-      light: '#ffffff'
+  await nextTick()
+  if (qrContainer.value) {
+    const qrCanvas = await renderBrandedQr(qrContainer.value, {
+      url: TEST_URL,
+      size: 200
+    })
+    if (qrCanvas) {
+      const dataUrl = generateQrLabelDataUrl(qrCanvas, { url: TEST_URL, size: 200 })
+      if (dataUrl) {
+        qrCodeDataUrl.value = dataUrl
+      }
     }
-  })
+  }
 })
 </script>
 
 <template>
   <div class="demo-page">
+    <!-- Hidden container for QR code rendering -->
+    <div ref="qrContainer" style="position: absolute; left: -9999px; width: 0; height: 0; overflow: hidden;" />
     <div class="demo-header">
       <h1 class="text-2xl font-mono font-medium text-ink">
         Recipe Printout Layout <span class="text-accent">.</span>

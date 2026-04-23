@@ -26,7 +26,7 @@
     {
       "version": "v1.4.0",
       "date": "2026-03-21",
-      "summary": "Rewrote dough procedure to 3-day cold ferment default (mix → 1h RT rest → overnight cold bulk → divide → 1-2 day cold proof → temper 1h). Removed sugar from formula (optional note for low-temp ovens). Added hard Italian cheese (Parm/Pecorino) to topping order. Updated vessels from pizza stone to baking steel."
+      "summary": "Rewrote dough procedure to 3-day cold ferment default (mix \u2192 1h RT rest \u2192 overnight cold bulk \u2192 divide \u2192 1-2 day cold proof \u2192 temper 1h). Removed sugar from formula (optional note for low-temp ovens). Added hard Italian cheese (Parm/Pecorino) to topping order. Updated vessels from pizza stone to baking steel."
     },
     {
       "version": "v1.3.0",
@@ -41,7 +41,7 @@
     {
       "version": "v1.1.0",
       "date": "2026-02-09",
-      "summary": "Scaled dough and toppings ×1.25 for bigger pizzas (~388g balls). 2 pizzas, more dough per pie."
+      "summary": "Scaled dough and toppings \u00d71.25 for bigger pizzas (~388g balls). 2 pizzas, more dough per pie."
     },
     {
       "version": "v1.0.0",
@@ -56,13 +56,13 @@
       "actual_yield": {
         "value": 2,
         "unit": "pizzas",
-        "notes": "Smaller pizzas, ~4 slices each — roughly half normal yield"
+        "notes": "Smaller pizzas, ~4 slices each \u2014 roughly half normal yield"
       },
-      "summary": "First pizza bake — 1-day cold proof was underproofed, dough was tough to stretch. Good char on the baking steel but HEB whole milk mozz was too moist to shred.",
+      "summary": "First pizza bake \u2014 1-day cold proof was underproofed, dough was tough to stretch. Good char on the baking steel but HEB whole milk mozz was too moist to shred.",
       "notes": [
-        "1-day cold proof was underproofed — dough was hard to stretch, kept springing back",
-        "Used baking steel, preheated 1 hour at ~530°F (275°C), dropped to ~485°F (250°C) by the time pizza went in",
-        "HEB whole milk mozzarella was too moist to shred — had to tear by hand",
+        "1-day cold proof was underproofed \u2014 dough was hard to stretch, kept springing back",
+        "Used baking steel, preheated 1 hour at ~530\u00b0F (275\u00b0C), dropped to ~485\u00b0F (250\u00b0C) by the time pizza went in",
+        "HEB whole milk mozzarella was too moist to shred \u2014 had to tear by hand",
         "8 min total bake on steel, rotated at 4 min mark, finished with 2 min under high broil",
         "Good char on bottom from the steel, crust was crispy but slightly tough from underproofing"
       ],
@@ -80,7 +80,7 @@
         {
           "src": "/images/ny-style-pizza/bake-2026-02-08/03-mise-en-place-800w.webp",
           "thumb": "/images/ny-style-pizza/bake-2026-02-08/03-mise-en-place-400w.webp",
-          "alt": "Mise en place — Pioneer cornmeal, tomato sauce, grater on counter"
+          "alt": "Mise en place \u2014 Pioneer cornmeal, tomato sauce, grater on counter"
         },
         {
           "src": "/images/ny-style-pizza/bake-2026-02-08/05-stretching-dough-800w.webp",
@@ -95,7 +95,7 @@
         {
           "src": "/images/ny-style-pizza/bake-2026-02-08/04-baking-on-steel-800w.webp",
           "thumb": "/images/ny-style-pizza/bake-2026-02-08/04-baking-on-steel-400w.webp",
-          "alt": "Pizza baking on steel in oven — cheese melting, crust puffing"
+          "alt": "Pizza baking on steel in oven \u2014 cheese melting, crust puffing"
         },
         {
           "src": "/images/ny-style-pizza/bake-2026-02-08/07-pulling-from-oven-800w.webp",
@@ -105,7 +105,7 @@
         {
           "src": "/images/ny-style-pizza/bake-2026-02-08/10-two-pizzas-done-800w.webp",
           "thumb": "/images/ny-style-pizza/bake-2026-02-08/10-two-pizzas-done-400w.webp",
-          "alt": "Both pizzas done — first sliced on plate, second cooling on rack"
+          "alt": "Both pizzas done \u2014 first sliced on plate, second cooling on rack"
         },
         {
           "src": "/images/ny-style-pizza/bake-2026-02-08/11-pizza-with-wine-800w.webp",
@@ -120,12 +120,12 @@
         {
           "src": "/images/ny-style-pizza/bake-2026-02-08/08-finished-pepperoni-800w.webp",
           "thumb": "/images/ny-style-pizza/bake-2026-02-08/08-finished-pepperoni-400w.webp",
-          "alt": "Finished pepperoni pizza on wire rack — cupped pepperoni, leopard-spotted char"
+          "alt": "Finished pepperoni pizza on wire rack \u2014 cupped pepperoni, leopard-spotted char"
         },
         {
           "src": "/images/ny-style-pizza/bake-2026-02-08/09-slice-fold-800w.webp",
           "thumb": "/images/ny-style-pizza/bake-2026-02-08/09-slice-fold-400w.webp",
-          "alt": "Holding a slice showing the fold — thin center, crispy underside"
+          "alt": "Holding a slice showing the fold \u2014 thin center, crispy underside"
         }
       ],
       "next_time": [
@@ -133,13 +133,13 @@
           "text": "Try 2-3 day cold proof for better extensibility and flavor development"
         },
         {
-          "text": "Add sliced jalapeños as a topping option"
+          "text": "Add sliced jalape\u00f1os as a topping option"
         },
         {
           "text": "Make a batch of 4 dough balls to have extras for the week"
         },
         {
-          "text": "Use Trader Joe's low-moisture mozz next time — the HEB whole milk was too wet to shred"
+          "text": "Use Trader Joe's low-moisture mozz next time \u2014 the HEB whole milk was too wet to shred"
         }
       ],
       "weather": {
@@ -155,44 +155,44 @@
     {
       "date": "2026-02-12",
       "version": "v1.2.0",
-      "summary": "Second bake with a hydration mix-up during mise (weighed flour amount as water), producing the densest dough ever. Stretching improved after watching a tutorial, but crust burned from sugar at 550°F — may not need sugar for browning on steel.",
+      "summary": "Second bake with a hydration mix-up during mise (weighed flour amount as water), producing the densest dough ever. Stretching improved after watching a tutorial, but crust burned from sugar at 550\u00b0F \u2014 may not need sugar for browning on steel.",
       "notes": [
-        "Hydration mixup during mise en place — weighed 288g flour (the water amount) instead of 463g. Dough was very watery. Added extra flour to compensate but the result was the densest pizza dough ever — gluten never developed properly from the two-stage flour addition",
+        "Hydration mixup during mise en place \u2014 weighed 288g flour (the water amount) instead of 463g. Dough was very watery. Added extra flour to compensate but the result was the densest pizza dough ever \u2014 gluten never developed properly from the two-stage flour addition",
         "Bulk fermented overnight in the fridge. Pulled out next day, split into 2 balls, room temp proof ~5 hours total (4 hours + 1 hour during final oven preheat)",
-        "Poke test passed — dough balls sprang back after second ferment",
-        "Preheated oven to 550°F with pizza steel for ~2 hours. Steel clocked in at ~520°F at bake time",
-        "Dough stretched out much better than Try 1 — reviewed a YouTube stretching tutorial beforehand. Not afraid of it tearing this time, better size overall",
+        "Poke test passed \u2014 dough balls sprang back after second ferment",
+        "Preheated oven to 550\u00b0F with pizza steel for ~2 hours. Steel clocked in at ~520\u00b0F at bake time",
+        "Dough stretched out much better than Try 1 \u2014 reviewed a YouTube stretching tutorial beforehand. Not afraid of it tearing this time, better size overall",
         "Bake: 4 min on steel, rotated, 4 more min, then ~2 min under high broil",
-        "Crust was pretty burned — likely from the sugar in the dough. Oven at 550 + pizza steel may be hot enough to not need sugar for browning",
-        "Topping order: sauce → fresh grated Parmigiano-Reggiano (generous) → HEB low-moisture whole milk mozz (bagged) → pepperoni",
-        "HEB low-moisture mozz melted perfectly and didn't need shredding — much more convenient than Try 1's block mozz. Trade-off: less tangy flavor",
+        "Crust was pretty burned \u2014 likely from the sugar in the dough. Oven at 550 + pizza steel may be hot enough to not need sugar for browning",
+        "Topping order: sauce \u2192 fresh grated Parmigiano-Reggiano (generous) \u2192 HEB low-moisture whole milk mozz (bagged) \u2192 pepperoni",
+        "HEB low-moisture mozz melted perfectly and didn't need shredding \u2014 much more convenient than Try 1's block mozz. Trade-off: less tangy flavor",
         "Second pizza: ran out of pepperoni, did half pepperoni / half extra cheese. Cheesier side bubbled nicely",
-        "Sauce was jarred pizza sauce (not San Marzano) — want to get Sclafani next time",
+        "Sauce was jarred pizza sauce (not San Marzano) \u2014 want to get Sclafani next time",
         "Forgot to measure dough ball yield",
         "Bigger pizza size meant better pepperoni distribution compared to Try 1",
         "Despite the char and dense crumb, good crunch and taste overall",
-        "Broiler is a separate drawer under the main oven — transferred pizza to a tray (not the steel) to avoid further bottom char. Two rack positions in the drawer; first pizza on upper rack (very close to flame), second pizza on lower rack. Broiler bubbled the cheese nicely. The crust burning was from the sugar, not the broiler"
+        "Broiler is a separate drawer under the main oven \u2014 transferred pizza to a tray (not the steel) to avoid further bottom char. Two rack positions in the drawer; first pizza on upper rack (very close to flame), second pizza on lower rack. Broiler bubbled the cheese nicely. The crust burning was from the sugar, not the broiler"
       ],
       "photos": [
         {
           "src": "/images/ny-style-pizza/2026-02-12/img-6808-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-12/img-6808-400w.webp",
-          "alt": "Assembled pepperoni pizza on wooden peel, pre-bake — stretched dough topped with sauce, shredded mozzarella, and pepperoni slices with clean raised cornicione"
+          "alt": "Assembled pepperoni pizza on wooden peel, pre-bake \u2014 stretched dough topped with sauce, shredded mozzarella, and pepperoni slices with clean raised cornicione"
         },
         {
           "src": "/images/ny-style-pizza/2026-02-12/img-6810-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-12/img-6810-400w.webp",
-          "alt": "Stretched dough on wooden peel with sauce spread in a spiral, pre-topping — grated parmesan bowl and microplane on counter alongside sauce"
+          "alt": "Stretched dough on wooden peel with sauce spread in a spiral, pre-topping \u2014 grated parmesan bowl and microplane on counter alongside sauce"
         },
         {
           "src": "/images/ny-style-pizza/2026-02-12/img-6812-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-12/img-6812-400w.webp",
-          "alt": "Slice held up showing crumb cross-section — dense, tight crumb with minimal air pockets. Significant charring on crust edges, cupped pepperoni on top"
+          "alt": "Slice held up showing crumb cross-section \u2014 dense, tight crumb with minimal air pockets. Significant charring on crust edges, cupped pepperoni on top"
         },
         {
           "src": "/images/ny-style-pizza/2026-02-12/img-6814-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-12/img-6814-400w.webp",
-          "alt": "Finished pepperoni pizza close-up — heavy char on crust rim and cheese surface with dark blisters, pepperoni partially buried under melted browned cheese"
+          "alt": "Finished pepperoni pizza close-up \u2014 heavy char on crust rim and cheese surface with dark blisters, pepperoni partially buried under melted browned cheese"
         }
       ],
       "references": [
@@ -203,22 +203,22 @@
       ],
       "next_time": [
         {
-          "text": "Consider lowering or removing sugar — oven at 550 + pizza steel provides enough heat for browning without it"
+          "text": "Consider lowering or removing sugar \u2014 oven at 550 + pizza steel provides enough heat for browning without it"
         },
         {
           "text": "Get Sclafani crushed tomatoes for proper sauce"
         },
         {
-          "text": "Add Parmigiano-Reggiano as an ingredient in the recipe (sauce → parm → mozz → pepperoni layer order)"
+          "text": "Add Parmigiano-Reggiano as an ingredient in the recipe (sauce \u2192 parm \u2192 mozz \u2192 pepperoni layer order)"
         },
         {
-          "text": "Try TJ's low-moisture mozz (carried over from Try 1 — still haven't tried it)"
+          "text": "Try TJ's low-moisture mozz (carried over from Try 1 \u2014 still haven't tried it)"
         },
         {
           "text": "Measure dough ball yield after portioning"
         },
         {
-          "text": "Try the 2-3 day cold proof (carried over — did overnight this time, still want to try longer)"
+          "text": "Try the 2-3 day cold proof (carried over \u2014 did overnight this time, still want to try longer)"
         }
       ],
       "weather": {
@@ -234,30 +234,30 @@
     {
       "date": "2026-02-18",
       "version": "v1.3.0",
-      "summary": "Third bake — removed all sugar, 3-day cold proof, first time with TJ's mozz and homemade Sclafani sauce. Best pizza yet. No extra flour needed for shaping — dough handled like a dream.",
+      "summary": "Third bake \u2014 removed all sugar, 3-day cold proof, first time with TJ's mozz and homemade Sclafani sauce. Best pizza yet. No extra flour needed for shaping \u2014 dough handled like a dream.",
       "notes": [
         "Removed all sugar from the dough (0g instead of recipe's 19g)",
-        "Rounded dough built nicely — patience paid off, let it sit before manipulating",
-        "No extra flour needed for rounding or shaping — stretched and worked dough into a ball completely flour-free",
-        "Dough was warm from washing machine running nearby — measured 77°F with laser thermometer (unsure of accuracy)",
+        "Rounded dough built nicely \u2014 patience paid off, let it sit before manipulating",
+        "No extra flour needed for rounding or shaping \u2014 stretched and worked dough into a ball completely flour-free",
+        "Dough was warm from washing machine running nearby \u2014 measured 77\u00b0F with laser thermometer (unsure of accuracy)",
         "Dough volume in greased Cambro: ~1 quart at base, ~1.5 quart at peak",
         "1 hour counter rest before overnight cold bulk ferment (into fridge ~12:30am)",
-        "Divided next day at ~12:24pm — total dough weight 765g, split nearly perfectly (~382g each). Portions back in fridge",
-        "Taken out ~11:45am on bake day (Feb 18) — effectively a 3-day process (mixed evening of Feb 16)",
-        "Pizza stone at 520°F at bake time, dough at 77°F after stretching",
-        "Used homemade NY pizza sauce (proofed Sclafani recipe) — much better than jarred. Wished I'd made it the night before to let flavors develop",
-        "Finally used Trader Joe's low-moisture mozz — better flavor, more depth than HEB",
-        "Toppings: sauce → fresh grated Parmigiano-Reggiano → TJ's mozz → Boar's Head pepperoni → fresh jalapeño slices (pre-bake)",
-        "1st pizza: 4 min on steel, rotate, 4 min, then broiler — broiler slightly too long at 1.5 min, aim for ~1 min. Crust less burned than last time, a little fractured and crunchy",
-        "2nd pizza: stone slightly cooler at 500°F. Dough ball sat out longer — incredibly malleable, almost scared it would rip but the dough held strong",
-        "Pepperoni shifted to one side when launching into oven — toppings not as evenly distributed after launch",
-        "Only light burn on crust this time — wonders if olive oil should also be removed for a leaner dough at these temps"
+        "Divided next day at ~12:24pm \u2014 total dough weight 765g, split nearly perfectly (~382g each). Portions back in fridge",
+        "Taken out ~11:45am on bake day (Feb 18) \u2014 effectively a 3-day process (mixed evening of Feb 16)",
+        "Pizza stone at 520\u00b0F at bake time, dough at 77\u00b0F after stretching",
+        "Used homemade NY pizza sauce (proofed Sclafani recipe) \u2014 much better than jarred. Wished I'd made it the night before to let flavors develop",
+        "Finally used Trader Joe's low-moisture mozz \u2014 better flavor, more depth than HEB",
+        "Toppings: sauce \u2192 fresh grated Parmigiano-Reggiano \u2192 TJ's mozz \u2192 Boar's Head pepperoni \u2192 fresh jalape\u00f1o slices (pre-bake)",
+        "1st pizza: 4 min on steel, rotate, 4 min, then broiler \u2014 broiler slightly too long at 1.5 min, aim for ~1 min. Crust less burned than last time, a little fractured and crunchy",
+        "2nd pizza: stone slightly cooler at 500\u00b0F. Dough ball sat out longer \u2014 incredibly malleable, almost scared it would rip but the dough held strong",
+        "Pepperoni shifted to one side when launching into oven \u2014 toppings not as evenly distributed after launch",
+        "Only light burn on crust this time \u2014 wonders if olive oil should also be removed for a leaner dough at these temps"
       ],
       "photos": [
         {
           "src": "/images/ny-style-pizza/2026-02-18/00-dough-in-cambro-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-18/00-dough-in-cambro-400w.webp",
-          "alt": "Dough ball in greased Cambro container marked 'BREAD - 77°' — sitting at the 1 quart line before overnight cold bulk ferment"
+          "alt": "Dough ball in greased Cambro container marked 'BREAD - 77\u00b0' \u2014 sitting at the 1 quart line before overnight cold bulk ferment"
         },
         {
           "src": "/images/ny-style-pizza/2026-02-18/01-tj-mozz-shopping-800w.webp",
@@ -267,22 +267,22 @@
         {
           "src": "/images/ny-style-pizza/2026-02-18/03-both-pizzas-overhead-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-18/03-both-pizzas-overhead-400w.webp",
-          "alt": "Both pizzas overhead — pepperoni pie on wire rack with cupped Boar's Head pepperoni, jalapeño-pepperoni slices on white plate in background"
+          "alt": "Both pizzas overhead \u2014 pepperoni pie on wire rack with cupped Boar's Head pepperoni, jalape\u00f1o-pepperoni slices on white plate in background"
         },
         {
           "src": "/images/ny-style-pizza/2026-02-18/04-crumb-shot-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-18/04-crumb-shot-400w.webp",
-          "alt": "Crumb cross-section of a torn slice — open, airy structure with large irregular holes from 3-day cold proof, thin crisp base transitioning to puffy edge"
+          "alt": "Crumb cross-section of a torn slice \u2014 open, airy structure with large irregular holes from 3-day cold proof, thin crisp base transitioning to puffy edge"
         },
         {
           "src": "/images/ny-style-pizza/2026-02-18/05-underside-char-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-18/05-underside-char-400w.webp",
-          "alt": "Underside of a slice — even golden-brown leopard char pattern from the baking steel, thin crisp base"
+          "alt": "Underside of a slice \u2014 even golden-brown leopard char pattern from the baking steel, thin crisp base"
         },
         {
           "src": "/images/ny-style-pizza/2026-02-18/02-pizza-one-closeup-800w.webp",
           "thumb": "/images/ny-style-pizza/2026-02-18/02-pizza-one-closeup-800w.webp",
-          "alt": "Close-up of finished pepperoni and jalapeño pizza — fresh jalapeño rings over cupped pepperoni, leopard-spotted cornicione, melted TJ's mozz with good browning"
+          "alt": "Close-up of finished pepperoni and jalape\u00f1o pizza \u2014 fresh jalape\u00f1o rings over cupped pepperoni, leopard-spotted cornicione, melted TJ's mozz with good browning"
         }
       ],
       "cost": {
@@ -372,7 +372,7 @@
           "text": "Aim for ~1 min under broiler (1.5 min was slightly too long)"
         },
         {
-          "text": "Consider removing olive oil from dough — may not need enrichments at 550°F + steel temps"
+          "text": "Consider removing olive oil from dough \u2014 may not need enrichments at 550\u00b0F + steel temps"
         },
         {
           "text": "Work on peel launch technique to keep toppings evenly distributed"
@@ -392,25 +392,25 @@
       "start_date": "2026-02-20",
       "date": "2026-02-22",
       "version": "v1.3.0",
-      "summary": "Fourth bake — dough accidentally sat at room temp ~4 hours before fridging, stuck to Cambro on removal. Second ball collapsed during shaping but recovered after re-rounding with 15 min rest. Both pies stretched easily and turned out great despite the mishaps.",
+      "summary": "Fourth bake \u2014 dough accidentally sat at room temp ~4 hours before fridging, stuck to Cambro on removal. Second ball collapsed during shaping but recovered after re-rounding with 15 min rest. Both pies stretched easily and turned out great despite the mishaps.",
       "notes": [
-        "Remember to use a measuring glass (the easier to pour one) for recipes involving a stand mixer — much easier to incorporate water",
+        "Remember to use a measuring glass (the easier to pour one) for recipes involving a stand mixer \u2014 much easier to incorporate water",
         "Forgot to measure dough temp before autolyse",
         "Autolyse started around 19:00, ~20 min",
-        "86.4°F dough temp at 19:15 — started adding olive oil and salt",
-        "80°F dough at ~19:20 after incorporating salt and olive oil",
-        "Stopped mixer ~20 seconds early on first knead pass — dough was looking like it was getting overworked",
-        "19:24 — let dough rest, planned to check back in ~13 minutes",
-        "82°F at 19:48 after running mixer for another ~4 minutes (second knead pass)",
-        "78°F approx surface temp — shaped and placed in Cambro. Forgot to weigh dough again",
-        "20:00 — letting dough sit at room temp before fridge, ~43 min remaining (wanted a full hour but forgot to log start time)",
+        "86.4\u00b0F dough temp at 19:15 \u2014 started adding olive oil and salt",
+        "80\u00b0F dough at ~19:20 after incorporating salt and olive oil",
+        "Stopped mixer ~20 seconds early on first knead pass \u2014 dough was looking like it was getting overworked",
+        "19:24 \u2014 let dough rest, planned to check back in ~13 minutes",
+        "82\u00b0F at 19:48 after running mixer for another ~4 minutes (second knead pass)",
+        "78\u00b0F approx surface temp \u2014 shaped and placed in Cambro. Forgot to weigh dough again",
+        "20:00 \u2014 letting dough sit at room temp before fridge, ~43 min remaining (wanted a full hour but forgot to log start time)",
         "383.5g target for each dough ball",
-        "Forgot to place dough in fridge — it was 00:13, dough sat at room temp ~4 hours instead of planned 1 hour",
-        "Dough sticking on bottom of Cambro — probably because didn't bulk ferment in fridge overnight this time",
+        "Forgot to place dough in fridge \u2014 it was 00:13, dough sat at room temp ~4 hours instead of planned 1 hour",
+        "Dough sticking on bottom of Cambro \u2014 probably because didn't bulk ferment in fridge overnight this time",
         "Preheated oven Feb 22 at ~11:30, letting dough come to room temp",
         "Started making pizza at ~1:30pm on Feb 22",
-        "Second dough ball collapsed — re-rounded with tension and let sit 15 minutes, made second pizza at ~14:00",
-        "Result was great for both pies — both stretched out easily. One scare on second dough where it nearly tore but held strong"
+        "Second dough ball collapsed \u2014 re-rounded with tension and let sit 15 minutes, made second pizza at ~14:00",
+        "Result was great for both pies \u2014 both stretched out easily. One scare on second dough where it nearly tore but held strong"
       ],
       "photos": [
         {
@@ -431,7 +431,7 @@
       ],
       "next_time": [
         {
-          "text": "Always bulk ferment overnight in the fridge — room temp bulk led to dough sticking to Cambro"
+          "text": "Always bulk ferment overnight in the fridge \u2014 room temp bulk led to dough sticking to Cambro"
         }
       ],
       "weather": {
@@ -463,7 +463,7 @@
     {
       "id": "V4",
       "name": "Baking Steel",
-      "reuse": "Preheat → bake"
+      "reuse": "Preheat \u2192 bake"
     },
     {
       "id": "V5",
@@ -545,7 +545,7 @@
             "total": 350,
             "unit": "g",
             "breakdown": null,
-            "note": "Low-moisture, high-fat, whole milk mozzarella is mandatory — it shreds clean and melts right"
+            "note": "Low-moisture, high-fat, whole milk mozzarella is mandatory \u2014 it shreds clean and melts right"
           },
           {
             "id": "hard_cheese",
@@ -553,7 +553,7 @@
             "total": 40,
             "unit": "g",
             "breakdown": null,
-            "note": "Freshly grated — adds a savory base layer under the mozzarella"
+            "note": "Freshly grated \u2014 adds a savory base layer under the mozzarella"
           },
           {
             "id": "pepperoni",
@@ -665,7 +665,7 @@
       "exit_condition": "Flour, water, and yeast combined into a shaggy mass with no dry flour visible",
       "notes": [
         {
-          "text": "Jacob Burton adds yeast to the autolyse water — he says it does not affect gluten formation",
+          "text": "Jacob Burton adds yeast to the autolyse water \u2014 he says it does not affect gluten formation",
           "critical": false,
           "source": "user"
         }
@@ -713,7 +713,7 @@
           "source": "user"
         },
         {
-          "text": "Sugar has been removed from the default formula. At 550°F with a preheated steel, the Maillard reaction on flour proteins provides sufficient browning without added sugar. For ovens below 500°F, consider adding 10-19g sugar for Maillard browning.",
+          "text": "Sugar has been removed from the default formula. At 550\u00b0F with a preheated steel, the Maillard reaction on flour proteins provides sufficient browning without added sugar. For ovens below 500\u00b0F, consider adding 10-19g sugar for Maillard browning.",
           "critical": false,
           "source": "agent"
         }
@@ -721,7 +721,7 @@
     },
     {
       "id": "KNEAD_FIRST",
-      "title": "Knead — First Pass",
+      "title": "Knead \u2014 First Pass",
       "direction": "Knead in the stand mixer (V1) on speed 2 for 4 minutes. The dough should begin to pull away from the sides of the bowl.",
       "duration_min": 4,
       "timer": false,
@@ -732,8 +732,8 @@
     },
     {
       "id": "KNEAD_SECOND",
-      "title": "Knead — Second Pass",
-      "direction": "Let the dough rest briefly in the bowl (1–2 minutes), then knead again on speed 2 for 4 more minutes. Total knead time is 8 minutes.",
+      "title": "Knead \u2014 Second Pass",
+      "direction": "Let the dough rest briefly in the bowl (1\u20132 minutes), then knead again on speed 2 for 4 more minutes. Total knead time is 8 minutes.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -752,7 +752,7 @@
       "exit_condition": "Dough stretches thin enough to see light through without tearing",
       "notes": [
         {
-          "text": "If the dough tears before becoming translucent, knead for 1–2 more minutes and re-test",
+          "text": "If the dough tears before becoming translucent, knead for 1\u20132 more minutes and re-test",
           "critical": true,
           "source": "user"
         }
@@ -790,12 +790,12 @@
     {
       "id": "COLD_BULK_FERMENT",
       "title": "Cold Bulk Ferment",
-      "direction": "Transfer the covered bowl (V2) to the refrigerator. Cold ferment for 8–16 hours (overnight). The dough will rise slowly and develop complex flavor.",
+      "direction": "Transfer the covered bowl (V2) to the refrigerator. Cold ferment for 8\u201316 hours (overnight). The dough will rise slowly and develop complex flavor.",
       "duration_min": 720,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough has roughly doubled in size after 8–16 hours in the fridge",
+      "exit_condition": "Dough has roughly doubled in size after 8\u201316 hours in the fridge",
       "notes": [
         {
           "text": "Cold fermentation develops more complex, tangy flavors than a room temperature bulk. The slow rise also strengthens the gluten network for better extensibility.",
@@ -840,7 +840,7 @@
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough balls have visibly expanded after 1–2 days in the fridge, surface is smooth and slightly puffy",
+      "exit_condition": "Dough balls have visibly expanded after 1\u20132 days in the fridge, surface is smooth and slightly puffy",
       "notes": [
         {
           "text": "A 2-day cold proof produces noticeably better flavor and extensibility than 1 day. The dough stretches with almost no spring-back.",
@@ -865,7 +865,7 @@
       "exit_condition": "Dough balls are at room temperature, relaxed, and easy to press with a finger",
       "notes": [
         {
-          "text": "Start preheating the oven during this step — by the time the dough is tempered, the steel will be fully saturated with heat",
+          "text": "Start preheating the oven during this step \u2014 by the time the dough is tempered, the steel will be fully saturated with heat",
           "critical": false,
           "source": "user"
         }
@@ -874,15 +874,15 @@
     {
       "id": "PREHEAT_STEEL",
       "title": "Preheat Baking Steel",
-      "direction": "Place the baking steel (V4) on the middle oven rack. Preheat the oven to 550°F (288°C). Allow at least 45 minutes for the steel to fully saturate with heat.",
+      "direction": "Place the baking steel (V4) on the middle oven rack. Preheat the oven to 550\u00b0F (288\u00b0C). Allow at least 45 minutes for the steel to fully saturate with heat.",
       "duration_min": 45,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven at 550°F (288°C) and steel fully preheated for at least 45 minutes",
+      "exit_condition": "Oven at 550\u00b0F (288\u00b0C) and steel fully preheated for at least 45 minutes",
       "notes": [
         {
-          "text": "A fully preheated steel is essential — it provides the intense bottom heat that creates a properly charred NY-style crust",
+          "text": "A fully preheated steel is essential \u2014 it provides the intense bottom heat that creates a properly charred NY-style crust",
           "critical": true,
           "source": "user"
         }
@@ -891,7 +891,7 @@
     {
       "id": "STRETCH_DOUGH",
       "title": "Stretch Dough",
-      "direction": "Sprinkle the wooden pizza peel (V5) with 7g cornmeal. Place one dough ball on a lightly floured surface. Using your fingertips, press from the center outward, pushing air toward the edges to form the crust rim. Pick up the dough and drape it over your knuckles, gently stretching and rotating until you have a 30–33cm (12–13 inch) disc. Never use a rolling pin. Transfer to the cornmeal-dusted peel.",
+      "direction": "Sprinkle the wooden pizza peel (V5) with 7g cornmeal. Place one dough ball on a lightly floured surface. Using your fingertips, press from the center outward, pushing air toward the edges to form the crust rim. Pick up the dough and drape it over your knuckles, gently stretching and rotating until you have a 30\u201333cm (12\u201313 inch) disc. Never use a rolling pin. Transfer to the cornmeal-dusted peel.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -901,10 +901,10 @@
           "amount": "7g"
         }
       ],
-      "exit_condition": "Dough stretched to a 30–33cm disc with puffy edge crust, resting on cornmeal-dusted peel",
+      "exit_condition": "Dough stretched to a 30\u201333cm disc with puffy edge crust, resting on cornmeal-dusted peel",
       "notes": [
         {
-          "text": "Never roll pizza dough — rolling pops the gas bubbles that create the airy, puffy crust",
+          "text": "Never roll pizza dough \u2014 rolling pops the gas bubbles that create the airy, puffy crust",
           "critical": true,
           "source": "user"
         },
@@ -943,12 +943,12 @@
       "exit_condition": "Pizza topped in order: sauce, grated hard cheese, mozzarella, pepperoni on top",
       "notes": [
         {
-          "text": "Pepperoni goes on top of the cheese — this is intentional so it browns, crisps, and cups up during baking",
+          "text": "Pepperoni goes on top of the cheese \u2014 this is intentional so it browns, crisps, and cups up during baking",
           "critical": false,
           "source": "user"
         },
         {
-          "text": "Layering sauce → grated Parmigiano-Reggiano → mozzarella → pepperoni adds a savory base layer under the mozz. The parm melts into the sauce and creates a flavor bridge between the two.",
+          "text": "Layering sauce \u2192 grated Parmigiano-Reggiano \u2192 mozzarella \u2192 pepperoni adds a savory base layer under the mozz. The parm melts into the sauce and creates a flavor bridge between the two.",
           "critical": false,
           "source": "agent"
         },
@@ -962,7 +962,7 @@
     {
       "id": "BAKE_PIZZA",
       "title": "Bake Pizza",
-      "direction": "Open the oven and slide the pizza from the peel onto the preheated steel (V4) with a quick forward-and-back motion. Bake at 550°F (288°C) for 8–12 minutes. Repeat the stretch, top, and bake process for the second pizza.",
+      "direction": "Open the oven and slide the pizza from the peel onto the preheated steel (V4) with a quick forward-and-back motion. Bake at 550\u00b0F (288\u00b0C) for 8\u201312 minutes. Repeat the stretch, top, and bake process for the second pizza.",
       "duration_min": 10,
       "timer": true,
       "parallel": false,
@@ -970,7 +970,7 @@
       "exit_condition": "Cheese is bubbly and lightly browned, crust is puffed and golden with charred spots",
       "notes": [
         {
-          "text": "Check at 8 minutes — ovens vary. Rotate the pizza halfway through if your oven has hot spots.",
+          "text": "Check at 8 minutes \u2014 ovens vary. Rotate the pizza halfway through if your oven has hot spots.",
           "critical": false,
           "source": "user"
         }
@@ -979,7 +979,7 @@
     {
       "id": "COOL_SLICE",
       "title": "Cool & Slice",
-      "direction": "Use the peel to slide the baked pizza onto a wire rack or cutting board. Let it rest for 2–3 minutes. Cut into 8 slices. Serve immediately.",
+      "direction": "Use the peel to slide the baked pizza onto a wire rack or cutting board. Let it rest for 2\u20133 minutes. Cut into 8 slices. Serve immediately.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -1166,14 +1166,112 @@
     "methods": [
       {
         "method": "Skillet Steam",
-        "detail": "Heat a dry pan over medium-high heat. Add 1–3 slices of cold pizza and heat for about 2 minutes until the bottom starts to crisp. Add 1–1.5 tsp water and immediately cover the pan. Steam covered for 30 seconds. Uncover, let any remaining water boil off, and continue cooking until the bottom is firm and crispy, about 1 minute. Don't burn the crust. Results taste exactly like fresh — crispy bottom, melty cheese, soft top.",
+        "detail": "Heat a dry pan over medium-high heat. Add 1\u20133 slices of cold pizza and heat for about 2 minutes until the bottom starts to crisp. Add 1\u20131.5 tsp water and immediately cover the pan. Steam covered for 30 seconds. Uncover, let any remaining water boil off, and continue cooking until the bottom is firm and crispy, about 1 minute. Don't burn the crust. Results taste exactly like fresh \u2014 crispy bottom, melty cheese, soft top.",
         "source": "user",
         "reference": "https://www.reddit.com/r/Cooking/comments/13k900q/my_mom_introduced_us_to_the_perfect_method_of/"
       },
       {
         "method": "Air Fryer",
-        "detail": "350–400°F for about 5 minutes. Quick and effective, crisps the bottom well.",
+        "detail": "350\u2013400\u00b0F for about 5 minutes. Quick and effective, crisps the bottom well.",
         "source": "user"
+      }
+    ]
+  },
+  "estimatedCost": {
+    "total": 14.35,
+    "perServing": 7.17,
+    "servings": 2,
+    "estimatedAt": "2026-04-23",
+    "items": [
+      {
+        "ingredientId": "bread_flour",
+        "name": "Bread Flour",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Baker's Scoop Bread Flour 5 lb ($3.78)",
+        "amount": 463,
+        "unit": "g",
+        "cost": 0.77
+      },
+      {
+        "ingredientId": "water",
+        "name": "Water",
+        "sourceType": "rate",
+        "sourceName": "Tap water (free)",
+        "amount": 288,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "instant_yeast",
+        "name": "Instant Dry Yeast",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Instant Yeast 3-pack/21g ($0.98)",
+        "amount": 6,
+        "unit": "g",
+        "cost": 0.28
+      },
+      {
+        "ingredientId": "olive_oil",
+        "name": "Olive Oil",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Extra Virgin Olive Oil 17 oz ($6.68)",
+        "amount": 18,
+        "unit": "g",
+        "cost": 0.27
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 8,
+        "unit": "g",
+        "cost": 0.01
+      },
+      {
+        "ingredientId": "cornmeal",
+        "name": "Cornmeal",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Corn Starch 1 lb ($1.68)",
+        "amount": 13,
+        "unit": "g",
+        "cost": 0.05
+      },
+      {
+        "ingredientId": "san_marzano_sauce",
+        "name": "Raw San Marzano Tomato Sauce",
+        "sourceType": "rate",
+        "sourceName": "Cento San Marzano Tomatoes 28 oz ($4.54)",
+        "amount": 175,
+        "unit": "g",
+        "cost": 1.0
+      },
+      {
+        "ingredientId": "mozzarella",
+        "name": "Low-Moisture Mozzarella",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Organics Mozzarella 8 oz ($4.39)",
+        "amount": 350,
+        "unit": "g",
+        "cost": 6.78
+      },
+      {
+        "ingredientId": "hard_cheese",
+        "name": "Parmigiano-Reggiano or Pecorino Romano",
+        "sourceType": "rate",
+        "sourceName": "Galli Parmigiano Reggiano ~0.43 lb ($10.31)",
+        "amount": 40,
+        "unit": "g",
+        "cost": 2.11
+      },
+      {
+        "ingredientId": "pepperoni",
+        "name": "Pepperoni",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Pepperoni Slices 6 oz ($2.99)",
+        "amount": 175,
+        "unit": "g",
+        "cost": 3.08
       }
     ]
   }

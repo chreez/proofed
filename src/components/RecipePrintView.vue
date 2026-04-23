@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { validatePrintSections } from '@/composables/usePrintValidation'
@@ -7,7 +7,7 @@ import { deriveAllergens } from '@/composables/useAllergens'
 import { getMostRecentCost, getMostRecentCostDate, getMostRecentCostWithItems, getMostRecentCostWithItemsDate } from '@/composables/useCost'
 import type { CookLogCostItem } from '@/types/recipe'
 import NutritionLabel from '@/components/NutritionLabel.vue'
-import * as QRCode from 'qrcode'
+import { renderBrandedQr, generateQrLabelDataUrl } from '@/composables/useQrLabel'
 
 const route = useRoute()
 const { currentRecipe } = useRecipe()
@@ -17,21 +17,38 @@ const validation = computed(() => validatePrintSections(currentRecipe.value))
 const failedChecks = computed(() => validation.value.checks.filter((c) => !c.pass))
 
 const qrCodeDataUrl = ref<string>('')
+const qrContainer = ref<HTMLDivElement | null>(null)
 
-// Generate QR code on mount
+/**
+ * Generate branded QR code on mount using the shared useQrLabel composable.
+ *
+ * Spike finding (PF-220 AC #6): qr-code-styling renders asynchronously via
+ * canvas — the library appends a <canvas> to a container DOM node and draws
+ * to it over ~200-300ms. renderBrandedQr() handles this with an internal
+ * setTimeout(300ms) before resolving. For print rendering, the QR is
+ * converted to a static <img> data URL immediately after the canvas is ready,
+ * so print CSS sees a plain image element rather than a live canvas — this
+ * sidesteps the canvas-not-printing issue in Safari/WebKit. In testing, the
+ * 300ms delay is sufficient for QR codes up to 512px; larger sizes or complex
+ * logos may need a longer wait. No reliability issues observed for the
+ * print-page use case (200px rendered size).
+ */
 onMounted(async () => {
+  await nextTick()
   const recipeId = route.params.recipeId
-  if (typeof recipeId === 'string') {
+  if (typeof recipeId === 'string' && qrContainer.value) {
     const url = `https://proofeddot.netlify.app/recipe/${recipeId}`
-    qrCodeDataUrl.value = await QRCode.toDataURL(url, {
-      errorCorrectionLevel: 'M',
-      margin: 4,
-      width: 200,
-      color: {
-        dark: '#1a1816',
-        light: '#ffffff'
-      }
+    const qrCanvas = await renderBrandedQr(qrContainer.value, {
+      url,
+      size: 200
     })
+    if (qrCanvas) {
+      // No labelText — print page gets QR-only, no "reheat." label
+      const dataUrl = generateQrLabelDataUrl(qrCanvas, { url, size: 200 })
+      if (dataUrl) {
+        qrCodeDataUrl.value = dataUrl
+      }
+    }
   }
 })
 
@@ -292,6 +309,9 @@ const recipeUrl = computed(() => {
       </div>
     </div>
 
+    <!-- Hidden container for QR code rendering (qr-code-styling needs a DOM node) -->
+    <div ref="qrContainer" class="qr-render-target" />
+
     <!-- Footer + QR unified section -->
     <footer class="print-footer">
       <div class="footer-text">
@@ -433,6 +453,16 @@ const recipeUrl = computed(() => {
 .check-detail {
   font-size: 9pt;
   color: var(--color-stone-500);
+}
+
+/* Hidden QR render target — offscreen, never visible */
+.qr-render-target {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 /* Outer wrapper — no layout, just contains sibling pages */
