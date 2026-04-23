@@ -1,10 +1,10 @@
 ---
 id: PF-211
 title: Recipe Printout — Professional Printable Bake Sheet
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-04-22 05:14'
-updated_date: '2026-04-22 05:28'
+updated_date: '2026-04-23 18:03'
 labels:
   - feature
   - ux
