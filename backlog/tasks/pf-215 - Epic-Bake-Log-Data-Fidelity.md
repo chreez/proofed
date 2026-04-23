@@ -1,9 +1,10 @@
 ---
-id: DRAFT-69
+id: PF-215
 title: 'Epic: Bake Log Data Fidelity'
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-04-23 18:40'
+updated_date: '2026-04-23 18:59'
 labels:
   - epic
 dependencies: []
