@@ -7,7 +7,7 @@ import type { Recipe, RecipeManifest, Ingredient, CookLogEntry } from '@/types/r
 function loadAllRecipes(): Array<{ id: string } & Recipe> {
   const recipesDir = join(process.cwd(), 'public/recipes')
   const files = readdirSync(recipesDir).filter(
-    (f) => f.endsWith('.json') && f !== 'index.json'
+    (f) => f.endsWith('.json') && f !== 'index.json' && f !== 'cost-rates.json'
   )
   return files.map((file) => {
     const content = JSON.parse(
