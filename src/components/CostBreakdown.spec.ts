@@ -61,7 +61,7 @@ describe('CostBreakdown', () => {
             ingredientId: 'water',
             name: 'Water',
             sourceType: 'rate',
-            sourceName: 'Tap water (negligible)',
+            sourceName: 'Filtered water (not yet priced)',
             amount: 350,
             unit: 'g',
             cost: 0.00
@@ -274,7 +274,7 @@ describe('CostBreakdown', () => {
       expect(itemCosts[0].text()).toBe('$1.23')
     })
 
-    it('shows "negligible" for zero-cost rate items', () => {
+    it('shows $0.00 for zero-cost rate items', () => {
       const cost: CookLogCost = {
         total: 1.23,
         perServing: 1.23,
@@ -284,7 +284,7 @@ describe('CostBreakdown', () => {
             ingredientId: 'water',
             name: 'Water',
             sourceType: 'rate',
-            sourceName: 'Tap water',
+            sourceName: 'Filtered water (not yet priced)',
             amount: 350,
             unit: 'g',
             cost: 0.00
@@ -305,7 +305,7 @@ describe('CostBreakdown', () => {
 
       const wrapper = mount(CostBreakdown, { props: { recipe } })
 
-      expect(wrapper.text()).toContain('negligible')
+      expect(wrapper.text()).toContain('$0.00')
     })
 
     it('displays total and per-serving costs', () => {

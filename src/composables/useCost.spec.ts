@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getMostRecentCost, getServings, getMostRecentCostDate, getMajorVersion, getVersionAverageCost } from './useCost'
+import { getMostRecentCost, getMostRecentCostWithItems, getMostRecentCostWithItemsDate, getServings, getMostRecentCostDate, getMajorVersion, getVersionAverageCost } from './useCost'
 import type { Recipe, CookLogCost } from '@/types/recipe'
 
 describe('useCost', () => {
@@ -365,6 +365,117 @@ describe('useCost', () => {
       }
 
       expect(getMostRecentCostDate(recipe)).toBe('2026-02-15')
+    })
+  })
+
+  describe('getMostRecentCostWithItems', () => {
+    const baseRecipe: Recipe = {
+      meta: { name: 'Test', source: { name: 'Test' }, yields: '1', total_time: '1h' },
+      config: { early_check_percent: 0.8 },
+      vessels: [],
+      stages: [],
+      states: [],
+      version: 'v1.0.0',
+    }
+
+    it('returns null when no cook_log', () => {
+      expect(getMostRecentCostWithItems(baseRecipe)).toBeNull()
+    })
+
+    it('returns null when cost entries have empty items', () => {
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          { date: '2026-02-01', version: 'v1.0.0', notes: ['test'], cost: { total: 5, perServing: 5, servings: 1, items: [] } },
+        ],
+      }
+      expect(getMostRecentCostWithItems(recipe)).toBeNull()
+    })
+
+    it('skips entries without items and returns entry with items', () => {
+      const costWithItems: CookLogCost = {
+        total: 7.94,
+        perServing: 0.66,
+        servings: 12,
+        items: [{ ingredientId: 'flour', name: 'Flour', sourceType: 'heb', sourceName: 'HEB Flour', amount: 420, unit: 'g', cost: 0.50 }],
+      }
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          { date: '2026-04-17', version: 'v1.0.0', notes: ['has items'], cost: costWithItems },
+          { date: '2026-04-22', version: 'v1.0.0', notes: ['no items'], cost: { total: 9.31, perServing: 0.93, servings: 10, items: [] } },
+        ],
+      }
+      expect(getMostRecentCostWithItems(recipe)).toEqual(costWithItems)
+    })
+
+    it('returns most recent entry with items when multiple have items', () => {
+      const older: CookLogCost = {
+        total: 5,
+        perServing: 5,
+        servings: 1,
+        items: [{ ingredientId: 'a', name: 'A', sourceType: 'heb', sourceName: 'X', amount: 1, unit: 'g', cost: 5 }],
+      }
+      const newer: CookLogCost = {
+        total: 6,
+        perServing: 6,
+        servings: 1,
+        items: [{ ingredientId: 'b', name: 'B', sourceType: 'heb', sourceName: 'Y', amount: 2, unit: 'g', cost: 6 }],
+      }
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          { date: '2026-01-01', version: 'v1.0.0', notes: ['old'], cost: older },
+          { date: '2026-02-01', version: 'v1.0.0', notes: ['new'], cost: newer },
+        ],
+      }
+      expect(getMostRecentCostWithItems(recipe)?.total).toBe(6)
+    })
+  })
+
+  describe('getMostRecentCostWithItemsDate', () => {
+    const baseRecipe: Recipe = {
+      meta: { name: 'Test', source: { name: 'Test' }, yields: '1', total_time: '1h' },
+      config: { early_check_percent: 0.8 },
+      vessels: [],
+      stages: [],
+      states: [],
+      version: 'v1.0.0',
+    }
+
+    it('returns null when no cook_log', () => {
+      expect(getMostRecentCostWithItemsDate(baseRecipe)).toBeNull()
+    })
+
+    it('returns null when no entries have items', () => {
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          { date: '2026-02-01', version: 'v1.0.0', notes: ['test'], cost: { total: 5, perServing: 5, servings: 1, items: [] } },
+        ],
+      }
+      expect(getMostRecentCostWithItemsDate(recipe)).toBeNull()
+    })
+
+    it('returns date of most recent entry with items', () => {
+      const recipe: Recipe = {
+        ...baseRecipe,
+        cook_log: [
+          {
+            date: '2026-04-17',
+            version: 'v1.0.0',
+            notes: ['has items'],
+            cost: {
+              total: 7,
+              perServing: 7,
+              servings: 1,
+              items: [{ ingredientId: 'a', name: 'A', sourceType: 'heb', sourceName: 'X', amount: 1, unit: 'g', cost: 7 }],
+            },
+          },
+          { date: '2026-04-22', version: 'v1.0.0', notes: ['no items'], cost: { total: 9, perServing: 9, servings: 1, items: [] } },
+        ],
+      }
+      expect(getMostRecentCostWithItemsDate(recipe)).toBe('2026-04-17')
     })
   })
 

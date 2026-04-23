@@ -148,7 +148,7 @@ const sampleCostRates = {
   updatedAt: '2026-02-16',
   source: 'Test Store',
   rates: {
-    water: { name: 'Water', ratePerGram: 0, sourceProduct: 'Tap water (negligible)', updatedAt: '2026-02-16' },
+    water: { name: 'Water', ratePerGram: 0, sourceProduct: 'Filtered water (not yet priced)', updatedAt: '2026-02-16' },
     starter: { name: 'Sourdough Starter', ratePerGram: 0.00057, sourceProduct: 'Derived: 50% AP flour rate', updatedAt: '2026-02-16' }
   }
 }
@@ -1263,7 +1263,7 @@ describe('BakeReviewPage', () => {
       expect(ingredientCards[2].find('[data-testid="stored-rate-display"]').exists()).toBe(true)
     })
 
-    it('shows negligible label for zero-rate ingredients like water', async () => {
+    it('shows $0.00 for zero-rate ingredients like water', async () => {
       global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithRateIngredients)
 
       const wrapper = mount(BakeReviewPage)
@@ -1273,7 +1273,7 @@ describe('BakeReviewPage', () => {
       await tabs.find(t => t.text() === 'Cost')!.trigger('click')
 
       const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
-      expect(ingredientCards[1].text()).toContain('negligible')
+      expect(ingredientCards[1].text()).toContain('$0.00')
     })
 
     it('shows calculated cost for stored rate ingredients', async () => {

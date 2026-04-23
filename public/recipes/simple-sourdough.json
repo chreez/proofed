@@ -163,7 +163,7 @@
             "breakdown": null,
             "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
             "confidence": "high",
-            "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Tap water is fine."
+            "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
           },
           {
             "id": "starter",
@@ -1164,7 +1164,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 350,
             "unit": "g",
             "cost": 0
@@ -1385,7 +1385,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 350,
             "unit": "g",
             "cost": 0
@@ -1626,7 +1626,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -1852,7 +1852,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -2073,7 +2073,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -2280,7 +2280,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -2488,7 +2488,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -2687,7 +2687,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -2880,7 +2880,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -3008,7 +3008,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 350,
             "unit": "g",
             "cost": 0
@@ -3213,7 +3213,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -3437,7 +3437,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -3671,7 +3671,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -3881,7 +3881,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 700,
             "unit": "g",
             "cost": 0
@@ -4077,7 +4077,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 350,
             "unit": "g",
             "cost": 0
@@ -4259,7 +4259,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 350,
             "unit": "g",
             "cost": 0
@@ -4414,7 +4414,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 350,
             "unit": "g",
             "cost": 0

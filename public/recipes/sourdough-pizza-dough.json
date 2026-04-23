@@ -1035,7 +1035,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 476,
             "unit": "g",
             "cost": 0

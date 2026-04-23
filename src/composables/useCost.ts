@@ -22,6 +22,46 @@ export function getMostRecentCost(recipe: Recipe): CookLogCost | null {
 }
 
 /**
+ * Extract the most recent cost data that has a populated items[] array.
+ * Use this when you need the itemized breakdown (e.g., print page cost table).
+ * Falls back to null if no entry has cost items.
+ */
+export function getMostRecentCostWithItems(recipe: Recipe): CookLogCost | null {
+  if (!recipe.cook_log || recipe.cook_log.length === 0) {
+    return null
+  }
+
+  const entriesWithItems = recipe.cook_log
+    .filter(entry => entry.cost && Array.isArray(entry.cost.items) && entry.cost.items.length > 0)
+    .sort((a, b) => b.date.localeCompare(a.date))
+
+  if (entriesWithItems.length === 0) {
+    return null
+  }
+
+  return entriesWithItems[0].cost!
+}
+
+/**
+ * Get the date of the most recent bake with populated cost items[].
+ */
+export function getMostRecentCostWithItemsDate(recipe: Recipe): string | null {
+  if (!recipe.cook_log || recipe.cook_log.length === 0) {
+    return null
+  }
+
+  const entriesWithItems = recipe.cook_log
+    .filter(entry => entry.cost && Array.isArray(entry.cost.items) && entry.cost.items.length > 0)
+    .sort((a, b) => b.date.localeCompare(a.date))
+
+  if (entriesWithItems.length === 0) {
+    return null
+  }
+
+  return entriesWithItems[0].date
+}
+
+/**
  * Get servings count for a recipe.
  * Priority: nutrition.servings > config.stats calculation > 1 (fallback)
  */
@@ -65,6 +105,7 @@ export function getMostRecentCostDate(recipe: Recipe): string | null {
  * "v3.6.0" → 3, "v1.2.0" → 1, "1.0" → 1
  */
 export function getMajorVersion(version: string): number {
+  if (!version) return 0
   const match = version.match(/v?(\d+)/)
   return match ? parseInt(match[1], 10) : 0
 }

@@ -68,13 +68,13 @@
       "recipeUnit": "g",
       "products": [
         {
-          "name": "Tap water",
+          "name": "Filtered water",
           "brand": "Municipal",
           "size": "n/a",
           "sizeGrams": null,
           "price": 0,
           "salePrice": null,
-          "unitPrice": "negligible",
+          "unitPrice": "not yet priced",
           "inStock": true
         }
       ]

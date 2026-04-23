@@ -49,6 +49,7 @@ const fullGather = {
   equipment: ['Rolling pin', 'Serrated knife'],
   ingredients: [
     { id: 'flour', name: 'All-purpose flour', total: 390, unit: 'g', breakdown: null },
+    { id: 'eggs', name: 'Large Eggs', total: 3, unit: 'whole', breakdown: null },
     {
       id: 'butter',
       name: 'Unsalted butter',
@@ -88,7 +89,7 @@ describe('GatherSection', () => {
     expect(stubs.length).toBe(3)
     expect(stubs[0].text()).toContain('Vessels: 2 items')
     expect(stubs[1].text()).toContain('Equipment: 2 items')
-    expect(stubs[2].text()).toContain('Ingredients: 2 items')
+    expect(stubs[2].text()).toContain('Ingredients: 3 items')
   })
 
   it('passes startCollapsed to Vessels and Equipment but not Ingredients', () => {

@@ -411,7 +411,7 @@ function getCostRate(ingredientId: string): CostRate | null {
   return costRates.value?.rates[ingredientId] ?? null
 }
 
-function isNegligibleCost(ingredientId: string): boolean {
+function isUnpricedRate(ingredientId: string): boolean {
   const rate = getCostRate(ingredientId)
   return rate !== null && rate.ratePerGram === 0
 }
@@ -496,7 +496,7 @@ const costLineItems = computed<CostLineItem[]>(() => {
       const rate = getCostRate(ingredient.ingredientId)
       if (rate) {
         sourceName = rate.sourceProduct
-        packageSize = isNegligibleCost(ingredient.ingredientId) ? 'negligible' : `$${rate.ratePerGram.toFixed(4)}/g`
+        packageSize = isUnpricedRate(ingredient.ingredientId) ? 'not yet priced' : `$${rate.ratePerGram.toFixed(4)}/g`
         packagePrice = 0
       }
     } else if (selection.sourceType === 'heb') {
@@ -983,12 +983,12 @@ onMounted(async () => {
             <!-- Stored rate display -->
             <template v-if="getSelection(ingredient.ingredientId).sourceType === 'rate'">
               <div class="bg-stone-50 border-2 border-stone-200 p-4" data-testid="stored-rate-display">
-                <template v-if="isNegligibleCost(ingredient.ingredientId)">
+                <template v-if="isUnpricedRate(ingredient.ingredientId)">
                   <div class="flex items-center justify-between">
                     <div>
                       <span class="font-mono text-xs text-stone-500">{{ getCostRate(ingredient.ingredientId)?.sourceProduct }}</span>
                     </div>
-                    <span class="font-mono text-sm text-stone-400 italic">negligible</span>
+                    <span class="font-mono text-sm text-stone-400">$0.00</span>
                   </div>
                 </template>
                 <template v-else>

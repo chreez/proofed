@@ -41,9 +41,10 @@ const ingredientItems = computed(() => {
   const mult = multiplier.value
   return (props.gather.ingredients || []).map(ing => {
     const scaledTotal = ing.total * mult
-    const label = `${ing.name} — ${scaledTotal}${ing.unit}`
+    const fmt = (amount: number, unit: string) => unit === 'whole' ? `${amount}x` : `${amount}${unit}`
+    const label = `${ing.name} — ${fmt(scaledTotal, ing.unit)}`
     const detail = ing.breakdown
-      ? ing.breakdown.map(b => `${b.amount * mult}${ing.unit} ${b.label}`).join(', ')
+      ? ing.breakdown.map(b => `${fmt(b.amount * mult, ing.unit)} ${b.label}`).join(', ')
       : undefined
     // Show behavior note for non-linear/fixed ingredients when scaled
     let note: string | undefined

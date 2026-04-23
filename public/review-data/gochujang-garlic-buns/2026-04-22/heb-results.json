@@ -53,7 +53,7 @@
       "recipeAmount": 100,
       "recipeUnit": "g",
       "products": [
-        { "name": "Tap water", "brand": "n/a", "size": "negligible", "sizeGrams": null, "price": 0, "salePrice": null, "unitPrice": "free", "inStock": true }
+        { "name": "Filtered water", "brand": "n/a", "size": "not yet priced", "sizeGrams": null, "price": 0, "salePrice": null, "unitPrice": "free", "inStock": true }
       ]
     },
     {

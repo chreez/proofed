@@ -1171,7 +1171,7 @@
             "ingredientId": "water",
             "name": "Water",
             "sourceType": "rate",
-            "sourceName": "Tap water (negligible)",
+            "sourceName": "Filtered water (not yet priced)",
             "amount": 100,
             "unit": "g",
             "cost": 0
@@ -1407,8 +1407,8 @@
           {
             "ingredientId": "water",
             "ingredientName": "Water",
-            "product": "Tap water",
-            "packageSize": "negligible",
+            "product": "Filtered water",
+            "packageSize": "not yet priced",
             "packagePrice": 0,
             "cost": 0
           },
@@ -1566,7 +1566,7 @@
           { "ingredientId": "garlic", "ingredientName": "Garlic Cloves", "product": "Fresh Garlic", "packageSize": "Each", "packagePrice": 0.50, "cost": 0 },
           { "ingredientId": "olive-oil", "ingredientName": "Extra Virgin Olive Oil", "product": "H-E-B Extra Virgin Olive Oil 8.5 oz", "packageSize": "8.5 oz", "packagePrice": 4.38, "cost": 4.74 },
           { "ingredientId": "bread-flour", "ingredientName": "Bread Flour", "product": "King Arthur Unbleached Bread Flour 10 lbs", "packageSize": "10 lbs", "packagePrice": 10.99, "cost": 1.02 },
-          { "ingredientId": "water", "ingredientName": "Water", "product": "Tap water", "packageSize": "negligible", "packagePrice": 0, "cost": 0 },
+          { "ingredientId": "water", "ingredientName": "Water", "product": "Filtered water", "packageSize": "not yet priced", "packagePrice": 0, "cost": 0 },
           { "ingredientId": "instant-yeast", "ingredientName": "Instant Yeast", "product": "Red Star Quick-Rise Instant Dry Yeast 3ct", "packageSize": "3 ct", "packagePrice": 1.76, "cost": 0.59 },
           { "ingredientId": "whole-milk", "ingredientName": "Whole Milk", "product": "H-E-B Whole Milk 1 pt", "packageSize": "1 pt", "packagePrice": 1.00, "cost": 0.24 },
           { "ingredientId": "unsalted-butter", "ingredientName": "Unsalted Butter", "product": "Hill Country Fare Unsalted Butter Sticks 4ct", "packageSize": "4 ct", "packagePrice": 2.98, "cost": 0.18 },

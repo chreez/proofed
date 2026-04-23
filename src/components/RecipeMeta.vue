@@ -71,7 +71,7 @@ function formatRecipeForPaprika(): string {
   for (const stage of stages) {
     if (stage.gather?.ingredients) {
       for (const ing of stage.gather.ingredients) {
-        allIngredients.push(`${ing.name} — ${ing.total}${ing.unit}`)
+        allIngredients.push(`${ing.name} — ${ing.unit === 'whole' ? `${ing.total}x` : `${ing.total}${ing.unit}`}`)
       }
     }
   }

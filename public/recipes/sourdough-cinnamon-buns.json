@@ -1447,7 +1447,7 @@
           },
           {
             "ingredientId": "levain_water",
-            "name": "Water (negligible)",
+            "name": "Water (not yet priced)",
             "recipeAmount": 84,
             "packageSize": null,
             "packagePrice": null,

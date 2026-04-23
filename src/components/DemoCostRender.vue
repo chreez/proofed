@@ -14,7 +14,7 @@ const sampleCost: CostData = {
   servings: 1,
   items: [
     { ingredientId: 'bread_flour', name: 'Bread Flour', sourceType: 'heb', sourceName: 'King Arthur Bread Flour, 5 lb', amount: 500, unit: 'g', cost: 1.23 },
-    { ingredientId: 'water', name: 'Water', sourceType: 'rate', sourceName: 'Tap water (negligible)', amount: 350, unit: 'g', cost: 0.00 },
+    { ingredientId: 'water', name: 'Water', sourceType: 'rate', sourceName: 'Filtered water (not yet priced)', amount: 350, unit: 'g', cost: 0.00 },
     { ingredientId: 'starter', name: 'Sourdough Starter', sourceType: 'rate', sourceName: 'Derived: 50% AP flour rate', amount: 100, unit: 'g', cost: 0.06 },
     { ingredientId: 'salt', name: 'Fine Sea Salt', sourceType: 'manual', sourceName: 'H-E-B Mediterranean Sea Salt', amount: 10, unit: 'g', cost: 0.03 }
   ]
@@ -38,12 +38,11 @@ function sourceBadgeClass(sourceType: CostSourceType): string {
   }
 }
 
-function formatCost(cost: number, isNegligible: boolean): string {
-  if (isNegligible) return 'negligible'
+function formatCost(cost: number): string {
   return `$${cost.toFixed(2)}`
 }
 
-function isNegligible(item: CookLogCostItem): boolean {
+function isUnpriced(item: CookLogCostItem): boolean {
   return item.cost === 0 && item.sourceType === 'rate'
 }
 </script>
@@ -92,12 +91,12 @@ function isNegligible(item: CookLogCostItem): boolean {
             </div>
             <div class="text-right flex-shrink-0">
               <div class="flex items-baseline gap-2">
-                <span class="text-xs text-stone-400 font-mono">{{ item.amount }}{{ item.unit }}</span>
+                <span class="text-xs text-stone-400 font-mono">{{ item.unit === 'whole' ? `${item.amount}x` : `${item.amount}${item.unit}` }}</span>
                 <span
                   class="text-sm font-mono font-medium"
-                  :class="isNegligible(item) ? 'text-stone-400 italic' : 'text-ink'"
+                  :class="isUnpriced(item) ? 'text-stone-400' : 'text-ink'"
                 >
-                  {{ formatCost(item.cost, isNegligible(item)) }}
+                  {{ formatCost(item.cost) }}
                 </span>
               </div>
             </div>

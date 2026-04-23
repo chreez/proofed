@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Recipe, CookLogCostItem, CostSourceType } from '@/types/recipe'
+import type { Recipe, CostSourceType } from '@/types/recipe'
 import { getMostRecentCost, getMostRecentCostDate } from '@/composables/useCost'
 
 interface Props {
@@ -42,12 +42,7 @@ function sourceBadgeClass(sourceType: CostSourceType): string {
   }
 }
 
-function isNegligible(item: CookLogCostItem): boolean {
-  return item.cost === 0 && item.sourceType === 'rate'
-}
-
-function formatCost(cost: number, negligible: boolean): string {
-  if (negligible) return 'negligible'
+function formatCost(cost: number): string {
   return `$${cost.toFixed(2)}`
 }
 
@@ -101,11 +96,11 @@ function formatDate(dateStr: string): string {
               >
                 {{ sourceBadgeLabel(item.sourceType) }}
               </span>
-              <span class="text-xs text-stone-400">{{ item.amount }}{{ item.unit }}</span>
+              <span class="text-xs text-stone-400">{{ item.unit === 'whole' ? `${item.amount}x` : `${item.amount}${item.unit}` }}</span>
             </div>
           </div>
           <div class="font-mono text-sm font-medium text-ink shrink-0" data-testid="item-cost">
-            {{ formatCost(item.cost, isNegligible(item)) }}
+            {{ formatCost(item.cost) }}
           </div>
         </div>
       </div>
