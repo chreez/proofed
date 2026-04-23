@@ -202,6 +202,42 @@ describe('usePrintValidation', () => {
       const check = validatePrintSections(minimalRecipe).checks.find((c) => c.id === 'PV4')
       expect(check?.pass).toBe(false)
     })
+
+    it('passes when estimatedCost has populated items[]', () => {
+      const recipe: Recipe = {
+        ...minimalRecipe,
+        estimatedCost: {
+          items: [
+            { ingredientId: 'flour', name: 'Flour', amount: 500, unit: 'g', cost: 1.5, sourceType: 'rate', sourceName: 'HEB Flour 5lb' },
+          ],
+          total: 1.5,
+          perServing: 0.19,
+          servings: 8,
+          estimatedAt: '2026-04-23',
+        },
+      }
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV4')
+      expect(check?.pass).toBe(true)
+      expect(check?.detail).toContain('estimatedCost')
+    })
+
+    it('passes with estimatedCost and counts bake cost sources', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
+        estimatedCost: {
+          items: [
+            { ingredientId: 'flour', name: 'Flour', amount: 500, unit: 'g', cost: 1.5, sourceType: 'rate', sourceName: 'HEB Flour 5lb' },
+          ],
+          total: 1.5,
+          perServing: 0.19,
+          servings: 8,
+          estimatedAt: '2026-04-23',
+        },
+      }
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV4')
+      expect(check?.pass).toBe(true)
+      expect(check?.detail).toContain('2 cost sources')
+    })
   })
 
   describe('PV5: Serving label coherence', () => {

@@ -241,6 +241,13 @@ const costDateFormatted = computed(() => {
 
 const costBreakdownDateFormatted = computed(() => costDateFormatted.value)
 
+function formatCostRate(item: CookLogCostItem): string {
+  const rate = item.cost / item.amount
+  const unit = item.unit === 'whole' ? 'ea' : item.unit
+  if (rate < 0.01) return `<$0.01/${unit}`
+  return `$${rate.toFixed(2)}/${unit}`
+}
+
 const recipeUrl = computed(() => {
   const id = route.params.recipeId
   return typeof id === 'string' ? `/recipe/${id}` : '/'
@@ -394,24 +401,8 @@ const recipeUrl = computed(() => {
           <h1 class="recipe-name">{{ recipeName }}</h1>
           <div class="recipe-version">{{ recipeVersion }} — Cost Breakdown</div>
         </div>
-        <div class="header-right">
-          <div class="cost-summary-total">${{ costBreakdown.total.toFixed(2) }}</div>
-          <div class="cost-summary-label">per bake</div>
-        </div>
+        <div class="header-right" />
       </header>
-
-      <!-- Cost summary bar -->
-      <div class="cost-summary-bar">
-        <div class="cost-stat">
-          <span class="cost-stat-value">${{ costBreakdown.perServing.toFixed(2) }}</span>
-          <span class="cost-stat-label">per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}</span>
-        </div>
-        <div class="cost-stat-divider" />
-        <div class="cost-stat">
-          <span class="cost-stat-value">{{ currentRecipe?.meta.yields || `${costBreakdown.servings} servings` }}</span>
-          <span class="cost-stat-label">yield</span>
-        </div>
-      </div>
 
       <!-- Ingredient cost table -->
       <table class="cost-table">
@@ -426,7 +417,7 @@ const recipeUrl = computed(() => {
           <tr v-for="item in costItems" :key="item.ingredientId">
             <td class="col-ingredient">
               <span class="ingredient-primary">{{ item.name }}</span>
-              <span class="ingredient-source">{{ item.sourceName }}</span>
+              <span class="ingredient-source">{{ item.sourceName }}<template v-if="item.cost > 0 && item.amount > 0"> · {{ formatCostRate(item) }}</template></span>
             </td>
             <td class="col-amount">{{ item.unit === 'whole' ? `${item.amount}x` : `${item.amount}${item.unit}` }}</td>
             <td class="col-cost">${{ item.cost.toFixed(2) }}</td>
@@ -437,8 +428,18 @@ const recipeUrl = computed(() => {
             <td colspan="2" class="cost-total-label">Total</td>
             <td class="col-cost cost-total-value">${{ costBreakdown.total.toFixed(2) }}</td>
           </tr>
+          <tr class="cost-detail-row">
+            <td colspan="2" class="cost-detail-label">per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}</td>
+            <td class="col-cost cost-detail-value">${{ costBreakdown.perServing.toFixed(2) }}</td>
+          </tr>
         </tfoot>
       </table>
+
+      <!-- Cost summary -->
+      <div class="cost-summary-text">
+        Recipe makes {{ currentRecipe?.meta.yields || `${costBreakdown.servings} servings` }}.
+        Estimated cost is ${{ costBreakdown.total.toFixed(2) }} per bake, or ${{ costBreakdown.perServing.toFixed(2) }} per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}.
+      </div>
 
       <!-- Estimation disclaimer -->
       <div class="cost-disclaimer">
@@ -895,51 +896,6 @@ const recipeUrl = computed(() => {
   padding-top: 1rem;
 }
 
-.cost-summary-bar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 0;
-  margin-bottom: 0.75rem;
-  border-bottom: 2px solid var(--color-accent);
-}
-
-.cost-stat {
-  display: flex;
-  align-items: baseline;
-  gap: 0.25rem;
-}
-
-.cost-stat-value {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12pt;
-  font-weight: 600;
-  color: var(--color-ink);
-}
-
-.cost-stat-label {
-  font-size: 8pt;
-  color: var(--color-stone-500);
-}
-
-.cost-stat-divider {
-  width: 1px;
-  height: 1rem;
-  background: var(--color-stone-300);
-}
-
-.cost-summary-total {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 18pt;
-  font-weight: 700;
-  color: var(--color-ink);
-}
-
-.cost-summary-label {
-  font-size: 8pt;
-  color: var(--color-stone-500);
-  text-align: right;
-}
 
 /* Cost table */
 .cost-table {
@@ -999,6 +955,7 @@ const recipeUrl = computed(() => {
   white-space: nowrap;
 }
 
+
 .cost-table th.col-cost {
   text-align: right;
 }
@@ -1024,7 +981,37 @@ const recipeUrl = computed(() => {
   color: var(--color-accent);
 }
 
+.cost-detail-row td {
+  border-bottom: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.cost-detail-label {
+  text-align: right;
+  padding-right: 0.375rem;
+  font-size: 8pt;
+  color: var(--color-stone-500);
+}
+
+.cost-detail-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9pt;
+  font-weight: 600;
+  text-align: right;
+  color: var(--color-stone-500);
+}
+
+
+
 /* Disclaimer */
+.cost-summary-text {
+  font-size: 9pt;
+  color: var(--color-stone-600);
+  padding: 0.5rem 0;
+  line-height: 1.4;
+}
+
 .cost-disclaimer {
   font-size: 7pt;
   color: var(--color-stone-500);

@@ -91,6 +91,14 @@ function checkNutritionComplete(recipe: Recipe): PrintCheck {
 }
 
 function checkCostNewSchema(recipe: Recipe): PrintCheck {
+  // Check for estimatedCost (from /cost skill)
+  if (recipe.estimatedCost && Array.isArray(recipe.estimatedCost.items) && recipe.estimatedCost.items.length > 0) {
+    const bakeItems = recipe.cook_log?.filter(
+      (e) => e.cost && Array.isArray(e.cost.items) && e.cost.items.length > 0
+    ) ?? []
+    const sources = 1 + bakeItems.length
+    return { id: 'PV4', label: 'Cost data (new schema)', pass: true, detail: `${sources} cost source${sources > 1 ? 's' : ''} (estimatedCost + ${bakeItems.length} bake${bakeItems.length !== 1 ? 's' : ''})` }
+  }
   if (!recipe.cook_log || recipe.cook_log.length === 0) {
     return { id: 'PV4', label: 'Cost data (new schema)', pass: false, detail: 'No cook_log entries' }
   }
