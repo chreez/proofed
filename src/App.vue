@@ -927,4 +927,10 @@ watch(() => route.hash, (newHash) => {
   background: var(--color-accent);
   border-color: var(--color-accent);
 }
+
+@media print {
+  header {
+    display: none !important;
+  }
+}
 </style>
