@@ -489,7 +489,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </nav>
 
-    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showStats) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode ? 'max-w-3xl mx-auto px-4' : '')]">
+    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showBakeDetail || showStats) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode ? 'max-w-3xl mx-auto px-4' : '')]">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
