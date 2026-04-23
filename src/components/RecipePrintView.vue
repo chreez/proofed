@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { validatePrintSections } from '@/composables/usePrintValidation'
 import { deriveAllergens } from '@/composables/useAllergens'
-import { getMostRecentCost, getMostRecentCostDate, getMostRecentCostWithItems, getMostRecentCostWithItemsDate } from '@/composables/useCost'
 import type { CookLogCostItem } from '@/types/recipe'
 import NutritionLabel from '@/components/NutritionLabel.vue'
 import { renderBrandedQr, generateQrLabelDataUrl } from '@/composables/useQrLabel'
@@ -150,48 +149,97 @@ const nutritionDate = computed(() => {
   return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 })
 
-// Cost snapshot date
-const costDate = computed(() => {
-  if (!currentRecipe.value) return null
-  return getMostRecentCostDate(currentRecipe.value)
-})
+// --- Cost source dropdown ---
+interface CostSource {
+  label: string
+  date: string
+  type: 'estimated' | 'bake'
+  total: number
+  perServing: number
+  servings: number
+  items: CookLogCostItem[]
+}
 
-const costDateFormatted = computed(() => {
-  if (!costDate.value) return ''
-  const d = new Date(costDate.value)
+function formatDateLabel(dateStr: string): string {
+  const d = new Date(dateStr)
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+}
+
+/** Collect all available cost sources, sorted by date descending (freshest first) */
+const costSources = computed<CostSource[]>(() => {
+  const recipe = currentRecipe.value
+  if (!recipe) return []
+
+  const sources: CostSource[] = []
+
+  // Estimated cost (top-level)
+  if (recipe.estimatedCost && recipe.estimatedCost.items && recipe.estimatedCost.items.length > 0) {
+    sources.push({
+      label: `Estimated — ${formatDateLabel(recipe.estimatedCost.estimatedAt)}`,
+      date: recipe.estimatedCost.estimatedAt,
+      type: 'estimated',
+      total: recipe.estimatedCost.total,
+      perServing: recipe.estimatedCost.perServing,
+      servings: recipe.estimatedCost.servings,
+      items: recipe.estimatedCost.items,
+    })
+  }
+
+  // Per-bake cost snapshots from cook_log
+  if (recipe.cook_log) {
+    for (const entry of recipe.cook_log) {
+      if (entry.cost && Array.isArray(entry.cost.items) && entry.cost.items.length > 0) {
+        sources.push({
+          label: `Bake — ${formatDateLabel(entry.date)}`,
+          date: entry.date,
+          type: 'bake',
+          total: entry.cost.total,
+          perServing: entry.cost.perServing,
+          servings: entry.cost.servings,
+          items: entry.cost.items,
+        })
+      }
+    }
+  }
+
+  // Sort by date descending (freshest first)
+  sources.sort((a, b) => b.date.localeCompare(a.date))
+  return sources
 })
 
-// Most recent cost for page 1 summary — use same entry as page 2 for consistency
-const costSummary = computed(() => {
-  if (!currentRecipe.value) return null
-  // Prefer entry with items (matches page 2), fall back to any cost entry
-  return getMostRecentCostWithItems(currentRecipe.value) ?? getMostRecentCost(currentRecipe.value)
+/** Index into costSources — defaults to 0 (freshest) */
+const selectedSourceIndex = ref(0)
+
+/** The currently selected cost source */
+const selectedCostSource = computed<CostSource | null>(() => {
+  if (costSources.value.length === 0) return null
+  const idx = selectedSourceIndex.value
+  return costSources.value[idx] ?? costSources.value[0]
 })
 
-// Most recent cost WITH items for page 2 table
+/** Whether the dropdown should render (at least one cost source) */
+const hasCostData = computed(() => costSources.value.length > 0)
+
+// Derived cost values from selected source
+const costSummary = computed(() => selectedCostSource.value)
+
 const costBreakdown = computed(() => {
-  if (!currentRecipe.value) return null
-  return getMostRecentCostWithItems(currentRecipe.value)
+  const src = selectedCostSource.value
+  if (!src || !src.items || src.items.length === 0) return null
+  return src
 })
 
-// Cost items sorted by cost descending
 const costItems = computed<CookLogCostItem[]>(() => {
   if (!costBreakdown.value?.items) return []
   return [...costBreakdown.value.items].sort((a, b) => b.cost - a.cost)
 })
 
-// Cost date — prefer the items entry date for the breakdown page
-const costBreakdownDate = computed(() => {
-  if (!currentRecipe.value) return null
-  return getMostRecentCostWithItemsDate(currentRecipe.value)
+const costDateFormatted = computed(() => {
+  if (!selectedCostSource.value) return ''
+  return formatDateLabel(selectedCostSource.value.date)
 })
 
-const costBreakdownDateFormatted = computed(() => {
-  if (!costBreakdownDate.value) return ''
-  const d = new Date(costBreakdownDate.value)
-  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-})
+const costBreakdownDateFormatted = computed(() => costDateFormatted.value)
 
 const recipeUrl = computed(() => {
   const id = route.params.recipeId
@@ -297,12 +345,24 @@ const recipeUrl = computed(() => {
       <p class="missing-text">Unable to determine allergens — ingredient lookup incomplete</p>
     </section>
 
-    <!-- Cost (most recent bake, hidden when absent) -->
-    <div v-if="costSummary" class="cost-section">
+    <!-- Cost source dropdown + summary -->
+    <div v-if="hasCostData" class="cost-section">
+      <div class="cost-source-selector">
+        <select
+          v-model.number="selectedSourceIndex"
+          class="cost-source-dropdown"
+        >
+          <option
+            v-for="(source, idx) in costSources"
+            :key="idx"
+            :value="idx"
+          >{{ source.label }}</option>
+        </select>
+      </div>
       <div class="cost-values">
-        <span class="cost-total">${{ costSummary.total.toFixed(2) }} per bake</span>
+        <span class="cost-total">${{ costSummary!.total.toFixed(2) }} per bake</span>
         <span class="cost-divider">&middot;</span>
-        <span class="cost-serving">${{ costSummary.perServing.toFixed(2) }} per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}</span>
+        <span class="cost-serving">${{ costSummary!.perServing.toFixed(2) }} per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}</span>
       </div>
       <div class="estimation-note">
         Estimated from H-E-B retail prices<span v-if="costDateFormatted">, snapshotted {{ costDateFormatted }}</span>
@@ -772,6 +832,27 @@ const recipeUrl = computed(() => {
   border-top: 1px solid var(--color-stone-300);
 }
 
+/* Cost source dropdown — screen only */
+.cost-source-selector {
+  margin-bottom: 0.375rem;
+}
+
+.cost-source-dropdown {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8pt;
+  color: var(--color-ink);
+  background: var(--color-stone-100);
+  border: 1px solid var(--color-stone-300);
+  padding: 0.25rem 0.375rem;
+  cursor: pointer;
+  appearance: auto;
+}
+
+.cost-source-dropdown:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
 .cost-values {
   display: flex;
   align-items: center;
@@ -1112,7 +1193,8 @@ const recipeUrl = computed(() => {
   button,
   .fab,
   nav,
-  .toc-sidebar {
+  .toc-sidebar,
+  .cost-source-selector {
     display: none !important;
   }
 
