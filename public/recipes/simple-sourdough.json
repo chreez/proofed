@@ -3058,7 +3058,7 @@
             "ingredientId": "starter",
             "name": "Active Sourdough Starter",
             "sourceType": "rate",
-            "sourceName": "Sourdough starter (negligible — maintained culture)",
+            "sourceName": "Sourdough starter (maintained culture, unpriced)",
             "amount": 170,
             "unit": "g",
             "cost": 0

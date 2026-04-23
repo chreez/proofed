@@ -527,13 +527,15 @@ function weatherIcon(condition: string): string {
       </div>
     </template>
 
-    <BakeQrModal
-      v-if="entry && currentRecipe"
-      ref="bakeQrModal"
-      :recipe-name="currentRecipe.meta.name"
-      :recipe-id="String(route.params.recipeId)"
-      :bake-date="entry.date"
-    />
+    <Teleport to="body">
+      <BakeQrModal
+        v-if="entry && currentRecipe"
+        ref="bakeQrModal"
+        :recipe-name="currentRecipe.meta.name"
+        :recipe-id="String(route.params.recipeId)"
+        :bake-date="entry.date"
+      />
+    </Teleport>
 
     <PhotoLightbox
       :photos="lightboxPhotos"
