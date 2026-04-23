@@ -46,6 +46,13 @@ export function useRecipeMeta(
 
     const r = recipe()
     const date = bakeDate?.()
+
+    // Print route: business-grade PDF filename
+    if (rn === 'recipe-print' && r) {
+      const id = recipeId()
+      return `bake-sheet-${id}-${r.version}`
+    }
+
     if (r && date) {
       return `${r.meta.name} — ${formatBakeDate(date)} Bake`
     }

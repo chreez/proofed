@@ -4,7 +4,21 @@ import {
   isPrintReady,
   getValidationSummary,
 } from './usePrintValidation'
-import type { Recipe } from '@/types/recipe'
+import type { Recipe, CookLogCostItem } from '@/types/recipe'
+
+// Helper to make cost items
+function makeCostItem(overrides: Partial<CookLogCostItem> = {}): CookLogCostItem {
+  return {
+    ingredientId: 'flour',
+    name: 'All-purpose flour',
+    sourceType: 'heb',
+    sourceName: 'H-E-B All Purpose Flour 5lb',
+    amount: 390,
+    unit: 'g',
+    cost: 1.25,
+    ...overrides,
+  }
+}
 
 // Minimal valid recipe fixture
 const minimalRecipe: Recipe = {
@@ -77,7 +91,7 @@ const completeRecipe: Recipe = {
         total: 8.5,
         perServing: 1.06,
         servings: 8,
-        items: [],
+        items: [makeCostItem()],
       },
     },
   ],
@@ -96,12 +110,6 @@ const emptyRecipe: Recipe = {
   ],
 }
 
-// Recipe with nutrition but no cost
-const partialRecipe: Recipe = {
-  ...minimalRecipe,
-  nutrition: completeRecipe.nutrition,
-}
-
 describe('usePrintValidation', () => {
   describe('validatePrintSections', () => {
     it('validates all sections for complete recipe', () => {
@@ -114,61 +122,39 @@ describe('usePrintValidation', () => {
       expect(validation.sections.cost).toBe(true)
       expect(validation.ready).toBe(true)
       expect(validation.summary).toBe('Ready to print')
+      expect(validation.checks).toHaveLength(9)
+      expect(validation.checks.every((c) => c.pass)).toBe(true)
     })
 
-    it('validates minimal recipe with only ingredients', () => {
+    it('blocks recipe missing nutrition (PV3)', () => {
       const validation = validatePrintSections(minimalRecipe)
 
-      expect(validation.sections.header).toBe(true)
       expect(validation.sections.ingredients).toBe(true)
-      expect(validation.sections.allergens).toBe(true)
       expect(validation.sections.nutrition).toBe(false)
-      expect(validation.sections.cost).toBe(false)
-      expect(validation.ready).toBe(true)
-      expect(validation.summary).toBe(
-        'Ready to print (nutrition, cost will show placeholder)'
-      )
+      expect(validation.ready).toBe(false)
+      expect(validation.checks.find((c) => c.id === 'PV3')?.pass).toBe(false)
     })
 
-    it('validates partial recipe with nutrition but no cost', () => {
-      const validation = validatePrintSections(partialRecipe)
-
-      expect(validation.sections.header).toBe(true)
-      expect(validation.sections.ingredients).toBe(true)
-      expect(validation.sections.allergens).toBe(true)
-      expect(validation.sections.nutrition).toBe(true)
-      expect(validation.sections.cost).toBe(false)
-      expect(validation.ready).toBe(true)
-      expect(validation.summary).toBe('Ready to print (cost will show placeholder)')
-    })
-
-    it('blocks empty recipe with no ingredients', () => {
+    it('blocks empty recipe with no ingredients (PV1)', () => {
       const validation = validatePrintSections(emptyRecipe)
 
-      expect(validation.sections.header).toBe(true)
       expect(validation.sections.ingredients).toBe(false)
-      expect(validation.sections.allergens).toBe(true)
-      expect(validation.sections.nutrition).toBe(false)
-      expect(validation.sections.cost).toBe(false)
       expect(validation.ready).toBe(false)
-      expect(validation.summary).toBe('Missing critical data: ingredients')
+      expect(validation.checks.find((c) => c.id === 'PV1')?.pass).toBe(false)
     })
 
     it('handles null recipe', () => {
       const validation = validatePrintSections(null)
 
       expect(validation.sections.header).toBe(false)
-      expect(validation.sections.ingredients).toBe(false)
-      expect(validation.sections.allergens).toBe(false)
-      expect(validation.sections.nutrition).toBe(false)
-      expect(validation.sections.cost).toBe(false)
       expect(validation.ready).toBe(false)
       expect(validation.summary).toBe('No recipe loaded')
+      expect(validation.checks).toHaveLength(0)
     })
 
-    it('validates recipe with zero-calorie nutrition as invalid', () => {
+    it('validates recipe with zero-calorie nutrition as PV3 fail', () => {
       const zeroCalorieRecipe: Recipe = {
-        ...minimalRecipe,
+        ...completeRecipe,
         nutrition: {
           ...completeRecipe.nutrition!,
           totals: {
@@ -179,78 +165,228 @@ describe('usePrintValidation', () => {
       }
 
       const validation = validatePrintSections(zeroCalorieRecipe)
-
-      expect(validation.sections.nutrition).toBe(false)
-      expect(validation.ready).toBe(true)
-      expect(validation.summary).toBe(
-        'Ready to print (nutrition, cost will show placeholder)'
-      )
+      expect(validation.checks.find((c) => c.id === 'PV3')?.pass).toBe(false)
+      expect(validation.ready).toBe(false)
     })
+  })
 
-    it('validates recipe with cost but no nutrition', () => {
-      const costOnlyRecipe: Recipe = {
-        ...minimalRecipe,
-        cook_log: completeRecipe.cook_log,
-      }
-
-      const validation = validatePrintSections(costOnlyRecipe)
-
-      expect(validation.sections.nutrition).toBe(false)
-      expect(validation.sections.cost).toBe(true)
-      expect(validation.ready).toBe(true)
-      expect(validation.summary).toBe('Ready to print (nutrition will show placeholder)')
-    })
-
-    it('validates recipe with multiple cook_log entries (uses most recent)', () => {
-      const multiLogRecipe: Recipe = {
-        ...minimalRecipe,
-        cook_log: [
-          {
-            date: '2024-01-01',
-            version: '1.0',
-            notes: ['First bake'],
-            cost: {
-              total: 5.0,
-              perServing: 0.63,
-              servings: 8,
-              items: [],
-            },
-          },
-          {
-            date: '2024-02-01',
-            version: '1.0',
-            notes: ['Second bake'],
-            cost: {
-              total: 7.0,
-              perServing: 0.88,
-              servings: 8,
-              items: [],
-            },
-          },
-        ],
-      }
-
-      const validation = validatePrintSections(multiLogRecipe)
-
-      expect(validation.sections.cost).toBe(true)
-    })
-
-    it('validates recipe with cook_log but no cost data', () => {
-      const noCostRecipe: Recipe = {
-        ...minimalRecipe,
+  describe('PV4: Cost data new schema', () => {
+    it('fails when cook_log has cost with empty items[]', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
         cook_log: [
           {
             date: '2024-01-15',
             version: '1.0',
-            notes: ['Bake went well'],
+            notes: ['test'],
+            cost: {
+              total: 8.5,
+              perServing: 1.06,
+              servings: 8,
+              items: [],
+            },
           },
         ],
       }
 
-      const validation = validatePrintSections(noCostRecipe)
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV4')
+      expect(check?.pass).toBe(false)
+    })
 
-      expect(validation.sections.cost).toBe(false)
-      expect(validation.ready).toBe(true)
+    it('passes when cook_log has cost with populated items[]', () => {
+      const check = validatePrintSections(completeRecipe).checks.find((c) => c.id === 'PV4')
+      expect(check?.pass).toBe(true)
+    })
+
+    it('fails when no cook_log exists', () => {
+      const check = validatePrintSections(minimalRecipe).checks.find((c) => c.id === 'PV4')
+      expect(check?.pass).toBe(false)
+    })
+  })
+
+  describe('PV5: Serving label coherence', () => {
+    it('fails when servings mismatch without meta.yields', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
+        meta: { ...completeRecipe.meta, yields: '' },
+        nutrition: { ...completeRecipe.nutrition!, servings: 8 },
+        cook_log: [
+          {
+            date: '2024-01-15',
+            version: '1.0',
+            notes: ['test'],
+            cost: {
+              total: 8.5,
+              perServing: 0.85,
+              servings: 10, // different from nutrition.servings=8
+              items: [makeCostItem()],
+            },
+          },
+        ],
+      }
+
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV5')
+      expect(check?.pass).toBe(false)
+      expect(check?.detail).toContain('10')
+      expect(check?.detail).toContain('8')
+    })
+
+    it('passes when servings mismatch but meta.yields present', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
+        meta: { ...completeRecipe.meta, yields: '10 buns' },
+        nutrition: { ...completeRecipe.nutrition!, servings: 8 },
+        cook_log: [
+          {
+            date: '2024-01-15',
+            version: '1.0',
+            notes: ['test'],
+            cost: {
+              total: 8.5,
+              perServing: 0.85,
+              servings: 10,
+              items: [makeCostItem()],
+            },
+          },
+        ],
+      }
+
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV5')
+      expect(check?.pass).toBe(true)
+    })
+
+    it('passes when servings match', () => {
+      const check = validatePrintSections(completeRecipe).checks.find((c) => c.id === 'PV5')
+      expect(check?.pass).toBe(true)
+    })
+  })
+
+  describe('PV6: No stale terminology', () => {
+    it('fails when sourceName contains "negligible"', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
+        cook_log: [
+          {
+            date: '2024-01-15',
+            version: '1.0',
+            notes: ['test'],
+            cost: {
+              total: 8.5,
+              perServing: 1.06,
+              servings: 8,
+              items: [
+                makeCostItem(),
+                makeCostItem({
+                  ingredientId: 'salt',
+                  name: 'Salt',
+                  sourceName: 'Negligible cost',
+                  cost: 0,
+                }),
+              ],
+            },
+          },
+        ],
+      }
+
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV6')
+      expect(check?.pass).toBe(false)
+      expect(check?.detail).toContain('Salt')
+    })
+
+    it('passes when no stale terminology', () => {
+      const check = validatePrintSections(completeRecipe).checks.find((c) => c.id === 'PV6')
+      expect(check?.pass).toBe(true)
+    })
+  })
+
+  describe('PV7: Cost items sourced', () => {
+    it('fails when sourceName is empty', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
+        cook_log: [
+          {
+            date: '2024-01-15',
+            version: '1.0',
+            notes: ['test'],
+            cost: {
+              total: 8.5,
+              perServing: 1.06,
+              servings: 8,
+              items: [
+                makeCostItem(),
+                makeCostItem({
+                  ingredientId: 'yeast',
+                  name: 'Yeast',
+                  sourceName: '',
+                  cost: 0.10,
+                }),
+              ],
+            },
+          },
+        ],
+      }
+
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV7')
+      expect(check?.pass).toBe(false)
+      expect(check?.detail).toContain('Yeast')
+    })
+
+    it('passes when all items have sourceName', () => {
+      const check = validatePrintSections(completeRecipe).checks.find((c) => c.id === 'PV7')
+      expect(check?.pass).toBe(true)
+    })
+  })
+
+  describe('PV8: Recipe has yields', () => {
+    it('fails when yields is empty', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
+        meta: { ...completeRecipe.meta, yields: '' },
+      }
+
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV8')
+      expect(check?.pass).toBe(false)
+    })
+
+    it('passes when yields is present', () => {
+      const check = validatePrintSections(completeRecipe).checks.find((c) => c.id === 'PV8')
+      expect(check?.pass).toBe(true)
+    })
+  })
+
+  describe('PV9: Estimation provenance', () => {
+    it('fails when nutrition has no dataSource or calculatedDate', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
+        nutrition: {
+          ...completeRecipe.nutrition!,
+          dataSource: '',
+          calculatedDate: '',
+        },
+      }
+
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV9')
+      expect(check?.pass).toBe(false)
+      expect(check?.detail).toContain('dataSource')
+    })
+
+    it('passes when dataSource exists', () => {
+      const check = validatePrintSections(completeRecipe).checks.find((c) => c.id === 'PV9')
+      expect(check?.pass).toBe(true)
+    })
+
+    it('passes when only calculatedDate exists', () => {
+      const recipe: Recipe = {
+        ...completeRecipe,
+        nutrition: {
+          ...completeRecipe.nutrition!,
+          dataSource: '',
+          calculatedDate: '2024-01-15',
+        },
+      }
+
+      const check = validatePrintSections(recipe).checks.find((c) => c.id === 'PV9')
+      expect(check?.pass).toBe(true)
     })
   })
 
@@ -259,8 +395,8 @@ describe('usePrintValidation', () => {
       expect(isPrintReady(completeRecipe)).toBe(true)
     })
 
-    it('returns true for minimal recipe', () => {
-      expect(isPrintReady(minimalRecipe)).toBe(true)
+    it('returns false for minimal recipe (missing nutrition + cost)', () => {
+      expect(isPrintReady(minimalRecipe)).toBe(false)
     })
 
     it('returns false for empty recipe', () => {
@@ -277,14 +413,11 @@ describe('usePrintValidation', () => {
       expect(getValidationSummary(completeRecipe)).toBe('Ready to print')
     })
 
-    it('returns placeholder summary for minimal recipe', () => {
-      expect(getValidationSummary(minimalRecipe)).toBe(
-        'Ready to print (nutrition, cost will show placeholder)'
-      )
-    })
-
-    it('returns missing critical data for empty recipe', () => {
-      expect(getValidationSummary(emptyRecipe)).toBe('Missing critical data: ingredients')
+    it('returns failure summary for minimal recipe', () => {
+      const summary = getValidationSummary(minimalRecipe)
+      expect(summary).toContain('failed')
+      expect(summary).toContain('PV3')
+      expect(summary).toContain('PV4')
     })
 
     it('returns no recipe loaded for null', () => {

@@ -185,6 +185,7 @@ function makeRouter() {
     routes: [
       { path: '/', name: 'index', component: { template: '<div />' } },
       { path: '/recipe/:recipeId', name: 'recipe', component: { template: '<div />' } },
+      { path: '/recipe/:recipeId/print', name: 'recipe-print', component: { template: '<div />' }, meta: { printMode: true } },
       { path: '/about', name: 'about', component: { template: '<div />' } },
       { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } },
       { path: '/recipe/:recipeId/bake/:date', name: 'bake-detail', component: { template: '<div />' }, meta: { bakeDetail: true } },
@@ -381,6 +382,57 @@ describe('App', () => {
     mockCurrentRecipeId.value = 'test-recipe'
     const { wrapper } = await mountApp('/recipe/test-recipe')
     expect(wrapper.find('.tab-bar').exists()).toBe(false)
+  })
+
+  it('shows print button on recipe page', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    expect(wrapper.find('[data-testid="print-btn"]').exists()).toBe(true)
+  })
+
+  it('hides print button on index page', async () => {
+    const { wrapper } = await mountApp('/')
+    expect(wrapper.find('[data-testid="print-btn"]').exists()).toBe(false)
+  })
+
+  it('hides share button when recipe has no cook_log', async () => {
+    mockCurrentRecipe.value = makeRecipe({ cook_log: [] })
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    expect(wrapper.find('[data-testid="print-btn"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="share-btn"]').exists()).toBe(false)
+  })
+
+  it('hides print button when currentRecipeId is empty', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = ''
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    expect(wrapper.find('[data-testid="print-btn"]').exists()).toBe(false)
+  })
+
+  it('hides print button on about page', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper } = await mountApp('/about')
+    expect(wrapper.find('[data-testid="print-btn"]').exists()).toBe(false)
+  })
+
+  it('hides print button on bake-detail page', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper } = await mountApp('/recipe/test-recipe/bake/2026-02-01')
+    expect(wrapper.find('[data-testid="print-btn"]').exists()).toBe(false)
+  })
+
+  it('navigates to print page when print button clicked', async () => {
+    mockCurrentRecipe.value = makeRecipe()
+    mockCurrentRecipeId.value = 'test-recipe'
+    const { wrapper, router } = await mountApp('/recipe/test-recipe')
+    const printBtn = wrapper.find('[data-testid="print-btn"]')
+    await printBtn.find('button').trigger('click')
+    await flushPromises()
+    expect(router.currentRoute.value.path).toBe('/recipe/test-recipe/print')
   })
 
   it('marks Recipes tab active on index route', async () => {

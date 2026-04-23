@@ -111,6 +111,21 @@ Add checks here for new features:
 | F29 | Reheat required | All recipes must include a `reheat` block with at least one method | 2026-02-16 |
 | F30 | Reheat version bump | Changes to `reheat` data must bump minor version + add `change_log` entry | 2026-02-16 |
 
+## Print Validation
+
+| ID | Check | Criteria | Files to Verify |
+|----|-------|----------|-----------------|
+| PV1 | Ingredients exist | >=1 stage with >=1 ingredient in gather | `public/recipes/*.json` |
+| PV2 | Allergens derivable | `deriveAllergens(recipe)` runs without throwing | `public/recipes/*.json` |
+| PV3 | Nutrition complete | `nutrition.totals.calories > 0` AND `nutrition.perServing` populated | `public/recipes/*.json` |
+| PV4 | Cost data (new schema) | >=1 cook_log entry with `cost.items[]` array (not old `costs[]`) | `public/recipes/*.json` |
+| PV5 | Serving label coherence | If `cost.servings !== nutrition.servings`, recipe must have `meta.yields` | `public/recipes/*.json` |
+| PV6 | No stale terminology | No cost item `sourceName` contains "negligible" | `public/recipes/*.json` |
+| PV7 | Cost items sourced | Every `cost.items[]` entry has non-empty `sourceName` | `public/recipes/*.json` |
+| PV8 | Recipe has yields | `meta.yields` is non-empty string | `public/recipes/*.json` |
+| PV9 | Estimation provenance | Nutrition has `dataSource` OR `calculatedDate`; most recent cost entry has valid `date` | `public/recipes/*.json` |
+| PV10 | Print render (HITL) | Manual visual review of print page — not automatable | Browser |
+
 ## Build Validation (MANDATORY)
 
 | ID | Check | Criteria |

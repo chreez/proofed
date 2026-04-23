@@ -512,6 +512,25 @@ Paste the combined JSON back here to wire into the cook_log entry.
 - If user says "skip cost" or "no cost" — skip this phase entirely
 - If HEB MCP server is unavailable (tool errors) — warn and skip gracefully
 
+## Phase 6b: Print Validation Gate
+
+After cost data is wired into the cook_log entry (user pastes review JSON back):
+
+1. **Run `/validate-print {recipe-id}`** -- automated checks against the updated recipe
+2. **If all pass:** Open print preview for HITL review:
+   - `open http://<LAN_IP>:<PORT>/recipe/{recipe-id}/print`
+   - "Print validation passed. Review the print page -- does it look correct?"
+   - Wait for user confirmation
+3. **If any fail:** Report failures. Do NOT open print preview.
+   - "Print validation has {N} failures -- print page will show 'not yet generated' until fixed."
+   - List failures with fix suggestions
+4. **Continue to Phase 7 regardless** -- print validation doesn't block the bake log commit. Print issues are tracked separately.
+
+**Skip conditions:**
+- `--start` flag: skip (skeleton entry)
+- `--update` flag: skip (incomplete entry)
+- No cost data wired: skip (nothing to validate against)
+
 ## Phase 7: Commit (No Version Bump)
 
 Cook log entries are **observational data** — they do NOT change the recipe itself. Therefore:

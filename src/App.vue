@@ -10,7 +10,7 @@ import { latestCookLogEntryWithPhotos } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
-import { QrCode } from 'lucide-vue-next'
+import { QrCode, Printer } from 'lucide-vue-next'
 import type { RecipeState, CookLogPhoto } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import ShareModal from '@/components/ShareModal.vue'
@@ -79,6 +79,7 @@ const showBakeReview = computed(() => route.name === 'bake-review')
 const showBakeLog = computed(() => route.name === 'bake-log')
 const showStats = computed(() => route.name === 'stats' || route.name === 'stats-demo')
 const showPrintMode = computed(() => route.name === 'recipe-print')
+const showHeaderActions = computed(() => !!currentRecipe.value && !showIndex.value && !showAbout.value && !showBakeDetail.value)
 function goToIndex(): void {
   router.push('/')
 }
@@ -259,6 +260,7 @@ const aggregatedStepNotes = computed(() => {
 
 // Format version as v{major}.{minor} (drop patch) for scrolled header
 function formatVersionShort(version: string): string {
+  if (!version) return ''
   const match = version.match(/^v?(\d+)\.(\d+)/)
   if (!match) return version
   return `v${match[1]}.${match[2]}`
@@ -443,16 +445,27 @@ watch(() => route.hash, (newHash) => {
             </div>
           </Transition>
         </div>
-        <IconButton
-          v-if="currentRecipe?.cook_log?.length && !showIndex && !showAbout && !showBakeDetail"
-          tooltip="Share"
-          tooltip-align="right"
-          size="sm"
-          data-testid="share-btn"
-          @click="openShareModal"
-        >
-          <QrCode />
-        </IconButton>
+        <div v-if="showHeaderActions" class="flex items-center gap-1">
+          <IconButton
+            v-if="currentRecipeId"
+            tooltip="Print bake sheet"
+            size="sm"
+            data-testid="print-btn"
+            @click="router.push(`/recipe/${currentRecipeId}/print`)"
+          >
+            <Printer />
+          </IconButton>
+          <IconButton
+            v-if="currentRecipe?.cook_log?.length"
+            tooltip="Share"
+            tooltip-align="right"
+            size="sm"
+            data-testid="share-btn"
+            @click="openShareModal"
+          >
+            <QrCode />
+          </IconButton>
+        </div>
       </div>
     </header>
 

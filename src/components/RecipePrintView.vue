@@ -1,18 +1,30 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { ArrowLeft } from 'lucide-vue-next'
 import { useRecipe } from '@/composables/useRecipe'
 import { validatePrintSections } from '@/composables/usePrintValidation'
 import { deriveAllergens } from '@/composables/useAllergens'
-import { getVersionAverageCost } from '@/composables/useCost'
+import { getMostRecentCost, getMostRecentCostDate, getMostRecentCostWithItems, getMostRecentCostWithItemsDate } from '@/composables/useCost'
+import type { CookLogCostItem } from '@/types/recipe'
 import NutritionLabel from '@/components/NutritionLabel.vue'
 import * as QRCode from 'qrcode'
 
 const route = useRoute()
+const router = useRouter()
 const { currentRecipe } = useRecipe()
+
+function goBack(): void {
+  if (window.history.length > 1) {
+    router.back()
+  } else {
+    router.push(`/recipe/${route.params.recipeId}`)
+  }
+}
 
 // Validation
 const validation = computed(() => validatePrintSections(currentRecipe.value))
+const failedChecks = computed(() => validation.value.checks.filter((c) => !c.pass))
 
 const qrCodeDataUrl = ref<string>('')
 
@@ -61,7 +73,7 @@ const ingredientsByStage = computed<IngredientGroup[]>(() => {
       stageName: stage.title,
       items: (stage.gather?.ingredients ?? []).map(ing => ({
         name: ing.name,
-        amount: `${ing.total} ${ing.unit}`
+        amount: ing.unit === 'whole' ? `${ing.total}x` : `${ing.total} ${ing.unit}`
       }))
     }))
 })
@@ -123,10 +135,55 @@ const allergenText = computed(() => {
   return allergens.value.join(', ')
 })
 
-// Version-averaged cost
-const avgCost = computed(() => {
+// Nutrition metadata
+const nutritionSource = computed(() => currentRecipe.value?.nutrition?.dataSource ?? '')
+const nutritionDate = computed(() => {
+  const d = currentRecipe.value?.nutrition?.calculatedDate
+  if (!d) return ''
+  return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+})
+
+// Cost snapshot date
+const costDate = computed(() => {
   if (!currentRecipe.value) return null
-  return getVersionAverageCost(currentRecipe.value)
+  return getMostRecentCostDate(currentRecipe.value)
+})
+
+const costDateFormatted = computed(() => {
+  if (!costDate.value) return ''
+  const d = new Date(costDate.value)
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+})
+
+// Most recent cost for page 1 summary — use same entry as page 2 for consistency
+const costSummary = computed(() => {
+  if (!currentRecipe.value) return null
+  // Prefer entry with items (matches page 2), fall back to any cost entry
+  return getMostRecentCostWithItems(currentRecipe.value) ?? getMostRecentCost(currentRecipe.value)
+})
+
+// Most recent cost WITH items for page 2 table
+const costBreakdown = computed(() => {
+  if (!currentRecipe.value) return null
+  return getMostRecentCostWithItems(currentRecipe.value)
+})
+
+// Cost items sorted by cost descending
+const costItems = computed<CookLogCostItem[]>(() => {
+  if (!costBreakdown.value?.items) return []
+  return [...costBreakdown.value.items].sort((a, b) => b.cost - a.cost)
+})
+
+// Cost date — prefer the items entry date for the breakdown page
+const costBreakdownDate = computed(() => {
+  if (!currentRecipe.value) return null
+  return getMostRecentCostWithItemsDate(currentRecipe.value)
+})
+
+const costBreakdownDateFormatted = computed(() => {
+  if (!costBreakdownDate.value) return ''
+  const d = new Date(costBreakdownDate.value)
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 })
 
 const recipeUrl = computed(() => {
@@ -140,11 +197,34 @@ function handlePrint(): void {
 </script>
 
 <template>
-  <div v-if="currentRecipe" class="print-view">
-    <!-- Print Button (hidden in print) -->
-    <button class="print-btn" @click="handlePrint">
-      Print
-    </button>
+  <!-- Screen-only navigation bar (hidden in print) -->
+  <nav v-if="currentRecipe" class="print-nav">
+    <div class="print-nav-inner">
+      <button class="back-link" @click="goBack">
+        <ArrowLeft :size="16" />
+        <span class="font-mono text-sm">Back</span>
+      </button>
+      <span class="print-nav-brand">proofed<span class="brand-dot">.</span></span>
+      <button v-if="validation.ready" class="print-btn" @click="handlePrint">Print</button>
+    </div>
+  </nav>
+
+  <!-- Not yet generated gate -->
+  <div v-if="currentRecipe && !validation.ready" class="print-not-ready">
+    <h1 class="not-ready-title">Print View Not Yet Generated</h1>
+    <p class="not-ready-subtitle">This recipe needs the following before a printout can be generated:</p>
+    <ul class="not-ready-list">
+      <li v-for="check in failedChecks" :key="check.id" class="not-ready-item">
+        <span class="check-id">{{ check.id }}</span>
+        <span class="check-label">{{ check.label }}</span>
+        <span class="check-detail">{{ check.detail }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div v-else-if="currentRecipe" class="print-container">
+    <!-- PAGE 1 -->
+    <div class="print-view">
 
     <!-- Recipe Header -->
     <header class="print-header">
@@ -198,8 +278,13 @@ function handlePrint(): void {
       </section>
 
       <!-- Nutrition (right column) -->
-      <div v-if="validation.sections.nutrition" class="nutrition-wrapper">
-        <NutritionLabel :recipe="currentRecipe" />
+      <div v-if="validation.sections.nutrition" class="nutrition-column">
+        <div class="nutrition-wrapper">
+          <NutritionLabel :recipe="currentRecipe" />
+        </div>
+        <div v-if="nutritionSource || nutritionDate" class="estimation-note">
+          Derived from {{ nutritionSource || 'nutritional databases' }}<span v-if="nutritionDate">, calculated {{ nutritionDate }}</span>
+        </div>
       </div>
       <section v-else class="nutrition-placeholder">
         <h2 class="section-title">Nutrition Facts</h2>
@@ -209,19 +294,27 @@ function handlePrint(): void {
 
     <!-- Allergen Declaration -->
     <div v-if="allergenText" class="allergen-section">
-      <span class="allergen-label">Contains: </span>
-      <span class="allergen-value">{{ allergenText }}</span>
+      <div>
+        <span class="allergen-label">Contains: </span>
+        <span class="allergen-value">{{ allergenText }}</span>
+      </div>
+      <div class="estimation-note">Derived from ingredient classification</div>
     </div>
     <section v-else-if="!validation.sections.allergens" class="critical-missing">
       <h2 class="section-title">Allergen Declaration</h2>
       <p class="missing-text">Unable to determine allergens — ingredient lookup incomplete</p>
     </section>
 
-    <!-- Cost (version-averaged, hidden when absent) -->
-    <div v-if="avgCost" class="cost-section">
-      <span class="cost-total">${{ avgCost.total.toFixed(2) }} per bake</span>
-      <span class="cost-divider">&middot;</span>
-      <span class="cost-serving">${{ avgCost.perServing.toFixed(2) }} per serving</span>
+    <!-- Cost (most recent bake, hidden when absent) -->
+    <div v-if="costSummary" class="cost-section">
+      <div class="cost-values">
+        <span class="cost-total">${{ costSummary.total.toFixed(2) }} per bake</span>
+        <span class="cost-divider">&middot;</span>
+        <span class="cost-serving">${{ costSummary.perServing.toFixed(2) }} per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}</span>
+      </div>
+      <div class="estimation-note">
+        Estimated from H-E-B retail prices<span v-if="costDateFormatted">, snapshotted {{ costDateFormatted }}</span>
+      </div>
     </div>
 
     <!-- Footer + QR unified section -->
@@ -235,16 +328,181 @@ function handlePrint(): void {
         <p class="qr-caption">Scan for full recipe</p>
       </router-link>
     </footer>
+
+    </div><!-- end page 1 .print-view -->
+
+    <!-- PAGE 2: Cost Breakdown -->
+    <div v-if="costBreakdown" class="page-break" />
+    <div v-if="costBreakdown" class="print-view cost-page">
+      <header class="print-header">
+        <div class="header-left">
+          <h1 class="recipe-name">{{ recipeName }}</h1>
+          <div class="recipe-version">{{ recipeVersion }} — Cost Breakdown</div>
+        </div>
+        <div class="header-right">
+          <div class="cost-summary-total">${{ costBreakdown.total.toFixed(2) }}</div>
+          <div class="cost-summary-label">per bake</div>
+        </div>
+      </header>
+
+      <!-- Cost summary bar -->
+      <div class="cost-summary-bar">
+        <div class="cost-stat">
+          <span class="cost-stat-value">${{ costBreakdown.perServing.toFixed(2) }}</span>
+          <span class="cost-stat-label">per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}</span>
+        </div>
+        <div class="cost-stat-divider" />
+        <div class="cost-stat">
+          <span class="cost-stat-value">{{ currentRecipe?.meta.yields || `${costBreakdown.servings} servings` }}</span>
+          <span class="cost-stat-label">yield</span>
+        </div>
+      </div>
+
+      <!-- Ingredient cost table -->
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th class="col-ingredient">Ingredient</th>
+            <th class="col-amount">Amount</th>
+            <th class="col-cost">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in costItems" :key="item.ingredientId">
+            <td class="col-ingredient">
+              <span class="ingredient-primary">{{ item.name }}</span>
+              <span class="ingredient-source">{{ item.sourceName }}</span>
+            </td>
+            <td class="col-amount">{{ item.unit === 'whole' ? `${item.amount}x` : `${item.amount}${item.unit}` }}</td>
+            <td class="col-cost">${{ item.cost.toFixed(2) }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="cost-total-row">
+            <td colspan="2" class="cost-total-label">Total</td>
+            <td class="col-cost cost-total-value">${{ costBreakdown.total.toFixed(2) }}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- Estimation disclaimer -->
+      <div class="cost-disclaimer">
+        <span class="disclaimer-accent">*</span>
+        Cost is an estimation using H-E-B retail prices, calculated programmatically from product listings — not wholesale or bulk pricing.<span v-if="costBreakdownDateFormatted"> Prices snapshotted {{ costBreakdownDateFormatted }}.</span>
+      </div>
+
+      <!-- Page 2 footer -->
+      <footer class="print-footer">
+        <div class="footer-text">
+          <span class="brand">proofed<span class="brand-dot">.</span></span>
+          <span class="footer-copy">&copy; 2026 Chris Palmer</span>
+        </div>
+      </footer>
+    </div>
   </div>
 </template>
 
 <style scoped>
-/* Print Button */
+/* Not Ready Gate */
+.print-not-ready {
+  max-width: 8.5in;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--color-ink);
+}
+
+.not-ready-title {
+  font-size: 18pt;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.not-ready-subtitle {
+  font-size: 10pt;
+  color: var(--color-stone-600);
+  margin: 0 0 1.5rem 0;
+}
+
+.not-ready-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.not-ready-item {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  grid-template-rows: auto auto;
+  gap: 0 0.75rem;
+  padding: 0.75rem;
+  border: 2px solid var(--color-stone-300);
+}
+
+.check-id {
+  grid-row: 1 / 3;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--color-accent);
+  align-self: center;
+}
+
+.check-label {
+  font-size: 10pt;
+  font-weight: 600;
+}
+
+.check-detail {
+  font-size: 9pt;
+  color: var(--color-stone-500);
+}
+
+/* Screen-only nav bar */
+.print-nav {
+  max-width: 8.5in;
+  margin: 0 auto;
+  border-bottom: 2px solid var(--color-stone-200);
+  background: var(--color-surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.print-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0.75rem;
+}
+
+.print-nav-brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14pt;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  padding: 0 12px 0 8px;
+}
+
+.back-link:hover {
+  background: var(--color-stone-200);
+}
+
 .print-btn {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.5rem 1.25rem;
+  padding: 0.375rem 1rem;
   font-family: 'JetBrains Mono', monospace;
   font-size: 9pt;
   font-weight: 600;
@@ -252,7 +510,6 @@ function handlePrint(): void {
   background: var(--color-ink);
   border: 2px solid var(--color-ink);
   cursor: pointer;
-  z-index: 100;
 }
 
 .print-btn:hover {
@@ -260,17 +517,20 @@ function handlePrint(): void {
   border-color: var(--color-accent);
 }
 
-/* Base Layout — tight, print-dense */
-.print-view {
+/* Outer wrapper — no layout, just contains sibling pages */
+.print-container {
   max-width: 8.5in;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+}
+
+/* Base Layout — tight, print-dense */
+.print-view {
+  padding: 1rem 0.75rem;
   background: var(--color-surface);
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--color-ink);
   font-size: 10pt;
   line-height: 1.3;
-  min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
 }
@@ -306,11 +566,11 @@ function handlePrint(): void {
 
 .header-right {
   text-align: right;
-  font-size: 10pt;
+  font-size: 9pt;
 }
 
 .recipe-yield {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-ink);
 }
 
@@ -349,7 +609,7 @@ function handlePrint(): void {
   font-size: 9pt;
   color: var(--color-stone-600);
   font-style: italic;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.625rem;
 }
 
 /* Main content — side by side */
@@ -357,7 +617,7 @@ function handlePrint(): void {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Ingredients Section */
@@ -419,10 +679,14 @@ function handlePrint(): void {
   color: var(--color-stone-700);
 }
 
-/* Nutrition wrapper (left column) */
-.nutrition-wrapper {
+/* Nutrition column (right side) */
+.nutrition-column {
   flex-shrink: 0;
-  width: 250px;
+  width: 40%;
+}
+
+.nutrition-wrapper {
+  width: 100%;
 }
 
 .nutrition-wrapper :deep(.nutrition-label) {
@@ -511,7 +775,7 @@ function handlePrint(): void {
 /* Nutrition Placeholder */
 .nutrition-placeholder {
   flex-shrink: 0;
-  width: 250px;
+  width: 40%;
   background: var(--color-stone-100);
   border: 2px solid var(--color-stone-200);
   padding: 0.5rem;
@@ -540,7 +804,7 @@ function handlePrint(): void {
 
 /* Allergen Declaration */
 .allergen-section {
-  padding: 0.375rem 0;
+  padding: 0.5rem 0;
   border-top: 1px solid var(--color-stone-300);
   font-size: 9pt;
 }
@@ -556,13 +820,16 @@ function handlePrint(): void {
 
 /* Cost section */
 .cost-section {
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--color-stone-300);
+}
+
+.cost-values {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0;
   font-family: 'JetBrains Mono', monospace;
   font-size: 9pt;
-  color: var(--color-stone-600);
 }
 
 .cost-total {
@@ -576,6 +843,172 @@ function handlePrint(): void {
 
 .cost-serving {
   color: var(--color-stone-600);
+}
+
+/* Shared estimation note — used under nutrition, cost, allergens */
+.estimation-note {
+  font-size: 7pt;
+  color: var(--color-stone-400);
+  font-style: italic;
+  margin-top: 0.25rem;
+  line-height: 1.3;
+}
+
+/* Page break between pages */
+.page-break {
+  height: 0;
+  page-break-after: always;
+  break-after: page;
+}
+
+/* Cost Page (page 2) */
+.cost-page {
+  padding-top: 1rem;
+}
+
+.cost-summary-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.cost-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.cost-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12pt;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.cost-stat-label {
+  font-size: 8pt;
+  color: var(--color-stone-500);
+}
+
+.cost-stat-divider {
+  width: 1px;
+  height: 1rem;
+  background: var(--color-stone-300);
+}
+
+.cost-summary-total {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.cost-summary-label {
+  font-size: 8pt;
+  color: var(--color-stone-500);
+  text-align: right;
+}
+
+/* Cost table */
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  margin-bottom: 0.75rem;
+}
+
+.cost-table thead {
+  border-bottom: 2px solid var(--color-ink);
+}
+
+.cost-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-stone-600);
+  padding: 0.375rem 0.5rem;
+  text-align: left;
+}
+
+.cost-table td {
+  padding: 0.375rem 0.5rem;
+  border-bottom: 1px solid var(--color-stone-200);
+  color: var(--color-ink);
+}
+
+.col-amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8pt;
+  white-space: nowrap;
+}
+
+.col-ingredient {
+  line-height: 1.3;
+}
+
+.ingredient-primary {
+  display: block;
+  font-weight: 500;
+}
+
+.ingredient-source {
+  display: block;
+  font-size: 7pt;
+  color: var(--color-stone-400);
+  margin-top: 0.0625rem;
+}
+
+.col-cost {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cost-table th.col-cost {
+  text-align: right;
+}
+
+.cost-total-row {
+  border-top: 2px solid var(--color-ink);
+}
+
+.cost-total-row td {
+  border-bottom: none;
+  padding-top: 0.375rem;
+}
+
+.cost-total-label {
+  font-weight: 600;
+  text-align: right;
+  padding-right: 0.375rem;
+}
+
+.cost-total-value {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+/* Disclaimer */
+.cost-disclaimer {
+  font-size: 7pt;
+  color: var(--color-stone-500);
+  font-style: italic;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--color-stone-200);
+  line-height: 1.4;
+}
+
+.disclaimer-accent {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-style: normal;
 }
 
 /*
@@ -598,7 +1031,7 @@ function handlePrint(): void {
 .footer-text {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.5rem;
   padding-top: 0.5rem;
   font-family: 'JetBrains Mono', monospace;
@@ -649,11 +1082,14 @@ function handlePrint(): void {
 @media print {
   @page {
     size: letter portrait;
-    margin: 0.75in 0.5in;
+    margin: 0.5in 0.375in;
+  }
+
+  .print-container {
+    max-width: 100%;
   }
 
   .print-view {
-    max-width: 100%;
     padding: 0;
     background: white;
     font-size: 10pt;
@@ -670,11 +1106,11 @@ function handlePrint(): void {
     page-break-after: avoid;
   }
 
-  .main-content {
+  .ingredients-section {
     page-break-inside: avoid;
   }
 
-  .ingredients-section {
+  .nutrition-column {
     page-break-inside: avoid;
   }
 
@@ -730,6 +1166,31 @@ function handlePrint(): void {
   nav,
   .toc-sidebar {
     display: none !important;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .cost-page {
+    min-height: calc(11in - 1.5in);
+  }
+
+  .cost-table {
+    page-break-inside: avoid;
+  }
+
+  .cost-summary-bar {
+    border-color: #a65d45;
+  }
+
+  .cost-total-value {
+    color: #a65d45;
+  }
+
+  .disclaimer-accent {
+    color: #a65d45;
   }
 
   /* Prevent orphans and widows */
