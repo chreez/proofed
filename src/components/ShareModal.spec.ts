@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach, beforeAll, afterAll } from 'vitest'
-import { mount } from '@vue/test-utils'
+import { mount, flushPromises } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import ShareModal from './ShareModal.vue'
 import type { CookLogEntry } from '@/types/recipe'
@@ -249,6 +249,7 @@ describe('ShareModal', () => {
       await openAndSelectBake(wrapper)
       // Advance past the 300ms setTimeout for canvas compositing
       vi.advanceTimersByTime(350)
+      await flushPromises()
       await nextTick()
       const qrLabel = wrapper.find('[data-testid="share-qr-label"]')
       expect(qrLabel.exists()).toBe(true)
@@ -269,6 +270,7 @@ describe('ShareModal', () => {
       const wrapper = mountModal()
       await openAndSelectBake(wrapper)
       vi.advanceTimersByTime(350)
+      await flushPromises()
       await nextTick()
       // Should not crash, no QR label rendered
       expect(wrapper.find('[data-testid="share-qr-label"]').exists()).toBe(false)
@@ -283,6 +285,7 @@ describe('ShareModal', () => {
       const wrapper = mountModal()
       await openAndSelectBake(wrapper)
       vi.advanceTimersByTime(350)
+      await flushPromises()
       await nextTick()
       expect(wrapper.find('[data-testid="share-qr-label"]').exists()).toBe(false)
       vi.useRealTimers()

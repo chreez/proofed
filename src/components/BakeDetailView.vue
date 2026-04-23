@@ -2,10 +2,11 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { marked } from 'marked'
-import { ArrowLeft, Bot, Printer } from 'lucide-vue-next'
+import { ArrowLeft, Bot, Printer, QrCode } from 'lucide-vue-next'
 import { useRecipe } from '@/composables/useRecipe'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import BakeStatsBlock from '@/components/BakeStatsBlock.vue'
+import BakeQrModal from '@/components/BakeQrModal.vue'
 import type { CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType, KeyNote } from '@/types/recipe'
 
 const route = useRoute()
@@ -37,6 +38,13 @@ const supportingPhotos = computed<CookLogPhoto[]>(() => {
   if (!entry.value?.photos || entry.value.photos.length <= 1) return []
   return entry.value.photos.slice(0, -1)
 })
+
+// QR modal ref
+const bakeQrModal = ref<InstanceType<typeof BakeQrModal> | null>(null)
+
+function openQrModal(): void {
+  bakeQrModal.value?.open()
+}
 
 // Lightbox state
 const lightboxOpen = ref(false)
@@ -284,9 +292,14 @@ function weatherIcon(condition: string): string {
           <ArrowLeft :size="16" />
           <span class="font-mono text-sm">Back to recipe</span>
         </button>
-        <router-link :to="`/recipe/${route.params.recipeId}/print`" class="print-link" title="View bake sheet">
-          <Printer :size="16" />
-        </router-link>
+        <div class="flex items-center gap-1">
+          <button class="nav-icon-btn" title="Share QR code" data-testid="bake-qr-btn" @click="openQrModal">
+            <QrCode :size="16" />
+          </button>
+          <router-link :to="`/recipe/${route.params.recipeId}/print`" class="nav-icon-btn" title="View bake sheet">
+            <Printer :size="16" />
+          </router-link>
+        </div>
       </div>
 
       <!-- Header -->
@@ -453,6 +466,14 @@ function weatherIcon(condition: string): string {
         </button>
       </div>
     </template>
+
+    <BakeQrModal
+      v-if="entry && currentRecipe"
+      ref="bakeQrModal"
+      :recipe-name="currentRecipe.meta.name"
+      :recipe-id="String(route.params.recipeId)"
+      :bake-date="entry.date"
+    />
 
     <PhotoLightbox
       :photos="lightboxPhotos"
@@ -623,7 +644,7 @@ function weatherIcon(condition: string): string {
   background: var(--color-stone-300);
 }
 
-.print-link {
+.nav-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -631,10 +652,13 @@ function weatherIcon(condition: string): string {
   height: 44px;
   color: var(--color-stone-500);
   text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
   transition: color 0.15s ease;
 }
 
-.print-link:hover {
+.nav-icon-btn:hover {
   color: var(--color-ink);
 }
 

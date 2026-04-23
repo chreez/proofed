@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import { ArrowLeft, X, Share2, Copy, Check } from 'lucide-vue-next'
-import type { CookLogEntry } from '@/types/recipe'
+import { X, Share2, Copy, Check } from 'lucide-vue-next'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { renderBrandedQr, generateQrLabelDataUrl } from '@/composables/useQrLabel'
 
 const props = defineProps<{
   recipeName: string
   recipeId: string
-  cookLog: CookLogEntry[]
+  bakeDate: string
 }>()
 
 const emit = defineEmits<{
@@ -17,51 +16,28 @@ const emit = defineEmits<{
 
 // Modal state
 const isOpen = ref(false)
-const step = ref<'pick' | 'share'>('pick')
-const selectedBake = ref<CookLogEntry | null>(null)
 const copied = ref(false)
 const qrContainer = ref<HTMLDivElement | null>(null)
 const qrImageSrc = ref<string | null>(null)
 
-// Sort entries newest first
-const sortedEntries = computed(() => {
-  return [...props.cookLog].sort((a, b) => b.date.localeCompare(a.date))
-})
-
 const shareUrl = computed(() => {
-  if (!selectedBake.value) return ''
-  return `https://proofeddot.netlify.app/recipe/${props.recipeId}/bake/${selectedBake.value.date}?shared=true`
+  return `https://proofeddot.netlify.app/recipe/${props.recipeId}/bake/${props.bakeDate}?shared=true`
 })
 
 const hasNativeShare = computed(() => typeof navigator !== 'undefined' && !!navigator.share)
 
 function open(): void {
   isOpen.value = true
-  step.value = 'pick'
-  selectedBake.value = null
   copied.value = false
   qrImageSrc.value = null
   document.body.style.overflow = 'hidden'
+  nextTick(() => renderQrLabel())
 }
 
 function close(): void {
   isOpen.value = false
   document.body.style.overflow = ''
   emit('close')
-}
-
-function selectBake(entry: CookLogEntry): void {
-  selectedBake.value = entry
-  step.value = 'share'
-  copied.value = false
-  qrImageSrc.value = null
-  nextTick(() => renderQrLabel())
-}
-
-function goBackToPicker(): void {
-  step.value = 'pick'
-  selectedBake.value = null
-  copied.value = false
 }
 
 async function renderQrLabel(): Promise<void> {
@@ -95,10 +71,10 @@ async function copyLink(): Promise<void> {
 }
 
 async function shareLink(): Promise<void> {
-  if (!shareUrl.value || !selectedBake.value) return
+  if (!shareUrl.value) return
   try {
     await navigator.share({
-      title: `${props.recipeName} — ${formatDate(selectedBake.value.date)}`,
+      title: `${props.recipeName} — ${formatDate(props.bakeDate)}`,
       url: shareUrl.value
     })
   } catch {
@@ -132,65 +108,33 @@ defineExpose({ open, close, isOpen })
 </script>
 
 <template>
-  <Transition name="share-fade">
+  <Transition name="bake-qr-fade">
     <div
       v-if="isOpen"
       class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
-      data-testid="share-modal-overlay"
+      data-testid="bake-qr-modal-overlay"
       @click.self="close"
     >
       <div class="bg-surface border-2 border-stone-200 w-full max-w-sm max-h-[80vh] overflow-y-auto">
         <!-- Header -->
         <div class="flex items-center justify-between p-4 border-b-2 border-stone-200">
-          <div class="flex items-center gap-2">
-            <button
-              v-if="step === 'share'"
-              class="icon-btn-inline"
-              title="Back"
-              data-testid="share-back-btn"
-              @click="goBackToPicker"
-            >
-              <ArrowLeft :size="16" />
-            </button>
-            <h3 class="font-mono text-sm text-ink font-semibold">
-              {{ step === 'pick' ? 'Share a Bake' : 'Share Link' }}
-            </h3>
-          </div>
+          <h3 class="font-mono text-sm text-ink font-semibold">
+            Share Bake
+          </h3>
           <button
             class="icon-btn-inline"
             title="Close"
-            data-testid="share-close-btn"
+            data-testid="bake-qr-close-btn"
             @click="close"
           >
             <X :size="16" />
           </button>
         </div>
 
-        <!-- Step 1: Bake Picker -->
-        <div v-if="step === 'pick'" class="p-4">
-          <p class="text-muted mb-3">Select a bake to share:</p>
-          <div class="space-y-2">
-            <button
-              v-for="entry in sortedEntries"
-              :key="entry.date"
-              class="w-full text-left p-3 border-2 border-stone-200 hover:bg-stone-50 transition-colors"
-              data-testid="bake-picker-entry"
-              @click="selectBake(entry)"
-            >
-              <div class="flex items-center gap-2 mb-1">
-                <span class="font-mono text-xs text-ink">{{ formatDate(entry.date) }}</span>
-                <span class="text-xs bg-stone-200 px-1.5 py-0.5">{{ entry.version }}</span>
-              </div>
-              <p v-if="entry.summary" class="text-xs text-stone-600 line-clamp-2">{{ entry.summary }}</p>
-              <p v-else class="text-xs text-stone-400 italic">No summary</p>
-            </button>
-          </div>
-        </div>
-
-        <!-- Step 2: Share Actions -->
-        <div v-if="step === 'share'" class="p-4">
+        <!-- Share content -->
+        <div class="p-4">
           <p class="text-muted mb-1">{{ recipeName }}</p>
-          <p class="font-mono text-xs text-ink mb-4">{{ selectedBake ? formatDate(selectedBake.date) : '' }}</p>
+          <p class="font-mono text-xs text-ink mb-4">{{ formatDate(bakeDate) }}</p>
 
           <!-- Hidden canvas for QR generation -->
           <div ref="qrContainer" class="hidden" />
@@ -202,20 +146,20 @@ defineExpose({ open, close, isOpen })
               :alt="`Reheat instructions QR code for ${recipeName}`"
               class="w-full"
               style="-webkit-touch-callout: default;"
-              data-testid="share-qr-label"
+              data-testid="bake-qr-label"
             />
           </div>
 
           <!-- Link preview -->
           <div class="bg-stone-100 border-2 border-stone-200 p-3 mb-4">
-            <p class="font-mono text-xs text-stone-500 break-all" data-testid="share-url">{{ shareUrl }}</p>
+            <p class="font-mono text-xs text-stone-500 break-all" data-testid="bake-qr-url">{{ shareUrl }}</p>
           </div>
 
           <!-- Actions -->
           <div class="space-y-2">
             <button
               class="w-full flex items-center justify-center gap-2 py-3 border-2 border-stone-200 hover:bg-stone-50 transition-colors font-mono text-sm text-ink"
-              data-testid="share-copy-btn"
+              data-testid="bake-qr-copy-btn"
               @click="copyLink"
             >
               <Check v-if="copied" :size="16" class="text-green-600" />
@@ -226,7 +170,7 @@ defineExpose({ open, close, isOpen })
             <button
               v-if="hasNativeShare"
               class="w-full flex items-center justify-center gap-2 py-3 bg-ink text-surface font-mono text-sm transition-colors hover:bg-stone-700"
-              data-testid="share-native-btn"
+              data-testid="bake-qr-share-btn"
               @click="shareLink"
             >
               <Share2 :size="16" />
@@ -240,14 +184,14 @@ defineExpose({ open, close, isOpen })
 </template>
 
 <style scoped>
-.share-fade-enter-active {
+.bake-qr-fade-enter-active {
   transition: opacity 200ms ease-out;
 }
-.share-fade-leave-active {
+.bake-qr-fade-leave-active {
   transition: opacity 150ms ease-in;
 }
-.share-fade-enter-from,
-.share-fade-leave-to {
+.bake-qr-fade-enter-from,
+.bake-qr-fade-leave-to {
   opacity: 0;
 }
 
@@ -266,12 +210,5 @@ defineExpose({ open, close, isOpen })
 }
 .icon-btn-inline:hover {
   background: var(--color-stone-200);
-}
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 </style>

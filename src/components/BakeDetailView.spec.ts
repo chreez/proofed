@@ -38,7 +38,8 @@ vi.mock('@/composables/useRecipe', () => ({
 vi.mock('lucide-vue-next', () => ({
   ArrowLeft: { name: 'ArrowLeft', props: ['size'], template: '<svg class="arrow-left-icon" />' },
   Bot: { name: 'Bot', props: ['size'], template: '<svg class="bot-icon" />' },
-  Printer: { name: 'Printer', props: ['size'], template: '<svg class="printer-icon" />' }
+  Printer: { name: 'Printer', props: ['size'], template: '<svg class="printer-icon" />' },
+  QrCode: { name: 'QrCode', props: ['size'], template: '<svg class="qr-code-icon" />' }
 }))
 
 // Stub PhotoLightbox
@@ -48,6 +49,20 @@ vi.mock('@/components/PhotoLightbox.vue', () => ({
     props: ['photos', 'initialIndex', 'open'],
     emits: ['close'],
     template: '<div class="photo-lightbox-stub" v-if="open">Lightbox</div>'
+  }
+}))
+
+// Stub BakeQrModal
+const mockQrOpen = vi.fn()
+vi.mock('@/components/BakeQrModal.vue', () => ({
+  default: {
+    name: 'BakeQrModal',
+    props: ['recipeName', 'recipeId', 'bakeDate'],
+    emits: ['close'],
+    setup() {
+      return { open: mockQrOpen, close: vi.fn(), isOpen: ref(false) }
+    },
+    template: '<div class="bake-qr-modal-stub" />'
   }
 }))
 
