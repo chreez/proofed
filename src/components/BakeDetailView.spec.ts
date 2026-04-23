@@ -37,7 +37,8 @@ vi.mock('@/composables/useRecipe', () => ({
 // Mock lucide-vue-next
 vi.mock('lucide-vue-next', () => ({
   ArrowLeft: { name: 'ArrowLeft', props: ['size'], template: '<svg class="arrow-left-icon" />' },
-  Bot: { name: 'Bot', props: ['size'], template: '<svg class="bot-icon" />' }
+  Bot: { name: 'Bot', props: ['size'], template: '<svg class="bot-icon" />' },
+  Printer: { name: 'Printer', props: ['size'], template: '<svg class="printer-icon" />' }
 }))
 
 // Stub PhotoLightbox
@@ -487,7 +488,7 @@ describe('BakeDetailView', () => {
       servings: 1,
       items: [
         { ingredientId: 'bread_flour', name: 'Bread Flour', sourceType: 'heb' as const, sourceName: 'King Arthur Bread Flour, 5 lb', amount: 500, unit: 'g', cost: 1.23 },
-        { ingredientId: 'water', name: 'Water', sourceType: 'rate' as const, sourceName: 'Tap water (negligible)', amount: 350, unit: 'g', cost: 0.00 },
+        { ingredientId: 'water', name: 'Water', sourceType: 'rate' as const, sourceName: 'Filtered water (not yet priced)', amount: 350, unit: 'g', cost: 0.00 },
         { ingredientId: 'salt', name: 'Fine Sea Salt', sourceType: 'manual' as const, sourceName: 'H-E-B Mediterranean Sea Salt', amount: 10, unit: 'g', cost: 0.03 }
       ]
     }
@@ -528,7 +529,7 @@ describe('BakeDetailView', () => {
       expect(badgeTexts).toContain('MANUAL')
     })
 
-    it('shows "negligible" for zero-cost rate items', () => {
+    it('shows $0.00 for zero-cost rate items instead of special label', () => {
       mockCurrentRecipe.value = makeRecipe({
         cook_log: [{
           date: '2026-02-05',
@@ -538,27 +539,9 @@ describe('BakeDetailView', () => {
         }]
       })
       const wrapper = mountComponent()
-      expect(wrapper.text()).toContain('negligible')
-    })
-
-    it('does not show "negligible" for non-zero cost items', () => {
-      mockCurrentRecipe.value = makeRecipe({
-        cook_log: [{
-          date: '2026-02-05',
-          version: 'v1.1.0',
-          notes: ['A note'],
-          cost: {
-            total: 1.23,
-            perServing: 1.23,
-            servings: 1,
-            items: [
-              { ingredientId: 'flour', name: 'Flour', sourceType: 'heb' as const, sourceName: 'KA', amount: 500, unit: 'g', cost: 1.23 }
-            ]
-          }
-        }]
-      })
-      const wrapper = mountComponent()
-      expect(wrapper.text()).not.toContain('negligible')
+      const costSection = wrapper.find('[data-testid="cost-breakdown"]')
+      expect(costSection.text()).toContain('$0.00')
+      expect(costSection.text()).not.toContain('negligible')
     })
 
     it('shows total and per-serving in footer', () => {

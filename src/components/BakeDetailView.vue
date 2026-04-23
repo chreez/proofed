@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { marked } from 'marked'
-import { ArrowLeft, Bot } from 'lucide-vue-next'
+import { ArrowLeft, Bot, Printer } from 'lucide-vue-next'
 import { useRecipe } from '@/composables/useRecipe'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import BakeStatsBlock from '@/components/BakeStatsBlock.vue'
@@ -205,12 +205,11 @@ function sourceBadgeClass(sourceType: CostSourceType): string {
   }
 }
 
-function isNegligible(item: CookLogCostItem): boolean {
+function isUnpriced(item: CookLogCostItem): boolean {
   return item.cost === 0 && item.sourceType === 'rate'
 }
 
-function formatCost(cost: number, negligible: boolean): string {
-  if (negligible) return 'negligible'
+function formatCost(cost: number): string {
   return `$${cost.toFixed(2)}`
 }
 
@@ -279,11 +278,16 @@ function weatherIcon(condition: string): string {
 
     <!-- Bake detail -->
     <template v-else-if="entry && currentRecipe">
-      <!-- Back link -->
-      <button class="back-link" @click="goBack">
-        <ArrowLeft :size="16" />
-        <span class="font-mono text-sm">Back to recipe</span>
-      </button>
+      <!-- Nav row -->
+      <div class="flex items-center justify-between mb-2">
+        <button class="back-link" @click="goBack">
+          <ArrowLeft :size="16" />
+          <span class="font-mono text-sm">Back to recipe</span>
+        </button>
+        <router-link :to="`/recipe/${route.params.recipeId}/print`" class="print-link" title="View bake sheet">
+          <Printer :size="16" />
+        </router-link>
+      </div>
 
       <!-- Header -->
       <div class="mb-4">
@@ -409,12 +413,12 @@ function weatherIcon(condition: string): string {
               </div>
               <div class="text-right flex-shrink-0">
                 <div class="flex items-baseline gap-2">
-                  <span class="text-xs text-stone-400 font-mono">{{ item.amount }}{{ item.unit }}</span>
+                  <span class="text-xs text-stone-400 font-mono">{{ item.unit === 'whole' ? `${item.amount}x` : `${item.amount}${item.unit}` }}</span>
                   <span
                     class="text-sm font-mono font-medium"
-                    :class="isNegligible(item) ? 'text-stone-400 italic' : 'text-ink'"
+                    :class="isUnpriced(item) ? 'text-stone-400' : 'text-ink'"
                   >
-                    {{ formatCost(item.cost, isNegligible(item)) }}
+                    {{ formatCost(item.cost) }}
                   </span>
                 </div>
               </div>
@@ -617,6 +621,21 @@ function weatherIcon(condition: string): string {
 
 .back-link:active {
   background: var(--color-stone-300);
+}
+
+.print-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-stone-500);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.print-link:hover {
+  color: var(--color-ink);
 }
 
 .bake-prose :deep(code) {
