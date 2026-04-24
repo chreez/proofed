@@ -1,3 +1,9 @@
+import { config } from '@vue/test-utils'
+
+// Globally stub RouterLink so specs mounting components with <router-link>
+// don't emit "Failed to resolve component" warnings.
+config.global.stubs['RouterLink'] = true
+
 // jsdom does not set isSecureContext = true by default.
 // Most component tests mock navigator.clipboard, which requires the
 // secure-context path in copyToClipboard. Setting this globally ensures
