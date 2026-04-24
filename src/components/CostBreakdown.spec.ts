@@ -539,8 +539,7 @@ describe('CostBreakdown', () => {
       expect(footer.text()).toContain('$3.00')
 
       const note = wrapper.find('[data-testid="cost-date-note"]')
-      expect(note.text()).toContain('Feb')
-      expect(note.text()).toContain('14') // Feb 15 UTC -> Feb 14 in local time (CST)
+      expect(note.text()).toContain('Feb 15, 2026')
     })
   })
 })

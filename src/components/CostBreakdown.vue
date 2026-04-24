@@ -47,7 +47,9 @@ function formatCost(cost: number): string {
 }
 
 function formatDate(dateStr: string): string {
-  const date = new Date(dateStr)
+  // Parse YYYY-MM-DD as local date (not UTC) to avoid timezone shift
+  const [y, m, d] = dateStr.split('-').map(Number)
+  const date = new Date(y, m - 1, d)
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 </script>

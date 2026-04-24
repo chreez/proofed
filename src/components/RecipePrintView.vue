@@ -146,7 +146,8 @@ const nutritionSource = computed(() => currentRecipe.value?.nutrition?.dataSourc
 const nutritionDate = computed(() => {
   const d = currentRecipe.value?.nutrition?.calculatedDate
   if (!d) return ''
-  return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+  const [y, m, day] = d.split('-').map(Number)
+  return new Date(y, m - 1, day).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 })
 
 // --- Cost source dropdown ---
@@ -161,8 +162,9 @@ interface CostSource {
 }
 
 function formatDateLabel(dateStr: string): string {
-  const d = new Date(dateStr)
-  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+  // Parse YYYY-MM-DD as local date to avoid UTC timezone shift
+  const [y, m, d] = dateStr.split('-').map(Number)
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 /** Collect all available cost sources, sorted by date descending (freshest first) */
