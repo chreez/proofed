@@ -1,0 +1,19 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-04-24",
+  "processedAt": "2026-04-24T20:32:47.745Z",
+  "photos": [
+    {
+      "name": "finished-loaf",
+      "thumb": "finished-loaf-400w.webp",
+      "src": "finished-loaf-800w.webp",
+      "summary": "Halved loaf held up showing crumb and crust side-by-side. Open, irregular crumb with good hole structure. Golden-brown crust with visible banneton ring pattern and defined ear. Second half rests on white cutting board."
+    },
+    {
+      "name": "scoring-pre-bake",
+      "thumb": "scoring-pre-bake-400w.webp",
+      "src": "scoring-pre-bake-800w.webp",
+      "summary": "Overhead crumb shot — loaf halved on counter. Open, airy crumb with mix of large and medium holes throughout. Even distribution, no dense patches. Good evidence of proper fermentation and shaping."
+    }
+  ]
+}

@@ -5073,6 +5073,291 @@
           "notable": false
         }
       ]
+    },
+    {
+      "date": "2026-04-24",
+      "start_date": "2026-04-23",
+      "version": "v3.6.0",
+      "actual_yield": {
+        "value": 1,
+        "unit": "loaves"
+      },
+      "summary": "Single loaf, super active starter — aliquot ripped from 0% to 60% in 3.5 hours. Two stretch folds, overnight cold retard (~14 hrs), covered bake at 480°F. Good spring, 208°F internal. Flavor depth TBD.",
+      "notes": [
+        "Fermentolyse at 2:54pm — DDT 78.8°F, ambient 77.2°F, 63% humidity inside",
+        "Salt added at 3:31pm — aliquot at 0%, DDT 78.4°F. First stretch fold.",
+        "5:01pm — aliquot 10%, DDT 77.5°F",
+        "5:39pm — second stretch fold, DDT 77.7°F. Dough felt elastic, nice. Aliquot 30%.",
+        "6:19pm — DDT 77.4°F, aliquot 45%. Starter was super active, aliquot moving faster than normal.",
+        "6:52pm — aliquot 60%, turned out for preshape. Dough weight 952g. Single loaf.",
+        "Shaped ~7:22pm. Room temp rest until ~8:30pm, then into fridge.",
+        "Bake day (Fri): straight from fridge to score after ~1hr preheat at 500°F. Covered bake at 480°F for 20 min, uncovered at 425°F for ~26 min.",
+        "Out at 208°F internal. Good spring. Feels like it lacks some depth of flavor — holding judgment until used in a dish."
+      ],
+      "next_time": [],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-04-24/scoring-pre-bake-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-24/scoring-pre-bake-400w.webp",
+          "alt": "Overhead crumb shot — loaf halved on counter. Open, airy crumb with mix of large and medium holes throughout. Even distribution, no dense patches."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-24/finished-loaf-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-24/finished-loaf-400w.webp",
+          "alt": "Halved loaf held up showing crumb and crust side-by-side. Open, irregular crumb with good hole structure. Golden-brown crust with visible banneton ring pattern and defined ear."
+        }
+      ],
+      "bake_stats": {
+        "dough_temps": [
+          {
+            "time": "2026-04-23 - 14:54",
+            "temp_f": 78.8
+          },
+          {
+            "time": "2026-04-23 - 15:31",
+            "temp_f": 78.4
+          },
+          {
+            "time": "2026-04-23 - 17:04",
+            "temp_f": 77.5
+          },
+          {
+            "time": "2026-04-23 - 17:39",
+            "temp_f": 77.7
+          },
+          {
+            "time": "2026-04-23 - 18:19",
+            "temp_f": 77.4
+          }
+        ],
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-04-23",
+            "temp_f": 77.2,
+            "note": "pre-bake kitchen temp"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-04-23 - 15:31",
+            "type": "stretch_fold",
+            "note": "after salt"
+          },
+          {
+            "time": "2026-04-23 - 17:39",
+            "type": "stretch_fold"
+          }
+        ],
+        "aliquot_rises": [
+          {
+            "time": "2026-04-23 - 15:31",
+            "rise_pct": 0,
+            "stage": "bulk"
+          },
+          {
+            "time": "2026-04-23 - 17:01",
+            "rise_pct": 10,
+            "stage": "bulk"
+          },
+          {
+            "time": "2026-04-23 - 17:39",
+            "rise_pct": 30,
+            "stage": "bulk"
+          },
+          {
+            "time": "2026-04-23 - 18:19",
+            "rise_pct": 45,
+            "stage": "bulk"
+          },
+          {
+            "time": "2026-04-23 - 18:52",
+            "rise_pct": 60,
+            "stage": "bulk"
+          }
+        ],
+        "shape_time": "2026-04-23 - 19:22",
+        "proof_phases": [
+          {
+            "type": "room_temp",
+            "duration_min": 68,
+            "start_time": "2026-04-23 - 19:22"
+          },
+          {
+            "type": "cold_retard",
+            "duration_min": 837,
+            "start_time": "2026-04-23 - 20:30",
+            "note": "~14 hrs, straight from fridge to score"
+          }
+        ],
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 500,
+            "duration_min": 60
+          },
+          {
+            "stage": "covered",
+            "temp_f": 480,
+            "duration_min": 20,
+            "start_time": "2026-04-24 - 10:27"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 26
+          }
+        ],
+        "confidence": "high"
+      },
+      "bake_notes": [
+        {
+          "timestamp": "2026-04-23T19:54:59Z",
+          "raw": "78.8 dt - 77.2 ambient with 63% humidity inside",
+          "notable": true,
+          "stepId": "REST_FERMENTOLYSE",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-04-23T20:31:09Z",
+          "raw": "aliquot at 0% 78.4 dt",
+          "notable": false,
+          "stepId": "ADD_SALT",
+          "processing": "mix",
+          "prompt": "Take aliquot sample after incorporating salt"
+        },
+        {
+          "timestamp": "2026-04-23T20:31:14Z",
+          "raw": "78.4",
+          "notable": false,
+          "stepId": "FOLD_1",
+          "processing": "bulk_ferment",
+          "prompt": "Record dough temperature"
+        },
+        {
+          "timestamp": "2026-04-23T22:01:33Z",
+          "raw": "aliquot 10%",
+          "notable": false,
+          "stepId": "FOLD_1",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-23T22:04:29Z",
+          "raw": "77.5 dough temp",
+          "notable": false,
+          "stepId": "FOLD_1",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-23T22:39:08Z",
+          "raw": "77.7 second stretch fold. dough feels elastic. nice. 30% aliquot.",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-23T23:19:54Z",
+          "raw": "77.4 aliquot is 45% active starter ??",
+          "notable": true,
+          "processing": "bulk_ferment",
+          "curated": "Aliquot 45%, DDT 77.4°F — starter super active, aliquot moving faster than normal"
+        },
+        {
+          "timestamp": "2026-04-23T23:52:45Z",
+          "raw": "aliquot reads 60% gonna turn out dough for preshape now.",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-04-23T23:53:23Z",
+          "raw": "952 dough weight",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-04-24T00:42:28Z",
+          "raw": "shaped a bit ago. may need to calculate the time i shaped. about 20 minutes ago. letting sit at room temp for an hour or maybe a little longer depending on if i have time",
+          "notable": true,
+          "processing": "shaping | Timestamp inferred: 'about 20 minutes ago' relative to 2026-04-24T00:42:28Z → shape time ~2026-04-24T00:22:00Z"
+        },
+        {
+          "timestamp": "2026-04-24T15:27:56Z",
+          "raw": "preheated oven at 500 for about an hour. just placed bread into oven at 480 for 20 minutes. will take off lid in about 20 minutes and do uncovered for 425",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-04-24T16:16:00Z",
+          "raw": "208 degrees out of the oven. took about 26 minutes uncovered for desired crust color.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-04-24T16:16:00Z",
+          "raw": "Good spring. Feels like it lacks some depth of flavor — holding judgment until used in a dish.",
+          "notable": true,
+          "processing": "result"
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-24",
+        "temp_high_f": 87.1,
+        "temp_low_f": 70.9,
+        "humidity_avg_percent": 79,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 1.21,
+            "amount": 500,
+            "unit": "g",
+            "name": "Bread Flour"
+          },
+          {
+            "ingredientId": "water",
+            "sourceType": "rate",
+            "sourceName": "Filtered water (not yet priced)",
+            "packageSize": "not yet priced",
+            "packagePrice": 0,
+            "cost": 0,
+            "amount": 350,
+            "unit": "g",
+            "name": "Water"
+          },
+          {
+            "ingredientId": "starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0.06,
+            "amount": 100,
+            "unit": "g",
+            "name": "Active Sourdough Starter"
+          },
+          {
+            "ingredientId": "salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.06,
+            "amount": 10,
+            "unit": "g",
+            "name": "Fine Sea Salt"
+          }
+        ],
+        "total": 1.33,
+        "perServing": 0.67,
+        "servings": 2,
+        "date": "2026-04-24"
+      }
     }
   ],
   "research": {
