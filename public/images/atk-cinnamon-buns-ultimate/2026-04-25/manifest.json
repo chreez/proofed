@@ -1,0 +1,31 @@
+{
+  "recipeId": "atk-cinnamon-buns-ultimate",
+  "date": "2026-04-25",
+  "processedAt": "2026-04-25T03:10:11.433Z",
+  "photos": [
+    {
+      "name": "buns-detail-1",
+      "thumb": "buns-detail-1-400w.webp",
+      "src": "buns-detail-1-800w.webp",
+      "summary": "Baked cinnamon buns transferred to a white box lined with parchment paper. Buns are golden-brown on top with visible cinnamon swirl layers. Arranged loosely after removal from baking vessels."
+    },
+    {
+      "name": "buns-detail-2",
+      "thumb": "buns-detail-2-400w.webp",
+      "src": "buns-detail-2-800w.webp",
+      "summary": "Cupcake tin aftermath — buns stuck to cups with gelatinized sugar residue visible in each well. Tongs gripping one bun mid-extraction. Shows the sticking problem from baking in individual cups without adequate greasing."
+    },
+    {
+      "name": "buns-in-tin",
+      "thumb": "buns-in-tin-400w.webp",
+      "src": "buns-in-tin-800w.webp",
+      "summary": "Both baking vessels in the oven — cupcake tin with individual buns on left, Pyrex glass dish with clustered buns on right. Pre-bake or early bake stage, dough still pale and rising."
+    },
+    {
+      "name": "buns-top-view",
+      "thumb": "buns-top-view-400w.webp",
+      "src": "buns-top-view-800w.webp",
+      "summary": "Overhead view of baked cinnamon buns in Pyrex glass dish. Golden-brown tops with caramelized edges, buns touching and risen together. These are the Pyrex batch that released cleanly compared to the cupcake tin."
+    }
+  ]
+}

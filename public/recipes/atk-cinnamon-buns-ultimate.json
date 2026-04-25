@@ -247,7 +247,28 @@
           "text": "If revisiting tangzhong, try with AP flour and Pyrex to isolate the variable"
         }
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-in-tin-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-in-tin-400w.webp",
+          "alt": "Both baking vessels in the oven — cupcake tin with individual buns on left, Pyrex glass dish with clustered buns on right. Pre-bake or early bake stage, dough still pale and rising."
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-top-view-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-top-view-400w.webp",
+          "alt": "Overhead view of baked cinnamon buns in Pyrex glass dish. Golden-brown tops with caramelized edges, buns touching and risen together. These are the Pyrex batch that released cleanly compared to the cupcake tin."
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-detail-1-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-detail-1-400w.webp",
+          "alt": "Baked cinnamon buns transferred to a white box lined with parchment paper. Buns are golden-brown on top with visible cinnamon swirl layers. Arranged loosely after removal from baking vessels."
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-detail-2-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-detail-2-400w.webp",
+          "alt": "Cupcake tin aftermath — buns stuck to cups with gelatinized sugar residue visible in each well. Tongs gripping one bun mid-extraction. Shows the sticking problem from baking in individual cups without adequate greasing."
+        }
+      ],
       "bake_notes": [
         {
           "timestamp": "2026-04-24T21:53:14Z",
@@ -270,6 +291,26 @@
         "humidity_avg_percent": 83,
         "condition": "Drizzle",
         "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          { "ingredientId": "butter", "name": "Unsalted Butter", "sourceType": "heb", "sourceName": "Hill Country Fare Unsalted Butter Sticks", "amount": 227, "unit": "g", "cost": 1.49 },
+          { "ingredientId": "flour", "name": "All-Purpose Flour", "sourceType": "heb", "sourceName": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour", "amount": 531, "unit": "g", "cost": 0.89 },
+          { "ingredientId": "cornstarch", "name": "Cornstarch", "sourceType": "heb", "sourceName": "Hill Country Fare Corn Starch", "amount": 64, "unit": "g", "cost": 0.24 },
+          { "ingredientId": "granulated_sugar", "name": "Granulated Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Granulated Sugar", "amount": 75, "unit": "g", "cost": 0.11 },
+          { "ingredientId": "brown_sugar", "name": "Light Brown Sugar", "sourceType": "heb", "sourceName": "C&H Premium Pure Cane Light Brown Sugar", "amount": 240, "unit": "g", "cost": 0.69 },
+          { "ingredientId": "powdered_sugar", "name": "Confectioners' Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Confectioners Powdered Sugar", "amount": 128, "unit": "g", "cost": 0.26 },
+          { "ingredientId": "milk", "name": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk", "amount": 192, "unit": "g", "cost": 0.41 },
+          { "ingredientId": "cream_cheese", "name": "Cream Cheese", "sourceType": "heb", "sourceName": "Hill Country Fare Cream Cheese", "amount": 150, "unit": "g", "cost": 0.98 },
+          { "ingredientId": "eggs", "name": "Large Eggs", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 3, "unit": "whole", "cost": 0.47 },
+          { "ingredientId": "yeast", "name": "Instant Yeast", "sourceType": "heb", "sourceName": "Hill Country Fare Fast-Rise Instant Yeast", "amount": 7, "unit": "g", "cost": 0.33 },
+          { "ingredientId": "cinnamon", "name": "Ground Cinnamon", "sourceType": "heb", "sourceName": "H-E-B Ground Cinnamon Seasoning", "amount": 10, "unit": "g", "cost": 0.65 },
+          { "ingredientId": "salt", "name": "Salt", "sourceType": "heb", "sourceName": "H-E-B Iodized Salt", "amount": 11, "unit": "g", "cost": 0.01 },
+          { "ingredientId": "vanilla", "name": "Vanilla Extract", "sourceType": "heb", "sourceName": "Adams Best Twice as Strong Vanilla Extract", "amount": 5, "unit": "g", "cost": 0.34 }
+        ],
+        "total": 6.87,
+        "perServing": 0.86,
+        "servings": 8
       }
     }
   ],
