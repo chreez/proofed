@@ -1790,9 +1790,25 @@
         "Baked 350°F, lowered to 325°F for last ~4 min. ~24 min total. Internal ~210°F.",
         "Some centers caved — roll circumference too large for tin cups, edges grabbed tin walls. End result still looked nice, notably more uniform than previous bakes.",
         "Extra bun in separate pan didn't fully cook through — likely fewer thermal neighbors.",
-        "Wondering if muffin tin is right format for swirls — considering glass baking dish with rolls side-by-side like cinnamon rolls. Did honey-soy glaze."
+        "Wondering if muffin tin is right format for swirls — considering glass baking dish with rolls side-by-side like cinnamon rolls. Did honey-soy glaze.",
+        "Used canola oil for confit baking — stores garlic in olive oil in fridge after."
       ],
-      "photos": [],
+      "photos": [
+        {
+          "name": "confit-garlic-setup",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-25/confit-garlic-setup-400w.webp",
+          "src": "/images/gochujang-garlic-buns/2026-04-25/confit-garlic-setup-800w.webp",
+          "alt": "Two containers of HEB pre-peeled garlic cloves in a dark loaf pan submerged in canola oil, ready for confit. Hill Country Fare canola oil bottle visible alongside flour bag.",
+          "tag": "process"
+        },
+        {
+          "name": "finished-swirl-buns-in-tin",
+          "thumb": "/images/gochujang-garlic-buns/2026-04-25/finished-swirl-buns-in-tin-400w.webp",
+          "src": "/images/gochujang-garlic-buns/2026-04-25/finished-swirl-buns-in-tin-800w.webp",
+          "alt": "13 finished gochujang swirl buns — 12 in muffin tin plus 1 extra in separate loaf pan. Deep golden-brown with honey-soy glaze, black and white sesame seeds. Visible swirl pattern from cinnamon-roll style shaping.",
+          "tag": "hero"
+        }
+      ],
       "next_time": [
         { "text": "Measure rectangle before cutting — important sizing reference for uniform rolls" },
         { "text": "Consider glass baking dish (side-by-side like cinnamon rolls) instead of muffin tin" },
