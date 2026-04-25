@@ -180,6 +180,22 @@ describe('RecipeIndex', () => {
     expect(heroImg.attributes('src')).toBe('/img/hero-400w.webp')
   })
 
+  it('does not show hero image when photos are tagged but none is hero', async () => {
+    global.fetch = makeFetchMock({
+      cook_log: [{
+        date: '2026-01-01',
+        photos: [
+          { src: '/img/a-800w.webp', thumb: '/img/a-400w.webp', alt: 'A', tag: 'process' }
+        ]
+      }]
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    expect(wrapper.find('.timeline-hero').exists()).toBe(false)
+  })
+
   it('shows baked recipes by default and hides unbaked', async () => {
     // Set up two standalone recipes in the same category
     mockRecipeList.value = [

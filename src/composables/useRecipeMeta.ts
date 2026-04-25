@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import type { Recipe } from '@/types/recipe'
-import { latestCookLogEntryWithPhotos } from '@/composables/useCookLog'
+import { latestCookLogEntryWithPhotos, findHeroPhoto } from '@/composables/useCookLog'
 
 const BASE_URL = 'https://proofeddot.netlify.app'
 const SITE_NAME = 'proofed.'
@@ -112,8 +112,8 @@ export function useRecipeMeta(
       // Bake-specific: hero from that bake's photos
       const entry = r.cook_log?.find(e => e.date === date)
       if (entry?.photos?.length) {
-        const heroPhoto = entry.photos[entry.photos.length - 1]
-        return `${BASE_URL}${heroPhoto.src}`
+        const heroPhoto = findHeroPhoto(entry.photos)
+        return heroPhoto ? `${BASE_URL}${heroPhoto.src}` : FALLBACK_IMAGE
       }
       return FALLBACK_IMAGE
     }
@@ -124,9 +124,8 @@ export function useRecipeMeta(
     const latestEntry = latestCookLogEntryWithPhotos(r.cook_log)
     if (!latestEntry?.photos?.length) return FALLBACK_IMAGE
 
-    // Hero convention: last photo in the array (800w WebP)
-    const heroPhoto = latestEntry.photos[latestEntry.photos.length - 1]
-    return `${BASE_URL}${heroPhoto.src}`
+    const heroPhoto = findHeroPhoto(latestEntry.photos)
+    return heroPhoto ? `${BASE_URL}${heroPhoto.src}` : FALLBACK_IMAGE
   })
 
   const imageWidth = computed(() => image.value === FALLBACK_IMAGE ? 1200 : 800)

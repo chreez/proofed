@@ -1,4 +1,4 @@
-import type { CookLogEntry } from '@/types/recipe'
+import type { CookLogEntry, CookLogPhoto } from '@/types/recipe'
 
 /**
  * Returns cook log entries sorted newest-first by date.
@@ -23,4 +23,19 @@ export function latestCookLogEntry(entries: CookLogEntry[] | undefined): CookLog
 export function latestCookLogEntryWithPhotos(entries: CookLogEntry[] | undefined): CookLogEntry | null {
   if (!entries?.length) return null
   return sortedCookLog(entries).find(e => e.photos && e.photos.length > 0 && !e.aberration) ?? null
+}
+
+/**
+ * Returns the hero photo from a photos array.
+ * If any photo has tag "hero", use that. Otherwise fall back to last photo
+ * (legacy convention). Returns null if no photos or all are excluded.
+ */
+export function findHeroPhoto(photos: CookLogPhoto[] | undefined): CookLogPhoto | null {
+  if (!photos?.length) return null
+  const tagged = photos.find(p => p.tag === 'hero')
+  if (tagged) return tagged
+  // Legacy: last photo is hero — but only if no tags are used at all
+  const anyTagged = photos.some(p => p.tag)
+  if (anyTagged) return null
+  return photos[photos.length - 1]
 }

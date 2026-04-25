@@ -370,6 +370,8 @@ export interface CookLogPhoto {
   src: string
   thumb: string
   alt: string
+  tag?: 'hero' | 'process' | 'step' | 'exclude'
+  name?: string
 }
 
 // Cook log with step-specific notes

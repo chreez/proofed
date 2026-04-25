@@ -620,6 +620,25 @@ describe('App', () => {
     expect(banner.text()).toContain('2026-02-01')
   })
 
+  it('does not render hero banner when photos are tagged but none is hero', async () => {
+    mockCurrentRecipe.value = makeRecipe({
+      cook_log: [{
+        date: '2026-02-01',
+        notes: 'Tagged bake',
+        photos: [
+          { src: '/images/test/a.webp', thumb: '/images/test/a-400w.webp', alt: 'A', tag: 'process' },
+          { src: '/images/test/b.webp', thumb: '/images/test/b-400w.webp', alt: 'B', tag: 'step' }
+        ]
+      }]
+    })
+    mockCurrentRecipeId.value = 'test-recipe'
+
+    const { wrapper } = await mountApp('/recipe/test-recipe')
+    await nextTick()
+
+    expect(wrapper.find('[data-testid="hero-banner"]').exists()).toBe(false)
+  })
+
   it('does not render hero banner when no cook log photos', async () => {
     mockCurrentRecipe.value = makeRecipe({
       cook_log: [{ date: '2026-01-15', notes: 'No photos bake' }]

@@ -6,7 +6,7 @@ import { useProgress } from '@/composables/useProgress'
 import { useScratchpad } from '@/composables/useScratchpad'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
-import { latestCookLogEntryWithPhotos } from '@/composables/useCookLog'
+import { latestCookLogEntryWithPhotos, findHeroPhoto } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
@@ -209,8 +209,10 @@ function getStatesForStage(stateIds: string[]) {
 const latestHeroPhoto = computed(() => {
   const entry = latestCookLogEntryWithPhotos(currentRecipe.value?.cook_log)
   if (!entry?.photos?.length) return null
+  const hero = findHeroPhoto(entry.photos)
+  if (!hero) return null
   return {
-    photo: entry.photos[entry.photos.length - 1],
+    photo: hero,
     date: entry.date
   }
 })
@@ -245,8 +247,9 @@ const heroLightboxPhotos = ref<CookLogPhoto[]>([])
 function openHeroLightbox(): void {
   const entry = latestCookLogEntryWithPhotos(currentRecipe.value?.cook_log)
   if (!entry?.photos?.length) return
-  const hero = entry.photos[entry.photos.length - 1]
-  const rest = entry.photos.slice(0, -1)
+  const hero = findHeroPhoto(entry.photos)
+  if (!hero) return
+  const rest = entry.photos.filter(p => p !== hero)
   heroLightboxPhotos.value = [hero, ...rest]
   heroLightboxOpen.value = true
 }
