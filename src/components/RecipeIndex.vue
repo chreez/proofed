@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useRecipe } from '@/composables/useRecipe'
-import { latestCookLogEntryWithPhotos, findHeroPhoto } from '@/composables/useCookLog'
+import { latestCookLogEntryWithHero, findHeroPhoto } from '@/composables/useCookLog'
 import { motion } from 'motion-v'
 
 const emit = defineEmits<{
@@ -104,9 +104,9 @@ async function fetchRecipeMeta(file: string): Promise<RecipeMeta> {
     const hasCookLog = cookLog.length > 0
     let heroThumb: string | null = null
     if (hasCookLog) {
-      const entryWithPhotos = latestCookLogEntryWithPhotos(cookLog)
-      if (entryWithPhotos?.photos?.length) {
-        const hero = findHeroPhoto(entryWithPhotos.photos)
+      const entryWithHero = latestCookLogEntryWithHero(cookLog)
+      if (entryWithHero?.photos?.length) {
+        const hero = findHeroPhoto(entryWithHero.photos)
         heroThumb = hero?.thumb ?? null
       }
     }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { findHeroPhoto, latestCookLogEntryWithPhotos, sortedCookLog, latestCookLogEntry } from './useCookLog'
+import { findHeroPhoto, latestCookLogEntryWithPhotos, latestCookLogEntryWithHero, sortedCookLog, latestCookLogEntry } from './useCookLog'
 import type { CookLogPhoto, CookLogEntry } from '@/types/recipe'
 
 describe('findHeroPhoto', () => {
@@ -90,5 +90,75 @@ describe('latestCookLogEntryWithPhotos', () => {
       { date: '2026-02-01', photos: [{ src: 'y.webp', thumb: 'y-t.webp', alt: 'Y' }] },
     ] as CookLogEntry[]
     expect(latestCookLogEntryWithPhotos(entries)?.date).toBe('2026-02-01')
+  })
+})
+
+describe('latestCookLogEntryWithHero', () => {
+  it('returns null for undefined', () => {
+    expect(latestCookLogEntryWithHero(undefined)).toBeNull()
+  })
+
+  it('returns null for empty array', () => {
+    expect(latestCookLogEntryWithHero([])).toBeNull()
+  })
+
+  it('skips entries where all photos are tagged non-hero', () => {
+    const entries = [
+      {
+        date: '2026-03-01',
+        photos: [
+          { src: 'a.webp', thumb: 'a-t.webp', alt: 'A', tag: 'process' },
+          { src: 'b.webp', thumb: 'b-t.webp', alt: 'B', tag: 'process' },
+        ]
+      },
+      {
+        date: '2026-02-01',
+        photos: [
+          { src: 'c.webp', thumb: 'c-t.webp', alt: 'C' },
+          { src: 'd.webp', thumb: 'd-t.webp', alt: 'D' },
+        ]
+      },
+    ] as CookLogEntry[]
+    expect(latestCookLogEntryWithHero(entries)?.date).toBe('2026-02-01')
+  })
+
+  it('returns entry with hero-tagged photo', () => {
+    const entries = [
+      {
+        date: '2026-03-01',
+        photos: [
+          { src: 'a.webp', thumb: 'a-t.webp', alt: 'A', tag: 'process' },
+          { src: 'b.webp', thumb: 'b-t.webp', alt: 'B', tag: 'hero' },
+        ]
+      },
+    ] as CookLogEntry[]
+    expect(latestCookLogEntryWithHero(entries)?.date).toBe('2026-03-01')
+  })
+
+  it('returns entry with untagged photos (legacy)', () => {
+    const entries = [
+      {
+        date: '2026-03-01',
+        photos: [
+          { src: 'a.webp', thumb: 'a-t.webp', alt: 'A' },
+        ]
+      },
+    ] as CookLogEntry[]
+    expect(latestCookLogEntryWithHero(entries)?.date).toBe('2026-03-01')
+  })
+
+  it('skips aberration entries', () => {
+    const entries = [
+      {
+        date: '2026-03-01',
+        photos: [{ src: 'a.webp', thumb: 'a-t.webp', alt: 'A' }],
+        aberration: true
+      },
+      {
+        date: '2026-02-01',
+        photos: [{ src: 'b.webp', thumb: 'b-t.webp', alt: 'B' }]
+      },
+    ] as CookLogEntry[]
+    expect(latestCookLogEntryWithHero(entries)?.date).toBe('2026-02-01')
   })
 })

@@ -6,7 +6,7 @@ import { useProgress } from '@/composables/useProgress'
 import { useScratchpad } from '@/composables/useScratchpad'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
-import { latestCookLogEntryWithPhotos, findHeroPhoto } from '@/composables/useCookLog'
+import { latestCookLogEntryWithHero, findHeroPhoto } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
@@ -205,9 +205,9 @@ function getStatesForStage(stateIds: string[]) {
     .filter((s): s is RecipeState => s !== undefined)
 }
 
-// Hero banner: latest bake photo (skips in-progress entries with no photos)
+// Hero banner: latest bake with a hero-eligible photo
 const latestHeroPhoto = computed(() => {
-  const entry = latestCookLogEntryWithPhotos(currentRecipe.value?.cook_log)
+  const entry = latestCookLogEntryWithHero(currentRecipe.value?.cook_log)
   if (!entry?.photos?.length) return null
   const hero = findHeroPhoto(entry.photos)
   if (!hero) return null
@@ -245,7 +245,7 @@ const heroLightboxOpen = ref(false)
 const heroLightboxPhotos = ref<CookLogPhoto[]>([])
 
 function openHeroLightbox(): void {
-  const entry = latestCookLogEntryWithPhotos(currentRecipe.value?.cook_log)
+  const entry = latestCookLogEntryWithHero(currentRecipe.value?.cook_log)
   if (!entry?.photos?.length) return
   const hero = findHeroPhoto(entry.photos)
   if (!hero) return

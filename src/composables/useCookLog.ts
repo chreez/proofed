@@ -39,3 +39,14 @@ export function findHeroPhoto(photos: CookLogPhoto[] | undefined): CookLogPhoto 
   if (anyTagged) return null
   return photos[photos.length - 1]
 }
+
+/**
+ * Returns the most recent cook log entry that has a hero-eligible photo.
+ * Skips aberrations and entries where all photos are tagged non-hero.
+ */
+export function latestCookLogEntryWithHero(entries: CookLogEntry[] | undefined): CookLogEntry | null {
+  if (!entries?.length) return null
+  return sortedCookLog(entries).find(e =>
+    e.photos && e.photos.length > 0 && !e.aberration && findHeroPhoto(e.photos) !== null
+  ) ?? null
+}
