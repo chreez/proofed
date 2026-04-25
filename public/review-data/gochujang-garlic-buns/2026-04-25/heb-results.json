@@ -1,0 +1,219 @@
+{
+  "recipeId": "gochujang-garlic-buns",
+  "date": "2026-04-25",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "garlic",
+      "name": "Garlic Cloves",
+      "recipeAmount": 50,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Fresh Peeled Garlic Cloves", "brand": "H-E-B", "size": "6 oz", "sizeGrams": 170, "price": 2.98, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "H-E-B Fresh Peeled Garlic Cloves - Single Serve", "brand": "H-E-B", "size": "3 oz", "sizeGrams": 85, "price": 2.28, "salePrice": null, "unitPrice": "$0.76/oz", "inStock": true },
+        { "name": "Fresh Garlic", "brand": "Fresh", "size": "Each", "sizeGrams": 50, "price": 0.50, "salePrice": null, "unitPrice": "$0.50/ea", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "olive-oil",
+      "name": "Extra Virgin Olive Oil",
+      "recipeAmount": 240,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Extra Virgin Olive Oil", "brand": "H-E-B", "size": "17 oz", "sizeGrams": 482, "price": 6.68, "salePrice": null, "unitPrice": "$0.39/fl oz", "inStock": true },
+        { "name": "H-E-B Extra Virgin Olive Oil", "brand": "H-E-B", "size": "1.5 L", "sizeGrams": 1380, "price": 16.98, "salePrice": null, "unitPrice": "$0.33/fl oz", "inStock": true },
+        { "name": "H-E-B Extra Virgin Olive Oil", "brand": "H-E-B", "size": "8.5 oz", "sizeGrams": 241, "price": 4.38, "salePrice": null, "unitPrice": "$0.52/fl oz", "inStock": true },
+        { "name": "H-E-B Organics Extra Virgin Olive Oil", "brand": "H-E-B Organics", "size": "25.5 oz", "sizeGrams": 723, "price": 10.58, "salePrice": null, "unitPrice": "$0.42/fl oz", "inStock": true },
+        { "name": "Ottavio Private Reserve Cold Pressed Extra Virgin Olive Oil", "brand": "Ottavio", "size": "25.5 oz", "sizeGrams": 723, "price": 9.99, "salePrice": null, "unitPrice": "$0.39/fl oz", "inStock": true },
+        { "name": "Texas Olive Ranch Extra Virgin Olive Oil", "brand": "Texas Olive Ranch", "size": "16.9 oz", "sizeGrams": 479, "price": 7.58, "salePrice": null, "unitPrice": "$0.45/fl oz", "inStock": true },
+        { "name": "Bertolli Rich-Tasting Cold Pressed Extra Virgin Olive Oil", "brand": "Bertolli", "size": "25.4 oz", "sizeGrams": 720, "price": 11.97, "salePrice": null, "unitPrice": "$0.47/fl oz", "inStock": true },
+        { "name": "Bertolli Rich-Tasting Cold Pressed Extra Virgin Olive Oil", "brand": "Bertolli", "size": "16.9 oz", "sizeGrams": 479, "price": 8.47, "salePrice": null, "unitPrice": "$0.50/fl oz", "inStock": true },
+        { "name": "Terra Delyssa Organic Extra Virgin Olive Oil", "brand": "Terra Delyssa", "size": "34 oz", "sizeGrams": 964, "price": 15.48, "salePrice": null, "unitPrice": "$0.46/fl oz", "inStock": true },
+        { "name": "California Olive Ranch 100% Extra Virgin Olive Oil", "brand": "California Olive Ranch", "size": "25.4 oz", "sizeGrams": 720, "price": 19.74, "salePrice": null, "unitPrice": "$0.78/fl oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "bread-flour",
+      "name": "Bread Flour",
+      "recipeAmount": 420,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B The Baker's Scoop Bread Flour", "brand": "H-E-B", "size": "5 lbs", "sizeGrams": 2268, "price": 3.78, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "King Arthur Unbleached Bread Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 5.78, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Unbleached Bread Flour", "brand": "King Arthur", "size": "10 lbs", "sizeGrams": 4536, "price": 10.99, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "H-E-B Organics Unbleached Bread Flour", "brand": "H-E-B Organics", "size": "5 lbs", "sizeGrams": 2268, "price": 5.98, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "Bob's Red Mill Artisan Bread Flour", "brand": "Bob's Red Mill", "size": "5 lb", "sizeGrams": 2268, "price": 5.98, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Organic Bread Flour", "brand": "King Arthur", "size": "5 lb", "sizeGrams": 2268, "price": 7.73, "salePrice": null, "unitPrice": "$0.10/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "water",
+      "name": "Water",
+      "recipeAmount": 100,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Filtered water", "brand": "N/A", "size": "tap", "sizeGrams": null, "price": 0, "salePrice": null, "unitPrice": "free", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "instant-yeast",
+      "name": "Instant Yeast (SAF Red)",
+      "recipeAmount": 7,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Fast-Rise Instant Yeast", "brand": "Hill Country Fare", "size": "3 pk", "sizeGrams": 21, "price": 0.98, "salePrice": null, "unitPrice": "$1.31/oz", "inStock": true },
+        { "name": "Red Star Quick-Rise Instant Dry Yeast", "brand": "Red Star", "size": "3 ct", "sizeGrams": 21, "price": 1.76, "salePrice": null, "unitPrice": "$0.59/pack", "inStock": true },
+        { "name": "Fleischmann's RapidRise Fast-Acting Instant Yeast", "brand": "Fleischmann's", "size": "3 ct", "sizeGrams": 21, "price": 1.88, "salePrice": null, "unitPrice": "$2.51/oz", "inStock": true },
+        { "name": "Baker's Choice Instant Yeast", "brand": "Baker's Choice", "size": "16 oz", "sizeGrams": 454, "price": 4.05, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "Red Star Quick-Rise Instant Yeast", "brand": "Red Star", "size": "4 oz", "sizeGrams": 113, "price": 5.38, "salePrice": null, "unitPrice": "$1.34/oz", "inStock": true },
+        { "name": "Fleischmann's Bread Machine Instant Yeast", "brand": "Fleischmann's", "size": "4 oz", "sizeGrams": 113, "price": 5.48, "salePrice": null, "unitPrice": "$1.37/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "whole-milk",
+      "name": "Whole Milk",
+      "recipeAmount": 120,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Whole Milk", "brand": "H-E-B", "size": "1 pt", "sizeGrams": 473, "price": 1.00, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "H-E-B Whole Milk", "brand": "H-E-B", "size": "1 qt", "sizeGrams": 946, "price": 1.38, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "H-E-B Whole Milk", "brand": "H-E-B", "size": "1/2 gal", "sizeGrams": 1893, "price": 2.56, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "H-E-B Whole Milk", "brand": "H-E-B", "size": "1 gal", "sizeGrams": 3785, "price": 4.38, "salePrice": null, "unitPrice": "$0.03/oz", "inStock": true },
+        { "name": "Hill Country Fare Whole Milk", "brand": "Hill Country Fare", "size": "1 gal", "sizeGrams": 3785, "price": 3.98, "salePrice": null, "unitPrice": "$0.03/oz", "inStock": true },
+        { "name": "Park Manor Whole Milk", "brand": "Park Manor", "size": "1 gal", "sizeGrams": 3785, "price": 3.48, "salePrice": null, "unitPrice": "$0.03/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "unsalted-butter",
+      "name": "Unsalted Butter",
+      "recipeAmount": 43,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct", "sizeGrams": 454, "price": 2.98, "salePrice": null, "unitPrice": "$0.19/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct", "sizeGrams": 454, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "2 ct", "sizeGrams": 227, "price": 2.46, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Plugra Premium European Style Unsalted Butter", "brand": "Plugra", "size": "8 oz", "sizeGrams": 227, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Land O Lakes Unsalted Sweet Butter Sticks", "brand": "Land O Lakes", "size": "4 ct", "sizeGrams": 454, "price": 4.46, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Kerrygold Grass-Fed Unsalted Pure Irish Butter", "brand": "Kerrygold", "size": "8 oz", "sizeGrams": 227, "price": 4.84, "salePrice": null, "unitPrice": "$0.60/oz", "inStock": true },
+        { "name": "Central Market European Style Unsalted Butter Sticks", "brand": "Central Market", "size": "4 ct", "sizeGrams": 454, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "caster-sugar",
+      "name": "Caster Sugar",
+      "recipeAmount": 40,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "4 lbs", "sizeGrams": 1814, "price": 3.48, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "2 lbs", "sizeGrams": 907, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "India Tree Superfine Cane Caster Sugar", "brand": "India Tree", "size": "1 lb", "sizeGrams": 454, "price": 5.74, "salePrice": null, "unitPrice": "$0.36/oz", "inStock": true },
+        { "name": "Imperial Sugar Extra Fine Granulated Pure Cane Sugar", "brand": "Imperial Sugar", "size": "4 lbs", "sizeGrams": 1814, "price": 3.64, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Imperial Sugar Extra Fine Granulated Pure Cane Sugar", "brand": "Imperial Sugar", "size": "2 lb", "sizeGrams": 907, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "fine-salt",
+      "name": "Fine Salt",
+      "recipeAmount": 5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Fine Mediterranean Sea Salt Crystals", "brand": "H-E-B", "size": "26.5 oz", "sizeGrams": 751, "price": 2.38, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Morton Fine Sea Salt", "brand": "Morton", "size": "17.6 oz", "sizeGrams": 499, "price": 2.98, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "Southern Style Spices Bulk Fine California Sea Salt", "brand": "Southern Style Spices", "size": "lb", "sizeGrams": 454, "price": 2.78, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "Redmond Real Salt Fine Sea Salt", "brand": "Redmond Real Salt", "size": "10 oz", "sizeGrams": 283, "price": 4.98, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "gochujang",
+      "name": "Gochujang (CJ Haechandeul Medium Hot)",
+      "recipeAmount": 30,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "O'Food Gochujang Brown Rice Red Pepper Paste", "brand": "O'Food", "size": "17.6 oz", "sizeGrams": 499, "price": 6.18, "salePrice": null, "unitPrice": "$0.35/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "eggs",
+      "name": "Large Eggs",
+      "recipeAmount": 100,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Sunups Grade A Large White Eggs", "brand": "Sunups", "size": "12 ct", "sizeGrams": 600, "price": 1.66, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "12 ct", "sizeGrams": 600, "price": 1.87, "salePrice": null, "unitPrice": "$0.16/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "18 ct", "sizeGrams": 900, "price": 2.47, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": 600, "price": 2.86, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large Brown Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": 600, "price": 2.96, "salePrice": null, "unitPrice": "$0.25/ct", "inStock": true },
+        { "name": "Farmhouse Grade A Cage Free Large Brown Eggs", "brand": "Farmhouse", "size": "12 ct", "sizeGrams": 600, "price": 3.56, "salePrice": null, "unitPrice": "$0.30/ct", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "honey",
+      "name": "Honey",
+      "recipeAmount": 30,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Clover Honey", "brand": "Hill Country Fare", "size": "16 oz", "sizeGrams": 454, "price": 3.33, "salePrice": null, "unitPrice": "$0.21/oz", "inStock": true },
+        { "name": "Hill Country Fare Clover Honey Bear", "brand": "Hill Country Fare", "size": "12 oz", "sizeGrams": 340, "price": 3.35, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "H-E-B Texas Wildflower Honey", "brand": "H-E-B", "size": "12 oz", "sizeGrams": 340, "price": 4.89, "salePrice": null, "unitPrice": "$0.41/oz", "inStock": true },
+        { "name": "H-E-B Texas Wildflower Honey", "brand": "H-E-B", "size": "24 oz", "sizeGrams": 680, "price": 7.98, "salePrice": null, "unitPrice": "$0.33/oz", "inStock": true },
+        { "name": "Lone Star Raw & Unfiltered Local Honey", "brand": "Lone Star", "size": "12 oz", "sizeGrams": 340, "price": 5.48, "salePrice": null, "unitPrice": "$0.46/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "light-soy-sauce",
+      "name": "Light Soy Sauce",
+      "recipeAmount": 10,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Kikkoman Soy Sauce", "brand": "Kikkoman", "size": "5 oz", "sizeGrams": 142, "price": 1.98, "salePrice": null, "unitPrice": "$0.40/oz", "inStock": true },
+        { "name": "Kikkoman All-Purpose Soy Sauce", "brand": "Kikkoman", "size": "10 oz", "sizeGrams": 283, "price": 2.94, "salePrice": null, "unitPrice": "$0.29/oz", "inStock": true },
+        { "name": "Kikkoman All-Purpose Soy Sauce", "brand": "Kikkoman", "size": "20 oz", "sizeGrams": 567, "price": 4.78, "salePrice": null, "unitPrice": "$0.24/oz", "inStock": true },
+        { "name": "Hill Country Fare Soy Sauce", "brand": "Hill Country Fare", "size": "15 oz", "sizeGrams": 425, "price": 1.48, "salePrice": null, "unitPrice": "$0.10/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "glaze-butter",
+      "name": "Unsalted Butter (melted)",
+      "recipeAmount": 30,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct", "sizeGrams": 454, "price": 2.98, "salePrice": null, "unitPrice": "$0.19/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct", "sizeGrams": 454, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "sesame-seeds",
+      "name": "Sesame Seeds (black + white mix)",
+      "recipeAmount": 5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Bolner's Fiesta Sesame Seeds", "brand": "Bolner's Fiesta", "size": "1 oz", "sizeGrams": 28, "price": 1.40, "salePrice": null, "unitPrice": "$1.40/oz", "inStock": true },
+        { "name": "H-E-B Sesame Seeds Seasoning", "brand": "H-E-B", "size": "2.4 oz", "sizeGrams": 68, "price": 2.78, "salePrice": null, "unitPrice": "$1.26/oz", "inStock": true },
+        { "name": "McCormick Sesame Seeds", "brand": "McCormick", "size": "1 oz", "sizeGrams": 28, "price": 2.98, "salePrice": null, "unitPrice": "$2.98/oz", "inStock": true },
+        { "name": "Southern Style Spices Bulk Hulled White Sesame Seeds", "brand": "Southern Style Spices", "size": "lb", "sizeGrams": 454, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Southern Style Spices Bulk Black Sesame Seeds", "brand": "Southern Style Spices", "size": "lb", "sizeGrams": 454, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Central Market Organics White Sesame Seed", "brand": "Central Market", "size": "2.04 oz", "sizeGrams": 58, "price": 4.78, "salePrice": null, "unitPrice": "$2.34/oz", "inStock": true },
+        { "name": "Central Market Organics Black Sesame Seed", "brand": "Central Market", "size": "2.29 oz", "sizeGrams": 65, "price": 5.98, "salePrice": null, "unitPrice": "$2.17/oz", "inStock": true },
+        { "name": "Jayone Toasted Sesame Seeds", "brand": "Jayone", "size": "8 oz", "sizeGrams": 227, "price": 6.28, "salePrice": null, "unitPrice": "$0.78/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "mozzarella",
+      "name": "Shredded Mozzarella (deviation — not in recipe)",
+      "recipeAmount": null,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Low Moisture Part-Skim Mozzarella Shredded Cheese", "brand": "Hill Country Fare", "size": "8 oz", "sizeGrams": 227, "price": 1.97, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "H-E-B Low Moisture Whole Mozzarella Shredded Cheese", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese", "brand": "H-E-B", "size": "16 oz", "sizeGrams": 454, "price": 4.99, "salePrice": 3.99, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Hill Country Fare Low Moisture Part-Skim Mozzarella Shredded Cheese", "brand": "Hill Country Fare", "size": "16 oz", "sizeGrams": 454, "price": 3.29, "salePrice": null, "unitPrice": "$0.21/oz", "inStock": true },
+        { "name": "Hill Country Fare Low Moisture Part-Skim Mozzarella Shredded Cheese", "brand": "Hill Country Fare", "size": "32 oz", "sizeGrams": 907, "price": 5.89, "salePrice": null, "unitPrice": "$0.18/oz", "inStock": true },
+        { "name": "H-E-B Low Moisture Part-Skim Mozzarella Shredded Cheese", "brand": "H-E-B", "size": "32 oz", "sizeGrams": 907, "price": 8.99, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Tillamook Mozzarella Shredded Cheese, Thick Cut", "brand": "Tillamook", "size": "8 oz", "sizeGrams": 227, "price": 3.98, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "SARGENTO Whole Milk Mozzarella Shredded Cheese", "brand": "SARGENTO", "size": "8 oz", "sizeGrams": 227, "price": 3.69, "salePrice": null, "unitPrice": "$0.46/oz", "inStock": true },
+        { "name": "Kraft Low Moisture Part-Skim Mozzarella Shredded Cheese", "brand": "Kraft", "size": "8 oz", "sizeGrams": 227, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true }
+      ]
+    }
+  ]
+}

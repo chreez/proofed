@@ -1772,6 +1772,101 @@
           "notable": false
         }
       ]
+    },
+    {
+      "date": "2026-04-25",
+      "version": "v2.0.0",
+      "summary": "Fourth bake, first on v2.0.0 swirl shape. Added shredded mozzarella as filling — taste was good. Dental floss for cutting worked great. Some center caving from rolls being too thick for muffin tin. Confit garlic in filling only (not folded into dough). Kitchen running hot at 80.3°F while juggling two recipes in parallel.",
+      "notes": [
+        "Kitchen 80.3°F, 55% humidity. Baking gochujang buns in parallel with another recipe — moving fast.",
+        "Confit started ~2:05pm with two 6oz HEB pre-peeled garlic containers (~340g total). Way more than recipe's 50g — extra confit saved for future bakes.",
+        "Mixed dough ~2:53pm. Let sit ~20 min before working.",
+        "Folded dough ~3:25pm.",
+        "Swirl/cinnamon roll style shaping. Dental floss for cutting — worked much better than knife.",
+        "Cut 13 rolls (counting as 12). Extra placed in a separate pan.",
+        "Added shredded mozzarella cheese as filling (new deviation — not in recipe).",
+        "Confit garlic went in filling layer, not folded into dough. If garlic should go in dough, need to do it earlier in the process.",
+        "Didn't measure rectangle dimensions — should have for future reference. Rectangle size has big effect on roll uniformity.",
+        "Baked 350°F, lowered to 325°F for last ~4 min. ~24 min total. Internal ~210°F.",
+        "Some centers caved — roll circumference too large for tin cups, edges grabbed tin walls. End result still looked nice, notably more uniform than previous bakes.",
+        "Extra bun in separate pan didn't fully cook through — likely fewer thermal neighbors.",
+        "Wondering if muffin tin is right format for swirls — considering glass baking dish with rolls side-by-side like cinnamon rolls. Did honey-soy glaze."
+      ],
+      "photos": [],
+      "next_time": [
+        { "text": "Measure rectangle before cutting — important sizing reference for uniform rolls" },
+        { "text": "Consider glass baking dish (side-by-side like cinnamon rolls) instead of muffin tin" },
+        { "text": "Try incorporating confit garlic into dough earlier in process, not just filling" },
+        { "text": "Limit variables per bake — too many changes at once makes it hard to isolate improvements" },
+        { "text": "Take photo of rolled-out rectangle for sizing reference" },
+        { "text": "Research: does muffin tin shape cause uneven cooking for swirl-style buns vs open pan?" }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-04-24T19:05:00Z",
+          "raw": "started the confit about 20 minutes ago.",
+          "notable": false,
+          "stepId": "confit-garlic-bake",
+          "processing": "confit | Timestamp inferred: '20 minutes ago' relative to 2026-04-24T19:25:45Z → 2026-04-24T19:05:00Z"
+        },
+        {
+          "timestamp": "2026-04-24T19:33:01Z",
+          "raw": "warm kitchen. 80.3 degreees. 55% humidity",
+          "curated": "Kitchen 80.3°F, 55% humidity",
+          "notable": true,
+          "processing": "environment"
+        },
+        {
+          "timestamp": "2026-04-24T19:53:00Z",
+          "raw": "mixed dough about 10 minutes ago. gonna wait 20 minutes more to let it sit.",
+          "notable": false,
+          "processing": "mix | Timestamp inferred: '10 minutes ago' relative to 2026-04-24T20:03:35Z → 2026-04-24T19:53:00Z"
+        },
+        {
+          "timestamp": "2026-04-24T20:25:04Z",
+          "raw": "did some folding of the dough",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-25T00:40:58Z",
+          "raw": "unsure where i went wrong in the steps. but end result seemed ok with the problem of the center maybe not being fully cooked",
+          "notable": true,
+          "processing": "result"
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-25",
+        "temp_high_f": 86.3,
+        "temp_low_f": 71.7,
+        "humidity_avg_percent": 83,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "costs": [
+          { "ingredientId": "garlic", "ingredientName": "Garlic Cloves", "product": "H-E-B Fresh Peeled Garlic Cloves", "packageSize": "6 oz", "packagePrice": 2.98, "cost": 0.88 },
+          { "ingredientId": "olive-oil", "ingredientName": "Extra Virgin Olive Oil", "product": "H-E-B Extra Virgin Olive Oil 17 oz", "packageSize": "17 oz", "packagePrice": 6.68, "cost": 3.33 },
+          { "ingredientId": "bread-flour", "ingredientName": "Bread Flour", "product": "King Arthur Unbleached Bread Flour 10 lbs", "packageSize": "10 lbs", "packagePrice": 10.99, "cost": 1.02 },
+          { "ingredientId": "water", "ingredientName": "Water", "product": "Filtered water", "packageSize": "tap", "packagePrice": 0, "cost": 0 },
+          { "ingredientId": "instant-yeast", "ingredientName": "Instant Yeast", "product": "Red Star Quick-Rise Instant Dry Yeast 3ct", "packageSize": "3 ct", "packagePrice": 1.76, "cost": 0.59 },
+          { "ingredientId": "whole-milk", "ingredientName": "Whole Milk", "product": "H-E-B Whole Milk 1 qt", "packageSize": "1 qt", "packagePrice": 1.38, "cost": 0.18 },
+          { "ingredientId": "unsalted-butter", "ingredientName": "Unsalted Butter", "product": "Hill Country Fare Unsalted Butter Sticks 4ct", "packageSize": "4 ct", "packagePrice": 2.98, "cost": 0.28 },
+          { "ingredientId": "caster-sugar", "ingredientName": "Caster Sugar", "product": "H-E-B Pure Cane Extra Fine Granulated Sugar 4 lbs", "packageSize": "4 lbs", "packagePrice": 3.48, "cost": 0.08 },
+          { "ingredientId": "fine-salt", "ingredientName": "Fine Salt", "product": "Morton Fine Sea Salt 17.6 oz", "packageSize": "17.6 oz", "packagePrice": 2.98, "cost": 0.03 },
+          { "ingredientId": "gochujang", "ingredientName": "Gochujang", "product": "O'Food Gochujang Brown Rice Red Pepper Paste 17.6 oz", "packageSize": "17.6 oz", "packagePrice": 6.18, "cost": 0.37 },
+          { "ingredientId": "eggs", "ingredientName": "Large Eggs", "product": "Sunups Grade A Large White Eggs 12ct", "packageSize": "12 ct", "packagePrice": 1.66, "cost": 0.28 },
+          { "ingredientId": "honey", "ingredientName": "Honey", "product": "H-E-B Texas Wildflower Honey 12 oz", "packageSize": "12 oz", "packagePrice": 4.89, "cost": 0.43 },
+          { "ingredientId": "light-soy-sauce", "ingredientName": "Light Soy Sauce", "product": "Kikkoman Soy Sauce 5 oz", "packageSize": "5 oz", "packagePrice": 1.98, "cost": 0.14 },
+          { "ingredientId": "glaze-butter", "ingredientName": "Unsalted Butter (melted)", "product": "Hill Country Fare Unsalted Butter Sticks (shared)", "packageSize": "4 ct", "packagePrice": 2.98, "cost": 0.20 },
+          { "ingredientId": "sesame-seeds", "ingredientName": "Sesame Seeds", "product": "Bolner's Fiesta Sesame Seeds 1 oz", "packageSize": "1 oz", "packagePrice": 1.40, "cost": 0.25 },
+          { "ingredientId": "mozzarella", "ingredientName": "Shredded Mozzarella (deviation)", "product": "H-E-B Low Moisture Whole Mozzarella Shredded Cheese 8 oz", "packageSize": "8 oz", "packagePrice": 2.98, "cost": 0 }
+        ],
+        "total": 8.06,
+        "perServing": 0.67,
+        "servings": 12
+      }
     }
   ],
   "estimatedCost": {
