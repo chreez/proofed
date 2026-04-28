@@ -5358,6 +5358,223 @@
         "servings": 2,
         "date": "2026-04-24"
       }
+    },
+    {
+      "date": "2026-04-28",
+      "start_date": "2026-04-27",
+      "version": "v3.6.0",
+      "summary": "Tartine method experiment — first loaf had shaping issues from distraction mid-shape, second loaf came out much better with single score near top. Both hit 210°F internal.",
+      "notes": [
+        "Following Tartine book method, different from usual recipe. Details to follow.",
+        "Initial mix ~4:35pm CDT. Kitchen 78.6°F, 54% humidity.",
+        "Dough temp 82°F shortly after mix, trending down through folds: 81.5 → 81.5 → 81°F.",
+        "Three sets of stretch & folds at 5:38pm, 6:09pm, 6:44pm.",
+        "Targeting ~4hr bulk. Timer showed ~2.5hr left at 6:44pm.",
+        "Aliquot 40% at 6:48pm, ~80% at shaping.",
+        "Turned out 8:22pm — 977g + 951g = 1928g total. Preshape → bench rest → final shape → bannetons → fridge.",
+        "First loaf had shaping issues — got distracted by people coming home, skipped a step, knew something was off.",
+        "Loaf 1: preheat 500°F ~1hr, covered 450°F 20min, uncovered 420°F ~22min (rotated halfway). Fridge to oven, no warm-up.",
+        "Loaf 2: oven back to 500°F, 30min Dutch oven re-saturate, covered 450°F 20min, uncovered 450°F 20min. Checked at 9 and 18min, browning at 18min.",
+        "Second loaf came out much better. Single score close to top of dough for ear.",
+        "Both loaves 210°F internal."
+      ],
+      "next_time": [
+        { "text": "If shaping gets interrupted, rest the dough and reshape rather than continuing with a bad shape" }
+      ],
+      "photos": [],
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-04-27 - 17:12", "temp_f": 82 },
+          { "time": "2026-04-27 - 17:38", "temp_f": 81.5 },
+          { "time": "2026-04-27 - 18:09", "temp_f": 81.5 },
+          { "time": "2026-04-27 - 18:44", "temp_f": 81 }
+        ],
+        "bulk_ambient_temps": [
+          { "date": "2026-04-27", "temp_f": 78.6, "note": "pre-bake kitchen temp" }
+        ],
+        "stretch_folds": [
+          { "time": "2026-04-27 - 17:38", "type": "stretch_fold" },
+          { "time": "2026-04-27 - 18:09", "type": "stretch_fold" },
+          { "time": "2026-04-27 - 18:44", "type": "stretch_fold", "note": "last folds" }
+        ],
+        "aliquot_rises": [
+          { "time": "2026-04-27 - 18:48", "rise_pct": 40, "stage": "bulk" },
+          { "time": "2026-04-27 - 20:22", "rise_pct": 80, "stage": "bulk", "note": "at shaping" }
+        ],
+        "shape_time": "2026-04-27 - 20:22",
+        "proof_phases": [
+          {
+            "type": "cold_retard",
+            "start_time": "2026-04-27 - 20:45",
+            "note": "~14hr, fridge to oven directly, no warm-up"
+          }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "temp_f": 500, "duration_min": 60, "note": "loaf 1" },
+          { "stage": "covered", "temp_f": 450, "duration_min": 20, "note": "loaf 1" },
+          { "stage": "uncovered", "temp_f": 420, "duration_min": 22, "note": "loaf 1, rotated halfway" },
+          { "stage": "preheat", "temp_f": 500, "duration_min": 30, "note": "loaf 2, re-saturate Dutch oven" },
+          { "stage": "covered", "temp_f": 450, "duration_min": 20, "note": "loaf 2" },
+          { "stage": "uncovered", "temp_f": 450, "duration_min": 20, "note": "loaf 2, browning noticed at 18min" }
+        ],
+        "confidence": "medium"
+      },
+      "bake_notes": [
+        {
+          "timestamp": "2026-04-27T21:35:00Z",
+          "raw": "doing a bit of a different recipe following tartine book. will follow up with details. using this recipe for scratchpad. i did the initial mix about 30 minutes ago.",
+          "notable": true,
+          "processing": "mix | Timestamp inferred: 'about 30 minutes ago' relative to 2026-04-27T22:05:34Z → 2026-04-27T21:35:00Z"
+        },
+        {
+          "timestamp": "2026-04-27T22:05:39Z",
+          "raw": "Kitchen temp 78.6°F",
+          "notable": false,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-04-27T22:05:44Z",
+          "raw": "54% humidity",
+          "notable": false,
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-04-27T22:12:07Z",
+          "raw": "82 degrees on the dough. aliquot is starting around 15% this time. just pulled a bit too much dough into it.",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-27T22:38:41Z",
+          "raw": "s and f 81.5 degree dough temp",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-27T23:09:55Z",
+          "raw": "81.5 s and f 2",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-27T23:44:07Z",
+          "raw": "81 degree dough temp last folds done. looking for 4 hour ish bulk ferment time. so i set a timer when i started the bulk ferment to see how close i ltbwill be",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-27T23:44:23Z",
+          "raw": "timer about 2.5 hours left approx.",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-27T23:48:38Z",
+          "raw": "40% aliquot",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-04-28T01:22:03Z",
+          "raw": "turned out. 977 grams on one and the other would be the remainder from 1928",
+          "notable": true,
+          "processing": "shaping",
+          "curated": "Turned out — 977g + 951g = 1928g total. Aliquot ~80% at shaping."
+        },
+        {
+          "timestamp": "2026-04-28T16:33:15Z",
+          "raw": "just took first loaf out. 20 minutes covered 450. 500 preheat for about an hour. uncovered roughly 22 minutes with a rotate half way",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-04-28T17:45:24Z",
+          "raw": "second one baked way better not sure what i fucked up but it could have been a step in the shaping process that i accidentally skipped because people were talking to me. a bunch of people came home while i was shaping and i knew something was off with one of them. should have let it rest and reshape",
+          "notable": true,
+          "processing": "result"
+        },
+        {
+          "timestamp": "2026-04-28T17:45:55Z",
+          "raw": "second loaf came out pretty nice. i did the single score more close to the top of the dough to try to get the ear that i wanted",
+          "notable": true,
+          "processing": "result"
+        },
+        {
+          "timestamp": "2026-04-28T17:47:11Z",
+          "raw": "second bread i followed exactly as seen in tartine. let the oven come back to temp. wait 30 minutes to saturate the dutch oven better. then i did it covered for 20 minutes at 450. then left it at 450 for the final 20 minutes. i checked at 9 and 18 minute and noticed the browning effect at 18 minute. both loaves came out at 210 almost exactly",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-04-28T17:47:18Z",
+          "raw": "preheated 500 for both loaves.",
+          "notable": false,
+          "processing": "bake"
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-28",
+        "temp_high_f": 90.1,
+        "temp_low_f": 75.5,
+        "humidity_avg_percent": 79,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 2.42,
+            "amount": 1000,
+            "unit": "g",
+            "name": "Bread Flour"
+          },
+          {
+            "ingredientId": "water",
+            "sourceType": "rate",
+            "sourceName": "Tap water",
+            "packageSize": "n/a",
+            "packagePrice": 0,
+            "cost": 0,
+            "amount": 700,
+            "unit": "g",
+            "name": "Water"
+          },
+          {
+            "ingredientId": "starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0,
+            "amount": 200,
+            "unit": "g",
+            "name": "Active Sourdough Starter"
+          },
+          {
+            "ingredientId": "salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.12,
+            "amount": 20,
+            "unit": "g",
+            "name": "Fine Sea Salt"
+          }
+        ],
+        "total": 2.54,
+        "perServing": 1.27,
+        "servings": 2,
+        "date": "2026-04-28"
+      }
     }
   ],
   "research": {
