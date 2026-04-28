@@ -5381,7 +5381,28 @@
       "next_time": [
         { "text": "If shaping gets interrupted, rest the dough and reshape rather than continuing with a bad shape" }
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-04-28/both-loaves-angle-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-28/both-loaves-angle-400w.webp",
+          "alt": "Both loaves from a low angle — loaf 2 on wire rack with defined ear and banneton rings, loaf 1 on cutting board with less structure from shaping mishap"
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-28/both-loaves-wide-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-28/both-loaves-wide-400w.webp",
+          "alt": "Wide shot of both finished loaves side by side — loaf 1 with blistered rustic crust, loaf 2 with clean ear and tight banneton rings"
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-28/loaf1-side-view-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-28/loaf1-side-view-400w.webp",
+          "alt": "Loaf 1 side view — more spread out shape from shaping issue, blistered crust with flour dusting, score opened without distinct ear"
+        },
+        {
+          "src": "/images/simple-sourdough/2026-04-28/loaf2-ear-closeup-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-04-28/loaf2-ear-closeup-400w.webp",
+          "alt": "Close-up of loaf 2 — single score near top produced pronounced ear with golden caramelized flap, banneton ring pattern visible, good oven spring"
+        }
+      ],
       "bake_stats": {
         "dough_temps": [
           { "time": "2026-04-27 - 17:12", "temp_f": 82 },

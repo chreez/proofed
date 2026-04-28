@@ -1,0 +1,31 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-04-28",
+  "processedAt": "2026-04-28T18:44:43.075Z",
+  "photos": [
+    {
+      "name": "both-loaves-angle",
+      "thumb": "both-loaves-angle-400w.webp",
+      "src": "both-loaves-angle-800w.webp",
+      "summary": "Both loaves from a low angle — loaf 2 (foreground, wire rack) shows defined single score with ear lifting cleanly, banneton spiral pattern visible. Loaf 1 (background, cutting board) has a less defined shape from the shaping mishap."
+    },
+    {
+      "name": "both-loaves-wide",
+      "thumb": "both-loaves-wide-400w.webp",
+      "src": "both-loaves-wide-800w.webp",
+      "summary": "Wide shot of both finished loaves side by side on the kitchen counter. Loaf 1 (left, cutting board) with blistered crust and less structure. Loaf 2 (right, wire rack) with clean ear and tight banneton rings. Clear contrast between the two."
+    },
+    {
+      "name": "loaf1-side-view",
+      "thumb": "loaf1-side-view-400w.webp",
+      "src": "loaf1-side-view-800w.webp",
+      "summary": "Loaf 1 side view on cutting board — more spread out shape reflecting the shaping issue. Blistered, rustic crust with flour dusting. Score opened but without a distinct ear."
+    },
+    {
+      "name": "loaf2-ear-closeup",
+      "thumb": "loaf2-ear-closeup-400w.webp",
+      "src": "loaf2-ear-closeup-800w.webp",
+      "summary": "Close-up of loaf 2 on wire rack — single score near the top produced a pronounced ear with golden caramelized flap. Banneton ring pattern clearly visible across the crust. Good oven spring, round boule shape."
+    }
+  ]
+}

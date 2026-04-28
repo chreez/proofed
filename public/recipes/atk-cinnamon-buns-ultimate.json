@@ -329,7 +329,20 @@
       "next_time": [
         { "text": "Keep using strip-cut method — pizza cutter into strips, roll individually" }
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-side-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-side-400w.webp",
+          "alt": "Last remaining glazed cinnamon bun in foil pan lined with parchment — side angle showing swirl layers, cream cheese espresso glaze coating, golden dough visible at base",
+          "tag": "process"
+        },
+        {
+          "src": "/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-top-800w.webp",
+          "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-top-400w.webp",
+          "alt": "Last glazed cinnamon bun from above — top-down view of spiral with cream cheese espresso glaze, cinnamon filling visible through layers, crumbs and glaze residue on parchment",
+          "tag": "process"
+        }
+      ],
       "cost": {
         "items": [
           { "ingredientId": "butter", "name": "Unsalted Butter", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 227, "unit": "g", "cost": 2.46 },
