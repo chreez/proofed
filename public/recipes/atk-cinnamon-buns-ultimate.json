@@ -330,6 +330,26 @@
         { "text": "Keep using strip-cut method — pizza cutter into strips, roll individually" }
       ],
       "photos": [],
+      "cost": {
+        "items": [
+          { "ingredientId": "butter", "name": "Unsalted Butter", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 227, "unit": "g", "cost": 2.46 },
+          { "ingredientId": "flour", "name": "All-Purpose Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached All-Purpose Flour", "amount": 531, "unit": "g", "cost": 1.17 },
+          { "ingredientId": "cornstarch", "name": "Cornstarch", "sourceType": "heb", "sourceName": "Argo Corn Starch", "amount": 64, "unit": "g", "cost": 0.34 },
+          { "ingredientId": "granulated_sugar", "name": "Granulated Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Granulated Sugar", "amount": 75, "unit": "g", "cost": 0.11 },
+          { "ingredientId": "brown_sugar", "name": "Light Brown Sugar", "sourceType": "heb", "sourceName": "C&H Premium Pure Cane Light Brown Sugar", "amount": 240, "unit": "g", "cost": 0.69 },
+          { "ingredientId": "powdered_sugar", "name": "Confectioners' Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Confectioners Powdered Sugar", "amount": 128, "unit": "g", "cost": 0.26 },
+          { "ingredientId": "milk", "name": "Whole Milk", "sourceType": "heb", "sourceName": "Park Manor Whole Milk", "amount": 192, "unit": "g", "cost": 0.17 },
+          { "ingredientId": "cream_cheese", "name": "Cream Cheese", "sourceType": "heb", "sourceName": "Hill Country Fare Cream Cheese", "amount": 150, "unit": "g", "cost": 0.98 },
+          { "ingredientId": "eggs", "name": "Large Eggs", "sourceType": "heb", "sourceName": "Sunups Grade A Large White Eggs", "amount": 3, "unit": "whole", "cost": 0.42 },
+          { "ingredientId": "yeast", "name": "Instant Yeast", "sourceType": "heb", "sourceName": "Hill Country Fare Fast-Rise Instant Yeast", "amount": 7, "unit": "g", "cost": 0.33 },
+          { "ingredientId": "cinnamon", "name": "Ground Cinnamon", "sourceType": "heb", "sourceName": "Hill Country Fare Ground Cinnamon", "amount": 10, "unit": "g", "cost": 0.15 },
+          { "ingredientId": "salt", "name": "Salt", "sourceType": "heb", "sourceName": "H-E-B Iodized Salt", "amount": 11, "unit": "g", "cost": 0.01 },
+          { "ingredientId": "vanilla", "name": "Vanilla Extract", "sourceType": "heb", "sourceName": "H-E-B Pure Madagascar Bourbon Vanilla Extract", "amount": 5, "unit": "g", "cost": 0.44 }
+        ],
+        "total": 7.53,
+        "perServing": 0.94,
+        "servings": 8
+      },
       "weather": {
         "location": "Austin, TX",
         "date": "2026-04-26",
