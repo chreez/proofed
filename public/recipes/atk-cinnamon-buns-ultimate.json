@@ -316,6 +316,29 @@
         "perServing": 0.86,
         "servings": 8
       }
+    },
+    {
+      "date": "2026-04-26",
+      "version": "v1.3.0",
+      "summary": "Back to AP flour and Pyrex after last bake's failed experiments. New shaping method — cut filled rectangle into strips with pizza cutter, rolled each individually. Added extra espresso powder to icing and it hit the complementary flavor that was missing last time.",
+      "notes": [
+        "Went back to AP flour and Pyrex (per last bake's next_time)",
+        "New shaping method: spread butter and filling on rectangle, cut into strips with pizza cutter, rolled each strip individually into buns (instead of rolling cylinder first then cutting)",
+        "Added more espresso powder in icing — nailed the complementary flavor that was undetectable in the 2/10 bake"
+      ],
+      "next_time": [
+        { "text": "Keep using strip-cut method — pizza cutter into strips, roll individually" }
+      ],
+      "photos": [],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-04-26",
+        "temp_high_f": 85.3,
+        "temp_low_f": 72.8,
+        "humidity_avg_percent": 81,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      }
     }
   ],
   "vessels": [
