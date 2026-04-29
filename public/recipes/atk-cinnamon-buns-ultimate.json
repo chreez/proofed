@@ -277,12 +277,14 @@
         {
           "timestamp": "2026-04-24T21:53:14Z",
           "raw": "i am trying 20g bread flour thangzhong 100 water. tried to vary the bread flour but needed to add a little more. right now i'm still working the dough and checking back on it. i mixed it a while ago. like an hour. but keeping an eye on it. did a very lightweight mixing and treated it kinda like autolyse where i let the dough rest. did some slap and folds and reshaped to a ball and it's sitting on counter now",
+          "curated": "I am trying 20g bread flour tangzhong with 100g water. Tried to vary the bread flour but needed to add a little more. Right now I'm still working the dough and checking back on it. I mixed it a while ago, like an hour, but keeping an eye on it. Did a very lightweight mixing and treated it kinda like autolyse where I let the dough rest. Did some slap and folds and reshaped to a ball and it's sitting on counter now.",
           "notable": true,
           "processing": "mix"
         },
         {
           "timestamp": "2026-04-25T00:40:25Z",
           "raw": "use bread flour this time. gotta say i dont love it. also experimented with the cupcake tin instead of using the glass pan. really shouldn't fix what ain't broken. will make sure to get a successful bake of this later this week",
+          "curated": "Used bread flour this time. Gotta say I don't love it. Also experimented with the cupcake tin instead of using the glass pan. Really shouldn't fix what ain't broken. Will make sure to get a successful bake of this later this week.",
           "notable": true,
           "processing": "result"
         }

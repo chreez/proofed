@@ -3780,182 +3780,216 @@
           "timestamp": "2026-04-09T16:00:19.696Z",
           "raw": "ambient internal temp. 76 60% humidity",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "Ambient internal temp 76°F, 60% humidity."
         },
         {
           "timestamp": "2026-04-09T16:02:33.353Z",
           "raw": "trying to figure out if i'm having starter issues. why is it taking two days for it to get back to float status. it seems bubbly throughout the container. it's almost tripled in size in 6 hours.. should be peaked. will report.",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "Trying to figure out if I'm having starter issues. Why is it taking two days for it to get back to float status? It seems bubbly throughout the container. It's almost tripled in size in 6 hours — should be peaked. Will report."
         },
         {
           "timestamp": "2026-04-09T16:14:49.555Z",
           "raw": "77.2. finished initial mix about 7 minutes ago.",
           "notable": false,
-          "stepId": "FERMENTOLYSE"
+          "stepId": "FERMENTOLYSE",
+          "curated": "77.2°F. Finished initial mix about 7 minutes ago."
         },
         {
           "timestamp": "2026-04-09T16:41:51.650Z",
           "raw": "done. 76.6 degree dough temp",
           "notable": false,
-          "stepId": "ADD_SALT"
+          "stepId": "ADD_SALT",
+          "curated": "Done. 76.6°F dough temp."
         },
         {
           "timestamp": "2026-04-09T17:21:33.040Z",
           "raw": "aliquot reading 20% this fast seems sketchy. first stretch and fold now.",
-          "notable": false
+          "notable": false,
+          "curated": "Aliquot reading 20% — this fast seems sketchy. First stretch and fold now."
         },
         {
           "timestamp": "2026-04-09T17:21:40.594Z",
           "raw": "76.5 1st",
-          "notable": false
+          "notable": false,
+          "curated": "76.5°F — 1st stretch fold."
         },
         {
           "timestamp": "2026-04-09T17:56:06.502Z",
           "raw": "starting second s and fold - 76.5 degrees. aliquot 20%",
-          "notable": false
+          "notable": false,
+          "curated": "Starting second stretch & fold — 76.5°F. Aliquot 20%."
         },
         {
           "timestamp": "2026-04-09T17:59:20.153Z",
           "raw": "dough seems a little more slack than normal. or i may be comparing to pizza dough i just made.",
-          "notable": false
+          "notable": false,
+          "curated": "Dough seems a little more slack than normal. Or I may be comparing to pizza dough I just made."
         },
         {
           "timestamp": "2026-04-09T18:00:19.767Z",
           "raw": "may not need this. will check in 30",
           "notable": false,
-          "stepId": "FOLD_3"
+          "stepId": "FOLD_3",
+          "curated": "May not need this. Will check in 30 min."
         },
         {
           "timestamp": "2026-04-09T18:01:34.493Z",
           "raw": "i'm not sure if this direction is correct. i think 10 hour at room temperature will result in underproofing. if anything it should target a rise % then straight to fridge for bulk retard before a divide and preshape the next day. unsure though. will need to study more.",
           "notable": false,
-          "stepId": "OVERNIGHT_BULK"
+          "stepId": "OVERNIGHT_BULK",
+          "curated": "I'm not sure if this direction is correct. I think 10 hours at room temperature will result in underproofing. If anything it should target a rise % then straight to fridge for bulk retard before a divide and preshape the next day. Unsure though. Will need to study more."
         },
         {
           "timestamp": "2026-04-09T19:02:15.592Z",
           "raw": "i did my last stretch and fold about 10 minutes ago. will record temp.",
-          "notable": false
+          "notable": false,
+          "curated": "I did my last stretch and fold about 10 minutes ago. Will record temp."
         },
         {
           "timestamp": "2026-04-09T19:02:26.606Z",
           "raw": "aliquot at 30%",
-          "notable": false
+          "notable": false,
+          "curated": "Aliquot at 30%."
         },
         {
           "timestamp": "2026-04-09T19:03:01.311Z",
           "raw": "76.6 degrees. for bulk rest. with target of 50-60% rise",
-          "notable": false
+          "notable": false,
+          "curated": "76.6°F for bulk rest, targeting 50–60% rise."
         },
         {
           "timestamp": "2026-04-09T19:55:20.017Z",
           "raw": "aliquot is at 50%. checking dough.",
-          "notable": false
+          "notable": false,
+          "curated": "Aliquot is at 50%. Checking dough."
         },
         {
           "timestamp": "2026-04-09T20:27:16.811Z",
           "raw": "reading 70% on aliquot",
-          "notable": false
+          "notable": false,
+          "curated": "Reading 70% on aliquot."
         },
         {
           "timestamp": "2026-04-09T20:28:32.351Z",
           "raw": "77 at end of bulk ferment.",
           "notable": false,
-          "stepId": "OVERNIGHT_BULK"
+          "stepId": "OVERNIGHT_BULK",
+          "curated": "77°F at end of bulk ferment."
         },
         {
           "timestamp": "2026-04-09T20:28:48.481Z",
           "raw": "turning out dough to rest for 10 minutes on the counter",
-          "notable": false
+          "notable": false,
+          "curated": "Turning out dough to rest for 10 minutes on the counter."
         },
         {
           "timestamp": "2026-04-09T20:33:06.392Z",
           "raw": "1925 grams total. target per loaf is 962.5",
           "notable": false,
-          "stepId": "TURN_OUT"
+          "stepId": "TURN_OUT",
+          "curated": "1925g total. Target per loaf is 962.5g."
         },
         {
           "timestamp": "2026-04-09T21:08:21.711Z",
           "raw": "i preshaped dough about 30 minutes ago.",
           "notable": false,
-          "stepId": "TURN_OUT"
+          "stepId": "TURN_OUT",
+          "curated": "I preshaped dough about 30 minutes ago."
         },
         {
           "timestamp": "2026-04-09T21:08:50.042Z",
           "raw": "taking single dough temp probably unnecessary",
           "notable": false,
-          "stepId": "TURN_OUT"
+          "stepId": "TURN_OUT",
+          "curated": "Taking single dough temp — probably unnecessary."
         },
         {
           "timestamp": "2026-04-09T21:09:09.968Z",
           "raw": "shaping now",
-          "notable": false
+          "notable": false,
+          "curated": "Shaping now."
         },
         {
           "timestamp": "2026-04-09T21:27:50.492Z",
           "raw": "shaped and resting at room temperature for an hour. started the resting at room temp about 23 minutes ago.",
-          "notable": false
+          "notable": false,
+          "curated": "Shaped and resting at room temperature for an hour. Started the resting at room temp about 23 minutes ago."
         },
         {
           "timestamp": "2026-04-09T22:12:19.860Z",
           "raw": "in fridge now. will pull out and cook.",
           "notable": false,
-          "stepId": "ROOM_TEMP_REST"
+          "stepId": "ROOM_TEMP_REST",
+          "curated": "In fridge now. Will pull out and cook."
         },
         {
           "timestamp": "2026-04-10T14:25:31.635Z",
           "raw": "preheat started roughly an hour ago. preheating high just to speed up process. 410 degrees reading on dutch oven means i'm not there yet. looking for 450 readout on infrared thermometer before starting bake. preheat is set to 550 on oven. will lower to 480 covered this time per experiment parameters",
-          "notable": false
+          "notable": false,
+          "curated": "Preheat started roughly an hour ago. Preheating high just to speed up process. 410°F reading on Dutch oven means I'm not there yet. Looking for 450°F readout on infrared thermometer before starting bake. Preheat is set to 550°F on oven. Will lower to 480°F covered this time per experiment parameters."
         },
         {
           "timestamp": "2026-04-10T14:59:10.815Z",
           "raw": "480 covered start",
-          "notable": false
+          "notable": false,
+          "curated": "480°F covered start."
         },
         {
           "timestamp": "2026-04-10T14:59:34.548Z",
           "raw": "dutch oven reading still only 420 but i don't want to waste energy or time. it should be ok.",
-          "notable": false
+          "notable": false,
+          "curated": "Dutch oven reading still only 420°F but I don't want to waste energy or time. It should be ok."
         },
         {
           "timestamp": "2026-04-10T15:19:58.996Z",
           "raw": "lid off. 450. going to experiment and let second loaf dough sit at room temp for a bit. i want to see if it's easier to score if the dough has settled a little bit.",
-          "notable": false
+          "notable": false,
+          "curated": "Lid off. 450°F. Going to experiment and let second loaf dough sit at room temp for a bit. I want to see if it's easier to score if the dough has settled a little bit."
         },
         {
           "timestamp": "2026-04-10T15:29:23.438Z",
           "raw": "9 minute rotate dough. reading surface temp of 480 on dutch oven. nice.",
-          "notable": false
+          "notable": false,
+          "curated": "9-minute rotate dough. Reading surface temp of 480°F on Dutch oven. Nice."
         },
         {
           "timestamp": "2026-04-10T15:37:19.891Z",
           "raw": "oven off for final four minutes. let's see how the crust turns out",
-          "notable": false
+          "notable": false,
+          "curated": "Oven off for final four minutes. Let's see how the crust turns out."
         },
         {
           "timestamp": "2026-04-10T15:59:43.783Z",
           "raw": "second loaf. preheat complete. dutch oven just reading 380.",
-          "notable": false
+          "notable": false,
+          "curated": "Second loaf. Preheat complete. Dutch oven just reading 380°F."
         },
         {
           "timestamp": "2026-04-10T16:02:58.724Z",
           "raw": "second loaf in 480. dough looked really flat. harder to score. used bread lame. unamused by its functionality at this point.",
-          "notable": false
+          "notable": false,
+          "curated": "Second loaf in at 480°F. Dough looked really flat. Harder to score. Used bread lame. Unamused by its functionality at this point."
         },
         {
           "timestamp": "2026-04-10T16:23:25.759Z",
           "raw": "second bread. 425 uncovered this time for 9 minutes. then will flip",
-          "notable": false
+          "notable": false,
+          "curated": "Second bread. 425°F uncovered this time for 9 minutes. Then will flip."
         },
         {
           "timestamp": "2026-04-10T16:32:53.568Z",
           "raw": "rotate dough. 9 more minutes. temps 390",
-          "notable": false
+          "notable": false,
+          "curated": "Rotate dough. 9 more minutes. Temps 390°F."
         },
         {
           "timestamp": "2026-04-10T16:48:16.018Z",
           "raw": "i did 4 minutes oven off. after 18 minutes at the 425. i think it needs another 4 minutes",
-          "notable": false
+          "notable": false,
+          "curated": "I did 4 minutes oven off after 18 minutes at 425°F. I think it needs another 4 minutes."
         }
       ]
     },
@@ -4186,154 +4220,179 @@
           "timestamp": "2026-04-12T21:44:01.712Z",
           "raw": "starting",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "Starting."
         },
         {
           "timestamp": "2026-04-12T21:44:17.588Z",
           "raw": "74.2 55% humidity in workstation area",
           "notable": false,
-          "stepId": "FERMENTOLYSE"
+          "stepId": "FERMENTOLYSE",
+          "curated": "74.2°F, 55% humidity in workstation area."
         },
         {
           "timestamp": "2026-04-12T22:33:27.541Z",
           "raw": "77.2 starting to add salt.",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "77.2°F — starting to add salt."
         },
         {
           "timestamp": "2026-04-12T22:46:52.122Z",
           "raw": "dough was around 77 degrees. need to figure out better method to log. phone touching during bake not optimal. scratchpad ok?",
-          "notable": false
+          "notable": false,
+          "curated": "Dough was around 77°F. Need to figure out better method to log. Phone touching during bake not optimal. Scratchpad ok?"
         },
         {
           "timestamp": "2026-04-12T22:47:26.557Z",
           "raw": "forgot to directly add. recalling 77",
           "notable": false,
           "stepId": "FOLD_1",
-          "prompt": "Record dough temperature"
+          "prompt": "Record dough temperature",
+          "curated": "Forgot to directly add. Recalling 77°F."
         },
         {
           "timestamp": "2026-04-12T23:14:41.459Z",
           "raw": "really odd. oversaturated with water. could add flour. deciding not to just to see how bad it does. or if i can recover. might give it one extra stretch fold. aliquot rising very fast. 30%. could just be extra air. initial rise in aliquot normal?",
           "notable": false,
-          "stepId": "FOLD_2"
+          "stepId": "FOLD_2",
+          "curated": "Really odd. Oversaturated with water. Could add flour. Deciding not to just to see how bad it does, or if I can recover. Might give it one extra stretch fold. Aliquot rising very fast — 30%. Could just be extra air. Initial rise in aliquot normal?"
         },
         {
           "timestamp": "2026-04-12T23:43:04.509Z",
           "raw": "75.4",
           "notable": false,
-          "stepId": "REST_2"
+          "stepId": "REST_2",
+          "curated": "75.4°F."
         },
         {
           "timestamp": "2026-04-12T23:43:15.261Z",
           "raw": "30% aliquot",
           "notable": false,
-          "stepId": "REST_2"
+          "stepId": "REST_2",
+          "curated": "30% aliquot."
         },
         {
           "timestamp": "2026-04-12T23:43:51.104Z",
           "raw": "dough is a little soggy but manageable. starter is a theory. not active enough which is odd because i've been feeding it a lot.",
           "notable": false,
-          "stepId": "REST_2"
+          "stepId": "REST_2",
+          "curated": "Dough is a little soggy but manageable. Starter is a theory — not active enough, which is odd because I've been feeding it a lot."
         },
         {
           "timestamp": "2026-04-13T00:35:14.062Z",
           "raw": "dough cold. slow ferment. make sense.",
           "notable": false,
           "stepId": "FOLD_2",
-          "prompt": "Record dough temperature"
+          "prompt": "Record dough temperature",
+          "curated": "Dough cold. Slow ferment. Makes sense."
         },
         {
           "timestamp": "2026-04-13T01:15:04.463Z",
           "raw": "77.7 moved it next to oven. aliquot 50%. printing a reminder to measure dough on lid. i'll check again in 30 to see how it feels. kinda better now.",
           "notable": false,
           "stepId": "FOLD_3",
-          "prompt": "Record dough temperature"
+          "prompt": "Record dough temperature",
+          "curated": "77.7°F — moved it next to oven. Aliquot 50%. Printing a reminder to measure dough on lid. I'll check again in 30 min to see how it feels. Kinda better now."
         },
         {
           "timestamp": "2026-04-13T01:52:44.205Z",
           "raw": "gonna let it sit for longer. i probably shouldn't have messed with it right now. watching aliquot at 50%",
           "notable": false,
-          "stepId": "FOLD_3"
+          "stepId": "FOLD_3",
+          "curated": "Gonna let it sit for longer. I probably shouldn't have messed with it right now. Watching aliquot at 50%."
         },
         {
           "timestamp": "2026-04-13T02:33:52.214Z",
           "raw": "missed on preshape.",
           "notable": false,
           "stepId": "OVERNIGHT_BULK",
-          "prompt": "Record dough temperature (ambient temp optional)"
+          "prompt": "Record dough temperature (ambient temp optional)",
+          "curated": "Missed on preshape."
         },
         {
           "timestamp": "2026-04-13T02:34:14.697Z",
           "raw": "959 and 961",
           "notable": false,
-          "stepId": "DIVIDE"
+          "stepId": "DIVIDE",
+          "curated": "959g and 961g."
         },
         {
           "timestamp": "2026-04-13T03:43:26.663Z",
           "raw": "started room temp rest. stitched dough and in fridge.",
           "notable": false,
-          "stepId": "ROOM_TEMP_REST"
+          "stepId": "ROOM_TEMP_REST",
+          "curated": "Started room temp rest. Stitched dough and in fridge."
         },
         {
           "timestamp": "2026-04-13T20:38:30.709Z",
           "raw": "done with preheating. first loaf in starting 480 for 20 minutes",
           "notable": false,
-          "stepId": "PREHEAT"
+          "stepId": "PREHEAT",
+          "curated": "Done with preheating. First loaf in starting 480°F for 20 minutes."
         },
         {
           "timestamp": "2026-04-13T21:21:18.160Z",
           "raw": "bread out 425 was for 22 minutes.",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "Bread out — 425°F was for 22 minutes."
         },
         {
           "timestamp": "2026-04-13T21:21:20.664Z",
           "raw": "checking temp",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "Checking temp."
         },
         {
           "timestamp": "2026-04-13T21:25:23.010Z",
           "raw": "207 internal temp. wonder if i can leave it in for slightly longer to get 210 target temp",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "207°F internal temp. Wonder if I can leave it in for slightly longer to get 210°F target temp."
         },
         {
           "timestamp": "2026-04-13T21:25:37.756Z",
           "raw": "preheating dutch oven again for 30 minutes at 500",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "Preheating Dutch oven again for 30 minutes at 500°F."
         },
         {
           "timestamp": "2026-04-13T22:24:10.248Z",
           "raw": "covered 480. about 12 minutes ago i put it in. second loaf. 8 minutes left for second loaf covered.",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "Covered 480°F. About 12 minutes ago I put it in. Second loaf. 8 minutes left for second loaf covered."
         },
         {
           "timestamp": "2026-04-13T22:38:13.934Z",
           "raw": "425 uncovered. started about 6 minutes ago",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "425°F uncovered. Started about 6 minutes ago."
         },
         {
           "timestamp": "2026-04-13T22:57:45.177Z",
           "raw": "second loaf out. 210 degrees internal exactly. 22 minutes 425 for the record",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "Second loaf out. 210°F internal exactly. 22 minutes at 425°F for the record."
         },
         {
           "timestamp": "2026-04-13T22:58:04.149Z",
           "raw": "both loaves have a desirable golden brown. not ful brown but i think flour type dictates that's.",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "Both loaves have a desirable golden brown. Not full brown but I think flour type dictates that."
         },
         {
           "timestamp": "2026-04-13T22:59:02.319Z",
           "raw": "ironically didn't expect these loaves to pop as much as they did. they look like they had an amazing rise. wondering how i can get a more pronounced ear. probably best if i did a scoring on one side if that's what i want",
           "notable": false,
-          "stepId": "BAKE_COVERED"
+          "stepId": "BAKE_COVERED",
+          "curated": "Ironically didn't expect these loaves to pop as much as they did. They look like they had an amazing rise. Wondering how I can get a more pronounced ear. Probably best if I did a scoring on one side if that's what I want."
         }
       ]
     },
@@ -4538,81 +4597,94 @@
           "timestamp": "2026-04-14T19:02:23.928Z",
           "raw": "single loaf.  test. 75.4. ambient 54% humidity",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "Single loaf test. 75.4°F ambient, 54% humidity."
         },
         {
           "timestamp": "2026-04-14T19:03:02.272Z",
           "raw": "500 350 grams 10 grams salt. 100g startrr",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "500g flour, 350g water, 10g salt, 100g starter."
         },
         {
           "timestamp": "2026-04-14T19:14:50.300Z",
           "raw": "77.9 dough temp",
           "notable": false,
           "stepId": "ADD_SALT",
-          "prompt": "Take aliquot sample after incorporating salt"
+          "prompt": "Take aliquot sample after incorporating salt",
+          "curated": "77.9°F dough temp."
         },
         {
           "timestamp": "2026-04-14T19:44:38.198Z",
           "raw": "77.4 after adding salt waiting 30 minutes. aliquot sample slightly overfilled at 10%",
           "notable": false,
           "stepId": "FOLD_1",
-          "prompt": "Record dough temperature"
+          "prompt": "Record dough temperature",
+          "curated": "77.4°F after adding salt, waiting 30 minutes. Aliquot sample slightly overfilled at 10%."
         },
         {
           "timestamp": "2026-04-14T20:18:34.476Z",
           "raw": "77.4",
           "notable": false,
           "stepId": "FOLD_2",
-          "prompt": "Record dough temperature"
+          "prompt": "Record dough temperature",
+          "curated": "77.4°F."
         },
         {
           "timestamp": "2026-04-14T20:18:47.688Z",
           "raw": "15% aliquot",
           "notable": false,
-          "stepId": "FOLD_2"
+          "stepId": "FOLD_2",
+          "curated": "15% aliquot."
         },
         {
           "timestamp": "2026-04-14T20:58:14.159Z",
           "raw": "77.4",
           "notable": false,
           "stepId": "FOLD_3",
-          "prompt": "Record dough temperature"
+          "prompt": "Record dough temperature",
+          "curated": "77.4°F."
         },
         {
           "timestamp": "2026-04-14T21:41:57.423Z",
           "raw": "77.2 third s and f",
           "notable": false,
-          "stepId": "FOLD_3"
+          "stepId": "FOLD_3",
+          "curated": "77.2°F — third stretch & fold."
         },
         {
           "timestamp": "2026-04-14T21:42:03.422Z",
           "raw": "waiting an hour or so",
           "notable": false,
-          "stepId": "FOLD_3"
+          "stepId": "FOLD_3",
+          "curated": "Waiting an hour or so."
         },
         {
           "timestamp": "2026-04-14T23:50:12.820Z",
           "raw": "70% aliquot reading. turning out dough. fell asleep but dough temp is low enough that 70% is probably fine.",
           "notable": false,
-          "stepId": "TURN_OUT"
+          "stepId": "TURN_OUT",
+          "curated": "70% aliquot reading. Turning out dough. Fell asleep but dough temp is low enough that 70% is probably fine."
         },
         {
           "timestamp": "2026-04-15T00:21:45.184Z",
           "raw": "967g one bread. resting for one hour",
           "notable": false,
-          "stepId": "BUILD_TENSION"
+          "stepId": "BUILD_TENSION",
+          "curated": "967g one bread. Resting for one hour."
         },
         {
           "timestamp": "2026-04-15T17:21:03.962Z",
           "raw": "500 preheat. 480 uncovered started approx 16 minutes ago. pulling out in four minutes for uncovered remainder",
-          "notable": false
+          "notable": false,
+          "curated": "500°F preheat. 480°F covered started approx 16 minutes ago. Pulling out in four minutes for uncovered remainder."
         },
         {
           "timestamp": "2026-04-15T17:50:08.147Z",
           "raw": "bread out.  ended up doing spritz of water. 22 minutes total 425",
-          "notable": false
+          "notable": false,
+          "curated": "Bread out. Ended up doing spritz of water. 22 minutes total at 425°F."
         }
       ]
     },
@@ -4801,75 +4873,88 @@
           "timestamp": "2026-04-15T22:24:50.125Z",
           "raw": "ambient kitchen temp is 77.8 49% humidity",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "Ambient kitchen temp is 77.8°F, 49% humidity."
         },
         {
           "timestamp": "2026-04-15T22:25:25.092Z",
           "raw": "80 degree dough temp. waiting 20 minutes to add salt",
           "notable": false,
-          "stepId": "REST_FERMENTOLYSE"
+          "stepId": "REST_FERMENTOLYSE",
+          "curated": "80°F dough temp. Waiting 20 minutes to add salt."
         },
         {
           "timestamp": "2026-04-15T22:48:43.577Z",
           "raw": "20% aliquot sample. just pulled a little too much through tube.",
           "notable": false,
           "stepId": "ADD_SALT",
-          "prompt": "Take aliquot sample after incorporating salt"
+          "prompt": "Take aliquot sample after incorporating salt",
+          "curated": "20% aliquot sample. Just pulled a little too much through tube."
         },
         {
           "timestamp": "2026-04-15T22:49:05.084Z",
           "raw": "added salt. 79.2 degrees dough temp",
-          "notable": false
+          "notable": false,
+          "curated": "Added salt. 79.2°F dough temp."
         },
         {
           "timestamp": "2026-04-15T23:21:24.608Z",
           "raw": "79.7. aliquot baseline at 20%",
           "notable": false,
           "stepId": "FOLD_2",
-          "prompt": "Record dough temperature"
+          "prompt": "Record dough temperature",
+          "curated": "79.7°F. Aliquot baseline at 20%."
         },
         {
           "timestamp": "2026-04-16T00:00:16.866Z",
           "raw": "practiced slap and folding. letting sit for a bit.",
           "notable": false,
-          "stepId": "ADD_SALT"
+          "stepId": "ADD_SALT",
+          "curated": "Practiced slap and folding. Letting sit for a bit."
         },
         {
           "timestamp": "2026-04-16T03:17:50.280Z",
           "raw": "forgot to note when i finished shaping. i'll double check dough and put in fridge by feel. \n\ni ended up shaping when aliquot read 70%. just to mess with the dough some more. i practiced walking dough and making note of the top and bottom of the dough. used only the small bench scraper.",
-          "notable": false
+          "notable": false,
+          "curated": "Forgot to note when I finished shaping. I'll double check dough and put in fridge by feel.\n\nI ended up shaping when aliquot read 70%. Just to mess with the dough some more. I practiced walking dough and making note of the top and bottom of the dough. Used only the small bench scraper."
         },
         {
           "timestamp": "2026-04-16T13:39:25.583Z",
           "raw": "started the bake process earlier. i'm already at uncover step now. did single score on the side. attempt two of non cross pattern. upon uncover of the bread lowered oven to 425. will cook for 22ish minutes. i baked covered at 480 for 20. preheated at 500 for an hour",
-          "notable": false
+          "notable": false,
+          "curated": "Started the bake process earlier. I'm already at uncover step now. Did single score on the side — attempt two of non-cross pattern. Upon uncover of the bread lowered oven to 425°F. Will cook for ~22 minutes. I baked covered at 480°F for 20. Preheated at 500°F for an hour."
         },
         {
           "timestamp": "2026-04-16T14:04:34.782Z",
           "raw": "compared to yesterdays bake kinda looks flat. but the scoring looks better placed.",
-          "notable": false
+          "notable": false,
+          "curated": "Compared to yesterday's bake kinda looks flat. But the scoring looks better placed."
         },
         {
           "timestamp": "2026-04-16T14:04:51.302Z",
           "raw": "bread out of the oven. full bake time was 425 for 22 minutes.",
-          "notable": false
+          "notable": false,
+          "curated": "Bread out of the oven. Full bake time was 425°F for 22 minutes."
         },
         {
           "timestamp": "2026-04-16T14:05:50.596Z",
           "raw": "208 internal temp when pulling it out. but should continue to cook for the next hour. can possibly boost cook temp to 430",
-          "notable": false
+          "notable": false,
+          "curated": "208°F internal temp when pulling it out. But should continue to cook for the next hour. Can possibly boost cook temp to 430°F."
         },
         {
           "timestamp": "2026-04-16T14:13:51.897Z",
           "raw": "perhaps slightly burned crust. unsure",
-          "notable": false
+          "notable": false,
+          "curated": "Perhaps slightly burned crust. Unsure."
         },
         {
           "timestamp": "2026-04-16T14:14:32.770Z",
           "raw": "ear development perhaps not exactly what i want. blistering for sure. starter was not happy at the start of this bake. perhaps the biggest callout compared to yesterdays.",
           "notable": false,
           "stepId": "COOL_ON_RACK",
-          "prompt": "Rate crust: color, ear development, blistering"
+          "prompt": "Rate crust: color, ear development, blistering",
+          "curated": "Ear development perhaps not exactly what I want. Blistering for sure. Starter was not happy at the start of this bake. Perhaps the biggest callout compared to yesterday's."
         }
       ]
     },
@@ -5033,44 +5118,52 @@
           "timestamp": "2026-04-16T17:43:14.006Z",
           "raw": "ambient. 78.8 58% humidity",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "Ambient 78.8°F, 58% humidity."
         },
         {
           "timestamp": "2026-04-16T17:43:51.169Z",
           "raw": "fermentolease started. will be afking for a bit so may miss direct 30 minute window. should be fine. dough temp 80.2 degrees. will add salt when i get back",
           "notable": false,
-          "stepId": "PREP_WORKSPACE"
+          "stepId": "PREP_WORKSPACE",
+          "curated": "Fermentolyse started. Will be AFK for a bit so may miss direct 30-minute window. Should be fine. Dough temp 80.2°F. Will add salt when I get back."
         },
         {
           "timestamp": "2026-04-16T19:21:09.502Z",
           "raw": "80.8 degree dough temp after adding salt. aliquot pulled 0%",
-          "notable": false
+          "notable": false,
+          "curated": "80.8°F dough temp after adding salt. Aliquot pulled 0%."
         },
         {
           "timestamp": "2026-04-16T19:26:07.354Z",
           "raw": "i would count the stretching and folding when adding salt as s and f 1",
           "notable": false,
-          "stepId": "FOLD_1"
+          "stepId": "FOLD_1",
+          "curated": "I would count the stretching and folding when adding salt as stretch & fold 1."
         },
         {
           "timestamp": "2026-04-16T19:52:01.198Z",
           "raw": "80.8 dough temp. s and fold done.",
-          "notable": false
+          "notable": false,
+          "curated": "80.8°F dough temp. Stretch & fold done."
         },
         {
           "timestamp": "2026-04-16T20:43:03.625Z",
           "raw": "82.4 degree dough temp. a little too warm. moving to cooler area. needs another stretch fold before resting.",
-          "notable": false
+          "notable": false,
+          "curated": "82.4°F dough temp. A little too warm. Moving to cooler area. Needs another stretch fold before resting."
         },
         {
           "timestamp": "2026-04-16T23:53:24.813Z",
           "raw": "could be my first failure in a while. going to cook a foccacia tonight.",
-          "notable": false
+          "notable": false,
+          "curated": "Could be my first failure in a while. Going to cook a focaccia tonight."
         },
         {
           "timestamp": "2026-04-17T02:06:04.610Z",
           "raw": "foccaccia out of the oven almost an hour. will check crumb and taste for the hell of it",
-          "notable": false
+          "notable": false,
+          "curated": "Focaccia out of the oven almost an hour. Will check crumb and taste for the hell of it."
         }
       ]
     },
@@ -5215,7 +5308,8 @@
           "raw": "78.8 dt - 77.2 ambient with 63% humidity inside",
           "notable": true,
           "stepId": "REST_FERMENTOLYSE",
-          "processing": "mix"
+          "processing": "mix",
+          "curated": "78.8°F DDT — 77.2°F ambient with 63% humidity inside."
         },
         {
           "timestamp": "2026-04-23T20:31:09Z",
@@ -5223,7 +5317,8 @@
           "notable": false,
           "stepId": "ADD_SALT",
           "processing": "mix",
-          "prompt": "Take aliquot sample after incorporating salt"
+          "prompt": "Take aliquot sample after incorporating salt",
+          "curated": "Aliquot at 0%, 78.4°F DDT."
         },
         {
           "timestamp": "2026-04-23T20:31:14Z",
@@ -5231,27 +5326,31 @@
           "notable": false,
           "stepId": "FOLD_1",
           "processing": "bulk_ferment",
-          "prompt": "Record dough temperature"
+          "prompt": "Record dough temperature",
+          "curated": "78.4°F."
         },
         {
           "timestamp": "2026-04-23T22:01:33Z",
           "raw": "aliquot 10%",
           "notable": false,
           "stepId": "FOLD_1",
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "Aliquot 10%."
         },
         {
           "timestamp": "2026-04-23T22:04:29Z",
           "raw": "77.5 dough temp",
           "notable": false,
           "stepId": "FOLD_1",
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "77.5°F dough temp."
         },
         {
           "timestamp": "2026-04-23T22:39:08Z",
           "raw": "77.7 second stretch fold. dough feels elastic. nice. 30% aliquot.",
           "notable": true,
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "77.7°F — second stretch fold. Dough feels elastic. Nice. 30% aliquot."
         },
         {
           "timestamp": "2026-04-23T23:19:54Z",
@@ -5264,31 +5363,36 @@
           "timestamp": "2026-04-23T23:52:45Z",
           "raw": "aliquot reads 60% gonna turn out dough for preshape now.",
           "notable": true,
-          "processing": "shaping"
+          "processing": "shaping",
+          "curated": "Aliquot reads 60% — gonna turn out dough for preshape now."
         },
         {
           "timestamp": "2026-04-23T23:53:23Z",
           "raw": "952 dough weight",
           "notable": true,
-          "processing": "shaping"
+          "processing": "shaping",
+          "curated": "952g dough weight."
         },
         {
           "timestamp": "2026-04-24T00:42:28Z",
           "raw": "shaped a bit ago. may need to calculate the time i shaped. about 20 minutes ago. letting sit at room temp for an hour or maybe a little longer depending on if i have time",
           "notable": true,
-          "processing": "shaping | Timestamp inferred: 'about 20 minutes ago' relative to 2026-04-24T00:42:28Z → shape time ~2026-04-24T00:22:00Z"
+          "processing": "shaping | Timestamp inferred: 'about 20 minutes ago' relative to 2026-04-24T00:42:28Z → shape time ~2026-04-24T00:22:00Z",
+          "curated": "Shaped a bit ago. May need to calculate the time I shaped — about 20 minutes ago. Letting sit at room temp for an hour or maybe a little longer depending on if I have time."
         },
         {
           "timestamp": "2026-04-24T15:27:56Z",
           "raw": "preheated oven at 500 for about an hour. just placed bread into oven at 480 for 20 minutes. will take off lid in about 20 minutes and do uncovered for 425",
           "notable": true,
-          "processing": "bake"
+          "processing": "bake",
+          "curated": "Preheated oven at 500°F for about an hour. Just placed bread into oven at 480°F for 20 minutes. Will take off lid in about 20 minutes and do uncovered at 425°F."
         },
         {
           "timestamp": "2026-04-24T16:16:00Z",
           "raw": "208 degrees out of the oven. took about 26 minutes uncovered for desired crust color.",
           "notable": true,
-          "processing": "bake"
+          "processing": "bake",
+          "curated": "208°F out of the oven. Took about 26 minutes uncovered for desired crust color."
         },
         {
           "timestamp": "2026-04-24T16:16:00Z",
@@ -5528,13 +5632,15 @@
           "notable": false,
           "stepId": "_pre_bake",
           "prompt": "Kitchen temp (°F)?",
-          "processing": "prep"
+          "processing": "prep",
+          "curated": "Kitchen temp 78.6°F."
         },
         {
           "timestamp": "2026-04-27T22:05:44Z",
           "raw": "54% humidity",
           "notable": false,
-          "processing": "prep"
+          "processing": "prep",
+          "curated": "54% humidity."
         },
         {
           "timestamp": "2026-04-27T22:12:07Z",

@@ -1092,24 +1092,28 @@
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "16:25 fermentolease start",
+          "curated": "4:25pm — fermentolyse start.",
           "notable": false,
           "stepId": "MIX_FERMENTOLYSE"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "79.7 warm today",
+          "curated": "79.7°F — warm today.",
           "notable": false,
           "stepId": "FERMENTOLYSE_REST"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "last reading was for dough temp.",
+          "curated": "Last reading was for dough temp.",
           "notable": false,
           "stepId": "FERMENTOLYSE_REST"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "note that i am doubling the recipe to make four pizzas total.",
+          "curated": "Note that I am doubling the recipe to make four pizzas total.",
           "notable": false,
           "stepId": "FERMENTOLYSE_REST"
         },
@@ -1123,42 +1127,49 @@
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "adding salt now",
+          "curated": "Adding salt now.",
           "notable": false,
           "stepId": "ADD_SALT"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "waiting for 30 minutes after salt incorporation. i figured that should be a step in the recipe but it's missing. aliquot is at 10% because i pulled a little bit too much dough into vessel. good to note before preshaping. dough is super warm so i may want to consider even preshaping tonight. will revisit.",
+          "curated": "Waiting for 30 minutes after salt incorporation. I figured that should be a step in the recipe but it's missing. Aliquot is at 10% because I pulled a little bit too much dough into the vessel. Good to note before preshaping. Dough is super warm so I may want to consider even preshaping tonight. Will revisit.",
           "notable": false,
           "stepId": "STRETCH_FOLD_SETS"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "first stretch and fold a bit late. dough is still pretty stiff. will report back in second stretch fold. dough is still hot at 79.7",
+          "curated": "First stretch and fold a bit late. Dough is still pretty stiff. Will report back in second stretch fold. Dough is still hot at 79.7°F.",
           "notable": false,
           "stepId": "_general"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "80.2 degree second s and f",
+          "curated": "80.2°F — second stretch and fold.",
           "notable": false,
           "stepId": "BULK_REST"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "15% aliquot",
+          "curated": "15% aliquot.",
           "notable": false,
           "stepId": "BULK_REST"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "79.7 last s and f. aliquot at 30%",
+          "curated": "79.7°F — last stretch and fold. Aliquot at 30%.",
           "notable": false,
           "stepId": "BULK_REST"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "aliquot reading about 55% which is effectively 45%. going to turn out dough now",
+          "curated": "Aliquot reading about 55% which is effectively 45%. Going to turn out dough now.",
           "notable": false,
           "stepId": "BULK_REST",
           "prompt": "volume increase"
@@ -1166,6 +1177,7 @@
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "could be 1509. scale has issues sometimes. will verify when weighing balls",
+          "curated": "Could be 1509g. Scale has issues sometimes. Will verify when weighing balls.",
           "notable": false,
           "stepId": "ROUND_DOUGH",
           "prompt": "total weight"
@@ -1173,18 +1185,21 @@
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "in fridge now. aliquot will be placed next to it in fridge. it's in cambro for bulk ferment.",
+          "curated": "In fridge now. Aliquot will be placed next to it in fridge. It's in Cambro for bulk ferment.",
           "notable": false,
           "stepId": "COLD_BULK_FERMENT"
         },
         {
           "timestamp": "2026-04-08T12:00:00Z",
           "raw": "78.4 degrees before fridge.",
+          "curated": "78.4°F before fridge.",
           "notable": false,
           "stepId": "COLD_BULK_FERMENT"
         },
         {
           "timestamp": "2026-04-09T12:00:00Z",
           "raw": "total weight estimate is 1524g after adding back aliquot. divide by four is 381g a ball target.",
+          "curated": "Total weight estimate is 1524g after adding back aliquot. Divide by four is 381g per ball target.",
           "notable": false,
           "stepId": "ROUND_PORTIONS"
         },
@@ -1197,54 +1212,63 @@
         {
           "timestamp": "2026-04-09T12:00:00Z",
           "raw": "in fridge approx 15 minutes ago. shaped four balls",
+          "curated": "In fridge approx 15 minutes ago. Shaped four balls.",
           "notable": false,
           "stepId": "ROUND_PORTIONS"
         },
         {
           "timestamp": "2026-04-10T12:00:00Z",
           "raw": "prepped toppings for tomorrow",
+          "curated": "Prepped toppings for tomorrow.",
           "notable": false,
           "stepId": "_general"
         },
         {
           "timestamp": "2026-04-11T12:00:00Z",
           "raw": "i am checking in now. about 4 minutes into the actual bake of the second pizza. i messed up the launch on the sauce pizza. will need to lookup recovery methods when sticks to peel",
+          "curated": "I am checking in now. About 4 minutes into the actual bake of the second pizza. I messed up the launch on the sauce pizza. Will need to look up recovery methods when it sticks to peel.",
           "notable": false,
           "stepId": "_general"
         },
         {
           "timestamp": "2026-04-11T12:00:00Z",
           "raw": "could be worth noting to the user that we shouldn't start baking till an infrared sensor reads close to 450. that's what i do at least. watch steel not clock. watch variables and measurable variables not clock.",
+          "curated": "Could be worth noting to the user that we shouldn't start baking till an infrared sensor reads close to 450°F. That's what I do at least. Watch steel, not clock. Watch variables and measurable variables, not clock.",
           "notable": false,
           "stepId": "PREHEAT_STEEL"
         },
         {
           "timestamp": "2026-04-11T12:00:00Z",
           "raw": "might be a bad bake day for me. first pizza was perfect. did regular pepperoni. the sauce only pizza threw me off just because launching it i had trouble with sticking pizza peel and sauce x2 kinda overflowing. in future 1.5x sauce to prevent production flaws. process should be ironclad to handle bad execution too.",
+          "curated": "Might be a bad bake day for me. First pizza was perfect. Did regular pepperoni. The sauce-only pizza threw me off just because launching it I had trouble with sticking pizza peel and sauce 2x kinda overflowing. In future 1.5x sauce to prevent production flaws. Process should be ironclad to handle bad execution too.",
           "notable": false,
           "stepId": "_general"
         },
         {
           "timestamp": "2026-04-11T12:00:00Z",
           "raw": "third pizza i ended up getting a small tear somehow in the dough. i tried the basil leaf trick. will report back on result. wondering why the dough tore in the first place. at this point the dough has been sitting at room temperature for longer than the other two and i took a small break in between the second set of 2x pizzas. to reset from the failure of the sauce pizza. sauce pizza is my foccoccia fallback lol. i also overcooked the top in the final stretch. think i scorched the leaves. cap at 45 seconds in broiler for vegan pizza next time.",
+          "curated": "Third pizza I ended up getting a small tear somehow in the dough. I tried the basil leaf trick. Will report back on result. Wondering why the dough tore in the first place. At this point the dough has been sitting at room temperature for longer than the other two and I took a small break in between the second set of 2x pizzas to reset from the failure of the sauce pizza. Sauce pizza is my focaccia fallback. I also overcooked the top in the final stretch. Think I scorched the leaves. Cap at 45 seconds in broiler for vegan pizza next time.",
           "notable": false,
           "stepId": "_general"
         },
         {
           "timestamp": "2026-04-11T12:00:00Z",
           "raw": "jalapeño pep pizza out. detected small hole in middle of pizza at the end of bake. took care to not expose bottom during final browning in broiler. cheese pizza (number 3) seemed to have best looking crust. number 4 is cooking right now.",
+          "curated": "Jalapeño pepperoni pizza out. Detected small hole in middle of pizza at the end of bake. Took care to not expose bottom during final browning in broiler. Cheese pizza (number 3) seemed to have best-looking crust. Number 4 is cooking right now.",
           "notable": false,
           "stepId": "_general"
         },
         {
           "timestamp": "2026-04-11T12:00:00Z",
           "raw": "first time doing this many pizzas at once. especially with a newish recipe. my regular new york pizza dough i've done a million times and it seems easier to work with and fault tolerant. issue needed to be addressed in a backlog task. research and collaborate with me to determine best way for transferring pizza for an event. if it's cooked a few hours before hand i want to protect flavor and the texture. considering i dont want to use too much plastic wrap or foil either.",
+          "curated": "First time doing this many pizzas at once. Especially with a newish recipe. My regular New York pizza dough I've done a million times and it seems easier to work with and fault tolerant. Issue needed to be addressed in a backlog task. Research and collaborate with me to determine best way for transferring pizza for an event. If it's cooked a few hours beforehand I want to protect flavor and the texture. Considering I don't want to use too much plastic wrap or foil either.",
           "notable": false,
           "stepId": "_general"
         },
         {
           "timestamp": "2026-04-11T12:00:00Z",
           "raw": "overall success despite minor failures in process. possibly revisit dough proofing schedule. possibly lower down temper step to 4 hours. i didnt actually re shape on bake day as planned. didn't want to risk it but perhaps if i made dough balls it would have been a little easier to work with. starter was actually kind of weak which could have hindered the strength of the dough",
+          "curated": "Overall success despite minor failures in process. Possibly revisit dough proofing schedule. Possibly lower temper step to 4 hours. I didn't actually re-shape on bake day as planned. Didn't want to risk it but perhaps if I made dough balls it would have been a little easier to work with. Starter was actually kind of weak which could have hindered the strength of the dough.",
           "notable": false,
           "stepId": "_general"
         }

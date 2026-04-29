@@ -1,10 +1,10 @@
 ---
 id: PF-229
 title: Backfill curated fields on all existing bake_notes entries
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-04-29 00:47'
-updated_date: '2026-04-29 00:56'
+updated_date: '2026-04-29 01:15'
 labels:
   - bug
 dependencies: []
@@ -38,6 +38,4 @@ Affected recipes (from audit):
 - [ ] #4 No curated field adds information the user didn't state
 - [ ] #5 Build passes after all changes
 <!-- SECTION:DESCRIPTION:END -->
-
-<!-- AC:END -->
 <!-- AC:END -->

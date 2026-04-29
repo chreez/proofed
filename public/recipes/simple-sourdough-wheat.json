@@ -888,84 +888,117 @@
         {
           "timestamp": "2026-04-20T22:22:12.691Z",
           "raw": "ambient temp is cold. 73.9",
+          "curated": "Ambient temp is cold. 73.9°F.",
           "notable": false,
           "stepId": "PREP_WORKSPACE"
         },
         {
           "timestamp": "2026-04-20T22:22:20.509Z",
           "raw": "52 % humidity",
+          "curated": "52% humidity.",
           "notable": false,
           "stepId": "PREP_WORKSPACE"
         },
         {
           "timestamp": "2026-04-20T22:22:44.816Z",
           "raw": "no dark rye. unsure if that will have impact. recipe doesn't have a half scale so making two.",
+          "curated": "No dark rye. Unsure if that will have impact. Recipe doesn't have a half scale so making two.",
           "notable": false,
           "stepId": "PREP_WORKSPACE"
         },
         {
           "timestamp": "2026-04-20T22:40:44.224Z",
           "raw": "76.8 dough temp. finished initial pre salt mix about 10 minutes ago",
+          "curated": "76.8°F dough temp. Finished initial pre-salt mix about 10 minutes ago.",
           "notable": false,
           "stepId": "PREP_WORKSPACE"
         },
         {
           "timestamp": "2026-04-20T23:06:17.468Z",
           "raw": "75.7 after salt add. aliquot 0%",
+          "curated": "75.7°F after salt add. Aliquot 0%.",
           "notable": false,
           "stepId": "PREP_WORKSPACE"
         },
         {
           "timestamp": "2026-04-20T23:41:10.776Z",
           "raw": "75.6 first stretch fold. aliquot still around 0%. a little higher. can just put 2.5%",
+          "curated": "75.6°F first stretch fold. Aliquot still around 0%. A little higher. Can just put 2.5%.",
           "notable": false,
           "stepId": "PREP_WORKSPACE"
         },
         {
           "timestamp": "2026-04-21T00:17:02.098Z",
           "raw": "75.6",
+          "curated": "75.6°F.",
           "notable": false,
           "stepId": "PREP_WORKSPACE"
         },
         {
           "timestamp": "2026-04-21T00:51:01.584Z",
           "raw": "75.4 last stretch and fold",
+          "curated": "75.4°F last stretch and fold.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T02:52:45.373Z",
           "raw": "25% aliquot during bulk ferment. slow rising today because of temperature",
+          "curated": "25% aliquot during bulk ferment. Slow rising today because of temperature.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T04:27:37.171Z",
           "raw": "940~ gram dough balls. these are heavier. one dough is fighting me on preshape. waiting ~20 minutes for final shape",
+          "curated": "~940g dough balls. These are heavier. One dough is fighting me on preshape. Waiting ~20 minutes for final shape.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T05:50:55.864Z",
           "raw": "put into fridge after i shaped them about an hour ago",
+          "curated": "Put into fridge after I shaped them about an hour ago.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T14:45:14.257Z",
           "raw": "pulled out first bread from oven. i did a single score. bread seems a bit hard compared to when i do this normally. bake process was preheat 500 for hour. 20 minutes at 480 covered. and total of 22 minutes at 425 uncovered. not sure what variables are affecting oven spring with this whole wheat recipe",
+          "curated": "Pulled out first bread from oven. I did a single score. Bread seems a bit hard compared to when I do this normally. Bake process was preheat 500°F for hour. 20 minutes at 480°F covered. And total of 22 minutes at 425°F uncovered. Not sure what variables are affecting oven spring with this whole wheat recipe.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T14:46:13.398Z",
           "raw": "note on previous note about shaping timing. i shaped at 11pm and then placed in fridge at 12am. could have let this bread proof for longer.. till 1pm if i wanted",
+          "curated": "Note on previous note about shaping timing. I shaped at 11pm and then placed in fridge at 12am. Could have let this bread proof for longer... till 1pm if I wanted.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T15:16:07.546Z",
           "raw": "second loaf in after preheat at 525 for about 30 minutes. lowered down to 500 for covered 20 minutes. will assess in 20 minutes what to do with remaining temps when i uncover it",
+          "curated": "Second loaf in after preheat at 525°F for about 30 minutes. Lowered down to 500°F for covered 20 minutes. Will assess in 20 minutes what to do with remaining temps when I uncover it.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T18:23:42.635Z",
           "raw": "sour flavor there and subtle. think it lacks the depth that i'd like from the slightly longer proof. my schedule is preferred to get the baking done in the morning so try to start about 6 hours earlier in process to get in fridge asap",
+          "curated": "Sour flavor there and subtle. Think it lacks the depth that I'd like from the slightly longer proof. My schedule is preferred to get the baking done in the morning so try to start about 6 hours earlier in process to get in fridge ASAP.",
           "notable": false
+        }
+      ],
+      "proof_phases": [
+        {
+          "phase": "bulk_ferment",
+          "start": "2026-04-21T00:51:01.584Z",
+          "end": "2026-04-21T04:27:37.171Z",
+          "duration_min": 217,
+          "ambient_temp_f": 73.9,
+          "ddt_f": 75.4,
+          "notes": "Slow rise from cool kitchen. 25% aliquot at ~2 hrs into bulk."
+        },
+        {
+          "phase": "cold_proof",
+          "start": "2026-04-21T05:00:00.000Z",
+          "end": "2026-04-21T14:45:00.000Z",
+          "duration_min": 585,
+          "notes": "Shaped ~11pm, into fridge ~midnight. First loaf pulled ~9:45am."
         }
       ]
     }

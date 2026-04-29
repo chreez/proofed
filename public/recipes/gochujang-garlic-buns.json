@@ -1712,63 +1712,75 @@
         {
           "timestamp": "2026-04-21T18:52:25Z",
           "raw": "76.5 ambient 56% humidity",
+          "curated": "76.5°F ambient, 56% humidity.",
           "notable": false,
           "stepId": "MIX_DOUGH"
         },
         {
           "timestamp": "2026-04-21T19:14:37Z",
           "raw": "Dough temperature before bulk: 75",
+          "curated": "Dough temperature before bulk: 75°F.",
           "notable": false,
           "stepId": "FIRST_RISE"
         },
         {
           "timestamp": "2026-04-21T20:03:24Z",
           "raw": "prepping confit during initial proof. 43grams after draining oil as much as i could from the confit i made two days ago. notice i probably shortchanged quite a bit the last time i made this. consider making 4 bulbs of garlic to reduce waste or to double recipe for two bake practices sessions",
+          "curated": "Prepping confit during initial proof. 43g after draining oil as much as I could from the confit I made two days ago. Notice I probably shortchanged quite a bit the last time I made this. Consider making 4 bulbs of garlic to reduce waste or to double recipe for two bake practice sessions.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T21:34:28Z",
           "raw": "did 6 \"cinnamon roll\" style rolls to see how it comes out. theory is more exposed sponge to the soy glaze and butter wash",
+          "curated": "Did 6 cinnamon roll style rolls to see how it comes out. Theory is more exposed sponge to the soy glaze and butter wash.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T21:34:39Z",
           "raw": "short on butter. but should suffice for end glaze",
+          "curated": "Short on butter, but should suffice for end glaze.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T21:35:13Z",
           "raw": "i rotated it in the oven about 2 minutes ago. compute this as 12 minute mark of bake. 350. preheated while i got everything shaped",
+          "curated": "I rotated it in the oven about 2 minutes ago. Compute this as 12 min mark of bake. 350°F. Preheated while I got everything shaped.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T21:35:35Z",
           "raw": "sprayed top with water just in case tops can get scorched",
+          "curated": "Sprayed top with water just in case tops can get scorched.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T21:36:00Z",
           "raw": "cinna roll style- i added a melted butter pat and some minced garlic. theory is that it should gelatonize a bit at the bottom of the roll",
+          "curated": "Cinnamon roll style — I added a melted butter pat and some minced garlic. Theory is that it should gelatinize a bit at the bottom of the roll.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T21:50:53Z",
           "raw": "out after 24 minutes bake time. i pulled out at 20 and thought the tops could be a bit browner. so added 4 minutes",
+          "curated": "Out after 24 min bake time. I pulled out at 20 and thought the tops could be a bit browner, so added 4 minutes.",
           "notable": false
         },
         {
           "timestamp": "2026-04-21T22:34:33Z",
           "raw": "swirl might be a banger.",
+          "curated": "Swirl might be a banger.",
           "notable": false
         },
         {
           "timestamp": "2026-04-22T00:49:44Z",
           "raw": "swirly variation with melted butter should be standard v3. also note how much confit was used.",
+          "curated": "Swirly variation with melted butter should be standard v3. Also note how much confit was used.",
           "notable": false
         },
         {
           "timestamp": "2026-04-22T00:50:20Z",
           "raw": "need to understand how to make more uniform rolls for the swirly approach. if i need 12 of them it would be nice to get them the same size for even cooking",
+          "curated": "Need to understand how to make more uniform rolls for the swirly approach. If I need 12 of them it would be nice to get them the same size for even cooking.",
           "notable": false
         }
       ]
@@ -1821,6 +1833,7 @@
         {
           "timestamp": "2026-04-24T19:05:00Z",
           "raw": "started the confit about 20 minutes ago.",
+          "curated": "Started the confit about 20 minutes ago.",
           "notable": false,
           "stepId": "confit-garlic-bake",
           "processing": "confit | Timestamp inferred: '20 minutes ago' relative to 2026-04-24T19:25:45Z → 2026-04-24T19:05:00Z"
@@ -1835,18 +1848,21 @@
         {
           "timestamp": "2026-04-24T19:53:00Z",
           "raw": "mixed dough about 10 minutes ago. gonna wait 20 minutes more to let it sit.",
+          "curated": "Mixed dough about 10 minutes ago. Going to wait 20 minutes more to let it sit.",
           "notable": false,
           "processing": "mix | Timestamp inferred: '10 minutes ago' relative to 2026-04-24T20:03:35Z → 2026-04-24T19:53:00Z"
         },
         {
           "timestamp": "2026-04-24T20:25:04Z",
           "raw": "did some folding of the dough",
+          "curated": "Did some folding of the dough.",
           "notable": false,
           "processing": "bulk_ferment"
         },
         {
           "timestamp": "2026-04-25T00:40:58Z",
           "raw": "unsure where i went wrong in the steps. but end result seemed ok with the problem of the center maybe not being fully cooked",
+          "curated": "Unsure where I went wrong in the steps, but end result seemed okay with the problem of the center maybe not being fully cooked.",
           "notable": true,
           "processing": "result"
         }
