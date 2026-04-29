@@ -192,7 +192,15 @@ If the user dumps a structured or timestamped paste (e.g. notepad copy, dictatio
 - `notable`: `true` if the observation is highlight-worthy (key measurement, deviation, result)
 - `stepId`: recipe step ID if the note was captured against a specific step
 - `prompt`: scratchpad prompt text if this was a prompted response
-- `curated`: agent-refined version when meaningfully different from raw (omit if same)
+- `curated`: cleaned-up version of raw — always populate unless raw is already clean, properly capitalized prose with correct unit formatting. Omit ONLY when raw needs zero edits.
+  **Curation rules:**
+  - Fix typos and spelling errors
+  - Expand shorthand/abbreviations (e.g., "bf" → "bread flour", "ddt" → "DDT", "sf" → "stretch fold")
+  - Capitalize sentence starts and proper nouns
+  - Format units consistently (°F, g, ml, min)
+  - Fix grammar and punctuation without changing voice
+  - Never add information the user didn't state
+  - Never change the user's voice beyond cleanup — preserve their phrasing, just make it readable
 - `processing`: stage context (e.g. `"bulk_ferment"`, `"bake"`, `"shaping"`)
 
 **Legacy field `raw_notes` is deprecated (PF-216).** New entries MUST write `bake_notes[]` instead. Do NOT write `raw_notes` on new entries. Existing entries with `raw_notes` have been backfilled with `bake_notes[]`.
@@ -256,6 +264,8 @@ Parse into `BakePhase[]`:
 ```
 
 `start_time` is optional — only include if the user states it. `temp_f` and `duration_min` are required per phase.
+
+When timestamps are available for bake phase starts (e.g., oven-in time and oven-out time), compute `duration_min` from the time difference rather than relying on the user to state it. For example, if covered bake started at 10:00am and uncovered started at 10:20am, `duration_min: 20` for the covered phase.
 
 #### 4. `stretch_folds` — "Stretch and fold times?"
 
@@ -734,10 +744,11 @@ After parsing all structured stats, scan for **time gaps >1 hour** between known
 - **Proof timing** — gap between last fold/turn-out and bake start usually means bench rest + cold retard. Work backwards from bake start to infer.
 - **Bench rest** — gap between shaping and fridge entry
 - **Cold retard** — gap between fridge entry and bake preheat
+- **Proof duration** — if bake start time and shaping time are known, proof duration = bake_start - shape_time (minus preheat overlap if oven was preheating during proof). Add as `proof_phases[].duration_min` when computable.
 
 When a gap is detected:
 1. **Flag it** — notify the user: "I see a ~{N} hour gap between {event A} and {event B}. This is likely {bench rest / cold retard / etc}."
-2. **Best-effort inference** — propose timing based on available timestamps (e.g., "Shaped at 12:21am, baked at ~4:45pm → ~15.5hr cold retard"). Present the inference.
+2. **Best-effort inference** — propose timing based on available timestamps (e.g., "Shaped at 12:21am, baked at ~4:45pm → ~15.5hr cold retard"). Compute `duration_min` for proof phases when start and end timestamps are available: e.g., shaped at 12:21am, into oven at 10:00am → cold retard ~9.6 hours (577 min). Present the inference.
 3. **Quiz the user** — ask to confirm or correct: "Does that sound right? Did you pull from fridge to warm up, or go straight to oven?"
 4. **Record confirmed data** — add the missing phase(s) to `bake_stats` only after user confirms.
 5. **Never silently skip** — untracked phases that would appear as bake stat tags on the recipe page must be surfaced. Missing data is acceptable if the user confirms they don't have it; unasked gaps are not.
@@ -824,9 +835,9 @@ Saturday morning. Best crumb and ear yet.
 **bake_notes (12):** (raw → curated where different)
 | # | Time | Raw | Curated | Notable |
 |---|------|-----|---------|---------|
-| 1 | Fri 8:00pm | Fed starter 1:5:5 | — | no |
-| 2 | Fri 10:30pm | Starter peaked, doubled, sweet | — | yes |
-| 3 | Fri 10:45pm | Mixed dough... DDT 76°F | Mixed: 500g BF, 350g H₂O, 100g levain, 10g salt. DDT 76°F | yes |
+| 1 | Fri 8:00pm | fed starter 1:5:5 50g/250g/250g | Fed starter 1:5:5 — 50g starter, 250g flour, 250g water | no |
+| 2 | Fri 10:30pm | starter peaked doubled sweet smell | Starter peaked, doubled, sweet smell | yes |
+| 3 | Fri 10:45pm | mixed dough 500 bf 350 water 100 levain 10 salt ddt 76 | Mixed dough: 500g bread flour, 350g water, 100g levain, 10g salt. DDT 76°F | yes |
 | ... | ... | ... | ... | ... |
 
 **Photos:** 0
