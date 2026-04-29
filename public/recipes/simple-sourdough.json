@@ -5379,7 +5379,9 @@
         "Both loaves 210°F internal."
       ],
       "next_time": [
-        { "text": "If shaping gets interrupted, rest the dough and reshape rather than continuing with a bad shape" }
+        {
+          "text": "If shaping gets interrupted, rest the dough and reshape rather than continuing with a bad shape"
+        }
       ],
       "photos": [
         {
@@ -5405,38 +5407,110 @@
       ],
       "bake_stats": {
         "dough_temps": [
-          { "time": "2026-04-27 - 17:12", "temp_f": 82 },
-          { "time": "2026-04-27 - 17:38", "temp_f": 81.5 },
-          { "time": "2026-04-27 - 18:09", "temp_f": 81.5 },
-          { "time": "2026-04-27 - 18:44", "temp_f": 81 }
+          {
+            "time": "2026-04-27 - 17:12",
+            "temp_f": 82
+          },
+          {
+            "time": "2026-04-27 - 17:38",
+            "temp_f": 81.5
+          },
+          {
+            "time": "2026-04-27 - 18:09",
+            "temp_f": 81.5
+          },
+          {
+            "time": "2026-04-27 - 18:44",
+            "temp_f": 81
+          }
         ],
         "bulk_ambient_temps": [
-          { "date": "2026-04-27", "temp_f": 78.6, "note": "pre-bake kitchen temp" }
+          {
+            "date": "2026-04-27",
+            "temp_f": 78.6,
+            "note": "pre-bake kitchen temp"
+          }
         ],
         "stretch_folds": [
-          { "time": "2026-04-27 - 17:38", "type": "stretch_fold" },
-          { "time": "2026-04-27 - 18:09", "type": "stretch_fold" },
-          { "time": "2026-04-27 - 18:44", "type": "stretch_fold", "note": "last folds" }
+          {
+            "time": "2026-04-27 - 17:38",
+            "type": "stretch_fold"
+          },
+          {
+            "time": "2026-04-27 - 18:09",
+            "type": "stretch_fold"
+          },
+          {
+            "time": "2026-04-27 - 18:44",
+            "type": "stretch_fold",
+            "note": "last folds"
+          }
         ],
         "aliquot_rises": [
-          { "time": "2026-04-27 - 18:48", "rise_pct": 40, "stage": "bulk" },
-          { "time": "2026-04-27 - 20:22", "rise_pct": 80, "stage": "bulk", "note": "at shaping" }
+          {
+            "time": "2026-04-27 - 18:48",
+            "rise_pct": 40,
+            "stage": "bulk"
+          },
+          {
+            "time": "2026-04-27 - 20:22",
+            "rise_pct": 80,
+            "stage": "bulk",
+            "note": "at shaping"
+          }
         ],
         "shape_time": "2026-04-27 - 20:22",
         "proof_phases": [
           {
+            "type": "room_temp",
+            "duration_min": 23,
+            "start_time": "2026-04-27 - 20:22",
+            "note": "preshape → bench rest → final shape → bannetons"
+          },
+          {
             "type": "cold_retard",
+            "duration_min": 846,
             "start_time": "2026-04-27 - 20:45",
             "note": "~14hr, fridge to oven directly, no warm-up"
           }
         ],
         "bake_phases": [
-          { "stage": "preheat", "temp_f": 500, "duration_min": 60, "note": "loaf 1" },
-          { "stage": "covered", "temp_f": 450, "duration_min": 20, "note": "loaf 1" },
-          { "stage": "uncovered", "temp_f": 420, "duration_min": 22, "note": "loaf 1, rotated halfway" },
-          { "stage": "preheat", "temp_f": 500, "duration_min": 30, "note": "loaf 2, re-saturate Dutch oven" },
-          { "stage": "covered", "temp_f": 450, "duration_min": 20, "note": "loaf 2" },
-          { "stage": "uncovered", "temp_f": 450, "duration_min": 20, "note": "loaf 2, browning noticed at 18min" }
+          {
+            "stage": "preheat",
+            "temp_f": 500,
+            "duration_min": 60,
+            "note": "loaf 1"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "note": "loaf 1"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 420,
+            "duration_min": 22,
+            "note": "loaf 1, rotated halfway"
+          },
+          {
+            "stage": "preheat",
+            "temp_f": 500,
+            "duration_min": 30,
+            "note": "loaf 2, re-saturate Dutch oven"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "note": "loaf 2"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "note": "loaf 2, browning noticed at 18min"
+          }
         ],
         "confidence": "medium"
       },
@@ -5445,7 +5519,8 @@
           "timestamp": "2026-04-27T21:35:00Z",
           "raw": "doing a bit of a different recipe following tartine book. will follow up with details. using this recipe for scratchpad. i did the initial mix about 30 minutes ago.",
           "notable": true,
-          "processing": "mix | Timestamp inferred: 'about 30 minutes ago' relative to 2026-04-27T22:05:34Z → 2026-04-27T21:35:00Z"
+          "processing": "mix | Timestamp inferred: 'about 30 minutes ago' relative to 2026-04-27T22:05:34Z → 2026-04-27T21:35:00Z",
+          "curated": "Doing a different recipe following the Tartine book. Will follow up with details. Using this recipe for scratchpad. Did the initial mix about 30 minutes ago."
         },
         {
           "timestamp": "2026-04-27T22:05:39Z",
@@ -5465,37 +5540,43 @@
           "timestamp": "2026-04-27T22:12:07Z",
           "raw": "82 degrees on the dough. aliquot is starting around 15% this time. just pulled a bit too much dough into it.",
           "notable": true,
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "82°F dough temp. Aliquot starting around 15% — pulled a bit too much dough into the jar."
         },
         {
           "timestamp": "2026-04-27T22:38:41Z",
           "raw": "s and f 81.5 degree dough temp",
           "notable": false,
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "Stretch & fold — 81.5°F dough temp."
         },
         {
           "timestamp": "2026-04-27T23:09:55Z",
           "raw": "81.5 s and f 2",
           "notable": false,
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "Second stretch & fold — 81.5°F dough temp."
         },
         {
           "timestamp": "2026-04-27T23:44:07Z",
           "raw": "81 degree dough temp last folds done. looking for 4 hour ish bulk ferment time. so i set a timer when i started the bulk ferment to see how close i ltbwill be",
           "notable": true,
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "81°F dough temp, last folds done. Targeting ~4hr bulk ferment. Set a timer at bulk start to track."
         },
         {
           "timestamp": "2026-04-27T23:44:23Z",
           "raw": "timer about 2.5 hours left approx.",
           "notable": false,
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "Timer shows ~2.5 hours left."
         },
         {
           "timestamp": "2026-04-27T23:48:38Z",
           "raw": "40% aliquot",
           "notable": true,
-          "processing": "bulk_ferment"
+          "processing": "bulk_ferment",
+          "curated": "Aliquot at 40%."
         },
         {
           "timestamp": "2026-04-28T01:22:03Z",
@@ -5508,31 +5589,36 @@
           "timestamp": "2026-04-28T16:33:15Z",
           "raw": "just took first loaf out. 20 minutes covered 450. 500 preheat for about an hour. uncovered roughly 22 minutes with a rotate half way",
           "notable": true,
-          "processing": "bake"
+          "processing": "bake",
+          "curated": "First loaf out. Covered 20 min at 450°F, preheated at 500°F for ~1hr, uncovered ~22 min with rotate halfway."
         },
         {
           "timestamp": "2026-04-28T17:45:24Z",
           "raw": "second one baked way better not sure what i fucked up but it could have been a step in the shaping process that i accidentally skipped because people were talking to me. a bunch of people came home while i was shaping and i knew something was off with one of them. should have let it rest and reshape",
           "notable": true,
-          "processing": "result"
+          "processing": "result",
+          "curated": "Second loaf baked way better. Not sure what went wrong — possibly skipped a step during shaping. Got distracted when people came home mid-shape and knew something was off. Should have let it rest and reshaped."
         },
         {
           "timestamp": "2026-04-28T17:45:55Z",
           "raw": "second loaf came out pretty nice. i did the single score more close to the top of the dough to try to get the ear that i wanted",
           "notable": true,
-          "processing": "result"
+          "processing": "result",
+          "curated": "Second loaf came out pretty nice. Did the single score closer to the top of the dough to get the ear."
         },
         {
           "timestamp": "2026-04-28T17:47:11Z",
           "raw": "second bread i followed exactly as seen in tartine. let the oven come back to temp. wait 30 minutes to saturate the dutch oven better. then i did it covered for 20 minutes at 450. then left it at 450 for the final 20 minutes. i checked at 9 and 18 minute and noticed the browning effect at 18 minute. both loaves came out at 210 almost exactly",
           "notable": true,
-          "processing": "bake"
+          "processing": "bake",
+          "curated": "Second loaf followed Tartine method exactly. Let oven come back to temp, 30 min to re-saturate the Dutch oven. Covered 20 min at 450°F, uncovered 20 min at 450°F. Checked at 9 and 18 min — browning noticeable at 18 min. Both loaves hit 210°F."
         },
         {
           "timestamp": "2026-04-28T17:47:18Z",
           "raw": "preheated 500 for both loaves.",
           "notable": false,
-          "processing": "bake"
+          "processing": "bake",
+          "curated": "Preheated at 500°F for both loaves."
         }
       ],
       "weather": {
