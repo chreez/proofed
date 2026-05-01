@@ -1,0 +1,494 @@
+{
+  "meta": {
+    "name": "Jalapeño Cheddar Sourdough - 67% Hydration",
+    "source": {
+      "name": "Proof Bread",
+      "url": "https://www.youtube.com/watch?v=7hU_nEJYgxw",
+      "type": "inspired",
+      "author": "Jon Przybyl"
+    },
+    "yields": "2 loaves (~690g each)",
+    "total_time": "~26 hrs (1 hr active, 25 hrs passive)",
+    "description": "Enriched sourdough with milk powder, butter, and brown sugar — soft sandwich-style crumb studded with fresh jalapeño heat and melty cheddar pockets. 66% base hydration (67% effective with butter), 61% inclusion load by baker's weight. Inclusions contribute ~192g moisture — shape fast before they bleed. Inspired by Proof Bread's Ukrainian baton-style approach."
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "bakeStatsSchema": {
+      "fields": ["dough_temps", "bulk_ambient_temps", "bake_phases", "stretch_folds", "proof_phases"]
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-04-30",
+      "summary": "Initial recipe from Proof Bread YouTube video + multi-agent research synthesis (8 agents, 50+ sources)"
+    }
+  ],
+  "vessels": [
+    { "id": "V1", "name": "Glass Jar", "reuse": "Levain build" },
+    { "id": "V2", "name": "Large Mixing Bowl", "reuse": "Autolyse → mix → bulk fermentation" },
+    { "id": "V3", "name": "Medium Bowl", "reuse": "Dry pre-mix → inclusion staging" },
+    { "id": "V4", "name": "Dutch Oven", "reuse": "Baking vessel (2 sequential bakes)" },
+    { "id": "V5", "name": "Banneton (×2)", "reuse": "Final proof + cold retard" }
+  ],
+  "stages": [
+    {
+      "id": "LEVAIN",
+      "title": "Levain Build",
+      "gather": {
+        "vessels": ["Glass Jar"],
+        "equipment": ["Kitchen Scale"],
+        "ingredients": [
+          {
+            "id": "flour",
+            "name": "Bread Flour",
+            "total": 550,
+            "unit": "g",
+            "breakdown": [
+              { "label": "levain", "amount": 50 },
+              { "label": "dough", "amount": 500 }
+            ]
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 360,
+            "unit": "g",
+            "breakdown": [
+              { "label": "levain", "amount": 50 },
+              { "label": "dough", "amount": 310 }
+            ]
+          },
+          {
+            "id": "starter",
+            "name": "Ripe Sourdough Starter",
+            "total": 10,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": ["levain-ferment"]
+    },
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": ["Large Mixing Bowl", "Medium Bowl"],
+        "equipment": ["Kitchen Scale", "Bench Scraper", "Cutting Board", "Chef's Knife", "Disposable Gloves"],
+        "ingredients": [
+          { "id": "salt", "name": "Fine Sea Salt", "total": 10, "unit": "g", "breakdown": null },
+          { "id": "milk-powder", "name": "Nonfat Milk Powder", "total": 25, "unit": "g", "breakdown": null },
+          { "id": "brown-sugar", "name": "Brown Sugar", "total": 28, "unit": "g", "breakdown": null },
+          {
+            "id": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "total": 120,
+            "unit": "g",
+            "breakdown": [
+              { "label": "loaf 1", "amount": 60 },
+              { "label": "loaf 2", "amount": 60 }
+            ]
+          },
+          {
+            "id": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "total": 220,
+            "unit": "g",
+            "breakdown": [
+              { "label": "loaf 1", "amount": 110 },
+              { "label": "loaf 2", "amount": 110 }
+            ]
+          }
+        ]
+      },
+      "states": ["autolyse-rest", "prep-jalapenos", "cube-cheddar", "pre-mix-dry"]
+    },
+    {
+      "id": "MIX",
+      "title": "Dough Mixing",
+      "gather": {
+        "ingredients": [
+          { "id": "butter", "name": "Unsalted Butter (room temp)", "total": 45, "unit": "g", "breakdown": null }
+        ]
+      },
+      "states": ["incorporate", "develop-gluten", "add-butter"]
+    },
+    {
+      "id": "BULK",
+      "title": "Bulk Fermentation",
+      "gather": null,
+      "states": ["fold-inclusions", "stretch-fold-2", "stretch-fold-3", "stretch-fold-4", "bulk-rest"]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Divide & Shape",
+      "gather": null,
+      "states": ["divide", "preshape", "bench-rest", "final-shape"]
+    },
+    {
+      "id": "RETARD",
+      "title": "Cold Retard",
+      "gather": null,
+      "states": ["cold-retard"]
+    },
+    {
+      "id": "BAKE",
+      "title": "Score & Bake",
+      "gather": null,
+      "states": ["preheat-oven", "score", "bake-steam", "bake-dry", "cool"]
+    }
+  ],
+  "states": [
+    {
+      "id": "levain-ferment",
+      "title": "Build & Ferment Levain",
+      "direction": "In a clean glass jar, combine 50g bread flour, 50g water, and 10g ripe sourdough starter. Mix until no dry flour remains. Cover loosely and ferment at 74-76°F (23-24°C) for 10-12 hours.",
+      "duration_min": 720,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        { "name": "bread flour", "amount": "50g" },
+        { "name": "water", "amount": "50g" },
+        { "name": "ripe starter", "amount": "10g" }
+      ],
+      "exit_condition": "Levain has doubled in volume, is domed on top, and smells pleasantly yeasty-sour. A small spoonful floats in water.",
+      "notes": [
+        { "text": "Build the evening before bake day. If your kitchen is cool (below 68°F / 20°C), use slightly warmer water to compensate.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "autolyse-rest",
+      "title": "Autolyse Rest",
+      "direction": "In a large mixing bowl, combine 500g bread flour and 310g water. Mix until no dry flour remains. Place all 110g of ripe levain on top of the dough (do not mix in yet). Cover and rest 20-30 minutes.",
+      "duration_min": 25,
+      "timer": true,
+      "parallel": true,
+      "components": [
+        { "name": "bread flour", "amount": "500g" },
+        { "name": "water", "amount": "310g" }
+      ],
+      "exit_condition": "Dough is shaggy but fully hydrated with no dry pockets. Levain sits on top, untouched.",
+      "notes": [
+        { "text": "Place starter on top of autolyse immediately — this prevents forgetting it later. Proof Bread uses this habit to avoid accidentally omitting the starter.", "source": "agent" },
+        { "text": "Use this rest time to prep jalapeños and cube cheddar (next two steps run in parallel).", "source": "agent" },
+        { "text": "Try: Skip levain build entirely — use 100g active starter in place of the 110g levain. Adjust flour/water totals to compensate for the 50g/50g no longer in levain.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "prep-jalapenos",
+      "title": "Dice Jalapeños",
+      "direction": "Wearing disposable gloves, stem and halve jalapeños. Remove seeds for milder heat or leave them for full spice. Dice into 5-8mm pieces. Weigh out 60g per loaf (120g total).",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "fresh jalapeños", "amount": "120g" }
+      ],
+      "exit_condition": "Jalapeños diced uniformly, seeds removed to preference, weighed and staged in a bowl.",
+      "notes": [
+        { "text": "Always use gloves — capsaicin lingers on hands for hours and will burn eyes or contacts later.", "critical": true, "source": "agent" },
+        { "text": "Fresh jalapeños deliver sharper heat and more vibrant color than pickled. If substituting pickled, drain thoroughly and squeeze out all excess brine to prevent moisture issues.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "cube-cheddar",
+      "title": "Cube Cheddar",
+      "direction": "Cut block cheddar into 1cm cubes. Slice block into 1cm slabs, then cut into 1cm strips, then crosscut into cubes. Weigh out 110g per loaf (220g total).",
+      "duration_min": 15,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "sharp cheddar", "amount": "220g" }
+      ],
+      "exit_condition": "Cheddar cubed uniformly at ~1cm, weighed and staged. Cubes will clump together — that is normal for block cheese without cellulose.",
+      "notes": [
+        { "text": "Always cube from a block — never use pre-shredded. Pre-shredded cheese is coated with cellulose anti-caking agent that prevents proper melting and creates a webbing effect that restricts dough expansion.", "source": "agent" },
+        { "text": "Sharp or extra-sharp cheddar provides the best flavor contrast. 1cm cubes melt into distinct pockets without dissolving into the dough.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "pre-mix-dry",
+      "title": "Pre-Mix Dry Additions",
+      "direction": "In a medium bowl, combine 10g salt, 25g milk powder, and 28g brown sugar. Mix by hand, breaking up any brown sugar clumps. Discard any hard crystallized sugar pieces.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "salt", "amount": "10g" },
+        { "name": "milk powder", "amount": "25g" },
+        { "name": "brown sugar", "amount": "28g" }
+      ],
+      "exit_condition": "Dry additions evenly combined with no hard brown sugar clumps remaining.",
+      "notes": [
+        { "text": "Pre-mixing prevents brown sugar from clumping in the dough. Crystallized pieces survive fermentation and create sugary pockets in the crumb.", "source": "agent" },
+        { "text": "Milk powder is used instead of liquid milk because liquid milk contains glutathione, an enzyme that attacks gluten bonds during long sourdough fermentation. Milk powder is heat-treated to deactivate it.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "incorporate",
+      "title": "Incorporate Levain & Dry Mix",
+      "direction": "Squeeze the levain into the autolysed dough. Add the dry pre-mix (salt, milk powder, brown sugar) on top. Using wet hands, pinch and fold the dough until all additions are fully incorporated, 3-5 minutes.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "levain", "amount": "100g" },
+        { "name": "dry pre-mix", "amount": "63g" }
+      ],
+      "exit_condition": "No streaks of levain visible, dry additions fully dissolved into dough. Dough feels cohesive but not yet smooth.",
+      "notes": null
+    },
+    {
+      "id": "develop-gluten",
+      "title": "Develop Gluten",
+      "direction": "Using slap-and-fold technique on a clean counter, work the dough for 5-8 minutes until it becomes smooth, elastic, and passes a gentle windowpane test.",
+      "duration_min": 7,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is smooth and elastic. A small piece stretches thin enough to see light through without tearing (windowpane test).",
+      "notes": [
+        { "text": "Do NOT add butter yet. Gluten must be well-developed first — fat coats gluten proteins and prevents cross-linking if added too early.", "critical": true, "source": "agent" }
+      ],
+      "technique_url": "https://www.theperfectloaf.com/guides/slap-and-fold/"
+    },
+    {
+      "id": "add-butter",
+      "title": "Add Butter",
+      "direction": "With the dough on the counter, smear 45g room-temperature butter across the surface. Fold the dough over the butter and continue working it in by pinching, folding, and kneading for 3-5 minutes until fully incorporated.",
+      "duration_min": 4,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "butter", "amount": "45g" }
+      ],
+      "exit_condition": "Butter fully incorporated — no visible streaks or slick patches. Dough is smooth and slightly tacky.",
+      "notes": [
+        { "text": "The dough will feel greasy and fall apart initially. Keep working it — the gluten network re-forms around the fat within a few minutes.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "fold-inclusions",
+      "title": "Fold In Inclusions",
+      "direction": "Flatten the dough on the counter. Spread jalapeños and cheddar cubes in an even layer across the surface. Fold the dough over the inclusions like a letter (thirds). Rotate 90° and fold again. Repeat 2-3 times until inclusions are roughly distributed. Transfer to a lightly oiled container for bulk fermentation.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "jalapeños", "amount": "120g" },
+        { "name": "cheddar cubes", "amount": "220g" }
+      ],
+      "exit_condition": "Inclusions distributed throughout the dough in visible layers. Perfect uniformity not required — subsequent folds will even them out.",
+      "notes": [
+        { "text": "This lamination technique preserves dough structure and distributes cheese and peppers in pockets rather than dissolving them into the dough.", "source": "agent" },
+        { "text": "Some cheese will fall out during folding — that is normal with cubes. Push stray pieces back in.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "stretch-fold-2",
+      "title": "Stretch & Fold + Rest (Set 2)",
+      "direction": "With wet hands, perform one set of stretch and folds — pull dough up from each of the four sides and fold over the center. Cover and rest 30 minutes.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough feels stronger and more cohesive. Inclusions are more evenly distributed than after first fold.",
+      "notes": null
+    },
+    {
+      "id": "stretch-fold-3",
+      "title": "Stretch & Fold + Rest (Set 3)",
+      "direction": "Perform another set of stretch and folds from all four sides. Handle gently — the dough should be gaining strength and airiness. Cover and rest 30 minutes.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is noticeably puffier, smoother on the surface, and holds its shape when folded.",
+      "notes": null
+    },
+    {
+      "id": "stretch-fold-4",
+      "title": "Stretch & Fold + Rest (Set 4)",
+      "direction": "Final set of gentle stretch and folds. If dough resists stretching, skip this set — it has enough strength. Cover and rest.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is strong, jiggly, and holds a dome shape. Inclusions are well distributed throughout.",
+      "notes": [
+        { "text": "If the dough feels very tight and resists stretching, skip this fold. Over-developing an enriched dough with heavy inclusions can tear the gluten network.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "bulk-rest",
+      "title": "Bulk Rest",
+      "direction": "Leave the dough covered at 75-80°F (24-27°C) until it has risen 50-75% in volume. The surface should be domed with visible bubbles on the sides of the container.",
+      "duration_min": 180,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has risen 50-75% from its post-fold volume. Surface is domed, edges show visible bubbles. Total bulk fermentation time (including folds): 4-6 hours at 75-80°F (24-27°C).",
+      "notes": [
+        { "text": "Enriched dough ferments slower than lean sourdough. Insufficient bulk fermentation is the primary cause of flat loaves with this bread.", "critical": true, "source": "agent" },
+        { "text": "At 68-72°F (20-22°C), bulk may take 6-8 hours. At 80°F+ (27°C+), it may only need 3-4 hours. Judge by volume, not time.", "source": "agent" }
+      ],
+      "reminders": [
+        { "prompt": "Record ambient kitchen temperature", "type": "measurement" },
+        { "prompt": "Estimate dough volume increase (%)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "divide",
+      "title": "Divide Dough",
+      "direction": "Turn the dough out onto a lightly floured surface. Using a bench scraper, divide into two equal pieces, each approximately 690g.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Two roughly equal pieces of dough, each ~690g.",
+      "notes": null
+    },
+    {
+      "id": "preshape",
+      "title": "Preshape",
+      "direction": "Using a bench scraper and minimal flour, gently shape each piece into a loose round. Pull the dough toward you on the counter to build light surface tension. Do not degas aggressively.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Two loose rounds with light surface tension sitting on the counter.",
+      "notes": null
+    },
+    {
+      "id": "bench-rest",
+      "title": "Bench Rest",
+      "direction": "Leave preshaped rounds uncovered on the counter for 20-30 minutes. The dough should relax and spread slightly but still hold a rounded shape.",
+      "duration_min": 25,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has relaxed enough to shape easily — it spreads slightly but does not flatten. Pressing gently leaves a slow-recovering indent.",
+      "notes": null
+    },
+    {
+      "id": "final-shape",
+      "title": "Final Shape (Batard)",
+      "direction": "Working with one piece at a time: flip the round seam-side up. Fold the top third down and press to seal. Fold the bottom third up and over, pressing to seal. Roll the dough tightly into a log, stretching the skin taut as you go. Pinch the seam closed. Place seam-side up into a floured banneton.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Two tight, elongated batards with taut skin, seam-side down on parchment. No loose flaps or weak spots in the surface.",
+      "notes": [
+        { "text": "Shape as batards, NOT rounds. Proof Bread identified that stopping at the preshape round (skipping final batard shaping) is a primary cause of flat loaves.", "critical": true, "source": "agent" },
+        { "text": "Build strong surface tension — the tighter the shape, the better the loaf holds up during proof and bake. Think of stretching the dough skin like a tight burrito.", "source": "agent" },
+        { "text": "Alternative: proof seam-side down on a parchment-lined sheet tray instead of a banneton. Avoids jalapeño and cheese oils permanently scenting your proofing baskets. Use a banneton liner if you want the ring pattern without the smell. Or dedicate a banneton for inclusion breads — the seasoning is harmless.", "source": "agent" },
+        { "text": "Try: Loaf pan variation — skip batard shaping entirely, place ~690g dough into a greased 9×5 loaf pan. Cold retard in the pan, bake covered with foil 25 min then uncovered 20 min at 425°F (218°C). Produces a sandwich-style jalapeño cheddar pullman.", "source": "agent" },
+        { "text": "Some cheddar cubes will poke through the surface. That is expected and creates attractive caramelized cheese patches during baking.", "source": "agent" }
+      ],
+      "technique_url": "https://www.theperfectloaf.com/guides/shaping-a-batard/"
+    },
+    {
+      "id": "cold-retard",
+      "title": "Cold Retard",
+      "direction": "Cover each banneton tightly with plastic wrap or a shower cap. Refrigerate at 38-40°F (3-4°C) for 12-16 hours overnight.",
+      "duration_min": 840,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Loaves have puffed slightly but still feel firm and cold. They should pass the poke test with very slow recovery (slight underproof is ideal for this bread).",
+      "notes": [
+        { "text": "Cold retard develops flavor (sour tang) and makes the dough easier to score. Bake straight from the fridge — do not warm up.", "source": "agent" },
+        { "text": "Bannetons fit in the fridge more easily than a full sheet tray. If using sheet tray method instead, cover tightly with plastic wrap.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "preheat-oven",
+      "title": "Preheat Oven",
+      "direction": "Place Dutch oven with lid inside your oven. Preheat to 450°F (230°C) for 45-60 minutes.",
+      "duration_min": 50,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Oven and Dutch oven have been at 450°F (230°C) for at least 45 minutes.",
+      "notes": null
+    },
+    {
+      "id": "score",
+      "title": "Score",
+      "direction": "Remove one loaf from the fridge. Using a bread lame held at a 30-45° angle, make one confident, deep slash (~1.3cm deep) along the length of the loaf. Transfer immediately to the preheated Dutch oven using the parchment as a sling.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "One deep, clean score running the length of the batard. The cut opens slightly, revealing the dough underneath.",
+      "notes": [
+        { "text": "Score cold dough straight from the fridge — it holds shape and the blade cuts cleanly. One deep functional score is ideal for cheese bread; complex patterns risk fusing shut when cheese melts.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "bake-steam",
+      "title": "Bake (Steam Phase)",
+      "direction": "Place the lid on the Dutch oven. Bake at 450°F (230°C) for 30 minutes with the lid on.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 minutes elapsed. Do not open the lid during this phase.",
+      "notes": null
+    },
+    {
+      "id": "bake-dry",
+      "title": "Bake (Dry Phase)",
+      "direction": "Carefully remove the Dutch oven lid. Continue baking at 450°F (230°C) for 15-20 minutes until the crust is deep golden brown and the internal temperature reads 205°F (96°C).",
+      "duration_min": 18,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Crust is deep golden brown with caramelized cheese patches. Internal temperature reads 205°F (96°C) or above. The loaf sounds hollow when tapped on the bottom.",
+      "notes": [
+        { "text": "Home ovens need a higher internal temp target (205°F / 96°C) than commercial rack ovens (190-200°F) because steam dissipates once the lid comes off.", "source": "agent" },
+        { "text": "If the crust is browning too fast but internal temp is low, drop oven to 425°F (218°C) and extend baking.", "source": "agent" }
+      ],
+      "reminders": [
+        { "prompt": "Record internal bread temperature", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "cool",
+      "title": "Cool",
+      "direction": "Transfer the loaf to a wire cooling rack. Cool for at least 1 hour before cutting. Repeat the scoring and baking process for the second loaf.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Loaf has cooled to the point where the crumb has set — the center no longer feels hot to the touch.",
+      "notes": [
+        { "text": "The crumb continues to gelatinize during cooling. Cutting early releases steam that the crumb needs to set properly.", "source": "agent" }
+      ]
+    }
+  ],
+  "bake_defaults": {
+    "bake_phases": [
+      { "stage": "covered", "temp_f": 450, "duration_min": 30 },
+      { "stage": "uncovered", "temp_f": 450, "duration_min": 18 }
+    ]
+  },
+  "nutrition": null,
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "Preheat to 350°F (175°C). Wrap loaf loosely in foil. Heat 10-15 minutes until warmed through. Unwrap for last 2 minutes to re-crisp crust.",
+        "source": "agent"
+      },
+      {
+        "method": "Toaster",
+        "detail": "Slice and toast at medium setting until edges are golden and cheese pockets begin to re-melt.",
+        "source": "agent"
+      }
+    ]
+  }
+}

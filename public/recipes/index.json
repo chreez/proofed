@@ -8,6 +8,7 @@
     { "id": "coco-curry", "name": "CoCo Ichibanya-Style Japanese Curry", "file": "coco-curry.json" },
     { "id": "gochujang-garlic-buns", "name": "Gochujang & Garlic Savoury Buns", "file": "gochujang-garlic-buns.json" },
     { "id": "grain-free-bread", "name": "Grain-Free Bread", "file": "grain-free-bread.json" },
+    { "id": "jalapeno-cheddar-sourdough", "name": "Jalapeño Cheddar Sourdough - 67% Hydration", "file": "jalapeno-cheddar-sourdough.json" },
     { "id": "thai-tea-boba", "name": "Thai Tea Boba", "file": "thai-tea-boba.json" },
     { "id": "ichiran-ramen", "name": "Ichiran-Style Tonkotsu Ramen", "file": "ichiran-ramen.json" },
     { "id": "tomita-tsukemen", "name": "Tomita/Fuunji-Style Gyokai-Tonkotsu Tsukemen", "file": "tomita-tsukemen.json" },

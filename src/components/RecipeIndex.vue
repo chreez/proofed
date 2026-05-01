@@ -74,6 +74,7 @@ const categoryMap: Record<string, string> = {
   'simple-sourdough': 'baking',
   'simple-sourdough-wheat': 'baking',
   'sourdough-cheddar-bay-biscuits': 'baking',
+  'jalapeno-cheddar-sourdough': 'baking',
   'sourdough-cheddar-cheese': 'baking',
   'sourdough-chocolate-chip-cookies': 'baking',
   'sourdough-cinnamon-buns': 'baking',
