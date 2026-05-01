@@ -13,8 +13,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-04-30",
+      "summary": "Adapted for 10cm tartlets: per-stage mise en place, 12x88g dough portions, tartlet bake times"
+    },
     {
       "version": "v1.0.0",
       "date": "2026-04-30",
@@ -318,20 +323,25 @@
     {
       "id": "form-discs",
       "title": "Divide & Shape Discs",
-      "direction": "On a lightly floured surface, divide dough into 4 equal balls. Shape each ball into a disc 12mm thick. Wrap each disc well in plastic wrap.",
-      "duration_min": 5,
+      "direction": "On a lightly floured surface, divide dough into 12 equal portions (~88g each). Shape each into a ball, then flatten into a disc 12mm thick. Wrap each disc individually in plastic wrap.",
+      "duration_min": 10,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "4 evenly sized discs, each 12mm thick, individually wrapped in plastic",
+      "exit_condition": "12 evenly sized discs (~88g each), each 12mm thick, individually wrapped in plastic",
       "notes": [
         {
-          "text": "Only 1 disc is needed for this tart. Freeze remaining 3 discs for future use — dough keeps up to 1 month frozen.",
+          "text": "Weigh portions for even tartlets — scale is more reliable than eyeballing 12 pieces.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Leftover dough (including scraps from rolling) makes simple cookies.",
+          "text": "Freeze any discs you won't bake today — keeps up to 1 month. Thaw in refrigerator before rolling.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Leftover dough and scraps from rolling make simple cookies.",
           "critical": false,
           "source": "agent"
         }
