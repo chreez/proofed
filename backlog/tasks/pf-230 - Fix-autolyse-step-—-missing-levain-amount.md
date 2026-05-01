@@ -1,9 +1,10 @@
 ---
 id: PF-230
 title: Fix autolyse step — missing levain amount
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-05-01 04:23'
+updated_date: '2026-05-01 04:50'
 labels:
   - bug
 dependencies: []
