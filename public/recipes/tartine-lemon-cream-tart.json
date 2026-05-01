@@ -721,7 +721,19 @@
       "version": "v1.2.0",
       "status": "in_progress",
       "summary": null,
-      "notes": [],
+      "notes": [
+        "87.5g target weight for 12 discs"
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-01T02:55:41Z",
+          "raw": "87.5 target weight for 12 discs.",
+          "curated": "87.5g target weight for 12 discs",
+          "notable": false,
+          "stepId": "form-discs",
+          "processing": "dough"
+        }
+      ],
       "next_time": [
         { "text": "Try Olson's combine order — strain wet ingredients into a bowl with sugar already in it, instead of eggs → sugar → juice", "source": "Anna Olson video" },
         { "text": "Try confectioners' sugar instead of granulated in the curd — dissolves faster, no graininess risk", "source": "Anna Olson video" }
