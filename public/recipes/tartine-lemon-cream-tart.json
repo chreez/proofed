@@ -13,8 +13,13 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-04-30",
+      "summary": "Granular curd steps: strain juice, water bath, combine, cook, strain curd, cool, mount butter. Press-in tartlet option. Immersion blender only."
+    },
     {
       "version": "v1.1.0",
       "date": "2026-04-30",
@@ -167,7 +172,8 @@
         "equipment": [
           "Whisk",
           "Thermometer",
-          "Immersion Blender or Countertop Blender"
+          "Fine-Mesh Sieve",
+          "Immersion Blender"
         ],
         "ingredients": [
           {
@@ -215,8 +221,11 @@
         ]
       },
       "states": [
-        "setup-double-boiler",
+        "strain-lemon-juice",
+        "setup-water-bath",
+        "combine-curd",
         "cook-curd",
+        "strain-curd",
         "cool-curd",
         "mount-butter"
       ]
@@ -394,6 +403,11 @@
           "text": "Do not stretch the dough or the sides will shrink during baking.",
           "critical": true,
           "source": "agent"
+        },
+        {
+          "text": "For tartlets, you can press the dough disc directly into the pan with your fingers instead of rolling — push from center outward, working up the sides to an even thickness.",
+          "critical": false,
+          "source": "agent"
         }
       ]
     },
@@ -485,28 +499,53 @@
       ]
     },
     {
-      "id": "setup-double-boiler",
-      "title": "Set Up Double Boiler & Combine Curd Ingredients",
-      "direction": "Pour water to a depth of about 5cm into the saucepan and bring to a simmer over medium heat. In the stainless-steel bowl, whisk together 175g lemon juice, 3 eggs, 1 egg yolk, 175g sugar, and 0.5g salt.",
-      "duration_min": 5,
+      "id": "strain-lemon-juice",
+      "title": "Strain Lemon Juice",
+      "direction": "Strain 175g fresh lemon juice through a fine-mesh sieve to remove pulp and seeds.",
+      "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Lemon Juice", "amount": "175g" },
+        { "name": "Lemon Juice", "amount": "175g" }
+      ],
+      "exit_condition": "Lemon juice strained, no pulp or seeds remain",
+      "notes": null
+    },
+    {
+      "id": "setup-water-bath",
+      "title": "Set Up Water Bath",
+      "direction": "Pour water to a depth of about 5cm into the saucepan. Place over medium heat and bring to a simmer.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Water at a steady simmer in saucepan",
+      "notes": [
+        {
+          "text": "Never use unlined aluminum — acid reacts with metal and creates a metallic flavor.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "combine-curd",
+      "title": "Combine Curd Ingredients",
+      "direction": "In the stainless-steel bowl: whisk 3 eggs and 1 egg yolk together first. Add 175g sugar and whisk immediately — do not let yolks and sugar sit. Add strained lemon juice and salt, whisk to combine.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
         { "name": "Eggs", "amount": "3 whole" },
         { "name": "Egg Yolk", "amount": "1" },
         { "name": "Sugar", "amount": "175g" },
+        { "name": "Strained Lemon Juice", "amount": "175g" },
         { "name": "Salt", "amount": "0.5g (pinch)" }
       ],
-      "exit_condition": "Water simmering in saucepan, curd ingredients whisked together in steel bowl",
+      "exit_condition": "All curd ingredients whisked together in steel bowl, homogeneous",
       "notes": [
         {
           "text": "Never let egg yolks and sugar sit together without stirring — the sugar will 'cook' the yolks and turn them granular.",
-          "critical": true,
-          "source": "agent"
-        },
-        {
-          "text": "Never use unlined aluminum — acid reacts with metal and creates a metallic flavor.",
           "critical": true,
           "source": "agent"
         }
@@ -530,9 +569,26 @@
       ]
     },
     {
+      "id": "strain-curd",
+      "title": "Strain Curd",
+      "direction": "Immediately strain the hot curd through a fine-mesh sieve into a clean bowl to remove any chalazae or bits of cooked egg.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curd is smooth and silky — no lumps, strands, or cooked egg bits remain",
+      "notes": [
+        {
+          "text": "Strain while hot — it flows through the sieve much more easily than when cooled.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
       "id": "cool-curd",
       "title": "Cool Curd to 140°F (60°C)",
-      "direction": "Remove bowl from over the water. Let cool to 140°F (60°C), stirring from time to time to release heat. Meanwhile, cut 225g butter into ~14g (1 Tbsp) pieces.",
+      "direction": "Let strained curd cool to 140°F (60°C), stirring from time to time to release heat. Meanwhile, cut 225g butter into ~14g (1 Tbsp) pieces.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -555,7 +611,7 @@
     {
       "id": "mount-butter",
       "title": "Mount Butter into Cream",
-      "direction": "Leave curd in the bowl if using an immersion blender, or pour into a countertop blender. With blender running, add 225g butter one tablespoon at a time, blending after each addition until incorporated before adding the next piece.",
+      "direction": "Using immersion blender in the bowl, add 225g butter one tablespoon at a time, blending after each addition until incorporated before adding the next piece.",
       "duration_min": 8,
       "timer": false,
       "parallel": false,
