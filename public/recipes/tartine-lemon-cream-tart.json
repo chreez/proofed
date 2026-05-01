@@ -1,0 +1,652 @@
+{
+  "meta": {
+    "name": "Tartine Lemon Cream Tart",
+    "source": {
+      "name": "Tartine Bakery",
+      "type": "original",
+      "author": "Elisabeth Prueitt & Chad Robertson"
+    },
+    "yields": "12 tartlets (10cm / 4in) — dough batch makes all 12, bake as many as needed and freeze remaining discs",
+    "total_time": "~6 hrs (1.5 hrs active, 4.5 hrs passive)",
+    "description": "Tartine's signature lemon tart: buttery pate sucree shell filled with Pierre Herme-style lemon cream (butter mounted into curd for a softer, more unctuous texture than standard curd), topped with whipped cream. Dough recipe from Boulangerie Artisanale des Maures in southern France."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-04-30",
+      "summary": "Initial recipe from Tartine Bakery cookbook (sweet tart dough + lemon cream + assembly)"
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Stand Mixer Bowl",
+      "reuse": "Dough mix -> clean -> whipped cream"
+    },
+    {
+      "id": "V2",
+      "name": "10cm Tartlet Pans",
+      "reuse": "Line -> bake -> fill -> serve"
+    },
+    {
+      "id": "V3",
+      "name": "Stainless-Steel Bowl",
+      "reuse": "Double boiler curd -> mount butter -> pour into shell"
+    },
+    {
+      "id": "V4",
+      "name": "Medium Saucepan",
+      "reuse": "Water bath for double boiler"
+    },
+    {
+      "id": "V5",
+      "name": "Small Bowl",
+      "reuse": "Egg wash"
+    }
+  ],
+  "stages": [
+    {
+      "id": "DOUGH",
+      "title": "Make Tart Dough (Pate Sucree)",
+      "gather": {
+        "vessels": [
+          "Stand Mixer Bowl"
+        ],
+        "equipment": [
+          "Stand Mixer + Paddle Attachment",
+          "Rubber Spatula",
+          "Plastic Wrap",
+          "Kitchen Scale"
+        ],
+        "ingredients": [
+          {
+            "id": "butter_dough",
+            "name": "Unsalted Butter (room temp)",
+            "total": 255,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "sugar_dough",
+            "name": "Granulated Sugar",
+            "total": 200,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt_dough",
+            "name": "Salt (1/4 tsp)",
+            "total": 1.5,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "eggs_dough",
+            "name": "Large Eggs (room temp)",
+            "total": 2,
+            "unit": "whole",
+            "breakdown": null
+          },
+          {
+            "id": "flour",
+            "name": "All-Purpose Flour",
+            "total": 500,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": [
+        "cream-butter-sugar",
+        "add-eggs",
+        "add-flour",
+        "form-discs",
+        "chill-dough"
+      ]
+    },
+    {
+      "id": "LINE",
+      "title": "Line & Blind Bake Tart Shell",
+      "gather": {
+        "vessels": [
+          "10cm Tartlet Pans",
+          "Small Bowl"
+        ],
+        "equipment": [
+          "Rolling Pin",
+          "Paring Knife",
+          "Fork",
+          "Pastry Brush",
+          "Wire Rack"
+        ],
+        "ingredients": [
+          {
+            "id": "eggs_wash",
+            "name": "Large Egg (wash)",
+            "total": 1,
+            "unit": "whole",
+            "breakdown": null
+          },
+          {
+            "id": "salt_wash",
+            "name": "Salt (pinch, wash)",
+            "total": 0.5,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": [
+        "roll-dough",
+        "line-pan",
+        "chill-shell",
+        "preheat-tart-oven",
+        "dock-partial-bake",
+        "egg-wash",
+        "finish-bake",
+        "cool-shell"
+      ]
+    },
+    {
+      "id": "CREAM",
+      "title": "Make Lemon Cream",
+      "gather": {
+        "vessels": [
+          "Stainless-Steel Bowl",
+          "Medium Saucepan"
+        ],
+        "equipment": [
+          "Whisk",
+          "Thermometer",
+          "Immersion Blender or Countertop Blender"
+        ],
+        "ingredients": [
+          {
+            "id": "lemon_juice",
+            "name": "Fresh Lemon Juice",
+            "total": 175,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "eggs_cream",
+            "name": "Large Eggs",
+            "total": 3,
+            "unit": "whole",
+            "breakdown": null
+          },
+          {
+            "id": "egg_yolk",
+            "name": "Large Egg Yolk",
+            "total": 1,
+            "unit": "whole",
+            "breakdown": null
+          },
+          {
+            "id": "sugar_cream",
+            "name": "Granulated Sugar",
+            "total": 175,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt_cream",
+            "name": "Salt (pinch)",
+            "total": 0.5,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "butter_cream",
+            "name": "Unsalted Butter (cool, not cold)",
+            "total": 225,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": [
+        "setup-double-boiler",
+        "cook-curd",
+        "cool-curd",
+        "mount-butter"
+      ]
+    },
+    {
+      "id": "FILL",
+      "title": "Fill & Set Tart",
+      "gather": null,
+      "states": [
+        "fill-shell",
+        "chill-tart"
+      ]
+    },
+    {
+      "id": "FINISH",
+      "title": "Whipped Cream & Serve",
+      "gather": {
+        "equipment": [
+          "Whisk or Stand Mixer"
+        ],
+        "ingredients": [
+          {
+            "id": "heavy_cream",
+            "name": "Heavy Cream (very cold)",
+            "total": 240,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "sugar_topping",
+            "name": "Granulated Sugar",
+            "total": 8,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": [
+        "whip-cream",
+        "top-and-serve"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "cream-butter-sugar",
+      "title": "Cream Butter, Sugar & Salt",
+      "direction": "Using stand mixer fitted with paddle attachment, combine 255g room-temperature butter, 200g sugar, and 1.5g salt. Mix on medium speed until smooth.",
+      "duration_min": 4,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter (room temp)", "amount": "255g" },
+        { "name": "Sugar", "amount": "200g" },
+        { "name": "Salt", "amount": "1.5g" }
+      ],
+      "exit_condition": "Mixture is smooth and uniformly combined, no visible butter chunks",
+      "notes": [
+        {
+          "text": "Butter must be truly room temp — soft enough to indent easily with a finger but not greasy or melting.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "add-eggs",
+      "title": "Add Eggs",
+      "direction": "Mix in 1 egg on medium speed. Add remaining egg and mix until smooth. Stop mixer and scrape down sides of bowl with rubber spatula.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Eggs", "amount": "2 whole" }
+      ],
+      "exit_condition": "Eggs fully incorporated, mixture smooth, bowl sides scraped clean",
+      "notes": [
+        {
+          "text": "Eggs can be brought to room temp quickly by submerging in lukewarm water for 5 minutes.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "add-flour",
+      "title": "Add Flour",
+      "direction": "Add 500g flour all at once. Mix on low speed just until incorporated.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Flour", "amount": "500g" }
+      ],
+      "exit_condition": "Flour just incorporated — no dry patches, no overmixing. Dough cohesive but not elastic.",
+      "notes": [
+        {
+          "text": "Do not overmix — stop the moment flour disappears. Overmixing develops gluten and makes the dough tough rather than tender.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "form-discs",
+      "title": "Divide & Shape Discs",
+      "direction": "On a lightly floured surface, divide dough into 4 equal balls. Shape each ball into a disc 12mm thick. Wrap each disc well in plastic wrap.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "4 evenly sized discs, each 12mm thick, individually wrapped in plastic",
+      "notes": [
+        {
+          "text": "Only 1 disc is needed for this tart. Freeze remaining 3 discs for future use — dough keeps up to 1 month frozen.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Leftover dough (including scraps from rolling) makes simple cookies.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "chill-dough",
+      "title": "Chill Dough",
+      "direction": "Chill wrapped discs in refrigerator for at least 2 hours or overnight.",
+      "duration_min": 120,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is firm and cold throughout — holds its shape when pressed",
+      "notes": null
+    },
+    {
+      "id": "roll-dough",
+      "title": "Roll Out Dough",
+      "direction": "Place a chilled dough disc on a lightly floured surface. Roll to 3mm thick, rolling from center toward edge in all directions. Lift and rotate dough a quarter turn after every few strokes, dusting underneath as needed. Work quickly to keep dough cool. Cut circles sized for your tartlet pans.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough rolled to uniform 3mm thickness, circles cut for tartlet pans",
+      "notes": [
+        {
+          "text": "If dough becomes too soft to work with, return to refrigerator for a few minutes to firm up.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "This dough may be rolled out multiple times without losing quality — a valuable property.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "line-pan",
+      "title": "Line Tart Pan",
+      "direction": "Line each tartlet pan: transfer dough circles, ease into bottom and sides, pressing gently into place. Do not stretch the dough. Patch any tears with extra dough, pressing firmly to adhere. Trim level with pan edges. Freeze remaining dough and scraps for future use.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All tartlet pans lined with dough, no gaps or tears, excess trimmed flush with rims",
+      "notes": [
+        {
+          "text": "Do not stretch the dough or the sides will shrink during baking.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "chill-shell",
+      "title": "Chill Lined Shell",
+      "direction": "Place pastry shell in refrigerator or freezer until firm, about 15 minutes.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Shell is firm to the touch — dough does not dent when lightly pressed",
+      "notes": null
+    },
+    {
+      "id": "preheat-tart-oven",
+      "title": "Preheat Oven",
+      "direction": "Preheat oven to 325°F (160°C).",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven at 325°F (160°C)",
+      "notes": null
+    },
+    {
+      "id": "dock-partial-bake",
+      "title": "Dock & Partial Bake",
+      "direction": "Dock the bottom of each chilled shell with fork tines or knife tip, making tiny holes about 5cm apart. Place in oven and bake 5 to 7 minutes for tartlets (7-10 min for a large shell).",
+      "duration_min": 7,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Pastry is lightly colored, looks dry and opaque — not yet golden",
+      "notes": [
+        {
+          "text": "Check shell during baking and rotate pan if necessary for even color.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "egg-wash",
+      "title": "Egg Wash Shell",
+      "direction": "Beat 1 egg with a pinch of salt in a small bowl. A minute or two before the desired partial-bake color is reached, remove shell from oven and lightly brush bottom and sides with egg wash. Return to oven and bake until coating is set.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Egg", "amount": "1 whole" },
+        { "name": "Salt", "amount": "0.5g (pinch)" }
+      ],
+      "exit_condition": "Egg wash coating is set and sealed — surface looks glossy and firm",
+      "notes": [
+        {
+          "text": "The egg wash creates a moisture barrier that keeps the crust crisp longer under the wet filling.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "finish-bake",
+      "title": "Bake to Golden Brown",
+      "direction": "Continue baking until shell is golden brown, about 5 minutes longer after egg wash.",
+      "duration_min": 5,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Shell is uniformly golden brown — fully baked, not pale or raw-looking",
+      "notes": null
+    },
+    {
+      "id": "cool-shell",
+      "title": "Cool Shell Completely",
+      "direction": "Remove from oven and let cool completely on a wire rack.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Shell is room temperature throughout — no warmth when touching the bottom",
+      "notes": [
+        {
+          "text": "Start making the lemon cream while the shell cools.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "setup-double-boiler",
+      "title": "Set Up Double Boiler & Combine Curd Ingredients",
+      "direction": "Pour water to a depth of about 5cm into the saucepan and bring to a simmer over medium heat. In the stainless-steel bowl, whisk together 175g lemon juice, 3 eggs, 1 egg yolk, 175g sugar, and 0.5g salt.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Lemon Juice", "amount": "175g" },
+        { "name": "Eggs", "amount": "3 whole" },
+        { "name": "Egg Yolk", "amount": "1" },
+        { "name": "Sugar", "amount": "175g" },
+        { "name": "Salt", "amount": "0.5g (pinch)" }
+      ],
+      "exit_condition": "Water simmering in saucepan, curd ingredients whisked together in steel bowl",
+      "notes": [
+        {
+          "text": "Never let egg yolks and sugar sit together without stirring — the sugar will 'cook' the yolks and turn them granular.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Never use unlined aluminum — acid reacts with metal and creates a metallic flavor.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "cook-curd",
+      "title": "Cook Curd to 180°F (82°C)",
+      "direction": "Place bowl over saucepan — it should rest on the rim, over but not touching the water. Whisk continuously until mixture becomes very thick and registers 180°F (82°C) on a thermometer. This will take 10 to 12 minutes.",
+      "duration_min": 12,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curd is very thick and thermometer reads 180°F (82°C)",
+      "notes": null,
+      "reminders": [
+        {
+          "prompt": "Record curd temperature at thickening",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "cool-curd",
+      "title": "Cool Curd to 140°F (60°C)",
+      "direction": "Remove bowl from over the water. Let cool to 140°F (60°C), stirring from time to time to release heat. Meanwhile, cut 225g butter into ~14g (1 Tbsp) pieces.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curd temperature at 140°F (60°C), butter cut into 1 Tbsp pieces and ready",
+      "notes": [
+        {
+          "text": "Do not add butter while curd is too hot — the emulsion won't hold properly.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Record curd temperature before adding butter",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "mount-butter",
+      "title": "Mount Butter into Cream",
+      "direction": "Leave curd in the bowl if using an immersion blender, or pour into a countertop blender. With blender running, add 225g butter one tablespoon at a time, blending after each addition until incorporated before adding the next piece.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter (cool)", "amount": "225g" }
+      ],
+      "exit_condition": "Cream is pale yellow, opaque, and quite thick — all butter incorporated and emulsified",
+      "notes": [
+        {
+          "text": "This 'mounting' technique (like a beurre blanc) keeps butter in emulsion, creating the softer, lighter texture that distinguishes this from standard lemon curd.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If the butter 'breaks' (comes out of emulsion), the cream won't be as light but will still taste delicious.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "fill-shell",
+      "title": "Fill Tart Shell",
+      "direction": "Pour or spoon lemon cream into each cooled tartlet shell. Shake pans gently to smooth the surface.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All tartlet shells filled with lemon cream, surfaces smooth and level",
+      "notes": [
+        {
+          "text": "If using chilled lemon cream from storage, soften it first in a bowl over simmering water, stirring constantly to keep the emulsion.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "chill-tart",
+      "title": "Chill Until Set",
+      "direction": "Chill the filled tart in the refrigerator until firm, about 2 hours.",
+      "duration_min": 120,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Filling is firm — holds its shape when pan is tilted slightly. Keeps up to 3 days refrigerated.",
+      "notes": null
+    },
+    {
+      "id": "whip-cream",
+      "title": "Whip Cream",
+      "direction": "Whip 240g very cold heavy cream until thickened. Add 8g sugar and whip until the cream holds soft peaks.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Heavy Cream (very cold)", "amount": "240g" },
+        { "name": "Sugar", "amount": "8g" }
+      ],
+      "exit_condition": "Cream holds soft peaks — billowy and just holding its shape, not stiff",
+      "notes": null
+    },
+    {
+      "id": "top-and-serve",
+      "title": "Top & Serve",
+      "direction": "Top the chilled tart with the whipped cream. Decorate with fresh flowers or candied fennel.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Tart topped with whipped cream and garnished. Ready to serve.",
+      "notes": null
+    }
+  ],
+  "nutrition": null,
+  "reheat": {
+    "methods": [
+      {
+        "method": "Storage (filled tart)",
+        "detail": "Refrigerate up to 3 days. Add whipped cream just before serving.",
+        "source": "agent",
+        "reference": "Tartine Bakery cookbook"
+      },
+      {
+        "method": "Storage (baked shells)",
+        "detail": "Well wrapped, refrigerator up to 1 week or freezer up to 2 weeks.",
+        "source": "agent",
+        "reference": "Tartine Bakery cookbook"
+      },
+      {
+        "method": "Storage (lemon cream)",
+        "detail": "Sealed container, refrigerator up to 5 days. Re-soften over simmering water, whisking to maintain emulsion.",
+        "source": "agent",
+        "reference": "Tartine Bakery cookbook"
+      },
+      {
+        "method": "Storage (raw dough discs)",
+        "detail": "Wrapped in plastic, freezer up to 1 month. Thaw in refrigerator before rolling.",
+        "source": "agent",
+        "reference": "Tartine Bakery cookbook"
+      }
+    ]
+  }
+}

@@ -77,6 +77,7 @@ const categoryMap: Record<string, string> = {
   'sourdough-cheddar-cheese': 'baking',
   'sourdough-chocolate-chip-cookies': 'baking',
   'sourdough-cinnamon-buns': 'baking',
+  'tartine-lemon-cream-tart': 'baking',
   'sourdough-discard-cheese-crackers': 'baking',
   'ny-pizza-sauce': 'pizza & dough',
   'ny-style-pizza': 'pizza & dough',
