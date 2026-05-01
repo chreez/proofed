@@ -714,5 +714,18 @@
         "reference": "Tartine Bakery cookbook"
       }
     ]
-  }
+  },
+  "cook_log": [
+    {
+      "date": "2026-04-30",
+      "version": "v1.2.0",
+      "status": "in_progress",
+      "summary": null,
+      "notes": [],
+      "next_time": [
+        { "text": "Try Olson's combine order — strain wet ingredients into a bowl with sugar already in it, instead of eggs → sugar → juice", "source": "Anna Olson video" },
+        { "text": "Try confectioners' sugar instead of granulated in the curd — dissolves faster, no graininess risk", "source": "Anna Olson video" }
+      ]
+    }
+  ]
 }
