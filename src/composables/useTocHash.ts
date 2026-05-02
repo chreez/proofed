@@ -5,6 +5,7 @@
 
 /** Maps a TOC navigation target to a URL hash string */
 export function targetToHash(target: string): string {
+  if (target === 'technical-notes') return '#technical-notes-section'
   if (target === 'nutrition') return '#nutrition-section'
   if (target === 'cook-log') return '#cook-log-section'
   if (target === 'change-log') return '#version-history-section'
@@ -17,6 +18,7 @@ export function targetToHash(target: string): string {
 export function hashToTarget(hash: string): string | null {
   if (!hash || hash === '#') return null
   const h = hash.startsWith('#') ? hash.slice(1) : hash
+  if (h === 'technical-notes-section') return 'technical-notes'
   if (h === 'nutrition-section') return 'nutrition'
   if (h === 'cook-log-section') return 'cook-log'
   if (h === 'version-history-section') return 'change-log'
@@ -27,10 +29,11 @@ export function hashToTarget(hash: string): string | null {
 }
 
 /** Known section targets (non-stage TOC items) */
-export const SECTION_TARGETS = ['nutrition', 'cook-log', 'change-log', 'source', 'research'] as const
+export const SECTION_TARGETS = ['technical-notes', 'nutrition', 'cook-log', 'change-log', 'source', 'research'] as const
 
 /** Maps a TOC target to its DOM element ID for scrolling */
 export function targetToElementId(target: string): string {
+  if (target === 'technical-notes') return 'technical-notes-section'
   if (target === 'nutrition') return 'nutrition-section'
   if (target === 'cook-log') return 'cook-log-section'
   if (target === 'change-log') return 'version-history-section'

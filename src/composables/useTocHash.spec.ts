@@ -4,6 +4,7 @@ import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '
 describe('useTocHash', () => {
   describe('targetToHash', () => {
     it('maps section targets to hash format', () => {
+      expect(targetToHash('technical-notes')).toBe('#technical-notes-section')
       expect(targetToHash('nutrition')).toBe('#nutrition-section')
       expect(targetToHash('cook-log')).toBe('#cook-log-section')
       expect(targetToHash('change-log')).toBe('#version-history-section')
@@ -25,6 +26,7 @@ describe('useTocHash', () => {
     })
 
     it('maps section hashes to targets', () => {
+      expect(hashToTarget('#technical-notes-section')).toBe('technical-notes')
       expect(hashToTarget('#nutrition-section')).toBe('nutrition')
       expect(hashToTarget('#cook-log-section')).toBe('cook-log')
       expect(hashToTarget('#version-history-section')).toBe('change-log')
@@ -49,7 +51,7 @@ describe('useTocHash', () => {
     })
 
     it('round-trips with targetToHash', () => {
-      const targets = ['nutrition', 'cook-log', 'change-log', 'source', 'research', 'prep', 'bake']
+      const targets = ['technical-notes', 'nutrition', 'cook-log', 'change-log', 'source', 'research', 'prep', 'bake']
       for (const target of targets) {
         expect(hashToTarget(targetToHash(target))).toBe(target)
       }
@@ -58,6 +60,7 @@ describe('useTocHash', () => {
 
   describe('targetToElementId', () => {
     it('maps section targets to element IDs', () => {
+      expect(targetToElementId('technical-notes')).toBe('technical-notes-section')
       expect(targetToElementId('nutrition')).toBe('nutrition-section')
       expect(targetToElementId('cook-log')).toBe('cook-log-section')
       expect(targetToElementId('change-log')).toBe('version-history-section')
@@ -73,12 +76,13 @@ describe('useTocHash', () => {
 
   describe('SECTION_TARGETS', () => {
     it('contains all non-stage section identifiers', () => {
+      expect(SECTION_TARGETS).toContain('technical-notes')
       expect(SECTION_TARGETS).toContain('nutrition')
       expect(SECTION_TARGETS).toContain('cook-log')
       expect(SECTION_TARGETS).toContain('change-log')
       expect(SECTION_TARGETS).toContain('source')
       expect(SECTION_TARGETS).toContain('research')
-      expect(SECTION_TARGETS).toHaveLength(5)
+      expect(SECTION_TARGETS).toHaveLength(6)
     })
   })
 })

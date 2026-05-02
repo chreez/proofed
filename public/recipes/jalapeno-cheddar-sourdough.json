@@ -476,6 +476,18 @@
       { "stage": "uncovered", "temp_f": 450, "duration_min": 18 }
     ]
   },
+  "technical_notes": [
+    {
+      "title": "Levain vs. Active Starter",
+      "text": "- Recipe builds a dedicated **levain** (50g flour + 50g water + 10g starter) for precise fermentation control\n- **To skip levain**: use 100g active, recently-fed starter instead\n- Reduce dough flour by 40g and dough water by 40g to compensate\n- **Trade-off**: lose independent timing from starter feed schedule; fresh levain's lower inoculation rate produces milder, more complex sourness",
+      "category": "substitution"
+    },
+    {
+      "title": "Hydration Analysis",
+      "text": "- **Base hydration**: 330g water ÷ 500g flour = **66%**\n- **Butter**: ~13g water (16% moisture)\n- **Levain**: ~50g water contribution\n- **Milk powder**: ~0g (dry)\n- **Effective hydration**: ~393g total water ÷ 550g total flour = **~71%**\n- **Jalapeños**: ~90% water = ~68g moisture\n- **Cheddar**: ~37% water = ~43g moisture\n- **Total inclusion moisture**: ~111g — releases unevenly during bake, not part of gluten matrix\n- Shape fast before inclusions bleed",
+      "category": "hydration"
+    }
+  ],
   "nutrition": null,
   "reheat": {
     "methods": [

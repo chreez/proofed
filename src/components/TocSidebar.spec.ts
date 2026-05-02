@@ -340,6 +340,53 @@ describe('TocSidebar', () => {
     expect(dividers.length).toBe(0)
   })
 
+  it('shows technical notes link when hasTechnicalNotes is true', () => {
+    const wrapper = mount(TocSidebar, {
+      props: { ...defaultProps, hasTechnicalNotes: true }
+    })
+    const aside = wrapper.find('aside')
+    expect(aside.text()).toContain('Technical Notes')
+  })
+
+  it('hides technical notes link when hasTechnicalNotes is false', () => {
+    const wrapper = mount(TocSidebar, {
+      props: { ...defaultProps, hasTechnicalNotes: false }
+    })
+    const aside = wrapper.find('aside')
+    expect(aside.text()).not.toContain('Technical Notes')
+  })
+
+  it('emits navigate for technical-notes on click', async () => {
+    const wrapper = mount(TocSidebar, {
+      props: { ...defaultProps, hasTechnicalNotes: true }
+    })
+    const items = wrapper.findAll('aside nav > div')
+    const tnItem = items.find(d => d.text() === 'Technical Notes')
+    await tnItem?.trigger('click')
+
+    expect(wrapper.emitted('navigate')![0]).toEqual(['technical-notes'])
+  })
+
+  it('bottom sheet shows technical notes button and emits navigate', async () => {
+    const wrapper = mount(TocSidebar, {
+      props: { ...defaultProps, hasTechnicalNotes: true },
+      global: { stubs: { Teleport: true } }
+    })
+
+    const fab = wrapper.find('button[aria-label="Open table of contents"]')
+    await fab.trigger('click')
+
+    const buttons = wrapper.findAll('button')
+    const tnBtn = buttons.find(b => b.text().trim() === 'Technical Notes')
+    expect(tnBtn?.exists()).toBe(true)
+
+    await tnBtn!.trigger('click')
+
+    const navigateEvents = wrapper.emitted('navigate') as string[][]
+    const tnEvent = navigateEvents.find(e => e[0] === 'technical-notes')
+    expect(tnEvent).toBeTruthy()
+  })
+
   it('emits navigate for nutrition section', async () => {
     const wrapper = mount(TocSidebar, {
       props: { ...defaultProps, hasNutrition: true }

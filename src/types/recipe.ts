@@ -39,6 +39,14 @@ export interface EstimatedCost {
   estimatedAt: string
 }
 
+export type TechnicalNoteCategory = 'substitution' | 'hydration' | 'technique' | 'equipment' | 'general'
+
+export interface TechnicalNote {
+  title: string
+  text: string
+  category?: TechnicalNoteCategory
+}
+
 export interface Recipe {
   meta: RecipeMeta
   config: RecipeConfig
@@ -55,6 +63,8 @@ export interface Recipe {
   bake_defaults?: RecipeBakeDefaults
   scaling?: Scaling
   estimatedCost?: EstimatedCost
+  technical_notes?: TechnicalNote[] | null
+  experiment?: ExperimentConfig
 }
 
 /**
@@ -492,6 +502,8 @@ export interface BakeScratchpad {
   multiplier?: number
   entries: Record<string, ScratchpadEntry[]>
   generalNotes: ScratchpadEntry[]
+  /** Experiment variation snapshot, if the user exported one during this bake */
+  experimentExport?: ExperimentExport
 }
 
 // HEB cost data — agent-populated product search results
@@ -573,4 +585,170 @@ export interface BakeCostSummary {
   total: number
   perServing: number
   servings: number
+}
+
+// ---------------------------------------------------------------------------
+// Experiment Tool — real-time ingredient adjustment & derived variable calc
+// ---------------------------------------------------------------------------
+
+/** Classification of an ingredient's role in dough for hydration math. */
+export type ExperimentRole = 'base_flour' | 'base_liquid' | 'enrichment' | 'inclusion'
+
+/**
+ * Per-ingredient configuration for the experiment tool.
+ * Declares which ingredients are adjustable via slider and their constraints.
+ * Lives on Recipe.experiment.ingredients[].
+ */
+export interface ExperimentIngredient {
+  /** Must match an Ingredient.id in the recipe's gather sections */
+  id: string
+  /** Ingredient's role in dough formula — drives how hydration is calculated */
+  role: ExperimentRole
+  /** Default amount (grams) — the recipe's baseline before any adjustment */
+  defaultAmount: number
+  /** Minimum slider value (grams). Must be >= 0. */
+  min: number
+  /** Maximum slider value (grams). */
+  max: number
+  /** Slider step size in grams (e.g., 5 for coarse, 1 for fine) */
+  step: number
+  /**
+   * Water content lookup key. References an item id in water-content.json.
+   * If omitted, the experiment tool will attempt to match by ingredient id.
+   */
+  waterContentId?: string
+  /**
+   * Override water content percentage (0-100). Use when the lookup table
+   * doesn't have a match or the specific product differs from the default.
+   * Takes precedence over waterContentId lookup.
+   */
+  waterContentOverride?: number
+}
+
+/**
+ * Derived variables the experiment tool can display.
+ * Each entry defines a calculation the UI should perform and show.
+ */
+export interface ExperimentDerived {
+  /** Unique id for this derived value */
+  id: string
+  /** Display label (e.g., "Effective Hydration", "Inclusion Load %") */
+  label: string
+  /** Unit for display (e.g., "%", "g") */
+  unit: string
+  /**
+   * Calculation type. The UI implements each formula:
+   * - effective_hydration: (total water from all sources / total flour) * 100
+   * - inclusion_load: (total inclusion weight / total flour) * 100
+   * - total_dough_weight: sum of all ingredient amounts
+   * - custom: use `formula` field for recipe-specific calculations
+   */
+  type: 'effective_hydration' | 'inclusion_load' | 'total_dough_weight' | 'custom'
+  /** Custom formula expression (only used when type === 'custom') */
+  formula?: string
+}
+
+/**
+ * Top-level experiment configuration block on a Recipe.
+ * Defines which ingredients are adjustable and what derived values to show.
+ */
+export interface ExperimentConfig {
+  /** Human-readable description of what this experiment explores */
+  description: string
+  /** Adjustable ingredients with slider config */
+  ingredients: ExperimentIngredient[]
+  /** Derived values to calculate and display in real-time */
+  derived: ExperimentDerived[]
+  /**
+   * Whether the experiment tool operates on pre-scaled (recipe baseline)
+   * or post-scaled amounts. Default: 'pre_scaled'.
+   * - pre_scaled: sliders adjust the 1x recipe amounts; scaling multiplier
+   *   is applied after experiment adjustments
+   * - post_scaled: sliders adjust already-scaled amounts (user sees final
+   *   grams for their batch size)
+   */
+  scaleMode?: 'pre_scaled' | 'post_scaled'
+}
+
+// ---------------------------------------------------------------------------
+// Experiment Export — serialized variation for bake-log / scratchpad
+// ---------------------------------------------------------------------------
+
+/** A single ingredient adjustment recorded at export time. */
+export interface ExperimentAdjustment {
+  /** Ingredient id from recipe */
+  ingredientId: string
+  /** Ingredient display name */
+  ingredientName: string
+  /** Original recipe amount (grams, at the active scale) */
+  originalAmount: number
+  /** Adjusted amount (grams) after slider change */
+  adjustedAmount: number
+  /** Difference in grams (positive = added, negative = reduced) */
+  delta: number
+}
+
+/** A derived value snapshot at the time of export. */
+export interface ExperimentDerivedSnapshot {
+  /** Derived value id */
+  id: string
+  /** Display label */
+  label: string
+  /** Computed value */
+  value: number
+  /** Unit */
+  unit: string
+}
+
+/**
+ * Full experiment export — captures a specific variation the user wants to
+ * bake. Can be attached to a scratchpad export or referenced in cook_log.
+ */
+export interface ExperimentExport {
+  /** Recipe id */
+  recipeId: string
+  /** ISO 8601 timestamp of when this variation was exported */
+  exportedAt: string
+  /** Scaling multiplier active at time of export (1 = unscaled) */
+  multiplier: number
+  /** Scale mode that was active */
+  scaleMode: 'pre_scaled' | 'post_scaled'
+  /** All adjustments made (only ingredients that changed from default) */
+  adjustments: ExperimentAdjustment[]
+  /** Derived values at the moment of export */
+  derivedValues: ExperimentDerivedSnapshot[]
+  /** Optional user notes about this variation */
+  notes?: string
+}
+
+// ---------------------------------------------------------------------------
+// Water Content Lookup Table — typed schema for public/data/water-content.json
+// ---------------------------------------------------------------------------
+
+/** A single ingredient entry in the water content lookup table. */
+export interface WaterContentItem {
+  id: string
+  name: string
+  /** Water content as a percentage (0-100) */
+  waterPercent: number
+  /** Source or note about the data point */
+  note: string
+  /** Alternative names for fuzzy matching */
+  aliases: string[]
+}
+
+/** A category grouping in the water content lookup table. */
+export interface WaterContentCategory {
+  id: string
+  name: string
+  items: WaterContentItem[]
+}
+
+/** Root schema for public/data/water-content.json */
+export interface WaterContentTable {
+  version: string
+  updatedAt: string
+  description: string
+  sources: string[]
+  categories: WaterContentCategory[]
 }

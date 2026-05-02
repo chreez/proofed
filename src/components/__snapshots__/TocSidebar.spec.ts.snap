@@ -9,6 +9,7 @@ exports[`HTML snapshot > matches snapshot 1`] = `
     <div class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight text-stone-500 hover:text-ink">First Rise</div>
     <div class="my-2 h-px bg-stone-200"></div>
     <!--v-if-->
+    <!--v-if-->
     <div class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight text-stone-500 hover:text-ink"> Cook Log </div>
     <div class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight text-stone-500 hover:text-ink"> Version History </div>
     <!--v-if-->

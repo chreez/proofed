@@ -23,6 +23,7 @@ import TocSidebar from '@/components/TocSidebar.vue'
 import NutritionSection from '@/components/NutritionSection.vue'
 import SourceSection from '@/components/SourceSection.vue'
 import ResearchSection from '@/components/ResearchSection.vue'
+import TechnicalNotesSection from '@/components/TechnicalNotesSection.vue'
 import RecipeSummary from '@/components/RecipeSummary.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
@@ -350,7 +351,9 @@ function setupTocObserver() {
       for (const entry of entries) {
         if (entry.isIntersecting) {
           const id = entry.target.id
-          if (id === 'nutrition-section') {
+          if (id === 'technical-notes-section') {
+            activeSection.value = 'technical-notes'
+          } else if (id === 'nutrition-section') {
             activeSection.value = 'nutrition'
           } else if (id === 'cook-log-section') {
             activeSection.value = 'cook-log'
@@ -375,6 +378,8 @@ function setupTocObserver() {
       const el = document.getElementById(`stage-${stage.id}`)
       if (el) tocObserver?.observe(el)
     })
+    const technicalNotesEl = document.getElementById('technical-notes-section')
+    if (technicalNotesEl) tocObserver?.observe(technicalNotesEl)
     const nutritionEl = document.getElementById('nutrition-section')
     if (nutritionEl) tocObserver?.observe(nutritionEl)
     const cookLog = document.getElementById('cook-log-section')
@@ -613,6 +618,13 @@ watch(() => route.hash, (newHash) => {
             />
 
             <div class="space-y-4">
+              <TechnicalNotesSection
+                v-if="currentRecipe.technical_notes?.length"
+                id="technical-notes-section"
+                :notes="currentRecipe.technical_notes"
+                section-id="technical-notes-section"
+                class="scroll-mt-16"
+              />
               <StageCard
                 v-for="stage in currentRecipe.stages"
                 :id="`stage-${stage.id}`"
@@ -672,6 +684,7 @@ watch(() => route.hash, (newHash) => {
 
           <TocSidebar
             :stages="tocStages"
+            :has-technical-notes="!!currentRecipe.technical_notes?.length"
             :has-nutrition="!!currentRecipe.nutrition"
             :has-cook-log="!!currentRecipe.cook_log?.length"
             :has-change-log="!!currentRecipe.change_log?.length"

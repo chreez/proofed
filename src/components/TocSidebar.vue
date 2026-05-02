@@ -4,6 +4,7 @@ import BottomSheet from '@/components/BottomSheet.vue'
 
 const props = defineProps<{
   stages: { id: string; title: string }[]
+  hasTechnicalNotes?: boolean
   hasNutrition?: boolean
   hasCookLog: boolean
   hasChangeLog: boolean
@@ -56,7 +57,19 @@ function closeSheet(): void {
         {{ stage.title }}
       </div>
 
-      <div v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource || hasResearch" class="my-2 h-px bg-stone-200" />
+      <div v-if="hasTechnicalNotes || hasNutrition || hasCookLog || hasChangeLog || hasSource || hasResearch" class="my-2 h-px bg-stone-200" />
+
+      <div
+        v-if="hasTechnicalNotes"
+        @click="handleNavigate('technical-notes')"
+        class="py-1.5 text-xs cursor-pointer transition-colors duration-150 leading-tight"
+        :class="{
+          'text-accent font-medium': currentStageId === 'technical-notes',
+          'text-stone-500 hover:text-ink': currentStageId !== 'technical-notes'
+        }"
+      >
+        Technical Notes
+      </div>
 
       <div
         v-if="hasNutrition"
@@ -150,7 +163,20 @@ function closeSheet(): void {
         </li>
 
         <!-- Divider before extras -->
-        <li v-if="hasNutrition || hasCookLog || hasChangeLog || hasSource || hasResearch" class="my-2 mx-4 h-px bg-stone-200" />
+        <li v-if="hasTechnicalNotes || hasNutrition || hasCookLog || hasChangeLog || hasSource || hasResearch" class="my-2 mx-4 h-px bg-stone-200" />
+
+        <li v-if="hasTechnicalNotes">
+          <button
+            @click="handleNavigate('technical-notes')"
+            class="w-full text-left px-4 py-3 text-base transition-colors duration-150"
+            :class="{
+              'bg-accent-tint text-accent font-medium border-l-2 border-accent': currentStageId === 'technical-notes',
+              'text-ink active:bg-stone-100': currentStageId !== 'technical-notes'
+            }"
+          >
+            Technical Notes
+          </button>
+        </li>
 
         <li v-if="hasNutrition">
           <button
