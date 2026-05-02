@@ -1,0 +1,201 @@
+{
+  "recipeId": "tartine-lemon-cream-tart",
+  "date": "2026-05-02",
+  "storeId": 218,
+  "ingredients": [
+    {
+      "ingredientId": "butter_dough",
+      "name": "Unsalted Butter (room temp) — dough",
+      "recipeAmount": 255,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 2.98, "salePrice": null, "unitPrice": "$0.19/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "2 ct / 8 oz", "sizeGrams": 227, "price": 2.46, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Challenge Unsalted Butter Sticks", "brand": "Challenge", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 4.28, "salePrice": null, "unitPrice": "$0.27/oz", "inStock": true },
+        { "name": "Land O Lakes Unsalted Sweet Butter Sticks", "brand": "Land O Lakes", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 4.46, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Falfurrias Unsalted Butter Sticks", "brand": "Falfurrias", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 4.47, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Plugra Premium European Style Unsalted Butter", "brand": "Plugra", "size": "8 oz", "sizeGrams": 227, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Central Market European Style Unsalted Butter Sticks", "brand": "Central Market", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "H-E-B Organics Unsalted Butter", "brand": "H-E-B Organics", "size": "16 oz", "sizeGrams": 454, "price": 5.85, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Kerrygold Grass-Fed Unsalted Pure Irish Butter", "brand": "Kerrygold", "size": "8 oz", "sizeGrams": 227, "price": 4.84, "salePrice": null, "unitPrice": "$0.60/oz", "inStock": true },
+        { "name": "Kerrygold Unsalted Pure Irish Butter Sticks", "brand": "Kerrygold", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 10.88, "salePrice": null, "unitPrice": "$0.68/oz", "inStock": true },
+        { "name": "Vital Farms Grass Fed Unsalted Butter Sticks", "brand": "Vital Farms", "size": "2 ct / 8 oz", "sizeGrams": 227, "price": 5.28, "salePrice": null, "unitPrice": "$0.66/oz", "inStock": true },
+        { "name": "Truly Grass Fed Naturally Creamy Unsalted Butter", "brand": "Truly Grass Fed", "size": "8 oz", "sizeGrams": 227, "price": 5.88, "salePrice": null, "unitPrice": "$0.74/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "butter_cream",
+      "name": "Unsalted Butter (cool, not cold) — cream",
+      "recipeAmount": 225,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 2.98, "salePrice": null, "unitPrice": "$0.19/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "2 ct / 8 oz", "sizeGrams": 227, "price": 2.46, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Challenge Unsalted Butter Sticks", "brand": "Challenge", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 4.28, "salePrice": null, "unitPrice": "$0.27/oz", "inStock": true },
+        { "name": "Land O Lakes Unsalted Sweet Butter Sticks", "brand": "Land O Lakes", "size": "4 ct / 16 oz", "sizeGrams": 454, "price": 4.46, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Kerrygold Grass-Fed Unsalted Pure Irish Butter", "brand": "Kerrygold", "size": "8 oz", "sizeGrams": 227, "price": 4.84, "salePrice": null, "unitPrice": "$0.60/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "sugar_dough",
+      "name": "Granulated Sugar — dough",
+      "recipeAmount": 200,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Granulated Sugar", "brand": "Hill Country Fare", "size": "4 lbs", "sizeGrams": 1814, "price": 2.58, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "4 lbs", "sizeGrams": 1814, "price": 3.48, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "2 lbs", "sizeGrams": 907, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "Imperial Sugar Extra Fine Granulated Pure Cane Sugar", "brand": "Imperial Sugar", "size": "2 lb", "sizeGrams": 907, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "Imperial Sugar Pure Cane Extra Fine Granulated Sugar", "brand": "Imperial Sugar", "size": "4 lbs", "sizeGrams": 1814, "price": 3.64, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "C&H Premium Pure Cane Granulated Sugar", "brand": "C&H", "size": "4 lbs", "sizeGrams": 1814, "price": 3.94, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "sugar_cream",
+      "name": "Granulated Sugar — cream",
+      "recipeAmount": 175,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "(same products as sugar_dough — shared pantry staple)", "brand": "", "size": "", "sizeGrams": 0, "price": 0, "salePrice": null, "unitPrice": "", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "sugar_topping",
+      "name": "Granulated Sugar — topping",
+      "recipeAmount": 8,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "(same products as sugar_dough — shared pantry staple)", "brand": "", "size": "", "sizeGrams": 0, "price": 0, "salePrice": null, "unitPrice": "", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "flour",
+      "name": "All-Purpose Flour",
+      "recipeAmount": 500,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Enriched Bleached All-Purpose Flour", "brand": "Hill Country Fare", "size": "5 lbs", "sizeGrams": 2268, "price": 1.95, "salePrice": null, "unitPrice": "$0.02/oz", "inStock": true },
+        { "name": "Hill Country Fare Enriched Unbleached All-Purpose Flour", "brand": "Hill Country Fare", "size": "5 lbs", "sizeGrams": 2268, "price": 2.58, "salePrice": null, "unitPrice": "$0.03/oz", "inStock": true },
+        { "name": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour", "brand": "H-E-B", "size": "5 lbs", "sizeGrams": 2268, "price": 3.78, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "Gold Medal Enriched Bleached Pre-Sifted All-Purpose Flour", "brand": "Gold Medal", "size": "5 lbs", "sizeGrams": 2268, "price": 3.97, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 5.48, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "Bob's Red Mill Unbleached White All-Purpose Flour", "brand": "Bob's Red Mill", "size": "5 lbs", "sizeGrams": 2268, "price": 4.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Hill Country Fare Enriched Bleached All-Purpose Flour", "brand": "Hill Country Fare", "size": "2 lbs", "sizeGrams": 907, "price": 1.32, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "Hill Country Fare Enriched Unbleached All-Purpose Flour", "brand": "Hill Country Fare", "size": "2 lbs", "sizeGrams": 907, "price": 1.46, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "H-E-B Organics Unbleached All Purpose Flour", "brand": "H-E-B Organics", "size": "5 lbs", "sizeGrams": 2268, "price": 5.98, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "10 lbs", "sizeGrams": 4536, "price": 9.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "eggs_dough",
+      "name": "Large Eggs — dough",
+      "recipeAmount": 2,
+      "recipeUnit": "whole",
+      "products": [
+        { "name": "Sunups Grade A Large White Eggs", "brand": "Sunups", "size": "12 ct", "sizeGrams": null, "price": 1.66, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "12 ct", "sizeGrams": null, "price": 1.87, "salePrice": null, "unitPrice": "$0.16/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "18 ct", "sizeGrams": null, "price": 2.47, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": null, "price": 2.86, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "18 ct", "sizeGrams": null, "price": 4.29, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large Brown Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": null, "price": 2.96, "salePrice": null, "unitPrice": "$0.25/ct", "inStock": true },
+        { "name": "Farmhouse Grade A Cage Free Large Brown Eggs", "brand": "Farmhouse", "size": "12 ct", "sizeGrams": null, "price": 3.56, "salePrice": null, "unitPrice": "$0.30/ct", "inStock": true },
+        { "name": "Central Market Pasture Raised Large Brown Eggs", "brand": "Central Market", "size": "12 ct", "sizeGrams": null, "price": 5.98, "salePrice": null, "unitPrice": "$0.50/ct", "inStock": true },
+        { "name": "Vital Farms Pasture Raised Large Eggs", "brand": "Vital Farms", "size": "12 ct", "sizeGrams": null, "price": 7.46, "salePrice": null, "unitPrice": "$0.62/ct", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "eggs_wash",
+      "name": "Large Egg — wash",
+      "recipeAmount": 1,
+      "recipeUnit": "whole",
+      "products": [
+        { "name": "(same products as eggs_dough — shared carton)", "brand": "", "size": "", "sizeGrams": null, "price": 0, "salePrice": null, "unitPrice": "", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "eggs_cream",
+      "name": "Large Eggs — cream",
+      "recipeAmount": 3,
+      "recipeUnit": "whole",
+      "products": [
+        { "name": "(same products as eggs_dough — shared carton)", "brand": "", "size": "", "sizeGrams": null, "price": 0, "salePrice": null, "unitPrice": "", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "egg_yolk",
+      "name": "Large Egg Yolk — cream",
+      "recipeAmount": 1,
+      "recipeUnit": "whole",
+      "products": [
+        { "name": "(same products as eggs_dough — shared carton)", "brand": "", "size": "", "sizeGrams": null, "price": 0, "salePrice": null, "unitPrice": "", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "lemon_juice",
+      "name": "Fresh Lemon Juice",
+      "recipeAmount": 175,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Fresh Small Lemon", "brand": "Fresh", "size": "Each (~30g juice)", "sizeGrams": 30, "price": 0.50, "salePrice": null, "unitPrice": "$0.50/ea", "inStock": true },
+        { "name": "Fresh Extra Large Lemon", "brand": "Fresh", "size": "Each (~45g juice)", "sizeGrams": 45, "price": 0.88, "salePrice": null, "unitPrice": "$0.88/ea", "inStock": true },
+        { "name": "H-E-B Fresh Lemons", "brand": "H-E-B", "size": "2 lb bag", "sizeGrams": 907, "price": 3.89, "salePrice": null, "unitPrice": "$0.12/oz", "inStock": true },
+        { "name": "H-E-B Organics Fresh Lemons", "brand": "H-E-B Organics", "size": "2 lb bag", "sizeGrams": 907, "price": 4.20, "salePrice": null, "unitPrice": "$0.13/oz", "inStock": true },
+        { "name": "H-E-B Fresh Seedless Lemons", "brand": "H-E-B", "size": "2 lb bag", "sizeGrams": 907, "price": 4.98, "salePrice": null, "unitPrice": "$0.16/oz", "inStock": true },
+        { "name": "Buda Juice Fresh Lemon Juice (Sold Cold)", "brand": "Buda Juice", "size": "16 fl oz", "sizeGrams": 473, "price": 4.98, "salePrice": null, "unitPrice": "$0.31/fl oz", "inStock": true },
+        { "name": "Lakewood Organic Fresh Pressed Pure Lemon Juice", "brand": "Lakewood", "size": "12.5 oz", "sizeGrams": 354, "price": 3.98, "salePrice": null, "unitPrice": "$0.32/oz", "inStock": true },
+        { "name": "Pompeii 100% Lemon Juice", "brand": "Pompeii", "size": "13 fl oz", "sizeGrams": 384, "price": 2.48, "salePrice": null, "unitPrice": "$0.19/oz", "inStock": true },
+        { "name": "ReaLemon 100% Lemon Juice", "brand": "ReaLemon", "size": "15 oz", "sizeGrams": 425, "price": 2.37, "salePrice": null, "unitPrice": "$0.16/oz", "inStock": true },
+        { "name": "Hill Country Fare Lots of Lemon 100% Lemon Juice", "brand": "Hill Country Fare", "size": "32 oz", "sizeGrams": 907, "price": 2.19, "salePrice": null, "unitPrice": "$0.07/fl oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "heavy_cream",
+      "name": "Heavy Cream (very cold)",
+      "recipeAmount": 240,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Heavy Whipping Cream", "brand": "H-E-B", "size": "16 oz", "sizeGrams": 473, "price": 2.96, "salePrice": null, "unitPrice": "$0.18/oz", "inStock": true },
+        { "name": "H-E-B Heavy Whipping Cream", "brand": "H-E-B", "size": "32 oz", "sizeGrams": 946, "price": 4.89, "salePrice": null, "unitPrice": "$0.15/oz", "inStock": true },
+        { "name": "Land O Lakes Heavy Whipping Cream", "brand": "Land O Lakes", "size": "1 pt / 16 oz", "sizeGrams": 473, "price": 4.17, "salePrice": null, "unitPrice": "$0.26/oz", "inStock": true },
+        { "name": "Central Market Organics Heavy Whipping Cream", "brand": "Central Market", "size": "16 oz", "sizeGrams": 473, "price": 4.28, "salePrice": null, "unitPrice": "$0.27/oz", "inStock": true },
+        { "name": "Horizon Organic Heavy Whipping Cream", "brand": "Horizon Organic", "size": "1 pt / 16 oz", "sizeGrams": 473, "price": 5.87, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Shamrock Farms Heavy Whipping Cream", "brand": "Shamrock Farms", "size": "1 qt / 32 oz", "sizeGrams": 946, "price": 6.78, "salePrice": null, "unitPrice": "$0.21/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "salt_dough",
+      "name": "Salt — dough (1/4 tsp)",
+      "recipeAmount": 1.5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Iodized Salt", "brand": "H-E-B", "size": "26 oz", "sizeGrams": 737, "price": 0.58, "salePrice": null, "unitPrice": "$0.02/oz", "inStock": true },
+        { "name": "H-E-B Salt", "brand": "H-E-B", "size": "26 oz", "sizeGrams": 737, "price": 0.58, "salePrice": null, "unitPrice": "$0.02/oz", "inStock": true },
+        { "name": "Morton Salt", "brand": "Morton", "size": "26 oz", "sizeGrams": 737, "price": 1.58, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "H-E-B Fine Mediterranean Sea Salt Crystals", "brand": "H-E-B", "size": "26.5 oz", "sizeGrams": 751, "price": 2.38, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "H-E-B Coarse Kosher Salt", "brand": "H-E-B", "size": "4.4 lbs", "sizeGrams": 1996, "price": 2.98, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "Morton Fine Sea Salt", "brand": "Morton", "size": "17.6 oz", "sizeGrams": 499, "price": 2.98, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "Maldon Sea Salt Flakes", "brand": "Maldon", "size": "8.5 oz", "sizeGrams": 241, "price": 5.98, "salePrice": null, "unitPrice": "$0.70/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "salt_wash",
+      "name": "Salt (pinch) — wash",
+      "recipeAmount": 0.5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "(same products as salt_dough — shared pantry staple)", "brand": "", "size": "", "sizeGrams": 0, "price": 0, "salePrice": null, "unitPrice": "", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "salt_cream",
+      "name": "Salt (pinch) — cream",
+      "recipeAmount": 0.5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "(same products as salt_dough — shared pantry staple)", "brand": "", "size": "", "sizeGrams": 0, "price": 0, "salePrice": null, "unitPrice": "", "inStock": true }
+      ]
+    }
+  ]
+}
