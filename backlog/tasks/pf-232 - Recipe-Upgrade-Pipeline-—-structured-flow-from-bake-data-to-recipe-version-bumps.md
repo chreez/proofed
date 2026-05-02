@@ -3,7 +3,7 @@ id: PF-232
 title: >-
   Recipe Upgrade Pipeline — structured flow from bake data to recipe version
   bumps
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-01 04:08'
 updated_date: '2026-05-01 05:11'
