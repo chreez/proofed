@@ -1,0 +1,25 @@
+{
+  "recipeId": "tartine-lemon-cream-tart",
+  "date": "2026-05-02",
+  "processedAt": "2026-05-02T23:33:59.320Z",
+  "photos": [
+    {
+      "name": "blind-baked-shells",
+      "thumb": "blind-baked-shells-400w.webp",
+      "src": "blind-baked-shells-800w.webp",
+      "summary": "Six blind-baked tartlet shells on a sheet pan resting on the stovetop. Golden brown with egg wash sheen, scalloped edges from fluted tart pans. Slight variation in shell sizes visible."
+    },
+    {
+      "name": "filled-with-lemon-cream",
+      "thumb": "filled-with-lemon-cream-400w.webp",
+      "src": "filled-with-lemon-cream-800w.webp",
+      "summary": "Six tartlets filled with lemon cream on a sheet pan on the counter. Pale yellow cream with smooth, level surfaces. Ready for chilling."
+    },
+    {
+      "name": "plated-with-whipped-cream",
+      "thumb": "plated-with-whipped-cream-400w.webp",
+      "src": "plated-with-whipped-cream-800w.webp",
+      "summary": "Single finished tartlet on a decorative black-and-white patterned plate with a spoon. Topped with a generous dollop of whipped cream over pale lemon filling. Warm ambient lighting."
+    }
+  ]
+}

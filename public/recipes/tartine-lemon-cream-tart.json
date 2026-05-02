@@ -741,7 +741,25 @@
         "Dough edges receded slowly during fridge chill — may need to press more firmly into sides",
         "Feedback: people wish it was more crumbly. Tried one morning of 5/2, seemed fine. Overall surprising success for first bake."
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/tartine-lemon-cream-tart/2026-05-02/blind-baked-shells-800w.webp",
+          "thumb": "/images/tartine-lemon-cream-tart/2026-05-02/blind-baked-shells-400w.webp",
+          "alt": "Six blind-baked tartlet shells on sheet pan — golden brown with egg wash sheen, scalloped edges from fluted pans",
+          "usage": "process"
+        },
+        {
+          "src": "/images/tartine-lemon-cream-tart/2026-05-02/filled-with-lemon-cream-800w.webp",
+          "thumb": "/images/tartine-lemon-cream-tart/2026-05-02/filled-with-lemon-cream-400w.webp",
+          "alt": "Six tartlets filled with pale yellow lemon cream on sheet pan, smooth level surfaces ready for chilling"
+        },
+        {
+          "src": "/images/tartine-lemon-cream-tart/2026-05-02/plated-with-whipped-cream-800w.webp",
+          "thumb": "/images/tartine-lemon-cream-tart/2026-05-02/plated-with-whipped-cream-400w.webp",
+          "alt": "Finished lemon cream tartlet on decorative plate with whipped cream dollop and spoon — warm ambient lighting",
+          "usage": "hero"
+        }
+      ],
       "bake_notes": [
         {
           "timestamp": "2026-05-01T02:55:41Z",
