@@ -1,0 +1,569 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-05-01",
+  "description": "Water content percentages for common baking ingredients. Used by the experiment tool to calculate effective hydration, inclusion moisture load, and derived baker's percentages when ingredient amounts change.",
+  "sources": [
+    "USDA FoodData Central (fdc.nal.usda.gov)",
+    "Prof Steven Abbott — Water Content for Baking (stevenabbott.co.uk)",
+    "Bread, Cakes and Ale — The Hydration of Enriched Doughs",
+    "Busby's Bakery — Dough Hydration",
+    "King Arthur Baking — Hydration in Bread Dough",
+    "USDA AMS — Nonfat Dry Milk Grades and Standards",
+    "USDA AMS — Mozzarella Cheeses Specifications"
+  ],
+  "categories": [
+    {
+      "id": "flour",
+      "name": "Flours & Starches",
+      "items": [
+        {
+          "id": "all-purpose-flour",
+          "name": "All-Purpose Flour",
+          "waterPercent": 11.9,
+          "note": "USDA FDC #168894. Varies 10-14% with storage humidity.",
+          "aliases": ["ap-flour", "plain-flour"]
+        },
+        {
+          "id": "bread-flour",
+          "name": "Bread Flour",
+          "waterPercent": 11.8,
+          "note": "USDA FDC #168890. Higher protein, similar moisture to AP.",
+          "aliases": ["strong-flour"]
+        },
+        {
+          "id": "whole-wheat-flour",
+          "name": "Whole Wheat Flour",
+          "waterPercent": 10.7,
+          "note": "USDA FDC #168896. Bran absorbs more water during mixing.",
+          "aliases": ["wholemeal-flour"]
+        },
+        {
+          "id": "rye-flour",
+          "name": "Rye Flour (dark)",
+          "waterPercent": 11.0,
+          "note": "USDA FDC #168900. Pentosans in rye absorb 6-8x their weight in water.",
+          "aliases": []
+        },
+        {
+          "id": "cornstarch",
+          "name": "Cornstarch",
+          "waterPercent": 8.3,
+          "note": "USDA FDC #169690.",
+          "aliases": ["corn-starch", "cornflour"]
+        }
+      ]
+    },
+    {
+      "id": "dairy",
+      "name": "Dairy",
+      "items": [
+        {
+          "id": "whole-milk",
+          "name": "Whole Milk",
+          "waterPercent": 87.0,
+          "note": "USDA FDC #746776. Standard 3.25% milkfat.",
+          "aliases": ["milk"]
+        },
+        {
+          "id": "buttermilk",
+          "name": "Buttermilk",
+          "waterPercent": 90.0,
+          "note": "USDA FDC #170099. Cultured, low-fat.",
+          "aliases": []
+        },
+        {
+          "id": "heavy-cream",
+          "name": "Heavy Cream",
+          "waterPercent": 58.0,
+          "note": "USDA FDC #170856. 36%+ milkfat.",
+          "aliases": ["heavy-whipping-cream", "double-cream"]
+        },
+        {
+          "id": "sour-cream",
+          "name": "Sour Cream",
+          "waterPercent": 71.0,
+          "note": "USDA FDC #171258. Regular (not light/fat-free).",
+          "aliases": []
+        },
+        {
+          "id": "yogurt-plain",
+          "name": "Yogurt (plain, whole milk)",
+          "waterPercent": 85.0,
+          "note": "USDA FDC #171284. Greek yogurt is lower (~79%).",
+          "aliases": []
+        },
+        {
+          "id": "cream-cheese",
+          "name": "Cream Cheese",
+          "waterPercent": 55.5,
+          "note": "USDA FDC #173417. FDA max moisture 55%.",
+          "aliases": []
+        },
+        {
+          "id": "nonfat-milk-powder",
+          "name": "Nonfat Milk Powder",
+          "waterPercent": 3.5,
+          "note": "USDA AMS standard: max 4.0% moisture (spray process).",
+          "aliases": ["skim-milk-powder", "milk-powder"]
+        }
+      ]
+    },
+    {
+      "id": "cheese",
+      "name": "Cheeses",
+      "items": [
+        {
+          "id": "mozzarella-whole-milk",
+          "name": "Mozzarella (whole milk)",
+          "waterPercent": 50.0,
+          "note": "USDA AMS spec: max 52% moisture for whole-milk mozzarella.",
+          "aliases": ["mozzarella"]
+        },
+        {
+          "id": "mozzarella-low-moisture",
+          "name": "Mozzarella (low-moisture, part-skim)",
+          "waterPercent": 48.4,
+          "note": "USDA FDC #170845. Max 52% per AMS spec.",
+          "aliases": ["pizza-mozzarella"]
+        },
+        {
+          "id": "mozzarella-fresh",
+          "name": "Mozzarella (fresh)",
+          "waterPercent": 60.0,
+          "note": "Fresh mozzarella in brine. Highly variable (55-65%).",
+          "aliases": ["fresh-mozz", "burrata"]
+        },
+        {
+          "id": "cheddar",
+          "name": "Cheddar Cheese",
+          "waterPercent": 36.8,
+          "note": "USDA FDC #173414. Sharp/extra-sharp may be slightly lower.",
+          "aliases": ["sharp-cheddar"]
+        },
+        {
+          "id": "parmesan",
+          "name": "Parmesan (Parmigiano-Reggiano)",
+          "waterPercent": 29.2,
+          "note": "USDA FDC #170848. Hard aged cheese, lowest moisture in category.",
+          "aliases": ["parmigiano", "grana-padano"]
+        },
+        {
+          "id": "gruyere",
+          "name": "Gruyere",
+          "waterPercent": 33.2,
+          "note": "USDA FDC #173410.",
+          "aliases": []
+        },
+        {
+          "id": "feta",
+          "name": "Feta",
+          "waterPercent": 55.2,
+          "note": "USDA FDC #173420. Brined soft cheese.",
+          "aliases": []
+        },
+        {
+          "id": "ricotta-whole-milk",
+          "name": "Ricotta (whole milk)",
+          "waterPercent": 72.0,
+          "note": "USDA FDC #173422. Very high moisture — significant hydration contributor.",
+          "aliases": ["ricotta"]
+        }
+      ]
+    },
+    {
+      "id": "eggs",
+      "name": "Eggs",
+      "items": [
+        {
+          "id": "whole-egg",
+          "name": "Whole Egg (raw)",
+          "waterPercent": 75.0,
+          "note": "USDA FDC #171287. ~50g per large egg without shell.",
+          "aliases": ["egg", "eggs"]
+        },
+        {
+          "id": "egg-white",
+          "name": "Egg White (raw)",
+          "waterPercent": 87.6,
+          "note": "USDA FDC #171288. ~33g per large egg white.",
+          "aliases": ["albumen"]
+        },
+        {
+          "id": "egg-yolk",
+          "name": "Egg Yolk (raw)",
+          "waterPercent": 52.3,
+          "note": "USDA FDC #172185. ~17g per large egg yolk.",
+          "aliases": ["yolk"]
+        }
+      ]
+    },
+    {
+      "id": "fats",
+      "name": "Fats & Oils",
+      "items": [
+        {
+          "id": "butter-unsalted",
+          "name": "Butter (unsalted)",
+          "waterPercent": 16.0,
+          "note": "US standard ~80% fat, 16% water, 4% milk solids. European butter (82%+ fat) has ~15% water.",
+          "aliases": ["butter"]
+        },
+        {
+          "id": "olive-oil",
+          "name": "Olive Oil",
+          "waterPercent": 0.0,
+          "note": "Trace moisture only (~0.1%). Treated as 0% for hydration math.",
+          "aliases": ["evoo", "extra-virgin-olive-oil"]
+        },
+        {
+          "id": "vegetable-oil",
+          "name": "Vegetable/Neutral Oil",
+          "waterPercent": 0.0,
+          "note": "Canola, sunflower, safflower — all effectively 0% water.",
+          "aliases": ["canola-oil", "sunflower-oil"]
+        },
+        {
+          "id": "lard",
+          "name": "Lard",
+          "waterPercent": 0.0,
+          "note": "Rendered fat, effectively 0% water.",
+          "aliases": []
+        },
+        {
+          "id": "shortening",
+          "name": "Shortening",
+          "waterPercent": 0.0,
+          "note": "Hydrogenated fat, 0% water.",
+          "aliases": ["crisco"]
+        }
+      ]
+    },
+    {
+      "id": "sugars",
+      "name": "Sugars & Sweeteners",
+      "items": [
+        {
+          "id": "granulated-sugar",
+          "name": "Granulated Sugar",
+          "waterPercent": 0.0,
+          "note": "Dry crystal, effectively 0% moisture. Hygroscopic in high humidity but negligible for hydration math.",
+          "aliases": ["sugar", "white-sugar", "caster-sugar"]
+        },
+        {
+          "id": "brown-sugar",
+          "name": "Brown Sugar (packed)",
+          "waterPercent": 1.3,
+          "note": "USDA FDC #168833. Molasses coating adds slight moisture.",
+          "aliases": ["light-brown-sugar", "dark-brown-sugar"]
+        },
+        {
+          "id": "confectioners-sugar",
+          "name": "Confectioners' Sugar",
+          "waterPercent": 0.5,
+          "note": "Contains 2-5% cornstarch as anti-caking agent. Negligible moisture.",
+          "aliases": ["powdered-sugar", "icing-sugar"]
+        },
+        {
+          "id": "honey",
+          "name": "Honey",
+          "waterPercent": 17.0,
+          "note": "USDA FDC #169640. Legal max 20% in US. Despite being liquid, low water activity due to sugar concentration.",
+          "aliases": []
+        },
+        {
+          "id": "maple-syrup",
+          "name": "Maple Syrup",
+          "waterPercent": 32.0,
+          "note": "USDA FDC #168890. Higher water than honey.",
+          "aliases": []
+        },
+        {
+          "id": "molasses",
+          "name": "Molasses",
+          "waterPercent": 22.0,
+          "note": "USDA FDC #168861. Blackstrap is slightly lower (~19%).",
+          "aliases": ["treacle"]
+        },
+        {
+          "id": "corn-syrup",
+          "name": "Corn Syrup (light)",
+          "waterPercent": 24.0,
+          "note": "USDA FDC #168852.",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "vegetables",
+      "name": "Vegetables & Peppers",
+      "items": [
+        {
+          "id": "jalapeno-raw",
+          "name": "Jalapeño Pepper (raw)",
+          "waterPercent": 91.7,
+          "note": "USDA FDC #172574. Very high water — major moisture contributor in inclusion breads.",
+          "aliases": ["jalapeno", "jalapenos"]
+        },
+        {
+          "id": "jalapeno-pickled",
+          "name": "Jalapeño Pepper (pickled)",
+          "waterPercent": 90.0,
+          "note": "Estimated. Must drain and squeeze thoroughly if subbing for fresh.",
+          "aliases": []
+        },
+        {
+          "id": "onion-raw",
+          "name": "Onion (raw)",
+          "waterPercent": 89.0,
+          "note": "USDA FDC #170000. Caramelized onions lose ~75% of original water.",
+          "aliases": ["onions"]
+        },
+        {
+          "id": "garlic-raw",
+          "name": "Garlic (raw)",
+          "waterPercent": 59.0,
+          "note": "USDA FDC #169230. Lower moisture than most fresh vegetables.",
+          "aliases": ["garlic"]
+        },
+        {
+          "id": "roasted-garlic",
+          "name": "Roasted Garlic",
+          "waterPercent": 50.0,
+          "note": "Estimated. Roasting drives off moisture but adds paste-like consistency.",
+          "aliases": []
+        },
+        {
+          "id": "sun-dried-tomatoes",
+          "name": "Sun-Dried Tomatoes",
+          "waterPercent": 14.6,
+          "note": "USDA FDC #172435. Oil-packed add fat, not water.",
+          "aliases": []
+        },
+        {
+          "id": "carrot-raw",
+          "name": "Carrot (raw, shredded)",
+          "waterPercent": 88.3,
+          "note": "USDA FDC #170393. Relevant for carrot cake.",
+          "aliases": ["carrots"]
+        }
+      ]
+    },
+    {
+      "id": "cured-meats",
+      "name": "Cured Meats",
+      "items": [
+        {
+          "id": "pepperoni",
+          "name": "Pepperoni",
+          "waterPercent": 27.0,
+          "note": "USDA FDC #174571. Cured/dried sausage, relatively low moisture.",
+          "aliases": []
+        },
+        {
+          "id": "bacon-cooked",
+          "name": "Bacon (cooked, crisp)",
+          "waterPercent": 12.0,
+          "note": "Estimated from USDA cooked bacon data. Raw bacon is ~42% water.",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "olives",
+      "name": "Olives",
+      "items": [
+        {
+          "id": "green-olives",
+          "name": "Green Olives (brined)",
+          "waterPercent": 75.3,
+          "note": "USDA FDC #169094. Drain weight; brine adds sodium.",
+          "aliases": ["olives"]
+        },
+        {
+          "id": "kalamata-olives",
+          "name": "Kalamata Olives",
+          "waterPercent": 69.0,
+          "note": "Estimated from ripe olive data. Oil-cured/brined.",
+          "aliases": ["black-olives"]
+        }
+      ]
+    },
+    {
+      "id": "nuts",
+      "name": "Nuts & Seeds",
+      "items": [
+        {
+          "id": "walnuts",
+          "name": "Walnuts",
+          "waterPercent": 4.1,
+          "note": "USDA FDC #170187. Dried/processed kernels.",
+          "aliases": ["walnut"]
+        },
+        {
+          "id": "pecans",
+          "name": "Pecans",
+          "waterPercent": 3.5,
+          "note": "USDA FDC #170182.",
+          "aliases": ["pecan"]
+        },
+        {
+          "id": "almonds",
+          "name": "Almonds",
+          "waterPercent": 4.4,
+          "note": "USDA FDC #170567. Blanched/slivered similar.",
+          "aliases": ["almond"]
+        },
+        {
+          "id": "sesame-seeds",
+          "name": "Sesame Seeds",
+          "waterPercent": 4.7,
+          "note": "USDA FDC #170150. Topping only; negligible hydration impact.",
+          "aliases": []
+        },
+        {
+          "id": "pumpkin-seeds",
+          "name": "Pumpkin Seeds (pepitas)",
+          "waterPercent": 5.2,
+          "note": "USDA FDC #170556.",
+          "aliases": ["pepitas"]
+        }
+      ]
+    },
+    {
+      "id": "dried-fruit",
+      "name": "Dried Fruit",
+      "items": [
+        {
+          "id": "raisins",
+          "name": "Raisins",
+          "waterPercent": 15.4,
+          "note": "USDA FDC #168165. Seedless. Can absorb water if soaked.",
+          "aliases": ["sultanas"]
+        },
+        {
+          "id": "dried-cranberries",
+          "name": "Dried Cranberries",
+          "waterPercent": 16.0,
+          "note": "USDA data. Sweetened (Craisins-style).",
+          "aliases": ["craisins"]
+        },
+        {
+          "id": "dried-apricots",
+          "name": "Dried Apricots",
+          "waterPercent": 30.9,
+          "note": "USDA FDC #168146. Higher moisture than most dried fruit.",
+          "aliases": []
+        },
+        {
+          "id": "dates-medjool",
+          "name": "Dates (Medjool)",
+          "waterPercent": 21.3,
+          "note": "USDA FDC #168191. Deglet Nour dates are drier (~20%).",
+          "aliases": ["dates"]
+        }
+      ]
+    },
+    {
+      "id": "leavening",
+      "name": "Leavening & Other Dry",
+      "items": [
+        {
+          "id": "sourdough-starter-100",
+          "name": "Sourdough Starter (100% hydration)",
+          "waterPercent": 46.0,
+          "note": "Derived: 50% flour (12% water) + 50% water (100%). Effective water contribution = 50% of weight + flour moisture. Simplified to 46% for practical use.",
+          "aliases": ["starter", "levain"]
+        },
+        {
+          "id": "instant-yeast",
+          "name": "Instant Yeast",
+          "waterPercent": 5.0,
+          "note": "Approximate. Negligible contribution at typical usage (1-2% of flour).",
+          "aliases": ["active-dry-yeast", "yeast"]
+        },
+        {
+          "id": "baking-powder",
+          "name": "Baking Powder",
+          "waterPercent": 2.0,
+          "note": "Approximate. Sub-gram usage makes moisture irrelevant.",
+          "aliases": []
+        },
+        {
+          "id": "baking-soda",
+          "name": "Baking Soda",
+          "waterPercent": 0.0,
+          "note": "Anhydrous sodium bicarbonate.",
+          "aliases": ["bicarbonate-of-soda"]
+        },
+        {
+          "id": "salt",
+          "name": "Salt (fine sea salt)",
+          "waterPercent": 0.0,
+          "note": "Dry crystal. Negligible moisture.",
+          "aliases": ["salt", "fine-salt", "table-salt"]
+        }
+      ]
+    },
+    {
+      "id": "chocolate",
+      "name": "Chocolate",
+      "items": [
+        {
+          "id": "dark-chocolate",
+          "name": "Dark Chocolate (60-70%)",
+          "waterPercent": 1.0,
+          "note": "Approximate. Fat-based; effectively dry for hydration math.",
+          "aliases": ["semisweet-chocolate", "bittersweet-chocolate"]
+        },
+        {
+          "id": "chocolate-chips",
+          "name": "Chocolate Chips",
+          "waterPercent": 1.0,
+          "note": "Same as bar chocolate. Stabilizers add no moisture.",
+          "aliases": []
+        },
+        {
+          "id": "cocoa-powder",
+          "name": "Cocoa Powder (unsweetened)",
+          "waterPercent": 3.0,
+          "note": "USDA FDC #169593. Absorbs liquid in dough.",
+          "aliases": ["cacao-powder"]
+        }
+      ]
+    },
+    {
+      "id": "liquids",
+      "name": "Liquids",
+      "items": [
+        {
+          "id": "water",
+          "name": "Water",
+          "waterPercent": 100.0,
+          "note": "The baseline. All other ingredients are measured relative to this.",
+          "aliases": []
+        },
+        {
+          "id": "lemon-juice",
+          "name": "Lemon Juice",
+          "waterPercent": 91.0,
+          "note": "USDA FDC #167747. Fresh squeezed.",
+          "aliases": []
+        },
+        {
+          "id": "vanilla-extract",
+          "name": "Vanilla Extract",
+          "waterPercent": 53.0,
+          "note": "Approximate. ~35% alcohol + water. Sub-tablespoon usage makes this negligible.",
+          "aliases": []
+        },
+        {
+          "id": "beer",
+          "name": "Beer",
+          "waterPercent": 92.0,
+          "note": "Approximate for standard lager/ale.",
+          "aliases": []
+        }
+      ]
+    }
+  ]
+}
