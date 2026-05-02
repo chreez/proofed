@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment Panel UI Exploration | proofed.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* === Design Tokens === */
+    :root {
+      --color-stone-50: #faf9f7;
+      --color-stone-100: #f5f3ef;
+      --color-stone-200: #e8e4dc;
+      --color-stone-300: #d4cdc1;
+      --color-stone-400: #b8ad9c;
+      --color-stone-500: #9c8e78;
+      --color-stone-600: #7d6e58;
+      --color-stone-700: #5f5243;
+      --color-stone-800: #433a2f;
+      --color-stone-900: #2a241e;
+      --color-ink: #1a1816;
+      --color-surface: #ffffff;
+      --color-cream: #fff8e7;
+      --color-accent: #a65d45;
+      --color-accent-tint: rgba(166, 93, 69, 0.10);
+      --color-crust-light: #c9a66b;
+      --color-crust: #a67c52;
+      --color-crust-dark: #6b4423;
+      --color-success: #6b8e4e;
+      --color-warning: #c9a66b;
+      --color-danger: #a65252;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+
+    /* === Reset === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scrollbar-gutter: stable; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-stone-50);
+      color: var(--color-ink);
+      line-height: 1.5;
+    }
+
+    /* === Header === */
+    .header {
+      background: var(--color-stone-200);
+      padding: 1rem 1.5rem;
+      border-bottom: 2px solid var(--color-ink);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--color-ink);
+      letter-spacing: -0.01em;
+    }
+
+    .brand-dot { color: var(--color-accent); }
+
+    .header-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-stone-500);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* === Page Layout === */
+    .page {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .page-intro {
+      margin-bottom: 3rem;
+    }
+
+    .page-intro h2 {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-intro p {
+      color: var(--color-stone-600);
+      max-width: 40rem;
+    }
+
+    /* === Option Sections === */
+    .option-section {
+      margin-bottom: 4rem;
+    }
+
+    .option-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .option-title {
+      font-family: var(--font-sans);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .option-desc {
+      color: var(--color-stone-500);
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+      max-width: 36rem;
+    }
+
+    /* === Card (matches proofed. card shortcut) === */
+    .card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-stone-200);
+      padding: 1rem;
+      border-radius: 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+
+    /* === Mock Recipe Context === */
+    .recipe-context {
+      position: relative;
+      background: var(--color-stone-100);
+      border: 2px dashed var(--color-stone-300);
+      padding: 1rem;
+      min-height: 200px;
+    }
+
+    .recipe-context-label {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-stone-400);
+      margin-bottom: 0.75rem;
+    }
+
+    .mock-stage {
+      background: var(--color-surface);
+      border: 2px solid var(--color-stone-200);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mock-stage-title {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--color-stone-700);
+    }
+
+    .mock-stage-detail {
+      font-size: 0.75rem;
+      color: var(--color-stone-400);
+      margin-top: 0.25rem;
+    }
+
+    /* === Experiment Panel (shared styles) === */
+    .experiment-panel {
+      background: var(--color-surface);
+      border: 2px solid var(--color-accent);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-stone-200);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .panel-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .panel-icon {
+      font-size: 1rem;
+    }
+
+    .panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-ink);
+    }
+
+    .panel-badge {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      background: var(--color-accent-tint);
+      color: var(--color-accent);
+      padding: 0.125rem 0.375rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .panel-chevron {
+      color: var(--color-stone-400);
+      font-size: 0.75rem;
+      transition: transform 200ms ease;
+    }
+
+    .panel-chevron.open { transform: rotate(180deg); }
+
+    .panel-body {
+      padding: 1rem;
+    }
+
+    /* === Slider Controls === */
+    .slider-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .slider-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.375rem;
+    }
+
+    .slider-name {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-ink);
+    }
+
+    .slider-value {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      min-width: 3.5rem;
+      text-align: right;
+    }
+
+    .slider-track {
+      position: relative;
+      width: 100%;
+      height: 6px;
+      background: var(--color-stone-200);
+      cursor: pointer;
+    }
+
+    .slider-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: var(--color-accent);
+      pointer-events: none;
+    }
+
+    .slider-thumb {
+      position: absolute;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      background: var(--color-surface);
+      border: 2px solid var(--color-accent);
+      transform: translate(-50%, -50%);
+      cursor: grab;
+    }
+
+    .slider-thumb:active { cursor: grabbing; }
+
+    .slider-range-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.25rem;
+    }
+
+    .slider-range-label {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--color-stone-400);
+    }
+
+    /* === Derived Values === */
+    .derived-section {
+      border-top: 1px solid var(--color-stone-200);
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+    }
+
+    .derived-title {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-stone-400);
+      margin-bottom: 0.5rem;
+    }
+
+    .derived-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .derived-item {
+      text-align: center;
+    }
+
+    .derived-value {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-ink);
+    }
+
+    .derived-label {
+      font-size: 0.6875rem;
+      color: var(--color-stone-500);
+      margin-top: 0.125rem;
+    }
+
+    /* === Base Dough Info === */
+    .base-dough {
+      background: var(--color-stone-50);
+      padding: 0.625rem 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--color-stone-200);
+    }
+
+    .base-dough-title {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-stone-400);
+      margin-bottom: 0.375rem;
+    }
+
+    .base-dough-items {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .base-dough-item {
+      font-size: 0.75rem;
+      color: var(--color-stone-600);
+    }
+
+    .base-dough-item strong {
+      color: var(--color-ink);
+      font-weight: 500;
+    }
+
+    /* ===========================================
+       OPTION A: Collapsible Section
+       =========================================== */
+    .option-a .experiment-panel {
+      /* Sits inline between stages */
+    }
+
+    /* ===========================================
+       OPTION B: Side Drawer
+       =========================================== */
+    .option-b-wrapper {
+      display: flex;
+      gap: 0;
+      position: relative;
+    }
+
+    .option-b-recipe {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .option-b-drawer {
+      width: 320px;
+      flex-shrink: 0;
+      position: relative;
+      border-left: 2px solid var(--color-accent);
+      transition: width 300ms ease, opacity 300ms ease;
+      overflow: hidden;
+    }
+
+    .option-b-drawer.collapsed {
+      width: 0;
+      opacity: 0;
+      border-left: none;
+    }
+
+    .option-b-drawer .experiment-panel {
+      border: none;
+      border-top: none;
+      height: 100%;
+    }
+
+    .drawer-toggle {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      background: var(--color-accent);
+      color: var(--color-surface);
+      border: none;
+      padding: 0.375rem 0.75rem;
+      cursor: pointer;
+      z-index: 2;
+      letter-spacing: 0.02em;
+    }
+
+    .drawer-toggle:hover {
+      background: var(--color-crust-dark);
+    }
+
+    .drawer-toggle.closed-state {
+      position: static;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===========================================
+       OPTION C: Bottom Sheet
+       =========================================== */
+    .option-c-wrapper {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+    }
+
+    .bottom-sheet-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 24, 22, 0.3);
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+
+    .bottom-sheet-scrim.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .bottom-sheet {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 11;
+      transform: translateY(calc(100% - 48px));
+      transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .bottom-sheet.expanded {
+      transform: translateY(0);
+    }
+
+    .bottom-sheet .experiment-panel {
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .sheet-handle-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--color-stone-200);
+      gap: 0.625rem;
+    }
+
+    .sheet-handle {
+      width: 36px;
+      height: 4px;
+      background: var(--color-stone-300);
+    }
+
+    .sheet-peek-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    .sheet-peek-values {
+      display: flex;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-stone-500);
+    }
+
+    /* FAB trigger for mobile demo */
+    .fab-trigger {
+      position: absolute;
+      bottom: 60px;
+      right: 1rem;
+      width: 48px;
+      height: 48px;
+      background: var(--color-accent);
+      color: var(--color-surface);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 9;
+      transition: transform 200ms ease, background 150ms ease;
+    }
+
+    .fab-trigger:hover {
+      background: var(--color-crust-dark);
+      transform: scale(1.05);
+    }
+
+    .fab-trigger.hidden {
+      display: none;
+    }
+
+    /* === Pros/Cons === */
+    .tradeoffs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .tradeoff-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tradeoff-list li {
+      font-size: 0.8125rem;
+      color: var(--color-stone-600);
+      padding: 0.25rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .tradeoff-list li::before {
+      position: absolute;
+      left: 0;
+      font-size: 0.75rem;
+    }
+
+    .pros li::before { content: '+'; color: var(--color-success); font-weight: 600; }
+    .cons li::before { content: '-'; color: var(--color-danger); font-weight: 600; }
+
+    .tradeoff-heading {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-stone-400);
+      margin-bottom: 0.375rem;
+    }
+
+    /* === Divider === */
+    .section-divider {
+      border: none;
+      border-top: 2px solid var(--color-stone-200);
+      margin: 3rem 0;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 640px) {
+      .page { padding: 1.5rem 0.75rem; }
+      .derived-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+      .derived-item { text-align: left; display: flex; justify-content: space-between; align-items: baseline; }
+      .tradeoffs { grid-template-columns: 1fr; }
+      .option-b-drawer { width: 260px; }
+      .base-dough-items { flex-direction: column; gap: 0.25rem; }
+    }
+
+    /* === Mobile note === */
+    .mobile-note {
+      background: var(--color-cream);
+      border: 1px dashed var(--color-crust-light);
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--color-crust-dark);
+    }
+
+    .mobile-note-label {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-crust);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <span class="brand">proofed<span class="brand-dot">.</span></span>
+      <span class="header-subtitle">Experiment Panel Spike</span>
+    </div>
+  </header>
+
+  <div class="page">
+    <div class="page-intro">
+      <h2>Experiment Panel: Layout Options</h2>
+      <p>
+        Three placement approaches for the ingredient adjustment panel. Each renders functional sliders
+        with derived values that update in real time. Evaluate visual fit, scroll behavior, and mobile UX.
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.8125rem; color: var(--color-stone-400);">
+        Recipe context: Jalape&ntilde;o Cheddar Sourdough &mdash; 67% hydration, flour 490g, water 330g, starter 100g, salt 12g
+      </p>
+    </div>
+
+    <!-- ===================================================
+         OPTION A: Collapsible Section
+         =================================================== -->
+    <section class="option-section option-a">
+      <div class="option-label">Option A</div>
+      <div class="option-title">Collapsible Section</div>
+      <div class="option-desc">
+        Inline between stages, matching existing collapse/expand patterns. Feels native to the recipe page flow.
+      </div>
+
+      <div class="recipe-context">
+        <div class="recipe-context-label">Recipe page context</div>
+
+        <div class="mock-stage">
+          <div class="mock-stage-title">Mix Dough</div>
+          <div class="mock-stage-detail">6 steps &middot; flour, water, starter, salt</div>
+        </div>
+
+        <div class="mock-stage">
+          <div class="mock-stage-title">Add Inclusions</div>
+          <div class="mock-stage-detail">3 steps &middot; jalape&ntilde;os, cheddar</div>
+        </div>
+
+        <!-- Experiment panel sits between stages -->
+        <div class="experiment-panel" style="margin-bottom: 0.5rem;">
+          <div class="panel-header" onclick="togglePanelA()">
+            <div class="panel-header-left">
+              <span class="panel-icon">&#9881;</span>
+              <span class="panel-title">Experiment: Inclusions</span>
+              <span class="panel-badge">Live</span>
+            </div>
+            <span id="chevron-a" class="panel-chevron open">&#9660;</span>
+          </div>
+          <div id="panel-body-a" class="panel-body">
+            <div class="base-dough">
+              <div class="base-dough-title">Base Dough (fixed)</div>
+              <div class="base-dough-items">
+                <span class="base-dough-item"><strong>490g</strong> flour</span>
+                <span class="base-dough-item"><strong>330g</strong> water</span>
+                <span class="base-dough-item"><strong>100g</strong> starter</span>
+                <span class="base-dough-item"><strong>12g</strong> salt</span>
+              </div>
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span class="slider-name">Jalape&ntilde;os</span>
+                <span class="slider-value" id="val-a-jal">75g</span>
+              </div>
+              <div class="slider-track" id="track-a-jal">
+                <div class="slider-fill" id="fill-a-jal"></div>
+                <div class="slider-thumb" id="thumb-a-jal"></div>
+              </div>
+              <div class="slider-range-labels">
+                <span class="slider-range-label">0g</span>
+                <span class="slider-range-label">150g</span>
+              </div>
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label">
+                <span class="slider-name">Cheddar</span>
+                <span class="slider-value" id="val-a-ched">115g</span>
+              </div>
+              <div class="slider-track" id="track-a-ched">
+                <div class="slider-fill" id="fill-a-ched"></div>
+                <div class="slider-thumb" id="thumb-a-ched"></div>
+              </div>
+              <div class="slider-range-labels">
+                <span class="slider-range-label">0g</span>
+                <span class="slider-range-label">230g</span>
+              </div>
+            </div>
+
+            <div class="derived-section">
+              <div class="derived-title">Derived Values</div>
+              <div class="derived-grid">
+                <div class="derived-item">
+                  <span class="derived-value" id="derived-a-hydration">67.3%</span>
+                  <span class="derived-label">Base Hydration</span>
+                </div>
+                <div class="derived-item">
+                  <span class="derived-value" id="derived-a-effective">72.0%</span>
+                  <span class="derived-label">Effective Hydration</span>
+                </div>
+                <div class="derived-item">
+                  <span class="derived-value" id="derived-a-load">20.4%</span>
+                  <span class="derived-label">Inclusion Load</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mock-stage">
+          <div class="mock-stage-title">Bulk Ferment</div>
+          <div class="mock-stage-detail">4 steps &middot; stretch & folds</div>
+        </div>
+
+        <div class="mock-stage">
+          <div class="mock-stage-title">Shape & Proof</div>
+          <div class="mock-stage-detail">3 steps &middot; pre-shape, shape, cold proof</div>
+        </div>
+      </div>
+
+      <div class="mobile-note">
+        <div class="mobile-note-label">Mobile Behavior</div>
+        On mobile, this section scrolls naturally with the page. User scrolls past it if not needed.
+        Same collapse/expand interaction as stage cards &mdash; no new interaction pattern to learn.
+      </div>
+
+      <div class="tradeoffs">
+        <div>
+          <div class="tradeoff-heading">Advantages</div>
+          <ul class="tradeoff-list pros">
+            <li>Consistent with existing section patterns</li>
+            <li>No overlay z-index complexity</li>
+            <li>Accessible &mdash; standard expand/collapse</li>
+            <li>Works identically on mobile and desktop</li>
+            <li>Can be placed contextually near relevant stage</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tradeoff-heading">Disadvantages</div>
+          <ul class="tradeoff-list cons">
+            <li>Scrolls out of view when browsing other stages</li>
+            <li>Can't see derived values while reading a distant step</li>
+            <li>Takes vertical space in the recipe flow</li>
+            <li>Position is fixed &mdash; always between same stages</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===================================================
+         OPTION B: Side Drawer
+         =================================================== -->
+    <section class="option-section option-b">
+      <div class="option-label">Option B</div>
+      <div class="option-title">Side Drawer</div>
+      <div class="option-desc">
+        Slides in from the right, stays visible while scrolling through recipe stages.
+        Overlays part of the content but keeps experiment context always accessible.
+      </div>
+
+      <div class="recipe-context">
+        <div class="recipe-context-label">Recipe page context</div>
+
+        <div class="option-b-wrapper">
+          <div class="option-b-recipe">
+            <div class="mock-stage">
+              <div class="mock-stage-title">Mix Dough</div>
+              <div class="mock-stage-detail">6 steps &middot; flour, water, starter, salt</div>
+            </div>
+            <div class="mock-stage">
+              <div class="mock-stage-title">Add Inclusions</div>
+              <div class="mock-stage-detail">3 steps &middot; jalape&ntilde;os, cheddar</div>
+            </div>
+            <div class="mock-stage">
+              <div class="mock-stage-title">Bulk Ferment</div>
+              <div class="mock-stage-detail">4 steps &middot; stretch & folds</div>
+            </div>
+            <div class="mock-stage">
+              <div class="mock-stage-title">Shape & Proof</div>
+              <div class="mock-stage-detail">3 steps &middot; pre-shape, shape, cold proof</div>
+            </div>
+            <div class="mock-stage">
+              <div class="mock-stage-title">Bake</div>
+              <div class="mock-stage-detail">2 steps &middot; score, bake</div>
+            </div>
+
+            <button id="drawer-toggle-btn" class="drawer-toggle closed-state" onclick="toggleDrawerB()">
+              &#9881; Open Experiment Panel
+            </button>
+          </div>
+
+          <div id="drawer-b" class="option-b-drawer collapsed">
+            <button class="drawer-toggle" onclick="toggleDrawerB()" style="position: sticky; top: 0;">
+              &#10005; Close
+            </button>
+            <div class="experiment-panel" style="border: none;">
+              <div class="panel-body" style="padding-top: 2.5rem;">
+                <div class="panel-header-left" style="margin-bottom: 1rem;">
+                  <span class="panel-icon">&#9881;</span>
+                  <span class="panel-title">Experiment: Inclusions</span>
+                  <span class="panel-badge">Live</span>
+                </div>
+
+                <div class="base-dough">
+                  <div class="base-dough-title">Base Dough (fixed)</div>
+                  <div class="base-dough-items" style="flex-direction: column; gap: 0.125rem;">
+                    <span class="base-dough-item"><strong>490g</strong> flour</span>
+                    <span class="base-dough-item"><strong>330g</strong> water</span>
+                    <span class="base-dough-item"><strong>100g</strong> starter</span>
+                    <span class="base-dough-item"><strong>12g</strong> salt</span>
+                  </div>
+                </div>
+
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <span class="slider-name">Jalape&ntilde;os</span>
+                    <span class="slider-value" id="val-b-jal">75g</span>
+                  </div>
+                  <div class="slider-track" id="track-b-jal">
+                    <div class="slider-fill" id="fill-b-jal"></div>
+                    <div class="slider-thumb" id="thumb-b-jal"></div>
+                  </div>
+                  <div class="slider-range-labels">
+                    <span class="slider-range-label">0g</span>
+                    <span class="slider-range-label">150g</span>
+                  </div>
+                </div>
+
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <span class="slider-name">Cheddar</span>
+                    <span class="slider-value" id="val-b-ched">115g</span>
+                  </div>
+                  <div class="slider-track" id="track-b-ched">
+                    <div class="slider-fill" id="fill-b-ched"></div>
+                    <div class="slider-thumb" id="thumb-b-ched"></div>
+                  </div>
+                  <div class="slider-range-labels">
+                    <span class="slider-range-label">0g</span>
+                    <span class="slider-range-label">230g</span>
+                  </div>
+                </div>
+
+                <div class="derived-section">
+                  <div class="derived-title">Derived Values</div>
+                  <div class="derived-grid" style="grid-template-columns: 1fr;">
+                    <div class="derived-item" style="text-align: left; display: flex; justify-content: space-between;">
+                      <span class="derived-label">Base Hydration</span>
+                      <span class="derived-value" id="derived-b-hydration" style="font-size: 1rem;">67.3%</span>
+                    </div>
+                    <div class="derived-item" style="text-align: left; display: flex; justify-content: space-between;">
+                      <span class="derived-label">Effective Hydration</span>
+                      <span class="derived-value" id="derived-b-effective" style="font-size: 1rem;">72.0%</span>
+                    </div>
+                    <div class="derived-item" style="text-align: left; display: flex; justify-content: space-between;">
+                      <span class="derived-label">Inclusion Load</span>
+                      <span class="derived-value" id="derived-b-load" style="font-size: 1rem;">20.4%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-note">
+        <div class="mobile-note-label">Mobile Behavior</div>
+        On mobile, the drawer would need to become a full-width overlay or bottom sheet, since 320px
+        leaves too little room for recipe content. This means maintaining two interaction patterns.
+      </div>
+
+      <div class="tradeoffs">
+        <div>
+          <div class="tradeoff-heading">Advantages</div>
+          <ul class="tradeoff-list pros">
+            <li>Always visible while scrolling recipe</li>
+            <li>Derived values stay in view at all times</li>
+            <li>Doesn't interrupt recipe stage flow</li>
+            <li>Can be opened/closed without losing scroll position</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tradeoff-heading">Disadvantages</div>
+          <ul class="tradeoff-list cons">
+            <li>Competes with TOC sidebar for right-side space</li>
+            <li>Narrows recipe content area when open</li>
+            <li>Requires different pattern on mobile (dual UX)</li>
+            <li>Z-index complexity with sticky header + TOC</li>
+            <li>Not a pattern used elsewhere in proofed.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===================================================
+         OPTION C: Bottom Sheet / Overlay
+         =================================================== -->
+    <section class="option-section option-c">
+      <div class="option-label">Option C</div>
+      <div class="option-title">Bottom Sheet / Overlay</div>
+      <div class="option-desc">
+        Fixed to viewport bottom with a peek bar showing key values. Slides up to reveal full controls.
+        Mobile-native pattern, but evaluate desktop ergonomics.
+      </div>
+
+      <div class="recipe-context option-c-wrapper" id="option-c-container">
+        <div class="recipe-context-label">Recipe page context</div>
+
+        <div class="mock-stage">
+          <div class="mock-stage-title">Mix Dough</div>
+          <div class="mock-stage-detail">6 steps &middot; flour, water, starter, salt</div>
+        </div>
+        <div class="mock-stage">
+          <div class="mock-stage-title">Add Inclusions</div>
+          <div class="mock-stage-detail">3 steps &middot; jalape&ntilde;os, cheddar</div>
+        </div>
+        <div class="mock-stage">
+          <div class="mock-stage-title">Bulk Ferment</div>
+          <div class="mock-stage-detail">4 steps &middot; stretch & folds</div>
+        </div>
+        <div class="mock-stage">
+          <div class="mock-stage-title">Shape & Proof</div>
+          <div class="mock-stage-detail">3 steps &middot; pre-shape, shape, cold proof</div>
+        </div>
+        <div class="mock-stage">
+          <div class="mock-stage-title">Bake</div>
+          <div class="mock-stage-detail">2 steps &middot; score, bake</div>
+        </div>
+
+        <!-- FAB trigger -->
+        <button id="fab-c" class="fab-trigger" onclick="toggleSheetC()">&#9881;</button>
+
+        <!-- Scrim -->
+        <div id="scrim-c" class="bottom-sheet-scrim" onclick="toggleSheetC()"></div>
+
+        <!-- Bottom Sheet -->
+        <div id="sheet-c" class="bottom-sheet">
+          <div class="experiment-panel">
+            <div class="sheet-handle-bar" onclick="toggleSheetC()">
+              <span class="sheet-peek-label">&#9881; Experiment</span>
+              <div class="sheet-peek-values">
+                <span id="peek-c-jal">jal 75g</span>
+                <span id="peek-c-ched">ched 115g</span>
+                <span id="peek-c-load">load 20.4%</span>
+              </div>
+              <div class="sheet-handle"></div>
+            </div>
+
+            <div class="panel-body">
+              <div class="base-dough">
+                <div class="base-dough-title">Base Dough (fixed)</div>
+                <div class="base-dough-items">
+                  <span class="base-dough-item"><strong>490g</strong> flour</span>
+                  <span class="base-dough-item"><strong>330g</strong> water</span>
+                  <span class="base-dough-item"><strong>100g</strong> starter</span>
+                  <span class="base-dough-item"><strong>12g</strong> salt</span>
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label">
+                  <span class="slider-name">Jalape&ntilde;os</span>
+                  <span class="slider-value" id="val-c-jal">75g</span>
+                </div>
+                <div class="slider-track" id="track-c-jal">
+                  <div class="slider-fill" id="fill-c-jal"></div>
+                  <div class="slider-thumb" id="thumb-c-jal"></div>
+                </div>
+                <div class="slider-range-labels">
+                  <span class="slider-range-label">0g</span>
+                  <span class="slider-range-label">150g</span>
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label">
+                  <span class="slider-name">Cheddar</span>
+                  <span class="slider-value" id="val-c-ched">115g</span>
+                </div>
+                <div class="slider-track" id="track-c-ched">
+                  <div class="slider-fill" id="fill-c-ched"></div>
+                  <div class="slider-thumb" id="thumb-c-ched"></div>
+                </div>
+                <div class="slider-range-labels">
+                  <span class="slider-range-label">0g</span>
+                  <span class="slider-range-label">230g</span>
+                </div>
+              </div>
+
+              <div class="derived-section">
+                <div class="derived-title">Derived Values</div>
+                <div class="derived-grid">
+                  <div class="derived-item">
+                    <span class="derived-value" id="derived-c-hydration">67.3%</span>
+                    <span class="derived-label">Base Hydration</span>
+                  </div>
+                  <div class="derived-item">
+                    <span class="derived-value" id="derived-c-effective">72.0%</span>
+                    <span class="derived-label">Effective Hydration</span>
+                  </div>
+                  <div class="derived-item">
+                    <span class="derived-value" id="derived-c-load">20.4%</span>
+                    <span class="derived-label">Inclusion Load</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-note">
+        <div class="mobile-note-label">Mobile Behavior</div>
+        This IS the mobile pattern. The peek bar shows key values without opening. Swipe or tap to expand.
+        On desktop, the bottom-pinned sheet feels less natural &mdash; users expect side panels or inline content.
+        The FAB trigger (gear icon, bottom-right) opens the sheet from its collapsed state.
+      </div>
+
+      <div class="tradeoffs">
+        <div>
+          <div class="tradeoff-heading">Advantages</div>
+          <ul class="tradeoff-list pros">
+            <li>Excellent mobile UX &mdash; native bottom sheet feel</li>
+            <li>Peek bar shows key derived values at a glance</li>
+            <li>Doesn't take recipe page space when collapsed</li>
+            <li>Scrim focuses attention when expanded</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tradeoff-heading">Disadvantages</div>
+          <ul class="tradeoff-list cons">
+            <li>Feels foreign on desktop &mdash; bottom-anchored panels are mobile patterns</li>
+            <li>Blocks recipe content when expanded (modal-like)</li>
+            <li>Covers FAB and other bottom-positioned UI</li>
+            <li>Scrim creates cognitive interruption</li>
+            <li>Competes with existing FAB (general notes)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Recommendation summary -->
+    <section class="option-section" style="margin-bottom: 2rem;">
+      <div class="option-label">Summary</div>
+      <div class="option-title">Evaluation Notes</div>
+      <div style="color: var(--color-stone-600); font-size: 0.875rem; max-width: 40rem; line-height: 1.7;">
+        <p style="margin-bottom: 0.75rem;">
+          <strong>Option A (Collapsible)</strong> is the most consistent with existing proofed. patterns.
+          No new interaction model to learn. The tradeoff is losing visibility when scrolling away.
+        </p>
+        <p style="margin-bottom: 0.75rem;">
+          <strong>Option B (Drawer)</strong> keeps the panel always accessible but conflicts with the
+          TOC sidebar position and requires a separate mobile pattern. Two interaction models to maintain.
+        </p>
+        <p style="margin-bottom: 0.75rem;">
+          <strong>Option C (Bottom Sheet)</strong> is the strongest mobile solution but awkward on desktop.
+          The peek bar is a nice touch for passive monitoring, but the modal expansion breaks flow.
+        </p>
+        <p>
+          <strong>Hybrid approach worth considering:</strong> Option A for desktop (inline, contextual),
+          with Option C's peek bar on mobile only. This would give each platform its native pattern
+          without forcing a single compromise.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // === Slider Engine ===
+    // Dough constants
+    const FLOUR = 490;
+    const WATER = 330;
+    const STARTER = 100; // 50/50 flour/water at 100% hydration
+    const SALT = 12;
+
+    // Total flour includes starter flour contribution
+    const TOTAL_FLOUR = FLOUR + (STARTER / 2); // 540
+    const TOTAL_WATER = WATER + (STARTER / 2); // 380
+
+    function calcBaseHydration() {
+      return (TOTAL_WATER / TOTAL_FLOUR * 100).toFixed(1);
+    }
+
+    function calcEffectiveHydration(jalG, chedG) {
+      // Jalapenos are ~90% water, cheddar ~37% water
+      const jalWater = jalG * 0.90;
+      const chedWater = chedG * 0.37;
+      const totalWater = TOTAL_WATER + jalWater + chedWater;
+      return (totalWater / TOTAL_FLOUR * 100).toFixed(1);
+    }
+
+    function calcInclusionLoad(jalG, chedG) {
+      const totalInclusions = jalG + chedG;
+      return (totalInclusions / TOTAL_FLOUR * 100).toFixed(1);
+    }
+
+    // State per option
+    const state = {
+      a: { jal: 75, ched: 115 },
+      b: { jal: 75, ched: 115 },
+      c: { jal: 75, ched: 115 },
+    };
+
+    function updateDerived(option) {
+      const s = state[option];
+      const hydration = calcBaseHydration();
+      const effective = calcEffectiveHydration(s.jal, s.ched);
+      const load = calcInclusionLoad(s.jal, s.ched);
+
+      const hEl = document.getElementById(`derived-${option}-hydration`);
+      const eEl = document.getElementById(`derived-${option}-effective`);
+      const lEl = document.getElementById(`derived-${option}-load`);
+
+      if (hEl) hEl.textContent = hydration + '%';
+      if (eEl) eEl.textContent = effective + '%';
+      if (lEl) lEl.textContent = load + '%';
+
+      // Update peek values for option C
+      if (option === 'c') {
+        const pj = document.getElementById('peek-c-jal');
+        const pc = document.getElementById('peek-c-ched');
+        const pl = document.getElementById('peek-c-load');
+        if (pj) pj.textContent = 'jal ' + s.jal + 'g';
+        if (pc) pc.textContent = 'ched ' + s.ched + 'g';
+        if (pl) pl.textContent = 'load ' + load + '%';
+      }
+    }
+
+    function updateSliderVisual(option, ingredient, value) {
+      const max = ingredient === 'jal' ? 150 : 230;
+      const pct = (value / max) * 100;
+
+      const fill = document.getElementById(`fill-${option}-${ingredient}`);
+      const thumb = document.getElementById(`thumb-${option}-${ingredient}`);
+      const valEl = document.getElementById(`val-${option}-${ingredient}`);
+
+      if (fill) fill.style.width = pct + '%';
+      if (thumb) thumb.style.left = pct + '%';
+      if (valEl) valEl.textContent = value + 'g';
+    }
+
+    // Initialize all slider visuals
+    function initSliders() {
+      ['a', 'b', 'c'].forEach(option => {
+        updateSliderVisual(option, 'jal', state[option].jal);
+        updateSliderVisual(option, 'ched', state[option].ched);
+        updateDerived(option);
+      });
+    }
+
+    // Drag handling
+    let activeSlider = null;
+
+    function getSliderValue(trackEl, clientX, max) {
+      const rect = trackEl.getBoundingClientRect();
+      let pct = (clientX - rect.left) / rect.width;
+      pct = Math.max(0, Math.min(1, pct));
+      return Math.round(pct * max);
+    }
+
+    function onPointerDown(e) {
+      const track = e.target.closest('.slider-track');
+      if (!track) return;
+
+      const id = track.id; // e.g. "track-a-jal"
+      const parts = id.replace('track-', '').split('-');
+      const option = parts[0];
+      const ingredient = parts[1];
+      const max = ingredient === 'jal' ? 150 : 230;
+
+      activeSlider = { track, option, ingredient, max };
+
+      const val = getSliderValue(track, e.clientX, max);
+      state[option][ingredient] = val;
+      updateSliderVisual(option, ingredient, val);
+      updateDerived(option);
+
+      e.preventDefault();
+    }
+
+    function onPointerMove(e) {
+      if (!activeSlider) return;
+      const { track, option, ingredient, max } = activeSlider;
+      const val = getSliderValue(track, e.clientX, max);
+      state[option][ingredient] = val;
+      updateSliderVisual(option, ingredient, val);
+      updateDerived(option);
+    }
+
+    function onPointerUp() {
+      activeSlider = null;
+    }
+
+    // Touch support
+    function onTouchStart(e) {
+      const touch = e.touches[0];
+      const track = e.target.closest('.slider-track');
+      if (!track) return;
+
+      const id = track.id;
+      const parts = id.replace('track-', '').split('-');
+      const option = parts[0];
+      const ingredient = parts[1];
+      const max = ingredient === 'jal' ? 150 : 230;
+
+      activeSlider = { track, option, ingredient, max };
+
+      const val = getSliderValue(track, touch.clientX, max);
+      state[option][ingredient] = val;
+      updateSliderVisual(option, ingredient, val);
+      updateDerived(option);
+
+      e.preventDefault();
+    }
+
+    function onTouchMove(e) {
+      if (!activeSlider) return;
+      const touch = e.touches[0];
+      const { track, option, ingredient, max } = activeSlider;
+      const val = getSliderValue(track, touch.clientX, max);
+      state[option][ingredient] = val;
+      updateSliderVisual(option, ingredient, val);
+      updateDerived(option);
+    }
+
+    function onTouchEnd() {
+      activeSlider = null;
+    }
+
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('pointermove', onPointerMove);
+    document.addEventListener('pointerup', onPointerUp);
+    document.addEventListener('touchstart', onTouchStart, { passive: false });
+    document.addEventListener('touchmove', onTouchMove, { passive: false });
+    document.addEventListener('touchend', onTouchEnd);
+
+    // === Panel Toggles ===
+
+    // Option A: Collapsible
+    let panelAOpen = true;
+    function togglePanelA() {
+      panelAOpen = !panelAOpen;
+      const body = document.getElementById('panel-body-a');
+      const chevron = document.getElementById('chevron-a');
+      body.style.display = panelAOpen ? 'block' : 'none';
+      chevron.classList.toggle('open', panelAOpen);
+    }
+
+    // Option B: Drawer
+    let drawerBOpen = false;
+    function toggleDrawerB() {
+      drawerBOpen = !drawerBOpen;
+      const drawer = document.getElementById('drawer-b');
+      const btn = document.getElementById('drawer-toggle-btn');
+      drawer.classList.toggle('collapsed', !drawerBOpen);
+      btn.style.display = drawerBOpen ? 'none' : 'block';
+    }
+
+    // Option C: Bottom Sheet
+    let sheetCOpen = false;
+    function toggleSheetC() {
+      sheetCOpen = !sheetCOpen;
+      const sheet = document.getElementById('sheet-c');
+      const scrim = document.getElementById('scrim-c');
+      const fab = document.getElementById('fab-c');
+      sheet.classList.toggle('expanded', sheetCOpen);
+      scrim.classList.toggle('visible', sheetCOpen);
+      fab.classList.toggle('hidden', sheetCOpen);
+    }
+
+    // Init on load
+    document.addEventListener('DOMContentLoaded', initSliders);
+  </script>
+
+</body>
+</html>
