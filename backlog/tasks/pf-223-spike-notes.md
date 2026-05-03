@@ -1,3 +1,14 @@
+---
+id: TASK-TASK-
+title: ''
+status: Done
+assignee: []
+created_date: ''
+updated_date: '2026-04-23 23:21'
+labels: []
+dependencies: []
+---
+
 # PF-223 Spike Notes — Journey Mode P0
 
 ## AC1: Three-Recipe Audit
