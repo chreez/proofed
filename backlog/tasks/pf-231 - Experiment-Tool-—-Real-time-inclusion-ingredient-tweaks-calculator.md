@@ -1,7 +1,7 @@
 ---
 id: PF-231
 title: Experiment Tool — Real-time inclusion/ingredient tweaks calculator
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-01 04:07'
 updated_date: '2026-05-01 05:03'

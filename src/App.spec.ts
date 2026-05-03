@@ -179,6 +179,14 @@ vi.mock('@/components/GeneralNotesFab.vue', () => ({
   }
 }))
 
+vi.mock('@/components/ExperimentPanel.vue', () => ({
+  default: {
+    name: 'ExperimentPanel',
+    props: ['recipe', 'recipeId', 'waterContentTable', 'sectionId'],
+    template: '<div class="experiment-panel-stub">ExperimentPanel</div>'
+  }
+}))
+
 function makeRouter() {
   return createRouter({
     history: createMemoryHistory(),
@@ -293,6 +301,12 @@ describe('App', () => {
     lastObserverInstance = null
 
     vi.stubGlobal('IntersectionObserver', MockIntersectionObserver)
+
+    // Mock fetch for water content table loading
+    vi.stubGlobal('fetch', vi.fn(() => Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ version: '1.0.0', categories: [] })
+    })))
   })
 
   afterEach(() => {
@@ -1507,6 +1521,62 @@ describe('App', () => {
       await nextTick()
 
       expect(mockScratchpadClearAll).toHaveBeenCalled()
+    })
+  })
+
+  describe('Experiment Panel', () => {
+    it('renders ExperimentPanel when recipe has experiment config and water content loaded', async () => {
+      mockCurrentRecipe.value = makeRecipe({ experiment: { description: 'test', scaleMode: 'pre_scaled', ingredients: [], derived: [] } })
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      expect(wrapper.find('.experiment-panel-stub').exists()).toBe(true)
+    })
+
+    it('does NOT render ExperimentPanel when recipe lacks experiment config', async () => {
+      mockCurrentRecipe.value = makeRecipe()
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      expect(wrapper.find('.experiment-panel-stub').exists()).toBe(false)
+      expect(wrapper.find('.experiment-drawer-stub').exists()).toBe(false)
+    })
+
+    it('does NOT render ExperimentPanel when water content fetch fails', async () => {
+      // Override fetch to fail
+      vi.stubGlobal('fetch', vi.fn(() => Promise.resolve({ ok: false })))
+
+      mockCurrentRecipe.value = makeRecipe({ experiment: { description: 'test', scaleMode: 'pre_scaled', ingredients: [], derived: [] } })
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      expect(wrapper.find('.experiment-panel-stub').exists()).toBe(false)
+    })
+
+
+    it('handles fetch exception gracefully', async () => {
+      // Override fetch to throw
+      vi.stubGlobal('fetch', vi.fn(() => Promise.reject(new Error('Network error'))))
+
+      mockCurrentRecipe.value = makeRecipe({ experiment: { description: 'test', scaleMode: 'pre_scaled', ingredients: [], derived: [] } })
+      mockCurrentRecipeId.value = 'test-recipe'
+
+      // Should not throw
+      const { wrapper } = await mountApp('/recipe/test-recipe')
+      await nextTick()
+      await flushPromises()
+
+      // Panel should not render since waterContentTable is null
+      expect(wrapper.find('.experiment-panel-stub').exists()).toBe(false)
     })
   })
 

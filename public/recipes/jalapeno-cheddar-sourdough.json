@@ -502,5 +502,25 @@
         "source": "agent"
       }
     ]
+  },
+  "experiment": {
+    "description": "Adjust inclusion amounts and hydration for jalapeño cheddar sourdough",
+    "scaleMode": "pre_scaled",
+    "ingredients": [
+      { "id": "flour", "role": "base_flour", "defaultAmount": 550, "min": 450, "max": 650, "step": 25, "waterContentId": "bread-flour" },
+      { "id": "water", "role": "base_liquid", "defaultAmount": 360, "min": 280, "max": 420, "step": 10, "waterContentId": "water" },
+      { "id": "jalapenos", "role": "inclusion", "defaultAmount": 120, "min": 0, "max": 200, "step": 10, "waterContentId": "jalapeno-raw" },
+      { "id": "cheddar", "role": "inclusion", "defaultAmount": 220, "min": 0, "max": 350, "step": 25, "waterContentId": "cheddar" },
+      { "id": "butter", "role": "enrichment", "defaultAmount": 45, "min": 0, "max": 80, "step": 5, "waterContentId": "butter-unsalted" },
+      { "id": "starter", "role": "enrichment", "defaultAmount": 10, "min": 5, "max": 20, "step": 1, "waterContentId": "sourdough-starter-100" },
+      { "id": "salt", "role": "enrichment", "defaultAmount": 10, "min": 5, "max": 15, "step": 1, "waterContentId": "salt" },
+      { "id": "milk-powder", "role": "enrichment", "defaultAmount": 25, "min": 0, "max": 50, "step": 5, "waterContentId": "nonfat-milk-powder" },
+      { "id": "brown-sugar", "role": "enrichment", "defaultAmount": 28, "min": 0, "max": 50, "step": 5, "waterContentId": "brown-sugar" }
+    ],
+    "derived": [
+      { "id": "effective-hydration", "label": "Effective Hydration", "unit": "%", "type": "effective_hydration" },
+      { "id": "inclusion-load", "label": "Inclusion Load", "unit": "%", "type": "inclusion_load" },
+      { "id": "total-dough", "label": "Total Dough Weight", "unit": "g", "type": "total_dough_weight" }
+    ]
   }
 }

@@ -11,7 +11,7 @@ import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '
 import { copyToClipboard } from '@/composables/useClipboard'
 import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
 import { QrCode, Printer, ArrowLeft } from 'lucide-vue-next'
-import type { RecipeState, CookLogPhoto } from '@/types/recipe'
+import type { RecipeState, CookLogPhoto, WaterContentTable } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
 import ShareModal from '@/components/ShareModal.vue'
 import IconButton from '@/components/IconButton.vue'
@@ -48,6 +48,7 @@ import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
 import BakeLogPage from '@/components/BakeLogPage.vue'
 import GeneralNotesFab from '@/components/GeneralNotesFab.vue'
+import ExperimentPanel from '@/components/ExperimentPanel.vue'
 import RecipePrintView from '@/components/RecipePrintView.vue'
 
 const route = useRoute()
@@ -62,6 +63,9 @@ useRecipeMeta(
   () => typeof route.params.date === 'string' ? route.params.date : undefined,
   () => typeof route.name === 'string' ? route.name : undefined
 )
+
+// Water content table for experiment panel
+const waterContentTable = shallowRef<WaterContentTable | null>(null)
 
 // Scaling: multiplier lives at app level so all descendants (RecipeMeta, StageCard, etc.) can inject it
 const scalingMultiplier = ref(1)
@@ -190,6 +194,16 @@ onMounted(async () => {
   await loadTechniques()
   await loadManifest()
   manifestLoaded.value = true
+
+  // Load water content table for experiment panel (lazy — only needed when a recipe has experiment config)
+  try {
+    const resp = await fetch('/data/water-content.json')
+    if (resp.ok) {
+      waterContentTable.value = await resp.json()
+    }
+  } catch {
+    // Non-critical — experiment panel just won't render
+  }
 })
 
 /* v8 ignore start -- guarded by template v-if, null branches unreachable */
@@ -231,6 +245,7 @@ async function handleScratchpadExport(): Promise<void> {
   const json = scratchpad.value.exportJsonString(scalingMultiplier.value)
   await copyToClipboard(json)
 }
+
 
 // Pre-bake kitchen temp — recipe tracks bulk_ambient_temps in bakeStatsSchema
 const tracksBulkAmbient = computed(() => {
@@ -625,6 +640,15 @@ watch(() => route.hash, (newHash) => {
                 section-id="technical-notes-section"
                 class="scroll-mt-16"
               />
+
+              <ExperimentPanel
+                v-if="currentRecipe.experiment && waterContentTable && currentRecipeId"
+                :recipe="currentRecipe"
+                :recipe-id="currentRecipeId"
+                :water-content-table="waterContentTable"
+                section-id="experiment-section"
+              />
+
               <StageCard
                 v-for="stage in currentRecipe.stages"
                 :id="`stage-${stage.id}`"
@@ -702,6 +726,7 @@ watch(() => route.hash, (newHash) => {
           :open="heroLightboxOpen"
           @close="heroLightboxOpen = false"
         />
+
 
         <GeneralNotesFab
           v-if="scratchpad"
