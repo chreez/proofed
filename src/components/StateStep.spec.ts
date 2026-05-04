@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { ref } from 'vue'
 import StateStep from './StateStep.vue'
-import { SCALING_MULTIPLIER_KEY } from '@/composables/scalingKey'
+import { SCALING_MULTIPLIER_KEY, EXPERIMENT_ADJUSTMENTS_KEY } from '@/composables/scalingKey'
 
 // Mock child components
 vi.mock('@/components/TimerDisplay.vue', () => ({
@@ -772,5 +772,104 @@ describe('StateStep scaling', () => {
       global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
     })
     expect(wrapper.text()).toContain('to taste')
+  })
+})
+
+describe('StateStep experiment adjustments', () => {
+  it('shows adjusted component amount and "(was Xg)" annotation', () => {
+    const experimentAdjustments = ref(new Map<string, number>([['flour', 500]]))
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          components: [{ name: 'Flour', amount: '390g' }]
+        },
+        ingredientNameMap: { flour: { id: 'flour', total: 390 } }
+      },
+      global: { provide: { [EXPERIMENT_ADJUSTMENTS_KEY]: experimentAdjustments } }
+    })
+
+    // Should show adjusted amount (~500g) and "was 390g"
+    expect(wrapper.text()).toContain('500g')
+    expect(wrapper.text()).toContain('was 390g')
+  })
+
+  it('applies accent border on adjusted components', () => {
+    const experimentAdjustments = ref(new Map<string, number>([['flour', 500]]))
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          components: [{ name: 'Flour', amount: '390g' }]
+        },
+        ingredientNameMap: { flour: { id: 'flour', total: 390 } }
+      },
+      global: { provide: { [EXPERIMENT_ADJUSTMENTS_KEY]: experimentAdjustments } }
+    })
+
+    expect(wrapper.find('.border-l-2.border-accent').exists()).toBe(true)
+  })
+
+  it('does not annotate when adjustment equals original', () => {
+    const experimentAdjustments = ref(new Map<string, number>([['flour', 390]]))
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          components: [{ name: 'Flour', amount: '390g' }]
+        },
+        ingredientNameMap: { flour: { id: 'flour', total: 390 } }
+      },
+      global: { provide: { [EXPERIMENT_ADJUSTMENTS_KEY]: experimentAdjustments } }
+    })
+
+    expect(wrapper.text()).toContain('390g')
+    expect(wrapper.text()).not.toContain('was')
+  })
+
+  it('does not annotate components with no matching ingredient', () => {
+    const experimentAdjustments = ref(new Map<string, number>([['flour', 500]]))
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          components: [{ name: 'Sugar', amount: '50g' }]
+        },
+        ingredientNameMap: { flour: { id: 'flour', total: 390 } }
+      },
+      global: { provide: { [EXPERIMENT_ADJUSTMENTS_KEY]: experimentAdjustments } }
+    })
+
+    expect(wrapper.text()).toContain('50g')
+    expect(wrapper.text()).not.toContain('was')
+  })
+
+  it('composes experiment adjustment with scaling multiplier', () => {
+    const experimentAdjustments = ref(new Map<string, number>([['flour', 500]]))
+    const multiplier = ref(2)
+    const wrapper = mount(StateStep, {
+      props: {
+        ...defaultProps,
+        state: {
+          ...defaultState,
+          components: [{ name: 'Flour', amount: '390g' }]
+        },
+        ingredientNameMap: { flour: { id: 'flour', total: 390 } }
+      },
+      global: {
+        provide: {
+          [EXPERIMENT_ADJUSTMENTS_KEY]: experimentAdjustments,
+          [SCALING_MULTIPLIER_KEY]: multiplier
+        }
+      }
+    })
+
+    // 500 * 2 = 1000g, original was 390 * 2 = 780g
+    expect(wrapper.text()).toContain('1000g')
+    expect(wrapper.text()).toContain('was 780g')
   })
 })

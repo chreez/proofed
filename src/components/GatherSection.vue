@@ -5,7 +5,7 @@ import IconButton from '@/components/IconButton.vue'
 import type { GatherSection } from '@/types/recipe'
 import GatherCategory from '@/components/GatherCategory.vue'
 import { copyToClipboard } from '@/composables/useClipboard'
-import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
+import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY, EXPERIMENT_ADJUSTMENTS_KEY } from '@/composables/scalingKey'
 import type { ScalingIngredient } from '@/types/recipe'
 
 const props = defineProps<{
@@ -22,6 +22,8 @@ const resetBtn = useTemplateRef<InstanceType<typeof IconButton>>('resetBtn')
 const multiplier = inject<Ref<number>>(SCALING_MULTIPLIER_KEY, ref(1))
 // Inject scaling ingredients for behavior badges (provided as ComputedRef by App.vue)
 const scalingIngredients = inject<Ref<ScalingIngredient[]>>(SCALING_INGREDIENTS_KEY, ref([]))
+// Inject experiment adjustments (Map<ingredientId, adjustedGrams>)
+const experimentAdjustments = inject<Ref<Map<string, number>>>(EXPERIMENT_ADJUSTMENTS_KEY, ref(new Map()))
 
 const vesselItems = computed(() =>
   (props.gather.vessels || []).map(v => ({
@@ -39,12 +41,20 @@ const equipmentItems = computed(() =>
 
 const ingredientItems = computed(() => {
   const mult = multiplier.value
+  const expAdj = experimentAdjustments.value
   return (props.gather.ingredients || []).map(ing => {
-    const scaledTotal = ing.total * mult
+    // Experiment adjustment: use adjusted amount as 1x base, then scale
+    const adjustedBase = expAdj.has(ing.id) ? expAdj.get(ing.id)! : ing.total
+    const scaledTotal = adjustedBase * mult
+    const originalScaled = ing.total * mult
     const fmt = (amount: number, unit: string) => unit === 'whole' ? `${amount}x` : `${amount}${unit}`
     const label = `${ing.name} — ${fmt(scaledTotal, ing.unit)}`
     const detail = ing.breakdown
-      ? ing.breakdown.map(b => `${fmt(b.amount * mult, ing.unit)} ${b.label}`).join(', ')
+      ? ing.breakdown.map(b => {
+          // Scale breakdown proportionally if experiment adjusted
+          const ratio = adjustedBase / (ing.total || 1)
+          return `${fmt(b.amount * ratio * mult, ing.unit)} ${b.label}`
+        }).join(', ')
       : undefined
     // Show behavior note for non-linear/fixed ingredients when scaled
     let note: string | undefined
@@ -54,11 +64,19 @@ const ingredientItems = computed(() => {
         note = scalingInfo.note
       }
     }
+    // Experiment delta info (only when actually adjusted)
+    const hasExperimentDelta = expAdj.has(ing.id) && expAdj.get(ing.id) !== ing.total
+    const experimentDelta = hasExperimentDelta ? scaledTotal - originalScaled : undefined
+    const experimentOriginal = hasExperimentDelta ? originalScaled : undefined
+    const experimentUnit = ing.unit
     return {
       id: `ing-${ing.id}`,
       label,
       detail,
-      note
+      note,
+      experimentDelta,
+      experimentOriginal,
+      experimentUnit
     }
   })
 })

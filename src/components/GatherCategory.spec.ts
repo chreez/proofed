@@ -9,7 +9,7 @@ vi.mock('@/components/CheckableItem.vue', () => ({
     name: 'CheckableItem',
     props: ['id', 'label', 'checked'],
     emits: ['toggle'],
-    template: '<div class="checkable-stub" :data-item-id="id"><input type="checkbox" :checked="checked" @change="$emit(\'toggle\')" />{{ label }}</div>'
+    template: '<div class="checkable-stub" :data-item-id="id"><input type="checkbox" :checked="checked" @change="$emit(\'toggle\')" />{{ label }}<slot name="detail" /></div>'
   }
 }))
 vi.mock('@/components/TechniqueText.vue', () => ({
@@ -426,5 +426,76 @@ describe('GatherCategory scaling badges', () => {
     })
     const badges = wrapper.findAll('[title]').filter(el => el.text() === '⚠')
     expect(badges.length).toBe(0)
+  })
+})
+
+describe('GatherCategory experiment deltas', () => {
+  it('renders accent border and delta annotation for adjusted items', () => {
+    const wrapper = mount(GatherCategory, {
+      props: {
+        title: 'Ingredients',
+        items: [
+          { id: 'ing-flour', label: 'Bread Flour — 425g', experimentDelta: 35, experimentOriginal: 390, experimentUnit: 'g' }
+        ],
+        progress: makeProgress(),
+        stageId: 'prep'
+      }
+    })
+
+    // Accent left border on adjusted item
+    expect(wrapper.find('.border-l-3.border-accent').exists()).toBe(true)
+    // Strikethrough original
+    expect(wrapper.find('.line-through').text()).toContain('390g')
+    // Delta with + sign
+    expect(wrapper.text()).toContain('+35g')
+  })
+
+  it('renders negative delta without + sign', () => {
+    const wrapper = mount(GatherCategory, {
+      props: {
+        title: 'Ingredients',
+        items: [
+          { id: 'ing-water', label: 'Water — 300g', experimentDelta: -50, experimentOriginal: 350, experimentUnit: 'g' }
+        ],
+        progress: makeProgress(),
+        stageId: 'prep'
+      }
+    })
+
+    expect(wrapper.text()).toContain('-50g')
+    expect(wrapper.text()).toContain('350g')
+  })
+
+  it('does not render delta annotation for items without experiment data', () => {
+    const wrapper = mount(GatherCategory, {
+      props: {
+        title: 'Ingredients',
+        items: [
+          { id: 'ing-flour', label: 'Flour — 390g' }
+        ],
+        progress: makeProgress(),
+        stageId: 'prep'
+      }
+    })
+
+    expect(wrapper.find('.border-l-3.border-accent').exists()).toBe(false)
+    expect(wrapper.find('.font-mono.text-\\[10px\\]').exists()).toBe(false)
+  })
+
+  it('renders detail text alongside experiment delta', () => {
+    const wrapper = mount(GatherCategory, {
+      props: {
+        title: 'Ingredients',
+        items: [
+          { id: 'ing-butter', label: 'Butter — 150g', detail: '75g filling, 75g brushing', experimentDelta: 10, experimentOriginal: 140, experimentUnit: 'g' }
+        ],
+        progress: makeProgress(),
+        stageId: 'prep'
+      }
+    })
+
+    expect(wrapper.text()).toContain('75g filling, 75g brushing')
+    expect(wrapper.text()).toContain('+10g')
+    expect(wrapper.text()).toContain('140g')
   })
 })

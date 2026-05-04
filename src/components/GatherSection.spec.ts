@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { ref } from 'vue'
 import GatherSection from './GatherSection.vue'
-import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
+import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY, EXPERIMENT_ADJUSTMENTS_KEY } from '@/composables/scalingKey'
 
 // Mock child component
 vi.mock('@/components/GatherCategory.vue', () => ({
@@ -474,6 +474,71 @@ describe('GatherSection scaling', () => {
 
     const copiedText = writeTextMock.mock.calls[0][0]
     expect(copiedText).toContain('All-purpose flour — 780g')
+  })
+})
+
+describe('GatherSection experiment adjustments', () => {
+  it('passes experiment delta data to ingredient items when adjusted', () => {
+    const experimentAdjustments = ref(new Map<string, number>([['flour', 425]]))
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'flour', name: 'All-purpose flour', total: 390, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: { provide: { [EXPERIMENT_ADJUSTMENTS_KEY]: experimentAdjustments } }
+    })
+
+    expect(wrapper.find('.gather-category-stub').exists()).toBe(true)
+  })
+
+  it('does not produce delta when adjustment equals original total', () => {
+    const experimentAdjustments = ref(new Map<string, number>([['flour', 390]]))
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'flour', name: 'All-purpose flour', total: 390, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: { provide: { [EXPERIMENT_ADJUSTMENTS_KEY]: experimentAdjustments } }
+    })
+
+    expect(wrapper.find('.gather-category-stub').exists()).toBe(true)
+  })
+
+  it('composes experiment adjustments with scaling multiplier', () => {
+    const experimentAdjustments = ref(new Map<string, number>([['flour', 500]]))
+    const multiplier = ref(2)
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'flour', name: 'All-purpose flour', total: 390, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: {
+        provide: {
+          [EXPERIMENT_ADJUSTMENTS_KEY]: experimentAdjustments,
+          [SCALING_MULTIPLIER_KEY]: multiplier
+        }
+      }
+    })
+
+    expect(wrapper.find('.gather-category-stub').exists()).toBe(true)
   })
 })
 

@@ -82,6 +82,16 @@ const activeStepId = computed(() => {
   const first = props.states.find(s => !props.progress.isStateChecked(s.id))
   return first?.id ?? null
 })
+
+// Ingredient name→{id, total} map for experiment delta display in StateStep
+const ingredientNameMap = computed(() => {
+  const map: Record<string, { id: string; total: number }> = {}
+  if (!props.stage.gather?.ingredients) return map
+  for (const ing of props.stage.gather.ingredients) {
+    map[ing.name.toLowerCase()] = { id: ing.id, total: ing.total }
+  }
+  return map
+})
 </script>
 
 <template>
@@ -152,6 +162,7 @@ const activeStepId = computed(() => {
             :step-note="stepNotes?.[state.id]"
             :scratchpad="scratchpad"
             :is-active-step="state.id === activeStepId"
+            :ingredient-name-map="ingredientNameMap"
             @toggled="handleStateToggled"
           />
         </div>

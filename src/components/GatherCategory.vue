@@ -10,7 +10,7 @@ import { copyToClipboard } from '@/composables/useClipboard'
 
 const props = withDefaults(defineProps<{
   title: string
-  items: { id: string; label: string; detail?: string; note?: string; behaviorIcon?: string }[]
+  items: { id: string; label: string; detail?: string; note?: string; behaviorIcon?: string; experimentDelta?: number; experimentOriginal?: number; experimentUnit?: string }[]
   progress: ReturnType<typeof import('@/composables/useProgress').useProgress>
   stageId: string
   startCollapsed?: boolean
@@ -197,7 +197,7 @@ async function copyCategory(): Promise<void> {
         <div class="flex flex-col gap-0.5">
           <!-- Unchecked items first -->
           <div v-for="item in uncheckedItems" :key="item.id">
-            <div class="flex items-start gap-2">
+            <div class="flex items-start gap-2" :class="{ 'border-l-3 border-accent pl-2 -ml-2': item.experimentDelta != null }">
               <CheckableItem
                 :id="item.id"
                 :label="item.label"
@@ -205,8 +205,12 @@ async function copyCategory(): Promise<void> {
                 class="flex-1"
                 @toggle="handleToggle(item.id)"
               >
-                <template v-if="item.detail" #detail>
-                  <div class="text-xs text-stone-400 ml-8 mt-1"><TempText :text="item.detail" /></div>
+                <template v-if="item.detail || item.experimentDelta != null" #detail>
+                  <div v-if="item.detail" class="text-xs text-stone-400 ml-8 mt-1"><TempText :text="item.detail" /></div>
+                  <div v-if="item.experimentDelta != null" class="font-mono text-[10px] ml-8 mt-0.5 flex items-center gap-1.5">
+                    <span class="text-stone-400 line-through">{{ item.experimentOriginal }}{{ item.experimentUnit }}</span>
+                    <span class="text-accent font-medium">{{ item.experimentDelta > 0 ? '+' : '' }}{{ item.experimentDelta }}{{ item.experimentUnit }}</span>
+                  </div>
                 </template>
               </CheckableItem>
               <!-- Behavior note badge for non-linear/fixed ingredients -->

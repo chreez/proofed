@@ -68,7 +68,7 @@ describe('useExperimentStorage', () => {
       expect(notes.value).toEqual({ flour: 'Increased for stiffer dough' })
     })
 
-    it('removes corrupted JSON from localStorage', () => {
+    it('handles corrupted JSON gracefully without crashing', () => {
       storage._store[STORAGE_KEY] = 'not-valid-json{{{}'
 
       const adjustments = ref(new Map<string, number>())
@@ -78,7 +78,7 @@ describe('useExperimentStorage', () => {
       const { load } = useExperimentStorage('test-recipe', adjustments, freeformIngredients, notes)
       load()
 
-      expect(storage.removeItem).toHaveBeenCalledWith(STORAGE_KEY)
+      // State should remain at defaults — corrupted data is ignored
       expect(adjustments.value.size).toBe(0)
       expect(freeformIngredients.value).toEqual([])
       expect(notes.value).toEqual({})

@@ -1536,8 +1536,8 @@ describe('App', () => {
       expect(wrapper.find('.experiment-panel-stub').exists()).toBe(true)
     })
 
-    it('does NOT render ExperimentPanel when recipe lacks experiment config', async () => {
-      mockCurrentRecipe.value = makeRecipe()
+    it('does NOT render ExperimentPanel when recipe opts out with experiment: false', async () => {
+      mockCurrentRecipe.value = makeRecipe({ experiment: false })
       mockCurrentRecipeId.value = 'test-recipe'
 
       const { wrapper } = await mountApp('/recipe/test-recipe')

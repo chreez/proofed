@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ExperimentPanel from './ExperimentPanel.vue'
+import { useExperiment } from '@/composables/useExperiment'
 import type { Recipe, ExperimentConfig, WaterContentTable } from '@/types/recipe'
 
 // Mock localStorage
@@ -144,12 +145,21 @@ function makeRecipe(withExperiment = true): Recipe {
   } as unknown as Recipe
 }
 
-const defaultProps = {
-  recipe: makeRecipe(),
-  recipeId: 'test-recipe',
-  waterContentTable,
-  sectionId: 'experiment-section'
+function makeDefaultProps(recipe?: Recipe) {
+  const r = recipe ?? makeRecipe()
+  const instance = useExperiment(r, waterContentTable)
+  return {
+    recipe: r,
+    recipeId: 'test-recipe',
+    waterContentTable,
+    experimentConfig: experimentConfig,
+    experimentInstance: instance,
+    sliderNotes: {} as Record<string, string>,
+    sectionId: 'experiment-section'
+  }
 }
+
+let defaultProps = makeDefaultProps()
 
 describe('ExperimentPanel', () => {
   beforeEach(() => {
@@ -158,6 +168,8 @@ describe('ExperimentPanel', () => {
     // Restore default getItem behavior (read from empty store = null)
     localStorageMock.getItem.mockReset()
     localStorageMock.getItem.mockImplementation(() => null)
+    // Fresh instance for each test to avoid shared state
+    defaultProps = makeDefaultProps()
   })
 
   it('renders when experiment config is present', () => {
@@ -336,7 +348,7 @@ describe('ExperimentPanel', () => {
     expect(wrapper.find('input[placeholder="Name (e.g., Kalamata olives)"]').exists()).toBe(true)
   })
 
-  it('persists edit timestamps in localStorage', async () => {
+  it('adjusting slider updates the experiment instance state', async () => {
     const wrapper = mount(ExperimentPanel, { props: defaultProps })
     await wrapper.find('[role="button"]').trigger('click')
 
@@ -346,32 +358,20 @@ describe('ExperimentPanel', () => {
     const slider = wrapper.find('input[type="range"]')
     await slider.setValue('600')
 
-    // localStorage should have been called with data containing lastEditedAt
-    const lastCall = localStorageMock.setItem.mock.calls.find(
-      (c: [string, string]) => c[0] === 'experiment-test-recipe'
-    )
-    expect(lastCall).toBeDefined()
-    const stored = JSON.parse(lastCall![1])
-    expect(stored.lastEditedAt).toBeDefined()
-    expect(stored.editHistory).toBeInstanceOf(Array)
-    expect(stored.editHistory.length).toBeGreaterThan(0)
+    // The experiment instance adjustments map should reflect the change
+    expect(defaultProps.experimentInstance.adjustments.value.get('flour')).toBe(600)
   })
 
-  it('persists adjustments to localStorage', async () => {
+  it('adjustment is reflected in displayed value', async () => {
     const wrapper = mount(ExperimentPanel, { props: defaultProps })
     await wrapper.find('[role="button"]').trigger('click')
 
-    // Open slider and adjust
     const editBtns = wrapper.findAll('button[title="Adjust amount"], button[title="Hide slider"]')
     await editBtns[0].trigger('click')
     const slider = wrapper.find('input[type="range"]')
     await slider.setValue('600')
 
-    // localStorage.setItem should have been called
-    expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      'experiment-test-recipe',
-      expect.any(String)
-    )
+    expect(wrapper.text()).toContain('600g')
   })
 
   it('freeform form submits and adds ingredient', async () => {
@@ -436,7 +436,7 @@ describe('ExperimentPanel', () => {
     expect(wrapper.text()).toContain('Enrichment')
   })
 
-  it('reset all closes open sliders and clears localStorage', async () => {
+  it('reset all closes open sliders and clears adjustments', async () => {
     const wrapper = mount(ExperimentPanel, { props: defaultProps })
     await wrapper.find('[role="button"]').trigger('click')
 
@@ -452,27 +452,19 @@ describe('ExperimentPanel', () => {
 
     // Sliders should be hidden again
     expect(wrapper.findAll('input[type="range"]').length).toBe(0)
-    // localStorage should be cleared
-    expect(localStorageMock.removeItem).toHaveBeenCalledWith('experiment-test-recipe')
+    // Adjustments should be cleared
+    expect(defaultProps.experimentInstance.adjustments.value.size).toBe(0)
   })
 
-  it('loads persisted state from localStorage on mount', async () => {
-    const stored = JSON.stringify({
-      adjustments: { flour: 600 },
-      freeformIngredients: [],
-      notes: {},
-      lastEditedAt: '2026-05-01T00:00:00Z',
-      editHistory: ['2026-05-01T00:00:00Z']
-    })
-    localStorageMock.getItem.mockImplementation((key: string) => {
-      if (key === 'experiment-test-recipe') return stored
-      return null
-    })
+  it('renders pre-seeded adjustments from instance', async () => {
+    // Pre-seed the experiment instance with an adjustment
+    const props = makeDefaultProps()
+    props.experimentInstance.adjustIngredient('flour', 600)
 
-    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    const wrapper = mount(ExperimentPanel, { props })
     await wrapper.find('[role="button"]').trigger('click')
 
-    // Should show the persisted adjustment
+    // Should show the pre-seeded adjustment
     expect(wrapper.text()).toContain('600g')
   })
 
@@ -514,7 +506,7 @@ describe('ExperimentPanel', () => {
     expect(wrapper.text()).toContain('cancel')
   })
 
-  it('saving a note stores it and shows it', async () => {
+  it('saving a note emits update:sliderNotes', async () => {
     const wrapper = mount(ExperimentPanel, { props: defaultProps })
     await wrapper.find('[role="button"]').trigger('click')
 
@@ -530,7 +522,9 @@ describe('ExperimentPanel', () => {
     const saveBtn = wrapper.findAll('button').find(b => b.text() === 'save')
     await saveBtn!.trigger('click')
 
-    expect(wrapper.text()).toContain('Testing higher hydration')
+    const emitted = wrapper.emitted('update:sliderNotes')
+    expect(emitted).toBeDefined()
+    expect(emitted![0][0]).toEqual({ flour: 'Testing higher hydration' })
     expect(wrapper.find('input[placeholder="Why this adjustment..."]').exists()).toBe(false)
   })
 
@@ -555,20 +549,12 @@ describe('ExperimentPanel', () => {
   })
 
   it('existing note shows edit button', async () => {
-    // Pre-seed a note via localStorage
-    const stored = JSON.stringify({
-      adjustments: { flour: 600 },
-      freeformIngredients: [],
-      notes: { flour: 'My flour note' },
-      lastEditedAt: '2026-05-01T00:00:00Z',
-      editHistory: ['2026-05-01T00:00:00Z']
-    })
-    localStorageMock.getItem.mockImplementation((key: string) => {
-      if (key === 'experiment-test-recipe') return stored
-      return null
-    })
+    // Pre-seed notes via prop
+    const props = makeDefaultProps()
+    props.experimentInstance.adjustIngredient('flour', 600)
+    props.sliderNotes = { flour: 'My flour note' }
 
-    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    const wrapper = mount(ExperimentPanel, { props })
     await wrapper.find('[role="button"]').trigger('click')
 
     // Open flour slider
@@ -639,7 +625,8 @@ describe('ExperimentPanel', () => {
     const saveBtn = wrapper.findAll('button').find(b => b.text() === 'save')
     await saveBtn!.trigger('click')
 
-    expect(wrapper.text()).toContain('More heat')
+    const emitted = wrapper.emitted('update:sliderNotes')
+    expect(emitted![0][0]).toEqual({ jalapenos: 'More heat' })
   })
 
   it('note on enrichment ingredient works', async () => {
@@ -658,7 +645,8 @@ describe('ExperimentPanel', () => {
     const saveBtn = wrapper.findAll('button').find(b => b.text() === 'save')
     await saveBtn!.trigger('click')
 
-    expect(wrapper.text()).toContain('Extra richness')
+    const emitted = wrapper.emitted('update:sliderNotes')
+    expect(emitted![0][0]).toEqual({ butter: 'Extra richness' })
   })
 
   it('save note via Enter key', async () => {
@@ -675,7 +663,8 @@ describe('ExperimentPanel', () => {
     await noteInput.setValue('Enter save test')
     await noteInput.trigger('keydown.enter')
 
-    expect(wrapper.text()).toContain('Enter save test')
+    const emitted = wrapper.emitted('update:sliderNotes')
+    expect(emitted![0][0]).toEqual({ flour: 'Enter save test' })
     expect(wrapper.find('input[placeholder="Why this adjustment..."]').exists()).toBe(false)
   })
 
@@ -778,7 +767,8 @@ describe('ExperimentPanel', () => {
     const saveBtn = wrapper.findAll('button').find(b => b.text() === 'save')
     await saveBtn!.trigger('click')
 
-    expect(wrapper.text()).toContain('Trying higher hydration')
+    const emitted = wrapper.emitted('update:sliderNotes')
+    expect(emitted![0][0]).toEqual({ water: 'Trying higher hydration' })
   })
 
   it('remove freeform ingredient removes it from list', async () => {
@@ -802,5 +792,151 @@ describe('ExperimentPanel', () => {
     await removeBtn.trigger('click')
 
     expect(wrapper.text()).not.toContain('Olives')
+  })
+})
+
+describe('ExperimentPanel inline amount editing', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    localStorageMock.clear()
+    localStorageMock.getItem.mockReset()
+    localStorageMock.getItem.mockImplementation(() => null)
+    defaultProps = makeDefaultProps()
+  })
+
+  it('shows amount as text by default (not input)', async () => {
+    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    await wrapper.find('[role="button"]').trigger('click')
+
+    // Amount values shown as spans, not inputs
+    expect(wrapper.text()).toContain('550g')
+    const numInputs = wrapper.findAll('input[type="number"]')
+    expect(numInputs.length).toBe(0) // no number inputs visible initially
+  })
+
+  it('double-clicking amount opens inline number input', async () => {
+    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    await wrapper.find('[role="button"]').trigger('click')
+
+    // Find the flour amount span (550g)
+    const amountSpans = wrapper.findAll('span[title="Double-click to type a value"]')
+    expect(amountSpans.length).toBeGreaterThan(0)
+    await amountSpans[0].trigger('dblclick')
+
+    // Now a number input should appear
+    const numInputs = wrapper.findAll('input[type="number"]')
+    expect(numInputs.length).toBeGreaterThan(0)
+  })
+
+  it('commits amount on enter and updates adjustment', async () => {
+    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    await wrapper.find('[role="button"]').trigger('click')
+
+    // Double-click first amount
+    const amountSpans = wrapper.findAll('span[title="Double-click to type a value"]')
+    await amountSpans[0].trigger('dblclick')
+
+    // Set new value
+    const numInput = wrapper.find('input[type="number"]')
+    await numInput.setValue(600)
+    await numInput.trigger('keydown', { key: 'Enter' })
+
+    // Input should be gone, value updated
+    expect(wrapper.text()).toContain('600g')
+  })
+
+  it('cancels amount edit on escape', async () => {
+    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    await wrapper.find('[role="button"]').trigger('click')
+
+    const amountSpans = wrapper.findAll('span[title="Double-click to type a value"]')
+    await amountSpans[0].trigger('dblclick')
+
+    const numInput = wrapper.find('input[type="number"]')
+    await numInput.setValue(999)
+    await numInput.trigger('keydown', { key: 'Escape' })
+
+    // Original value should remain
+    expect(wrapper.text()).toContain('550g')
+    expect(wrapper.text()).not.toContain('999g')
+  })
+
+  it('clamps value to min/max range on commit', async () => {
+    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    await wrapper.find('[role="button"]').trigger('click')
+
+    const amountSpans = wrapper.findAll('span[title="Double-click to type a value"]')
+    await amountSpans[0].trigger('dblclick')
+
+    // Set value beyond max (flour max is 650)
+    const numInput = wrapper.find('input[type="number"]')
+    await numInput.setValue(999)
+    await numInput.trigger('keydown', { key: 'Enter' })
+
+    // Should be clamped to 650
+    expect(wrapper.text()).toContain('650g')
+  })
+})
+
+describe('ExperimentPanel note button', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    localStorageMock.clear()
+    localStorageMock.getItem.mockReset()
+    localStorageMock.getItem.mockImplementation(() => null)
+    defaultProps = makeDefaultProps()
+  })
+
+  it('shows "+ note" button with border styling when slider is open', async () => {
+    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    await wrapper.find('[role="button"]').trigger('click')
+
+    // Open first ingredient slider
+    const editBtns = wrapper.findAll('button[title="Adjust amount"], button[title="Hide slider"]')
+    await editBtns[0].trigger('click')
+
+    // Note button should have border
+    const noteBtn = wrapper.findAll('button').find(b => b.text().includes('+ note'))
+    expect(noteBtn?.exists()).toBe(true)
+    expect(noteBtn?.classes()).toContain('border')
+    expect(noteBtn?.classes()).toContain('border-stone-200')
+  })
+
+  it('clicking "+ note" reveals note input', async () => {
+    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    await wrapper.find('[role="button"]').trigger('click')
+
+    // Open slider
+    const editBtns = wrapper.findAll('button[title="Adjust amount"], button[title="Hide slider"]')
+    await editBtns[0].trigger('click')
+
+    // Click note button
+    const noteBtn = wrapper.findAll('button').find(b => b.text().includes('+ note'))
+    await noteBtn!.trigger('click')
+
+    // Note input should appear
+    const noteInput = wrapper.find('input[placeholder="Why this adjustment..."]')
+    expect(noteInput.exists()).toBe(true)
+  })
+
+  it('emits update:sliderNotes when saving a note', async () => {
+    const wrapper = mount(ExperimentPanel, { props: defaultProps })
+    await wrapper.find('[role="button"]').trigger('click')
+
+    const editBtns = wrapper.findAll('button[title="Adjust amount"], button[title="Hide slider"]')
+    await editBtns[0].trigger('click')
+
+    const noteBtn = wrapper.findAll('button').find(b => b.text().includes('+ note'))
+    await noteBtn!.trigger('click')
+
+    const noteInput = wrapper.find('input[placeholder="Why this adjustment..."]')
+    await noteInput.setValue('More flour for stiffer dough')
+
+    const saveBtn = wrapper.findAll('button').find(b => b.text() === 'save')
+    await saveBtn!.trigger('click')
+
+    const emitted = wrapper.emitted('update:sliderNotes')
+    expect(emitted).toBeTruthy()
+    expect(emitted![0][0]).toEqual({ flour: 'More flour for stiffer dough' })
   })
 })

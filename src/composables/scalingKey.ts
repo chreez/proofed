@@ -2,3 +2,5 @@
 export const SCALING_MULTIPLIER_KEY = Symbol('scalingMultiplier')
 // Provide/inject key for the scaling ingredients array (behavior badges on gather items)
 export const SCALING_INGREDIENTS_KEY = Symbol('scalingIngredients')
+// Provide/inject key for experiment adjustments (Map<ingredientId, adjustedGrams>)
+export const EXPERIMENT_ADJUSTMENTS_KEY = Symbol('experimentAdjustments')

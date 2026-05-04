@@ -9,7 +9,11 @@ import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import { latestCookLogEntryWithHero, findHeroPhoto } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
 import { copyToClipboard } from '@/composables/useClipboard'
-import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY } from '@/composables/scalingKey'
+import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY, EXPERIMENT_ADJUSTMENTS_KEY } from '@/composables/scalingKey'
+import { useExperiment } from '@/composables/useExperiment'
+import { useExperimentStorage } from '@/composables/useExperimentStorage'
+import { generateExperimentConfig } from '@/composables/useAutoExperiment'
+import type { ExperimentConfig } from '@/types/recipe'
 import { QrCode, Printer, ArrowLeft } from 'lucide-vue-next'
 import type { RecipeState, CookLogPhoto, WaterContentTable } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
@@ -74,6 +78,49 @@ provide(SCALING_INGREDIENTS_KEY, computed(() => currentRecipe.value?.scaling?.in
 
 // Reset multiplier when switching recipes
 watch(currentRecipeId, () => { scalingMultiplier.value = 1 })
+
+// Experiment: hoisted state so adjustments propagate to GatherSection + StateStep
+const effectiveExperimentConfig = computed<ExperimentConfig | null>(() => {
+  const recipe = currentRecipe.value
+  if (!recipe) return null
+  if (recipe.experiment === false) return null
+  if (recipe.experiment) return recipe.experiment
+  // Auto-generate when no explicit config and water content table loaded
+  if (!waterContentTable.value) return null
+  return generateExperimentConfig(recipe, waterContentTable.value)
+})
+
+// Experiment instance — recreated when config or recipe changes
+const experimentInstance = shallowRef<ReturnType<typeof useExperiment> | null>(null)
+const experimentSliderNotes = ref<Record<string, string>>({})
+let experimentStorageInstance: ReturnType<typeof useExperimentStorage> | null = null
+
+watch([currentRecipe, effectiveExperimentConfig, waterContentTable], ([recipe, config, wcTable]) => {
+  if (!recipe || !config || !wcTable) {
+    experimentInstance.value = null
+    experimentStorageInstance = null
+    return
+  }
+  // Build a recipe-like object with the effective config for useExperiment
+  const recipeWithConfig = { ...recipe, experiment: config }
+  const instance = useExperiment(recipeWithConfig, wcTable)
+  experimentInstance.value = instance
+
+  // Wire up persistence
+  if (currentRecipeId.value) {
+    experimentSliderNotes.value = {}
+    experimentStorageInstance = useExperimentStorage(
+      currentRecipeId.value,
+      instance.adjustments,
+      instance.freeformIngredients,
+      experimentSliderNotes
+    )
+    experimentStorageInstance.load()
+  }
+}, { immediate: true })
+
+// Provide adjustments map to descendants (GatherSection, StateStep)
+provide(EXPERIMENT_ADJUSTMENTS_KEY, computed(() => experimentInstance.value?.adjustments.value ?? new Map<string, number>()))
 
 // Derive page state from route
 const showIndex = computed(() => route.name === 'index')
@@ -642,11 +689,15 @@ watch(() => route.hash, (newHash) => {
               />
 
               <ExperimentPanel
-                v-if="currentRecipe.experiment && waterContentTable && currentRecipeId"
+                v-if="effectiveExperimentConfig && experimentInstance && waterContentTable && currentRecipeId"
                 :recipe="currentRecipe"
                 :recipe-id="currentRecipeId"
                 :water-content-table="waterContentTable"
+                :experiment-config="effectiveExperimentConfig"
+                :experiment-instance="experimentInstance"
+                :slider-notes="experimentSliderNotes"
                 section-id="experiment-section"
+                @update:slider-notes="experimentSliderNotes = $event"
               />
 
               <StageCard

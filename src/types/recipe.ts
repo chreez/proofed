@@ -64,7 +64,7 @@ export interface Recipe {
   scaling?: Scaling
   estimatedCost?: EstimatedCost
   technical_notes?: TechnicalNote[] | null
-  experiment?: ExperimentConfig
+  experiment?: ExperimentConfig | false
 }
 
 /**

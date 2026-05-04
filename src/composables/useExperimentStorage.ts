@@ -29,9 +29,9 @@ export function useExperimentStorage(
 
   /** Load saved state from localStorage. */
   function load(): void {
-    const saved = localStorage.getItem(key)
-    if (!saved) return
     try {
+      const saved = localStorage.getItem(key)
+      if (!saved) return
       const data: Partial<ExperimentStorageData> = JSON.parse(saved)
       if (data.adjustments) {
         adjustments.value = new Map(Object.entries(data.adjustments))
@@ -43,36 +43,43 @@ export function useExperimentStorage(
         notes.value = data.notes
       }
     } catch {
-      // Corrupted data — clear it
-      localStorage.removeItem(key)
+      // Corrupted data or unavailable storage — ignore
     }
   }
 
   /** Save current state to localStorage. Tracks edit timestamps silently. */
   function save(): void {
-    const now = new Date().toISOString()
-    const existing = localStorage.getItem(key)
-    let editHistory: string[] = []
-    if (existing) {
-      try {
-        const prev: Partial<ExperimentStorageData> = JSON.parse(existing)
-        editHistory = prev.editHistory || []
-      } catch { /* ignore */ }
+    try {
+      const now = new Date().toISOString()
+      const existing = localStorage.getItem(key)
+      let editHistory: string[] = []
+      if (existing) {
+        try {
+          const prev: Partial<ExperimentStorageData> = JSON.parse(existing)
+          editHistory = prev.editHistory || []
+        } catch { /* ignore */ }
+      }
+      editHistory.push(now)
+      const data: ExperimentStorageData = {
+        adjustments: Object.fromEntries(adjustments.value),
+        freeformIngredients: freeformIngredients.value,
+        notes: notes.value,
+        lastEditedAt: now,
+        editHistory
+      }
+      localStorage.setItem(key, JSON.stringify(data))
+    } catch {
+      // Storage unavailable or full — ignore
     }
-    editHistory.push(now)
-    const data: ExperimentStorageData = {
-      adjustments: Object.fromEntries(adjustments.value),
-      freeformIngredients: freeformIngredients.value,
-      notes: notes.value,
-      lastEditedAt: now,
-      editHistory
-    }
-    localStorage.setItem(key, JSON.stringify(data))
   }
 
   /** Clear persisted state. */
   function clear(): void {
-    localStorage.removeItem(key)
+    try {
+      localStorage.removeItem(key)
+    } catch {
+      // Storage unavailable — ignore
+    }
   }
 
   // Auto-save on state changes

@@ -16,8 +16,8 @@ exports[`HTML snapshot > matches snapshot 1`] = `
       <div class="mt-4 space-y-4">
         <!--v-if-->
         <div class="space-y-3">
-          <div class="state-step-stub" is-active-step="true">Step One</div>
-          <div class="state-step-stub" is-active-step="false">Step Two</div>
+          <div class="state-step-stub" is-active-step="true" ingredient-name-map="[object Object]">Step One</div>
+          <div class="state-step-stub" is-active-step="false" ingredient-name-map="[object Object]">Step Two</div>
         </div>
       </div>
     </div>

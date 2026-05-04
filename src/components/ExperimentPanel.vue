@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { RotateCcw, Plus, X, Pencil, Link2, Check } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
-import type { Recipe, ExperimentIngredient, ExperimentRole, WaterContentTable } from '@/types/recipe'
-import { useExperiment } from '@/composables/useExperiment'
-import { useExperimentStorage } from '@/composables/useExperimentStorage'
+import type { Recipe, ExperimentConfig, ExperimentIngredient, ExperimentRole, WaterContentTable } from '@/types/recipe'
+import type { useExperiment } from '@/composables/useExperiment'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { useTemplateRef } from 'vue'
 
@@ -12,15 +11,20 @@ const props = defineProps<{
   recipe: Recipe
   recipeId: string
   waterContentTable: WaterContentTable
+  experimentConfig: ExperimentConfig
+  experimentInstance: ReturnType<typeof useExperiment>
+  sliderNotes: Record<string, string>
   sectionId: string
 }>()
 
+const emit = defineEmits<{
+  'update:sliderNotes': [notes: Record<string, string>]
+}>()
 
 const linkBtn = useTemplateRef<InstanceType<typeof IconButton>>('linkBtn')
 
-const config = computed(() => props.recipe.experiment!)
+const config = computed(() => props.experimentConfig)
 
-const experiment = useExperiment(props.recipe, props.waterContentTable)
 const {
   adjustments,
   freeformIngredients,
@@ -36,14 +40,7 @@ const {
   addFreeform,
   removeFreeform,
   getAmount
-} = experiment
-
-// Per-slider notes
-const sliderNotes = ref<Record<string, string>>({})
-
-// Persistence
-const storage = useExperimentStorage(props.recipeId, adjustments, freeformIngredients, sliderNotes)
-onMounted(() => storage.load())
+} = props.experimentInstance
 
 // Collapsed state
 const isCollapsed = ref(true)
@@ -97,9 +94,9 @@ function handleAddFreeform(): void {
 
 function handleResetAll(): void {
   resetAll()
-  sliderNotes.value = {}
+  emit('update:sliderNotes', {})
   editingIngredients.value = new Set()
-  storage.clear()
+  // Storage is managed by App.vue — clearing adjustments triggers auto-save
 }
 
 function handleSliderInput(ingredient: ExperimentIngredient, event: Event): void {
@@ -120,6 +117,14 @@ const flourIngredients = computed(() => config.value.ingredients.filter(i => i.r
 const liquidIngredients = computed(() => config.value.ingredients.filter(i => i.role === 'base_liquid'))
 const enrichmentIngredients = computed(() => config.value.ingredients.filter(i => i.role === 'enrichment'))
 const inclusionIngredients = computed(() => config.value.ingredients.filter(i => i.role === 'inclusion'))
+
+// Unified role groups for single-loop template
+const roleGroups = computed(() => [
+  { label: 'Base Flour', items: flourIngredients.value, showBakers: false },
+  { label: 'Base Liquid', items: liquidIngredients.value, showBakers: false },
+  { label: 'Inclusions', items: inclusionIngredients.value, showBakers: true },
+  { label: 'Enrichments', items: enrichmentIngredients.value, showBakers: false }
+].filter(g => g.items.length > 0))
 
 // Ingredient display name lookup
 function getIngredientName(id: string): string {
@@ -146,16 +151,16 @@ const noteInput = ref('')
 
 function startNote(id: string): void {
   editingNoteId.value = id
-  noteInput.value = sliderNotes.value[id] || ''
+  noteInput.value = props.sliderNotes[id] || ''
 }
 
 function saveNote(id: string): void {
   if (noteInput.value.trim()) {
-    sliderNotes.value = { ...sliderNotes.value, [id]: noteInput.value.trim() }
+    emit('update:sliderNotes', { ...props.sliderNotes, [id]: noteInput.value.trim() })
   } else {
-    const updated = { ...sliderNotes.value }
+    const updated = { ...props.sliderNotes }
     delete updated[id]
-    sliderNotes.value = updated
+    emit('update:sliderNotes', updated)
   }
   editingNoteId.value = null
   noteInput.value = ''
@@ -164,6 +169,29 @@ function saveNote(id: string): void {
 function cancelNote(): void {
   editingNoteId.value = null
   noteInput.value = ''
+}
+
+// Inline amount editing (double-click on value)
+const editingAmountId = ref<string | null>(null)
+const amountInput = ref<number | null>(null)
+
+function startAmountEdit(ing: ExperimentIngredient): void {
+  editingAmountId.value = ing.id
+  amountInput.value = getAmount(ing)
+}
+
+function commitAmountEdit(ing: ExperimentIngredient): void {
+  if (amountInput.value != null) {
+    const clamped = Math.max(ing.min, Math.min(ing.max, amountInput.value))
+    adjustIngredient(ing.id, clamped)
+  }
+  editingAmountId.value = null
+  amountInput.value = null
+}
+
+function cancelAmountEdit(): void {
+  editingAmountId.value = null
+  amountInput.value = null
 }
 </script>
 
@@ -238,17 +266,37 @@ function cancelNote(): void {
           </div>
 
           <!-- Ingredient groups -->
-          <div v-if="flourIngredients.length" class="space-y-2">
-            <div class="font-mono text-[10px] text-stone-400 uppercase tracking-wide">Base Flour</div>
-            <div v-for="ing in flourIngredients" :key="ing.id">
+          <div v-for="group in roleGroups" :key="group.label" class="space-y-2">
+            <div class="font-mono text-[10px] text-stone-400 uppercase tracking-wide">{{ group.label }}</div>
+            <div v-for="ing in group.items" :key="ing.id">
               <div
                 class="flex items-center justify-between py-1.5"
                 :class="{ 'border-l-3 border-accent pl-2 -ml-2': isAdjusted(ing) }"
               >
                 <span class="text-sm text-ink">{{ getIngredientName(ing.id) }}</span>
                 <div class="flex items-center gap-2">
-                  <span class="font-mono text-sm font-medium" :class="isAdjusted(ing) ? 'text-accent' : 'text-ink'">{{ getAmount(ing) }}g</span>
+                  <input
+                    v-if="editingAmountId === ing.id"
+                    v-model.number="amountInput"
+                    type="number"
+                    :min="ing.min"
+                    :max="ing.max"
+                    :step="ing.step"
+                    class="font-mono text-sm font-medium w-16 border-b-2 border-accent bg-transparent text-accent outline-none text-right tabular-nums"
+                    @blur="commitAmountEdit(ing)"
+                    @keydown.enter="commitAmountEdit(ing)"
+                    @keydown.esc="cancelAmountEdit"
+                    @vue:mounted="({ el }: { el: HTMLInputElement }) => { el.focus(); el.select() }"
+                  />
+                  <span
+                    v-else
+                    class="font-mono text-sm font-medium cursor-text tabular-nums"
+                    :class="isAdjusted(ing) ? 'text-accent' : 'text-ink'"
+                    :title="'Double-click to type a value'"
+                    @dblclick="startAmountEdit(ing)"
+                  >{{ getAmount(ing) }}g</span>
                   <span v-if="isAdjusted(ing)" class="font-mono text-[10px] text-stone-500">({{ getDiff(ing) > 0 ? '+' : '' }}{{ getDiff(ing) }}g)</span>
+                  <span v-if="group.showBakers" class="font-mono text-[10px] text-stone-400">{{ perInclusionBakers.find(p => p.id === ing.id)?.percent ?? 0 }}% bkr</span>
                   <IconButton
                     v-if="isAdjusted(ing)"
                     tooltip="Reset to default"
@@ -285,194 +333,7 @@ function cancelNote(): void {
                   <button class="text-stone-400 hover:text-accent text-[10px]" @click="startNote(ing.id)">edit</button>
                 </div>
                 <div v-else-if="editingNoteId !== ing.id">
-                  <button class="font-mono text-[10px] text-stone-400 hover:text-accent" @click="startNote(ing.id)">+ note</button>
-                </div>
-                <div v-if="editingNoteId === ing.id" class="flex gap-1.5">
-                  <input
-                    v-model="noteInput"
-                    class="flex-1 border-2 border-stone-200 p-1 text-xs bg-surface rounded-none font-mono"
-                    placeholder="Why this adjustment..."
-                    @keydown.enter="saveNote(ing.id)"
-                    @keydown.esc="cancelNote"
-                  />
-                  <button class="btn-primary text-[10px] py-0.5 px-2 border-2 border-stone-700" @click="saveNote(ing.id)">save</button>
-                  <button class="btn-secondary text-[10px] py-0.5 px-2 border-2 border-stone-200" @click="cancelNote">cancel</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="liquidIngredients.length" class="space-y-2">
-            <div class="font-mono text-[10px] text-stone-400 uppercase tracking-wide">Base Liquid</div>
-            <div v-for="ing in liquidIngredients" :key="ing.id">
-              <div
-                class="flex items-center justify-between py-1.5"
-                :class="{ 'border-l-3 border-accent pl-2 -ml-2': isAdjusted(ing) }"
-              >
-                <span class="text-sm text-ink">{{ getIngredientName(ing.id) }}</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-mono text-sm font-medium" :class="isAdjusted(ing) ? 'text-accent' : 'text-ink'">{{ getAmount(ing) }}g</span>
-                  <span v-if="isAdjusted(ing)" class="font-mono text-[10px] text-stone-500">({{ getDiff(ing) > 0 ? '+' : '' }}{{ getDiff(ing) }}g)</span>
-                  <IconButton
-                    v-if="isAdjusted(ing)"
-                    tooltip="Reset to default"
-                    size="sm"
-                    class="text-stone-400"
-                    @click="resetIngredient(ing.id)"
-                  ><RotateCcw /></IconButton>
-                  <IconButton
-                    :tooltip="isEditing(ing.id) ? 'Hide slider' : 'Adjust amount'"
-                    size="sm"
-                    class="text-stone-300"
-                    @click="toggleEdit(ing.id)"
-                  ><Pencil /></IconButton>
-                </div>
-              </div>
-              <div v-if="isEditing(ing.id)" class="pl-2 pb-2 space-y-1">
-                <input
-                  type="range"
-                  :min="ing.min"
-                  :max="ing.max"
-                  :step="ing.step"
-                  :value="getAmount(ing)"
-                  class="experiment-slider w-full"
-                  @input="handleSliderInput(ing, $event)"
-                />
-                <div class="flex justify-between">
-                  <span class="font-mono text-[10px] text-stone-400">{{ ing.min }}g</span>
-                  <span class="font-mono text-[10px] text-stone-400">{{ ing.max }}g</span>
-                </div>
-                <div v-if="sliderNotes[ing.id] && editingNoteId !== ing.id" class="flex items-center gap-1.5">
-                  <span class="font-mono text-[10px] text-stone-500 italic">{{ sliderNotes[ing.id] }}</span>
-                  <button class="text-stone-400 hover:text-accent text-[10px]" @click="startNote(ing.id)">edit</button>
-                </div>
-                <div v-else-if="editingNoteId !== ing.id">
-                  <button class="font-mono text-[10px] text-stone-400 hover:text-accent" @click="startNote(ing.id)">+ note</button>
-                </div>
-                <div v-if="editingNoteId === ing.id" class="flex gap-1.5">
-                  <input
-                    v-model="noteInput"
-                    class="flex-1 border-2 border-stone-200 p-1 text-xs bg-surface rounded-none font-mono"
-                    placeholder="Why this adjustment..."
-                    @keydown.enter="saveNote(ing.id)"
-                    @keydown.esc="cancelNote"
-                  />
-                  <button class="btn-primary text-[10px] py-0.5 px-2 border-2 border-stone-700" @click="saveNote(ing.id)">save</button>
-                  <button class="btn-secondary text-[10px] py-0.5 px-2 border-2 border-stone-200" @click="cancelNote">cancel</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="inclusionIngredients.length" class="space-y-2">
-            <div class="font-mono text-[10px] text-stone-400 uppercase tracking-wide">Inclusions</div>
-            <div v-for="ing in inclusionIngredients" :key="ing.id">
-              <div
-                class="flex items-center justify-between py-1.5"
-                :class="{ 'border-l-3 border-accent pl-2 -ml-2': isAdjusted(ing) }"
-              >
-                <span class="text-sm text-ink">{{ getIngredientName(ing.id) }}</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-mono text-sm font-medium" :class="isAdjusted(ing) ? 'text-accent' : 'text-ink'">{{ getAmount(ing) }}g</span>
-                  <span v-if="isAdjusted(ing)" class="font-mono text-[10px] text-stone-500">({{ getDiff(ing) > 0 ? '+' : '' }}{{ getDiff(ing) }}g)</span>
-                  <span class="font-mono text-[10px] text-stone-400">{{ perInclusionBakers.find(p => p.id === ing.id)?.percent ?? 0 }}% bkr</span>
-                  <IconButton
-                    v-if="isAdjusted(ing)"
-                    tooltip="Reset to default"
-                    size="sm"
-                    class="text-stone-400"
-                    @click="resetIngredient(ing.id)"
-                  ><RotateCcw /></IconButton>
-                  <IconButton
-                    :tooltip="isEditing(ing.id) ? 'Hide slider' : 'Adjust amount'"
-                    size="sm"
-                    class="text-stone-300"
-                    @click="toggleEdit(ing.id)"
-                  ><Pencil /></IconButton>
-                </div>
-              </div>
-              <div v-if="isEditing(ing.id)" class="pl-2 pb-2 space-y-1">
-                <input
-                  type="range"
-                  :min="ing.min"
-                  :max="ing.max"
-                  :step="ing.step"
-                  :value="getAmount(ing)"
-                  class="experiment-slider w-full"
-                  @input="handleSliderInput(ing, $event)"
-                />
-                <div class="flex justify-between">
-                  <span class="font-mono text-[10px] text-stone-400">{{ ing.min }}g</span>
-                  <span class="font-mono text-[10px] text-stone-400">{{ ing.max }}g</span>
-                </div>
-                <div v-if="sliderNotes[ing.id] && editingNoteId !== ing.id" class="flex items-center gap-1.5">
-                  <span class="font-mono text-[10px] text-stone-500 italic">{{ sliderNotes[ing.id] }}</span>
-                  <button class="text-stone-400 hover:text-accent text-[10px]" @click="startNote(ing.id)">edit</button>
-                </div>
-                <div v-else-if="editingNoteId !== ing.id">
-                  <button class="font-mono text-[10px] text-stone-400 hover:text-accent" @click="startNote(ing.id)">+ note</button>
-                </div>
-                <div v-if="editingNoteId === ing.id" class="flex gap-1.5">
-                  <input
-                    v-model="noteInput"
-                    class="flex-1 border-2 border-stone-200 p-1 text-xs bg-surface rounded-none font-mono"
-                    placeholder="Why this adjustment..."
-                    @keydown.enter="saveNote(ing.id)"
-                    @keydown.esc="cancelNote"
-                  />
-                  <button class="btn-primary text-[10px] py-0.5 px-2 border-2 border-stone-700" @click="saveNote(ing.id)">save</button>
-                  <button class="btn-secondary text-[10px] py-0.5 px-2 border-2 border-stone-200" @click="cancelNote">cancel</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="enrichmentIngredients.length" class="space-y-2">
-            <div class="font-mono text-[10px] text-stone-400 uppercase tracking-wide">Enrichments</div>
-            <div v-for="ing in enrichmentIngredients" :key="ing.id">
-              <div
-                class="flex items-center justify-between py-1.5"
-                :class="{ 'border-l-3 border-accent pl-2 -ml-2': isAdjusted(ing) }"
-              >
-                <span class="text-sm text-ink">{{ getIngredientName(ing.id) }}</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-mono text-sm font-medium" :class="isAdjusted(ing) ? 'text-accent' : 'text-ink'">{{ getAmount(ing) }}g</span>
-                  <span v-if="isAdjusted(ing)" class="font-mono text-[10px] text-stone-500">({{ getDiff(ing) > 0 ? '+' : '' }}{{ getDiff(ing) }}g)</span>
-                  <IconButton
-                    v-if="isAdjusted(ing)"
-                    tooltip="Reset to default"
-                    size="sm"
-                    class="text-stone-400"
-                    @click="resetIngredient(ing.id)"
-                  ><RotateCcw /></IconButton>
-                  <IconButton
-                    :tooltip="isEditing(ing.id) ? 'Hide slider' : 'Adjust amount'"
-                    size="sm"
-                    class="text-stone-300"
-                    @click="toggleEdit(ing.id)"
-                  ><Pencil /></IconButton>
-                </div>
-              </div>
-              <div v-if="isEditing(ing.id)" class="pl-2 pb-2 space-y-1">
-                <input
-                  type="range"
-                  :min="ing.min"
-                  :max="ing.max"
-                  :step="ing.step"
-                  :value="getAmount(ing)"
-                  class="experiment-slider w-full"
-                  @input="handleSliderInput(ing, $event)"
-                />
-                <div class="flex justify-between">
-                  <span class="font-mono text-[10px] text-stone-400">{{ ing.min }}g</span>
-                  <span class="font-mono text-[10px] text-stone-400">{{ ing.max }}g</span>
-                </div>
-                <div v-if="sliderNotes[ing.id] && editingNoteId !== ing.id" class="flex items-center gap-1.5">
-                  <span class="font-mono text-[10px] text-stone-500 italic">{{ sliderNotes[ing.id] }}</span>
-                  <button class="text-stone-400 hover:text-accent text-[10px]" @click="startNote(ing.id)">edit</button>
-                </div>
-                <div v-else-if="editingNoteId !== ing.id">
-                  <button class="font-mono text-[10px] text-stone-400 hover:text-accent" @click="startNote(ing.id)">+ note</button>
+                  <button class="font-mono text-[10px] text-stone-400 hover:text-accent px-1.5 py-0.5 border border-stone-200 hover:border-accent transition-colors" @click="startNote(ing.id)">+ note</button>
                 </div>
                 <div v-if="editingNoteId === ing.id" class="flex gap-1.5">
                   <input
@@ -569,6 +430,16 @@ function cancelNote(): void {
 </template>
 
 <style scoped>
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .live-badge {
   position: relative;
   display: inline-flex;

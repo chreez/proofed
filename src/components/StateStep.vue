@@ -8,7 +8,7 @@ import TempText from '@/components/TempText.vue'
 import ScratchpadNote from '@/components/ScratchpadNote.vue'
 import ReminderBanner from '@/components/ReminderBanner.vue'
 import { scrollToStageAfterTransition } from '@/composables/useScrollToNext'
-import { SCALING_MULTIPLIER_KEY } from '@/composables/scalingKey'
+import { SCALING_MULTIPLIER_KEY, EXPERIMENT_ADJUSTMENTS_KEY } from '@/composables/scalingKey'
 
 interface StepNoteData {
   note: string
@@ -23,6 +23,7 @@ const props = defineProps<{
   stepNote?: StepNoteData
   scratchpad?: ReturnType<typeof useScratchpad>
   isActiveStep?: boolean
+  ingredientNameMap?: Record<string, { id: string; total: number }>
 }>()
 
 const emit = defineEmits<{
@@ -33,6 +34,8 @@ const isChecked = computed(() => props.progress.isStateChecked(props.state.id))
 
 // Inject multiplier from App.vue (defaults to 1 if not provided)
 const multiplier = inject<Ref<number>>(SCALING_MULTIPLIER_KEY, ref(1))
+// Inject experiment adjustments (Map<ingredientId, adjustedGrams>)
+const experimentAdjustments = inject<Ref<Map<string, number>>>(EXPERIMENT_ADJUSTMENTS_KEY, ref(new Map()))
 
 function toggle() {
   const advancedTo = props.progress.toggleState(props.state.id, props.stageId)
@@ -42,15 +45,46 @@ function toggle() {
   emit('toggled', props.state.id)
 }
 
-// Scale component amount by parsing and multiplying numeric values
-function scaleComponentAmount(amount: string): string {
-  if (multiplier.value === 1) return amount
+/**
+ * Scale component amount by multiplier and experiment adjustments.
+ * Returns { display, wasAmount } — wasAmount is set when experiment changed the value.
+ */
+function scaleComponentAmount(name: string, amount: string): { display: string; wasAmount: string | null } {
   const match = amount.match(/^([\d.]+)/)
-  if (!match) return amount
+  if (!match) return { display: amount, wasAmount: null }
+
   const num = parseFloat(match[1])
-  const scaled = num * multiplier.value
   const unit = amount.slice(match[1].length)
-  return `${scaled}${unit}`
+  const expAdj = experimentAdjustments.value
+  const nameMap = props.ingredientNameMap ?? {}
+
+  // Try to match this component to a recipe ingredient by name
+  const lowerName = name.toLowerCase()
+  const matched = nameMap[lowerName]
+
+  let adjusted = num
+  let wasOriginal: number | null = null
+
+  if (matched && expAdj.has(matched.id) && matched.total > 0) {
+    const ratio = expAdj.get(matched.id)! / matched.total
+    if (ratio !== 1) {
+      adjusted = num * ratio
+      wasOriginal = num * multiplier.value
+    }
+  }
+
+  const scaled = adjusted * multiplier.value
+  const display = `${Math.round(scaled * 10) / 10}${unit}`
+
+  if (wasOriginal != null) {
+    return { display, wasAmount: `${Math.round(wasOriginal * 10) / 10}${unit}` }
+  }
+
+  if (multiplier.value !== 1) {
+    return { display, wasAmount: null }
+  }
+
+  return { display: amount, wasAmount: null }
 }
 
 // Scratchpad handlers
@@ -65,6 +99,15 @@ function handleReminderRespond(stepId: string, prompt: string, value: string): v
 function handleReminderDismiss(stepId: string, prompt: string): void {
   props.scratchpad?.dismissReminder(stepId, prompt)
 }
+
+// Pre-compute scaled components to avoid repeated calls in template
+const scaledComponents = computed(() => {
+  if (!props.state.components) return []
+  return props.state.components.map(comp => ({
+    ...comp,
+    ...scaleComponentAmount(comp.name, comp.amount)
+  }))
+})
 
 const stepEntries = computed(() => props.scratchpad?.getEntriesForStep(props.state.id) ?? [])
 const hasEntries = computed(() => stepEntries.value.length > 0)
@@ -148,13 +191,15 @@ function parseSourceSegments(src: string): SourceSegment[] {
 
         <p class="text-body text-sm mb-3">{{ state.direction }}</p>
 
-        <div v-if="state.components?.length" class="flex flex-wrap gap-2 mb-3">
+        <div v-if="scaledComponents.length" class="flex flex-wrap gap-2 mb-3">
           <span
-            v-for="comp in state.components"
+            v-for="comp in scaledComponents"
             :key="comp.name"
             class="text-xs bg-stone-100 text-stone-700 px-2 py-1"
+            :class="{ 'border-l-2 border-accent': comp.wasAmount }"
           >
-            <TempText :text="comp.name" />: {{ scaleComponentAmount(comp.amount) }}
+            <TempText :text="comp.name" />: {{ comp.display }}
+            <span v-if="comp.wasAmount" class="text-stone-400 ml-1">(was {{ comp.wasAmount }})</span>
           </span>
         </div>
 
