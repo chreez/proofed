@@ -101,8 +101,9 @@ async function loadData(): Promise<void> {
   try {
     const manifestRes = await fetch('/recipes/index.json')
     const manifest: RecipeManifest = await manifestRes.json()
+    const manifestRecipes = manifest?.recipes ?? []
 
-    const recipePromises = manifest.recipes.map(async (entry) => {
+    const recipePromises = manifestRecipes.map(async (entry) => {
       const res = await fetch(`/recipes/${entry.file}`)
       const recipe: Recipe = await res.json()
       return { id: entry.id, name: entry.name, recipe }
