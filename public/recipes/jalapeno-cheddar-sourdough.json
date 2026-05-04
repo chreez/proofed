@@ -543,7 +543,38 @@
         "Loaf 2: 475°F covered 20 min, 440°F uncovered ~18 min. More spring, smoother skin, fluffier. Lower temps were better",
         "Friend reports best bread yet. Took liberties due to time constraints — should always start these earlier"
       ],
-      "photos": [],
+      "photos": [
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7469-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7469-400w.webp",
+          "alt": "Loaf 1 cooling on wire rack — heavy AP flour dusting, jalapeño slices poking through crust, caramelized cheese melted around base onto parchment"
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7474-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7474-400w.webp",
+          "alt": "Wide cross-section of loaf 1 — extensive cheddar melt concentrated in lower half, jalapeño pieces throughout, soft pillowy enriched crumb"
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7477-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7477-400w.webp",
+          "alt": "Loaf 2 from above on cutting board — smoother skin than loaf 1, cross score pattern, cheese visible at edges where it melted through"
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7478-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7478-400w.webp",
+          "alt": "Friend's photo of last piece of loaf on cutting board — 'This is how much is left. Until I eat in a few moments.'"
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7479-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7479-400w.webp",
+          "alt": "iMessage review — 'Bro. This is the best bread you've ever made. I'd stake my life on it.'"
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7475-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-03/img-7475-400w.webp",
+          "alt": "Loaf 2 halved on cutting board — full cross-section showing well-distributed jalapeño and cheddar pockets, even crumb structure, better spring than loaf 1"
+        }
+      ],
       "cost": {
         "total": 5.89,
         "perServing": 2.94,
