@@ -522,5 +522,100 @@
       { "id": "inclusion-load", "label": "Inclusion Load", "unit": "%", "type": "inclusion_load" },
       { "id": "total-dough", "label": "Total Dough Weight", "unit": "g", "type": "total_dough_weight" }
     ]
-  }
+  },
+  "cook_log": [
+    {
+      "date": "2026-05-03",
+      "start_date": "2026-05-02",
+      "version": "v1.0.0",
+      "summary": "First bake — skipped levain, used active starter with adjusted flour/water (-40g each). Cold bulk fermented overnight instead of cold retard, shaped and proofed at room temp. Loaf 2 had better spring and smoother skin at lower temps (475/440 vs 480). Friend called it best bread yet.",
+      "notes": [
+        "Skipped levain build — used active starter directly, reduced flour by 40g and water by 40g",
+        "Kitchen temp 75.9°F at autolyse start (10:15pm May 2)",
+        "DDT 81°F after dry ingredients incorporation",
+        "DDT 78.4°F after butter — unsure about butter technique, may need to rewatch video",
+        "Did two stretch-and-fold sets, then switched to coil folds (lift in center and fold over itself)",
+        "DDT 76.5°F at fold 3 (1:27am May 3)",
+        "Cold bulk fermented overnight in fridge (~2:22am to ~3:37pm, ~13 hrs). Dough still quite chilled at divide",
+        "Total dough weight 1390g, 695g target per loaf",
+        "Reversed recipe: cold bulk instead of cold retard. Shaped, then proofed room temp during preheat (~70 min loaf 1, ~2.5 hrs loaf 2)",
+        "Loaf 1: 480°F covered 20 min, 480°F uncovered ~20 min. Internal 210°F+",
+        "Loaf 2: 475°F covered 20 min, 440°F uncovered ~18 min. More spring, smoother skin, fluffier. Lower temps were better",
+        "Friend reports best bread yet. Took liberties due to time constraints — should always start these earlier"
+      ],
+      "photos": [],
+      "cost": {
+        "total": 5.89,
+        "perServing": 2.94,
+        "servings": 2,
+        "items": [
+          { "ingredientId": "flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "amount": 550, "unit": "g", "cost": 1.33 },
+          { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 10, "unit": "g", "cost": 0.06 },
+          { "ingredientId": "milk-powder", "name": "Nonfat Milk Powder", "sourceType": "heb", "sourceName": "H-E-B Instant Non-Fat Dry Milk", "amount": 25, "unit": "g", "cost": 0.27 },
+          { "ingredientId": "brown-sugar", "name": "Brown Sugar", "sourceType": "heb", "sourceName": "H-E-B Brown Sugar", "amount": 28, "unit": "g", "cost": 0.07 },
+          { "ingredientId": "jalapenos", "name": "Fresh Jalapeños", "sourceType": "heb", "sourceName": "Fresh Jalapeño Pepper", "amount": 120, "unit": "g", "cost": 0.24 },
+          { "ingredientId": "cheddar", "name": "Sharp Cheddar Cheese (block)", "sourceType": "heb", "sourceName": "Tillamook Extra Sharp Cheddar Cheese", "amount": 220, "unit": "g", "cost": 3.53 },
+          { "ingredientId": "butter", "name": "Unsalted Butter (room temp)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 45, "unit": "g", "cost": 0.39 }
+        ]
+      },
+      "next_time": [
+        { "text": "Start earlier — time constraints forced cold bulk; prefer overnight basket proof (cold retard after shaping)" },
+        { "text": "Rewatch Proof Bread video for butter incorporation technique" },
+        { "text": "Lower bake temps (475 covered / 440 uncovered) produced better results than 480/480" },
+        { "text": "Consider bumping recipe to use 100g active starter directly (no levain build) — suspect 100g is right for this yield since other recipes use 200g for larger batches" }
+      ],
+      "bake_notes": [
+        { "timestamp": "2026-05-03T03:15:27Z", "raw": "75.9 ambient kitchen temp. autolyse starters with starter and the adjusted flour weights", "curated": "Kitchen 75.9°F. Autolyse started with active starter and adjusted flour weights (-40g flour, -40g water)", "notable": true, "stepId": "autolyse-rest", "processing": "mix" },
+        { "timestamp": "2026-05-03T03:55:36Z", "raw": "81 after adding dry ingredients", "curated": "DDT 81°F after incorporating dry ingredients", "notable": true, "stepId": "develop-gluten", "processing": "mix" },
+        { "timestamp": "2026-05-03T04:08:21Z", "raw": "78.4 after butter inclusion. unsure about this step may need to rewatch video", "curated": "DDT 78.4°F after butter incorporation. Unsure about technique — need to rewatch video", "notable": false, "stepId": "add-butter", "processing": "mix" },
+        { "timestamp": "2026-05-03T05:14:00Z", "raw": "did two stretch and folds before deciding to do the other method of developing gluten. to lift in the center and fold over itself", "curated": "Did two stretch-and-fold sets, then switched to coil fold technique", "notable": false, "stepId": "stretch-fold-3", "processing": "bulk_ferment" },
+        { "timestamp": "2026-05-03T05:54:00Z", "raw": "finished a and fold 2 about 6 minutes ago. will check dough temp", "curated": "Finished coil fold 2. Will check dough temp", "notable": false, "stepId": "stretch-fold-3", "processing": "bulk_ferment | Timestamp inferred: '6 minutes ago' relative to 2026-05-03T05:59:58Z → 2026-05-03T05:54:00Z" },
+        { "timestamp": "2026-05-03T06:27:01Z", "raw": "76.5 stretch and folds 3", "curated": "DDT 76.5°F at fold 3", "notable": true, "stepId": "stretch-fold-3", "processing": "bulk_ferment" },
+        { "timestamp": "2026-05-03T07:22:42Z", "raw": "i'm gonna try overnight cold ferment", "curated": "Going with overnight cold bulk ferment", "notable": false, "stepId": "_general", "processing": "bulk_ferment" },
+        { "timestamp": "2026-05-03T20:37:20Z", "raw": "1390g", "curated": "Total dough weight 1390g", "notable": false, "stepId": "divide", "processing": "shaping" },
+        { "timestamp": "2026-05-03T20:37:40Z", "raw": "695 target", "curated": "Target 695g per loaf", "notable": false, "stepId": "divide", "processing": "shaping" },
+        { "timestamp": "2026-05-03T21:05:00Z", "raw": "since i reversed cold proofing. to cold bulk proof. i'm going to let the shaped doughs sit out while i preheat the oven. i shaped and preheated approx 15 minutes ago. record that as time of shape. prior to shaping i did a preshape and rest of 20 minutes. should be able to calculate these as the separate bake steps", "curated": "Reversed approach: cold bulk instead of cold retard. Shaped and started preheat ~15 min ago. Preshape + 20 min bench rest before final shape", "notable": true, "stepId": "cold-retard", "processing": "shaping | Timestamp inferred: '15 minutes ago' relative to 2026-05-03T21:19:50Z → 2026-05-03T21:05:00Z" },
+        { "timestamp": "2026-05-03T22:35:00Z", "raw": "removed lid approx four minutes ago. baked covered at 480 for 20", "curated": "Loaf 1: removed lid. Covered bake was 480°F for 20 min", "notable": true, "stepId": "bake-dry", "processing": "bake | Timestamp inferred: '4 minutes ago' relative to 2026-05-03T22:38:51Z → 2026-05-03T22:35:00Z" },
+        { "timestamp": "2026-05-03T22:54:39Z", "raw": "210+", "curated": "Internal temp 210°F+ (loaf 1)", "notable": true, "stepId": "bake-dry", "prompt": "Record internal bread temperature", "processing": "bake" },
+        { "timestamp": "2026-05-03T22:55:13Z", "raw": "first loaf out of oven. for second loaf i will preheat at 375. i'm thinking the temp is a bit too high to get the browning i want and spring with additions.", "curated": "First loaf out. Thinking temp too high for desired browning and spring with inclusions", "notable": false, "stepId": "bake-dry", "processing": "bake" },
+        { "timestamp": "2026-05-03T22:55:36Z", "raw": "the second bread will effectively have proofed a bit longer in the basket. about an hour and a half. notable for any differences between the two.", "curated": "Loaf 2 proofed ~1.5 hrs longer at room temp. Notable for differences between loaves", "notable": true, "stepId": "bake-dry", "processing": "bake" },
+        { "timestamp": "2026-05-03T23:53:48Z", "raw": "second bread 475 covered 20 minutes. just took off cover and going to aim for 18 minutes 440", "curated": "Loaf 2: 475°F covered 20 min, now uncovered aiming for 18 min at 440°F", "notable": true, "stepId": "bake-dry", "processing": "bake" }
+      ],
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-05-02 - 22:55", "temp_f": 81, "note": "after dry ingredients" },
+          { "time": "2026-05-02 - 23:08", "temp_f": 78.4, "note": "after butter" },
+          { "time": "2026-05-03 - 01:27", "temp_f": 76.5, "note": "at fold 3" }
+        ],
+        "bulk_ambient_temps": [
+          { "date": "2026-05-02", "temp_f": 75.9, "note": "kitchen at autolyse start" }
+        ],
+        "stretch_folds": [
+          { "time": "2026-05-03 - 00:14", "type": "stretch_fold", "note": "sets 1 & 2 (traditional S&F, then switched to coils)" },
+          { "time": "2026-05-03 - 00:54", "type": "coil", "note": "inferred: '6 min ago' at 00:59 → 00:54" },
+          { "time": "2026-05-03 - 01:27", "type": "coil", "note": "temp 76.5°F" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "temp_f": 480, "duration_min": 70, "note": "loaf 1" },
+          { "stage": "covered", "temp_f": 480, "duration_min": 20, "start_time": "2026-05-03 - 17:15", "note": "loaf 1" },
+          { "stage": "uncovered", "temp_f": 480, "duration_min": 19, "note": "loaf 1, internal 210°F+" },
+          { "stage": "covered", "temp_f": 475, "duration_min": 20, "start_time": "2026-05-03 - 18:33", "note": "loaf 2" },
+          { "stage": "uncovered", "temp_f": 440, "duration_min": 18, "note": "loaf 2 (target)" }
+        ],
+        "proof_phases": [
+          { "type": "room_temp", "duration_min": 70, "note": "loaf 1: shape to oven (~16:05 to ~17:15)" },
+          { "type": "room_temp", "duration_min": 148, "note": "loaf 2: shape to oven (~16:05 to ~18:33)" }
+        ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-03",
+        "temp_high_f": 76.9,
+        "temp_low_f": 53.2,
+        "humidity_avg_percent": 64,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      }
+    }
+  ]
 }
