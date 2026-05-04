@@ -562,7 +562,8 @@
         { "text": "Start earlier — time constraints forced cold bulk; prefer overnight basket proof (cold retard after shaping)" },
         { "text": "Rewatch Proof Bread video for butter incorporation technique" },
         { "text": "Lower bake temps (475 covered / 440 uncovered) produced better results than 480/480" },
-        { "text": "Consider bumping recipe to use 100g active starter directly (no levain build) — suspect 100g is right for this yield since other recipes use 200g for larger batches" }
+        { "text": "Consider bumping recipe to use 100g active starter directly (no levain build) — suspect 100g is right for this yield since other recipes use 200g for larger batches" },
+        { "text": "Use 50/50 rice flour and AP flour mix for banneton dusting — plain AP leaves stark white patches on the crust" }
       ],
       "bake_notes": [
         { "timestamp": "2026-05-03T03:15:27Z", "raw": "75.9 ambient kitchen temp. autolyse starters with starter and the adjusted flour weights", "curated": "Kitchen 75.9°F. Autolyse started with active starter and adjusted flour weights (-40g flour, -40g water)", "notable": true, "stepId": "autolyse-rest", "processing": "mix" },
