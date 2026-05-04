@@ -7,9 +7,10 @@
       "type": "inspired",
       "author": "Jon Przybyl"
     },
-    "yields": "2 loaves (~690g each)",
+    "yields": "2 loaves (~730g each)",
+    "servings": 16,
     "total_time": "~26 hrs (1 hr active, 25 hrs passive)",
-    "description": "Enriched sourdough with milk powder, butter, and brown sugar — soft sandwich-style crumb studded with fresh jalapeño heat and melty cheddar pockets. 66% base hydration (67% effective with butter), 61% inclusion load by baker's weight. Inclusions contribute ~192g moisture — shape fast before they bleed. Inspired by Proof Bread's Ukrainian baton-style approach."
+    "description": "Enriched sourdough with milk powder, butter, and brown sugar — soft sandwich-style crumb studded with fresh jalapeño heat and melty cheddar pockets. 65% base hydration (67% effective with butter). Inclusions contribute ~189g moisture — shape fast before they bleed. Uses 100g active starter directly (no levain build). Scaled 10% from Proof Bread's Ukrainian baton-style approach."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -17,16 +18,20 @@
       "fields": ["dough_temps", "bulk_ambient_temps", "bake_phases", "stretch_folds", "proof_phases"]
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
     {
       "version": "v1.0.0",
       "date": "2026-04-30",
       "summary": "Initial recipe from Proof Bread YouTube video + multi-agent research synthesis (8 agents, 50+ sources)"
+    },
+    {
+      "version": "v1.1.0",
+      "date": "2026-05-04",
+      "summary": "Skip levain build — use 100g active starter directly. Scale dough 10% for two ~730g loaves (yields 16 slices). Inclusions held at 120g jalapeño + 220g cheddar. Adopted after first bake (2026-05-03) confirmed direct-starter approach worked well."
     }
   ],
   "vessels": [
-    { "id": "V1", "name": "Glass Jar", "reuse": "Levain build" },
     { "id": "V2", "name": "Large Mixing Bowl", "reuse": "Autolyse → mix → bulk fermentation" },
     { "id": "V3", "name": "Medium Bowl", "reuse": "Dry pre-mix → inclusion staging" },
     { "id": "V4", "name": "Dutch Oven", "reuse": "Baking vessel (2 sequential bakes)" },
@@ -34,53 +39,18 @@
   ],
   "stages": [
     {
-      "id": "LEVAIN",
-      "title": "Levain Build",
-      "gather": {
-        "vessels": ["Glass Jar"],
-        "equipment": ["Kitchen Scale"],
-        "ingredients": [
-          {
-            "id": "flour",
-            "name": "Bread Flour",
-            "total": 550,
-            "unit": "g",
-            "breakdown": [
-              { "label": "levain", "amount": 50 },
-              { "label": "dough", "amount": 500 }
-            ]
-          },
-          {
-            "id": "water",
-            "name": "Water",
-            "total": 360,
-            "unit": "g",
-            "breakdown": [
-              { "label": "levain", "amount": 50 },
-              { "label": "dough", "amount": 310 }
-            ]
-          },
-          {
-            "id": "starter",
-            "name": "Ripe Sourdough Starter",
-            "total": 10,
-            "unit": "g",
-            "breakdown": null
-          }
-        ]
-      },
-      "states": ["levain-ferment"]
-    },
-    {
       "id": "PREP",
       "title": "Mise en Place",
       "gather": {
         "vessels": ["Large Mixing Bowl", "Medium Bowl"],
         "equipment": ["Kitchen Scale", "Bench Scraper", "Cutting Board", "Chef's Knife", "Disposable Gloves"],
         "ingredients": [
-          { "id": "salt", "name": "Fine Sea Salt", "total": 10, "unit": "g", "breakdown": null },
-          { "id": "milk-powder", "name": "Nonfat Milk Powder", "total": 25, "unit": "g", "breakdown": null },
-          { "id": "brown-sugar", "name": "Brown Sugar", "total": 28, "unit": "g", "breakdown": null },
+          { "id": "flour", "name": "Bread Flour", "total": 550, "unit": "g", "breakdown": null },
+          { "id": "water", "name": "Water", "total": 340, "unit": "g", "breakdown": null },
+          { "id": "starter", "name": "Active Sourdough Starter (100% hydration)", "total": 110, "unit": "g", "breakdown": null },
+          { "id": "salt", "name": "Fine Sea Salt", "total": 11, "unit": "g", "breakdown": null },
+          { "id": "milk-powder", "name": "Nonfat Milk Powder", "total": 28, "unit": "g", "breakdown": null },
+          { "id": "brown-sugar", "name": "Brown Sugar", "total": 31, "unit": "g", "breakdown": null },
           {
             "id": "jalapenos",
             "name": "Fresh Jalapeños",
@@ -110,7 +80,7 @@
       "title": "Dough Mixing",
       "gather": {
         "ingredients": [
-          { "id": "butter", "name": "Unsalted Butter (room temp)", "total": 45, "unit": "g", "breakdown": null }
+          { "id": "butter", "name": "Unsalted Butter (room temp)", "total": 50, "unit": "g", "breakdown": null }
         ]
       },
       "states": ["incorporate", "develop-gluten", "add-butter"]
@@ -142,38 +112,22 @@
   ],
   "states": [
     {
-      "id": "levain-ferment",
-      "title": "Build & Ferment Levain",
-      "direction": "In a clean glass jar, combine 50g bread flour, 50g water, and 10g ripe sourdough starter. Mix until no dry flour remains. Cover loosely and ferment at 74-76°F (23-24°C) for 10-12 hours.",
-      "duration_min": 720,
-      "timer": true,
-      "parallel": false,
-      "components": [
-        { "name": "bread flour", "amount": "50g" },
-        { "name": "water", "amount": "50g" },
-        { "name": "ripe starter", "amount": "10g" }
-      ],
-      "exit_condition": "Levain has doubled in volume, is domed on top, and smells pleasantly yeasty-sour. A small spoonful floats in water.",
-      "notes": [
-        { "text": "Build the evening before bake day. If your kitchen is cool (below 68°F / 20°C), use slightly warmer water to compensate.", "source": "agent" }
-      ]
-    },
-    {
       "id": "autolyse-rest",
       "title": "Autolyse Rest",
-      "direction": "In a large mixing bowl, combine 500g bread flour and 310g water. Mix until no dry flour remains. Place all 110g of ripe levain on top of the dough (do not mix in yet). Cover and rest 20-30 minutes.",
+      "direction": "In a large mixing bowl, combine 550g bread flour and 340g water. Mix until no dry flour remains. Place 110g active sourdough starter on top of the dough (do not mix in yet). Cover and rest 20-30 minutes.",
       "duration_min": 25,
       "timer": true,
       "parallel": true,
       "components": [
-        { "name": "bread flour", "amount": "500g" },
-        { "name": "water", "amount": "310g" }
+        { "name": "bread flour", "amount": "550g" },
+        { "name": "water", "amount": "340g" },
+        { "name": "active starter", "amount": "110g" }
       ],
-      "exit_condition": "Dough is shaggy but fully hydrated with no dry pockets. Levain sits on top, untouched.",
+      "exit_condition": "Dough is shaggy but fully hydrated with no dry pockets. Starter sits on top, untouched.",
       "notes": [
+        { "text": "Starter must be ripe — actively bubbling, doubled from last feed, passes the float test. Feed 4-8 hours ahead at 75°F (24°C) so it peaks near autolyse start.", "source": "agent" },
         { "text": "Place starter on top of autolyse immediately — this prevents forgetting it later. Proof Bread uses this habit to avoid accidentally omitting the starter.", "source": "agent" },
-        { "text": "Use this rest time to prep jalapeños and cube cheddar (next two steps run in parallel).", "source": "agent" },
-        { "text": "Try: Skip levain build entirely — use 100g active starter in place of the 110g levain. Adjust flour/water totals to compensate for the 50g/50g no longer in levain.", "source": "agent" }
+        { "text": "Use this rest time to prep jalapeños and cube cheddar (next two steps run in parallel).", "source": "agent" }
       ]
     },
     {
@@ -211,14 +165,14 @@
     {
       "id": "pre-mix-dry",
       "title": "Pre-Mix Dry Additions",
-      "direction": "In a medium bowl, combine 10g salt, 25g milk powder, and 28g brown sugar. Mix by hand, breaking up any brown sugar clumps. Discard any hard crystallized sugar pieces.",
+      "direction": "In a medium bowl, combine 11g salt, 28g milk powder, and 31g brown sugar. Mix by hand, breaking up any brown sugar clumps. Discard any hard crystallized sugar pieces.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "salt", "amount": "10g" },
-        { "name": "milk powder", "amount": "25g" },
-        { "name": "brown sugar", "amount": "28g" }
+        { "name": "salt", "amount": "11g" },
+        { "name": "milk powder", "amount": "28g" },
+        { "name": "brown sugar", "amount": "31g" }
       ],
       "exit_condition": "Dry additions evenly combined with no hard brown sugar clumps remaining.",
       "notes": [
@@ -228,16 +182,16 @@
     },
     {
       "id": "incorporate",
-      "title": "Incorporate Levain & Dry Mix",
-      "direction": "Squeeze the levain into the autolysed dough. Add the dry pre-mix (salt, milk powder, brown sugar) on top. Using wet hands, pinch and fold the dough until all additions are fully incorporated, 3-5 minutes.",
+      "title": "Incorporate Starter & Dry Mix",
+      "direction": "Squeeze the starter into the autolysed dough. Add the dry pre-mix (salt, milk powder, brown sugar) on top. Using wet hands, pinch and fold the dough until all additions are fully incorporated, 3-5 minutes.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "levain", "amount": "100g" },
-        { "name": "dry pre-mix", "amount": "63g" }
+        { "name": "active starter", "amount": "110g" },
+        { "name": "dry pre-mix", "amount": "70g" }
       ],
-      "exit_condition": "No streaks of levain visible, dry additions fully dissolved into dough. Dough feels cohesive but not yet smooth.",
+      "exit_condition": "No streaks of starter visible, dry additions fully dissolved into dough. Dough feels cohesive but not yet smooth.",
       "notes": null
     },
     {
@@ -257,12 +211,12 @@
     {
       "id": "add-butter",
       "title": "Add Butter",
-      "direction": "With the dough on the counter, smear 45g room-temperature butter across the surface. Fold the dough over the butter and continue working it in by pinching, folding, and kneading for 3-5 minutes until fully incorporated.",
+      "direction": "With the dough on the counter, smear 50g room-temperature butter across the surface. Fold the dough over the butter and continue working it in by pinching, folding, and kneading for 3-5 minutes until fully incorporated.",
       "duration_min": 4,
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "butter", "amount": "45g" }
+        { "name": "butter", "amount": "50g" }
       ],
       "exit_condition": "Butter fully incorporated — no visible streaks or slick patches. Dough is smooth and slightly tacky.",
       "notes": [
@@ -342,12 +296,12 @@
     {
       "id": "divide",
       "title": "Divide Dough",
-      "direction": "Turn the dough out onto a lightly floured surface. Using a bench scraper, divide into two equal pieces, each approximately 690g.",
+      "direction": "Turn the dough out onto a lightly floured surface. Using a bench scraper, divide into two equal pieces, each approximately 730g.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Two roughly equal pieces of dough, each ~690g.",
+      "exit_condition": "Two roughly equal pieces of dough, each ~730g.",
       "notes": null
     },
     {
@@ -385,7 +339,7 @@
         { "text": "Shape as batards, NOT rounds. Proof Bread identified that stopping at the preshape round (skipping final batard shaping) is a primary cause of flat loaves.", "critical": true, "source": "agent" },
         { "text": "Build strong surface tension — the tighter the shape, the better the loaf holds up during proof and bake. Think of stretching the dough skin like a tight burrito.", "source": "agent" },
         { "text": "Alternative: proof seam-side down on a parchment-lined sheet tray instead of a banneton. Avoids jalapeño and cheese oils permanently scenting your proofing baskets. Use a banneton liner if you want the ring pattern without the smell. Or dedicate a banneton for inclusion breads — the seasoning is harmless.", "source": "agent" },
-        { "text": "Try: Loaf pan variation — skip batard shaping entirely, place ~690g dough into a greased 9×5 loaf pan. Cold retard in the pan, bake covered with foil 25 min then uncovered 20 min at 425°F (218°C). Produces a sandwich-style jalapeño cheddar pullman.", "source": "agent" },
+        { "text": "Try: Loaf pan variation — skip batard shaping entirely, place ~730g dough into a greased 9×5 loaf pan. Cold retard in the pan, bake covered with foil 25 min then uncovered 20 min at 425°F (218°C). Produces a sandwich-style jalapeño cheddar pullman.", "source": "agent" },
         { "text": "Some cheddar cubes will poke through the surface. That is expected and creates attractive caramelized cheese patches during baking.", "source": "agent" }
       ],
       "technique_url": "https://www.theperfectloaf.com/guides/shaping-a-batard/"
@@ -478,17 +432,175 @@
   },
   "technical_notes": [
     {
-      "title": "Levain vs. Active Starter",
-      "text": "- Recipe builds a dedicated **levain** (50g flour + 50g water + 10g starter) for precise fermentation control\n- **To skip levain**: use 100g active, recently-fed starter instead\n- Reduce dough flour by 40g and dough water by 40g to compensate\n- **Trade-off**: lose independent timing from starter feed schedule; fresh levain's lower inoculation rate produces milder, more complex sourness",
-      "category": "substitution"
+      "title": "Active Starter (No Levain Build)",
+      "text": "- Recipe uses **100g active starter directly** — no overnight levain build required\n- Starter must be ripe at autolyse start: doubled, actively bubbling, passes float test\n- Feed starter 4-8 hours ahead at 75°F (24°C) so it peaks near mix time\n- **Trade-off vs. dedicated levain**: tied to starter feed schedule (less independent timing). Active-starter inoculation produces a slightly more aggressive ferment than a fresh, low-seed levain — bulk may run faster\n- Original Proof Bread recipe built a separate levain (50g flour + 50g water + 10g starter). This recipe folds that into the starter directly to simplify the build\n- The 110g of 100% hydration starter contributes 55g flour + 55g water to the dough",
+      "category": "method"
     },
     {
       "title": "Hydration Analysis",
-      "text": "- **Base hydration**: 330g water ÷ 500g flour = **66%**\n- **Butter**: ~13g water (16% moisture)\n- **Levain**: ~50g water contribution\n- **Milk powder**: ~0g (dry)\n- **Effective hydration**: ~393g total water ÷ 550g total flour = **~71%**\n- **Jalapeños**: ~90% water = ~68g moisture\n- **Cheddar**: ~37% water = ~43g moisture\n- **Total inclusion moisture**: ~111g — releases unevenly during bake, not part of gluten matrix\n- Shape fast before inclusions bleed",
+      "text": "- **Measured ingredients**: 550g flour + 340g water + 110g starter (= 55g flour + 55g water from starter)\n- **Effective totals**: 605g flour + 395g water = **65.3% base hydration**\n- **Butter**: 50g × 16% = ~8g water\n- **Milk powder**: ~0g (dry)\n- **Effective hydration with butter**: ~403g ÷ 605g = **~66.6%**\n- **Jalapeños**: 120g × ~90% = ~108g moisture\n- **Cheddar**: 220g × ~37% = ~81g moisture\n- **Total inclusion moisture**: ~189g — releases unevenly during bake, not part of gluten matrix\n- Shape fast before inclusions bleed",
       "category": "hydration"
+    },
+    {
+      "title": "Yield & Scaling (v1.1.0)",
+      "text": "- Scaled 10% from the v1.0.0 Proof Bread recipe — flour, water, starter, salt, milk powder, brown sugar, butter all ×1.10 (rounded to whole grams)\n- **Inclusions held constant** (120g jalapeño + 220g cheddar) — preserves heat/cheese-per-loaf rather than diluting flavor proportionally\n- Total dough weight: ~1460g → 2 batards × ~730g\n- Inclusion ratio: 23% of dough (vs. 25% pre-scale) — slight dilution of cheese-per-bite",
+      "category": "yield"
     }
   ],
-  "nutrition": null,
+  "nutrition": {
+    "servings": 16,
+    "servingSize": "1 slice (per loaf, 8 slices each)",
+    "calculatedDate": "2026-05-04",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 3682,
+      "protein": 134.2,
+      "totalFat": 124.5,
+      "saturatedFat": 73.7,
+      "carbohydrates": 498.4,
+      "sugar": 52.3,
+      "fiber": 17.9,
+      "sodium": 5815.2
+    },
+    "perServing": {
+      "calories": 230.1,
+      "protein": 8.4,
+      "totalFat": 7.8,
+      "saturatedFat": 4.6,
+      "carbohydrates": 31.2,
+      "sugar": 3.3,
+      "fiber": 1.1,
+      "sodium": 363.5
+    },
+    "breakdown": [
+      {
+        "ingredientId": "flour",
+        "ingredientName": "Bread Flour",
+        "amount": 550,
+        "fdcId": 168896,
+        "calories": 1985.5,
+        "protein": 65.9,
+        "totalFat": 9.1,
+        "saturatedFat": 1.3,
+        "carbohydrates": 398.9,
+        "sugar": 1.5,
+        "fiber": 13.2,
+        "sodium": 11
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 340,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1.4
+      },
+      {
+        "ingredientId": "starter",
+        "ingredientName": "Active Sourdough Starter (100% hydration)",
+        "amount": 110,
+        "fdcId": null,
+        "calories": 198.6,
+        "protein": 6.6,
+        "totalFat": 0.9,
+        "saturatedFat": 0.1,
+        "carbohydrates": 39.9,
+        "sugar": 0.2,
+        "fiber": 1.3,
+        "sodium": 1.1
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Fine Sea Salt",
+        "amount": 11,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 4268
+      },
+      {
+        "ingredientId": "milk-powder",
+        "ingredientName": "Nonfat Milk Powder",
+        "amount": 28,
+        "fdcId": 170825,
+        "calories": 100.2,
+        "protein": 9.8,
+        "totalFat": 0.2,
+        "saturatedFat": 0.1,
+        "carbohydrates": 14.6,
+        "sugar": 14.6,
+        "fiber": 0,
+        "sodium": 149.8
+      },
+      {
+        "ingredientId": "brown-sugar",
+        "ingredientName": "Brown Sugar",
+        "amount": 31,
+        "fdcId": 169655,
+        "calories": 117.8,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 30.4,
+        "sugar": 30.1,
+        "fiber": 0,
+        "sodium": 8.7
+      },
+      {
+        "ingredientId": "butter",
+        "ingredientName": "Unsalted Butter",
+        "amount": 50,
+        "fdcId": 173410,
+        "calories": 358.5,
+        "protein": 0.4,
+        "totalFat": 40.6,
+        "saturatedFat": 25.7,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 5.5
+      },
+      {
+        "ingredientId": "jalapenos",
+        "ingredientName": "Fresh Jalapeños",
+        "amount": 120,
+        "fdcId": 168577,
+        "calories": 34.8,
+        "protein": 1.1,
+        "totalFat": 0.4,
+        "saturatedFat": 0.1,
+        "carbohydrates": 7.8,
+        "sugar": 4.9,
+        "fiber": 3.4,
+        "sodium": 3.6
+      },
+      {
+        "ingredientId": "cheddar",
+        "ingredientName": "Sharp Cheddar Cheese",
+        "amount": 220,
+        "fdcId": 173414,
+        "calories": 886.6,
+        "protein": 50.3,
+        "totalFat": 73.3,
+        "saturatedFat": 46.4,
+        "carbohydrates": 6.8,
+        "sugar": 1.1,
+        "fiber": 0,
+        "sodium": 1366.2
+      }
+    ]
+  },
   "reheat": {
     "methods": [
       {
@@ -507,15 +619,15 @@
     "description": "Adjust inclusion amounts and hydration for jalapeño cheddar sourdough",
     "scaleMode": "pre_scaled",
     "ingredients": [
-      { "id": "flour", "role": "base_flour", "defaultAmount": 550, "min": 450, "max": 650, "step": 25, "waterContentId": "bread-flour" },
-      { "id": "water", "role": "base_liquid", "defaultAmount": 360, "min": 280, "max": 420, "step": 10, "waterContentId": "water" },
+      { "id": "flour", "role": "base_flour", "defaultAmount": 550, "min": 450, "max": 700, "step": 25, "waterContentId": "bread-flour" },
+      { "id": "water", "role": "base_liquid", "defaultAmount": 340, "min": 280, "max": 420, "step": 10, "waterContentId": "water" },
       { "id": "jalapenos", "role": "inclusion", "defaultAmount": 120, "min": 0, "max": 200, "step": 10, "waterContentId": "jalapeno-raw" },
       { "id": "cheddar", "role": "inclusion", "defaultAmount": 220, "min": 0, "max": 350, "step": 25, "waterContentId": "cheddar" },
-      { "id": "butter", "role": "enrichment", "defaultAmount": 45, "min": 0, "max": 80, "step": 5, "waterContentId": "butter-unsalted" },
-      { "id": "starter", "role": "enrichment", "defaultAmount": 10, "min": 5, "max": 20, "step": 1, "waterContentId": "sourdough-starter-100" },
-      { "id": "salt", "role": "enrichment", "defaultAmount": 10, "min": 5, "max": 15, "step": 1, "waterContentId": "salt" },
-      { "id": "milk-powder", "role": "enrichment", "defaultAmount": 25, "min": 0, "max": 50, "step": 5, "waterContentId": "nonfat-milk-powder" },
-      { "id": "brown-sugar", "role": "enrichment", "defaultAmount": 28, "min": 0, "max": 50, "step": 5, "waterContentId": "brown-sugar" }
+      { "id": "butter", "role": "enrichment", "defaultAmount": 50, "min": 0, "max": 80, "step": 5, "waterContentId": "butter-unsalted" },
+      { "id": "starter", "role": "enrichment", "defaultAmount": 110, "min": 50, "max": 150, "step": 10, "waterContentId": "sourdough-starter-100" },
+      { "id": "salt", "role": "enrichment", "defaultAmount": 11, "min": 5, "max": 15, "step": 1, "waterContentId": "salt" },
+      { "id": "milk-powder", "role": "enrichment", "defaultAmount": 28, "min": 0, "max": 50, "step": 5, "waterContentId": "nonfat-milk-powder" },
+      { "id": "brown-sugar", "role": "enrichment", "defaultAmount": 31, "min": 0, "max": 50, "step": 5, "waterContentId": "brown-sugar" }
     ],
     "derived": [
       { "id": "effective-hydration", "label": "Effective Hydration", "unit": "%", "type": "effective_hydration" },
