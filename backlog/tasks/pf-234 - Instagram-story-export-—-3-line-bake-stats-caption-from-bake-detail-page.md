@@ -1,10 +1,10 @@
 ---
 id: PF-234
 title: Instagram story export — 3-line bake stats caption from bake detail page
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-05 21:10'
-updated_date: '2026-05-05 21:16'
+updated_date: '2026-05-05 22:42'
 labels:
   - ux
   - export
@@ -48,12 +48,21 @@ L2 `typeCounts` (e.g. 'x pizzas, x sourdough') format TBD — see spike subtask.
 - [ ] #1 Bake detail page (/recipe/:id/bake/:date) renders a Share button colocated with existing Print and QR buttons, using share or instagram icon from existing icon set
 - [ ] #2 Click opens a small workflow with an optional 'Rate this bake' step (options: failure | meh | mid | success | skip), then a confirm/copy step
 - [ ] #3 Final action copies a 3-line plain-text caption to clipboard via shared copyToClipboard from useClipboard.ts (per F28). No image generation, no canvas/html-to-image dependency
-- [ ] #4 Line 1 (lifetime cadence, all recipes): '{daysBaked} days baked · {percent}% of {totalDays} days since first bake' — daysBaked = unique ISO dates with ≥1 cook_log entry (normal + aberration), totalDays = days from earliest cook_log date through today inclusive, percent = round(daysBaked / totalDays * 100)
-- [ ] #5 Line 2 (lifetime totals, all recipes): '{cals} cals · {typeCounts} · ${lifetimeSpend} lifetime' — cals formatted via existing formatCaloriesK (recipes without nutrition silently skipped, matches StatsPage); lifetimeSpend = sum of cook_log[].cost.total across all recipes (matches Pantry Ledger total), formatted $X.XX
-- [ ] #6 Line 3 (current bake, this recipe): '{recipeBakeCount} bakes of {recipeName}{ · outcome}{ · $thisCost}{ · servings servings}' — recipeBakeCount = total completed non-aberration cook_log entries for current recipe; recipeName = recipe.meta.name; outcome segment omitted entirely if user skipped; thisCost segment omitted if entry has no cost; servings segment omitted if actual_yield or stats.servingsPerItem missing
-- [ ] #7 New optional field on CookLogEntry for outcome with type 'failure' | 'meh' | 'mid' | 'success'. Field is written ONLY when user picks an outcome (skip leaves field absent)
-- [ ] #8 When outcome is picked, the choice is persisted to the recipe JSON cook_log entry. Re-opening export on the same entry pre-selects the prior outcome
-- [ ] #9 Export remains available even if recipe lacks config.stats, nutrition data, or cost data — affected line segments degrade gracefully (omit), never crash
-- [ ] #10 Recipe JSON changes from outcome write-back follow existing version protocol — minor version bump + change_log entry
-- [ ] #11 Spike subtask PF-234.1 demos visual variants for Line 2 typeCounts formatting (top-N truncation, all-groups, abbreviated forms). Implementer picks format after demo review and updates this AC list with chosen format before shipping
+- [ ] #4 New optional field on CookLogEntry for outcome with type 'failure' | 'meh' | 'mid' | 'success'. Field is written ONLY when user picks an outcome (skip leaves field absent)
+- [ ] #5 Export remains available even if recipe lacks config.stats, nutrition data, or cost data — affected line segments degrade gracefully (omit), never crash
+- [ ] #6 Line 2 typeCounts format: '{count}{icon} {count}{icon} {count}{icon}' using GROUP_ICONS map (mirror StatsPage.vue lines 69-78). Skip 'Aberrations' group. Order by count DESC. Example: '22🍞 10🧁 6🍕'
+- [ ] #7 Workflow UI shape: bottom sheet — slides up from viewport bottom, 2-col rate grid, full-width Copy button. Mobile-first.
+- [ ] #8 Outcome segment renders as emoji + label: '✅ success' | '😐 mid' | '👎 meh' | '💥 failure'. Emoji prefix only (no 'result:' or 'outcome:' word). Whole segment dropped if outcome missing/skipped.
+- [ ] #9 BakeScratchpad type (src/types/recipe.ts) gets new optional 'outcome' field of type 'failure' | 'meh' | 'mid' | 'success'. Future /bake-log skill captures it at scratchpad → cook_log harvest time (out of scope here)
+- [ ] #10 At export, outcome resolution: (1) cook_log entry.outcome → use it, skip rate step; (2) scratchpad.outcome (if a scratchpad exists for this bake) → use it; (3) neither → show rate step in bottom sheet. The dialog pick is transient — used ONLY in the clipboard string, no localStorage, no JSON write
+- [ ] #11 Add F-row to checklist.md feature-specific section documenting this share/export feature
+- [ ] #12 Line 1 (lifetime cadence, all recipes): items joined by tab (\\t) — '{daysBaked} days baked\\t{percent}% of {totalDays} days since first bake' — daysBaked = unique ISO dates with ≥1 cook_log entry (normal + aberration), totalDays = days from earliest cook_log date through today inclusive, percent = round(daysBaked / totalDays * 100)
+- [ ] #13 Line 2 (lifetime totals, all recipes): items joined by tab (\\t) — '{cals} cals\\t{typeCounts}\\t${lifetimeSpend} lifetime' — cals via formatCaloriesK, lifetimeSpend = sum of cook_log[].cost.total across all recipes (matches Pantry Ledger total), formatted $X.XX. typeCounts segment dropped if no groups
+- [ ] #14 Line 3 (current bake): items joined by tab (\\t) — '{recipeBakeCount} bakes of {recipeName}{\\toutcome}{\\t$thisCost}{\\tservings servings}' — recipeBakeCount = total non-aberration completed cook_log entries; segments after recipeName drop independently when their data is missing
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Shipped. Bottom sheet on bake detail page next to Print + QR. Tab-separated 3-line caption with emoji-prefixed outcome (✅😐👎💥) and money-bag (💰) cost segments. Outcome resolution: entry.outcome → scratchpad.outcome → dialog. Per-item cost rendered as 'X total (Y/loaf)' using config.stats.unit (singularized). New optional fields: CookLogEntry.outcome, BakeScratchpad.outcome. Future: /bake-log skill should capture scratchpad.outcome (separate task).
+<!-- SECTION:NOTES:END -->

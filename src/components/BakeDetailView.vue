@@ -2,12 +2,14 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { marked } from 'marked'
-import { ArrowLeft, Bot, Printer, QrCode } from 'lucide-vue-next'
+import { ArrowLeft, Bot, Printer, QrCode, Share2 } from 'lucide-vue-next'
 import { useRecipe } from '@/composables/useRecipe'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import BakeStatsBlock from '@/components/BakeStatsBlock.vue'
 import BakeQrModal from '@/components/BakeQrModal.vue'
-import type { CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType, KeyNote, BakeNote } from '@/types/recipe'
+import ShareBottomSheet from '@/components/ShareBottomSheet.vue'
+import { useBakeAggregates } from '@/composables/useBakeAggregates'
+import type { BakeScratchpad, CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType, KeyNote, BakeNote } from '@/types/recipe'
 
 const route = useRoute()
 const router = useRouter()
@@ -45,6 +47,83 @@ const bakeQrModal = ref<InstanceType<typeof BakeQrModal> | null>(null)
 function openQrModal(): void {
   bakeQrModal.value?.open()
 }
+
+// --- PF-234 IG share sheet ---
+const shareOpen = ref(false)
+const { aggregates: shareAggregates, load: loadShareAggregates } = useBakeAggregates()
+const shareAggregatesLoaded = ref(false)
+
+/**
+ * Resolve outcome for the share workflow per AC #13:
+ *   1. cook_log entry.outcome → use it (skip rate step)
+ *   2. scratchpad.outcome (if scratchpad exists for this bake) → use it
+ *   3. neither → null (show rate step)
+ */
+function resolveOutcome(): NonNullable<CookLogEntry['outcome']> | null {
+  const fromEntry = entry.value?.outcome
+  if (fromEntry) return fromEntry
+
+  // Read scratchpad directly from localStorage to avoid mutating composable state.
+  // Scratchpad is per-recipe; only honor it if it matches this bake's date.
+  const recipeId = route.params.recipeId
+  if (typeof recipeId !== 'string') return null
+  try {
+    const raw = localStorage.getItem(`scratchpad-${recipeId}`)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as Partial<BakeScratchpad> & { bakeDate?: string }
+    if (parsed.bakeDate && parsed.bakeDate !== bakeDate.value) return null
+    if (parsed.outcome) return parsed.outcome
+  } catch {
+    // ignore parse errors, fall through to null
+  }
+  return null
+}
+
+const shareInitialOutcome = ref<NonNullable<CookLogEntry['outcome']> | null>(null)
+
+async function openShareSheet(): Promise<void> {
+  shareInitialOutcome.value = resolveOutcome()
+  if (!shareAggregatesLoaded.value) {
+    await loadShareAggregates()
+    shareAggregatesLoaded.value = true
+  }
+  shareOpen.value = true
+}
+
+function closeShareSheet(): void {
+  shareOpen.value = false
+}
+
+// AC #6 — recipeBakeCount = total non-aberration completed cook_log entries
+const shareRecipeBakeCount = computed<number>(() => {
+  const log = currentRecipe.value?.cook_log ?? []
+  return log.filter((e) => e.status !== 'in_progress' && !e.aberration).length
+})
+
+// AC #6 — thisCost from the current entry, null if absent
+const shareThisCost = computed<number | null>(() => {
+  return entry.value?.cost?.total ?? null
+})
+
+// Per-item cost — cost.perServing in the schema actually represents cost per
+// output item (loaf, pizza), not per eating-portion. Used for the
+// "$X total ($Y/loaf)" breakdown in the caption.
+const shareThisCostPerItem = computed<number | null>(() => {
+  return entry.value?.cost?.perServing ?? null
+})
+
+const shareCostItemUnit = computed<string | null>(() => {
+  return currentRecipe.value?.config?.stats?.unit ?? null
+})
+
+// AC #6 — servings = actual_yield.value * config.stats.servingsPerItem.
+// Omit (null) when either piece is missing.
+const shareServings = computed<number | null>(() => {
+  const yieldValue = entry.value?.actual_yield?.value
+  const perItem = currentRecipe.value?.config?.stats?.servingsPerItem
+  if (yieldValue == null || perItem == null) return null
+  return yieldValue * perItem
+})
 
 // Lightbox state
 const lightboxOpen = ref(false)
@@ -349,6 +428,9 @@ function weatherIcon(condition: string): string {
           <span class="font-mono text-sm">Back to recipe</span>
         </button>
         <div class="flex items-center gap-1">
+          <button class="nav-icon-btn" title="Share caption" data-testid="bake-share-btn" @click="openShareSheet">
+            <Share2 :size="16" />
+          </button>
           <button class="nav-icon-btn" title="Share QR code" data-testid="bake-qr-btn" @click="openQrModal">
             <QrCode :size="16" />
           </button>
@@ -536,6 +618,21 @@ function weatherIcon(condition: string): string {
         :bake-date="entry.date"
       />
     </Teleport>
+
+    <!-- PF-234 IG share caption bottom sheet -->
+    <ShareBottomSheet
+      v-if="entry && currentRecipe"
+      :open="shareOpen"
+      :aggregates="shareAggregates"
+      :recipe-bake-count="shareRecipeBakeCount"
+      :recipe-name="currentRecipe.meta.name"
+      :initial-outcome="shareInitialOutcome"
+      :this-cost="shareThisCost"
+      :this-cost-per-item="shareThisCostPerItem"
+      :cost-item-unit="shareCostItemUnit"
+      :servings="shareServings"
+      @close="closeShareSheet"
+    />
 
     <PhotoLightbox
       :photos="lightboxPhotos"

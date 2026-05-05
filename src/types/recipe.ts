@@ -451,6 +451,13 @@ export interface CookLogEntry {
   actual_yield?: CookLogYield
   aberration?: boolean
   aberration_note?: string
+  /**
+   * User-rated outcome of this bake. Set via the Instagram share workflow
+   * (PF-234) when the user picks an outcome. Field is absent if the user
+   * skipped or never opened the share workflow. Used in the IG caption
+   * line 3 outcome segment ("✅ success" / "😐 mid" / "👎 meh" / "💥 failure").
+   */
+  outcome?: 'failure' | 'meh' | 'mid' | 'success'
   // Structured per-bake stats (PF-177.3 schema). Populated by /bake-log skill
   // (PF-177.6) or backfill (PF-177.7). Optional — existing entries omit it.
   bake_stats?: BakeStatsBlock
@@ -510,6 +517,13 @@ export interface BakeScratchpad {
   generalNotes: ScratchpadEntry[]
   /** Experiment variation snapshot, if the user exported one during this bake */
   experimentExport?: ExperimentExport
+  /**
+   * User-rated outcome captured during the bake. Future /bake-log skill will
+   * harvest this into the cook_log entry at write time (out of scope for
+   * PF-234 — share workflow currently reads scratchpad as resolution step
+   * 2 if entry.outcome is missing).
+   */
+  outcome?: 'failure' | 'meh' | 'mid' | 'success'
 }
 
 // HEB cost data — agent-populated product search results

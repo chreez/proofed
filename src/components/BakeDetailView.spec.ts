@@ -39,7 +39,18 @@ vi.mock('lucide-vue-next', () => ({
   ArrowLeft: { name: 'ArrowLeft', props: ['size'], template: '<svg class="arrow-left-icon" />' },
   Bot: { name: 'Bot', props: ['size'], template: '<svg class="bot-icon" />' },
   Printer: { name: 'Printer', props: ['size'], template: '<svg class="printer-icon" />' },
-  QrCode: { name: 'QrCode', props: ['size'], template: '<svg class="qr-code-icon" />' }
+  QrCode: { name: 'QrCode', props: ['size'], template: '<svg class="qr-code-icon" />' },
+  Share2: { name: 'Share2', props: ['size'], template: '<svg class="share-icon" />' }
+}))
+
+// Stub ShareBottomSheet (PF-234) — composable inside fetches manifest, skip for unit tests
+vi.mock('@/components/ShareBottomSheet.vue', () => ({
+  default: {
+    name: 'ShareBottomSheet',
+    props: ['open', 'aggregates', 'recipeBakeCount', 'recipeName', 'initialOutcome', 'thisCost', 'servings'],
+    emits: ['close'],
+    template: '<div class="share-bottom-sheet-stub" v-if="open" data-testid="share-sheet-stub" />'
+  }
 }))
 
 // Stub PhotoLightbox
@@ -1616,6 +1627,247 @@ describe('BakeDetailView', () => {
       const proseHtml = wrapper.find('.bake-prose').html()
       const h4Count = (proseHtml.match(/<h4/g) || []).length
       expect(h4Count).toBe(0)
+    })
+  })
+
+  // PF-234 — Instagram share caption workflow
+  describe('share workflow (PF-234)', () => {
+    let lsStore: Record<string, string> = {}
+
+    beforeEach(() => {
+      // Stub fetch so useBakeAggregates.load() resolves quickly without network.
+      ;(globalThis as any).fetch = vi.fn().mockImplementation(async (url: string) => {
+        if (url.includes('index.json')) {
+          return { json: async () => ({ recipes: [] }) }
+        }
+        return { json: async () => ({}) }
+      })
+      // Stub localStorage on globalThis (jsdom has it, but other test files
+      // may have overridden it via Object.defineProperty without restore).
+      lsStore = {}
+      Object.defineProperty(globalThis, 'localStorage', {
+        value: {
+          getItem: (k: string) => (k in lsStore ? lsStore[k] : null),
+          setItem: (k: string, v: string) => { lsStore[k] = String(v) },
+          removeItem: (k: string) => { delete lsStore[k] },
+          clear: () => { lsStore = {} },
+          key: (i: number) => Object.keys(lsStore)[i] ?? null,
+          get length() { return Object.keys(lsStore).length }
+        },
+        configurable: true,
+        writable: true
+      })
+    })
+
+    it('renders the Share button next to QR + Print icons', () => {
+      const wrapper = mountComponent()
+      const shareBtn = wrapper.find('[data-testid="bake-share-btn"]')
+      expect(shareBtn.exists()).toBe(true)
+      expect(shareBtn.attributes('title')).toBe('Share caption')
+    })
+
+    it('does not render share sheet stub before button click', () => {
+      const wrapper = mountComponent()
+      expect(wrapper.find('[data-testid="share-sheet-stub"]').exists()).toBe(false)
+    })
+
+    it('opens share sheet when share button clicked', async () => {
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      expect(wrapper.find('[data-testid="share-sheet-stub"]').exists()).toBe(true)
+    })
+
+    it('passes recipeBakeCount excluding aberration + in_progress entries', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [
+          { date: '2026-01-01', version: 'v1', notes: [] },
+          { date: '2026-02-01', version: 'v1', notes: [], aberration: true },
+          { date: '2026-03-01', version: 'v1', notes: [], status: 'in_progress' },
+          { date: '2026-04-01', version: 'v1', notes: [] },
+          { date: '2026-02-05', version: 'v1', notes: [] },
+        ],
+      })
+      mockRouteParams.value = { recipeId: 'atk-cinnamon-buns', date: '2026-02-05' }
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.exists()).toBe(true)
+      // 3 non-aberration completed entries
+      expect(sheet.props('recipeBakeCount')).toBe(3)
+    })
+
+    it('passes thisCost from current entry, null when missing', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1',
+          notes: [],
+          cost: { total: 9.42, perServing: 1, servings: 5, items: [] }
+        }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('thisCost')).toBe(9.42)
+    })
+
+    it('passes thisCost null when entry has no cost', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{ date: '2026-02-05', version: 'v1', notes: [] }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('thisCost')).toBeNull()
+    })
+
+    it('computes servings = actual_yield.value * config.stats.servingsPerItem', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        config: {
+          early_check_percent: 75,
+          stats: { group: 'Pizza', defaultYield: 2, unit: 'pizzas', servingsPerItem: 8, servingUnit: 'slices' }
+        },
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1',
+          notes: [],
+          actual_yield: { value: 2, unit: 'pizzas' }
+        }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('servings')).toBe(16)
+    })
+
+    it('passes servings null when actual_yield is missing', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        config: {
+          early_check_percent: 75,
+          stats: { group: 'Pizza', defaultYield: 2, unit: 'pizzas', servingsPerItem: 8, servingUnit: 'slices' }
+        },
+        cook_log: [{ date: '2026-02-05', version: 'v1', notes: [] }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('servings')).toBeNull()
+    })
+
+    it('passes servings null when stats.servingsPerItem is missing', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        config: { early_check_percent: 75 },
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1',
+          notes: [],
+          actual_yield: { value: 2, unit: 'loaves' }
+        }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('servings')).toBeNull()
+    })
+
+    it('resolves initialOutcome from entry.outcome (priority 1)', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1',
+          notes: [],
+          outcome: 'success'
+        }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('initialOutcome')).toBe('success')
+    })
+
+    it('resolves initialOutcome from scratchpad (priority 2) when entry.outcome missing', async () => {
+      localStorage.setItem(
+        'scratchpad-atk-cinnamon-buns',
+        JSON.stringify({ bakeDate: '2026-02-05', outcome: 'mid', entries: {}, generalNotes: [] })
+      )
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{ date: '2026-02-05', version: 'v1', notes: [] }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('initialOutcome')).toBe('mid')
+    })
+
+    it('ignores scratchpad outcome if bakeDate mismatch', async () => {
+      localStorage.setItem(
+        'scratchpad-atk-cinnamon-buns',
+        JSON.stringify({ bakeDate: '2026-01-01', outcome: 'success', entries: {}, generalNotes: [] })
+      )
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{ date: '2026-02-05', version: 'v1', notes: [] }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('initialOutcome')).toBeNull()
+    })
+
+    it('resolves initialOutcome to null when neither source has outcome (priority 3)', async () => {
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{ date: '2026-02-05', version: 'v1', notes: [] }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('initialOutcome')).toBeNull()
+    })
+
+    it('handles malformed scratchpad gracefully (returns null)', async () => {
+      localStorage.setItem('scratchpad-atk-cinnamon-buns', 'not-valid-json')
+      mockCurrentRecipe.value = makeRecipe({
+        cook_log: [{ date: '2026-02-05', version: 'v1', notes: [] }]
+      })
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      expect(sheet.props('initialOutcome')).toBeNull()
+    })
+
+    it('closes share sheet when @close emitted', async () => {
+      const wrapper = mountComponent()
+      await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
+      await flushPromises()
+      await flushPromises()
+      expect(wrapper.find('[data-testid="share-sheet-stub"]').exists()).toBe(true)
+      const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
+      sheet.vm.$emit('close')
+      await flushPromises()
+      expect(wrapper.find('[data-testid="share-sheet-stub"]').exists()).toBe(false)
     })
   })
 })
