@@ -160,6 +160,11 @@ export interface OutdatedMarker {
 
 export interface RecipeMeta {
   name: string
+  /**
+   * Short display name for compact contexts (IG share captions, etc.).
+   * When absent, callers fall back to stripping ' - {variant}' from `name`.
+   */
+  shortName?: string
   source?: RecipeSource
   yields: string
   total_time: string

@@ -47,6 +47,8 @@ export interface BakeAggregates {
   totalDays: number
   /** round(daysBaked / totalDays * 100) — 0 if totalDays === 0 */
   percent: number
+  /** Lifetime non-aberration completed bake count across all recipes */
+  totalBakes: number
   /** Total lifetime calories — recipes without nutrition silently skipped */
   totalCalories: number
   /** Group-level counts, sorted DESC by count, Aberrations excluded */
@@ -82,10 +84,10 @@ export function formatTypeCounts(groups: GroupCount[]): string {
  * Per AC #11: '✅ success' | '😐 mid' | '👎 meh' | '💥 failure'.
  */
 const OUTCOME_LABELS: Record<NonNullable<CookLogEntry['outcome']>, string> = {
-  success: '✅ success',
-  mid: '\u{1F610} mid',
-  meh: '\u{1F44E} meh',
-  failure: '\u{1F4A5} failure',
+  success: '✅ Success',
+  mid: '\u{1F610} Mid',
+  meh: '\u{1F44E} Meh',
+  failure: '\u{1F4A5} Failure',
 }
 
 export function formatOutcome(outcome: CookLogEntry['outcome'] | null | undefined): string | null {
@@ -102,87 +104,64 @@ export interface CaptionInput {
   aggregates: BakeAggregates
   /** Total non-aberration bakes for the current recipe */
   recipeBakeCount: number
-  /** Display name for the current recipe */
+  /** Display name for the current recipe (already shortened by caller) */
   recipeName: string
   /** User-rated outcome — null if skipped/missing */
   outcome: CookLogEntry['outcome'] | null
-  /** Total cost of THIS bake — null/undefined to omit segment */
+  /** Total cost of THIS bake — null/undefined to omit cost line */
   thisCost: number | null
-  /**
-   * Per-item cost (cost.perServing in the schema, which actually represents
-   * cost per output item — e.g. per loaf, per pizza — not per eating-portion).
-   * Rendered alongside thisCost when present.
-   */
+  /** Per-item cost — rendered alongside thisCost when present */
   thisCostPerItem?: number | null
-  /**
-   * Singular noun for the recipe's output unit, used to label per-item cost
-   * (e.g. "loaf", "pizza"). When null, falls back to "item".
-   */
-  costItemUnit?: string | null
-  /** Servings for THIS bake — null to omit segment */
-  servings: number | null
 }
 
 /**
- * Map a plural unit (config.stats.unit) to its singular form for caption
- * labels. Most plain English plurals strip 's'; irregulars need the map.
+ * Strip variant suffix from recipe display name. Preserves original casing.
+ * "Jalapeño Cheddar Sourdough - 67% Hydration" → "Jalapeño Cheddar Sourdough"
  */
-const UNIT_SINGULAR_OVERRIDES: Record<string, string> = {
-  loaves: 'loaf',
-  knives: 'knife',
-}
-
-export function singularizeUnit(plural: string | null | undefined): string {
-  if (!plural) return 'item'
-  const lower = plural.toLowerCase()
-  if (UNIT_SINGULAR_OVERRIDES[lower]) return UNIT_SINGULAR_OVERRIDES[lower]
-  if (lower.endsWith('ies')) return lower.slice(0, -3) + 'y'
-  if (lower.endsWith('s')) return lower.slice(0, -1)
-  return lower
+export function shortenRecipeName(name: string): string {
+  return name.split(' - ')[0]
 }
 
 /**
- * Build the 3-line IG story caption per PF-234 ACs.
+ * Build the IG story caption per PF-234 ACs.
  *
- * Logical items within a line are separated by a tab (\t).
+ * Top block = bake-specific (one logical item per line, no tabs):
+ *   L1: 'Bake #{N} of {shortName}{ – emoji + Outcome}'
+ *   L2: 'Bake cost: 💰 ${total} total (${perItem}/item)'  [omitted if no cost]
  *
- * Format (\t shown as ↹):
- *   L1: '{daysBaked} days baked ↹ {percent}% of {totalDays} days since first bake'
- *   L2: '{cals} cals ↹ {typeCounts} ↹ 💰 ${lifetimeSpend} across all bakes'
- *   L3: '{recipeBakeCount} bakes of {recipeName}{ ↹ outcome}{ ↹ 💰 $thisCost total (${perServing}/serving)}{ ↹ servings servings}'
- *
- * Segments on L3 are omitted entirely when the underlying data is missing.
+ * Bottom block = lifetime context (tab-separated within each line):
+ *   L3: '{daysBaked} days baked\t({percent}% of {totalDays} days since first bake)'
+ *   L4: '{totalBakes} bakes\t{typeCounts}\t🔥 {cals} cals'
  */
 export function buildCaption(input: CaptionInput): string {
-  const { aggregates, recipeBakeCount, recipeName, outcome, thisCost, thisCostPerItem, costItemUnit, servings } = input
+  const { aggregates, recipeBakeCount, recipeName, outcome, thisCost, thisCostPerItem } = input
 
-  const l1 = [
-    `${aggregates.daysBaked} days baked`,
-    `${aggregates.percent}% of ${aggregates.totalDays} days since first bake`,
-  ].join('\t')
-
-  const calsStr = `${formatCaloriesK(aggregates.totalCalories)} cals`
-  const typeCountsStr = formatTypeCounts(aggregates.typeCounts)
-  const spendStr = `\u{1F4B0} ${formatDollars(aggregates.lifetimeSpend)} across all bakes`
-  const l2Parts = typeCountsStr
-    ? [calsStr, typeCountsStr, spendStr]
-    : [calsStr, spendStr]
-  const l2 = l2Parts.join('\t')
-
-  const l3Parts: string[] = [`${recipeBakeCount} bakes of ${recipeName}`]
   const outcomeSeg = formatOutcome(outcome)
-  if (outcomeSeg) l3Parts.push(outcomeSeg)
-  if (thisCost != null) {
-    const unit = singularizeUnit(costItemUnit)
-    const costSeg = thisCostPerItem != null
-      ? `\u{1F4B0} ${formatDollars(thisCost)} total (${formatDollars(thisCostPerItem)}/${unit})`
-      : `\u{1F4B0} ${formatDollars(thisCost)} total`
-    l3Parts.push(costSeg)
-  }
-  if (servings != null) l3Parts.push(`${servings} servings`)
-  const l3 = l3Parts.join('\t')
+  const l1 = outcomeSeg
+    ? `Bake #${recipeBakeCount} of ${recipeName} – ${outcomeSeg}`
+    : `Bake #${recipeBakeCount} of ${recipeName}`
 
-  return [l1, l2, l3].join('\n')
+  const lines = [l1]
+
+  if (thisCost != null) {
+    const costStr = thisCostPerItem != null
+      ? `\u{1F4B0} ${formatDollars(thisCost)} total (${formatDollars(thisCostPerItem)}/item)`
+      : `\u{1F4B0} ${formatDollars(thisCost)} total`
+    lines.push(`Bake cost: ${costStr}`)
+  }
+
+  const l3 = `${aggregates.daysBaked} days baked\t(${aggregates.percent}% of ${aggregates.totalDays} days since first bake)`
+  lines.push(l3)
+
+  const totalBakesStr = `${aggregates.totalBakes} bakes`
+  const calsStr = `\u{1F525} ${formatCaloriesK(aggregates.totalCalories)} cals`
+  const typeCountsStr = formatTypeCounts(aggregates.typeCounts)
+  const l4Parts: string[] = [totalBakesStr]
+  if (typeCountsStr) l4Parts.push(typeCountsStr)
+  l4Parts.push(calsStr)
+  lines.push(l4Parts.join('\t'))
+
+  return lines.join('\n')
 }
 
 // ---------------------------------------------------------------------------
@@ -264,10 +243,15 @@ export function computeBakeAggregates(recipes: Recipe[], today: Date = new Date(
     percent = Math.round((daysBaked / totalDays) * 100)
   }
 
+  // Lifetime non-aberration bake count = sum of group counts (Aberrations excluded)
+  let totalBakes = 0
+  for (const c of typeCounts) totalBakes += c.count
+
   return {
     daysBaked,
     totalDays,
     percent,
+    totalBakes,
     totalCalories,
     typeCounts,
     lifetimeSpend,

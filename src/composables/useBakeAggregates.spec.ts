@@ -7,6 +7,7 @@ import {
   formatDollars,
   formatOutcome,
   formatTypeCounts,
+  shortenRecipeName,
   type BakeAggregates,
   type GroupCount,
 } from './useBakeAggregates'
@@ -19,6 +20,7 @@ function makeAggregates(overrides: Partial<BakeAggregates> = {}): BakeAggregates
     daysBaked: 47,
     totalDays: 392,
     percent: 12,
+    totalBakes: 38,
     totalCalories: 421000,
     typeCounts: [
       { label: 'Sourdough Breads', icon: '\u{1F35E}', count: 22 },
@@ -81,11 +83,11 @@ describe('formatTypeCounts', () => {
 })
 
 describe('formatOutcome', () => {
-  it('formats each outcome with emoji prefix per AC #11', () => {
-    expect(formatOutcome('success')).toBe('✅ success')
-    expect(formatOutcome('mid')).toBe('\u{1F610} mid')
-    expect(formatOutcome('meh')).toBe('\u{1F44E} meh')
-    expect(formatOutcome('failure')).toBe('\u{1F4A5} failure')
+  it('formats each outcome with emoji prefix and capitalized label', () => {
+    expect(formatOutcome('success')).toBe('✅ Success')
+    expect(formatOutcome('mid')).toBe('\u{1F610} Mid')
+    expect(formatOutcome('meh')).toBe('\u{1F44E} Meh')
+    expect(formatOutcome('failure')).toBe('\u{1F4A5} Failure')
   })
   it('returns null for missing outcome', () => {
     expect(formatOutcome(null)).toBeNull()
@@ -94,146 +96,127 @@ describe('formatOutcome', () => {
 })
 
 describe('buildCaption', () => {
-  it('builds 3-line caption with all segments populated', () => {
-    const result = buildCaption({
-      aggregates: makeAggregates(),
-      recipeBakeCount: 4,
-      recipeName: 'jalapeno-cheddar-sourdough',
-      outcome: 'success',
-      thisCost: 9.2,
-      servings: 16,
-    })
-    const lines = result.split('\n')
-    expect(lines).toHaveLength(3)
-    expect(lines[0]).toBe('47 days baked\t12% of 392 days since first bake')
-    expect(lines[1]).toBe('421.0k cals\t22\u{1F35E} 10\u{1F9C1} 6\u{1F355}\t\u{1F4B0} $284.50 across all bakes')
-    expect(lines[2]).toBe('4 bakes of jalapeno-cheddar-sourdough\t✅ success\t\u{1F4B0} $9.20 total\t16 servings')
-  })
-
-  it('omits outcome segment when null (skip)', () => {
-    const result = buildCaption({
-      aggregates: makeAggregates(),
-      recipeBakeCount: 4,
-      recipeName: 'jalapeno-cheddar-sourdough',
-      outcome: null,
-      thisCost: 9.2,
-      servings: 16,
-    })
-    const lines = result.split('\n')
-    expect(lines[2]).toBe('4 bakes of jalapeno-cheddar-sourdough\t\u{1F4B0} $9.20 total\t16 servings')
-    expect(lines[2]).not.toContain('success')
-    expect(lines[2]).not.toContain('skip')
-  })
-
-  it('omits cost segment when thisCost null', () => {
-    const result = buildCaption({
-      aggregates: makeAggregates(),
-      recipeBakeCount: 4,
-      recipeName: 'jalapeno-cheddar-sourdough',
-      outcome: null,
-      thisCost: null,
-      servings: 16,
-    })
-    const lines = result.split('\n')
-    expect(lines[2]).toBe('4 bakes of jalapeno-cheddar-sourdough\t16 servings')
-  })
-
-  it('omits servings segment when null', () => {
-    const result = buildCaption({
-      aggregates: makeAggregates(),
-      recipeBakeCount: 4,
-      recipeName: 'jalapeno-cheddar-sourdough',
-      outcome: 'mid',
-      thisCost: 9.2,
-      servings: null,
-    })
-    const lines = result.split('\n')
-    expect(lines[2]).toBe('4 bakes of jalapeno-cheddar-sourdough\t\u{1F610} mid\t\u{1F4B0} $9.20 total')
-  })
-
-  it('renders per-item cost when thisCostPerItem + costItemUnit provided', () => {
+  it('builds full caption with cost + outcome populated', () => {
     const result = buildCaption({
       aggregates: makeAggregates(),
       recipeBakeCount: 2,
-      recipeName: 'jalapeno-cheddar-sourdough',
+      recipeName: 'Sourdough Jalapeno',
       outcome: 'success',
       thisCost: 5.66,
       thisCostPerItem: 2.83,
-      costItemUnit: 'loaves',
-      servings: null,
     })
     const lines = result.split('\n')
-    expect(lines[2]).toBe('2 bakes of jalapeno-cheddar-sourdough\t✅ success\t\u{1F4B0} $5.66 total ($2.83/loaf)')
+    expect(lines).toHaveLength(4)
+    expect(lines[0]).toBe('Bake #2 of Sourdough Jalapeno – ✅ Success')
+    expect(lines[1]).toBe('Bake cost: \u{1F4B0} $5.66 total ($2.83/item)')
+    expect(lines[2]).toBe('47 days baked\t(12% of 392 days since first bake)')
+    expect(lines[3]).toBe('38 bakes\t22\u{1F35E} 10\u{1F9C1} 6\u{1F355}\t\u{1F525} 421.0k cals')
   })
 
-  it('singularizes pizza unit', () => {
+  it('omits outcome from L1 when null (skip)', () => {
     const result = buildCaption({
       aggregates: makeAggregates(),
-      recipeBakeCount: 1,
-      recipeName: 'pizza',
-      outcome: null,
-      thisCost: 4.0,
-      thisCostPerItem: 1.0,
-      costItemUnit: 'pizzas',
-      servings: null,
-    })
-    const lines = result.split('\n')
-    expect(lines[2]).toBe('1 bakes of pizza\t\u{1F4B0} $4.00 total ($1.00/pizza)')
-  })
-
-  it('falls back to "item" when costItemUnit null', () => {
-    const result = buildCaption({
-      aggregates: makeAggregates(),
-      recipeBakeCount: 1,
-      recipeName: 'thing',
-      outcome: null,
-      thisCost: 2.0,
-      thisCostPerItem: 2.0,
-      costItemUnit: null,
-      servings: null,
-    })
-    const lines = result.split('\n')
-    expect(lines[2]).toBe('1 bakes of thing\t\u{1F4B0} $2.00 total ($2.00/item)')
-  })
-
-  it('omits ALL optional segments — bare recipeBakeCount + name only', () => {
-    const result = buildCaption({
-      aggregates: makeAggregates(),
-      recipeBakeCount: 1,
-      recipeName: 'jalapeno-cheddar-sourdough',
-      outcome: null,
-      thisCost: null,
-      servings: null,
-    })
-    const lines = result.split('\n')
-    expect(lines[2]).toBe('1 bakes of jalapeno-cheddar-sourdough')
-  })
-
-  it('omits typeCounts segment from L2 when no groups have data', () => {
-    const result = buildCaption({
-      aggregates: makeAggregates({ typeCounts: [] }),
       recipeBakeCount: 4,
-      recipeName: 'test',
+      recipeName: 'Sourdough Jalapeno',
       outcome: null,
-      thisCost: null,
-      servings: null,
+      thisCost: 9.2,
     })
     const lines = result.split('\n')
-    expect(lines[1]).toBe('421.0k cals\t\u{1F4B0} $284.50 across all bakes')
-    expect(lines[1]).not.toContain('\t\t')
+    expect(lines[0]).toBe('Bake #4 of Sourdough Jalapeno')
+    expect(lines[0]).not.toContain('Success')
+    expect(lines[0]).not.toContain('–')
+  })
+
+  it('omits cost line entirely when thisCost null', () => {
+    const result = buildCaption({
+      aggregates: makeAggregates(),
+      recipeBakeCount: 1,
+      recipeName: 'Test',
+      outcome: 'mid',
+      thisCost: null,
+    })
+    const lines = result.split('\n')
+    expect(lines).toHaveLength(3)
+    expect(lines[0]).toBe('Bake #1 of Test – \u{1F610} Mid')
+    expect(lines[1]).toBe('47 days baked\t(12% of 392 days since first bake)')
+  })
+
+  it('omits per-item cost when thisCostPerItem missing', () => {
+    const result = buildCaption({
+      aggregates: makeAggregates(),
+      recipeBakeCount: 1,
+      recipeName: 'Test',
+      outcome: null,
+      thisCost: 9.2,
+    })
+    const lines = result.split('\n')
+    expect(lines[1]).toBe('Bake cost: \u{1F4B0} $9.20 total')
+    expect(lines[1]).not.toContain('/item')
+  })
+
+  it('drops typeCounts from L4 when no groups have data', () => {
+    const result = buildCaption({
+      aggregates: makeAggregates({ typeCounts: [], totalBakes: 0 }),
+      recipeBakeCount: 4,
+      recipeName: 'Test',
+      outcome: null,
+      thisCost: null,
+    })
+    const lines = result.split('\n')
+    expect(lines[2]).toBe('0 bakes\t\u{1F525} 421.0k cals')
+    expect(lines[2]).not.toContain('\t\t')
   })
 
   it('handles zero calories gracefully', () => {
     const result = buildCaption({
       aggregates: makeAggregates({ totalCalories: 0 }),
       recipeBakeCount: 1,
-      recipeName: 'test',
+      recipeName: 'Test',
       outcome: null,
       thisCost: null,
-      servings: null,
     })
     const lines = result.split('\n')
-    expect(lines[1]).toContain('0 cals')
+    expect(lines[2]).toContain('0 cals')
+  })
+
+  it('capitalizes all outcome labels', () => {
+    const outcomes: Array<[NonNullable<Parameters<typeof buildCaption>[0]['outcome']>, string]> = [
+      ['success', '✅ Success'],
+      ['mid', '\u{1F610} Mid'],
+      ['meh', '\u{1F44E} Meh'],
+      ['failure', '\u{1F4A5} Failure'],
+    ]
+    for (const [outcome, label] of outcomes) {
+      const result = buildCaption({
+        aggregates: makeAggregates(),
+        recipeBakeCount: 1,
+        recipeName: 'Test',
+        outcome,
+        thisCost: null,
+      })
+      expect(result.split('\n')[0]).toBe(`Bake #1 of Test – ${label}`)
+    }
+  })
+
+  it('does NOT contain lifetime spend anywhere', () => {
+    const result = buildCaption({
+      aggregates: makeAggregates(),
+      recipeBakeCount: 1,
+      recipeName: 'Test',
+      outcome: null,
+      thisCost: null,
+    })
+    expect(result).not.toContain('across all bakes')
+    expect(result).not.toContain('$284.50')
+  })
+})
+
+describe('shortenRecipeName', () => {
+  it('strips variant suffix, preserves casing', () => {
+    expect(shortenRecipeName('Jalapeño Cheddar Sourdough - 67% Hydration')).toBe('Jalapeño Cheddar Sourdough')
+  })
+  it('passes through name without variant', () => {
+    expect(shortenRecipeName('Sourdough Pizza Dough')).toBe('Sourdough Pizza Dough')
   })
 })
 

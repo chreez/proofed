@@ -34,14 +34,10 @@ const props = defineProps<{
    * - null: show rate step
    */
   initialOutcome: Outcome | null
-  /** Total cost of THIS bake — null to omit segment */
+  /** Total cost of THIS bake — null to omit cost line */
   thisCost: number | null
-  /** Per-item cost (cost.perServing field, actually per-loaf/per-pizza) */
+  /** Per-item cost (cost.perServing field, rendered as $X/item) */
   thisCostPerItem: number | null
-  /** Plural unit name (config.stats.unit) for per-item label */
-  costItemUnit: string | null
-  /** Servings for THIS bake — null to omit segment */
-  servings: number | null
 }>()
 
 const emit = defineEmits<{
@@ -107,8 +103,6 @@ const caption = computed<string>(() => {
     outcome: pickedOutcome.value,
     thisCost: props.thisCost,
     thisCostPerItem: props.thisCostPerItem,
-    costItemUnit: props.costItemUnit,
-    servings: props.servings,
   })
 })
 

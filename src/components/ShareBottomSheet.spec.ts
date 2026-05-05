@@ -13,10 +13,11 @@ const aggregates: BakeAggregates = {
   daysBaked: 47,
   totalDays: 392,
   percent: 12,
+  totalBakes: 32,
   totalCalories: 421000,
   typeCounts: [
-    { group: 'Sourdough Breads', count: 22, icon: '\u{1F35E}' },
-    { group: 'Buns & Rolls', count: 10, icon: '\u{1F9C1}' },
+    { label: 'Sourdough Breads', count: 22, icon: '\u{1F35E}' },
+    { label: 'Buns & Rolls', count: 10, icon: '\u{1F9C1}' },
   ],
   lifetimeSpend: 284.5,
 }
@@ -27,12 +28,10 @@ function mountSheet(overrides: Record<string, unknown> = {}) {
       open: true,
       aggregates,
       recipeBakeCount: 4,
-      recipeName: 'jalapeno-cheddar-sourdough',
+      recipeName: 'Sourdough Jalapeno',
       initialOutcome: null,
       thisCost: 5.66,
       thisCostPerItem: 2.83,
-      costItemUnit: 'loaves',
-      servings: null,
       ...overrides,
     },
     attachTo: document.body,
@@ -75,7 +74,7 @@ describe('ShareBottomSheet', () => {
     await nextTick()
     const caption = q('[data-testid="share-caption"]')
     expect(caption).toBeTruthy()
-    expect(caption!.textContent).toContain('\u{1F610} mid')
+    expect(caption!.textContent).toContain('Bake #4 of Sourdough Jalapeno – \u{1F610} Mid')
   })
 
   it('skip advances to preview without outcome', async () => {
@@ -83,8 +82,9 @@ describe('ShareBottomSheet', () => {
     ;(q('[data-testid="share-skip"]') as HTMLElement).click()
     await nextTick()
     const caption = q('[data-testid="share-caption"]')
-    expect(caption!.textContent).not.toContain('mid')
-    expect(caption!.textContent).not.toContain('success')
+    expect(caption!.textContent).toContain('Bake #4 of Sourdough Jalapeno')
+    expect(caption!.textContent).not.toContain('–')
+    expect(caption!.textContent).not.toContain('Success')
   })
 
   it('copy invokes copyToClipboard with caption text', async () => {
@@ -93,9 +93,9 @@ describe('ShareBottomSheet', () => {
     await nextTick()
     expect(copyMock).toHaveBeenCalledOnce()
     const arg = copyMock.mock.calls[0][0]
-    expect(arg).toContain('47 days baked\t12% of 392 days since first bake')
-    expect(arg).toContain('\u{1F4B0} $5.66 total ($2.83/loaf)')
-    expect(arg).toContain('✅ success')
+    expect(arg).toContain('47 days baked\t(12% of 392 days since first bake)')
+    expect(arg).toContain('Bake cost: \u{1F4B0} $5.66 total ($2.83/item)')
+    expect(arg).toContain('Bake #4 of Sourdough Jalapeno – ✅ Success')
   })
 
   it('copy button shows Copied state then resets', async () => {

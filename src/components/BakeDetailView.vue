@@ -100,29 +100,23 @@ const shareRecipeBakeCount = computed<number>(() => {
   return log.filter((e) => e.status !== 'in_progress' && !e.aberration).length
 })
 
-// AC #6 — thisCost from the current entry, null if absent
+// thisCost from the current entry, null if absent
 const shareThisCost = computed<number | null>(() => {
   return entry.value?.cost?.total ?? null
 })
 
 // Per-item cost — cost.perServing in the schema actually represents cost per
-// output item (loaf, pizza), not per eating-portion. Used for the
-// "$X total ($Y/loaf)" breakdown in the caption.
+// output item (loaf, pizza). Rendered as "$X.XX/item" in the caption.
 const shareThisCostPerItem = computed<number | null>(() => {
   return entry.value?.cost?.perServing ?? null
 })
 
-const shareCostItemUnit = computed<string | null>(() => {
-  return currentRecipe.value?.config?.stats?.unit ?? null
-})
-
-// AC #6 — servings = actual_yield.value * config.stats.servingsPerItem.
-// Omit (null) when either piece is missing.
-const shareServings = computed<number | null>(() => {
-  const yieldValue = entry.value?.actual_yield?.value
-  const perItem = currentRecipe.value?.config?.stats?.servingsPerItem
-  if (yieldValue == null || perItem == null) return null
-  return yieldValue * perItem
+// Recipe display name for the caption: prefer meta.shortName, fall back to
+// stripping ' - {variant}' suffix from meta.name.
+const shareRecipeName = computed<string>(() => {
+  const m = currentRecipe.value?.meta
+  if (!m) return ''
+  return m.shortName ?? m.name.split(' - ')[0]
 })
 
 // Lightbox state
@@ -625,12 +619,10 @@ function weatherIcon(condition: string): string {
       :open="shareOpen"
       :aggregates="shareAggregates"
       :recipe-bake-count="shareRecipeBakeCount"
-      :recipe-name="currentRecipe.meta.name"
+      :recipe-name="shareRecipeName"
       :initial-outcome="shareInitialOutcome"
       :this-cost="shareThisCost"
       :this-cost-per-item="shareThisCostPerItem"
-      :cost-item-unit="shareCostItemUnit"
-      :servings="shareServings"
       @close="closeShareSheet"
     />
 

@@ -1,6 +1,7 @@
 {
   "meta": {
     "name": "Jalapeño Cheddar Sourdough - 67% Hydration",
+    "shortName": "Sourdough Jalapeno",
     "source": {
       "name": "Proof Bread",
       "url": "https://www.youtube.com/watch?v=7hU_nEJYgxw",
@@ -24,7 +25,7 @@
       ]
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
     {
       "version": "v1.0.0",
@@ -35,6 +36,11 @@
       "version": "v1.1.0",
       "date": "2026-05-04",
       "summary": "Skip levain build — use 100g active starter directly. Scale dough 10% for two ~730g loaves (yields 16 slices). Inclusions held at 120g jalapeño + 220g cheddar. Adopted after first bake (2026-05-03) confirmed direct-starter approach worked well."
+    },
+    {
+      "version": "v1.2.0",
+      "date": "2026-05-05",
+      "summary": "Add meta.shortName 'Sourdough Jalapeno' for IG share caption display."
     }
   ],
   "vessels": [

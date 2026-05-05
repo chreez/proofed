@@ -47,7 +47,7 @@ vi.mock('lucide-vue-next', () => ({
 vi.mock('@/components/ShareBottomSheet.vue', () => ({
   default: {
     name: 'ShareBottomSheet',
-    props: ['open', 'aggregates', 'recipeBakeCount', 'recipeName', 'initialOutcome', 'thisCost', 'servings'],
+    props: ['open', 'aggregates', 'recipeBakeCount', 'recipeName', 'initialOutcome', 'thisCost', 'thisCostPerItem'],
     emits: ['close'],
     template: '<div class="share-bottom-sheet-stub" v-if="open" data-testid="share-sheet-stub" />'
   }
@@ -1729,17 +1729,13 @@ describe('BakeDetailView', () => {
       expect(sheet.props('thisCost')).toBeNull()
     })
 
-    it('computes servings = actual_yield.value * config.stats.servingsPerItem', async () => {
+    it('passes thisCostPerItem from entry.cost.perServing', async () => {
       mockCurrentRecipe.value = makeRecipe({
-        config: {
-          early_check_percent: 75,
-          stats: { group: 'Pizza', defaultYield: 2, unit: 'pizzas', servingsPerItem: 8, servingUnit: 'slices' }
-        },
         cook_log: [{
           date: '2026-02-05',
           version: 'v1',
           notes: [],
-          actual_yield: { value: 2, unit: 'pizzas' }
+          cost: { total: 5.66, perServing: 2.83, servings: 2, items: [] }
         }]
       })
       const wrapper = mountComponent()
@@ -1747,15 +1743,12 @@ describe('BakeDetailView', () => {
       await flushPromises()
       await flushPromises()
       const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
-      expect(sheet.props('servings')).toBe(16)
+      expect(sheet.props('thisCostPerItem')).toBe(2.83)
     })
 
-    it('passes servings null when actual_yield is missing', async () => {
+    it('passes recipeName from meta.shortName when present', async () => {
       mockCurrentRecipe.value = makeRecipe({
-        config: {
-          early_check_percent: 75,
-          stats: { group: 'Pizza', defaultYield: 2, unit: 'pizzas', servingsPerItem: 8, servingUnit: 'slices' }
-        },
+        meta: { name: 'Jalapeño Cheddar Sourdough - 67% Hydration', shortName: 'Sourdough Jalapeno', yields: '2 loaves', total_time: '24h' },
         cook_log: [{ date: '2026-02-05', version: 'v1', notes: [] }]
       })
       const wrapper = mountComponent()
@@ -1763,25 +1756,20 @@ describe('BakeDetailView', () => {
       await flushPromises()
       await flushPromises()
       const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
-      expect(sheet.props('servings')).toBeNull()
+      expect(sheet.props('recipeName')).toBe('Sourdough Jalapeno')
     })
 
-    it('passes servings null when stats.servingsPerItem is missing', async () => {
+    it('falls back to stripped meta.name when shortName missing', async () => {
       mockCurrentRecipe.value = makeRecipe({
-        config: { early_check_percent: 75 },
-        cook_log: [{
-          date: '2026-02-05',
-          version: 'v1',
-          notes: [],
-          actual_yield: { value: 2, unit: 'loaves' }
-        }]
+        meta: { name: 'ATK Cinnamon Buns - Quick', yields: '8 buns', total_time: '2h' },
+        cook_log: [{ date: '2026-02-05', version: 'v1', notes: [] }]
       })
       const wrapper = mountComponent()
       await wrapper.find('[data-testid="bake-share-btn"]').trigger('click')
       await flushPromises()
       await flushPromises()
       const sheet = wrapper.findComponent({ name: 'ShareBottomSheet' })
-      expect(sheet.props('servings')).toBeNull()
+      expect(sheet.props('recipeName')).toBe('ATK Cinnamon Buns')
     })
 
     it('resolves initialOutcome from entry.outcome (priority 1)', async () => {
