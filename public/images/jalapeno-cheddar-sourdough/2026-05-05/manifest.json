@@ -1,0 +1,367 @@
+{
+  "recipeId": "jalapeno-cheddar-sourdough",
+  "date": "2026-05-05",
+  "processedAt": "2026-05-05T21:20:30.246Z",
+  "photos": [
+    {
+      "name": "img-7484",
+      "thumb": "img-7484-400w.webp",
+      "src": "img-7484-800w.webp",
+      "summary": "Cooled loaf on a copper wire rack at the dining table — split-side view shows pooled cheese, a peeking jalapeño slice, and the deeper-browned crust from the first bake.",
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7484-v1-400w.webp",
+          "src": "img-7484-v1-800w.webp",
+          "editInstruction": "cropTighten — trim dark background top",
+          "editedAt": "2026-05-05T21:35:50.013Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7485",
+      "thumb": "img-7485-400w.webp",
+      "src": "img-7485-800w.webp",
+      "summary": "Same cooled loaf on copper wire rack, photographed against the living room — twin halves split open, dark caramelized cheese ear and an exposed jalapeño slice visible on the cut face."
+    },
+    {
+      "name": "img-7486",
+      "thumb": "img-7486-400w.webp",
+      "src": "img-7486-800w.webp",
+      "summary": "Cooled loaf on the copper wire rack near the kitchen sink, dusted with flour on top with cheese caramelization visible along the open ear.",
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7486-v1-400w.webp",
+          "src": "img-7486-v1-800w.webp",
+          "editInstruction": "cropTighten — trim sink clutter",
+          "editedAt": "2026-05-05T21:35:50.549Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7487",
+      "thumb": "img-7487-400w.webp",
+      "src": "img-7487-800w.webp",
+      "summary": "Crumb shot of the lighter loaf — two halves on a cutting board in raking sunlight, showing open-but-irregular crumb with visible jalapeño pieces and pockets of melted cheese.",
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7487-v1-400w.webp",
+          "src": "img-7487-v1-800w.webp",
+          "editInstruction": "cropTighten — to cutting board edges",
+          "editedAt": "2026-05-05T21:35:51.040Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7488",
+      "thumb": "img-7488-400w.webp",
+      "src": "img-7488-800w.webp",
+      "summary": "Top-down view of the second loaf cooling on a cutting board — heavily blistered crust, a small blowout window with a jalapeño seed visible, and a thermometer on the counter.",
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7488-v1-400w.webp",
+          "src": "img-7488-v1-800w.webp",
+          "editInstruction": "cropTighten — remove tile backsplash",
+          "editedAt": "2026-05-05T21:35:51.555Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7489",
+      "thumb": "img-7489-400w.webp",
+      "src": "img-7489-800w.webp",
+      "summary": "The darker first loaf on the cutting board near the sink — deeply caramelized molten-cheese face, surrounding crust very dark from the 450°F uncovered bake.",
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7489-v1-400w.webp",
+          "src": "img-7489-v1-800w.webp",
+          "editInstruction": "cropTighten — cut sink/counter clutter",
+          "editedAt": "2026-05-05T21:35:52.039Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7490",
+      "thumb": "img-7490-400w.webp",
+      "src": "img-7490-800w.webp",
+      "summary": "Crumb shot of the second loaf held in hand — two halves shown side by side, open crumb with diced jalapeños and small cheese pockets running through the interior.",
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7490-v1-400w.webp",
+          "src": "img-7490-v1-800w.webp",
+          "editInstruction": "cropTighten — trim feet/paper",
+          "editedAt": "2026-05-05T21:35:52.530Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7493",
+      "thumb": "img-7493-400w.webp",
+      "src": "img-7493-800w.webp",
+      "summary": "Side profile of the darker first loaf held by the window — deeply browned crust with rivulets of caramelized cheese running down the side, slightly squat profile.",
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7493-v1-400w.webp",
+          "src": "img-7493-v1-800w.webp",
+          "editInstruction": "cropTighten — bread+hand",
+          "editedAt": "2026-05-05T21:35:53.005Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7494",
+      "thumb": "img-7494-400w.webp",
+      "src": "img-7494-800w.webp",
+      "summary": "Held shot of the second loaf top-down by the window — flour-dusted crown, cheese ear cracked open along the score, golden caramelization across the bottom shoulder.",
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7494-v1-400w.webp",
+          "src": "img-7494-v1-800w.webp",
+          "editInstruction": "cropTighten — window/wall/floor",
+          "editedAt": "2026-05-05T21:35:53.479Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7482-frame-001",
+      "thumb": "img-7482-frame-001-400w.webp",
+      "src": "img-7482-frame-001-800w.webp",
+      "summary": "Motion-blurred frame of a banneton draped with a flour-cloth on the counter near a gooseneck kettle — pre-shape or shape stage prep.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 0
+    },
+    {
+      "name": "img-7482-frame-002",
+      "thumb": "img-7482-frame-002-400w.webp",
+      "src": "img-7482-frame-002-800w.webp",
+      "summary": "Shaped dough boule freshly placed seam-side up in a cloth-lined banneton — visible jalapeño slices peeking through the surface, ready to be wrapped for retard.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 1
+    },
+    {
+      "name": "img-7482-frame-003",
+      "thumb": "img-7482-frame-003-400w.webp",
+      "src": "img-7482-frame-003-800w.webp",
+      "summary": "Shaped boule resting in flour-dusted banneton, jalapeño rounds embedded on top — overhead view before the cloth is folded over.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 2,
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7482-frame-003-v1-400w.webp",
+          "src": "img-7482-frame-003-v1-800w.webp",
+          "editInstruction": "cropTighten — to banneton",
+          "editedAt": "2026-05-05T21:35:53.940Z"
+        }
+      ]
+    },
+    {
+      "name": "img-7482-frame-004",
+      "thumb": "img-7482-frame-004-400w.webp",
+      "src": "img-7482-frame-004-800w.webp",
+      "summary": "Same banneton with shaped dough and jalapeño slices visible — slight motion blur, kettle and oil bottles in background.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 3
+    },
+    {
+      "name": "img-7482-frame-005",
+      "thumb": "img-7482-frame-005-400w.webp",
+      "src": "img-7482-frame-005-800w.webp",
+      "summary": "Lower angle on the banneton showing the dough surface with embedded jalapeño slices, white flour cloth bunched around the rim.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 4
+    },
+    {
+      "name": "img-7482-frame-006",
+      "thumb": "img-7482-frame-006-400w.webp",
+      "src": "img-7482-frame-006-800w.webp",
+      "summary": "Hand reaching toward the wrapped banneton — motion blurred, transitioning between shaping steps.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 5
+    },
+    {
+      "name": "img-7482-frame-007",
+      "thumb": "img-7482-frame-007-400w.webp",
+      "src": "img-7482-frame-007-800w.webp",
+      "summary": "Hand sweeping past the camera as the cloth is being folded over the dough — heavy motion blur.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 6
+    },
+    {
+      "name": "img-7482-frame-008",
+      "thumb": "img-7482-frame-008-400w.webp",
+      "src": "img-7482-frame-008-800w.webp",
+      "summary": "Hand tucking the flour cloth over the top of the banneton, sealing the boule for cold retard.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 7
+    },
+    {
+      "name": "img-7482-frame-009",
+      "thumb": "img-7482-frame-009-400w.webp",
+      "src": "img-7482-frame-009-800w.webp",
+      "summary": "Counter scene with kettle and a Breaking-Bad 'Let's Cook' coaster — banneton out of frame as cloth is being arranged.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 8
+    },
+    {
+      "name": "img-7482-frame-010",
+      "thumb": "img-7482-frame-010-400w.webp",
+      "src": "img-7482-frame-010-800w.webp",
+      "summary": "Arm passing over the banneton mid-fold — the kettle and Heisenberg coaster visible in the background.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 9
+    },
+    {
+      "name": "img-7482-frame-011",
+      "thumb": "img-7482-frame-011-400w.webp",
+      "src": "img-7482-frame-011-800w.webp",
+      "summary": "Banneton fully wrapped in white flour cloth, ready to head into the fridge for overnight retard.",
+      "source": "video",
+      "sourceFile": "IMG_7482.MOV",
+      "frameIndex": 10
+    },
+    {
+      "name": "img-7491-frame-001",
+      "thumb": "img-7491-frame-001-400w.webp",
+      "src": "img-7491-frame-001-800w.webp",
+      "summary": "Hand-held shot of the darker first loaf at a low angle — backlit by window blinds, blowout window exposing molten cheese with a jalapeño slice peeking through.",
+      "source": "video",
+      "sourceFile": "IMG_7491.MOV",
+      "frameIndex": 0
+    },
+    {
+      "name": "img-7491-frame-002",
+      "thumb": "img-7491-frame-002-400w.webp",
+      "src": "img-7491-frame-002-800w.webp",
+      "summary": "Side profile of the first loaf rotated, showing the cheese-caramelized blowout against the deeply browned shoulder.",
+      "source": "video",
+      "sourceFile": "IMG_7491.MOV",
+      "frameIndex": 1
+    },
+    {
+      "name": "img-7491-frame-003",
+      "thumb": "img-7491-frame-003-400w.webp",
+      "src": "img-7491-frame-003-800w.webp",
+      "summary": "Closer angle on the cheese window — pooled yellow cheese with jalapeño seeds visible, set into the dark crust.",
+      "source": "video",
+      "sourceFile": "IMG_7491.MOV",
+      "frameIndex": 2
+    },
+    {
+      "name": "img-7491-frame-004",
+      "thumb": "img-7491-frame-004-400w.webp",
+      "src": "img-7491-frame-004-800w.webp",
+      "summary": "Top-down view of the first loaf in hand — cross-pattern score visible, large patches of caramelized cheese with a small jalapeño peek.",
+      "source": "video",
+      "sourceFile": "IMG_7491.MOV",
+      "frameIndex": 3
+    },
+    {
+      "name": "img-7491-frame-005",
+      "thumb": "img-7491-frame-005-400w.webp",
+      "src": "img-7491-frame-005-800w.webp",
+      "summary": "Tilted angle on the first loaf — top crust dusted with flour, dramatic cheese-caramelization at the score split.",
+      "source": "video",
+      "sourceFile": "IMG_7491.MOV",
+      "frameIndex": 4
+    },
+    {
+      "name": "img-7491-frame-006",
+      "thumb": "img-7491-frame-006-400w.webp",
+      "src": "img-7491-frame-006-800w.webp",
+      "summary": "Backlit side view of the first loaf against the window — the very dark crust silhouetted, cheese ear glowing where it caught the light.",
+      "source": "video",
+      "sourceFile": "IMG_7491.MOV",
+      "frameIndex": 5
+    },
+    {
+      "name": "img-7492-frame-001",
+      "thumb": "img-7492-frame-001-400w.webp",
+      "src": "img-7492-frame-001-800w.webp",
+      "summary": "Hand-held shot of the second loaf — top-down with a slight triangular profile visible, cross-score split open and golden cheese pockets at one end.",
+      "source": "video",
+      "sourceFile": "IMG_7492.MOV",
+      "frameIndex": 0
+    },
+    {
+      "name": "img-7492-frame-002",
+      "thumb": "img-7492-frame-002-400w.webp",
+      "src": "img-7492-frame-002-800w.webp",
+      "summary": "Side profile of the second loaf — flour-dusted crown, cheese ear cracked open along one edge with a clean amber color from the longer covered bake.",
+      "source": "video",
+      "sourceFile": "IMG_7492.MOV",
+      "frameIndex": 1
+    },
+    {
+      "name": "img-7492-frame-003",
+      "thumb": "img-7492-frame-003-400w.webp",
+      "src": "img-7492-frame-003-800w.webp",
+      "summary": "Side profile from the opposite side of the second loaf — long ear of caramelized cheese running across the score, lighter overall crust color.",
+      "source": "video",
+      "sourceFile": "IMG_7492.MOV",
+      "frameIndex": 2
+    },
+    {
+      "name": "img-7492-frame-004",
+      "thumb": "img-7492-frame-004-400w.webp",
+      "src": "img-7492-frame-004-800w.webp",
+      "summary": "Long side view of the second loaf showing flour-dusted top fading into deeply caramelized cheese crust at the bottom edge.",
+      "source": "video",
+      "sourceFile": "IMG_7492.MOV",
+      "frameIndex": 3
+    },
+    {
+      "name": "img-7492-frame-005",
+      "thumb": "img-7492-frame-005-400w.webp",
+      "src": "img-7492-frame-005-800w.webp",
+      "summary": "Top-down view of the second loaf with the cross score clearly visible — golden cheese windows on either side of the split with jalapeño seeds peeking through.",
+      "source": "video",
+      "sourceFile": "IMG_7492.MOV",
+      "frameIndex": 4
+    },
+    {
+      "name": "img-7492-frame-006",
+      "thumb": "img-7492-frame-006-400w.webp",
+      "src": "img-7492-frame-006-800w.webp",
+      "summary": "Top-down hero-style shot of the second loaf — flour-dusted crown above with the cross-cut split exposing two large caramelized-cheese windows below.",
+      "source": "video",
+      "sourceFile": "IMG_7492.MOV",
+      "frameIndex": 5
+    },
+    {
+      "name": "img-7492-frame-007",
+      "thumb": "img-7492-frame-007-400w.webp",
+      "src": "img-7492-frame-007-800w.webp",
+      "summary": "Same hero-style top-down framing of the second loaf, slightly different angle — flour cap, sharp cross-score, and the cheese-and-jalapeño windows clearly defined.",
+      "source": "video",
+      "sourceFile": "IMG_7492.MOV",
+      "frameIndex": 6,
+      "versions": [
+        {
+          "version": 1,
+          "thumb": "img-7492-frame-007-v1-400w.webp",
+          "src": "img-7492-frame-007-v1-800w.webp",
+          "editInstruction": "cropTighten — keep cross-score symmetry",
+          "editedAt": "2026-05-05T21:35:54.437Z"
+        }
+      ]
+    }
+  ]
+}
