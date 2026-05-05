@@ -110,6 +110,7 @@ Add checks here for new features:
 | F28 | Clipboard via utility | All clipboard calls must use shared `copyToClipboard` from `useClipboard.ts`, not `navigator.clipboard` directly | 2026-02-16 |
 | F29 | Reheat required | All recipes must include a `reheat` block with at least one method | 2026-02-16 |
 | F30 | Reheat version bump | Changes to `reheat` data must bump minor version + add `change_log` entry | 2026-02-16 |
+| F31 | Print ingredient swap | Print page ingredient amounts override from `selectedCostSource.items[]` by `ingredientId`; items absent from cost source fall back to recipe defaults | 2026-05-05 |
 
 ## Print Validation
 

@@ -73,14 +73,25 @@ interface IngredientGroup {
 
 const ingredientsByStage = computed<IngredientGroup[]>(() => {
   if (!currentRecipe.value) return []
+  // Map cost items by ingredientId so amounts reflect the selected bake/estimate.
+  // Items absent from the cost source (e.g., water, starter — zero-cost) keep recipe defaults.
+  const costMap = new Map<string, CookLogCostItem>()
+  for (const item of selectedCostSource.value?.items ?? []) {
+    costMap.set(item.ingredientId, item)
+  }
   return currentRecipe.value.stages
     .filter(stage => stage.gather?.ingredients && stage.gather.ingredients.length > 0)
     .map(stage => ({
       stageName: stage.title,
-      items: (stage.gather?.ingredients ?? []).map(ing => ({
-        name: ing.name,
-        amount: ing.unit === 'whole' ? `${ing.total}x` : `${ing.total} ${ing.unit}`
-      }))
+      items: (stage.gather?.ingredients ?? []).map(ing => {
+        const override = costMap.get(ing.id)
+        const amount = override?.amount ?? ing.total
+        const unit = override?.unit ?? ing.unit
+        return {
+          name: ing.name,
+          amount: unit === 'whole' ? `${amount}x` : `${amount} ${unit}`
+        }
+      })
     }))
 })
 
