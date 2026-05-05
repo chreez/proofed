@@ -15,7 +15,13 @@
   "config": {
     "early_check_percent": 0.8,
     "bakeStatsSchema": {
-      "fields": ["dough_temps", "bulk_ambient_temps", "bake_phases", "stretch_folds", "proof_phases"]
+      "fields": [
+        "dough_temps",
+        "bulk_ambient_temps",
+        "bake_phases",
+        "stretch_folds",
+        "proof_phases"
+      ]
     }
   },
   "version": "v1.1.0",
@@ -32,33 +38,100 @@
     }
   ],
   "vessels": [
-    { "id": "V2", "name": "Large Mixing Bowl", "reuse": "Autolyse → mix → bulk fermentation" },
-    { "id": "V3", "name": "Medium Bowl", "reuse": "Dry pre-mix → inclusion staging" },
-    { "id": "V4", "name": "Dutch Oven", "reuse": "Baking vessel (2 sequential bakes)" },
-    { "id": "V5", "name": "Banneton (×2)", "reuse": "Final proof + cold retard" }
+    {
+      "id": "V2",
+      "name": "Large Mixing Bowl",
+      "reuse": "Autolyse → mix → bulk fermentation"
+    },
+    {
+      "id": "V3",
+      "name": "Medium Bowl",
+      "reuse": "Dry pre-mix → inclusion staging"
+    },
+    {
+      "id": "V4",
+      "name": "Dutch Oven",
+      "reuse": "Baking vessel (2 sequential bakes)"
+    },
+    {
+      "id": "V5",
+      "name": "Banneton (×2)",
+      "reuse": "Final proof + cold retard"
+    }
   ],
   "stages": [
     {
       "id": "PREP",
       "title": "Mise en Place",
       "gather": {
-        "vessels": ["Large Mixing Bowl", "Medium Bowl"],
-        "equipment": ["Kitchen Scale", "Bench Scraper", "Cutting Board", "Chef's Knife", "Disposable Gloves"],
+        "vessels": [
+          "Large Mixing Bowl",
+          "Medium Bowl"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Bench Scraper",
+          "Cutting Board",
+          "Chef's Knife",
+          "Disposable Gloves"
+        ],
         "ingredients": [
-          { "id": "flour", "name": "Bread Flour", "total": 550, "unit": "g", "breakdown": null },
-          { "id": "water", "name": "Water", "total": 340, "unit": "g", "breakdown": null },
-          { "id": "starter", "name": "Active Sourdough Starter (100% hydration)", "total": 110, "unit": "g", "breakdown": null },
-          { "id": "salt", "name": "Fine Sea Salt", "total": 11, "unit": "g", "breakdown": null },
-          { "id": "milk-powder", "name": "Nonfat Milk Powder", "total": 28, "unit": "g", "breakdown": null },
-          { "id": "brown-sugar", "name": "Brown Sugar", "total": 31, "unit": "g", "breakdown": null },
+          {
+            "id": "flour",
+            "name": "Bread Flour",
+            "total": 550,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "water",
+            "name": "Water",
+            "total": 340,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "starter",
+            "name": "Active Sourdough Starter (100% hydration)",
+            "total": 110,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 11,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "total": 28,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "brown-sugar",
+            "name": "Brown Sugar",
+            "total": 31,
+            "unit": "g",
+            "breakdown": null
+          },
           {
             "id": "jalapenos",
             "name": "Fresh Jalapeños",
             "total": 120,
             "unit": "g",
             "breakdown": [
-              { "label": "loaf 1", "amount": 60 },
-              { "label": "loaf 2", "amount": 60 }
+              {
+                "label": "loaf 1",
+                "amount": 60
+              },
+              {
+                "label": "loaf 2",
+                "amount": 60
+              }
             ]
           },
           {
@@ -67,47 +140,87 @@
             "total": 220,
             "unit": "g",
             "breakdown": [
-              { "label": "loaf 1", "amount": 110 },
-              { "label": "loaf 2", "amount": 110 }
+              {
+                "label": "loaf 1",
+                "amount": 110
+              },
+              {
+                "label": "loaf 2",
+                "amount": 110
+              }
             ]
           }
         ]
       },
-      "states": ["autolyse-rest", "prep-jalapenos", "cube-cheddar", "pre-mix-dry"]
+      "states": [
+        "autolyse-rest",
+        "prep-jalapenos",
+        "cube-cheddar",
+        "pre-mix-dry"
+      ]
     },
     {
       "id": "MIX",
       "title": "Dough Mixing",
       "gather": {
         "ingredients": [
-          { "id": "butter", "name": "Unsalted Butter (room temp)", "total": 50, "unit": "g", "breakdown": null }
+          {
+            "id": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "total": 50,
+            "unit": "g",
+            "breakdown": null
+          }
         ]
       },
-      "states": ["incorporate", "develop-gluten", "add-butter"]
+      "states": [
+        "incorporate",
+        "develop-gluten",
+        "add-butter"
+      ]
     },
     {
       "id": "BULK",
       "title": "Bulk Fermentation",
       "gather": null,
-      "states": ["fold-inclusions", "stretch-fold-2", "stretch-fold-3", "stretch-fold-4", "bulk-rest"]
+      "states": [
+        "fold-inclusions",
+        "stretch-fold-2",
+        "stretch-fold-3",
+        "stretch-fold-4",
+        "bulk-rest"
+      ]
     },
     {
       "id": "SHAPE",
       "title": "Divide & Shape",
       "gather": null,
-      "states": ["divide", "preshape", "bench-rest", "final-shape"]
+      "states": [
+        "divide",
+        "preshape",
+        "bench-rest",
+        "final-shape"
+      ]
     },
     {
       "id": "RETARD",
       "title": "Cold Retard",
       "gather": null,
-      "states": ["cold-retard"]
+      "states": [
+        "cold-retard"
+      ]
     },
     {
       "id": "BAKE",
       "title": "Score & Bake",
       "gather": null,
-      "states": ["preheat-oven", "score", "bake-steam", "bake-dry", "cool"]
+      "states": [
+        "preheat-oven",
+        "score",
+        "bake-steam",
+        "bake-dry",
+        "cool"
+      ]
     }
   ],
   "states": [
@@ -119,15 +232,33 @@
       "timer": true,
       "parallel": true,
       "components": [
-        { "name": "bread flour", "amount": "550g" },
-        { "name": "water", "amount": "340g" },
-        { "name": "active starter", "amount": "110g" }
+        {
+          "name": "bread flour",
+          "amount": "550g"
+        },
+        {
+          "name": "water",
+          "amount": "340g"
+        },
+        {
+          "name": "active starter",
+          "amount": "110g"
+        }
       ],
       "exit_condition": "Dough is shaggy but fully hydrated with no dry pockets. Starter sits on top, untouched.",
       "notes": [
-        { "text": "Starter must be ripe — actively bubbling, doubled from last feed, passes the float test. Feed 4-8 hours ahead at 75°F (24°C) so it peaks near autolyse start.", "source": "agent" },
-        { "text": "Place starter on top of autolyse immediately — this prevents forgetting it later. Proof Bread uses this habit to avoid accidentally omitting the starter.", "source": "agent" },
-        { "text": "Use this rest time to prep jalapeños and cube cheddar (next two steps run in parallel).", "source": "agent" }
+        {
+          "text": "Starter must be ripe — actively bubbling, doubled from last feed, passes the float test. Feed 4-8 hours ahead at 75°F (24°C) so it peaks near autolyse start.",
+          "source": "agent"
+        },
+        {
+          "text": "Place starter on top of autolyse immediately — this prevents forgetting it later. Proof Bread uses this habit to avoid accidentally omitting the starter.",
+          "source": "agent"
+        },
+        {
+          "text": "Use this rest time to prep jalapeños and cube cheddar (next two steps run in parallel).",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -138,12 +269,22 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "fresh jalapeños", "amount": "120g" }
+        {
+          "name": "fresh jalapeños",
+          "amount": "120g"
+        }
       ],
       "exit_condition": "Jalapeños diced uniformly, seeds removed to preference, weighed and staged in a bowl.",
       "notes": [
-        { "text": "Always use gloves — capsaicin lingers on hands for hours and will burn eyes or contacts later.", "critical": true, "source": "agent" },
-        { "text": "Fresh jalapeños deliver sharper heat and more vibrant color than pickled. If substituting pickled, drain thoroughly and squeeze out all excess brine to prevent moisture issues.", "source": "agent" }
+        {
+          "text": "Always use gloves — capsaicin lingers on hands for hours and will burn eyes or contacts later.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Fresh jalapeños deliver sharper heat and more vibrant color than pickled. If substituting pickled, drain thoroughly and squeeze out all excess brine to prevent moisture issues.",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -154,12 +295,21 @@
       "timer": false,
       "parallel": true,
       "components": [
-        { "name": "sharp cheddar", "amount": "220g" }
+        {
+          "name": "sharp cheddar",
+          "amount": "220g"
+        }
       ],
       "exit_condition": "Cheddar cubed uniformly at ~1cm, weighed and staged. Cubes will clump together — that is normal for block cheese without cellulose.",
       "notes": [
-        { "text": "Always cube from a block — never use pre-shredded. Pre-shredded cheese is coated with cellulose anti-caking agent that prevents proper melting and creates a webbing effect that restricts dough expansion.", "source": "agent" },
-        { "text": "Sharp or extra-sharp cheddar provides the best flavor contrast. 1cm cubes melt into distinct pockets without dissolving into the dough.", "source": "agent" }
+        {
+          "text": "Always cube from a block — never use pre-shredded. Pre-shredded cheese is coated with cellulose anti-caking agent that prevents proper melting and creates a webbing effect that restricts dough expansion.",
+          "source": "agent"
+        },
+        {
+          "text": "Sharp or extra-sharp cheddar provides the best flavor contrast. 1cm cubes melt into distinct pockets without dissolving into the dough.",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -170,14 +320,29 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "salt", "amount": "11g" },
-        { "name": "milk powder", "amount": "28g" },
-        { "name": "brown sugar", "amount": "31g" }
+        {
+          "name": "salt",
+          "amount": "11g"
+        },
+        {
+          "name": "milk powder",
+          "amount": "28g"
+        },
+        {
+          "name": "brown sugar",
+          "amount": "31g"
+        }
       ],
       "exit_condition": "Dry additions evenly combined with no hard brown sugar clumps remaining.",
       "notes": [
-        { "text": "Pre-mixing prevents brown sugar from clumping in the dough. Crystallized pieces survive fermentation and create sugary pockets in the crumb.", "source": "agent" },
-        { "text": "Milk powder is used instead of liquid milk because liquid milk contains glutathione, an enzyme that attacks gluten bonds during long sourdough fermentation. Milk powder is heat-treated to deactivate it.", "source": "agent" }
+        {
+          "text": "Pre-mixing prevents brown sugar from clumping in the dough. Crystallized pieces survive fermentation and create sugary pockets in the crumb.",
+          "source": "agent"
+        },
+        {
+          "text": "Milk powder is used instead of liquid milk because liquid milk contains glutathione, an enzyme that attacks gluten bonds during long sourdough fermentation. Milk powder is heat-treated to deactivate it.",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -188,8 +353,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "active starter", "amount": "110g" },
-        { "name": "dry pre-mix", "amount": "70g" }
+        {
+          "name": "active starter",
+          "amount": "110g"
+        },
+        {
+          "name": "dry pre-mix",
+          "amount": "70g"
+        }
       ],
       "exit_condition": "No streaks of starter visible, dry additions fully dissolved into dough. Dough feels cohesive but not yet smooth.",
       "notes": null
@@ -204,7 +375,11 @@
       "components": null,
       "exit_condition": "Dough is smooth and elastic. A small piece stretches thin enough to see light through without tearing (windowpane test).",
       "notes": [
-        { "text": "Do NOT add butter yet. Gluten must be well-developed first — fat coats gluten proteins and prevents cross-linking if added too early.", "critical": true, "source": "agent" }
+        {
+          "text": "Do NOT add butter yet. Gluten must be well-developed first — fat coats gluten proteins and prevents cross-linking if added too early.",
+          "critical": true,
+          "source": "agent"
+        }
       ],
       "technique_url": "https://www.theperfectloaf.com/guides/slap-and-fold/"
     },
@@ -216,11 +391,17 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "butter", "amount": "50g" }
+        {
+          "name": "butter",
+          "amount": "50g"
+        }
       ],
       "exit_condition": "Butter fully incorporated — no visible streaks or slick patches. Dough is smooth and slightly tacky.",
       "notes": [
-        { "text": "The dough will feel greasy and fall apart initially. Keep working it — the gluten network re-forms around the fat within a few minutes.", "source": "agent" }
+        {
+          "text": "The dough will feel greasy and fall apart initially. Keep working it — the gluten network re-forms around the fat within a few minutes.",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -231,13 +412,25 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "jalapeños", "amount": "120g" },
-        { "name": "cheddar cubes", "amount": "220g" }
+        {
+          "name": "jalapeños",
+          "amount": "120g"
+        },
+        {
+          "name": "cheddar cubes",
+          "amount": "220g"
+        }
       ],
       "exit_condition": "Inclusions distributed throughout the dough in visible layers. Perfect uniformity not required — subsequent folds will even them out.",
       "notes": [
-        { "text": "This lamination technique preserves dough structure and distributes cheese and peppers in pockets rather than dissolving them into the dough.", "source": "agent" },
-        { "text": "Some cheese will fall out during folding — that is normal with cubes. Push stray pieces back in.", "source": "agent" }
+        {
+          "text": "This lamination technique preserves dough structure and distributes cheese and peppers in pockets rather than dissolving them into the dough.",
+          "source": "agent"
+        },
+        {
+          "text": "Some cheese will fall out during folding — that is normal with cubes. Push stray pieces back in.",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -272,7 +465,10 @@
       "components": null,
       "exit_condition": "Dough is strong, jiggly, and holds a dome shape. Inclusions are well distributed throughout.",
       "notes": [
-        { "text": "If the dough feels very tight and resists stretching, skip this fold. Over-developing an enriched dough with heavy inclusions can tear the gluten network.", "source": "agent" }
+        {
+          "text": "If the dough feels very tight and resists stretching, skip this fold. Over-developing an enriched dough with heavy inclusions can tear the gluten network.",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -285,12 +481,25 @@
       "components": null,
       "exit_condition": "Dough has risen 50-75% from its post-fold volume. Surface is domed, edges show visible bubbles. Total bulk fermentation time (including folds): 4-6 hours at 75-80°F (24-27°C).",
       "notes": [
-        { "text": "Enriched dough ferments slower than lean sourdough. Insufficient bulk fermentation is the primary cause of flat loaves with this bread.", "critical": true, "source": "agent" },
-        { "text": "At 68-72°F (20-22°C), bulk may take 6-8 hours. At 80°F+ (27°C+), it may only need 3-4 hours. Judge by volume, not time.", "source": "agent" }
+        {
+          "text": "Enriched dough ferments slower than lean sourdough. Insufficient bulk fermentation is the primary cause of flat loaves with this bread.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "At 68-72°F (20-22°C), bulk may take 6-8 hours. At 80°F+ (27°C+), it may only need 3-4 hours. Judge by volume, not time.",
+          "source": "agent"
+        }
       ],
       "reminders": [
-        { "prompt": "Record ambient kitchen temperature", "type": "measurement" },
-        { "prompt": "Estimate dough volume increase (%)", "type": "measurement" }
+        {
+          "prompt": "Record ambient kitchen temperature",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Estimate dough volume increase (%)",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -336,11 +545,27 @@
       "components": null,
       "exit_condition": "Two tight, elongated batards with taut skin, seam-side down on parchment. No loose flaps or weak spots in the surface.",
       "notes": [
-        { "text": "Shape as batards, NOT rounds. Proof Bread identified that stopping at the preshape round (skipping final batard shaping) is a primary cause of flat loaves.", "critical": true, "source": "agent" },
-        { "text": "Build strong surface tension — the tighter the shape, the better the loaf holds up during proof and bake. Think of stretching the dough skin like a tight burrito.", "source": "agent" },
-        { "text": "Alternative: proof seam-side down on a parchment-lined sheet tray instead of a banneton. Avoids jalapeño and cheese oils permanently scenting your proofing baskets. Use a banneton liner if you want the ring pattern without the smell. Or dedicate a banneton for inclusion breads — the seasoning is harmless.", "source": "agent" },
-        { "text": "Try: Loaf pan variation — skip batard shaping entirely, place ~730g dough into a greased 9×5 loaf pan. Cold retard in the pan, bake covered with foil 25 min then uncovered 20 min at 425°F (218°C). Produces a sandwich-style jalapeño cheddar pullman.", "source": "agent" },
-        { "text": "Some cheddar cubes will poke through the surface. That is expected and creates attractive caramelized cheese patches during baking.", "source": "agent" }
+        {
+          "text": "Shape as batards, NOT rounds. Proof Bread identified that stopping at the preshape round (skipping final batard shaping) is a primary cause of flat loaves.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Build strong surface tension — the tighter the shape, the better the loaf holds up during proof and bake. Think of stretching the dough skin like a tight burrito.",
+          "source": "agent"
+        },
+        {
+          "text": "Alternative: proof seam-side down on a parchment-lined sheet tray instead of a banneton. Avoids jalapeño and cheese oils permanently scenting your proofing baskets. Use a banneton liner if you want the ring pattern without the smell. Or dedicate a banneton for inclusion breads — the seasoning is harmless.",
+          "source": "agent"
+        },
+        {
+          "text": "Try: Loaf pan variation — skip batard shaping entirely, place ~730g dough into a greased 9×5 loaf pan. Cold retard in the pan, bake covered with foil 25 min then uncovered 20 min at 425°F (218°C). Produces a sandwich-style jalapeño cheddar pullman.",
+          "source": "agent"
+        },
+        {
+          "text": "Some cheddar cubes will poke through the surface. That is expected and creates attractive caramelized cheese patches during baking.",
+          "source": "agent"
+        }
       ],
       "technique_url": "https://www.theperfectloaf.com/guides/shaping-a-batard/"
     },
@@ -354,8 +579,14 @@
       "components": null,
       "exit_condition": "Loaves have puffed slightly but still feel firm and cold. They should pass the poke test with very slow recovery (slight underproof is ideal for this bread).",
       "notes": [
-        { "text": "Cold retard develops flavor (sour tang) and makes the dough easier to score. Bake straight from the fridge — do not warm up.", "source": "agent" },
-        { "text": "Bannetons fit in the fridge more easily than a full sheet tray. If using sheet tray method instead, cover tightly with plastic wrap.", "source": "agent" }
+        {
+          "text": "Cold retard develops flavor (sour tang) and makes the dough easier to score. Bake straight from the fridge — do not warm up.",
+          "source": "agent"
+        },
+        {
+          "text": "Bannetons fit in the fridge more easily than a full sheet tray. If using sheet tray method instead, cover tightly with plastic wrap.",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -379,7 +610,10 @@
       "components": null,
       "exit_condition": "One deep, clean score running the length of the batard. The cut opens slightly, revealing the dough underneath.",
       "notes": [
-        { "text": "Score cold dough straight from the fridge — it holds shape and the blade cuts cleanly. One deep functional score is ideal for cheese bread; complex patterns risk fusing shut when cheese melts.", "source": "agent" }
+        {
+          "text": "Score cold dough straight from the fridge — it holds shape and the blade cuts cleanly. One deep functional score is ideal for cheese bread; complex patterns risk fusing shut when cheese melts.",
+          "source": "agent"
+        }
       ]
     },
     {
@@ -403,11 +637,20 @@
       "components": null,
       "exit_condition": "Crust is deep golden brown with caramelized cheese patches. Internal temperature reads 205°F (96°C) or above. The loaf sounds hollow when tapped on the bottom.",
       "notes": [
-        { "text": "Home ovens need a higher internal temp target (205°F / 96°C) than commercial rack ovens (190-200°F) because steam dissipates once the lid comes off.", "source": "agent" },
-        { "text": "If the crust is browning too fast but internal temp is low, drop oven to 425°F (218°C) and extend baking.", "source": "agent" }
+        {
+          "text": "Home ovens need a higher internal temp target (205°F / 96°C) than commercial rack ovens (190-200°F) because steam dissipates once the lid comes off.",
+          "source": "agent"
+        },
+        {
+          "text": "If the crust is browning too fast but internal temp is low, drop oven to 425°F (218°C) and extend baking.",
+          "source": "agent"
+        }
       ],
       "reminders": [
-        { "prompt": "Record internal bread temperature", "type": "measurement" }
+        {
+          "prompt": "Record internal bread temperature",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -420,14 +663,25 @@
       "components": null,
       "exit_condition": "Loaf has cooled to the point where the crumb has set — the center no longer feels hot to the touch.",
       "notes": [
-        { "text": "The crumb continues to gelatinize during cooling. Cutting early releases steam that the crumb needs to set properly.", "source": "agent" }
+        {
+          "text": "The crumb continues to gelatinize during cooling. Cutting early releases steam that the crumb needs to set properly.",
+          "source": "agent"
+        }
       ]
     }
   ],
   "bake_defaults": {
     "bake_phases": [
-      { "stage": "covered", "temp_f": 450, "duration_min": 30 },
-      { "stage": "uncovered", "temp_f": 450, "duration_min": 18 }
+      {
+        "stage": "covered",
+        "temp_f": 450,
+        "duration_min": 30
+      },
+      {
+        "stage": "uncovered",
+        "temp_f": 450,
+        "duration_min": 18
+      }
     ]
   },
   "technical_notes": [
@@ -619,20 +873,107 @@
     "description": "Adjust inclusion amounts and hydration for jalapeño cheddar sourdough",
     "scaleMode": "pre_scaled",
     "ingredients": [
-      { "id": "flour", "role": "base_flour", "defaultAmount": 550, "min": 450, "max": 700, "step": 25, "waterContentId": "bread-flour" },
-      { "id": "water", "role": "base_liquid", "defaultAmount": 340, "min": 280, "max": 420, "step": 10, "waterContentId": "water" },
-      { "id": "jalapenos", "role": "inclusion", "defaultAmount": 120, "min": 0, "max": 200, "step": 10, "waterContentId": "jalapeno-raw" },
-      { "id": "cheddar", "role": "inclusion", "defaultAmount": 220, "min": 0, "max": 350, "step": 25, "waterContentId": "cheddar" },
-      { "id": "butter", "role": "enrichment", "defaultAmount": 50, "min": 0, "max": 80, "step": 5, "waterContentId": "butter-unsalted" },
-      { "id": "starter", "role": "enrichment", "defaultAmount": 110, "min": 50, "max": 150, "step": 10, "waterContentId": "sourdough-starter-100" },
-      { "id": "salt", "role": "enrichment", "defaultAmount": 11, "min": 5, "max": 15, "step": 1, "waterContentId": "salt" },
-      { "id": "milk-powder", "role": "enrichment", "defaultAmount": 28, "min": 0, "max": 50, "step": 5, "waterContentId": "nonfat-milk-powder" },
-      { "id": "brown-sugar", "role": "enrichment", "defaultAmount": 31, "min": 0, "max": 50, "step": 5, "waterContentId": "brown-sugar" }
+      {
+        "id": "flour",
+        "role": "base_flour",
+        "defaultAmount": 550,
+        "min": 450,
+        "max": 700,
+        "step": 25,
+        "waterContentId": "bread-flour"
+      },
+      {
+        "id": "water",
+        "role": "base_liquid",
+        "defaultAmount": 340,
+        "min": 280,
+        "max": 420,
+        "step": 10,
+        "waterContentId": "water"
+      },
+      {
+        "id": "jalapenos",
+        "role": "inclusion",
+        "defaultAmount": 120,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "waterContentId": "jalapeno-raw"
+      },
+      {
+        "id": "cheddar",
+        "role": "inclusion",
+        "defaultAmount": 220,
+        "min": 0,
+        "max": 350,
+        "step": 25,
+        "waterContentId": "cheddar"
+      },
+      {
+        "id": "butter",
+        "role": "enrichment",
+        "defaultAmount": 50,
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "waterContentId": "butter-unsalted"
+      },
+      {
+        "id": "starter",
+        "role": "enrichment",
+        "defaultAmount": 110,
+        "min": 50,
+        "max": 150,
+        "step": 10,
+        "waterContentId": "sourdough-starter-100"
+      },
+      {
+        "id": "salt",
+        "role": "enrichment",
+        "defaultAmount": 11,
+        "min": 5,
+        "max": 15,
+        "step": 1,
+        "waterContentId": "salt"
+      },
+      {
+        "id": "milk-powder",
+        "role": "enrichment",
+        "defaultAmount": 28,
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "waterContentId": "nonfat-milk-powder"
+      },
+      {
+        "id": "brown-sugar",
+        "role": "enrichment",
+        "defaultAmount": 31,
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "waterContentId": "brown-sugar"
+      }
     ],
     "derived": [
-      { "id": "effective-hydration", "label": "Effective Hydration", "unit": "%", "type": "effective_hydration" },
-      { "id": "inclusion-load", "label": "Inclusion Load", "unit": "%", "type": "inclusion_load" },
-      { "id": "total-dough", "label": "Total Dough Weight", "unit": "g", "type": "total_dough_weight" }
+      {
+        "id": "effective-hydration",
+        "label": "Effective Hydration",
+        "unit": "%",
+        "type": "effective_hydration"
+      },
+      {
+        "id": "inclusion-load",
+        "label": "Inclusion Load",
+        "unit": "%",
+        "type": "inclusion_load"
+      },
+      {
+        "id": "total-dough",
+        "label": "Total Dough Weight",
+        "unit": "g",
+        "type": "total_dough_weight"
+      }
     ]
   },
   "cook_log": [
@@ -692,63 +1033,298 @@
         "perServing": 2.94,
         "servings": 2,
         "items": [
-          { "ingredientId": "flour", "name": "Bread Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached Bread Flour", "amount": 550, "unit": "g", "cost": 1.33 },
-          { "ingredientId": "salt", "name": "Fine Sea Salt", "sourceType": "heb", "sourceName": "Morton Fine Sea Salt", "amount": 10, "unit": "g", "cost": 0.06 },
-          { "ingredientId": "milk-powder", "name": "Nonfat Milk Powder", "sourceType": "heb", "sourceName": "H-E-B Instant Non-Fat Dry Milk", "amount": 25, "unit": "g", "cost": 0.27 },
-          { "ingredientId": "brown-sugar", "name": "Brown Sugar", "sourceType": "heb", "sourceName": "H-E-B Brown Sugar", "amount": 28, "unit": "g", "cost": 0.07 },
-          { "ingredientId": "jalapenos", "name": "Fresh Jalapeños", "sourceType": "heb", "sourceName": "Fresh Jalapeño Pepper", "amount": 120, "unit": "g", "cost": 0.24 },
-          { "ingredientId": "cheddar", "name": "Sharp Cheddar Cheese (block)", "sourceType": "heb", "sourceName": "Tillamook Extra Sharp Cheddar Cheese", "amount": 220, "unit": "g", "cost": 3.53 },
-          { "ingredientId": "butter", "name": "Unsalted Butter (room temp)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 45, "unit": "g", "cost": 0.39 }
+          {
+            "ingredientId": "flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 550,
+            "unit": "g",
+            "cost": 1.33
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Instant Non-Fat Dry Milk",
+            "amount": 25,
+            "unit": "g",
+            "cost": 0.27
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "name": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Brown Sugar",
+            "amount": 28,
+            "unit": "g",
+            "cost": 0.07
+          },
+          {
+            "ingredientId": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "sourceType": "heb",
+            "sourceName": "Fresh Jalapeño Pepper",
+            "amount": 120,
+            "unit": "g",
+            "cost": 0.24
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "sourceType": "heb",
+            "sourceName": "Tillamook Extra Sharp Cheddar Cheese",
+            "amount": 220,
+            "unit": "g",
+            "cost": 3.53
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 45,
+            "unit": "g",
+            "cost": 0.39
+          }
         ]
       },
       "next_time": [
-        { "text": "Start earlier — time constraints forced cold bulk; prefer overnight basket proof (cold retard after shaping)" },
-        { "text": "Rewatch Proof Bread video for butter incorporation technique" },
-        { "text": "Lower bake temps (475 covered / 440 uncovered) produced better results than 480/480" },
-        { "text": "Consider bumping recipe to use 100g active starter directly (no levain build) — suspect 100g is right for this yield since other recipes use 200g for larger batches" },
-        { "text": "Use 50/50 rice flour and AP flour mix for banneton dusting — plain AP leaves stark white patches on the crust" }
+        {
+          "text": "Start earlier — time constraints forced cold bulk; prefer overnight basket proof (cold retard after shaping)"
+        },
+        {
+          "text": "Rewatch Proof Bread video for butter incorporation technique"
+        },
+        {
+          "text": "Lower bake temps (475 covered / 440 uncovered) produced better results than 480/480"
+        },
+        {
+          "text": "Consider bumping recipe to use 100g active starter directly (no levain build) — suspect 100g is right for this yield since other recipes use 200g for larger batches"
+        },
+        {
+          "text": "Use 50/50 rice flour and AP flour mix for banneton dusting — plain AP leaves stark white patches on the crust"
+        }
       ],
       "bake_notes": [
-        { "timestamp": "2026-05-03T03:15:27Z", "raw": "75.9 ambient kitchen temp. autolyse starters with starter and the adjusted flour weights", "curated": "Kitchen 75.9°F. Autolyse started with active starter and adjusted flour weights (-40g flour, -40g water)", "notable": true, "stepId": "autolyse-rest", "processing": "mix" },
-        { "timestamp": "2026-05-03T03:55:36Z", "raw": "81 after adding dry ingredients", "curated": "DDT 81°F after incorporating dry ingredients", "notable": true, "stepId": "develop-gluten", "processing": "mix" },
-        { "timestamp": "2026-05-03T04:08:21Z", "raw": "78.4 after butter inclusion. unsure about this step may need to rewatch video", "curated": "DDT 78.4°F after butter incorporation. Unsure about technique — need to rewatch video", "notable": false, "stepId": "add-butter", "processing": "mix" },
-        { "timestamp": "2026-05-03T05:14:00Z", "raw": "did two stretch and folds before deciding to do the other method of developing gluten. to lift in the center and fold over itself", "curated": "Did two stretch-and-fold sets, then switched to coil fold technique", "notable": false, "stepId": "stretch-fold-3", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-03T05:54:00Z", "raw": "finished a and fold 2 about 6 minutes ago. will check dough temp", "curated": "Finished coil fold 2. Will check dough temp", "notable": false, "stepId": "stretch-fold-3", "processing": "bulk_ferment | Timestamp inferred: '6 minutes ago' relative to 2026-05-03T05:59:58Z → 2026-05-03T05:54:00Z" },
-        { "timestamp": "2026-05-03T06:27:01Z", "raw": "76.5 stretch and folds 3", "curated": "DDT 76.5°F at fold 3", "notable": true, "stepId": "stretch-fold-3", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-03T07:22:42Z", "raw": "i'm gonna try overnight cold ferment", "curated": "Going with overnight cold bulk ferment", "notable": false, "stepId": "_general", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-03T20:37:20Z", "raw": "1390g", "curated": "Total dough weight 1390g", "notable": false, "stepId": "divide", "processing": "shaping" },
-        { "timestamp": "2026-05-03T20:37:40Z", "raw": "695 target", "curated": "Target 695g per loaf", "notable": false, "stepId": "divide", "processing": "shaping" },
-        { "timestamp": "2026-05-03T21:05:00Z", "raw": "since i reversed cold proofing. to cold bulk proof. i'm going to let the shaped doughs sit out while i preheat the oven. i shaped and preheated approx 15 minutes ago. record that as time of shape. prior to shaping i did a preshape and rest of 20 minutes. should be able to calculate these as the separate bake steps", "curated": "Reversed approach: cold bulk instead of cold retard. Shaped and started preheat ~15 min ago. Preshape + 20 min bench rest before final shape", "notable": true, "stepId": "cold-retard", "processing": "shaping | Timestamp inferred: '15 minutes ago' relative to 2026-05-03T21:19:50Z → 2026-05-03T21:05:00Z" },
-        { "timestamp": "2026-05-03T22:35:00Z", "raw": "removed lid approx four minutes ago. baked covered at 480 for 20", "curated": "Loaf 1: removed lid. Covered bake was 480°F for 20 min", "notable": true, "stepId": "bake-dry", "processing": "bake | Timestamp inferred: '4 minutes ago' relative to 2026-05-03T22:38:51Z → 2026-05-03T22:35:00Z" },
-        { "timestamp": "2026-05-03T22:54:39Z", "raw": "210+", "curated": "Internal temp 210°F+ (loaf 1)", "notable": true, "stepId": "bake-dry", "prompt": "Record internal bread temperature", "processing": "bake" },
-        { "timestamp": "2026-05-03T22:55:13Z", "raw": "first loaf out of oven. for second loaf i will preheat at 375. i'm thinking the temp is a bit too high to get the browning i want and spring with additions.", "curated": "First loaf out. Thinking temp too high for desired browning and spring with inclusions", "notable": false, "stepId": "bake-dry", "processing": "bake" },
-        { "timestamp": "2026-05-03T22:55:36Z", "raw": "the second bread will effectively have proofed a bit longer in the basket. about an hour and a half. notable for any differences between the two.", "curated": "Loaf 2 proofed ~1.5 hrs longer at room temp. Notable for differences between loaves", "notable": true, "stepId": "bake-dry", "processing": "bake" },
-        { "timestamp": "2026-05-03T23:53:48Z", "raw": "second bread 475 covered 20 minutes. just took off cover and going to aim for 18 minutes 440", "curated": "Loaf 2: 475°F covered 20 min, now uncovered aiming for 18 min at 440°F", "notable": true, "stepId": "bake-dry", "processing": "bake" }
+        {
+          "timestamp": "2026-05-03T03:15:27Z",
+          "raw": "75.9 ambient kitchen temp. autolyse starters with starter and the adjusted flour weights",
+          "curated": "Kitchen 75.9°F. Autolyse started with active starter and adjusted flour weights (-40g flour, -40g water)",
+          "notable": true,
+          "stepId": "autolyse-rest",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-03T03:55:36Z",
+          "raw": "81 after adding dry ingredients",
+          "curated": "DDT 81°F after incorporating dry ingredients",
+          "notable": true,
+          "stepId": "develop-gluten",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-03T04:08:21Z",
+          "raw": "78.4 after butter inclusion. unsure about this step may need to rewatch video",
+          "curated": "DDT 78.4°F after butter incorporation. Unsure about technique — need to rewatch video",
+          "notable": false,
+          "stepId": "add-butter",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-03T05:14:00Z",
+          "raw": "did two stretch and folds before deciding to do the other method of developing gluten. to lift in the center and fold over itself",
+          "curated": "Did two stretch-and-fold sets, then switched to coil fold technique",
+          "notable": false,
+          "stepId": "stretch-fold-3",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-03T05:54:00Z",
+          "raw": "finished a and fold 2 about 6 minutes ago. will check dough temp",
+          "curated": "Finished coil fold 2. Will check dough temp",
+          "notable": false,
+          "stepId": "stretch-fold-3",
+          "processing": "bulk_ferment | Timestamp inferred: '6 minutes ago' relative to 2026-05-03T05:59:58Z → 2026-05-03T05:54:00Z"
+        },
+        {
+          "timestamp": "2026-05-03T06:27:01Z",
+          "raw": "76.5 stretch and folds 3",
+          "curated": "DDT 76.5°F at fold 3",
+          "notable": true,
+          "stepId": "stretch-fold-3",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-03T07:22:42Z",
+          "raw": "i'm gonna try overnight cold ferment",
+          "curated": "Going with overnight cold bulk ferment",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-03T20:37:20Z",
+          "raw": "1390g",
+          "curated": "Total dough weight 1390g",
+          "notable": false,
+          "stepId": "divide",
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-03T20:37:40Z",
+          "raw": "695 target",
+          "curated": "Target 695g per loaf",
+          "notable": false,
+          "stepId": "divide",
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-03T21:05:00Z",
+          "raw": "since i reversed cold proofing. to cold bulk proof. i'm going to let the shaped doughs sit out while i preheat the oven. i shaped and preheated approx 15 minutes ago. record that as time of shape. prior to shaping i did a preshape and rest of 20 minutes. should be able to calculate these as the separate bake steps",
+          "curated": "Reversed approach: cold bulk instead of cold retard. Shaped and started preheat ~15 min ago. Preshape + 20 min bench rest before final shape",
+          "notable": true,
+          "stepId": "cold-retard",
+          "processing": "shaping | Timestamp inferred: '15 minutes ago' relative to 2026-05-03T21:19:50Z → 2026-05-03T21:05:00Z"
+        },
+        {
+          "timestamp": "2026-05-03T22:35:00Z",
+          "raw": "removed lid approx four minutes ago. baked covered at 480 for 20",
+          "curated": "Loaf 1: removed lid. Covered bake was 480°F for 20 min",
+          "notable": true,
+          "stepId": "bake-dry",
+          "processing": "bake | Timestamp inferred: '4 minutes ago' relative to 2026-05-03T22:38:51Z → 2026-05-03T22:35:00Z"
+        },
+        {
+          "timestamp": "2026-05-03T22:54:39Z",
+          "raw": "210+",
+          "curated": "Internal temp 210°F+ (loaf 1)",
+          "notable": true,
+          "stepId": "bake-dry",
+          "prompt": "Record internal bread temperature",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-03T22:55:13Z",
+          "raw": "first loaf out of oven. for second loaf i will preheat at 375. i'm thinking the temp is a bit too high to get the browning i want and spring with additions.",
+          "curated": "First loaf out. Thinking temp too high for desired browning and spring with inclusions",
+          "notable": false,
+          "stepId": "bake-dry",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-03T22:55:36Z",
+          "raw": "the second bread will effectively have proofed a bit longer in the basket. about an hour and a half. notable for any differences between the two.",
+          "curated": "Loaf 2 proofed ~1.5 hrs longer at room temp. Notable for differences between loaves",
+          "notable": true,
+          "stepId": "bake-dry",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-03T23:53:48Z",
+          "raw": "second bread 475 covered 20 minutes. just took off cover and going to aim for 18 minutes 440",
+          "curated": "Loaf 2: 475°F covered 20 min, now uncovered aiming for 18 min at 440°F",
+          "notable": true,
+          "stepId": "bake-dry",
+          "processing": "bake"
+        }
       ],
       "bake_stats": {
         "dough_temps": [
-          { "time": "2026-05-02 - 22:55", "temp_f": 81, "note": "after dry ingredients" },
-          { "time": "2026-05-02 - 23:08", "temp_f": 78.4, "note": "after butter" },
-          { "time": "2026-05-03 - 01:27", "temp_f": 76.5, "note": "at fold 3" }
+          {
+            "time": "2026-05-02 - 22:55",
+            "temp_f": 81,
+            "note": "after dry ingredients"
+          },
+          {
+            "time": "2026-05-02 - 23:08",
+            "temp_f": 78.4,
+            "note": "after butter"
+          },
+          {
+            "time": "2026-05-03 - 01:27",
+            "temp_f": 76.5,
+            "note": "at fold 3"
+          }
         ],
         "bulk_ambient_temps": [
-          { "date": "2026-05-02", "temp_f": 75.9, "note": "kitchen at autolyse start" }
+          {
+            "date": "2026-05-02",
+            "temp_f": 75.9,
+            "note": "kitchen at autolyse start"
+          }
         ],
         "stretch_folds": [
-          { "time": "2026-05-03 - 00:14", "type": "stretch_fold", "note": "sets 1 & 2 (traditional S&F, then switched to coils)" },
-          { "time": "2026-05-03 - 00:54", "type": "coil", "note": "inferred: '6 min ago' at 00:59 → 00:54" },
-          { "time": "2026-05-03 - 01:27", "type": "coil", "note": "temp 76.5°F" }
+          {
+            "time": "2026-05-03 - 00:14",
+            "type": "stretch_fold",
+            "note": "sets 1 & 2 (traditional S&F, then switched to coils)"
+          },
+          {
+            "time": "2026-05-03 - 00:54",
+            "type": "coil",
+            "note": "inferred: '6 min ago' at 00:59 → 00:54"
+          },
+          {
+            "time": "2026-05-03 - 01:27",
+            "type": "coil",
+            "note": "temp 76.5°F"
+          }
         ],
         "bake_phases": [
-          { "stage": "preheat", "temp_f": 480, "duration_min": 70, "note": "loaf 1" },
-          { "stage": "covered", "temp_f": 480, "duration_min": 20, "start_time": "2026-05-03 - 17:15", "note": "loaf 1" },
-          { "stage": "uncovered", "temp_f": 480, "duration_min": 19, "note": "loaf 1, internal 210°F+" },
-          { "stage": "covered", "temp_f": 475, "duration_min": 20, "start_time": "2026-05-03 - 18:33", "note": "loaf 2" },
-          { "stage": "uncovered", "temp_f": 440, "duration_min": 18, "note": "loaf 2 (target)" }
+          {
+            "stage": "preheat",
+            "temp_f": 480,
+            "duration_min": 70,
+            "note": "loaf 1"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 480,
+            "duration_min": 20,
+            "start_time": "2026-05-03 - 17:15",
+            "note": "loaf 1"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 480,
+            "duration_min": 19,
+            "note": "loaf 1, internal 210°F+"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 475,
+            "duration_min": 20,
+            "start_time": "2026-05-03 - 18:33",
+            "note": "loaf 2"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 440,
+            "duration_min": 18,
+            "note": "loaf 2 (target)"
+          }
         ],
         "proof_phases": [
-          { "type": "room_temp", "duration_min": 70, "note": "loaf 1: shape to oven (~16:05 to ~17:15)" },
-          { "type": "room_temp", "duration_min": 148, "note": "loaf 2: shape to oven (~16:05 to ~18:33)" }
+          {
+            "type": "room_temp",
+            "duration_min": 70,
+            "note": "loaf 1: shape to oven (~16:05 to ~17:15)"
+          },
+          {
+            "type": "room_temp",
+            "duration_min": 148,
+            "note": "loaf 2: shape to oven (~16:05 to ~18:33)"
+          }
         ]
       },
       "weather": {
@@ -759,6 +1335,499 @@
         "humidity_avg_percent": 64,
         "condition": "Overcast",
         "source": "open-meteo"
+      }
+    },
+    {
+      "date": "2026-05-05",
+      "start_date": "2026-05-04",
+      "version": "v1.1.0",
+      "summary": "First v1.1.0 bake (no levain, 10% scale). Time-pressured — cut bulk short for evening commitment, only ~10min preshape rest, ~14hr cold retard. Baked two loaves with different temp profiles next day; second loaf (450 covered → 425 uncovered) had much better color than first (375 covered → 450 uncovered). Both pulled at internal 210°F.",
+      "notes": [
+        "Started 5/4 evening. Kitchen 76.4°F, 54% humidity pre-bake.",
+        "Autolyse start 5:19pm, DDT 78.8°F.",
+        "Only had ~100g sharp cheddar on hand — substituted remainder of cheese target weight with shredded cheese from fridge.",
+        "Dough temp progression: 78°F after butter (6:07pm), 75.7°F after inclusions (6:20pm), 74°F at fold 2 (6:52pm).",
+        "Workflow this bake: autolyse → start dry mix (fed starter same step) → cheddar cubes → jalapeños → cambro shake to mix inclusions.",
+        "Time-constrained — cut bulk ferment short at fold 3 (~7:25pm), turned dough out for divide.",
+        "Dough divide ~7:34pm: total ~1435g → split into 711g and 720g loaves.",
+        "Only 10min preshape rest (had show to attend), shaped feeling underproofed.",
+        "Counter rest until ~9:42pm, wife transferred baskets to fridge.",
+        "Returned home ~10:33pm, poke test good, dough had air, corners rounded but not triangular.",
+        "Loaf 1 bake (5/5): preheat 500°F for 1hr, in at 11:31am, lowered to 375°F covered for 20min, then 450°F uncovered ~18min total (9min, rotate, 9 more). Pulled at 12:14pm, internal 210°F. A little brown — expected with sugar+butter.",
+        "Loaf 2 bake: audibled to 450°F preheat after re-reading recipe. In at 12:44pm, 450°F covered for 30min, then 425°F uncovered ~18min. Internal 210°F.",
+        "Loaf 2 came out with much more desirable color than loaf 1, but slightly triangular shape (under or over proof unclear).",
+        "Loaf 1 kept for me — tasted fine. Loaf 2 gifted to Trevor — he said it didn't stand a chance."
+      ],
+      "photos": [],
+      "next_time": [
+        {
+          "text": "Use bigger sharp cheddar block if planning to make twice in a row — had to sub shredded for ~half"
+        },
+        {
+          "text": "Measure butter right after autolyse so it comes to room temp naturally — skip microwave"
+        },
+        {
+          "text": "Bake profile: 450°F covered (30min) + 425°F uncovered seems better than 375/450 — second loaf had better color"
+        },
+        {
+          "text": "Start earlier — repeated time-constraint problem cutting bulk short"
+        },
+        {
+          "text": "Review proof timeline — second loaf triangular shape ambiguous (under vs over)"
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-04T22:10:40Z",
+          "raw": "76.4",
+          "curated": "Kitchen temp 76.4°F (pre-bake)",
+          "notable": true,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-04T22:10:52Z",
+          "raw": "54% internal humidity",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-04T22:19:44Z",
+          "raw": "autolyse start.",
+          "curated": "Autolyse start",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "autolyse"
+        },
+        {
+          "timestamp": "2026-05-04T22:20:00Z",
+          "raw": "78.8 ddt",
+          "curated": "DDT 78.8°F",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "autolyse"
+        },
+        {
+          "timestamp": "2026-05-04T22:43:16Z",
+          "raw": "i actually only had about 100g of sharp cheddar left. good to know for next time to get a bigger sharp cheddar block if i wanna try making it twice. i replaced the remainder of the cheese by weight with some shredded cheese i found in the fridge. lets just estimate 100g of sharp cheddar and the remainder of target weight is shredded cheese",
+          "curated": "Only ~100g sharp cheddar left — substituted remainder of target weight with shredded cheese from fridge. Note: get bigger block if making twice.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "inclusions"
+        },
+        {
+          "timestamp": "2026-05-04T23:07:34Z",
+          "raw": "78 degrees after adding butter. letting rest before adding inclusions",
+          "curated": "78°F after adding butter. Letting rest before adding inclusions.",
+          "notable": true,
+          "stepId": "add-butter",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-04T23:20:57Z",
+          "raw": "75.7 after inclusions added. waiting 30",
+          "curated": "75.7°F after inclusions added. Waiting 30 min.",
+          "notable": true,
+          "stepId": "fold-inclusions",
+          "processing": "inclusions"
+        },
+        {
+          "timestamp": "2026-05-04T23:42:36Z",
+          "raw": "disregard last entry. note: would be nice to be able to edit or remove entries.",
+          "curated": "Disregard prior entry. UX feedback: would be nice to edit/remove entries in scratchpad.",
+          "notable": true,
+          "stepId": "incorporate",
+          "processing": "meta"
+        },
+        {
+          "timestamp": "2026-05-04T23:43:13Z",
+          "raw": "overall recipe note: i am doing things in a order that seems to work for me.",
+          "curated": "Overall recipe note: doing things in an order that seems to work for me.",
+          "notable": true,
+          "stepId": "autolyse-rest",
+          "processing": "meta"
+        },
+        {
+          "timestamp": "2026-05-04T23:44:06Z",
+          "raw": "i start with autolyse. so i measure out the water flour and starter. its good to get this started because its a mostly passive step. we can do other preps in the meantime. in order: start dry mix (i also feed my starter this step but nonconsequential for recipe)",
+          "curated": "Start with autolyse — measure water, flour, starter. Mostly passive step, allows other preps in meantime. Order: start dry mix (also feed starter same step, non-consequential for recipe).",
+          "notable": true,
+          "stepId": "autolyse-rest",
+          "processing": "meta"
+        },
+        {
+          "timestamp": "2026-05-04T23:44:50Z",
+          "raw": "if i get that done quickly. i’m able to then shift focus on the cheese and jalapeños. however, an improvement is to measure out the butter right after auto lyse. just so we can let it come to room temp naturally without needing microwave.",
+          "curated": "Once dry mix started, shift focus to cheese and jalapeños. Improvement: measure butter right after autolyse so it comes to room temp naturally — skip microwave.",
+          "notable": true,
+          "stepId": "autolyse-rest",
+          "processing": "meta"
+        },
+        {
+          "timestamp": "2026-05-04T23:45:12Z",
+          "raw": "i then do the cheddar cubes. and then jalapeños. i throw them in a cambro and shake it up to mix.",
+          "curated": "Then cheddar cubes, then jalapeños. Throw in cambro and shake to mix inclusions.",
+          "notable": true,
+          "stepId": "autolyse-rest",
+          "processing": "meta"
+        },
+        {
+          "timestamp": "2026-05-04T23:46:22Z",
+          "raw": "these notes should result in a major version bump. when processing just create and draft the backlog item for version bump. include all details and make sure it references raw notes so the agent picking up the task knows what to do with it.",
+          "curated": "Agent instruction: these workflow notes should drive a major version bump. Create draft backlog item referencing these raw notes.",
+          "notable": true,
+          "stepId": "autolyse-rest",
+          "processing": "meta"
+        },
+        {
+          "timestamp": "2026-05-04T23:52:26Z",
+          "raw": "74",
+          "curated": "Dough temp 74°F (fold 2)",
+          "notable": true,
+          "stepId": "stretch-fold-2",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-05T00:25:53Z",
+          "raw": "turning dough out due to time constraints will try to proof in bowl a little early cutting off bulk ferment.",
+          "curated": "Turning dough out due to time constraints. Cutting bulk ferment short — will try to proof in bowl a little early.",
+          "notable": true,
+          "stepId": "stretch-fold-3",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-05T00:34:08Z",
+          "raw": "1435",
+          "curated": "Total dough weight 1435g",
+          "notable": true,
+          "stepId": "stretch-fold-4",
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-05T00:34:12Z",
+          "raw": "717g",
+          "curated": "First loaf 717g",
+          "notable": false,
+          "stepId": "stretch-fold-4",
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-05T00:35:55Z",
+          "raw": "711 720",
+          "curated": "Loaf weights 711g and 720g after split",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-05T00:52:07Z",
+          "raw": "ok bread is shaped. it’s pretty underproofed to my liking but i forgot i had a show to go to. I cut down bulk ferment unfortunately.",
+          "curated": "Bread shaped. Feels underproofed — forgot I had a show, cut down bulk ferment.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-05T00:52:39Z",
+          "raw": "i turned dough out. let it sit for 10 minutes. split. (when i recorded the values that’s when i started preshape rest.) only let it rest for 10 minutes but every bit counts",
+          "curated": "Turned dough out, sat 10 min, split. (Weight values were captured at start of preshape rest.) Only 10 min preshape rest — every bit counts.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-05T00:52:53Z",
+          "raw": "my goal is to let it sit in the counter and my wife will put it in fridge when she gets home.",
+          "curated": "Plan: leave on counter, wife will fridge it when she gets home.",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "proof"
+        },
+        {
+          "timestamp": "2026-05-05T00:53:02Z",
+          "raw": "should have a low risk of overproof",
+          "curated": "Should have low risk of overproof",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "proof"
+        },
+        {
+          "timestamp": "2026-05-05T03:43:08Z",
+          "raw": "wife put the proofing baskets in the fridge at around 9:42",
+          "curated": "Wife put proofing baskets in fridge ~9:42pm",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "proof"
+        },
+        {
+          "timestamp": "2026-05-05T03:43:41Z",
+          "raw": "came back home about 10 minutes ago. checked it. poke test is good. there is air in the dough. corners look nicely rounded but not triangular. should be good.",
+          "curated": "Came back home ~10 min ago. Poke test good. Air in dough. Corners nicely rounded, not triangular. Should be good.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "proof"
+        },
+        {
+          "timestamp": "2026-05-05T16:31:31Z",
+          "raw": "preheat 500. one hour.",
+          "curated": "Preheat 500°F for 1 hour",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-05T16:31:51Z",
+          "raw": "first loaf in now after the hour preheat. lowered to 375 covered for 20 monutes",
+          "curated": "First loaf in after 1hr preheat. Lowered to 375°F covered for 20 min.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-05T16:52:19Z",
+          "raw": "lowered to 450 uncovered. 9 minutes then rotate and probably another 9-13 minutes",
+          "curated": "Lowered to 450°F uncovered. 9 min, rotate, ~9–13 more min.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-05T17:14:05Z",
+          "raw": "took it out after 18 minute mark. looks a little brown but to be expected with sugar and butter. will try doing covered at 475 preheat for 30 minutes for the next one. waiting on preheat for second loaf now. internal temp of the first loaf is about 210 exactly",
+          "curated": "Loaf 1 out after 18 min uncovered. A little brown — expected with sugar and butter. Internal 210°F. Plan: try 475°F preheat covered 30 min for loaf 2.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-05T17:44:00Z",
+          "raw": "second loaf in at 450 for 20 minutes",
+          "curated": "Second loaf in at 450°F for 20 min (audibled to 450 from planned 475 after re-reading recipe).",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-05T18:15:00Z",
+          "raw": "450 covered might be the way to go. i did it for 30 minutes covered for second loaf. lowering down to 425 for remainder and will watch the bread. 9 minute timer starter for 425",
+          "curated": "450°F covered for 30 min on loaf 2. Lowering to 425°F for remainder, 9-min timer + watch.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-05T19:50:02Z",
+          "raw": "second loaf faired better at lower temperatures. much more desirable color.",
+          "curated": "Loaf 2 fared better at lower temps — much more desirable color.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "result"
+        },
+        {
+          "timestamp": "2026-05-05T19:50:21Z",
+          "raw": "second loaf looked a bit triangular which could mean either under or overproof. review timeline",
+          "curated": "Loaf 2 slightly triangular — ambiguous (under or over proof). Review timeline.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "result"
+        }
+      ],
+      "bake_stats": {
+        "dough_temps": [
+          {
+            "time": "2026-05-04 - 17:20",
+            "temp_f": 78.8,
+            "note": "DDT after autolyse start"
+          },
+          {
+            "time": "2026-05-04 - 18:07",
+            "temp_f": 78,
+            "note": "after butter"
+          },
+          {
+            "time": "2026-05-04 - 18:20",
+            "temp_f": 75.7,
+            "note": "after inclusions"
+          },
+          {
+            "time": "2026-05-04 - 18:52",
+            "temp_f": 74,
+            "note": "fold 2"
+          }
+        ],
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-05-04",
+            "temp_f": 76.4,
+            "note": "pre-bake (54% humidity)"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-05-04 - 18:52",
+            "type": "stretch_fold",
+            "note": "fold 2, dough 74°F"
+          },
+          {
+            "time": "2026-05-04 - 19:25",
+            "type": "stretch_fold",
+            "note": "fold 3, bulk cut short due to time"
+          },
+          {
+            "time": "2026-05-04 - 19:34",
+            "type": "stretch_fold",
+            "note": "fold 4 / pre-divide"
+          }
+        ],
+        "proof_phases": [
+          {
+            "stage": "counter_rest",
+            "start_time": "2026-05-04 - 19:53",
+            "end_time": "2026-05-04 - 21:42",
+            "duration_min": 109,
+            "ambient_f": 76,
+            "note": "between shape and fridge"
+          },
+          {
+            "stage": "cold_retard",
+            "start_time": "2026-05-04 - 21:42",
+            "end_time": "2026-05-05 - 11:31",
+            "duration_min": 829,
+            "note": "loaf 1 — ~13.8 hr"
+          },
+          {
+            "stage": "cold_retard",
+            "start_time": "2026-05-04 - 21:42",
+            "end_time": "2026-05-05 - 12:44",
+            "duration_min": 902,
+            "note": "loaf 2 — ~15 hr"
+          }
+        ],
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 500,
+            "duration_min": 60,
+            "note": "loaf 1"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 375,
+            "duration_min": 20,
+            "start_time": "2026-05-05 - 11:31",
+            "note": "loaf 1"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 450,
+            "duration_min": 18,
+            "note": "loaf 1, internal 210°F at pull"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 30,
+            "start_time": "2026-05-05 - 12:44",
+            "note": "loaf 2 (audibled from 475)"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 18,
+            "note": "loaf 2, internal 210°F at pull — better color than loaf 1"
+          }
+        ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-05",
+        "temp_high_f": 86.4,
+        "temp_low_f": 68.8,
+        "humidity_avg_percent": 80,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "total": 5.66,
+        "perServing": 2.83,
+        "servings": 2,
+        "date": "2026-05-05",
+        "items": [
+          {
+            "ingredientId": "flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B The Baker's Scoop Bread Flour",
+            "amount": 550,
+            "unit": "g",
+            "cost": 0.92
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter (100% hydration)",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 110,
+            "unit": "g",
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 11,
+            "unit": "g",
+            "cost": 0.07
+          },
+          {
+            "ingredientId": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Instant Non-Fat Dry Milk",
+            "amount": 28,
+            "unit": "g",
+            "cost": 0.31
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "name": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Brown Sugar",
+            "amount": 31,
+            "unit": "g",
+            "cost": 0.08
+          },
+          {
+            "ingredientId": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "sourceType": "heb",
+            "sourceName": "Fresh Jalapeño Pepper",
+            "amount": 120,
+            "unit": "g",
+            "cost": 0.24
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "sourceType": "heb",
+            "sourceName": "Tillamook Extra Sharp Cheddar Cheese",
+            "amount": 220,
+            "unit": "g",
+            "cost": 3.54
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 50,
+            "unit": "g",
+            "cost": 0.44
+          }
+        ]
       }
     }
   ]

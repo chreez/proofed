@@ -1,0 +1,577 @@
+{
+  "recipeId": "jalapeno-cheddar-sourdough",
+  "date": "2026-05-05",
+  "storeId": 218,
+  "ingredients": [
+    {
+      "ingredientId": "flour",
+      "name": "Bread Flour",
+      "recipeAmount": 550,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B The Baker's Scoop Bread Flour",
+          "brand": "H-E-B",
+          "size": "5 lbs",
+          "sizeGrams": 2268.0,
+          "price": 3.78,
+          "salePrice": null,
+          "unitPrice": "$0.05/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "10 lbs",
+          "sizeGrams": 4535.9,
+          "price": 10.99,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour",
+          "brand": "H-E-B",
+          "size": "5 lbs",
+          "sizeGrams": 2268.0,
+          "price": 3.78,
+          "salePrice": null,
+          "unitPrice": "$0.05/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Unbleached All Purpose Flour",
+          "brand": "H-E-B Organics",
+          "size": "5 lbs",
+          "sizeGrams": 2268.0,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached All-Purpose Flour",
+          "brand": "King Arthur",
+          "size": "5 lbs",
+          "sizeGrams": 2268.0,
+          "price": 5.48,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Enriched Unbleached All-Purpose Flour",
+          "brand": "Hill Country Fare",
+          "size": "5 lbs",
+          "sizeGrams": 2268.0,
+          "price": 2.58,
+          "salePrice": null,
+          "unitPrice": "$0.03/oz",
+          "inStock": true
+        },
+        {
+          "name": "Central Market Unbleached \"00\" Flour",
+          "brand": "Central Market",
+          "size": "2.2 lbs",
+          "sizeGrams": 997.9,
+          "price": 3.98,
+          "salePrice": null,
+          "unitPrice": "$0.11/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Neapolitan-Style '00' Pizza Flour",
+          "brand": "King Arthur",
+          "size": "3 lbs",
+          "sizeGrams": 1360.8,
+          "price": 6.68,
+          "salePrice": null,
+          "unitPrice": "$0.14/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "water",
+      "name": "Water",
+      "recipeAmount": 340,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "starter",
+      "name": "Active Sourdough Starter (100% hydration)",
+      "recipeAmount": 110,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Fine Sea Salt",
+      "recipeAmount": 11,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Morton Fine Sea Salt",
+          "brand": "Morton",
+          "size": "17.6 oz",
+          "sizeGrams": 499.0,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        },
+        {
+          "name": "Redmond Real Salt Fine Sea Salt",
+          "brand": "Redmond Real Salt",
+          "size": "10 oz",
+          "sizeGrams": 283.5,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "La Baleine Fine Sea Salt Shaker",
+          "brand": "La Baleine",
+          "size": "4.4 oz",
+          "sizeGrams": 124.7,
+          "price": 2.18,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
+          "brand": "H-E-B",
+          "size": "26.5 oz",
+          "sizeGrams": 751.3,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "milk-powder",
+      "name": "Nonfat Milk Powder",
+      "recipeAmount": 28,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Instant Non-Fat Dry Milk",
+          "brand": "H-E-B",
+          "size": "25.6 oz",
+          "sizeGrams": 725.7,
+          "price": 7.98,
+          "salePrice": null,
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        },
+        {
+          "name": "Saco Mix 'N Drink Instant Skim Milk",
+          "brand": "Saco",
+          "size": "3.2 oz",
+          "sizeGrams": 90.7,
+          "price": 1.78,
+          "salePrice": null,
+          "unitPrice": "$0.56/oz",
+          "inStock": true
+        },
+        {
+          "name": "Saco Mix 'N Drink Real Skim Milk",
+          "brand": "Saco",
+          "size": "9.6 oz",
+          "sizeGrams": 272.2,
+          "price": 3.36,
+          "salePrice": null,
+          "unitPrice": "$0.35/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "brown-sugar",
+      "name": "Brown Sugar",
+      "recipeAmount": 31,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Brown Sugar",
+          "brand": "H-E-B",
+          "size": "2 lbs",
+          "sizeGrams": 907.2,
+          "price": 2.42,
+          "salePrice": null,
+          "unitPrice": "$0.08/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Light Brown Sugar",
+          "brand": "H-E-B Organics",
+          "size": "24 oz",
+          "sizeGrams": 680.4,
+          "price": 3.09,
+          "salePrice": null,
+          "unitPrice": "$0.13/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Brown Sugar",
+          "brand": "Hill Country Fare",
+          "size": "32 oz",
+          "sizeGrams": 907.2,
+          "price": 1.84,
+          "salePrice": null,
+          "unitPrice": "$0.06/oz",
+          "inStock": true
+        },
+        {
+          "name": "Imperial Sugar Pure Cane Dark Brown Sugar",
+          "brand": "Imperial Sugar",
+          "size": "2 lbs",
+          "sizeGrams": 907.2,
+          "price": 2.82,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Imperial Sugar Pure Cane Light Brown Sugar",
+          "brand": "Imperial Sugar",
+          "size": "2 lbs",
+          "sizeGrams": 907.2,
+          "price": 2.82,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Zulka Brown Pure Cane Sugar",
+          "brand": "Zulka",
+          "size": "1 lb",
+          "sizeGrams": 453.6,
+          "price": 1.48,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "C&H Premium Pure Cane Light Brown Sugar",
+          "brand": "C&H",
+          "size": "2 lbs",
+          "sizeGrams": 907.2,
+          "price": 2.62,
+          "salePrice": null,
+          "unitPrice": "$0.08/oz",
+          "inStock": true
+        },
+        {
+          "name": "C&H Premium Pure Cane Dark Brown Sugar",
+          "brand": "C&H",
+          "size": "2 lbs",
+          "sizeGrams": 907.2,
+          "price": 2.82,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Wholesome Organic Light Brown Sugar",
+          "brand": "Wholesome",
+          "size": "24 oz",
+          "sizeGrams": 680.4,
+          "price": 3.28,
+          "salePrice": null,
+          "unitPrice": "$0.14/oz",
+          "inStock": true
+        },
+        {
+          "name": "Wholesome Organic Dark Brown Sugar",
+          "brand": "Wholesome",
+          "size": "1.5 lb",
+          "sizeGrams": 680.4,
+          "price": 5.4,
+          "salePrice": null,
+          "unitPrice": "$0.22/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "jalapenos",
+      "name": "Fresh Jalapeños",
+      "recipeAmount": 120,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Fresh Jalapeño Pepper",
+          "brand": "Fresh",
+          "size": "Avg. 0.165 lb",
+          "sizeGrams": 74.8,
+          "price": 0.15,
+          "salePrice": null,
+          "unitPrice": "$0.90/lb",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Fresh Diced Jalapeno - Single Serve",
+          "brand": "H-E-B",
+          "size": "3 oz",
+          "sizeGrams": 85.0,
+          "price": 1.98,
+          "salePrice": null,
+          "unitPrice": "$0.66/oz",
+          "inStock": true
+        },
+        {
+          "name": "Mt. Olive Jalapeno Slices Fresh Pack",
+          "brand": "Mt. Olive",
+          "size": "12 oz",
+          "sizeGrams": 340.2,
+          "price": 2.14,
+          "salePrice": null,
+          "unitPrice": "$0.18/oz",
+          "inStock": true
+        },
+        {
+          "name": "Mt. Olive Diced Jalapeno Peppers Fresh Pack",
+          "brand": "Mt. Olive",
+          "size": "12 oz",
+          "sizeGrams": 340.2,
+          "price": 2.14,
+          "salePrice": null,
+          "unitPrice": "$0.18/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "cheddar",
+      "name": "Sharp Cheddar Cheese (block)",
+      "recipeAmount": 220,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Sharp Cheddar Cheese",
+          "brand": "H-E-B",
+          "size": "16 oz",
+          "sizeGrams": 453.6,
+          "price": 4.99,
+          "salePrice": null,
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Sharp Cheddar Cheese",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "Tillamook Sharp Cheddar Cheese",
+          "brand": "Tillamook",
+          "size": "16 oz",
+          "sizeGrams": 453.6,
+          "price": 6.97,
+          "salePrice": null,
+          "unitPrice": "$0.44/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B New York Style Extra Sharp White Cheddar Cheese",
+          "brand": "H-E-B",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "Tillamook Extra Sharp Cheddar Cheese",
+          "brand": "Tillamook",
+          "size": "16 oz",
+          "sizeGrams": 453.6,
+          "price": 7.29,
+          "salePrice": null,
+          "unitPrice": "$0.46/oz",
+          "inStock": true
+        },
+        {
+          "name": "Kraft Sharp Cheddar Cheese",
+          "brand": "Kraft",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "Tillamook Extra Sharp White Cheddar Cheese",
+          "brand": "Tillamook",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 3.88,
+          "salePrice": null,
+          "unitPrice": "$0.48/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Sharp Cheddar Cheese",
+          "brand": "H-E-B Organics",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 3.97,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "Organic Valley Pasture-Raised Sharp Cheddar Raw Cheese",
+          "brand": "Organic Valley",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 5.79,
+          "salePrice": null,
+          "unitPrice": "$0.72/oz",
+          "inStock": true
+        },
+        {
+          "name": "Kraft Extra Sharp Cheddar Cheese",
+          "brand": "Kraft",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "Kraft Natural Cheese Extra Sharp Cheddar Block",
+          "brand": "Kraft",
+          "size": "16 oz",
+          "sizeGrams": 453.6,
+          "price": 5.48,
+          "salePrice": null,
+          "unitPrice": "$0.34/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "butter",
+      "name": "Unsalted Butter (room temp)",
+      "recipeAmount": 50,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Sweet Cream Unsalted Butter Sticks",
+          "brand": "H-E-B",
+          "size": "4 ct (16 oz)",
+          "sizeGrams": 453.6,
+          "price": 3.98,
+          "salePrice": null,
+          "unitPrice": "$0.25/oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Unsalted Butter Sticks",
+          "brand": "Hill Country Fare",
+          "size": "4 ct (16 oz)",
+          "sizeGrams": 453.6,
+          "price": 2.88,
+          "salePrice": null,
+          "unitPrice": "$0.18/oz",
+          "inStock": true
+        },
+        {
+          "name": "Central Market European Style Unsalted Butter Sticks",
+          "brand": "Central Market",
+          "size": "4 ct (16 oz)",
+          "sizeGrams": 453.6,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Sweet Cream Unsalted Butter Sticks",
+          "brand": "H-E-B",
+          "size": "2 ct (8 oz)",
+          "sizeGrams": 226.8,
+          "price": 2.46,
+          "salePrice": null,
+          "unitPrice": "$0.31/oz",
+          "inStock": true
+        },
+        {
+          "name": "Land O Lakes Unsalted Sweet Butter Sticks",
+          "brand": "Land O Lakes",
+          "size": "4 ct (16 oz)",
+          "sizeGrams": 453.6,
+          "price": 4.46,
+          "salePrice": null,
+          "unitPrice": "$0.28/oz",
+          "inStock": true
+        },
+        {
+          "name": "Kerrygold Grass-Fed Unsalted Pure Irish Butter",
+          "brand": "Kerrygold",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 4.84,
+          "salePrice": null,
+          "unitPrice": "$0.60/oz",
+          "inStock": true
+        },
+        {
+          "name": "Falfurrias Unsalted Butter Sticks",
+          "brand": "Falfurrias",
+          "size": "4 ct (16 oz)",
+          "sizeGrams": 453.6,
+          "price": 4.47,
+          "salePrice": null,
+          "unitPrice": "$0.28/oz",
+          "inStock": true
+        },
+        {
+          "name": "Plugra Premium European Style Unsalted Butter",
+          "brand": "Plugra",
+          "size": "8 oz",
+          "sizeGrams": 226.8,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        },
+        {
+          "name": "Challenge Unsalted Butter Sticks",
+          "brand": "Challenge",
+          "size": "4 ct (16 oz)",
+          "sizeGrams": 453.6,
+          "price": 4.28,
+          "salePrice": null,
+          "unitPrice": "$0.27/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Unsalted Butter",
+          "brand": "H-E-B",
+          "size": "16 oz",
+          "sizeGrams": 453.6,
+          "price": 5.85,
+          "salePrice": null,
+          "unitPrice": "$0.37/oz",
+          "inStock": true
+        }
+      ]
+    }
+  ]
+}
