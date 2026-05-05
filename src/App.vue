@@ -669,6 +669,7 @@ watch(() => route.hash, (newHash) => {
               :scratchpad-note-count="scratchpad?.totalEntryCount?.value ?? 0"
               class="mb-6"
               @reset="handleReset"
+              @select="handleRecipeSelect"
             />
 
             <!-- RecipeSummary hidden until user provides dictated content -->

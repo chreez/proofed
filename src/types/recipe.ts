@@ -153,6 +153,11 @@ export interface Research {
   date: string
 }
 
+export interface OutdatedMarker {
+  reason: string
+  supersededBy?: string
+}
+
 export interface RecipeMeta {
   name: string
   source?: RecipeSource
@@ -160,6 +165,7 @@ export interface RecipeMeta {
   total_time: string
   description?: string
   allergenOverride?: string[]
+  outdated?: OutdatedMarker
 }
 
 export interface RecipeStats {

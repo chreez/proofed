@@ -391,6 +391,63 @@ describe('Scaling', () => {
   })
 })
 
+describe('outdated banner', () => {
+  it('does not render when meta.outdated is unset', () => {
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe: makeRecipe() }
+    })
+    expect(wrapper.text()).not.toContain('outdated')
+  })
+
+  it('renders banner with reason when meta.outdated is set', () => {
+    const wrapper = mount(RecipeMeta, {
+      props: {
+        recipe: makeRecipe({
+          meta: {
+            name: 'Old Sourdough',
+            source: { name: 'me' },
+            yields: '2 loaves',
+            total_time: '~22 hrs',
+            outdated: { reason: 'Replaced by new method.' }
+          }
+        })
+      }
+    })
+    expect(wrapper.text()).toContain('outdated')
+    expect(wrapper.text()).toContain('Replaced by new method.')
+  })
+
+  it('emits select with supersededBy id when superseder link clicked', async () => {
+    // Inject a fake manifest into useRecipe singleton so superseder name resolves
+    const { useRecipe } = await import('@/composables/useRecipe')
+    const r = useRecipe()
+    r.manifest.value = {
+      recipes: [
+        { id: 'new-id', name: 'New Recipe', file: 'new.json' }
+      ]
+    }
+    const wrapper = mount(RecipeMeta, {
+      props: {
+        recipe: makeRecipe({
+          meta: {
+            name: 'Old',
+            source: { name: 'me' },
+            yields: '1',
+            total_time: '1h',
+            outdated: { reason: 'Old.', supersededBy: 'new-id' }
+          }
+        })
+      }
+    })
+    const link = wrapper.find('a')
+    expect(link.exists()).toBe(true)
+    expect(link.text()).toContain('New Recipe')
+    await link.trigger('click')
+    expect(wrapper.emitted('select')?.[0]).toEqual(['new-id'])
+    r.manifest.value = null
+  })
+})
+
 describe('HTML snapshot', () => {
   it('matches snapshot', () => {
     const wrapper = mount(RecipeMeta, {

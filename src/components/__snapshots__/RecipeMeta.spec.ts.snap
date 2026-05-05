@@ -15,7 +15,9 @@ exports[`HTML snapshot > matches snapshot 1`] = `
         <div data-v-f6045c74="" class="icon-btn-wrap"><button data-v-f6045c74="" class="icon-btn" title="Copy Recipe"><svg class="icon-clipboard"></svg></button><span data-v-f6045c74="" class="icon-tooltip">Copy Recipe</span></div>
       </div>
     </div>
-  </div><!-- Process caveats banner when scaled -->
+  </div><!-- Outdated banner -->
+  <!--v-if-->
+  <!-- Process caveats banner when scaled -->
   <!--v-if-->
 </div>
 <!--teleport start-->

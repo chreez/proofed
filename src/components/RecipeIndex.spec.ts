@@ -616,4 +616,41 @@ describe('RecipeIndex', () => {
     expect(labels.length).toBe(1)
     expect(labels[0].text()).toBe('baking')
   })
+
+  it('renders outdated baked recipes in dedicated outdated group', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-fresh', name: 'Fresh Recipe', file: 'fresh.json' },
+      { id: 'recipe-old', name: 'Old Recipe', file: 'old.json' }
+    ]
+    global.fetch = makeFetchMockByFile({
+      'fresh.json': { meta: { description: 'fresh' }, cook_log: [{ date: '2026-01-01', photos: [] }] },
+      'old.json': { meta: { description: 'old', outdated: { reason: 'Replaced.' } }, cook_log: [{ date: '2026-01-01', photos: [] }] }
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const labels = wrapper.findAll('.timeline-section-label').map(l => l.text())
+    expect(labels).toContain('outdated')
+
+    const outdatedItems = wrapper.findAll('.timeline-item--outdated')
+    expect(outdatedItems.length).toBe(1)
+    expect(outdatedItems[0].text()).toContain('Old Recipe')
+  })
+
+  it('emits select for outdated item click', async () => {
+    mockRecipeList.value = [
+      { id: 'recipe-old', name: 'Old Recipe', file: 'old.json' }
+    ]
+    global.fetch = makeFetchMockByFile({
+      'old.json': { meta: { description: 'old', outdated: { reason: 'Replaced.' } }, cook_log: [{ date: '2026-01-01', photos: [] }] }
+    })
+
+    const wrapper = mount(RecipeIndex)
+    await flushPromises()
+
+    const outdated = wrapper.find('.timeline-item--outdated')
+    await outdated.trigger('click')
+    expect(wrapper.emitted('select')?.[0]).toEqual(['recipe-old'])
+  })
 })

@@ -6,6 +6,7 @@ import ResetConfirmDialog from '@/components/ResetConfirmDialog.vue'
 import ScalingControl from '@/components/ScalingControl.vue'
 import { copyToClipboard } from '@/composables/useClipboard'
 import { useScaling } from '@/composables/useScaling'
+import { useRecipe } from '@/composables/useRecipe'
 import type { Recipe } from '@/types/recipe'
 import { SCALING_MULTIPLIER_KEY } from '@/composables/scalingKey'
 
@@ -19,6 +20,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   reset: []
+  select: [recipeId: string]
 }>()
 
 const copyBtn = useTemplateRef<InstanceType<typeof IconButton>>('copyBtn')
@@ -29,6 +31,18 @@ const resetDialog = useTemplateRef<InstanceType<typeof ResetConfirmDialog>>('res
 const appMultiplier = inject(SCALING_MULTIPLIER_KEY, ref(1))
 const scaling = useScaling(props.recipe, appMultiplier)
 const dismissedCaveats = ref(new Set<number>())
+
+const { recipeList } = useRecipe()
+const supersederName = computed<string | null>(() => {
+  const id = props.recipe.meta.outdated?.supersededBy
+  if (!id) return null
+  return recipeList.value.find(r => r.id === id)?.name ?? null
+})
+
+function gotoSuperseder(): void {
+  const id = props.recipe.meta.outdated?.supersededBy
+  if (id) emit('select', id)
+}
 
 const visibleCaveats = computed(() => {
   return scaling.processCaveats.value.filter((_, idx) => !dismissedCaveats.value.has(idx))
@@ -155,6 +169,23 @@ function handleResetConfirm(): void {
           </IconButton>
         </div>
       </div>
+    </div>
+
+    <!-- Outdated banner -->
+    <div
+      v-if="recipe.meta.outdated"
+      class="mt-4 bg-stone-100 border-l-4 border-stone-400 p-3 text-sm text-stone-600"
+    >
+      <div class="font-mono text-xs uppercase tracking-wide text-stone-500 mb-1">outdated</div>
+      <p class="text-ink">{{ recipe.meta.outdated.reason }}</p>
+      <p v-if="recipe.meta.outdated.supersededBy" class="mt-2">
+        <a
+          v-if="supersederName"
+          href="#"
+          class="text-accent hover:underline"
+          @click.prevent="gotoSuperseder"
+        >→ {{ supersederName }}</a>
+      </p>
     </div>
 
     <!-- Process caveats banner when scaled -->

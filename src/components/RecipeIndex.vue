@@ -19,6 +19,7 @@ interface RecipeMeta {
   heroThumb: string | null
   sourceType: 'original' | 'adapted' | null
   sourceAuthor: string | null
+  outdated: boolean
 }
 
 interface TimelineItem {
@@ -33,6 +34,7 @@ interface TimelineItem {
   category: string
   sourceType: 'original' | 'adapted' | null
   sourceAuthor: string | null
+  outdated: boolean
 }
 
 interface CategoryGroup {
@@ -121,9 +123,10 @@ async function fetchRecipeMeta(file: string): Promise<RecipeMeta> {
       heroThumb,
       sourceType: sourceType === 'original' || sourceType === 'adapted' ? sourceType : null,
       sourceAuthor,
+      outdated: Boolean(data.meta?.outdated),
     }
   } catch {
-    return { baked: false, bakeCount: 0, description: null, heroThumb: null, sourceType: null, sourceAuthor: null }
+    return { baked: false, bakeCount: 0, description: null, heroThumb: null, sourceType: null, sourceAuthor: null, outdated: false }
   }
 }
 
@@ -160,6 +163,7 @@ const items = computed<TimelineItem[]>(() => {
       category: categoryMap[recipe.id] ?? 'other',
       sourceType: meta?.sourceType ?? null,
       sourceAuthor: meta?.sourceAuthor ?? null,
+      outdated: meta?.outdated ?? false,
     }
   })
 })
@@ -175,11 +179,11 @@ const inProgressItems = computed<TimelineItem[]>(() =>
     .sort((a, b) => a.name.localeCompare(b.name))
 )
 
-// Baked items grouped by category (excluding in-progress to avoid dupes)
+// Baked items grouped by category (excluding in-progress + outdated)
 const bakedGroupedItems = computed<CategoryGroup[]>(() => {
   const inProgressIds = new Set(inProgressItems.value.map(i => i.id))
   const bakedItems = items.value
-    .filter(item => item.baked && !inProgressIds.has(item.id))
+    .filter(item => item.baked && !item.outdated && !inProgressIds.has(item.id))
     .sort((a, b) => a.name.localeCompare(b.name))
 
   const groups = new Map<string, TimelineItem[]>()
@@ -193,11 +197,19 @@ const bakedGroupedItems = computed<CategoryGroup[]>(() => {
     .map(cat => ({ label: cat, items: groups.get(cat)! }))
 })
 
-// Unbaked items grouped by category (hidden by default)
+// Outdated baked items: dedicated group rendered at bottom of baked section
+const outdatedItems = computed<TimelineItem[]>(() => {
+  const inProgressIds = new Set(inProgressItems.value.map(i => i.id))
+  return items.value
+    .filter(item => item.baked && item.outdated && !inProgressIds.has(item.id))
+    .sort((a, b) => a.name.localeCompare(b.name))
+})
+
+// Unbaked items grouped by category (hidden by default; excludes outdated)
 const unbakedGroupedItems = computed<CategoryGroup[]>(() => {
   const inProgressIds = new Set(inProgressItems.value.map(i => i.id))
   const unbaked = items.value
-    .filter(item => !item.baked && !inProgressIds.has(item.id))
+    .filter(item => !item.baked && !item.outdated && !inProgressIds.has(item.id))
     .sort((a, b) => a.name.localeCompare(b.name))
 
   const groups = new Map<string, TimelineItem[]>()
@@ -338,6 +350,54 @@ const labelVariants = {
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8" /></svg>
               </span>
+              <span v-if="item.bakeCount > 0" class="timeline-bake-count">{{ item.bakeCount }} bake{{ item.bakeCount !== 1 ? 's' : '' }}</span>
+            </div>
+
+            <div class="timeline-detail">
+              <div v-if="item.heroImage" class="timeline-hero-wrap">
+                <img
+                  :src="item.heroImage"
+                  :alt="item.name"
+                  class="timeline-hero"
+                  loading="lazy"
+                />
+              </div>
+              <div class="timeline-meta">
+                <p v-if="item.description" class="timeline-summary">{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        </motion.li>
+      </template>
+
+      <!-- Outdated baked recipes (dedicated group at bottom) -->
+      <template v-if="outdatedItems.length > 0">
+        <motion.li
+          class="timeline-section-label-item"
+          initial="hidden"
+          :whileInView="'visible'"
+          :inViewOptions="{ once: true, amount: 0.1 }"
+          :variants="labelVariants"
+        >
+          <span class="timeline-section-label">outdated</span>
+        </motion.li>
+
+        <motion.li
+          v-for="(item, idx) in outdatedItems"
+          :key="item.id"
+          class="timeline-item timeline-item--outdated"
+          initial="hidden"
+          :whileInView="'visible'"
+          :inViewOptions="{ once: true, amount: 0.15 }"
+          :variants="itemVariants"
+          :transition="{ duration: 0.3, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }"
+          @click="selectRecipe(item)"
+        >
+          <span class="timeline-dot timeline-dot--outdated" />
+
+          <div class="timeline-content">
+            <div class="timeline-row">
+              <span class="timeline-name">{{ item.name }}</span>
               <span v-if="item.bakeCount > 0" class="timeline-bake-count">{{ item.bakeCount }} bake{{ item.bakeCount !== 1 ? 's' : '' }}</span>
             </div>
 
@@ -662,6 +722,23 @@ const labelVariants = {
 
 .timeline-dot--unbaked {
   border-color: var(--color-stone-300);
+}
+
+/* --- Outdated items: dimmed but more readable than unbaked --- */
+.timeline-item--outdated {
+  opacity: 0.6;
+}
+
+.timeline-item--outdated:hover {
+  opacity: 1;
+}
+
+.timeline-item--outdated .timeline-dot {
+  border-color: var(--color-stone-400);
+}
+
+.timeline-dot--outdated {
+  border-color: var(--color-stone-400);
 }
 
 /* --- Reveal toggle link --- */

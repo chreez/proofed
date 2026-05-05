@@ -9,7 +9,11 @@
     },
     "yields": "2 loaves (~900g each baked)",
     "total_time": "~22 hrs (30 min active)",
-    "description": "A cheddar-enriched variant of our simple sourdough. 226g Tillamook sharp cheddar folded in at set 2, 67% hydration, 1.8% salt, overnight bulk, cold proof, 400°F uncovered bake. Cheese fat provides built-in over-fermentation insurance and 3-day shelf life."
+    "description": "A cheddar-enriched variant of our simple sourdough. 226g Tillamook sharp cheddar folded in at set 2, 67% hydration, 1.8% salt, overnight bulk, cold proof, 400°F uncovered bake. Cheese fat provides built-in over-fermentation insurance and 3-day shelf life.",
+    "outdated": {
+      "reason": "Superseded by the jalapeño cheddar sourdough — same base method, refined hydration and bake schedule, and the version I keep going back to.",
+      "supersededBy": "jalapeno-cheddar-sourdough"
+    }
   },
   "config": {
     "early_check_percent": 0.8,
@@ -22,8 +26,13 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-05-05",
+      "summary": "Marked outdated — superseded by jalapeno-cheddar-sourdough."
+    },
     {
       "version": "v1.0.0",
       "date": "2026-02-23",
