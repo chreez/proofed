@@ -1,0 +1,411 @@
+{
+  "meta": {
+    "name": "BA's Best Bolognese",
+    "shortName": "Bolognese",
+    "source": {
+      "name": "Bon Appétit",
+      "type": "original"
+    },
+    "yields": "4 servings",
+    "total_time": "~3.5 hrs (1 hr active, 2-2.5 hr passive simmer)",
+    "description": "Slow-simmered northern Italian meat sauce: beef chuck and pancetta, white wine reduction, milk and stock for richness. 2-2.5 hour low simmer until sloppy-joe texture. Tossed with fresh tagliatelle (or dry rigatoni) and Parmesan."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-05-06",
+      "summary": "Initial recipe imported from Bon Appétit's BA's Best Bolognese (via Paprika app screenshots). Source text preserved in original-recipes.md."
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Food Processor",
+      "reuse": "Pulse mirepoix once, then put away — not used again."
+    },
+    {
+      "id": "V2",
+      "name": "Small Bowl",
+      "reuse": "Holds pulsed mirepoix until added to pot during soften-soffritto."
+    },
+    {
+      "id": "V3",
+      "name": "Dutch Oven (or large heavy pot)",
+      "reuse": "Brown beef → wipe out → cook pancetta → soften veg → reduce wine → bloom paste → low simmer 2-2.5 hr. Single vessel for entire sauce."
+    },
+    {
+      "id": "V4",
+      "name": "Medium Bowl",
+      "reuse": "Holds browned beef until returned to pot during reduce-wine."
+    },
+    {
+      "id": "V5",
+      "name": "Large Pot",
+      "reuse": "Boil pasta water. Reserve 1 cup pasta water with measuring cup before draining."
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Prep Mirepoix",
+      "gather": {
+        "vessels": ["Food Processor", "Small Bowl"],
+        "equipment": ["Kitchen Scale"],
+        "ingredients": [
+          {
+            "id": "onion",
+            "name": "Onion (medium)",
+            "total": 110,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "celery",
+            "name": "Celery Stalk",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "carrot",
+            "name": "Carrot (small, peeled)",
+            "total": 50,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": ["prep-mirepoix"]
+    },
+    {
+      "id": "SAUCE_BUILD",
+      "title": "Build the Sauce Base",
+      "gather": {
+        "vessels": ["Dutch Oven (or large heavy pot)", "Medium Bowl"],
+        "equipment": ["Kitchen Scale", "Slotted Spoon", "Wooden Spoon"],
+        "ingredients": [
+          {
+            "id": "olive-oil",
+            "name": "Extra-Virgin Olive Oil",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "ground-beef",
+            "name": "Ground Beef Chuck (20% fat), patted dry",
+            "total": 454,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "kosher-salt-sauce",
+            "name": "Kosher Salt (for sauce)",
+            "total": 6,
+            "unit": "g",
+            "breakdown": [
+              { "label": "season beef while browning", "amount": 2 },
+              { "label": "pinch with stock+milk", "amount": 1 },
+              { "label": "final taste-adjust", "amount": 3 }
+            ]
+          },
+          {
+            "id": "pancetta",
+            "name": "Pancetta (thinly sliced, finely chopped)",
+            "total": 85,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "white-wine",
+            "name": "Dry White Wine",
+            "total": 240,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "tomato-paste",
+            "name": "Tomato Paste",
+            "total": 85,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "bay-leaf",
+            "name": "Bay Leaf (1 leaf)",
+            "total": 0.2,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "nutmeg",
+            "name": "Nutmeg (finely grated, pinch)",
+            "total": 0.1,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": ["brown-beef", "crisp-pancetta", "soften-soffritto", "reduce-wine", "bloom-paste"]
+    },
+    {
+      "id": "SIMMER",
+      "title": "Low Simmer",
+      "gather": {
+        "vessels": [],
+        "equipment": [],
+        "ingredients": [
+          {
+            "id": "chicken-stock",
+            "name": "Chicken Stock (homemade or low-sodium broth)",
+            "total": 480,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "whole-milk",
+            "name": "Whole Milk",
+            "total": 240,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": ["simmer-sauce"]
+    },
+    {
+      "id": "FINISH",
+      "title": "Cook Pasta & Toss",
+      "gather": {
+        "vessels": ["Large Pot"],
+        "equipment": ["Tongs", "Liquid Measuring Cup"],
+        "ingredients": [
+          {
+            "id": "pasta",
+            "name": "Pasta (1 lb fresh tagliatelle/pappardelle OR dry rigatoni)",
+            "total": 454,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "parmesan",
+            "name": "Parmesan (finely grated; plus more for plating)",
+            "total": 57,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "kosher-salt-pasta-water",
+            "name": "Kosher Salt (for pasta water)",
+            "total": 30,
+            "unit": "g",
+            "breakdown": null
+          }
+        ]
+      },
+      "states": ["boil-pasta", "toss-finish", "plate"]
+    }
+  ],
+  "states": [
+    {
+      "id": "prep-mirepoix",
+      "title": "Pulse Mirepoix in Food Processor",
+      "direction": "Pulse onion, celery, and carrot in food processor until very finely chopped. Transfer to small bowl and set aside.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Onion", "amount": "110g" },
+        { "name": "Celery", "amount": "40g" },
+        { "name": "Carrot", "amount": "50g" }
+      ],
+      "exit_condition": "Vegetables are uniformly very finely chopped (near-paste consistency, no chunks larger than ~3mm) and transferred to small bowl.",
+      "notes": null
+    },
+    {
+      "id": "brown-beef",
+      "title": "Brown the Beef in Clumps",
+      "direction": "Heat olive oil in Dutch oven over medium. Break beef into ~4cm (1.5\") clumps and add to pot; season lightly with 2g kosher salt. Cook, stirring occasionally but NOT breaking the meat apart, 6-8 min. Beef may be gray in spots and still pink in center — that's fine. Transfer beef with slotted spoon to medium bowl.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Olive Oil", "amount": "40g" },
+        { "name": "Ground Beef Chuck", "amount": "454g" },
+        { "name": "Kosher Salt", "amount": "2g" }
+      ],
+      "exit_condition": "Beef clumps are lightly browned on the outside (Maillard color, not crisp), still pink in centers, and transferred to medium bowl. Some fat rendered into pot.",
+      "notes": [
+        {
+          "text": "Don't break the meat into fine pieces here. Larger 4cm clumps brown better — final fine-grind texture happens later during wine reduction.",
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Note Maillard color before transferring beef", "type": "observation" }
+      ]
+    },
+    {
+      "id": "crisp-pancetta",
+      "title": "Crisp the Pancetta",
+      "direction": "Wipe out pot. Add pancetta and cook over medium heat, stirring occasionally, 6-8 min until pancetta has released some fat and is crisp.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Pancetta", "amount": "85g" }
+      ],
+      "exit_condition": "Pancetta is crisp and lightly golden, with rendered fat pooled in pot.",
+      "notes": null
+    },
+    {
+      "id": "soften-soffritto",
+      "title": "Soften Soffritto",
+      "direction": "Add the pulsed mirepoix to pot with crisp pancetta. Cook, stirring occasionally, 6-8 min until vegetables are very soft and beginning to stick to surface of pot.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Pulsed Mirepoix", "amount": "200g" }
+      ],
+      "exit_condition": "Vegetables are very soft (no resistance), reduced in volume, and beginning to stick/brown on bottom of pot (this fond builds flavor).",
+      "notes": null
+    },
+    {
+      "id": "reduce-wine",
+      "title": "Return Beef + Reduce Wine",
+      "direction": "Return browned beef (and any juices) to pot. Pour in white wine. Reduce heat to medium-low and cook, smashing down on beef with wooden spoon, 12-15 min until wine is fully evaporated, surface of pot is almost dry, and meat is broken into fine 'little bits' texture.",
+      "duration_min": 15,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Browned Beef (returned)", "amount": "454g" },
+        { "name": "Dry White Wine", "amount": "240g" }
+      ],
+      "exit_condition": "Wine is fully evaporated, pot surface is almost dry, beef has been smashed to fine 'little bits' texture (looks finely ground, not in clumps).",
+      "notes": [
+        {
+          "text": "The smashing here is the whole point — this is when the meat transforms from clumps into the fine, almost-paste texture that defines real Bolognese. Takes effort. Take breaks if your wrist tires.",
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "bloom-paste",
+      "title": "Bloom Tomato Paste + Aromatics",
+      "direction": "Add tomato paste, bay leaf, and pinch of grated nutmeg. Cook, stirring occasionally and still pressing down on meat, about 5 min until tomato paste is slightly darkened (rust-colored).",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Tomato Paste", "amount": "85g" },
+        { "name": "Bay Leaf", "amount": "0.2g" },
+        { "name": "Nutmeg", "amount": "0.1g" }
+      ],
+      "exit_condition": "Tomato paste has darkened from bright red to rust/brick color and smells sweet-roasted (not sharp/raw).",
+      "notes": null
+    },
+    {
+      "id": "simmer-sauce",
+      "title": "Low Simmer 2-2.5 Hours",
+      "direction": "Pour chicken stock and whole milk into pot; add a 1g pinch of kosher salt. Reduce heat to the lowest setting and cook, uncovered, stirring occasionally, 2-2.5 hours until meat is very, very tender and sauce has the texture of sloppy joe mixture. There should be NO rapid bubbles — only the occasional small bubble or two. If liquid reduces before meat is tender, add ½ cup (~120g) extra stock and continue. Discard bay leaf. Taste sauce and adjust seasoning with kosher salt (~3g final); keep warm.",
+      "duration_min": 135,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        { "name": "Chicken Stock", "amount": "480g" },
+        { "name": "Whole Milk", "amount": "240g" },
+        { "name": "Kosher Salt (pinch with stock)", "amount": "1g" },
+        { "name": "Kosher Salt (final taste)", "amount": "3g" }
+      ],
+      "exit_condition": "Meat is very tender, sauce has sloppy-joe texture and look (loose but not soupy, glossy with rendered fat), bay leaf removed, salt adjusted to taste. No rapid bubbles throughout — only occasional small bubbles indicate correct heat.",
+      "notes": [
+        {
+          "text": "Lowest possible heat is critical. Rapid bubbling = too hot = sauce reduces too fast and burns on bottom. If you see active bubbling, drop heat further or move pot off-center on the burner.",
+          "source": "agent",
+          "critical": true
+        },
+        {
+          "text": "Sauce can be made up to 4 days ahead — cover and chill. Reheat gently before tossing with pasta.",
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Sauce texture at 2hr — sloppy joe yet?", "type": "observation" },
+        { "prompt": "Total simmer time (min)", "type": "measurement" },
+        { "prompt": "Added extra stock? How much (g)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "boil-pasta",
+      "title": "Cook Pasta in Salted Water",
+      "direction": "Bring large pot of water to rolling boil. Add 30g kosher salt (heavily salted, sea-water salty). Add pasta. For fresh tagliatelle/pappardelle: cook ~3 min. For dry rigatoni: cook until very al dente, ~2 min less than package directions. Reserve 1 cup (~240g) pasta cooking water with liquid measuring cup BEFORE draining.",
+      "duration_min": 12,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Pasta", "amount": "454g" },
+        { "name": "Kosher Salt (pasta water)", "amount": "30g" }
+      ],
+      "exit_condition": "Pasta is very al dente (firmer than final desired texture — will finish in sauce). 1 cup (~240g) starchy pasta water reserved before draining.",
+      "notes": [
+        {
+          "text": "Reserve pasta water FIRST, drain second. Easy to forget — set the measuring cup beside the pot before adding pasta.",
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "toss-finish",
+      "title": "Toss Pasta + Sauce + Pasta Water",
+      "direction": "Using tongs, transfer pasta directly to pot of sauce. Add reserved 1 cup (~240g) pasta water and 57g grated Parmesan. Increase heat to medium, bring to a simmer, and cook, tossing constantly, 2 min until pasta is al dente and liquid is slightly thickened/glossy.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Reserved Pasta Water", "amount": "240g" },
+        { "name": "Parmesan", "amount": "57g" }
+      ],
+      "exit_condition": "Pasta is fully al dente (final texture), sauce coats every strand glossily (slightly thickened from starch + cheese emulsion), liquid is no longer pooling.",
+      "notes": null,
+      "reminders": [
+        { "prompt": "Final pasta texture (al dente?)", "type": "rating" }
+      ]
+    },
+    {
+      "id": "plate",
+      "title": "Plate + Top with Parmesan",
+      "direction": "Transfer pasta to serving platter or individual bowls. Top generously with additional finely grated Parmesan.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Pasta plated, extra Parmesan grated over top.",
+      "notes": null
+    }
+  ],
+  "nutrition": null,
+  "reheat": {
+    "methods": [
+      {
+        "method": "Stovetop (sauce only)",
+        "detail": "Warm sauce in pot over low heat, stirring occasionally. Add splash of stock or water if reduced too thick. ~10 min.",
+        "source": "agent"
+      },
+      {
+        "method": "Stovetop (tossed pasta leftover)",
+        "detail": "Add 2 Tbsp water to pan, cover, low heat, stir occasionally to redistribute moisture. ~5 min for one portion.",
+        "source": "agent"
+      },
+      {
+        "method": "Microwave (sauce or tossed)",
+        "detail": "Cover bowl, 50% power, stir every 60s until heated through. ~3-4 min for one portion. Splash of water helps if dry.",
+        "source": "agent"
+      }
+    ]
+  }
+}

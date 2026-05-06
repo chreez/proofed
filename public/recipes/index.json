@@ -1,6 +1,7 @@
 {
   "recipes": [
     { "id": "atk-cinnamon-buns-ultimate", "name": "ATK Ultimate Cinnamon Buns", "file": "atk-cinnamon-buns-ultimate.json" },
+    { "id": "ba-bolognese", "name": "BA's Best Bolognese", "file": "ba-bolognese.json" },
     { "id": "birote-salado", "name": "Birote Salado", "file": "birote-salado.json" },
     { "id": "candida-focaccia", "name": "Rosemary-Garlic Focaccia (Grain-Free, Candida-Friendly)", "file": "candida-focaccia.json" },
     { "id": "tartine-baguette", "name": "Tartine Baguette", "file": "tartine-baguette.json" },
