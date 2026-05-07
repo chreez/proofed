@@ -481,6 +481,17 @@ Wait for explicit user confirmation. If they correct anything, update and re-ech
 **For --update:** Summary is NOT required until --finalize.
 **For --finalize:** Summary is MANDATORY before completing the entry.
 
+### Default-flow shortcut (skip text echo)
+
+In the **default (no-flag) flow**, the explicit text echo is a friction step — the bake review page in Phase 5+6 is itself a richer, visual echo. After the clarify loop closes (no outstanding questions, raw input parsed, deviations confirmed inline), proceed directly to Phase 4 write + Phase 5+6 page open. The user reviews on the page; if anything is wrong, they say so and you patch the cook_log entry in place.
+
+**Still mandatory** — text echo before page open in any of these cases:
+- `bake_stats` were captured (stats corrections must be made before the page renders cost/photos)
+- The clarify loop produced ambiguous parsing (e.g., relative time inferences, hedged numbers)
+- `--finalize` flag (the summary is the user's commit-message-for-the-bake; never auto-write it)
+
+For other defaults, write entry → open page → treat the page as the echo.
+
 ## Phase 4: Write cook_log Entry
 
 After user confirms:
@@ -569,20 +580,33 @@ If the user's scratchpad export contains a `_pre_bake` entry (stepId `_pre_bake`
 
 Insert as the **first** element of `bulk_ambient_temps` (before any mid-bulk readings). If the user didn't capture a pre-bake temp, do nothing — don't prompt for it here (the scratchpad UI handles the prompt at bake time).
 
-## Phase 5+6: Photos, Cost & Bake Review Page (COMBINED)
+## Phase 5+6: Photos, Cost & Bake Review Page (TWO-PASS)
 
-Photo processing and cost lookup happen together. The user reviews BOTH on the bake review page in a single pass — never open the photo review page separately.
+The bake review page hosts BOTH photo tagging and cost picking. Run it in two passes so the user isn't blocked waiting for photos to be ready:
 
-**IMPORTANT:** Do NOT invoke `/review-photos` as a separate skill with its own review page. Instead, generate photo summaries inline (spawn a sub-agent to read photos via vision and write summaries to manifest.json), then proceed directly to cost lookup and open the combined bake review page.
+**Pass 1 — Cost first (open page immediately):**
+1. Skip photos entirely on the first pass (even if user says "I'll attach photos") — the goal is to get the page in front of them fast.
+2. Run HEB lookup for all ingredients and write `heb-results.json`.
+3. Open the review page. The user picks cost products; photo grid is empty.
+4. User pastes the cost-only review payload back. Wire the `cost` block into the cook_log entry.
 
-### Photo Pipeline (if photos provided)
+**Pass 2 — Photos (when user drops paths):**
+1. User drops photo paths. Copy to `photos-source/{recipe-id}/{date}/`, run `npm run photos`, spawn a vision sub-agent to populate `summary` fields in `manifest.json`.
+2. **Re-open the same review page** — the photos now appear in the grid alongside the costs already tagged from Pass 1.
+3. User tags photos (hero/step/process/exclude) and pastes the combined review payload back. Wire `photos[]` into the cook_log entry.
+
+If user says "skip photos" or "no photos this bake", skip Pass 2 entirely.
+
+**IMPORTANT:** Do NOT invoke `/review-photos` as a separate skill with its own review page. Photo summaries are generated inline; tagging happens on the bake review page.
+
+### Photo Pipeline (Pass 2 only — when photos provided)
 
 1. **Copy source photos** to `photos-source/{recipe-id}/{date}/` with descriptive filenames
 2. **Run pipeline**: `npm run photos photos-source/{recipe-id}/{date}/`
 3. **Generate summaries** — spawn a sub-agent to read each processed photo via multimodal vision and write summaries to `manifest.json` (see Sub-Agent Prompt in `/review-photos` skill for voice rules)
-4. Continue to cost lookup below — do NOT open a separate review page
+4. Re-open the bake review page (same URL) — do NOT open a separate review page
 
-If no photos provided, skip the photo steps but still run cost lookup.
+If no photos provided in Pass 2, skip these steps. The cost-only entry is already complete.
 
 ### Cost Data
 
@@ -653,24 +677,37 @@ Paste the combined JSON back here to wire into the cook_log entry.
 - If user says "skip cost" or "no cost" — skip this phase entirely
 - If HEB MCP server is unavailable (tool errors) — warn and skip gracefully
 
-## Phase 6b: Print Validation Gate
+## Phase 6b: Print Validation Gate (automated)
 
 After cost data is wired into the cook_log entry (user pastes review JSON back):
 
 1. **Run `/validate-print {recipe-id}`** -- automated checks against the updated recipe
-2. **If all pass:** Open print preview for HITL review:
-   - `open http://<LAN_IP>:<PORT>/recipe/{recipe-id}/print`
-   - "Print validation passed. Review the print page -- does it look correct?"
-   - Wait for user confirmation
-3. **If any fail:** Report failures. Do NOT open print preview.
+2. **If all pass:** Note "print validation passed" inline and continue. Do NOT open print preview here -- the bake detail page is the user's HITL gate (Phase 6c).
+3. **If any fail:** Report failures inline. Do NOT block.
    - "Print validation has {N} failures -- print page will show 'not yet generated' until fixed."
    - List failures with fix suggestions
-4. **Continue to Phase 7 regardless** -- print validation doesn't block the bake log commit. Print issues are tracked separately.
+4. **Continue to Phase 6c regardless** -- print validation is informational; it does not gate the bake log commit. Print issues are tracked separately.
 
 **Skip conditions:**
 - `--start` flag: skip (skeleton entry)
 - `--update` flag: skip (incomplete entry)
 - No cost data wired: skip (nothing to validate against)
+
+## Phase 6c: Bake Detail Final HITL
+
+This is the user's commit gate. The review page validates inputs (costs, photos); the **bake detail page validates the rendered output** — what the user actually sees on their bake archive.
+
+1. **Run `npm run build`** silently to confirm the recipe JSON is well-formed and tests pass. If the build fails, fix the issue before opening the page.
+2. **Open the bake detail page**: `open http://<LAN_IP>:<PORT>/recipe/{recipe-id}/bake/{date}`
+3. **Print iPhone URL** for cross-device check.
+4. **Summarize what's wired** in chat (notes count, cost total, photo count + hero, weather, any flags like `excludeFromStats`).
+5. **Wait for explicit approval** ("approved", "ship it", "looks good"). If the user requests changes, patch the cook_log entry in place and re-open the page.
+
+**Skip conditions:**
+- `--start` flag: skip (skeleton entry; no detail page worth showing yet)
+- `--update` flag: skip (entry incomplete)
+
+For `--finalize` and default flows, this gate is **mandatory** — never commit without explicit user sign-off on the bake detail page.
 
 ## Phase 7: Commit (No Version Bump)
 
