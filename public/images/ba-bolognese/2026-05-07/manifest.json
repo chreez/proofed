@@ -1,0 +1,130 @@
+{
+  "recipeId": "ba-bolognese",
+  "date": "2026-05-07",
+  "processedAt": "2026-05-07T19:21:09.557Z",
+  "photos": [
+    {
+      "name": "img-7505",
+      "thumb": "img-7505-400w.webp",
+      "src": "img-7505-800w.webp",
+      "summary": "Fresh tagliatelle tossed with bolognese in the pot — sauce evenly clinging, glossy, well-emulsified."
+    },
+    {
+      "name": "img-8944",
+      "thumb": "img-8944-400w.webp",
+      "src": "img-8944-800w.webp",
+      "summary": "Fresh egg pasta strands draped over wooden drying rack, golden ribbons, hand-cranked roller behind."
+    },
+    {
+      "name": "img-8946",
+      "thumb": "img-8946-400w.webp",
+      "src": "img-8946-800w.webp",
+      "summary": "Feeding rolled dough sheet into hand-crank pasta machine, drying rack already loaded with cut strands."
+    },
+    {
+      "name": "img-8959",
+      "thumb": "img-8959-400w.webp",
+      "src": "img-8959-800w.webp",
+      "summary": "Plated tagliatelle bolognese in dark ribbed bowl, heavy parmesan dusting, warm bokeh kitchen background."
+    },
+    {
+      "name": "img-8960",
+      "thumb": "img-8960-400w.webp",
+      "src": "img-8960-800w.webp",
+      "summary": "Same bowl from higher angle — neat pasta nest, generous parmesan snowfall, fork resting at the back."
+    },
+    {
+      "name": "img-8961",
+      "thumb": "img-8961-400w.webp",
+      "src": "img-8961-800w.webp",
+      "summary": "Tighter portrait of the plated bowl — pasta twirl visible, parmesan caught in sauce ridges."
+    },
+    {
+      "name": "img-8962",
+      "thumb": "img-8962-400w.webp",
+      "src": "img-8962-800w.webp",
+      "summary": "Two finished bowls on the table, fork sunk in front bowl, kitchen visible — final plated shot."
+    },
+    {
+      "name": "img-7503-frame-001",
+      "thumb": "img-7503-frame-001-400w.webp",
+      "src": "img-7503-frame-001-800w.webp",
+      "summary": "Stirring sauce mid-simmer — bright orange surface, bay leaf floating, fond visible up the pot wall.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 0
+    },
+    {
+      "name": "img-7503-frame-002",
+      "thumb": "img-7503-frame-002-400w.webp",
+      "src": "img-7503-frame-002-800w.webp",
+      "summary": "Wooden spoon pulled back from sauce — orange pulp clinging, bay leaf centered, dial set to Lo.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 1
+    },
+    {
+      "name": "img-7503-frame-003",
+      "thumb": "img-7503-frame-003-400w.webp",
+      "src": "img-7503-frame-003-800w.webp",
+      "summary": "Mid-stir sweep — meat catching at pot edge while orange sauce pools in center, sloppy-joe texture forming.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 2
+    },
+    {
+      "name": "img-7503-frame-004",
+      "thumb": "img-7503-frame-004-400w.webp",
+      "src": "img-7503-frame-004-800w.webp",
+      "summary": "Spoon pressing down on meat to break it finer — bay leaf tucked into the sauce, walls heavily fonded.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 3
+    },
+    {
+      "name": "img-7503-frame-005",
+      "thumb": "img-7503-frame-005-400w.webp",
+      "src": "img-7503-frame-005-800w.webp",
+      "summary": "Close overhead frame, hand and elbow in foreground, sauce darkening as it reduces on lowest heat.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 4
+    },
+    {
+      "name": "img-7503-frame-006",
+      "thumb": "img-7503-frame-006-400w.webp",
+      "src": "img-7503-frame-006-800w.webp",
+      "summary": "Spoon dragged through sauce leaves a temporary track on the pot bottom — proper reduction texture.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 5
+    },
+    {
+      "name": "img-7503-frame-007",
+      "thumb": "img-7503-frame-007-400w.webp",
+      "src": "img-7503-frame-007-800w.webp",
+      "summary": "Pot tilted to camera — sauce filling the lower half, orange-amber color, fond ring at the high-water line.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 6
+    },
+    {
+      "name": "img-7503-frame-008",
+      "thumb": "img-7503-frame-008-400w.webp",
+      "src": "img-7503-frame-008-800w.webp",
+      "summary": "Spoon raised, dripping sauce — bay leaf at center-left, meat finely broken down, cohesive consistency.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 7
+    },
+    {
+      "name": "img-7503-frame-009",
+      "thumb": "img-7503-frame-009-400w.webp",
+      "src": "img-7503-frame-009-800w.webp",
+      "summary": "Final stir of the clip — sauce settled, meat fully integrated, ready to hold the long simmer.",
+      "source": "video",
+      "sourceFile": "IMG_7503.MOV",
+      "frameIndex": 8
+    }
+  ]
+}

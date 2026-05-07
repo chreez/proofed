@@ -407,5 +407,101 @@
         "source": "agent"
       }
     ]
-  }
+  },
+  "cook_log": [
+    {
+      "date": "2026-05-07",
+      "version": "v1.0.0",
+      "summary": "First bake — used 2× tomato paste and 2 carrots, paired with homemade 00-flour egg pasta. Simmered 2.5hr to spot-on sloppy-joe texture; slight salt over from pasta water.",
+      "excludeFromStats": true,
+      "notes": [
+        "Started prep around 7:02pm May 6.",
+        "Used a full small (6oz / ~170g) can of tomato paste — 2× the recipe spec of 85g.",
+        "Used 2 carrots (~100g) instead of 1.",
+        "Pasta was homemade egg pasta with 00 flour (no recipe attached yet); cooked ~3 min as fresh.",
+        "Simmer ran ~2.5 hours; started pasta water at the 2hr mark.",
+        "Texture hit sloppy-joe consistency; hard to screw up.",
+        "Final dish slightly salty — 30g pasta water salt was too much for ~75% pot fill."
+      ],
+      "photos": [
+        {
+          "src": "/images/ba-bolognese/2026-05-07/img-8946-800w.webp",
+          "thumb": "/images/ba-bolognese/2026-05-07/img-8946-400w.webp",
+          "alt": "Feeding rolled dough sheet into a hand-crank pasta machine — drying rack already loaded with cut tagliatelle strands behind."
+        },
+        {
+          "src": "/images/ba-bolognese/2026-05-07/img-7503-frame-001-800w.webp",
+          "thumb": "/images/ba-bolognese/2026-05-07/img-7503-frame-001-400w.webp",
+          "alt": "Stirring sauce mid-simmer — bright orange surface, bay leaf floating, fond visible up the pot wall."
+        },
+        {
+          "src": "/images/ba-bolognese/2026-05-07/img-7505-800w.webp",
+          "thumb": "/images/ba-bolognese/2026-05-07/img-7505-400w.webp",
+          "alt": "Fresh homemade tagliatelle tossed with bolognese in the pot — sauce evenly clinging, glossy, well-emulsified."
+        },
+        {
+          "src": "/images/ba-bolognese/2026-05-07/img-8961-800w.webp",
+          "thumb": "/images/ba-bolognese/2026-05-07/img-8961-400w.webp",
+          "alt": "Final plated tagliatelle bolognese in dark ribbed bowl — pasta twirl visible, parmesan caught in sauce ridges."
+        }
+      ],
+      "cost": {
+        "items": [
+          { "ingredientId": "onion", "ingredientName": "Onion (medium)", "sourceType": "heb", "sourceName": "H-E-B Texas Roots Fresh Yellow Onion", "recipeAmount": 110, "recipeUnit": "g", "packageSize": "Avg. 0.6 lb", "packagePrice": 0.58, "cost": 0.23 },
+          { "ingredientId": "celery", "ingredientName": "Celery Stalk", "sourceType": "heb", "sourceName": "H-E-B Fresh Celery Sticks", "recipeAmount": 40, "recipeUnit": "g", "packageSize": "20 oz", "packagePrice": 2.96, "cost": 0.21 },
+          { "ingredientId": "carrot", "ingredientName": "Carrot (small, peeled)", "sourceType": "heb", "sourceName": "Fresh Carrots (each)", "recipeAmount": 50, "recipeUnit": "g", "packageSize": "Avg. 0.75 lb", "packagePrice": 0.96, "cost": 0.14 },
+          { "ingredientId": "olive-oil", "ingredientName": "Extra-Virgin Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Extra Virgin Olive Oil (17 oz)", "recipeAmount": 40, "recipeUnit": "g", "packageSize": "17 oz", "packagePrice": 6.68, "cost": 0.58 },
+          { "ingredientId": "ground-beef", "ingredientName": "Ground Beef Chuck (20% fat)", "sourceType": "heb", "sourceName": "H-E-B 100% Pure Ground Beef Chuck, 80% Lean (1 lb)", "recipeAmount": 454, "recipeUnit": "g", "packageSize": "1 lb", "packagePrice": 6.99, "cost": 6.99 },
+          { "ingredientId": "kosher-salt-sauce", "ingredientName": "Kosher Salt (for sauce)", "sourceType": "heb", "sourceName": "H-E-B Coarse Kosher Salt", "recipeAmount": 6, "recipeUnit": "g", "packageSize": "4.4 lbs", "packagePrice": 2.98, "cost": 0.01 },
+          { "ingredientId": "pancetta", "ingredientName": "Pancetta", "sourceType": "heb", "sourceName": "Volpi Chopped Uncured Pancetta", "recipeAmount": 85, "recipeUnit": "g", "packageSize": "4 oz", "packagePrice": 8.58, "cost": 6.45 },
+          { "ingredientId": "white-wine", "ingredientName": "Dry White Wine", "sourceType": "heb", "sourceName": "Josh Cellars Seaswept Sauvignon Blanc & Pinot Grigio", "recipeAmount": 240, "recipeUnit": "g", "packageSize": "750 mL", "packagePrice": 10.96, "cost": 3.51 },
+          { "ingredientId": "tomato-paste", "ingredientName": "Tomato Paste", "sourceType": "heb", "sourceName": "Hunt's Tomato Paste", "recipeAmount": 85, "recipeUnit": "g", "packageSize": "6 oz", "packagePrice": 1.16, "cost": 0.58 },
+          { "ingredientId": "bay-leaf", "ingredientName": "Bay Leaf", "sourceType": "heb", "sourceName": "McCormick Bay Leaves", "recipeAmount": 0.2, "recipeUnit": "g", "packageSize": "0.12 oz", "packagePrice": 4.00, "cost": 0.24 },
+          { "ingredientId": "nutmeg", "ingredientName": "Nutmeg (pinch)", "sourceType": "heb", "sourceName": "H-E-B Ground Nutmeg", "recipeAmount": 0.1, "recipeUnit": "g", "packageSize": "0.8 oz", "packagePrice": 2.98, "cost": 0.01 },
+          { "ingredientId": "chicken-stock", "ingredientName": "Chicken Stock", "sourceType": "heb", "sourceName": "H-E-B Reduced Sodium Chicken Broth (32 oz)", "recipeAmount": 480, "recipeUnit": "g", "packageSize": "32 oz", "packagePrice": 1.98, "cost": 1.00 },
+          { "ingredientId": "whole-milk", "ingredientName": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk (1 qt)", "recipeAmount": 240, "recipeUnit": "g", "packageSize": "1 qt", "packagePrice": 1.38, "cost": 0.35 },
+          { "ingredientId": "pasta", "ingredientName": "Homemade egg pasta (00 flour, 3 eggs)", "sourceType": "manual", "sourceName": "3 large eggs (H-E-B Cage Free Large White, $0.24/ea) — flour cost trivial, not counted", "recipeAmount": 454, "recipeUnit": "g", "packageSize": "3 eggs", "packagePrice": 0.72, "cost": 0.72 },
+          { "ingredientId": "parmesan", "ingredientName": "Parmesan", "sourceType": "heb", "sourceName": "Galli Parmigiano Reggiano (wedge)", "recipeAmount": 57, "recipeUnit": "g", "packageSize": "Avg. 0.43 lb", "packagePrice": 10.31, "cost": 3.01 },
+          { "ingredientId": "kosher-salt-pasta-water", "ingredientName": "Kosher Salt (pasta water)", "sourceType": "heb", "sourceName": "Morton Coarse Kosher Salt", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "16 oz", "packagePrice": 2.12, "cost": 0.14 }
+        ],
+        "total": 24.17,
+        "perServing": 6.04,
+        "servings": 4,
+        "date": "2026-05-07"
+      },
+      "next_time": [
+        { "text": "Use full 6oz can tomato paste (~170g) instead of 85g — richer outcome." },
+        { "text": "Use 2 carrots (~100g) instead of 1." },
+        { "text": "Use 2 celery stalks instead of 1." },
+        { "text": "Reduce pasta water salt to ~1.5 Tbsp for ~75% pot fill (instead of 30g) — was salty." },
+        { "text": "Document homemade 00-flour egg pasta as an accepted variant." }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-07",
+        "temp_high_f": 67.4,
+        "temp_low_f": 58.9,
+        "humidity_avg_percent": 78,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      },
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-07T00:02:38Z",
+          "raw": "starting",
+          "stepId": "prep-mirepoix",
+          "processing": "prep",
+          "notable": false
+        },
+        {
+          "timestamp": "2026-05-07T17:57:42Z",
+          "raw": "recipe success. wil attach pictures. note that i used a full can of the tomato paste and two carrots instead of one. i like the outcome. could add a second celery stock too.",
+          "curated": "Recipe success. Used a full can of tomato paste and two carrots instead of one. Liked the outcome. Could add a second celery stalk too.",
+          "stepId": "_general",
+          "processing": "result",
+          "notable": true
+        }
+      ]
+    }
+  ]
 }

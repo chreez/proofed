@@ -1,0 +1,197 @@
+{
+  "recipeId": "ba-bolognese",
+  "date": "2026-05-07",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "onion",
+      "name": "Onion (medium)",
+      "recipeAmount": 110,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Texas Roots Fresh Yellow Onion", "brand": "H-E-B", "size": "Avg. 0.6 lb", "sizeGrams": 272, "price": 0.58, "salePrice": null, "unitPrice": "$0.97/lb", "inStock": true },
+        { "name": "H-E-B Texas Roots Fresh Yellow Onions (3 lb bag)", "brand": "H-E-B", "size": "3 lb bag", "sizeGrams": 1361, "price": 1.99, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "H-E-B Texas Roots Fresh Organic Yellow Onions (2 lb bag)", "brand": "H-E-B Organics", "size": "2 lb bag", "sizeGrams": 907, "price": 3.48, "salePrice": null, "unitPrice": "$0.11/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "celery",
+      "name": "Celery Stalk",
+      "recipeAmount": 40,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Fresh Celery Stalk", "brand": "Fresh", "size": "Each", "sizeGrams": 40, "price": 1.75, "salePrice": null, "unitPrice": "$1.75/ea", "inStock": true },
+        { "name": "H-E-B Fresh Celery Sticks", "brand": "H-E-B", "size": "20 oz", "sizeGrams": 567, "price": 2.96, "salePrice": null, "unitPrice": "$0.15/oz", "inStock": true },
+        { "name": "Organic Celery Stalk", "brand": "Organic", "size": "Each", "sizeGrams": 40, "price": 2.87, "salePrice": null, "unitPrice": "$2.87/ea", "inStock": true },
+        { "name": "H-E-B Fresh Chopped Celery", "brand": "H-E-B", "size": "7 oz", "sizeGrams": 198, "price": 3.98, "salePrice": null, "unitPrice": "$0.57/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "carrot",
+      "name": "Carrot (small, peeled)",
+      "recipeAmount": 50,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Fresh Carrots (each)", "brand": "Fresh", "size": "Avg. 0.75 lb", "sizeGrams": 340, "price": 0.96, "salePrice": null, "unitPrice": "$1.28/lb", "inStock": true },
+        { "name": "H-E-B Fresh Whole Carrots (2 lb)", "brand": "H-E-B", "size": "2 lbs", "sizeGrams": 907, "price": 1.59, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "H-E-B Organics Fresh Whole Carrots (2 lb)", "brand": "H-E-B Organics", "size": "2 lbs", "sizeGrams": 907, "price": 2.62, "salePrice": null, "unitPrice": "$2.62/ea", "inStock": true },
+        { "name": "H-E-B Fresh Baby Carrots", "brand": "H-E-B", "size": "1 lb", "sizeGrams": 454, "price": 1.05, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "olive-oil",
+      "name": "Extra-Virgin Olive Oil",
+      "recipeAmount": 40,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Extra Virgin Olive Oil (17 oz)", "brand": "H-E-B", "size": "17 oz", "sizeGrams": 463, "price": 6.68, "salePrice": null, "unitPrice": "$0.39/fl oz", "inStock": true },
+        { "name": "H-E-B Extra Virgin Olive Oil (1.5 L)", "brand": "H-E-B", "size": "1.5 L", "sizeGrams": 1380, "price": 16.98, "salePrice": null, "unitPrice": "$0.33/fl oz", "inStock": true },
+        { "name": "H-E-B Organics Extra Virgin Olive Oil", "brand": "H-E-B Organics", "size": "25.5 oz", "sizeGrams": 695, "price": 10.58, "salePrice": null, "unitPrice": "$0.42/fl oz", "inStock": true },
+        { "name": "Bertolli Rich-Tasting Cold Pressed Extra Virgin Olive Oil", "brand": "Bertolli", "size": "16.9 oz", "sizeGrams": 460, "price": 8.47, "salePrice": null, "unitPrice": "$0.50/fl oz", "inStock": true },
+        { "name": "Graza Sizzle Extra Virgin Olive Cooking Oil", "brand": "Graza", "size": "16.9 oz", "sizeGrams": 479, "price": 10.47, "salePrice": null, "unitPrice": "$0.62/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "ground-beef",
+      "name": "Ground Beef Chuck (20% fat)",
+      "recipeAmount": 454,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B 100% Pure Ground Beef Chuck, 80% Lean (1 lb)", "brand": "H-E-B", "size": "1 lb", "sizeGrams": 454, "price": 6.99, "salePrice": null, "unitPrice": "$0.44/oz", "inStock": true },
+        { "name": "H-E-B 100% Pure Ground Beef Chuck, 80% Lean (Avg 1.1 lbs)", "brand": "H-E-B", "size": "Avg. 1.1 lbs", "sizeGrams": 499, "price": 7.69, "salePrice": null, "unitPrice": "$6.99/lb", "inStock": true },
+        { "name": "H-E-B 100% Pure Ground Beef Chuck, 80% Lean - Value Pack", "brand": "H-E-B", "size": "Avg. 1.9 lbs", "sizeGrams": 862, "price": 11.38, "salePrice": null, "unitPrice": "$5.99/lb", "inStock": true },
+        { "name": "H-E-B Prime 1 Ground Beef Chuck, 80% Lean (1 lb)", "brand": "H-E-B Prime 1", "size": "1 lb", "sizeGrams": 454, "price": 7.49, "salePrice": null, "unitPrice": "$7.49/ea", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "kosher-salt-sauce",
+      "name": "Kosher Salt (for sauce)",
+      "recipeAmount": 6,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Diamond Crystal Salt Co Kosher Salt Flakes", "brand": "Diamond Crystal", "size": "16 oz", "sizeGrams": 454, "price": 4.98, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Morton Coarse Kosher Salt", "brand": "Morton", "size": "16 oz", "sizeGrams": 454, "price": 2.12, "salePrice": null, "unitPrice": "$0.13/oz", "inStock": true },
+        { "name": "Morton Coarse Kosher Salt (3 lb)", "brand": "Morton", "size": "3 lb", "sizeGrams": 1361, "price": 3.50, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "H-E-B Coarse Kosher Salt", "brand": "H-E-B", "size": "4.4 lbs", "sizeGrams": 1996, "price": 2.98, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "pancetta",
+      "name": "Pancetta",
+      "recipeAmount": 85,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Volpi Chopped Uncured Pancetta", "brand": "Volpi", "size": "4 oz", "sizeGrams": 113, "price": 8.58, "salePrice": null, "unitPrice": "$2.14/oz", "inStock": true },
+        { "name": "Boar's Head Uncured Pancetta, Custom Sliced", "brand": "Boar's Head", "size": "lb", "sizeGrams": 454, "price": 15.99, "salePrice": null, "unitPrice": "$1.00/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "white-wine",
+      "name": "Dry White Wine",
+      "recipeAmount": 240,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Josh Cellars Seaswept Sauvignon Blanc & Pinot Grigio", "brand": "Josh Cellars", "size": "750 mL", "sizeGrams": 750, "price": 10.96, "salePrice": null, "unitPrice": "$0.43/fl oz", "inStock": true },
+        { "name": "Principato Pinot Grigio Chardonnay Reserve Italy White Wine", "brand": "Principato", "size": "1.5 L", "sizeGrams": 1500, "price": 11.99, "salePrice": 11.39, "unitPrice": "$0.24/fl oz", "inStock": true },
+        { "name": "Bota Box Brightside Sauvignon Blanc & Pinot Grigio", "brand": "Bota Box", "size": "3 L", "sizeGrams": 3000, "price": 15.99, "salePrice": null, "unitPrice": "$0.16/fl oz", "inStock": true },
+        { "name": "Gigi's Garden Sauvignon Blanc Pinot Gris", "brand": "Gigi's Garden", "size": "1 L", "sizeGrams": 1000, "price": 18.99, "salePrice": null, "unitPrice": "$0.56/fl oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "tomato-paste",
+      "name": "Tomato Paste",
+      "recipeAmount": 85,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Tomato Paste", "brand": "H-E-B", "size": "6 oz", "sizeGrams": 170, "price": 0.86, "salePrice": null, "unitPrice": "$0.14/oz", "inStock": true },
+        { "name": "H-E-B Organics Tomato Paste", "brand": "H-E-B Organics", "size": "6 oz", "sizeGrams": 170, "price": 1.38, "salePrice": null, "unitPrice": "$0.23/oz", "inStock": true },
+        { "name": "Hunt's Tomato Paste", "brand": "Hunt's", "size": "6 oz", "sizeGrams": 170, "price": 1.16, "salePrice": null, "unitPrice": "$0.19/oz", "inStock": true },
+        { "name": "Red Gold Tomato Paste", "brand": "Red Gold", "size": "6 oz", "sizeGrams": 170, "price": 1.08, "salePrice": null, "unitPrice": "$0.18/oz", "inStock": true },
+        { "name": "Mutti Triple Concentrated Tomato Paste", "brand": "Mutti", "size": "6.53 oz", "sizeGrams": 185, "price": 3.28, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "bay-leaf",
+      "name": "Bay Leaf",
+      "recipeAmount": 0.2,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Bolner's Fiesta Laurel Leaves Bay Leaves", "brand": "Bolner's Fiesta", "size": ".25 oz", "sizeGrams": 7, "price": 2.00, "salePrice": null, "unitPrice": "$8.00/oz", "inStock": true },
+        { "name": "McCormick Bay Leaves", "brand": "McCormick", "size": "0.12 oz", "sizeGrams": 3.4, "price": 4.00, "salePrice": null, "unitPrice": "$33.33/oz", "inStock": true },
+        { "name": "McCormick Gourmet Organic Turkish Bay Leaves", "brand": "McCormick", "size": "0.18 oz", "sizeGrams": 5, "price": 6.98, "salePrice": null, "unitPrice": "$38.78/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "nutmeg",
+      "name": "Nutmeg (pinch)",
+      "recipeAmount": 0.1,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Ground Nutmeg", "brand": "H-E-B", "size": "0.8 oz", "sizeGrams": 23, "price": 2.98, "salePrice": null, "unitPrice": "$3.72/oz", "inStock": true },
+        { "name": "H-E-B Ground Nutmeg Seasoning", "brand": "H-E-B", "size": "1.8 oz", "sizeGrams": 51, "price": 4.48, "salePrice": null, "unitPrice": "$2.49/oz", "inStock": true },
+        { "name": "McCormick Ground Nutmeg", "brand": "McCormick", "size": "1.1 oz", "sizeGrams": 31, "price": 4.62, "salePrice": null, "unitPrice": "$4.20/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "chicken-stock",
+      "name": "Chicken Stock",
+      "recipeAmount": 480,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Reduced Sodium Chicken Broth (32 oz)", "brand": "H-E-B", "size": "32 oz", "sizeGrams": 946, "price": 1.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "H-E-B Unsalted Chicken Broth", "brand": "H-E-B", "size": "32 oz", "sizeGrams": 946, "price": 1.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "H-E-B Reduced Sodium Chicken Broth (48 oz)", "brand": "H-E-B", "size": "48 oz", "sizeGrams": 1419, "price": 2.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Central Market Organics Free Range Low Sodium Chicken Broth", "brand": "Central Market", "size": "32 oz", "sizeGrams": 946, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "Swanson 33% Less Sodium Chicken Broth (32 oz)", "brand": "Swanson", "size": "32 oz", "sizeGrams": 946, "price": 2.52, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "whole-milk",
+      "name": "Whole Milk",
+      "recipeAmount": 240,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Whole Milk (1 gal)", "brand": "H-E-B", "size": "1 gal", "sizeGrams": 3785, "price": 4.38, "salePrice": null, "unitPrice": "$0.03/oz", "inStock": true },
+        { "name": "H-E-B Whole Milk (1/2 gal)", "brand": "H-E-B", "size": "1/2 gal", "sizeGrams": 1893, "price": 2.56, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "H-E-B Whole Milk (1 qt)", "brand": "H-E-B", "size": "1 qt", "sizeGrams": 946, "price": 1.38, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "Hill Country Fare Whole Milk", "brand": "Hill Country Fare", "size": "1 gal", "sizeGrams": 3785, "price": 3.98, "salePrice": null, "unitPrice": "$0.03/oz", "inStock": true },
+        { "name": "Central Market Organics Whole Milk (1 gal)", "brand": "Central Market", "size": "1 gal", "sizeGrams": 3785, "price": 7.48, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "pasta",
+      "name": "Pasta (homemade egg pasta used this bake)",
+      "recipeAmount": 454,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Central Market Bronze-Cut Egg Taglierini Pasta", "brand": "Central Market", "size": "8.8 oz", "sizeGrams": 249, "price": 3.98, "salePrice": null, "unitPrice": "$0.45/oz", "inStock": true },
+        { "name": "Central Market Spinach Tagliatelle", "brand": "Central Market", "size": "16 oz", "sizeGrams": 454, "price": 2.58, "salePrice": null, "unitPrice": "$0.16/oz", "inStock": true },
+        { "name": "Jovial Organic Brown Rice Pasta GF Egg Tagliatelle", "brand": "Jovial", "size": "9 oz", "sizeGrams": 255, "price": 5.17, "salePrice": null, "unitPrice": "$0.57/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "parmesan",
+      "name": "Parmesan",
+      "recipeAmount": 57,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Galli Parmigiano Reggiano (wedge)", "brand": "Galli", "size": "Avg. 0.43 lb", "sizeGrams": 195, "price": 10.31, "salePrice": null, "unitPrice": "$23.98/lb", "inStock": true },
+        { "name": "Sartori Classic Parmesan Cheese Wedge", "brand": "Sartori", "size": "5 oz", "sizeGrams": 142, "price": 4.98, "salePrice": null, "unitPrice": "$1.00/oz", "inStock": true },
+        { "name": "H-E-B Grated Parmesan Cheese", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 3.49, "salePrice": null, "unitPrice": "$0.44/oz", "inStock": true },
+        { "name": "H-E-B Copper Kettle Parmesan Grated Cheese", "brand": "H-E-B", "size": "5 oz", "sizeGrams": 142, "price": 3.29, "salePrice": null, "unitPrice": "$0.66/oz", "inStock": true },
+        { "name": "Sartori Classic Grated Parmesan Cheese", "brand": "Sartori", "size": "7 oz", "sizeGrams": 198, "price": 5.58, "salePrice": null, "unitPrice": "$0.80/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "kosher-salt-pasta-water",
+      "name": "Kosher Salt (pasta water)",
+      "recipeAmount": 30,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Diamond Crystal Salt Co Kosher Salt Flakes", "brand": "Diamond Crystal", "size": "16 oz", "sizeGrams": 454, "price": 4.98, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Morton Coarse Kosher Salt", "brand": "Morton", "size": "16 oz", "sizeGrams": 454, "price": 2.12, "salePrice": null, "unitPrice": "$0.13/oz", "inStock": true },
+        { "name": "H-E-B Coarse Kosher Salt", "brand": "H-E-B", "size": "4.4 lbs", "sizeGrams": 1996, "price": 2.98, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true }
+      ]
+    }
+  ]
+}
