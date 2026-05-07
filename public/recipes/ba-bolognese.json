@@ -410,7 +410,7 @@
   },
   "cook_log": [
     {
-      "date": "2026-05-07",
+      "date": "2026-05-06",
       "version": "v1.0.0",
       "summary": "First bake — used 2× tomato paste and 2 carrots, paired with homemade 00-flour egg pasta. Simmered 2.5hr to spot-on sloppy-joe texture; slight salt over from pasta water.",
       "excludeFromStats": true,
@@ -425,23 +425,23 @@
       ],
       "photos": [
         {
-          "src": "/images/ba-bolognese/2026-05-07/img-8946-800w.webp",
-          "thumb": "/images/ba-bolognese/2026-05-07/img-8946-400w.webp",
+          "src": "/images/ba-bolognese/2026-05-06/img-8946-800w.webp",
+          "thumb": "/images/ba-bolognese/2026-05-06/img-8946-400w.webp",
           "alt": "Feeding rolled dough sheet into a hand-crank pasta machine — drying rack already loaded with cut tagliatelle strands behind."
         },
         {
-          "src": "/images/ba-bolognese/2026-05-07/img-7503-frame-001-800w.webp",
-          "thumb": "/images/ba-bolognese/2026-05-07/img-7503-frame-001-400w.webp",
+          "src": "/images/ba-bolognese/2026-05-06/img-7503-frame-001-800w.webp",
+          "thumb": "/images/ba-bolognese/2026-05-06/img-7503-frame-001-400w.webp",
           "alt": "Stirring sauce mid-simmer — bright orange surface, bay leaf floating, fond visible up the pot wall."
         },
         {
-          "src": "/images/ba-bolognese/2026-05-07/img-7505-800w.webp",
-          "thumb": "/images/ba-bolognese/2026-05-07/img-7505-400w.webp",
+          "src": "/images/ba-bolognese/2026-05-06/img-7505-800w.webp",
+          "thumb": "/images/ba-bolognese/2026-05-06/img-7505-400w.webp",
           "alt": "Fresh homemade tagliatelle tossed with bolognese in the pot — sauce evenly clinging, glossy, well-emulsified."
         },
         {
-          "src": "/images/ba-bolognese/2026-05-07/img-8961-800w.webp",
-          "thumb": "/images/ba-bolognese/2026-05-07/img-8961-400w.webp",
+          "src": "/images/ba-bolognese/2026-05-06/img-8961-800w.webp",
+          "thumb": "/images/ba-bolognese/2026-05-06/img-8961-400w.webp",
           "alt": "Final plated tagliatelle bolognese in dark ribbed bowl — pasta twirl visible, parmesan caught in sauce ridges."
         }
       ],
@@ -467,7 +467,7 @@
         "total": 24.17,
         "perServing": 6.04,
         "servings": 4,
-        "date": "2026-05-07"
+        "date": "2026-05-06"
       },
       "next_time": [
         { "text": "Use full 6oz can tomato paste (~170g) instead of 85g — richer outcome." },
@@ -478,11 +478,11 @@
       ],
       "weather": {
         "location": "Austin, TX",
-        "date": "2026-05-07",
-        "temp_high_f": 67.4,
-        "temp_low_f": 58.9,
-        "humidity_avg_percent": 78,
-        "condition": "Overcast",
+        "date": "2026-05-06",
+        "temp_high_f": 75.2,
+        "temp_low_f": 63.6,
+        "humidity_avg_percent": 87,
+        "condition": "Rain",
         "source": "open-meteo"
       },
       "bake_notes": [
