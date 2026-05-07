@@ -590,12 +590,32 @@ The bake review page hosts BOTH photo tagging and cost picking. Run it in two pa
 3. Open the review page. The user picks cost products; photo grid is empty.
 4. User pastes the cost-only review payload back. Wire the `cost` block into the cook_log entry.
 
-**Pass 2 — Photos (when user drops paths):**
-1. User drops photo paths. Copy to `photos-source/{recipe-id}/{date}/`, run `npm run photos`, spawn a vision sub-agent to populate `summary` fields in `manifest.json`.
-2. **Re-open the same review page** — the photos now appear in the grid alongside the costs already tagged from Pass 1.
-3. User tags photos (hero/step/process/exclude) and pastes the combined review payload back. Wire `photos[]` into the cook_log entry.
+**Pass 2 — Photos (when user drops paths OR auto-scan surfaces candidates):**
+
+When entering Pass 2, do a **cursory Downloads scan first** before asking the user to paste paths. iPhone-to-Mac transfers (AirDrop, iCloud) usually land in `~/Downloads`, and a recent bake's assets typically have an **access time of today** even if their creation time is the day prior (a multi-day cook might capture photos the night before serving).
+
+1. **Auto-scan** `~/Downloads` for image/video files accessed today:
+   ```bash
+   find ~/Downloads -maxdepth 1 -type f \
+     \( -iname "*.heic" -o -iname "*.heif" -o -iname "*.jpg" -o -iname "*.jpeg" \
+        -o -iname "*.png" -o -iname "*.mov" -o -iname "*.mp4" \) \
+     -newerat "$(date +%Y-%m-%d) 00:00:00" \
+     -exec stat -f "%SB | %Sa | %z | %N" -t "%Y-%m-%d %H:%M" {} \; | sort
+   ```
+   Display creation time (`%SB`), access time (`%Sa`), size, and path so the user can spot which set belongs to this bake.
+2. **Surface candidates** to the user as a table. Always require confirmation before copying — never auto-process the scan results. Phrasing: "Found N candidates accessed today. Match? Proceed to copy + process?"
+3. **Filter prompts** the user might give:
+   - "exclude the screenshots" — drop `.png` files that look like daytime UI captures (typical iPhone screenshot timing/sizes)
+   - "only the ones from after Xpm" — narrow by creation time
+   - "check again" — re-run the scan (e.g., user just AirDropped more)
+4. **If the scan returns nothing** OR the user says "I'll paste paths instead", fall back to manual path collection.
+5. After confirmation, copy the chosen files to `photos-source/{recipe-id}/{date}/`, run `npm run photos`, and spawn a vision sub-agent to populate `summary` fields in `manifest.json`.
+6. **Re-open the same review page** — the photos now appear in the grid alongside the costs already tagged from Pass 1.
+7. User tags photos (hero/step/process/exclude) and pastes the combined review payload back. Wire `photos[]` into the cook_log entry.
 
 If user says "skip photos" or "no photos this bake", skip Pass 2 entirely.
+
+**Why auto-scan + confirm:** the bake-log session usually runs minutes-to-hours after the cook, so the user's photos are likely already on disk. Surfacing them removes a friction step. But Downloads also accumulates unrelated screenshots, receipts, and other agents' output — so the user MUST confirm the candidate set, and they can always ask the agent to re-scan or hand-pick.
 
 **IMPORTANT:** Do NOT invoke `/review-photos` as a separate skill with its own review page. Photo summaries are generated inline; tagging happens on the bake review page.
 
