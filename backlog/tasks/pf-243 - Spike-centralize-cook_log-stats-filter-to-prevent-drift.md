@@ -1,10 +1,10 @@
 ---
 id: PF-243
 title: 'Spike: centralize cook_log stats filter to prevent drift'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-05-07 18:44'
-updated_date: '2026-05-07 19:39'
+updated_date: '2026-05-08 01:01'
 labels:
   - spike
   - stats
