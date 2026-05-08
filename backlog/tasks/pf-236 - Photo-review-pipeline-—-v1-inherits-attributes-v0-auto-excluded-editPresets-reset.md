@@ -1,13 +1,13 @@
 ---
-id: DRAFT-71
+id: PF-236
 title: >-
   Photo review pipeline — v1 inherits attributes, v0 auto-excluded, editPresets
   reset
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-05-05 21:41'
+updated_date: '2026-05-07 19:39'
 labels:
-  - ungroomed
   - ux
   - photo-pipeline
 dependencies: []
@@ -60,3 +60,17 @@ This is a Draft. Grooming should:
 - `BakeReviewPage.vue` — currently lists v0 and v1 as separate top-level entries with no supersession logic
 - `scripts/edit-photo.ts` — where v1 gets written; doesn't currently propagate any review-page state
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 On manifest load in BakeReviewPage, when a manifest version (v≥1) has no localStorage state entry under its versioned key, the version's photoState inherits parent's summary, notes, and usage (hero/step/process/exclude) from the parent's restored-or-default state
+- [ ] #2 At the same first-encounter moment, the parent's photoState gets usage.exclude=true; this write only happens once (gated by 'version has no saved entry yet')
+- [ ] #3 Inheritance is one-shot: if a version already has a localStorage entry (any saved state, even empty), the manifest-load path does not re-copy or re-flip; user manual un-exclude on parent persists across reloads
+- [ ] #4 Multi-generation rule: when version N is first encountered, only version N-1 (direct predecessor) gets usage.exclude=true; older versions (0..N-2) are not modified
+- [ ] #5 v1 editPresets default to all-false on first encounter (rotateCW/rotateCCW/flip/cropTighten); v1 editInstruction defaults to empty string
+- [ ] #6 Parent row's preset checkboxes render disabled and visually greyed-checked for any preset that produced an existing version; an 'applied' badge appears next to the disabled preset row
+- [ ] #7 scripts/edit-photo.ts prints a review-page URL line on success using detected LAN IP and port 6811, format http://<LAN_IP>:6811/review/bake/<recipeId>/<date>
+- [ ] #8 edit-photo.ts does NOT call open itself; the calling agent invokes open <url> exactly once after the final edit in a batch
+- [ ] #9 Snapshot test or component test verifies: given manifest with one v0+v1 photo and localStorage entry only for v0 with usage.step=true, after page load v1's usage.step=true AND v0's usage.exclude=true
+- [ ] #10 Snapshot test or component test verifies: given the same manifest with both v0 AND v1 entries already in localStorage (v0.usage.exclude=false, v1.usage.step=true), after page load no inheritance occurs (v0.exclude stays false, v1 unchanged)
+<!-- AC:END -->

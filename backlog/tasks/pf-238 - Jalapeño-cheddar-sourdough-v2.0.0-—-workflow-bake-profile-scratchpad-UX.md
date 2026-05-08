@@ -1,11 +1,11 @@
 ---
-id: DRAFT-69
+id: PF-238
 title: Jalapeño cheddar sourdough v2.0.0 — workflow + bake profile + scratchpad UX
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-05-05 21:11'
+updated_date: '2026-05-07 19:39'
 labels:
-  - ungroomed
   - recipe
 dependencies: []
 ---
@@ -64,3 +64,23 @@ This is a Draft. Grooming should:
 - Prior cook log entry: `cook_log[0]` (date 2026-05-03) for the v1.0.0 → v1.1.0 reasoning
 - Proof Bread reference video: `jalapeno-cheddar-sourdough_7hU_nEJYgxw/transcript.txt`
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Recipe meta.version bumps to v2.0.0; change_log[] gets new entry with version v2.0.0, date 2026-05-07, summary describing workflow reorder, cambro-mix inclusion, bake-dry 425/210 profile, and meta.shopping_notes field
+- [ ] #2 New PREP state added: id 'temper-butter', title 'Temper Butter', direction tells user to measure 50g butter and leave on counter to room-temp naturally during autolyse, duration_min ~25 (parallel passive), timer false, non-empty exit_condition
+- [ ] #3 PREP stage states[] order updated to: autolyse-rest, temper-butter, cube-cheddar, prep-jalapenos, pre-mix-dry — temper-butter inserted after autolyse-rest; cube-cheddar swapped before prep-jalapenos
+- [ ] #4 fold-inclusions state direction rewritten to cambro pre-mix technique: combine cubed cheddar + diced jalapeños in a cambro, shake to mix, then incorporate as one batch into the flattened dough via letter folds
+- [ ] #5 fold-inclusions exit_condition updated to reflect pre-mixed inclusions distributed throughout the dough
+- [ ] #6 PREP stage gather updated: cambro added to vessels[] so the cambro shake step has a vessel reference
+- [ ] #7 bake-dry state direction updated to 425°F (218°C) for 15-20 minutes, target internal 210°F (99°C)
+- [ ] #8 bake-dry exit_condition updated: crust deep golden brown with caramelized cheese patches, internal 210°F (99°C) or above, hollow when tapped
+- [ ] #9 New meta.shopping_notes field populated with cheddar block guidance: recipe uses 220g total (110g per loaf); plan ≥250g block per bake or ≥500g if baking twice in a row; 100g blocks insufficient for one loaf
+- [ ] #10 src/types/recipe.ts Meta interface gets optional shopping_notes?: string field, documented as 'free-form sourcing/shopping guidance shown on print + shop pages'
+- [ ] #11 Recipe accuracy gate verified: cambro pre-mix technique cross-checked against jalapeno-cheddar-sourdough_7hU_nEJYgxw/transcript.txt; result documented in commit message or task notes (consistent or divergent with reasoning)
+- [ ] #12 Validation passes D1-D14, D16, R1-R8: grams/F/cm units; exit_condition non-empty on every state including temper-butter; gather breakdown sums match totals
+- [ ] #13 Validation passes V1-V6 for any cook_log entries that reference v2.0.0 changes
+- [ ] #14 Snapshot tests for StageCard and RecipeMeta updated if rendered structure changes; if no structural change, no snapshot churn
+- [ ] #15 Print page and recipe page render new PREP order and bake-dry temps correctly; HITL styling-gate sign-off required before commit (recipe page render qualifies as styling)
+- [ ] #16 Scratchpad edit/remove UX ask is split out as separate DRAFT (already created during grooming), referenced in this task's notes, NOT included in this task's scope
+<!-- AC:END -->

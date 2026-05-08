@@ -1,11 +1,11 @@
 ---
-id: DRAFT-70
+id: PF-237
 title: Persist per-bake + per-version ingredient snapshots
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-05-05 21:23'
+updated_date: '2026-05-07 19:39'
 labels:
-  - ungroomed
   - schema
   - print
 dependencies: []
@@ -65,3 +65,22 @@ Captured during 2026-05-05 jalapeno-cheddar-sourdough print page bug investigati
 - DRAFT-69 (v2.0.0 workflow rework) may interact with this — version bump + ingredient changes should land together.
 - F26+F27 (print validation) — once snapshots exist, add a check that every bake on the print page has a matching ingredient snapshot.
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 New schema field: change_log[].ingredients?: { stageId: string, stageName: string, ingredients: Ingredient[] }[] mirroring stages[].gather.ingredients shape (Ingredient type unchanged)
+- [ ] #2 New schema field: cook_log[].ingredients?: { stageId: string, stageName: string, ingredients: Ingredient[] }[] (same shape as version snapshot); amounts are absolute grams post-multiplier
+- [ ] #3 Both fields documented in src/types/recipe.ts with comments stating 'frozen at write time; never auto-mutated by later version bumps'
+- [ ] #4 RecipePrintView.vue ingredientsByStage reads from cook_log[].ingredients when a bake is selected, change_log[].ingredients when 'Estimated' is selected; falls back to stages[].gather.ingredients only when neither snapshot is present
+- [ ] #5 RecipePrintView.vue no longer maps cost.items[] amounts over gather amounts; cost.items remains as cost data only (still drives cost summary, no longer drives ingredient amounts)
+- [ ] #6 One-shot synthesis script (scripts/sync-ingredient-snapshots.ts) backfills every recipe in public/recipes/: writes change_log[].ingredients for each version (frozen copy of current gather grouped by stage) and cook_log[].ingredients for each bake (clone of that bake's version baseline; no deltas inferred)
+- [ ] #7 Synthesis script is idempotent: re-running on a recipe whose snapshots already exist must not modify them; only fills missing snapshots
+- [ ] #8 /bake-log skill writes cook_log[].ingredients on cook_log entry creation: defaults to clone of the selected version's change_log[].ingredients; if scratchpad or bake_notes contain ingredient deltas (e.g. '-40g flour'), skill surfaces a confirmation prompt and records the delta in the snapshot
+- [ ] #9 Validation rule (new F-series check): every cook_log entry must have a matching ingredients[] snapshot; print validation flags missing snapshot per bake
+- [ ] #10 Validation rule: every change_log entry must have a matching ingredients[] snapshot
+- [ ] #11 Sum check (extension of D6): for each snapshot ingredient, breakdown amounts (when present) sum to total ±2g
+- [ ] #12 Component test on RecipePrintView verifies: with a bake selected and cook_log[].ingredients present, rendered ingredient amounts equal the snapshot (NOT cost.items[], NOT gather defaults)
+- [ ] #13 Component test verifies: with 'Estimated' selected, rendered ingredient amounts equal change_log[].ingredients for the matching version
+- [ ] #14 Backward compat: recipes without ingredients[] snapshots continue to render via gather fallback (no print regression for unmigrated recipes); both new fields are optional in the type
+- [ ] #15 Schema docs in CLAUDE.md updated to describe the new snapshot fields and the authoring rules (when written, by whom, never auto-mutated)
+<!-- AC:END -->
