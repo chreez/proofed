@@ -25,7 +25,40 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'fs'
 import { join, dirname, basename, extname } from 'path'
+import { execSync } from 'child_process'
 import sharp from 'sharp'
+
+/**
+ * Detects the LAN IP for the active interface so the printed review URL
+ * is reachable from other devices (iPhone, MacBook). Mirrors the user's
+ * convention: prefer `ipconfig getifaddr en0`. If detection fails, falls
+ * back to `localhost` so the print line is still useful in CI.
+ */
+function detectLanIp(): string {
+  try {
+    const out = execSync('ipconfig getifaddr en0', { encoding: 'utf8' }).trim()
+    if (out) return out
+  } catch {
+    // fall through
+  }
+  return 'localhost'
+}
+
+/**
+ * Extracts the recipeId and bake date from the input photo path.
+ * Photo paths follow the convention:
+ *   public/images/<recipeId>/<YYYY-MM-DD>/<photo-name>-<size>.webp
+ * Returns null if the path doesn't match the convention.
+ */
+function extractRecipeAndDate(inputPath: string): { recipeId: string; date: string } | null {
+  // Take the last "<recipeId>/<date>" pair before the filename.
+  const parts = inputPath.split('/').filter(Boolean)
+  if (parts.length < 3) return null
+  const date = parts[parts.length - 2]
+  const recipeId = parts[parts.length - 3]
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null
+  return { recipeId, date }
+}
 
 interface EditParams {
   // crop
@@ -293,12 +326,25 @@ async function editPhoto(args: ParsedArgs): Promise<void> {
     console.warn('Version entry not recorded in manifest')
   }
 
+  // PF-236 AC#7: print review-page URL line on success using detected LAN IP
+  // and port 6811. The script does NOT call `open` itself (AC#8); the calling
+  // agent invokes `open <url>` exactly once after the final edit in a batch.
+  const recipeAndDate = extractRecipeAndDate(args.inputPath)
+  const reviewUrl = recipeAndDate
+    ? `http://${detectLanIp()}:6811/review/bake/${recipeAndDate.recipeId}/${recipeAndDate.date}`
+    : null
+  if (reviewUrl) {
+    console.log()
+    console.log(`Review page: ${reviewUrl}`)
+  }
+
   // Output result
   console.log()
   console.log(JSON.stringify({
     success: true,
     files: outputFiles,
-    manifest: 'updated'
+    manifest: 'updated',
+    reviewUrl
   }, null, 2))
 }
 

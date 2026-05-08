@@ -3,10 +3,10 @@ id: PF-236
 title: >-
   Photo review pipeline — v1 inherits attributes, v0 auto-excluded, editPresets
   reset
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-05 21:41'
-updated_date: '2026-05-07 19:39'
+updated_date: '2026-05-08 01:33'
 labels:
   - ux
   - photo-pipeline
