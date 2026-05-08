@@ -2494,4 +2494,331 @@ describe('BakeReviewPage', () => {
       expect(wrapper.text()).toContain('test-recipe')
     })
   })
+
+  // ---------------------------------------------------------------------------
+  // PF-236: v1 inherits attributes from v0; v0 auto-excluded; editPresets reset
+  // ---------------------------------------------------------------------------
+  describe('PF-236 v1 inheritance + auto-exclude', () => {
+    const manifestV1 = {
+      recipeId: 'test-recipe',
+      date: '2026-02-10',
+      processedAt: '2026-02-10T00:00:00.000Z',
+      photos: [
+        {
+          name: 'photo-1',
+          thumb: 'photo-1-400w.webp',
+          src: 'photo-1-800w.webp',
+          summary: 'Parent summary',
+          versions: [
+            {
+              version: 1,
+              thumb: 'photo-1-v1-400w.webp',
+              src: 'photo-1-v1-800w.webp',
+              editInstruction: 'cropTighten — trim background',
+              editedAt: '2026-02-10T12:00:00.000Z'
+            }
+          ]
+        }
+      ]
+    }
+
+    it('AC#1+#2: v1 inherits parent summary/notes/usage and v0 is auto-excluded on first encounter', async () => {
+      // Saved state for v0 only — v1 has no entry yet
+      const savedState = JSON.stringify([
+        {
+          name: 'photo-1',
+          summary: 'Custom v0 summary',
+          notes: 'v0 notes',
+          editInstruction: '',
+          usage: { hero: false, step: true, process: false, exclude: false }
+        }
+      ])
+      localStorageMock._store['photo-review:test-recipe:2026-02-10'] = savedState
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+      global.fetch = makeFetchSuccess(manifestV1, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Two cards: v0 (parent) and v1
+      const cards = wrapper.findAll('[data-testid="photos-section"] .card')
+      expect(cards.length).toBe(2)
+
+      // AC#1: v1 inherits summary, notes, usage.step from v0
+      const summaryTextareas = wrapper.findAll('[data-testid="photos-section"] textarea')
+      // Each card has summary (idx 0) + notes (idx 1) + edit-instruction (only when expanded)
+      // Card 0 (v0): summary, notes
+      // Card 1 (v1): summary, notes
+      const v0Summary = summaryTextareas[0].element as HTMLTextAreaElement
+      const v0Notes = summaryTextareas[1].element as HTMLTextAreaElement
+      const v1Summary = summaryTextareas[2].element as HTMLTextAreaElement
+      const v1Notes = summaryTextareas[3].element as HTMLTextAreaElement
+
+      expect(v0Summary.value).toBe('Custom v0 summary')
+      expect(v0Notes.value).toBe('v0 notes')
+      expect(v1Summary.value).toBe('Custom v0 summary')
+      expect(v1Notes.value).toBe('v0 notes')
+
+      // Per-photo checkboxes: each card has 5 checkboxes (editToggle + hero + step + process + exclude)
+      // Card 0 v0: indices 0..4. Card 1 v1: indices 5..9.
+      const checkboxes = wrapper.findAll('input[type="checkbox"]')
+      // v0 step (idx 2) was true and stays true
+      expect((checkboxes[2].element as HTMLInputElement).checked).toBe(true)
+      // AC#2: v0 exclude (idx 4) flipped to true
+      expect((checkboxes[4].element as HTMLInputElement).checked).toBe(true)
+      // AC#1: v1 inherits step=true (idx 7)
+      expect((checkboxes[7].element as HTMLInputElement).checked).toBe(true)
+      // v1 exclude (idx 9) is NOT set (only the direct predecessor is excluded)
+      expect((checkboxes[9].element as HTMLInputElement).checked).toBe(false)
+    })
+
+    it('AC#3+#10: no inheritance occurs when both v0 and v1 already have localStorage entries', async () => {
+      // Both v0 and v1 have saved entries — user already manually unflagged v0.exclude
+      const savedState = JSON.stringify([
+        {
+          name: 'photo-1',
+          summary: 'v0 summary persisted',
+          notes: '',
+          editInstruction: '',
+          usage: { hero: false, step: false, process: false, exclude: false }
+        },
+        {
+          name: 'photo-1-v1',
+          summary: 'v1 summary persisted',
+          notes: '',
+          editInstruction: '',
+          usage: { hero: false, step: true, process: false, exclude: false }
+        }
+      ])
+      localStorageMock._store['photo-review:test-recipe:2026-02-10'] = savedState
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+      global.fetch = makeFetchSuccess(manifestV1, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const summaryTextareas = wrapper.findAll('[data-testid="photos-section"] textarea')
+      const v0Summary = summaryTextareas[0].element as HTMLTextAreaElement
+      const v1Summary = summaryTextareas[2].element as HTMLTextAreaElement
+
+      // v1 was NOT overwritten with v0's value
+      expect(v0Summary.value).toBe('v0 summary persisted')
+      expect(v1Summary.value).toBe('v1 summary persisted')
+
+      const checkboxes = wrapper.findAll('input[type="checkbox"]')
+      // v0 exclude (idx 4) stays false — no auto-flip
+      expect((checkboxes[4].element as HTMLInputElement).checked).toBe(false)
+      // v1 step (idx 7) is true as persisted; nothing else added
+      expect((checkboxes[7].element as HTMLInputElement).checked).toBe(true)
+      expect((checkboxes[5].element as HTMLInputElement).checked).toBe(false) // v1 editToggle
+      expect((checkboxes[6].element as HTMLInputElement).checked).toBe(false) // v1 hero
+    })
+
+    it('AC#4: only direct predecessor (N-1) gets exclude=true; older versions unaffected', async () => {
+      const manifestV2 = {
+        recipeId: 'test-recipe',
+        date: '2026-02-10',
+        processedAt: '2026-02-10T00:00:00.000Z',
+        photos: [
+          {
+            name: 'photo-1',
+            thumb: 'photo-1-400w.webp',
+            src: 'photo-1-800w.webp',
+            summary: 'parent',
+            versions: [
+              {
+                version: 1,
+                thumb: 'photo-1-v1-400w.webp',
+                src: 'photo-1-v1-800w.webp',
+                editInstruction: 'cropTighten — pass 1',
+                editedAt: '2026-02-10T12:00:00.000Z'
+              },
+              {
+                version: 2,
+                thumb: 'photo-1-v2-400w.webp',
+                src: 'photo-1-v2-800w.webp',
+                editInstruction: 'rotateCW — pass 2',
+                editedAt: '2026-02-10T13:00:00.000Z'
+              }
+            ]
+          }
+        ]
+      }
+      // Pretend v0 and v1 are already in localStorage (with v0.exclude=true from a prior pass);
+      // v2 is new, so only v1 should flip — v0 must stay as the user left it (exclude=true).
+      const savedState = JSON.stringify([
+        {
+          name: 'photo-1',
+          summary: 'parent',
+          notes: '',
+          editInstruction: '',
+          usage: { hero: false, step: false, process: false, exclude: true }
+        },
+        {
+          name: 'photo-1-v1',
+          summary: 'parent',
+          notes: '',
+          editInstruction: '',
+          usage: { hero: false, step: false, process: true, exclude: false }
+        }
+      ])
+      localStorageMock._store['photo-review:test-recipe:2026-02-10'] = savedState
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+      global.fetch = makeFetchSuccess(manifestV2, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const checkboxes = wrapper.findAll('input[type="checkbox"]')
+      // 3 cards: v0 (idx 0..4), v1 (idx 5..9), v2 (idx 10..14)
+      // v0 exclude (4) stays true (was already true; not modified)
+      expect((checkboxes[4].element as HTMLInputElement).checked).toBe(true)
+      // v1 exclude (9) is now true (direct predecessor of v2 — flipped this pass)
+      expect((checkboxes[9].element as HTMLInputElement).checked).toBe(true)
+      // v2 exclude (14) is false
+      expect((checkboxes[14].element as HTMLInputElement).checked).toBe(false)
+    })
+
+    it('AC#5: v1 editPresets default to all-false and editInstruction defaults to empty on first encounter', async () => {
+      // No localStorage at all — first load
+      global.fetch = makeFetchSuccess(manifestV1, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Expand edit controls on v1 (second photo card)
+      const editToggles = wrapper.findAll('[data-testid="photo-edit-toggle"] input')
+      await editToggles[1].setValue(true)
+      await flushPromises()
+
+      // Find v1's preset checkboxes — second occurrence of photo-edit-presets
+      const presetGroups = wrapper.findAll('[data-testid="photo-edit-presets"]')
+      expect(presetGroups.length).toBeGreaterThanOrEqual(1)
+      const v1PresetCheckboxes = presetGroups[presetGroups.length - 1].findAll('input[type="checkbox"]')
+      expect(v1PresetCheckboxes.length).toBe(4)
+      for (const cb of v1PresetCheckboxes) {
+        expect((cb.element as HTMLInputElement).checked).toBe(false)
+        expect((cb.element as HTMLInputElement).disabled).toBe(false)
+      }
+
+      // editInstruction default empty on v1
+      const editTextareas = wrapper.findAll('[data-testid="photo-edit-instruction"]')
+      const v1Instruction = editTextareas[editTextareas.length - 1]
+      expect((v1Instruction.element as HTMLTextAreaElement).value).toBe('')
+    })
+
+    it("setEditPreset: toggling a non-applied preset on parent updates editPresets state", async () => {
+      global.fetch = makeFetchSuccess(manifestV1, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Expand parent edit controls
+      const editToggles = wrapper.findAll('[data-testid="photo-edit-toggle"] input')
+      await editToggles[0].setValue(true)
+      await flushPromises()
+
+      // Toggle the non-applied rotateCW preset on parent (cropTighten is applied; rotateCW is not)
+      const rotateCWRow = wrapper.find('[data-testid="photo-edit-preset-rotateCW"]')
+      const rotateCWCheckbox = rotateCWRow.find('input[type="checkbox"]')
+      expect((rotateCWCheckbox.element as HTMLInputElement).checked).toBe(false)
+      await rotateCWCheckbox.setValue(true)
+      await flushPromises()
+
+      // After toggle, the checkbox is checked AND the preset state was persisted
+      expect((rotateCWCheckbox.element as HTMLInputElement).checked).toBe(true)
+      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        'photo-review:test-recipe:2026-02-10',
+        expect.stringContaining('"rotateCW":true')
+      )
+    })
+
+    it("detectPresetFromInstruction: empty/unknown editInstruction yields no applied preset (parent checkboxes all enabled)", async () => {
+      const manifestEmptyInstruction = {
+        recipeId: 'test-recipe',
+        date: '2026-02-10',
+        processedAt: '2026-02-10T00:00:00.000Z',
+        photos: [
+          {
+            name: 'photo-1',
+            thumb: 'photo-1-400w.webp',
+            src: 'photo-1-800w.webp',
+            summary: 'parent',
+            versions: [
+              {
+                version: 1,
+                thumb: 'photo-1-v1-400w.webp',
+                src: 'photo-1-v1-800w.webp',
+                editInstruction: '',
+                editedAt: '2026-02-10T12:00:00.000Z'
+              },
+              {
+                version: 2,
+                thumb: 'photo-1-v2-400w.webp',
+                src: 'photo-1-v2-800w.webp',
+                editInstruction: 'unknownPreset whatever',
+                editedAt: '2026-02-10T13:00:00.000Z'
+              }
+            ]
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(manifestEmptyInstruction, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Expand parent edit controls
+      const editToggles = wrapper.findAll('[data-testid="photo-edit-toggle"] input')
+      await editToggles[0].setValue(true)
+      await flushPromises()
+
+      // None of the parent's preset rows should show 'applied' (empty + unknown both miss)
+      const presetRows = [
+        wrapper.find('[data-testid="photo-edit-preset-rotateCW"]'),
+        wrapper.find('[data-testid="photo-edit-preset-rotateCCW"]'),
+        wrapper.find('[data-testid="photo-edit-preset-flip"]'),
+        wrapper.find('[data-testid="photo-edit-preset-cropTighten"]')
+      ]
+      for (const row of presetRows) {
+        expect(row.attributes('data-applied')).toBe('false')
+        const cb = row.find('input[type="checkbox"]')
+        expect((cb.element as HTMLInputElement).disabled).toBe(false)
+        expect((cb.element as HTMLInputElement).checked).toBe(false)
+      }
+    })
+
+    it("AC#6: parent's preset checkbox for cropTighten renders disabled+checked with 'applied' badge", async () => {
+      global.fetch = makeFetchSuccess(manifestV1, sampleRecipe, sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      // Expand edit controls on parent (first card)
+      const editToggles = wrapper.findAll('[data-testid="photo-edit-toggle"] input')
+      await editToggles[0].setValue(true)
+      await flushPromises()
+
+      // Find parent's cropTighten preset row (first preset group)
+      const cropRow = wrapper.find('[data-testid="photo-edit-preset-cropTighten"]')
+      expect(cropRow.exists()).toBe(true)
+      expect(cropRow.attributes('data-applied')).toBe('true')
+
+      const cropCheckbox = cropRow.find('input[type="checkbox"]')
+      expect((cropCheckbox.element as HTMLInputElement).checked).toBe(true)
+      expect((cropCheckbox.element as HTMLInputElement).disabled).toBe(true)
+
+      // Applied badge is rendered
+      const badge = cropRow.find('[data-testid="photo-edit-preset-applied-badge"]')
+      expect(badge.exists()).toBe(true)
+      expect(badge.text()).toBe('applied')
+
+      // Other parent preset rows remain enabled and unchecked
+      const rotateCWRow = wrapper.find('[data-testid="photo-edit-preset-rotateCW"]')
+      expect(rotateCWRow.attributes('data-applied')).toBe('false')
+      const rotateCWCheckbox = rotateCWRow.find('input[type="checkbox"]')
+      expect((rotateCWCheckbox.element as HTMLInputElement).disabled).toBe(false)
+      expect((rotateCWCheckbox.element as HTMLInputElement).checked).toBe(false)
+    })
+  })
 })

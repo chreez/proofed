@@ -66,7 +66,49 @@ interface PhotoState {
   editPresets: PhotoEditPresets
   editInstruction: string
   usage: PhotoUsage
+  /**
+   * Presets that have already produced an applied version (latest-edit chain).
+   * Only populated on parent rows; version rows are always empty.
+   * Renders the corresponding preset checkboxes disabled + greyed-checked.
+   */
+  appliedPresets: Set<keyof PhotoEditPresets>
 }
+
+const PRESET_KEYS: Array<keyof PhotoEditPresets> = ['rotateCW', 'rotateCCW', 'flip', 'cropTighten']
+
+/**
+ * Detects which preset (if any) produced a given edit instruction.
+ * Convention from edit-photo.ts callers: instruction starts with the preset key
+ * (e.g. "cropTighten — trim dark background top").
+ */
+function detectPresetFromInstruction(instruction: string): keyof PhotoEditPresets | null {
+  if (!instruction) return null
+  for (const key of PRESET_KEYS) {
+    if (instruction.startsWith(key)) return key
+  }
+  return null
+}
+
+/**
+ * Template handler: only update the editPreset toggle if it isn't an applied
+ * preset (which renders disabled+greyed-checked per PF-236 AC#6).
+ */
+function setEditPreset(state: PhotoState, key: keyof PhotoEditPresets, event: Event): void {
+  if (state.appliedPresets.has(key)) return
+  state.editPresets[key] = (event.target as HTMLInputElement).checked
+}
+
+/**
+ * Template config: list of preset rows iterated by v-for.
+ * Keeps the template DRY and minimizes the number of ternary branches
+ * the coverage tool counts per checkbox.
+ */
+const PRESET_ROWS: Array<{ key: keyof PhotoEditPresets; label: string; testid: string }> = [
+  { key: 'rotateCW', label: 'Rotate 90° CW', testid: 'photo-edit-preset-rotateCW' },
+  { key: 'rotateCCW', label: 'Rotate 90° CCW', testid: 'photo-edit-preset-rotateCCW' },
+  { key: 'flip', label: 'Flip', testid: 'photo-edit-preset-flip' },
+  { key: 'cropTighten', label: 'Crop & tighten', testid: 'photo-edit-preset-cropTighten' }
+]
 
 type SectionId = 'photos' | 'cost' | 'notes' | 'summary'
 
@@ -668,6 +710,22 @@ onMounted(async () => {
       } catch { /* ignore corrupt data */ }
     }
 
+    // Track which photo names had a localStorage entry on this load.
+    // Used to gate one-shot inheritance for newly-encountered versions (PF-236).
+    const hadEntryNames = new Set(savedMap.keys())
+
+    /**
+     * Track inheritance actions to apply AFTER all rows are pushed.
+     * - inheritFromParent: copy parent's restored-or-default summary/notes/usage onto this version row
+     * - flipPredecessorExclude: name of the direct predecessor whose usage.exclude must be set to true
+     * Both gated by "version row had no saved entry" (one-shot semantics).
+     */
+    const pendingInheritance: Array<{
+      versionRowName: string
+      parentRowName: string
+      predecessorRowName: string
+    }> = []
+
     for (const photo of manifest.photos) {
       const restored = savedMap.get(photo.name)
       // Clear editInstruction if it matches the latest applied version
@@ -680,6 +738,14 @@ onMounted(async () => {
           editInstruction = ''
         }
       }
+
+      // Compute applied presets from versions[].editInstruction (latest-edit chain)
+      const appliedPresets = new Set<keyof PhotoEditPresets>()
+      for (const ver of versions) {
+        const preset = detectPresetFromInstruction(ver.editInstruction)
+        if (preset) appliedPresets.add(preset)
+      }
+
       photoStates.push({
         name: photo.name,
         src: photo.src,
@@ -689,13 +755,19 @@ onMounted(async () => {
         editExpanded: restored?.editExpanded ?? false,
         editPresets: restored?.editPresets ?? { ...defaultPresets },
         editInstruction,
-        usage: restored?.usage ?? { hero: false, step: false, process: false, exclude: false }
+        usage: restored?.usage ?? { hero: false, step: false, process: false, exclude: false },
+        appliedPresets
       })
 
-      // Flatten versions as standalone photo cards after their parent
-      for (const ver of versions) {
+      // Flatten versions as standalone photo cards after their parent.
+      // Note: version rows always start with editPresets all-false (PF-236 AC#5),
+      // independent of restored state; user must check a new preset to request a v(N+1).
+      for (let i = 0; i < versions.length; i++) {
+        const ver = versions[i]
         const verName = `${photo.name}-v${ver.version}`
         const restoredVer = savedMap.get(verName)
+        const predecessorRowName = i === 0 ? photo.name : `${photo.name}-v${versions[i - 1].version}`
+
         photoStates.push({
           name: verName,
           src: ver.src,
@@ -703,10 +775,49 @@ onMounted(async () => {
           summary: restoredVer?.summary || photo.summary,
           notes: restoredVer?.notes ?? '',
           editExpanded: restoredVer?.editExpanded ?? false,
+          // AC#5: editPresets default to all-false on first encounter; if user later
+          // checks a new preset on this version row to request v(N+1), that gets saved.
           editPresets: restoredVer?.editPresets ?? { ...defaultPresets },
+          // AC#5: editInstruction defaults to empty string
           editInstruction: restoredVer?.editInstruction ?? '',
-          usage: restoredVer?.usage ?? { hero: false, step: false, process: false, exclude: false }
+          usage: restoredVer?.usage ?? { hero: false, step: false, process: false, exclude: false },
+          // version rows never display "applied" badges (only parent does)
+          appliedPresets: new Set()
         })
+
+        if (!hadEntryNames.has(verName)) {
+          pendingInheritance.push({
+            versionRowName: verName,
+            parentRowName: photo.name,
+            predecessorRowName
+          })
+        }
+      }
+    }
+
+    // Apply pending inheritance AFTER all rows are pushed so we can look up
+    // predecessor state by name (covers AC#1, AC#2, AC#3, AC#4).
+    if (pendingInheritance.length > 0) {
+      const byName = new Map<string, PhotoState>()
+      for (const p of photoStates) byName.set(p.name, p)
+
+      for (const job of pendingInheritance) {
+        const versionRow = byName.get(job.versionRowName)
+        const predecessorRow = byName.get(job.predecessorRowName)
+        if (!versionRow || !predecessorRow) continue
+
+        // AC#1: inherit summary, notes, and usage onto this version row from the
+        // direct predecessor (v0 for v1, v1 for v2, etc). Capture predecessor
+        // state BEFORE flipping exclude so the new version doesn't inherit
+        // exclude=true from the auto-flag we're about to set.
+        versionRow.summary = predecessorRow.summary
+        versionRow.notes = predecessorRow.notes
+        versionRow.usage = { ...predecessorRow.usage, exclude: false }
+
+        // AC#4: only the direct predecessor (N-1) gets exclude=true.
+        // For v1: predecessor is the manifest root (v0). For v2: predecessor is v1.
+        // AC#2: this write happens only once (gated by "version had no saved entry").
+        predecessorRow.usage = { ...predecessorRow.usage, exclude: true }
       }
     }
   } catch {
@@ -823,23 +934,30 @@ onMounted(async () => {
 
                 <!-- Edit controls (hidden until toggled) -->
                 <div v-if="photo.editExpanded" class="mt-2 ml-5 space-y-3" data-testid="photo-edit-controls">
-                  <!-- Preset checkboxes -->
+                  <!-- Preset checkboxes (PF-236 AC#6: disabled+greyed-checked for already-applied presets, with 'applied' badge) -->
                   <div class="flex flex-wrap gap-3" data-testid="photo-edit-presets">
-                    <label class="flex items-center gap-1.5 cursor-pointer">
-                      <input type="checkbox" v-model="photo.editPresets.rotateCW" class="w-3.5 h-3.5" style="accent-color: var(--color-accent);" />
-                      <span class="text-xs text-body">Rotate 90° CW</span>
-                    </label>
-                    <label class="flex items-center gap-1.5 cursor-pointer">
-                      <input type="checkbox" v-model="photo.editPresets.rotateCCW" class="w-3.5 h-3.5" style="accent-color: var(--color-accent);" />
-                      <span class="text-xs text-body">Rotate 90° CCW</span>
-                    </label>
-                    <label class="flex items-center gap-1.5 cursor-pointer">
-                      <input type="checkbox" v-model="photo.editPresets.flip" class="w-3.5 h-3.5" style="accent-color: var(--color-accent);" />
-                      <span class="text-xs text-body">Flip</span>
-                    </label>
-                    <label class="flex items-center gap-1.5 cursor-pointer">
-                      <input type="checkbox" v-model="photo.editPresets.cropTighten" class="w-3.5 h-3.5" style="accent-color: var(--color-accent);" />
-                      <span class="text-xs text-body">Crop &amp; tighten</span>
+                    <label
+                      v-for="row in PRESET_ROWS"
+                      :key="row.key"
+                      class="flex items-center gap-1.5"
+                      :class="photo.appliedPresets.has(row.key) ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'"
+                      :data-applied="photo.appliedPresets.has(row.key) ? 'true' : 'false'"
+                      :data-testid="row.testid"
+                    >
+                      <input
+                        type="checkbox"
+                        :checked="photo.appliedPresets.has(row.key) || photo.editPresets[row.key]"
+                        :disabled="photo.appliedPresets.has(row.key)"
+                        class="w-3.5 h-3.5"
+                        style="accent-color: var(--color-accent);"
+                        @change="setEditPreset(photo, row.key, $event)"
+                      />
+                      <span class="text-xs text-body">{{ row.label }}</span>
+                      <span
+                        v-if="photo.appliedPresets.has(row.key)"
+                        class="font-mono text-[10px] bg-stone-200 text-stone-600 px-1.5 py-0.5"
+                        data-testid="photo-edit-preset-applied-badge"
+                      >applied</span>
                     </label>
                   </div>
 
