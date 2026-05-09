@@ -100,6 +100,14 @@ function handleReminderDismiss(stepId: string, prompt: string): void {
   props.scratchpad?.dismissReminder(stepId, prompt)
 }
 
+function handleEditEntry(stepId: string, index: number, value: string): void {
+  props.scratchpad?.editEntry(stepId, index, value)
+}
+
+function handleDeleteEntry(stepId: string, index: number): void {
+  props.scratchpad?.deleteEntry(stepId, index)
+}
+
 // Pre-compute scaled components to avoid repeated calls in template
 const scaledComponents = computed(() => {
   if (!props.state.components) return []
@@ -178,6 +186,8 @@ function parseSourceSegments(src: string): SourceSegment[] {
             :has-entries="hasEntries"
             @add-note="handleAddNote"
             @respond="handleReminderRespond"
+            @edit-entry="handleEditEntry"
+            @delete-entry="handleDeleteEntry"
           />
           <span v-if="state.parallel" class="text-xs bg-stone-200 text-stone-600 px-2 py-0.5">
             parallel

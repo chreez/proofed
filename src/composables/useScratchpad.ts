@@ -109,6 +109,50 @@ export function useScratchpad(recipeId: string) {
     return state.entries[stepId] || []
   }
 
+  /**
+   * Edit an existing scratchpad entry's value. Type-agnostic (works for
+   * 'note', 'reminder_response', and 'rating' entries). Trims whitespace and
+   * no-ops on empty values to avoid producing invalid entries. Preserves the
+   * original timestamp, type, prompt, and stepId.
+   */
+  function editEntry(
+    stepId: string,
+    index: number,
+    newValue: string
+  ): void {
+    const trimmed = newValue.trim()
+    if (!trimmed) return
+    const list = stepId === '_general' ? state.generalNotes : state.entries[stepId]
+    if (!list) return
+    const existing = list[index]
+    if (!existing) return
+    list[index] = { ...existing, value: trimmed }
+    save()
+  }
+
+  /**
+   * Hard-delete an entry from a step list (or the general notes list when
+   * stepId is '_general'). Splices the entry out of the array. If the step
+   * list becomes empty, removes the empty key so the export shape stays clean.
+   * Type-agnostic.
+   */
+  function deleteEntry(stepId: string, index: number): void {
+    if (stepId === '_general') {
+      if (index < 0 || index >= state.generalNotes.length) return
+      state.generalNotes.splice(index, 1)
+      save()
+      return
+    }
+    const list = state.entries[stepId]
+    if (!list) return
+    if (index < 0 || index >= list.length) return
+    list.splice(index, 1)
+    if (list.length === 0) {
+      delete state.entries[stepId]
+    }
+    save()
+  }
+
   const totalEntryCount = computed<number>(() => {
     let count = 0
     for (const entries of Object.values(state.entries)) {
@@ -156,6 +200,8 @@ export function useScratchpad(recipeId: string) {
     dismissReminder,
     isReminderDismissed,
     getEntriesForStep,
+    editEntry,
+    deleteEntry,
     hasEntriesForStep,
     totalEntryCount,
     generalNoteCount,

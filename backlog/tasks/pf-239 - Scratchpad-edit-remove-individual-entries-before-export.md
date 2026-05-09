@@ -1,10 +1,10 @@
 ---
 id: PF-239
 title: 'Scratchpad: edit/remove individual entries before export'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-07 18:00'
-updated_date: '2026-05-07 19:39'
+updated_date: '2026-05-09 23:39'
 labels:
   - ux
   - scratchpad

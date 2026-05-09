@@ -8,7 +8,8 @@ vi.mock('lucide-vue-next', () => ({
   X: { name: 'X', template: '<svg class="x-icon" />' },
   Download: { name: 'Download', template: '<svg class="download-icon" />' },
   Trash2: { name: 'Trash2', template: '<svg class="trash-icon" />' },
-  Check: { name: 'Check', template: '<svg class="check-icon" />' }
+  Check: { name: 'Check', template: '<svg class="check-icon" />' },
+  Pencil: { name: 'Pencil', template: '<svg class="pencil-icon" />' }
 }))
 
 // Mock IconButton
@@ -700,6 +701,237 @@ describe('GeneralNotesFab', () => {
       await logBtn!.trigger('click')
 
       expect((input.element as HTMLInputElement).value).toBe('')
+    })
+  })
+
+  describe('PF-239 — edit and delete', () => {
+    function mountWithEntries() {
+      const general = makeEntry({ stepId: '_general', value: 'general one', timestamp: '2026-01-02T10:00:00Z' })
+      const step = makeEntry({ stepId: 'mix', value: 'step one', timestamp: '2026-01-02T11:00:00Z' })
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 1,
+        totalEntryCount: 2,
+        generalNotes: [general],
+        stepEntries: { mix: [step] },
+        stepNames: { mix: 'Mix' }
+      })
+      return wrapper
+    }
+
+    async function openPanel(wrapper: ReturnType<typeof mountWithEntries>) {
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+    }
+
+    it('renders pencil + trash icons on every entry', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      const deleteBtns = wrapper.findAll('button[aria-label="Delete entry"]')
+      expect(editBtns.length).toBe(2)
+      expect(deleteBtns.length).toBe(2)
+    })
+
+    it('emits editEntry with sourceStepId and sourceIndex on save', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      // Step entry is most recent — appears first in the chronologically sorted list
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      await editBtns[0].trigger('click')
+
+      const textarea = wrapper.find('textarea')
+      await textarea.setValue('updated step text')
+
+      const saveBtn = wrapper.findAll('button').find(b => b.text() === 'Save')
+      await saveBtn!.trigger('click')
+
+      const ev = wrapper.emitted('editEntry')
+      expect(ev).toBeTruthy()
+      expect(ev![0]).toEqual(['mix', 0, 'updated step text'])
+    })
+
+    it('emits editEntry for general note with _general stepId', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      // Index 1 = general entry (older timestamp)
+      await editBtns[1].trigger('click')
+
+      const textarea = wrapper.find('textarea')
+      await textarea.setValue('updated general text')
+
+      const saveBtn = wrapper.findAll('button').find(b => b.text() === 'Save')
+      await saveBtn!.trigger('click')
+
+      const ev = wrapper.emitted('editEntry')
+      expect(ev).toBeTruthy()
+      expect(ev![0]).toEqual(['_general', 0, 'updated general text'])
+    })
+
+    it('cancel restores original and emits nothing', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      await editBtns[0].trigger('click')
+
+      // Edit textareas appear inside entry blocks; the new-note textarea is in
+      // a separate panel section. Two textareas while editing, one after cancel.
+      expect(wrapper.findAll('textarea').length).toBe(2)
+
+      const editTextarea = wrapper.findAll('textarea')[0]
+      await editTextarea.setValue('discarded')
+
+      const cancelBtn = wrapper.findAll('button').find(b => b.text() === 'Cancel')
+      await cancelBtn!.trigger('click')
+
+      expect(wrapper.emitted('editEntry')).toBeFalsy()
+      expect(wrapper.findAll('textarea').length).toBe(1)
+    })
+
+    it('trash opens confirm strip; Delete emits deleteEntry', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const trashBtns = wrapper.findAll('button[aria-label="Delete entry"]')
+      await trashBtns[0].trigger('click') // step entry, source index 0
+
+      expect(wrapper.text()).toContain('Delete this entry?')
+      const deleteBtn = wrapper.findAll('button').find(b => b.text() === 'Delete')
+      await deleteBtn!.trigger('click')
+
+      const ev = wrapper.emitted('deleteEntry')
+      expect(ev).toBeTruthy()
+      expect(ev![0]).toEqual(['mix', 0])
+    })
+
+    it('confirm-delete Cancel does not emit', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const trashBtns = wrapper.findAll('button[aria-label="Delete entry"]')
+      await trashBtns[0].trigger('click')
+
+      const cancelBtn = wrapper.findAll('button').find(b => b.text() === 'Cancel')
+      await cancelBtn!.trigger('click')
+
+      expect(wrapper.emitted('deleteEntry')).toBeFalsy()
+      expect(wrapper.text()).not.toContain('Delete this entry?')
+    })
+
+    it('hides edit/trash icons while one entry is being edited', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      await editBtns[0].trigger('click')
+
+      const remainingEdit = wrapper.findAll('button[aria-label="Edit entry"]')
+      const remainingTrash = wrapper.findAll('button[aria-label="Delete entry"]')
+      expect(remainingEdit.length).toBe(0)
+      expect(remainingTrash.length).toBe(0)
+    })
+
+    it('save with empty value cancels edit and emits nothing', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      await editBtns[0].trigger('click')
+
+      const editTextarea = wrapper.findAll('textarea')[0]
+      await editTextarea.setValue('   ')
+
+      const saveBtn = wrapper.findAll('button').find(b => b.text() === 'Save')
+      await saveBtn!.trigger('click')
+
+      expect(wrapper.emitted('editEntry')).toBeFalsy()
+      expect(wrapper.findAll('button[aria-label="Edit entry"]').length).toBe(2)
+    })
+
+    it('Enter key on edit textarea commits and emits editEntry', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      await editBtns[0].trigger('click')
+
+      const editTextarea = wrapper.findAll('textarea')[0]
+      await editTextarea.setValue('via enter')
+      await editTextarea.trigger('keydown.enter')
+
+      const ev = wrapper.emitted('editEntry')
+      expect(ev).toBeTruthy()
+      expect(ev![0]).toEqual(['mix', 0, 'via enter'])
+    })
+
+    it('Esc key on edit textarea cancels edit', async () => {
+      const wrapper = mountWithEntries()
+      await openPanel(wrapper)
+
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      await editBtns[0].trigger('click')
+
+      const editTextarea = wrapper.findAll('textarea')[0]
+      await editTextarea.setValue('discarded')
+      await editTextarea.trigger('keydown.esc')
+
+      expect(wrapper.emitted('editEntry')).toBeFalsy()
+      expect(wrapper.findAll('textarea').length).toBe(1)
+    })
+
+    it('watch resets edit state when the edited entry vanishes from props', async () => {
+      const general = makeEntry({ stepId: '_general', value: 'a', timestamp: '2026-01-02T10:00:00Z' })
+      const general2 = makeEntry({ stepId: '_general', value: 'b', timestamp: '2026-01-02T11:00:00Z' })
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 2,
+        totalEntryCount: 2,
+        generalNotes: [general, general2]
+      })
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      const editBtns = wrapper.findAll('button[aria-label="Edit entry"]')
+      await editBtns[0].trigger('click')
+      expect(wrapper.findAll('textarea').length).toBe(2)
+
+      await wrapper.setProps({
+        generalNoteCount: 1,
+        totalEntryCount: 1,
+        generalNotes: [general]
+      })
+
+      expect(wrapper.findAll('textarea').length).toBe(1)
+    })
+
+    it('watch resets confirm-delete state when the targeted entry vanishes', async () => {
+      const general = makeEntry({ stepId: '_general', value: 'a', timestamp: '2026-01-02T10:00:00Z' })
+      const general2 = makeEntry({ stepId: '_general', value: 'b', timestamp: '2026-01-02T11:00:00Z' })
+      const wrapper = mountWithTeleport({
+        ...defaultProps,
+        generalNoteCount: 2,
+        totalEntryCount: 2,
+        generalNotes: [general, general2]
+      })
+      const fab = wrapper.find('button[aria-label="Open bake scratchpad"]')
+      await fab.trigger('click')
+
+      const trashBtns = wrapper.findAll('button[aria-label="Delete entry"]')
+      await trashBtns[0].trigger('click')
+      expect(wrapper.text()).toContain('Delete this entry?')
+
+      await wrapper.setProps({
+        generalNoteCount: 1,
+        totalEntryCount: 1,
+        generalNotes: [general]
+      })
+
+      expect(wrapper.text()).not.toContain('Delete this entry?')
     })
   })
 })

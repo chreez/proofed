@@ -6,7 +6,9 @@ import ScratchpadNote from './ScratchpadNote.vue'
 vi.mock('lucide-vue-next', () => ({
   StickyNote: { name: 'StickyNote', template: '<svg class="sticky-note-icon" />' },
   X: { name: 'X', template: '<svg class="x-icon" />' },
-  Bell: { name: 'Bell', template: '<svg class="bell-icon" />' }
+  Bell: { name: 'Bell', template: '<svg class="bell-icon" />' },
+  Pencil: { name: 'Pencil', template: '<svg class="pencil-icon" />' },
+  Trash2: { name: 'Trash2', template: '<svg class="trash-icon" />' }
 }))
 
 const defaultProps = {
@@ -315,6 +317,222 @@ describe('ScratchpadNote', () => {
       await textarea.trigger('keydown', { key: 'Enter', shiftKey: true })
 
       expect(wrapper.emitted('addNote')).toBeFalsy()
+    })
+  })
+
+  describe('edit entry (PF-239)', () => {
+    it('renders pencil + trash icons on every entry block', async () => {
+      const entries = [
+        makeEntry({ type: 'note', value: 'a' }),
+        makeEntry({ type: 'rating', value: 'good' })
+      ]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+
+      const editBtns = wrapper.findAll('[data-testid="edit-entry-btn"]')
+      const deleteBtns = wrapper.findAll('[data-testid="delete-entry-btn"]')
+      expect(editBtns.length).toBe(2)
+      expect(deleteBtns.length).toBe(2)
+      expect(wrapper.findAll('.pencil-icon').length).toBeGreaterThanOrEqual(2)
+      expect(wrapper.findAll('.trash-icon').length).toBeGreaterThanOrEqual(2)
+    })
+
+    it('pencil click swaps the entry into edit mode with prefilled textarea', async () => {
+      const entries = [makeEntry({ value: 'original' })]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+
+      await wrapper.find('[data-testid="edit-entry-btn"]').trigger('click')
+
+      const editTextarea = wrapper.find<HTMLTextAreaElement>('[data-testid="edit-entry-textarea"]')
+      expect(editTextarea.exists()).toBe(true)
+      expect(editTextarea.element.value).toBe('original')
+    })
+
+    it('Enter saves edit and emits editEntry with index + new value', async () => {
+      const entries = [makeEntry({ value: 'orig' })]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+      await wrapper.find('[data-testid="edit-entry-btn"]').trigger('click')
+
+      const editTextarea = wrapper.find('[data-testid="edit-entry-textarea"]')
+      await editTextarea.setValue('updated value')
+      await editTextarea.trigger('keydown', { key: 'Enter', shiftKey: false })
+
+      expect(wrapper.emitted('editEntry')).toBeTruthy()
+      expect(wrapper.emitted('editEntry')![0]).toEqual(['mix-dough', 0, 'updated value'])
+    })
+
+    it('Save button click emits editEntry', async () => {
+      const entries = [makeEntry({ value: 'orig' })]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+      await wrapper.find('[data-testid="edit-entry-btn"]').trigger('click')
+
+      const editTextarea = wrapper.find('[data-testid="edit-entry-textarea"]')
+      await editTextarea.setValue('via save btn')
+      await wrapper.find('[data-testid="edit-save-btn"]').trigger('click')
+
+      expect(wrapper.emitted('editEntry')).toBeTruthy()
+      expect(wrapper.emitted('editEntry')![0]).toEqual(['mix-dough', 0, 'via save btn'])
+    })
+
+    it('Esc cancels edit and restores original (no emit)', async () => {
+      const entries = [makeEntry({ value: 'keep me' })]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+      await wrapper.find('[data-testid="edit-entry-btn"]').trigger('click')
+
+      const editTextarea = wrapper.find('[data-testid="edit-entry-textarea"]')
+      await editTextarea.setValue('something else')
+      await editTextarea.trigger('keydown', { key: 'Escape' })
+
+      expect(wrapper.emitted('editEntry')).toBeFalsy()
+      // Edit textarea is gone; original value still rendered
+      expect(wrapper.find('[data-testid="edit-entry-textarea"]').exists()).toBe(false)
+      expect(wrapper.text()).toContain('keep me')
+    })
+
+    it('Cancel button cancels edit (no emit)', async () => {
+      const entries = [makeEntry({ value: 'orig' })]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+      await wrapper.find('[data-testid="edit-entry-btn"]').trigger('click')
+
+      await wrapper.find('[data-testid="edit-cancel-btn"]').trigger('click')
+
+      expect(wrapper.emitted('editEntry')).toBeFalsy()
+      expect(wrapper.find('[data-testid="edit-entry-textarea"]').exists()).toBe(false)
+    })
+
+    it('only one entry is editable at a time per surface', async () => {
+      const entries = [
+        makeEntry({ value: 'a' }),
+        makeEntry({ value: 'b' })
+      ]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+
+      // Open edit on first entry
+      const editBtns = wrapper.findAll('[data-testid="edit-entry-btn"]')
+      await editBtns[0].trigger('click')
+
+      // Now there should be exactly 1 edit textarea, and the second entry's
+      // edit button should still be visible (not its own edit textarea)
+      const textareasInEdit = wrapper.findAll('[data-testid="edit-entry-textarea"]')
+      expect(textareasInEdit.length).toBe(1)
+
+      // Click second entry's edit button (still rendered since only first is editing)
+      const editBtnsAfter = wrapper.findAll('[data-testid="edit-entry-btn"]')
+      // The first entry's edit button is hidden during edit, so only one remains
+      expect(editBtnsAfter.length).toBe(1)
+      await editBtnsAfter[0].trigger('click')
+
+      // Still only one textarea — the new one for entry 2
+      const textareasFinal = wrapper.findAll('[data-testid="edit-entry-textarea"]')
+      expect(textareasFinal.length).toBe(1)
+    })
+
+    it('AC#9: editing a reminder_response entry via pencil emits editEntry on the same surface', async () => {
+      const entries = [
+        makeEntry({ type: 'reminder_response', prompt: 'Weigh dough', value: '748g' })
+      ]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+      await wrapper.find('[data-testid="edit-entry-btn"]').trigger('click')
+
+      const editTextarea = wrapper.find('[data-testid="edit-entry-textarea"]')
+      expect((editTextarea.element as HTMLTextAreaElement).value).toBe('748g')
+      await editTextarea.setValue('752g')
+      await wrapper.find('[data-testid="edit-save-btn"]').trigger('click')
+
+      expect(wrapper.emitted('editEntry')).toBeTruthy()
+      expect(wrapper.emitted('editEntry')![0]).toEqual(['mix-dough', 0, '752g'])
+    })
+  })
+
+  describe('delete entry (PF-239)', () => {
+    it('trash click opens confirm dialog before deleting', async () => {
+      const entries = [makeEntry({ value: 'doomed' })]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+
+      // No confirm before click
+      expect(wrapper.find('[data-testid="delete-confirm"]').exists()).toBe(false)
+
+      await wrapper.find('[data-testid="delete-entry-btn"]').trigger('click')
+
+      const confirm = wrapper.find('[data-testid="delete-confirm"]')
+      expect(confirm.exists()).toBe(true)
+      expect(confirm.text()).toContain('Delete this entry?')
+      // No delete emitted yet
+      expect(wrapper.emitted('deleteEntry')).toBeFalsy()
+    })
+
+    it('Cancel in confirm dialog dismisses without deleting', async () => {
+      const entries = [makeEntry({ value: 'doomed' })]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+      await wrapper.find('[data-testid="delete-entry-btn"]').trigger('click')
+
+      await wrapper.find('[data-testid="delete-cancel-btn"]').trigger('click')
+
+      expect(wrapper.emitted('deleteEntry')).toBeFalsy()
+      expect(wrapper.find('[data-testid="delete-confirm"]').exists()).toBe(false)
+    })
+
+    it('Delete in confirm dialog emits deleteEntry with index', async () => {
+      const entries = [
+        makeEntry({ value: 'first' }),
+        makeEntry({ value: 'second' })
+      ]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+
+      // Click the second entry's delete button
+      const deleteBtns = wrapper.findAll('[data-testid="delete-entry-btn"]')
+      await deleteBtns[1].trigger('click')
+      await wrapper.find('[data-testid="delete-confirm-btn"]').trigger('click')
+
+      expect(wrapper.emitted('deleteEntry')).toBeTruthy()
+      expect(wrapper.emitted('deleteEntry')![0]).toEqual(['mix-dough', 1])
+    })
+
+    it('no double-delete: confirm dialog is dismissed after Delete click', async () => {
+      const entries = [makeEntry({ value: 'a' })]
+      const wrapper = mount(ScratchpadNote, {
+        props: { ...defaultProps, hasEntries: true, entries }
+      })
+      await wrapper.find('button').trigger('click')
+      await wrapper.find('[data-testid="delete-entry-btn"]').trigger('click')
+      await wrapper.find('[data-testid="delete-confirm-btn"]').trigger('click')
+
+      // Confirm UI is gone
+      expect(wrapper.find('[data-testid="delete-confirm"]').exists()).toBe(false)
+      // Only one emit
+      expect(wrapper.emitted('deleteEntry')!.length).toBe(1)
     })
   })
 })

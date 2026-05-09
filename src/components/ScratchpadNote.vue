@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, useTemplateRef } from 'vue'
-import { StickyNote, X, Bell } from 'lucide-vue-next'
+import { ref, computed, nextTick, useTemplateRef, watch } from 'vue'
+import { StickyNote, X, Bell, Pencil, Trash2 } from 'lucide-vue-next'
 import BottomSheet from '@/components/BottomSheet.vue'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import type { StepReminder, ScratchpadEntry } from '@/types/recipe'
@@ -16,12 +16,21 @@ const props = defineProps<{
 const emit = defineEmits<{
   addNote: [stepId: string, value: string]
   respond: [stepId: string, prompt: string, value: string]
+  editEntry: [stepId: string, index: number, value: string]
+  deleteEntry: [stepId: string, index: number]
 }>()
 
 const noteTextarea = useTemplateRef<HTMLTextAreaElement>('noteTextarea')
 const isOpen = ref(false)
 const noteText = ref('')
 const reminderResponses = ref<Record<string, string>>({})
+
+// PF-239: edit/delete state. editingIndex enforces single-edit-at-a-time;
+// confirmingDeleteIndex drives the inline confirm dialog. Both reset whenever
+// the popover closes or the entries list changes shape (e.g. after delete).
+const editingIndex = ref<number | null>(null)
+const editValue = ref('')
+const confirmingDeleteIndex = ref<number | null>(null)
 
 // md breakpoint = 768px (UnoCSS default)
 const { matches: isDesktop } = useMediaQuery('(min-width: 768px)')
@@ -31,11 +40,16 @@ function toggle(event: MouseEvent): void {
   isOpen.value = !isOpen.value
   if (isOpen.value && isDesktop.value) {
     nextTick(() => noteTextarea.value?.focus())
+  } else if (!isOpen.value) {
+    cancelEdit()
+    cancelDeleteConfirm()
   }
 }
 
 function close(): void {
   isOpen.value = false
+  cancelEdit()
+  cancelDeleteConfirm()
 }
 
 function handleNoteKeydown(event: KeyboardEvent): void {
@@ -58,6 +72,77 @@ function handleReminderRespond(prompt: string): void {
     reminderResponses.value[prompt] = ''
   }
 }
+
+function startEdit(index: number, currentValue: string): void {
+  editingIndex.value = index
+  editValue.value = currentValue
+  // Cancel any pending delete-confirm in favor of edit
+  confirmingDeleteIndex.value = null
+}
+
+function cancelEdit(): void {
+  editingIndex.value = null
+  editValue.value = ''
+}
+
+function saveEdit(): void {
+  if (editingIndex.value === null) return
+  const trimmed = editValue.value.trim()
+  if (!trimmed) {
+    cancelEdit()
+    return
+  }
+  emit('editEntry', props.stepId, editingIndex.value, trimmed)
+  cancelEdit()
+}
+
+function handleEditKeydown(event: KeyboardEvent): void {
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault()
+    saveEdit()
+  } else if (event.key === 'Escape') {
+    event.preventDefault()
+    event.stopPropagation()
+    cancelEdit()
+  }
+}
+
+function startDeleteConfirm(index: number): void {
+  confirmingDeleteIndex.value = index
+  // Cancel any in-progress edit; one action at a time
+  cancelEdit()
+}
+
+function cancelDeleteConfirm(): void {
+  confirmingDeleteIndex.value = null
+}
+
+function confirmDelete(): void {
+  if (confirmingDeleteIndex.value === null) return
+  const idx = confirmingDeleteIndex.value
+  confirmingDeleteIndex.value = null
+  emit('deleteEntry', props.stepId, idx)
+}
+
+// Reset edit/delete state if entries list shrinks (e.g. parent removed an
+// entry through another path). Prevents stale indexes from being applied.
+watch(
+  () => props.entries.length,
+  () => {
+    if (
+      editingIndex.value !== null &&
+      editingIndex.value >= props.entries.length
+    ) {
+      cancelEdit()
+    }
+    if (
+      confirmingDeleteIndex.value !== null &&
+      confirmingDeleteIndex.value >= props.entries.length
+    ) {
+      cancelDeleteConfirm()
+    }
+  }
+)
 
 const hasReminders = computed(() => !!props.reminders?.length)
 
@@ -122,8 +207,9 @@ const formattedEntries = computed(() => {
             <span class="font-mono text-[10px] text-stone-500 block">notes ({{ entries.length }})</span>
             <div
               v-for="(entry, i) in formattedEntries"
-              :key="i"
+              :key="entry.timestamp + '-' + i"
               class="bg-stone-50 border border-stone-200 p-2"
+              data-testid="scratchpad-entry"
             >
               <div class="flex items-center gap-1.5 mb-0.5">
                 <span
@@ -131,9 +217,79 @@ const formattedEntries = computed(() => {
                   :class="entry.type === 'reminder_response' ? 'text-accent' : entry.type === 'rating' ? 'text-crust-dark' : 'text-stone-400'"
                 >{{ entry.type === 'reminder_response' ? 'reminder' : entry.type }}</span>
                 <span class="font-mono text-[10px] text-stone-400">{{ entry.time }}</span>
+                <div class="ml-auto flex items-center gap-0.5">
+                  <button
+                    v-if="editingIndex !== i"
+                    type="button"
+                    class="w-5 h-5 inline-flex items-center justify-center text-stone-400 hover:text-accent hover:bg-stone-100 transition-colors"
+                    title="Edit entry"
+                    aria-label="Edit entry"
+                    data-testid="edit-entry-btn"
+                    @click="startEdit(i, entry.value)"
+                  >
+                    <Pencil class="w-3 h-3" />
+                  </button>
+                  <button
+                    v-if="editingIndex !== i"
+                    type="button"
+                    class="w-5 h-5 inline-flex items-center justify-center text-stone-400 hover:text-accent hover:bg-stone-100 transition-colors"
+                    title="Delete entry"
+                    aria-label="Delete entry"
+                    data-testid="delete-entry-btn"
+                    @click="startDeleteConfirm(i)"
+                  >
+                    <Trash2 class="w-3 h-3" />
+                  </button>
+                </div>
               </div>
               <p v-if="entry.prompt" class="text-[10px] text-stone-500 italic mb-0.5">{{ entry.prompt }}</p>
-              <p class="text-xs text-stone-700">{{ entry.value }}</p>
+              <template v-if="editingIndex === i">
+                <textarea
+                  v-model="editValue"
+                  class="w-full border-2 border-stone-200 p-1.5 text-base md:text-xs bg-surface resize-none rounded-none mb-1"
+                  rows="2"
+                  data-testid="edit-entry-textarea"
+                  @keydown="handleEditKeydown"
+                />
+                <div class="flex justify-end gap-1.5">
+                  <button
+                    type="button"
+                    class="font-mono text-[10px] text-stone-500 hover:text-ink py-0.5 px-1.5"
+                    data-testid="edit-cancel-btn"
+                    @click="cancelEdit"
+                  >Cancel</button>
+                  <button
+                    type="button"
+                    class="btn-primary text-[10px] py-0.5 px-2"
+                    data-testid="edit-save-btn"
+                    @click="saveEdit"
+                  >Save</button>
+                </div>
+              </template>
+              <template v-else>
+                <p class="text-xs text-stone-700">{{ entry.value }}</p>
+                <div
+                  v-if="confirmingDeleteIndex === i"
+                  class="mt-1.5 flex items-center justify-between gap-1.5 bg-accent-tint border border-accent p-1.5"
+                  data-testid="delete-confirm"
+                >
+                  <span class="font-mono text-[10px] text-crust-dark">Delete this entry?</span>
+                  <div class="flex gap-1.5">
+                    <button
+                      type="button"
+                      class="font-mono text-[10px] text-stone-500 hover:text-ink py-0.5 px-1.5"
+                      data-testid="delete-cancel-btn"
+                      @click="cancelDeleteConfirm"
+                    >Cancel</button>
+                    <button
+                      type="button"
+                      class="btn-primary text-[10px] py-0.5 px-2"
+                      data-testid="delete-confirm-btn"
+                      @click="confirmDelete"
+                    >Delete</button>
+                  </div>
+                </div>
+              </template>
             </div>
           </div>
 
@@ -201,8 +357,9 @@ const formattedEntries = computed(() => {
           <span class="font-mono text-xs text-stone-500 block">notes ({{ entries.length }})</span>
           <div
             v-for="(entry, i) in formattedEntries"
-            :key="i"
+            :key="entry.timestamp + '-' + i"
             class="bg-stone-50 border border-stone-200 p-3"
+            data-testid="scratchpad-entry"
           >
             <div class="flex items-center gap-1.5 mb-1">
               <span
@@ -210,9 +367,79 @@ const formattedEntries = computed(() => {
                 :class="entry.type === 'reminder_response' ? 'text-accent' : entry.type === 'rating' ? 'text-crust-dark' : 'text-stone-400'"
               >{{ entry.type === 'reminder_response' ? 'reminder' : entry.type }}</span>
               <span class="font-mono text-xs text-stone-400">{{ entry.time }}</span>
+              <div class="ml-auto flex items-center gap-1">
+                <button
+                  v-if="editingIndex !== i"
+                  type="button"
+                  class="w-7 h-7 inline-flex items-center justify-center text-stone-400 hover:text-accent hover:bg-stone-100 transition-colors"
+                  title="Edit entry"
+                  aria-label="Edit entry"
+                  data-testid="edit-entry-btn"
+                  @click="startEdit(i, entry.value)"
+                >
+                  <Pencil class="w-4 h-4" />
+                </button>
+                <button
+                  v-if="editingIndex !== i"
+                  type="button"
+                  class="w-7 h-7 inline-flex items-center justify-center text-stone-400 hover:text-accent hover:bg-stone-100 transition-colors"
+                  title="Delete entry"
+                  aria-label="Delete entry"
+                  data-testid="delete-entry-btn"
+                  @click="startDeleteConfirm(i)"
+                >
+                  <Trash2 class="w-4 h-4" />
+                </button>
+              </div>
             </div>
             <p v-if="entry.prompt" class="text-xs text-stone-500 italic mb-1">{{ entry.prompt }}</p>
-            <p class="text-sm text-stone-700">{{ entry.value }}</p>
+            <template v-if="editingIndex === i">
+              <textarea
+                v-model="editValue"
+                class="w-full border-2 border-stone-200 p-2 text-base bg-surface resize-none rounded-none mb-2"
+                rows="3"
+                data-testid="edit-entry-textarea"
+                @keydown="handleEditKeydown"
+              />
+              <div class="flex justify-end gap-2">
+                <button
+                  type="button"
+                  class="font-mono text-xs text-stone-500 hover:text-ink py-1 px-2"
+                  data-testid="edit-cancel-btn"
+                  @click="cancelEdit"
+                >Cancel</button>
+                <button
+                  type="button"
+                  class="btn-primary text-xs py-1 px-3"
+                  data-testid="edit-save-btn"
+                  @click="saveEdit"
+                >Save</button>
+              </div>
+            </template>
+            <template v-else>
+              <p class="text-sm text-stone-700">{{ entry.value }}</p>
+              <div
+                v-if="confirmingDeleteIndex === i"
+                class="mt-2 flex items-center justify-between gap-2 bg-accent-tint border border-accent p-2"
+                data-testid="delete-confirm"
+              >
+                <span class="font-mono text-xs text-crust-dark">Delete this entry?</span>
+                <div class="flex gap-2">
+                  <button
+                    type="button"
+                    class="font-mono text-xs text-stone-500 hover:text-ink py-1 px-2"
+                    data-testid="delete-cancel-btn"
+                    @click="cancelDeleteConfirm"
+                  >Cancel</button>
+                  <button
+                    type="button"
+                    class="btn-primary text-xs py-1 px-3"
+                    data-testid="delete-confirm-btn"
+                    @click="confirmDelete"
+                  >Delete</button>
+                </div>
+              </div>
+            </template>
           </div>
         </div>
 

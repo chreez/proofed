@@ -792,6 +792,8 @@ watch(() => route.hash, (newHash) => {
           @pre-bake-temp="handlePreBakeTemp"
           @export-json="handleScratchpadExport"
           @clear-all="() => scratchpad!.clearAll()"
+          @edit-entry="(stepId: string, idx: number, value: string) => scratchpad!.editEntry(stepId, idx, value)"
+          @delete-entry="(stepId: string, idx: number) => scratchpad!.deleteEntry(stepId, idx)"
         />
       </template>
 

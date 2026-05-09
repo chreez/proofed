@@ -7,7 +7,9 @@ import ScratchpadNote from './ScratchpadNote.vue'
 vi.mock('lucide-vue-next', () => ({
   StickyNote: { name: 'StickyNote', template: '<svg class="sticky-note-icon" />' },
   X: { name: 'X', template: '<svg class="x-icon" />' },
-  Bell: { name: 'Bell', template: '<svg class="bell-icon" />' }
+  Bell: { name: 'Bell', template: '<svg class="bell-icon" />' },
+  Pencil: { name: 'Pencil', template: '<svg class="pencil-icon" />' },
+  Trash2: { name: 'Trash2', template: '<svg class="trash-icon" />' }
 }))
 
 // Mock useMediaQuery to simulate mobile viewport (isDesktop = false)
@@ -159,5 +161,55 @@ describe('ScratchpadNote mobile (bottom sheet)', () => {
     const wrapper = mount(ScratchpadNote, { props: defaultProps, ...mountOpts })
     await openSheet(wrapper)
     expect(wrapper.find('.cursor-grab').exists()).toBe(true)
+  })
+
+  it('PF-239: renders pencil + trash icons per entry in bottom sheet', async () => {
+    const entries = [
+      makeEntry({ type: 'note', value: 'first' }),
+      makeEntry({ type: 'note', value: 'second' })
+    ]
+    const wrapper = mount(ScratchpadNote, {
+      props: { ...defaultProps, hasEntries: true, entries },
+      ...mountOpts
+    })
+    await openSheet(wrapper)
+
+    expect(wrapper.findAll('[data-testid="edit-entry-btn"]').length).toBe(2)
+    expect(wrapper.findAll('[data-testid="delete-entry-btn"]').length).toBe(2)
+  })
+
+  it('PF-239: edit + save in bottom sheet emits editEntry', async () => {
+    const entries = [makeEntry({ value: 'orig' })]
+    const wrapper = mount(ScratchpadNote, {
+      props: { ...defaultProps, hasEntries: true, entries },
+      ...mountOpts
+    })
+    await openSheet(wrapper)
+
+    await wrapper.find('[data-testid="edit-entry-btn"]').trigger('click')
+    const editTextarea = wrapper.find('[data-testid="edit-entry-textarea"]')
+    expect(editTextarea.exists()).toBe(true)
+    await editTextarea.setValue('mobile updated')
+    await wrapper.find('[data-testid="edit-save-btn"]').trigger('click')
+
+    expect(wrapper.emitted('editEntry')).toBeTruthy()
+    expect(wrapper.emitted('editEntry')![0]).toEqual(['mix-dough', 0, 'mobile updated'])
+  })
+
+  it('PF-239: delete with confirm in bottom sheet emits deleteEntry', async () => {
+    const entries = [makeEntry({ value: 'doomed' })]
+    const wrapper = mount(ScratchpadNote, {
+      props: { ...defaultProps, hasEntries: true, entries },
+      ...mountOpts
+    })
+    await openSheet(wrapper)
+
+    await wrapper.find('[data-testid="delete-entry-btn"]').trigger('click')
+    const confirm = wrapper.find('[data-testid="delete-confirm"]')
+    expect(confirm.exists()).toBe(true)
+    await wrapper.find('[data-testid="delete-confirm-btn"]').trigger('click')
+
+    expect(wrapper.emitted('deleteEntry')).toBeTruthy()
+    expect(wrapper.emitted('deleteEntry')![0]).toEqual(['mix-dough', 0])
   })
 })

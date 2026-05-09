@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, useTemplateRef } from 'vue'
-import { MessageSquare, X, Download, Trash2, Check } from 'lucide-vue-next'
+import { ref, computed, useTemplateRef, nextTick, watch } from 'vue'
+import { MessageSquare, X, Download, Trash2, Check, Pencil } from 'lucide-vue-next'
 import IconButton from '@/components/IconButton.vue'
 import ResetConfirmDialog from '@/components/ResetConfirmDialog.vue'
 import type { ScratchpadEntry } from '@/types/recipe'
@@ -19,6 +19,8 @@ const emit = defineEmits<{
   preBakeTemp: [value: string]
   exportJson: []
   clearAll: []
+  editEntry: [stepId: string, index: number, value: string]
+  deleteEntry: [stepId: string, index: number]
 }>()
 
 const exportBtn = useTemplateRef<InstanceType<typeof IconButton>>('exportBtn')
@@ -81,31 +83,99 @@ function formatTimestamp(iso: string): string {
 interface FlatEntry extends ScratchpadEntry {
   time: string
   origin: string
+  sourceStepId: string
+  sourceIndex: number
 }
 
 const allEntries = computed<FlatEntry[]>(() => {
   const entries: FlatEntry[] = []
 
-  for (const note of props.generalNotes) {
+  props.generalNotes.forEach((note, i) => {
     entries.push({
       ...note,
       time: formatTimestamp(note.timestamp),
-      origin: 'general'
+      origin: 'general',
+      sourceStepId: '_general',
+      sourceIndex: i
     })
-  }
+  })
 
   for (const [stepId, stepArr] of Object.entries(props.stepEntries)) {
-    for (const entry of stepArr) {
+    stepArr.forEach((entry, i) => {
       entries.push({
         ...entry,
         time: formatTimestamp(entry.timestamp),
-        origin: props.stepNames[stepId] || stepId
+        origin: props.stepNames[stepId] || stepId,
+        sourceStepId: stepId,
+        sourceIndex: i
       })
-    }
+    })
   }
 
   entries.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
   return entries
+})
+
+// PF-239 iteration: edit/delete state. Keys are "stepId:index" so they survive
+// the chronological re-sort across props changes.
+const editingKey = ref<string | null>(null)
+const editValue = ref('')
+const confirmDeleteKey = ref<string | null>(null)
+const editTextarea = useTemplateRef<HTMLTextAreaElement | HTMLTextAreaElement[]>('editTextarea')
+
+function entryKey(entry: FlatEntry): string {
+  return `${entry.sourceStepId}:${entry.sourceIndex}`
+}
+
+function startEdit(entry: FlatEntry): void {
+  if (confirmDeleteKey.value !== null) confirmDeleteKey.value = null
+  editingKey.value = entryKey(entry)
+  editValue.value = entry.value
+  void nextTick(() => {
+    const ref = editTextarea.value
+    const el = Array.isArray(ref) ? ref[0] : ref
+    if (el && typeof el.focus === 'function') {
+      el.focus()
+      if (typeof el.select === 'function') el.select()
+    }
+  })
+}
+
+function cancelEdit(): void {
+  editingKey.value = null
+  editValue.value = ''
+}
+
+function commitEdit(entry: FlatEntry): void {
+  const trimmed = editValue.value.trim()
+  if (!trimmed) {
+    cancelEdit()
+    return
+  }
+  emit('editEntry', entry.sourceStepId, entry.sourceIndex, trimmed)
+  cancelEdit()
+}
+
+function startConfirmDelete(entry: FlatEntry): void {
+  if (editingKey.value !== null) cancelEdit()
+  confirmDeleteKey.value = entryKey(entry)
+}
+
+function cancelDelete(): void {
+  confirmDeleteKey.value = null
+}
+
+function commitDelete(entry: FlatEntry): void {
+  emit('deleteEntry', entry.sourceStepId, entry.sourceIndex)
+  confirmDeleteKey.value = null
+}
+
+// If the entry being edited or pending delete vanishes from props (e.g.
+// cleared elsewhere), reset state to avoid stranded UI.
+watch(allEntries, (next) => {
+  const keys = new Set(next.map(entryKey))
+  if (editingKey.value !== null && !keys.has(editingKey.value)) cancelEdit()
+  if (confirmDeleteKey.value !== null && !keys.has(confirmDeleteKey.value)) cancelDelete()
 })
 
 const visibleEntries = computed(() => {
@@ -229,8 +299,8 @@ const hiddenCount = computed(() => {
           <div v-if="allEntries.length" class="space-y-2">
             <span class="font-mono text-[10px] text-stone-500 block">entries ({{ allEntries.length }})</span>
             <div
-              v-for="(entry, i) in visibleEntries"
-              :key="i"
+              v-for="entry in visibleEntries"
+              :key="entryKey(entry)"
               class="bg-stone-50 border border-stone-200 p-2"
             >
               <div class="flex items-center gap-1.5 mb-0.5">
@@ -240,9 +310,64 @@ const hiddenCount = computed(() => {
                   :class="entry.type === 'reminder_response' ? 'text-accent' : entry.type === 'rating' ? 'text-crust-dark' : 'text-stone-400'"
                 >{{ entry.type === 'reminder_response' ? 'reminder' : entry.type }}</span>
                 <span class="font-mono text-[10px] text-stone-400">{{ entry.time }}</span>
+                <div
+                  v-if="editingKey === null && confirmDeleteKey === null"
+                  class="ml-auto flex items-center gap-0.5"
+                >
+                  <button
+                    class="p-0.5 text-stone-400 hover:text-accent hover:bg-stone-100 transition-colors"
+                    aria-label="Edit entry"
+                    @click="startEdit(entry)"
+                  >
+                    <Pencil class="w-3 h-3" />
+                  </button>
+                  <button
+                    class="p-0.5 text-stone-400 hover:text-accent hover:bg-stone-100 transition-colors"
+                    aria-label="Delete entry"
+                    @click="startConfirmDelete(entry)"
+                  >
+                    <Trash2 class="w-3 h-3" />
+                  </button>
+                </div>
               </div>
               <p v-if="entry.prompt" class="text-[10px] text-stone-500 italic mb-0.5">{{ entry.prompt }}</p>
-              <p class="text-xs text-stone-700">{{ entry.value }}</p>
+              <template v-if="editingKey === entryKey(entry)">
+                <textarea
+                  ref="editTextarea"
+                  v-model="editValue"
+                  class="w-full border-2 border-stone-200 p-1.5 text-base md:text-xs bg-surface resize-none rounded-none font-mono"
+                  rows="3"
+                  @keydown.enter.prevent="commitEdit(entry)"
+                  @keydown.esc.prevent="cancelEdit"
+                />
+                <div class="flex justify-end items-center gap-1 mt-1">
+                  <button
+                    class="font-mono text-[10px] text-stone-500 hover:text-accent transition-colors px-1.5 py-0.5"
+                    @click="cancelEdit"
+                  >Cancel</button>
+                  <button
+                    class="btn-primary text-[10px] py-0.5 px-2"
+                    @click="commitEdit(entry)"
+                  >Save</button>
+                </div>
+              </template>
+              <template v-else-if="confirmDeleteKey === entryKey(entry)">
+                <p class="text-xs text-stone-700 mb-1">{{ entry.value }}</p>
+                <div class="flex items-center justify-between gap-2 bg-stone-100 border border-stone-200 px-2 py-1">
+                  <span class="font-mono text-[10px] text-stone-700">Delete this entry?</span>
+                  <div class="flex items-center gap-1">
+                    <button
+                      class="font-mono text-[10px] text-stone-500 hover:text-stone-700 transition-colors px-1.5 py-0.5"
+                      @click="cancelDelete"
+                    >Cancel</button>
+                    <button
+                      class="btn-primary text-[10px] py-0.5 px-2"
+                      @click="commitDelete(entry)"
+                    >Delete</button>
+                  </div>
+                </div>
+              </template>
+              <p v-else class="text-xs text-stone-700">{{ entry.value }}</p>
             </div>
             <button
               v-if="hiddenCount > 0"
