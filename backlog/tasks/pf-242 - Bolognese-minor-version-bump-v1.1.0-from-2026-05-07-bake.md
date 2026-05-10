@@ -1,10 +1,10 @@
 ---
 id: PF-242
 title: Bolognese minor version bump (v1.1.0) from 2026-05-07 bake
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-07 18:27'
-updated_date: '2026-05-07 19:39'
+updated_date: '2026-05-10 03:57'
 labels:
   - recipes
 dependencies:

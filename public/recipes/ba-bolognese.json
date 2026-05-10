@@ -13,8 +13,170 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-05-09",
+      "summary": "Bake-derived (2026-05-06 cook_log): tomato paste 85g→170g (full 6oz can — richer outcome), carrot 50g→100g (2 carrots), celery 40g→80g (2 stalks), kosher salt for pasta water 30g→14g (1.5 Tbsp — 30g was salty). Added pasta-water timing note to SIMMER state. Display labels updated for celery (1 stalk → 2 stalks) and carrot (small → 2 carrots). PF-242.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Prep Mirepoix",
+          "ingredients": [
+            {
+              "id": "onion",
+              "name": "Onion (medium)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "medium"
+            },
+            {
+              "id": "celery",
+              "name": "Celery Stalks (×2)",
+              "total": 80,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2 stalks"
+            },
+            {
+              "id": "carrot",
+              "name": "Carrots (peeled, ×2)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2 carrots"
+            }
+          ]
+        },
+        {
+          "stageId": "SAUCE_BUILD",
+          "stageName": "Build the Sauce Base",
+          "ingredients": [
+            {
+              "id": "olive-oil",
+              "name": "Extra-Virgin Olive Oil",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ground-beef",
+              "name": "Ground Beef Chuck (20% fat), patted dry",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-sauce",
+              "name": "Kosher Salt (for sauce)",
+              "total": 6,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "season beef while browning",
+                  "amount": 2
+                },
+                {
+                  "label": "pinch with stock+milk",
+                  "amount": 1
+                },
+                {
+                  "label": "final taste-adjust",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "id": "pancetta",
+              "name": "Pancetta (thinly sliced, finely chopped)",
+              "total": 85,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "white-wine",
+              "name": "Dry White Wine",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "tomato-paste",
+              "name": "Tomato Paste",
+              "total": 170,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "bay-leaf",
+              "name": "Bay Leaf (1 leaf)",
+              "total": 0.2,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 leaf"
+            },
+            {
+              "id": "nutmeg",
+              "name": "Nutmeg (finely grated, pinch)",
+              "total": 0.1,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "pinch"
+            }
+          ]
+        },
+        {
+          "stageId": "SIMMER",
+          "stageName": "Low Simmer",
+          "ingredients": [
+            {
+              "id": "chicken-stock",
+              "name": "Chicken Stock (homemade or low-sodium broth)",
+              "total": 480,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "whole-milk",
+              "name": "Whole Milk",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Cook Pasta & Toss",
+          "ingredients": [
+            {
+              "id": "pasta",
+              "name": "Pasta (1 lb fresh tagliatelle/pappardelle OR dry rigatoni)",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "parmesan",
+              "name": "Parmesan (finely grated; plus more for plating)",
+              "total": 57,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-pasta-water",
+              "name": "Kosher Salt (for pasta water)",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1.5 Tbsp"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.1.0",
       "date": "2026-05-09",
@@ -383,19 +545,19 @@
           },
           {
             "id": "celery",
-            "name": "Celery Stalk",
-            "total": 40,
+            "name": "Celery Stalks (×2)",
+            "total": 80,
             "unit": "g",
             "breakdown": null,
-            "display_amount": "1 stalk"
+            "display_amount": "2 stalks"
           },
           {
             "id": "carrot",
-            "name": "Carrot (small, peeled)",
-            "total": 50,
+            "name": "Carrots (peeled, ×2)",
+            "total": 100,
             "unit": "g",
             "breakdown": null,
-            "display_amount": "small"
+            "display_amount": "2 carrots"
           }
         ]
       },
@@ -468,7 +630,7 @@
           {
             "id": "tomato-paste",
             "name": "Tomato Paste",
-            "total": 85,
+            "total": 170,
             "unit": "g",
             "breakdown": null
           },
@@ -554,9 +716,10 @@
           {
             "id": "kosher-salt-pasta-water",
             "name": "Kosher Salt (for pasta water)",
-            "total": 30,
+            "total": 14,
             "unit": "g",
-            "breakdown": null
+            "breakdown": null,
+            "display_amount": "1.5 Tbsp"
           }
         ]
       },
@@ -743,6 +906,10 @@
         {
           "text": "Sauce can be made up to 4 days ahead — cover and chill. Reheat gently before tossing with pasta.",
           "source": "agent"
+        },
+        {
+          "text": "Start pasta water heating at the ~2hr mark of the 2.5hr simmer — gives water time to come to a rolling boil while sauce finishes reducing.",
+          "source": "user"
         }
       ],
       "reminders": [
@@ -1260,18 +1427,6 @@
         "date": "2026-05-06"
       },
       "next_time": [
-        {
-          "text": "Use full 6oz can tomato paste (~170g) instead of 85g — richer outcome."
-        },
-        {
-          "text": "Use 2 carrots (~100g) instead of 1."
-        },
-        {
-          "text": "Use 2 celery stalks instead of 1."
-        },
-        {
-          "text": "Reduce pasta water salt to ~1.5 Tbsp for ~75% pot fill (instead of 30g) — was salty."
-        },
         {
           "text": "Document homemade 00-flour egg pasta as an accepted variant."
         }
