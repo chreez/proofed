@@ -1,10 +1,10 @@
 ---
 id: PF-237
 title: Persist per-bake + per-version ingredient snapshots
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-05 21:23'
-updated_date: '2026-05-07 19:39'
+updated_date: '2026-05-10 02:55'
 labels:
   - schema
   - print

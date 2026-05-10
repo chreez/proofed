@@ -112,6 +112,10 @@ Add checks here for new features:
 | F30 | Reheat version bump | Changes to `reheat` data must bump minor version + add `change_log` entry | 2026-02-16 |
 | F31 | Print ingredient swap | Print page ingredient amounts override from `selectedCostSource.items[]` by `ingredientId`; items absent from cost source fall back to recipe defaults | 2026-05-05 |
 | F32 | IG story export | Bake detail page (`/recipe/:id/bake/:date`) renders a Share button next to QR + Print; click opens a bottom sheet with optional rate step (failure/meh/mid/success/skip), then a 3-line caption preview that copies via `copyToClipboard`. L1 = lifetime cadence, L2 = lifetime cals + typeCounts + spend, L3 = current bake (recipeBakeCount, recipeName, optional outcome/cost/servings). Outcome resolution: entry.outcome → scratchpad.outcome → show rate step. | 2026-05-05 |
+| F33 | Cook_log ingredient snapshot | Every `cook_log[]` entry has a non-empty `ingredients[]` snapshot — `IngredientSnapshotGroup[]` mirroring `stages[].gather.ingredients` shape. Validated in `tests/validation/recipe-schema.spec.ts`. Backfill via `scripts/sync-ingredient-snapshots.ts`. | 2026-05-07 |
+| F34 | Change_log ingredient snapshot | Every `change_log[]` entry has a non-empty `ingredients[]` snapshot — frozen at write time, never auto-mutated by later version bumps. Source of truth for "what the recipe said at vX.Y.Z". | 2026-05-07 |
+| F35 | Snapshot breakdown sums | For each snapshot ingredient with `breakdown[]`, sum of breakdown amounts equals `total` (±2g tolerance). Extension of D6 to per-bake / per-version snapshots. | 2026-05-07 |
+| F36 | Print snapshot resolution | `RecipePrintView.vue` ingredient amounts read from `cook_log[].ingredients` when a bake is selected, `change_log[].ingredients` when "Estimated" is selected; falls back to `stages[].gather.ingredients` only when neither snapshot is present. `cost.items[]` no longer drives ingredient amounts. | 2026-05-07 |
 
 ## Print Validation
 

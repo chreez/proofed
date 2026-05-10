@@ -388,11 +388,36 @@ export interface NextTimeEntry {
   source?: string
 }
 
+/**
+ * Ingredient snapshot grouped by stage. Mirrors the shape of
+ * `Stage.gather.ingredients[]` but is flat per snapshot — one entry per
+ * stage that introduces ingredients. Used to freeze ingredient state at a
+ * specific point in time.
+ *
+ * IMPORTANT: snapshots are frozen at write time and MUST NEVER be
+ * auto-mutated by later version bumps. They represent "what the recipe
+ * said" or "what the user actually used" at the moment they were captured.
+ * (PF-237)
+ */
+export interface IngredientSnapshotGroup {
+  stageId: string
+  stageName: string
+  ingredients: Ingredient[]
+}
+
 // Version tracking
 export interface ChangeLogEntry {
   version: string
   date: string
   summary: string
+  /**
+   * Per-version ingredient snapshot — frozen at write time, never
+   * auto-mutated by later version bumps. Mirrors `stages[].gather.ingredients`
+   * grouped by stage. Optional for backward compat: recipes without a
+   * snapshot fall back to `stages[].gather.ingredients` for that version
+   * (which only matches the *current* version, not historical ones). (PF-237)
+   */
+  ingredients?: IngredientSnapshotGroup[]
 }
 
 // Cook log photos
@@ -499,6 +524,16 @@ export interface CookLogEntry {
   // Outdoor weather conditions on bake day. Populated by /bake-log skill
   // (PF-193.1) or backfill (PF-193.2). Optional — existing entries omit it.
   weather?: BakeWeather
+  /**
+   * Per-bake ingredient snapshot — what the user actually used during this
+   * bake. Frozen at write time, never auto-mutated by later version bumps.
+   * Defaults to a clone of the matching `change_log[].ingredients` baseline;
+   * may carry experimental deltas where the user adjusted amounts during the
+   * bake. Amounts are absolute grams (post-multiplier if scaling was used).
+   * Optional: omit when a bake hasn't been migrated yet — print view falls
+   * back to gather defaults. (PF-237)
+   */
+  ingredients?: IngredientSnapshotGroup[]
 }
 
 // Outdoor weather snapshot for a bake day (PF-193).

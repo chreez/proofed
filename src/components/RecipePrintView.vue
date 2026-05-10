@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { validatePrintSections } from '@/composables/usePrintValidation'
 import { deriveAllergens } from '@/composables/useAllergens'
-import type { CookLogCostItem } from '@/types/recipe'
+import type { CookLogCostItem, IngredientSnapshotGroup } from '@/types/recipe'
 import NutritionLabel from '@/components/NutritionLabel.vue'
 import { renderBrandedQr, generateQrLabelDataUrl } from '@/composables/useQrLabel'
 
@@ -71,27 +71,75 @@ interface IngredientGroup {
   items: Array<{ name: string; amount: string }>
 }
 
+/**
+ * Format an ingredient amount + unit for display.
+ * "whole" units render as "{n}x"; everything else as "{n} {unit}".
+ */
+function formatAmount(amount: number, unit: string): string {
+  return unit === 'whole' ? `${amount}x` : `${amount} ${unit}`
+}
+
+/**
+ * Convert a snapshot (IngredientSnapshotGroup[]) into IngredientGroup[]
+ * for render. Snapshots are the source of truth when present — they carry
+ * the ingredient amounts the user *actually used* (per-bake) or the
+ * canonical baseline at a specific recipe version (per-version).
+ */
+function snapshotToGroups(snapshot: IngredientSnapshotGroup[]): IngredientGroup[] {
+  return snapshot
+    .filter(g => g.ingredients.length > 0)
+    .map(g => ({
+      stageName: g.stageName,
+      items: g.ingredients.map(ing => ({
+        name: ing.name,
+        amount: formatAmount(ing.total, ing.unit),
+      })),
+    }))
+}
+
+/**
+ * Ingredients shown in the print view. Resolution order (PF-237):
+ *
+ * 1. Selected bake → `cook_log[].ingredients` snapshot (post-multiplier
+ *    absolute grams; may include experimental deltas the user made).
+ * 2. Estimated source → `change_log[].ingredients` snapshot for the
+ *    matching version (canonical baseline frozen at version write time).
+ * 3. Fallback → `stages[].gather.ingredients` (only correct for the
+ *    *current* recipe version; backward compat for un-migrated recipes).
+ *
+ * Cost is a separate concern — `cost.items[]` no longer drives the
+ * ingredient list. Items absent from a cost source (e.g., zero-cost water
+ * or starter) used to fall back to gather defaults; with snapshots they
+ * are first-class and accurate.
+ */
 const ingredientsByStage = computed<IngredientGroup[]>(() => {
-  if (!currentRecipe.value) return []
-  // Map cost items by ingredientId so amounts reflect the selected bake/estimate.
-  // Items absent from the cost source (e.g., water, starter — zero-cost) keep recipe defaults.
-  const costMap = new Map<string, CookLogCostItem>()
-  for (const item of selectedCostSource.value?.items ?? []) {
-    costMap.set(item.ingredientId, item)
+  const recipe = currentRecipe.value
+  if (!recipe) return []
+
+  const source = selectedCostSource.value
+
+  // Per-bake snapshot path
+  if (source && source.type === 'bake' && source.bakeIngredients && source.bakeIngredients.length > 0) {
+    return snapshotToGroups(source.bakeIngredients)
   }
-  return currentRecipe.value.stages
+
+  // Per-version snapshot path (estimated source → match by version)
+  if (source && source.type === 'estimated') {
+    const versionSnapshot = recipe.change_log?.find(c => c.version === recipe.version)?.ingredients
+    if (versionSnapshot && versionSnapshot.length > 0) {
+      return snapshotToGroups(versionSnapshot)
+    }
+  }
+
+  // Fallback: gather defaults (un-migrated recipes only)
+  return recipe.stages
     .filter(stage => stage.gather?.ingredients && stage.gather.ingredients.length > 0)
     .map(stage => ({
       stageName: stage.title,
-      items: (stage.gather?.ingredients ?? []).map(ing => {
-        const override = costMap.get(ing.id)
-        const amount = override?.amount ?? ing.total
-        const unit = override?.unit ?? ing.unit
-        return {
-          name: ing.name,
-          amount: unit === 'whole' ? `${amount}x` : `${amount} ${unit}`
-        }
-      })
+      items: (stage.gather?.ingredients ?? []).map(ing => ({
+        name: ing.name,
+        amount: formatAmount(ing.total, ing.unit),
+      })),
     }))
 })
 
@@ -170,6 +218,13 @@ interface CostSource {
   perServing: number
   servings: number
   items: CookLogCostItem[]
+  /**
+   * Per-bake ingredient snapshot for `type: 'bake'` sources (PF-237).
+   * Pulled from the matching `cook_log[].ingredients` field. Absent on
+   * `type: 'estimated'` sources — those resolve via `change_log[].ingredients`
+   * by recipe version inside `ingredientsByStage`.
+   */
+  bakeIngredients?: IngredientSnapshotGroup[]
 }
 
 function formatDateLabel(dateStr: string): string {
@@ -210,6 +265,7 @@ const costSources = computed<CostSource[]>(() => {
           perServing: entry.cost.perServing,
           servings: entry.cost.servings,
           items: entry.cost.items,
+          bakeIngredients: entry.ingredients,
         })
       }
     }

@@ -26,27 +26,417 @@
     {
       "version": "v1.4.0",
       "date": "2026-03-21",
-      "summary": "Rewrote dough procedure to 3-day cold ferment default (mix → 1h RT rest → overnight cold bulk → divide → 1-2 day cold proof → temper 1h). Removed sugar from formula (optional note for low-temp ovens). Added hard Italian cheese (Parm/Pecorino) to topping order. Updated vessels from pizza stone to baking steel."
+      "summary": "Rewrote dough procedure to 3-day cold ferment default (mix → 1h RT rest → overnight cold bulk → divide → 1-2 day cold proof → temper 1h). Removed sugar from formula (optional note for low-temp ovens). Added hard Italian cheese (Parm/Pecorino) to topping order. Updated vessels from pizza stone to baking steel.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.3.0",
       "date": "2026-02-12",
-      "summary": "Feedback session: added agent tips on sugar reduction at high temps (ADD_ENRICHMENTS) and parm flavor bridge layering (TOP_PIZZA)."
+      "summary": "Feedback session: added agent tips on sugar reduction at high temps (ADD_ENRICHMENTS) and parm flavor bridge layering (TOP_PIZZA).",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.2.0",
       "date": "2026-02-09",
-      "summary": "Added bake photos, fixed mozzarella notes (HEB whole milk, not TJ's), added ingredient note on mozz spec."
+      "summary": "Added bake photos, fixed mozzarella notes (HEB whole milk, not TJ's), added ingredient note on mozz spec.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.1.0",
       "date": "2026-02-09",
-      "summary": "Scaled dough and toppings ×1.25 for bigger pizzas (~388g balls). 2 pizzas, more dough per pie."
+      "summary": "Scaled dough and toppings ×1.25 for bigger pizzas (~388g balls). 2 pizzas, more dough per pie.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.0.0",
       "date": "2026-02-08",
-      "summary": "Initial recipe from Jacob Burton / Stella Culinary"
+      "summary": "Initial recipe from Jacob Burton / Stella Culinary",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "cook_log": [
@@ -150,7 +540,85 @@
         "humidity_avg_percent": 48,
         "condition": "Overcast",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-02-12",
@@ -229,7 +697,85 @@
         "humidity_avg_percent": 55,
         "condition": "Overcast",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-02-18",
@@ -386,7 +932,85 @@
         "humidity_avg_percent": 81,
         "condition": "Overcast",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "start_date": "2026-02-20",
@@ -442,7 +1066,85 @@
         "humidity_avg_percent": 36,
         "condition": "Overcast",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [

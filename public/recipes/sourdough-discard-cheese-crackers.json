@@ -18,7 +18,105 @@
     {
       "version": "v1.0.0",
       "date": "2026-03-30",
-      "summary": "Initial recipe from 4-agent research synthesis across 12 sources. Sourdough-forward family with smoked paprika-garlic-black pepper spice profile."
+      "summary": "Initial recipe from 4-agent research synthesis across 12 sources. Sourdough-forward family with smoked paprika-garlic-black pepper spice profile.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mix Dough",
+          "ingredients": [
+            {
+              "id": "discard",
+              "name": "Sourdough Discard (unfed, 100% hydration)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents confirmed 200-230g; using 200g for sourdough-forward family"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents; provides structure and rollability"
+            },
+            {
+              "id": "sharp-cheddar",
+              "name": "Sharp Cheddar (block, fine-grated)",
+              "total": 170,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents; sharp cheddar (36-39% moisture) browns and crisps reliably"
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (softened)",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents confirmed 28-57g range; 40g balances richness and crispness"
+            },
+            {
+              "id": "smoked-paprika",
+              "name": "Smoked Paprika",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "3/4 agents; above 1 tsp risks eclipsing cheddar"
+            },
+            {
+              "id": "garlic-powder",
+              "name": "Garlic Powder",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "3/4 agents; rounds out savory profile"
+            },
+            {
+              "id": "black-pepper",
+              "name": "Black Pepper (coarse)",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "2/4 agents; visible flecks and bite"
+            },
+            {
+              "id": "cayenne",
+              "name": "Cayenne Pepper",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "3/4 agents; 1/4 tsp = noticeable warmth. Capsaicin stable at 350°F"
+            },
+            {
+              "id": "fine-salt",
+              "name": "Fine Salt",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents; sourdough tang demands salt to balance"
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Salt",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents; topping for texture and visual"
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [

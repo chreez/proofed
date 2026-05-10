@@ -18,17 +18,410 @@
     {
       "version": "v1.2.0",
       "date": "2026-04-30",
-      "summary": "Granular curd steps: strain juice, water bath, combine, cook, strain curd, cool, mount butter. Press-in tartlet option. Immersion blender only."
+      "summary": "Granular curd steps: strain juice, water bath, combine, cook, strain curd, cool, mount butter. Press-in tartlet option. Immersion blender only.",
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            {
+              "id": "butter_dough",
+              "name": "Unsalted Butter (room temp)",
+              "total": 255,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_dough",
+              "name": "Granulated Sugar",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_dough",
+              "name": "Salt (1/4 tsp)",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_dough",
+              "name": "Large Eggs (room temp)",
+              "total": 2,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            {
+              "id": "eggs_wash",
+              "name": "Large Egg (wash)",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "salt_wash",
+              "name": "Salt (pinch, wash)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            {
+              "id": "lemon_juice",
+              "name": "Fresh Lemon Juice",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_cream",
+              "name": "Large Eggs",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "egg_yolk",
+              "name": "Large Egg Yolk",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_cream",
+              "name": "Granulated Sugar",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_cream",
+              "name": "Salt (pinch)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter_cream",
+              "name": "Unsalted Butter (cool, not cold)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Whipped Cream & Serve",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (very cold)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_topping",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.1.0",
       "date": "2026-04-30",
-      "summary": "Adapted for 10cm tartlets: per-stage mise en place, 12x88g dough portions, tartlet bake times"
+      "summary": "Adapted for 10cm tartlets: per-stage mise en place, 12x88g dough portions, tartlet bake times",
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            {
+              "id": "butter_dough",
+              "name": "Unsalted Butter (room temp)",
+              "total": 255,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_dough",
+              "name": "Granulated Sugar",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_dough",
+              "name": "Salt (1/4 tsp)",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_dough",
+              "name": "Large Eggs (room temp)",
+              "total": 2,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            {
+              "id": "eggs_wash",
+              "name": "Large Egg (wash)",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "salt_wash",
+              "name": "Salt (pinch, wash)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            {
+              "id": "lemon_juice",
+              "name": "Fresh Lemon Juice",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_cream",
+              "name": "Large Eggs",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "egg_yolk",
+              "name": "Large Egg Yolk",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_cream",
+              "name": "Granulated Sugar",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_cream",
+              "name": "Salt (pinch)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter_cream",
+              "name": "Unsalted Butter (cool, not cold)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Whipped Cream & Serve",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (very cold)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_topping",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.0.0",
       "date": "2026-04-30",
-      "summary": "Initial recipe from Tartine Bakery cookbook (sweet tart dough + lemon cream + assembly)"
+      "summary": "Initial recipe from Tartine Bakery cookbook (sweet tart dough + lemon cream + assembly)",
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            {
+              "id": "butter_dough",
+              "name": "Unsalted Butter (room temp)",
+              "total": 255,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_dough",
+              "name": "Granulated Sugar",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_dough",
+              "name": "Salt (1/4 tsp)",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_dough",
+              "name": "Large Eggs (room temp)",
+              "total": 2,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            {
+              "id": "eggs_wash",
+              "name": "Large Egg (wash)",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "salt_wash",
+              "name": "Salt (pinch, wash)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            {
+              "id": "lemon_juice",
+              "name": "Fresh Lemon Juice",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_cream",
+              "name": "Large Eggs",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "egg_yolk",
+              "name": "Large Egg Yolk",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_cream",
+              "name": "Granulated Sugar",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_cream",
+              "name": "Salt (pinch)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter_cream",
+              "name": "Unsalted Butter (cool, not cold)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Whipped Cream & Serve",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (very cold)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_topping",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -278,9 +671,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (room temp)", "amount": "255g" },
-        { "name": "Sugar", "amount": "200g" },
-        { "name": "Salt", "amount": "1.5g" }
+        {
+          "name": "Butter (room temp)",
+          "amount": "255g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "200g"
+        },
+        {
+          "name": "Salt",
+          "amount": "1.5g"
+        }
       ],
       "exit_condition": "Mixture is smooth and uniformly combined, no visible butter chunks",
       "notes": [
@@ -299,7 +701,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Eggs", "amount": "2 whole" }
+        {
+          "name": "Eggs",
+          "amount": "2 whole"
+        }
       ],
       "exit_condition": "Eggs fully incorporated, mixture smooth, bowl sides scraped clean",
       "notes": [
@@ -318,7 +723,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Flour", "amount": "500g" }
+        {
+          "name": "Flour",
+          "amount": "500g"
+        }
       ],
       "exit_condition": "Flour just incorporated — no dry patches, no overmixing. Dough cohesive but not elastic.",
       "notes": [
@@ -458,8 +866,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Egg", "amount": "1 whole" },
-        { "name": "Salt", "amount": "0.5g (pinch)" }
+        {
+          "name": "Egg",
+          "amount": "1 whole"
+        },
+        {
+          "name": "Salt",
+          "amount": "0.5g (pinch)"
+        }
       ],
       "exit_condition": "Egg wash coating is set and sealed — surface looks glossy and firm",
       "notes": [
@@ -506,7 +920,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Lemon Juice", "amount": "175g" }
+        {
+          "name": "Lemon Juice",
+          "amount": "175g"
+        }
       ],
       "exit_condition": "Lemon juice strained, no pulp or seeds remain",
       "notes": null
@@ -536,11 +953,26 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Eggs", "amount": "3 whole" },
-        { "name": "Egg Yolk", "amount": "1" },
-        { "name": "Sugar", "amount": "175g" },
-        { "name": "Strained Lemon Juice", "amount": "175g" },
-        { "name": "Salt", "amount": "0.5g (pinch)" }
+        {
+          "name": "Eggs",
+          "amount": "3 whole"
+        },
+        {
+          "name": "Egg Yolk",
+          "amount": "1"
+        },
+        {
+          "name": "Sugar",
+          "amount": "175g"
+        },
+        {
+          "name": "Strained Lemon Juice",
+          "amount": "175g"
+        },
+        {
+          "name": "Salt",
+          "amount": "0.5g (pinch)"
+        }
       ],
       "exit_condition": "All curd ingredients whisked together in steel bowl, homogeneous",
       "notes": [
@@ -616,7 +1048,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Butter (cool)", "amount": "225g" }
+        {
+          "name": "Butter (cool)",
+          "amount": "225g"
+        }
       ],
       "exit_condition": "Cream is pale yellow, opaque, and quite thick — all butter incorporated and emulsified",
       "notes": [
@@ -668,8 +1103,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Heavy Cream (very cold)", "amount": "240g" },
-        { "name": "Sugar", "amount": "8g" }
+        {
+          "name": "Heavy Cream (very cold)",
+          "amount": "240g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "8g"
+        }
       ],
       "exit_condition": "Cream holds soft peaks — billowy and just holding its shape, not stiff",
       "notes": null
@@ -705,7 +1146,7 @@
       "calories": 673.2,
       "protein": 8.5,
       "totalFat": 42.8,
-      "saturatedFat": 26.0,
+      "saturatedFat": 26,
       "carbohydrates": 65.4,
       "sugar": 33.1,
       "fiber": 1.2,
@@ -904,7 +1345,7 @@
         "totalFat": 86.4,
         "saturatedFat": 53.8,
         "carbohydrates": 7.1,
-        "sugar": 7.0,
+        "sugar": 7,
         "fiber": 0,
         "sodium": 58
       },
@@ -917,8 +1358,8 @@
         "protein": 0,
         "totalFat": 0,
         "saturatedFat": 0,
-        "carbohydrates": 8.0,
-        "sugar": 8.0,
+        "carbohydrates": 8,
+        "sugar": 8,
         "fiber": 0,
         "sodium": 0
       }
@@ -1084,34 +1525,297 @@
         }
       ],
       "next_time": [
-        { "text": "Try Olson's combine order — strain wet ingredients into a bowl with sugar already in it, instead of eggs → sugar → juice", "source": "Anna Olson video" },
-        { "text": "Try confectioners' sugar instead of granulated in the curd — dissolves faster, no graininess risk", "source": "Anna Olson video" },
-        { "text": "Preheat oven hotter and preheat sheet pan for better heat transfer to tartlet shells" },
-        { "text": "Press dough more firmly into tin edges to prevent receding during chill" },
-        { "text": "Consider halving whipped cream when only serving 6 tartlets" }
+        {
+          "text": "Try Olson's combine order — strain wet ingredients into a bowl with sugar already in it, instead of eggs → sugar → juice",
+          "source": "Anna Olson video"
+        },
+        {
+          "text": "Try confectioners' sugar instead of granulated in the curd — dissolves faster, no graininess risk",
+          "source": "Anna Olson video"
+        },
+        {
+          "text": "Preheat oven hotter and preheat sheet pan for better heat transfer to tartlet shells"
+        },
+        {
+          "text": "Press dough more firmly into tin edges to prevent receding during chill"
+        },
+        {
+          "text": "Consider halving whipped cream when only serving 6 tartlets"
+        }
       ],
       "cost": {
         "servings": 12,
         "total": 7.35,
         "perServing": 0.61,
         "items": [
-          { "ingredientId": "butter_dough", "name": "Unsalted Butter (dough)", "sourceType": "heb", "sourceName": "Hill Country Fare Unsalted Butter Sticks (16 oz)", "amount": 255, "unit": "g", "cost": 1.67 },
-          { "ingredientId": "butter_cream", "name": "Unsalted Butter (cream)", "sourceType": "heb", "sourceName": "Hill Country Fare Unsalted Butter Sticks (16 oz)", "amount": 225, "unit": "g", "cost": 1.48 },
-          { "ingredientId": "sugar_dough", "name": "Granulated Sugar (dough)", "sourceType": "heb", "sourceName": "Hill Country Fare Granulated Sugar (4 lbs)", "amount": 200, "unit": "g", "cost": 0.28 },
-          { "ingredientId": "sugar_cream", "name": "Granulated Sugar (cream)", "sourceType": "heb", "sourceName": "Hill Country Fare Granulated Sugar (4 lbs)", "amount": 175, "unit": "g", "cost": 0.25 },
-          { "ingredientId": "sugar_topping", "name": "Granulated Sugar (topping)", "sourceType": "heb", "sourceName": "Hill Country Fare Granulated Sugar (4 lbs)", "amount": 8, "unit": "g", "cost": 0.01 },
-          { "ingredientId": "flour", "name": "All-Purpose Flour", "sourceType": "heb", "sourceName": "Hill Country Fare All-Purpose Flour (5 lbs)", "amount": 500, "unit": "g", "cost": 0.43 },
-          { "ingredientId": "eggs_dough", "name": "Large Eggs (dough)", "sourceType": "heb", "sourceName": "Sunups Grade A Large White Eggs (12 ct)", "amount": 2, "unit": "whole", "cost": 0.28 },
-          { "ingredientId": "eggs_wash", "name": "Large Egg (wash)", "sourceType": "heb", "sourceName": "Sunups Grade A Large White Eggs (12 ct)", "amount": 1, "unit": "whole", "cost": 0.14 },
-          { "ingredientId": "eggs_cream", "name": "Large Eggs (cream)", "sourceType": "heb", "sourceName": "Sunups Grade A Large White Eggs (12 ct)", "amount": 3, "unit": "whole", "cost": 0.42 },
-          { "ingredientId": "egg_yolk", "name": "Large Egg Yolk (cream)", "sourceType": "heb", "sourceName": "Sunups Grade A Large White Eggs (12 ct)", "amount": 1, "unit": "whole", "cost": 0.14 },
-          { "ingredientId": "lemon_juice", "name": "Fresh Lemon Juice", "sourceType": "heb", "sourceName": "H-E-B Fresh Lemons (2 lb bag)", "amount": 175, "unit": "g", "cost": 0.75 },
-          { "ingredientId": "heavy_cream", "name": "Heavy Cream", "sourceType": "heb", "sourceName": "H-E-B Heavy Whipping Cream (16 oz)", "amount": 240, "unit": "g", "cost": 1.50 },
-          { "ingredientId": "salt_dough", "name": "Salt (dough)", "sourceType": "heb", "sourceName": "H-E-B Iodized Salt (26 oz)", "amount": 1.5, "unit": "g", "cost": 0.00 },
-          { "ingredientId": "salt_wash", "name": "Salt (wash)", "sourceType": "heb", "sourceName": "H-E-B Iodized Salt (26 oz)", "amount": 0.5, "unit": "g", "cost": 0.00 },
-          { "ingredientId": "salt_cream", "name": "Salt (cream)", "sourceType": "heb", "sourceName": "H-E-B Iodized Salt (26 oz)", "amount": 0.5, "unit": "g", "cost": 0.00 }
+          {
+            "ingredientId": "butter_dough",
+            "name": "Unsalted Butter (dough)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter Sticks (16 oz)",
+            "amount": 255,
+            "unit": "g",
+            "cost": 1.67
+          },
+          {
+            "ingredientId": "butter_cream",
+            "name": "Unsalted Butter (cream)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter Sticks (16 oz)",
+            "amount": 225,
+            "unit": "g",
+            "cost": 1.48
+          },
+          {
+            "ingredientId": "sugar_dough",
+            "name": "Granulated Sugar (dough)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Granulated Sugar (4 lbs)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 0.28
+          },
+          {
+            "ingredientId": "sugar_cream",
+            "name": "Granulated Sugar (cream)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Granulated Sugar (4 lbs)",
+            "amount": 175,
+            "unit": "g",
+            "cost": 0.25
+          },
+          {
+            "ingredientId": "sugar_topping",
+            "name": "Granulated Sugar (topping)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Granulated Sugar (4 lbs)",
+            "amount": 8,
+            "unit": "g",
+            "cost": 0.01
+          },
+          {
+            "ingredientId": "flour",
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare All-Purpose Flour (5 lbs)",
+            "amount": 500,
+            "unit": "g",
+            "cost": 0.43
+          },
+          {
+            "ingredientId": "eggs_dough",
+            "name": "Large Eggs (dough)",
+            "sourceType": "heb",
+            "sourceName": "Sunups Grade A Large White Eggs (12 ct)",
+            "amount": 2,
+            "unit": "whole",
+            "cost": 0.28
+          },
+          {
+            "ingredientId": "eggs_wash",
+            "name": "Large Egg (wash)",
+            "sourceType": "heb",
+            "sourceName": "Sunups Grade A Large White Eggs (12 ct)",
+            "amount": 1,
+            "unit": "whole",
+            "cost": 0.14
+          },
+          {
+            "ingredientId": "eggs_cream",
+            "name": "Large Eggs (cream)",
+            "sourceType": "heb",
+            "sourceName": "Sunups Grade A Large White Eggs (12 ct)",
+            "amount": 3,
+            "unit": "whole",
+            "cost": 0.42
+          },
+          {
+            "ingredientId": "egg_yolk",
+            "name": "Large Egg Yolk (cream)",
+            "sourceType": "heb",
+            "sourceName": "Sunups Grade A Large White Eggs (12 ct)",
+            "amount": 1,
+            "unit": "whole",
+            "cost": 0.14
+          },
+          {
+            "ingredientId": "lemon_juice",
+            "name": "Fresh Lemon Juice",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Fresh Lemons (2 lb bag)",
+            "amount": 175,
+            "unit": "g",
+            "cost": 0.75
+          },
+          {
+            "ingredientId": "heavy_cream",
+            "name": "Heavy Cream",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Heavy Whipping Cream (16 oz)",
+            "amount": 240,
+            "unit": "g",
+            "cost": 1.5
+          },
+          {
+            "ingredientId": "salt_dough",
+            "name": "Salt (dough)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Iodized Salt (26 oz)",
+            "amount": 1.5,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "salt_wash",
+            "name": "Salt (wash)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Iodized Salt (26 oz)",
+            "amount": 0.5,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "salt_cream",
+            "name": "Salt (cream)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Iodized Salt (26 oz)",
+            "amount": 0.5,
+            "unit": "g",
+            "cost": 0
+          }
         ]
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            {
+              "id": "butter_dough",
+              "name": "Unsalted Butter (room temp)",
+              "total": 255,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_dough",
+              "name": "Granulated Sugar",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_dough",
+              "name": "Salt (1/4 tsp)",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_dough",
+              "name": "Large Eggs (room temp)",
+              "total": 2,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            {
+              "id": "eggs_wash",
+              "name": "Large Egg (wash)",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "salt_wash",
+              "name": "Salt (pinch, wash)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            {
+              "id": "lemon_juice",
+              "name": "Fresh Lemon Juice",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_cream",
+              "name": "Large Eggs",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "egg_yolk",
+              "name": "Large Egg Yolk",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_cream",
+              "name": "Granulated Sugar",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_cream",
+              "name": "Salt (pinch)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter_cream",
+              "name": "Unsalted Butter (cool, not cold)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Whipped Cream & Serve",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (very cold)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_topping",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }

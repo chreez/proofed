@@ -25,7 +25,419 @@
     {
       "version": "v1.0.0",
       "date": "2026-02-08",
-      "summary": "Initial recipe synthesized from 8-agent research across 74 sources (Japanese ramen blogs, Reddit/r/ramen, noodle science manufacturers, restaurant deep dives, food science, YouTube creators)"
+      "summary": "Initial recipe synthesized from 8-agent research across 74 sources (Japanese ramen blogs, Reddit/r/ramen, noodle science manufacturers, restaurant deep dives, food science, YouTube creators)",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "pork_bones",
+              "name": "Pork Bones (femur/neck)",
+              "total": 1500,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "All 8 agents — universal for tonkotsu base; Ramen_Lord, Kaonashi, Men to Choujin, Ramen Cook",
+              "confidence": "high",
+              "rationale": "Femur and neck bones provide the highest collagen yield for thick tonkotsu. 1.5 kg is the standard batch size across 6+ sources for a pressure cooker method."
+            },
+            {
+              "id": "chicken_feet",
+              "name": "Chicken Feet",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents — Ramen_Lord, Kaonashi, RecipeTin, food science sources",
+              "confidence": "high",
+              "rationale": "70% pure collagen — the single most efficient gelatin source. Non-negotiable for proper body. 500g provides backbone collagen without overwhelming pork flavor."
+            },
+            {
+              "id": "chicken_backs",
+              "name": "Chicken Backs",
+              "total": 1500,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents — Ramen_Lord, Kaonashi, multiple copycat sources",
+              "confidence": "high",
+              "rationale": "Secondary animal base that mellows the pork intensity. Added in Phase 2 with the pork belly. 1.5 kg balances the pork bones."
+            },
+            {
+              "id": "pork_belly",
+              "name": "Pork Belly (skin-on, for broth + chashu)",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "broth (Phase 2 cook, then remove)",
+                  "amount": 1000
+                }
+              ],
+              "sourcedFrom": "5/8 agents — dual-purpose technique from Ramen_Lord, Kaonashi, Ramen Cook",
+              "confidence": "high",
+              "rationale": "Skin-on pork belly serves double duty: collagen and fat into the broth during Phase 2, then removed and soaked in chashu marinade. 1 kg yields generous chashu slices for 8 servings."
+            },
+            {
+              "id": "onion",
+              "name": "Yellow Onion (quartered)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "4/8 agents — Kaonashi, Men to Choujin, Ramen_Lord",
+              "confidence": "medium",
+              "rationale": "Aromatic added late (final hour of bone cook). One medium onion quartered provides sweetness without making broth cloudy."
+            },
+            {
+              "id": "ginger",
+              "name": "Ginger (coins)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents — standard aromatic across Japanese broth recipes",
+              "confidence": "medium",
+              "rationale": "4 coin-sized slices. Added late to prevent bitterness. Provides clean aromatic note that cuts through heavy pork flavor."
+            },
+            {
+              "id": "garlic",
+              "name": "Garlic Cloves",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents — standard aromatic; Ramen_Lord, Kaonashi",
+              "confidence": "medium",
+              "rationale": "About 10 cloves. Added late with other aromatics. Contributes depth and rounds out the animal flavor."
+            },
+            {
+              "id": "kombu",
+              "name": "Kombu (dried kelp)",
+              "total": 35,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare cold soak",
+                  "amount": 15
+                },
+                {
+                  "label": "fish dashi",
+                  "amount": 20
+                }
+              ],
+              "sourcedFrom": "7/8 agents — universal glutamic acid foundation; preferred from Hokkaido",
+              "confidence": "high",
+              "rationale": "Glutamic acid backbone for umami synergy. Split between tare (cold soak for clean extraction) and dashi (heated steep). Hokkaido rishiri or hidaka preferred."
+            },
+            {
+              "id": "niboshi",
+              "name": "Niboshi (dried sardines)",
+              "total": 112,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare cold soak",
+                  "amount": 20
+                },
+                {
+                  "label": "fish dashi",
+                  "amount": 80
+                },
+                {
+                  "label": "gyofun blend",
+                  "amount": 12
+                }
+              ],
+              "sourcedFrom": "8/8 agents — primary fish backbone; Setouchi origin preferred (Tomita official site)",
+              "confidence": "high",
+              "rationale": "The most assertive dried fish — provides the aggressive sardine punch that defines gyokai-tonkotsu. Used in three ways: cold-soaked in tare for clean umami, steeped in dashi for body, and ground into gyofun for finishing powder."
+            },
+            {
+              "id": "katsuobushi",
+              "name": "Katsuobushi (thick-cut dried bonito)",
+              "total": 83,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare finish steep",
+                  "amount": 15
+                },
+                {
+                  "label": "fish dashi",
+                  "amount": 50
+                },
+                {
+                  "label": "gyofun blend",
+                  "amount": 18
+                }
+              ],
+              "sourcedFrom": "8/8 agents — thick-cut (atsukezuri) specified; Kochi origin for premium",
+              "confidence": "high",
+              "rationale": "Smoky, clean umami top notes. Must use thick-cut (atsukezuri) for slow extraction in dashi — thin flakes would over-extract and turn bitter. Used across tare, dashi, and gyofun."
+            },
+            {
+              "id": "sababushi",
+              "name": "Sababushi (thick-cut dried mackerel)",
+              "total": 74,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "fish dashi",
+                  "amount": 50
+                },
+                {
+                  "label": "gyofun blend",
+                  "amount": 24
+                }
+              ],
+              "sourcedFrom": "7/8 agents — Ramen_Lord, Japanese sources, YouTube creators",
+              "confidence": "high",
+              "rationale": "Rich, oily fish depth that complements the leaner katsuobushi. Key differentiator for Tomita-style gyokai. 50g in dashi steep + 24g ground into gyofun blend."
+            },
+            {
+              "id": "dried_flounder_powder",
+              "name": "Dried Flounder Powder (optional)",
+              "total": 6,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "gyofun blend",
+                  "amount": 6
+                }
+              ],
+              "sourcedFrom": "3/8 agents — enhancer role; Sweet Post brand on Amazon",
+              "confidence": "medium",
+              "rationale": "10% of the gyofun blend. Adds a sweet, delicate fish note that rounds out the more aggressive sardine and mackerel. Optional but recommended."
+            },
+            {
+              "id": "soy_sauce",
+              "name": "Koikuchi Soy Sauce (Yamasa or equivalent)",
+              "total": 700,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare cold soak",
+                  "amount": 450
+                },
+                {
+                  "label": "chashu marinade",
+                  "amount": 200
+                },
+                {
+                  "label": "ajitama marinade",
+                  "amount": 50
+                }
+              ],
+              "sourcedFrom": "8/8 agents — universal tare base; Yamasa Marudaizu recommended for whole-soybean depth",
+              "confidence": "high",
+              "rationale": "The backbone of all three marinades. Yamasa whole-soybean soy sauce provides deeper flavor than standard brewed. Tomita uses rare ki-joyu (raw soy) but quality koikuchi is the home approximation."
+            },
+            {
+              "id": "mirin",
+              "name": "Hon-Mirin (Takara or equivalent)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare cold soak",
+                  "amount": 50
+                },
+                {
+                  "label": "chashu marinade",
+                  "amount": 100
+                },
+                {
+                  "label": "ajitama marinade",
+                  "amount": 50
+                }
+              ],
+              "sourcedFrom": "8/8 agents — universal sweetness component in tare and marinades",
+              "confidence": "high",
+              "rationale": "Must be hon-mirin (true mirin with 14% alcohol), not mirin-fu (mirin-like seasoning). The alcohol carries flavor compounds and tenderizes the chashu."
+            },
+            {
+              "id": "sake",
+              "name": "Sake (cooking grade)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents — tare alcohol component for flavor depth",
+              "confidence": "medium",
+              "rationale": "Boiled to cook off alcohol before adding to tare. Adds flavor complexity and helps dissolve fat-soluble flavor compounds."
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Brown Sugar",
+              "total": 70,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare finish",
+                  "amount": 20
+                },
+                {
+                  "label": "chashu marinade",
+                  "amount": 50
+                }
+              ],
+              "sourcedFrom": "5/8 agents — balances fish bitterness in tare; sweetens chashu marinade",
+              "confidence": "medium",
+              "rationale": "Molasses notes in brown sugar complement the deep fish flavors better than white sugar. Split between tare and chashu marinade."
+            },
+            {
+              "id": "msg",
+              "name": "MSG (optional)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "4/8 agents — umami booster; standard in professional ramen",
+              "confidence": "medium",
+              "rationale": "Optional but standard in professional ramen kitchens. Amplifies the glutamic acid from kombu and soy sauce. Omit if preferred."
+            },
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour (King Arthur, 12.7% protein)",
+              "total": 940,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Ramen_Lord Tomita clone — highest confidence noodle formula; Yamato Noodle science",
+              "confidence": "high",
+              "rationale": "High-protein bread flour (12.7%) provides the strong gluten network needed for thick, chewy tsukemen noodles. 94% of the flour blend."
+            },
+            {
+              "id": "whole_wheat_flour",
+              "name": "Whole Wheat Flour",
+              "total": 60,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Ramen_Lord Tomita clone — 6% whole wheat for color and flavor",
+              "confidence": "high",
+              "rationale": "6% whole wheat provides the golden-brown color, earthy wheat aroma, and mineral specks characteristic of Tomita's noodles. Slightly reduces gluten for a more tender bite."
+            },
+            {
+              "id": "noodle_water",
+              "name": "Water (for noodle dough)",
+              "total": 420,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Ramen_Lord Tomita clone — 42% hydration, confirmed sweet spot for tsukemen",
+              "confidence": "high",
+              "rationale": "42% hydration is the consensus sweet spot for thick tsukemen noodles (range: 38-45%). Higher hydration makes sheeting easier but produces softer noodles."
+            },
+            {
+              "id": "kansui",
+              "name": "Kansui (80% Na2CO3, 20% K2CO3)",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Ramen_Lord Tomita clone — reversed ratio confirmed by Yamato Noodle, Myojo USA",
+              "confidence": "high",
+              "rationale": "Reversed 80:20 Na:K ratio (opposite of standard ramen's 20:80). Sodium carbonate dominant = softer, more supple texture appropriate for thick noodles. 1% baker's percentage."
+            },
+            {
+              "id": "noodle_salt",
+              "name": "Salt (for noodle dough)",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Ramen_Lord Tomita clone — 1% baker's percentage",
+              "confidence": "high",
+              "rationale": "Strengthens the gluten network and adds flavor to the noodles. Dissolved with kansui in the water before mixing."
+            },
+            {
+              "id": "eggs",
+              "name": "Eggs (for ajitama)",
+              "total": 360,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal — standard ramen topping; 6 large eggs ~60g each",
+              "confidence": "high",
+              "rationale": "6 large eggs for 8 servings (allows for breakage). Soft-boiled to jammy center, marinated in soy-mirin solution."
+            },
+            {
+              "id": "ajitama_water",
+              "name": "Water (for ajitama marinade)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard ajitama technique — dilutes marinade to prevent over-seasoning",
+              "confidence": "high",
+              "rationale": "Dilutes the soy-mirin marinade so eggs absorb flavor gently over 4-12 hours without becoming overly salty."
+            },
+            {
+              "id": "chashu_water",
+              "name": "Water (for chashu marinade)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Synthesis Component 5 — standard chashu braising liquid ratio",
+              "confidence": "high",
+              "rationale": "Dilutes the soy-mirin-sugar chashu soak so the pork belly absorbs flavor evenly. The belly is already cooked from the broth phase."
+            },
+            {
+              "id": "broth_water",
+              "name": "Water (for broth)",
+              "total": 4000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Ramen_Lord, Kaonashi — standard bone:water ratio ~1:1 (kg:L)",
+              "confidence": "high",
+              "rationale": "Starting water for the pressure cooker. Will reduce significantly during cooking. Target final volume ~3L after blending solids back in. 4L starting water with ~3.5 kg bones/meat."
+            },
+            {
+              "id": "dashi_water",
+              "name": "Water (for fish dashi)",
+              "total": 1500,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Synthesis master recipe — fish dashi extraction base",
+              "confidence": "high",
+              "rationale": "Water for steeping kombu, niboshi, katsuobushi, and sababushi. Heated to 176°F (80°C), never boiled. Yields ~1.2L after straining and pressing."
+            },
+            {
+              "id": "rice_vinegar",
+              "name": "Rice Vinegar (unseasoned)",
+              "total": 10,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "per-bowl assembly (~1.2g each)",
+                  "amount": 10
+                }
+              ],
+              "sourcedFrom": "7/8 agents — Ramen_Lord, Kaonashi, Ramen Database, food science",
+              "confidence": "high",
+              "rationale": "The acid that prevents palate fatigue. A small splash per bowl brightens the ultra-rich dipping broth. Without it, the richness becomes cloying. Marukan Genuine Brewed recommended."
+            },
+            {
+              "id": "nori",
+              "name": "Nori Sheets",
+              "total": 24,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal topping — 2 half-sheets per serving, ~3g total per serving",
+              "confidence": "high",
+              "rationale": "Standard tsukemen garnish. 16 half-sheets (2 per bowl). Placed upright in the dipping broth so they soften gradually."
+            },
+            {
+              "id": "menma",
+              "name": "Menma (seasoned bamboo shoots)",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal topping — standard ramen garnish",
+              "confidence": "high",
+              "rationale": "About 15g per bowl. Provides crunch and a mild sweetness that contrasts with the intense broth. Use jarred/packaged menma."
+            },
+            {
+              "id": "green_onion",
+              "name": "Green Onions (sliced thin)",
+              "total": 60,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal topping — standard ramen garnish",
+              "confidence": "high",
+              "rationale": "Fresh, sharp contrast to the rich broth. Sliced thin on the bias. Some reserved for soup-wari finishing."
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [

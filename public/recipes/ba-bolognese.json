@@ -18,7 +18,158 @@
     {
       "version": "v1.0.0",
       "date": "2026-05-06",
-      "summary": "Initial recipe imported from Bon Appétit's BA's Best Bolognese (via Paprika app screenshots). Source text preserved in original-recipes.md."
+      "summary": "Initial recipe imported from Bon Appétit's BA's Best Bolognese (via Paprika app screenshots). Source text preserved in original-recipes.md.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Prep Mirepoix",
+          "ingredients": [
+            {
+              "id": "onion",
+              "name": "Onion (medium)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "celery",
+              "name": "Celery Stalk",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "carrot",
+              "name": "Carrot (small, peeled)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SAUCE_BUILD",
+          "stageName": "Build the Sauce Base",
+          "ingredients": [
+            {
+              "id": "olive-oil",
+              "name": "Extra-Virgin Olive Oil",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ground-beef",
+              "name": "Ground Beef Chuck (20% fat), patted dry",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-sauce",
+              "name": "Kosher Salt (for sauce)",
+              "total": 6,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "season beef while browning",
+                  "amount": 2
+                },
+                {
+                  "label": "pinch with stock+milk",
+                  "amount": 1
+                },
+                {
+                  "label": "final taste-adjust",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "id": "pancetta",
+              "name": "Pancetta (thinly sliced, finely chopped)",
+              "total": 85,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "white-wine",
+              "name": "Dry White Wine",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "tomato-paste",
+              "name": "Tomato Paste",
+              "total": 85,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "bay-leaf",
+              "name": "Bay Leaf (1 leaf)",
+              "total": 0.2,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "nutmeg",
+              "name": "Nutmeg (finely grated, pinch)",
+              "total": 0.1,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SIMMER",
+          "stageName": "Low Simmer",
+          "ingredients": [
+            {
+              "id": "chicken-stock",
+              "name": "Chicken Stock (homemade or low-sodium broth)",
+              "total": 480,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "whole-milk",
+              "name": "Whole Milk",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Cook Pasta & Toss",
+          "ingredients": [
+            {
+              "id": "pasta",
+              "name": "Pasta (1 lb fresh tagliatelle/pappardelle OR dry rigatoni)",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "parmesan",
+              "name": "Parmesan (finely grated; plus more for plating)",
+              "total": 57,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-pasta-water",
+              "name": "Kosher Salt (for pasta water)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -53,8 +204,13 @@
       "id": "PREP",
       "title": "Prep Mirepoix",
       "gather": {
-        "vessels": ["Food Processor", "Small Bowl"],
-        "equipment": ["Kitchen Scale"],
+        "vessels": [
+          "Food Processor",
+          "Small Bowl"
+        ],
+        "equipment": [
+          "Kitchen Scale"
+        ],
         "ingredients": [
           {
             "id": "onion",
@@ -79,14 +235,23 @@
           }
         ]
       },
-      "states": ["prep-mirepoix"]
+      "states": [
+        "prep-mirepoix"
+      ]
     },
     {
       "id": "SAUCE_BUILD",
       "title": "Build the Sauce Base",
       "gather": {
-        "vessels": ["Dutch Oven (or large heavy pot)", "Medium Bowl"],
-        "equipment": ["Kitchen Scale", "Slotted Spoon", "Wooden Spoon"],
+        "vessels": [
+          "Dutch Oven (or large heavy pot)",
+          "Medium Bowl"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Slotted Spoon",
+          "Wooden Spoon"
+        ],
         "ingredients": [
           {
             "id": "olive-oil",
@@ -108,9 +273,18 @@
             "total": 6,
             "unit": "g",
             "breakdown": [
-              { "label": "season beef while browning", "amount": 2 },
-              { "label": "pinch with stock+milk", "amount": 1 },
-              { "label": "final taste-adjust", "amount": 3 }
+              {
+                "label": "season beef while browning",
+                "amount": 2
+              },
+              {
+                "label": "pinch with stock+milk",
+                "amount": 1
+              },
+              {
+                "label": "final taste-adjust",
+                "amount": 3
+              }
             ]
           },
           {
@@ -150,7 +324,13 @@
           }
         ]
       },
-      "states": ["brown-beef", "crisp-pancetta", "soften-soffritto", "reduce-wine", "bloom-paste"]
+      "states": [
+        "brown-beef",
+        "crisp-pancetta",
+        "soften-soffritto",
+        "reduce-wine",
+        "bloom-paste"
+      ]
     },
     {
       "id": "SIMMER",
@@ -175,14 +355,21 @@
           }
         ]
       },
-      "states": ["simmer-sauce"]
+      "states": [
+        "simmer-sauce"
+      ]
     },
     {
       "id": "FINISH",
       "title": "Cook Pasta & Toss",
       "gather": {
-        "vessels": ["Large Pot"],
-        "equipment": ["Tongs", "Liquid Measuring Cup"],
+        "vessels": [
+          "Large Pot"
+        ],
+        "equipment": [
+          "Tongs",
+          "Liquid Measuring Cup"
+        ],
         "ingredients": [
           {
             "id": "pasta",
@@ -207,7 +394,11 @@
           }
         ]
       },
-      "states": ["boil-pasta", "toss-finish", "plate"]
+      "states": [
+        "boil-pasta",
+        "toss-finish",
+        "plate"
+      ]
     }
   ],
   "states": [
@@ -219,9 +410,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Onion", "amount": "110g" },
-        { "name": "Celery", "amount": "40g" },
-        { "name": "Carrot", "amount": "50g" }
+        {
+          "name": "Onion",
+          "amount": "110g"
+        },
+        {
+          "name": "Celery",
+          "amount": "40g"
+        },
+        {
+          "name": "Carrot",
+          "amount": "50g"
+        }
       ],
       "exit_condition": "Vegetables are uniformly very finely chopped (near-paste consistency, no chunks larger than ~3mm) and transferred to small bowl.",
       "notes": null
@@ -234,9 +434,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Olive Oil", "amount": "40g" },
-        { "name": "Ground Beef Chuck", "amount": "454g" },
-        { "name": "Kosher Salt", "amount": "2g" }
+        {
+          "name": "Olive Oil",
+          "amount": "40g"
+        },
+        {
+          "name": "Ground Beef Chuck",
+          "amount": "454g"
+        },
+        {
+          "name": "Kosher Salt",
+          "amount": "2g"
+        }
       ],
       "exit_condition": "Beef clumps are lightly browned on the outside (Maillard color, not crisp), still pink in centers, and transferred to medium bowl. Some fat rendered into pot.",
       "notes": [
@@ -246,7 +455,10 @@
         }
       ],
       "reminders": [
-        { "prompt": "Note Maillard color before transferring beef", "type": "observation" }
+        {
+          "prompt": "Note Maillard color before transferring beef",
+          "type": "observation"
+        }
       ]
     },
     {
@@ -257,7 +469,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Pancetta", "amount": "85g" }
+        {
+          "name": "Pancetta",
+          "amount": "85g"
+        }
       ],
       "exit_condition": "Pancetta is crisp and lightly golden, with rendered fat pooled in pot.",
       "notes": null
@@ -270,7 +485,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Pulsed Mirepoix", "amount": "200g" }
+        {
+          "name": "Pulsed Mirepoix",
+          "amount": "200g"
+        }
       ],
       "exit_condition": "Vegetables are very soft (no resistance), reduced in volume, and beginning to stick/brown on bottom of pot (this fond builds flavor).",
       "notes": null
@@ -283,8 +501,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Browned Beef (returned)", "amount": "454g" },
-        { "name": "Dry White Wine", "amount": "240g" }
+        {
+          "name": "Browned Beef (returned)",
+          "amount": "454g"
+        },
+        {
+          "name": "Dry White Wine",
+          "amount": "240g"
+        }
       ],
       "exit_condition": "Wine is fully evaporated, pot surface is almost dry, beef has been smashed to fine 'little bits' texture (looks finely ground, not in clumps).",
       "notes": [
@@ -302,9 +526,18 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Tomato Paste", "amount": "85g" },
-        { "name": "Bay Leaf", "amount": "0.2g" },
-        { "name": "Nutmeg", "amount": "0.1g" }
+        {
+          "name": "Tomato Paste",
+          "amount": "85g"
+        },
+        {
+          "name": "Bay Leaf",
+          "amount": "0.2g"
+        },
+        {
+          "name": "Nutmeg",
+          "amount": "0.1g"
+        }
       ],
       "exit_condition": "Tomato paste has darkened from bright red to rust/brick color and smells sweet-roasted (not sharp/raw).",
       "notes": null
@@ -317,10 +550,22 @@
       "timer": true,
       "parallel": false,
       "components": [
-        { "name": "Chicken Stock", "amount": "480g" },
-        { "name": "Whole Milk", "amount": "240g" },
-        { "name": "Kosher Salt (pinch with stock)", "amount": "1g" },
-        { "name": "Kosher Salt (final taste)", "amount": "3g" }
+        {
+          "name": "Chicken Stock",
+          "amount": "480g"
+        },
+        {
+          "name": "Whole Milk",
+          "amount": "240g"
+        },
+        {
+          "name": "Kosher Salt (pinch with stock)",
+          "amount": "1g"
+        },
+        {
+          "name": "Kosher Salt (final taste)",
+          "amount": "3g"
+        }
       ],
       "exit_condition": "Meat is very tender, sauce has sloppy-joe texture and look (loose but not soupy, glossy with rendered fat), bay leaf removed, salt adjusted to taste. No rapid bubbles throughout — only occasional small bubbles indicate correct heat.",
       "notes": [
@@ -335,9 +580,18 @@
         }
       ],
       "reminders": [
-        { "prompt": "Sauce texture at 2hr — sloppy joe yet?", "type": "observation" },
-        { "prompt": "Total simmer time (min)", "type": "measurement" },
-        { "prompt": "Added extra stock? How much (g)", "type": "measurement" }
+        {
+          "prompt": "Sauce texture at 2hr — sloppy joe yet?",
+          "type": "observation"
+        },
+        {
+          "prompt": "Total simmer time (min)",
+          "type": "measurement"
+        },
+        {
+          "prompt": "Added extra stock? How much (g)",
+          "type": "measurement"
+        }
       ]
     },
     {
@@ -348,8 +602,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Pasta", "amount": "454g" },
-        { "name": "Kosher Salt (pasta water)", "amount": "30g" }
+        {
+          "name": "Pasta",
+          "amount": "454g"
+        },
+        {
+          "name": "Kosher Salt (pasta water)",
+          "amount": "30g"
+        }
       ],
       "exit_condition": "Pasta is very al dente (firmer than final desired texture — will finish in sauce). 1 cup (~240g) starchy pasta water reserved before draining.",
       "notes": [
@@ -367,13 +627,22 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Reserved Pasta Water", "amount": "240g" },
-        { "name": "Parmesan", "amount": "57g" }
+        {
+          "name": "Reserved Pasta Water",
+          "amount": "240g"
+        },
+        {
+          "name": "Parmesan",
+          "amount": "57g"
+        }
       ],
       "exit_condition": "Pasta is fully al dente (final texture), sauce coats every strand glossily (slightly thickened from starch + cheese emulsion), liquid is no longer pooling.",
       "notes": null,
       "reminders": [
-        { "prompt": "Final pasta texture (al dente?)", "type": "rating" }
+        {
+          "prompt": "Final pasta texture (al dente?)",
+          "type": "rating"
+        }
       ]
     },
     {
@@ -642,22 +911,182 @@
       ],
       "cost": {
         "items": [
-          { "ingredientId": "onion", "ingredientName": "Onion (medium)", "sourceType": "heb", "sourceName": "H-E-B Texas Roots Fresh Yellow Onion", "recipeAmount": 110, "recipeUnit": "g", "packageSize": "Avg. 0.6 lb", "packagePrice": 0.58, "cost": 0.23 },
-          { "ingredientId": "celery", "ingredientName": "Celery Stalk", "sourceType": "heb", "sourceName": "H-E-B Fresh Celery Sticks", "recipeAmount": 40, "recipeUnit": "g", "packageSize": "20 oz", "packagePrice": 2.96, "cost": 0.21 },
-          { "ingredientId": "carrot", "ingredientName": "Carrot (small, peeled)", "sourceType": "heb", "sourceName": "Fresh Carrots (each)", "recipeAmount": 50, "recipeUnit": "g", "packageSize": "Avg. 0.75 lb", "packagePrice": 0.96, "cost": 0.14 },
-          { "ingredientId": "olive-oil", "ingredientName": "Extra-Virgin Olive Oil", "sourceType": "heb", "sourceName": "H-E-B Extra Virgin Olive Oil (17 oz)", "recipeAmount": 40, "recipeUnit": "g", "packageSize": "17 oz", "packagePrice": 6.68, "cost": 0.58 },
-          { "ingredientId": "ground-beef", "ingredientName": "Ground Beef Chuck (20% fat)", "sourceType": "heb", "sourceName": "H-E-B 100% Pure Ground Beef Chuck, 80% Lean (1 lb)", "recipeAmount": 454, "recipeUnit": "g", "packageSize": "1 lb", "packagePrice": 6.99, "cost": 6.99 },
-          { "ingredientId": "kosher-salt-sauce", "ingredientName": "Kosher Salt (for sauce)", "sourceType": "heb", "sourceName": "H-E-B Coarse Kosher Salt", "recipeAmount": 6, "recipeUnit": "g", "packageSize": "4.4 lbs", "packagePrice": 2.98, "cost": 0.01 },
-          { "ingredientId": "pancetta", "ingredientName": "Pancetta", "sourceType": "heb", "sourceName": "Volpi Chopped Uncured Pancetta", "recipeAmount": 85, "recipeUnit": "g", "packageSize": "4 oz", "packagePrice": 8.58, "cost": 6.45 },
-          { "ingredientId": "white-wine", "ingredientName": "Dry White Wine", "sourceType": "heb", "sourceName": "Josh Cellars Seaswept Sauvignon Blanc & Pinot Grigio", "recipeAmount": 240, "recipeUnit": "g", "packageSize": "750 mL", "packagePrice": 10.96, "cost": 3.51 },
-          { "ingredientId": "tomato-paste", "ingredientName": "Tomato Paste", "sourceType": "heb", "sourceName": "Hunt's Tomato Paste", "recipeAmount": 85, "recipeUnit": "g", "packageSize": "6 oz", "packagePrice": 1.16, "cost": 0.58 },
-          { "ingredientId": "bay-leaf", "ingredientName": "Bay Leaf", "sourceType": "heb", "sourceName": "McCormick Bay Leaves", "recipeAmount": 0.2, "recipeUnit": "g", "packageSize": "0.12 oz", "packagePrice": 4.00, "cost": 0.24 },
-          { "ingredientId": "nutmeg", "ingredientName": "Nutmeg (pinch)", "sourceType": "heb", "sourceName": "H-E-B Ground Nutmeg", "recipeAmount": 0.1, "recipeUnit": "g", "packageSize": "0.8 oz", "packagePrice": 2.98, "cost": 0.01 },
-          { "ingredientId": "chicken-stock", "ingredientName": "Chicken Stock", "sourceType": "heb", "sourceName": "H-E-B Reduced Sodium Chicken Broth (32 oz)", "recipeAmount": 480, "recipeUnit": "g", "packageSize": "32 oz", "packagePrice": 1.98, "cost": 1.00 },
-          { "ingredientId": "whole-milk", "ingredientName": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk (1 qt)", "recipeAmount": 240, "recipeUnit": "g", "packageSize": "1 qt", "packagePrice": 1.38, "cost": 0.35 },
-          { "ingredientId": "pasta", "ingredientName": "Homemade egg pasta (00 flour, 3 eggs)", "sourceType": "manual", "sourceName": "3 large eggs (H-E-B Cage Free Large White, $0.24/ea) — flour cost trivial, not counted", "recipeAmount": 454, "recipeUnit": "g", "packageSize": "3 eggs", "packagePrice": 0.72, "cost": 0.72 },
-          { "ingredientId": "parmesan", "ingredientName": "Parmesan", "sourceType": "heb", "sourceName": "Galli Parmigiano Reggiano (wedge)", "recipeAmount": 57, "recipeUnit": "g", "packageSize": "Avg. 0.43 lb", "packagePrice": 10.31, "cost": 3.01 },
-          { "ingredientId": "kosher-salt-pasta-water", "ingredientName": "Kosher Salt (pasta water)", "sourceType": "heb", "sourceName": "Morton Coarse Kosher Salt", "recipeAmount": 30, "recipeUnit": "g", "packageSize": "16 oz", "packagePrice": 2.12, "cost": 0.14 }
+          {
+            "ingredientId": "onion",
+            "ingredientName": "Onion (medium)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Texas Roots Fresh Yellow Onion",
+            "recipeAmount": 110,
+            "recipeUnit": "g",
+            "packageSize": "Avg. 0.6 lb",
+            "packagePrice": 0.58,
+            "cost": 0.23
+          },
+          {
+            "ingredientId": "celery",
+            "ingredientName": "Celery Stalk",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Fresh Celery Sticks",
+            "recipeAmount": 40,
+            "recipeUnit": "g",
+            "packageSize": "20 oz",
+            "packagePrice": 2.96,
+            "cost": 0.21
+          },
+          {
+            "ingredientId": "carrot",
+            "ingredientName": "Carrot (small, peeled)",
+            "sourceType": "heb",
+            "sourceName": "Fresh Carrots (each)",
+            "recipeAmount": 50,
+            "recipeUnit": "g",
+            "packageSize": "Avg. 0.75 lb",
+            "packagePrice": 0.96,
+            "cost": 0.14
+          },
+          {
+            "ingredientId": "olive-oil",
+            "ingredientName": "Extra-Virgin Olive Oil",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Extra Virgin Olive Oil (17 oz)",
+            "recipeAmount": 40,
+            "recipeUnit": "g",
+            "packageSize": "17 oz",
+            "packagePrice": 6.68,
+            "cost": 0.58
+          },
+          {
+            "ingredientId": "ground-beef",
+            "ingredientName": "Ground Beef Chuck (20% fat)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B 100% Pure Ground Beef Chuck, 80% Lean (1 lb)",
+            "recipeAmount": 454,
+            "recipeUnit": "g",
+            "packageSize": "1 lb",
+            "packagePrice": 6.99,
+            "cost": 6.99
+          },
+          {
+            "ingredientId": "kosher-salt-sauce",
+            "ingredientName": "Kosher Salt (for sauce)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Coarse Kosher Salt",
+            "recipeAmount": 6,
+            "recipeUnit": "g",
+            "packageSize": "4.4 lbs",
+            "packagePrice": 2.98,
+            "cost": 0.01
+          },
+          {
+            "ingredientId": "pancetta",
+            "ingredientName": "Pancetta",
+            "sourceType": "heb",
+            "sourceName": "Volpi Chopped Uncured Pancetta",
+            "recipeAmount": 85,
+            "recipeUnit": "g",
+            "packageSize": "4 oz",
+            "packagePrice": 8.58,
+            "cost": 6.45
+          },
+          {
+            "ingredientId": "white-wine",
+            "ingredientName": "Dry White Wine",
+            "sourceType": "heb",
+            "sourceName": "Josh Cellars Seaswept Sauvignon Blanc & Pinot Grigio",
+            "recipeAmount": 240,
+            "recipeUnit": "g",
+            "packageSize": "750 mL",
+            "packagePrice": 10.96,
+            "cost": 3.51
+          },
+          {
+            "ingredientId": "tomato-paste",
+            "ingredientName": "Tomato Paste",
+            "sourceType": "heb",
+            "sourceName": "Hunt's Tomato Paste",
+            "recipeAmount": 85,
+            "recipeUnit": "g",
+            "packageSize": "6 oz",
+            "packagePrice": 1.16,
+            "cost": 0.58
+          },
+          {
+            "ingredientId": "bay-leaf",
+            "ingredientName": "Bay Leaf",
+            "sourceType": "heb",
+            "sourceName": "McCormick Bay Leaves",
+            "recipeAmount": 0.2,
+            "recipeUnit": "g",
+            "packageSize": "0.12 oz",
+            "packagePrice": 4,
+            "cost": 0.24
+          },
+          {
+            "ingredientId": "nutmeg",
+            "ingredientName": "Nutmeg (pinch)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Ground Nutmeg",
+            "recipeAmount": 0.1,
+            "recipeUnit": "g",
+            "packageSize": "0.8 oz",
+            "packagePrice": 2.98,
+            "cost": 0.01
+          },
+          {
+            "ingredientId": "chicken-stock",
+            "ingredientName": "Chicken Stock",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Reduced Sodium Chicken Broth (32 oz)",
+            "recipeAmount": 480,
+            "recipeUnit": "g",
+            "packageSize": "32 oz",
+            "packagePrice": 1.98,
+            "cost": 1
+          },
+          {
+            "ingredientId": "whole-milk",
+            "ingredientName": "Whole Milk",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Whole Milk (1 qt)",
+            "recipeAmount": 240,
+            "recipeUnit": "g",
+            "packageSize": "1 qt",
+            "packagePrice": 1.38,
+            "cost": 0.35
+          },
+          {
+            "ingredientId": "pasta",
+            "ingredientName": "Homemade egg pasta (00 flour, 3 eggs)",
+            "sourceType": "manual",
+            "sourceName": "3 large eggs (H-E-B Cage Free Large White, $0.24/ea) — flour cost trivial, not counted",
+            "recipeAmount": 454,
+            "recipeUnit": "g",
+            "packageSize": "3 eggs",
+            "packagePrice": 0.72,
+            "cost": 0.72
+          },
+          {
+            "ingredientId": "parmesan",
+            "ingredientName": "Parmesan",
+            "sourceType": "heb",
+            "sourceName": "Galli Parmigiano Reggiano (wedge)",
+            "recipeAmount": 57,
+            "recipeUnit": "g",
+            "packageSize": "Avg. 0.43 lb",
+            "packagePrice": 10.31,
+            "cost": 3.01
+          },
+          {
+            "ingredientId": "kosher-salt-pasta-water",
+            "ingredientName": "Kosher Salt (pasta water)",
+            "sourceType": "heb",
+            "sourceName": "Morton Coarse Kosher Salt",
+            "recipeAmount": 30,
+            "recipeUnit": "g",
+            "packageSize": "16 oz",
+            "packagePrice": 2.12,
+            "cost": 0.14
+          }
         ],
         "total": 24.17,
         "perServing": 6.04,
@@ -665,11 +1094,21 @@
         "date": "2026-05-06"
       },
       "next_time": [
-        { "text": "Use full 6oz can tomato paste (~170g) instead of 85g — richer outcome." },
-        { "text": "Use 2 carrots (~100g) instead of 1." },
-        { "text": "Use 2 celery stalks instead of 1." },
-        { "text": "Reduce pasta water salt to ~1.5 Tbsp for ~75% pot fill (instead of 30g) — was salty." },
-        { "text": "Document homemade 00-flour egg pasta as an accepted variant." }
+        {
+          "text": "Use full 6oz can tomato paste (~170g) instead of 85g — richer outcome."
+        },
+        {
+          "text": "Use 2 carrots (~100g) instead of 1."
+        },
+        {
+          "text": "Use 2 celery stalks instead of 1."
+        },
+        {
+          "text": "Reduce pasta water salt to ~1.5 Tbsp for ~75% pot fill (instead of 30g) — was salty."
+        },
+        {
+          "text": "Document homemade 00-flour egg pasta as an accepted variant."
+        }
       ],
       "weather": {
         "location": "Austin, TX",
@@ -695,6 +1134,157 @@
           "stepId": "_general",
           "processing": "result",
           "notable": true
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Prep Mirepoix",
+          "ingredients": [
+            {
+              "id": "onion",
+              "name": "Onion (medium)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "celery",
+              "name": "Celery Stalk",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "carrot",
+              "name": "Carrot (small, peeled)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SAUCE_BUILD",
+          "stageName": "Build the Sauce Base",
+          "ingredients": [
+            {
+              "id": "olive-oil",
+              "name": "Extra-Virgin Olive Oil",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ground-beef",
+              "name": "Ground Beef Chuck (20% fat), patted dry",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-sauce",
+              "name": "Kosher Salt (for sauce)",
+              "total": 6,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "season beef while browning",
+                  "amount": 2
+                },
+                {
+                  "label": "pinch with stock+milk",
+                  "amount": 1
+                },
+                {
+                  "label": "final taste-adjust",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "id": "pancetta",
+              "name": "Pancetta (thinly sliced, finely chopped)",
+              "total": 85,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "white-wine",
+              "name": "Dry White Wine",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "tomato-paste",
+              "name": "Tomato Paste",
+              "total": 85,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "bay-leaf",
+              "name": "Bay Leaf (1 leaf)",
+              "total": 0.2,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "nutmeg",
+              "name": "Nutmeg (finely grated, pinch)",
+              "total": 0.1,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SIMMER",
+          "stageName": "Low Simmer",
+          "ingredients": [
+            {
+              "id": "chicken-stock",
+              "name": "Chicken Stock (homemade or low-sodium broth)",
+              "total": 480,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "whole-milk",
+              "name": "Whole Milk",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Cook Pasta & Toss",
+          "ingredients": [
+            {
+              "id": "pasta",
+              "name": "Pasta (1 lb fresh tagliatelle/pappardelle OR dry rigatoni)",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "parmesan",
+              "name": "Parmesan (finely grated; plus more for plating)",
+              "total": 57,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-pasta-water",
+              "name": "Kosher Salt (for pasta water)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
         }
       ]
     }

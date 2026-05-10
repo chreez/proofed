@@ -26,22 +26,394 @@
     {
       "version": "v1.3.0",
       "date": "2026-04-09",
-      "summary": "Add scaling research block with 1–2× tested range, ingredient behavior classification, and process caveats for bulk fermentation timing and vessel size."
+      "summary": "Add scaling research block with 1–2× tested range, ingredient behavior classification, and process caveats for bulk fermentation timing and vessel size.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F"
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.2.0",
       "date": "2026-04-09",
-      "summary": "Removed rating-type reminder prompts."
+      "summary": "Removed rating-type reminder prompts.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F"
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.1.0",
       "date": "2026-03-21",
-      "summary": "Add sugar substitute instruction to fermentolyse step — 5g granulated sugar in place of diastatic malt when unavailable."
+      "summary": "Add sugar substitute instruction to fermentolyse step — 5g granulated sugar in place of diastatic malt when unavailable.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F"
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.0.0",
       "date": "2026-03-21",
-      "summary": "Initial recipe from multi-agent research synthesis. Sourdough variant of NY-Style Pizza Dough v1.4.0 — fermentolyse, stretch-and-fold, diastatic malt, no olive oil."
+      "summary": "Initial recipe from multi-agent research synthesis. Sourdough variant of NY-Style Pizza Dough v1.4.0 — fermentolyse, stretch-and-fold, diastatic malt, no olive oil.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F"
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -894,7 +1266,100 @@
         "humidity_avg_percent": 58,
         "condition": "Drizzle",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F"
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-04-11",
@@ -1271,6 +1736,99 @@
           "curated": "Overall success despite minor failures in process. Possibly revisit dough proofing schedule. Possibly lower temper step to 4 hours. I didn't actually re-shape on bake day as planned. Didn't want to risk it but perhaps if I made dough balls it would have been a little easier to work with. Starter was actually kind of weak which could have hindered the strength of the dough.",
           "notable": false,
           "stepId": "_general"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F"
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
         }
       ]
     }

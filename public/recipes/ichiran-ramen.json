@@ -25,7 +25,504 @@
     {
       "version": "v1.0.0",
       "date": "2026-02-08",
-      "summary": "Initial recipe synthesized from 8-agent research across 92 sources (official Ichiran labels, copycat recipes, Japanese-language blogs, food science, community forums, product reverse-engineering)"
+      "summary": "Initial recipe synthesized from 8-agent research across 92 sources (official Ichiran labels, copycat recipes, Japanese-language blogs, food science, community forums, product reverse-engineering)",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "pork_femur_bones",
+              "name": "Pork Femur Bones (genkotsu)",
+              "total": 1500,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "8/8 agents; all sources confirm genkotsu as primary tonkotsu bone",
+              "confidence": "high",
+              "rationale": "Universal consensus. Ask butcher to cut crosswise into 5cm discs to expose marrow for maximum collagen extraction."
+            },
+            {
+              "id": "pork_trotters",
+              "name": "Pork Trotters (split lengthwise)",
+              "total": 750,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents; all except community intel agent",
+              "confidence": "high",
+              "rationale": "Trotters provide high-gelatin collagen that creates the characteristic creamy body. Split lengthwise for surface area."
+            },
+            {
+              "id": "pork_neck_bones",
+              "name": "Pork Neck Bones",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents; broth science, copycats, Japanese sources",
+              "confidence": "high",
+              "rationale": "Supplementary bones that add meaty flavor alongside the collagen-heavy femurs and trotters."
+            },
+            {
+              "id": "pork_skin",
+              "name": "Pork Skin (optional)",
+              "total": 250,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "3/8 agents; Ramen Cook Blog, Adam Liaw, Yoshi",
+              "confidence": "medium",
+              "rationale": "Provides clean gelatin body without the off-aromas that can come from bone marrow. Optional but recommended for cleaner broth."
+            },
+            {
+              "id": "pork_back_fat",
+              "name": "Pork Back Fat",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents; labels confirm 'lard' in commercial product, Yoshi, Adam Liaw",
+              "confidence": "high",
+              "rationale": "Rendered into aroma oil. Ichiran's commercial product uses cottonseed oil as primary fat, but pork lard is the traditional choice for authentic flavor."
+            },
+            {
+              "id": "pork_shoulder",
+              "name": "Pork Shoulder (kata rosu)",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "6/8 agents; standard chashu cut for Ichiran-style thin slices",
+              "confidence": "high",
+              "rationale": "Shoulder provides the right fat-to-lean ratio for tender, thin-sliced chashu. Sous vide at 145 F (63 C) yields Ichiran-style melt-in-mouth texture."
+            },
+            {
+              "id": "eggs",
+              "name": "Eggs (large)",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "6/8 agents; standard ajitama technique",
+              "confidence": "high",
+              "rationale": "6 large eggs at ~50g each. Boiled 6.5 minutes from fridge for jammy orange yolk."
+            },
+            {
+              "id": "soy_sauce",
+              "name": "Soy Sauce",
+              "total": 186,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare (usukuchi/light)",
+                  "amount": 62
+                },
+                {
+                  "label": "red sauce",
+                  "amount": 31
+                },
+                {
+                  "label": "chashu (dark soy)",
+                  "amount": 31
+                },
+                {
+                  "label": "ajitama marinade",
+                  "amount": 62
+                }
+              ],
+              "sourcedFrom": "8/8 agents; all labels confirm soy sauce across all sub-recipes",
+              "confidence": "high",
+              "rationale": "Soy sauce appears in four sub-recipes. Tare uses light/usukuchi to preserve broth whiteness. Red sauce and ajitama use regular. Chashu uses dark for color."
+            },
+            {
+              "id": "sake",
+              "name": "Sake (cooking)",
+              "total": 137,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "broth aromatics",
+                  "amount": 47
+                },
+                {
+                  "label": "tare",
+                  "amount": 19
+                },
+                {
+                  "label": "chashu",
+                  "amount": 14
+                },
+                {
+                  "label": "ajitama marinade",
+                  "amount": 57
+                }
+              ],
+              "sourcedFrom": "5/8 agents; labels, Yoshi, Just One Cookbook, multiple Japanese sources",
+              "confidence": "high",
+              "rationale": "Sake adds depth and helps remove pork odor in broth. In tare and marinades, it provides subtle sweetness and alcohol extraction of flavors."
+            },
+            {
+              "id": "mirin",
+              "name": "Mirin (hon mirin)",
+              "total": 117,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare",
+                  "amount": 21
+                },
+                {
+                  "label": "red sauce",
+                  "amount": 32
+                },
+                {
+                  "label": "ajitama marinade",
+                  "amount": 64
+                }
+              ],
+              "sourcedFrom": "6/8 agents; labels confirm 'fermented seasoning', Japanese sources, copycats",
+              "confidence": "high",
+              "rationale": "Real hon mirin (not mirin-style) provides sweet depth and umami. Appears in three sub-recipes for different purposes: tare sweetness, red sauce depth, and egg marinade balance."
+            },
+            {
+              "id": "sugar",
+              "name": "Sugar",
+              "total": 22,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare",
+                  "amount": 2
+                },
+                {
+                  "label": "red sauce",
+                  "amount": 15
+                },
+                {
+                  "label": "ajitama marinade",
+                  "amount": 5
+                }
+              ],
+              "sourcedFrom": "5/8 agents; Umakara label lists sugar as #2 ingredient in red sauce",
+              "confidence": "high",
+              "rationale": "The Umakara Kokumashi label was the key breakthrough: sugar is the #2 ingredient after soy sauce, confirming the red sauce is sweet-first, not spicy-first."
+            },
+            {
+              "id": "garlic",
+              "name": "Garlic",
+              "total": 60,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "broth (1 head, halved crosswise)",
+                  "amount": 40
+                },
+                {
+                  "label": "aroma oil (2 cloves, crushed)",
+                  "amount": 10
+                },
+                {
+                  "label": "red sauce (paste)",
+                  "amount": 10
+                }
+              ],
+              "sourcedFrom": "7/8 agents; labels, copycats, Japanese sources all confirm garlic across sub-recipes",
+              "confidence": "high",
+              "rationale": "Garlic appears in three sub-recipes with different preparations: whole halved head for broth, crushed for oil infusion, paste for red sauce."
+            },
+            {
+              "id": "ginger",
+              "name": "Ginger",
+              "total": 20,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "broth (thick slices)",
+                  "amount": 15
+                },
+                {
+                  "label": "red sauce (grated)",
+                  "amount": 5
+                }
+              ],
+              "sourcedFrom": "5/8 agents; labels, copycats, Just One Cookbook, cup ramen label",
+              "confidence": "high",
+              "rationale": "Sliced for broth (gentle flavor extraction over hours), grated for red sauce (immediate pungency)."
+            },
+            {
+              "id": "onion",
+              "name": "Onion (medium, halved)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents; labels list 'onion powder', Adam Liaw, Weissman, EatHealthy365",
+              "confidence": "high",
+              "rationale": "Added to broth as aromatic. Halved to release flavor slowly over the long cook. Discarded when straining."
+            },
+            {
+              "id": "rice_vinegar",
+              "name": "Rice Vinegar",
+              "total": 20,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "broth (odor removal)",
+                  "amount": 15
+                },
+                {
+                  "label": "red sauce (brightness)",
+                  "amount": 5
+                }
+              ],
+              "sourcedFrom": "3/8 agents; fresh kit label lists 'brewed vinegar', Yoshi, Just One Cookbook",
+              "confidence": "medium",
+              "rationale": "In broth, vinegar helps neutralize pork odor. In red sauce, it provides the brightness noted on the Umakara label as 'acidulant'."
+            },
+            {
+              "id": "kombu",
+              "name": "Kombu (dried kelp)",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "6/8 agents; US kit label confirms kelp extract, Samsung Food, Yoshi, Kaonashi, JFL",
+              "confidence": "high",
+              "rationale": "One ~10cm square piece for tare dashi. Soaked overnight in cold water, then heated to 175 F (80 C) — never boiled to avoid bitterness."
+            },
+            {
+              "id": "dried_shiitake",
+              "name": "Dried Shiitake Mushrooms",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents; US kit label confirms shiitake extract, Yoshi, Samsung Food, JFL",
+              "confidence": "high",
+              "rationale": "1-2 small dried mushrooms for tare dashi. Soaked with kombu overnight for guanylate (GMP) extraction — synergistic with MSG."
+            },
+            {
+              "id": "katsuobushi",
+              "name": "Katsuobushi (dried bonito flakes)",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents; US kit label confirms dried bonito extract, Samsung Food, JFL, Kaonashi",
+              "confidence": "high",
+              "rationale": "Added to heated dashi and steeped 15 minutes. Provides inosinate (IMP) that synergizes with kombu glutamate for exponential umami."
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 15,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare",
+                  "amount": 10
+                },
+                {
+                  "label": "noodles",
+                  "amount": 5
+                }
+              ],
+              "sourcedFrom": "7/8 agents; all recipe sources confirm salt in tare and noodles",
+              "confidence": "high",
+              "rationale": "Salt is the primary seasoning vehicle in tare. In noodles, it strengthens gluten structure alongside kansui."
+            },
+            {
+              "id": "ribotide",
+              "name": "Ribotide (IMP+GMP nucleotide blend)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "3/8 agents; labels list 'disodium inosinate/guanylate', Yoshi specifies Ribotide",
+              "confidence": "medium",
+              "rationale": "50/50 blend of inosinic acid (IMP) and guanylic acid (GMP) that multiplies perceived umami when combined with glutamates. If unavailable, increase MSG to 3g and add dried shiitake powder."
+            },
+            {
+              "id": "msg",
+              "name": "MSG (Aji-no-moto)",
+              "total": 3,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tare",
+                  "amount": 1
+                },
+                {
+                  "label": "red sauce",
+                  "amount": 2
+                }
+              ],
+              "sourcedFrom": "4/8 agents; labels list 'hydrolyzed protein' and 'yeast extract', Yoshi, Ryuji",
+              "confidence": "high",
+              "rationale": "Labels use euphemisms (hydrolyzed protein, yeast extract) but these are all glutamate sources. Direct MSG is cleaner and more precise."
+            },
+            {
+              "id": "scallion_whites",
+              "name": "Scallion Whites",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "3/8 agents; Adam Liaw, Life By Mike G, deep-dive article",
+              "confidence": "medium",
+              "rationale": "Infused into aroma oil for allium sweetness. 2 stalks, white parts only."
+            },
+            {
+              "id": "water_aroma_oil",
+              "name": "Water (aroma oil splash)",
+              "total": 15,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "2/8 agents; technique for even rendering",
+              "confidence": "medium",
+              "rationale": "Small splash of water in the pan with the fat helps render evenly at lower temperature, preventing scorching."
+            },
+            {
+              "id": "ichimi_togarashi",
+              "name": "Ichimi Togarashi (Japanese chili)",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "8/8 agents; all labels confirm chili pepper as base ingredient",
+              "confidence": "high",
+              "rationale": "Primary heat source and the togarashi base of the red sauce. S&B or GABAN brand recommended."
+            },
+            {
+              "id": "gochugaru",
+              "name": "Gochugaru (Korean red pepper flakes)",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "4/8 agents; RamenChef, Rakuten, Samsung Food, note.com/shinmr",
+              "confidence": "medium",
+              "rationale": "Adds fruity heat and vibrant red color. Coarse flakes, not fine powder. Ichiran says 'finest peppers from around the world' — a multi-chili blend is essential."
+            },
+            {
+              "id": "cayenne",
+              "name": "Cayenne Pepper",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "3/8 agents; RamenChef, note.com/shinmr, Samsung Food",
+              "confidence": "medium",
+              "rationale": "Sharp, clean heat that complements the more complex togarashi and gochugaru."
+            },
+            {
+              "id": "white_pepper",
+              "name": "White Pepper",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents; all labels confirm pepper, Yoshi, RamenChef",
+              "confidence": "high",
+              "rationale": "Aromatic heat that blooms when the red sauce hits hot broth. White pepper is traditional in tonkotsu ramen."
+            },
+            {
+              "id": "black_pepper",
+              "name": "Black Pepper",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents; all labels list 'pepper', most sources specify both white and black",
+              "confidence": "high",
+              "rationale": "Adds a different aromatic dimension than white pepper. Small amount for complexity."
+            },
+            {
+              "id": "garlic_paste_red",
+              "name": "Garlic Paste (for red sauce)",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "6/8 agents; Umakara label lists garlic as #4 ingredient, cup ramen label confirms",
+              "confidence": "high",
+              "rationale": "Grated or pressed garlic for the red sauce. The Umakara label places garlic at #4 by weight — it's a major flavor component, not just seasoning."
+            },
+            {
+              "id": "gochujang",
+              "name": "Gochujang (fermented chili paste)",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "4/8 agents; Rakuten, Ryuji, RamenChef, Myojo",
+              "confidence": "medium",
+              "rationale": "Fermented depth and sweetness that bridges the gap between simple chili heat and Ichiran's complex aged flavor. CJ Haechandle gold label recommended."
+            },
+            {
+              "id": "sesame_oil",
+              "name": "Sesame Oil (toasted)",
+              "total": 9,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents; Ryuji, Rakuten, Samsung Food, Myojo, basic copycats",
+              "confidence": "high",
+              "rationale": "Aromatic carrier oil for the red sauce. Kadoya brand recommended. Toasted sesame oil provides the nutty depth found in many Japanese chili preparations."
+            },
+            {
+              "id": "neutral_oil",
+              "name": "Neutral Oil (for red sauce)",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "2/8 agents; cup ramen label lists rapeseed oil, Samsung Food",
+              "confidence": "medium",
+              "rationale": "Carrier oil that gives the red sauce its paste-like body. Cup ramen label confirms rapeseed oil. Canola or grapeseed work."
+            },
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour (13%+ protein)",
+              "total": 400,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents; all labels list 'wheat flour', noodle science confirms high-protein requirement",
+              "confidence": "high",
+              "rationale": "High-protein flour (13%+) is essential for the firm, snappy bite of Hakata noodles. King Arthur bread flour (12.7%) with added vital wheat gluten reaches the target."
+            },
+            {
+              "id": "vital_wheat_gluten",
+              "name": "Vital Wheat Gluten",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents; all labels list 'wheat protein', noodle science, Cookpit",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Boosts protein to 14%+ for the characteristic firm, chewy texture. Labels confirm 'wheat protein' as separate ingredient."
+            },
+            {
+              "id": "cold_water_noodles",
+              "name": "Cold Water (for noodles)",
+              "total": 116,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents; 29% hydration confirmed across noodle science sources",
+              "confidence": "high",
+              "rationale": "29% hydration (116ml for 400g flour) — low by any standard, creating a very stiff dough that requires mechanical kneading. This is what gives Hakata noodles their distinctive snap."
+            },
+            {
+              "id": "kansui",
+              "name": "Kansui Powder (alkaline salt)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "7/8 agents; all labels confirm kansui, all noodle sources specify it",
+              "confidence": "high",
+              "rationale": "1.25% of flour weight. 70:30 potassium carbonate to sodium carbonate blend preferred. Provides the yellow color, alkaline flavor, and firm texture characteristic of ramen noodles."
+            },
+            {
+              "id": "water_tare_dashi",
+              "name": "Water (for tare dashi)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/8 agents; standard dashi preparation method",
+              "confidence": "high",
+              "rationale": "Base water for cold-soaking kombu and shiitake overnight, then gently heating for dashi extraction."
+            },
+            {
+              "id": "water_ajitama",
+              "name": "Water (for ajitama marinade)",
+              "total": 60,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "4/8 agents; standard ajitama marinade dilution",
+              "confidence": "high",
+              "rationale": "Dilutes the marinade to prevent over-seasoning the eggs. Combined with soy, mirin, and sake for balanced penetration."
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
