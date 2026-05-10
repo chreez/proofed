@@ -555,3 +555,95 @@ describe('HTML snapshot', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
+
+describe('GatherSection display_amount (PF-241)', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+    writeTextMock.mockClear()
+  })
+  afterEach(() => vi.useRealTimers())
+
+  function getIngredientItems(wrapper: ReturnType<typeof mount>) {
+    const cats = wrapper.findAllComponents({ name: 'GatherCategory' })
+    const ingCat = cats.find((c) => c.props('title') === 'Ingredients')
+    return ingCat?.props('items') as Array<{ id: string; label: string }>
+  }
+
+  it('renders label as "name — display_amount (grams)" when display_amount is set', () => {
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'onion', name: 'Onion', total: 110, unit: 'g', breakdown: null, display_amount: 'medium' }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      }
+    })
+    const items = getIngredientItems(wrapper)
+    expect(items[0].label).toBe('Onion — medium (110g)')
+  })
+
+  it('falls back to "name — grams" when display_amount is absent (regression guard)', () => {
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'flour', name: 'Flour', total: 390, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      }
+    })
+    const items = getIngredientItems(wrapper)
+    expect(items[0].label).toBe('Flour — 390g')
+  })
+
+  it('display_amount is verbatim — does not scale with multiplier; grams scale normally', () => {
+    const multiplier = ref(2)
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'onion', name: 'Onion', total: 110, unit: 'g', breakdown: null, display_amount: 'medium' }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      },
+      global: { provide: { [SCALING_MULTIPLIER_KEY]: multiplier } }
+    })
+    const items = getIngredientItems(wrapper)
+    // multiplier scales grams (110→220) but display_amount stays "medium"
+    expect(items[0].label).toBe('Onion — medium (220g)')
+  })
+
+  it('clipboard copy includes display_amount alongside grams', async () => {
+    const wrapper = mount(GatherSection, {
+      props: {
+        gather: {
+          ingredients: [
+            { id: 'onion', name: 'Onion', total: 110, unit: 'g', breakdown: null, display_amount: 'medium' },
+            { id: 'flour', name: 'Flour', total: 390, unit: 'g', breakdown: null }
+          ]
+        },
+        stageId: 'prep',
+        stageTitle: 'Prep',
+        progress: makeProgress()
+      }
+    })
+    const buttons = wrapper.findAll('button')
+    const copyBtn = buttons.find((b) => b.attributes('aria-label')?.includes('Copy') ||
+      b.find('.icon-clipboard').exists())
+    await copyBtn!.trigger('click')
+    await Promise.resolve()
+    const copied = writeTextMock.mock.calls[0]?.[0] as string
+    expect(copied).toContain('Onion — medium (110g)')
+    expect(copied).toContain('Flour — 390g')
+  })
+})

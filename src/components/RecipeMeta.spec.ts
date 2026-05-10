@@ -198,6 +198,45 @@ describe('RecipeMeta', () => {
     expect(copiedText).toContain('2. Bake at 175C')
   })
 
+  it('PF-241: copy includes display_amount alongside grams when set; falls back to grams-only when absent', async () => {
+    const recipe = makeRecipe({
+      stages: [
+        {
+          id: 'prep',
+          title: 'Prep',
+          gather: {
+            ingredients: [
+              { id: 'onion', name: 'Onion', total: 110, unit: 'g', breakdown: null, display_amount: 'medium' },
+              { id: 'flour', name: 'Flour', total: 390, unit: 'g', breakdown: null }
+            ]
+          },
+          states: ['mix']
+        }
+      ],
+      states: [
+        {
+          id: 'mix',
+          title: 'Mix',
+          direction: 'Mix everything',
+          components: null,
+          exit_condition: 'Done',
+          notes: null
+        }
+      ]
+    })
+
+    const wrapper = mount(RecipeMeta, {
+      props: { recipe }
+    })
+
+    await wrapper.find('button[title="Copy Recipe"]').trigger('click')
+
+    const copiedText = writeTextMock.mock.calls[0][0]
+    expect(copiedText).toContain('Onion — medium (110g)')
+    expect(copiedText).toContain('Flour — 390g')
+    expect(copiedText).not.toContain('Flour — medium')
+  })
+
   it('handles stage with no gather ingredients', async () => {
     const recipe = makeRecipe({
       stages: [

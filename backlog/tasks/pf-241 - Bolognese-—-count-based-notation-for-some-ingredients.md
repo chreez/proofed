@@ -1,10 +1,10 @@
 ---
 id: PF-241
 title: Bolognese — count-based notation for some ingredients
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-07 18:27'
-updated_date: '2026-05-07 19:39'
+updated_date: '2026-05-10 03:31'
 labels:
   - ux
   - recipes

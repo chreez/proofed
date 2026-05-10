@@ -85,7 +85,12 @@ function formatRecipeForPaprika(): string {
   for (const stage of stages) {
     if (stage.gather?.ingredients) {
       for (const ing of stage.gather.ingredients) {
-        allIngredients.push(`${ing.name} — ${ing.unit === 'whole' ? `${ing.total}x` : `${ing.total}${ing.unit}`}`)
+        const grams = ing.unit === 'whole' ? `${ing.total}x` : `${ing.total}${ing.unit}`
+        // PF-241: display_amount renders primary, grams in parens.
+        const formatted = ing.display_amount
+          ? `${ing.name} — ${ing.display_amount} (${grams})`
+          : `${ing.name} — ${grams}`
+        allIngredients.push(formatted)
       }
     }
   }

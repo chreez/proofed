@@ -48,7 +48,11 @@ const ingredientItems = computed(() => {
     const scaledTotal = adjustedBase * mult
     const originalScaled = ing.total * mult
     const fmt = (amount: number, unit: string) => unit === 'whole' ? `${amount}x` : `${amount}${unit}`
-    const label = `${ing.name} — ${fmt(scaledTotal, ing.unit)}`
+    // PF-241: when display_amount is set, render it primary with grams in parens.
+    // display_amount is verbatim — never scaled or pluralized regardless of multiplier.
+    const label = ing.display_amount
+      ? `${ing.name} — ${ing.display_amount} (${fmt(scaledTotal, ing.unit)})`
+      : `${ing.name} — ${fmt(scaledTotal, ing.unit)}`
     const detail = ing.breakdown
       ? ing.breakdown.map(b => {
           // Scale breakdown proportionally if experiment adjusted

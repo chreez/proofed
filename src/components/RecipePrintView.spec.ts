@@ -275,4 +275,38 @@ describe('RecipePrintView — ingredient snapshot resolution (PF-237)', () => {
     expect(wrapper.text()).toContain('500 g')
     expect(wrapper.text()).not.toContain('480 g')
   })
+
+  it('PF-241 AC #8: display_amount renders alongside grams in print (snapshot path)', async () => {
+    const bakeSnapshot: IngredientSnapshotGroup[] = [
+      {
+        stageId: 'PREP',
+        stageName: 'Mise en Place',
+        ingredients: [
+          { id: 'onion', name: 'Onion', total: 110, unit: 'g', breakdown: null, display_amount: 'medium' },
+          { id: 'flour', name: 'Flour', total: 510, unit: 'g', breakdown: null },
+        ],
+      },
+    ]
+    const recipe = makeRecipe({ bakeSnapshot })
+
+    const wrapper = await mountAndSelect(recipe, /^Bake/)
+
+    const items = wrapper.findAll('.ingredient-item')
+    const onionItem = items.find(i => i.text().includes('Onion'))
+    const flourItem = items.find(i => i.text().includes('Flour'))
+    expect(onionItem?.text()).toContain('medium (110 g)')
+    expect(flourItem?.text()).toContain('510 g')
+    expect(flourItem?.text()).not.toContain('medium')
+  })
+
+  it('PF-241: display_amount also renders in gather fallback (un-migrated recipes)', async () => {
+    // No snapshot path; uses stages[].gather.ingredients with display_amount
+    const recipe = makeRecipe({ estimatedCostItems: [makeCostItem()] })
+    // Inject display_amount into the gather defaults (mirrors how the recipe JSON is authored)
+    recipe.stages[0].gather!.ingredients![0].display_amount = 'medium'
+    recipe.stages[0].gather!.ingredients![0].name = 'Onion'
+
+    const wrapper = await mountAndSelect(recipe, /^Estimated/)
+    expect(wrapper.text()).toContain('medium (999 g)')
+  })
 })

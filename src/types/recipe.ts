@@ -299,6 +299,13 @@ export interface Ingredient {
   sourcedFrom?: string
   confidence?: Confidence
   rationale?: string
+  /**
+   * PF-241: optional render override. When present, gather list / print /
+   * copy show display_amount alongside grams. JSON total/unit remain
+   * authoritative for scaling, cost, and nutrition; display_amount is
+   * render-only and does NOT auto-scale with multiplier or pluralize.
+   */
+  display_amount?: string
 }
 
 export interface IngredientBreakdown {

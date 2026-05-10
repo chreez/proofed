@@ -13,8 +13,169 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-05-09",
+      "summary": "Render-only: added display_amount to onion (medium), celery (1 stalk), carrot (small), bay leaf (1 leaf), nutmeg (pinch). Gram weights unchanged — count/size cues are render hints only, not a scaling source. PF-241.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Prep Mirepoix",
+          "ingredients": [
+            {
+              "id": "onion",
+              "name": "Onion (medium)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "medium"
+            },
+            {
+              "id": "celery",
+              "name": "Celery Stalk",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 stalk"
+            },
+            {
+              "id": "carrot",
+              "name": "Carrot (small, peeled)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "small"
+            }
+          ]
+        },
+        {
+          "stageId": "SAUCE_BUILD",
+          "stageName": "Build the Sauce Base",
+          "ingredients": [
+            {
+              "id": "olive-oil",
+              "name": "Extra-Virgin Olive Oil",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ground-beef",
+              "name": "Ground Beef Chuck (20% fat), patted dry",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-sauce",
+              "name": "Kosher Salt (for sauce)",
+              "total": 6,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "season beef while browning",
+                  "amount": 2
+                },
+                {
+                  "label": "pinch with stock+milk",
+                  "amount": 1
+                },
+                {
+                  "label": "final taste-adjust",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "id": "pancetta",
+              "name": "Pancetta (thinly sliced, finely chopped)",
+              "total": 85,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "white-wine",
+              "name": "Dry White Wine",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "tomato-paste",
+              "name": "Tomato Paste",
+              "total": 85,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "bay-leaf",
+              "name": "Bay Leaf (1 leaf)",
+              "total": 0.2,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 leaf"
+            },
+            {
+              "id": "nutmeg",
+              "name": "Nutmeg (finely grated, pinch)",
+              "total": 0.1,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "pinch"
+            }
+          ]
+        },
+        {
+          "stageId": "SIMMER",
+          "stageName": "Low Simmer",
+          "ingredients": [
+            {
+              "id": "chicken-stock",
+              "name": "Chicken Stock (homemade or low-sodium broth)",
+              "total": 480,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "whole-milk",
+              "name": "Whole Milk",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Cook Pasta & Toss",
+          "ingredients": [
+            {
+              "id": "pasta",
+              "name": "Pasta (1 lb fresh tagliatelle/pappardelle OR dry rigatoni)",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "parmesan",
+              "name": "Parmesan (finely grated; plus more for plating)",
+              "total": 57,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-pasta-water",
+              "name": "Kosher Salt (for pasta water)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.0.0",
       "date": "2026-05-06",
@@ -217,21 +378,24 @@
             "name": "Onion (medium)",
             "total": 110,
             "unit": "g",
-            "breakdown": null
+            "breakdown": null,
+            "display_amount": "medium"
           },
           {
             "id": "celery",
             "name": "Celery Stalk",
             "total": 40,
             "unit": "g",
-            "breakdown": null
+            "breakdown": null,
+            "display_amount": "1 stalk"
           },
           {
             "id": "carrot",
             "name": "Carrot (small, peeled)",
             "total": 50,
             "unit": "g",
-            "breakdown": null
+            "breakdown": null,
+            "display_amount": "small"
           }
         ]
       },
@@ -313,14 +477,16 @@
             "name": "Bay Leaf (1 leaf)",
             "total": 0.2,
             "unit": "g",
-            "breakdown": null
+            "breakdown": null,
+            "display_amount": "1 leaf"
           },
           {
             "id": "nutmeg",
             "name": "Nutmeg (finely grated, pinch)",
             "total": 0.1,
             "unit": "g",
-            "breakdown": null
+            "breakdown": null,
+            "display_amount": "pinch"
           }
         ]
       },

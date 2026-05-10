@@ -92,7 +92,10 @@ function snapshotToGroups(snapshot: IngredientSnapshotGroup[]): IngredientGroup[
       stageName: g.stageName,
       items: g.ingredients.map(ing => ({
         name: ing.name,
-        amount: formatAmount(ing.total, ing.unit),
+        // PF-241: display_amount renders alongside grams when set.
+        amount: ing.display_amount
+          ? `${ing.display_amount} (${formatAmount(ing.total, ing.unit)})`
+          : formatAmount(ing.total, ing.unit),
       })),
     }))
 }
@@ -138,7 +141,9 @@ const ingredientsByStage = computed<IngredientGroup[]>(() => {
       stageName: stage.title,
       items: (stage.gather?.ingredients ?? []).map(ing => ({
         name: ing.name,
-        amount: formatAmount(ing.total, ing.unit),
+        amount: ing.display_amount
+          ? `${ing.display_amount} (${formatAmount(ing.total, ing.unit)})`
+          : formatAmount(ing.total, ing.unit),
       })),
     }))
 })
