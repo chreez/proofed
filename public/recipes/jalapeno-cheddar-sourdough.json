@@ -1891,6 +1891,183 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-05-07",
+      "start_date": "2026-05-06",
+      "version": "v1.2.0",
+      "summary": "Double-cheese accident — Gemma cut the whole block, pulled 50g back so ~400g cheddar in dough vs 220g target. Lower-temp profile (450/425) on both loaves; loaf 1 slightly dense, loaf 2 better rise. Both ~210°F internal. Friend pleased; cheese overdose came out fine.",
+      "notes": [
+        "Autolyse start 6:46pm 5/6, kitchen 74.9°F / 54% RH",
+        "Process: 30-min autolyse rest → mix dry (10 min wait) → butter (20 min wait) → inclusions. Inclusions actual 8:13pm vs planned ~7:46pm",
+        "Inclusions: Gemma cut the whole cheese block despite scale being out — pulled 50g back, ~400g final cheddar (target 220g)",
+        "Stretch + coil folds 30-min cadence from inclusions to preshape (~5 sets). Fold 2 at 9:52pm: dough 'loaded bomb', switched to coil. Gentle, didn't fight it. Gluten decent. Did not log dough temps — bouncing between cooks",
+        "Preshape 11:07pm 5/6 after 10-min full-dough bench rest. Ball weights 804g + 820g (1624g; 6g lost via transfer)",
+        "Into fridge ~midnight 5/7 for cold retard",
+        "Loaf 1: preheat 500°F 30 min (goal 60), covered 450°F 30 min start 12:50pm, uncovered 425°F 18 min (rotated at 9). Out 1:42pm, internal 211°F (peaked above)",
+        "Loaf 2: ~33 min RT rest near oven during loaf 1 bake. Covered 450°F 30 min start 2:15pm, uncovered 425°F 13.5 min (9 + 4.5). Internal ~210°F",
+        "Loaf 1 slightly dense, loaf 2 better rise — possibly cleaner preshape/shape. Friend pleased. Will reheat loaf 1 tonight for follow-up taste notes"
+      ],
+      "photos": [
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7504-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7504-400w.webp",
+          "alt": "Bulk-fermenting dough in a glass Pyrex bowl on the counter — slack wet surface with cheddar chunks and jalapeño bits embedded near the edges. Red Cambro lid in the corner."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7507-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7507-400w.webp",
+          "alt": "Loaf 1 cooling on copper wire rack with silicone pastry mat backdrop — score split open showing pockets of melted cheddar and a green jalapeño slice peeking through."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7515-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7515-400w.webp",
+          "alt": "Loaf 2 held on copper rack in front of windows — taller, rounder dome than loaf 1, flour-dusted crown with green jalapeño slices and pools of golden cheddar across the side."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7517-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7517-400w.webp",
+          "alt": "Loaf 2 crumb shot held in hand against grey wall — two halves side by side, moderately open crumb packed with green jalapeño chunks and large molten cheddar pockets reflecting the heavy cheese load."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7516-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-07/img-7516-400w.webp",
+          "alt": "Loaf 2 hero — tilted three-quarter on copper rack near windows, prominent jalapeño slices peek through caramelized cheese windows, clean flour-dusted top showing the better rise vs loaf 1."
+        }
+      ],
+      "next_time": [
+        { "text": "Pre-weigh inclusions yourself — Gemma overshot cheese with scale unused" },
+        { "text": "Fix preheat timing — 30 min vs 60 goal, oven not on as early as thought" },
+        { "text": "Try 25 min covered for second loaf (noted live during bake)" },
+        { "text": "Log dough temps next bake — slipped due to parallel cook" },
+        { "text": "Reheat loaf 1 tonight for taste/crumb follow-up" }
+      ],
+      "cost": {
+        "total": 8.60,
+        "perServing": 4.30,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 550,
+            "unit": "g",
+            "cost": 1.33
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Instant Non-Fat Dry Milk",
+            "amount": 25,
+            "unit": "g",
+            "cost": 0.31
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "name": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Brown Sugar",
+            "amount": 28,
+            "unit": "g",
+            "cost": 0.07
+          },
+          {
+            "ingredientId": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "sourceType": "heb",
+            "sourceName": "Fresh Jalapeño Pepper",
+            "amount": 120,
+            "unit": "g",
+            "cost": 0.24
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "sourceType": "heb",
+            "sourceName": "Tillamook Sharp Cheddar Cheese",
+            "amount": 400,
+            "unit": "g",
+            "cost": 6.15,
+            "note": "actual amount used this bake — Gemma overcut block; recipe target is 220g"
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 50,
+            "unit": "g",
+            "cost": 0.44
+          }
+        ]
+      },
+      "bake_stats": {
+        "dough_temps": [
+          { "time": "2026-05-06 - 18:46", "temp_f": 74.9, "note": "autolyse mix — kitchen-temp proxy, no DDT measured this bake" }
+        ],
+        "bulk_ambient_temps": [
+          { "date": "2026-05-06", "temp_f": 74.9, "note": "pre-bake, 54% RH" }
+        ],
+        "stretch_folds": [
+          { "time": "2026-05-06 - 21:52", "type": "stretch_fold", "note": "fold 2, dough 'loaded bomb', switched to coil after; ~5 total folds 30-min cadence inclusions→preshape, individual times not logged" }
+        ],
+        "shape_time": "2026-05-06 - 23:07",
+        "proof_phases": [
+          { "type": "bench_rest", "start": "2026-05-06 - 22:56", "end": "2026-05-06 - 23:06", "duration_min": 10, "note": "full-dough bench rest before preshape" },
+          { "type": "bench_rest", "start": "2026-05-06 - 23:07", "end": "2026-05-07 - 00:00", "duration_min": 53, "note": "post-preshape → fridge" },
+          { "type": "cold_retard", "start": "2026-05-07 - 00:00", "end": "2026-05-07 - 12:50", "duration_min": 770, "note": "loaf 1 — ~12.8 hr" },
+          { "type": "cold_retard", "start": "2026-05-07 - 00:00", "end": "2026-05-07 - 13:42", "duration_min": 822, "note": "loaf 2 — ~13.7 hr" },
+          { "type": "bench_rest", "start": "2026-05-07 - 13:42", "end": "2026-05-07 - 14:15", "duration_min": 33, "note": "loaf 2 RT rest near oven during loaf 1 bake" }
+        ],
+        "bake_phases": [
+          { "stage": "preheat", "temp_f": 500, "duration_min": 30, "note": "loaf 1 (goal was 60)" },
+          { "stage": "covered", "temp_f": 450, "duration_min": 30, "start_time": "2026-05-07 - 12:50", "note": "loaf 1" },
+          { "stage": "uncovered", "temp_f": 425, "duration_min": 18, "note": "loaf 1, rotated at 9 min, internal 211°F at pull (peaked above)" },
+          { "stage": "preheat", "temp_f": 500, "duration_min": 33, "note": "loaf 2" },
+          { "stage": "covered", "temp_f": 450, "duration_min": 30, "start_time": "2026-05-07 - 14:15", "note": "loaf 2" },
+          { "stage": "uncovered", "temp_f": 425, "duration_min": 13.5, "note": "loaf 2, 9 + 4.5 min, internal ~210°F" }
+        ],
+        "confidence": "medium"
+      },
+      "bake_notes": [
+        { "timestamp": "2026-05-06T23:46:22Z", "raw": "74.9", "curated": "Kitchen temp 74.9°F (pre-bake)", "notable": true, "stepId": "_pre_bake", "prompt": "Kitchen temp (°F)?", "processing": "prep" },
+        { "timestamp": "2026-05-07T01:13:23Z", "raw": "added inclusions. gemma cut the whole block of cheese despite me having a scale out for her to measure out the weight", "curated": "Added inclusions. Gemma cut the whole cheese block despite scale being out for her to measure", "notable": true, "stepId": "fold-inclusions", "processing": "inclusions" },
+        { "timestamp": "2026-05-07T01:26:24Z", "raw": "i took out about 50g of the cheese after realizing it. let's see what this overdose of cheese does to the bread.", "curated": "Pulled ~50g of cheese back after realizing. Letting cheese overdose play out", "notable": true, "stepId": "fold-inclusions", "processing": "inclusions" },
+        { "timestamp": "2026-05-07T02:52:00Z", "raw": "just did s n f 2. being as gentle as possible. dough is a loaded bomb. just doing coil folds. lettting rest and not fighting the dough", "curated": "Just did stretch-and-fold 2. Being as gentle as possible — dough is a loaded bomb. Switching to coil folds, letting rest, not fighting it", "notable": true, "stepId": "stretch-fold-3", "processing": "bulk_ferment" },
+        { "timestamp": "2026-05-07T02:52:04Z", "raw": "gluten is decent.", "curated": "Gluten is decent", "notable": false, "stepId": "stretch-fold-3", "processing": "bulk_ferment" },
+        { "timestamp": "2026-05-07T03:56:43Z", "raw": "may have short cutted. but i bench rested full dough ball about 30 minutes ago. bench rest 10 minutes.", "curated": "May have shortcut. Bench rested full dough ball ~30 min ago. 10-min bench rest", "notable": false, "stepId": "preshape", "processing": "shaping | Timestamp inferred: '30 minutes ago' relative to 2026-05-07T04:26:43Z → 2026-05-07T03:56:43Z" },
+        { "timestamp": "2026-05-07T04:07:43Z", "raw": "after the ten minute rest did a preshape. (approx 20 minutes ago) 804 and 820 ball weights. 1630g yield before i split the balls. 6g lost prob thru transfer", "curated": "After the 10-min rest did preshape (~20 min ago). 804g + 820g ball weights. 1630g yield before split, 6g lost via transfer", "notable": true, "stepId": "preshape", "processing": "shaping | Timestamp inferred: '20 minutes ago' relative to 2026-05-07T04:27:43Z → 2026-05-07T04:07:43Z" },
+        { "timestamp": "2026-05-07T17:55:54Z", "raw": "i believe i put the loaves in the fridge for cold retard around 12am.", "curated": "Believe loaves into fridge for cold retard ~midnight", "notable": true, "stepId": "_general", "processing": "cold_retard" },
+        { "timestamp": "2026-05-07T17:56:13Z", "raw": "500 preheat for 30 minutes. i thought i had the oven on earlier. goal was 60 minutes preheeat", "curated": "500°F preheat 30 min. Thought oven was on earlier — goal was 60 min", "notable": true, "stepId": "_general", "processing": "bake" },
+        { "timestamp": "2026-05-07T17:50:43Z", "raw": "lowered to 450 and cooking for 30 minutes the first loaf. note: i placed the first loaf in about 6 minutes ago", "curated": "Lowered to 450°F, first loaf in for 30 min", "notable": true, "stepId": "_general", "processing": "bake | Timestamp inferred: '6 minutes ago' relative to 2026-05-07T17:56:43Z → 2026-05-07T17:50:43Z" },
+        { "timestamp": "2026-05-07T18:21:42Z", "raw": "first loaf, dry bake started at 425 - aiming for around 18 minutes", "curated": "First loaf dry bake start at 425°F, aiming ~18 min", "notable": true, "stepId": "_general", "processing": "bake" },
+        { "timestamp": "2026-05-07T18:42:11Z", "raw": "first loaf out after 18 minutes dry bake  time. 9 minute rotated. 425 for dry bake", "curated": "First loaf out after 18-min dry bake at 425°F, rotated at 9 min", "notable": true, "stepId": "_general", "processing": "bake" },
+        { "timestamp": "2026-05-07T18:42:46Z", "raw": "preheat started now. 500. will load second loaf after. in meantime letting second loaf sit at room temperature for approx 30 minutes.", "curated": "Preheat 500°F starts. Second loaf RT rests ~30 min before going in", "notable": false, "stepId": "_general", "processing": "bake" },
+        { "timestamp": "2026-05-07T18:56:56Z", "raw": "note that the first loaf was around 211 internal temp", "curated": "First loaf internal ~211°F", "notable": true, "stepId": "_general", "processing": "bake" },
+        { "timestamp": "2026-05-07T19:15:28Z", "raw": "second loaf in. 450. 30 minutes. may want to try 25 minutes next bake and see what happens", "curated": "Second loaf in at 450°F for 30 min. May try 25 min next bake", "notable": true, "stepId": "_general", "processing": "bake" },
+        { "timestamp": "2026-05-07T19:46:17Z", "raw": "second loaf uncovered start. 425 temp. may pull out earlier than other loaf. will rotate at 9 minutes and try doing just 5 minutes after that to see where the loaf is at. oddly enough the second one seems to have better rise. could be my preshape/shape was better for this loaf.", "curated": "Second loaf uncovered at 425°F. Rotate 9 min, try 5 min after. Second loaf has better rise — possibly better preshape/shape", "notable": true, "stepId": "_general", "processing": "bake" }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-07",
+        "temp_high_f": 67.6,
+        "temp_low_f": 58.9,
+        "humidity_avg_percent": 77,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      }
     }
   ]
 }
