@@ -1,5 +1,5 @@
 ---
-id: DRAFT-74
+id: DRAFT-79
 title: "Print page context modes: recipe reference vs bake handout"
 status: Draft
 created_date: '2026-04-23 21:15'

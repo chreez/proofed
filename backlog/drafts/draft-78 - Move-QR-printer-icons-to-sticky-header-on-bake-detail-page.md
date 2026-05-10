@@ -1,5 +1,5 @@
 ---
-id: DRAFT-73
+id: DRAFT-78
 title: Move QR + printer icons to sticky header on bake detail page
 status: Draft
 created_date: '2026-04-23 20:30'
