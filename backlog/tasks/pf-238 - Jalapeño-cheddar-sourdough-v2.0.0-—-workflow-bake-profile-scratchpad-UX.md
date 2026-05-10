@@ -1,10 +1,10 @@
 ---
 id: PF-238
 title: Jalapeño cheddar sourdough v2.0.0 — workflow + bake profile + scratchpad UX
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-05 21:11'
-updated_date: '2026-05-07 19:39'
+updated_date: '2026-05-10 03:52'
 labels:
   - recipe
 dependencies: []

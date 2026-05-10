@@ -171,6 +171,13 @@ export interface RecipeMeta {
   description?: string
   allergenOverride?: string[]
   outdated?: OutdatedMarker
+  /**
+   * PF-238: free-form sourcing/shopping guidance. Renders on the recipe
+   * page and the print/shop surfaces when present. Use for ingredient size
+   * or block-purchase notes that are not quantity-driven (e.g. "use a
+   * ≥250g cheddar block — 100g blocks are insufficient for one loaf").
+   */
+  shopping_notes?: string
 }
 
 export interface RecipeStats {

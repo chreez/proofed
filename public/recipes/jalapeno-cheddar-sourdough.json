@@ -11,7 +11,8 @@
     "yields": "2 loaves (~730g each)",
     "servings": 16,
     "total_time": "~26 hrs (1 hr active, 25 hrs passive)",
-    "description": "Enriched sourdough with milk powder, butter, and brown sugar — soft sandwich-style crumb studded with fresh jalapeño heat and melty cheddar pockets. 65% base hydration (67% effective with butter). Inclusions contribute ~189g moisture — shape fast before they bleed. Uses 100g active starter directly (no levain build). Scaled 10% from Proof Bread's Ukrainian baton-style approach."
+    "description": "Enriched sourdough with milk powder, butter, and brown sugar — soft sandwich-style crumb studded with fresh jalapeño heat and melty cheddar pockets. 65% base hydration (67% effective with butter). Inclusions contribute ~189g moisture — shape fast before they bleed. Uses 100g active starter directly (no levain build). Scaled 10% from Proof Bread's Ukrainian baton-style approach.",
+    "shopping_notes": "Recipe uses 220g sharp cheddar total (110g per loaf). Plan a ≥250g block per bake — 100g blocks are insufficient for one loaf. If baking back-to-back, source a ≥500g block to avoid a second store run."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -25,8 +26,108 @@
       ]
     }
   },
-  "version": "v1.2.0",
+  "version": "v2.0.0",
   "change_log": [
+    {
+      "version": "v2.0.0",
+      "date": "2026-05-09",
+      "summary": "Major: workflow reorder + cambro pre-mix inclusions + tempered butter step + revised bake profile (450°F covered → 425°F uncovered, target 210°F). PREP states now: autolyse-rest → temper-butter → cube-cheddar → prep-jalapenos → pre-mix-dry. fold-inclusions rewritten for cambro shake-then-fold technique. New meta.shopping_notes calls out ≥250g cheddar block sizing. Ingredient gram weights unchanged. PF-238.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 550,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 340,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 31,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 220,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 110
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 110
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Dough Mixing",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.0.0",
       "date": "2026-04-30",
@@ -348,6 +449,11 @@
       "id": "V5",
       "name": "Banneton (×2)",
       "reuse": "Final proof + cold retard"
+    },
+    {
+      "id": "V6",
+      "name": "Cambro (or sealed container)",
+      "reuse": "Pre-mix inclusions (cheddar + jalapeños) — shake to combine before folding into dough"
     }
   ],
   "stages": [
@@ -357,7 +463,8 @@
       "gather": {
         "vessels": [
           "Large Mixing Bowl",
-          "Medium Bowl"
+          "Medium Bowl",
+          "Cambro (or sealed container)"
         ],
         "equipment": [
           "Kitchen Scale",
@@ -445,8 +552,9 @@
       },
       "states": [
         "autolyse-rest",
-        "prep-jalapenos",
+        "temper-butter",
         "cube-cheddar",
+        "prep-jalapenos",
         "pre-mix-dry"
       ]
     },
@@ -549,6 +657,32 @@
         {
           "text": "Use this rest time to prep jalapeños and cube cheddar (next two steps run in parallel).",
           "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "temper-butter",
+      "title": "Temper Butter",
+      "direction": "Measure 50g unsalted butter and place it on the counter (do not microwave). It will come to room temperature naturally over the autolyse rest. Slice into ~1cm pats to speed warming if needed.",
+      "duration_min": 25,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        {
+          "name": "unsalted butter",
+          "amount": "50g"
+        }
+      ],
+      "exit_condition": "Butter is soft enough to indent with light finger pressure; surface is no longer cold to the touch. Save microwave time and avoid melting.",
+      "notes": [
+        {
+          "text": "Starting butter early during the autolyse window means it tempers passively while you handle the cheddar and jalapeños. By the time you reach add-butter (later in MIX), it is room-temp without microwave shortcuts.",
+          "source": "agent"
+        },
+        {
+          "text": "Do NOT microwave butter for sourdough. Even brief microwaving partially melts the butter, which prevents it from forming a proper laminated structure with the gluten network.",
+          "source": "agent",
+          "critical": true
         }
       ]
     },
@@ -698,7 +832,7 @@
     {
       "id": "fold-inclusions",
       "title": "Fold In Inclusions",
-      "direction": "Flatten the dough on the counter. Spread jalapeños and cheddar cubes in an even layer across the surface. Fold the dough over the inclusions like a letter (thirds). Rotate 90° and fold again. Repeat 2-3 times until inclusions are roughly distributed. Transfer to a lightly oiled container for bulk fermentation.",
+      "direction": "Pre-mix inclusions: combine the cubed cheddar and diced jalapeños in a cambro (or sealed container). Cover and shake vigorously for 10-15 seconds until the cheese cubes are evenly coated with diced peppers — this distributes the inclusions before they touch the dough. Flatten the dough on the counter, scatter the pre-mix in an even layer across the surface, and incorporate via letter folds: fold the dough over itself in thirds, rotate 90°, fold again. Repeat 2-3 times until inclusions are roughly distributed. Transfer to a lightly oiled container for bulk fermentation.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -712,10 +846,10 @@
           "amount": "220g"
         }
       ],
-      "exit_condition": "Inclusions distributed throughout the dough in visible layers. Perfect uniformity not required — subsequent folds will even them out.",
+      "exit_condition": "Pre-mixed inclusions distributed throughout the dough in visible layers. Cheese cubes and jalapeños appear together (not in separate pockets) thanks to the cambro shake. Subsequent stretch-and-folds will refine distribution.",
       "notes": [
         {
-          "text": "This lamination technique preserves dough structure and distributes cheese and peppers in pockets rather than dissolving them into the dough.",
+          "text": "Cambro pre-mixing distributes the cheese and peppers BEFORE they hit the dough. Compared to layering each ingredient separately, this approach gives more uniform pockets in the finished crumb with fewer \"all cheddar\" or \"all jalapeño\" zones.",
           "source": "agent"
         },
         {
@@ -921,19 +1055,19 @@
     {
       "id": "bake-dry",
       "title": "Bake (Dry Phase)",
-      "direction": "Carefully remove the Dutch oven lid. Continue baking at 450°F (230°C) for 15-20 minutes until the crust is deep golden brown and the internal temperature reads 205°F (96°C).",
+      "direction": "Carefully remove the Dutch oven lid. Drop oven temperature to 425°F (218°C) and continue baking 15-20 minutes until the crust is deep golden brown and the internal temperature reads 210°F (99°C). The reduced uncovered temp prevents over-browning while the loaf finishes setting.",
       "duration_min": 18,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Crust is deep golden brown with caramelized cheese patches. Internal temperature reads 205°F (96°C) or above. The loaf sounds hollow when tapped on the bottom.",
+      "exit_condition": "Crust is deep golden brown with caramelized cheese patches. Internal temperature reads 210°F (99°C) or above. The loaf sounds hollow when tapped on the bottom.",
       "notes": [
         {
-          "text": "Home ovens need a higher internal temp target (205°F / 96°C) than commercial rack ovens (190-200°F) because steam dissipates once the lid comes off.",
-          "source": "agent"
+          "text": "Drop to 425°F (218°C) on uncovered phase — this profile (450°F covered → 425°F uncovered) gives deep color without over-browning. Confirmed across 2026-05-05 and 2026-05-07 bakes.",
+          "source": "user"
         },
         {
-          "text": "If the crust is browning too fast but internal temp is low, drop oven to 425°F (218°C) and extend baking.",
+          "text": "Home ovens need a higher internal target (210°F / 99°C) than commercial rack ovens because steam dissipates once the lid comes off. The extra 5°F over the commercial 200°F target accounts for residual cooking.",
           "source": "agent"
         }
       ],
