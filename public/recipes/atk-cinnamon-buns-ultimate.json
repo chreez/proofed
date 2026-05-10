@@ -374,6 +374,64 @@
         "condition": "Drizzle",
         "source": "open-meteo"
       }
+    },
+    {
+      "date": "2026-05-08",
+      "start_date": "2026-05-07",
+      "version": "v1.3.0",
+      "summary": "Recovered from butter taboo (dumped all at once into hand-mix) by patience and stretch-and-folds — dough was fine. Ran out of cornstarch so used ~32g (half of 64g target); crumb came out slightly less spongey. 1g ground espresso in icing was a subtle hit. Strip-cut shaping continued.",
+      "notes": [
+        "Started late 5/7 — ran late on prep. Continued strip-cut method (cut filled rectangle into strips with pizza cutter, rolled each individually) per last bake's next_time",
+        "Hand-mixing — added all butter at once (taboo). Let dough rest 30 min, did stretch-and-folds — dough recovered fine, just had to be patient",
+        "Cornstarch: ran out, used ~32g (half of 64g target). Didn't substitute. Should have gotten more — attributing slightly less spongey crumb to this",
+        "1g ground espresso added to icing — subtle, nice. Better than last bake's heavier espresso powder",
+        "Finished rolling/shaping ~4:11am 5/8, into Pyrex, wrapped with plastic, into fridge for cold proof. Baked late same morning",
+        "Bake: 350°F per recipe, 35 min total, rotated at 15 min"
+      ],
+      "photos": [],
+      "next_time": [
+        { "text": "Hand-mix dough = split butter additions: half, mix, rest, last half (don't dump all at once)" },
+        { "text": "Replace cornstarch before running out — full 64g made better sponge in past bakes" },
+        { "text": "Keep 1g ground espresso in icing — subtle hit, don't overshoot" }
+      ],
+      "bake_notes": [
+        { "timestamp": "2026-05-08T05:54:51Z", "raw": "may have committed the taboo. added too much butter at once. going to try stretch and folding in 30 minutes. letting dough rest. mixing by hand.", "curated": "May have committed the taboo — added too much butter at once. Going to try stretch-and-folding in 30 min. Letting dough rest. Mixing by hand", "notable": true, "stepId": "ADD_BUTTER", "processing": "dough" },
+        { "timestamp": "2026-05-08T09:11:09Z", "raw": "finished rolling and shaping. placed in glass tupperware. wrapped with seran wrap. plan to bake tomorrow morning", "curated": "Finished rolling and shaping. Placed in glass Pyrex, wrapped with plastic. Plan to bake tomorrow morning", "notable": false, "stepId": "_general", "processing": "shaping" },
+        { "timestamp": "2026-05-08T09:11:38Z", "raw": "the butter inclusion plus time was fine. i think if i mix by hand i may need to do half the butter. mix. rest. last half butter.", "curated": "Butter inclusion + time was fine. If hand-mixing, may need to do half the butter, mix, rest, last half", "notable": true, "stepId": "_general", "processing": "dough" },
+        { "timestamp": "2026-05-08T16:05:37Z", "raw": "15 minute timer then will rotate. rolls in oven", "curated": "15-min timer then rotate. Rolls in oven", "notable": false, "stepId": "BAKE", "processing": "bake" },
+        { "timestamp": "2026-05-08T16:20:42Z", "raw": "rotate", "curated": "Rotated", "notable": false, "stepId": "BAKE", "processing": "bake" },
+        { "timestamp": "2026-05-08T16:47:36Z", "raw": "35 total minutes in oven", "curated": "35 total min in oven", "notable": true, "stepId": "BAKE", "processing": "bake" }
+      ],
+      "cost": {
+        "items": [
+          { "ingredientId": "flour", "name": "All-Purpose Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached All-Purpose Flour", "amount": 531, "unit": "g", "cost": 1.17 },
+          { "ingredientId": "butter", "name": "Unsalted Butter", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 227, "unit": "g", "cost": 1.99 },
+          { "ingredientId": "brown_sugar", "name": "Light Brown Sugar", "sourceType": "heb", "sourceName": "Imperial Sugar Pure Cane Light Brown Sugar", "amount": 240, "unit": "g", "cost": 0.75 },
+          { "ingredientId": "granulated_sugar", "name": "Granulated Sugar", "sourceType": "heb", "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar", "amount": 75, "unit": "g", "cost": 0.21 },
+          { "ingredientId": "powdered_sugar", "name": "Confectioners' Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Confectioners Powdered Sugar", "amount": 128, "unit": "g", "cost": 0.26 },
+          { "ingredientId": "cornstarch", "name": "Cornstarch", "sourceType": "heb", "sourceName": "Hill Country Fare Corn Starch", "amount": 64, "unit": "g", "cost": 0.24 },
+          { "ingredientId": "cream_cheese", "name": "Cream Cheese (softened)", "sourceType": "heb", "sourceName": "H-E-B Regular Cream Cheese", "amount": 150, "unit": "g", "cost": 1.52 },
+          { "ingredientId": "milk", "name": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk", "amount": 192, "unit": "g", "cost": 0.22 },
+          { "ingredientId": "eggs", "name": "Large Eggs (room temp)", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 3, "unit": "whole", "cost": 0.42 },
+          { "ingredientId": "yeast", "name": "Instant Yeast", "sourceType": "heb", "sourceName": "Hill Country Fare Fast-Rise Instant Yeast", "amount": 7, "unit": "g", "cost": 0.33 },
+          { "ingredientId": "cinnamon", "name": "Ground Cinnamon", "sourceType": "heb", "sourceName": "Hill Country Fare Ground Cinnamon", "amount": 10, "unit": "g", "cost": 0.19 },
+          { "ingredientId": "salt", "name": "Salt", "sourceType": "heb", "sourceName": "H-E-B Iodized Salt", "amount": 11, "unit": "g", "cost": 0.01 },
+          { "ingredientId": "vanilla", "name": "Vanilla Extract", "sourceType": "heb", "sourceName": "McCormick Pure Vanilla Extract", "amount": 5, "unit": "g", "cost": 0.87 },
+          { "ingredientId": "espresso", "name": "Ground Espresso (icing)", "sourceType": "heb", "sourceName": "Cafe Bustelo Espresso Ground Coffee", "amount": 1, "unit": "g", "cost": 0.03, "note": "bake-time addition — 1g ground espresso in icing" }
+        ],
+        "total": 8.21,
+        "perServing": 1.03,
+        "servings": 8
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-08",
+        "temp_high_f": 77.4,
+        "temp_low_f": 60.4,
+        "humidity_avg_percent": 83,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      }
     }
   ],
   "vessels": [
