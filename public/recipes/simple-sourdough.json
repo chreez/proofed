@@ -38,67 +38,691 @@
     {
       "version": "v3.6.0",
       "date": "2026-04-10",
-      "summary": "Reheat instructions updated with user sign-off: oven method clarified (half-loaf only, wet the bread thoroughly), toaster renamed to toaster/air fryer for slices."
+      "summary": "Reheat instructions updated with user sign-off: oven method clarified (half-loaf only, wet the bread thoroughly), toaster renamed to toaster/air fryer for slices.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v3.5.0",
       "date": "2026-04-10",
-      "summary": "Update preheat duration from 45 to 60 minutes — user preference confirmed across 14 bakes. Longer preheat ensures Dutch oven is fully heat-saturated."
+      "summary": "Update preheat duration from 45 to 60 minutes — user preference confirmed across 14 bakes. Longer preheat ensures Dutch oven is fully heat-saturated.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v3.4.0",
       "date": "2026-04-08",
-      "summary": "Backfilled confidence ratings on all cook_log bake_stats for PF-177.5 BakeStatsBlock: 10 entries marked high, 3 medium (first bake / focaccia aberration / improv single-loaf), 1 low (2026-04-06 emergency cold retard — already set). Zero prose notes[] changes — purely additive metadata."
+      "summary": "Backfilled confidence ratings on all cook_log bake_stats for PF-177.5 BakeStatsBlock: 10 entries marked high, 3 medium (first bake / focaccia aberration / improv single-loaf), 1 low (2026-04-06 emergency cold retard — already set). Zero prose notes[] changes — purely additive metadata.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v3.3.0",
       "date": "2026-04-08",
-      "summary": "FOLD_1 state note: replaced free-text Sourdough Journey reference with a structured fermentation chart table (dough temp → target aliquot rise %). First use of PF-180 structured tables in state notes."
+      "summary": "FOLD_1 state note: replaced free-text Sourdough Journey reference with a structured fermentation chart table (dough temp → target aliquot rise %). First use of PF-180 structured tables in state notes.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v3.2.0",
       "date": "2026-04-08",
-      "summary": "State notes cleanup: removed duplicate starter note, stripped dated bake-count references, strengthened DIVIDE/PRE_SHAPE/SCORE notes with user learnings from 12 bakes, updated BAKE_UNCOVERED direction with flip technique and open temp range."
+      "summary": "State notes cleanup: removed duplicate starter note, stripped dated bake-count references, strengthened DIVIDE/PRE_SHAPE/SCORE notes with user learnings from 12 bakes, updated BAKE_UNCOVERED direction with flip technique and open temp range.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v3.1.0",
       "date": "2026-04-08",
-      "summary": "Retitled to reference 70% hydration — the stable identity after 12 bakes. Recipe URL slug unchanged."
+      "summary": "Retitled to reference 70% hydration — the stable identity after 12 bakes. Recipe URL slug unchanged.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v3.0.0",
       "date": "2026-04-03",
-      "summary": "Major procedure update codifying 11 bakes of evolved technique: fermentolyse (delayed salt), aliquot jar tracking, room-temp rest after shaping, no-linen banneton default, sequential 2-loaf bake procedure, corrected divide weights, and comprehensive StateNote/reminder audit."
+      "summary": "Major procedure update codifying 11 bakes of evolved technique: fermentolyse (delayed salt), aliquot jar tracking, room-temp rest after shaping, no-linen banneton default, sequential 2-loaf bake procedure, corrected divide weights, and comprehensive StateNote/reminder audit.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v2.1.0",
       "date": "2026-03-25",
-      "summary": "Update bake temps — preheat 500°F, covered bake 450°F, uncovered bake 425°F for 18-22 min. Stepped-down approach for better crust control."
+      "summary": "Update bake temps — preheat 500°F, covered bake 450°F, uncovered bake 425°F for 18-22 min. Stepped-down approach for better crust control.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v2.0.0",
       "date": "2026-02-19",
-      "summary": "Scaled to 2-loaf yield with sequential Dutch oven bake. Same ratios and technique (70% hydration, 20% inoculation). Added dough divide step, second proofing basket, and starter % reduction notes for troubleshooting."
+      "summary": "Scaled to 2-loaf yield with sequential Dutch oven bake. Same ratios and technique (70% hydration, 20% inoculation). Added dough divide step, second proofing basket, and starter % reduction notes for troubleshooting.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.2.0",
       "date": "2026-02-17",
-      "summary": "Recipe improvements from 3 bakes: oven light fermentation warning (critical), pre-shape + bench rest step, parchment sling note, tightened exit conditions, added reminders for temp/fermentation tracking"
+      "summary": "Recipe improvements from 3 bakes: oven light fermentation warning (critical), pre-shape + bench rest step, parchment sling note, tightened exit conditions, added reminders for temp/fermentation tracking",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.1.1",
       "date": "2026-02-16",
-      "summary": "Bake log: second bake — over-fermented again (oven light too warm), pivoted to focaccia. Research added to next_time."
+      "summary": "Bake log: second bake — over-fermented again (oven light too warm), pivoted to focaccia. Research added to next_time.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.1.0",
       "date": "2026-02-14",
-      "summary": "Feedback session: first bake notes — over-fermentation recovery, pizza steel bake without Dutch oven, scoring and shaping lessons, taste review"
+      "summary": "Feedback session: first bake notes — over-fermentation recovery, pizza steel bake without Dutch oven, scoring and shaping lessons, taste review",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.0.0",
       "date": "2026-02-11",
-      "summary": "Initial recipe from multi-agent research synthesis (9 agents, 100+ sources, 335+ tool uses)"
+      "summary": "Initial recipe from multi-agent research synthesis (9 agents, 100+ sources, 335+ tool uses)",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -1035,7 +1659,55 @@
         "humidity_avg_percent": 90,
         "condition": "Rain",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-02-16",
@@ -1199,7 +1871,55 @@
         "humidity_avg_percent": 75,
         "condition": "Overcast",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-02-17",
@@ -1418,7 +2138,55 @@
         "humidity_avg_percent": 78,
         "condition": "Drizzle",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-02-20",
@@ -1673,7 +2441,55 @@
         "humidity_avg_percent": 60,
         "condition": "Drizzle",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-02-27",
@@ -1913,7 +2729,55 @@
         "humidity_avg_percent": 47,
         "condition": "Clear sky",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-03-01",
@@ -2134,7 +2998,55 @@
         "humidity_avg_percent": 69,
         "condition": "Drizzle",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-03-08",
@@ -2341,7 +3253,55 @@
         "humidity_avg_percent": 84,
         "condition": "Rain",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-03-12",
@@ -2549,7 +3509,55 @@
         "humidity_avg_percent": 47,
         "condition": "Clear sky",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-03-13",
@@ -2748,7 +3756,55 @@
         "humidity_avg_percent": 50,
         "condition": "Clear sky",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-03-18",
@@ -2954,7 +4010,55 @@
         "humidity_avg_percent": 46,
         "condition": "Overcast",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-03-24",
@@ -3082,7 +4186,55 @@
         "humidity_avg_percent": 58,
         "condition": "Drizzle",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-04-01",
@@ -3301,7 +4453,55 @@
         "humidity_avg_percent": 66,
         "condition": "Drizzle",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-04-06",
@@ -3525,7 +4725,55 @@
         "humidity_avg_percent": 57,
         "condition": "Overcast",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-04-10",
@@ -3991,6 +5239,54 @@
           "notable": false,
           "curated": "I did 4 minutes oven off after 18 minutes at 425°F. I think it needs another 4 minutes."
         }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4394,6 +5690,54 @@
           "stepId": "BAKE_COVERED",
           "curated": "Ironically didn't expect these loaves to pop as much as they did. They look like they had an amazing rise. Wondering how I can get a more pronounced ear. Probably best if I did a scoring on one side if that's what I want."
         }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4686,6 +6030,54 @@
           "notable": false,
           "curated": "Bread out. Ended up doing spritz of water. 22 minutes total at 425°F."
         }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4956,6 +6348,54 @@
           "prompt": "Rate crust: color, ear development, blistering",
           "curated": "Ear development perhaps not exactly what I want. Blistering for sure. Starter was not happy at the start of this bake. Perhaps the biggest callout compared to yesterday's."
         }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
       ]
     },
     {
@@ -5164,6 +6604,54 @@
           "raw": "foccaccia out of the oven almost an hour. will check crumb and taste for the hell of it",
           "notable": false,
           "curated": "Focaccia out of the oven almost an hour. Will check crumb and taste for the hell of it."
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
         }
       ]
     },
@@ -5461,7 +6949,55 @@
         "perServing": 0.67,
         "servings": 2,
         "date": "2026-04-24"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-04-28",
@@ -5787,7 +7323,55 @@
         "perServing": 1.27,
         "servings": 2,
         "date": "2026-04-28"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
     }
   ],
   "research": {

@@ -25,7 +25,126 @@
     {
       "version": "v1.0.0",
       "date": "2026-02-08",
-      "summary": "Initial recipe synthesized from 16-source research across food blogs, professional boba chains, and tea specialists"
+      "summary": "Initial recipe synthesized from 16-source research across food blogs, professional boba chains, and tea specialists",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 1674,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "brew tea",
+                  "amount": 711
+                },
+                {
+                  "label": "cook boba",
+                  "amount": 948
+                },
+                {
+                  "label": "boba syrup",
+                  "amount": 15
+                }
+              ],
+              "sourcedFrom": "All 16 sources — standard water ratios for strong brew and 5:1+ boba cooking",
+              "confidence": "high",
+              "rationale": "3 cups for tea (strong concentrate that holds up to ice dilution). 4 cups for boba (rolling boil with room to move). 1 Tbsp for syrup."
+            },
+            {
+              "id": "thai_tea_mix",
+              "name": "ChaTraMue Thai Tea Mix",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S10 (Sharetea), S5 (Carmyy), S1 (The Forked Spoon) — 11/16 sources use pre-made mix",
+              "confidence": "high",
+              "rationale": "Pre-made mix (ChaTraMue or Pantai) is the most reliable path to authentic color and flavor. ChaTraMue (Number One Brand) is the Thai industry standard. 1/2 cup loose mix weighs approximately 40g."
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Dark Brown Sugar",
+              "total": 52,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tea base",
+                  "amount": 26
+                },
+                {
+                  "label": "boba syrup",
+                  "amount": 26
+                }
+              ],
+              "sourcedFrom": "S4 (Oh, How Civilized), S5 (Carmyy), S9 (Mountain Rose Herbs) — brown sugar preferred over white for depth",
+              "confidence": "high",
+              "rationale": "Brown sugar adds molasses depth that complements the tea's malty character. Split between tea brewing and boba syrup coating."
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S6 (Simply Suwanee) — 1/8 tsp salt in tea base",
+              "confidence": "medium",
+              "rationale": "A pinch of salt rounds out the tea's bitterness and enhances sweetness perception. Standard Thai tea shop technique."
+            },
+            {
+              "id": "tapioca_pearls",
+              "name": "Quick-Cook Tapioca Pearls",
+              "total": 80,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1 (The Forked Spoon), S10 (Sharetea) — 10/16 sources use quick-cook; WuFuYuan brand recommended",
+              "confidence": "high",
+              "rationale": "Quick-cook pearls (5-7 min) deliver excellent texture with minimal effort. 1/2 cup dry pearls weighs approximately 80g, yielding enough for 2 generous servings."
+            },
+            {
+              "id": "condensed_milk",
+              "name": "Sweetened Condensed Milk",
+              "total": 60,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S4 (Oh, How Civilized), S6 (Simply Suwanee), S7 (Honest Food Talks) — 9/16 sources use condensed + evaporated combo",
+              "confidence": "high",
+              "rationale": "The condensed + evaporated combination is the strongest consensus across sources (9/16). Condensed provides sweetness and body. 3 Tbsp = approximately 60g (dense liquid)."
+            },
+            {
+              "id": "evaporated_milk",
+              "name": "Evaporated Milk",
+              "total": 45,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S4 (Oh, How Civilized), S6 (Simply Suwanee), S7 (Honest Food Talks) — evaporated adds creaminess without excessive sweetness",
+              "confidence": "high",
+              "rationale": "Evaporated milk adds dairy richness and creaminess without the cloying sweetness of using condensed milk alone. 3 Tbsp = approximately 45g."
+            },
+            {
+              "id": "ice",
+              "name": "Ice",
+              "total": 280,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "glass 1",
+                  "amount": 140
+                },
+                {
+                  "label": "glass 2",
+                  "amount": 140
+                }
+              ],
+              "sourcedFrom": "All 16 sources — standard iced tea service",
+              "confidence": "high",
+              "rationale": "Approximately 1 cup per glass. Tea is brewed as a concentrate specifically to withstand ice dilution."
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [

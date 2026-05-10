@@ -26,12 +26,324 @@
     {
       "version": "v1.1.0",
       "date": "2026-04-09",
-      "summary": "Removed rating-type reminder prompts."
+      "summary": "Removed rating-type reminder prompts.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "ap_flour",
+              "name": "All-Purpose Flour",
+              "total": 220,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus, adjusted -30g for discard compensation",
+              "confidence": "high",
+              "rationale": "Standard 250g base minus 50g flour equivalent from 130g discard (100% hydration). Verified against 14 sourdough biscuit recipes."
+            },
+            {
+              "id": "sourdough_discard",
+              "name": "Sourdough Discard (100% hydration, cold)",
+              "total": 130,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "14 sourdough adaptation recipes, sweet spot analysis",
+              "confidence": "high",
+              "rationale": "100-150g is the sweet spot — enough for tang and tenderness without dominating structure. Works interchangeably with active starter at same weight."
+            },
+            {
+              "id": "buttermilk",
+              "name": "Cold Buttermilk",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Adjusted from standard 240ml, compensating for discard liquid",
+              "confidence": "high",
+              "rationale": "Reduced from 240ml to 150ml — discard contributes ~65g liquid. Buttermilk adds fat, tang, and tenderizes gluten."
+            },
+            {
+              "id": "butter",
+              "name": "Cold Unsalted Butter",
+              "total": 160,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (cold, cubed)",
+                  "amount": 115
+                },
+                {
+                  "label": "garlic herb butter brush",
+                  "amount": 45
+                }
+              ],
+              "sourcedFrom": "Unanimous across 10+ conventional copycats — 115g dough, 45g brush",
+              "confidence": "high",
+              "rationale": "115g cold butter in dough creates flaky pockets via steam. 45g melted for the signature garlic butter brush."
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar (block, hand-shredded)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stella Parks (67% ratio), cross-source range 100-170g",
+              "confidence": "high",
+              "rationale": "150g = 68% baker's percentage. Aggressive but supported by Stella Parks' testing. Block cheese only — pre-shredded anti-caking starch ruins melt."
+            },
+            {
+              "id": "baking_powder",
+              "name": "Baking Powder (aluminum-free)",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal across all 60+ sources — 1 Tbsp per ~240g flour",
+              "confidence": "high",
+              "rationale": "Double-acting provides reliable rise. Aluminum-free (Rumford) avoids metallic aftertaste in simple baked goods."
+            },
+            {
+              "id": "baking_soda",
+              "name": "Baking Soda",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Majority of refined copycats + all sourdough versions",
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid and buttermilk for extra lift + browning. Also neutralizes excess tang from discard."
+            },
+            {
+              "id": "garlic_powder",
+              "name": "Garlic Powder",
+              "total": 7.5,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 6
+                },
+                {
+                  "label": "garlic herb butter brush",
+                  "amount": 1.5
+                }
+              ],
+              "sourcedFrom": "Official Red Lobster seasoning packet + copycat consensus",
+              "confidence": "high",
+              "rationale": "Garlic powder in dough for even distribution. Garlic powder in brush for signature flavor hit."
+            },
+            {
+              "id": "onion_powder",
+              "name": "Onion Powder",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Official Red Lobster seasoning packet, Weissman, Plum Branch Home",
+              "confidence": "medium",
+              "rationale": "Present in official mix but absent from many copycats. Adds background aromatic depth without competing with garlic."
+            },
+            {
+              "id": "sugar",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Majority of copycats use 1-2 tsp",
+              "confidence": "high",
+              "rationale": "Promotes browning via Maillard reaction. Balances garlic and salt. Present in official mix as dextrose."
+            },
+            {
+              "id": "salt",
+              "name": "Kosher Salt",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source range 4-8g, adjusted for baking soda sodium",
+              "confidence": "high",
+              "rationale": "Lower end of range since baking soda contributes sodium. Garlic butter brush gets a pinch (unmeasured)."
+            },
+            {
+              "id": "cayenne",
+              "name": "Cayenne Pepper",
+              "total": 0.3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Sweet Cayenne, Damn Delicious, Cozy Cook",
+              "confidence": "medium",
+              "rationale": "Subtle warmth without identifiable heat. About 1/8 tsp — detectable only as background complexity."
+            },
+            {
+              "id": "parsley",
+              "name": "Fresh Italian Parsley (finely chopped)",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal in garlic butter brush across all sources",
+              "confidence": "high",
+              "rationale": "Fresh flat-leaf for flavor in the brush. Dried parsley is mostly visual — fresh makes a real difference in the butter."
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.0.0",
       "date": "2026-02-24",
-      "summary": "Initial recipe from 7-agent parallel research synthesis (60+ sources). Sourdough adaptation of Red Lobster Cheddar Bay Biscuits — discard provides flavor and tenderness, chemical leaveners provide rise."
+      "summary": "Initial recipe from 7-agent parallel research synthesis (60+ sources). Sourdough adaptation of Red Lobster Cheddar Bay Biscuits — discard provides flavor and tenderness, chemical leaveners provide rise.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "ap_flour",
+              "name": "All-Purpose Flour",
+              "total": 220,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus, adjusted -30g for discard compensation",
+              "confidence": "high",
+              "rationale": "Standard 250g base minus 50g flour equivalent from 130g discard (100% hydration). Verified against 14 sourdough biscuit recipes."
+            },
+            {
+              "id": "sourdough_discard",
+              "name": "Sourdough Discard (100% hydration, cold)",
+              "total": 130,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "14 sourdough adaptation recipes, sweet spot analysis",
+              "confidence": "high",
+              "rationale": "100-150g is the sweet spot — enough for tang and tenderness without dominating structure. Works interchangeably with active starter at same weight."
+            },
+            {
+              "id": "buttermilk",
+              "name": "Cold Buttermilk",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Adjusted from standard 240ml, compensating for discard liquid",
+              "confidence": "high",
+              "rationale": "Reduced from 240ml to 150ml — discard contributes ~65g liquid. Buttermilk adds fat, tang, and tenderizes gluten."
+            },
+            {
+              "id": "butter",
+              "name": "Cold Unsalted Butter",
+              "total": 160,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (cold, cubed)",
+                  "amount": 115
+                },
+                {
+                  "label": "garlic herb butter brush",
+                  "amount": 45
+                }
+              ],
+              "sourcedFrom": "Unanimous across 10+ conventional copycats — 115g dough, 45g brush",
+              "confidence": "high",
+              "rationale": "115g cold butter in dough creates flaky pockets via steam. 45g melted for the signature garlic butter brush."
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar (block, hand-shredded)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stella Parks (67% ratio), cross-source range 100-170g",
+              "confidence": "high",
+              "rationale": "150g = 68% baker's percentage. Aggressive but supported by Stella Parks' testing. Block cheese only — pre-shredded anti-caking starch ruins melt."
+            },
+            {
+              "id": "baking_powder",
+              "name": "Baking Powder (aluminum-free)",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal across all 60+ sources — 1 Tbsp per ~240g flour",
+              "confidence": "high",
+              "rationale": "Double-acting provides reliable rise. Aluminum-free (Rumford) avoids metallic aftertaste in simple baked goods."
+            },
+            {
+              "id": "baking_soda",
+              "name": "Baking Soda",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Majority of refined copycats + all sourdough versions",
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid and buttermilk for extra lift + browning. Also neutralizes excess tang from discard."
+            },
+            {
+              "id": "garlic_powder",
+              "name": "Garlic Powder",
+              "total": 7.5,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 6
+                },
+                {
+                  "label": "garlic herb butter brush",
+                  "amount": 1.5
+                }
+              ],
+              "sourcedFrom": "Official Red Lobster seasoning packet + copycat consensus",
+              "confidence": "high",
+              "rationale": "Garlic powder in dough for even distribution. Garlic powder in brush for signature flavor hit."
+            },
+            {
+              "id": "onion_powder",
+              "name": "Onion Powder",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Official Red Lobster seasoning packet, Weissman, Plum Branch Home",
+              "confidence": "medium",
+              "rationale": "Present in official mix but absent from many copycats. Adds background aromatic depth without competing with garlic."
+            },
+            {
+              "id": "sugar",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Majority of copycats use 1-2 tsp",
+              "confidence": "high",
+              "rationale": "Promotes browning via Maillard reaction. Balances garlic and salt. Present in official mix as dextrose."
+            },
+            {
+              "id": "salt",
+              "name": "Kosher Salt",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source range 4-8g, adjusted for baking soda sodium",
+              "confidence": "high",
+              "rationale": "Lower end of range since baking soda contributes sodium. Garlic butter brush gets a pinch (unmeasured)."
+            },
+            {
+              "id": "cayenne",
+              "name": "Cayenne Pepper",
+              "total": 0.3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Sweet Cayenne, Damn Delicious, Cozy Cook",
+              "confidence": "medium",
+              "rationale": "Subtle warmth without identifiable heat. About 1/8 tsp — detectable only as background complexity."
+            },
+            {
+              "id": "parsley",
+              "name": "Fresh Italian Parsley (finely chopped)",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal in garlic butter brush across all sources",
+              "confidence": "high",
+              "rationale": "Fresh flat-leaf for flavor in the brush. Dried parsley is mostly visual — fresh makes a real difference in the butter."
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [

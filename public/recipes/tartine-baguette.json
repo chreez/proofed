@@ -45,12 +45,164 @@
     {
       "version": "v1.1.0",
       "date": "2026-02-11",
-      "summary": "Feedback session: added agent-sourced definition notes to MIX_POOLISH, FEED_LEAVEN, MIX_DOUGH, PREPARE_COUCHE; updated description with hybrid approach explanation"
+      "summary": "Feedback session: added agent-sourced definition notes to MIX_POOLISH, FEED_LEAVEN, MIX_DOUGH, PREPARE_COUCHE; updated description with hybrid approach explanation",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "ap_flour",
+              "name": "All-Purpose Flour",
+              "total": 1070,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "poolish",
+                  "amount": 200
+                },
+                {
+                  "label": "leaven",
+                  "amount": 220
+                },
+                {
+                  "label": "main dough",
+                  "amount": 650
+                }
+              ]
+            },
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 920,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "poolish (75°F)",
+                  "amount": 200
+                },
+                {
+                  "label": "leaven (80°F)",
+                  "amount": 220
+                },
+                {
+                  "label": "main dough (74–75°F)",
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "id": "yeast",
+              "name": "Active Dry Yeast",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Mature Starter",
+              "total": 15,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 24,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.0.0",
       "date": "2026-02-07",
-      "summary": "Initial recipe from Tartine Bread (pp.128-130) by Chad Robertson"
+      "summary": "Initial recipe from Tartine Bread (pp.128-130) by Chad Robertson",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "ap_flour",
+              "name": "All-Purpose Flour",
+              "total": 1070,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "poolish",
+                  "amount": 200
+                },
+                {
+                  "label": "leaven",
+                  "amount": 220
+                },
+                {
+                  "label": "main dough",
+                  "amount": 650
+                }
+              ]
+            },
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 920,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "poolish (75°F)",
+                  "amount": 200
+                },
+                {
+                  "label": "leaven (80°F)",
+                  "amount": 220
+                },
+                {
+                  "label": "main dough (74–75°F)",
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "id": "yeast",
+              "name": "Active Dry Yeast",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Mature Starter",
+              "total": 15,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 24,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [

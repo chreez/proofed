@@ -317,6 +317,76 @@ describe('Recipe JSON Validation', () => {
         }
       }
     })
+
+    // F33 (PF-237): every cook_log entry has an ingredients[] snapshot
+    it('every cook_log entry has an ingredients snapshot (F33)', () => {
+      if (recipe.cook_log) {
+        for (const entry of recipe.cook_log) {
+          expect(
+            entry.ingredients,
+            `cook_log entry ${entry.date} (v${entry.version}) is missing ingredients[] snapshot — run scripts/sync-ingredient-snapshots.ts`
+          ).toBeDefined()
+          expect(
+            Array.isArray(entry.ingredients),
+            `cook_log entry ${entry.date} ingredients must be an array`
+          ).toBe(true)
+          expect(
+            entry.ingredients!.length > 0,
+            `cook_log entry ${entry.date} ingredients[] must not be empty`
+          ).toBe(true)
+        }
+      }
+    })
+
+    // F34 (PF-237): every change_log entry has an ingredients[] snapshot
+    it('every change_log entry has an ingredients snapshot (F34)', () => {
+      if (recipe.change_log) {
+        for (const entry of recipe.change_log) {
+          expect(
+            entry.ingredients,
+            `change_log entry v${entry.version} is missing ingredients[] snapshot — run scripts/sync-ingredient-snapshots.ts`
+          ).toBeDefined()
+          expect(
+            Array.isArray(entry.ingredients),
+            `change_log entry v${entry.version} ingredients must be an array`
+          ).toBe(true)
+          expect(
+            entry.ingredients!.length > 0,
+            `change_log entry v${entry.version} ingredients[] must not be empty`
+          ).toBe(true)
+        }
+      }
+    })
+
+    // F35 (PF-237): snapshot ingredient breakdowns sum to total (D6 extension)
+    it('snapshot ingredient breakdown amounts sum to total (F35)', () => {
+      type Snap = NonNullable<NonNullable<typeof recipe.change_log>[number]['ingredients']>
+      const allSnapshots: Array<{ source: string; snapshot: Snap }> = []
+      if (recipe.change_log) {
+        for (const e of recipe.change_log) {
+          if (e.ingredients) allSnapshots.push({ source: `change_log v${e.version}`, snapshot: e.ingredients })
+        }
+      }
+      if (recipe.cook_log) {
+        for (const e of recipe.cook_log) {
+          if (e.ingredients) allSnapshots.push({ source: `cook_log ${e.date}`, snapshot: e.ingredients })
+        }
+      }
+
+      for (const { source, snapshot } of allSnapshots) {
+        for (const group of snapshot) {
+          for (const ing of group.ingredients) {
+            if (ing.breakdown && ing.breakdown.length > 0) {
+              const sum = ing.breakdown.reduce((acc, b) => acc + b.amount, 0)
+              expect(
+                Math.abs(sum - ing.total),
+                `${source} ingredient "${ing.name}" breakdown sum (${sum}) differs from total (${ing.total}) by more than 2g`
+              ).toBeLessThanOrEqual(2)
+            }
+          }
+        }
+      }
+    })
   })
 })
 

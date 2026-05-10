@@ -31,6 +31,37 @@ public/recipes/
 - Every state MUST have `exit_condition`
 - Ingredient breakdown sums MUST equal totals
 
+### Ingredient Snapshots (PF-237)
+
+Two parallel snapshot fields persist ingredient state at write time. Both are
+optional `IngredientSnapshotGroup[]` mirroring `stages[].gather.ingredients`
+grouped by stage.
+
+- **`change_log[].ingredients`** — canonical baseline frozen when a version
+  bump is committed. Answers "what did the recipe say at vX.Y.Z?"
+- **`cook_log[].ingredients`** — what the user actually used during a bake.
+  Defaults to a clone of the matching `change_log[]` snapshot at bake-log
+  write time; may carry experimental deltas (e.g. -40g flour). Amounts are
+  absolute grams (post-multiplier if scaling was used).
+
+**Authoring rules (CRITICAL):**
+
+1. Snapshots are **frozen at write time** and MUST NEVER be auto-mutated by
+   later version bumps. Historical bakes always render with the ingredients
+   they used, not the current recipe defaults.
+2. The `/feedback` skill writes `change_log[].ingredients` at every version
+   bump (clone of the new gather state).
+3. The `/bake-log` skill writes `cook_log[].ingredients` at cook_log entry
+   creation. Defaults to clone of the version baseline; if scratchpad or
+   bake_notes contain ingredient deltas (`-40g flour`, `+10g salt`), surface
+   a confirmation prompt and record the delta in the snapshot.
+4. `RecipePrintView` reads from snapshots first; falls back to
+   `stages[].gather.ingredients` only on un-migrated recipes (backward
+   compat). `cost.items[]` is for cost data only — it does NOT drive
+   ingredient amounts.
+5. **Backfill:** run `npx tsx scripts/sync-ingredient-snapshots.ts` to fill
+   missing snapshots. Idempotent — re-running on synced recipes is a no-op.
+
 ## Feature Workflow (STRICT ORDER)
 
 ```

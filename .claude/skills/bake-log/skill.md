@@ -555,6 +555,56 @@ After user confirms:
 3. **Append to existing `cook_log[]` array** (do not replace)
 4. If `cook_log` doesn't exist yet, create it
 
+### Per-Bake Ingredient Snapshot (PF-237) — REQUIRED
+
+Every COMPLETE cook_log entry (default flow + `--finalize`) must include an
+`ingredients[]` snapshot. This is the source of truth for what the user
+actually used during this bake.
+
+**Default behavior:**
+
+1. **Clone the version baseline** — find the matching `change_log[]` entry
+   for `entry.version` and clone its `ingredients[]` snapshot. This becomes
+   the bake's starting point.
+2. **Scan for ingredient deltas** in `bake_notes[]` and the raw user input.
+   Look for patterns like:
+   - `"-40g flour"`, `"+10g water"`, `"reduced salt to 8g"`
+   - `"used 550g instead of 510g"`, `"swapped out X for Y"`
+   - `"forgot the {ingredient}"`, `"doubled the {ingredient}"`
+3. **Surface a confirmation prompt** if any deltas detected:
+   ```
+   I noticed the notes mention an ingredient change:
+   - "{quoted phrase}"
+
+   Should I update the bake's ingredients snapshot to reflect this?
+   - flour: 510g → 470g (-40g)
+   - salt: 10g (no change)
+   ...
+
+   Or should I keep the version baseline as-is?
+   ```
+4. **Apply confirmed deltas** to the snapshot. Write the modified snapshot
+   to `cook_log[].ingredients`. Otherwise write the unchanged baseline.
+
+**Authoring rules:**
+
+- The snapshot is **frozen at write time**. Later version bumps to the
+  recipe MUST NEVER mutate this entry. Historical bakes always render with
+  what they used.
+- If `entry.version` doesn't match any `change_log[]` entry (e.g. unbumped
+  recipe), clone from current `stages[].gather.ingredients` instead.
+- Amounts are **absolute grams** post-multiplier. If the bake used scaling
+  (e.g. 0.5× the recipe), the snapshot stores the scaled values, not the
+  base × multiplier.
+- Cook Log Protocol applies — never infer deltas the user didn't state.
+  When in doubt, ask before recording.
+
+**Skip conditions:**
+
+- `--start` flag: skip (skeleton entry, no snapshot yet)
+- `--update` flag: skip until `--finalize` (snapshot is written once, on
+  finalization)
+
 ## Phase 4a: Weather Fetch (PF-193.1)
 
 After writing the cook_log entry (Phase 4), silently fetch outdoor weather for the bake date:

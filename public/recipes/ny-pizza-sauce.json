@@ -25,7 +25,64 @@
     {
       "version": "v1.0.0",
       "date": "2026-02-17",
-      "summary": "Initial recipe from r/Pizza wiki"
+      "summary": "Initial recipe from r/Pizza wiki",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Make Sauce",
+          "ingredients": [
+            {
+              "id": "crushed_tomatoes",
+              "name": "Sclafani Crushed Tomatoes",
+              "total": 794,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 57,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "basil",
+              "name": "Fresh Basil",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "oregano",
+              "name": "Dried Oregano",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar",
+              "name": "Sugar",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "garlic",
+              "name": "Garlic",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [

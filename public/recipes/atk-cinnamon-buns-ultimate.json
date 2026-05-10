@@ -25,22 +25,542 @@
     {
       "version": "v1.3.0",
       "date": "2026-02-11",
-      "summary": "Added internal temp doneness check (190°F / 88°C) to bake step exit condition"
+      "summary": "Added internal temp doneness check (190°F / 88°C) to bake step exit condition",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.2.0",
       "date": "2026-02-07",
-      "summary": "Reduced all sugars ~25% (brown 320→240g, granulated 100→75g, confectioners' 170→128g). Increased cream cheese 113→150g to offset thinner glaze."
+      "summary": "Reduced all sugars ~25% (brown 320→240g, granulated 100→75g, confectioners' 170→128g). Increased cream cheese 113→150g to offset thinner glaze.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.1.0",
       "date": "2026-02-05",
-      "summary": "Added rolling tips from research, cook log from first bake"
+      "summary": "Added rolling tips from research, cook log from first bake",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "version": "v1.0.0",
       "date": "2026-02-05",
-      "summary": "Initial recipe from ATK, adapted for stand mixer"
+      "summary": "Initial recipe from ATK, adapted for stand mixer",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "cook_log": [
@@ -146,7 +666,137 @@
         "humidity_avg_percent": 82,
         "condition": "Rain",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-02-05",
@@ -226,7 +876,137 @@
         "humidity_avg_percent": 57,
         "condition": "Clear sky",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-04-25",
@@ -300,24 +1080,258 @@
       },
       "cost": {
         "items": [
-          { "ingredientId": "butter", "name": "Unsalted Butter", "sourceType": "heb", "sourceName": "Hill Country Fare Unsalted Butter Sticks", "amount": 227, "unit": "g", "cost": 1.49 },
-          { "ingredientId": "flour", "name": "All-Purpose Flour", "sourceType": "heb", "sourceName": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour", "amount": 531, "unit": "g", "cost": 0.89 },
-          { "ingredientId": "cornstarch", "name": "Cornstarch", "sourceType": "heb", "sourceName": "Hill Country Fare Corn Starch", "amount": 64, "unit": "g", "cost": 0.24 },
-          { "ingredientId": "granulated_sugar", "name": "Granulated Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Granulated Sugar", "amount": 75, "unit": "g", "cost": 0.11 },
-          { "ingredientId": "brown_sugar", "name": "Light Brown Sugar", "sourceType": "heb", "sourceName": "C&H Premium Pure Cane Light Brown Sugar", "amount": 240, "unit": "g", "cost": 0.69 },
-          { "ingredientId": "powdered_sugar", "name": "Confectioners' Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Confectioners Powdered Sugar", "amount": 128, "unit": "g", "cost": 0.26 },
-          { "ingredientId": "milk", "name": "Whole Milk", "sourceType": "heb", "sourceName": "H-E-B Whole Milk", "amount": 192, "unit": "g", "cost": 0.41 },
-          { "ingredientId": "cream_cheese", "name": "Cream Cheese", "sourceType": "heb", "sourceName": "Hill Country Fare Cream Cheese", "amount": 150, "unit": "g", "cost": 0.98 },
-          { "ingredientId": "eggs", "name": "Large Eggs", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 3, "unit": "whole", "cost": 0.47 },
-          { "ingredientId": "yeast", "name": "Instant Yeast", "sourceType": "heb", "sourceName": "Hill Country Fare Fast-Rise Instant Yeast", "amount": 7, "unit": "g", "cost": 0.33 },
-          { "ingredientId": "cinnamon", "name": "Ground Cinnamon", "sourceType": "heb", "sourceName": "H-E-B Ground Cinnamon Seasoning", "amount": 10, "unit": "g", "cost": 0.65 },
-          { "ingredientId": "salt", "name": "Salt", "sourceType": "heb", "sourceName": "H-E-B Iodized Salt", "amount": 11, "unit": "g", "cost": 0.01 },
-          { "ingredientId": "vanilla", "name": "Vanilla Extract", "sourceType": "heb", "sourceName": "Adams Best Twice as Strong Vanilla Extract", "amount": 5, "unit": "g", "cost": 0.34 }
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter Sticks",
+            "amount": 227,
+            "unit": "g",
+            "cost": 1.49
+          },
+          {
+            "ingredientId": "flour",
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour",
+            "amount": 531,
+            "unit": "g",
+            "cost": 0.89
+          },
+          {
+            "ingredientId": "cornstarch",
+            "name": "Cornstarch",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Corn Starch",
+            "amount": 64,
+            "unit": "g",
+            "cost": 0.24
+          },
+          {
+            "ingredientId": "granulated_sugar",
+            "name": "Granulated Sugar",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Granulated Sugar",
+            "amount": 75,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "brown_sugar",
+            "name": "Light Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "C&H Premium Pure Cane Light Brown Sugar",
+            "amount": 240,
+            "unit": "g",
+            "cost": 0.69
+          },
+          {
+            "ingredientId": "powdered_sugar",
+            "name": "Confectioners' Sugar",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Confectioners Powdered Sugar",
+            "amount": 128,
+            "unit": "g",
+            "cost": 0.26
+          },
+          {
+            "ingredientId": "milk",
+            "name": "Whole Milk",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Whole Milk",
+            "amount": 192,
+            "unit": "g",
+            "cost": 0.41
+          },
+          {
+            "ingredientId": "cream_cheese",
+            "name": "Cream Cheese",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Cream Cheese",
+            "amount": 150,
+            "unit": "g",
+            "cost": 0.98
+          },
+          {
+            "ingredientId": "eggs",
+            "name": "Large Eggs",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs",
+            "amount": 3,
+            "unit": "whole",
+            "cost": 0.47
+          },
+          {
+            "ingredientId": "yeast",
+            "name": "Instant Yeast",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Fast-Rise Instant Yeast",
+            "amount": 7,
+            "unit": "g",
+            "cost": 0.33
+          },
+          {
+            "ingredientId": "cinnamon",
+            "name": "Ground Cinnamon",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Ground Cinnamon Seasoning",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.65
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Salt",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Iodized Salt",
+            "amount": 11,
+            "unit": "g",
+            "cost": 0.01
+          },
+          {
+            "ingredientId": "vanilla",
+            "name": "Vanilla Extract",
+            "sourceType": "heb",
+            "sourceName": "Adams Best Twice as Strong Vanilla Extract",
+            "amount": 5,
+            "unit": "g",
+            "cost": 0.34
+          }
         ],
         "total": 6.87,
         "perServing": 0.86,
         "servings": 8
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2026-04-26",
@@ -329,7 +1343,9 @@
         "Added more espresso powder in icing — nailed the complementary flavor that was undetectable in the 2/10 bake"
       ],
       "next_time": [
-        { "text": "Keep using strip-cut method — pizza cutter into strips, roll individually" }
+        {
+          "text": "Keep using strip-cut method — pizza cutter into strips, roll individually"
+        }
       ],
       "photos": [
         {
@@ -347,19 +1363,123 @@
       ],
       "cost": {
         "items": [
-          { "ingredientId": "butter", "name": "Unsalted Butter", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 227, "unit": "g", "cost": 2.46 },
-          { "ingredientId": "flour", "name": "All-Purpose Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached All-Purpose Flour", "amount": 531, "unit": "g", "cost": 1.17 },
-          { "ingredientId": "cornstarch", "name": "Cornstarch", "sourceType": "heb", "sourceName": "Argo Corn Starch", "amount": 64, "unit": "g", "cost": 0.34 },
-          { "ingredientId": "granulated_sugar", "name": "Granulated Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Granulated Sugar", "amount": 75, "unit": "g", "cost": 0.11 },
-          { "ingredientId": "brown_sugar", "name": "Light Brown Sugar", "sourceType": "heb", "sourceName": "C&H Premium Pure Cane Light Brown Sugar", "amount": 240, "unit": "g", "cost": 0.69 },
-          { "ingredientId": "powdered_sugar", "name": "Confectioners' Sugar", "sourceType": "heb", "sourceName": "Hill Country Fare Confectioners Powdered Sugar", "amount": 128, "unit": "g", "cost": 0.26 },
-          { "ingredientId": "milk", "name": "Whole Milk", "sourceType": "heb", "sourceName": "Park Manor Whole Milk", "amount": 192, "unit": "g", "cost": 0.17 },
-          { "ingredientId": "cream_cheese", "name": "Cream Cheese", "sourceType": "heb", "sourceName": "Hill Country Fare Cream Cheese", "amount": 150, "unit": "g", "cost": 0.98 },
-          { "ingredientId": "eggs", "name": "Large Eggs", "sourceType": "heb", "sourceName": "Sunups Grade A Large White Eggs", "amount": 3, "unit": "whole", "cost": 0.42 },
-          { "ingredientId": "yeast", "name": "Instant Yeast", "sourceType": "heb", "sourceName": "Hill Country Fare Fast-Rise Instant Yeast", "amount": 7, "unit": "g", "cost": 0.33 },
-          { "ingredientId": "cinnamon", "name": "Ground Cinnamon", "sourceType": "heb", "sourceName": "Hill Country Fare Ground Cinnamon", "amount": 10, "unit": "g", "cost": 0.15 },
-          { "ingredientId": "salt", "name": "Salt", "sourceType": "heb", "sourceName": "H-E-B Iodized Salt", "amount": 11, "unit": "g", "cost": 0.01 },
-          { "ingredientId": "vanilla", "name": "Vanilla Extract", "sourceType": "heb", "sourceName": "H-E-B Pure Madagascar Bourbon Vanilla Extract", "amount": 5, "unit": "g", "cost": 0.44 }
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 227,
+            "unit": "g",
+            "cost": 2.46
+          },
+          {
+            "ingredientId": "flour",
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached All-Purpose Flour",
+            "amount": 531,
+            "unit": "g",
+            "cost": 1.17
+          },
+          {
+            "ingredientId": "cornstarch",
+            "name": "Cornstarch",
+            "sourceType": "heb",
+            "sourceName": "Argo Corn Starch",
+            "amount": 64,
+            "unit": "g",
+            "cost": 0.34
+          },
+          {
+            "ingredientId": "granulated_sugar",
+            "name": "Granulated Sugar",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Granulated Sugar",
+            "amount": 75,
+            "unit": "g",
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "brown_sugar",
+            "name": "Light Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "C&H Premium Pure Cane Light Brown Sugar",
+            "amount": 240,
+            "unit": "g",
+            "cost": 0.69
+          },
+          {
+            "ingredientId": "powdered_sugar",
+            "name": "Confectioners' Sugar",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Confectioners Powdered Sugar",
+            "amount": 128,
+            "unit": "g",
+            "cost": 0.26
+          },
+          {
+            "ingredientId": "milk",
+            "name": "Whole Milk",
+            "sourceType": "heb",
+            "sourceName": "Park Manor Whole Milk",
+            "amount": 192,
+            "unit": "g",
+            "cost": 0.17
+          },
+          {
+            "ingredientId": "cream_cheese",
+            "name": "Cream Cheese",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Cream Cheese",
+            "amount": 150,
+            "unit": "g",
+            "cost": 0.98
+          },
+          {
+            "ingredientId": "eggs",
+            "name": "Large Eggs",
+            "sourceType": "heb",
+            "sourceName": "Sunups Grade A Large White Eggs",
+            "amount": 3,
+            "unit": "whole",
+            "cost": 0.42
+          },
+          {
+            "ingredientId": "yeast",
+            "name": "Instant Yeast",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Fast-Rise Instant Yeast",
+            "amount": 7,
+            "unit": "g",
+            "cost": 0.33
+          },
+          {
+            "ingredientId": "cinnamon",
+            "name": "Ground Cinnamon",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Ground Cinnamon",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.15
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Salt",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Iodized Salt",
+            "amount": 11,
+            "unit": "g",
+            "cost": 0.01
+          },
+          {
+            "ingredientId": "vanilla",
+            "name": "Vanilla Extract",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Madagascar Bourbon Vanilla Extract",
+            "amount": 5,
+            "unit": "g",
+            "cost": 0.44
+          }
         ],
         "total": 7.53,
         "perServing": 0.94,
@@ -373,7 +1493,137 @@
         "humidity_avg_percent": 81,
         "condition": "Drizzle",
         "source": "open-meteo"
-      }
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [

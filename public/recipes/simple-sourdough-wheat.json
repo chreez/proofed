@@ -27,7 +27,75 @@
     {
       "version": "v1.0.0",
       "date": "2026-03-09",
-      "summary": "Initial recipe branched from Simple Sourdough v2.0.0. 80/15/5 bread/whole wheat/rye flour blend at 74% hydration and 15% inoculation, based on 18-source research spike."
+      "summary": "Initial recipe branched from Simple Sourdough v2.0.0. 80/15/5 bread/whole wheat/rye flour blend at 74% hydration and 15% inoculation, based on 18-source research spike.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 800,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PF-166.1 research spike — 80% bread flour retains strong gluten network",
+              "confidence": "high",
+              "rationale": "80% bread flour maintains oven spring and open crumb while allowing 20% whole grain for flavor. King Arthur Bread Flour (12.7% protein) recommended."
+            },
+            {
+              "id": "whole_wheat_flour",
+              "name": "Whole Wheat Flour",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "The Perfect Loaf, King Arthur, Tartine, The Clever Carrot consensus",
+              "confidence": "high",
+              "rationale": "15% whole wheat — sweet spot for nutty, earthy flavor without degrading handling. More impactful than Tartine's 10%, more manageable than 25%+."
+            },
+            {
+              "id": "dark_rye_flour",
+              "name": "Dark Rye Flour",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Breadtopia, Grant Bakes, yoursourdoughstart.com, Pain de Campagne tradition",
+              "confidence": "high",
+              "rationale": "5% dark rye adds fruity, spicy complexity that whole wheat alone cannot provide. Traditional country bread accent. Also slows staling via pentosans."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 740,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "King Arthur, yoursourdoughstart.com, The Perfect Loaf hydration guides",
+              "confidence": "high",
+              "rationale": "74% hydration — +4% over base recipe to compensate for bran absorption. Whole grain bran absorbs 2-3x its weight in water. Conservative start — can go to 75% if dough feels tight."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "The Perfect Loaf, The Sourdough Framework, sourdoughtalk.com",
+              "confidence": "high",
+              "rationale": "15% inoculation — reduced from 20% to offset faster fermentation from whole grains. Whole grain is more enzymatically active. This keeps the same overnight bulk ferment window."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor."
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -999,6 +1067,74 @@
           "end": "2026-04-21T14:45:00.000Z",
           "duration_min": 585,
           "notes": "Shaped ~11pm, into fridge ~midnight. First loaf pulled ~9:45am."
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 800,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PF-166.1 research spike — 80% bread flour retains strong gluten network",
+              "confidence": "high",
+              "rationale": "80% bread flour maintains oven spring and open crumb while allowing 20% whole grain for flavor. King Arthur Bread Flour (12.7% protein) recommended."
+            },
+            {
+              "id": "whole_wheat_flour",
+              "name": "Whole Wheat Flour",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "The Perfect Loaf, King Arthur, Tartine, The Clever Carrot consensus",
+              "confidence": "high",
+              "rationale": "15% whole wheat — sweet spot for nutty, earthy flavor without degrading handling. More impactful than Tartine's 10%, more manageable than 25%+."
+            },
+            {
+              "id": "dark_rye_flour",
+              "name": "Dark Rye Flour",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Breadtopia, Grant Bakes, yoursourdoughstart.com, Pain de Campagne tradition",
+              "confidence": "high",
+              "rationale": "5% dark rye adds fruity, spicy complexity that whole wheat alone cannot provide. Traditional country bread accent. Also slows staling via pentosans."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 740,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "King Arthur, yoursourdoughstart.com, The Perfect Loaf hydration guides",
+              "confidence": "high",
+              "rationale": "74% hydration — +4% over base recipe to compensate for bran absorption. Whole grain bran absorbs 2-3x its weight in water. Conservative start — can go to 75% if dough feels tight."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "The Perfect Loaf, The Sourdough Framework, sourdoughtalk.com",
+              "confidence": "high",
+              "rationale": "15% inoculation — reduced from 20% to offset faster fermentation from whole grains. Whole grain is more enzymatically active. This keeps the same overnight bulk ferment window."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor."
+            }
+          ]
         }
       ]
     }
