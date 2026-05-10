@@ -8,9 +8,37 @@
  * (matches StatsPage AC #11). Aberrations excluded from typeCounts and the
  * recipeBakeCount, but counted in the lifetime daysBaked / cadence figure
  * (mirrors StatsPage calendarBakeCount semantics).
+ *
+ * PF-240: entries with `excludeFromStats === true` (or whose recipe sets
+ * `config.excludeFromStatsDefault === true` without an explicit per-entry
+ * override) are omitted from EVERY stats surface — cadence, spend, counts,
+ * and calories. Independent of the aberration filter; both can apply.
  */
 import { ref, type Ref } from 'vue'
-import type { Recipe, RecipeManifest, CookLogEntry } from '@/types/recipe'
+import type { Recipe, RecipeManifest, CookLogEntry, RecipeConfig } from '@/types/recipe'
+
+/**
+ * PF-240. Returns true if this entry should be EXCLUDED from stats roll-ups
+ * (cadence, spend, counts, calories). Resolution order:
+ *   1. entry.excludeFromStats === true   → excluded
+ *   2. recipeConfig.excludeFromStatsDefault === true AND entry doesn't
+ *      explicitly set excludeFromStats: false → excluded
+ *   3. otherwise → included (function returns false)
+ *
+ * Aberration is intentionally NOT consulted here (per AC #3, flags are
+ * independent). Callers that also want to filter aberrations compose the
+ * predicates: `isExcludedFromStats(e, cfg) || e.aberration`.
+ */
+export function isExcludedFromStats(
+  entry: CookLogEntry,
+  recipeConfig?: RecipeConfig | null,
+): boolean {
+  if (entry.excludeFromStats === true) return true
+  if (recipeConfig?.excludeFromStatsDefault === true && entry.excludeFromStats !== false) {
+    return true
+  }
+  return false
+}
 
 // Mirrors StatsPage.vue lines 69-78 — keep in sync.
 export const SHARE_GROUP_ICONS: Record<string, string> = {
@@ -177,23 +205,29 @@ export function computeBakeAggregates(recipes: Recipe[], today: Date = new Date(
 
   for (const recipe of recipes) {
     const cookLog = recipe.cook_log ?? []
-    const completed = cookLog.filter((e) => e.status !== 'in_progress')
+    // PF-240: drop entries flagged excludeFromStats (or recipe-default-excluded)
+    // BEFORE every aggregate. The flag is independent of `aberration` — both
+    // filters compose at the calorie + group-count sites below.
+    const countable = cookLog.filter(
+      (e) => e.status !== 'in_progress' && !isExcludedFromStats(e, recipe.config),
+    )
 
-    // Lifetime cadence — ALL completed dates, including aberrations
-    for (const e of completed) {
+    // Lifetime cadence — every countable date (still includes aberrations)
+    for (const e of countable) {
       allDates.add(e.date)
     }
 
-    // Lifetime spend — every completed entry's cost.total
-    for (const e of completed) {
+    // Lifetime spend — every countable entry's cost.total
+    for (const e of countable) {
       if (e.cost) lifetimeSpend += e.cost.total
     }
 
-    // Calories — recipes without nutrition silently skipped
+    // Calories — recipes without nutrition silently skipped; aberrations
+    // also excluded here (independent filter, layered on top of stats-exclude)
     const stats = recipe.config?.stats
     const caloriesPerServing = recipe.nutrition?.perServing?.calories ?? null
     if (stats && caloriesPerServing != null) {
-      const normal = completed.filter((e) => !e.aberration)
+      const normal = countable.filter((e) => !e.aberration)
       for (const e of normal) {
         const items = e.actual_yield?.value ?? stats.defaultYield
         const servings = items * stats.servingsPerItem
@@ -203,7 +237,7 @@ export function computeBakeAggregates(recipes: Recipe[], today: Date = new Date(
 
     // Group counts — Aberrations excluded entirely (skip group)
     if (stats && stats.group !== 'Aberrations') {
-      const normal = completed.filter((e) => !e.aberration)
+      const normal = countable.filter((e) => !e.aberration)
       if (normal.length > 0) {
         groupCounts.set(stats.group, (groupCounts.get(stats.group) ?? 0) + normal.length)
       }
@@ -258,12 +292,16 @@ export function computeBakeAggregates(recipes: Recipe[], today: Date = new Date(
   }
 }
 
-/** Recipe-specific aggregates (count of non-aberration completed bakes) */
+/** Recipe-specific aggregates (count of non-aberration completed bakes).
+ *  PF-240: also skips entries marked `excludeFromStats` (or recipe-default-excluded). */
 export function computeRecipeAggregates(recipe: Recipe | null | undefined): RecipeAggregates {
   if (!recipe) return { recipeBakeCount: 0 }
   const cookLog = recipe.cook_log ?? []
   const recipeBakeCount = cookLog.filter(
-    (e) => e.status !== 'in_progress' && !e.aberration,
+    (e) =>
+      e.status !== 'in_progress' &&
+      !e.aberration &&
+      !isExcludedFromStats(e, recipe.config),
   ).length
   return { recipeBakeCount }
 }

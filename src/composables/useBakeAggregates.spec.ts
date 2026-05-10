@@ -409,3 +409,177 @@ describe('computeRecipeAggregates', () => {
     expect(computeRecipeAggregates(recipe).recipeBakeCount).toBe(0)
   })
 })
+
+// ---------------------------------------------------------------------------
+// PF-240 — excludeFromStats filter (5 tests covering AC #11-15)
+// ---------------------------------------------------------------------------
+
+describe('computeBakeAggregates — excludeFromStats (PF-240)', () => {
+  const fixedToday = new Date(2026, 4, 5) // 2026-05-05
+
+  it('AC #11: same-date entries — daysBaked counts the date once, lifetimeSpend skips excluded', () => {
+    // Two entries on the same date for the same recipe: one normal, one
+    // excluded. Cadence still counts the date (because the normal entry
+    // exists), but lifetimeSpend only sees the non-excluded entry's cost.
+    const recipes = [
+      makeRecipe({
+        config: {
+          early_check_percent: 75,
+          stats: { group: 'Sourdough Breads', defaultYield: 1, unit: 'loaf', servingsPerItem: 10, servingUnit: 'slices' },
+        },
+        cook_log: [
+          { date: '2026-04-01', version: 'v1', notes: [], cost: { total: 5, perServing: 0.5, servings: 10, items: [] } },
+          { date: '2026-04-01', version: 'v1', notes: [], excludeFromStats: true, cost: { total: 99, perServing: 9.9, servings: 10, items: [] } },
+        ],
+      }),
+    ]
+    const r = computeBakeAggregates(recipes, fixedToday)
+    // Cadence: only the non-excluded entry contributes (excluded one is dropped).
+    expect(r.daysBaked).toBe(1)
+    expect(r.lifetimeSpend).toBe(5)
+    expect(r.totalBakes).toBe(1)
+  })
+
+  it('AC #12: single excluded entry — every aggregate is zero', () => {
+    const recipes = [
+      makeRecipe({
+        config: {
+          early_check_percent: 75,
+          stats: { group: 'Sourdough Breads', defaultYield: 1, unit: 'loaf', servingsPerItem: 10, servingUnit: 'slices' },
+        },
+        nutrition: {
+          servings: 10,
+          calculatedDate: '2026-01-01',
+          dataSource: 'usda',
+          totals: { calories: 1000, protein: 0, totalFat: 0, saturatedFat: 0, carbohydrates: 0, sugar: 0, fiber: 0, sodium: 0 },
+          perServing: { calories: 100, protein: 0, totalFat: 0, saturatedFat: 0, carbohydrates: 0, sugar: 0, fiber: 0, sodium: 0 },
+          breakdown: [],
+        },
+        cook_log: [
+          { date: '2026-04-01', version: 'v1', notes: [], excludeFromStats: true, cost: { total: 12, perServing: 1.2, servings: 10, items: [] } },
+        ],
+      }),
+    ]
+    const r = computeBakeAggregates(recipes, fixedToday)
+    expect(r.daysBaked).toBe(0)
+    expect(r.lifetimeSpend).toBe(0)
+    expect(r.totalBakes).toBe(0)
+    expect(r.totalCalories).toBe(0)
+    expect(r.typeCounts).toEqual([])
+  })
+
+  it('AC #13: aberration=true + excludeFromStats=false — independent flags compose', () => {
+    // Aberration filter keeps the entry out of calories + group counts but
+    // counts it in cadence + spend. excludeFromStats: false (explicit) means
+    // the stats filter does NOT additionally drop it. Confirms flags are
+    // independent — neither subsumes the other.
+    const recipes = [
+      makeRecipe({
+        config: {
+          early_check_percent: 75,
+          stats: { group: 'Sourdough Breads', defaultYield: 1, unit: 'loaf', servingsPerItem: 10, servingUnit: 'slices' },
+        },
+        nutrition: {
+          servings: 10,
+          calculatedDate: '2026-01-01',
+          dataSource: 'usda',
+          totals: { calories: 1000, protein: 0, totalFat: 0, saturatedFat: 0, carbohydrates: 0, sugar: 0, fiber: 0, sodium: 0 },
+          perServing: { calories: 100, protein: 0, totalFat: 0, saturatedFat: 0, carbohydrates: 0, sugar: 0, fiber: 0, sodium: 0 },
+          breakdown: [],
+        },
+        cook_log: [
+          { date: '2026-04-01', version: 'v1', notes: [], aberration: true, excludeFromStats: false, cost: { total: 7, perServing: 0.7, servings: 10, items: [] } },
+        ],
+      }),
+    ]
+    const r = computeBakeAggregates(recipes, fixedToday)
+    // Aberration → no calories, no group count
+    expect(r.totalCalories).toBe(0)
+    expect(r.typeCounts).toEqual([])
+    expect(r.totalBakes).toBe(0)
+    // Not stats-excluded → cadence + spend still count it
+    expect(r.daysBaked).toBe(1)
+    expect(r.lifetimeSpend).toBe(7)
+  })
+
+  it('AC #14: aberration=false + excludeFromStats=true — entry is fully out', () => {
+    const recipes = [
+      makeRecipe({
+        config: {
+          early_check_percent: 75,
+          stats: { group: 'Sourdough Breads', defaultYield: 1, unit: 'loaf', servingsPerItem: 10, servingUnit: 'slices' },
+        },
+        nutrition: {
+          servings: 10,
+          calculatedDate: '2026-01-01',
+          dataSource: 'usda',
+          totals: { calories: 1000, protein: 0, totalFat: 0, saturatedFat: 0, carbohydrates: 0, sugar: 0, fiber: 0, sodium: 0 },
+          perServing: { calories: 100, protein: 0, totalFat: 0, saturatedFat: 0, carbohydrates: 0, sugar: 0, fiber: 0, sodium: 0 },
+          breakdown: [],
+        },
+        cook_log: [
+          { date: '2026-04-01', version: 'v1', notes: [], aberration: false, excludeFromStats: true, cost: { total: 9, perServing: 0.9, servings: 10, items: [] } },
+        ],
+      }),
+    ]
+    const r = computeBakeAggregates(recipes, fixedToday)
+    expect(r.daysBaked).toBe(0)
+    expect(r.lifetimeSpend).toBe(0)
+    expect(r.totalCalories).toBe(0)
+    expect(r.typeCounts).toEqual([])
+    expect(r.totalBakes).toBe(0)
+  })
+
+  it('AC #15: recipe.config.excludeFromStatsDefault=true — entries default to excluded; per-entry false opts in', () => {
+    // Recipe-level default excludes everything UNLESS an entry sets
+    // excludeFromStats: false explicitly. This is the read-time companion
+    // to /bake-log skill writing the default at entry-creation time.
+    const recipes = [
+      makeRecipe({
+        config: {
+          early_check_percent: 75,
+          stats: { group: 'Sourdough Breads', defaultYield: 1, unit: 'loaf', servingsPerItem: 10, servingUnit: 'slices' },
+          excludeFromStatsDefault: true,
+        },
+        cook_log: [
+          // Entry A: no per-entry flag → falls under default → excluded
+          { date: '2026-04-01', version: 'v1', notes: [], cost: { total: 5, perServing: 0.5, servings: 10, items: [] } },
+          // Entry B: explicit false → overrides default → counted
+          { date: '2026-05-01', version: 'v1', notes: [], excludeFromStats: false, cost: { total: 8, perServing: 0.8, servings: 10, items: [] } },
+        ],
+      }),
+    ]
+    const r = computeBakeAggregates(recipes, fixedToday)
+    // Only entry B counts
+    expect(r.daysBaked).toBe(1)
+    expect(r.lifetimeSpend).toBe(8)
+    expect(r.totalBakes).toBe(1)
+    expect(r.typeCounts[0]?.label).toBe('Sourdough Breads')
+    expect(r.typeCounts[0]?.count).toBe(1)
+  })
+})
+
+describe('computeRecipeAggregates — excludeFromStats (PF-240)', () => {
+  it('skips excludeFromStats entries from recipeBakeCount', () => {
+    const recipe = makeRecipe({
+      cook_log: [
+        { date: '2026-01-01', version: 'v1', notes: [] },
+        { date: '2026-02-01', version: 'v1', notes: [], excludeFromStats: true },
+        { date: '2026-03-01', version: 'v1', notes: [] },
+      ],
+    })
+    expect(computeRecipeAggregates(recipe).recipeBakeCount).toBe(2)
+  })
+
+  it('honors recipe.config.excludeFromStatsDefault unless entry overrides', () => {
+    const recipe = makeRecipe({
+      config: { early_check_percent: 75, excludeFromStatsDefault: true },
+      cook_log: [
+        { date: '2026-01-01', version: 'v1', notes: [] }, // default → excluded
+        { date: '2026-02-01', version: 'v1', notes: [], excludeFromStats: false }, // override → counted
+        { date: '2026-03-01', version: 'v1', notes: [], excludeFromStats: true }, // explicit → excluded
+      ],
+    })
+    expect(computeRecipeAggregates(recipe).recipeBakeCount).toBe(1)
+  })
+})

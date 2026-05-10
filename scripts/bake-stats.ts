@@ -61,6 +61,9 @@ interface CookLogEntry {
   actual_yield?: { value: number; unit: string }
   aberration?: boolean
   aberration_note?: string
+  /** PF-240: omit this entry from stats roll-ups */
+  excludeFromStats?: boolean
+  status?: 'in_progress' | 'complete'
 }
 
 interface RecipeConfig {
@@ -73,6 +76,8 @@ interface RecipeConfig {
     servingsPerItem: number
     servingUnit: string
   }
+  /** PF-240: default new cook_log entries to excludeFromStats: true */
+  excludeFromStatsDefault?: boolean
 }
 
 interface RecipeJSON {
@@ -111,6 +116,10 @@ interface RecipeStats {
   subgroup: string | null
   current_version: string
   bake_count: number
+  /** PF-240: count of entries excluded via excludeFromStats (or recipe default).
+   *  Reported here for visibility — already removed from `bake_count`,
+   *  `cost`, and group rollups. */
+  excluded_bakes: number
   first_bake: string | null
   last_bake: string | null
   total_photos: number
@@ -195,7 +204,21 @@ function buildSnapshot(): Snapshot {
   const recipes: RecipeStats[] = index.recipes.map((entry) => {
     const raw = readFileSync(join(RECIPES_DIR, entry.file), 'utf-8')
     const recipe: RecipeJSON = JSON.parse(raw)
-    const log = recipe.cook_log ?? []
+    const fullLog = recipe.cook_log ?? []
+    // PF-240: split into countable vs excluded. Approach (per SKILL.md):
+    // excluded entries are removed from rolled-up counts (bake_count,
+    // by_group, totals, costs) AND surfaced under per-recipe `excluded_bakes`
+    // so they remain visible without inflating headline numbers.
+    const cfg = recipe.config
+    const excludedFromStats = (e: CookLogEntry): boolean => {
+      if (e.excludeFromStats === true) return true
+      if (cfg?.excludeFromStatsDefault === true && e.excludeFromStats !== false) return true
+      return false
+    }
+    // status === 'in_progress' is also dropped so a half-completed bake doesn't
+    // pollute counts (mirrors useBakeAggregates).
+    const log = fullLog.filter((e) => e.status !== 'in_progress' && !excludedFromStats(e))
+    const excludedCount = fullLog.filter(excludedFromStats).length
     const stats = recipe.config?.stats
     const group = stats?.group ?? 'Ungrouped'
     const subgroup = stats?.subgroup ?? null
@@ -285,6 +308,7 @@ function buildSnapshot(): Snapshot {
       subgroup,
       current_version: recipe.version,
       bake_count: log.length,
+      excluded_bakes: excludedCount,
       first_bake: dates[0] ?? null,
       last_bake: dates[dates.length - 1] ?? null,
       total_photos: photos,
