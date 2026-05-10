@@ -186,6 +186,15 @@ export interface RecipeConfig {
   early_check_percent: number
   stats?: RecipeStats
   bakeStatsSchema?: BakeStatsSchema
+  /**
+   * When true, every new cook_log entry created via /bake-log defaults to
+   * `excludeFromStats: true` unless the user overrides per-bake. Useful for
+   * recipes that are inherently atypical (e.g. ongoing experiments) and
+   * shouldn't roll into lifetime cadence/spend/counts. Treated as `false`
+   * when absent. Per-entry `excludeFromStats: false` overrides this default
+   * for that entry. Independent of `aberration` (PF-240).
+   */
+  excludeFromStatsDefault?: boolean
 }
 
 // Per-bake structured stats (Option A — flat scalars + arrays).
@@ -456,6 +465,18 @@ export interface CookLogEntry {
   actual_yield?: CookLogYield
   aberration?: boolean
   aberration_note?: string
+  /**
+   * When true, this entry is omitted from ALL stats roll-ups
+   * (lifetime cadence dates, lifetime spend, group/type counts, total bakes,
+   * lifetime calories). Entry still renders normally on the recipe page and
+   * bake detail page — there is no visual badge. Treated as `false` when
+   * absent. Independent of `aberration` (PF-240):
+   * - `aberration` flags an atypical bake — skips hero photo selection,
+   *   calories, and group counts, but still counted in cadence + spend.
+   * - `excludeFromStats` opts the entry out of every stats surface.
+   * Both flags can be set; they compose.
+   */
+  excludeFromStats?: boolean
   /**
    * User-rated outcome of this bake. Set via the Instagram share workflow
    * (PF-234) when the user picks an outcome. Field is absent if the user

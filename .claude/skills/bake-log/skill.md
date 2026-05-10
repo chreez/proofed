@@ -552,8 +552,9 @@ After user confirms:
 2. **Both `bake_stats` and `bake_notes` are optional.** Omit them if not captured:
    - `bake_stats`: omit entirely if Phase 2b was skipped or yielded nothing. Omit individual field arrays within `bake_stats` if that field was skipped or had no data.
    - `bake_notes`: always write when any notes are captured (replaces deprecated `raw_notes`). Omit only for skeleton `--start` entries with no initial notes.
-3. **Append to existing `cook_log[]` array** (do not replace)
-4. If `cook_log` doesn't exist yet, create it
+3. **`excludeFromStats` default (PF-240):** If `recipe.config.excludeFromStatsDefault === true`, pre-fill the new entry's `excludeFromStats: true`. During the echo check (Phase 3), surface this default and offer the user a chance to override per-bake (set `excludeFromStats: false` to opt this entry into stats). If the recipe does NOT set the default, do not add the field unless the user explicitly asks to exclude this bake.
+4. **Append to existing `cook_log[]` array** (do not replace)
+5. If `cook_log` doesn't exist yet, create it
 
 ## Phase 4a: Weather Fetch (PF-193.1)
 

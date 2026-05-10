@@ -46,7 +46,7 @@ Script handles everything: reads recipes, compiles stats, writes file, copies cl
   "recipes": [
     {
       "id": "...", "name": "...", "group": "...", "subgroup": null,
-      "current_version": "v1.3.0", "bake_count": 5,
+      "current_version": "v1.3.0", "bake_count": 5, "excluded_bakes": 0,
       "first_bake": "...", "last_bake": "...",
       "total_photos": 23, "versions_used": ["v1.0.0"],
       "next_time_count": 8, "aberrations": 0, "has_bake_stats": true,
@@ -55,6 +55,23 @@ Script handles everything: reads recipes, compiles stats, writes file, copies cl
   ]
 }
 ```
+
+## Stats-Excluded Entries (PF-240)
+
+Cook log entries with `excludeFromStats: true` (or recipes whose
+`config.excludeFromStatsDefault: true` applies) are **removed** from every
+rolled-up count: `bake_count`, `total_bakes`, `by_group.*.bakes`,
+`recipes_baked` (when zero countable bakes remain), photos, cost totals,
+date_range, and `versions_used`.
+
+The chosen approach is **omit-and-surface**: excluded entries do not inflate
+headline numbers, but the per-recipe `excluded_bakes` field reports the count
+so the snapshot remains a complete picture of what's in the cook log. Use
+`excluded_bakes` to spot recipes where exclusion is in play (e.g., one-off
+experimental bakes) without polluting the comparable stats.
+
+In-progress entries (`status: "in_progress"`) are also excluded from the
+rollups via the same filter; they are not yet completed bakes.
 
 ## File Location
 
