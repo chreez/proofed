@@ -1,10 +1,10 @@
 ---
 id: PF-245
 title: 'Fix HTML semantics warning: tr outside tbody in demo tables'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-10 02:56'
-updated_date: '2026-05-10 04:09'
+updated_date: '2026-05-10 04:51'
 labels:
   - bug
   - demo

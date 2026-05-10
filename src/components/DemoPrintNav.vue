@@ -37,11 +37,13 @@ const printUrl = `/recipe/${demoRecipeId}/print`
           </div>
         </div>
         <table class="pros-cons">
-          <tr><td class="pro">Discoverable</td><td>Always visible in header</td></tr>
-          <tr><td class="pro">Familiar</td><td>Print icon is universally understood</td></tr>
-          <tr><td class="pro">Mobile-ready</td><td>Icon button meets 44px touch target</td></tr>
-          <tr><td class="con">Adds chrome</td><td>Second icon in header — still minimal</td></tr>
-          <tr><td class="con">Visibility</td><td>Only shows on recipe pages with cook_log (matches Share behavior)</td></tr>
+          <tbody>
+            <tr><td class="pro">Discoverable</td><td>Always visible in header</td></tr>
+            <tr><td class="pro">Familiar</td><td>Print icon is universally understood</td></tr>
+            <tr><td class="pro">Mobile-ready</td><td>Icon button meets 44px touch target</td></tr>
+            <tr><td class="con">Adds chrome</td><td>Second icon in header — still minimal</td></tr>
+            <tr><td class="con">Visibility</td><td>Only shows on recipe pages with cook_log (matches Share behavior)</td></tr>
+          </tbody>
         </table>
       </section>
 
@@ -70,11 +72,13 @@ const printUrl = `/recipe/${demoRecipeId}/print`
           </div>
         </div>
         <table class="pros-cons">
-          <tr><td class="pro">No clutter</td><td>Hidden in sidebar — doesn't add header chrome</td></tr>
-          <tr><td class="pro">Contextual</td><td>Print is a document action, fits TOC mental model</td></tr>
-          <tr><td class="con">Discoverable?</td><td>Users may not look in TOC for print</td></tr>
-          <tr><td class="con">Mobile</td><td>Behind FAB → bottom sheet — two taps to reach</td></tr>
-          <tr><td class="con">Desktop only</td><td>Sidebar hidden below md breakpoint</td></tr>
+          <tbody>
+            <tr><td class="pro">No clutter</td><td>Hidden in sidebar — doesn't add header chrome</td></tr>
+            <tr><td class="pro">Contextual</td><td>Print is a document action, fits TOC mental model</td></tr>
+            <tr><td class="con">Discoverable?</td><td>Users may not look in TOC for print</td></tr>
+            <tr><td class="con">Mobile</td><td>Behind FAB → bottom sheet — two taps to reach</td></tr>
+            <tr><td class="con">Desktop only</td><td>Sidebar hidden below md breakpoint</td></tr>
+          </tbody>
         </table>
       </section>
 
@@ -111,11 +115,13 @@ const printUrl = `/recipe/${demoRecipeId}/print`
           </div>
         </div>
         <table class="pros-cons">
-          <tr><td class="pro">Scalable</td><td>Menu can hold future actions (export, copy, etc.)</td></tr>
-          <tr><td class="pro">Clean header</td><td>Single overflow icon replaces multiple buttons</td></tr>
-          <tr><td class="con">Hidden</td><td>Two clicks to print — worse discoverability</td></tr>
-          <tr><td class="con">Overkill</td><td>Only 2 actions currently — menu feels heavy</td></tr>
-          <tr><td class="con">Complexity</td><td>Dropdown state management, click-outside dismissal</td></tr>
+          <tbody>
+            <tr><td class="pro">Scalable</td><td>Menu can hold future actions (export, copy, etc.)</td></tr>
+            <tr><td class="pro">Clean header</td><td>Single overflow icon replaces multiple buttons</td></tr>
+            <tr><td class="con">Hidden</td><td>Two clicks to print — worse discoverability</td></tr>
+            <tr><td class="con">Overkill</td><td>Only 2 actions currently — menu feels heavy</td></tr>
+            <tr><td class="con">Complexity</td><td>Dropdown state management, click-outside dismissal</td></tr>
+          </tbody>
         </table>
       </section>
     </div>
