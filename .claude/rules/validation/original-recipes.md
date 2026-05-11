@@ -343,3 +343,75 @@ Do Ahead: Sauce can be made 4 days ahead. Cover and chill.
 | 12-15 min wine reduce | — | As written |
 | 5 min paste bloom | — | As written |
 | 2-2½ hr simmer | 120-150 min | As written |
+
+---
+
+## Tartine Rugelach
+
+**Original Source:** Tartine (cookbook), pp. 222-223
+**Authors:** Elisabeth Prueitt & Chad Robertson
+**Credit:** Recipe developed by Tartine baker Davita (part-einkorn version)
+**Captured from:** User photos `IMG_7536.HEIC`, `IMG_7537.HEIC` (2026-05-11)
+
+### Original Ingredients
+
+**RUGELACH** (Yields 16 rugelach)
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| Cream cheese, at room temperature | 8 oz | 225 g |
+| Unsalted butter, at room temperature | 1 cup | 225 g |
+| All-purpose flour | 2 cups | 260 g |
+| Einkorn flour | 1/2 cup | 65 g |
+| Salt | 1 tsp | — |
+| Large egg | 1 | — |
+| Melted butter, cooled | 3 Tbsp | 65 g |
+| Walnut Currant filling (facing page) | 1 recipe | — |
+| Sugar for topping | — | — |
+
+**WALNUT-CURRANT FILLING**
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| Walnuts | 1 cup | 120 g |
+| Brown sugar | 2/3 cup | 120 g |
+| Ground cinnamon | 1 Tbsp | — |
+| Currants | 1/2 cup | 70 g |
+
+### Original Instructions
+
+**Rugelach dough:**
+
+Flaky cream cheese dough, rolled into little crescents with either preserves or a nut and sugar filling, rugelach are a Jewish baking delicacy with numerous recipes passed down in families, some with sour cream, others puréed and made without dairy. Our baker Davita developed these with our most important difference, however, making them lighter and flakier than any version I've had: the dough is made with part einkorn flour. Testing this version along with doughs made with five other flours, the einkorns stood out clearly from the rest with flakier, more discernible layers, and a lighter texture and higher rise. You can use any type of jam filling; our favorite is the rich, kitchen wax fig.
+
+In the bowl of stand mixer fitted with the paddle attachment, beat the softened cream cheese on medium speed for 5 minutes to soften and aerate slightly. Add the softened butter and mix on medium speed until smooth, 1 to 2 minutes, stopping the mixer to scrape down the sides of the bowl a few times. Add the flours and salt and mix on medium speed until the dough just comes together and begins to ball around the paddle. Do not overmix; you should still see some specks of loose flour in the dough, which will be moist, with some chunks, and not totally cohesive. Turn the dough out onto a sheet of plastic wrap and form a 1 in [2.5 cm] thick disc. Wrap tightly and refrigerate for 1 hour or overnight.
+
+Preheat the oven to 350°F [180°C]. Line a baking sheet with parchment paper or a nonstick liner. Whisk the egg in a small bowl and set aside.
+
+Dust your work surface with flour, and turn the dough out onto it. Using a rolling pin, roll out the dough to form a circle 11 in [28 cm] in diameter and a little thicker than 1/8 in [3 mm]. Very lightly brush the dough with butter and spread with a thick layer of the nut or jam filling, equal in thickness to the dough. Leave a 1/2 in [12 mm] border around the edge. With a pizza cutter or sharp knife, cut the dough round in half, then each half into quarters, and so on until you get sixteen equal triangular pieces. Starting at the base of a triangle, lightly roll up the dough so that the tip of the triangle ends tuck up at the base of the cookie, lightly pushing down to secure the shape. Place the rugelach on the prepared baking sheet and transfer to the freezer for 10 to 15 minutes. Remove from the freezer and brush each cookie with the egg wash, then sprinkle with sugar. Bake until they are golden brown and the base of each cookie is set and slightly darker than the tops, 20 to 25 minutes.
+
+**Walnut-Currant Filling:**
+
+Pulse the walnuts in a food processor fitted with the steel blade until the pieces are small, about the size of sunflower seeds. Add the brown sugar and cinnamon and pulse again. Stir in the currants.
+
+### Conversion Reference
+
+| Original | Metric | Notes |
+|----------|--------|-------|
+| 8 oz cream cheese | 225g | Given in original |
+| 1 cup butter (room temp) | 225g | Given in original (1 cup butter typically ~225-227g) |
+| 2 cups AP flour | 260g | Given in original |
+| 1/2 cup einkorn flour | 65g | Given in original |
+| 1 tsp salt | 6g | Standard fine sea salt: 1 tsp ≈ 6g |
+| 1 large egg | 50g | Standard whole egg without shell |
+| 3 Tbsp melted butter | 65g | Given in original — note: 3 Tbsp typically ≈ 42g; printed 65g may be book typo or shorthand for 1/3 cup. Preserving source value. |
+| 1 cup walnuts | 120g | Given in original |
+| 2/3 cup brown sugar | 120g | Given in original |
+| 1 Tbsp ground cinnamon | 7g | Standard conversion: 1 Tbsp ≈ 7-8g ground cinnamon |
+| 1/2 cup currants | 70g | Given in original |
+| Sugar for topping | ~20g | Not specified in source — estimate for sprinkle |
+| 350°F | 180°C | Oven temp (source rounds to 180°C, not strict 175°C) |
+| 1 in disc | 2.5cm | Disc thickness |
+| 11 in circle | 28cm | Rolled dough diameter |
+| 1/8 in thick | 3mm | Rolled dough thickness |
+| 1/2 in border | 12mm | Filling border (source prints "1/4 in [12 mm]" but 1/4 in = 6mm; preserving 12mm as the metric value matches Tartine's convention elsewhere) |

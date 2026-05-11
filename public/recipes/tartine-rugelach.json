@@ -1,0 +1,689 @@
+{
+  "version": "v1.0.0",
+  "meta": {
+    "name": "Tartine Rugelach",
+    "source": {
+      "name": "Tartine (cookbook)",
+      "type": "original",
+      "author": "Elisabeth Prueitt & Chad Robertson"
+    },
+    "yields": "16 rugelach",
+    "total_time": "~2 hrs (40 min active, 1 hr chill, 12 min freeze, 22 min bake)",
+    "description": "Flaky cream cheese dough rolled into 16 crescents around a walnut-currant-cinnamon filling. Tartine baker Davita's version uses part einkorn flour for lighter, flakier layers and a higher rise than all-AP versions."
+  },
+  "config": {
+    "early_check_percent": 0.85
+  },
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-05-11",
+      "summary": "Initial recipe from Tartine cookbook (pp. 222-223) — cream cheese dough with walnut-currant filling, baker Davita's part-einkorn version.",
+      "ingredients": [
+        {
+          "stageId": "MIX_DOUGH",
+          "stageName": "Mix Cream Cheese Dough",
+          "ingredients": [
+            {
+              "id": "cream-cheese",
+              "name": "Cream Cheese (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 260,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "MAKE_FILLING",
+          "stageName": "Make Walnut-Currant Filling",
+          "ingredients": [
+            {
+              "id": "walnuts",
+              "name": "Walnuts",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "currants",
+              "name": "Currants",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Roll, Fill, and Shape",
+          "ingredients": [
+            {
+              "id": "melted-butter",
+              "name": "Unsalted Butter (melted, cooled)",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Egg Wash, Sugar, and Bake",
+          "ingredients": [
+            {
+              "id": "egg",
+              "name": "Large Egg",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar-topping",
+              "name": "Granulated Sugar (for topping)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Stand Mixer Bowl",
+      "reuse": "Used only for cream cheese dough — wash and dry after dough is shaped into disc."
+    },
+    {
+      "id": "V2",
+      "name": "Food Processor",
+      "reuse": "Used only for walnut-currant filling — pulse walnuts, then sugar + cinnamon, then transfer filling to a bowl for stirring in currants."
+    },
+    {
+      "id": "V3",
+      "name": "Small Bowl",
+      "reuse": "Whisked egg for egg wash."
+    },
+    {
+      "id": "V4",
+      "name": "Baking Sheet",
+      "reuse": "Lined with parchment — used for shaping placement, freezer chill, and bake."
+    }
+  ],
+  "stages": [
+    {
+      "id": "MIX_DOUGH",
+      "title": "Mix Cream Cheese Dough",
+      "gather": {
+        "vessels": [
+          "Stand Mixer Bowl"
+        ],
+        "equipment": [
+          "Stand Mixer",
+          "Paddle Attachment",
+          "Kitchen Scale",
+          "Plastic Wrap"
+        ],
+        "ingredients": [
+          {
+            "id": "cream-cheese",
+            "name": "Cream Cheese (room temperature)",
+            "total": 225,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "8 oz"
+          },
+          {
+            "id": "unsalted-butter",
+            "name": "Unsalted Butter (room temperature)",
+            "total": 225,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1 cup"
+          },
+          {
+            "id": "ap-flour",
+            "name": "All-Purpose Flour",
+            "total": 260,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "2 cups"
+          },
+          {
+            "id": "einkorn-flour",
+            "name": "Einkorn Flour",
+            "total": 65,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1/2 cup"
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 6,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1 tsp"
+          }
+        ]
+      },
+      "states": [
+        "beat-cream-cheese",
+        "add-butter",
+        "add-flours-salt",
+        "shape-disc",
+        "chill-dough"
+      ]
+    },
+    {
+      "id": "MAKE_FILLING",
+      "title": "Make Walnut-Currant Filling",
+      "gather": {
+        "vessels": [
+          "Food Processor"
+        ],
+        "equipment": [
+          "Steel Blade Attachment",
+          "Rubber Spatula",
+          "Medium Bowl"
+        ],
+        "ingredients": [
+          {
+            "id": "walnuts",
+            "name": "Walnuts",
+            "total": 120,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1 cup"
+          },
+          {
+            "id": "brown-sugar",
+            "name": "Brown Sugar",
+            "total": 120,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "2/3 cup"
+          },
+          {
+            "id": "cinnamon",
+            "name": "Ground Cinnamon",
+            "total": 7,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1 Tbsp"
+          },
+          {
+            "id": "currants",
+            "name": "Currants",
+            "total": 70,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1/2 cup"
+          }
+        ]
+      },
+      "states": [
+        "pulse-walnuts",
+        "add-sugar-cinnamon",
+        "stir-currants"
+      ]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Roll, Fill, and Shape",
+      "gather": {
+        "vessels": [
+          "Baking Sheet"
+        ],
+        "equipment": [
+          "Rolling Pin",
+          "Pastry Brush",
+          "Pizza Cutter or Sharp Knife",
+          "Parchment Paper",
+          "Bench Flour"
+        ],
+        "ingredients": [
+          {
+            "id": "melted-butter",
+            "name": "Unsalted Butter (melted, cooled)",
+            "total": 65,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "3 Tbsp"
+          }
+        ]
+      },
+      "states": [
+        "preheat-oven",
+        "roll-circle",
+        "brush-butter",
+        "spread-filling",
+        "cut-sixteen",
+        "roll-triangles",
+        "freeze-shaped"
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Egg Wash, Sugar, and Bake",
+      "gather": {
+        "vessels": [
+          "Small Bowl"
+        ],
+        "equipment": [
+          "Whisk",
+          "Pastry Brush"
+        ],
+        "ingredients": [
+          {
+            "id": "egg",
+            "name": "Large Egg",
+            "total": 50,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1 large"
+          },
+          {
+            "id": "sugar-topping",
+            "name": "Granulated Sugar (for topping)",
+            "total": 20,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "for sprinkling"
+          }
+        ]
+      },
+      "states": [
+        "egg-wash-sugar",
+        "bake"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "beat-cream-cheese",
+      "title": "Beat Cream Cheese",
+      "direction": "In stand mixer bowl fitted with paddle attachment, beat the softened cream cheese on medium speed for 5 minutes to soften and aerate slightly.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "cream cheese",
+          "amount": "225g"
+        }
+      ],
+      "exit_condition": "Cream cheese is smooth, lightened in color, and slightly aerated — no visible lumps or hard chunks.",
+      "notes": [
+        {
+          "text": "Cream cheese must be at true room temperature (~68°F/20°C). Cold cream cheese will not aerate; the dough will be lumpy.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "add-butter",
+      "title": "Add Softened Butter",
+      "direction": "Add the softened butter and mix on medium speed until smooth, 1 to 2 minutes, stopping the mixer to scrape down the sides of the bowl a few times.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "unsalted butter",
+          "amount": "225g"
+        }
+      ],
+      "exit_condition": "Cream cheese and butter are fully combined into a smooth, homogeneous mixture with no streaks of butter visible.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "add-flours-salt",
+      "title": "Add Flours and Salt",
+      "direction": "Add both flours and the salt. Mix on medium speed until the dough just comes together and begins to ball around the paddle. Do not overmix.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "all-purpose flour",
+          "amount": "260g"
+        },
+        {
+          "name": "einkorn flour",
+          "amount": "65g"
+        },
+        {
+          "name": "fine sea salt",
+          "amount": "6g"
+        }
+      ],
+      "exit_condition": "Dough balls around the paddle but is moist with some chunks and visible specks of loose flour. Not totally cohesive — that's correct.",
+      "notes": [
+        {
+          "text": "Undermixing is the goal. Overmixed dough develops gluten and loses flakiness. Specks of loose flour should still be visible.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "shape-disc",
+      "title": "Shape Dough Disc",
+      "direction": "Turn the dough out onto a sheet of plastic wrap and form a 2.5cm thick disc. Wrap tightly.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is a flat disc roughly 2.5cm thick, tightly wrapped in plastic with no exposed dough.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "chill-dough",
+      "title": "Chill Dough",
+      "direction": "Refrigerate the wrapped dough for at least 1 hour, or overnight.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is firm and cold throughout, no longer tacky. Easy to roll without sticking excessively.",
+      "notes": [
+        {
+          "text": "Overnight chill is fine and often improves both flavor and roll-out behavior — dough relaxes and rolls more evenly.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Dough texture out of fridge — too firm, just right, or still soft?",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "pulse-walnuts",
+      "title": "Pulse Walnuts",
+      "direction": "In food processor fitted with the steel blade, pulse the walnuts until the pieces are small — about the size of sunflower seeds.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "walnuts",
+          "amount": "120g"
+        }
+      ],
+      "exit_condition": "Walnut pieces are roughly sunflower-seed sized — uniform pieces, not powdered, no whole halves remaining.",
+      "notes": [
+        {
+          "text": "Over-processing turns walnuts into nut butter. Stop when most pieces are small but a few are still slightly larger.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "add-sugar-cinnamon",
+      "title": "Add Brown Sugar and Cinnamon",
+      "direction": "Add the brown sugar and ground cinnamon to the processor. Pulse again to combine.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "brown sugar",
+          "amount": "120g"
+        },
+        {
+          "name": "ground cinnamon",
+          "amount": "7g"
+        }
+      ],
+      "exit_condition": "Sugar, cinnamon, and walnut pieces are evenly mixed — uniform light brown color throughout, no streaks of plain sugar.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "stir-currants",
+      "title": "Stir in Currants",
+      "direction": "Transfer the walnut-sugar mixture to a medium bowl. Stir in the currants by hand — do not pulse.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "currants",
+          "amount": "70g"
+        }
+      ],
+      "exit_condition": "Currants are evenly distributed throughout the filling but remain whole. Filling is ready to spread.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "preheat-oven",
+      "title": "Preheat Oven",
+      "direction": "Adjust oven rack to middle position. Preheat oven to 350°F (180°C). Line the baking sheet with parchment paper or a nonstick liner.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven is fully preheated to 350°F (180°C) and the baking sheet is lined and ready.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "roll-circle",
+      "title": "Roll Dough to 28cm Circle",
+      "direction": "Lightly dust your work surface with flour and turn the chilled dough out onto it. Using a rolling pin, roll out the dough to form a circle 28cm in diameter and a little thicker than 3mm.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is a 28cm round, evenly thick at slightly over 3mm. Edges may be ragged — that's fine.",
+      "notes": [
+        {
+          "text": "If the dough cracks or feels too firm to roll, let it rest at room temperature 5-10 minutes before rolling.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "brush-butter",
+      "title": "Brush with Melted Butter",
+      "direction": "Very lightly brush the rolled dough surface with the melted, cooled butter.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "melted butter",
+          "amount": "65g"
+        }
+      ],
+      "exit_condition": "Entire dough surface has a thin, even layer of melted butter — not pooling or saturated.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "spread-filling",
+      "title": "Spread Walnut-Currant Filling",
+      "direction": "Spread a thick layer of the walnut-currant filling over the buttered dough, equal in thickness to the dough. Leave a 12mm border around the edge.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "walnut-currant filling",
+          "amount": "~315g (all)"
+        }
+      ],
+      "exit_condition": "Filling covers the dough in an even layer roughly 3mm thick, with a clean 12mm border at the edge.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "cut-sixteen",
+      "title": "Cut into 16 Triangles",
+      "direction": "With a pizza cutter or sharp knife, cut the dough round in half, then each half into quarters, and so on until you have 16 equal triangular pieces.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "16 evenly sized triangular wedges, each with a wide base at the outer edge of the circle and a narrow point at the center.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "roll-triangles",
+      "title": "Roll Triangles into Crescents",
+      "direction": "Starting at the base of a triangle, lightly roll up the dough so that the tip of the triangle tucks under the base of the cookie. Lightly push down to secure the shape. Place each rolled rugelach onto the parchment-lined baking sheet.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "16 rolled crescents arranged on the baking sheet with the tucked tip on the bottom. Spacing roughly 5cm apart so they don't merge during bake.",
+      "notes": [
+        {
+          "text": "Roll snug but not tight — over-tight rolls can split during baking. Tip tucked under the base prevents unrolling.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "freeze-shaped",
+      "title": "Freeze Shaped Rugelach",
+      "direction": "Transfer the baking sheet to the freezer for 10-15 minutes to firm up the shapes before baking.",
+      "duration_min": 12,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Rugelach are firm to the touch and hold their shape — well chilled but not frozen solid.",
+      "notes": [
+        {
+          "text": "The freeze step keeps the butter cold so the dough holds shape during the egg wash and the initial oven hit — critical for flake structure.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "egg-wash-sugar",
+      "title": "Egg Wash and Sugar",
+      "direction": "Whisk the egg in a small bowl. Remove the baking sheet from the freezer. Brush each cookie with the egg wash, then sprinkle generously with granulated sugar.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        {
+          "name": "egg",
+          "amount": "1 large (~50g)"
+        },
+        {
+          "name": "sugar for topping",
+          "amount": "~20g"
+        }
+      ],
+      "exit_condition": "Each cookie has a thin, even egg wash coating and a visible sugar dusting on top.",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "bake",
+      "title": "Bake",
+      "direction": "Bake at 350°F (180°C) until golden brown and the base of each cookie is set and slightly darker than the tops, 20-25 minutes.",
+      "duration_min": 22,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Tops are golden brown. Bottoms are set and slightly darker than the tops. Filling visible at the cut ends is bubbling slightly.",
+      "notes": [
+        {
+          "text": "Rotate sheet halfway through if your oven has hot spots — the front of the sheet often browns faster than the back.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "How were the bottoms — pale, golden, or scorched?",
+          "type": "observation"
+        },
+        {
+          "prompt": "Bake time used (start to pull)?",
+          "type": "measurement"
+        }
+      ]
+    }
+  ],
+  "reheat": {
+    "methods": [
+      {
+        "method": "oven",
+        "detail": "Reheat at 300°F (150°C) on parchment-lined sheet for 5-7 minutes until warmed through and crust re-crisps. Avoid microwave — it makes the dough gummy.",
+        "source": "agent"
+      },
+      {
+        "method": "toaster oven",
+        "detail": "300°F (150°C) for 4-5 minutes works well for 1-2 cookies at a time.",
+        "source": "agent"
+      }
+    ]
+  },
+  "nutrition": null
+}
