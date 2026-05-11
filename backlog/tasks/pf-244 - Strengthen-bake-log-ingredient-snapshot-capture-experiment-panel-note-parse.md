@@ -3,10 +3,10 @@ id: PF-244
 title: >-
   Strengthen /bake-log ingredient snapshot capture (experiment panel + note
   parse)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-10 02:53'
-updated_date: '2026-05-10 04:09'
+updated_date: '2026-05-10 04:54'
 labels:
   - ux
   - snapshot

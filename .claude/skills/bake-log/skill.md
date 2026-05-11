@@ -606,6 +606,50 @@ actually used during this bake.
 - `--update` flag: skip until `--finalize` (snapshot is written once, on
   finalization)
 
+### Snapshot Resolution (PF-244)
+
+The bake's `ingredients[]` snapshot is resolved in this order. Each step is
+deterministic; ambiguity always prompts. The **Mozzarella Rule** governs every
+write — never infer a delta the user did not state. Wrong data is worse than
+missing data.
+
+1. **Clone baseline** — copy `change_log[entry.version].ingredients[]` (or
+   `stages[].gather.ingredients` if version is unbumped) as the starting
+   snapshot.
+2. **Apply ExperimentPanel adjustments silently.** Read the
+   `proofed:experiment:{recipeId}` key from localStorage (or the equivalent
+   scratchpad payload). For each `{ingredientId, total}` entry, overwrite
+   the matching snapshot row. These were the user's deliberate pre-bake
+   dial-ins; do not prompt.
+3. **Detect note deltas.** Run `scripts/parse-note-deltas.ts` (or the same
+   logic) over `bake_notes[]` against the post-experiment snapshot. The
+   parser surfaces 6 pattern buckets:
+   - `signed-delta` (`-40g flour`, `+10g salt`)
+   - `count-quantity` forward (`400g cheddar`, `1.5 Tbsp salt`)
+   - `count-quantity` reverse (`reduced salt to 8g`)
+   - `prose-volume` ran-out (`ran out of flour`)
+   - `prose-volume` half/full (`half a bag of cheddar`)
+   - `prose-volume` doubled/forgot (`doubled the salt`, `forgot the salt`)
+4. **Echo each detected delta** to the user with four options:
+   - **Apply** — write `proposed` grams to the snapshot
+   - **Skip** — leave the baseline value
+   - **Edit value** — user provides the correct grams
+   - **Choose different ingredient** — user picks the right ingredient ID
+     when the parser's association was wrong or ambiguous
+5. **Batch shortcuts** — accept `Apply all` / `Skip all` after the first
+   echo. Each individual delta can still be edited even after a batch
+   choice.
+6. **Write `cook_log[].ingredients`** with the resolved snapshot.
+7. **Run D6 (breakdown sums match)** against the resolved snapshot. If a
+   breakdown drifts from totals, surface the discrepancy and ask the user
+   to confirm before the entry lands.
+8. **Clear `proofed:experiment:{recipeId}` localStorage** — the experiment
+   was committed into the bake; do not let it linger and double-apply on
+   the next session.
+
+**Skip conditions** for resolution: `--start` (skeleton has no snapshot)
+and `--update` (snapshot is written once, on `--finalize`).
+
 ## Phase 4a: Weather Fetch (PF-193.1)
 
 After writing the cook_log entry (Phase 4), silently fetch outdoor weather for the bake date:

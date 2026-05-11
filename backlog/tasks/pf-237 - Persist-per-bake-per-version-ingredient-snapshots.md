@@ -84,3 +84,7 @@ Captured during 2026-05-05 jalapeno-cheddar-sourdough print page bug investigati
 - [ ] #14 Backward compat: recipes without ingredients[] snapshots continue to render via gather fallback (no print regression for unmigrated recipes); both new fields are optional in the type
 - [ ] #15 Schema docs in CLAUDE.md updated to describe the new snapshot fields and the authoring rules (when written, by whom, never auto-mutated)
 <!-- AC:END -->
+
+## Notes
+
+PF-244 realizes AC #8 of this task.
