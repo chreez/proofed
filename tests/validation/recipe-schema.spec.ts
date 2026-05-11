@@ -141,7 +141,8 @@ describe('Recipe JSON Validation', () => {
         /pressure/i,
         /toast/i,
         /roast/i,
-        /hydrate/i
+        /hydrate/i,
+        /freeze/i
       ]
 
       for (const state of recipe.states) {
