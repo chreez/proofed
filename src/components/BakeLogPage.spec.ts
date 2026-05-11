@@ -473,4 +473,87 @@ describe('BakeLogPage', () => {
 
     expect(wrapper.find('.bake-log-status').text()).toBe('In Progress')
   })
+
+  describe('tag search', () => {
+    it('renders the TagSearch input when bakes exist', async () => {
+      global.fetch = makeFetchMockByFile({
+        'atk-cinnamon-buns-ultimate.json': { cook_log: [{ date: '2026-04-10', version: 'v1.0.0', notes: [] }] },
+        'tartine-baguette.json': { cook_log: [] }
+      })
+      const wrapper = mount(BakeLogPage)
+      await flushPromises()
+      expect(wrapper.find('[data-testid="tag-search-input"]').exists()).toBe(true)
+    })
+
+    it('filters the timeline when a chip is active', async () => {
+      global.fetch = makeFetchMockByFile({
+        'atk-cinnamon-buns-ultimate.json': { cook_log: [{ date: '2026-04-10', version: 'v1.0.0', notes: [] }] },
+        'tartine-baguette.json': { cook_log: [{ date: '2026-04-15', version: 'v1.1.0', notes: [] }] }
+      })
+      const wrapper = mount(BakeLogPage)
+      await flushPromises()
+      expect(wrapper.findAll('.bake-log-item').length).toBe(2)
+
+      const tagSearch = wrapper.findComponent({ name: 'TagSearch' })
+      await tagSearch.setValue(['name:baguette'], 'modelValue')
+      await flushPromises()
+      const rows = wrapper.findAll('.bake-log-item')
+      expect(rows.length).toBe(1)
+      expect(rows[0].text()).toContain('Tartine Baguette')
+    })
+
+    it('shows "No bakes match" when filter yields zero results', async () => {
+      global.fetch = makeFetchMockByFile({
+        'atk-cinnamon-buns-ultimate.json': { cook_log: [{ date: '2026-04-10', version: 'v1.0.0', notes: [] }] },
+        'tartine-baguette.json': { cook_log: [] }
+      })
+      const wrapper = mount(BakeLogPage)
+      await flushPromises()
+      const tagSearch = wrapper.findComponent({ name: 'TagSearch' })
+      await tagSearch.setValue(['name:nonexistent'], 'modelValue')
+      await flushPromises()
+      expect(wrapper.text()).toContain('No bakes match the current filter.')
+    })
+
+    it('renders preview slot with photo + weather variants in dropdown', async () => {
+      global.fetch = makeFetchMockByFile({
+        'atk-cinnamon-buns-ultimate.json': { cook_log: [{
+          date: '2026-04-10', version: 'v1.0.0', notes: [],
+          photos: [{ src: '/img/h.webp', thumb: '/img/t.webp', alt: 'photo' }],
+          weather: { location: 'A', date: '2026-04-10', temp_high_f: 80, temp_low_f: 60, humidity_avg_percent: 50, condition: 'Clear sky', source: 'open-meteo' }
+        }] },
+        'tartine-baguette.json': { cook_log: [{ date: '2026-04-15', version: 'v1.0.0', notes: [] }] }
+      })
+      const wrapper = mount(BakeLogPage, { attachTo: document.body })
+      await flushPromises()
+      const input = wrapper.find('[data-testid="tag-search-input"]')
+      await input.setValue('atk')
+      await input.trigger('focus')
+      await flushPromises()
+      const previews = wrapper.findAll('[data-testid="result-preview"]')
+      expect(previews.length).toBeGreaterThan(0)
+      expect(wrapper.html()).toContain('ATK Ultimate Cinnamon Buns')
+      // verify both branches: one entry has heroThumb (img) + weather, other has neither
+      await input.setValue('baguette')
+      await flushPromises()
+      expect(wrapper.findAll('[data-testid="result-preview"]').length).toBeGreaterThan(0)
+      wrapper.unmount()
+    })
+
+    it('navigates when a preview is clicked through the search', async () => {
+      global.fetch = makeFetchMockByFile({
+        'atk-cinnamon-buns-ultimate.json': { cook_log: [{ date: '2026-04-10', version: 'v1.0.0', notes: [] }] },
+        'tartine-baguette.json': { cook_log: [] }
+      })
+      const wrapper = mount(BakeLogPage)
+      await flushPromises()
+      const tagSearch = wrapper.findComponent({ name: 'TagSearch' })
+      tagSearch.vm.$emit('navigate', {
+        recipeId: 'atk-cinnamon-buns-ultimate', date: '2026-04-10',
+        recipeName: 'ATK', version: 'v1.0.0', summary: null, heroThumb: null, heroAlt: null, weather: null
+      })
+      await flushPromises()
+      expect(mockPush).toHaveBeenCalledWith('/recipe/atk-cinnamon-buns-ultimate/bake/2026-04-10')
+    })
+  })
 })

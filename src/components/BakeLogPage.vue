@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
+import TagSearch from '@/components/TagSearch.vue'
+import { bakeTokens, bakeMatchesText, filterByTags } from '@/composables/useSearchTokens'
 import type { CookLogEntry } from '@/types/recipe'
 
 const router = useRouter()
@@ -99,7 +101,18 @@ function navigateToBake(entry: BakeEntry): void {
   router.push(`/recipe/${entry.recipeId}/bake/${entry.date}`)
 }
 
+const filterTags = ref<string[]>([])
+const searchSlotReady = ref(false)
+onMounted(() => {
+  searchSlotReady.value = !!document.getElementById('header-search-slot')
+})
+
+const filteredEntries = computed<BakeEntry[]>(() =>
+  filterByTags(entries.value, bakeTokens, filterTags.value)
+)
+
 const hasEntries = computed(() => entries.value.length > 0)
+const hasResults = computed(() => filteredEntries.value.length > 0)
 
 function weatherIcon(condition: string): string {
   switch (condition) {
@@ -118,9 +131,42 @@ function weatherIcon(condition: string): string {
 
     <div v-else-if="!hasEntries" class="bake-log-empty">No bakes recorded yet.</div>
 
-    <ul v-else class="bake-log-list">
+    <template v-else>
+      <Teleport to="#header-search-slot" :disabled="!searchSlotReady">
+        <TagSearch
+          v-model="filterTags"
+          :items="entries"
+          :tokens-fn="bakeTokens"
+          :match-text-fn="bakeMatchesText"
+          placeholder="Search bakes..."
+          compact
+          @navigate="navigateToBake"
+        >
+          <template #preview="{ item }">
+            <div class="dd-preview">
+              <div v-if="item.heroThumb" class="dd-preview-thumb">
+                <img :src="item.heroThumb" :alt="item.heroAlt ?? ''" loading="lazy" />
+              </div>
+              <div v-else class="dd-preview-thumb dd-preview-thumb--empty" aria-hidden="true">·</div>
+              <div class="dd-preview-meta">
+                <div class="dd-preview-name">{{ item.recipeName }}</div>
+                <div class="dd-preview-sub">
+                  {{ formatDate(item.date) }} · {{ item.version }}
+                  <template v-if="item.weather"> · {{ item.weather.condition }}</template>
+                </div>
+              </div>
+            </div>
+          </template>
+        </TagSearch>
+      </Teleport>
+
+      <div v-if="!hasResults" class="bake-log-empty">
+        No bakes match the current filter.
+      </div>
+
+    <ul v-if="hasResults" class="bake-log-list">
       <li
-        v-for="entry in entries"
+        v-for="entry in filteredEntries"
         :key="`${entry.recipeId}-${entry.date}`"
         class="bake-log-item"
         @click="navigateToBake(entry)"
@@ -160,6 +206,7 @@ function weatherIcon(condition: string): string {
         </div>
       </li>
     </ul>
+    </template>
   </div>
 </template>
 
@@ -169,6 +216,56 @@ function weatherIcon(condition: string): string {
   color: var(--color-ink);
   max-width: 36rem;
   margin: 0 auto;
+}
+
+.dd-preview {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dd-preview-thumb {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-stone-300);
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dd-preview-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dd-preview-thumb--empty {
+  font-family: var(--font-mono);
+  color: var(--color-stone-300);
+  font-size: 1rem;
+  background: var(--color-stone-50);
+}
+
+.dd-preview-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.dd-preview-name {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dd-preview-sub {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-stone-400);
 }
 
 .bake-log-loading,

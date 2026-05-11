@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRecipe } from '@/composables/useRecipe'
 import { latestCookLogEntryWithHero, findHeroPhoto } from '@/composables/useCookLog'
 import { motion } from 'motion-v'
+import TagSearch from '@/components/TagSearch.vue'
+import { recipeTokens, recipeMatchesText, filterByTags } from '@/composables/useSearchTokens'
 
 const emit = defineEmits<{
   select: [recipeId: string]
@@ -170,13 +172,29 @@ const items = computed<TimelineItem[]>(() => {
   })
 })
 
+// --- Tag search ---
+
+const filterTags = ref<string[]>([])
+const searchSlotReady = ref(false)
+onMounted(() => {
+  searchSlotReady.value = !!document.getElementById('header-search-slot')
+})
+
+const filteredItems = computed<TimelineItem[]>(() =>
+  filterByTags(items.value, recipeTokens, filterTags.value)
+)
+
+function navigateToRecipe(item: TimelineItem): void {
+  emit('select', item.routeId)
+}
+
 // --- Category grouping: baked-first, then alphabetical ---
 
 const CATEGORY_ORDER = ['baking', 'grain-free', 'pizza & dough', 'mains', 'drinks', 'other']
 
 // In-progress items (have active scratchpad data)
 const inProgressItems = computed<TimelineItem[]>(() =>
-  items.value
+  filteredItems.value
     .filter(item => item.inProgress)
     .sort((a, b) => a.name.localeCompare(b.name))
 )
@@ -184,7 +202,7 @@ const inProgressItems = computed<TimelineItem[]>(() =>
 // Baked items grouped by category (excluding in-progress + outdated)
 const bakedGroupedItems = computed<CategoryGroup[]>(() => {
   const inProgressIds = new Set(inProgressItems.value.map(i => i.id))
-  const bakedItems = items.value
+  const bakedItems = filteredItems.value
     .filter(item => item.baked && !item.outdated && !inProgressIds.has(item.id))
     .sort((a, b) => a.name.localeCompare(b.name))
 
@@ -202,7 +220,7 @@ const bakedGroupedItems = computed<CategoryGroup[]>(() => {
 // Outdated baked items: dedicated group rendered at bottom of baked section
 const outdatedItems = computed<TimelineItem[]>(() => {
   const inProgressIds = new Set(inProgressItems.value.map(i => i.id))
-  return items.value
+  return filteredItems.value
     .filter(item => item.baked && item.outdated && !inProgressIds.has(item.id))
     .sort((a, b) => a.name.localeCompare(b.name))
 })
@@ -210,7 +228,7 @@ const outdatedItems = computed<TimelineItem[]>(() => {
 // Unbaked items grouped by category (hidden by default; excludes outdated)
 const unbakedGroupedItems = computed<CategoryGroup[]>(() => {
   const inProgressIds = new Set(inProgressItems.value.map(i => i.id))
-  const unbaked = items.value
+  const unbaked = filteredItems.value
     .filter(item => !item.baked && !item.outdated && !inProgressIds.has(item.id))
     .sort((a, b) => a.name.localeCompare(b.name))
 
@@ -228,6 +246,9 @@ const unbakedGroupedItems = computed<CategoryGroup[]>(() => {
 const unbakedCount = computed<number>(() =>
   unbakedGroupedItems.value.reduce((sum, g) => sum + g.items.length, 0)
 )
+
+const isFilterActive = computed<boolean>(() => filterTags.value.length > 0)
+const showUnbakedEffective = computed<boolean>(() => showUnbaked.value || isFilterActive.value)
 
 function toggleUnbaked(): void {
   showUnbaked.value = !showUnbaked.value
@@ -267,7 +288,38 @@ const labelVariants = {
   <div class="recipe-timeline">
     <div v-if="!loaded" class="timeline-loading">Loading recipes...</div>
 
-    <ul v-else class="timeline-list">
+    <template v-else>
+      <Teleport to="#header-search-slot" :disabled="!searchSlotReady">
+        <TagSearch
+          v-model="filterTags"
+          :items="items"
+          :tokens-fn="recipeTokens"
+          :match-text-fn="recipeMatchesText"
+          :preview-sort-fn="(a: TimelineItem, b: TimelineItem) => b.bakeCount - a.bakeCount"
+          placeholder="Search recipes..."
+          compact
+          @navigate="navigateToRecipe"
+        >
+          <template #preview="{ item }">
+            <div class="dd-preview">
+              <div v-if="item.heroImage" class="dd-preview-thumb">
+                <img :src="item.heroImage" :alt="item.name" loading="lazy" />
+              </div>
+              <div v-else class="dd-preview-thumb dd-preview-thumb--empty" aria-hidden="true">·</div>
+              <div class="dd-preview-meta">
+                <div class="dd-preview-name">{{ item.name }}</div>
+                <div class="dd-preview-sub">
+                  {{ item.category }}
+                  <template v-if="item.bakeCount > 0"> · {{ item.bakeCount }} bake{{ item.bakeCount !== 1 ? 's' : '' }}</template>
+                  <template v-else> · unbaked</template>
+                </div>
+              </div>
+            </div>
+          </template>
+        </TagSearch>
+      </Teleport>
+
+    <ul class="timeline-list">
       <!-- In-progress section -->
       <template v-if="inProgressItems.length > 0">
         <motion.li
@@ -420,15 +472,15 @@ const labelVariants = {
         </motion.li>
       </template>
 
-      <!-- Reveal toggle for unbaked recipes -->
-      <li v-if="unbakedCount > 0" class="timeline-reveal-item">
+      <!-- Reveal toggle for unbaked recipes (hidden when filter active — unbaked auto-revealed) -->
+      <li v-if="unbakedCount > 0 && !isFilterActive" class="timeline-reveal-item">
         <span class="timeline-reveal-link" @click="toggleUnbaked">
           {{ showUnbaked ? '- hide unbaked recipes' : `+ ${unbakedCount} more recipe${unbakedCount !== 1 ? 's' : ''}` }}
         </span>
       </li>
 
-      <!-- Unbaked recipes (revealed) -->
-      <template v-if="showUnbaked">
+      <!-- Unbaked recipes (revealed when toggled or when filter is active) -->
+      <template v-if="showUnbakedEffective">
         <template v-for="group in unbakedGroupedItems" :key="'unbaked-' + group.label">
           <motion.li
             class="timeline-section-label-item"
@@ -476,6 +528,7 @@ const labelVariants = {
         </template>
       </template>
     </ul>
+    </template>
   </div>
 </template>
 
@@ -487,6 +540,56 @@ const labelVariants = {
   background: var(--color-stone-50);
   max-width: 36rem;
   margin: 0 auto;
+}
+
+.dd-preview {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dd-preview-thumb {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-stone-300);
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dd-preview-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dd-preview-thumb--empty {
+  font-family: var(--font-mono);
+  color: var(--color-stone-300);
+  font-size: 1rem;
+  background: var(--color-stone-100);
+}
+
+.dd-preview-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.dd-preview-name {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dd-preview-sub {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-stone-400);
 }
 
 /* --- Category section label --- */

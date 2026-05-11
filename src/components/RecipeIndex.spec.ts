@@ -653,4 +653,72 @@ describe('RecipeIndex', () => {
     await outdated.trigger('click')
     expect(wrapper.emitted('select')?.[0]).toEqual(['recipe-old'])
   })
+
+  describe('tag search', () => {
+    it('renders the TagSearch input above the timeline', async () => {
+      const wrapper = mount(RecipeIndex)
+      await flushPromises()
+      expect(wrapper.find('[data-testid="tag-search-input"]').exists()).toBe(true)
+    })
+
+    it('filters recipes when a chip is active', async () => {
+      mockRecipeList.value = [
+        { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', file: 'atk.json' },
+        { id: 'tartine-baguette', name: 'Tartine Baguette', file: 'tartine.json' },
+      ]
+      global.fetch = makeFetchMockByFile({
+        'atk.json': { meta: { description: 'cinn', source: { name: 'ATK', type: 'adapted' } }, cook_log: [{ date: '2026-02-10', photos: [] }] },
+        'tartine.json': { meta: { description: 'bag', source: { name: 'Tartine', type: 'adapted' } }, cook_log: [{ date: '2026-02-15', photos: [] }] },
+      })
+      const wrapper = mount(RecipeIndex)
+      await flushPromises()
+      expect(wrapper.findAll('.timeline-item').length).toBe(2)
+
+      const tagSearch = wrapper.findComponent({ name: 'TagSearch' })
+      await tagSearch.setValue(['name:baguette'], 'modelValue')
+      await flushPromises()
+      const items = wrapper.findAll('.timeline-item')
+      expect(items.length).toBe(1)
+      expect(items[0].text()).toContain('Tartine Baguette')
+    })
+
+    it('renders preview slot with hero + unbaked variants in dropdown', async () => {
+      mockRecipeList.value = [
+        { id: 'baked-1', name: 'Baked One', file: 'baked-1.json' },
+        { id: 'unbaked-1', name: 'Unbaked One', file: 'unbaked-1.json' },
+      ]
+      global.fetch = makeFetchMockByFile({
+        'baked-1.json': {
+          meta: { description: 'baked desc', source: { name: 'Chris', type: 'original' } },
+          cook_log: [{ date: '2026-02-10', photos: [{ src: '/img/h.webp', thumb: '/img/t.webp', alt: 'photo' }] }]
+        },
+        'unbaked-1.json': {
+          meta: { description: 'unbaked desc' },
+          cook_log: []
+        }
+      })
+      const wrapper = mount(RecipeIndex, { attachTo: document.body })
+      await flushPromises()
+      const input = wrapper.find('[data-testid="tag-search-input"]')
+      await input.setValue('one')
+      await input.trigger('focus')
+      await flushPromises()
+      expect(wrapper.findAll('[data-testid="result-preview"]').length).toBeGreaterThan(0)
+      expect(wrapper.html()).toContain('Baked One')
+      wrapper.unmount()
+    })
+
+    it('emits select when navigate fires from search', async () => {
+      const wrapper = mount(RecipeIndex)
+      await flushPromises()
+      const tagSearch = wrapper.findComponent({ name: 'TagSearch' })
+      tagSearch.vm.$emit('navigate', {
+        id: 'tartine-baguette', name: 'Tartine Baguette', routeId: 'tartine-baguette',
+        baked: true, inProgress: false, bakeCount: 1, heroImage: null, description: null,
+        category: 'baking', sourceType: 'adapted', sourceAuthor: 'Tartine', outdated: false,
+      })
+      await flushPromises()
+      expect(wrapper.emitted('select')?.[0]).toEqual(['tartine-baguette'])
+    })
+  })
 })

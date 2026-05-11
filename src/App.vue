@@ -132,6 +132,11 @@ const showBakeLog = computed(() => route.name === 'bake-log')
 const showStats = computed(() => route.name === 'stats' || route.name === 'stats-demo')
 const showPrintMode = computed(() => route.name === 'recipe-print')
 const showHeaderActions = computed(() => !!currentRecipe.value && !showIndex.value && !showAbout.value && !showBakeDetail.value)
+
+// Inclusion list — routes that mount a search bar into the header slot.
+// Add a route name here to opt in. Falls back to no header search.
+const SEARCH_ROUTE_NAMES = ['index', 'bake-log'] as const
+const showHeaderSearch = computed(() => SEARCH_ROUTE_NAMES.includes(route.name as typeof SEARCH_ROUTE_NAMES[number]))
 function goToIndex(): void {
   router.push('/')
 }
@@ -535,8 +540,14 @@ watch(() => route.hash, (newHash) => {
             @click="handlePrint"
           >Print</button>
         </div>
+        <!-- Tag search slot: teleport target for routes in SEARCH_ROUTE_NAMES -->
+        <div
+          v-show="showHeaderSearch && !showPrintMode"
+          id="header-search-slot"
+          class="header-search-slot"
+        ></div>
         <!-- Normal mode: printer + share actions -->
-        <div v-else-if="showHeaderActions" class="flex items-center gap-1">
+        <div v-if="showHeaderActions && !showPrintMode" class="flex items-center gap-1">
           <IconButton
             v-if="currentRecipeId"
             tooltip="Print bake sheet"
@@ -876,6 +887,26 @@ watch(() => route.hash, (newHash) => {
   .brand-text,
   .brand-dot {
     animation: none;
+  }
+}
+
+/* --- Header search slot (teleport target for TagSearch) --- */
+.header-search-slot {
+  flex: 1;
+  max-width: 28rem;
+  margin: 0 0 0 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.header-search-slot:empty {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .header-search-slot {
+    margin-left: 0.75rem;
+    max-width: none;
   }
 }
 
