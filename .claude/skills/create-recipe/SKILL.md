@@ -231,12 +231,17 @@ Each stage groups related states and has an optional gather section for mise en 
 {
   "id": "flour",
   "name": "All-Purpose Flour",
-  "total": 390,            // GRAMS ONLY
+  "total": 390,            // GRAMS — authoritative for scaling, cost, nutrition
   "unit": "g",             // always "g"
   "breakdown": [           // null if used in one place
     { "label": "dough", "amount": 350 },
     { "label": "dusting", "amount": 40 }
   ],
+  // Optional render override (PF-241): shows original volume next to grams in
+  // gather list, print, copy. Render-only — does NOT auto-scale with
+  // multiplier or pluralize. Use when source recipe gives a volume measure
+  // (tsp, Tbsp, cup, "1 large egg", "1 stick") so users see familiar units.
+  "display_amount": "3 cups",
   // Research provenance (Path A only):
   "sourcedFrom": "Tier 1: 7/7 agents",
   "confidence": "high",
@@ -244,7 +249,9 @@ Each stage groups related states and has an optional gather section for mise en 
 }
 ```
 
-**Check D1**: All weights in grams. No cups, tablespoons, teaspoons in amounts.
+**Check D1**: All weights in grams. `total` and `unit: "g"` remain authoritative. `display_amount` is render-only — never use it as a substitute for grams.
+**When to use `display_amount`**: source recipe expresses the ingredient in volume (tsp, Tbsp, cup) or count (1 large egg, 1 stick butter, 2 cloves garlic). The grams stay primary; display_amount appears alongside. Examples: `"1 tsp"`, `"1 Tbsp"`, `"1/2 cup"`, `"1 large"`, `"for sprinkling"`.
+**When NOT to use**: source already in grams (most modern baking sources). Skip the field.
 **Check D6**: `sum(breakdown[].amount)` MUST equal `total` for every ingredient with breakdown. Verify this mathematically for EACH ingredient before presenting to user.
 
 ### Breakdown Sum Verification
