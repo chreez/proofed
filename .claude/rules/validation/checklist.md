@@ -116,6 +116,12 @@ Add checks here for new features:
 | F34 | Change_log ingredient snapshot | Every `change_log[]` entry has a non-empty `ingredients[]` snapshot — frozen at write time, never auto-mutated by later version bumps. Source of truth for "what the recipe said at vX.Y.Z". | 2026-05-07 |
 | F35 | Snapshot breakdown sums | For each snapshot ingredient with `breakdown[]`, sum of breakdown amounts equals `total` (±2g tolerance). Extension of D6 to per-bake / per-version snapshots. | 2026-05-07 |
 | F36 | Print snapshot resolution | `RecipePrintView.vue` ingredient amounts read from `cook_log[].ingredients` when a bake is selected, `change_log[].ingredients` when "Estimated" is selected; falls back to `stages[].gather.ingredients` only when neither snapshot is present. `cost.items[]` no longer drives ingredient amounts. | 2026-05-07 |
+| F37 | TagSearch renders | `TagSearch.vue` mounts on `/bake-log` and `/` above the timeline/list; chips inline left of input. | 2026-05-11 |
+| F38 | Tag dropdown sections | Dropdown opens on non-empty input, shows two labeled sections: "Add filter tag" (max 4) and "Jump to result" (max 4). Counts in tag rows are scoped to the current chip-filtered subset. | 2026-05-11 |
+| F39 | Multi-chip AND filter | When multiple chips are active, only items whose tokens include ALL chip keys remain in the list. `tokensFn(item)` is the source of truth for matching. | 2026-05-11 |
+| F40 | Keyboard nav | ArrowDown/ArrowUp moves `activeIdx` across all dropdown rows (tag + preview); Enter activates the active row; Esc closes dropdown; Backspace on empty input pops the last chip. | 2026-05-11 |
+| F41 | Preview nav targets | Bake log previews navigate to `/recipe/:id/bake/:date`. Recipe index previews navigate to `/recipe/:id`. Wired via `navigate` prop / emit. | 2026-05-11 |
+| F42 | Recipe index filter coherence | When recipes are filtered by chips, existing groupings still render correctly: in-progress section, baked category groups, outdated section, and "+N more" unbaked toggle all operate on the filtered subset. | 2026-05-11 |
 
 ## Print Validation
 
