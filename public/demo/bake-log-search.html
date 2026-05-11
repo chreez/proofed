@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tag Search — 3 Variants × 2 Pages (Demo)</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink: #1a1816;
+    --stone-100: #f5f2ec;
+    --stone-200: #e8e4dc;
+    --stone-300: #d4cfc4;
+    --stone-400: #999081;
+    --stone-500: #6b6457;
+    --stone-600: #4a443a;
+    --accent: #a65d45;
+    --accent-tint: #f3e3dc;
+    --warning: #b8861f;
+    --warning-tint: #f5ebcf;
+    --success: #4a7a4a;
+    --success-tint: #e0eedf;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  body { font-family: var(--font-body); background: var(--stone-100); color: var(--ink); padding: 24px; line-height: 1.5; }
+  h1 { font-family: var(--font-mono); font-size: 20px; letter-spacing: -0.01em; }
+  h1 .dot { color: var(--accent); }
+  h2 { font-family: var(--font-mono); font-size: 13px; margin: 0 0 6px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
+  h3 { font-family: var(--font-mono); font-size: 14px; margin: 0 0 4px; }
+  .subtitle { font-size: 13px; color: var(--stone-500); margin-bottom: 24px; }
+  .page { max-width: 1400px; margin: 0 auto; }
+  .intro { background: var(--stone-200); border: 2px solid var(--ink); padding: 16px 20px; margin-bottom: 24px; font-size: 13px; }
+  .intro p { margin: 4px 0; }
+  .intro code { font-family: var(--font-mono); font-size: 12px; background: var(--stone-100); padding: 1px 6px; border: 1px solid var(--stone-300); }
+
+  .section-header {
+    margin: 32px 0 12px;
+    padding: 8px 12px;
+    background: var(--ink);
+    color: var(--stone-100);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .section-header .meta-line { font-size: 11px; color: var(--stone-300); text-transform: none; letter-spacing: 0; }
+
+  .variants {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  @media (max-width: 1100px) { .variants { grid-template-columns: 1fr; } }
+
+  .variant {
+    background: #fff;
+    border: 2px solid var(--ink);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 620px;
+  }
+  .variant-head { border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 14px; }
+  .variant-head .behavior { font-size: 11px; font-family: var(--font-mono); color: var(--stone-600); margin-top: 6px; line-height: 1.6; }
+
+  /* ── Search bar ─────────────────────────────── */
+  .search-wrap { position: relative; }
+  .search-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 2px solid var(--ink);
+    padding: 8px 10px;
+    background: #fff;
+    flex-wrap: wrap;
+  }
+  .search-row:focus-within { background: var(--stone-100); }
+  .search-input {
+    flex: 1;
+    min-width: 80px;
+    border: none;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    background: transparent;
+  }
+  .search-input::placeholder { color: var(--stone-400); }
+  .chips-inline { display: flex; gap: 4px; flex-wrap: wrap; }
+
+  /* ── Chips ──────────────────────────────────── */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    white-space: nowrap;
+  }
+  .chip .x { cursor: pointer; font-weight: bold; margin-left: 2px; line-height: 1; }
+  .chip .x:hover { color: var(--ink); }
+
+  /* ── Dropdown ───────────────────────────────── */
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 2px solid var(--ink);
+    max-height: 320px;
+    overflow-y: auto;
+    z-index: 10;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .dropdown.hidden { display: none; }
+  .dd-section-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 10px 4px;
+    color: var(--stone-400);
+    background: var(--stone-100);
+    border-bottom: 1px solid var(--stone-300);
+  }
+  .dd-tag-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--stone-200);
+  }
+  .dd-tag-row:hover, .dd-tag-row.active { background: var(--stone-100); }
+  .dd-tag-name { font-family: var(--font-mono); font-size: 13px; color: var(--ink); }
+  .dd-tag-cat { font-family: var(--font-mono); font-size: 10px; color: var(--stone-400); margin-left: 6px; }
+  .dd-tag-count { font-family: var(--font-mono); font-size: 11px; color: var(--stone-400); }
+  .dd-result-row {
+    display: flex;
+    gap: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--stone-200);
+    align-items: center;
+  }
+  .dd-result-row:hover, .dd-result-row.active { background: var(--stone-100); }
+  .dd-result-thumb {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--stone-300);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .dd-result-meta { flex: 1; min-width: 0; }
+  .dd-result-name { font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dd-result-sub { font-family: var(--font-mono); font-size: 10px; color: var(--stone-400); }
+  mark { background: var(--warning-tint); color: var(--ink); padding: 0 1px; }
+  .dd-empty { padding: 14px 10px; font-size: 12px; color: var(--stone-400); font-style: italic; text-align: center; }
+
+  /* ── List (both pages) ──────────────────────── */
+  .item-list {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0;
+    position: relative;
+    max-height: 460px;
+    overflow-y: auto;
+  }
+  .item-list::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--stone-300);
+  }
+  .list-item {
+    position: relative;
+    padding: 8px 0 8px 2rem;
+    border-bottom: 1px solid var(--stone-200);
+    cursor: pointer;
+  }
+  .list-item:hover .item-name { color: var(--accent); }
+  .list-item:last-child { border-bottom: none; }
+  .item-dot {
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: #fff;
+    transform: translateY(-50%);
+  }
+  .item-dot.in-progress { background: var(--warning); border-color: var(--warning); }
+  .item-dot.unbaked { border-color: var(--stone-300); background: transparent; }
+  .item-row-top { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+  .item-date, .item-version, .item-cat, .item-count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--stone-400);
+    flex-shrink: 0;
+  }
+  .item-sep { font-family: var(--font-mono); font-size: 11px; color: var(--stone-300); }
+  .item-name { font-size: 14px; font-weight: 500; transition: color 150ms; }
+  .item-status {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 1px 6px;
+    background: var(--warning-tint);
+    color: var(--warning);
+    border: 1px solid var(--warning);
+  }
+  .item-summary { font-size: 12px; color: var(--stone-500); margin-top: 4px; line-height: 1.4; }
+  .item-wx { font-family: var(--font-mono); font-size: 10px; color: var(--stone-500); margin-top: 2px; }
+  .list-item.dim { opacity: 0.5; }
+
+  .empty-state {
+    padding: 32px 0;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--stone-400);
+  }
+
+  .count-bar {
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--stone-500);
+    display: flex;
+    justify-content: space-between;
+  }
+  .clear-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    padding: 0;
+  }
+  .clear-btn:hover { color: var(--ink); }
+  .clear-btn.hidden { visibility: hidden; }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--stone-100);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 10px 16px;
+    border: 2px solid var(--ink);
+    opacity: 0;
+    transition: opacity 200ms;
+    pointer-events: none;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; }
+
+  .legend { font-size: 11px; color: var(--stone-500); margin-top: 16px; font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>tag search<span class="dot">.</span> — 3 variants × 2 pages</h1>
+  <p class="subtitle">Same patterns, different data domains. Pick a winner per page (or one for both).</p>
+
+  <div class="intro">
+    <p><strong>Two pages, three UX patterns each.</strong> No real tag model yet — tokens derived from existing JSON fields.</p>
+    <p><strong>Bake log</strong> tokens: <code>name</code>, <code>weather</code>, <code>month</code>, <code>status</code>, <code>version</code>. Click previews → jump to bake.</p>
+    <p><strong>Recipe index</strong> tokens: <code>name</code>, <code>category</code>, <code>source</code>, <code>type</code>, <code>status</code>. Click previews → jump to recipe.</p>
+    <p>Try typing: <em>sour</em>, <em>pizza</em>, <em>rain</em>, <em>tartine</em>, <em>atk</em>, <em>baked</em>, <em>v1.0</em>.</p>
+  </div>
+
+  <!-- ─── BAKE LOG SECTION ─────────────────────── -->
+  <div class="section-header">
+    <span>1. Bake Log <span style="opacity:0.6">— /bake-log</span></span>
+    <span class="meta-line">14 sample bakes · tokens: name, weather, month, status, version</span>
+  </div>
+  <div class="variants" id="row-bakes">
+    <section class="variant">
+      <header class="variant-head">
+        <h2>A. Chips + Autocomplete</h2>
+        <div class="behavior">Type → tag suggestions w/ live counts. Click adds chip. Multi-chip = AND filter on list below.</div>
+      </header>
+      <div class="search-wrap"><div class="search-row" id="bake-a-row">
+        <div class="chips-inline" id="bake-a-chips"></div>
+        <input class="search-input" type="text" placeholder="Search tags..." id="bake-a-input" autocomplete="off">
+      </div><div class="dropdown hidden" id="bake-a-dd"></div></div>
+      <div class="count-bar"><span id="bake-a-count"></span><button class="clear-btn hidden" id="bake-a-clear">clear filter</button></div>
+      <ul class="item-list" id="bake-a-list"></ul>
+    </section>
+    <section class="variant">
+      <header class="variant-head">
+        <h2>B. Result Preview</h2>
+        <div class="behavior">Type → dropdown shows matching bakes (thumb + name + date). Click jumps. List also filters live.</div>
+      </header>
+      <div class="search-wrap"><div class="search-row">
+        <input class="search-input" type="text" placeholder="Search bakes..." id="bake-b-input" autocomplete="off">
+      </div><div class="dropdown hidden" id="bake-b-dd"></div></div>
+      <div class="count-bar"><span id="bake-b-count"></span><button class="clear-btn hidden" id="bake-b-clear">clear search</button></div>
+      <ul class="item-list" id="bake-b-list"></ul>
+    </section>
+    <section class="variant">
+      <header class="variant-head">
+        <h2>C. Hybrid</h2>
+        <div class="behavior">Dropdown shows tag suggestions (top) + bake previews (bottom). Click tag adds chip; click bake jumps.</div>
+      </header>
+      <div class="search-wrap"><div class="search-row" id="bake-c-row">
+        <div class="chips-inline" id="bake-c-chips"></div>
+        <input class="search-input" type="text" placeholder="Search tags or bakes..." id="bake-c-input" autocomplete="off">
+      </div><div class="dropdown hidden" id="bake-c-dd"></div></div>
+      <div class="count-bar"><span id="bake-c-count"></span><button class="clear-btn hidden" id="bake-c-clear">clear filter</button></div>
+      <ul class="item-list" id="bake-c-list"></ul>
+    </section>
+  </div>
+
+  <!-- ─── RECIPE INDEX SECTION ─────────────────── -->
+  <div class="section-header">
+    <span>2. Recipe Index <span style="opacity:0.6">— /</span></span>
+    <span class="meta-line">16 sample recipes · tokens: name, category, source, type, status</span>
+  </div>
+  <div class="variants" id="row-recipes">
+    <section class="variant">
+      <header class="variant-head">
+        <h2>A. Chips + Autocomplete</h2>
+        <div class="behavior">Type → tag suggestions w/ live counts. Click adds chip. Multi-chip = AND filter on list below.</div>
+      </header>
+      <div class="search-wrap"><div class="search-row" id="rec-a-row">
+        <div class="chips-inline" id="rec-a-chips"></div>
+        <input class="search-input" type="text" placeholder="Search tags..." id="rec-a-input" autocomplete="off">
+      </div><div class="dropdown hidden" id="rec-a-dd"></div></div>
+      <div class="count-bar"><span id="rec-a-count"></span><button class="clear-btn hidden" id="rec-a-clear">clear filter</button></div>
+      <ul class="item-list" id="rec-a-list"></ul>
+    </section>
+    <section class="variant">
+      <header class="variant-head">
+        <h2>B. Result Preview</h2>
+        <div class="behavior">Type → dropdown shows matching recipes (thumb + name + category). Click jumps. List filters live.</div>
+      </header>
+      <div class="search-wrap"><div class="search-row">
+        <input class="search-input" type="text" placeholder="Search recipes..." id="rec-b-input" autocomplete="off">
+      </div><div class="dropdown hidden" id="rec-b-dd"></div></div>
+      <div class="count-bar"><span id="rec-b-count"></span><button class="clear-btn hidden" id="rec-b-clear">clear search</button></div>
+      <ul class="item-list" id="rec-b-list"></ul>
+    </section>
+    <section class="variant">
+      <header class="variant-head">
+        <h2>C. Hybrid</h2>
+        <div class="behavior">Dropdown shows tag suggestions (top) + recipe previews (bottom). Click tag adds chip; click recipe jumps.</div>
+      </header>
+      <div class="search-wrap"><div class="search-row" id="rec-c-row">
+        <div class="chips-inline" id="rec-c-chips"></div>
+        <input class="search-input" type="text" placeholder="Search tags or recipes..." id="rec-c-input" autocomplete="off">
+      </div><div class="dropdown hidden" id="rec-c-dd"></div></div>
+      <div class="count-bar"><span id="rec-c-count"></span><button class="clear-btn hidden" id="rec-c-clear">clear filter</button></div>
+      <ul class="item-list" id="rec-c-list"></ul>
+    </section>
+  </div>
+
+  <div class="legend">
+    Demo limitations · click jumps emit a fake toast · no URL state · mock thumbs · sample data only
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// DATA: bakes
+// ═══════════════════════════════════════════════════
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const bakes = [
+  { recipeId:'tartine-rugelach', recipeName:'Tartine Rugelach', date:'2026-05-11', version:'v1.0', status:'in_progress', summary:'First time — Davita\'s part-einkorn dough. Walnut-currant filling.', weather:{ condition:'Clear sky', high:82, low:64, rh:42 }, thumb:'🍪' },
+  { recipeId:'jalapeno-cheddar-sourdough', recipeName:'Jalapeño Cheddar Sourdough', date:'2026-05-10', version:'v1.0', status:'complete', summary:'67% hydration. Loose crumb, sharp cheddar pulled through fermentation.', weather:{ condition:'Overcast', high:75, low:62, rh:68 }, thumb:'🥖' },
+  { recipeId:'atk-cinnamon-buns-ultimate', recipeName:'ATK Ultimate Cinnamon Buns', date:'2026-04-28', version:'v1.2', status:'complete', summary:'Overnight cold proof variant. Gooier center than quick version.', weather:{ condition:'Rain', high:68, low:54, rh:88 }, thumb:'🥐' },
+  { recipeId:'sourdough-chocolate-chip-cookies', recipeName:'Sourdough Chocolate Chip Cookies', date:'2026-04-22', version:'v1.1', status:'complete', summary:'Bumped salt to 7g. Best batch yet — chewy edges, soft middle.', weather:{ condition:'Clear sky', high:78, low:60, rh:38 }, thumb:'🍪' },
+  { recipeId:'ba-bolognese', recipeName:"BA's Best Bolognese", date:'2026-04-15', version:'v1.0', status:'complete', summary:'2.5hr simmer. Used pappardelle. Pancetta + chuck combo nailed it.', weather:{ condition:'Drizzle', high:64, low:52, rh:80 }, thumb:'🍝' },
+  { recipeId:'ny-style-pizza', recipeName:'NY-Style Pizza Dough', date:'2026-04-12', version:'v1.3', status:'complete', summary:'72hr cold ferment. Char on the rim, slight cupping on pepperoni.', weather:{ condition:'Clear sky', high:74, low:58, rh:44 }, thumb:'🍕' },
+  { recipeId:'tomita-tsukemen', recipeName:'Tomita Tsukemen', date:'2026-04-05', version:'v1.0', status:'complete', summary:'12hr chintan + gyokai blend. Dip broth way too salty — needs dilution.', weather:{ condition:'Overcast', high:66, low:54, rh:72 }, thumb:'🍜' },
+  { recipeId:'tartine-baguette', recipeName:'Tartine Baguette', date:'2026-03-28', version:'v1.1', status:'complete', summary:'Open crumb, blistered crust. Slashes opened well after retard.', weather:{ condition:'Rain', high:62, low:48, rh:85 }, thumb:'🥖' },
+  { recipeId:'sourdough-cinnamon-buns', recipeName:'Sourdough Cinnamon Buns', date:'2026-03-20', version:'v1.0', status:'complete', summary:'Cold proof overnight. Tangier than ATK version, less puffy.', weather:{ condition:'Clear sky', high:70, low:52, rh:48 }, thumb:'🥐' },
+  { recipeId:'sourdough-chocolate-chip-cookies', recipeName:'Sourdough Chocolate Chip Cookies', date:'2026-03-12', version:'v1.0', status:'complete', summary:'First go — straight discard, no chill. Too flat. Chill needs 1hr min.', weather:{ condition:'Overcast', high:60, low:48, rh:62 }, thumb:'🍪' },
+  { recipeId:'birote-salado', recipeName:'Birote Salado', date:'2026-03-05', version:'v1.0', status:'complete', summary:'Steamed crust, almost no crumb. Holds tortas ahogadas perfectly.', weather:{ condition:'Clear sky', high:65, low:50, rh:55 }, thumb:'🥖' },
+  { recipeId:'carrot-cake', recipeName:'Carrot Cake w/ Brown Butter Frosting', date:'2026-02-25', version:'v1.0', status:'complete', summary:'Brown butter cream cheese frosting. Dense, moist crumb, walnut chunks.', weather:{ condition:'Rain', high:55, low:42, rh:82 }, thumb:'🥕' },
+  { recipeId:'gochujang-garlic-buns', recipeName:'Gochujang & Garlic Buns', date:'2026-02-18', version:'v1.0', status:'complete', summary:'Soft milk bread base. Gochujang butter glaze brushed after bake.', weather:{ condition:'Clear sky', high:50, low:38, rh:45 }, thumb:'🥯' },
+  { recipeId:'atk-cinnamon-buns-ultimate', recipeName:'ATK Ultimate Cinnamon Buns', date:'2026-02-10', version:'v1.1', status:'complete', summary:'Quick version. 1.5hr total. Cream cheese glaze got runny — cool buns first.', weather:{ condition:'Overcast', high:48, low:36, rh:60 }, thumb:'🥐' },
+];
+
+// ═══════════════════════════════════════════════════
+// DATA: recipes (homepage)
+// ═══════════════════════════════════════════════════
+const recipes = [
+  { id:'tartine-rugelach', name:'Tartine Rugelach', category:'baking', source:'Tartine', sourceType:'adapted', bakeCount:1, status:'baked', description:"Davita's part-einkorn flaky dough with walnut-currant filling.", thumb:'🍪' },
+  { id:'tartine-baguette', name:'Tartine Baguette', category:'baking', source:'Tartine', sourceType:'adapted', bakeCount:2, status:'baked', description:'Open crumb sourdough baguette, retarded overnight.', thumb:'🥖' },
+  { id:'tartine-lemon-cream-tart', name:'Tartine Lemon Cream Tart', category:'baking', source:'Tartine', sourceType:'adapted', bakeCount:0, status:'unbaked', description:"Pâte sucrée + Pierre Herme butter-mounted lemon cream.", thumb:'🥧' },
+  { id:'atk-cinnamon-buns-ultimate', name:'ATK Ultimate Cinnamon Buns', category:'baking', source:'ATK', sourceType:'adapted', bakeCount:3, status:'baked', description:'Stand mixer enriched dough, double cream cheese glaze.', thumb:'🥐' },
+  { id:'sourdough-chocolate-chip-cookies', name:'Sourdough Chocolate Chip Cookies', category:'baking', source:'Clever Carrot', sourceType:'adapted', bakeCount:2, status:'baked', description:'Discard-based chewy cookies with bread + AP blend.', thumb:'🍪' },
+  { id:'jalapeno-cheddar-sourdough', name:'Jalapeño Cheddar Sourdough', category:'baking', source:'Chris', sourceType:'original', bakeCount:1, status:'baked', description:'67% hydration loaf, sharp cheddar laminated through bulk.', thumb:'🥖' },
+  { id:'simple-sourdough', name:'Sourdough — 70% Hydration', category:'baking', source:'Chris', sourceType:'original', bakeCount:5, status:'baked', description:'House workhorse loaf. Bread flour + 20% whole wheat.', thumb:'🥖' },
+  { id:'sourdough-cinnamon-buns', name:'Sourdough Cinnamon Buns', category:'baking', source:'Chris', sourceType:'original', bakeCount:1, status:'baked', description:'Tangier riff on ATK — slow cold ferment.', thumb:'🥐' },
+  { id:'birote-salado', name:'Birote Salado', category:'baking', source:'Chris', sourceType:'original', bakeCount:1, status:'baked', description:'Steam-crust Mexican bread for tortas ahogadas.', thumb:'🥖' },
+  { id:'carrot-cake', name:'Carrot Cake w/ Brown Butter Frosting', category:'baking', source:'Chris', sourceType:'original', bakeCount:1, status:'baked', description:'Dense moist crumb, brown butter cream cheese frosting.', thumb:'🥕' },
+  { id:'gochujang-garlic-buns', name:'Gochujang & Garlic Buns', category:'baking', source:'Sourdough School', sourceType:'adapted', bakeCount:1, status:'baked', description:'Soft milk bread base, gochujang butter glaze.', thumb:'🥯' },
+  { id:'ny-style-pizza', name:'NY-Style Pizza Dough', category:'pizza & dough', source:'r/Pizza', sourceType:'adapted', bakeCount:5, status:'baked', description:'72hr cold ferment, high-protein flour, baking steel.', thumb:'🍕' },
+  { id:'ny-pizza-sauce', name:'NY Pizza Sauce', category:'pizza & dough', source:'r/Pizza', sourceType:'adapted', bakeCount:0, status:'unbaked', description:'Hand-blended Sclafani tomatoes, no-cook.', thumb:'🍅' },
+  { id:'sourdough-pizza-dough', name:'Sourdough Pizza Dough', category:'pizza & dough', source:'Chris', sourceType:'original', bakeCount:0, status:'unbaked', description:'Naturally leavened cold-ferment dough.', thumb:'🍕' },
+  { id:'ba-bolognese', name:"BA's Best Bolognese", category:'mains', source:'Bon Appétit', sourceType:'adapted', bakeCount:1, status:'baked', description:'Long-simmered chuck + pancetta ragu over pappardelle.', thumb:'🍝' },
+  { id:'tomita-tsukemen', name:'Tomita Tsukemen', category:'mains', source:'Tomita', sourceType:'adapted', bakeCount:1, status:'baked', description:'12hr chintan + gyokai blend dip broth, thick noodles.', thumb:'🍜' },
+  { id:'ichiran-ramen', name:'Ichiran-Style Tonkotsu Ramen', category:'mains', source:'Ichiran', sourceType:'adapted', bakeCount:1, status:'baked', description:'Pork bone broth, secret red sauce, thin noodles.', thumb:'🍜' },
+  { id:'coco-curry', name:'CoCo Ichibanya Japanese Curry', category:'mains', source:'CoCo Ichibanya', sourceType:'adapted', bakeCount:0, status:'unbaked', description:'Roux-thickened sweet-savory curry over rice.', thumb:'🍛' },
+  { id:'thai-tea-boba', name:'Thai Tea Boba', category:'drinks', source:'Chris', sourceType:'original', bakeCount:0, status:'unbaked', description:'Strong Cha Yen with tapioca pearls.', thumb:'🧋' },
+];
+
+// ═══════════════════════════════════════════════════
+// TOKEN DERIVATION
+// ═══════════════════════════════════════════════════
+function bakeTokens(b) {
+  const t = new Set();
+  b.recipeName.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(w => w.length >= 3).forEach(w => t.add(`name:${w}`));
+  if (b.weather) t.add(`weather:${b.weather.condition.toLowerCase()}`);
+  t.add(`status:${b.status === 'in_progress' ? 'in progress' : 'complete'}`);
+  const [, m] = b.date.split('-').map(Number);
+  t.add(`month:${MONTHS[m-1].toLowerCase()}`);
+  t.add(`version:${b.version}`);
+  return [...t];
+}
+function bakeMatchesText(b, q) {
+  const ql = q.toLowerCase();
+  return [b.recipeName, b.version, b.summary, b.weather?.condition, b.status==='in_progress'?'in progress':'complete', MONTHS[parseInt(b.date.split('-')[1])-1]]
+    .filter(Boolean).join(' ').toLowerCase().includes(ql);
+}
+function recipeTokens(r) {
+  const t = new Set();
+  r.name.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(w => w.length >= 3).forEach(w => t.add(`name:${w}`));
+  t.add(`category:${r.category}`);
+  t.add(`source:${r.source.toLowerCase()}`);
+  t.add(`type:${r.sourceType}`);
+  t.add(`status:${r.status}`);
+  return [...t];
+}
+function recipeMatchesText(r, q) {
+  const ql = q.toLowerCase();
+  return [r.name, r.description, r.category, r.source, r.sourceType, r.status].filter(Boolean).join(' ').toLowerCase().includes(ql);
+}
+
+// ═══════════════════════════════════════════════════
+// SHARED HELPERS
+// ═══════════════════════════════════════════════════
+function buildTagPool(items, tokensFn) {
+  const m = new Map();
+  items.forEach(it => tokensFn(it).forEach(t => m.set(t, (m.get(t) || 0) + 1)));
+  return [...m.entries()].map(([key, count]) => {
+    const [category, ...rest] = key.split(':');
+    return { key, category, name: rest.join(':'), count };
+  }).sort((a,b) => b.count - a.count);
+}
+function fmtDate(d) { const [,m,day] = d.split('-').map(Number); return `${MONTHS[m-1]} ${day}`; }
+function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;' }[c])); }
+function highlight(text, q) {
+  if (!q) return escapeHtml(text);
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig');
+  return escapeHtml(text).replace(re, '<mark>$1</mark>');
+}
+function wxIcon(c) { return ({ 'Clear sky':'☀️','Overcast':'☁️','Rain':'🌧️','Drizzle':'🌦️' })[c] || '🌤️'; }
+
+function renderBakeItem(b, q) {
+  return `<li class="list-item">
+    <span class="item-dot ${b.status==='in_progress'?'in-progress':''}"></span>
+    <div class="item-row-top">
+      <span class="item-date">${fmtDate(b.date)}</span>
+      <span class="item-sep">·</span>
+      <span class="item-name">${highlight(b.recipeName, q)}</span>
+      <span class="item-sep">·</span>
+      <span class="item-version">${b.version}</span>
+      ${b.status==='in_progress'?'<span class="item-status">In Progress</span>':''}
+    </div>
+    ${b.weather?`<div class="item-wx">${wxIcon(b.weather.condition)} ${b.weather.high}°/${b.weather.low}° · ${b.weather.rh}%rh</div>`:''}
+    ${b.summary?`<div class="item-summary">${highlight(b.summary, q)}</div>`:''}
+  </li>`;
+}
+function renderRecipeItem(r, q) {
+  return `<li class="list-item ${r.status==='unbaked'?'dim':''}">
+    <span class="item-dot ${r.status==='unbaked'?'unbaked':''}"></span>
+    <div class="item-row-top">
+      <span class="item-name">${highlight(r.name, q)}</span>
+      <span class="item-sep">·</span>
+      <span class="item-cat">${r.category}</span>
+      ${r.bakeCount>0?`<span class="item-sep">·</span><span class="item-count">${r.bakeCount} bake${r.bakeCount===1?'':'s'}</span>`:''}
+    </div>
+    ${r.description?`<div class="item-summary">${highlight(r.description, q)}</div>`:''}
+  </li>`;
+}
+function renderBakePreviewRow(b, q, active) {
+  return `<div class="dd-result-row ${active?'active':''}">
+    <div class="dd-result-thumb">${b.thumb}</div>
+    <div class="dd-result-meta">
+      <div class="dd-result-name">${highlight(b.recipeName, q)}</div>
+      <div class="dd-result-sub">${fmtDate(b.date)} · ${b.version} · ${b.weather?.condition ?? ''}</div>
+    </div></div>`;
+}
+function renderRecipePreviewRow(r, q, active) {
+  return `<div class="dd-result-row ${active?'active':''}">
+    <div class="dd-result-thumb">${r.thumb}</div>
+    <div class="dd-result-meta">
+      <div class="dd-result-name">${highlight(r.name, q)}</div>
+      <div class="dd-result-sub">${r.category} · ${r.source} · ${r.bakeCount>0?r.bakeCount+' bakes':'unbaked'}</div>
+    </div></div>`;
+}
+
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 1500);
+}
+
+// ═══════════════════════════════════════════════════
+// VARIANT FACTORIES (generalized over data domain)
+// ═══════════════════════════════════════════════════
+function mountVariantA(opts) {
+  const { items, tokensFn, renderItem, navUrl, ids } = opts;
+  const allTags = buildTagPool(items, tokensFn);
+  const input = document.getElementById(ids.input);
+  const dropdown = document.getElementById(ids.dd);
+  const chipsEl = document.getElementById(ids.chips);
+  const listEl = document.getElementById(ids.list);
+  const countEl = document.getElementById(ids.count);
+  const clearBtn = document.getElementById(ids.clear);
+  let filterTags = [];
+  let activeIdx = -1;
+  let suggestions = [];
+
+  function render() {
+    chipsEl.innerHTML = filterTags.map(t => {
+      const tag = allTags.find(x => x.key === t);
+      return `<span class="chip" data-key="${t}">${tag.category}:${tag.name}<span class="x">×</span></span>`;
+    }).join('');
+    chipsEl.querySelectorAll('.chip .x').forEach(x => {
+      x.onclick = () => { filterTags = filterTags.filter(t => t !== x.parentElement.dataset.key); render(); };
+    });
+    const filtered = items.filter(it => filterTags.every(t => new Set(tokensFn(it)).has(t)));
+    listEl.innerHTML = filtered.length ? filtered.map(it => renderItem(it, '')).join('') : '<div class="empty-state">No matches. Remove a chip.</div>';
+    countEl.textContent = `${filtered.length} of ${items.length}`;
+    clearBtn.classList.toggle('hidden', filterTags.length === 0);
+  }
+  function renderDropdown() {
+    const q = input.value.trim().toLowerCase();
+    if (!q) { dropdown.classList.add('hidden'); return; }
+    const scoped = items.filter(it => filterTags.every(t => new Set(tokensFn(it)).has(t)));
+    suggestions = allTags
+      .filter(t => !filterTags.includes(t.key))
+      .filter(t => t.name.includes(q) || `${t.category}:${t.name}`.includes(q))
+      .map(t => ({ ...t, liveCount: scoped.filter(it => new Set(tokensFn(it)).has(t.key)).length }))
+      .filter(t => t.liveCount > 0)
+      .slice(0, 8);
+    if (!suggestions.length) {
+      dropdown.innerHTML = `<div class="dd-empty">No matching tags for "${escapeHtml(q)}"</div>`;
+    } else {
+      dropdown.innerHTML = suggestions.map((s, i) => `
+        <div class="dd-tag-row ${i===activeIdx?'active':''}" data-idx="${i}">
+          <div><span class="dd-tag-name">${highlight(s.name, q)}</span><span class="dd-tag-cat">${s.category}</span></div>
+          <span class="dd-tag-count">${s.liveCount}</span>
+        </div>`).join('');
+      dropdown.querySelectorAll('.dd-tag-row').forEach(row => {
+        row.onmousedown = e => { e.preventDefault(); pick(parseInt(row.dataset.idx)); };
+      });
+    }
+    dropdown.classList.remove('hidden');
+  }
+  function pick(i) {
+    const s = suggestions[i];
+    if (!s) return;
+    filterTags.push(s.key);
+    input.value = '';
+    activeIdx = -1;
+    dropdown.classList.add('hidden');
+    render();
+  }
+  input.addEventListener('input', () => { activeIdx = -1; renderDropdown(); });
+  input.addEventListener('focus', renderDropdown);
+  input.addEventListener('blur', () => setTimeout(() => dropdown.classList.add('hidden'), 150));
+  input.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); activeIdx = Math.min(activeIdx+1, suggestions.length-1); renderDropdown(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); activeIdx = Math.max(activeIdx-1, 0); renderDropdown(); }
+    else if (e.key === 'Enter' && activeIdx >= 0) { e.preventDefault(); pick(activeIdx); }
+    else if (e.key === 'Backspace' && !input.value && filterTags.length) { filterTags.pop(); render(); }
+    else if (e.key === 'Escape') { dropdown.classList.add('hidden'); }
+  });
+  clearBtn.onclick = () => { filterTags = []; render(); };
+  render();
+}
+
+function mountVariantB(opts) {
+  const { items, matchTextFn, renderItem, renderPreview, navUrl, ids } = opts;
+  const input = document.getElementById(ids.input);
+  const dropdown = document.getElementById(ids.dd);
+  const listEl = document.getElementById(ids.list);
+  const countEl = document.getElementById(ids.count);
+  const clearBtn = document.getElementById(ids.clear);
+  let activeIdx = -1;
+  let results = [];
+
+  function render() {
+    const q = input.value.trim();
+    const filtered = q ? items.filter(it => matchTextFn(it, q)) : items;
+    listEl.innerHTML = filtered.length ? filtered.map(it => renderItem(it, q)).join('') : '<div class="empty-state">No matches.</div>';
+    countEl.textContent = `${filtered.length} of ${items.length}`;
+    clearBtn.classList.toggle('hidden', !q);
+  }
+  function renderDropdown() {
+    const q = input.value.trim();
+    if (!q) { dropdown.classList.add('hidden'); return; }
+    results = items.filter(it => matchTextFn(it, q)).slice(0, 6);
+    if (!results.length) {
+      dropdown.innerHTML = `<div class="dd-empty">No matches for "${escapeHtml(q)}"</div>`;
+    } else {
+      dropdown.innerHTML = `<div class="dd-section-title">${results.length} match${results.length===1?'':'es'}</div>` +
+        results.map((it, i) => renderPreview(it, q, i===activeIdx).replace('<div class="dd-result-row', `<div data-idx="${i}" class="dd-result-row`)).join('');
+      dropdown.querySelectorAll('.dd-result-row').forEach(row => {
+        row.onmousedown = e => { e.preventDefault(); jump(parseInt(row.dataset.idx)); };
+      });
+    }
+    dropdown.classList.remove('hidden');
+  }
+  function jump(i) {
+    const it = results[i];
+    if (!it) return;
+    showToast(`→ ${navUrl(it)}`);
+    dropdown.classList.add('hidden');
+  }
+  input.addEventListener('input', () => { activeIdx = -1; renderDropdown(); render(); });
+  input.addEventListener('focus', renderDropdown);
+  input.addEventListener('blur', () => setTimeout(() => dropdown.classList.add('hidden'), 150));
+  input.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); activeIdx = Math.min(activeIdx+1, results.length-1); renderDropdown(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); activeIdx = Math.max(activeIdx-1, 0); renderDropdown(); }
+    else if (e.key === 'Enter' && activeIdx >= 0) { e.preventDefault(); jump(activeIdx); }
+    else if (e.key === 'Escape') { dropdown.classList.add('hidden'); }
+  });
+  clearBtn.onclick = () => { input.value = ''; dropdown.classList.add('hidden'); render(); };
+  render();
+}
+
+function mountVariantC(opts) {
+  const { items, tokensFn, matchTextFn, renderItem, renderPreview, navUrl, ids } = opts;
+  const allTags = buildTagPool(items, tokensFn);
+  const input = document.getElementById(ids.input);
+  const dropdown = document.getElementById(ids.dd);
+  const chipsEl = document.getElementById(ids.chips);
+  const listEl = document.getElementById(ids.list);
+  const countEl = document.getElementById(ids.count);
+  const clearBtn = document.getElementById(ids.clear);
+  let filterTags = [];
+  let activeIdx = -1;
+  let allItems = [];
+
+  function render() {
+    chipsEl.innerHTML = filterTags.map(t => {
+      const tag = allTags.find(x => x.key === t);
+      return `<span class="chip" data-key="${t}">${tag.category}:${tag.name}<span class="x">×</span></span>`;
+    }).join('');
+    chipsEl.querySelectorAll('.chip .x').forEach(x => {
+      x.onclick = () => { filterTags = filterTags.filter(t => t !== x.parentElement.dataset.key); render(); };
+    });
+    const q = input.value.trim();
+    let filtered = items.filter(it => filterTags.every(t => new Set(tokensFn(it)).has(t)));
+    if (q) filtered = filtered.filter(it => matchTextFn(it, q));
+    listEl.innerHTML = filtered.length ? filtered.map(it => renderItem(it, q)).join('') : '<div class="empty-state">No matches.</div>';
+    countEl.textContent = `${filtered.length} of ${items.length}`;
+    clearBtn.classList.toggle('hidden', filterTags.length === 0 && !q);
+  }
+  function renderDropdown() {
+    const q = input.value.trim().toLowerCase();
+    if (!q) { dropdown.classList.add('hidden'); return; }
+    const scoped = items.filter(it => filterTags.every(t => new Set(tokensFn(it)).has(t)));
+    const tagSuggs = allTags
+      .filter(t => !filterTags.includes(t.key))
+      .filter(t => t.name.includes(q) || `${t.category}:${t.name}`.includes(q))
+      .map(t => ({ ...t, liveCount: scoped.filter(it => new Set(tokensFn(it)).has(t.key)).length }))
+      .filter(t => t.liveCount > 0)
+      .slice(0, 4);
+    const previews = scoped.filter(it => matchTextFn(it, q)).slice(0, 4);
+    allItems = [
+      ...tagSuggs.map(t => ({ type:'tag', payload:t })),
+      ...previews.map(it => ({ type:'item', payload:it })),
+    ];
+    if (!allItems.length) {
+      dropdown.innerHTML = `<div class="dd-empty">No tags or matches for "${escapeHtml(q)}"</div>`;
+    } else {
+      let html = '';
+      if (tagSuggs.length) {
+        html += `<div class="dd-section-title">Add filter tag</div>`;
+        html += tagSuggs.map((s, i) => `
+          <div class="dd-tag-row ${i===activeIdx?'active':''}" data-idx="${i}">
+            <div><span class="dd-tag-name">${highlight(s.name, q)}</span><span class="dd-tag-cat">${s.category}</span></div>
+            <span class="dd-tag-count">${s.liveCount}</span>
+          </div>`).join('');
+      }
+      if (previews.length) {
+        html += `<div class="dd-section-title">Jump to result</div>`;
+        html += previews.map((it, j) => {
+          const i = tagSuggs.length + j;
+          return renderPreview(it, q, i===activeIdx).replace('<div class="dd-result-row', `<div data-idx="${i}" class="dd-result-row`);
+        }).join('');
+      }
+      dropdown.innerHTML = html;
+      dropdown.querySelectorAll('[data-idx]').forEach(row => {
+        row.onmousedown = e => { e.preventDefault(); pick(parseInt(row.dataset.idx)); };
+      });
+    }
+    dropdown.classList.remove('hidden');
+  }
+  function pick(i) {
+    const item = allItems[i];
+    if (!item) return;
+    if (item.type === 'tag') {
+      filterTags.push(item.payload.key);
+      input.value = '';
+      dropdown.classList.add('hidden');
+      render();
+    } else {
+      showToast(`→ ${navUrl(item.payload)}`);
+      dropdown.classList.add('hidden');
+    }
+    activeIdx = -1;
+  }
+  input.addEventListener('input', () => { activeIdx = -1; renderDropdown(); render(); });
+  input.addEventListener('focus', renderDropdown);
+  input.addEventListener('blur', () => setTimeout(() => dropdown.classList.add('hidden'), 150));
+  input.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); activeIdx = Math.min(activeIdx+1, allItems.length-1); renderDropdown(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); activeIdx = Math.max(activeIdx-1, 0); renderDropdown(); }
+    else if (e.key === 'Enter' && activeIdx >= 0) { e.preventDefault(); pick(activeIdx); }
+    else if (e.key === 'Backspace' && !input.value && filterTags.length) { filterTags.pop(); render(); }
+    else if (e.key === 'Escape') { dropdown.classList.add('hidden'); }
+  });
+  clearBtn.onclick = () => { filterTags = []; input.value = ''; dropdown.classList.add('hidden'); render(); };
+  render();
+}
+
+// ═══════════════════════════════════════════════════
+// MOUNT
+// ═══════════════════════════════════════════════════
+const bakeNav = b => `/recipe/${b.recipeId}/bake/${b.date}`;
+const recipeNav = r => `/recipe/${r.id}`;
+
+// Bake log row
+mountVariantA({ items: bakes, tokensFn: bakeTokens, renderItem: renderBakeItem, navUrl: bakeNav,
+  ids: { input:'bake-a-input', dd:'bake-a-dd', chips:'bake-a-chips', list:'bake-a-list', count:'bake-a-count', clear:'bake-a-clear' } });
+mountVariantB({ items: bakes, matchTextFn: bakeMatchesText, renderItem: renderBakeItem, renderPreview: renderBakePreviewRow, navUrl: bakeNav,
+  ids: { input:'bake-b-input', dd:'bake-b-dd', list:'bake-b-list', count:'bake-b-count', clear:'bake-b-clear' } });
+mountVariantC({ items: bakes, tokensFn: bakeTokens, matchTextFn: bakeMatchesText, renderItem: renderBakeItem, renderPreview: renderBakePreviewRow, navUrl: bakeNav,
+  ids: { input:'bake-c-input', dd:'bake-c-dd', chips:'bake-c-chips', list:'bake-c-list', count:'bake-c-count', clear:'bake-c-clear' } });
+
+// Recipe index row
+mountVariantA({ items: recipes, tokensFn: recipeTokens, renderItem: renderRecipeItem, navUrl: recipeNav,
+  ids: { input:'rec-a-input', dd:'rec-a-dd', chips:'rec-a-chips', list:'rec-a-list', count:'rec-a-count', clear:'rec-a-clear' } });
+mountVariantB({ items: recipes, matchTextFn: recipeMatchesText, renderItem: renderRecipeItem, renderPreview: renderRecipePreviewRow, navUrl: recipeNav,
+  ids: { input:'rec-b-input', dd:'rec-b-dd', list:'rec-b-list', count:'rec-b-count', clear:'rec-b-clear' } });
+mountVariantC({ items: recipes, tokensFn: recipeTokens, matchTextFn: recipeMatchesText, renderItem: renderRecipeItem, renderPreview: renderRecipePreviewRow, navUrl: recipeNav,
+  ids: { input:'rec-c-input', dd:'rec-c-dd', chips:'rec-c-chips', list:'rec-c-list', count:'rec-c-count', clear:'rec-c-clear' } });
+</script>
+</body>
+</html>
