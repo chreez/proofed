@@ -1229,5 +1229,12 @@
         "cost": 0.05
       }
     ]
-  }
+  },
+  "technical_notes": [
+    {
+      "title": "Quick Bake vs Overnight Rest",
+      "text": "- Recipe defaults to overnight rest (8-24h fridge). Same-day bake works with tradeoffs.\n- **Why rest helps**: flour hydrates fully (chewier crumb, less gritty); enzymes break starch into sugars (deeper browning, toffee depth); discard acidity mellows; dough firms so cookies stay thicker (less spread).\n- **Quick bake (30-min freezer chill, no overnight)**: flatter cookies (warm butter spreads in oven), paler color (less browning fuel), sharper sourdough tang, slightly grittier bite from under-hydrated flour.\n- **Minimum viable chill**: 30 min in freezer firms butter enough to prevent runaway spread. Flavor will be one-dimensional compared to rested dough.\n- **No yeast involved**: leavening is baking soda + baking powder. Sourdough discard contributes flavor + hydration, not lift. Adding instant yeast won't help — bake window is too short for fermentation.",
+      "category": "method"
+    }
+  ]
 }
