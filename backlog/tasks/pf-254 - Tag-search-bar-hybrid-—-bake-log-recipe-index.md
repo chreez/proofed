@@ -1,10 +1,10 @@
 ---
 id: PF-254
 title: Tag search bar (hybrid) — bake log + recipe index
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-11 20:28'
-updated_date: '2026-05-11 20:43'
+updated_date: '2026-05-11 21:48'
 labels:
   - ux
 dependencies: []
@@ -42,15 +42,15 @@ Demo: public/demo/bake-log-search.html — 3 variants × 2 pages.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 TagSearch.vue component exists in src/components/, generic over items via props (tokensFn, matchTextFn, renderItem slot, navigate handler)
-- [ ] #2 BakeLogPage.vue renders a TagSearch at the top of the page that filters the bake timeline below; chips AND-filter; clicking a preview navigates to /recipe/:id/bake/:date
-- [ ] #3 RecipeIndex.vue renders a TagSearch at the top that filters recipes; existing category groups, in-progress section, outdated section, and unbaked-toggle still work on the filtered subset
-- [ ] #4 Dropdown opens on input non-empty; shows 'Add filter tag' (max 4) + 'Jump to result' (max 4) sections; live counts reflect chip-scoped subset
-- [ ] #5 Keyboard nav: ArrowDown/ArrowUp moves active index across all dropdown items; Enter activates; Esc closes; Backspace on empty input pops the last chip
-- [ ] #6 Multi-chip filter is AND (every chip's token must match)
-- [ ] #7 Empty state: when filter returns 0 items, list shows 'No matches — clear filter' affordance
-- [ ] #8 Component tests in src/components/TagSearch.spec.ts: chip add/remove, AND filter logic, keyboard nav, dropdown sections, empty state
-- [ ] #9 Integration: BakeLogPage.spec.ts asserts search bar renders + filters timeline; RecipeIndex.spec.ts asserts search bar renders + filters category groups
-- [ ] #10 npm run build passes (vitest + vue-tsc + vite build), including snapshot updates for BakeLogPage and RecipeIndex
-- [ ] #11 Human sign-off: visual review on /bake-log and / on iPhone + macOS — search opens, chips render, previews jump, mobile readable
+- [x] #1 TagSearch.vue component exists in src/components/, generic over items via props (tokensFn, matchTextFn, renderItem slot, navigate handler)
+- [x] #2 BakeLogPage.vue renders a TagSearch at the top of the page that filters the bake timeline below; chips AND-filter; clicking a preview navigates to /recipe/:id/bake/:date
+- [x] #3 RecipeIndex.vue renders a TagSearch at the top that filters recipes; existing category groups, in-progress section, outdated section, and unbaked-toggle still work on the filtered subset
+- [x] #4 Dropdown opens on input non-empty; shows 'Add filter tag' (max 4) + 'Jump to result' (max 4) sections; live counts reflect chip-scoped subset
+- [x] #5 Keyboard nav: ArrowDown/ArrowUp moves active index across all dropdown items; Enter activates; Esc closes; Backspace on empty input pops the last chip
+- [x] #6 Multi-chip filter is AND (every chip's token must match)
+- [x] #7 Empty state: when filter returns 0 items, list shows 'No matches — clear filter' affordance
+- [x] #8 Component tests in src/components/TagSearch.spec.ts: chip add/remove, AND filter logic, keyboard nav, dropdown sections, empty state
+- [x] #9 Integration: BakeLogPage.spec.ts asserts search bar renders + filters timeline; RecipeIndex.spec.ts asserts search bar renders + filters category groups
+- [x] #10 npm run build passes (vitest + vue-tsc + vite build), including snapshot updates for BakeLogPage and RecipeIndex
+- [x] #11 Human sign-off: visual review on /bake-log and / on iPhone + macOS — search opens, chips render, previews jump, mobile readable
 <!-- AC:END -->
