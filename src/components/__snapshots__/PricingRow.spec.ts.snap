@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PricingRow > matches HTML snapshot for a dirty row with no cost data 1`] = `
+"<div data-v-28c293e9="" class="pricing-row" data-recipe-id="test-recipe" data-dirty="true">
+  <!-- Row 1: name + dirty badge + cost -->
+  <div data-v-28c293e9="" class="pricing-row-top">
+    <div data-v-28c293e9="" class="pricing-row-name-wrap"><span data-v-28c293e9="" class="pricing-row-name">Test Recipe</span><span data-v-28c293e9="" class="pricing-row-dirty" title="Differs from committed default. Export to save.">modified</span><span data-v-28c293e9="" class="pricing-row-id">test-recipe</span></div>
+    <div data-v-28c293e9="" class="pricing-row-cost"><span data-v-28c293e9="" class="pricing-row-cost-missing">no cost data</span><span data-v-28c293e9="" class="pricing-row-label">cost</span></div>
+  </div><!-- Row 2: slider + readout -->
+  <div data-v-28c293e9="" class="pricing-row-controls">
+    <div data-v-28c293e9="" class="pricing-row-slider-wrap"><input data-v-28c293e9="" type="range" class="pricing-row-slider" min="50" max="300" step="1" aria-label="Markup percent for Test Recipe" value="200">
+      <div data-v-28c293e9="" class="pricing-row-slider-readout"><span data-v-28c293e9="" class="pricing-row-markup">200%</span><span data-v-28c293e9="" class="pricing-row-label">markup</span></div>
+    </div>
+    <div data-v-28c293e9="" class="pricing-row-readout">
+      <div data-v-28c293e9="" class="pricing-row-price pricing-row-price--missing">—</div>
+      <!--v-if-->
+    </div>
+  </div><!-- Row 3: nudge hint -->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`PricingRow > matches HTML snapshot for a typical row 1`] = `
+"<div data-v-28c293e9="" class="pricing-row" data-recipe-id="test-recipe" data-dirty="false">
+  <!-- Row 1: name + dirty badge + cost -->
+  <div data-v-28c293e9="" class="pricing-row-top">
+    <div data-v-28c293e9="" class="pricing-row-name-wrap"><span data-v-28c293e9="" class="pricing-row-name">Test Recipe</span>
+      <!--v-if--><span data-v-28c293e9="" class="pricing-row-id">test-recipe</span>
+    </div>
+    <div data-v-28c293e9="" class="pricing-row-cost"><span data-v-28c293e9="" class="pricing-row-cost-value">$2.50</span><span data-v-28c293e9="" class="pricing-row-label">cost</span></div>
+  </div><!-- Row 2: slider + readout -->
+  <div data-v-28c293e9="" class="pricing-row-controls">
+    <div data-v-28c293e9="" class="pricing-row-slider-wrap"><input data-v-28c293e9="" type="range" class="pricing-row-slider" min="50" max="300" step="1" aria-label="Markup percent for Test Recipe" value="150">
+      <div data-v-28c293e9="" class="pricing-row-slider-readout"><span data-v-28c293e9="" class="pricing-row-markup">150%</span><span data-v-28c293e9="" class="pricing-row-label">markup</span></div>
+    </div>
+    <div data-v-28c293e9="" class="pricing-row-readout">
+      <div data-v-28c293e9="" class="pricing-row-price"><span data-v-28c293e9="" class="pricing-row-pretty">$6.50</span><span data-v-28c293e9="" class="pricing-row-raw">raw $6.25</span></div>
+      <div data-v-28c293e9="" class="pricing-row-cp"><span data-v-28c293e9="" class="pricing-row-cp-dollar">$4.00</span><span data-v-28c293e9="" class="pricing-row-cp-pct">61.5% CP</span></div>
+    </div>
+  </div><!-- Row 3: nudge hint -->
+  <div data-v-28c293e9="" class="pricing-row-hint"> Nudge up to <strong data-v-28c293e9="">$6.95</strong> for <strong data-v-28c293e9="">+$0.45</strong> CP </div>
+</div>"
+`;

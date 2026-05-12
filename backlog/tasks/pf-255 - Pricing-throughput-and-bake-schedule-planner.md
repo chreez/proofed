@@ -1,7 +1,7 @@
 ---
 id: PF-255
 title: 'Pricing, throughput, and bake-schedule planner'
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-05-11 22:17'
 updated_date: '2026-05-12 04:21'
@@ -58,8 +58,8 @@ Needs full /groom pass with multiple spikes before any implementation. User said
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 1. 6 subtasks created: 1 slice + 3 spikes + 2 designs.
-- [ ] #2 2. Parent has no shippable code; closes when the slice subtask ships and all spikes/designs are marked Done or explicitly deferred.
-- [ ] #3 3. Labels: epic, pricing, scheduler (ungroomed stripped).
-- [ ] #4 4. Description preserves the 5 work streams from the original draft.
+- [x] #1 1. 6 subtasks created: 1 slice + 3 spikes + 2 designs.
+- [x] #2 2. Parent has no shippable code; closes when the slice subtask ships and all spikes/designs are marked Done or explicitly deferred.
+- [x] #3 3. Labels: epic, pricing, scheduler (ungroomed stripped).
+- [x] #4 4. Description preserves the 5 work streams from the original draft.
 <!-- AC:END -->
