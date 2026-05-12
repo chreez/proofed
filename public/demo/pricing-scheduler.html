@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>proofed. — Bake Scheduler (PF-255.4 demo)</title>
+<style>
+  /* ────────────────────────────────────────────────────────────────
+     Design tokens (mirrors index.html :root)
+     ──────────────────────────────────────────────────────────────── */
+  :root {
+    --stone-50:  #faf9f7;
+    --stone-100: #f5f3ef;
+    --stone-200: #e8e4dc;
+    --stone-300: #d4cdc1;
+    --stone-400: #b8ad9c;
+    --stone-500: #9c8e78;
+    --stone-600: #7d6e58;
+    --stone-700: #5f5243;
+    --stone-800: #433a2f;
+    --stone-900: #2a241e;
+    --ink:       #1a1816;
+    --cream:     #fff8e7;
+    --accent:    #a65d45;
+    --accent-tint: rgba(166,93,69,.10);
+    --crust:     #a67c52;
+    --crust-dark: #6b4423;
+    --success:   #6b8e4e;
+    --warning:   #c9a66b;
+    --warning-tint: rgba(201,166,107,.15);
+    --danger:    #a65252;
+    --danger-tint: rgba(166,82,82,.15);
+    --cold:      #b0c4d6;     /* cold-retard custom token */
+    --cold-tint: rgba(176,196,214,.30);
+    --night:     rgba(26,24,22,.06); /* nighttime band overlay */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--stone-100); color: var(--ink); }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  /* ────────────────────────────────────────────────────────────────
+     Header / brand
+     ──────────────────────────────────────────────────────────────── */
+  header { margin-bottom: 24px; }
+  .brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+  .brand .dot { color: var(--accent); }
+  .subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--stone-600);
+    margin-top: 4px;
+  }
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    border: 1px solid var(--stone-400);
+    padding: 1px 6px;
+    background: var(--stone-50);
+    margin-left: 8px;
+    color: var(--stone-700);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ────────────────────────────────────────────────────────────────
+     Toolbar (metrics + controls)
+     ──────────────────────────────────────────────────────────────── */
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: stretch;
+    margin-bottom: 16px;
+  }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+  }
+  .metric {
+    padding: 12px 16px;
+    border-right: 1px solid var(--stone-700);
+    color: var(--stone-200);
+  }
+  .metric:last-child { border-right: none; }
+  .metric-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--stone-400);
+    margin-bottom: 4px;
+  }
+  .metric-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--stone-100);
+  }
+  .metric-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--stone-500);
+    margin-top: 2px;
+  }
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: space-between;
+  }
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 6px 10px;
+    border: 2px solid var(--ink);
+    background: var(--stone-200);
+    color: var(--ink);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    appearance: none;
+  }
+  .btn:hover { background: var(--stone-300); }
+  .btn-accent { background: var(--accent); color: var(--stone-100); border-color: var(--accent); }
+
+  /* ────────────────────────────────────────────────────────────────
+     Alarm banner (brutal-wake-up warning)
+     ──────────────────────────────────────────────────────────────── */
+  .alarm-banner {
+    background: var(--danger-tint);
+    border: 2px solid var(--danger);
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+  }
+  .alarm-banner .icon { font-size: 20px; }
+  .alarm-banner strong { color: var(--danger); font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; }
+  .alarm-banner .spacer { flex: 1; }
+
+  /* ────────────────────────────────────────────────────────────────
+     Main grid: library + timeline
+     ──────────────────────────────────────────────────────────────── */
+  .main {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 16px;
+  }
+
+  /* Library */
+  .library {
+    background: var(--stone-200);
+    border: 2px solid var(--ink);
+    padding: 12px;
+  }
+  .library h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--stone-700);
+    margin-bottom: 10px;
+  }
+  .recipe-card {
+    background: var(--stone-50);
+    border: 2px solid var(--stone-400);
+    padding: 10px;
+    margin-bottom: 8px;
+    cursor: grab;
+    transition: transform 0.1s, border-color 0.1s;
+  }
+  .recipe-card:hover { border-color: var(--ink); transform: translateX(2px); }
+  .recipe-card.scheduled { opacity: 0.4; cursor: default; }
+  .recipe-card.scheduled:hover { transform: none; border-color: var(--stone-400); }
+  .recipe-name {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .recipe-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--stone-600);
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .recipe-meta span { white-space: nowrap; }
+  .recipe-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  /* ────────────────────────────────────────────────────────────────
+     Timeline
+     ──────────────────────────────────────────────────────────────── */
+  .timeline-wrapper {
+    background: var(--stone-50);
+    border: 2px solid var(--ink);
+    overflow-x: auto;
+  }
+
+  .timeline {
+    position: relative;
+    min-width: 1400px;
+    padding: 0;
+  }
+
+  /* Hour ruler */
+  .ruler {
+    position: relative;
+    height: 32px;
+    border-bottom: 2px solid var(--ink);
+    background: var(--stone-200);
+  }
+  .ruler-tick {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid var(--stone-400);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 4px 0 0 4px;
+    color: var(--stone-700);
+    white-space: nowrap;
+  }
+  .ruler-tick.midnight {
+    border-left: 2px solid var(--ink);
+    background: var(--night);
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .ruler-tick.midnight::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 4px;
+    height: 4px;
+    background: var(--ink);
+  }
+  .ruler-day-label {
+    position: absolute;
+    top: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--stone-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Night band overlay */
+  .night-band {
+    position: absolute;
+    top: 32px; /* below ruler */
+    bottom: 0;
+    background: var(--night);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Rows */
+  .row {
+    position: relative;
+    height: 56px;
+    border-bottom: 1px solid var(--stone-300);
+    display: flex;
+    align-items: center;
+  }
+  .row-label {
+    position: sticky;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    background: var(--stone-100);
+    border-right: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--stone-700);
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  .row-content {
+    position: relative;
+    flex: 1;
+    height: 100%;
+  }
+
+  /* Bake blocks */
+  .block {
+    position: absolute;
+    top: 6px;
+    height: 44px;
+    border: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink);
+    cursor: grab;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .block .block-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .block .alarm-icon {
+    font-size: 13px;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .block .alarm-icon.brutal { color: var(--danger); }
+
+  /* Phase fills */
+  .phase-active   { background: var(--crust); color: var(--stone-100); }
+  .phase-passive  { background: var(--stone-300); }
+  .phase-cold     {
+    background: var(--cold);
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--cold),
+      var(--cold) 6px,
+      var(--cold-tint) 6px,
+      var(--cold-tint) 12px
+    );
+    border-style: dashed;
+  }
+  .phase-bake     { background: var(--accent); color: var(--stone-100); }
+  .phase-conflict {
+    background: var(--danger-tint);
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+  .phase-warning {
+    background: var(--warning-tint);
+    border-color: var(--warning);
+  }
+
+  /* Compressed passive marker */
+  .compressed {
+    border-style: dashed !important;
+    text-align: center;
+    justify-content: center;
+  }
+  .compressed::before, .compressed::after {
+    content: '≈';
+    color: var(--stone-600);
+    margin: 0 4px;
+    font-size: 14px;
+  }
+
+  /* Ghost (dragging) block */
+  .ghost {
+    position: absolute;
+    top: 6px;
+    height: 44px;
+    border: 2px dashed var(--danger);
+    background: var(--danger-tint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--danger);
+    z-index: 5;
+    pointer-events: none;
+  }
+  .snap-chip {
+    position: absolute;
+    top: -28px;
+    right: 0;
+    background: var(--ink);
+    color: var(--stone-100);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: 2px solid var(--ink);
+  }
+
+  /* ────────────────────────────────────────────────────────────────
+     Per-recipe breakdown table
+     ──────────────────────────────────────────────────────────────── */
+  .breakdown {
+    margin-top: 16px;
+    background: var(--stone-50);
+    border: 2px solid var(--ink);
+    padding: 12px 16px;
+  }
+  .breakdown h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--stone-700);
+    margin-bottom: 10px;
+  }
+  table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  th, td { padding: 6px 8px; text-align: right; border-bottom: 1px solid var(--stone-200); }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--stone-600); font-weight: 600; }
+  tr.total td { border-top: 2px solid var(--ink); border-bottom: none; font-weight: 600; padding-top: 8px; }
+  tr.alert td { color: var(--danger); }
+
+  /* ────────────────────────────────────────────────────────────────
+     Legend
+     ──────────────────────────────────────────────────────────────── */
+  .legend {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--stone-700);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 18px; height: 14px; border: 2px solid var(--ink); }
+
+  /* ────────────────────────────────────────────────────────────────
+     State sections
+     ──────────────────────────────────────────────────────────────── */
+  .state-section {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--stone-400);
+  }
+  .state-section:last-child { border-bottom: none; }
+  .state-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .state-note {
+    font-size: 12px;
+    color: var(--stone-600);
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  /* Mini-timeline variant for state demos */
+  .mini-timeline {
+    background: var(--stone-50);
+    border: 2px solid var(--ink);
+    padding: 0;
+    overflow-x: auto;
+  }
+  .mini-timeline .timeline { min-width: 900px; }
+  .mini-timeline .row { height: 48px; }
+  .mini-timeline .row-label { width: 70px; font-size: 9px; }
+  .mini-timeline .block { height: 36px; top: 6px; font-size: 10px; }
+  .mini-timeline .ghost { height: 36px; top: 6px; font-size: 10px; }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--stone-400);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--stone-600);
+  }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">proofed<span class="dot">.</span> bake scheduler</div>
+  <div class="subtitle">PF-255.4 demo &middot; static states &middot; throwaway <span class="tag">design exploration</span></div>
+</header>
+
+<!-- ────────────────────────────────────────────────────────────────
+     STATE 1: populated 3-bake queue (the headline view)
+     ──────────────────────────────────────────────────────────────── -->
+<section class="state-section">
+  <div class="state-title">State A — populated weekend queue</div>
+  <div class="state-note">
+    Friday 4pm start. Cinnamon Buns (overnight) + SD Choc Cookies (overnight) + Focaccia (same-day).
+    Both metrics shown. Profit/hr active = labor; profit/hr elapsed = wall-clock.
+  </div>
+
+  <div class="toolbar">
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-label">Revenue</div>
+        <div class="metric-value">$104.00</div>
+        <div class="metric-sub">3 bakes &middot; 80 units</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">$/hr active</div>
+        <div class="metric-value">$21.67</div>
+        <div class="metric-sub">labor: 4.8h hands-on</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">$/hr elapsed</div>
+        <div class="metric-value">$4.33</div>
+        <div class="metric-sub">wall-clock: 24h window</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Oven utilization</div>
+        <div class="metric-value">11%</div>
+        <div class="metric-sub">2.5h / 24h scheduled</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn btn-accent">+ Add bake</button>
+      <button class="btn">Snap to grid</button>
+      <button class="btn">True scale</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- LIBRARY -->
+    <aside class="library">
+      <h2>Recipe library</h2>
+      <div class="recipe-card scheduled">
+        <div class="recipe-name">ATK Cinnamon Buns (ON)</div>
+        <div class="recipe-meta">
+          <span>2.5h active</span>
+          <span>14h elapsed</span>
+          <span>8 buns</span>
+        </div>
+        <div class="recipe-price">$48 &middot; $6/bun</div>
+      </div>
+      <div class="recipe-card scheduled">
+        <div class="recipe-name">SD Choc Cookies</div>
+        <div class="recipe-meta">
+          <span>1.3h active</span>
+          <span>18h elapsed</span>
+          <span>16 cookies</span>
+        </div>
+        <div class="recipe-price">$32 &middot; $2/ea</div>
+      </div>
+      <div class="recipe-card scheduled">
+        <div class="recipe-name">Focaccia</div>
+        <div class="recipe-meta">
+          <span>1h active</span>
+          <span>6h elapsed</span>
+          <span>1 sheet</span>
+        </div>
+        <div class="recipe-price">$24</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-name">Tartine Baguette</div>
+        <div class="recipe-meta">
+          <span>2h active</span>
+          <span>16h elapsed</span>
+          <span>3 loaves</span>
+        </div>
+        <div class="recipe-price">$36 &middot; $12/ea</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-name">Sourdough Discard Crackers</div>
+        <div class="recipe-meta">
+          <span>0.5h active</span>
+          <span>1.5h elapsed</span>
+        </div>
+        <div class="recipe-price">$8</div>
+      </div>
+    </aside>
+
+    <!-- TIMELINE -->
+    <div class="timeline-wrapper" id="main-timeline">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <p style="font-size: 12px; color: var(--stone-600); margin: 8px 0 4px; max-width: 720px;">
+    <strong>How to read this:</strong> hover any colored block for full label + minutes.
+    Narrow segments truncate; long passive stretches (8h+) collapse into the dashed pill
+    so the timeline stays scannable — the pill shows total hours but is not drawn to scale.
+  </p>
+  <div class="legend">
+    <div class="legend-item" title="Hands-on work — kneading, shaping, mixing"><div class="swatch phase-active"></div> Active prep</div>
+    <div class="legend-item" title="Room-temperature rest — bulk ferment, autolyse, final proof"><div class="swatch phase-passive"></div> Passive (room temp)</div>
+    <div class="legend-item" title="Fridge cold retard — overnight in fridge, dashed = fridge resource"><div class="swatch phase-cold"></div> Cold retard (fridge)</div>
+    <div class="legend-item" title="Oven occupancy — exclusive, only one bake at a time"><div class="swatch phase-bake"></div> Oven (exclusive)</div>
+    <div class="legend-item" title="Two bakes need oven simultaneously — must resolve before scheduling"><div class="swatch phase-conflict"></div> Oven conflict</div>
+    <div class="legend-item" title="Two active prep windows overlap — possible to multitask, flagged for awareness"><div class="swatch phase-warning"></div> Active overlap</div>
+    <div class="legend-item" title="Active phase falls between 10 PM and 6 AM — scheduler warns about late-night/early-morning work">◴ Late-night alarm (10p–6a)</div>
+    <div class="legend-item" title="Long passive phases (8h+) draw as a fixed-width pill marked ≈ Xh ≈ — not drawn to true scale"><span style="font-family: 'JetBrains Mono', monospace; border: 2px dashed var(--stone-600); padding: 0 6px;">≈ 8h ≈</span> &nbsp;Compressed passive (not to scale)</div>
+  </div>
+
+  <div class="breakdown">
+    <h3>Per-recipe breakdown</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Recipe</th><th>Revenue</th><th>Active</th><th>Elapsed</th><th>$/hr A</th><th>$/hr E</th><th>Alarm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ATK Cinnamon Buns (ON)</td>
+          <td>$48</td><td>2.5h</td><td>14h</td><td>$19</td><td>$3.40</td><td>—</td>
+        </tr>
+        <tr class="alert">
+          <td>SD Choc Cookies</td>
+          <td>$32</td><td>1.3h</td><td>18h</td><td>$25</td><td>$1.80</td><td>◴ 5:00am</td>
+        </tr>
+        <tr>
+          <td>Focaccia</td>
+          <td>$24</td><td>1.0h</td><td>6h</td><td>$24</td><td>$4.00</td><td>—</td>
+        </tr>
+        <tr class="total">
+          <td>Total</td>
+          <td>$104</td><td>4.8h</td><td>24h</td><td>$21.67</td><td>$4.33</td><td>1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────────────
+     STATE 2: empty timeline
+     ──────────────────────────────────────────────────────────────── -->
+<section class="state-section">
+  <div class="state-title">State B — empty timeline</div>
+  <div class="state-note">First load. User drags from library to start. Night band shaded to anchor sleep hours.</div>
+
+  <div class="mini-timeline" id="empty-timeline">
+    <!-- rendered by JS -->
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────────────
+     STATE 3: overnight cold retard close-up
+     ──────────────────────────────────────────────────────────────── -->
+<section class="state-section">
+  <div class="state-title">State C — overnight cold retard (compressed)</div>
+  <div class="state-note">
+    8-hour cold retard collapsed to a 60px "≈ 8h ≈" pill. Cross-hatch fill + dashed border = fridge.
+    Active and oven phases render at true scale; only long passive segments compress.
+  </div>
+
+  <div class="mini-timeline" id="overnight-timeline">
+    <!-- rendered by JS -->
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────────────
+     STATE 4: conflict warning + snap-to-fix
+     ──────────────────────────────────────────────────────────────── -->
+<section class="state-section">
+  <div class="state-title">State D — oven conflict (drop refused)</div>
+  <div class="state-note">
+    Dragging Tartine Baguette onto a slot that overlaps Focaccia's bake.
+    Ghost turns red; "Snap to next free slot →" chip offered.
+  </div>
+
+  <div class="mini-timeline" id="conflict-timeline">
+    <!-- rendered by JS -->
+  </div>
+</section>
+
+<footer>
+  Design doc: <code>backlog/tasks/pf-255.4-design-notes.md</code>
+  &nbsp;&middot;&nbsp;
+  Parent: PF-255 (pricing + throughput + scheduler)
+  &nbsp;&middot;&nbsp;
+  Demo is static — no real drag wired yet
+</footer>
+
+<script>
+/* ──────────────────────────────────────────────────────────────────
+   Tiny renderer — hand-rolled, no framework
+   Time anchored to Friday 4pm (16:00). 36h horizon. 1 minute = 1 px / 24
+   (so 24h = 1440 px / 24 = 60 px/h). Min-width clamps via CSS.
+   ────────────────────────────────────────────────────────────────── */
+
+const PX_PER_HOUR = 60;
+const PX_PER_MIN  = PX_PER_HOUR / 60;
+const HORIZON_HOURS_MAIN = 24;
+const HORIZON_HOURS_MINI = 14;
+const START_HOUR = 16; // Friday 4pm anchor
+
+/* Compress passive segments longer than this many minutes into a fixed pill. */
+const PASSIVE_TRUE_SCALE_MAX = 90; // minutes
+const COMPRESSED_WIDTH_PX = 80;
+
+/**
+ * Build a hour ruler for a given horizon (hours).
+ */
+function renderRuler(horizonHours) {
+  const ticks = [];
+  for (let h = 0; h <= horizonHours; h++) {
+    const absHour = (START_HOUR + h) % 24;
+    const isMidnight = absHour === 0;
+    const isDayLabel = h === 0 || isMidnight;
+    const label12 = (absHour === 0 ? '12a' :
+                     absHour === 12 ? '12p' :
+                     absHour < 12 ? absHour + 'a' :
+                     (absHour - 12) + 'p');
+    ticks.push(`
+      <div class="ruler-tick ${isMidnight ? 'midnight' : ''}" style="left: ${h * PX_PER_HOUR}px;">
+        ${(h % 2 === 0) ? label12 : ''}
+        ${isDayLabel && h !== 0 ? `<div class="ruler-day-label" style="top: 14px; left: 4px;">Sat</div>` : ''}
+        ${h === 0 ? `<div class="ruler-day-label" style="top: 14px; left: 4px;">Fri</div>` : ''}
+      </div>
+    `);
+  }
+  return `<div class="ruler" style="width: ${horizonHours * PX_PER_HOUR}px;">${ticks.join('')}</div>`;
+}
+
+/**
+ * Night band overlays — shade hours from 10pm to 6am.
+ */
+function renderNightBands(horizonHours) {
+  const bands = [];
+  for (let h = 0; h <= horizonHours; h++) {
+    const absHour = (START_HOUR + h) % 24;
+    if (absHour >= 22 || absHour < 6) {
+      bands.push(`<div class="night-band" style="left: ${h * PX_PER_HOUR}px; width: ${PX_PER_HOUR}px;"></div>`);
+    }
+  }
+  return bands.join('');
+}
+
+/**
+ * Render a single bake as a series of phase blocks.
+ * `phases`: [{ kind, label, duration_min, compress? }]
+ * `startOffsetMin`: minutes from timeline start
+ */
+function renderBakeRow(label, phases, startOffsetMin, alarmIcon, rowClass = '') {
+  let cursorMin = startOffsetMin;
+  const blocks = [];
+  phases.forEach((p, i) => {
+    const trueScale = p.kind !== 'passive-cold' && p.kind !== 'passive' || p.duration_min <= PASSIVE_TRUE_SCALE_MAX;
+    const widthPx = trueScale ? p.duration_min * PX_PER_MIN : COMPRESSED_WIDTH_PX;
+    const phaseClass = ({
+      'active':       'phase-active',
+      'passive':      'phase-passive',
+      'passive-cold': 'phase-cold',
+      'bake':         'phase-bake',
+      'conflict':     'phase-conflict',
+      'warning':      'phase-warning'
+    })[p.kind] || 'phase-passive';
+    const compressedClass = trueScale ? '' : 'compressed';
+    const leftPx = cursorMin * PX_PER_MIN;
+    const labelText = trueScale ? (p.label || '') : `${Math.round(p.duration_min / 60 * 10) / 10}h`;
+    const showAlarm = (i === phases.length - 1 && alarmIcon) ? alarmIcon : '';
+    blocks.push(`
+      <div class="block ${phaseClass} ${compressedClass}"
+           style="left: ${leftPx}px; width: ${widthPx}px;"
+           title="${p.label || ''} — ${p.duration_min} min">
+        <span class="block-label">${labelText}${showAlarm}</span>
+      </div>
+    `);
+    cursorMin += trueScale ? p.duration_min : (COMPRESSED_WIDTH_PX / PX_PER_MIN);
+  });
+  return `
+    <div class="row ${rowClass}">
+      <div class="row-label">${label}</div>
+      <div class="row-content">${blocks.join('')}</div>
+    </div>
+  `;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Recipe phase definitions (sourced from public/recipes/*.json times)
+   ────────────────────────────────────────────────────────────────── */
+
+// ATK Cinnamon Buns (Overnight) — Day 1 phases summarized
+const cinnamonBunsON = [
+  { kind: 'active',       label: 'mise + autolyse mix', duration_min: 12 },
+  { kind: 'passive',      label: 'autolyse rest', duration_min: 30 },
+  { kind: 'active',       label: 'mix + develop', duration_min: 15 },
+  { kind: 'passive',      label: 'bulk ferment', duration_min: 60 },
+  { kind: 'passive-cold', label: 'COLD RETARD', duration_min: 480 },
+  { kind: 'active',       label: 'temper + roll + cut', duration_min: 15 },
+  { kind: 'passive',      label: 'final proof', duration_min: 60 },
+  { kind: 'bake',         label: 'BAKE', duration_min: 27 },
+  { kind: 'active',       label: 'cool + glaze', duration_min: 15 }
+];
+
+// SD Choc Cookies — overnight rest variant
+const sdChocCookies = [
+  { kind: 'active',       label: 'brown butter + mix', duration_min: 20 },
+  { kind: 'passive-cold', label: 'COLD REST', duration_min: 960 }, // 16h
+  { kind: 'active',       label: 'scoop', duration_min: 10 },
+  { kind: 'bake',         label: 'BAKE', duration_min: 14 },
+  { kind: 'active',       label: 'cool', duration_min: 5 }
+];
+
+// Focaccia — same-day
+const focaccia = [
+  { kind: 'active',       label: 'mix', duration_min: 15 },
+  { kind: 'passive',      label: 'bulk', duration_min: 240 },
+  { kind: 'active',       label: 'shape', duration_min: 10 },
+  { kind: 'passive',      label: 'final proof', duration_min: 60 },
+  { kind: 'bake',         label: 'BAKE', duration_min: 25 },
+  { kind: 'active',       label: 'cool', duration_min: 10 }
+];
+
+// Baguette — conflict ghost
+const baguetteGhost = [
+  { kind: 'conflict', label: 'OVEN CONFLICT', duration_min: 30 }
+];
+
+/* ──────────────────────────────────────────────────────────────────
+   STATE A — main timeline (3 bakes scheduled)
+   ────────────────────────────────────────────────────────────────── */
+
+function renderMainTimeline() {
+  const horizon = HORIZON_HOURS_MAIN;
+  const ruler = renderRuler(horizon);
+  const nights = renderNightBands(horizon);
+
+  // Cinnamon Buns starts at hour 0 (Fri 4pm)
+  const r1 = renderBakeRow('Cinnamon Buns ON', cinnamonBunsON, 0, '');
+  // SD Choc Cookies starts at hour 0:30 (Fri 4:30pm), bake-end falls at ~5am Sat -> brutal alarm
+  // But the user can't really start two active preps at once; we offset by 30 min
+  const r2 = renderBakeRow('SD Choc Cookies', sdChocCookies, 30, '<span class="alarm-icon brutal" title="◴ 5:00am wake-up — pull from oven">◴</span>');
+  // Focaccia starts at hour 8 (midnight, but user did it on Sat morning)
+  const r3 = renderBakeRow('Focaccia', focaccia, 14 * 60, '');
+
+  const inner = `
+    <div class="timeline" style="width: ${horizon * PX_PER_HOUR + 80}px;">
+      ${ruler}
+      <div style="position: relative;">
+        ${nights}
+        ${r1}
+        ${r2}
+        ${r3}
+      </div>
+    </div>
+  `;
+  document.getElementById('main-timeline').innerHTML = inner;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   STATE B — empty timeline
+   ────────────────────────────────────────────────────────────────── */
+
+function renderEmptyTimeline() {
+  const horizon = HORIZON_HOURS_MINI;
+  const ruler = renderRuler(horizon);
+  const nights = renderNightBands(horizon);
+
+  const inner = `
+    <div class="timeline" style="width: ${horizon * PX_PER_HOUR + 80}px;">
+      ${ruler}
+      <div style="position: relative;">
+        ${nights}
+        <div class="row">
+          <div class="row-label">Queue</div>
+          <div class="row-content" style="display:flex; align-items:center; justify-content:center; color: var(--stone-500); font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+            ↤ drag a recipe from the library to begin
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('empty-timeline').innerHTML = inner;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   STATE C — overnight cold retard close-up
+   ────────────────────────────────────────────────────────────────── */
+
+function renderOvernightTimeline() {
+  const horizon = HORIZON_HOURS_MINI;
+  const ruler = renderRuler(horizon);
+  const nights = renderNightBands(horizon);
+
+  const r1 = renderBakeRow('Cinnamon Buns ON', cinnamonBunsON, 0, '');
+
+  const inner = `
+    <div class="timeline" style="width: ${horizon * PX_PER_HOUR + 80}px;">
+      ${ruler}
+      <div style="position: relative;">
+        ${nights}
+        ${r1}
+      </div>
+    </div>
+  `;
+  document.getElementById('overnight-timeline').innerHTML = inner;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   STATE D — conflict warning with ghost
+   ────────────────────────────────────────────────────────────────── */
+
+function renderConflictTimeline() {
+  const horizon = HORIZON_HOURS_MINI;
+  const ruler = renderRuler(horizon);
+  const nights = renderNightBands(horizon);
+
+  // Focaccia placed normally
+  const r1 = renderBakeRow('Focaccia', focaccia, 0, '');
+
+  // Ghost bake of baguette landing right on focaccia's bake slot
+  // Focaccia bake is at hour ~5:25 from start.
+  // Compute focaccia bake start: mix 15 + bulk 240 + shape 10 + proof 60 = 325 min
+  const focacciaBakeStartMin = 325;
+  const ghostLeftPx = focacciaBakeStartMin * PX_PER_MIN;
+  const ghostWidthPx = 30 * PX_PER_MIN; // a 30 min bake overlapping
+
+  const ghostRow = `
+    <div class="row">
+      <div class="row-label">Ghost</div>
+      <div class="row-content">
+        <div class="ghost" style="left: ${ghostLeftPx}px; width: ${ghostWidthPx}px;">
+          BAGUETTE BAKE — overlaps oven
+          <div class="snap-chip">Snap to next free slot →</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const inner = `
+    <div class="timeline" style="width: ${horizon * PX_PER_HOUR + 80}px;">
+      ${ruler}
+      <div style="position: relative;">
+        ${nights}
+        ${r1}
+        ${ghostRow}
+      </div>
+    </div>
+  `;
+  document.getElementById('conflict-timeline').innerHTML = inner;
+}
+
+/* ────────────────────────────────────────────────────────────────── */
+
+renderMainTimeline();
+renderEmptyTimeline();
+renderOvernightTimeline();
+renderConflictTimeline();
+</script>
+
+</body>
+</html>
