@@ -1816,6 +1816,410 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-05-13",
+      "version": "v1.2.0",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-13",
+        "temp_high_f": 88.2,
+        "temp_low_f": 63.0,
+        "humidity_avg_percent": 68,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      },
+      "summary": "Second bake — used 220g lemon juice (vs 175g spec) with double-strain workflow (juice + finished curd), curd tasted notably less eggy. Rolled all discs (Tartine's no-roll tartlet tip was wrong), pressed dough firmer into tins, 15-min freezer chill, 6-at-a-time tray batching. Final tasting pending.",
+      "notes": [
+        "Kitchen 76.3°F, 54% humidity at cream-butter-sugar step",
+        "Dough yield 1047g, targeting 87-90g discs for tartlets",
+        "Used ~220g lemon juice as input (vs 175g spec). Strained juice before adding, strained finished curd again. Did not measure final curd yield. Curd tasted notably less eggy after double-strain — desired result.",
+        "15 min freezer chill to firm up shaped dough (instead of fridge chill)",
+        "Doing 6 tartlets at a time instead of large baking sheet",
+        "Partial blind bake still needs full 10 min even for tartlets — Tartine's shorter tartlet time was insufficient",
+        "Rolled all discs with rolling pin even for tartlets — Tartine says it's unnecessary, found false. Non-rolled ones were too thick.",
+        "Pressed fork firmly down into bottom of tin to anchor dough — first batch had too much edge rise where dough wasn't anchored",
+        "Final tarts cooling in fridge, full tasting pending"
+      ],
+      "photos": [
+        {
+          "src": "/images/tartine-lemon-cream-tart/2026-05-13/img-7556-800w.webp",
+          "thumb": "/images/tartine-lemon-cream-tart/2026-05-13/img-7556-400w.webp",
+          "alt": "Six filled tartlets arranged 2×3 in a clear plastic storage container — pale yellow lemon cream in fluted tartlet pans, smooth tops, ready to chill in the fridge",
+          "usage": "hero"
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-13T15:42:11Z",
+          "raw": "76.3 and 54% humidity kitchen",
+          "curated": "Kitchen 76.3°F, 54% humidity",
+          "notable": false,
+          "stepId": "cream-butter-sugar",
+          "processing": "dough"
+        },
+        {
+          "timestamp": "2026-05-13T15:57:48Z",
+          "raw": "1047g yield 87-90 gram target discs",
+          "curated": "Dough yield 1047g, targeting 87-90g discs",
+          "notable": true,
+          "stepId": "form-discs",
+          "processing": "dough"
+        },
+        {
+          "timestamp": "2026-05-13T17:17:46Z",
+          "raw": "ended up getting closer to 220g on the lemon juice. made sure to use a strainer.",
+          "curated": "Used ~220g lemon juice as input (vs 175g spec). Strained juice before adding.",
+          "notable": true,
+          "processing": "curd"
+        },
+        {
+          "timestamp": "2026-05-13T18:29:01Z",
+          "raw": "6 tarts in feeezer. going to do 6 at a time instead of using large baking sheet",
+          "curated": "6 tartlets in freezer to chill. Doing 6 at a time instead of large baking sheet.",
+          "notable": false,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-13T18:29:07Z",
+          "raw": "15 minute chill period",
+          "curated": "15 minute freezer chill",
+          "notable": false,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-13T18:55:00Z",
+          "raw": "still think it needs a full ten minutes even for tartlets",
+          "curated": "Partial blind bake still needs full 10 min even for tartlets",
+          "notable": true,
+          "stepId": "dock-partial-bake",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-13T21:17:14Z",
+          "raw": "i'm thinking i want to try 15 minutes blind bake then egg wash next time.",
+          "curated": "Want to try 15 min blind bake + egg wash next time",
+          "notable": true,
+          "processing": "bake"
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Try 15 min blind bake then egg wash next time"
+        },
+        {
+          "text": "Always rolling pin discs even for tartlets — Tartine's no-roll tip was wrong, non-rolled ones too thick"
+        },
+        {
+          "text": "Press fork firmly down into bottom of tin to anchor dough and prevent edge rise"
+        },
+        {
+          "text": "Version bump candidate: lemon juice 175g → 220g (less eggy curd via double-strain workflow). Confirm after final tasting and one more bake."
+        }
+      ],
+      "cost": {
+        "servings": 12,
+        "total": 10.39,
+        "perServing": 0.87,
+        "items": [
+          {
+            "ingredientId": "butter_dough",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "Central Market European Style Unsalted Butter Sticks (4 ct, 16 oz)",
+            "recipeAmount": 255,
+            "recipeUnit": "g",
+            "packageSize": "4 ct (16 oz)",
+            "packagePrice": 5.98,
+            "cost": 3.36
+          },
+          {
+            "ingredientId": "sugar_dough",
+            "name": "Granulated Sugar (dough)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar (2 lbs)",
+            "recipeAmount": 200,
+            "recipeUnit": "g",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.48,
+            "cost": 0.55
+          },
+          {
+            "ingredientId": "salt_dough",
+            "name": "Salt (dough, 1/4 tsp)",
+            "sourceType": "heb",
+            "sourceName": "Morton Salt (26 oz)",
+            "recipeAmount": 1.5,
+            "recipeUnit": "g",
+            "packageSize": "26 oz",
+            "packagePrice": 1.68,
+            "cost": 0
+          },
+          {
+            "ingredientId": "eggs_dough",
+            "name": "Large Eggs (dough)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs (12 ct)",
+            "recipeAmount": 2,
+            "recipeUnit": "whole",
+            "packageSize": "12 ct",
+            "packagePrice": 1.67,
+            "cost": 0
+          },
+          {
+            "ingredientId": "flour",
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour (5 lbs)",
+            "recipeAmount": 500,
+            "recipeUnit": "g",
+            "packageSize": "5 lbs",
+            "packagePrice": 3.78,
+            "cost": 0.83
+          },
+          {
+            "ingredientId": "eggs_wash",
+            "name": "Large Egg (wash)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs (12 ct)",
+            "recipeAmount": 1,
+            "recipeUnit": "whole",
+            "packageSize": "12 ct",
+            "packagePrice": 1.67,
+            "cost": 0
+          },
+          {
+            "ingredientId": "salt_wash",
+            "name": "Salt (pinch, wash)",
+            "sourceType": "heb",
+            "sourceName": "Morton Salt (26 oz)",
+            "recipeAmount": 0.5,
+            "recipeUnit": "g",
+            "packageSize": "26 oz",
+            "packagePrice": 1.68,
+            "cost": 0
+          },
+          {
+            "ingredientId": "lemon_juice",
+            "name": "Fresh Lemon Juice",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Fresh Lemons (2 lb bag)",
+            "recipeAmount": 220,
+            "recipeUnit": "g",
+            "packageSize": "2 lb bag (907g)",
+            "packagePrice": 3.89,
+            "cost": 0.94
+          },
+          {
+            "ingredientId": "eggs_cream",
+            "name": "Large Eggs (cream)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs (12 ct)",
+            "recipeAmount": 3,
+            "recipeUnit": "whole",
+            "packageSize": "12 ct",
+            "packagePrice": 1.67,
+            "cost": 0
+          },
+          {
+            "ingredientId": "egg_yolk",
+            "name": "Large Egg Yolk",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs (12 ct)",
+            "recipeAmount": 1,
+            "recipeUnit": "whole",
+            "packageSize": "12 ct",
+            "packagePrice": 1.67,
+            "cost": 0
+          },
+          {
+            "ingredientId": "sugar_cream",
+            "name": "Granulated Sugar (cream)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar (2 lbs)",
+            "recipeAmount": 175,
+            "recipeUnit": "g",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.48,
+            "cost": 0.48
+          },
+          {
+            "ingredientId": "salt_cream",
+            "name": "Salt (pinch, cream)",
+            "sourceType": "heb",
+            "sourceName": "Morton Salt (26 oz)",
+            "recipeAmount": 0.5,
+            "recipeUnit": "g",
+            "packageSize": "26 oz",
+            "packagePrice": 1.68,
+            "cost": 0
+          },
+          {
+            "ingredientId": "butter_cream",
+            "name": "Unsalted Butter (cool, cream)",
+            "sourceType": "heb",
+            "sourceName": "Central Market European Style Unsalted Butter Sticks (4 ct, 16 oz)",
+            "recipeAmount": 225,
+            "recipeUnit": "g",
+            "packageSize": "4 ct (16 oz)",
+            "packagePrice": 5.98,
+            "cost": 2.97
+          },
+          {
+            "ingredientId": "heavy_cream",
+            "name": "Heavy Cream (very cold)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Heavy Whipping Cream (32 oz)",
+            "recipeAmount": 240,
+            "recipeUnit": "g",
+            "packageSize": "32 oz",
+            "packagePrice": 4.69,
+            "cost": 1.24
+          },
+          {
+            "ingredientId": "sugar_topping",
+            "name": "Granulated Sugar (topping)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar (2 lbs)",
+            "recipeAmount": 8,
+            "recipeUnit": "g",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.48,
+            "cost": 0.02
+          }
+        ]
+      },
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            {
+              "id": "butter_dough",
+              "name": "Unsalted Butter (room temp)",
+              "total": 255,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_dough",
+              "name": "Granulated Sugar",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_dough",
+              "name": "Salt (1/4 tsp)",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_dough",
+              "name": "Large Eggs (room temp)",
+              "total": 2,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            {
+              "id": "eggs_wash",
+              "name": "Large Egg (wash)",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "salt_wash",
+              "name": "Salt (pinch, wash)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            {
+              "id": "lemon_juice",
+              "name": "Fresh Lemon Juice",
+              "total": 220,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_cream",
+              "name": "Large Eggs",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "egg_yolk",
+              "name": "Large Egg Yolk",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_cream",
+              "name": "Granulated Sugar",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_cream",
+              "name": "Salt (pinch)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter_cream",
+              "name": "Unsalted Butter (cool, not cold)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Whipped Cream & Serve",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (very cold)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_topping",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }

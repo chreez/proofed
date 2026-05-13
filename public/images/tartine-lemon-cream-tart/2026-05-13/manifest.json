@@ -1,0 +1,85 @@
+{
+  "recipeId": "tartine-lemon-cream-tart",
+  "date": "2026-05-13",
+  "processedAt": "2026-05-13T21:35:38.970Z",
+  "photos": [
+    {
+      "name": "img-7556",
+      "thumb": "img-7556-400w.webp",
+      "src": "img-7556-800w.webp",
+      "summary": "Six filled tartlets arranged 2x3 in a clear plastic storage container with red lid — pale yellow lemon cream in fluted tartlet pans, smooth tops, ready to chill in the fridge"
+    },
+    {
+      "name": "img-7555-frame-001",
+      "thumb": "img-7555-frame-001-400w.webp",
+      "src": "img-7555-frame-001-800w.webp",
+      "summary": "Cooking lemon curd in stainless double boiler on stove — baker in pink 'BITCH AM THE SECRET INGREDIENT' apron whisking, empty blind-baked tartlet shells lined up on sheet pan in background",
+      "source": "video",
+      "sourceFile": "IMG_7555.MOV",
+      "frameIndex": 0
+    },
+    {
+      "name": "img-7555-frame-002",
+      "thumb": "img-7555-frame-002-400w.webp",
+      "src": "img-7555-frame-002-800w.webp",
+      "summary": "Whisking lemon curd in double boiler, wider angle showing kitchen and empty tartlet shells on tray to the right",
+      "source": "video",
+      "sourceFile": "IMG_7555.MOV",
+      "frameIndex": 1
+    },
+    {
+      "name": "img-7555-frame-003",
+      "thumb": "img-7555-frame-003-400w.webp",
+      "src": "img-7555-frame-003-800w.webp",
+      "summary": "Curd cooking in double boiler — golden yellow liquid swirling around whisk, four empty tartlet shells visible behind on sheet pan",
+      "source": "video",
+      "sourceFile": "IMG_7555.MOV",
+      "frameIndex": 2
+    },
+    {
+      "name": "img-7555-frame-004",
+      "thumb": "img-7555-frame-004-400w.webp",
+      "src": "img-7555-frame-004-800w.webp",
+      "summary": "Motion-blurred whisking shot — curd visibly thickening in the bowl, tartlet shells on sheet pan in background",
+      "source": "video",
+      "sourceFile": "IMG_7555.MOV",
+      "frameIndex": 3
+    },
+    {
+      "name": "img-7555-frame-005",
+      "thumb": "img-7555-frame-005-400w.webp",
+      "src": "img-7555-frame-005-800w.webp",
+      "summary": "Curd cooking — surface looks lighter and bubblier as it thickens, hand mid-whisk over double boiler",
+      "source": "video",
+      "sourceFile": "IMG_7555.MOV",
+      "frameIndex": 4
+    },
+    {
+      "name": "img-7555-frame-006",
+      "thumb": "img-7555-frame-006-400w.webp",
+      "src": "img-7555-frame-006-800w.webp",
+      "summary": "Curd nearly set — pale opaque yellow with visible swirl marks from whisk, tartlet shells ready to fill in background",
+      "source": "video",
+      "sourceFile": "IMG_7555.MOV",
+      "frameIndex": 5
+    },
+    {
+      "name": "img-7555-frame-007",
+      "thumb": "img-7555-frame-007-400w.webp",
+      "src": "img-7555-frame-007-800w.webp",
+      "summary": "Active whisking on the double boiler — curd thickened to custard consistency, tartlet shells lined up on tray to the right",
+      "source": "video",
+      "sourceFile": "IMG_7555.MOV",
+      "frameIndex": 6
+    },
+    {
+      "name": "img-7555-frame-008",
+      "thumb": "img-7555-frame-008-400w.webp",
+      "src": "img-7555-frame-008-800w.webp",
+      "summary": "Heavy motion blur — camera moving away from stove, low usable quality (exclude candidate)",
+      "source": "video",
+      "sourceFile": "IMG_7555.MOV",
+      "frameIndex": 7
+    }
+  ]
+}
