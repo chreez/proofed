@@ -663,11 +663,11 @@ export interface CostSelection {
 // Bake cost summary — final output
 export interface CostLineItem {
   ingredientId: string
-  ingredientName: string
+  name: string
   sourceType: CostSourceType
   sourceName: string
-  recipeAmount: number
-  recipeUnit: string
+  amount: number
+  unit: string
   packageSize: string
   packagePrice: number
   cost: number

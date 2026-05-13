@@ -544,7 +544,9 @@ const costLineItems = computed<CostLineItem[]>(() => {
     } else if (selection.sourceType === 'heb') {
       const product = getSelectedProduct(ingredient, selection)
       if (product) {
-        sourceName = `${product.brand} ${product.name}`
+        sourceName = product.name.toLowerCase().startsWith(product.brand.toLowerCase())
+          ? product.name
+          : `${product.brand} ${product.name}`
         packageSize = product.size
         packagePrice = product.salePrice ?? product.price
       }
@@ -560,11 +562,11 @@ const costLineItems = computed<CostLineItem[]>(() => {
 
     return {
       ingredientId: ingredient.ingredientId,
-      ingredientName: ingredient.name,
+      name: ingredient.name,
       sourceType: selection.sourceType,
       sourceName,
-      recipeAmount: ingredient.recipeAmount,
-      recipeUnit: ingredient.recipeUnit,
+      amount: ingredient.recipeAmount,
+      unit: ingredient.recipeUnit,
       packageSize,
       packagePrice,
       cost: parseFloat(cost.toFixed(2))
@@ -1424,7 +1426,7 @@ onMounted(async () => {
             >
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2">
-                  <span class="text-sm font-medium text-ink">{{ line.ingredientName }}</span>
+                  <span class="text-sm font-medium text-ink">{{ line.name }}</span>
                   <span
                     class="font-mono text-[10px] px-1.5 py-0.5"
                     :class="sourceBadgeClass(line.sourceType)"
@@ -1437,7 +1439,7 @@ onMounted(async () => {
               </div>
               <div class="text-right flex-shrink-0">
                 <div class="flex items-baseline gap-2">
-                  <span class="text-xs text-stone-400 font-mono">{{ line.recipeAmount }}{{ line.recipeUnit }}</span>
+                  <span class="text-xs text-stone-400 font-mono">{{ line.amount }}{{ line.unit }}</span>
                   <span class="text-sm font-mono font-medium text-ink">${{ line.cost.toFixed(2) }}</span>
                 </div>
               </div>

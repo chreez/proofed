@@ -483,6 +483,74 @@ describe('BakeReviewPage', () => {
       expect(parsed.cost).toHaveProperty('servings', 8)
     })
 
+    it('emits cost line items with CookLogCostItem field names', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      const firstItem = parsed.cost.costs[0]
+      expect(firstItem).toHaveProperty('ingredientId')
+      expect(firstItem).toHaveProperty('name')
+      expect(firstItem).toHaveProperty('amount')
+      expect(firstItem).toHaveProperty('unit')
+      expect(firstItem).toHaveProperty('sourceName')
+      expect(firstItem).toHaveProperty('cost')
+      expect(firstItem).not.toHaveProperty('ingredientName')
+      expect(firstItem).not.toHaveProperty('recipeAmount')
+      expect(firstItem).not.toHaveProperty('recipeUnit')
+    })
+
+    it('de-duplicates brand prefix in sourceName when product name already starts with brand', async () => {
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+
+      const hebWithBrandedNames = {
+        recipeId: 'test-recipe',
+        date: '2026-02-10',
+        storeId: 428,
+        ingredients: [
+          {
+            ingredientId: 'unsalted-butter',
+            name: 'Unsalted butter',
+            recipeAmount: 140,
+            recipeUnit: 'g',
+            products: [
+              {
+                // product.name already includes brand prefix
+                name: 'H-E-B Sweet Cream Unsalted Butter Sticks',
+                brand: 'H-E-B',
+                size: '4ct / 16oz',
+                sizeGrams: 454,
+                price: 3.98,
+                salePrice: null,
+                unitPrice: '$0.25/oz',
+                inStock: true
+              }
+            ]
+          }
+        ]
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebWithBrandedNames as typeof sampleHebResults)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+      await wrapper.find('[data-testid="copy-all-btn"]').trigger('click')
+      await flushPromises()
+
+      const calls = (copyToClipboard as ReturnType<typeof vi.fn>).mock.calls
+      const lastCall = calls[calls.length - 1][0]
+      const parsed = JSON.parse(lastCall)
+      const item = parsed.cost.costs.find((c: { ingredientId: string }) => c.ingredientId === 'unsalted-butter')
+      // Without de-dupe this would be "H-E-B H-E-B Sweet Cream Unsalted Butter Sticks"
+      expect(item?.sourceName).toBe('H-E-B Sweet Cream Unsalted Butter Sticks')
+    })
+
     it('shows Copied! text after click', async () => {
       const wrapper = mount(BakeReviewPage)
       await flushPromises()
