@@ -1,0 +1,61 @@
+{
+  "recipeId": "jalapeno-cheddar-sourdough",
+  "date": "2026-05-13",
+  "processedAt": "2026-05-13T21:39:20.740Z",
+  "photos": [
+    {
+      "name": "01-bulk-fold-skin",
+      "thumb": "01-bulk-fold-skin-400w.webp",
+      "src": "01-bulk-fold-skin-800w.webp",
+      "summary": "Mid-bulk fold in the glass bowl — taut, smooth skin pulled across the top with cheddar cubes and sliced jalapeño peeking out at the seam."
+    },
+    {
+      "name": "02-pullman-pre",
+      "thumb": "02-pullman-pre-400w.webp",
+      "src": "02-pullman-pre-800w.webp",
+      "summary": "Pullman loaf in the oiled tin, just loaded into the oven — pale dough with a melted cheese pocket already weeping through the top surface."
+    },
+    {
+      "name": "03-pullman-setup",
+      "thumb": "03-pullman-setup-400w.webp",
+      "src": "03-pullman-setup-800w.webp",
+      "summary": "Pullman loaf out of the oven, still in the tin on the stovetop — deep mahogany top with visible cheese leak spots browned into the crust."
+    },
+    {
+      "name": "04-dutch-oven-load",
+      "thumb": "04-dutch-oven-load-400w.webp",
+      "src": "04-dutch-oven-load-800w.webp",
+      "summary": "Pullman loaf turned out onto the wire rack — golden top crust with cheese-darkened patches and a dark base where it sat in the tin."
+    },
+    {
+      "name": "05-dutch-oven-load-2",
+      "thumb": "05-dutch-oven-load-2-400w.webp",
+      "src": "05-dutch-oven-load-2-800w.webp",
+      "summary": "Pullman loaf on the cooling rack in window light — burnished tan top, jalapeño peeking through one side, dark caramelized base from the tin."
+    },
+    {
+      "name": "06-mid-bake",
+      "thumb": "06-mid-bake-400w.webp",
+      "src": "06-mid-bake-800w.webp",
+      "summary": "Pullman loaf split open on the cutting board — open crumb with big melted cheddar pockets and bright green jalapeño specks scattered through both halves."
+    },
+    {
+      "name": "07-mid-bake-2",
+      "thumb": "07-mid-bake-2-400w.webp",
+      "src": "07-mid-bake-2-800w.webp",
+      "summary": "Hand holding up a single Pullman slice — translucent cheese pools and chunky jalapeño pieces visible in the open crumb, scale in the background."
+    },
+    {
+      "name": "08-dutch-oven-final",
+      "thumb": "08-dutch-oven-final-400w.webp",
+      "src": "08-dutch-oven-final-800w.webp",
+      "summary": "Dutch oven batard out at 1:18pm, internal 210°F — sharp ear lifted along the score, deep mahogany crust with flour bloom and cheese caramelized into the seam."
+    },
+    {
+      "name": "09-dutch-oven-final-2",
+      "thumb": "09-dutch-oven-final-2-400w.webp",
+      "src": "09-dutch-oven-final-2-800w.webp",
+      "summary": "Dutch oven batard from the front — open score showing green jalapeño and orange cheddar bubbling out, deep caramelization streaks running down the crust."
+    }
+  ]
+}

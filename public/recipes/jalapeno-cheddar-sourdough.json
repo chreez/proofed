@@ -2960,6 +2960,568 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-05-13",
+      "start_date": "2026-05-12",
+      "version": "v1.2.0",
+      "summary": "Two-loaf split — Pullman tin loaf (no shape, fridge direct, 1hr RT before bake; small undercooked pocket but tasted fine) and Dutch oven batard (cold retard ~15hr, 480→450 preheat, decent rise, internal 210°F). Inclusion bump via ExperimentPanel (147g jalapeño, 316g cheddar) felt right — version bump candidate.",
+      "notes": [
+        "Pre-bake kitchen 76.8°F, 52% humidity. Autolyse with levain (no separate levain build) mixed at 4:29pm Mon at 79°F.",
+        "Dough temp dropped through bulk: 79°F → 78.4°F (after dry) → 72.5°F at S&F #2 (cold).",
+        "Five folds total — inclusion fold at 5:30pm, S&F #2 + coil fold (skin building, comfortable with heavy inclusions) at 6:05pm, S&F #3 at 6:40pm (may have overstretched slightly, let it rest), final S&F at 7:20pm Mon.",
+        "Bulk rest 7:21pm at 76°F kitchen — noted could leave on counter longer.",
+        "Scale issue: can't handle dough weight even in lighter vessel. Divided to ~780g each.",
+        "Preshape ~8:50pm, final shape ~9:09pm Mon. Two loaves split: one Pullman tin (oiled, no shape, fridge direct), one proofing basket for Dutch oven.",
+        "Cold retard overnight ~15hrs.",
+        "Pullman: 1hr RT at oven preheat, baked per recipe directions. Out at 12:00pm Tue, internal 212°F+ (slightly high). Taste fine, but small undercooked pocket. Plan: research clean rigid square loaf technique, try proofing in tin before cold retard if time allows, force bread to fill pan.",
+        "Dutch oven: out of fridge 12:00pm Tue with Pullman pull. Preheat 480°F for ~28 min; oven thermometer read actual 450°F at loaf-in, lowered set to 450°F. Loaf in 12:29pm with side score, covered 30 min. Lid off 12:59pm, lowered to 425°F. Lowered to 400°F for second half of uncovered phase. Out at ~1:14pm, internal 210°F. Decent rise."
+      ],
+      "next_time": [
+        {
+          "text": "Research how to get clean, rigid, square Pullman loaf — avoid undercooked pockets"
+        },
+        {
+          "text": "Try proofing in tin before cold retard (didn't have time this bake)"
+        },
+        {
+          "text": "Try 'forcing' bread to fill the Pullman pan"
+        },
+        {
+          "text": "Buy better scale — current can't handle dough weight in lighter vessel"
+        },
+        {
+          "text": "Bump recipe minor version for new inclusion ratio (147g jalapeño / 316g cheddar)"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 550,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 340,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 31,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 147,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 316,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Mix & Develop Gluten",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "bake_stats": {
+        "dough_temps": [
+          {
+            "time": "2026-05-12 - 16:29",
+            "temp_f": 79,
+            "note": "autolyse start"
+          },
+          {
+            "time": "2026-05-12 - 17:01",
+            "temp_f": 78.4,
+            "note": "after dry incorporated"
+          },
+          {
+            "time": "2026-05-12 - 18:05",
+            "temp_f": 72.5,
+            "note": "S&F #2, cold"
+          }
+        ],
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-05-12",
+            "temp_f": 76.8,
+            "note": "pre-bake, 52% humidity"
+          },
+          {
+            "date": "2026-05-12",
+            "temp_f": 76,
+            "note": "bulk rest 7:21pm"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-05-12 - 17:30",
+            "type": "stretch_fold",
+            "note": "inclusion fold (147g jalapeño + 316g cheddar)"
+          },
+          {
+            "time": "2026-05-12 - 18:05",
+            "type": "coil",
+            "note": "S&F #2, dough 72.5°F, building skin, comfortable with heavy inclusions"
+          },
+          {
+            "time": "2026-05-12 - 18:40",
+            "type": "stretch_fold",
+            "note": "S&F #3, may have overstretched slightly"
+          },
+          {
+            "time": "2026-05-12 - 19:20",
+            "type": "stretch_fold",
+            "note": "final S&F"
+          }
+        ],
+        "proof_phases": [
+          {
+            "stage": "bulk",
+            "start_time": "2026-05-12 - 16:29",
+            "duration_min": 261,
+            "note": "mix to preshape"
+          },
+          {
+            "stage": "bench_rest",
+            "start_time": "2026-05-12 - 20:50",
+            "duration_min": 19,
+            "note": "preshape to final shape"
+          },
+          {
+            "stage": "cold_retard",
+            "start_time": "2026-05-12 - 21:09",
+            "duration_min": 771,
+            "note": "Pullman loaf, out 10:00am Tue"
+          },
+          {
+            "stage": "cold_retard",
+            "start_time": "2026-05-12 - 21:09",
+            "duration_min": 891,
+            "note": "Dutch oven loaf, out 12:00pm Tue"
+          },
+          {
+            "stage": "warm_proof",
+            "start_time": "2026-05-13 - 10:00",
+            "duration_min": 75,
+            "note": "Pullman RT rest at preheat"
+          },
+          {
+            "stage": "warm_proof",
+            "start_time": "2026-05-13 - 12:00",
+            "duration_min": 29,
+            "note": "Dutch oven RT rest at preheat"
+          }
+        ],
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 450,
+            "duration_min": 45,
+            "start_time": "2026-05-13 - 10:30",
+            "note": "Pullman, inferred from 12:00pm out + recipe defaults"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 30,
+            "start_time": "2026-05-13 - 11:15",
+            "note": "Pullman, inferred"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 450,
+            "duration_min": 15,
+            "start_time": "2026-05-13 - 11:45",
+            "note": "Pullman, inferred; out at 12:00pm internal 212°F"
+          },
+          {
+            "stage": "preheat",
+            "temp_f": 480,
+            "duration_min": 28,
+            "start_time": "2026-05-13 - 12:01",
+            "note": "Dutch oven; actual 450°F at loaf-in, set lowered to 450"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 30,
+            "start_time": "2026-05-13 - 12:29",
+            "note": "Dutch oven, side score"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 8,
+            "start_time": "2026-05-13 - 12:59",
+            "note": "Dutch oven, first half"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 400,
+            "duration_min": 7,
+            "start_time": "2026-05-13 - 13:07",
+            "note": "Dutch oven, second half lowered; out ~1:14pm internal 210°F"
+          }
+        ]
+      },
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-12T21:14:31Z",
+          "raw": "Kitchen temp 76.8°F (pre-bake)",
+          "curated": "Kitchen temp 76.8°F (pre-bake)",
+          "notable": true,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-12T21:14:38Z",
+          "raw": "52% humidity",
+          "notable": true,
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-12T21:29:11Z",
+          "raw": "79 degrees autolyse start",
+          "curated": "79°F autolyse start",
+          "notable": true,
+          "stepId": "autolyse-rest",
+          "processing": "autolyse"
+        },
+        {
+          "timestamp": "2026-05-12T21:50:53Z",
+          "raw": "meta note: the experiment panel does not get reset when i reset the recipe",
+          "curated": "Meta note: ExperimentPanel does not reset when recipe is reset (bug)",
+          "notable": true,
+          "processing": "meta"
+        },
+        {
+          "timestamp": "2026-05-12T21:56:48Z",
+          "raw": "this step is already done in previous stage. the starter. in autolyse.",
+          "curated": "Starter already incorporated in autolyse — this step (incorporate) was redundant",
+          "notable": false,
+          "stepId": "incorporate",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-12T22:01:04Z",
+          "raw": "78.4 after adding dry",
+          "curated": "78.4°F after adding dry ingredients",
+          "notable": true,
+          "stepId": "incorporate",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-12T22:30:57Z",
+          "raw": "inclusion added now.",
+          "curated": "Inclusions added (147g jalapeño + 316g cheddar)",
+          "notable": true,
+          "stepId": "fold-inclusions",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-12T23:05:45Z",
+          "raw": "stretch and fold two - 72.5 cold",
+          "curated": "S&F #2 — dough 72.5°F, cold",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-12T23:08:33Z",
+          "raw": "did coil folds. trying to make a nice skin will attach picture. getting more comfortable with heavy inclusions",
+          "curated": "Coil folds (same set as S&F #2) — building skin. Getting more comfortable with heavy inclusions. Photo to attach.",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-12T23:40:39Z",
+          "raw": "s&f 3 ( effectively) no noticeable dough temp change. may have overstretched slightly but will let it rest",
+          "curated": "S&F #3 — no noticeable dough temp change. May have overstretched slightly, letting it rest.",
+          "notable": true,
+          "stepId": "stretch-fold-4",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-13T00:20:40Z",
+          "raw": "last stretch and fold",
+          "curated": "Final S&F",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-13T00:21:43Z",
+          "raw": "76 degrees. maybe i can leave it out on the counter longer",
+          "curated": "Kitchen 76°F. Maybe can leave on counter longer.",
+          "notable": true,
+          "stepId": "bulk-rest",
+          "prompt": "Record ambient kitchen temperature",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-13T02:01:52Z",
+          "raw": "damn scale can't handle the weight of dough even in a lighter vessel. need to buy a better one.",
+          "curated": "Scale can't handle dough weight even in lighter vessel — need better scale.",
+          "notable": true,
+          "processing": "divide"
+        },
+        {
+          "timestamp": "2026-05-13T02:02:01Z",
+          "raw": "780g each ish~",
+          "curated": "~780g each (two loaves)",
+          "notable": true,
+          "processing": "divide"
+        },
+        {
+          "timestamp": "2026-05-13T02:14:28Z",
+          "raw": "shaped quickly approx 5 minutes ago. did a preshape about 20 minutes prior to that.",
+          "curated": "Shaped ~5 min ago (~9:09pm), preshape ~20 min prior (~8:50pm)",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-13T02:15:24Z",
+          "raw": "using the bread tin. didn't shape the bread per instructions and just loaded the better shaped bread into the tin oiled and into fridge directly. same with the one in proofing basket. i'll check when i get home tonight how it's doing but ill probably let it rest for an hour as an experiment tomorrow when i bake before baking. instead of straight from fridge",
+          "curated": "Used Pullman bread tin — better-shaped loaf into oiled tin, fridge direct (no shape per instructions). Other loaf into proofing basket, also fridge direct. Plan: 1hr RT rest before bake tomorrow as experiment instead of straight from fridge.",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-13T17:00:27Z",
+          "raw": "did the pullman loaf per recipe directions. let the loaf and pan come to room temp for an hour with oven on during preheat. measured internal temp was a bit high around 212+ \n\nnote for next time. i might be able to \"force\" the bread to fill the pan. and if i had more time i think letting it proof in the tin before cold retard makes sense. i just didn't have the time last night",
+          "curated": "Pullman loaf done per recipe directions: 1hr RT rest during preheat, internal 212°F+ (slightly high). Next time: try forcing bread to fill pan, try proofing in tin before cold retard if time allows.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-13T17:01:07Z",
+          "raw": "after the pullman loaf i started preheat 480 with dutch oven. i'm doing a hour long preheat with approx 30 minutes left on the preheat.",
+          "curated": "After Pullman, started Dutch oven preheat at 480°F (continuation from 450°F Pullman bake) — ~30 min left.",
+          "notable": false,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-13T17:29:46Z",
+          "raw": "preheated 480. oven temp thermometer (actual reading) is 450. lowered to 450. side score and second loaf in for 30 minutes.",
+          "curated": "Preheat set 480°F, actual thermometer read 450°F — lowered set to 450°F. Side score, Dutch oven loaf in for 30 min covered.",
+          "notable": true,
+          "stepId": "bake-steam",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-13T17:59:28Z",
+          "raw": "lid off. lowered to 425",
+          "curated": "Lid off, lowered to 425°F",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-13T18:00:08Z",
+          "raw": "uncovered bake time is 15-20 minute target. will check at 7 to flip it / rotate",
+          "curated": "Uncovered target 15-20 min — plan check at 7 min to flip/rotate",
+          "notable": false,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-13T18:18:31Z",
+          "raw": "second loaf at desired browning around 15 minutes. uncovered bake phase was 425 and i lowered it to 400 for second half of the 15 minute total (7 minutes about)",
+          "curated": "Dutch oven loaf at desired browning ~15 min uncovered. 425°F first half, lowered to 400°F second half (~7 min). Internal 210°F.",
+          "notable": true,
+          "processing": "bake"
+        }
+      ],
+      "photos": [
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/01-bulk-fold-skin-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/01-bulk-fold-skin-400w.webp",
+          "alt": "Mid-bulk fold in the glass bowl — taut, smooth skin pulled across the top with cheddar cubes and sliced jalapeño peeking out at the seam."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/02-pullman-pre-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/02-pullman-pre-400w.webp",
+          "alt": "Pullman loaf in the oiled tin, just loaded into the oven — pale dough with a melted cheese pocket already weeping through the top surface."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/03-pullman-setup-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/03-pullman-setup-400w.webp",
+          "alt": "Pullman loaf out of the oven, still in the tin on the stovetop — deep mahogany top with visible cheese leak spots browned into the crust."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/04-dutch-oven-load-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/04-dutch-oven-load-400w.webp",
+          "alt": "Pullman loaf turned out onto the wire rack — golden top crust with cheese-darkened patches and a dark base where it sat in the tin."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/05-dutch-oven-load-2-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/05-dutch-oven-load-2-400w.webp",
+          "alt": "Pullman loaf on the cooling rack in window light — burnished tan top, jalapeño peeking through one side, dark caramelized base from the tin."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/06-mid-bake-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/06-mid-bake-400w.webp",
+          "alt": "Pullman loaf split open on the cutting board — open crumb with big melted cheddar pockets and bright green jalapeño specks scattered through both halves."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/07-mid-bake-2-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/07-mid-bake-2-400w.webp",
+          "alt": "Hand holding up a single Pullman slice — translucent cheese pools and chunky jalapeño pieces visible in the open crumb, scale in the background."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/09-dutch-oven-final-2-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/09-dutch-oven-final-2-400w.webp",
+          "alt": "Dutch oven batard from the front — open score showing green jalapeño and orange cheddar bubbling out, deep caramelization streaks running down the crust."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-13/08-dutch-oven-final-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-13/08-dutch-oven-final-400w.webp",
+          "alt": "Dutch oven batard out at 1:18pm, internal 210°F — sharp ear lifted along the score, deep mahogany crust with flour bloom and cheese caramelized into the seam."
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-13",
+        "temp_high_f": 88.2,
+        "temp_low_f": 63.0,
+        "humidity_avg_percent": 68,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 550,
+            "unit": "g",
+            "cost": 1.33
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "heb",
+            "sourceName": "Municipal Tap water",
+            "amount": 340,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "heb",
+            "sourceName": "Home-maintained starter (50% flour share)",
+            "amount": 110,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 11,
+            "unit": "g",
+            "cost": 0.07
+          },
+          {
+            "ingredientId": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Instant Non-Fat Dry Milk",
+            "amount": 28,
+            "unit": "g",
+            "cost": 0.35
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "name": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Brown Sugar",
+            "amount": 31,
+            "unit": "g",
+            "cost": 0.08
+          },
+          {
+            "ingredientId": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "sourceType": "heb",
+            "sourceName": "Fresh Jalapeño Pepper",
+            "amount": 147,
+            "unit": "g",
+            "cost": 0.31
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sharp Cheddar Cheese",
+            "amount": 316,
+            "unit": "g",
+            "cost": 3.47
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 50,
+            "unit": "g",
+            "cost": 0.44
+          }
+        ],
+        "total": 6.05,
+        "perServing": 3.03,
+        "servings": 2
+      }
     }
   ]
 }
