@@ -1,9 +1,10 @@
 ---
-id: DRAFT-98
+id: PF-259
 title: ExperimentPanel data missing from scratchpad export payload
 status: Draft
 assignee: []
 created_date: '2026-05-13 21:35'
+updated_date: '2026-05-13 22:18'
 labels:
   - bug
   - scratchpad
@@ -13,6 +14,7 @@ dependencies: []
 
 ## Description
 
+<!-- SECTION:DESCRIPTION:BEGIN -->
 <!-- SECTION:DESCRIPTION:BEGIN -->
 ExperimentPanel adjustments (custom ingredient amounts) are NOT included in the scratchpad export JSON. This breaks /bake-log fidelity — the user has to manually relay the dial values to the agent.
 
@@ -35,10 +37,13 @@ Scratchpad export should include an `experiment` block at the top level mirrorin
 
 ## Why this matters
 /bake-log resolution (PF-244) expects ExperimentPanel adjustments to be applied silently as the first step of snapshot resolution. Without the data in the export, the silent-apply pathway fails and resolution defaults to prompting the user for every delta.
+<!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
-- Scratchpad export JSON includes `experiment` block (or equivalent) when ExperimentPanel has values
-- Block is omitted when ExperimentPanel is empty/cleared
-- /bake-log skill can read and silently apply the values during snapshot resolution
-- Backward compat: exports without the block continue to work (fall back to prompting)
-<!-- SECTION:DESCRIPTION:END -->
+<!-- AC:BEGIN -->
+- [ ] #1 BakeScratchpad type in src/types/recipe.ts includes optional experiment field as Array of { ingredientId: string; total: number }
+- [ ] #2 exportJson() in useScratchpad.ts reads proofed:experiment:{recipeId} localStorage and includes the experiment array when non-empty
+- [ ] #3 experiment block omitted entirely when ExperimentPanel has no values (empty/default state)
+- [ ] #4 Unit test: export with active ExperimentPanel includes block; export with empty panel omits it
+- [ ] #5 Manual repro on 2026-05-13 jalapeno-cheddar-sourdough: scratchpad export now contains experiment block when user has dialed amounts
+<!-- AC:END -->

@@ -1,9 +1,10 @@
 ---
-id: DRAFT-97
+id: PF-258
 title: ExperimentPanel does not reset when recipe is reset
 status: Draft
 assignee: []
 created_date: '2026-05-13 21:35'
+updated_date: '2026-05-13 22:18'
 labels:
   - bug
   - scratchpad
@@ -13,6 +14,7 @@ dependencies: []
 
 ## Description
 
+<!-- SECTION:DESCRIPTION:BEGIN -->
 <!-- SECTION:DESCRIPTION:BEGIN -->
 ExperimentPanel adjustments persist after the user resets the recipe state. Should clear alongside step state on recipe reset.
 
@@ -24,12 +26,13 @@ ExperimentPanel adjustments persist after the user resets the recipe state. Shou
 
 ## Expected
 Reset should clear `proofed:experiment:{recipeId}` localStorage key. ExperimentPanel UI should reflect empty/default state.
+<!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
-- Reset action clears `proofed:experiment:{recipeId}` localStorage key
-- ExperimentPanel UI reflects empty/default state after reset
-- Tested on jalapeno-cheddar-sourdough recipe (where bug was observed)
-
-## Source
-Surfaced during /bake-log session 2026-05-13 for jalapeno-cheddar-sourdough. User entered 147g jalapeño and 316g cheddar in ExperimentPanel during prep, noted as meta observation at 9:50pm Mon. Include snapshot of current ExperimentPanel state in any future repro.
-<!-- SECTION:DESCRIPTION:END -->
+<!-- AC:BEGIN -->
+- [ ] #1 handleReset() in src/App.vue clears ExperimentPanel state alongside progress + scratchpad
+- [ ] #2 After reset, localStorage.getItem('proofed:experiment:{recipeId}') returns null
+- [ ] #3 ExperimentPanel.vue UI re-renders with all sliders at recipe baseline values
+- [ ] #4 Unit test covers reset flow clearing all three (progress, scratchpad, experiment)
+- [ ] #5 Manual repro on jalapeno-cheddar-sourdough shows ExperimentPanel empty after reset
+<!-- AC:END -->
