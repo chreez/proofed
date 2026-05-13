@@ -26,7 +26,7 @@
       ]
     }
   },
-  "version": "v2.0.0",
+  "version": "v2.1.0",
   "change_log": [
     {
       "version": "v2.0.0",
@@ -427,6 +427,59 @@
           ]
         }
       ]
+    },
+    {
+      "version": "v2.1.0",
+      "date": "2026-05-13",
+      "summary": "Graduate cheddar inclusion ratio: 220g → 320g (+100g). Promoted from 2026-05-13 bake (user-approved bump-worthy). Nutrition recalculated. Jalapeño baseline unchanged at 120g.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "ingredients": [
+            {
+              "id": "flour",
+              "total": 550
+            },
+            {
+              "id": "water",
+              "total": 340
+            },
+            {
+              "id": "starter",
+              "total": 110
+            },
+            {
+              "id": "salt",
+              "total": 11
+            },
+            {
+              "id": "milk-powder",
+              "total": 28
+            },
+            {
+              "id": "brown-sugar",
+              "total": 31
+            },
+            {
+              "id": "jalapenos",
+              "total": 120
+            },
+            {
+              "id": "cheddar",
+              "total": 320
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "ingredients": [
+            {
+              "id": "butter",
+              "total": 50
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -535,16 +588,16 @@
           {
             "id": "cheddar",
             "name": "Sharp Cheddar Cheese (block)",
-            "total": 220,
+            "total": 320,
             "unit": "g",
             "breakdown": [
               {
                 "label": "loaf 1",
-                "amount": 110
+                "amount": 160
               },
               {
                 "label": "loaf 2",
-                "amount": 110
+                "amount": 160
               }
             ]
           }
@@ -1129,27 +1182,27 @@
   "nutrition": {
     "servings": 16,
     "servingSize": "1 slice (per loaf, 8 slices each)",
-    "calculatedDate": "2026-05-04",
+    "calculatedDate": "2026-05-13",
     "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 3682,
-      "protein": 134.2,
-      "totalFat": 124.5,
-      "saturatedFat": 73.7,
-      "carbohydrates": 498.4,
-      "sugar": 52.3,
+      "calories": 4085.0,
+      "protein": 157.1,
+      "totalFat": 157.8,
+      "saturatedFat": 94.8,
+      "carbohydrates": 501.5,
+      "sugar": 52.8,
       "fiber": 17.9,
-      "sodium": 5815.2
+      "sodium": 6436.2
     },
     "perServing": {
-      "calories": 230.1,
-      "protein": 8.4,
-      "totalFat": 7.8,
-      "saturatedFat": 4.6,
-      "carbohydrates": 31.2,
+      "calories": 255.3,
+      "protein": 9.8,
+      "totalFat": 9.9,
+      "saturatedFat": 5.9,
+      "carbohydrates": 31.3,
       "sugar": 3.3,
       "fiber": 1.1,
-      "sodium": 363.5
+      "sodium": 402.3
     },
     "breakdown": [
       {
@@ -1267,16 +1320,16 @@
       {
         "ingredientId": "cheddar",
         "ingredientName": "Sharp Cheddar Cheese",
-        "amount": 220,
+        "amount": 320,
         "fdcId": 173414,
-        "calories": 886.6,
-        "protein": 50.3,
-        "totalFat": 73.3,
-        "saturatedFat": 46.4,
-        "carbohydrates": 6.8,
-        "sugar": 1.1,
+        "calories": 1289.6,
+        "protein": 73.2,
+        "totalFat": 106.6,
+        "saturatedFat": 67.5,
+        "carbohydrates": 9.9,
+        "sugar": 1.6,
         "fiber": 0,
-        "sodium": 1366.2
+        "sodium": 1987.2
       }
     ]
   },
@@ -2964,7 +3017,7 @@
     {
       "date": "2026-05-13",
       "start_date": "2026-05-12",
-      "version": "v1.2.0",
+      "version": "v2.0.0",
       "summary": "Two-loaf split — Pullman tin loaf (no shape, fridge direct, 1hr RT before bake; small undercooked pocket but tasted fine) and Dutch oven batard (cold retard ~15hr, 480→450 preheat, decent rise, internal 210°F). Inclusion bump via ExperimentPanel (147g jalapeño, 316g cheddar) felt right — version bump candidate.",
       "notes": [
         "Pre-bake kitchen 76.8°F, 52% humidity. Autolyse with levain (no separate levain build) mixed at 4:29pm Mon at 79°F.",
