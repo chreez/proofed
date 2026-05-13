@@ -10,7 +10,7 @@ Personal portfolio and blog site (proofed.netlify.app) — Vue 3 + Vite recipe w
 
 ## Current Focus
 
-**DRAFT-95 Bakery Ops Assistant** — full-service local (bake + schedule + sell) is the active umbrella. Reframed from PF-255 (pricing planner) on 2026-05-12 after user surfaced the actual ambition. Pending: pick v1 spine slice (S0 Plan skeleton vs S1 rework Pricing + Plan vs other), then groom.
+**PF-256 Bakery Ops Assistant** (promoted from DRAFT-95 on 2026-05-12) — full-service local (bake + schedule + sell). Umbrella epic with 9 candidate slices (S0–S8). First slice groomed: **PF-256.1** "Production plan skeleton" — `/production` route + `ProductionPlan` localStorage + UI add/remove/edit + `addedBy` provenance. Ready to execute. Every later lens reads from this foundation.
 
 Background: recipe workflow features (cook logs, photo pipeline, energy-level reading modes). Also serves as living portfolio piece for resume/applications.
 
@@ -20,9 +20,10 @@ Background: recipe workflow features (cook logs, photo pipeline, energy-level re
 
 ## Open Threads
 
-- **DRAFT-95** Bakery Ops Assistant — umbrella epic awaiting v1 spine grooming
-- **PF-255.1 /pricing** committed (601812b) but user flagged "not shippable"; rework consolidated into DRAFT-95 S1
-- 14 candidate drafts under DRAFT-95 (80–94); dedupe needed: 80⇔83, 81⇔84
+- **PF-256.1** Production plan skeleton — groomed (14 ACs), ready to execute next session
+- **PF-255.1 /pricing** committed (601812b) but user flagged "not shippable"; rework consolidated into PF-256 S1 (later slice)
+- 13 candidate drafts under PF-256 (80–94, minus promoted 95); dedupe needed: 80⇔83, 81⇔84
+- DRAFT-96 (recently viewed recipes) filed mid-session; not yet groomed
 - DRAFT-33 pending groom (pre-DRAFT-95)
 - Backlog tasks managed via backlog.md CLI
 
