@@ -10,7 +10,9 @@ Personal portfolio and blog site (proofed.netlify.app) — Vue 3 + Vite recipe w
 
 ## Current Focus
 
-Recipe workflow features (cook logs, photo pipeline, energy-level reading modes). Also serves as living portfolio piece for resume/applications.
+**DRAFT-95 Bakery Ops Assistant** — full-service local (bake + schedule + sell) is the active umbrella. Reframed from PF-255 (pricing planner) on 2026-05-12 after user surfaced the actual ambition. Pending: pick v1 spine slice (S0 Plan skeleton vs S1 rework Pricing + Plan vs other), then groom.
+
+Background: recipe workflow features (cook logs, photo pipeline, energy-level reading modes). Also serves as living portfolio piece for resume/applications.
 
 ## Ports
 
@@ -18,11 +20,15 @@ Recipe workflow features (cook logs, photo pipeline, energy-level reading modes)
 
 ## Open Threads
 
-- DRAFT-33 pending groom
+- **DRAFT-95** Bakery Ops Assistant — umbrella epic awaiting v1 spine grooming
+- **PF-255.1 /pricing** committed (601812b) but user flagged "not shippable"; rework consolidated into DRAFT-95 S1
+- 14 candidate drafts under DRAFT-95 (80–94); dedupe needed: 80⇔83, 81⇔84
+- DRAFT-33 pending groom (pre-DRAFT-95)
 - Backlog tasks managed via backlog.md CLI
 
 ## Recent
 
+- DRAFT-95: reframed PF-255 narrow pricing scope into "Bakery Ops Assistant" full-service umbrella (bake + schedule + sell, local-only, agent-in-loop, accuracy-flagged); 9 candidate slices (S0–S8); PF-255 work + DRAFTs 80–94 roll up under it
 - PF-255.1: pricing MVP at `/pricing` — per-recipe markup% slider (50–300%), snap-to-pretty display, live CP$/CP%, nudge-up hint, localStorage persistence + JSON export, dirty badge per row, mobile-responsive; 67 new tests + PricingRow snapshot
 - PF-255 (epic): groomed + executed — 6 subtasks closed (5 spikes/designs + 1 slice). Spawned 10 follow-up drafts (DRAFT-80..89) covering recipe-metadata backfill, throughput schema, tooltips
 - F43: new validation check — every interactive/jargon-bearing UI element must expose a help tooltip on hover/focus
