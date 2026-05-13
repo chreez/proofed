@@ -685,5 +685,352 @@
       }
     ]
   },
-  "nutrition": null
+  "nutrition": null,
+  "cook_log": [
+    {
+      "date": "2026-05-12",
+      "version": "v1.0.0",
+      "summary": "First bake — splash run, recipe-only. Food-processor dough came together well-hydrated; 1hr chill, shapes uneven. Bake stretched to ~30 min and bottoms set before tops browned. Flavor there, could be sweeter.",
+      "notes": [
+        "Splash bake — going blind, recipe-only, learning pass",
+        "Kitchen pre-bake: 74.5°F ambient, 54% humidity",
+        "Used food processor for dough; also processed walnuts for filling. Order may matter — will think about it.",
+        "Dough seemed well-hydrated — never got the 'specks of loose flour' the recipe describes",
+        "Chilled ~1 hour (recipe allows 1hr or overnight)",
+        "Filling: walnut-currant per recipe",
+        "Rolled as single big disc → 16 pieces, none lost. Some shapes better than others.",
+        "Egg wash + sugar applied per recipe, then 10-15 min freezer",
+        "Baked ~30 min vs recipe's 22 min. Bottoms set before tops got golden brown.",
+        "Flavor present but could be sweeter — coarser sugar topping might help"
+      ],
+      "photos": [
+        {
+          "src": "/images/tartine-rugelach/2026-05-12/img-7541-800w.webp",
+          "thumb": "/images/tartine-rugelach/2026-05-12/img-7541-400w.webp",
+          "alt": "Sheet pan of 16 freshly baked rugelach on parchment — blonde tops, set bottoms, walnut-currant filling leaked and caramelized between cookies. First-bake shape inconsistency visible: some tight crescents, others loose with filling exposed at the seam.",
+          "tag": "process",
+          "name": "img-7541"
+        },
+        {
+          "src": "/images/tartine-rugelach/2026-05-12/img-7542-800w.webp",
+          "thumb": "/images/tartine-rugelach/2026-05-12/img-7542-400w.webp",
+          "alt": "Finished rugelach packed into kraft paper bags with cellophane windows, on a dark wood table with the Tartine cookbook in the background. Bagged for sharing after the bake.",
+          "tag": "step",
+          "name": "img-7542"
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Try 2hr chill instead of 1hr"
+        },
+        {
+          "text": "Split dough into 2 smaller discs — easier roll-out",
+          "source": "Claire Saffitz YouTube: https://www.youtube.com/watch?v=93ZbPtxv_RY"
+        },
+        {
+          "text": "Try egg wash + sugar BEFORE freezer (Tartine does after)",
+          "source": "Claire Saffitz"
+        },
+        {
+          "text": "Get demerara/turbinado sugar for topping — coarser, stands out, better flavor"
+        },
+        {
+          "text": "Move bake to top rack to prevent bottoms setting before tops brown",
+          "source": "Claire Saffitz"
+        },
+        {
+          "text": "Decide food processor order — dough first then walnuts, or reverse"
+        },
+        {
+          "text": "Cross-check Claire Saffitz's almond paste rugelach recipe for technique cues",
+          "source": "Claire Saffitz YouTube: https://www.youtube.com/watch?v=93ZbPtxv_RY"
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-12T13:08:31Z",
+          "raw": "74.5 ambient temp. 54% humidity in kitchen",
+          "curated": "Kitchen 74.5°F ambient, 54% humidity",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-12T16:02:40Z",
+          "raw": "bake time is probably closer to 30 minutes in my oven",
+          "curated": "Bake time closer to 30 min in my oven (vs 22 min recipe)",
+          "notable": true,
+          "stepId": "bake",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-12T16:03:14Z",
+          "raw": "first bake issues. not sure the shape of the final product is as desired. may need to ensure i do a tighter roll and roll more cleanly",
+          "curated": "First bake — shape not quite right. Try tighter roll and cleaner cutting next time",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "result"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "MIX_DOUGH",
+          "stageName": "Mix Cream Cheese Dough",
+          "ingredients": [
+            {
+              "id": "cream-cheese",
+              "name": "Cream Cheese (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 260,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "MAKE_FILLING",
+          "stageName": "Make Walnut-Currant Filling",
+          "ingredients": [
+            {
+              "id": "walnuts",
+              "name": "Walnuts",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "currants",
+              "name": "Currants",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Roll, Fill, and Shape",
+          "ingredients": [
+            {
+              "id": "melted-butter",
+              "name": "Unsalted Butter (melted, cooled)",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Egg Wash, Sugar, and Bake",
+          "ingredients": [
+            {
+              "id": "egg",
+              "name": "Large Egg",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar-topping",
+              "name": "Granulated Sugar (for topping)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-12",
+        "temp_high_f": 82.8,
+        "temp_low_f": 62.3,
+        "humidity_avg_percent": 72,
+        "condition": "Mainly clear",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "cream-cheese",
+            "ingredientName": "Cream Cheese (room temperature)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B H-E-B Regular Cream Cheese",
+            "recipeAmount": 225,
+            "recipeUnit": "g",
+            "packageSize": "8 oz",
+            "packagePrice": 2.30,
+            "cost": 2.28
+          },
+          {
+            "ingredientId": "unsalted-butter",
+            "ingredientName": "Unsalted Butter (room temperature)",
+            "sourceType": "heb",
+            "sourceName": "Central Market Central Market European Style Unsalted Butter Sticks",
+            "recipeAmount": 225,
+            "recipeUnit": "g",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 5.98,
+            "cost": 2.96
+          },
+          {
+            "ingredientId": "ap-flour",
+            "ingredientName": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur King Arthur Unbleached All-Purpose Flour",
+            "recipeAmount": 260,
+            "recipeUnit": "g",
+            "packageSize": "10 lbs",
+            "packagePrice": 9.98,
+            "cost": 0.57
+          },
+          {
+            "ingredientId": "einkorn-flour",
+            "ingredientName": "Einkorn Flour",
+            "sourceType": "heb",
+            "sourceName": "Jovial Jovial Organic Einkorn All-Purpose Flour",
+            "recipeAmount": 65,
+            "recipeUnit": "g",
+            "packageSize": "2 lb",
+            "packagePrice": 9.29,
+            "cost": 0.67
+          },
+          {
+            "ingredientId": "salt",
+            "ingredientName": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Morton Fine Sea Salt",
+            "recipeAmount": 6,
+            "recipeUnit": "g",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "walnuts",
+            "ingredientName": "Walnuts",
+            "sourceType": "heb",
+            "sourceName": "H-E-B H-E-B Premium Walnut Halves",
+            "recipeAmount": 120,
+            "recipeUnit": "g",
+            "packageSize": "8 oz",
+            "packagePrice": 5.28,
+            "cost": 2.79
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "ingredientName": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B H-E-B Brown Sugar",
+            "recipeAmount": 120,
+            "recipeUnit": "g",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.42,
+            "cost": 0.32
+          },
+          {
+            "ingredientId": "cinnamon",
+            "ingredientName": "Ground Cinnamon",
+            "sourceType": "heb",
+            "sourceName": "H-E-B H-E-B Ground Cinnamon Seasoning",
+            "recipeAmount": 7,
+            "recipeUnit": "g",
+            "packageSize": "1.8 oz",
+            "packagePrice": 2.58,
+            "cost": 0.35
+          },
+          {
+            "ingredientId": "currants",
+            "ingredientName": "Currants",
+            "sourceType": "heb",
+            "sourceName": "Sun-Maid Sun-Maid California Sun-Dried Zante Currants",
+            "recipeAmount": 70,
+            "recipeUnit": "g",
+            "packageSize": "8 oz",
+            "packagePrice": 4.98,
+            "cost": 1.54
+          },
+          {
+            "ingredientId": "melted-butter",
+            "ingredientName": "Unsalted Butter (melted, cooled)",
+            "sourceType": "heb",
+            "sourceName": "Central Market Central Market European Style Unsalted Butter Sticks",
+            "recipeAmount": 65,
+            "recipeUnit": "g",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 5.98,
+            "cost": 0.86
+          },
+          {
+            "ingredientId": "egg",
+            "ingredientName": "Large Egg",
+            "sourceType": "heb",
+            "sourceName": "H-E-B H-E-B Grade AA Cage Free Large White Eggs",
+            "recipeAmount": 50,
+            "recipeUnit": "g",
+            "packageSize": "18 ct",
+            "packagePrice": 4.29,
+            "cost": 0.24
+          },
+          {
+            "ingredientId": "sugar-topping",
+            "ingredientName": "Granulated Sugar (for topping)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "recipeAmount": 20,
+            "recipeUnit": "g",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.48,
+            "cost": 0.05
+          }
+        ],
+        "total": 12.67,
+        "perServing": 0.79,
+        "servings": 16,
+        "date": "2026-05-12"
+      }
+    }
+  ]
 }
