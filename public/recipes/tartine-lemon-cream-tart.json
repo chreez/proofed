@@ -13,8 +13,144 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.2.0",
+  "version": "v1.3.0",
   "change_log": [
+    {
+      "version": "v1.3.0",
+      "date": "2026-05-13",
+      "summary": "Bump fresh lemon juice 175g → 220g. Double-strain workflow (strain juice before adding, strain finished curd) produced notably less eggy curd. Confirmed in bake 2026-05-13.",
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            {
+              "id": "butter_dough",
+              "name": "Unsalted Butter (room temp)",
+              "total": 255,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_dough",
+              "name": "Granulated Sugar",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_dough",
+              "name": "Salt (1/4 tsp)",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_dough",
+              "name": "Large Eggs (room temp)",
+              "total": 2,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            {
+              "id": "eggs_wash",
+              "name": "Large Egg (wash)",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "salt_wash",
+              "name": "Salt (pinch, wash)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            {
+              "id": "lemon_juice",
+              "name": "Fresh Lemon Juice",
+              "total": 220,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_cream",
+              "name": "Large Eggs",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "egg_yolk",
+              "name": "Large Egg Yolk",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_cream",
+              "name": "Granulated Sugar",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_cream",
+              "name": "Salt (pinch)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter_cream",
+              "name": "Unsalted Butter (cool, not cold)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Whipped Cream & Serve",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (very cold)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_topping",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.2.0",
       "date": "2026-04-30",
@@ -572,7 +708,7 @@
           {
             "id": "lemon_juice",
             "name": "Fresh Lemon Juice",
-            "total": 175,
+            "total": 220,
             "unit": "g",
             "breakdown": null
           },
@@ -915,14 +1051,14 @@
     {
       "id": "strain-lemon-juice",
       "title": "Strain Lemon Juice",
-      "direction": "Strain 175g fresh lemon juice through a fine-mesh sieve to remove pulp and seeds.",
+      "direction": "Strain 220g fresh lemon juice through a fine-mesh sieve to remove pulp and seeds.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "Lemon Juice",
-          "amount": "175g"
+          "amount": "220g"
         }
       ],
       "exit_condition": "Lemon juice strained, no pulp or seeds remain",
@@ -967,7 +1103,7 @@
         },
         {
           "name": "Strained Lemon Juice",
-          "amount": "175g"
+          "amount": "220g"
         },
         {
           "name": "Salt",
@@ -1130,24 +1266,24 @@
   "nutrition": {
     "servings": 12,
     "servingSize": "1 tartlet",
-    "calculatedDate": "2026-05-02",
+    "calculatedDate": "2026-05-13",
     "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 8078,
+      "calories": 8088,
       "protein": 102,
-      "totalFat": 514,
-      "saturatedFat": 313,
-      "carbohydrates": 785,
-      "sugar": 397,
-      "fiber": 14,
-      "sodium": 1527
+      "totalFat": 514.3,
+      "saturatedFat": 312.5,
+      "carbohydrates": 787.9,
+      "sugar": 397.8,
+      "fiber": 14.1,
+      "sodium": 1528
     },
     "perServing": {
-      "calories": 673.2,
+      "calories": 674.0,
       "protein": 8.5,
-      "totalFat": 42.8,
-      "saturatedFat": 26,
-      "carbohydrates": 65.4,
+      "totalFat": 42.9,
+      "saturatedFat": 26.0,
+      "carbohydrates": 65.7,
       "sugar": 33.1,
       "fiber": 1.2,
       "sodium": 127.3
@@ -1254,16 +1390,16 @@
       {
         "ingredientId": "lemon_juice",
         "ingredientName": "Fresh Lemon Juice",
-        "amount": 175,
+        "amount": 220,
         "fdcId": 167747,
-        "calories": 39,
-        "protein": 0.6,
-        "totalFat": 0.4,
+        "calories": 49.0,
+        "protein": 0.8,
+        "totalFat": 0.5,
         "saturatedFat": 0.1,
-        "carbohydrates": 11.6,
-        "sugar": 4.4,
-        "fiber": 0.5,
-        "sodium": 4
+        "carbohydrates": 14.6,
+        "sugar": 5.5,
+        "fiber": 0.6,
+        "sodium": 5.0
       },
       {
         "ingredientId": "eggs_cream",
@@ -1912,9 +2048,6 @@
         },
         {
           "text": "Press fork firmly down into bottom of tin to anchor dough and prevent edge rise"
-        },
-        {
-          "text": "Version bump candidate: lemon juice 175g → 220g (less eggy curd via double-strain workflow). Confirm after final tasting and one more bake."
         }
       ],
       "cost": {
