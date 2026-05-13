@@ -15,6 +15,22 @@ dependencies: []
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
+## Reframed on 2026-05-12 → see DRAFT-95
+
+This epic shipped (6 subtasks closed) but the scope was narrower than the
+user's actual intent. During the PF-255.1 HITL review, the user named the
+real ambition: a **full-service local baking + scheduling + selling assistant**,
+captured as **DRAFT-95 "Bakery Ops Assistant"**.
+
+PF-255 stays Done. Its work (snap algo, scheduler design, profile schema,
+metadata audit) all feeds DRAFT-95 as foundational research. PF-255.1
+shipped but was flagged "not shippable" by user — rework lives in
+DRAFT-90 (units + opt-in) under DRAFT-95's S1 slice.
+
+The 11 follow-up drafts spawned during PF-255 execution (80–94) all roll
+up under DRAFT-95 as candidate slices. See DRAFT-95 description for the
+slice map.
+
 ## Idea (raw — pre-grooming)
 
 Public-facing showcase feature: from recipe cost → suggested sell price → batch throughput → drag-to-schedule queue → profit/hour. Use proofed as a "bakery operations" demo while keeping all data file-based (no backend).
