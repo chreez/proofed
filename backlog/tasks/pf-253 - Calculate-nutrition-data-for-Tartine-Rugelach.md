@@ -1,9 +1,10 @@
 ---
 id: PF-253
 title: Calculate nutrition data for Tartine Rugelach
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-11 19:49'
+updated_date: '2026-05-13 21:26'
 labels:
   - nutrition
 dependencies: []

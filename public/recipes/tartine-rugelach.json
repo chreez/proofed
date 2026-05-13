@@ -1,5 +1,5 @@
 {
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "meta": {
     "name": "Tartine Rugelach",
     "source": {
@@ -15,6 +15,121 @@
     "early_check_percent": 0.85
   },
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-05-12",
+      "summary": "Added USDA-sourced nutrition block (351 kcal/rugelach, 16 servings). No ingredient or procedural changes.",
+      "ingredients": [
+        {
+          "stageId": "MIX_DOUGH",
+          "stageName": "Mix Cream Cheese Dough",
+          "ingredients": [
+            {
+              "id": "cream-cheese",
+              "name": "Cream Cheese (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 260,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "MAKE_FILLING",
+          "stageName": "Make Walnut-Currant Filling",
+          "ingredients": [
+            {
+              "id": "walnuts",
+              "name": "Walnuts",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "currants",
+              "name": "Currants",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Roll, Fill, and Shape",
+          "ingredients": [
+            {
+              "id": "melted-butter",
+              "name": "Unsalted Butter (melted, cooled)",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Egg Wash, Sugar, and Bake",
+          "ingredients": [
+            {
+              "id": "egg",
+              "name": "Large Egg",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar-topping",
+              "name": "Granulated Sugar (for topping)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.0.0",
       "date": "2026-05-11",
@@ -685,7 +800,202 @@
       }
     ]
   },
-  "nutrition": null,
+  "nutrition": {
+    "servings": 16,
+    "servingSize": "1 rugelach",
+    "calculatedDate": "2026-05-13",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 5621.4,
+      "protein": 79.2,
+      "totalFat": 399.7,
+      "saturatedFat": 202.1,
+      "carbohydrates": 469.8,
+      "sugar": 196.6,
+      "fiber": 30.5,
+      "sodium": 3201.9
+    },
+    "perServing": {
+      "calories": 351.3,
+      "protein": 5,
+      "totalFat": 25,
+      "saturatedFat": 12.6,
+      "carbohydrates": 29.4,
+      "sugar": 12.3,
+      "fiber": 1.9,
+      "sodium": 200.1
+    },
+    "breakdown": [
+      {
+        "ingredientId": "cream-cheese",
+        "ingredientName": "Cream Cheese (room temperature)",
+        "amount": 225,
+        "fdcId": 173418,
+        "calories": 769.5,
+        "protein": 13.3,
+        "totalFat": 77,
+        "saturatedFat": 43.4,
+        "carbohydrates": 12.4,
+        "sugar": 8.5,
+        "fiber": 0,
+        "sodium": 722.3
+      },
+      {
+        "ingredientId": "unsalted-butter",
+        "ingredientName": "Unsalted Butter (room temperature)",
+        "amount": 225,
+        "fdcId": 173430,
+        "calories": 1613.3,
+        "protein": 1.9,
+        "totalFat": 182.5,
+        "saturatedFat": 115.6,
+        "carbohydrates": 0.1,
+        "sugar": 0.1,
+        "fiber": 0,
+        "sodium": 24.8
+      },
+      {
+        "ingredientId": "ap-flour",
+        "ingredientName": "All-Purpose Flour",
+        "amount": 260,
+        "fdcId": 168894,
+        "calories": 946.4,
+        "protein": 26.9,
+        "totalFat": 2.5,
+        "saturatedFat": 0.4,
+        "carbohydrates": 198.4,
+        "sugar": 0.7,
+        "fiber": 7,
+        "sodium": 5.2
+      },
+      {
+        "ingredientId": "einkorn-flour",
+        "ingredientName": "Einkorn Flour",
+        "amount": 65,
+        "fdcId": 168944,
+        "calories": 221,
+        "protein": 8.6,
+        "totalFat": 1.6,
+        "saturatedFat": 0.3,
+        "carbohydrates": 46.8,
+        "sugar": 0.3,
+        "fiber": 7,
+        "sodium": 1.3
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Fine Sea Salt",
+        "amount": 6,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 2325.5
+      },
+      {
+        "ingredientId": "walnuts",
+        "ingredientName": "Walnuts",
+        "amount": 120,
+        "fdcId": 170187,
+        "calories": 784.8,
+        "protein": 18.3,
+        "totalFat": 78.3,
+        "saturatedFat": 7.4,
+        "carbohydrates": 16.5,
+        "sugar": 3.1,
+        "fiber": 8,
+        "sodium": 2.4
+      },
+      {
+        "ingredientId": "brown-sugar",
+        "ingredientName": "Brown Sugar",
+        "amount": 120,
+        "fdcId": 168833,
+        "calories": 456,
+        "protein": 0.1,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 117.7,
+        "sugar": 116.4,
+        "fiber": 0,
+        "sodium": 33.6
+      },
+      {
+        "ingredientId": "cinnamon",
+        "ingredientName": "Ground Cinnamon",
+        "amount": 7,
+        "fdcId": 171320,
+        "calories": 17.3,
+        "protein": 0.3,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 5.6,
+        "sugar": 0.2,
+        "fiber": 3.7,
+        "sodium": 0.7
+      },
+      {
+        "ingredientId": "currants",
+        "ingredientName": "Currants",
+        "amount": 70,
+        "fdcId": 173904,
+        "calories": 198.1,
+        "protein": 2.9,
+        "totalFat": 0.2,
+        "saturatedFat": 0,
+        "carbohydrates": 51.9,
+        "sugar": 47.1,
+        "fiber": 4.8,
+        "sodium": 7.7
+      },
+      {
+        "ingredientId": "melted-butter",
+        "ingredientName": "Unsalted Butter (melted, cooled)",
+        "amount": 65,
+        "fdcId": 173430,
+        "calories": 466.1,
+        "protein": 0.6,
+        "totalFat": 52.7,
+        "saturatedFat": 33.4,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 7.2
+      },
+      {
+        "ingredientId": "egg",
+        "ingredientName": "Large Egg",
+        "amount": 50,
+        "fdcId": 171287,
+        "calories": 71.5,
+        "protein": 6.3,
+        "totalFat": 4.8,
+        "saturatedFat": 1.6,
+        "carbohydrates": 0.4,
+        "sugar": 0.2,
+        "fiber": 0,
+        "sodium": 71
+      },
+      {
+        "ingredientId": "sugar-topping",
+        "ingredientName": "Granulated Sugar (for topping)",
+        "amount": 20,
+        "fdcId": 169655,
+        "calories": 77.4,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 20,
+        "sugar": 20,
+        "fiber": 0,
+        "sodium": 0.2
+      }
+    ]
+  },
   "cook_log": [
     {
       "date": "2026-05-12",
@@ -895,135 +1205,135 @@
         "items": [
           {
             "ingredientId": "cream-cheese",
-            "ingredientName": "Cream Cheese (room temperature)",
             "sourceType": "heb",
-            "sourceName": "H-E-B H-E-B Regular Cream Cheese",
-            "recipeAmount": 225,
-            "recipeUnit": "g",
+            "sourceName": "H-E-B Regular Cream Cheese",
             "packageSize": "8 oz",
-            "packagePrice": 2.30,
-            "cost": 2.28
+            "packagePrice": 2.3,
+            "cost": 2.28,
+            "name": "Cream Cheese (room temperature)",
+            "amount": 225,
+            "unit": "g"
           },
           {
             "ingredientId": "unsalted-butter",
-            "ingredientName": "Unsalted Butter (room temperature)",
             "sourceType": "heb",
-            "sourceName": "Central Market Central Market European Style Unsalted Butter Sticks",
-            "recipeAmount": 225,
-            "recipeUnit": "g",
+            "sourceName": "Central Market European Style Unsalted Butter Sticks",
             "packageSize": "4 ct (1 lb)",
             "packagePrice": 5.98,
-            "cost": 2.96
+            "cost": 2.96,
+            "name": "Unsalted Butter (room temperature)",
+            "amount": 225,
+            "unit": "g"
           },
           {
             "ingredientId": "ap-flour",
-            "ingredientName": "All-Purpose Flour",
             "sourceType": "heb",
-            "sourceName": "King Arthur King Arthur Unbleached All-Purpose Flour",
-            "recipeAmount": 260,
-            "recipeUnit": "g",
+            "sourceName": "King Arthur Unbleached All-Purpose Flour",
             "packageSize": "10 lbs",
             "packagePrice": 9.98,
-            "cost": 0.57
+            "cost": 0.57,
+            "name": "All-Purpose Flour",
+            "amount": 260,
+            "unit": "g"
           },
           {
             "ingredientId": "einkorn-flour",
-            "ingredientName": "Einkorn Flour",
             "sourceType": "heb",
-            "sourceName": "Jovial Jovial Organic Einkorn All-Purpose Flour",
-            "recipeAmount": 65,
-            "recipeUnit": "g",
+            "sourceName": "Jovial Organic Einkorn All-Purpose Flour",
             "packageSize": "2 lb",
             "packagePrice": 9.29,
-            "cost": 0.67
+            "cost": 0.67,
+            "name": "Einkorn Flour",
+            "amount": 65,
+            "unit": "g"
           },
           {
             "ingredientId": "salt",
-            "ingredientName": "Fine Sea Salt",
             "sourceType": "heb",
-            "sourceName": "Morton Morton Fine Sea Salt",
-            "recipeAmount": 6,
-            "recipeUnit": "g",
+            "sourceName": "Morton Fine Sea Salt",
             "packageSize": "17.6 oz",
             "packagePrice": 2.98,
-            "cost": 0.04
+            "cost": 0.04,
+            "name": "Fine Sea Salt",
+            "amount": 6,
+            "unit": "g"
           },
           {
             "ingredientId": "walnuts",
-            "ingredientName": "Walnuts",
             "sourceType": "heb",
-            "sourceName": "H-E-B H-E-B Premium Walnut Halves",
-            "recipeAmount": 120,
-            "recipeUnit": "g",
+            "sourceName": "H-E-B Premium Walnut Halves",
             "packageSize": "8 oz",
             "packagePrice": 5.28,
-            "cost": 2.79
+            "cost": 2.79,
+            "name": "Walnuts",
+            "amount": 120,
+            "unit": "g"
           },
           {
             "ingredientId": "brown-sugar",
-            "ingredientName": "Brown Sugar",
             "sourceType": "heb",
-            "sourceName": "H-E-B H-E-B Brown Sugar",
-            "recipeAmount": 120,
-            "recipeUnit": "g",
+            "sourceName": "H-E-B Brown Sugar",
             "packageSize": "2 lbs",
             "packagePrice": 2.42,
-            "cost": 0.32
+            "cost": 0.32,
+            "name": "Brown Sugar",
+            "amount": 120,
+            "unit": "g"
           },
           {
             "ingredientId": "cinnamon",
-            "ingredientName": "Ground Cinnamon",
             "sourceType": "heb",
-            "sourceName": "H-E-B H-E-B Ground Cinnamon Seasoning",
-            "recipeAmount": 7,
-            "recipeUnit": "g",
+            "sourceName": "H-E-B Ground Cinnamon Seasoning",
             "packageSize": "1.8 oz",
             "packagePrice": 2.58,
-            "cost": 0.35
+            "cost": 0.35,
+            "name": "Ground Cinnamon",
+            "amount": 7,
+            "unit": "g"
           },
           {
             "ingredientId": "currants",
-            "ingredientName": "Currants",
             "sourceType": "heb",
-            "sourceName": "Sun-Maid Sun-Maid California Sun-Dried Zante Currants",
-            "recipeAmount": 70,
-            "recipeUnit": "g",
+            "sourceName": "Sun-Maid California Sun-Dried Zante Currants",
             "packageSize": "8 oz",
             "packagePrice": 4.98,
-            "cost": 1.54
+            "cost": 1.54,
+            "name": "Currants",
+            "amount": 70,
+            "unit": "g"
           },
           {
             "ingredientId": "melted-butter",
-            "ingredientName": "Unsalted Butter (melted, cooled)",
             "sourceType": "heb",
-            "sourceName": "Central Market Central Market European Style Unsalted Butter Sticks",
-            "recipeAmount": 65,
-            "recipeUnit": "g",
+            "sourceName": "Central Market European Style Unsalted Butter Sticks",
             "packageSize": "4 ct (1 lb)",
             "packagePrice": 5.98,
-            "cost": 0.86
+            "cost": 0.86,
+            "name": "Unsalted Butter (melted, cooled)",
+            "amount": 65,
+            "unit": "g"
           },
           {
             "ingredientId": "egg",
-            "ingredientName": "Large Egg",
             "sourceType": "heb",
-            "sourceName": "H-E-B H-E-B Grade AA Cage Free Large White Eggs",
-            "recipeAmount": 50,
-            "recipeUnit": "g",
+            "sourceName": "H-E-B Grade AA Cage Free Large White Eggs",
             "packageSize": "18 ct",
             "packagePrice": 4.29,
-            "cost": 0.24
+            "cost": 0.24,
+            "name": "Large Egg",
+            "amount": 50,
+            "unit": "g"
           },
           {
             "ingredientId": "sugar-topping",
-            "ingredientName": "Granulated Sugar (for topping)",
             "sourceType": "heb",
-            "sourceName": "H-E-B H-E-B Pure Cane Extra Fine Granulated Sugar",
-            "recipeAmount": 20,
-            "recipeUnit": "g",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
             "packageSize": "2 lbs",
             "packagePrice": 2.48,
-            "cost": 0.05
+            "cost": 0.05,
+            "name": "Granulated Sugar (for topping)",
+            "amount": 20,
+            "unit": "g"
           }
         ],
         "total": 12.67,
