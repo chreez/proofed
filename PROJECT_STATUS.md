@@ -21,17 +21,19 @@ Background: recipe workflow features (cook logs, photo pipeline, energy-level re
 ## Open Threads
 
 - **PF-255.1 /pricing** committed (601812b) but flagged "not shippable"; rework consolidated into PF-256 S1
-- 13 candidate drafts under PF-256 (80–94, minus 95/97); dedupe needed: 80⇔83, 81⇔84
+- Remaining PF-256 drafts: 91 (inventory), 92 (multi-baker), 93 (passive batching), 94 (observed times). All design-stage, pending groom.
 - DRAFT-96 (recently viewed), DRAFT-99 (cart reorder), DRAFT-33 — pending groom
 - Backlog tasks managed via backlog.md CLI
 
 ## Recent
 
+- PF-261/262/263/264/265/266/267: streamlined backfill wave — D4 timer audit (6 fixes across 3 recipes); nutrition for 5 un-nutritioned recipes; cost.items refresh on 5 recipes (100% HEB-sourced); config.stats backfill on 7 recipes (3 new top-level groups: Cookies & Bars / Crackers & Snacks / Tarts & Pies); RecipeStats.itemsPerBatch field + 9 backfills; estimatedCost seed for lime-chantilly (only un-seeded); RecipeMeta throughput fields (prep_active_min, proof_passive_min, oven_occupancy_min, bake_min) on all 27 recipes
 - PF-256.1: `/production` route shipped — library grid (search + sort by most-baked + keyboard nav j/k/Enter//) + sticky cart sidebar (qty stepper, yield override via dbl-click, provenance per entry); hero thumbs from cook_log; scroll-isolated viewport; minimized header
 - PF-256.2: demo spike — 3 desktop layout demos (Trello/Cart/Dock) at `public/demo/production-*.html`; Cart pattern locked
 - DRAFT-95: reframed PF-255 narrow pricing scope into "Bakery Ops Assistant" full-service umbrella (bake + schedule + sell, local-only, agent-in-loop, accuracy-flagged); 9 candidate slices (S0–S8); PF-255 work + DRAFTs 80–94 roll up under it
 - PF-255.1: pricing MVP at `/pricing` — per-recipe markup% slider (50–300%), snap-to-pretty display, live CP$/CP%, nudge-up hint, localStorage persistence + JSON export, dirty badge per row, mobile-responsive; 67 new tests + PricingRow snapshot
 - PF-255 (epic): groomed + executed — 6 subtasks closed (5 spikes/designs + 1 slice). Spawned 10 follow-up drafts (DRAFT-80..89) covering recipe-metadata backfill, throughput schema, tooltips
+- DRAFT-89: `<HelpTooltip>` Vue primitive shipped + retrofitted across PricingRow/View, ProductionLibraryRow/CartEntry/View; F43 checklist updated to name component as canonical
 - F43: new validation check — every interactive/jargon-bearing UI element must expose a help tooltip on hover/focus
 - PF-254: hybrid tag search in header for recipes + bake log
 - PF-244: /bake-log skill reads ExperimentPanel localStorage adjustments + parses bake_notes prose for ingredient deltas (`scripts/parse-note-deltas.ts`, 6 patterns), echoes each detected delta with 4-option prompt before writing cook_log[].ingredients; Mozzarella Rule enforced
