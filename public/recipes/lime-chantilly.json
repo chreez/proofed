@@ -130,8 +130,15 @@
       "id": "MACERATE",
       "title": "Macerate Lime Sugar",
       "gather": {
-        "vessels": ["Small Bowl", "Stand Mixer Bowl"],
-        "equipment": ["Microplane", "Kitchen Scale", "Stand Mixer with Whisk Attachment"],
+        "vessels": [
+          "Small Bowl",
+          "Stand Mixer Bowl"
+        ],
+        "equipment": [
+          "Microplane",
+          "Kitchen Scale",
+          "Stand Mixer with Whisk Attachment"
+        ],
         "ingredients": [
           {
             "id": "lime_zest",
@@ -156,14 +163,20 @@
           }
         ]
       },
-      "states": ["chill-bowl", "zest-into-sugar", "smush-and-rest"]
+      "states": [
+        "chill-bowl",
+        "zest-into-sugar",
+        "smush-and-rest"
+      ]
     },
     {
       "id": "SMOOTH",
       "title": "Smooth Cream Cheese Base",
       "gather": {
         "vessels": [],
-        "equipment": ["Rubber Spatula"],
+        "equipment": [
+          "Rubber Spatula"
+        ],
         "ingredients": [
           {
             "id": "cream_cheese",
@@ -193,7 +206,10 @@
           }
         ]
       },
-      "states": ["rest-cc", "smooth-base"]
+      "states": [
+        "rest-cc",
+        "smooth-base"
+      ]
     },
     {
       "id": "WHIP",
@@ -226,14 +242,21 @@
           }
         ]
       },
-      "states": ["stream-cream", "whip-to-peaks"]
+      "states": [
+        "stream-cream",
+        "whip-to-peaks"
+      ]
     },
     {
       "id": "PIPE",
       "title": "Pipe & Set",
       "gather": {
-        "vessels": ["Piping Bag"],
-        "equipment": ["Ateco 869 French Star Tip (or Wilton 1M)"],
+        "vessels": [
+          "Piping Bag"
+        ],
+        "equipment": [
+          "Ateco 869 French Star Tip (or Wilton 1M)"
+        ],
         "ingredients": [
           {
             "id": "flake_salt",
@@ -248,7 +271,10 @@
           }
         ]
       },
-      "states": ["pipe-rosettes", "chill-set"]
+      "states": [
+        "pipe-rosettes",
+        "chill-set"
+      ]
     }
   ],
   "states": [
@@ -260,8 +286,14 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Persian Lime Zest", "amount": "zest of 1 lime (~2 tsp / ~1g)" },
-        { "name": "Powdered Sugar", "amount": "50g" }
+        {
+          "name": "Persian Lime Zest",
+          "amount": "zest of 1 lime (~2 tsp / ~1g)"
+        },
+        {
+          "name": "Powdered Sugar",
+          "amount": "50g"
+        }
       ],
       "exit_condition": "All green zest from one lime sits on top of the sugar; no visible white pith in the zest.",
       "notes": [
@@ -279,7 +311,10 @@
       "timer": true,
       "parallel": true,
       "components": [
-        { "name": "Lime Sugar", "amount": "from previous step" }
+        {
+          "name": "Lime Sugar",
+          "amount": "from previous step"
+        }
       ],
       "exit_condition": "Sugar appears damp and pale green; aroma is intensely lime-forward when sniffed.",
       "notes": [
@@ -307,7 +342,10 @@
       "timer": true,
       "parallel": true,
       "components": [
-        { "name": "Block Cream Cheese", "amount": "120g" }
+        {
+          "name": "Block Cream Cheese",
+          "amount": "120g"
+        }
       ],
       "exit_condition": "Cream cheese cubes yield to gentle finger pressure but are not visibly soft or shiny.",
       "notes": [
@@ -326,10 +364,22 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Cream Cheese (softened)", "amount": "120g" },
-        { "name": "Lime Sugar", "amount": "from maceration (~51g)" },
-        { "name": "Salt", "amount": "pinch" },
-        { "name": "Vanilla", "amount": "1/2 tsp (optional)" }
+        {
+          "name": "Cream Cheese (softened)",
+          "amount": "120g"
+        },
+        {
+          "name": "Lime Sugar",
+          "amount": "from maceration (~51g)"
+        },
+        {
+          "name": "Salt",
+          "amount": "pinch"
+        },
+        {
+          "name": "Vanilla",
+          "amount": "1/2 tsp (optional)"
+        }
       ],
       "exit_condition": "Mixture is completely smooth, glossy, no visible lumps when scraped against the bowl. Spreads cleanly with rubber spatula.",
       "notes": [
@@ -348,7 +398,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Heavy Cream (cold)", "amount": "240g, streamed slowly" }
+        {
+          "name": "Heavy Cream (cold)",
+          "amount": "240g, streamed slowly"
+        }
       ],
       "exit_condition": "All cream incorporated, mixture thickened to a thin pourable consistency.",
       "notes": [
@@ -366,7 +419,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Lime Juice (optional)", "amount": "1 tsp folded at end" }
+        {
+          "name": "Lime Juice (optional)",
+          "amount": "1 tsp folded at end"
+        }
       ],
       "exit_condition": "Peaks hold their shape when whisk is lifted; tip folds slightly but base stays upright. Surface is smooth and glossy, not grainy.",
       "notes": [
@@ -389,7 +445,10 @@
       "timer": false,
       "parallel": false,
       "components": [
-        { "name": "Lime Chantilly", "amount": "~240g" }
+        {
+          "name": "Lime Chantilly",
+          "amount": "~240g"
+        }
       ],
       "exit_condition": "Perimeter ring of rosettes complete; rosettes sharp and upright; center curd still visible.",
       "notes": [
@@ -407,13 +466,137 @@
       "timer": true,
       "parallel": false,
       "components": [
-        { "name": "Flake Salt", "amount": "pinch — applied at destination" }
+        {
+          "name": "Flake Salt",
+          "amount": "pinch — applied at destination"
+        }
       ],
       "exit_condition": "Rosette surfaces feel firm to gentle finger pressure; peaks no longer move when bowl is jostled.",
       "notes": [
         {
           "text": "Transport: insert toothpicks in the exposed curd center to keep foil off rosettes; loose-tent foil. Pack in cooler bag with 2 frozen gel packs (not loose ice) — target ≤8°C. Flat surface in car (floorboard/trunk, not seat). At destination: straight to fridge, hold until 20-30 min before serving, then microplane fresh lime zest over rosettes, sprinkle flake salt, optional channel-knife lime curl and viola/marigold/lemon thyme garnish.",
           "source": "agent"
+        }
+      ]
+    }
+  ],
+  "cook_log": [
+    {
+      "date": "2026-05-13",
+      "version": "v1.0.0",
+      "status": "in_progress",
+      "summary": null,
+      "notes": [
+        "9:09pm — smushed lime zest into powdered sugar, resting on counter (started ~23 min ago)",
+        "9:09pm — cream cheese cubed and resting at room temp (parallel)",
+        "9:09pm — stand mixer bowl + whisk attachment chilling in freezer (parallel)"
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-14T02:09:00Z",
+          "raw": "smushed the lime and the sugar. now waiting to rest. i did it approx 23 minutes ago.",
+          "curated": "Smushed lime zest into powdered sugar; resting now.",
+          "notable": true,
+          "stepId": "smush-and-rest",
+          "processing": "macerate | Timestamp inferred: '~23 minutes ago' relative to 2026-05-14T02:32:00Z → 2026-05-14T02:09:00Z"
+        },
+        {
+          "timestamp": "2026-05-14T02:09:00Z",
+          "raw": "while letting the creme cheese rest at room temp",
+          "curated": "Cream cheese resting at room temp (parallel to maceration).",
+          "notable": false,
+          "stepId": "rest-cc",
+          "processing": "macerate"
+        },
+        {
+          "timestamp": "2026-05-14T02:09:00Z",
+          "raw": "the mixer bowl is being chilled",
+          "curated": "Mixer bowl + whisk attachment in freezer chilling.",
+          "notable": false,
+          "stepId": "chill-bowl",
+          "processing": "macerate"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "MACERATE",
+          "stageName": "Macerate Lime Sugar",
+          "ingredients": [
+            {
+              "id": "lime_zest",
+              "name": "Persian Lime Zest (microplaned)",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Powdered Sugar (10X with cornstarch)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SMOOTH",
+          "stageName": "Smooth Cream Cheese Base",
+          "ingredients": [
+            {
+              "id": "cream_cheese",
+              "name": "Block Cream Cheese (full-fat, softened)",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Salt",
+              "total": 0.3,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Bean Paste or Extract",
+              "total": 2.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "WHIP",
+          "stageName": "Whip with Heavy Cream",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (cold, ≥36% fat)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "lime_juice",
+              "name": "Fresh Lime Juice (optional)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "PIPE",
+          "stageName": "Pipe & Set",
+          "ingredients": [
+            {
+              "id": "flake_salt",
+              "name": "Flake Salt (Maldon / fleur de sel)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
         }
       ]
     }
@@ -431,16 +614,61 @@
   },
   "research": {
     "sources": [
-      { "name": "Dominique Ansel Bakery — Salted Lemon Lime Tart", "url": "https://m.facebook.com/Dominique.Ansel.Bakery/photos/day-two-salted-lemon-lime-tartcreamy-lemon-curd-lime-mousse-fleur-de-sel-and-can/629630100400120/", "type": "inspired", "author": "Dominique Ansel" },
-      { "name": "Dorie Greenspan — The Smush Trick (Pierre Hermé)", "url": "https://doriegreenspan.substack.com/p/the-smush-trick-21-06-26", "type": "inspired", "author": "Dorie Greenspan / Pierre Hermé" },
-      { "name": "RecipeTin Eats — Nagi Pistachio Cake (4-day-tested CC ratio)", "url": "https://www.recipetineats.com/pistachio-cake/", "type": "inspired", "author": "Nagi Maehashi" },
-      { "name": "Style Sweet — Stabilized Whipped Cream with Cream Cheese", "url": "https://stylesweet.com/stabilized-whipped-cream-with-cream-cheese/", "type": "inspired", "author": "Tessa Huff" },
-      { "name": "King Arthur Baking Trials — Stabilized Whipped Cream", "url": "https://www.kingarthurbaking.com/blog/2023/06/08/baking-trials-whats-the-best-way-to-stabilize-whipped-cream", "type": "inspired" },
-      { "name": "ATK — Best Cream Cheese Taste Test", "url": "https://www.americastestkitchen.com/taste_tests/1785-cream-cheese", "type": "inspired" },
-      { "name": "ScienceDirect — Whipped Cream Overview (partial coalescence mechanism)", "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/whipped-cream", "type": "inspired" },
-      { "name": "Bake School (Janice Lawandi PhD) — Lemon Sugar Maceration", "url": "https://bakeschool.com/how-to-make-lemon-sugar/", "type": "inspired", "author": "Janice Lawandi" },
-      { "name": "Sand Dollars and Lime — Key Lime Whipped Cream", "url": "https://sanddollarsandlime.com/key-lime-whipped-cream/", "type": "inspired" },
-      { "name": "Butter Love & Salt — Lime Whipped Cream", "url": "https://butterloveandsalt.com/homemade-lime-whipped-cream/", "type": "inspired" }
+      {
+        "name": "Dominique Ansel Bakery — Salted Lemon Lime Tart",
+        "url": "https://m.facebook.com/Dominique.Ansel.Bakery/photos/day-two-salted-lemon-lime-tartcreamy-lemon-curd-lime-mousse-fleur-de-sel-and-can/629630100400120/",
+        "type": "inspired",
+        "author": "Dominique Ansel"
+      },
+      {
+        "name": "Dorie Greenspan — The Smush Trick (Pierre Hermé)",
+        "url": "https://doriegreenspan.substack.com/p/the-smush-trick-21-06-26",
+        "type": "inspired",
+        "author": "Dorie Greenspan / Pierre Hermé"
+      },
+      {
+        "name": "RecipeTin Eats — Nagi Pistachio Cake (4-day-tested CC ratio)",
+        "url": "https://www.recipetineats.com/pistachio-cake/",
+        "type": "inspired",
+        "author": "Nagi Maehashi"
+      },
+      {
+        "name": "Style Sweet — Stabilized Whipped Cream with Cream Cheese",
+        "url": "https://stylesweet.com/stabilized-whipped-cream-with-cream-cheese/",
+        "type": "inspired",
+        "author": "Tessa Huff"
+      },
+      {
+        "name": "King Arthur Baking Trials — Stabilized Whipped Cream",
+        "url": "https://www.kingarthurbaking.com/blog/2023/06/08/baking-trials-whats-the-best-way-to-stabilize-whipped-cream",
+        "type": "inspired"
+      },
+      {
+        "name": "ATK — Best Cream Cheese Taste Test",
+        "url": "https://www.americastestkitchen.com/taste_tests/1785-cream-cheese",
+        "type": "inspired"
+      },
+      {
+        "name": "ScienceDirect — Whipped Cream Overview (partial coalescence mechanism)",
+        "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/whipped-cream",
+        "type": "inspired"
+      },
+      {
+        "name": "Bake School (Janice Lawandi PhD) — Lemon Sugar Maceration",
+        "url": "https://bakeschool.com/how-to-make-lemon-sugar/",
+        "type": "inspired",
+        "author": "Janice Lawandi"
+      },
+      {
+        "name": "Sand Dollars and Lime — Key Lime Whipped Cream",
+        "url": "https://sanddollarsandlime.com/key-lime-whipped-cream/",
+        "type": "inspired"
+      },
+      {
+        "name": "Butter Love & Salt — Lime Whipped Cream",
+        "url": "https://butterloveandsalt.com/homemade-lime-whipped-cream/",
+        "type": "inspired"
+      }
     ],
     "techniques": [
       {
