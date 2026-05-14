@@ -1,0 +1,34 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProductionCartEntry > matches HTML snapshot for a user-added entry 1`] = `
+"<div data-v-b45f02f6="" class="cart-entry" data-recipe-id="atk-cinnamon-buns-ultimate" data-entry-id="entry-1">
+  <div data-v-b45f02f6="" class="cart-entry-top">
+    <div data-v-b45f02f6="" class="cart-entry-main">
+      <div data-v-b45f02f6="" class="cart-entry-thumb cart-entry-thumb-placeholder" aria-hidden="true">TB</div>
+      <div data-v-b45f02f6="" class="cart-entry-text"><a data-v-b45f02f6="" href="/recipe/atk-cinnamon-buns-ultimate" class="cart-entry-name" title="Open Tartine Baguette">Tartine Baguette</a>
+        <div data-v-b45f02f6="" class="cart-entry-yields">makes: 2 loaves</div>
+      </div>
+    </div><button data-v-b45f02f6="" type="button" class="cart-entry-remove" title="Remove Tartine Baguette from production" aria-label="Remove Tartine Baguette from production">×</button>
+  </div>
+  <div data-v-b45f02f6="" class="cart-entry-controls">
+    <div data-v-b45f02f6="" class="cart-entry-qty"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Decrease quantity" aria-label="Decrease quantity">−</button><input data-v-b45f02f6="" type="number" class="cart-entry-qty-input" inputmode="numeric" min="1" step="1" title="Number of loafs to bake" aria-label="Quantity for Tartine Baguette" value="2"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Increase quantity" aria-label="Increase quantity">+</button></div><input data-v-b45f02f6="" type="text" class="cart-entry-unit" placeholder="unit" title="Per-recipe unit label (e.g. loaf, roll, cookie)" aria-label="Unit for Tartine Baguette" value="loaf">
+  </div>
+  <div data-v-b45f02f6="" class="cart-entry-meta"> added by <span data-v-b45f02f6="" class="cart-entry-meta-by" data-added-by="user">user</span> · <span data-v-b45f02f6="" class="cart-entry-meta-date">May 12</span></div>
+</div>"
+`;
+
+exports[`ProductionCartEntry > matches HTML snapshot for an agent-added entry with hero thumb 1`] = `
+"<div data-v-b45f02f6="" class="cart-entry" data-recipe-id="atk-cinnamon-buns-ultimate" data-entry-id="entry-2">
+  <div data-v-b45f02f6="" class="cart-entry-top">
+    <div data-v-b45f02f6="" class="cart-entry-main"><img data-v-b45f02f6="" class="cart-entry-thumb" src="/images/sourdough-chocolate-chip-cookies/x/y-400w.webp" alt="Sourdough Chocolate Chip Cookies thumbnail" loading="lazy">
+      <div data-v-b45f02f6="" class="cart-entry-text"><a data-v-b45f02f6="" href="/recipe/atk-cinnamon-buns-ultimate" class="cart-entry-name" title="Open Sourdough Chocolate Chip Cookies">Sourdough Chocolate Chip Cookies</a>
+        <div data-v-b45f02f6="" class="cart-entry-yields">makes: 22 cookies</div>
+      </div>
+    </div><button data-v-b45f02f6="" type="button" class="cart-entry-remove" title="Remove Sourdough Chocolate Chip Cookies from production" aria-label="Remove Sourdough Chocolate Chip Cookies from production">×</button>
+  </div>
+  <div data-v-b45f02f6="" class="cart-entry-controls">
+    <div data-v-b45f02f6="" class="cart-entry-qty"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Decrease quantity" aria-label="Decrease quantity">−</button><input data-v-b45f02f6="" type="number" class="cart-entry-qty-input" inputmode="numeric" min="1" step="1" title="Number of cookies to bake" aria-label="Quantity for Sourdough Chocolate Chip Cookies" value="12"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Increase quantity" aria-label="Increase quantity">+</button></div><input data-v-b45f02f6="" type="text" class="cart-entry-unit" placeholder="unit" title="Per-recipe unit label (e.g. loaf, roll, cookie)" aria-label="Unit for Sourdough Chocolate Chip Cookies" value="cookie">
+  </div>
+  <div data-v-b45f02f6="" class="cart-entry-meta"> added by <span data-v-b45f02f6="" class="cart-entry-meta-by" data-added-by="agent">agent</span> · <span data-v-b45f02f6="" class="cart-entry-meta-date">May 12</span></div>
+</div>"
+`;

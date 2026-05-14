@@ -156,6 +156,12 @@ const router = createRouter({
       meta: { showIndex: false, showPricing: true }
     },
     {
+      path: '/production',
+      name: 'production',
+      component: EmptyRouteView,
+      meta: { showIndex: false, showProduction: true }
+    },
+    {
       path: '/demo/stats',
       name: 'stats-demo',
       component: EmptyRouteView,
