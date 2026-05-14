@@ -107,7 +107,12 @@ describe('ProductionLibraryRow', () => {
       props: { recipeId: 'x', recipeName: 'X' },
     })
     const btn = wrapper.find('button.library-row-plus')
-    expect(btn.attributes('title')).toBeTruthy()
+    // F43: the + button must sit inside a HelpTooltip wrapper carrying the
+    // descriptive add-to-queue text. ARIA label is still present on the button.
+    const tooltipWrap = btn.element.closest('.help-tooltip')
+    expect(tooltipWrap).not.toBeNull()
+    const popover = tooltipWrap?.querySelector('[role="tooltip"]')
+    expect(popover?.textContent?.trim()).toContain('Add X to production queue')
     expect(btn.attributes('aria-label')).toBeTruthy()
   })
 

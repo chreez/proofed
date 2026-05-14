@@ -21,8 +21,109 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.3.0",
+  "version": "v1.3.1",
   "change_log": [
+    {
+      "version": "v1.3.1",
+      "date": "2026-05-12",
+      "summary": "D4 fix: flip BULK_REST, COLD_BULK_FERMENT, COLD_PROOF to timer:true (passive rests; baker is free during these windows). STRETCH_FOLD_SETS candidate reverted — composite state flagged for human review (PF-261).",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F",
+              "note": "Substitute: 5g granulated sugar (1% of total flour) if malt is unavailable. Add at the same step. At 1%, sugar won't interfere with gluten development during fermentolyse — that only matters at 15%+. Sugar adds reducing sugars directly but lacks the enzymatic activity of diastatic malt."
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Low-moisture, high-fat, whole milk mozzarella — shreds clean and melts right"
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Freshly grated — adds a savory base layer under the mozzarella"
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.3.0",
       "date": "2026-04-09",
@@ -739,7 +840,7 @@
       "title": "Bulk Rest",
       "direction": "After the final stretch-and-fold, cover the bowl and let the dough rest undisturbed at room temperature (75–77°F / 24–25°C) until it shows a 25–50% volume increase with visible bubbles at the periphery. Typically 1–2 hours after the last fold.",
       "duration_min": 90,
-      "timer": false,
+      "timer": true,
       "parallel": false,
       "components": null,
       "exit_condition": "Dough has increased 25–50% in volume with visible bubbles along the edges. Surface appears slightly domed and puffy.",
@@ -779,7 +880,7 @@
       "title": "Cold Bulk Ferment",
       "direction": "Transfer the covered bowl (V1) to the refrigerator. Cold ferment for 8–16 hours (overnight). The dough will rise slowly and develop complex flavor.",
       "duration_min": 720,
-      "timer": false,
+      "timer": true,
       "parallel": false,
       "components": null,
       "exit_condition": "Dough has risen noticeably after 8–16 hours in the fridge",
@@ -830,7 +931,7 @@
       "title": "Cold Proof",
       "direction": "Let the dough balls proof in the refrigerator for 1 to 2 days. Maximum 48 hours — sourdough continues acidifying in the fridge, and beyond 48h risks overacidification and gluten degradation.",
       "duration_min": 2880,
-      "timer": false,
+      "timer": true,
       "parallel": false,
       "components": null,
       "exit_condition": "Dough balls have visibly expanded after 1–2 days in the fridge, surface is smooth and slightly puffy",

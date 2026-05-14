@@ -17,6 +17,7 @@ import {
 import type { PricingProfile, PerRecipePricing } from '@/types/pricing'
 import type { Recipe, CookLogCost } from '@/types/recipe'
 import PricingRow from '@/components/PricingRow.vue'
+import HelpTooltip from '@/components/HelpTooltip.vue'
 
 useSeoMeta({
   title: 'Pricing · proofed.',
@@ -175,12 +176,25 @@ function onExport(): void {
       <div class="pricing-header-text">
         <h1 class="pricing-title">Pricing</h1>
         <p class="pricing-subtitle">
-          Profile: <span class="pricing-profile-name">{{ profile.name }}</span>
-          <span v-if="headerDirty" class="pricing-header-dirty" title="Profile-level fields differ from committed baseline.">modified</span>
+          Profile:
+          <HelpTooltip text="Active pricing profile name. Exports inherit this label.">
+            <span class="pricing-profile-name">{{ profile.name }}</span>
+          </HelpTooltip>
+          <HelpTooltip
+            v-if="headerDirty"
+            text="Profile-level fields differ from committed baseline."
+          >
+            <span class="pricing-header-dirty">modified</span>
+          </HelpTooltip>
         </p>
       </div>
       <div class="pricing-header-actions">
-        <button class="pricing-btn" type="button" @click="onExport">Export profile JSON</button>
+        <HelpTooltip
+          text="Download the current pricing profile as JSON to commit and share."
+          align="right"
+        >
+          <button class="pricing-btn" type="button" @click="onExport">Export profile JSON</button>
+        </HelpTooltip>
       </div>
     </header>
 

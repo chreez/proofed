@@ -21,8 +21,93 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.4.0",
+  "version": "v1.4.1",
   "change_log": [
+    {
+      "version": "v1.4.1",
+      "date": "2026-05-12",
+      "summary": "D4 fix: flip COLD_BULK_FERMENT and COLD_PROOF to timer:true (passive cold rests, baker is free; matches corpus-wide convention for overnight bulks and cold proofs).",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Low-moisture, high-fat, whole milk mozzarella is mandatory — it shreds clean and melts right"
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Freshly grated — adds a savory base layer under the mozzarella"
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.4.0",
       "date": "2026-03-21",
@@ -1494,7 +1579,7 @@
       "title": "Cold Bulk Ferment",
       "direction": "Transfer the covered bowl (V2) to the refrigerator. Cold ferment for 8–16 hours (overnight). The dough will rise slowly and develop complex flavor.",
       "duration_min": 720,
-      "timer": false,
+      "timer": true,
       "parallel": false,
       "components": null,
       "exit_condition": "Dough has roughly doubled in size after 8–16 hours in the fridge",
@@ -1539,7 +1624,7 @@
       "title": "Cold Proof",
       "direction": "Let the dough balls proof in the refrigerator for 1 to 2 days. The long cold proof develops flavor and makes the dough incredibly extensible.",
       "duration_min": 2880,
-      "timer": false,
+      "timer": true,
       "parallel": false,
       "components": null,
       "exit_condition": "Dough balls have visibly expanded after 1–2 days in the fridge, surface is smooth and slightly puffy",

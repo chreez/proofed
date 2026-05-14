@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue'
 import type { ProductionEntry } from '@/types/production'
+import HelpTooltip from '@/components/HelpTooltip.vue'
 
 const props = withDefaults(defineProps<{
   entry: ProductionEntry
@@ -171,90 +172,106 @@ function onRemove(): void {
           aria-hidden="true"
         >{{ initials }}</div>
         <div class="cart-entry-text">
-          <a
-            :href="`/recipe/${entry.recipeId}`"
-            class="cart-entry-name"
-            :title="`Open ${recipeName}`"
-          >{{ recipeName }}</a>
+          <HelpTooltip :text="`Open ${recipeName}`">
+            <a
+              :href="`/recipe/${entry.recipeId}`"
+              class="cart-entry-name"
+            >{{ recipeName }}</a>
+          </HelpTooltip>
           <div v-if="yields" class="cart-entry-yields">makes: {{ yields }}</div>
         </div>
       </div>
-      <button
-        type="button"
-        class="cart-entry-remove"
-        :title="`Remove ${recipeName} from production`"
-        :aria-label="`Remove ${recipeName} from production`"
-        @click="onRemove"
-      >×</button>
+      <HelpTooltip
+        :text="`Remove ${recipeName} from production`"
+        align="right"
+      >
+        <button
+          type="button"
+          class="cart-entry-remove"
+          :aria-label="`Remove ${recipeName} from production`"
+          @click="onRemove"
+        >×</button>
+      </HelpTooltip>
     </div>
 
     <div class="cart-entry-controls">
       <div class="cart-entry-qty">
-        <button
-          type="button"
-          class="cart-entry-qty-btn"
-          :title="decTitle"
-          :aria-label="decTitle"
-          @click="onDecrement"
-        >−</button>
-        <input
+        <HelpTooltip :text="decTitle">
+          <button
+            type="button"
+            class="cart-entry-qty-btn"
+            :aria-label="decTitle"
+            @click="onDecrement"
+          >−</button>
+        </HelpTooltip>
+        <HelpTooltip
           v-if="editing"
-          ref="editInputRef"
-          v-model="editValue"
-          type="number"
-          class="cart-entry-qty-input cart-entry-qty-edit"
-          inputmode="numeric"
-          min="1"
-          step="1"
-          :title="`Type a custom ${unitLabel} count, Enter to save, Esc to cancel`"
-          :aria-label="`Custom yield input for ${recipeName}`"
-          data-testid="cart-entry-yield-edit"
-          @keydown="onEditKeydown"
-          @blur="commitEdit"
-        />
-        <span
-          v-else
-          class="cart-entry-qty-display"
-          :class="{ 'cart-entry-qty-display-override': isOverride }"
-          title="Double-click to set a custom amount"
-          :aria-label="`Quantity for ${recipeName}`"
-          role="button"
-          tabindex="0"
-          data-testid="cart-entry-yield-display"
-          @dblclick="onYieldDoubleClick"
-          @keydown.enter.prevent="onYieldDoubleClick"
-        >{{ displayYield }}</span>
-        <button
-          type="button"
-          class="cart-entry-qty-btn"
-          :title="incTitle"
-          :aria-label="incTitle"
-          @click="onIncrement"
-        >+</button>
+          :text="`Type a custom ${unitLabel} count, Enter to save, Esc to cancel`"
+        >
+          <input
+            ref="editInputRef"
+            v-model="editValue"
+            type="number"
+            class="cart-entry-qty-input cart-entry-qty-edit"
+            inputmode="numeric"
+            min="1"
+            step="1"
+            :aria-label="`Custom yield input for ${recipeName}`"
+            data-testid="cart-entry-yield-edit"
+            @keydown="onEditKeydown"
+            @blur="commitEdit"
+          />
+        </HelpTooltip>
+        <HelpTooltip v-else text="Double-click to set a custom amount">
+          <span
+            class="cart-entry-qty-display"
+            :class="{ 'cart-entry-qty-display-override': isOverride }"
+            :aria-label="`Quantity for ${recipeName}`"
+            role="button"
+            tabindex="0"
+            data-testid="cart-entry-yield-display"
+            @dblclick="onYieldDoubleClick"
+            @keydown.enter.prevent="onYieldDoubleClick"
+          >{{ displayYield }}</span>
+        </HelpTooltip>
+        <HelpTooltip :text="incTitle">
+          <button
+            type="button"
+            class="cart-entry-qty-btn"
+            :aria-label="incTitle"
+            @click="onIncrement"
+          >+</button>
+        </HelpTooltip>
       </div>
-      <input
-        type="text"
-        class="cart-entry-unit"
-        :value="entry.unit"
-        placeholder="unit"
-        title="Per-recipe unit label (e.g. loaf, roll, cookie)"
-        :aria-label="`Unit for ${recipeName}`"
-        @input="onUnitInput"
-      />
+      <HelpTooltip
+        class="cart-entry-unit-tooltip"
+        text="Per-recipe unit label (e.g. loaf, roll, cookie)"
+        align="right"
+      >
+        <input
+          type="text"
+          class="cart-entry-unit"
+          :value="entry.unit"
+          placeholder="unit"
+          :aria-label="`Unit for ${recipeName}`"
+          @input="onUnitInput"
+        />
+      </HelpTooltip>
     </div>
 
     <div class="cart-entry-subtext">
       <template v-if="isOverride">
         <span class="cart-entry-subtext-custom" data-testid="cart-entry-custom-label">custom</span>
         ·
-        <button
-          type="button"
-          class="cart-entry-reset"
-          title="Clear custom amount, go back to whole batches"
-          aria-label="Clear custom amount"
-          data-testid="cart-entry-reset"
-          @click="onReset"
-        >↺ clear custom</button>
+        <HelpTooltip text="Clear custom amount, go back to whole batches">
+          <button
+            type="button"
+            class="cart-entry-reset"
+            aria-label="Clear custom amount"
+            data-testid="cart-entry-reset"
+            @click="onReset"
+          >↺ clear custom</button>
+        </HelpTooltip>
       </template>
       <template v-else>
         <span class="cart-entry-subtext-scale" data-testid="cart-entry-scale-label">
@@ -479,6 +496,18 @@ function onRemove(): void {
   background: var(--color-stone-50);
 }
 
+.cart-entry-unit-tooltip {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.cart-entry-unit-tooltip :deep(.help-tooltip-trigger) {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
 .cart-entry-unit {
   flex: 1;
   font-family: var(--font-mono);
@@ -489,6 +518,7 @@ function onRemove(): void {
   background: var(--color-stone-50);
   color: var(--color-ink);
   min-width: 0;
+  width: 100%;
 }
 
 .cart-entry-unit:focus-visible {

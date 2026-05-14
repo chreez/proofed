@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { computePricing } from '@/composables/usePrettyPrice'
+import HelpTooltip from '@/components/HelpTooltip.vue'
 
 const props = defineProps<{
   recipeId: string
@@ -65,12 +66,29 @@ function onSliderInput(event: Event): void {
     <div class="pricing-row-top">
       <div class="pricing-row-name-wrap">
         <span class="pricing-row-name">{{ recipeName }}</span>
-        <span v-if="dirty" class="pricing-row-dirty" title="Differs from committed default. Export to save.">modified</span>
+        <HelpTooltip
+          v-if="dirty"
+          text="Differs from committed default. Export to save."
+        >
+          <span class="pricing-row-dirty">modified</span>
+        </HelpTooltip>
         <span class="pricing-row-id">{{ recipeId }}</span>
       </div>
       <div class="pricing-row-cost">
-        <span v-if="hasCost" class="pricing-row-cost-value">{{ fmtMoney(cost ?? 0) }}</span>
-        <span v-else class="pricing-row-cost-missing">no cost data</span>
+        <HelpTooltip
+          v-if="hasCost"
+          text="Variable cost per recipe — most recent cook_log[].cost.total."
+          align="right"
+        >
+          <span class="pricing-row-cost-value">{{ fmtMoney(cost ?? 0) }}</span>
+        </HelpTooltip>
+        <HelpTooltip
+          v-else
+          text="No cost recorded yet — add a cook_log entry with cost.items."
+          align="right"
+        >
+          <span class="pricing-row-cost-missing">no cost data</span>
+        </HelpTooltip>
         <span class="pricing-row-label">cost</span>
       </div>
     </div>
@@ -78,40 +96,75 @@ function onSliderInput(event: Event): void {
     <!-- Row 2: slider + readout -->
     <div class="pricing-row-controls">
       <div class="pricing-row-slider-wrap">
-        <input
-          type="range"
-          class="pricing-row-slider"
-          :min="sliderMin"
-          :max="sliderMax"
-          :step="sliderStep"
-          :value="markupPct"
-          :aria-label="`Markup percent for ${recipeName}`"
-          @input="onSliderInput"
-        />
+        <HelpTooltip
+          class="pricing-row-slider-tooltip"
+          :text="`Markup percent — drag to set retail price (${sliderMin}% to ${sliderMax}%).`"
+          align="left"
+        >
+          <input
+            type="range"
+            class="pricing-row-slider"
+            :min="sliderMin"
+            :max="sliderMax"
+            :step="sliderStep"
+            :value="markupPct"
+            :aria-label="`Markup percent for ${recipeName}`"
+            @input="onSliderInput"
+          />
+        </HelpTooltip>
         <div class="pricing-row-slider-readout">
-          <span class="pricing-row-markup">{{ markupPct }}%</span>
+          <HelpTooltip text="Markup as a percentage above variable cost." align="left">
+            <span class="pricing-row-markup">{{ markupPct }}%</span>
+          </HelpTooltip>
           <span class="pricing-row-label">markup</span>
         </div>
       </div>
 
       <div class="pricing-row-readout">
         <div v-if="pricing" class="pricing-row-price">
-          <span class="pricing-row-pretty">{{ fmtMoney(pricing.prettyPrice) }}</span>
-          <span class="pricing-row-raw">raw {{ fmtMoney(pricing.rawPrice) }}</span>
+          <HelpTooltip
+            :text="`Snapped retail price — pretty-pricing rounded from raw ${fmtMoney(pricing.rawPrice)}.`"
+            align="right"
+          >
+            <span class="pricing-row-pretty">{{ fmtMoney(pricing.prettyPrice) }}</span>
+          </HelpTooltip>
+          <HelpTooltip
+            text="Raw price — variable cost × (1 + markup%), before pretty-price snap."
+            align="right"
+          >
+            <span class="pricing-row-raw">raw {{ fmtMoney(pricing.rawPrice) }}</span>
+          </HelpTooltip>
         </div>
         <div v-else class="pricing-row-price pricing-row-price--missing">—</div>
 
         <div v-if="pricing" class="pricing-row-cp">
-          <span class="pricing-row-cp-dollar">{{ fmtMoney(pricing.cp) }}</span>
-          <span class="pricing-row-cp-pct">{{ pricing.cpPct.toFixed(1) }}% CP</span>
+          <HelpTooltip
+            text="Contribution profit in dollars — retail price minus variable cost."
+            align="right"
+          >
+            <span class="pricing-row-cp-dollar">{{ fmtMoney(pricing.cp) }}</span>
+          </HelpTooltip>
+          <HelpTooltip
+            text="Contribution profit as a share of retail price."
+            align="right"
+          >
+            <span class="pricing-row-cp-pct">{{ pricing.cpPct.toFixed(1) }}% CP</span>
+          </HelpTooltip>
         </div>
       </div>
     </div>
 
     <!-- Row 3: nudge hint -->
-    <div v-if="pricing && showUplift" class="pricing-row-hint">
-      Nudge up to <strong>{{ fmtMoney(pricing.nextPrettyUp) }}</strong> for
-      <strong>+{{ fmtMoney(upliftCp) }}</strong> CP
+    <div v-if="pricing && showUplift" class="pricing-row-hint-wrap">
+      <HelpTooltip
+        text="Bumping to the next pretty price increases contribution profit by this much."
+        align="left"
+      >
+        <span class="pricing-row-hint">
+          Nudge up to <strong>{{ fmtMoney(pricing.nextPrettyUp) }}</strong> for
+          <strong>+{{ fmtMoney(upliftCp) }}</strong> CP
+        </span>
+      </HelpTooltip>
     </div>
   </div>
 </template>
@@ -212,6 +265,16 @@ function onSliderInput(event: Event): void {
   gap: 0.25rem;
 }
 
+.pricing-row-slider-tooltip {
+  display: flex;
+  width: 100%;
+}
+
+.pricing-row-slider-tooltip :deep(.help-tooltip-trigger) {
+  display: flex;
+  width: 100%;
+}
+
 .pricing-row-slider {
   width: 100%;
   accent-color: var(--color-accent);
@@ -287,7 +350,12 @@ function onSliderInput(event: Event): void {
   color: var(--color-stone-500);
 }
 
+.pricing-row-hint-wrap {
+  display: block;
+}
+
 .pricing-row-hint {
+  display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--color-crust-dark);

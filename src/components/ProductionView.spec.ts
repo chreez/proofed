@@ -346,9 +346,21 @@ describe('ProductionView (Cart pattern, dense list library)', () => {
   it('exposes tooltips on toolbar + cart elements (F43)', async () => {
     const wrapper = mount(ProductionView)
     await flushPromises()
-    expect(wrapper.find('[data-testid="cart-collapse"]').attributes('title')).toBeTruthy()
-    expect(wrapper.find('[data-testid="library-search"]').attributes('title')).toBeTruthy()
-    expect(wrapper.find('[data-testid="library-sort"]').attributes('title')).toBeTruthy()
+
+    // F43: interactive elements must be wrapped in HelpTooltip (or carry a
+    // native title= fallback). Verify each control sits inside a help-tooltip
+    // wrapper that carries the expected text.
+    const collapse = wrapper.find('[data-testid="cart-collapse"]')
+    expect(collapse.exists()).toBe(true)
+    expect(collapse.element.closest('.help-tooltip')).not.toBeNull()
+
+    const search = wrapper.find('[data-testid="library-search"]')
+    expect(search.exists()).toBe(true)
+    expect(search.element.closest('.help-tooltip')).not.toBeNull()
+
+    const sort = wrapper.find('[data-testid="library-sort"]')
+    expect(sort.exists()).toBe(true)
+    expect(sort.element.closest('.help-tooltip')).not.toBeNull()
   })
 
   // ────────────────────────────────────────────────

@@ -16,6 +16,7 @@ import type { ProductionPlan } from '@/types/production'
 import type { Recipe } from '@/types/recipe'
 import ProductionLibraryRow from '@/components/ProductionLibraryRow.vue'
 import ProductionCartEntry from '@/components/ProductionCartEntry.vue'
+import HelpTooltip from '@/components/HelpTooltip.vue'
 
 useSeoMeta({
   title: 'Production · proofed.',
@@ -369,30 +370,36 @@ const lastUpdatedFormatted = computed(() => {
       </header>
 
       <div class="production-toolbar" data-testid="production-toolbar">
-        <input
-          ref="searchInput"
-          v-model="searchQuery"
-          class="production-search"
-          type="text"
-          placeholder="Search recipes…"
-          title="Search recipes — press / to focus"
-          aria-label="Search recipes"
-          data-testid="library-search"
-        />
+        <HelpTooltip
+          class="production-search-tooltip"
+          text="Search recipes — press / to focus"
+          align="left"
+        >
+          <input
+            ref="searchInput"
+            v-model="searchQuery"
+            class="production-search"
+            type="text"
+            placeholder="Search recipes…"
+            aria-label="Search recipes"
+            data-testid="library-search"
+          />
+        </HelpTooltip>
         <label class="production-sort-label">
           <span class="production-sort-text">sort</span>
-          <select
-            v-model="sortKey"
-            class="production-sort"
-            title="Sort library order"
-            aria-label="Sort recipes"
-            data-testid="library-sort"
-          >
-            <option value="most_baked" title="Highest cook_log count first">Most baked</option>
-            <option value="alphabetical" title="Recipe name A → Z">Alphabetical</option>
-            <option value="recently_used" title="Most recent cook_log date first">Recently used</option>
-            <option value="category" title="Group by category, then alphabetical">Category</option>
-          </select>
+          <HelpTooltip text="Sort library order" align="right">
+            <select
+              v-model="sortKey"
+              class="production-sort"
+              aria-label="Sort recipes"
+              data-testid="library-sort"
+            >
+              <option value="most_baked">Most baked</option>
+              <option value="alphabetical">Alphabetical</option>
+              <option value="recently_used">Recently used</option>
+              <option value="category">Category</option>
+            </select>
+          </HelpTooltip>
         </label>
       </div>
 
@@ -433,31 +440,37 @@ const lastUpdatedFormatted = computed(() => {
       data-testid="production-cart"
     >
       <!-- Collapsed sliver: rotated label + count bubble -->
-      <button
+      <HelpTooltip
         v-if="cartCollapsed"
-        type="button"
-        class="production-cart-sliver"
-        title="Expand production queue"
-        aria-label="Expand production queue"
-        data-testid="cart-expand"
-        @click="toggleCartCollapsed"
+        class="production-cart-sliver-tooltip"
+        text="Expand production queue"
+        align="right"
       >
-        <span class="production-cart-sliver-text">production</span>
-        <span class="production-cart-sliver-count">{{ entryCount }}</span>
-      </button>
+        <button
+          type="button"
+          class="production-cart-sliver"
+          aria-label="Expand production queue"
+          data-testid="cart-expand"
+          @click="toggleCartCollapsed"
+        >
+          <span class="production-cart-sliver-text">production</span>
+          <span class="production-cart-sliver-count">{{ entryCount }}</span>
+        </button>
+      </HelpTooltip>
 
       <template v-else>
         <div class="production-cart-head">
           <h2 class="production-cart-head-title">
             <span>Production · <span data-testid="cart-count">{{ entryCount }}</span> {{ entryCount === 1 ? 'bake' : 'bakes' }}</span>
-            <button
-              type="button"
-              class="production-cart-collapse"
-              title="Collapse sidebar"
-              aria-label="Collapse production sidebar"
-              data-testid="cart-collapse"
-              @click="toggleCartCollapsed"
-            >›</button>
+            <HelpTooltip text="Collapse sidebar" align="right">
+              <button
+                type="button"
+                class="production-cart-collapse"
+                aria-label="Collapse production sidebar"
+                data-testid="cart-collapse"
+                @click="toggleCartCollapsed"
+              >›</button>
+            </HelpTooltip>
           </h2>
           <div class="production-cart-head-meta">last updated {{ lastUpdatedFormatted }}</div>
         </div>
@@ -582,8 +595,21 @@ const lastUpdatedFormatted = computed(() => {
   margin-bottom: 0.875rem;
 }
 
+.production-search-tooltip {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.production-search-tooltip :deep(.help-tooltip-trigger) {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
 .production-search {
   flex: 1;
+  width: 100%;
   min-width: 0;
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -740,6 +766,17 @@ const lastUpdatedFormatted = computed(() => {
 /* Collapsed sliver button */
 .production-cart-collapsed {
   align-items: stretch;
+}
+
+.production-cart-sliver-tooltip {
+  display: flex;
+  height: 100%;
+}
+
+.production-cart-sliver-tooltip :deep(.help-tooltip-trigger) {
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .production-cart-sliver {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import HelpTooltip from '@/components/HelpTooltip.vue'
 
 const props = defineProps<{
   recipeId: string
@@ -88,30 +89,38 @@ watch(
       aria-hidden="true"
     >{{ initials }}</div>
 
-    <div class="library-row-name" :title="recipeName">{{ recipeName }}</div>
+    <HelpTooltip class="library-row-name-tooltip" :text="recipeName">
+      <span class="library-row-name">{{ recipeName }}</span>
+    </HelpTooltip>
 
     <div class="library-row-yields">{{ yieldsLabel }}</div>
 
-    <div
+    <HelpTooltip
       v-if="categoryLabel"
-      class="library-row-category"
-      :title="`Category: ${categoryLabel}`"
-    >{{ categoryLabel }}</div>
+      :text="`Category: ${categoryLabel}`"
+    >
+      <span class="library-row-category">{{ categoryLabel }}</span>
+    </HelpTooltip>
     <div v-else class="library-row-category library-row-category-empty">—</div>
 
-    <div
-      class="library-row-bakes"
-      :title="`Baked ${bakeCount ?? 0} time${(bakeCount ?? 0) === 1 ? '' : 's'}`"
-    >{{ bakeCountLabel }}</div>
+    <HelpTooltip
+      :text="`Baked ${bakeCount ?? 0} time${(bakeCount ?? 0) === 1 ? '' : 's'}`"
+    >
+      <span class="library-row-bakes">{{ bakeCountLabel }}</span>
+    </HelpTooltip>
 
-    <button
-      type="button"
-      class="library-row-plus"
-      :title="`Add ${recipeName} to production queue`"
-      :aria-label="`Add ${recipeName} to production queue`"
-      :data-testid="`add-library-${recipeId}`"
-      @click="handleAdd"
-    >+</button>
+    <HelpTooltip
+      :text="`Add ${recipeName} to production queue`"
+      align="right"
+    >
+      <button
+        type="button"
+        class="library-row-plus"
+        :aria-label="`Add ${recipeName} to production queue`"
+        :data-testid="`add-library-${recipeId}`"
+        @click="handleAdd"
+      >+</button>
+    </HelpTooltip>
   </li>
 </template>
 
@@ -174,6 +183,17 @@ watch(
   text-transform: uppercase;
 }
 
+.library-row-name-tooltip {
+  min-width: 0;
+  display: flex;
+}
+
+.library-row-name-tooltip :deep(.help-tooltip-trigger) {
+  min-width: 0;
+  display: flex;
+  width: 100%;
+}
+
 .library-row-name {
   font-family: var(--font-mono);
   font-weight: 600;
@@ -184,6 +204,7 @@ watch(
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 100%;
 }
 
 .library-row-yields {

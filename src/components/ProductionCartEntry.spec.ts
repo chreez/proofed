@@ -374,18 +374,31 @@ describe('ProductionCartEntry', () => {
     expect(link.attributes('href')).toBe('/recipe/atk-cinnamon-buns-ultimate')
   })
 
-  it('exposes tooltips via title attribute on interactive elements (F43)', () => {
+  /**
+   * Helpers for F43 — find the HelpTooltip wrapper around an element and
+   * read its popover text.
+   */
+  function tooltipTextFor(el: Element | null | undefined): string | null {
+    if (!el) return null
+    const wrapper = el.closest('.help-tooltip')
+    if (!wrapper) return null
+    const popover = wrapper.querySelector('[role="tooltip"]')
+    return popover?.textContent?.trim() ?? null
+  }
+
+  it('exposes tooltips via HelpTooltip wrappers on interactive elements (F43)', () => {
     const wrapper = mount(ProductionCartEntry, {
       props: { entry: makeEntry(), recipeName: 'X' },
     })
     const buttons = wrapper.findAll('button.cart-entry-qty-btn')
     // Default mode: "Add one batch" / "Remove one batch".
-    expect(buttons[0].attributes('title')).toBe('Remove one batch')
-    expect(buttons[1].attributes('title')).toBe('Add one batch')
-    expect(wrapper.find('[data-testid="cart-entry-yield-display"]').attributes('title')).toBe('Double-click to set a custom amount')
-    expect(wrapper.find('input.cart-entry-unit').attributes('title')).toBeTruthy()
-    expect(wrapper.find('.cart-entry-remove').attributes('title')).toBeTruthy()
-    expect(wrapper.find('a.cart-entry-name').attributes('title')).toBeTruthy()
+    expect(tooltipTextFor(buttons[0].element)).toBe('Remove one batch')
+    expect(tooltipTextFor(buttons[1].element)).toBe('Add one batch')
+    expect(tooltipTextFor(wrapper.find('[data-testid="cart-entry-yield-display"]').element))
+      .toBe('Double-click to set a custom amount')
+    expect(tooltipTextFor(wrapper.find('input.cart-entry-unit').element)).toBeTruthy()
+    expect(tooltipTextFor(wrapper.find('.cart-entry-remove').element)).toBeTruthy()
+    expect(tooltipTextFor(wrapper.find('a.cart-entry-name').element)).toBeTruthy()
   })
 
   it('tooltips swap to unit-based labels in override mode', () => {
@@ -396,9 +409,9 @@ describe('ProductionCartEntry', () => {
       },
     })
     const buttons = wrapper.findAll('button.cart-entry-qty-btn')
-    expect(buttons[0].attributes('title')).toBe('Remove one bun')
-    expect(buttons[1].attributes('title')).toBe('Add one bun')
-    expect(wrapper.find('[data-testid="cart-entry-reset"]').attributes('title')).toBeTruthy()
+    expect(tooltipTextFor(buttons[0].element)).toBe('Remove one bun')
+    expect(tooltipTextFor(buttons[1].element)).toBe('Add one bun')
+    expect(tooltipTextFor(wrapper.find('[data-testid="cart-entry-reset"]').element)).toBeTruthy()
   })
 
   it('tooltips degrade gracefully when unit is empty', () => {
@@ -409,7 +422,7 @@ describe('ProductionCartEntry', () => {
       },
     })
     const buttons = wrapper.findAll('button.cart-entry-qty-btn')
-    expect(buttons[1].attributes('title')).toBe('Add one unit')
+    expect(tooltipTextFor(buttons[1].element)).toBe('Add one unit')
   })
 
   it('matches HTML snapshot for a user-added default-mode entry', async () => {

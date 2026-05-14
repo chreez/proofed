@@ -26,8 +26,108 @@
       ]
     }
   },
-  "version": "v2.1.0",
+  "version": "v2.1.1",
   "change_log": [
+    {
+      "version": "v2.1.1",
+      "date": "2026-05-12",
+      "summary": "D4 fix: flip temper-butter to timer:true (25-min passive butter warm-up at room temperature; baker is free).",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 550,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 340,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 31,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 320,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 160
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 160
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Dough Mixing",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v2.0.0",
       "date": "2026-05-09",
@@ -718,7 +818,7 @@
       "title": "Temper Butter",
       "direction": "Measure 50g unsalted butter and place it on the counter (do not microwave). It will come to room temperature naturally over the autolyse rest. Slice into ~1cm pats to speed warming if needed.",
       "duration_min": 25,
-      "timer": false,
+      "timer": true,
       "parallel": true,
       "components": [
         {
@@ -1185,7 +1285,7 @@
     "calculatedDate": "2026-05-13",
     "dataSource": "USDA FoodData Central",
     "totals": {
-      "calories": 4085.0,
+      "calories": 4085,
       "protein": 157.1,
       "totalFat": 157.8,
       "saturatedFat": 94.8,
@@ -3482,7 +3582,7 @@
         "location": "Austin, TX",
         "date": "2026-05-13",
         "temp_high_f": 88.2,
-        "temp_low_f": 63.0,
+        "temp_low_f": 63,
         "humidity_avg_percent": 68,
         "condition": "Overcast",
         "source": "open-meteo"
