@@ -21,8 +21,219 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v2.0.0",
+  "version": "v2.1.0",
   "change_log": [
+    {
+      "version": "v2.1.0",
+      "date": "2026-05-14",
+      "summary": "Refresh cook_log[].cost.items[] line-items from HEB-derived pantry rates (cost-rates.json @ HEB store 428). Total $7.32 / $0.61 per serving (×12). PF-263.",
+      "ingredients": [
+        {
+          "stageId": "CONFIT",
+          "stageName": "Confit Garlic",
+          "ingredients": [
+            {
+              "id": "garlic",
+              "name": "Garlic Cloves",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official recipe + all recreations",
+              "confidence": "high",
+              "rationale": "1 full bulb (~50g); confit method universal across sources. Use ~15g folded into dough, ~10g in filling roll-up, save rest for other uses"
+            },
+            {
+              "id": "olive-oil",
+              "name": "Extra Virgin Olive Oil",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard confit technique",
+              "confidence": "high",
+              "rationale": "~1 cup, enough to submerge cloves. Leftover oil is garlic-flavored bonus"
+            }
+          ]
+        },
+        {
+          "stageId": "DOUGH",
+          "stageName": "Tangzhong & Dough",
+          "ingredients": [
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 420,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tangzhong",
+                  "amount": 20
+                },
+                {
+                  "label": "dough",
+                  "amount": 400
+                }
+              ],
+              "sourcedFrom": "Tier 1: 7/8 sources use 400g bread flour + tangzhong flour",
+              "confidence": "high",
+              "rationale": "Universal across Dylan's official and all recreations"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Dylan's official tangzhong ratio",
+              "confidence": "high",
+              "rationale": "100g water for tangzhong — clean 5:1 ratio with 20g flour"
+            },
+            {
+              "id": "instant-yeast",
+              "name": "Instant Yeast (SAF Red)",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official recipe",
+              "confidence": "high",
+              "rationale": "Dylan specifies SAF-Instant Red by brand"
+            },
+            {
+              "id": "whole-milk",
+              "name": "Whole Milk",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official + Delectablediction match exactly",
+              "confidence": "high",
+              "rationale": "Lukewarm for yeast activation"
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter",
+              "total": 43,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 28
+                },
+                {
+                  "label": "filling",
+                  "amount": 15
+                }
+              ],
+              "sourcedFrom": "Tier 1: Dylan's official + Delectablediction match",
+              "confidence": "high",
+              "rationale": "28g melted and cooled for dough, 15g melted for swirl filling layer"
+            },
+            {
+              "id": "caster-sugar",
+              "name": "Caster Sugar",
+              "total": 40,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "yeast bloom",
+                  "amount": 4
+                },
+                {
+                  "label": "dough",
+                  "amount": 36
+                }
+              ],
+              "sourcedFrom": "Tier 1: Dylan's official recipe",
+              "confidence": "high",
+              "rationale": "40g caster sugar; 3/4 copycats agree on ~30-40g range"
+            },
+            {
+              "id": "fine-salt",
+              "name": "Fine Salt",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official recipe",
+              "confidence": "high",
+              "rationale": "5ml (~5g); note gochujang contributes additional salt"
+            },
+            {
+              "id": "gochujang",
+              "name": "Gochujang (CJ Haechandeul Medium Hot)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official + community consensus",
+              "confidence": "high",
+              "rationale": "2 tbsp (~30g) in dough. ~8% baker's percentage. Brand: CJ Haechandeul Medium Hot recommended"
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs",
+              "total": 100,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 50
+                },
+                {
+                  "label": "egg wash",
+                  "amount": 50
+                }
+              ],
+              "sourcedFrom": "Tier 1: Dylan's official recipe",
+              "confidence": "high",
+              "rationale": "1 in dough + 1 for egg wash"
+            }
+          ]
+        },
+        {
+          "stageId": "GLAZE",
+          "stageName": "Honey-Soy Glaze (Optional)",
+          "ingredients": [
+            {
+              "id": "honey",
+              "name": "Honey",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 3: Sophie Bamford's popular community upgrade",
+              "confidence": "medium",
+              "rationale": "Most tested glaze upgrade to Dylan's original"
+            },
+            {
+              "id": "light-soy-sauce",
+              "name": "Light Soy Sauce",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 3: Sophie Bamford",
+              "confidence": "medium",
+              "rationale": "2 tsp; provides salt + umami to balance honey sweetness"
+            },
+            {
+              "id": "glaze-butter",
+              "name": "Unsalted Butter (melted)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 3: Sophie Bamford",
+              "confidence": "medium",
+              "rationale": "Brushed after honey-soy to prevent stickiness and add shine"
+            },
+            {
+              "id": "sesame-seeds",
+              "name": "Sesame Seeds (black + white mix)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 2: Multiple recreations include sesame",
+              "confidence": "medium",
+              "rationale": "Natural Korean flavor pairing, visual contrast"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v2.0.0",
       "date": "2026-04-22",
@@ -3331,139 +3542,146 @@
         "source": "open-meteo"
       },
       "cost": {
-        "costs": [
+        "total": 7.32,
+        "perServing": 0.61,
+        "servings": 12,
+        "items": [
           {
             "ingredientId": "garlic",
-            "ingredientName": "Garlic Cloves",
-            "product": "H-E-B Fresh Peeled Garlic Cloves",
-            "packageSize": "6 oz",
-            "packagePrice": 2.98,
-            "cost": 0.88
+            "name": "Garlic Cloves",
+            "sourceType": "heb",
+            "sourceName": "Fresh Garlic 2 for $1.00",
+            "amount": 50,
+            "unit": "g",
+            "cost": 0.5
           },
           {
             "ingredientId": "olive-oil",
-            "ingredientName": "Extra Virgin Olive Oil",
-            "product": "H-E-B Extra Virgin Olive Oil 17 oz",
-            "packageSize": "17 oz",
-            "packagePrice": 6.68,
-            "cost": 3.33
+            "name": "Extra Virgin Olive Oil",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Extra Virgin Olive Oil",
+            "amount": 240,
+            "unit": "g",
+            "cost": 3.62
           },
           {
             "ingredientId": "bread-flour",
-            "ingredientName": "Bread Flour",
-            "product": "King Arthur Unbleached Bread Flour 10 lbs",
-            "packageSize": "10 lbs",
-            "packagePrice": 10.99,
-            "cost": 1.02
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Baker's Scoop Bread Flour",
+            "amount": 420,
+            "unit": "g",
+            "cost": 0.7
           },
           {
             "ingredientId": "water",
-            "ingredientName": "Water",
-            "product": "Filtered water",
-            "packageSize": "tap",
-            "packagePrice": 0,
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water",
+            "amount": 100,
+            "unit": "g",
             "cost": 0
           },
           {
             "ingredientId": "instant-yeast",
-            "ingredientName": "Instant Yeast",
-            "product": "Red Star Quick-Rise Instant Dry Yeast 3ct",
-            "packageSize": "3 ct",
-            "packagePrice": 1.76,
-            "cost": 0.59
+            "name": "Instant Yeast (SAF Red)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Instant Yeast 3-pack/21g",
+            "amount": 7,
+            "unit": "g",
+            "cost": 0.33
           },
           {
             "ingredientId": "whole-milk",
-            "ingredientName": "Whole Milk",
-            "product": "H-E-B Whole Milk 1 qt",
-            "packageSize": "1 qt",
-            "packagePrice": 1.38,
-            "cost": 0.18
+            "name": "Whole Milk",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Whole Milk",
+            "amount": 120,
+            "unit": "g",
+            "cost": 0.14
           },
           {
             "ingredientId": "unsalted-butter",
-            "ingredientName": "Unsalted Butter",
-            "product": "Hill Country Fare Unsalted Butter Sticks 4ct",
-            "packageSize": "4 ct",
-            "packagePrice": 2.98,
+            "name": "Unsalted Butter",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz",
+            "amount": 43,
+            "unit": "g",
             "cost": 0.28
           },
           {
             "ingredientId": "caster-sugar",
-            "ingredientName": "Caster Sugar",
-            "product": "H-E-B Pure Cane Extra Fine Granulated Sugar 4 lbs",
-            "packageSize": "4 lbs",
-            "packagePrice": 3.48,
+            "name": "Caster Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Granulated Sugar",
+            "amount": 40,
+            "unit": "g",
             "cost": 0.08
           },
           {
             "ingredientId": "fine-salt",
-            "ingredientName": "Fine Salt",
-            "product": "Morton Fine Sea Salt 17.6 oz",
-            "packageSize": "17.6 oz",
-            "packagePrice": 2.98,
-            "cost": 0.03
+            "name": "Fine Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Iodized Salt",
+            "amount": 5,
+            "unit": "g",
+            "cost": 0.01
           },
           {
             "ingredientId": "gochujang",
-            "ingredientName": "Gochujang",
-            "product": "O'Food Gochujang Brown Rice Red Pepper Paste 17.6 oz",
-            "packageSize": "17.6 oz",
-            "packagePrice": 6.18,
+            "name": "Gochujang (CJ Haechandeul Medium Hot)",
+            "sourceType": "heb",
+            "sourceName": "O'Food Gochujang",
+            "amount": 30,
+            "unit": "g",
             "cost": 0.37
           },
           {
             "ingredientId": "eggs",
-            "ingredientName": "Large Eggs",
-            "product": "Sunups Grade A Large White Eggs 12ct",
-            "packageSize": "12 ct",
-            "packagePrice": 1.66,
-            "cost": 0.28
+            "name": "Large Eggs",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Large Eggs",
+            "amount": 100,
+            "unit": "g",
+            "cost": 0.36
           },
           {
             "ingredientId": "honey",
-            "ingredientName": "Honey",
-            "product": "H-E-B Texas Wildflower Honey 12 oz",
-            "packageSize": "12 oz",
-            "packagePrice": 4.89,
+            "name": "Honey",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Texas Wildflower Honey",
+            "amount": 30,
+            "unit": "g",
             "cost": 0.43
           },
           {
             "ingredientId": "light-soy-sauce",
-            "ingredientName": "Light Soy Sauce",
-            "product": "Kikkoman Soy Sauce 5 oz",
-            "packageSize": "5 oz",
-            "packagePrice": 1.98,
-            "cost": 0.14
+            "name": "Light Soy Sauce",
+            "sourceType": "heb",
+            "sourceName": "Kikkoman Soy Sauce",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.08
           },
           {
             "ingredientId": "glaze-butter",
-            "ingredientName": "Unsalted Butter (melted)",
-            "product": "Hill Country Fare Unsalted Butter Sticks (shared)",
-            "packageSize": "4 ct",
-            "packagePrice": 2.98,
+            "name": "Unsalted Butter (melted)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz",
+            "amount": 30,
+            "unit": "g",
             "cost": 0.2
           },
           {
             "ingredientId": "sesame-seeds",
-            "ingredientName": "Sesame Seeds",
-            "product": "Bolner's Fiesta Sesame Seeds 1 oz",
-            "packageSize": "1 oz",
-            "packagePrice": 1.4,
-            "cost": 0.25
-          },
-          {
-            "ingredientId": "mozzarella",
-            "ingredientName": "Shredded Mozzarella (deviation)",
-            "product": "H-E-B Low Moisture Whole Mozzarella Shredded Cheese 8 oz",
-            "packageSize": "8 oz",
-            "packagePrice": 2.98,
-            "cost": 0
+            "name": "Sesame Seeds (black + white mix)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sesame Seeds",
+            "amount": 5,
+            "unit": "g",
+            "cost": 0.22
           }
-        ],
-        "total": 8.06,
-        "perServing": 0.67,
-        "servings": 12
+        ]
       },
       "ingredients": [
         {

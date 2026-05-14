@@ -21,8 +21,93 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.4.1",
+  "version": "v1.5.0",
   "change_log": [
+    {
+      "version": "v1.5.0",
+      "date": "2026-05-14",
+      "summary": "Refresh cook_log[].cost.items[] line-items from HEB-derived pantry rates (cost-rates.json @ HEB store 428). Total $14.35 / $7.18 per serving (×2). PF-263.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Low-moisture, high-fat, whole milk mozzarella is mandatory — it shreds clean and melts right"
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Freshly grated — adds a savory base layer under the mozzarella"
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.4.1",
       "date": "2026-05-12",
@@ -1229,7 +1314,104 @@
             }
           ]
         }
-      ]
+      ],
+      "cost": {
+        "total": 14.35,
+        "perServing": 7.18,
+        "servings": 2,
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Baker's Scoop Bread Flour",
+            "amount": 463,
+            "unit": "g",
+            "cost": 0.77
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water",
+            "amount": 288,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "instant_yeast",
+            "name": "Instant Dry Yeast",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Instant Yeast 3-pack/21g",
+            "amount": 6,
+            "unit": "g",
+            "cost": 0.28
+          },
+          {
+            "ingredientId": "olive_oil",
+            "name": "Olive Oil",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Extra Virgin Olive Oil",
+            "amount": 18,
+            "unit": "g",
+            "cost": 0.27
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Iodized Salt",
+            "amount": 8,
+            "unit": "g",
+            "cost": 0.01
+          },
+          {
+            "ingredientId": "cornmeal",
+            "name": "Cornmeal",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Corn Starch",
+            "amount": 13,
+            "unit": "g",
+            "cost": 0.05
+          },
+          {
+            "ingredientId": "san_marzano_sauce",
+            "name": "Raw San Marzano Tomato Sauce",
+            "sourceType": "heb",
+            "sourceName": "Cento San Marzano Tomatoes",
+            "amount": 175,
+            "unit": "g",
+            "cost": 1
+          },
+          {
+            "ingredientId": "mozzarella",
+            "name": "Low-Moisture Mozzarella",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Organics Mozzarella",
+            "amount": 350,
+            "unit": "g",
+            "cost": 6.78
+          },
+          {
+            "ingredientId": "hard_cheese",
+            "name": "Parmigiano-Reggiano or Pecorino Romano",
+            "sourceType": "heb",
+            "sourceName": "Galli Parmigiano Reggiano",
+            "amount": 40,
+            "unit": "g",
+            "cost": 2.11
+          },
+          {
+            "ingredientId": "pepperoni",
+            "name": "Pepperoni",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pepperoni Slices",
+            "amount": 175,
+            "unit": "g",
+            "cost": 3.08
+          }
+        ]
+      }
     }
   ],
   "vessels": [

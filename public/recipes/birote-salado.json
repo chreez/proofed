@@ -21,8 +21,119 @@
       "servingUnit": "rolls"
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-05-14",
+      "summary": "Refresh cook_log[].cost.items[] line-items from HEB-derived pantry rates (cost-rates.json @ HEB store 428). Total $1.03 / $0.21 per serving (×5). PF-263.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Build Levain",
+          "ingredients": [
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 80,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice formula, Puratos Library #72",
+              "confidence": "high",
+              "rationale": "1:1 ratio with levain flour. Must be active and bubbly — doubled within 4-8 hours of last feeding."
+            },
+            {
+              "id": "ap_flour",
+              "name": "All-Purpose Flour",
+              "total": 480,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "levain",
+                  "amount": 80
+                },
+                {
+                  "label": "dough",
+                  "amount": 400
+                }
+              ],
+              "sourcedFrom": "Cross-source consensus (7/7 agents)",
+              "confidence": "high",
+              "rationale": "Mexican flour is 9% protein — US AP flour (10-12%) is closer than bread flour. An 80/20 AP/bread blend also works for more structure."
+            },
+            {
+              "id": "beer",
+              "name": "Mexican Lager Beer",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice, Breadtopia, Grupo La Florida (7/7 agents)",
+              "confidence": "high",
+              "rationale": "Slows fermentation via hops antimicrobial, adds malt character, creates selection pressure for T. delbrueckii yeast. Modelo Especial or Pacifico."
+            },
+            {
+              "id": "egg",
+              "name": "Egg (whisked)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice, Breadtopia, Puratos Library #72 (6/7 agents)",
+              "confidence": "high",
+              "rationale": "~1/2 large egg. Lecithin emulsifies, protein adds structure. Only sourdough in the Puratos collection fed with egg."
+            },
+            {
+              "id": "lime_juice",
+              "name": "Fresh Lime Juice",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice, Breadtopia, Puratos Library #72 (6/7 agents)",
+              "confidence": "high",
+              "rationale": "Immediately acidifies the levain, supports LAB, adds citrus tang. May historically compensate for alkaline water."
+            },
+            {
+              "id": "sugar",
+              "name": "Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice, Breadtopia (5/7 agents)",
+              "confidence": "high",
+              "rationale": "Feeds yeast, balances acidity in the hostile levain environment."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "levain",
+                  "amount": 1
+                },
+                {
+                  "label": "dough",
+                  "amount": 10
+                }
+              ],
+              "sourcedFrom": "Cross-source consensus (7/7 agents)",
+              "confidence": "high",
+              "rationale": "2.3% of total flour. 'Salado' means salted — birote is intentionally saltier than standard bread."
+            },
+            {
+              "id": "water",
+              "name": "Filtered Water",
+              "total": 250,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Professional GDL formulas (Lesaffre 63%, Grupo La Florida 62%)",
+              "confidence": "high",
+              "rationale": "62.5% hydration. Carbon-filtered Austin tap diluted 50/50 with distilled water to reduce hardness and alkalinity."
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.1.0",
       "date": "2026-02-26",
@@ -1464,99 +1575,83 @@
         }
       ],
       "cost": {
-        "costs": [
-          {
-            "ingredientId": "ap_flour",
-            "ingredientName": "All-Purpose Flour",
-            "sourceType": "heb",
-            "sourceName": "King Arthur Unbleached All-Purpose Flour",
-            "recipeAmount": 480,
-            "recipeUnit": "g",
-            "packageSize": "5 lbs",
-            "packagePrice": 5.24,
-            "cost": 1.11
-          },
+        "total": 1.03,
+        "perServing": 0.21,
+        "servings": 5,
+        "items": [
           {
             "ingredientId": "starter",
-            "ingredientName": "Active Sourdough Starter",
+            "name": "Active Sourdough Starter",
             "sourceType": "rate",
-            "sourceName": "Derived: 50% AP flour rate (flour + water)",
-            "recipeAmount": 80,
-            "recipeUnit": "g",
-            "packageSize": "$0.0006/g",
-            "packagePrice": 0,
+            "sourceName": "Home-maintained starter",
+            "amount": 80,
+            "unit": "g",
             "cost": 0
           },
           {
-            "ingredientId": "beer",
-            "ingredientName": "Mexican Lager Beer",
+            "ingredientId": "ap_flour",
+            "name": "All-Purpose Flour",
             "sourceType": "heb",
-            "sourceName": "Modelo Especial Mexican Lager Import Beer",
-            "recipeAmount": 40,
-            "recipeUnit": "g",
-            "packageSize": "32 oz",
-            "packagePrice": 4.67,
-            "cost": 0.21
+            "sourceName": "Hill Country Fare All-Purpose Flour",
+            "amount": 480,
+            "unit": "g",
+            "cost": 0.55
+          },
+          {
+            "ingredientId": "beer",
+            "name": "Mexican Lager Beer",
+            "sourceType": "heb",
+            "sourceName": "Modelo Especial",
+            "amount": 40,
+            "unit": "g",
+            "cost": 0.22
           },
           {
             "ingredientId": "egg",
-            "ingredientName": "Egg (whisked)",
+            "name": "Egg (whisked)",
             "sourceType": "heb",
-            "sourceName": "Hill Country Fare Grade A Large White Eggs",
-            "recipeAmount": 30,
-            "recipeUnit": "g",
-            "packageSize": "12 ct",
-            "packagePrice": 2.17,
+            "sourceName": "Hill Country Fare Large Eggs",
+            "amount": 30,
+            "unit": "g",
             "cost": 0.11
           },
           {
             "ingredientId": "lime_juice",
-            "ingredientName": "Fresh Lime Juice",
+            "name": "Fresh Lime Juice",
             "sourceType": "heb",
             "sourceName": "Fresh Lime",
-            "recipeAmount": 10,
-            "recipeUnit": "g",
-            "packageSize": "Each",
-            "packagePrice": 0.24,
-            "cost": 0.04
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.11
           },
           {
             "ingredientId": "sugar",
-            "ingredientName": "Sugar",
+            "name": "Sugar",
             "sourceType": "heb",
-            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
-            "recipeAmount": 8,
-            "recipeUnit": "g",
-            "packageSize": "4 lbs",
-            "packagePrice": 3.48,
+            "sourceName": "H-E-B Pure Cane Granulated Sugar",
+            "amount": 8,
+            "unit": "g",
             "cost": 0.02
           },
           {
             "ingredientId": "salt",
-            "ingredientName": "Fine Sea Salt",
+            "name": "Fine Sea Salt",
             "sourceType": "heb",
-            "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals",
-            "recipeAmount": 11,
-            "recipeUnit": "g",
-            "packageSize": "26.5 oz",
-            "packagePrice": 2.38,
-            "cost": 0.03
+            "sourceName": "Morton Iodized Salt",
+            "amount": 11,
+            "unit": "g",
+            "cost": 0.02
           },
           {
             "ingredientId": "water",
-            "ingredientName": "Filtered Water",
-            "sourceType": "manual",
-            "sourceName": "Manual entry",
-            "recipeAmount": 250,
-            "recipeUnit": "g",
-            "packageSize": "0g",
-            "packagePrice": 0,
+            "name": "Filtered Water",
+            "sourceType": "rate",
+            "sourceName": "Tap water",
+            "amount": 250,
+            "unit": "g",
             "cost": 0
           }
-        ],
-        "total": 1.52,
-        "perServing": 0.38,
-        "servings": 4
+        ]
       },
       "weather": {
         "location": "Austin, TX",

@@ -20,8 +20,186 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-05-14",
+      "summary": "Refresh cook_log[].cost.items[] line-items from HEB-derived pantry rates (cost-rates.json @ HEB store 428). Total $6.67 / $0.83 per serving (×8). PF-263.",
+      "ingredients": [
+        {
+          "stageId": "PREP_LEVAIN",
+          "stageName": "Build Levain",
+          "ingredients": [
+            {
+              "id": "starter",
+              "name": "Ripe Sourdough Starter",
+              "total": 34,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "17-20% PFF is consensus for enriched sourdough dough"
+            },
+            {
+              "id": "levain_flour",
+              "name": "All-Purpose Flour (levain)",
+              "total": 84,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "levain_water",
+              "name": "Water (room temp, levain)",
+              "total": 84,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 430,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "531g original minus ~100g contributed by levain"
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Unchanged from ATK — gluten dilution for tenderness, resistant to sourdough enzymatic degradation"
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ],
+              "confidence": "high",
+              "rationale": "Unchanged from ATK v1.3.0. 29% baker's % matches Perfect Loaf enrichment level."
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 95,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 95-100°F)",
+                  "amount": 80
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ],
+              "confidence": "high",
+              "rationale": "Reduced from 192g — levain contributes ~100g water"
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "v1.2.0 amount (bumped from 113g for cream-cheese-forward glaze)"
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "ATK and Perfect Loaf both use 3. Most sourdough recipes use 1. Keeping 3 for ATK DNA."
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Poured over rolls before baking. Multiple sourdough recipes endorse 60-120ml range."
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.1.0",
       "date": "2026-02-18",
@@ -1947,139 +2125,155 @@
         }
       ],
       "cost": {
-        "costs": [
+        "total": 6.67,
+        "perServing": 0.83,
+        "servings": 8,
+        "items": [
           {
             "ingredientId": "starter",
-            "name": "Derived: 50% AP flour rate (flour + water)",
-            "recipeAmount": 34,
-            "packageSize": null,
-            "packagePrice": null,
-            "cost": 0.02
+            "name": "Ripe Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Home-maintained starter",
+            "amount": 34,
+            "unit": "g",
+            "cost": 0
           },
           {
             "ingredientId": "levain_flour",
-            "name": "King Arthur Organic Unbleached All-Purpose Flour",
-            "recipeAmount": 84,
-            "packageSize": "5 lbs",
-            "packagePrice": 7.87,
-            "cost": 0.29
+            "name": "All-Purpose Flour (levain)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare All-Purpose Flour",
+            "amount": 84,
+            "unit": "g",
+            "cost": 0.1
           },
           {
             "ingredientId": "levain_water",
-            "name": "Water (not yet priced)",
-            "recipeAmount": 84,
-            "packageSize": null,
-            "packagePrice": null,
+            "name": "Water (room temp, levain)",
+            "sourceType": "rate",
+            "sourceName": "Tap water",
+            "amount": 84,
+            "unit": "g",
             "cost": 0
           },
           {
             "ingredientId": "flour",
-            "name": "King Arthur Organic Unbleached All-Purpose Flour",
-            "recipeAmount": 430,
-            "packageSize": "5 lbs",
-            "packagePrice": 7.87,
-            "cost": 1.49
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare All-Purpose Flour",
+            "amount": 430,
+            "unit": "g",
+            "cost": 0.49
           },
           {
             "ingredientId": "cornstarch",
-            "name": "Argo Corn Starch",
-            "recipeAmount": 64,
-            "packageSize": "1 lb",
-            "packagePrice": 2.44,
-            "cost": 0.34
+            "name": "Cornstarch",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Corn Starch",
+            "amount": 64,
+            "unit": "g",
+            "cost": 0.24
           },
           {
             "ingredientId": "granulated_sugar",
-            "name": "H-E-B Pure Cane Extra Fine Granulated Sugar",
-            "recipeAmount": 75,
-            "packageSize": "4 lbs",
-            "packagePrice": 3.48,
+            "name": "Granulated Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Granulated Sugar",
+            "amount": 75,
+            "unit": "g",
             "cost": 0.14
           },
           {
             "ingredientId": "brown_sugar",
-            "name": "Wholesome Organic Light Brown Sugar",
-            "recipeAmount": 240,
-            "packageSize": "24 oz",
-            "packagePrice": 3.28,
-            "cost": 1.16
+            "name": "Light Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Brown Sugar",
+            "amount": 240,
+            "unit": "g",
+            "cost": 0.49
           },
           {
             "ingredientId": "powdered_sugar",
-            "name": "H-E-B Organics Powdered Sugar",
-            "recipeAmount": 128,
-            "packageSize": "24 oz",
-            "packagePrice": 3.48,
-            "cost": 0.66
+            "name": "Confectioners' Sugar",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Confectioners Sugar",
+            "amount": 128,
+            "unit": "g",
+            "cost": 0.26
           },
           {
             "ingredientId": "butter",
-            "name": "Hill Country Fare Unsalted Butter Sticks",
-            "recipeAmount": 227,
-            "packageSize": "4 ct",
-            "packagePrice": 3.18,
-            "cost": 1.59
+            "name": "Unsalted Butter",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter 4 sticks/16 oz",
+            "amount": 227,
+            "unit": "g",
+            "cost": 1.49
           },
           {
             "ingredientId": "milk",
-            "name": "H-E-B Whole Milk",
-            "recipeAmount": 95,
-            "packageSize": "1 gal",
-            "packagePrice": 4.16,
-            "cost": 0.1
+            "name": "Whole Milk",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Whole Milk",
+            "amount": 95,
+            "unit": "g",
+            "cost": 0.11
           },
           {
             "ingredientId": "cream_cheese",
-            "name": "Hill Country Fare Cream Cheese",
-            "recipeAmount": 150,
-            "packageSize": "8 oz",
-            "packagePrice": 1.49,
-            "cost": 0.98
+            "name": "Cream Cheese (softened)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Cream Cheese",
+            "amount": 150,
+            "unit": "g",
+            "cost": 1.52
           },
           {
             "ingredientId": "eggs",
-            "name": "H-E-B Grade AA Cage Free Large Brown Eggs",
-            "recipeAmount": 3,
-            "packageSize": "12 ct",
-            "packagePrice": 2.96,
-            "cost": 0.74
+            "name": "Large Eggs (room temp)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Large Eggs",
+            "amount": 3,
+            "unit": "whole",
+            "cost": 0.54
           },
           {
             "ingredientId": "cinnamon",
-            "name": "McCormick Ground Cinnamon",
-            "recipeAmount": 10,
-            "packageSize": "4.12 oz",
-            "packagePrice": 4.18,
-            "cost": 0.36
+            "name": "Ground Cinnamon",
+            "sourceType": "heb",
+            "sourceName": "McCormick Ground Cinnamon",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.41
           },
           {
             "ingredientId": "salt",
-            "name": "Sea salt (manual)",
-            "recipeAmount": 11,
-            "packageSize": null,
-            "packagePrice": null,
-            "cost": 0
+            "name": "Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Iodized Salt",
+            "amount": 11,
+            "unit": "g",
+            "cost": 0.02
           },
           {
             "ingredientId": "vanilla",
-            "name": "Spice Islands Pure Vanilla Extract",
-            "recipeAmount": 5,
-            "packageSize": "2 oz",
-            "packagePrice": 8.98,
-            "cost": 0.79
+            "name": "Vanilla Extract",
+            "sourceType": "heb",
+            "sourceName": "Adams Best Vanilla Extract",
+            "amount": 5,
+            "unit": "g",
+            "cost": 0.34
           },
           {
             "ingredientId": "heavy_cream",
-            "name": "Not used this bake",
-            "recipeAmount": 0,
-            "packageSize": null,
-            "packagePrice": null,
-            "cost": 0
+            "name": "Heavy Cream",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Heavy Whipping Cream",
+            "amount": 100,
+            "unit": "g",
+            "cost": 0.52
           }
-        ],
-        "total": 8.66,
-        "perServing": 1.08,
-        "servings": 8
+        ]
       },
       "next_time": [
         {
