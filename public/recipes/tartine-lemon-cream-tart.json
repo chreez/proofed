@@ -2338,17 +2338,64 @@
           "ingredients": [
             {
               "id": "heavy_cream",
-              "name": "Heavy Cream (very cold)",
+              "name": "Heavy Cream (cold, ≥36% fat)",
               "total": 240,
               "unit": "g",
               "breakdown": null
             },
             {
-              "id": "sugar_topping",
-              "name": "Granulated Sugar",
-              "total": 8,
+              "id": "cream_cheese",
+              "name": "Block Cream Cheese (full-fat, softened)",
+              "total": 120,
               "unit": "g",
               "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Powdered Sugar (10X with cornstarch)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "lime_zest",
+              "name": "Persian Lime Zest (microplaned)",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "zest of 1 lime (~2 tsp)"
+            },
+            {
+              "id": "lime_juice",
+              "name": "Fresh Lime Juice",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 tsp"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Bean Paste or Extract",
+              "total": 2.5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1/2 tsp"
+            },
+            {
+              "id": "salt",
+              "name": "Fine Salt",
+              "total": 0.3,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "pinch"
+            },
+            {
+              "id": "flake_salt",
+              "name": "Flake Salt (Maldon / fleur de sel)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "for finishing"
             }
           ]
         }
