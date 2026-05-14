@@ -140,8 +140,8 @@ watch(
 }
 
 .library-row.in-queue {
-  outline: 2px solid var(--color-accent);
-  outline-offset: -2px;
+  background: var(--color-accent-tint, rgba(166, 93, 69, 0.08));
+  border-left: 3px solid var(--color-accent);
   z-index: 1;
 }
 
