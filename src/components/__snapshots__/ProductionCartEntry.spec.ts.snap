@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ProductionCartEntry > matches HTML snapshot for a user-added entry 1`] = `
+exports[`ProductionCartEntry > matches HTML snapshot for a user-added default-mode entry 1`] = `
 "<div data-v-b45f02f6="" class="cart-entry" data-recipe-id="atk-cinnamon-buns-ultimate" data-entry-id="entry-1">
   <div data-v-b45f02f6="" class="cart-entry-top">
     <div data-v-b45f02f6="" class="cart-entry-main">
@@ -11,13 +11,14 @@ exports[`ProductionCartEntry > matches HTML snapshot for a user-added entry 1`] 
     </div><button data-v-b45f02f6="" type="button" class="cart-entry-remove" title="Remove Tartine Baguette from production" aria-label="Remove Tartine Baguette from production">×</button>
   </div>
   <div data-v-b45f02f6="" class="cart-entry-controls">
-    <div data-v-b45f02f6="" class="cart-entry-qty"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Decrease quantity" aria-label="Decrease quantity">−</button><input data-v-b45f02f6="" type="number" class="cart-entry-qty-input" inputmode="numeric" min="1" step="1" title="Number of loafs to bake" aria-label="Quantity for Tartine Baguette" value="2"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Increase quantity" aria-label="Increase quantity">+</button></div><input data-v-b45f02f6="" type="text" class="cart-entry-unit" placeholder="unit" title="Per-recipe unit label (e.g. loaf, roll, cookie)" aria-label="Unit for Tartine Baguette" value="loaf">
+    <div data-v-b45f02f6="" class="cart-entry-qty"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Remove one batch" aria-label="Remove one batch">−</button><span data-v-b45f02f6="" class="cart-entry-qty-display" title="Double-click to set a custom amount" aria-label="Quantity for Tartine Baguette" role="button" tabindex="0" data-testid="cart-entry-yield-display">4</span><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Add one batch" aria-label="Add one batch">+</button></div><input data-v-b45f02f6="" type="text" class="cart-entry-unit" placeholder="unit" title="Per-recipe unit label (e.g. loaf, roll, cookie)" aria-label="Unit for Tartine Baguette" value="loaf">
   </div>
+  <div data-v-b45f02f6="" class="cart-entry-subtext"><span data-v-b45f02f6="" class="cart-entry-subtext-scale" data-testid="cart-entry-scale-label">2 batch<span data-v-b45f02f6="">es</span> · scaled from 2/batch </span></div>
   <div data-v-b45f02f6="" class="cart-entry-meta"> added by <span data-v-b45f02f6="" class="cart-entry-meta-by" data-added-by="user">user</span> · <span data-v-b45f02f6="" class="cart-entry-meta-date">May 12</span></div>
 </div>"
 `;
 
-exports[`ProductionCartEntry > matches HTML snapshot for an agent-added entry with hero thumb 1`] = `
+exports[`ProductionCartEntry > matches HTML snapshot for an override-mode entry with hero thumb 1`] = `
 "<div data-v-b45f02f6="" class="cart-entry" data-recipe-id="atk-cinnamon-buns-ultimate" data-entry-id="entry-2">
   <div data-v-b45f02f6="" class="cart-entry-top">
     <div data-v-b45f02f6="" class="cart-entry-main"><img data-v-b45f02f6="" class="cart-entry-thumb" src="/images/sourdough-chocolate-chip-cookies/x/y-400w.webp" alt="Sourdough Chocolate Chip Cookies thumbnail" loading="lazy">
@@ -27,8 +28,9 @@ exports[`ProductionCartEntry > matches HTML snapshot for an agent-added entry wi
     </div><button data-v-b45f02f6="" type="button" class="cart-entry-remove" title="Remove Sourdough Chocolate Chip Cookies from production" aria-label="Remove Sourdough Chocolate Chip Cookies from production">×</button>
   </div>
   <div data-v-b45f02f6="" class="cart-entry-controls">
-    <div data-v-b45f02f6="" class="cart-entry-qty"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Decrease quantity" aria-label="Decrease quantity">−</button><input data-v-b45f02f6="" type="number" class="cart-entry-qty-input" inputmode="numeric" min="1" step="1" title="Number of cookies to bake" aria-label="Quantity for Sourdough Chocolate Chip Cookies" value="12"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Increase quantity" aria-label="Increase quantity">+</button></div><input data-v-b45f02f6="" type="text" class="cart-entry-unit" placeholder="unit" title="Per-recipe unit label (e.g. loaf, roll, cookie)" aria-label="Unit for Sourdough Chocolate Chip Cookies" value="cookie">
+    <div data-v-b45f02f6="" class="cart-entry-qty"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Remove one cookie" aria-label="Remove one cookie">−</button><span data-v-b45f02f6="" class="cart-entry-qty-display cart-entry-qty-display-override" title="Double-click to set a custom amount" aria-label="Quantity for Sourdough Chocolate Chip Cookies" role="button" tabindex="0" data-testid="cart-entry-yield-display">15</span><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Add one cookie" aria-label="Add one cookie">+</button></div><input data-v-b45f02f6="" type="text" class="cart-entry-unit" placeholder="unit" title="Per-recipe unit label (e.g. loaf, roll, cookie)" aria-label="Unit for Sourdough Chocolate Chip Cookies" value="cookie">
   </div>
+  <div data-v-b45f02f6="" class="cart-entry-subtext"><span data-v-b45f02f6="" class="cart-entry-subtext-custom" data-testid="cart-entry-custom-label">custom</span> · <button data-v-b45f02f6="" type="button" class="cart-entry-reset" title="Clear custom amount, go back to whole batches" aria-label="Clear custom amount" data-testid="cart-entry-reset">↺ clear custom</button></div>
   <div data-v-b45f02f6="" class="cart-entry-meta"> added by <span data-v-b45f02f6="" class="cart-entry-meta-by" data-added-by="agent">agent</span> · <span data-v-b45f02f6="" class="cart-entry-meta-date">May 12</span></div>
 </div>"
 `;

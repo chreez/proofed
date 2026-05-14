@@ -513,7 +513,7 @@ watch(() => route.hash, (newHash) => {
   <div class="min-h-screen bg-stone-50 font-sans flex flex-col">
     <header
       class="bg-stone-200 px-6 sticky top-0 z-10 transition-all duration-200 ease-out"
-      :class="[isScrolled && !showPrintMode ? 'py-2' : 'py-4', (showIndex || showBakeLog) ? '' : 'border-b-2 border-ink']"
+      :class="[((isScrolled || showProduction) && !showPrintMode) ? 'py-2' : 'py-4', (showIndex || showBakeLog) ? '' : 'border-b-2 border-ink']"
     >
       <div class="max-w-4xl mx-auto flex items-center justify-between">
         <div class="flex items-center min-w-0">

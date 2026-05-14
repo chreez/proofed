@@ -143,7 +143,8 @@ describe('ProductionView (Cart pattern, dense list library)', () => {
     expect(stored.entries).toHaveLength(1)
     expect(stored.entries[0].recipeId).toBe('atk-cinnamon-buns-ultimate')
     expect(stored.entries[0].addedBy).toBe('user')
-    expect(stored.entries[0].quantity).toBe(1)
+    expect(stored.entries[0].batches).toBe(1)
+    expect(stored.entries[0].yieldOverride).toBe(null)
     // inferDefaultUnit on "8 rolls" → "roll"
     expect(stored.entries[0].unit).toBe('roll')
   })
@@ -162,7 +163,7 @@ describe('ProductionView (Cart pattern, dense list library)', () => {
     expect(updated.props('inQueue')).toBe(true)
   })
 
-  it('bumps quantity when the same library row [+] is clicked twice', async () => {
+  it('bumps batches when the same library row [+] is clicked twice', async () => {
     const wrapper = mount(ProductionView)
     await flushPromises()
 
@@ -178,7 +179,7 @@ describe('ProductionView (Cart pattern, dense list library)', () => {
 
     const stored = JSON.parse(localStorage.getItem('bake-production-current') ?? '{}')
     expect(stored.entries).toHaveLength(1)
-    expect(stored.entries[0].quantity).toBe(2)
+    expect(stored.entries[0].batches).toBe(2)
   })
 
   it('removes an entry when confirm returns true', async () => {
@@ -218,7 +219,7 @@ describe('ProductionView (Cart pattern, dense list library)', () => {
     confirmSpy.mockRestore()
   })
 
-  it('updates an entry when quantity stepper increments', async () => {
+  it('updates an entry when batch stepper increments', async () => {
     const wrapper = mount(ProductionView)
     await flushPromises()
 
@@ -233,7 +234,41 @@ describe('ProductionView (Cart pattern, dense list library)', () => {
     await flushPromises()
 
     const stored = JSON.parse(localStorage.getItem('bake-production-current') ?? '{}')
-    expect(stored.entries[0].quantity).toBe(2)
+    expect(stored.entries[0].batches).toBe(2)
+  })
+
+  it('passes baseYield (parsed from recipe.meta.yields) to ProductionCartEntry', async () => {
+    const wrapper = mount(ProductionView)
+    await flushPromises()
+
+    const row = wrapper.findAllComponents({ name: 'ProductionLibraryRow' })
+      .find(r => r.props('recipeId') === 'atk-cinnamon-buns-ultimate')!
+    await row.find('button.library-row-plus').trigger('click')
+    await flushPromises()
+
+    const entry = wrapper.findComponent({ name: 'ProductionCartEntry' })
+    expect(entry.exists()).toBe(true)
+    // "8 rolls" → 8
+    expect(entry.props('baseYield')).toBe(8)
+    // Default-mode display: 1 × 8 = 8.
+    expect(entry.find('[data-testid="cart-entry-yield-display"]').text()).toBe('8')
+  })
+
+  it('persists a yieldOverride emitted from the cart entry', async () => {
+    const wrapper = mount(ProductionView)
+    await flushPromises()
+
+    const row = wrapper.findAllComponents({ name: 'ProductionLibraryRow' })
+      .find(r => r.props('recipeId') === 'atk-cinnamon-buns-ultimate')!
+    await row.find('button.library-row-plus').trigger('click')
+    await flushPromises()
+
+    const entry = wrapper.findComponent({ name: 'ProductionCartEntry' })
+    entry.vm.$emit('update', { yieldOverride: 15 })
+    await flushPromises()
+
+    const stored = JSON.parse(localStorage.getItem('bake-production-current') ?? '{}')
+    expect(stored.entries[0].yieldOverride).toBe(15)
   })
 
   it('updates an entry when unit input changes', async () => {
@@ -257,7 +292,7 @@ describe('ProductionView (Cart pattern, dense list library)', () => {
     __ls_store['bake-production-current'] = JSON.stringify({
       updated: '2026-05-12T00:00:00Z',
       entries: [
-        { id: 'preload', recipeId: 'tartine-baguette', quantity: 2, unit: 'loaf', addedBy: 'agent', addedAt: '2026-05-12T00:00:00Z' },
+        { id: 'preload', recipeId: 'tartine-baguette', batches: 2, yieldOverride: null, unit: 'loaf', addedBy: 'agent', addedAt: '2026-05-12T00:00:00Z' },
       ],
     })
 
@@ -268,6 +303,23 @@ describe('ProductionView (Cart pattern, dense list library)', () => {
     expect(entries.length).toBe(1)
     expect(wrapper.text()).toContain('Tartine Baguette')
     expect(wrapper.text()).toContain('agent')
+  })
+
+  it('hydrates a legacy plan (with quantity, no batches/yieldOverride) and migrates the field', async () => {
+    __ls_store['bake-production-current'] = JSON.stringify({
+      updated: '2026-05-12T00:00:00Z',
+      entries: [
+        { id: 'legacy', recipeId: 'tartine-baguette', quantity: 3, unit: 'loaf', addedBy: 'user', addedAt: '2026-05-12T00:00:00Z' },
+      ],
+    })
+
+    const wrapper = mount(ProductionView)
+    await flushPromises()
+
+    const entry = wrapper.findComponent({ name: 'ProductionCartEntry' })
+    expect(entry.exists()).toBe(true)
+    expect(entry.props('entry').batches).toBe(3)
+    expect(entry.props('entry').yieldOverride).toBe(null)
   })
 
   it('collapses and expands the cart sidebar', async () => {

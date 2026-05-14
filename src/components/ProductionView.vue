@@ -9,6 +9,7 @@ import {
   removeEntry as removeEntryFn,
   updateEntry as updateEntryFn,
   inferDefaultUnit,
+  parseBaseYield,
 } from '@/composables/useProductionPlan'
 import { findHeroPhoto, latestCookLogEntryWithHero } from '@/composables/useCookLog'
 import type { ProductionPlan } from '@/types/production'
@@ -251,11 +252,14 @@ function handleAddLibrary(recipeId: string): void {
   const unit = unitFor(recipeId)
   const next = addEntryFn(plan.value, {
     recipeId,
-    quantity: 1,
     unit,
     addedBy: 'user',
   })
   plan.value = savePlan(next)
+}
+
+function baseYieldFor(recipeId: string): number {
+  return parseBaseYield(recipeFacts.value[recipeId]?.yields)
 }
 
 function handleRowFocus(recipeId: string): void {
@@ -271,7 +275,10 @@ function handleRemove(entryId: string): void {
   plan.value = savePlan(removeEntryFn(plan.value, entryId))
 }
 
-function handleUpdate(entryId: string, patch: { quantity?: number; unit?: string }): void {
+function handleUpdate(
+  entryId: string,
+  patch: { batches?: number; yieldOverride?: number | null; unit?: string }
+): void {
   plan.value = savePlan(updateEntryFn(plan.value, entryId, patch))
 }
 
@@ -474,6 +481,7 @@ const lastUpdatedFormatted = computed(() => {
                 :recipe-name="recipeNameFor(entry.recipeId)"
                 :yields="yieldsFor(entry.recipeId)"
                 :hero-thumb="heroThumbFor(entry.recipeId)"
+                :base-yield="baseYieldFor(entry.recipeId)"
                 @update="(patch) => handleUpdate(entry.id, patch)"
                 @remove="() => handleRemove(entry.id)"
               />
@@ -492,7 +500,7 @@ const lastUpdatedFormatted = computed(() => {
 .production-layout {
   display: grid;
   grid-template-columns: 1fr 340px;
-  height: calc(100vh - 4rem);
+  height: calc(100dvh - 3rem);
   overflow: hidden;
   background: var(--color-stone-100);
 }

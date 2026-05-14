@@ -16,7 +16,7 @@ describe('ProductionLibraryRow', () => {
     expect(wrapper.text()).toContain('Sourdough Bread - 70% Hydration')
     expect(wrapper.text()).toContain('2 loaves (~800g)')
     expect(wrapper.text()).toContain('baking')
-    expect(wrapper.text()).toContain('24×')
+    expect(wrapper.text()).toContain('24 bakes')
   })
 
   it('renders the hero thumb when heroThumb is provided', () => {
@@ -49,7 +49,7 @@ describe('ProductionLibraryRow', () => {
     const wrapper = mount(ProductionLibraryRow, {
       props: { recipeId: 'x', recipeName: 'X' },
     })
-    expect(wrapper.find('.library-row-bakes').text()).toBe('0×')
+    expect(wrapper.find('.library-row-bakes').text()).toBe('0 bakes')
   })
 
   it('emits add(recipeId) on [+] click and stops propagation', async () => {

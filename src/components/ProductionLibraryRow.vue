@@ -34,7 +34,10 @@ const initials = computed(() => {
 
 const yieldsLabel = computed(() => props.yields?.trim() || '—')
 const categoryLabel = computed(() => props.category?.trim() || '')
-const bakeCountLabel = computed(() => `${props.bakeCount ?? 0}×`)
+const bakeCountLabel = computed(() => {
+  const n = props.bakeCount ?? 0
+  return `${n} ${n === 1 ? 'bake' : 'bakes'}`
+})
 
 function handleAdd(event: Event): void {
   event.stopPropagation()

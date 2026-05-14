@@ -5,7 +5,7 @@ exports[`ProductionLibraryRow > matches HTML snapshot for a row with hero thumb 
   <div data-v-2f09520e="" class="library-row-name" title="Sourdough Bread - 70% Hydration">Sourdough Bread - 70% Hydration</div>
   <div data-v-2f09520e="" class="library-row-yields">2 loaves (~800g)</div>
   <div data-v-2f09520e="" class="library-row-category" title="Category: baking">baking</div>
-  <div data-v-2f09520e="" class="library-row-bakes" title="Baked 24 times">24×</div><button data-v-2f09520e="" type="button" class="library-row-plus" title="Add Sourdough Bread - 70% Hydration to production queue" aria-label="Add Sourdough Bread - 70% Hydration to production queue" data-testid="add-library-simple-sourdough">+</button>
+  <div data-v-2f09520e="" class="library-row-bakes" title="Baked 24 times">24 bakes</div><button data-v-2f09520e="" type="button" class="library-row-plus" title="Add Sourdough Bread - 70% Hydration to production queue" aria-label="Add Sourdough Bread - 70% Hydration to production queue" data-testid="add-library-simple-sourdough">+</button>
 </li>"
 `;
 
@@ -15,6 +15,6 @@ exports[`ProductionLibraryRow > matches HTML snapshot for a row without hero thu
   <div data-v-2f09520e="" class="library-row-name" title="Tartine Baguette">Tartine Baguette</div>
   <div data-v-2f09520e="" class="library-row-yields">2-3 baguettes</div>
   <div data-v-2f09520e="" class="library-row-category" title="Category: baking">baking</div>
-  <div data-v-2f09520e="" class="library-row-bakes" title="Baked 3 times">3×</div><button data-v-2f09520e="" type="button" class="library-row-plus" title="Add Tartine Baguette to production queue" aria-label="Add Tartine Baguette to production queue" data-testid="add-library-tartine-baguette">+</button>
+  <div data-v-2f09520e="" class="library-row-bakes" title="Baked 3 times">3 bakes</div><button data-v-2f09520e="" type="button" class="library-row-plus" title="Add Tartine Baguette to production queue" aria-label="Add Tartine Baguette to production queue" data-testid="add-library-tartine-baguette">+</button>
 </li>"
 `;

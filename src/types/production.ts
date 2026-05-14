@@ -11,14 +11,30 @@
 /** Where the entry originated. Mirrors StateNote.source. */
 export type Provenance = 'user' | 'agent'
 
-/** One planned bake — a recipe + quantity + unit + provenance. */
+/**
+ * One planned bake — a recipe + batch count + optional yield override + unit
+ * + provenance.
+ *
+ * Yield resolution:
+ *  - `yieldOverride === null`  → effective yield = batches × baseYield (scaled)
+ *  - `yieldOverride === N`     → effective yield = N (absolute override)
+ *
+ * `batches` always reflects whole-recipe multiples (>= 1, integer). The
+ * override exists so users can ask for arbitrary counts (e.g. "15 buns from
+ * an 8-bun recipe") without lying about batch math.
+ */
 export interface ProductionEntry {
   /** Stable opaque id (UUID-ish) used by remove/update. */
   id: string
   /** Recipe id from public/recipes/index.json. */
   recipeId: string
-  /** Number of batches/units to bake. >= 1, integer or float allowed. */
-  quantity: number
+  /** Number of whole batches to bake. Integer, >= 1. Default 1. */
+  batches: number
+  /**
+   * Absolute yield override (e.g. 15 buns). `null` means "use batches ×
+   * baseYield". Integer, >= 1 when set.
+   */
+  yieldOverride: number | null
   /** Free-form per-recipe label (e.g. "roll", "loaf", "cookie"). */
   unit: string
   /** Provenance flag — who/what added this entry. */

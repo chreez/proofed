@@ -38,23 +38,48 @@ export function emptyPlan(): ProductionPlan {
 /**
  * Validate raw JSON against the ProductionPlan shape. Returns the typed
  * plan on success, or `{ error }` for the caller to surface.
+ *
+ * Migration: legacy plans carried `quantity` instead of `batches`. We accept
+ * either field name, normalise to `batches`, and default `yieldOverride` to
+ * `null` when missing so existing localStorage state doesn't get nuked on
+ * load.
  */
 export function validatePlan(raw: unknown): ProductionPlan | { error: string } {
   if (typeof raw !== 'object' || raw === null) return { error: 'not an object' }
   const p = raw as Record<string, unknown>
   if (typeof p.updated !== 'string') return { error: 'updated missing' }
   if (!Array.isArray(p.entries)) return { error: 'entries missing' }
+  const normalised: ProductionEntry[] = []
   for (const [idx, entry] of (p.entries as unknown[]).entries()) {
     if (typeof entry !== 'object' || entry === null) return { error: `entries[${idx}] invalid` }
     const e = entry as Record<string, unknown>
     if (typeof e.id !== 'string' || !e.id) return { error: `entries[${idx}].id missing` }
     if (typeof e.recipeId !== 'string' || !e.recipeId) return { error: `entries[${idx}].recipeId missing` }
-    if (typeof e.quantity !== 'number' || !Number.isFinite(e.quantity)) return { error: `entries[${idx}].quantity invalid` }
+    // Accept new `batches` or legacy `quantity`.
+    const rawBatches = typeof e.batches === 'number' ? e.batches : (typeof e.quantity === 'number' ? e.quantity : NaN)
+    if (!Number.isFinite(rawBatches)) return { error: `entries[${idx}].batches invalid` }
     if (typeof e.unit !== 'string') return { error: `entries[${idx}].unit invalid` }
     if (e.addedBy !== 'user' && e.addedBy !== 'agent') return { error: `entries[${idx}].addedBy invalid` }
     if (typeof e.addedAt !== 'string') return { error: `entries[${idx}].addedAt invalid` }
+    let yieldOverride: number | null = null
+    if (e.yieldOverride === null || e.yieldOverride === undefined) {
+      yieldOverride = null
+    } else if (typeof e.yieldOverride === 'number' && Number.isFinite(e.yieldOverride)) {
+      yieldOverride = e.yieldOverride
+    } else {
+      return { error: `entries[${idx}].yieldOverride invalid` }
+    }
+    normalised.push({
+      id: e.id,
+      recipeId: e.recipeId,
+      batches: Math.max(1, Math.floor(rawBatches)),
+      yieldOverride,
+      unit: e.unit,
+      addedBy: e.addedBy,
+      addedAt: e.addedAt,
+    })
   }
-  return raw as ProductionPlan
+  return { entries: normalised, updated: p.updated }
 }
 
 /**
@@ -90,35 +115,49 @@ export function savePlan(plan: ProductionPlan): ProductionPlan {
 
 interface AddEntryInput {
   recipeId: string
-  quantity: number
+  /** Whole batches to bake. Defaults to 1. */
+  batches?: number
   unit: string
   addedBy: Provenance
 }
 
 /**
- * Append a new entry to the plan, or bump quantity on an existing entry with
+ * Append a new entry to the plan, or bump batches on an existing entry with
  * the same recipeId (shopping-cart-style merge). Pure — returns a new
  * ProductionPlan. Caller is responsible for calling `savePlan` if persistence
  * is desired.
  *
  * Merge semantics:
- *  - If an entry with input.recipeId already exists, its quantity is increased
- *    by input.quantity. The unit, addedBy, and addedAt fields are left alone
- *    (provenance is set when the entry was first added).
- *  - Otherwise a new entry is appended.
+ *  - If an entry with input.recipeId already exists, its `batches` is
+ *    increased by `input.batches` (default 1). The unit, addedBy, and
+ *    addedAt fields are left alone (provenance is set when the entry was
+ *    first added).
+ *  - `yieldOverride` is **cleared on merge-add**. Rationale: hitting [+] in
+ *    the library means "add a fresh batch", which is a batch-scale action.
+ *    If the user had a custom override (e.g. 15 buns), bumping by a batch
+ *    snaps back to batch math so the new total is meaningful (otherwise
+ *    "15 + 1 batch" has no clear semantic).
+ *  - Otherwise a new entry is appended with `yieldOverride: null`.
  */
 export function addEntry(plan: ProductionPlan, input: AddEntryInput): ProductionPlan {
+  const batches = Math.max(1, Math.floor(input.batches ?? 1))
   const existingIdx = plan.entries.findIndex(e => e.recipeId === input.recipeId)
   if (existingIdx >= 0) {
     const next = plan.entries.slice()
     const existing = next[existingIdx]
-    next[existingIdx] = { ...existing, quantity: existing.quantity + input.quantity }
+    next[existingIdx] = {
+      ...existing,
+      batches: existing.batches + batches,
+      // Clear override on merge — bumping is a batch-scale action.
+      yieldOverride: null,
+    }
     return { entries: next, updated: nowISO() }
   }
   const entry: ProductionEntry = {
     id: newId(),
     recipeId: input.recipeId,
-    quantity: input.quantity,
+    batches,
+    yieldOverride: null,
     unit: input.unit,
     addedBy: input.addedBy,
     addedAt: nowISO(),
@@ -137,16 +176,41 @@ export function removeEntry(plan: ProductionPlan, entryId: string): ProductionPl
   }
 }
 
-/** Patch fields on an entry (quantity / unit). Pure — returns a new plan. */
+/** Patch fields on an entry (batches / yieldOverride / unit). Pure — returns a new plan. */
 export function updateEntry(
   plan: ProductionPlan,
   entryId: string,
-  patch: Partial<Pick<ProductionEntry, 'quantity' | 'unit'>>
+  patch: Partial<Pick<ProductionEntry, 'batches' | 'yieldOverride' | 'unit'>>
 ): ProductionPlan {
   return {
     entries: plan.entries.map(e => (e.id === entryId ? { ...e, ...patch } : e)),
     updated: nowISO(),
   }
+}
+
+// ---------- Yield parsing ----------
+
+/**
+ * Extract the leading integer from a yields string. Used to compute the
+ * effective scaled yield ("8 buns" × 2 batches → 16 buns).
+ *
+ * Strategy: find the first run of digits anywhere in the string and parse
+ * it. Handles:
+ *   - "8 cinnamon rolls" → 8
+ *   - "2 loaves (~800g each)" → 2
+ *   - "12-16 slices" → 12 (first integer wins, conservative)
+ *   - "" or "loaves" → 1 (safe default — yields = 1 batch when unknown)
+ *
+ * Note: returns `1` (not `0`) when no integer is parseable so downstream
+ * scaling math (`batches × baseYield`) stays meaningful.
+ */
+export function parseBaseYield(yieldsString: string | undefined | null): number {
+  if (!yieldsString || typeof yieldsString !== 'string') return 1
+  const match = yieldsString.match(/\d+/)
+  if (!match) return 1
+  const n = parseInt(match[0], 10)
+  if (!Number.isFinite(n) || n < 1) return 1
+  return n
 }
 
 // ---------- Unit inference ----------
