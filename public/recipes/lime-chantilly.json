@@ -484,12 +484,23 @@
     {
       "date": "2026-05-13",
       "version": "v1.0.0",
-      "status": "in_progress",
-      "summary": null,
+      "summary": "Came together cleanly. Used vanilla, skipped the optional lime juice — zest alone was plenty. Saved some zest for garnish.",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-13",
+        "temp_high_f": 88.2,
+        "temp_low_f": 63.0,
+        "humidity_avg_percent": 68,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      },
       "notes": [
         "9:09pm — smushed lime zest into powdered sugar, resting on counter (started ~23 min ago)",
         "9:09pm — cream cheese cubed and resting at room temp (parallel)",
-        "9:09pm — stand mixer bowl + whisk attachment chilling in freezer (parallel)"
+        "9:09pm — stand mixer bowl + whisk attachment chilling in freezer (parallel)",
+        "Whipped + piped — came out well",
+        "Used vanilla (~½ tsp); skipped the optional lime juice — zest alone was sufficient",
+        "Reserved some lime zest separately for garnish"
       ],
       "bake_notes": [
         {
@@ -573,13 +584,6 @@
               "id": "heavy_cream",
               "name": "Heavy Cream (cold, ≥36% fat)",
               "total": 240,
-              "unit": "g",
-              "breakdown": null
-            },
-            {
-              "id": "lime_juice",
-              "name": "Fresh Lime Juice (optional)",
-              "total": 5,
               "unit": "g",
               "breakdown": null
             }
