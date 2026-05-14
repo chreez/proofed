@@ -21,12 +21,13 @@ Background: recipe workflow features (cook logs, photo pipeline, energy-level re
 ## Open Threads
 
 - **PF-255.1 /pricing** committed (601812b) but flagged "not shippable"; rework consolidated into PF-256 S1
-- Remaining PF-256 drafts: 91 (inventory), 92 (multi-baker), 93 (passive batching), 94 (observed times). All design-stage, pending groom.
+- PF-256 design tasks awaiting sign-off: PF-268 (inventory), PF-269 (multi-baker), PF-270 (passive batching), PF-271 (observed times). Each spawned 4-6 follow-up implementation drafts (DRAFT-100..111).
 - DRAFT-96 (recently viewed), DRAFT-99 (cart reorder), DRAFT-33 — pending groom
 - Backlog tasks managed via backlog.md CLI
 
 ## Recent
 
+- PF-268/269/270/271: design wave for remaining PF-256 slices — ingredient inventory (S3); multi-baker shift mgmt (S8); passive-time batching solver (S8); observed step times + per-state worker capacity (S5/S8). Each design doc + ACs + spawned implementation drafts (12 new drafts total).
 - PF-261/262/263/264/265/266/267: streamlined backfill wave — D4 timer audit (6 fixes across 3 recipes); nutrition for 5 un-nutritioned recipes; cost.items refresh on 5 recipes (100% HEB-sourced); config.stats backfill on 7 recipes (3 new top-level groups: Cookies & Bars / Crackers & Snacks / Tarts & Pies); RecipeStats.itemsPerBatch field + 9 backfills; estimatedCost seed for lime-chantilly (only un-seeded); RecipeMeta throughput fields (prep_active_min, proof_passive_min, oven_occupancy_min, bake_min) on all 27 recipes
 - PF-256.1: `/production` route shipped — library grid (search + sort by most-baked + keyboard nav j/k/Enter//) + sticky cart sidebar (qty stepper, yield override via dbl-click, provenance per entry); hero thumbs from cook_log; scroll-isolated viewport; minimized header
 - PF-256.2: demo spike — 3 desktop layout demos (Trello/Cart/Dock) at `public/demo/production-*.html`; Cart pattern locked
