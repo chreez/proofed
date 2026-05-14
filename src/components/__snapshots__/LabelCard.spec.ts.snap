@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LabelCard > matches snapshot — full nutrition + multi-batch override 1`] = `
+"<article data-v-d9b287f6="" class="label-card" data-recipe-id="atk-cinnamon-buns-ultimate" data-entry-id="entry-1" data-testid="label-card">
+  <header data-v-d9b287f6="" class="label-header">
+    <h2 data-v-d9b287f6="" class="label-name">ATK Ultimate Cinnamon Buns</h2>
+    <div data-v-d9b287f6="" class="label-sub">2 batches · 20 rolls (custom)</div>
+    <div data-v-d9b287f6="" class="label-meta-row"><span data-v-d9b287f6="" class="label-date">May 12, 2026</span><span data-v-d9b287f6="" class="label-version">v1.2.0</span></div>
+  </header>
+  <section data-v-d9b287f6="" class="label-body">
+    <div data-v-d9b287f6="" class="label-allergens" data-testid="label-allergens"><span data-v-d9b287f6="" class="label-allergens-label">Contains:</span><span data-v-d9b287f6="" class="label-allergens-value">MILK, EGGS, WHEAT</span></div>
+    <div data-v-d9b287f6="" class="label-ingredients" data-testid="label-ingredients"><span data-v-d9b287f6="" class="label-ingredients-title">Ingredients:</span><span data-v-d9b287f6="" class="label-ingredients-list"><strong data-v-d9b287f6="">all-purpose flour</strong><span data-v-d9b287f6="">, </span><strong data-v-d9b287f6="">whole milk</strong><span data-v-d9b287f6="">, </span><strong data-v-d9b287f6="">unsalted butter</strong><span data-v-d9b287f6="">, </span><span data-v-d9b287f6="">salt</span><span data-v-d9b287f6="">, </span><strong data-v-d9b287f6="">large eggs</strong>
+      <!--v-if--></span>
+    </div>
+    <div data-v-d9b287f6="" class="label-nutrition" data-testid="label-nutrition">
+      <div data-v-d9b287f6="" class="label-nutrition-title">Nutrition Facts <span data-v-d9b287f6="" class="label-nutrition-sub">(per serving)</span></div>
+      <dl data-v-d9b287f6="" class="label-nutrition-grid">
+        <div data-v-d9b287f6="" class="label-nutrition-cell">
+          <dt data-v-d9b287f6="">Calories</dt>
+          <dd data-v-d9b287f6="">300</dd>
+        </div>
+        <div data-v-d9b287f6="" class="label-nutrition-cell">
+          <dt data-v-d9b287f6="">Fat</dt>
+          <dd data-v-d9b287f6="">12.5g</dd>
+        </div>
+        <div data-v-d9b287f6="" class="label-nutrition-cell">
+          <dt data-v-d9b287f6="">Carbs</dt>
+          <dd data-v-d9b287f6="">40g</dd>
+        </div>
+        <div data-v-d9b287f6="" class="label-nutrition-cell">
+          <dt data-v-d9b287f6="">Protein</dt>
+          <dd data-v-d9b287f6="">5g</dd>
+        </div>
+        <div data-v-d9b287f6="" class="label-nutrition-cell">
+          <dt data-v-d9b287f6="">Sodium</dt>
+          <dd data-v-d9b287f6="">200mg</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+  <footer data-v-d9b287f6="" class="label-footer">
+    <div data-v-d9b287f6="" class="label-brand"><span data-v-d9b287f6="" class="label-brand-name">proofed<span data-v-d9b287f6="" class="label-brand-dot">.</span></span></div><a data-v-d9b287f6="" href="/recipe/atk-cinnamon-buns-ultimate" class="label-qr" data-testid="label-qr"><img data-v-d9b287f6="" src="data:image/png;base64,FAKEQR" alt="Scan to open recipe" class="label-qr-img"></a>
+  </footer><!-- Hidden render target for qr-code-styling; never visible to user. -->
+  <div data-v-d9b287f6="" class="label-qr-target" aria-hidden="true"></div>
+</article>"
+`;
+
+exports[`LabelCard > matches snapshot — recipe missing nutrition 1`] = `
+"<article data-v-d9b287f6="" class="label-card" data-recipe-id="atk-cinnamon-buns-ultimate" data-entry-id="entry-1" data-testid="label-card">
+  <header data-v-d9b287f6="" class="label-header">
+    <h2 data-v-d9b287f6="" class="label-name">ATK Ultimate Cinnamon Buns</h2>
+    <div data-v-d9b287f6="" class="label-sub">1 batch · 8 rolls</div>
+    <div data-v-d9b287f6="" class="label-meta-row"><span data-v-d9b287f6="" class="label-date">May 12, 2026</span><span data-v-d9b287f6="" class="label-version">v1.2.0</span></div>
+  </header>
+  <section data-v-d9b287f6="" class="label-body">
+    <div data-v-d9b287f6="" class="label-allergens" data-testid="label-allergens"><span data-v-d9b287f6="" class="label-allergens-label">Contains:</span><span data-v-d9b287f6="" class="label-allergens-value">MILK, EGGS, WHEAT</span></div>
+    <div data-v-d9b287f6="" class="label-ingredients" data-testid="label-ingredients"><span data-v-d9b287f6="" class="label-ingredients-title">Ingredients:</span><span data-v-d9b287f6="" class="label-ingredients-list"><strong data-v-d9b287f6="">all-purpose flour</strong><span data-v-d9b287f6="">, </span><strong data-v-d9b287f6="">whole milk</strong><span data-v-d9b287f6="">, </span><strong data-v-d9b287f6="">unsalted butter</strong><span data-v-d9b287f6="">, </span><span data-v-d9b287f6="">salt</span><span data-v-d9b287f6="">, </span><strong data-v-d9b287f6="">large eggs</strong>
+      <!--v-if--></span>
+    </div>
+    <div data-v-d9b287f6="" class="label-nutrition label-nutrition-pending" data-testid="label-nutrition-pending"> Nutrition data pending </div>
+  </section>
+  <footer data-v-d9b287f6="" class="label-footer">
+    <div data-v-d9b287f6="" class="label-brand"><span data-v-d9b287f6="" class="label-brand-name">proofed<span data-v-d9b287f6="" class="label-brand-dot">.</span></span></div><a data-v-d9b287f6="" href="/recipe/atk-cinnamon-buns-ultimate" class="label-qr" data-testid="label-qr"><img data-v-d9b287f6="" src="data:image/png;base64,FAKEQR" alt="Scan to open recipe" class="label-qr-img"></a>
+  </footer><!-- Hidden render target for qr-code-styling; never visible to user. -->
+  <div data-v-d9b287f6="" class="label-qr-target" aria-hidden="true"></div>
+</article>"
+`;
