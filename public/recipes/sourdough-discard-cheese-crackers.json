@@ -13,8 +13,111 @@
   "config": {
     "early_check_percent": 0.8
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-05-12",
+      "summary": "Add nutrition data (USDA FoodData Central). PF-262.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mix Dough",
+          "ingredients": [
+            {
+              "id": "discard",
+              "name": "Sourdough Discard (unfed, 100% hydration)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents confirmed 200-230g; using 200g for sourdough-forward family"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents; provides structure and rollability"
+            },
+            {
+              "id": "sharp-cheddar",
+              "name": "Sharp Cheddar (block, fine-grated)",
+              "total": 170,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents; sharp cheddar (36-39% moisture) browns and crisps reliably"
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (softened)",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents confirmed 28-57g range; 40g balances richness and crispness"
+            },
+            {
+              "id": "smoked-paprika",
+              "name": "Smoked Paprika",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "3/4 agents; above 1 tsp risks eclipsing cheddar"
+            },
+            {
+              "id": "garlic-powder",
+              "name": "Garlic Powder",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "3/4 agents; rounds out savory profile"
+            },
+            {
+              "id": "black-pepper",
+              "name": "Black Pepper (coarse)",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "2/4 agents; visible flecks and bite"
+            },
+            {
+              "id": "cayenne",
+              "name": "Cayenne Pepper",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "3/4 agents; 1/4 tsp = noticeable warmth. Capsaicin stable at 350°F"
+            },
+            {
+              "id": "fine-salt",
+              "name": "Fine Salt",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents; sourdough tang demands salt to balance"
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Salt",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "4/4 agents; topping for texture and visual"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.0.0",
       "date": "2026-03-30",
@@ -507,7 +610,174 @@
       ]
     }
   ],
-  "nutrition": null,
+  "nutrition": {
+    "servings": 100,
+    "servingSize": "1 cracker",
+    "calculatedDate": "2026-05-14",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 1731.9,
+      "protein": 61.3,
+      "totalFat": 91.7,
+      "saturatedFat": 53.1,
+      "carbohydrates": 164.5,
+      "sugar": 2,
+      "fiber": 8,
+      "sodium": 3065.7
+    },
+    "perServing": {
+      "calories": 17.3,
+      "protein": 0.6,
+      "totalFat": 0.9,
+      "saturatedFat": 0.5,
+      "carbohydrates": 1.6,
+      "sugar": 0,
+      "fiber": 0.1,
+      "sodium": 30.7
+    },
+    "breakdown": [
+      {
+        "ingredientId": "discard",
+        "ingredientName": "Sourdough Discard (unfed, 100% hydration)",
+        "amount": 200,
+        "fdcId": 0,
+        "calories": 364,
+        "protein": 10.3,
+        "totalFat": 1,
+        "saturatedFat": 0.2,
+        "carbohydrates": 76.3,
+        "sugar": 0.3,
+        "fiber": 2.7,
+        "sodium": 6
+      },
+      {
+        "ingredientId": "ap-flour",
+        "ingredientName": "All-Purpose Flour",
+        "amount": 100,
+        "fdcId": 168894,
+        "calories": 364,
+        "protein": 10.3,
+        "totalFat": 1,
+        "saturatedFat": 0.2,
+        "carbohydrates": 76.3,
+        "sugar": 0.3,
+        "fiber": 2.7,
+        "sodium": 2
+      },
+      {
+        "ingredientId": "sharp-cheddar",
+        "ingredientName": "Sharp Cheddar (block, fine-grated)",
+        "amount": 170,
+        "fdcId": 173414,
+        "calories": 686.8,
+        "protein": 38.9,
+        "totalFat": 56.6,
+        "saturatedFat": 32.1,
+        "carbohydrates": 5.3,
+        "sugar": 0.8,
+        "fiber": 0,
+        "sodium": 1110.1
+      },
+      {
+        "ingredientId": "butter",
+        "ingredientName": "Unsalted Butter (softened)",
+        "amount": 40,
+        "fdcId": 173430,
+        "calories": 286.8,
+        "protein": 0.3,
+        "totalFat": 32.4,
+        "saturatedFat": 20.5,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 4.4
+      },
+      {
+        "ingredientId": "smoked-paprika",
+        "ingredientName": "Smoked Paprika",
+        "amount": 4,
+        "fdcId": 170924,
+        "calories": 11.3,
+        "protein": 0.6,
+        "totalFat": 0.5,
+        "saturatedFat": 0.1,
+        "carbohydrates": 2.2,
+        "sugar": 0.4,
+        "fiber": 1.4,
+        "sodium": 2.7
+      },
+      {
+        "ingredientId": "garlic-powder",
+        "ingredientName": "Garlic Powder",
+        "amount": 3,
+        "fdcId": 171325,
+        "calories": 9.9,
+        "protein": 0.5,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 2.2,
+        "sugar": 0.1,
+        "fiber": 0.3,
+        "sodium": 1.8
+      },
+      {
+        "ingredientId": "black-pepper",
+        "ingredientName": "Black Pepper (coarse)",
+        "amount": 3,
+        "fdcId": 170929,
+        "calories": 7.5,
+        "protein": 0.3,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 1.9,
+        "sugar": 0,
+        "fiber": 0.8,
+        "sodium": 0.6
+      },
+      {
+        "ingredientId": "cayenne",
+        "ingredientName": "Cayenne Pepper",
+        "amount": 0.5,
+        "fdcId": 170925,
+        "calories": 1.6,
+        "protein": 0.1,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 0.3,
+        "sugar": 0.1,
+        "fiber": 0.1,
+        "sodium": 0.2
+      },
+      {
+        "ingredientId": "fine-salt",
+        "ingredientName": "Fine Salt",
+        "amount": 3,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1162.7
+      },
+      {
+        "ingredientId": "flaky-salt",
+        "ingredientName": "Flaky Salt",
+        "amount": 2,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 775.2
+      }
+    ]
+  },
   "reheat": {
     "methods": [
       {

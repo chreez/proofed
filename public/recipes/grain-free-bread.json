@@ -20,8 +20,140 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-05-12",
+      "summary": "Add nutrition data (USDA FoodData Central). PF-262.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "almond_flour",
+              "name": "Blanched Almond Flour (superfine)",
+              "total": 168,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus — 3:1 almond-to-coconut ratio",
+              "confidence": "high",
+              "rationale": "Provides bulk and lighter texture. Must be blanched and superfine — almond meal is too coarse and heavy."
+            },
+            {
+              "id": "coconut_flour",
+              "name": "Coconut Flour",
+              "total": 56,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus — 3:1 almond-to-coconut ratio",
+              "confidence": "high",
+              "rationale": "Absorbs excess oil from almond flour, provides fiber. Contains 60.9% dietary fiber — absorbs 4-5x its weight in liquid."
+            },
+            {
+              "id": "psyllium_husk",
+              "name": "Psyllium Husk Powder",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PMC/ScienceDirect peer-reviewed research",
+              "confidence": "high",
+              "rationale": "The gluten mimic — forms elastic gel network, increases gas-holding capacity from 84% to 98.5%. Pre-hydration essential."
+            },
+            {
+              "id": "warm_water",
+              "name": "Warm Water",
+              "total": 90,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Psyllium hydration ratio research",
+              "confidence": "medium",
+              "rationale": "For psyllium pre-hydration. Warm water accelerates gel formation."
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs",
+              "total": 200,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "whites (whipped)",
+                  "amount": 132
+                },
+                {
+                  "label": "yolks (wet mix)",
+                  "amount": 68
+                }
+              ],
+              "sourcedFrom": "Cross-source consensus — primary structural protein",
+              "confidence": "high",
+              "rationale": "4 eggs separated. Whites provide mechanical leavening (6-8x volume). Yolks contribute flavor, color, and emulsification."
+            },
+            {
+              "id": "cream_of_tartar",
+              "name": "Cream of Tartar",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard egg white foam stabilization",
+              "confidence": "high",
+              "rationale": "Stabilizes egg white foam — without it, foam collapses after ~5 minutes."
+            },
+            {
+              "id": "baking_powder",
+              "name": "Baking Powder (double-acting)",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Section 6 research — double-acting preferred over baking soda alone",
+              "confidence": "high",
+              "rationale": "Releases CO2 in two phases (wet + heat). Combined with ACV for extra acid activation."
+            },
+            {
+              "id": "apple_cider_vinegar",
+              "name": "Apple Cider Vinegar",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Busby's Bakery, research synthesis",
+              "confidence": "high",
+              "rationale": "Activates leavening, weakens protein bonds for tender crumb, masks eggy flavor."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard baker's percentage adjusted for grain-free",
+              "confidence": "medium",
+              "rationale": "~1.3% of total flour weight. Enhances flavor and strengthens egg protein structure."
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (melted)",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Section 10 synthesis",
+              "confidence": "medium",
+              "rationale": "Minimal added fat — almond flour is already ~50% fat. Adds flavor and moisture."
+            },
+            {
+              "id": "xanthan_gum",
+              "name": "Xanthan Gum",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Section 7 — psyllium + xanthan combination approach",
+              "confidence": "medium",
+              "rationale": "Provides gas-trapping film alongside psyllium's elasticity. ATK says xanthan behaves most like gluten of all replacers."
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.1.0",
       "date": "2026-04-09",
@@ -814,7 +946,188 @@
       ]
     }
   ],
-  "nutrition": null,
+  "nutrition": {
+    "servings": 12,
+    "servingSize": "1 slice",
+    "calculatedDate": "2026-05-14",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 1702.8,
+      "protein": 70.3,
+      "totalFat": 133.2,
+      "saturatedFat": 33.6,
+      "carbohydrates": 86.1,
+      "sugar": 17.3,
+      "fiber": 51.6,
+      "sodium": 2562.5
+    },
+    "perServing": {
+      "calories": 141.9,
+      "protein": 5.9,
+      "totalFat": 11.1,
+      "saturatedFat": 2.8,
+      "carbohydrates": 7.2,
+      "sugar": 1.4,
+      "fiber": 4.3,
+      "sodium": 213.5
+    },
+    "breakdown": [
+      {
+        "ingredientId": "almond_flour",
+        "ingredientName": "Blanched Almond Flour (superfine)",
+        "amount": 168,
+        "fdcId": 170567,
+        "calories": 972.7,
+        "protein": 35.5,
+        "totalFat": 83.9,
+        "saturatedFat": 6.4,
+        "carbohydrates": 36.2,
+        "sugar": 7.3,
+        "fiber": 21,
+        "sodium": 1.7
+      },
+      {
+        "ingredientId": "coconut_flour",
+        "ingredientName": "Coconut Flour",
+        "amount": 56,
+        "fdcId": 2345997,
+        "calories": 224,
+        "protein": 9.3,
+        "totalFat": 7.5,
+        "saturatedFat": 6.5,
+        "carbohydrates": 33.6,
+        "sugar": 9.3,
+        "fiber": 18.6,
+        "sodium": 317.5
+      },
+      {
+        "ingredientId": "psyllium_husk",
+        "ingredientName": "Psyllium Husk Powder",
+        "amount": 14,
+        "fdcId": 0,
+        "calories": 9.9,
+        "protein": 0.2,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 11.9,
+        "sugar": 0,
+        "fiber": 11.2,
+        "sodium": 14
+      },
+      {
+        "ingredientId": "warm_water",
+        "ingredientName": "Warm Water",
+        "amount": 90,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3.6
+      },
+      {
+        "ingredientId": "eggs",
+        "ingredientName": "Large Eggs",
+        "amount": 200,
+        "fdcId": 171287,
+        "calories": 286,
+        "protein": 25.1,
+        "totalFat": 19,
+        "saturatedFat": 6.3,
+        "carbohydrates": 1.4,
+        "sugar": 0.7,
+        "fiber": 0,
+        "sodium": 284
+      },
+      {
+        "ingredientId": "cream_of_tartar",
+        "ingredientName": "Cream of Tartar",
+        "amount": 0.5,
+        "fdcId": 170173,
+        "calories": 1.3,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.3,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.3
+      },
+      {
+        "ingredientId": "baking_powder",
+        "ingredientName": "Baking Powder (double-acting)",
+        "amount": 7,
+        "fdcId": 171015,
+        "calories": 3.7,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 1.9,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 742
+      },
+      {
+        "ingredientId": "apple_cider_vinegar",
+        "ingredientName": "Apple Cider Vinegar",
+        "amount": 5,
+        "fdcId": 173469,
+        "calories": 1.1,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.3
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Fine Sea Salt",
+        "amount": 3,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1162.7
+      },
+      {
+        "ingredientId": "butter",
+        "ingredientName": "Unsalted Butter (melted)",
+        "amount": 28,
+        "fdcId": 173430,
+        "calories": 200.8,
+        "protein": 0.2,
+        "totalFat": 22.7,
+        "saturatedFat": 14.4,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3.1
+      },
+      {
+        "ingredientId": "xanthan_gum",
+        "ingredientName": "Xanthan Gum",
+        "amount": 1,
+        "fdcId": 0,
+        "calories": 3.3,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.8,
+        "sugar": 0,
+        "fiber": 0.8,
+        "sodium": 33.3
+      }
+    ]
+  },
   "reheat": {
     "methods": [
       {

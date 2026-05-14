@@ -20,8 +20,236 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.2.0",
   "change_log": [
+    {
+      "version": "v1.2.0",
+      "date": "2026-05-12",
+      "summary": "Add nutrition data (USDA FoodData Central). PF-262.",
+      "ingredients": [
+        {
+          "stageId": "ROAST",
+          "stageName": "Roast Garlic",
+          "ingredients": [
+            {
+              "id": "garlic",
+              "name": "Whole Garlic Head",
+              "total": 50,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "mashed into dough",
+                  "amount": 25
+                },
+                {
+                  "label": "pressed into dimples",
+                  "amount": 25
+                }
+              ],
+              "sourcedFrom": "Flavor optimization agent consensus",
+              "confidence": "high",
+              "rationale": "Roasted garlic is antifungal and mellows into sweet, buttery cloves — masks any eggy flavor"
+            },
+            {
+              "id": "olive-oil-roast",
+              "name": "Olive Oil (for roasting)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard roasted garlic technique",
+              "confidence": "high",
+              "rationale": "Minimal oil needed to prevent garlic from drying out"
+            }
+          ]
+        },
+        {
+          "stageId": "PREP",
+          "stageName": "Prep & Hydrate",
+          "ingredients": [
+            {
+              "id": "almond-flour",
+              "name": "Blanched Superfine Almond Flour",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "All 4 research agents",
+              "confidence": "high",
+              "rationale": "5:1 ratio with coconut flour — universal in grain-free bread science"
+            },
+            {
+              "id": "coconut-flour",
+              "name": "Coconut Flour",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "All 4 research agents",
+              "confidence": "high",
+              "rationale": "5:1 ratio with almond flour; absorbs 4-5x its weight in liquid"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Aluminum-Free Baking Powder",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Community intel + food science agents",
+              "confidence": "high",
+              "rationale": "Double-acting for reliable chemical leavening"
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent",
+              "confidence": "high",
+              "rationale": "Reacts with ACV for instant lift — never exceed 1/4 tsp to avoid soapy taste"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard bread ratio",
+              "confidence": "high",
+              "rationale": "~1.6% of flour weight"
+            },
+            {
+              "id": "rosemary",
+              "name": "Fresh Rosemary",
+              "total": 5,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "finely chopped into dough",
+                  "amount": 2
+                },
+                {
+                  "label": "whole leaves for dimples",
+                  "amount": 3
+                }
+              ],
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "high",
+              "rationale": "Antimicrobial herb — candida-safe and flavor-forward"
+            },
+            {
+              "id": "psyllium",
+              "name": "Psyllium Husk Powder",
+              "total": 25,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent — key finding",
+              "confidence": "high",
+              "rationale": "Forms gel network mimicking gluten. Increases gas-holding from 84% to 98%. Must be POWDER not whole husks"
+            },
+            {
+              "id": "warm-water",
+              "name": "Warm Water",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent",
+              "confidence": "high",
+              "rationale": "10:1 water-to-psyllium is too high at 250ml; 120ml tested ratio for focaccia density"
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Mix Batter",
+          "ingredients": [
+            {
+              "id": "eggs",
+              "name": "Large Eggs (separated)",
+              "total": 168,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "yolks (2 only)",
+                  "amount": 36
+                },
+                {
+                  "label": "whites (all 4)",
+                  "amount": 132
+                }
+              ],
+              "sourcedFrom": "Food science + community agents",
+              "confidence": "high",
+              "rationale": "2 yolks + 4 whites reduces eggy flavor while maximizing lift from whipped whites"
+            },
+            {
+              "id": "ghee",
+              "name": "Ghee (melted)",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "high",
+              "rationale": "Nutty, rich, high smoke point, essentially zero lactose — better flavor than coconut oil"
+            },
+            {
+              "id": "acv",
+              "name": "Apple Cider Vinegar",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent",
+              "confidence": "high",
+              "rationale": "Reacts with baking soda + prevents purple psyllium reaction"
+            },
+            {
+              "id": "cream-of-tartar",
+              "name": "Cream of Tartar",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent",
+              "confidence": "medium",
+              "rationale": "Stabilizes whipped egg whites for longer hold during folding"
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Shape & Top",
+          "ingredients": [
+            {
+              "id": "olive-oil-topping",
+              "name": "Extra Virgin Olive Oil (topping)",
+              "total": 45,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "high",
+              "rationale": "Generous EVOO is what makes focaccia — fruity, Mediterranean character"
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "high",
+              "rationale": "Visible crystals on top for texture and presentation"
+            },
+            {
+              "id": "black-pepper",
+              "name": "Black Pepper (cracked)",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "medium",
+              "rationale": "Optional finishing touch — to taste"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.1.0",
       "date": "2026-04-09",
@@ -1187,7 +1415,272 @@
       ]
     }
   ],
-  "nutrition": null,
+  "nutrition": {
+    "servings": 9,
+    "servingSize": "1 slice",
+    "calculatedDate": "2026-05-14",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 2023.5,
+      "protein": 61.8,
+      "totalFat": 173.5,
+      "saturatedFat": 38.8,
+      "carbohydrates": 93.1,
+      "sugar": 12.6,
+      "fiber": 50.9,
+      "sodium": 3930
+    },
+    "perServing": {
+      "calories": 224.8,
+      "protein": 6.9,
+      "totalFat": 19.3,
+      "saturatedFat": 4.3,
+      "carbohydrates": 10.3,
+      "sugar": 1.4,
+      "fiber": 5.7,
+      "sodium": 436.7
+    },
+    "breakdown": [
+      {
+        "ingredientId": "garlic",
+        "ingredientName": "Whole Garlic Head",
+        "amount": 50,
+        "fdcId": 169230,
+        "calories": 74.5,
+        "protein": 3.2,
+        "totalFat": 0.3,
+        "saturatedFat": 0,
+        "carbohydrates": 16.5,
+        "sugar": 0.5,
+        "fiber": 1.1,
+        "sodium": 8.5
+      },
+      {
+        "ingredientId": "olive-oil-roast",
+        "ingredientName": "Olive Oil (for roasting)",
+        "amount": 5,
+        "fdcId": 171413,
+        "calories": 44.2,
+        "protein": 0,
+        "totalFat": 5,
+        "saturatedFat": 0.7,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.1
+      },
+      {
+        "ingredientId": "almond-flour",
+        "ingredientName": "Blanched Superfine Almond Flour",
+        "amount": 150,
+        "fdcId": 170567,
+        "calories": 868.5,
+        "protein": 31.7,
+        "totalFat": 74.9,
+        "saturatedFat": 5.7,
+        "carbohydrates": 32.3,
+        "sugar": 6.5,
+        "fiber": 18.8,
+        "sodium": 1.5
+      },
+      {
+        "ingredientId": "coconut-flour",
+        "ingredientName": "Coconut Flour",
+        "amount": 30,
+        "fdcId": 2345997,
+        "calories": 120,
+        "protein": 5,
+        "totalFat": 4,
+        "saturatedFat": 3.5,
+        "carbohydrates": 18,
+        "sugar": 5,
+        "fiber": 10,
+        "sodium": 170.1
+      },
+      {
+        "ingredientId": "baking-powder",
+        "ingredientName": "Aluminum-Free Baking Powder",
+        "amount": 7,
+        "fdcId": 171015,
+        "calories": 3.7,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 1.9,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 742
+      },
+      {
+        "ingredientId": "baking-soda",
+        "ingredientName": "Baking Soda",
+        "amount": 1.5,
+        "fdcId": 0,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 410.4
+      },
+      {
+        "ingredientId": "fine-sea-salt",
+        "ingredientName": "Fine Sea Salt",
+        "amount": 3,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1162.7
+      },
+      {
+        "ingredientId": "rosemary",
+        "ingredientName": "Fresh Rosemary",
+        "amount": 5,
+        "fdcId": 169270,
+        "calories": 6.6,
+        "protein": 0.2,
+        "totalFat": 0.3,
+        "saturatedFat": 0.1,
+        "carbohydrates": 1,
+        "sugar": 0,
+        "fiber": 0.7,
+        "sodium": 1.3
+      },
+      {
+        "ingredientId": "psyllium",
+        "ingredientName": "Psyllium Husk Powder",
+        "amount": 25,
+        "fdcId": 0,
+        "calories": 17.8,
+        "protein": 0.4,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 21.3,
+        "sugar": 0,
+        "fiber": 20,
+        "sodium": 25
+      },
+      {
+        "ingredientId": "warm-water",
+        "ingredientName": "Warm Water",
+        "amount": 120,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 4.8
+      },
+      {
+        "ingredientId": "eggs",
+        "ingredientName": "Large Eggs (separated)",
+        "amount": 168,
+        "fdcId": 171287,
+        "calories": 240.2,
+        "protein": 21.1,
+        "totalFat": 16,
+        "saturatedFat": 5.3,
+        "carbohydrates": 1.2,
+        "sugar": 0.6,
+        "fiber": 0,
+        "sodium": 238.6
+      },
+      {
+        "ingredientId": "ghee",
+        "ingredientName": "Ghee (melted)",
+        "amount": 28,
+        "fdcId": 171413,
+        "calories": 245.3,
+        "protein": 0.1,
+        "totalFat": 27.9,
+        "saturatedFat": 17.3,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.6
+      },
+      {
+        "ingredientId": "acv",
+        "ingredientName": "Apple Cider Vinegar",
+        "amount": 5,
+        "fdcId": 173469,
+        "calories": 1.1,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.3
+      },
+      {
+        "ingredientId": "cream-of-tartar",
+        "ingredientName": "Cream of Tartar",
+        "amount": 0.5,
+        "fdcId": 170173,
+        "calories": 1.3,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.3,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.3
+      },
+      {
+        "ingredientId": "olive-oil-topping",
+        "ingredientName": "Extra Virgin Olive Oil (topping)",
+        "amount": 45,
+        "fdcId": 171413,
+        "calories": 397.8,
+        "protein": 0,
+        "totalFat": 45,
+        "saturatedFat": 6.2,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0.9
+      },
+      {
+        "ingredientId": "flaky-salt",
+        "ingredientName": "Flaky Sea Salt (Maldon)",
+        "amount": 3,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1162.7
+      },
+      {
+        "ingredientId": "black-pepper",
+        "ingredientName": "Black Pepper (cracked)",
+        "amount": 1,
+        "fdcId": 170929,
+        "calories": 2.5,
+        "protein": 0.1,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0.6,
+        "sugar": 0,
+        "fiber": 0.3,
+        "sodium": 0.2
+      }
+    ]
+  },
   "reheat": {
     "methods": [
       {

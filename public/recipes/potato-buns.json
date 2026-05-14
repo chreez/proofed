@@ -20,8 +20,120 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-05-12",
+      "summary": "Add nutrition data (USDA FoodData Central). PF-262.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Potato Prep & Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 450,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents — universal base flour",
+              "confidence": "high",
+              "rationale": "12-13% protein compensates for potato starch weakening gluten. Consensus across King Arthur, Weissman, Saffitz, Elise, Baking Sense, Andy Cooks."
+            },
+            {
+              "id": "russet_potato",
+              "name": "Russet Potato (1 medium, ~200g raw)",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents — ~27% baker's percentage",
+              "confidence": "high",
+              "rationale": "120g mashed = 27% of flour weight. Sweet spot from 15+ recipes (range: 20-35%). Russet preferred for starchy, smooth mash. Weight is after cooking and ricing."
+            },
+            {
+              "id": "whole_milk",
+              "name": "Whole Milk (warm, 43°C / 110°F)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 6/8 agents — primary liquid",
+              "confidence": "high",
+              "rationale": "Milk provides fat, protein (casein), lactose for browning. Warm to activate yeast. Potato water can substitute part of this."
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 70,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 55
+                },
+                {
+                  "label": "post-bake brush (melted)",
+                  "amount": 15
+                }
+              ],
+              "sourcedFrom": "Tier 1: 7/8 agents — 12% baker's percentage",
+              "confidence": "high",
+              "rationale": "55g in dough (12% of flour) for richness. 15g melted for post-bake brush — softens crust, adds sheen. Range across sources: 8-16%."
+            },
+            {
+              "id": "sugar",
+              "name": "Granulated Sugar",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents — 7% baker's percentage",
+              "confidence": "high",
+              "rationale": "7% = subtle sweetness for savory burger bun. Martin's uses 10-12% — push higher if you want that Martin's sweetness."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 9,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: universal — 2% baker's percentage",
+              "confidence": "high",
+              "rationale": "Standard 2% of flour weight. Well-established across all sources."
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents — 1.5% baker's percentage",
+              "confidence": "high",
+              "rationale": "1 standard packet. Instant preferred — mixes directly into dry ingredients, no proofing needed. SAF Red Label recommended."
+            },
+            {
+              "id": "eggs",
+              "name": "Eggs (1 whole + 1 extra yolk)",
+              "total": 68,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 2: 5/8 agents — Weissman's approach",
+              "confidence": "high",
+              "rationale": "1 whole egg (50g) for structure + 1 extra yolk (18g) for richness and natural lecithin. Martin's uses no eggs — the egg yolk here substitutes for their commercial emulsifiers."
+            },
+            {
+              "id": "neutral_oil",
+              "name": "Neutral Oil (for shaping)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Technique consensus",
+              "confidence": "medium",
+              "rationale": "Small amount for oiling glass bottom when pressing buns flat and oiling fermentation bowl. Not a flavor ingredient."
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.0.0",
       "date": "2026-04-14",
@@ -555,7 +667,160 @@
       ]
     }
   ],
-  "nutrition": null,
+  "nutrition": {
+    "servings": 8,
+    "servingSize": "1 bun",
+    "calculatedDate": "2026-05-14",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 2623.5,
+      "protein": 74.7,
+      "totalFat": 82.9,
+      "saturatedFat": 43.8,
+      "carbohydrates": 391.1,
+      "sugar": 42.5,
+      "fiber": 14.3,
+      "sodium": 3697.4
+    },
+    "perServing": {
+      "calories": 327.9,
+      "protein": 9.3,
+      "totalFat": 10.4,
+      "saturatedFat": 5.5,
+      "carbohydrates": 48.9,
+      "sugar": 5.3,
+      "fiber": 1.8,
+      "sodium": 462.2
+    },
+    "breakdown": [
+      {
+        "ingredientId": "bread_flour",
+        "ingredientName": "Bread Flour",
+        "amount": 450,
+        "fdcId": 168896,
+        "calories": 1624.5,
+        "protein": 53.9,
+        "totalFat": 7.5,
+        "saturatedFat": 1.1,
+        "carbohydrates": 326.4,
+        "sugar": 1.2,
+        "fiber": 10.8,
+        "sodium": 9
+      },
+      {
+        "ingredientId": "russet_potato",
+        "ingredientName": "Russet Potato (1 medium, ~200g raw)",
+        "amount": 120,
+        "fdcId": 170026,
+        "calories": 94.8,
+        "protein": 2.6,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 21.7,
+        "sugar": 1,
+        "fiber": 1.6,
+        "sodium": 6
+      },
+      {
+        "ingredientId": "whole_milk",
+        "ingredientName": "Whole Milk (warm, 43°C / 110°F)",
+        "amount": 200,
+        "fdcId": 171265,
+        "calories": 122,
+        "protein": 6.3,
+        "totalFat": 6.5,
+        "saturatedFat": 3.7,
+        "carbohydrates": 9.6,
+        "sugar": 10.1,
+        "fiber": 0,
+        "sodium": 86
+      },
+      {
+        "ingredientId": "butter",
+        "ingredientName": "Unsalted Butter",
+        "amount": 70,
+        "fdcId": 173430,
+        "calories": 501.9,
+        "protein": 0.6,
+        "totalFat": 56.8,
+        "saturatedFat": 36,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 7.7
+      },
+      {
+        "ingredientId": "sugar",
+        "ingredientName": "Granulated Sugar",
+        "amount": 30,
+        "fdcId": 169655,
+        "calories": 116.1,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 30,
+        "sugar": 29.9,
+        "fiber": 0,
+        "sodium": 0.3
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Fine Sea Salt",
+        "amount": 9,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3488.2
+      },
+      {
+        "ingredientId": "yeast",
+        "ingredientName": "Instant Yeast",
+        "amount": 7,
+        "fdcId": 175043,
+        "calories": 22.8,
+        "protein": 2.8,
+        "totalFat": 0.5,
+        "saturatedFat": 0.1,
+        "carbohydrates": 2.9,
+        "sugar": 0,
+        "fiber": 1.9,
+        "sodium": 3.6
+      },
+      {
+        "ingredientId": "eggs",
+        "ingredientName": "Eggs (1 whole + 1 extra yolk)",
+        "amount": 68,
+        "fdcId": 171287,
+        "calories": 97.2,
+        "protein": 8.5,
+        "totalFat": 6.5,
+        "saturatedFat": 2.1,
+        "carbohydrates": 0.5,
+        "sugar": 0.3,
+        "fiber": 0,
+        "sodium": 96.6
+      },
+      {
+        "ingredientId": "neutral_oil",
+        "ingredientName": "Neutral Oil (for shaping)",
+        "amount": 5,
+        "fdcId": 171411,
+        "calories": 44.2,
+        "protein": 0,
+        "totalFat": 5,
+        "saturatedFat": 0.8,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 0
+      }
+    ]
+  },
   "reheat": {
     "methods": [
       {

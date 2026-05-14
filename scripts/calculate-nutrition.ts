@@ -17,8 +17,16 @@ interface RecipeIngredient {
   unit: string
 }
 
+interface RecipeStats {
+  defaultYield: number
+  unit: string
+  servingsPerItem: number
+  servingUnit: string
+}
+
 interface RecipeJSON {
   meta: { yields: string }
+  config?: { stats?: RecipeStats | null }
   stages: { gather: { ingredients?: RecipeIngredient[] } | null }[]
   nutrition?: unknown
   [key: string]: unknown
@@ -123,7 +131,8 @@ function divideByServings(totals: NutrientTotals, servings: number): NutrientTot
 
 function parseServings(yields: string): { count: number; label: string } {
   // Strip approximate prefix (e.g., "~8 servings" → "8 servings")
-  const cleaned = yields.replace(/^~\s*/, '')
+  // Also strip trailing parenthetical notes (e.g., "100 crackers (2 sheet pans)" → "100 crackers")
+  const cleaned = yields.replace(/^~\s*/, '').replace(/\s*\(.+\)\s*$/, '').trim()
   // Handle range yields like "2–3 baguettes" or "6-8 servings" (en-dash or hyphen)
   const rangeMatch = cleaned.match(/^(\d+)\s*[–\-]\s*(\d+)\s+(.+)$/)
   if (rangeMatch) {
@@ -135,6 +144,21 @@ function parseServings(yields: string): { count: number; label: string } {
     throw new Error(`Cannot parse yields: "${yields}". Expected format: "8 buns" or "2–3 baguettes"`)
   }
   return { count: parseInt(match[1], 10), label: `1 ${match[2].replace(/s$/, '')}` }
+}
+
+/**
+ * Prefer config.stats (defaultYield × servingsPerItem) when available — it is
+ * the authoritative per-serving denominator used throughout the app. Falls
+ * back to parsing meta.yields when stats are absent.
+ */
+function resolveServings(recipe: RecipeJSON): { count: number; label: string } {
+  const stats = recipe.config?.stats
+  if (stats && stats.defaultYield > 0 && stats.servingsPerItem > 0) {
+    const count = stats.defaultYield * stats.servingsPerItem
+    const unit = stats.servingUnit.replace(/s$/, '')
+    return { count, label: `1 ${unit}` }
+  }
+  return parseServings(recipe.meta.yields)
 }
 
 function main(): void {
@@ -150,8 +174,8 @@ function main(): void {
   console.log(`\nReading: ${filePath}`)
   const recipe: RecipeJSON = JSON.parse(readFileSync(filePath, 'utf-8'))
 
-  // Parse servings from yields
-  const { count: servings, label: servingSize } = parseServings(recipe.meta.yields)
+  // Resolve servings: prefer config.stats, fall back to yields parsing
+  const { count: servings, label: servingSize } = resolveServings(recipe)
   console.log(`Servings: ${servings} (${servingSize})`)
 
   // Collect all ingredients from all stages

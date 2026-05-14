@@ -21,8 +21,106 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.3.1",
+  "version": "v1.4.0",
   "change_log": [
+    {
+      "version": "v1.4.0",
+      "date": "2026-05-12",
+      "summary": "Add nutrition data (USDA FoodData Central). PF-262.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F"
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.3.1",
       "date": "2026-05-12",
@@ -1110,7 +1208,174 @@
       ]
     }
   ],
-  "nutrition": null,
+  "nutrition": {
+    "servings": 16,
+    "servingSize": "1 slice",
+    "calculatedDate": "2026-05-14",
+    "dataSource": "USDA FoodData Central",
+    "totals": {
+      "calories": 3863.5,
+      "protein": 200.1,
+      "totalFat": 165.6,
+      "saturatedFat": 78.2,
+      "carbohydrates": 379.5,
+      "sugar": 13.7,
+      "fiber": 15,
+      "sodium": 9484.1
+    },
+    "perServing": {
+      "calories": 241.5,
+      "protein": 12.5,
+      "totalFat": 10.4,
+      "saturatedFat": 4.9,
+      "carbohydrates": 23.7,
+      "sugar": 0.9,
+      "fiber": 0.9,
+      "sodium": 592.8
+    },
+    "breakdown": [
+      {
+        "ingredientId": "bread_flour",
+        "ingredientName": "Bread Flour",
+        "amount": 413,
+        "fdcId": 168896,
+        "calories": 1490.9,
+        "protein": 49.5,
+        "totalFat": 6.9,
+        "saturatedFat": 1,
+        "carbohydrates": 299.5,
+        "sugar": 1.1,
+        "fiber": 9.9,
+        "sodium": 8.3
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 238,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 9.5
+      },
+      {
+        "ingredientId": "sourdough_starter",
+        "ingredientName": "Sourdough Starter (100% Hydration)",
+        "amount": 100,
+        "fdcId": 0,
+        "calories": 182,
+        "protein": 5.2,
+        "totalFat": 0.5,
+        "saturatedFat": 0.1,
+        "carbohydrates": 38.2,
+        "sugar": 0.1,
+        "fiber": 1.4,
+        "sodium": 3
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Salt",
+        "amount": 8,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3100.6
+      },
+      {
+        "ingredientId": "diastatic_malt",
+        "ingredientName": "Diastatic Malt Powder",
+        "amount": 4,
+        "fdcId": 0,
+        "calories": 14.4,
+        "protein": 0.4,
+        "totalFat": 0.1,
+        "saturatedFat": 0,
+        "carbohydrates": 3.1,
+        "sugar": 0.2,
+        "fiber": 0.2,
+        "sodium": 0.2
+      },
+      {
+        "ingredientId": "cornmeal",
+        "ingredientName": "Cornmeal",
+        "amount": 13,
+        "fdcId": 168876,
+        "calories": 47.1,
+        "protein": 1.1,
+        "totalFat": 0.5,
+        "saturatedFat": 0.1,
+        "carbohydrates": 10,
+        "sugar": 0.2,
+        "fiber": 0.9,
+        "sodium": 0.9
+      },
+      {
+        "ingredientId": "san_marzano_sauce",
+        "ingredientName": "Raw San Marzano Tomato Sauce",
+        "amount": 175,
+        "fdcId": 170506,
+        "calories": 50.8,
+        "protein": 2.3,
+        "totalFat": 0.4,
+        "saturatedFat": 0,
+        "carbohydrates": 10.2,
+        "sugar": 6.2,
+        "fiber": 2.6,
+        "sodium": 444.5
+      },
+      {
+        "ingredientId": "mozzarella",
+        "ingredientName": "Low-Moisture Mozzarella",
+        "amount": 350,
+        "fdcId": 170892,
+        "calories": 1057,
+        "protein": 88,
+        "totalFat": 70.1,
+        "saturatedFat": 40.4,
+        "carbohydrates": 12.3,
+        "sugar": 3.5,
+        "fiber": 0,
+        "sodium": 2194.5
+      },
+      {
+        "ingredientId": "hard_cheese",
+        "ingredientName": "Parmigiano-Reggiano or Pecorino Romano",
+        "amount": 40,
+        "fdcId": 173417,
+        "calories": 156.8,
+        "protein": 14.3,
+        "totalFat": 10.3,
+        "saturatedFat": 6.6,
+        "carbohydrates": 1.3,
+        "sugar": 0.3,
+        "fiber": 0,
+        "sodium": 640.8
+      },
+      {
+        "ingredientId": "pepperoni",
+        "ingredientName": "Pepperoni",
+        "amount": 175,
+        "fdcId": 174580,
+        "calories": 864.5,
+        "protein": 39.3,
+        "totalFat": 76.8,
+        "saturatedFat": 30,
+        "carbohydrates": 4.9,
+        "sugar": 2.1,
+        "fiber": 0,
+        "sodium": 3081.8
+      }
+    ]
+  },
   "research": {
     "sources": [
       {
