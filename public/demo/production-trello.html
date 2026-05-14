@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>proofed. — Production (Trello-style) — PF-256.2 demo A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --stone-50:  #faf9f7;
+    --stone-100: #f5f3ef;
+    --stone-200: #e8e4dc;
+    --stone-300: #d4cdc1;
+    --stone-400: #b8ad9c;
+    --stone-500: #9c8e78;
+    --stone-600: #7d6e58;
+    --stone-700: #5f5243;
+    --ink:       #1a1816;
+    --accent:    #a65d45;
+    --accent-tint: rgba(166, 93, 69, 0.12);
+    --danger:    #b8442e;
+    --danger-tint: rgba(184, 68, 46, 0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--stone-100); color: var(--ink); }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  header { margin-bottom: 16px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+  .brand .dot { color: var(--accent); }
+  .subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--stone-600);
+  }
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    border: 1px solid var(--stone-400);
+    padding: 1px 6px;
+    background: var(--stone-50);
+    color: var(--stone-700);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 6px 10px;
+    border: 2px solid var(--ink);
+    background: var(--stone-200);
+    color: var(--ink);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .btn:hover { background: var(--stone-300); }
+  .btn-accent { background: var(--accent); color: var(--stone-100); border-color: var(--accent); }
+  .btn-ghost { background: transparent; }
+
+  /* Layout: two columns */
+  .board {
+    display: grid;
+    grid-template-columns: 45fr 55fr;
+    gap: 16px;
+    min-height: 600px;
+  }
+  .col {
+    background: var(--stone-50);
+    border: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .col-head {
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--ink);
+    background: var(--stone-200);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .col-head h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--stone-700);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .col-head .count {
+    background: var(--ink);
+    color: var(--stone-100);
+    padding: 1px 8px;
+    font-size: 10px;
+  }
+  .col-body {
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 480px;
+  }
+
+  /* Library search + chips */
+  .search-input {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    border: 2px solid var(--ink);
+    padding: 6px 10px;
+    background: var(--stone-50);
+    color: var(--ink);
+  }
+  .search-input:focus { outline: none; background: white; }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border: 1px solid var(--stone-500);
+    background: var(--stone-50);
+    cursor: pointer;
+    color: var(--stone-700);
+  }
+  .chip.active {
+    background: var(--ink);
+    color: var(--stone-100);
+    border-color: var(--ink);
+  }
+
+  /* Library cards */
+  .lib-card {
+    background: white;
+    border: 2px solid var(--stone-400);
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    cursor: grab;
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    transition: transform 0.1s, border-color 0.1s;
+  }
+  .lib-card:hover { border-color: var(--ink); transform: translateX(2px); }
+  .lib-card.dragging { opacity: 0.4; }
+  .lib-card .name {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  .lib-card .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--stone-600);
+  }
+  .lib-card .grip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    color: var(--stone-500);
+    cursor: grab;
+    user-select: none;
+  }
+
+  /* Hero thumbnails — shared photo + placeholder rules */
+  .thumb {
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    display: block;
+    background: var(--stone-300);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .thumb-placeholder {
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    background: var(--stone-300);
+    color: var(--stone-600);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .thumb-lib { width: 56px; height: 56px; }
+  .thumb-lib.thumb-placeholder { font-size: 18px; }
+  .thumb-queue { width: 40px; height: 40px; }
+  .thumb-queue.thumb-placeholder { font-size: 14px; }
+
+  /* Queue */
+  .queue-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--stone-600);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .queue-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 100%;
+  }
+  .queue-list.empty-drop {
+    border: 2px dashed var(--stone-400);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stone-600);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-align: center;
+    padding: 24px;
+  }
+  .queue-list.empty-drop.drag-over,
+  .col-body.drag-over .queue-list.empty-drop {
+    border-color: var(--accent);
+    background: var(--accent-tint);
+    color: var(--accent);
+  }
+  .queue-item {
+    background: white;
+    border: 2px solid var(--ink);
+    padding: 10px 12px;
+    display: grid;
+    grid-template-columns: 40px 1fr auto auto auto;
+    gap: 10px;
+    align-items: center;
+    cursor: grab;
+    position: relative;
+  }
+  .queue-item.dragging { opacity: 0.4; }
+  .queue-item.drop-before { box-shadow: 0 -4px 0 0 var(--accent); }
+  .queue-item.drop-after  { box-shadow: 0 4px 0 0 var(--accent); }
+  .queue-item .name {
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .queue-item .name .grip { color: var(--stone-400); font-family: 'JetBrains Mono', monospace; }
+  .queue-item .yields {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--stone-600);
+    margin-top: 2px;
+  }
+  .qty {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--ink);
+    background: var(--stone-100);
+  }
+  .qty button {
+    width: 26px;
+    height: 26px;
+    border: none;
+    background: transparent;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .qty button:hover { background: var(--stone-300); }
+  .qty input {
+    width: 36px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--stone-400);
+    border-right: 1px solid var(--stone-400);
+    background: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 4px 0;
+    -moz-appearance: textfield;
+  }
+  .qty input::-webkit-outer-spin-button,
+  .qty input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+  .unit-input {
+    width: 80px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    border: 2px solid var(--stone-400);
+    padding: 4px 6px;
+    background: var(--stone-50);
+  }
+  .row-x {
+    width: 26px;
+    height: 26px;
+    border: 2px solid var(--ink);
+    background: var(--stone-200);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .row-x:hover { background: var(--danger-tint); border-color: var(--danger); color: var(--danger); }
+
+  /* Tradeoffs */
+  .tradeoffs {
+    margin-top: 24px;
+    background: white;
+    border: 2px solid var(--ink);
+    padding: 16px;
+    max-width: 720px;
+  }
+  .tradeoffs h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+  .tradeoffs dl {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 6px 12px;
+    font-size: 13px;
+  }
+  .tradeoffs dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--stone-700);
+  }
+
+  footer {
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--stone-400);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--stone-600);
+  }
+  footer a { color: var(--accent); }
+
+  /* Mobile fallback — review mode */
+  @media (max-width: 640px) {
+    body { padding: 16px; }
+    .board { grid-template-columns: 1fr; }
+    .col.library-col { display: none; }
+    .col-body { min-height: 0; }
+    .mobile-note {
+      background: var(--accent-tint);
+      border: 2px solid var(--accent);
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+    }
+    .toolbar .btn:not(.btn-accent):not(#empty-toggle) { display: none; }
+    /* Queue thumbs shrink on mobile to keep row controls reachable */
+    .queue-item { grid-template-columns: 32px 1fr auto auto auto; gap: 6px; }
+    .queue-item .unit-input { width: 56px; }
+    .thumb-queue { width: 32px; height: 32px; }
+  }
+  @media (min-width: 641px) { .mobile-note { display: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">proofed<span class="dot">.</span> production</div>
+  <div class="subtitle">PF-256.2 demo A &middot; two-column trello-style <span class="tag">throwaway</span></div>
+</header>
+
+<div class="mobile-note">Mobile = review mode only. Composition (library + drag) is desktop-only. Queue stays visible.</div>
+
+<div class="toolbar">
+  <button class="btn btn-accent" id="add-btn" title="Adds a sample bake">+ Quick add bake</button>
+  <button class="btn" id="empty-toggle">Toggle empty state</button>
+  <button class="btn btn-ghost" id="clear-btn">Clear queue</button>
+  <span class="subtitle" style="margin-left: auto;">Drag library → queue · drag within queue to reorder</span>
+</div>
+
+<div class="board">
+  <!-- LIBRARY -->
+  <div class="col library-col">
+    <div class="col-head">
+      <h2>Recipe library <span class="count" id="lib-count">12</span></h2>
+      <input type="text" class="search-input" id="search" placeholder="Search recipes…">
+      <div class="chips" id="chips">
+        <button class="chip active" data-cat="all">all</button>
+        <button class="chip" data-cat="bread">bread</button>
+        <button class="chip" data-cat="pastry">pastry</button>
+        <button class="chip" data-cat="pizza">pizza</button>
+        <button class="chip" data-cat="sweet">sweet</button>
+        <button class="chip" data-cat="savory">savory</button>
+      </div>
+    </div>
+    <div class="col-body" id="lib-body"></div>
+  </div>
+
+  <!-- QUEUE -->
+  <div class="col" id="queue-col">
+    <div class="col-head">
+      <h2><span><span id="queue-count">3</span> bakes queued</span> <span class="queue-meta" id="queue-updated">last updated 12:42p</span></h2>
+    </div>
+    <div class="col-body" id="queue-body">
+      <ul class="queue-list" id="queue-list"></ul>
+    </div>
+  </div>
+</div>
+
+<div class="tradeoffs">
+  <h3>Tradeoffs</h3>
+  <dl>
+    <dt>Best for</dt>
+    <dd>Power users building a queue from a known shortlist; high-density compose sessions where library + queue need parallel scanning.</dd>
+    <dt>Worst for</dt>
+    <dd>Touch-only users; first-time users who don't know what a queue is yet. Drag affordance has a learning curve.</dd>
+    <dt>Mobile fallback</dt>
+    <dd>Library column hides; queue becomes the entire screen as a read-only review list. Add/edit moves to recipe pages.</dd>
+  </dl>
+</div>
+
+<footer>
+  Demo of PF-256.2 &middot; pair with <a href="/demo/production-cart.html">cart</a> + <a href="/demo/production-dock.html">dock</a> &middot; <a href="/demo/production-options.html">back to options</a>
+</footer>
+
+<script>
+  // ────────────────────────────────────────────────
+  // Realistic recipe data (sourced from public/recipes/*.json)
+  // ────────────────────────────────────────────────
+  // hero = last photo in latest cook_log entry with photos (per CLAUDE.md § Hero Image Selection)
+  // initials = fallback label for recipes with no processed bake photos
+  const LIBRARY = [
+    { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', yields: '8 buns', cat: 'sweet', hero: '/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-top-400w.webp', initials: 'AC' },
+    { id: 'simple-sourdough', name: 'Sourdough Bread (70% Hydration)', yields: '2 loaves (~800g)', cat: 'bread', hero: '/images/simple-sourdough/2026-04-28/loaf2-ear-closeup-400w.webp', initials: 'SS' },
+    { id: 'tartine-lemon-cream-tart', name: 'Tartine Lemon Cream Tart', yields: '12 tartlets (10cm)', cat: 'pastry', hero: '/images/tartine-lemon-cream-tart/2026-05-13/img-7556-400w.webp', initials: 'TL' },
+    { id: 'sourdough-chocolate-chip-cookies', name: 'Sourdough Chocolate Chip Cookies', yields: '~22-24 cookies', cat: 'sweet', hero: null, initials: 'SC' },
+    { id: 'jalapeno-cheddar-sourdough', name: 'Jalapeño Cheddar Sourdough', yields: '2 loaves (~730g)', cat: 'bread', hero: '/images/jalapeno-cheddar-sourdough/2026-05-13/08-dutch-oven-final-400w.webp', initials: 'JC' },
+    { id: 'tartine-baguette', name: 'Tartine Baguette', yields: '2-3 baguettes', cat: 'bread', hero: null, initials: 'TB' },
+    { id: 'ny-style-pizza', name: 'NY-Style Pizza Dough', yields: '2 pizzas', cat: 'pizza', hero: '/images/ny-style-pizza/2026-02-20/pepperoni-pizza-sliced-vsco-400w.webp', initials: 'NY' },
+    { id: 'tartine-rugelach', name: 'Tartine Rugelach', yields: '16 rugelach', cat: 'pastry', hero: '/images/tartine-rugelach/2026-05-12/img-7542-400w.webp', initials: 'TR' },
+    { id: 'sourdough-cinnamon-buns', name: 'Sourdough Cinnamon Buns', yields: '8 buns', cat: 'sweet', hero: '/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-wide-400w.webp', initials: 'SC' },
+    { id: 'gochujang-garlic-buns', name: 'Gochujang Garlic Buns', yields: '12 buns', cat: 'savory', hero: '/images/gochujang-garlic-buns/2026-04-25/finished-swirl-buns-in-tin-400w.webp', initials: 'GG' },
+    { id: 'potato-buns', name: 'Potato Buns (Smashburgers)', yields: '8 buns', cat: 'savory', hero: null, initials: 'PB' },
+    { id: 'carrot-cake', name: 'Carrot Cake w/ Brown Butter Frosting', yields: '12-16 slices', cat: 'sweet', hero: null, initials: 'CC' },
+  ];
+
+  // Quick lookup for hero/initials in queue items (queue carries id; library is source of truth for photo)
+  const HERO_MAP = Object.fromEntries(LIBRARY.map(r => [r.id, { hero: r.hero, initials: r.initials }]));
+
+  function thumbHTML(id, sizeClass) {
+    const info = HERO_MAP[id] || { hero: null, initials: '??' };
+    if (info.hero) {
+      return `<img class="thumb ${sizeClass}" src="${info.hero}" alt="" loading="lazy">`;
+    }
+    return `<div class="thumb-placeholder ${sizeClass}" aria-hidden="true">${info.initials}</div>`;
+  }
+
+  // ────────────────────────────────────────────────
+  // Initial queue (populated state) + empty toggle
+  // ────────────────────────────────────────────────
+  let queue = [
+    { id: 'jalapeno-cheddar-sourdough', name: 'Jalapeño Cheddar Sourdough', yields: '2 loaves (~730g)', qty: 2, unit: 'loaves' },
+    { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', yields: '8 buns', qty: 8, unit: 'buns' },
+    { id: 'sourdough-chocolate-chip-cookies', name: 'SD Chocolate Chip Cookies', yields: '~22-24 cookies', qty: 24, unit: 'cookies' },
+  ];
+
+  let activeCat = 'all';
+  let searchTerm = '';
+  let isEmpty = false;
+
+  // ────────────────────────────────────────────────
+  // Render library
+  // ────────────────────────────────────────────────
+  function renderLibrary() {
+    const body = document.getElementById('lib-body');
+    const filtered = LIBRARY.filter(r => {
+      const matchesCat = activeCat === 'all' || r.cat === activeCat;
+      const matchesSearch = !searchTerm || r.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesCat && matchesSearch;
+    });
+    document.getElementById('lib-count').textContent = filtered.length;
+    body.innerHTML = filtered.map(r => `
+      <div class="lib-card" draggable="true" data-id="${r.id}" data-name="${r.name}" data-yields="${r.yields}">
+        ${thumbHTML(r.id, 'thumb-lib')}
+        <div>
+          <div class="name">${r.name}</div>
+          <div class="meta">${r.yields} &middot; <span style="color: var(--stone-500);">${r.cat}</span></div>
+        </div>
+        <div class="grip" title="Drag to queue">≣</div>
+      </div>
+    `).join('');
+    wireLibraryDrag();
+  }
+
+  // ────────────────────────────────────────────────
+  // Render queue
+  // ────────────────────────────────────────────────
+  function renderQueue() {
+    const list = document.getElementById('queue-list');
+    document.getElementById('queue-count').textContent = isEmpty ? 0 : queue.length;
+    if (isEmpty || queue.length === 0) {
+      list.className = 'queue-list empty-drop';
+      list.innerHTML = '↤ Drag a recipe here to start your production queue';
+    } else {
+      list.className = 'queue-list';
+      list.innerHTML = queue.map((q, i) => `
+        <li class="queue-item" draggable="true" data-idx="${i}">
+          ${thumbHTML(q.id, 'thumb-queue')}
+          <div>
+            <div class="name"><span class="grip">≣</span> ${q.name}</div>
+            <div class="yields">recipe makes: ${q.yields}</div>
+          </div>
+          <div class="qty">
+            <button data-act="dec" data-idx="${i}">−</button>
+            <input type="number" min="1" value="${q.qty}" data-idx="${i}" class="qty-input">
+            <button data-act="inc" data-idx="${i}">+</button>
+          </div>
+          <input type="text" class="unit-input" value="${q.unit}" data-idx="${i}" placeholder="unit">
+          <button class="row-x" data-act="rm" data-idx="${i}" title="Remove">×</button>
+        </li>
+      `).join('');
+    }
+    wireQueueInteractions();
+  }
+
+  // ────────────────────────────────────────────────
+  // Library drag-out
+  // ────────────────────────────────────────────────
+  function wireLibraryDrag() {
+    document.querySelectorAll('.lib-card').forEach(card => {
+      card.addEventListener('dragstart', (e) => {
+        card.classList.add('dragging');
+        e.dataTransfer.setData('application/x-library-item', JSON.stringify({
+          id: card.dataset.id,
+          name: card.dataset.name,
+          yields: card.dataset.yields,
+        }));
+        e.dataTransfer.effectAllowed = 'copy';
+      });
+      card.addEventListener('dragend', () => card.classList.remove('dragging'));
+    });
+  }
+
+  // ────────────────────────────────────────────────
+  // Queue interactions: qty / unit / remove / reorder
+  // ────────────────────────────────────────────────
+  function wireQueueInteractions() {
+    document.querySelectorAll('[data-act="inc"]').forEach(b => b.onclick = (e) => {
+      const i = +e.target.dataset.idx; queue[i].qty++; touchUpdated(); renderQueue();
+    });
+    document.querySelectorAll('[data-act="dec"]').forEach(b => b.onclick = (e) => {
+      const i = +e.target.dataset.idx; queue[i].qty = Math.max(1, queue[i].qty - 1); touchUpdated(); renderQueue();
+    });
+    document.querySelectorAll('.qty-input').forEach(inp => inp.onchange = (e) => {
+      const i = +e.target.dataset.idx; queue[i].qty = Math.max(1, parseInt(e.target.value) || 1); touchUpdated(); renderQueue();
+    });
+    document.querySelectorAll('.unit-input').forEach(inp => inp.oninput = (e) => {
+      const i = +e.target.dataset.idx; queue[i].unit = e.target.value; touchUpdated();
+    });
+    document.querySelectorAll('[data-act="rm"]').forEach(b => b.onclick = (e) => {
+      const i = +e.target.dataset.idx; queue.splice(i, 1); touchUpdated(); renderQueue();
+    });
+
+    // Sortable rows
+    document.querySelectorAll('.queue-item').forEach(item => {
+      item.addEventListener('dragstart', (e) => {
+        item.classList.add('dragging');
+        e.dataTransfer.setData('application/x-queue-idx', item.dataset.idx);
+        e.dataTransfer.effectAllowed = 'move';
+      });
+      item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
+        document.querySelectorAll('.queue-item').forEach(i => {
+          i.classList.remove('drop-before', 'drop-after');
+        });
+      });
+      item.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        const rect = item.getBoundingClientRect();
+        const before = (e.clientY - rect.top) < rect.height / 2;
+        document.querySelectorAll('.queue-item').forEach(i => i.classList.remove('drop-before', 'drop-after'));
+        item.classList.add(before ? 'drop-before' : 'drop-after');
+      });
+      item.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const fromIdx = e.dataTransfer.getData('application/x-queue-idx');
+        if (fromIdx === '') return;
+        const toIdx = +item.dataset.idx;
+        const rect = item.getBoundingClientRect();
+        const before = (e.clientY - rect.top) < rect.height / 2;
+        const insertAt = before ? toIdx : toIdx + 1;
+        moveItem(+fromIdx, insertAt);
+      });
+    });
+  }
+
+  function moveItem(from, to) {
+    if (from === to || from + 1 === to) return;
+    const [item] = queue.splice(from, 1);
+    const adjustedTo = from < to ? to - 1 : to;
+    queue.splice(adjustedTo, 0, item);
+    touchUpdated();
+    renderQueue();
+  }
+
+  // ────────────────────────────────────────────────
+  // Queue body drop (drop library items + empty drop)
+  // ────────────────────────────────────────────────
+  const queueBody = document.getElementById('queue-body');
+  queueBody.addEventListener('dragover', (e) => {
+    if (e.dataTransfer.types.includes('application/x-library-item') ||
+        e.dataTransfer.types.includes('application/x-queue-idx')) {
+      e.preventDefault();
+      queueBody.classList.add('drag-over');
+    }
+  });
+  queueBody.addEventListener('dragleave', (e) => {
+    if (e.target === queueBody) queueBody.classList.remove('drag-over');
+  });
+  queueBody.addEventListener('drop', (e) => {
+    queueBody.classList.remove('drag-over');
+    const libData = e.dataTransfer.getData('application/x-library-item');
+    if (libData) {
+      e.preventDefault();
+      const r = JSON.parse(libData);
+      isEmpty = false;
+      queue.push({ id: r.id, name: r.name, yields: r.yields, qty: 1, unit: '' });
+      touchUpdated();
+      renderQueue();
+    }
+  });
+
+  // Empty-state drop area
+  document.getElementById('queue-list').addEventListener('dragover', (e) => {
+    if (e.dataTransfer.types.includes('application/x-library-item')) {
+      e.preventDefault();
+    }
+  });
+
+  // ────────────────────────────────────────────────
+  // Toolbar
+  // ────────────────────────────────────────────────
+  document.getElementById('add-btn').onclick = () => {
+    const sample = LIBRARY[Math.floor(Math.random() * LIBRARY.length)];
+    isEmpty = false;
+    queue.push({ id: sample.id, name: sample.name, yields: sample.yields, qty: 1, unit: '' });
+    touchUpdated();
+    renderQueue();
+  };
+  document.getElementById('empty-toggle').onclick = () => {
+    isEmpty = !isEmpty;
+    renderQueue();
+  };
+  document.getElementById('clear-btn').onclick = () => {
+    if (confirm('Clear the queue?')) { queue = []; touchUpdated(); renderQueue(); }
+  };
+
+  // Chips + search
+  document.querySelectorAll('.chip').forEach(c => c.onclick = () => {
+    document.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    activeCat = c.dataset.cat;
+    renderLibrary();
+  });
+  document.getElementById('search').oninput = (e) => { searchTerm = e.target.value; renderLibrary(); };
+
+  // ────────────────────────────────────────────────
+  // Last updated stamp
+  // ────────────────────────────────────────────────
+  function touchUpdated() {
+    const d = new Date();
+    let h = d.getHours();
+    const m = String(d.getMinutes()).padStart(2, '0');
+    const ap = h >= 12 ? 'p' : 'a';
+    h = h % 12 || 12;
+    document.getElementById('queue-updated').textContent = `last updated ${h}:${m}${ap}`;
+  }
+
+  // ────────────────────────────────────────────────
+  // Init
+  // ────────────────────────────────────────────────
+  renderLibrary();
+  renderQueue();
+  touchUpdated();
+</script>
+
+</body>
+</html>

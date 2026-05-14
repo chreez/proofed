@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>proofed. — Production (Cart sidebar) — PF-256.2 demo B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --stone-50:  #faf9f7;
+    --stone-100: #f5f3ef;
+    --stone-200: #e8e4dc;
+    --stone-300: #d4cdc1;
+    --stone-400: #b8ad9c;
+    --stone-500: #9c8e78;
+    --stone-600: #7d6e58;
+    --stone-700: #5f5243;
+    --ink:       #1a1816;
+    --accent:    #a65d45;
+    --accent-tint: rgba(166, 93, 69, 0.12);
+    --danger:    #b8442e;
+    --danger-tint: rgba(184, 68, 46, 0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--stone-100); color: var(--ink); }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ────────────────────────────────────────────────
+     Sticky cart sidebar — fixed right column
+     ──────────────────────────────────────────────── */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 0;
+    min-height: 100vh;
+  }
+  .layout.collapsed { grid-template-columns: 1fr 56px; }
+
+  main { padding: 24px; }
+  aside.cart {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    background: var(--stone-50);
+    border-left: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  header { margin-bottom: 16px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .brand .dot { color: var(--accent); }
+  .subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--stone-600);
+  }
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    border: 1px solid var(--stone-400);
+    padding: 1px 6px;
+    background: var(--stone-50);
+    color: var(--stone-700);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 6px 10px;
+    border: 2px solid var(--ink);
+    background: var(--stone-200);
+    color: var(--ink);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .btn:hover { background: var(--stone-300); }
+  .btn-accent { background: var(--accent); color: var(--stone-100); border-color: var(--accent); }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+  .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border: 1px solid var(--stone-500);
+    background: var(--stone-50);
+    cursor: pointer;
+    color: var(--stone-700);
+  }
+  .chip.active { background: var(--ink); color: var(--stone-100); border-color: var(--ink); }
+
+  /* ────────────────────────────────────────────────
+     Library grid — recipe cards w/ "+" affordance
+     ──────────────────────────────────────────────── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .card {
+    background: white;
+    border: 2px solid var(--ink);
+    padding: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 130px;
+    transition: transform 0.1s;
+    overflow: hidden;
+  }
+  .card-body { padding: 12px 16px 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .card .name {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  /* Card banner photo (4:3) — top of every library card */
+  .card-banner {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border-bottom: 2px solid var(--ink);
+    background: var(--stone-300);
+  }
+  .card-banner-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--stone-300);
+    color: var(--stone-600);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  /* Cart-item thumbs */
+  .thumb-cart {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    object-fit: cover;
+    background: var(--stone-300);
+    flex-shrink: 0;
+    display: block;
+  }
+  .thumb-cart-placeholder {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    background: var(--stone-300);
+    color: var(--stone-600);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .card .yields {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--stone-600);
+    margin-bottom: 8px;
+  }
+  .card .cat-pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--stone-200);
+    color: var(--stone-700);
+    padding: 1px 6px;
+    border: 1px solid var(--stone-400);
+  }
+  .card .plus {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--ink);
+    background: var(--stone-100);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1;
+    color: var(--ink);
+    transition: transform 0.1s, background 0.1s;
+  }
+  .card .plus:hover { background: var(--accent); color: white; border-color: var(--accent); transform: scale(1.05); }
+  .card .plus.added {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    animation: pulse 0.3s;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+  .card .badge-added {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--accent);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 1px 6px;
+    border: 2px solid var(--ink);
+    z-index: 2;
+  }
+
+  /* ────────────────────────────────────────────────
+     Cart sidebar
+     ──────────────────────────────────────────────── */
+  .cart-head {
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--ink);
+    background: var(--stone-200);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cart-head h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-collapse {
+    background: var(--stone-50);
+    border: 2px solid var(--ink);
+    padding: 2px 8px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .cart-meta { font-size: 11px; color: var(--stone-600); font-family: 'JetBrains Mono', monospace; }
+
+  .cart-body {
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .cart-empty {
+    border: 2px dashed var(--stone-400);
+    padding: 32px 16px;
+    text-align: center;
+    color: var(--stone-600);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .cart-item {
+    background: white;
+    border: 2px solid var(--ink);
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    animation: slideIn 0.25s ease-out;
+  }
+  @keyframes slideIn {
+    from { transform: translateX(40px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  .cart-item .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .cart-item .top-main {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0;
+  }
+  .cart-item .name { font-weight: 600; font-size: 13px; line-height: 1.3; }
+  .cart-item .yields { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--stone-600); }
+  .cart-item .controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .qty {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--ink);
+    background: var(--stone-100);
+  }
+  .qty button {
+    width: 24px; height: 24px;
+    border: none; background: transparent;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; cursor: pointer;
+  }
+  .qty button:hover { background: var(--stone-300); }
+  .qty input {
+    width: 32px; text-align: center;
+    border: none;
+    border-left: 1px solid var(--stone-400);
+    border-right: 1px solid var(--stone-400);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 3px 0;
+    -moz-appearance: textfield;
+  }
+  .qty input::-webkit-outer-spin-button,
+  .qty input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .unit-input {
+    flex: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    border: 2px solid var(--stone-400);
+    padding: 3px 6px;
+    background: var(--stone-50);
+    min-width: 0;
+  }
+  .row-x {
+    width: 24px; height: 24px;
+    border: 2px solid var(--ink);
+    background: var(--stone-200);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .row-x:hover { background: var(--danger-tint); color: var(--danger); border-color: var(--danger); }
+
+  /* Collapsed cart sliver */
+  .cart-collapsed-inner {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 16px auto;
+    cursor: pointer;
+    color: var(--stone-700);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+  }
+  .cart-collapsed-inner .count-bubble {
+    writing-mode: horizontal-tb;
+    transform: rotate(180deg);
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border: 2px solid var(--accent);
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .cart-collapsed-only,
+  .cart-expanded-only { display: none; }
+  .layout:not(.collapsed) .cart-expanded-only { display: flex; }
+  .layout:not(.collapsed) .cart-body { display: block; }
+  .layout.collapsed .cart-body,
+  .layout.collapsed .cart-head { display: none; }
+  .layout.collapsed .cart-collapsed-only { display: flex; flex-direction: column; align-items: center; height: 100%; padding: 12px 0; }
+  .layout.collapsed aside.cart { padding: 0; }
+
+  /* Tradeoffs */
+  .tradeoffs {
+    margin-top: 32px;
+    background: white;
+    border: 2px solid var(--ink);
+    padding: 16px;
+    max-width: 720px;
+  }
+  .tradeoffs h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+  .tradeoffs dl {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 6px 12px;
+    font-size: 13px;
+  }
+  .tradeoffs dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--stone-700);
+  }
+
+  footer {
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--stone-400);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--stone-600);
+  }
+  footer a { color: var(--accent); }
+
+  /* Mobile fallback */
+  @media (max-width: 640px) {
+    .layout { grid-template-columns: 1fr; }
+    aside.cart {
+      position: static;
+      height: auto;
+      border-left: none;
+      border-top: 2px solid var(--ink);
+    }
+    .grid { display: none; }
+    main { padding: 16px; }
+    .mobile-note {
+      background: var(--accent-tint);
+      border: 2px solid var(--accent);
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+    }
+    .chips, .toolbar .btn:not(.btn-accent):not(#empty-toggle) { display: none; }
+    .cart-body { display: block !important; padding: 12px; }
+    .cart-head { display: flex !important; }
+  }
+  @media (min-width: 641px) { .mobile-note { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="layout" id="layout">
+  <main>
+    <header>
+      <div class="brand">proofed<span class="dot">.</span> production</div>
+      <div class="subtitle">PF-256.2 demo B &middot; library grid + sticky cart <span class="tag">throwaway</span></div>
+    </header>
+
+    <div class="mobile-note">Mobile = review mode. Sidebar collapses below the queue list; composition is desktop-only.</div>
+
+    <div class="toolbar">
+      <button class="btn btn-accent" id="empty-toggle">Toggle empty cart</button>
+      <button class="btn" id="reset-btn">Reset</button>
+      <span class="subtitle" style="margin-left: auto;">Click + on a card to add &middot; cart on the right →</span>
+    </div>
+
+    <div class="chips" id="chips">
+      <button class="chip active" data-cat="all">all</button>
+      <button class="chip" data-cat="bread">bread</button>
+      <button class="chip" data-cat="pastry">pastry</button>
+      <button class="chip" data-cat="pizza">pizza</button>
+      <button class="chip" data-cat="sweet">sweet</button>
+      <button class="chip" data-cat="savory">savory</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="tradeoffs">
+      <h3>Tradeoffs</h3>
+      <dl>
+        <dt>Best for</dt>
+        <dd>Discovery-first workflows; users browsing recipes and incrementally building a queue. Lower interaction cost than drag.</dd>
+        <dt>Worst for</dt>
+        <dd>Reordering the queue (no drag in cart). Sidebar competes with cards for screen real estate on narrower laptops.</dd>
+        <dt>Mobile fallback</dt>
+        <dd>Grid hides entirely; cart becomes the only content as a review-mode list. Adding new bakes happens from recipe pages.</dd>
+      </dl>
+    </div>
+
+    <footer>
+      Demo of PF-256.2 &middot; pair with <a href="/demo/production-trello.html">trello</a> + <a href="/demo/production-dock.html">dock</a> &middot; <a href="/demo/production-options.html">back to options</a>
+    </footer>
+  </main>
+
+  <aside class="cart" id="cart">
+    <!-- Collapsed sliver -->
+    <div class="cart-collapsed-only">
+      <div class="cart-collapsed-inner" id="expand-cart">
+        Production <span class="count-bubble" id="collapsed-count">3</span>
+      </div>
+    </div>
+
+    <!-- Expanded -->
+    <div class="cart-head cart-expanded-only" style="display: flex; flex-direction: column;">
+      <h2>
+        <span>Production &middot; <span id="cart-count">3</span> bakes</span>
+        <button class="cart-collapse" id="collapse-cart" title="Collapse sidebar">›</button>
+      </h2>
+      <div class="cart-meta" id="cart-updated">last updated 12:42p</div>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+  </aside>
+</div>
+
+<script>
+  // ────────────────────────────────────────────────
+  // Recipe data — realistic from public/recipes/*.json
+  // ────────────────────────────────────────────────
+  // hero = last photo in latest cook_log entry with photos (per CLAUDE.md § Hero Image Selection)
+  const LIBRARY = [
+    { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', yields: '8 buns', cat: 'sweet', hero: '/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-top-400w.webp', initials: 'AC' },
+    { id: 'simple-sourdough', name: 'Sourdough Bread (70% Hydration)', yields: '2 loaves (~800g)', cat: 'bread', hero: '/images/simple-sourdough/2026-04-28/loaf2-ear-closeup-400w.webp', initials: 'SS' },
+    { id: 'tartine-lemon-cream-tart', name: 'Tartine Lemon Cream Tart', yields: '12 tartlets', cat: 'pastry', hero: '/images/tartine-lemon-cream-tart/2026-05-13/img-7556-400w.webp', initials: 'TL' },
+    { id: 'sourdough-chocolate-chip-cookies', name: 'Sourdough Chocolate Chip Cookies', yields: '~22-24 cookies', cat: 'sweet', hero: null, initials: 'SC' },
+    { id: 'jalapeno-cheddar-sourdough', name: 'Jalapeño Cheddar Sourdough', yields: '2 loaves (~730g)', cat: 'bread', hero: '/images/jalapeno-cheddar-sourdough/2026-05-13/08-dutch-oven-final-400w.webp', initials: 'JC' },
+    { id: 'tartine-baguette', name: 'Tartine Baguette', yields: '2-3 baguettes', cat: 'bread', hero: null, initials: 'TB' },
+    { id: 'ny-style-pizza', name: 'NY-Style Pizza Dough', yields: '2 pizzas', cat: 'pizza', hero: '/images/ny-style-pizza/2026-02-20/pepperoni-pizza-sliced-vsco-400w.webp', initials: 'NY' },
+    { id: 'tartine-rugelach', name: 'Tartine Rugelach', yields: '16 rugelach', cat: 'pastry', hero: '/images/tartine-rugelach/2026-05-12/img-7542-400w.webp', initials: 'TR' },
+    { id: 'sourdough-cinnamon-buns', name: 'Sourdough Cinnamon Buns', yields: '8 buns', cat: 'sweet', hero: '/images/sourdough-cinnamon-buns/2026-03-20/buns-glazed-wide-400w.webp', initials: 'SC' },
+    { id: 'gochujang-garlic-buns', name: 'Gochujang Garlic Buns', yields: '12 buns', cat: 'savory', hero: '/images/gochujang-garlic-buns/2026-04-25/finished-swirl-buns-in-tin-400w.webp', initials: 'GG' },
+    { id: 'potato-buns', name: 'Potato Buns (Smashburgers)', yields: '8 buns', cat: 'savory', hero: null, initials: 'PB' },
+    { id: 'carrot-cake', name: 'Carrot Cake w/ Brown Butter Frosting', yields: '12-16 slices', cat: 'sweet', hero: null, initials: 'CC' },
+  ];
+
+  const HERO_MAP = Object.fromEntries(LIBRARY.map(r => [r.id, { hero: r.hero, initials: r.initials }]));
+
+  function bannerHTML(id) {
+    const info = HERO_MAP[id] || { hero: null, initials: '??' };
+    if (info.hero) {
+      return `<img class="card-banner" src="${info.hero}" alt="" loading="lazy">`;
+    }
+    return `<div class="card-banner-placeholder" aria-hidden="true">${info.initials}</div>`;
+  }
+
+  function cartThumbHTML(id) {
+    const info = HERO_MAP[id] || { hero: null, initials: '??' };
+    if (info.hero) {
+      return `<img class="thumb-cart" src="${info.hero}" alt="" loading="lazy">`;
+    }
+    return `<div class="thumb-cart-placeholder" aria-hidden="true">${info.initials}</div>`;
+  }
+
+  let cart = [
+    { id: 'jalapeno-cheddar-sourdough', name: 'Jalapeño Cheddar Sourdough', yields: '2 loaves (~730g)', qty: 2, unit: 'loaves' },
+    { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', yields: '8 buns', qty: 8, unit: 'buns' },
+    { id: 'sourdough-chocolate-chip-cookies', name: 'SD Chocolate Chip Cookies', yields: '~22-24 cookies', qty: 24, unit: 'cookies' },
+  ];
+
+  let activeCat = 'all';
+  let isEmpty = false;
+
+  function renderGrid() {
+    const grid = document.getElementById('grid');
+    const filtered = LIBRARY.filter(r => activeCat === 'all' || r.cat === activeCat);
+    grid.innerHTML = filtered.map(r => {
+      const added = cart.some(c => c.id === r.id) && !isEmpty;
+      return `
+        <div class="card" data-id="${r.id}">
+          ${added ? '<span class="badge-added">in queue</span>' : ''}
+          ${bannerHTML(r.id)}
+          <div class="card-body">
+            <div>
+              <div class="name">${r.name}</div>
+              <div class="yields">${r.yields}</div>
+              <span class="cat-pill">${r.cat}</span>
+            </div>
+            <button class="plus" data-id="${r.id}" data-name="${r.name}" data-yields="${r.yields}" title="Add to queue">+</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+    wirePlus();
+  }
+
+  function renderCart() {
+    const body = document.getElementById('cart-body');
+    const count = isEmpty ? 0 : cart.length;
+    document.getElementById('cart-count').textContent = count;
+    document.getElementById('collapsed-count').textContent = count;
+    if (isEmpty || cart.length === 0) {
+      body.innerHTML = `<div class="cart-empty">Click <strong>+</strong> on a recipe<br>to add it to your queue</div>`;
+      return;
+    }
+    body.innerHTML = cart.map((c, i) => `
+      <div class="cart-item">
+        <div class="top">
+          <div class="top-main">
+            ${cartThumbHTML(c.id)}
+            <div>
+              <div class="name">${c.name}</div>
+              <div class="yields">makes: ${c.yields}</div>
+            </div>
+          </div>
+          <button class="row-x" data-act="rm" data-idx="${i}" title="Remove">×</button>
+        </div>
+        <div class="controls">
+          <div class="qty">
+            <button data-act="dec" data-idx="${i}">−</button>
+            <input type="number" min="1" value="${c.qty}" data-idx="${i}" class="qty-input">
+            <button data-act="inc" data-idx="${i}">+</button>
+          </div>
+          <input type="text" class="unit-input" value="${c.unit}" data-idx="${i}" placeholder="unit">
+        </div>
+      </div>
+    `).join('');
+    wireCartInteractions();
+  }
+
+  function wirePlus() {
+    document.querySelectorAll('.plus').forEach(btn => btn.onclick = (e) => {
+      const id = btn.dataset.id;
+      const existing = cart.find(c => c.id === id);
+      isEmpty = false;
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ id, name: btn.dataset.name, yields: btn.dataset.yields, qty: 1, unit: '' });
+      }
+      btn.classList.add('added');
+      setTimeout(() => btn.classList.remove('added'), 300);
+      touchUpdated();
+      renderCart();
+      // Update "in queue" badge
+      renderGrid();
+    });
+  }
+
+  function wireCartInteractions() {
+    document.querySelectorAll('[data-act="inc"]').forEach(b => b.onclick = (e) => {
+      const i = +e.target.dataset.idx; cart[i].qty++; touchUpdated(); renderCart();
+    });
+    document.querySelectorAll('[data-act="dec"]').forEach(b => b.onclick = (e) => {
+      const i = +e.target.dataset.idx; cart[i].qty = Math.max(1, cart[i].qty - 1); touchUpdated(); renderCart();
+    });
+    document.querySelectorAll('.qty-input').forEach(inp => inp.onchange = (e) => {
+      const i = +e.target.dataset.idx; cart[i].qty = Math.max(1, parseInt(e.target.value) || 1); touchUpdated(); renderCart();
+    });
+    document.querySelectorAll('.unit-input').forEach(inp => inp.oninput = (e) => {
+      const i = +e.target.dataset.idx; cart[i].unit = e.target.value; touchUpdated();
+    });
+    document.querySelectorAll('[data-act="rm"]').forEach(b => b.onclick = (e) => {
+      const i = +e.target.dataset.idx; cart.splice(i, 1); touchUpdated(); renderCart(); renderGrid();
+    });
+  }
+
+  document.getElementById('empty-toggle').onclick = () => { isEmpty = !isEmpty; renderCart(); renderGrid(); };
+  document.getElementById('reset-btn').onclick = () => {
+    cart = [
+      { id: 'jalapeno-cheddar-sourdough', name: 'Jalapeño Cheddar Sourdough', yields: '2 loaves (~730g)', qty: 2, unit: 'loaves' },
+      { id: 'atk-cinnamon-buns-ultimate', name: 'ATK Ultimate Cinnamon Buns', yields: '8 buns', qty: 8, unit: 'buns' },
+      { id: 'sourdough-chocolate-chip-cookies', name: 'SD Chocolate Chip Cookies', yields: '~22-24 cookies', qty: 24, unit: 'cookies' },
+    ];
+    isEmpty = false;
+    touchUpdated();
+    renderCart();
+    renderGrid();
+  };
+
+  document.querySelectorAll('.chip').forEach(c => c.onclick = () => {
+    document.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    activeCat = c.dataset.cat;
+    renderGrid();
+  });
+
+  // Collapse / expand cart
+  document.getElementById('collapse-cart').onclick = () => {
+    document.getElementById('layout').classList.add('collapsed');
+  };
+  document.getElementById('expand-cart').onclick = () => {
+    document.getElementById('layout').classList.remove('collapsed');
+  };
+
+  function touchUpdated() {
+    const d = new Date();
+    let h = d.getHours();
+    const m = String(d.getMinutes()).padStart(2, '0');
+    const ap = h >= 12 ? 'p' : 'a';
+    h = h % 12 || 12;
+    document.getElementById('cart-updated').textContent = `last updated ${h}:${m}${ap}`;
+  }
+
+  renderGrid();
+  renderCart();
+  touchUpdated();
+</script>
+
+</body>
+</html>

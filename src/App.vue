@@ -55,6 +55,7 @@ import GeneralNotesFab from '@/components/GeneralNotesFab.vue'
 import ExperimentPanel from '@/components/ExperimentPanel.vue'
 import RecipePrintView from '@/components/RecipePrintView.vue'
 import PricingView from '@/components/PricingView.vue'
+import ProductionView from '@/components/ProductionView.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -132,8 +133,9 @@ const showBakeReview = computed(() => route.name === 'bake-review')
 const showBakeLog = computed(() => route.name === 'bake-log')
 const showStats = computed(() => route.name === 'stats' || route.name === 'stats-demo')
 const showPricing = computed(() => route.name === 'pricing')
+const showProduction = computed(() => route.name === 'production')
 const showPrintMode = computed(() => route.name === 'recipe-print')
-const showHeaderActions = computed(() => !!currentRecipe.value && !showIndex.value && !showAbout.value && !showBakeDetail.value && !showPricing.value)
+const showHeaderActions = computed(() => !!currentRecipe.value && !showIndex.value && !showAbout.value && !showBakeDetail.value && !showPricing.value && !showProduction.value)
 
 // Inclusion list — routes that mount a search bar into the header slot.
 // Add a route name here to opt in. Falls back to no header search.
@@ -593,7 +595,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </nav>
 
-    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showBakeDetail || showStats || showPricing) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && !showPricing && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode && !showPricing ? 'max-w-3xl mx-auto px-4' : '')]">
+    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showBakeDetail || showStats || showPricing || showProduction) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && !showPricing && !showProduction && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode && !showPricing && !showProduction ? 'max-w-3xl mx-auto px-4' : '')]">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
@@ -622,6 +624,12 @@ watch(() => route.hash, (newHash) => {
       <template v-else-if="showPricing">
         <div class="page-settle">
           <PricingView />
+        </div>
+      </template>
+
+      <template v-else-if="showProduction">
+        <div class="page-settle">
+          <ProductionView />
         </div>
       </template>
 

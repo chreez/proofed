@@ -32,6 +32,7 @@ const PAGE_TITLES: Record<string, string> = {
   'stats-demo': `Dashboard — ${SITE_NAME}`,
   'bake-log': `Cook Log — ${SITE_NAME}`,
   pricing: `Pricing — ${SITE_NAME}`,
+  production: `Production — ${SITE_NAME}`,
 }
 
 export function useRecipeMeta(
@@ -91,6 +92,7 @@ export function useRecipeMeta(
     'stats-demo': `${BASE_URL}/stats`,
     'bake-log': `${BASE_URL}/bake-log`,
     pricing: `${BASE_URL}/pricing`,
+    production: `${BASE_URL}/production`,
   }
 
   const url = computed(() => {

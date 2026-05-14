@@ -1,0 +1,220 @@
+/**
+ * Production plan state + persistence for the /production route (PF-256.1).
+ *
+ * Foundation for every other lens in the PF-256 Bakery Ops Assistant epic.
+ * Pure functions — caller wires reactivity at the page-component level.
+ *
+ * Storage convention:
+ *   - LS_CURRENT (`bake-production-current`) — working ProductionPlan
+ */
+
+import type { ProductionEntry, ProductionPlan, Provenance } from '@/types/production'
+import type { Recipe } from '@/types/recipe'
+
+const LS_CURRENT = 'bake-production-current'
+
+/** ISO 8601 timestamp for now. */
+function nowISO(): string {
+  return new Date().toISOString()
+}
+
+/** Generate a stable id. Falls back to a random string when crypto is absent. */
+function newId(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID()
+  }
+  // Deterministic fallback: timestamp + random chunk.
+  return `prod-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`
+}
+
+/** Create a fresh empty plan. */
+export function emptyPlan(): ProductionPlan {
+  return {
+    entries: [],
+    updated: nowISO(),
+  }
+}
+
+/**
+ * Validate raw JSON against the ProductionPlan shape. Returns the typed
+ * plan on success, or `{ error }` for the caller to surface.
+ */
+export function validatePlan(raw: unknown): ProductionPlan | { error: string } {
+  if (typeof raw !== 'object' || raw === null) return { error: 'not an object' }
+  const p = raw as Record<string, unknown>
+  if (typeof p.updated !== 'string') return { error: 'updated missing' }
+  if (!Array.isArray(p.entries)) return { error: 'entries missing' }
+  for (const [idx, entry] of (p.entries as unknown[]).entries()) {
+    if (typeof entry !== 'object' || entry === null) return { error: `entries[${idx}] invalid` }
+    const e = entry as Record<string, unknown>
+    if (typeof e.id !== 'string' || !e.id) return { error: `entries[${idx}].id missing` }
+    if (typeof e.recipeId !== 'string' || !e.recipeId) return { error: `entries[${idx}].recipeId missing` }
+    if (typeof e.quantity !== 'number' || !Number.isFinite(e.quantity)) return { error: `entries[${idx}].quantity invalid` }
+    if (typeof e.unit !== 'string') return { error: `entries[${idx}].unit invalid` }
+    if (e.addedBy !== 'user' && e.addedBy !== 'agent') return { error: `entries[${idx}].addedBy invalid` }
+    if (typeof e.addedAt !== 'string') return { error: `entries[${idx}].addedAt invalid` }
+  }
+  return raw as ProductionPlan
+}
+
+/**
+ * Read the working plan from localStorage. Falls back to an empty plan
+ * when the key is absent or malformed.
+ */
+export function loadPlan(): ProductionPlan {
+  if (typeof localStorage === 'undefined') return emptyPlan()
+  const raw = localStorage.getItem(LS_CURRENT)
+  if (!raw) return emptyPlan()
+  try {
+    const parsed = JSON.parse(raw)
+    const validated = validatePlan(parsed)
+    if ('error' in validated) {
+      console.warn(`[production] working plan invalid: ${validated.error}; using empty default`)
+      return emptyPlan()
+    }
+    return validated
+  } catch (e) {
+    console.warn('[production] working plan JSON parse failed; using empty default', e)
+    return emptyPlan()
+  }
+}
+
+/** Persist the working plan to localStorage; bumps `updated`. */
+export function savePlan(plan: ProductionPlan): ProductionPlan {
+  const bumped: ProductionPlan = { ...plan, updated: nowISO() }
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem(LS_CURRENT, JSON.stringify(bumped))
+  }
+  return bumped
+}
+
+interface AddEntryInput {
+  recipeId: string
+  quantity: number
+  unit: string
+  addedBy: Provenance
+}
+
+/**
+ * Append a new entry to the plan, or bump quantity on an existing entry with
+ * the same recipeId (shopping-cart-style merge). Pure — returns a new
+ * ProductionPlan. Caller is responsible for calling `savePlan` if persistence
+ * is desired.
+ *
+ * Merge semantics:
+ *  - If an entry with input.recipeId already exists, its quantity is increased
+ *    by input.quantity. The unit, addedBy, and addedAt fields are left alone
+ *    (provenance is set when the entry was first added).
+ *  - Otherwise a new entry is appended.
+ */
+export function addEntry(plan: ProductionPlan, input: AddEntryInput): ProductionPlan {
+  const existingIdx = plan.entries.findIndex(e => e.recipeId === input.recipeId)
+  if (existingIdx >= 0) {
+    const next = plan.entries.slice()
+    const existing = next[existingIdx]
+    next[existingIdx] = { ...existing, quantity: existing.quantity + input.quantity }
+    return { entries: next, updated: nowISO() }
+  }
+  const entry: ProductionEntry = {
+    id: newId(),
+    recipeId: input.recipeId,
+    quantity: input.quantity,
+    unit: input.unit,
+    addedBy: input.addedBy,
+    addedAt: nowISO(),
+  }
+  return {
+    entries: [...plan.entries, entry],
+    updated: nowISO(),
+  }
+}
+
+/** Remove an entry by id. Pure — returns a new ProductionPlan. */
+export function removeEntry(plan: ProductionPlan, entryId: string): ProductionPlan {
+  return {
+    entries: plan.entries.filter(e => e.id !== entryId),
+    updated: nowISO(),
+  }
+}
+
+/** Patch fields on an entry (quantity / unit). Pure — returns a new plan. */
+export function updateEntry(
+  plan: ProductionPlan,
+  entryId: string,
+  patch: Partial<Pick<ProductionEntry, 'quantity' | 'unit'>>
+): ProductionPlan {
+  return {
+    entries: plan.entries.map(e => (e.id === entryId ? { ...e, ...patch } : e)),
+    updated: nowISO(),
+  }
+}
+
+// ---------- Unit inference ----------
+
+/**
+ * Naive singularize: strip trailing 's' if the word ends in 's' and isn't
+ * already a known singular ending in 'ss' (e.g. "loaves" → "loave" is wrong,
+ * so we special-case a few endings). Conservative: only strips when safe.
+ */
+function singularize(word: string): string {
+  const w = word.toLowerCase().trim()
+  if (!w) return w
+  // Irregulars common to baking yields.
+  const irregulars: Record<string, string> = {
+    loaves: 'loaf',
+    biscuits: 'biscuit',
+    cookies: 'cookie',
+    rolls: 'roll',
+    buns: 'bun',
+    pizzas: 'pizza',
+    tarts: 'tart',
+    tartlets: 'tartlet',
+    baguettes: 'baguette',
+    pieces: 'piece',
+    servings: 'serving',
+    slices: 'slice',
+    bagels: 'bagel',
+    muffins: 'muffin',
+    crackers: 'cracker',
+    rugelach: 'rugelach',
+  }
+  if (irregulars[w]) return irregulars[w]
+  // Avoid stripping "ss".
+  if (w.endsWith('ss')) return w
+  if (w.endsWith('s') && w.length > 2) return w.slice(0, -1)
+  return w
+}
+
+/**
+ * Best-effort default unit from a recipe's meta.yields string.
+ *
+ * Strategy:
+ *  1. Match a number then a noun (e.g. "8 rolls" → "roll", "2 loaves" → "loaf").
+ *  2. Match a noun without a number (e.g. "rolls" → "roll").
+ *  3. Fall back to "unit".
+ *
+ * Drops parenthetical detail and trailing qualifiers (e.g. "8 rolls (cast-iron)"
+ * → "roll", "12 cookies, 30g each" → "cookie").
+ */
+export function inferDefaultUnit(recipe: Recipe | null | undefined): string {
+  const yields = recipe?.meta?.yields
+  if (!yields || typeof yields !== 'string') return 'unit'
+
+  // Strip parentheticals and clauses after commas.
+  const cleaned = yields.replace(/\([^)]*\)/g, '').split(',')[0].trim()
+  if (!cleaned) return 'unit'
+
+  // Pattern A: "<number><frac?> <noun>" — capture first word group after a number.
+  const numNoun = cleaned.match(/^[\d.\/\s-]+\s*([a-zA-Z][a-zA-Z-]*)/)
+  if (numNoun?.[1]) {
+    return singularize(numNoun[1])
+  }
+
+  // Pattern B: leading noun without a number.
+  const noun = cleaned.match(/^([a-zA-Z][a-zA-Z-]*)/)
+  if (noun?.[1]) {
+    return singularize(noun[1])
+  }
+
+  return 'unit'
+}
