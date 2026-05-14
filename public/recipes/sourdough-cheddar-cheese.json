@@ -23,10 +23,11 @@
       "defaultYield": 2,
       "unit": "loaves",
       "servingsPerItem": 10,
-      "servingUnit": "slices"
+      "servingUnit": "slices",
+      "itemsPerBatch": 1
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.1.1",
   "change_log": [
     {
       "version": "v1.1.0",
@@ -114,6 +115,88 @@
       "version": "v1.0.0",
       "date": "2026-02-23",
       "summary": "Initial recipe from 8-agent parallel research synthesis (60+ sources). Adapted from simple-sourdough base with cheese-specific hydration, salt, temperature, and timing adjustments.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 agents)",
+              "confidence": "high",
+              "rationale": "Same base as simple sourdough. 12-13% protein for strong gluten network."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 670,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent, TheYeastWeCando, JennyBlogs",
+              "confidence": "high",
+              "rationale": "67% hydration — reduced 3% from lean recipe. Cheese adds ~97g bound moisture; without reduction, dough becomes too slack."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus, same as simple-sourdough base",
+              "confidence": "high",
+              "rationale": "20% inoculation unchanged — cheese fat slows fermentation, so maintaining the higher inoculation rate compensates."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "The Perfect Loaf, The Fresh Loaf (alfanso), Sourdough Geeks",
+              "confidence": "high",
+              "rationale": "1.8% of flour weight — reduced from 2% because 226g cheddar adds ~1.4g sodium. Prevents over-salting."
+            },
+            {
+              "id": "cheddar",
+              "name": "Tillamook Sharp Cheddar",
+              "total": 226,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 113
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 113
+                }
+              ],
+              "sourcedFrom": "Poetry & Pies, Little Spoon Farm, The Perfect Loaf, 8/8 agents",
+              "confidence": "high",
+              "rationale": "22.6% of flour weight — dead center of 20-25% consensus range. One 8oz/226g Tillamook block, split evenly."
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (melted)",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Multiple community bakers, Reddit consensus",
+              "confidence": "medium",
+              "rationale": "Post-bake brush only (~7g per loaf). Achieves butter flavor and golden crust without disrupting dough. No butter IN the dough — cheese already contributes 72g fat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.1.1",
+      "date": "2026-05-12",
+      "summary": "Add config.stats.itemsPerBatch=1 for throughput modeling (PF-265). One dutch oven, one loaf at a time; second loaf waits in fridge — 2 batches.",
       "ingredients": [
         {
           "stageId": "PREP",

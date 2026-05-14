@@ -18,10 +18,11 @@
       "defaultYield": 5,
       "unit": "rolls",
       "servingsPerItem": 1,
-      "servingUnit": "rolls"
+      "servingUnit": "rolls",
+      "itemsPerBatch": 3
     }
   },
-  "version": "v1.2.0",
+  "version": "v1.2.1",
   "change_log": [
     {
       "version": "v1.2.0",
@@ -249,6 +250,117 @@
       "version": "v1.0.0",
       "date": "2026-02-26",
       "summary": "Initial recipe from multi-agent research synthesis (7 agents, 31 sources). Texas-adapted from Stellanspice, Breadtopia, Lesaffre Mexico, and Grupo La Florida professional formulas.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Build Levain",
+          "ingredients": [
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 80,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice formula, Puratos Library #72",
+              "confidence": "high",
+              "rationale": "1:1 ratio with levain flour. Must be active and bubbly — doubled within 4-8 hours of last feeding."
+            },
+            {
+              "id": "ap_flour",
+              "name": "All-Purpose Flour",
+              "total": 480,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "levain",
+                  "amount": 80
+                },
+                {
+                  "label": "dough",
+                  "amount": 400
+                }
+              ],
+              "sourcedFrom": "Cross-source consensus (7/7 agents)",
+              "confidence": "high",
+              "rationale": "Mexican flour is 9% protein — US AP flour (10-12%) is closer than bread flour. An 80/20 AP/bread blend also works for more structure."
+            },
+            {
+              "id": "beer",
+              "name": "Mexican Lager Beer",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice, Breadtopia, Grupo La Florida (7/7 agents)",
+              "confidence": "high",
+              "rationale": "Slows fermentation via hops antimicrobial, adds malt character, creates selection pressure for T. delbrueckii yeast. Modelo Especial or Pacifico."
+            },
+            {
+              "id": "egg",
+              "name": "Egg (whisked)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice, Breadtopia, Puratos Library #72 (6/7 agents)",
+              "confidence": "high",
+              "rationale": "~1/2 large egg. Lecithin emulsifies, protein adds structure. Only sourdough in the Puratos collection fed with egg."
+            },
+            {
+              "id": "lime_juice",
+              "name": "Fresh Lime Juice",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice, Breadtopia, Puratos Library #72 (6/7 agents)",
+              "confidence": "high",
+              "rationale": "Immediately acidifies the levain, supports LAB, adds citrus tang. May historically compensate for alkaline water."
+            },
+            {
+              "id": "sugar",
+              "name": "Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Stellanspice, Breadtopia (5/7 agents)",
+              "confidence": "high",
+              "rationale": "Feeds yeast, balances acidity in the hostile levain environment."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "levain",
+                  "amount": 1
+                },
+                {
+                  "label": "dough",
+                  "amount": 10
+                }
+              ],
+              "sourcedFrom": "Cross-source consensus (7/7 agents)",
+              "confidence": "high",
+              "rationale": "2.3% of total flour. 'Salado' means salted — birote is intentionally saltier than standard bread."
+            },
+            {
+              "id": "water",
+              "name": "Filtered Water",
+              "total": 250,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Professional GDL formulas (Lesaffre 63%, Grupo La Florida 62%)",
+              "confidence": "high",
+              "rationale": "62.5% hydration. Carbon-filtered Austin tap diluted 50/50 with distilled water to reduce hardness and alkalinity."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.2.1",
+      "date": "2026-05-12",
+      "summary": "Add config.stats.itemsPerBatch=3 for throughput modeling (PF-265). Recipe says \"Load 2-3 rolls into the preheated dutch oven\" — 5 rolls / 3 per batch = 2 batches.",
       "ingredients": [
         {
           "stageId": "PREP",

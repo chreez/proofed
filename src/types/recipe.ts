@@ -187,6 +187,15 @@ export interface RecipeStats {
   unit: string
   servingsPerItem: number
   servingUnit: string
+  /**
+   * Max items the user can bake in a single oven slot (e.g. cookies per
+   * sheet pan, loaves per dutch oven, pizzas per baking steel). Used by the
+   * throughput scheduler (PF-255 / PF-256.4): batches_needed =
+   * ceil(defaultYield / itemsPerBatch). Optional — when absent, callers
+   * assume the entire `defaultYield` fits in one bake (single loaf, single
+   * pan, single skillet — the common case). (PF-265 / PF-255.3 §5)
+   */
+  itemsPerBatch?: number
 }
 
 export interface RecipeConfig {

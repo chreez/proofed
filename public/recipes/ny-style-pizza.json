@@ -18,10 +18,11 @@
       "defaultYield": 2,
       "unit": "pizzas",
       "servingsPerItem": 8,
-      "servingUnit": "slices"
+      "servingUnit": "slices",
+      "itemsPerBatch": 1
     }
   },
-  "version": "v1.5.0",
+  "version": "v1.5.1",
   "change_log": [
     {
       "version": "v1.5.0",
@@ -596,6 +597,91 @@
               "total": 40,
               "unit": "g",
               "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.5.1",
+      "date": "2026-05-12",
+      "summary": "Add config.stats.itemsPerBatch=1 for throughput modeling (PF-265). One baking steel, one pizza at a time; recipe explicitly says \"Repeat the stretch, top, and bake process for the second pizza\" — 2 batches.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Low-moisture, high-fat, whole milk mozzarella is mandatory — it shreds clean and melts right"
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Freshly grated — adds a savory base layer under the mozzarella"
             },
             {
               "id": "pepperoni",

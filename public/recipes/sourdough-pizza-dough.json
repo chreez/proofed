@@ -18,10 +18,11 @@
       "defaultYield": 2,
       "unit": "pizzas",
       "servingsPerItem": 8,
-      "servingUnit": "slices"
+      "servingUnit": "slices",
+      "itemsPerBatch": 1
     }
   },
-  "version": "v1.4.0",
+  "version": "v1.4.1",
   "change_log": [
     {
       "version": "v1.4.0",
@@ -602,6 +603,107 @@
               "total": 40,
               "unit": "g",
               "breakdown": null
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.4.1",
+      "date": "2026-05-12",
+      "summary": "Add config.stats.itemsPerBatch=1 for throughput modeling (PF-265). One baking steel, one pizza at a time — 2 batches.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 413,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes use flour; 3/5 specify bread flour",
+              "confidence": "high",
+              "rationale": "Bread flour (13%+ protein) browns reliably at 550°F and develops strong gluten for stretch"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 238,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Derived: base 288g - 50g starter water",
+              "confidence": "high",
+              "rationale": "Maintains 62% effective hydration when combined with starter water"
+            },
+            {
+              "id": "sourdough_starter",
+              "name": "Sourdough Starter (100% Hydration)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "5/5 pure SD recipes; Perfect Loaf uses 15% of flour",
+              "confidence": "high",
+              "rationale": "100g at 100% hydration contributes 50g flour + 50g water. ~22% of total flour"
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Carried from base recipe; 5/5 SD recipes use ~2%",
+              "confidence": "high",
+              "rationale": "~1.7% of total flour weight (463g)"
+            },
+            {
+              "id": "diastatic_malt",
+              "name": "Diastatic Malt Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PizzaBlab, King Arthur, food science agent",
+              "confidence": "medium",
+              "rationale": "Amylase enzymes produce reducing sugars during bake, compensating for sourdough's pH-inhibited Maillard reaction at 550°F",
+              "note": "Substitute: 5g granulated sugar (1% of total flour) if malt is unavailable. Add at the same step. At 1%, sugar won't interfere with gluten development during fermentolyse — that only matters at 15%+. Sugar adds reducing sugars directly but lacks the enzymatic activity of diastatic malt."
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Low-moisture, high-fat, whole milk mozzarella — shreds clean and melts right"
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Freshly grated — adds a savory base layer under the mozzarella"
             },
             {
               "id": "pepperoni",

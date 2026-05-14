@@ -17,10 +17,11 @@
       "defaultYield": 23,
       "unit": "cookies",
       "servingsPerItem": 1,
-      "servingUnit": "cookie"
+      "servingUnit": "cookie",
+      "itemsPerBatch": 6
     }
   },
-  "version": "v2.0.1",
+  "version": "v2.0.2",
   "change_log": [
     {
       "version": "v1.0.0",
@@ -304,6 +305,145 @@
       "version": "v2.0.1",
       "date": "2026-05-12",
       "summary": "Backfill config.stats (PF-264): new group 'Cookies & Bars', defaultYield 23 cookies (matches nutrition.servings, midpoint of yields ~22-24), servingsPerItem 1. Enables throughput modeling + per-cookie price rollups.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "6/7 agents confirmed 225-227g browned butter as consensus"
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 210,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across sources; 2:1 brown-to-white ratio"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 96,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Provides crispness and spread balance"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 54,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Yolks only removes excess moisture; validated by JennyBlogs bake-off winner"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "100-150g sweet spot for overnight ferment; discard preferred over active"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "1 tbsp; bean paste upgrade recommended"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "AP-dominant blend"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "AP+bread blend is our v1 differentiator; most blogs use AP only but KAB and Edd Kimber validate the blend"
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid for lift and browning"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Insurance lift; some recipes omit"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Consistent across sources"
+            },
+            {
+              "id": "chocolate",
+              "name": "Chopped Chocolate (60-66% semisweet)",
+              "total": 350,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "fold into dough",
+                  "amount": 300
+                },
+                {
+                  "label": "press into tops",
+                  "amount": 50
+                }
+              ],
+              "confidence": "high",
+              "rationale": "Hand-chopped bar, not chips; reserve for surface per Schiff technique"
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across every source"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v2.0.2",
+      "date": "2026-05-12",
+      "summary": "Add config.stats.itemsPerBatch=6 for throughput modeling (PF-265). Recipe states \"No more than 6 cookies per sheet\" + \"Bake one sheet at a time\" — 23 cookies → 4 batches.",
       "ingredients": [
         {
           "stageId": "PREP",
