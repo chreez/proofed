@@ -1,9 +1,10 @@
 ---
-id: DRAFT-84
+id: PF-264
 title: Backfill config.stats on 7 recipes missing the block
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-05-12 13:11'
+updated_date: '2026-05-14 20:01'
 labels: []
 dependencies: []
 ---
@@ -32,3 +33,13 @@ All derivable from existing `meta.yields` strings except the jalapeno-cheddar mi
 
 **Priority:** Medium — blocks Pricing lens (S1) accuracy + throughput modeling.
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Each of the 7 missing recipes (ba-bolognese, jalapeno-cheddar-sourdough, lime-chantilly, sourdough-chocolate-chip-cookies, sourdough-discard-cheese-crackers, tartine-lemon-cream-tart, tartine-rugelach) has a non-empty config.stats block matching the RecipeStats interface
+- [ ] #2 jalapeno-cheddar-sourdough mismatch resolved as 2 loaves × 8 slices/loaf = 16 servings (aligns with nutrition.servings); choice documented in change_log entry
+- [ ] #3 group/subgroup values align with existing canonical labels; new groups (Cookies & Bars, Crackers & Snacks, Tarts & Pies) introduced where needed for accurate classification
+- [ ] #4 Every modified recipe has a minor version bump and a change_log entry with PF-237 ingredients snapshot preserved
+- [ ] #5 scripts/sync-ingredient-snapshots.ts runs idempotently (no diffs after run)
+- [ ] #6 npm run build exits 0
+<!-- AC:END -->

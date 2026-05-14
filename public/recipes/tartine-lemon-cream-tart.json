@@ -11,10 +11,153 @@
     "description": "Tartine's signature lemon tart: buttery pate sucree shell filled with Pierre Herme-style lemon cream (butter mounted into curd for a softer, more unctuous texture than standard curd), topped with whipped cream. Dough recipe from Boulangerie Artisanale des Maures in southern France."
   },
   "config": {
-    "early_check_percent": 0.8
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Tarts & Pies",
+      "defaultYield": 12,
+      "unit": "tartlets",
+      "servingsPerItem": 1,
+      "servingUnit": "tartlet"
+    }
   },
-  "version": "v1.4.0",
+  "version": "v1.4.1",
   "change_log": [
+    {
+      "version": "v1.4.1",
+      "date": "2026-05-12",
+      "summary": "Backfill config.stats (PF-264): new group 'Tarts & Pies', defaultYield 12 tartlets (matches nutrition.servings and yields), servingsPerItem 1. Enables throughput modeling + per-tartlet price rollups.",
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            {
+              "id": "butter_dough",
+              "name": "Unsalted Butter (room temp)",
+              "total": 255,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_dough",
+              "name": "Granulated Sugar",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_dough",
+              "name": "Salt (1/4 tsp)",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_dough",
+              "name": "Large Eggs (room temp)",
+              "total": 2,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            {
+              "id": "eggs_wash",
+              "name": "Large Egg (wash)",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "salt_wash",
+              "name": "Salt (pinch, wash)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            {
+              "id": "lemon_juice",
+              "name": "Fresh Lemon Juice",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_cream",
+              "name": "Large Eggs",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "egg_yolk",
+              "name": "Large Egg Yolk",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_cream",
+              "name": "Granulated Sugar",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_cream",
+              "name": "Salt (pinch)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter_cream",
+              "name": "Unsalted Butter (cool, not cold)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Whipped Cream & Serve",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (very cold)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_topping",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.4.0",
       "date": "2026-05-14",
@@ -1411,14 +1554,14 @@
       "saturatedFat": 312.5,
       "carbohydrates": 786.6,
       "sugar": 397.3,
-      "fiber": 14.0,
+      "fiber": 14,
       "sodium": 1528
     },
     "perServing": {
       "calories": 673.7,
       "protein": 8.5,
       "totalFat": 42.9,
-      "saturatedFat": 26.0,
+      "saturatedFat": 26,
       "carbohydrates": 65.6,
       "sugar": 33.1,
       "fiber": 1.2,
@@ -1533,7 +1676,7 @@
         "totalFat": 0.5,
         "saturatedFat": 0.1,
         "carbohydrates": 13.3,
-        "sugar": 5.0,
+        "sugar": 5,
         "fiber": 0.5,
         "sodium": 4.5
       },
@@ -2096,7 +2239,7 @@
         "location": "Austin, TX",
         "date": "2026-05-13",
         "temp_high_f": 88.2,
-        "temp_low_f": 63.0,
+        "temp_low_f": 63,
         "humidity_avg_percent": 68,
         "condition": "Overcast",
         "source": "open-meteo"

@@ -16,6 +16,14 @@
   },
   "config": {
     "early_check_percent": 0.8,
+    "stats": {
+      "group": "Sourdough Breads",
+      "subgroup": "Loaves",
+      "defaultYield": 2,
+      "unit": "loaves",
+      "servingsPerItem": 8,
+      "servingUnit": "slices"
+    },
     "bakeStatsSchema": {
       "fields": [
         "dough_temps",
@@ -26,8 +34,108 @@
       ]
     }
   },
-  "version": "v2.1.1",
+  "version": "v2.1.2",
   "change_log": [
+    {
+      "version": "v2.1.2",
+      "date": "2026-05-12",
+      "summary": "Backfill config.stats (PF-264): group 'Sourdough Breads / Loaves', defaultYield 2 loaves, servingsPerItem 8 slices. Resolves yields/nutrition mismatch: meta.yields '2 loaves' × 8 slices/loaf = 16 servings (matches nutrition.servings). 8 slices/loaf at ~730g/loaf = ~91g/slice (sandwich-loaf sized).",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 550,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 340,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 31,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 320,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 160
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 160
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Dough Mixing",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v2.1.1",
       "date": "2026-05-12",
