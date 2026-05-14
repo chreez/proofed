@@ -20,7 +20,7 @@
       "servingUnit": "rosettes"
     }
   },
-  "version": "v1.0.1",
+  "version": "v1.0.2",
   "change_log": [
     {
       "version": "v1.0.1",
@@ -215,6 +215,117 @@
               "unit": "g",
               "breakdown": null,
               "display_amount": "for finishing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.0.2",
+      "date": "2026-05-12",
+      "summary": "Seed estimatedCost block (PF-266): 8 ingredients priced via cost-rates.json, total $3.12 (perServing $0.28 across 11 rosettes). Recipe has one bake (2026-05-13) with cost:null — no real cost data to consume yet, so estimatedCost provides pre-bake pricing for PF-255 surfaces.",
+      "ingredients": [
+        {
+          "stageId": "MACERATE",
+          "stageName": "Macerate Lime Sugar",
+          "ingredients": [
+            {
+              "id": "lime_zest",
+              "name": "Persian Lime Zest (microplaned)",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "zest of 1 lime (~2 tsp)",
+              "sourcedFrom": "Tier 1: 6/7 agents — modal value across lemon+lime WC recipes",
+              "confidence": "high",
+              "rationale": "Persian lime safer than key lime for whipped applications (less bitter peel); ~2 tsp delivers clear lime identity without pith bitterness"
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Powdered Sugar (10X with cornstarch)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 6/7 agents — 20-25% sugar:cream consensus",
+              "confidence": "high",
+              "rationale": "Cornstarch in 10X powdered sugar adds micro-stabilization; sweetens without overpowering"
+            }
+          ]
+        },
+        {
+          "stageId": "SMOOTH",
+          "stageName": "Smooth Cream Cheese Base",
+          "ingredients": [
+            {
+              "id": "cream_cheese",
+              "name": "Block Cream Cheese (full-fat, softened)",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 7/7 agents — heavy-ratio cluster (50% CC:cream) for transport hold",
+              "confidence": "high",
+              "rationale": "Block only (tub adds whey/gums that break the whip); H-E-B Organics Brick has cleanest label (locust bean gum only — the gum specifically associated with whipped cream stability). RecipeTin Eats Nagi tested this ratio holding 4 days piped on cake."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Salt",
+              "total": 0.3,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "pinch"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Bean Paste or Extract",
+              "total": 2.5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1/2 tsp (optional)"
+            }
+          ]
+        },
+        {
+          "stageId": "WHIP",
+          "stageName": "Whip with Heavy Cream",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (cold, ≥36% fat)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 cup",
+              "sourcedFrom": "Tier 1: 7/7 agents",
+              "confidence": "high",
+              "rationale": "Cold straight from fridge — ATK measured fat-crystal-dependent whipping efficiency; warm cream won't form stiff peaks. H-E-B Heavy Whipping Cream (gellan-only stabilizer) is cleanest label at store; avoid Land O Lakes (carrageenan + polysorbate 80)"
+            },
+            {
+              "id": "lime_juice",
+              "name": "Fresh Lime Juice (optional)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 tsp (optional)",
+              "sourcedFrom": "Tier 2: 4-5 agents — fold late at soft peaks",
+              "confidence": "medium",
+              "rationale": "Lemon curd below already supplies acid; juice >1 tsp risks weep + curdle. Skip entirely for cleanest aroma; include 1 tsp for perceptible tang lift."
+            }
+          ]
+        },
+        {
+          "stageId": "PIPE",
+          "stageName": "Pipe & Set",
+          "ingredients": [
+            {
+              "id": "flake_salt",
+              "name": "Flake Salt (Maldon / fleur de sel)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "for finishing",
+              "sourcedFrom": "Tier 2: chef precedent — Dominique Ansel Salted Lemon Lime Tart",
+              "confidence": "high",
+              "rationale": "Maldon flake works as fleur de sel sub. Visible crystal + crunch + burst on tongue. Avoid table/iodized salt (dissolves on contact)."
             }
           ]
         }
@@ -828,5 +939,85 @@
     "strategy": "7-agent parallel research (cream-cheese ratios, lime flavor extraction, lemon-lime pairing, hold-time science, community intel, brand selection, plating/transport) — see photos-source/lime-chantilly/research/lime-chantilly-research-synthesis.md",
     "sourceCount": 60,
     "date": "2026-05-13"
+  },
+  "estimatedCost": {
+    "total": 3.12,
+    "perServing": 0.28,
+    "servings": 11,
+    "estimatedAt": "2026-05-12",
+    "items": [
+      {
+        "ingredientId": "lime_zest",
+        "name": "Persian Lime Zest (microplaned)",
+        "sourceType": "rate",
+        "sourceName": "Fresh Lime ($0.33 ea, ~1g zest)",
+        "amount": 1,
+        "unit": "g",
+        "cost": 0.33
+      },
+      {
+        "ingredientId": "powdered_sugar",
+        "name": "Powdered Sugar (10X with cornstarch)",
+        "sourceType": "rate",
+        "sourceName": "Hill Country Fare Confectioners Sugar 32 oz ($1.84)",
+        "amount": 50,
+        "unit": "g",
+        "cost": 0.10
+      },
+      {
+        "ingredientId": "cream_cheese",
+        "name": "Block Cream Cheese (full-fat, softened)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Cream Cheese 8 oz ($2.30)",
+        "amount": 120,
+        "unit": "g",
+        "cost": 1.22
+      },
+      {
+        "ingredientId": "salt",
+        "name": "Fine Salt",
+        "sourceType": "rate",
+        "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
+        "amount": 0.3,
+        "unit": "g",
+        "cost": 0.0
+      },
+      {
+        "ingredientId": "vanilla",
+        "name": "Vanilla Bean Paste or Extract",
+        "sourceType": "rate",
+        "sourceName": "Adams Best Vanilla Extract 1.5 oz ($2.92)",
+        "amount": 2.5,
+        "unit": "g",
+        "cost": 0.17
+      },
+      {
+        "ingredientId": "heavy_cream",
+        "name": "Heavy Cream (cold, ≥36% fat)",
+        "sourceType": "rate",
+        "sourceName": "H-E-B Heavy Whipping Cream 32 oz ($4.89)",
+        "amount": 240,
+        "unit": "g",
+        "cost": 1.24
+      },
+      {
+        "ingredientId": "lime_juice",
+        "name": "Fresh Lime Juice (optional)",
+        "sourceType": "rate",
+        "sourceName": "Fresh Lime ($0.33 ea, ~30g juice)",
+        "amount": 5,
+        "unit": "g",
+        "cost": 0.05
+      },
+      {
+        "ingredientId": "flake_salt",
+        "name": "Flake Salt (Maldon / fleur de sel)",
+        "sourceType": "rate",
+        "sourceName": "Maldon Sea Salt Flakes 8.5 oz ($5.98)",
+        "amount": 0.5,
+        "unit": "g",
+        "cost": 0.01
+      }
+    ]
   }
 }
