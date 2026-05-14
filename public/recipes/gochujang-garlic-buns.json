@@ -9,7 +9,11 @@
     },
     "yields": "12 buns",
     "total_time": "~3 hrs active (plus 2 hrs confit garlic, can be done ahead)",
-    "description": "Enriched tangzhong rolls with Korean fermented chili paste and confit garlic. Paul Hollywood handshake recipe from GBBO Season 15 Bread Week."
+    "description": "Enriched tangzhong rolls with Korean fermented chili paste and confit garlic. Paul Hollywood handshake recipe from GBBO Season 15 Bread Week.",
+    "prep_active_min": 81,
+    "proof_passive_min": 105,
+    "oven_occupancy_min": 163,
+    "bake_min": 163
   },
   "config": {
     "early_check_percent": 0.8,
@@ -21,7 +25,7 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v2.1.0",
+  "version": "v2.1.1",
   "change_log": [
     {
       "version": "v2.1.0",
@@ -871,6 +875,217 @@
       "version": "v1.0.0",
       "date": "2026-04-14",
       "summary": "Initial recipe adapted from Dylan Bachelet's GBBO Season 15 Bread Week buns with science-informed adjustments from multi-agent research",
+      "ingredients": [
+        {
+          "stageId": "CONFIT",
+          "stageName": "Confit Garlic",
+          "ingredients": [
+            {
+              "id": "garlic",
+              "name": "Garlic Cloves",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official recipe + all recreations",
+              "confidence": "high",
+              "rationale": "1 full bulb (~50g); confit method universal across sources. Use ~15g folded into dough, ~10g in filling roll-up, save rest for other uses"
+            },
+            {
+              "id": "olive-oil",
+              "name": "Extra Virgin Olive Oil",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard confit technique",
+              "confidence": "high",
+              "rationale": "~1 cup, enough to submerge cloves. Leftover oil is garlic-flavored bonus"
+            }
+          ]
+        },
+        {
+          "stageId": "DOUGH",
+          "stageName": "Tangzhong & Dough",
+          "ingredients": [
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 420,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "tangzhong",
+                  "amount": 20
+                },
+                {
+                  "label": "dough",
+                  "amount": 400
+                }
+              ],
+              "sourcedFrom": "Tier 1: 7/8 sources use 400g bread flour + tangzhong flour",
+              "confidence": "high",
+              "rationale": "Universal across Dylan's official and all recreations"
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Dylan's official tangzhong ratio",
+              "confidence": "high",
+              "rationale": "100g water for tangzhong — clean 5:1 ratio with 20g flour"
+            },
+            {
+              "id": "instant-yeast",
+              "name": "Instant Yeast (SAF Red)",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official recipe",
+              "confidence": "high",
+              "rationale": "Dylan specifies SAF-Instant Red by brand"
+            },
+            {
+              "id": "whole-milk",
+              "name": "Whole Milk",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official + Delectablediction match exactly",
+              "confidence": "high",
+              "rationale": "Lukewarm for yeast activation"
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter",
+              "total": 43,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 28
+                },
+                {
+                  "label": "filling",
+                  "amount": 15
+                }
+              ],
+              "sourcedFrom": "Tier 1: Dylan's official + Delectablediction match",
+              "confidence": "high",
+              "rationale": "28g melted and cooled for dough, 15g melted for swirl filling layer"
+            },
+            {
+              "id": "caster-sugar",
+              "name": "Caster Sugar",
+              "total": 40,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "yeast bloom",
+                  "amount": 4
+                },
+                {
+                  "label": "dough",
+                  "amount": 36
+                }
+              ],
+              "sourcedFrom": "Tier 1: Dylan's official recipe",
+              "confidence": "high",
+              "rationale": "40g caster sugar; 3/4 copycats agree on ~30-40g range"
+            },
+            {
+              "id": "fine-salt",
+              "name": "Fine Salt",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official recipe",
+              "confidence": "high",
+              "rationale": "5ml (~5g); note gochujang contributes additional salt"
+            },
+            {
+              "id": "gochujang",
+              "name": "Gochujang (CJ Haechandeul Medium Hot)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: Dylan's official + community consensus",
+              "confidence": "high",
+              "rationale": "2 tbsp (~30g) in dough. ~8% baker's percentage. Brand: CJ Haechandeul Medium Hot recommended"
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs",
+              "total": 100,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 50
+                },
+                {
+                  "label": "egg wash",
+                  "amount": 50
+                }
+              ],
+              "sourcedFrom": "Tier 1: Dylan's official recipe",
+              "confidence": "high",
+              "rationale": "1 in dough + 1 for egg wash"
+            }
+          ]
+        },
+        {
+          "stageId": "GLAZE",
+          "stageName": "Honey-Soy Glaze (Optional)",
+          "ingredients": [
+            {
+              "id": "honey",
+              "name": "Honey",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 3: Sophie Bamford's popular community upgrade",
+              "confidence": "medium",
+              "rationale": "Most tested glaze upgrade to Dylan's original"
+            },
+            {
+              "id": "light-soy-sauce",
+              "name": "Light Soy Sauce",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 3: Sophie Bamford",
+              "confidence": "medium",
+              "rationale": "2 tsp; provides salt + umami to balance honey sweetness"
+            },
+            {
+              "id": "glaze-butter",
+              "name": "Unsalted Butter (melted)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 3: Sophie Bamford",
+              "confidence": "medium",
+              "rationale": "Brushed after honey-soy to prevent stickiness and add shine"
+            },
+            {
+              "id": "sesame-seeds",
+              "name": "Sesame Seeds (black + white mix)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 2: Multiple recreations include sesame",
+              "confidence": "medium",
+              "rationale": "Natural Korean flavor pairing, visual contrast"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v2.1.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=81m, proof_passive=105m, oven_occupancy=163m, bake=163m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "CONFIT",

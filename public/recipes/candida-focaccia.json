@@ -8,7 +8,11 @@
     },
     "yields": "One 23cm round focaccia (8-10 slices)",
     "total_time": "~2 hrs (30 min active, 1.5 hrs passive)",
-    "description": "A savory grain-free focaccia for friends on a candida diet. Blanched almond flour and coconut flour replace wheat, psyllium husk builds structure, and roasted garlic with fresh rosemary carry the flavor. Not diet food — real bread with real character."
+    "description": "A savory grain-free focaccia for friends on a candida diet. Blanched almond flour and coconut flour replace wheat, psyllium husk builds structure, and roasted garlic with fresh rosemary carry the flavor. Not diet food — real bread with real character.",
+    "prep_active_min": 24,
+    "proof_passive_min": 10,
+    "oven_occupancy_min": 148,
+    "bake_min": 148
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.2.0",
+  "version": "v1.2.1",
   "change_log": [
     {
       "version": "v1.2.0",
@@ -482,6 +486,234 @@
       "version": "v1.0.0",
       "date": "2026-03-02",
       "summary": "Initial recipe from candida diet research synthesis — almond/coconut flour with psyllium, roasted garlic, rosemary, two-temperature bake",
+      "ingredients": [
+        {
+          "stageId": "ROAST",
+          "stageName": "Roast Garlic",
+          "ingredients": [
+            {
+              "id": "garlic",
+              "name": "Whole Garlic Head",
+              "total": 50,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "mashed into dough",
+                  "amount": 25
+                },
+                {
+                  "label": "pressed into dimples",
+                  "amount": 25
+                }
+              ],
+              "sourcedFrom": "Flavor optimization agent consensus",
+              "confidence": "high",
+              "rationale": "Roasted garlic is antifungal and mellows into sweet, buttery cloves — masks any eggy flavor"
+            },
+            {
+              "id": "olive-oil-roast",
+              "name": "Olive Oil (for roasting)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard roasted garlic technique",
+              "confidence": "high",
+              "rationale": "Minimal oil needed to prevent garlic from drying out"
+            }
+          ]
+        },
+        {
+          "stageId": "PREP",
+          "stageName": "Prep & Hydrate",
+          "ingredients": [
+            {
+              "id": "almond-flour",
+              "name": "Blanched Superfine Almond Flour",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "All 4 research agents",
+              "confidence": "high",
+              "rationale": "5:1 ratio with coconut flour — universal in grain-free bread science"
+            },
+            {
+              "id": "coconut-flour",
+              "name": "Coconut Flour",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "All 4 research agents",
+              "confidence": "high",
+              "rationale": "5:1 ratio with almond flour; absorbs 4-5x its weight in liquid"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Aluminum-Free Baking Powder",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Community intel + food science agents",
+              "confidence": "high",
+              "rationale": "Double-acting for reliable chemical leavening"
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent",
+              "confidence": "high",
+              "rationale": "Reacts with ACV for instant lift — never exceed 1/4 tsp to avoid soapy taste"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard bread ratio",
+              "confidence": "high",
+              "rationale": "~1.6% of flour weight"
+            },
+            {
+              "id": "rosemary",
+              "name": "Fresh Rosemary",
+              "total": 5,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "finely chopped into dough",
+                  "amount": 2
+                },
+                {
+                  "label": "whole leaves for dimples",
+                  "amount": 3
+                }
+              ],
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "high",
+              "rationale": "Antimicrobial herb — candida-safe and flavor-forward"
+            },
+            {
+              "id": "psyllium",
+              "name": "Psyllium Husk Powder",
+              "total": 25,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent — key finding",
+              "confidence": "high",
+              "rationale": "Forms gel network mimicking gluten. Increases gas-holding from 84% to 98%. Must be POWDER not whole husks"
+            },
+            {
+              "id": "warm-water",
+              "name": "Warm Water",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent",
+              "confidence": "high",
+              "rationale": "10:1 water-to-psyllium is too high at 250ml; 120ml tested ratio for focaccia density"
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Mix Batter",
+          "ingredients": [
+            {
+              "id": "eggs",
+              "name": "Large Eggs (separated)",
+              "total": 168,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "yolks (2 only)",
+                  "amount": 36
+                },
+                {
+                  "label": "whites (all 4)",
+                  "amount": 132
+                }
+              ],
+              "sourcedFrom": "Food science + community agents",
+              "confidence": "high",
+              "rationale": "2 yolks + 4 whites reduces eggy flavor while maximizing lift from whipped whites"
+            },
+            {
+              "id": "ghee",
+              "name": "Ghee (melted)",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "high",
+              "rationale": "Nutty, rich, high smoke point, essentially zero lactose — better flavor than coconut oil"
+            },
+            {
+              "id": "acv",
+              "name": "Apple Cider Vinegar",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent",
+              "confidence": "high",
+              "rationale": "Reacts with baking soda + prevents purple psyllium reaction"
+            },
+            {
+              "id": "cream-of-tartar",
+              "name": "Cream of Tartar",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent",
+              "confidence": "medium",
+              "rationale": "Stabilizes whipped egg whites for longer hold during folding"
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Shape & Top",
+          "ingredients": [
+            {
+              "id": "olive-oil-topping",
+              "name": "Extra Virgin Olive Oil (topping)",
+              "total": 45,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "high",
+              "rationale": "Generous EVOO is what makes focaccia — fruity, Mediterranean character"
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "high",
+              "rationale": "Visible crystals on top for texture and presentation"
+            },
+            {
+              "id": "black-pepper",
+              "name": "Black Pepper (cracked)",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Flavor optimization agent",
+              "confidence": "medium",
+              "rationale": "Optional finishing touch — to taste"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.2.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=24m, proof_passive=10m, oven_occupancy=148m, bake=148m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "ROAST",

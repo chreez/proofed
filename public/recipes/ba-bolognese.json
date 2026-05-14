@@ -8,7 +8,11 @@
     },
     "yields": "4 servings",
     "total_time": "~3.5 hrs (1 hr active, 2-2.5 hr passive simmer)",
-    "description": "Slow-simmered northern Italian meat sauce: beef chuck and pancetta, white wine reduction, milk and stock for richness. 2-2.5 hour low simmer until sloppy-joe texture. Tossed with fresh tagliatelle (or dry rigatoni) and Parmesan."
+    "description": "Slow-simmered northern Italian meat sauce: beef chuck and pancetta, white wine reduction, milk and stock for richness. 2-2.5 hour low simmer until sloppy-joe texture. Tossed with fresh tagliatelle (or dry rigatoni) and Parmesan.",
+    "prep_active_min": 65,
+    "proof_passive_min": 135,
+    "oven_occupancy_min": 0,
+    "bake_min": 0
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "serving"
     }
   },
-  "version": "v1.2.1",
+  "version": "v1.2.2",
   "change_log": [
     {
       "version": "v1.2.1",
@@ -652,6 +656,168 @@
               "total": 30,
               "unit": "g",
               "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.2.2",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=65m, proof_passive=135m, oven_occupancy=0m, bake=0m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Prep Mirepoix",
+          "ingredients": [
+            {
+              "id": "onion",
+              "name": "Onion (medium)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "medium"
+            },
+            {
+              "id": "celery",
+              "name": "Celery Stalks (×2)",
+              "total": 80,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2 stalks"
+            },
+            {
+              "id": "carrot",
+              "name": "Carrots (peeled, ×2)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2 carrots"
+            }
+          ]
+        },
+        {
+          "stageId": "SAUCE_BUILD",
+          "stageName": "Build the Sauce Base",
+          "ingredients": [
+            {
+              "id": "olive-oil",
+              "name": "Extra-Virgin Olive Oil",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ground-beef",
+              "name": "Ground Beef Chuck (20% fat), patted dry",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-sauce",
+              "name": "Kosher Salt (for sauce)",
+              "total": 6,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "season beef while browning",
+                  "amount": 2
+                },
+                {
+                  "label": "pinch with stock+milk",
+                  "amount": 1
+                },
+                {
+                  "label": "final taste-adjust",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "id": "pancetta",
+              "name": "Pancetta (thinly sliced, finely chopped)",
+              "total": 85,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "white-wine",
+              "name": "Dry White Wine",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "tomato-paste",
+              "name": "Tomato Paste",
+              "total": 170,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "bay-leaf",
+              "name": "Bay Leaf (1 leaf)",
+              "total": 0.2,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 leaf"
+            },
+            {
+              "id": "nutmeg",
+              "name": "Nutmeg (finely grated, pinch)",
+              "total": 0.1,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "pinch"
+            }
+          ]
+        },
+        {
+          "stageId": "SIMMER",
+          "stageName": "Low Simmer",
+          "ingredients": [
+            {
+              "id": "chicken-stock",
+              "name": "Chicken Stock (homemade or low-sodium broth)",
+              "total": 480,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "whole-milk",
+              "name": "Whole Milk",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Cook Pasta & Toss",
+          "ingredients": [
+            {
+              "id": "pasta",
+              "name": "Pasta (1 lb fresh tagliatelle/pappardelle OR dry rigatoni)",
+              "total": 454,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "parmesan",
+              "name": "Parmesan (finely grated; plus more for plating)",
+              "total": 57,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "kosher-salt-pasta-water",
+              "name": "Kosher Salt (for pasta water)",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1.5 Tbsp"
             }
           ]
         }

@@ -27,7 +27,11 @@
     },
     "yields": "2–3 baguettes",
     "total_time": "~12–16 hrs (2 hrs active)",
-    "description": "A hybrid baguette using both poolish (commercial yeast) and leaven (sourdough starter) — the poolish gives reliable lift and extensibility, the leaven adds flavor complexity. Baked to a deep golden tone with the toasty aroma of freshly popped corn."
+    "description": "A hybrid baguette using both poolish (commercial yeast) and leaven (sourdough starter) — the poolish gives reliable lift and extensibility, the leaven adds flavor complexity. Baked to a deep golden tone with the toasty aroma of freshly popped corn.",
+    "prep_active_min": 59,
+    "proof_passive_min": 1215,
+    "oven_occupancy_min": 112,
+    "bake_min": 67
   },
   "config": {
     "early_check_percent": 0.8,
@@ -40,7 +44,7 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.1.1",
   "change_log": [
     {
       "version": "v1.1.0",
@@ -127,6 +131,87 @@
       "version": "v1.0.0",
       "date": "2026-02-07",
       "summary": "Initial recipe from Tartine Bread (pp.128-130) by Chad Robertson",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "ap_flour",
+              "name": "All-Purpose Flour",
+              "total": 1070,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "poolish",
+                  "amount": 200
+                },
+                {
+                  "label": "leaven",
+                  "amount": 220
+                },
+                {
+                  "label": "main dough",
+                  "amount": 650
+                }
+              ]
+            },
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 920,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "poolish (75°F)",
+                  "amount": 200
+                },
+                {
+                  "label": "leaven (80°F)",
+                  "amount": 220
+                },
+                {
+                  "label": "main dough (74–75°F)",
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "id": "yeast",
+              "name": "Active Dry Yeast",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Mature Starter",
+              "total": 15,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 24,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.1.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=59m, proof_passive=1215m, oven_occupancy=112m, bake=67m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

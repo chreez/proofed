@@ -1,5 +1,5 @@
 {
-  "version": "v1.1.1",
+  "version": "v1.1.2",
   "meta": {
     "name": "Tartine Rugelach",
     "source": {
@@ -9,7 +9,11 @@
     },
     "yields": "16 rugelach",
     "total_time": "~2 hrs (40 min active, 1 hr chill, 12 min freeze, 22 min bake)",
-    "description": "Flaky cream cheese dough rolled into 16 crescents around a walnut-currant-cinnamon filling. Tartine baker Davita's version uses part einkorn flour for lighter, flakier layers and a higher rise than all-AP versions."
+    "description": "Flaky cream cheese dough rolled into 16 crescents around a walnut-currant-cinnamon filling. Tartine baker Davita's version uses part einkorn flour for lighter, flakier layers and a higher rise than all-AP versions.",
+    "prep_active_min": 33,
+    "proof_passive_min": 72,
+    "oven_occupancy_min": 40,
+    "bake_min": 25
   },
   "config": {
     "early_check_percent": 0.85,
@@ -363,6 +367,133 @@
               "total": 20,
               "unit": "g",
               "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.1.2",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=33m, proof_passive=72m, oven_occupancy=40m, bake=25m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
+      "ingredients": [
+        {
+          "stageId": "MIX_DOUGH",
+          "stageName": "Mix Cream Cheese Dough",
+          "ingredients": [
+            {
+              "id": "cream-cheese",
+              "name": "Cream Cheese (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "8 oz"
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 cup"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 260,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2 cups"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1/2 cup"
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 tsp"
+            }
+          ]
+        },
+        {
+          "stageId": "MAKE_FILLING",
+          "stageName": "Make Walnut-Currant Filling",
+          "ingredients": [
+            {
+              "id": "walnuts",
+              "name": "Walnuts",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 cup"
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2/3 cup"
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 Tbsp"
+            },
+            {
+              "id": "currants",
+              "name": "Currants",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1/2 cup"
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Roll, Fill, and Shape",
+          "ingredients": [
+            {
+              "id": "melted-butter",
+              "name": "Unsalted Butter (melted, cooled)",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "3 Tbsp"
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Egg Wash, Sugar, and Bake",
+          "ingredients": [
+            {
+              "id": "egg",
+              "name": "Large Egg",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 large"
+            },
+            {
+              "id": "sugar-topping",
+              "name": "Granulated Sugar (for topping)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "for sprinkling"
             }
           ]
         }

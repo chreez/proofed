@@ -8,7 +8,11 @@
     },
     "yields": "8 buns",
     "total_time": "~18 hrs (1 hr active), two-day schedule",
-    "description": "ATK Ultimate Cinnamon Buns rebuilt on a sourdough chassis. Active levain replaces commercial yeast, overnight cold retard develops complex flavor. Same reduced-sugar filling and cream-cheese-forward glaze (v1.2.0). Heavy cream pour before baking for caramel bottom."
+    "description": "ATK Ultimate Cinnamon Buns rebuilt on a sourdough chassis. Active levain replaces commercial yeast, overnight cold retard develops complex flavor. Same reduced-sugar filling and cream-cheese-forward glaze (v1.2.0). Heavy cream pour before baking for caramel bottom.",
+    "prep_active_min": 51,
+    "proof_passive_min": 1130,
+    "oven_occupancy_min": 45,
+    "bake_min": 25
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v1.2.0",
+  "version": "v1.2.1",
   "change_log": [
     {
       "version": "v1.2.0",
@@ -382,6 +386,184 @@
       "version": "v1.0.0",
       "date": "2026-02-16",
       "summary": "Initial recipe adapted from ATK Ultimate Cinnamon Buns v1.3.0 with sourdough levain, overnight cold retard, springform pan, and heavy cream pour. Based on 7-agent research synthesis (100+ sources).",
+      "ingredients": [
+        {
+          "stageId": "PREP_LEVAIN",
+          "stageName": "Build Levain",
+          "ingredients": [
+            {
+              "id": "starter",
+              "name": "Ripe Sourdough Starter",
+              "total": 34,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "17-20% PFF is consensus for enriched sourdough dough"
+            },
+            {
+              "id": "levain_flour",
+              "name": "All-Purpose Flour (levain)",
+              "total": 84,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "levain_water",
+              "name": "Water (room temp, levain)",
+              "total": 84,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 430,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "531g original minus ~100g contributed by levain"
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Unchanged from ATK — gluten dilution for tenderness, resistant to sourdough enzymatic degradation"
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ],
+              "confidence": "high",
+              "rationale": "Unchanged from ATK v1.3.0. 29% baker's % matches Perfect Loaf enrichment level."
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 95,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 95-100°F)",
+                  "amount": 80
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ],
+              "confidence": "high",
+              "rationale": "Reduced from 192g — levain contributes ~100g water"
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "v1.2.0 amount (bumped from 113g for cream-cheese-forward glaze)"
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "ATK and Perfect Loaf both use 3. Most sourdough recipes use 1. Keeping 3 for ATK DNA."
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Poured over rolls before baking. Multiple sourdough recipes endorse 60-120ml range."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.2.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=51m, proof_passive=1130m, oven_occupancy=45m, bake=25m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP_LEVAIN",

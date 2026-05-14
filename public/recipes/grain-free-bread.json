@@ -8,7 +8,11 @@
     },
     "yields": "1 loaf (~12 slices)",
     "total_time": "~2 hrs (35 min active, 1.5 hrs passive)",
-    "description": "A nut-flour loaf using almond flour, coconut flour, and whipped egg whites for structure. No wheat, no yeast, no sugar. Psyllium husk provides the elastic network that gluten normally would."
+    "description": "A nut-flour loaf using almond flour, coconut flour, and whipped egg whites for structure. No wheat, no yeast, no sugar. Psyllium husk provides the elastic network that gluten normally would.",
+    "prep_active_min": 23,
+    "proof_passive_min": 50,
+    "oven_occupancy_min": 52,
+    "bake_min": 52
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.2.0",
+  "version": "v1.2.1",
   "change_log": [
     {
       "version": "v1.2.0",
@@ -290,6 +294,138 @@
       "version": "v1.0.0",
       "date": "2026-03-02",
       "summary": "Initial recipe from food science research synthesis — almond/coconut flour blend with psyllium husk binder, dual leavening (whipped whites + baking powder)",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "almond_flour",
+              "name": "Blanched Almond Flour (superfine)",
+              "total": 168,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus — 3:1 almond-to-coconut ratio",
+              "confidence": "high",
+              "rationale": "Provides bulk and lighter texture. Must be blanched and superfine — almond meal is too coarse and heavy."
+            },
+            {
+              "id": "coconut_flour",
+              "name": "Coconut Flour",
+              "total": 56,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus — 3:1 almond-to-coconut ratio",
+              "confidence": "high",
+              "rationale": "Absorbs excess oil from almond flour, provides fiber. Contains 60.9% dietary fiber — absorbs 4-5x its weight in liquid."
+            },
+            {
+              "id": "psyllium_husk",
+              "name": "Psyllium Husk Powder",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PMC/ScienceDirect peer-reviewed research",
+              "confidence": "high",
+              "rationale": "The gluten mimic — forms elastic gel network, increases gas-holding capacity from 84% to 98.5%. Pre-hydration essential."
+            },
+            {
+              "id": "warm_water",
+              "name": "Warm Water",
+              "total": 90,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Psyllium hydration ratio research",
+              "confidence": "medium",
+              "rationale": "For psyllium pre-hydration. Warm water accelerates gel formation."
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs",
+              "total": 200,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "whites (whipped)",
+                  "amount": 132
+                },
+                {
+                  "label": "yolks (wet mix)",
+                  "amount": 68
+                }
+              ],
+              "sourcedFrom": "Cross-source consensus — primary structural protein",
+              "confidence": "high",
+              "rationale": "4 eggs separated. Whites provide mechanical leavening (6-8x volume). Yolks contribute flavor, color, and emulsification."
+            },
+            {
+              "id": "cream_of_tartar",
+              "name": "Cream of Tartar",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard egg white foam stabilization",
+              "confidence": "high",
+              "rationale": "Stabilizes egg white foam — without it, foam collapses after ~5 minutes."
+            },
+            {
+              "id": "baking_powder",
+              "name": "Baking Powder (double-acting)",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Section 6 research — double-acting preferred over baking soda alone",
+              "confidence": "high",
+              "rationale": "Releases CO2 in two phases (wet + heat). Combined with ACV for extra acid activation."
+            },
+            {
+              "id": "apple_cider_vinegar",
+              "name": "Apple Cider Vinegar",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Busby's Bakery, research synthesis",
+              "confidence": "high",
+              "rationale": "Activates leavening, weakens protein bonds for tender crumb, masks eggy flavor."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Standard baker's percentage adjusted for grain-free",
+              "confidence": "medium",
+              "rationale": "~1.3% of total flour weight. Enhances flavor and strengthens egg protein structure."
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (melted)",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Section 10 synthesis",
+              "confidence": "medium",
+              "rationale": "Minimal added fat — almond flour is already ~50% fat. Adds flavor and moisture."
+            },
+            {
+              "id": "xanthan_gum",
+              "name": "Xanthan Gum",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Section 7 — psyllium + xanthan combination approach",
+              "confidence": "medium",
+              "rationale": "Provides gas-trapping film alongside psyllium's elasticity. ATK says xanthan behaves most like gluten of all replacers."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.2.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=23m, proof_passive=50m, oven_occupancy=52m, bake=52m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

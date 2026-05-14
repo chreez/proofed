@@ -8,7 +8,11 @@
     },
     "yields": "8 buns",
     "total_time": "~3.5 hrs (45 min active, 2.75 hrs passive)",
-    "description": "Soft, squishy, flat potato buns built for smashburgers. Consensus recipe from 15+ sources — bread flour counterbalances potato's gluten-weakening, egg yolk adds natural lecithin for Martin's-like softness. Press flat and proof for the classic 4-inch smashburger shape."
+    "description": "Soft, squishy, flat potato buns built for smashburgers. Consensus recipe from 15+ sources — bread flour counterbalances potato's gluten-weakening, egg yolk adds natural lecithin for Martin's-like softness. Press flat and proof for the classic 4-inch smashburger shape.",
+    "prep_active_min": 45,
+    "proof_passive_min": 155,
+    "oven_occupancy_min": 32,
+    "bake_min": 32
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.1.1",
   "change_log": [
     {
       "version": "v1.1.0",
@@ -138,6 +142,118 @@
       "version": "v1.0.0",
       "date": "2026-04-14",
       "summary": "Initial recipe from 8-agent parallel research synthesis (40+ sources). Commercial yeast potato bun optimized for smashburger use.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Potato Prep & Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 450,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents — universal base flour",
+              "confidence": "high",
+              "rationale": "12-13% protein compensates for potato starch weakening gluten. Consensus across King Arthur, Weissman, Saffitz, Elise, Baking Sense, Andy Cooks."
+            },
+            {
+              "id": "russet_potato",
+              "name": "Russet Potato (1 medium, ~200g raw)",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents — ~27% baker's percentage",
+              "confidence": "high",
+              "rationale": "120g mashed = 27% of flour weight. Sweet spot from 15+ recipes (range: 20-35%). Russet preferred for starchy, smooth mash. Weight is after cooking and ricing."
+            },
+            {
+              "id": "whole_milk",
+              "name": "Whole Milk (warm, 43°C / 110°F)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 6/8 agents — primary liquid",
+              "confidence": "high",
+              "rationale": "Milk provides fat, protein (casein), lactose for browning. Warm to activate yeast. Potato water can substitute part of this."
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 70,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 55
+                },
+                {
+                  "label": "post-bake brush (melted)",
+                  "amount": 15
+                }
+              ],
+              "sourcedFrom": "Tier 1: 7/8 agents — 12% baker's percentage",
+              "confidence": "high",
+              "rationale": "55g in dough (12% of flour) for richness. 15g melted for post-bake brush — softens crust, adds sheen. Range across sources: 8-16%."
+            },
+            {
+              "id": "sugar",
+              "name": "Granulated Sugar",
+              "total": 30,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents — 7% baker's percentage",
+              "confidence": "high",
+              "rationale": "7% = subtle sweetness for savory burger bun. Martin's uses 10-12% — push higher if you want that Martin's sweetness."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 9,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: universal — 2% baker's percentage",
+              "confidence": "high",
+              "rationale": "Standard 2% of flour weight. Well-established across all sources."
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents — 1.5% baker's percentage",
+              "confidence": "high",
+              "rationale": "1 standard packet. Instant preferred — mixes directly into dry ingredients, no proofing needed. SAF Red Label recommended."
+            },
+            {
+              "id": "eggs",
+              "name": "Eggs (1 whole + 1 extra yolk)",
+              "total": 68,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 2: 5/8 agents — Weissman's approach",
+              "confidence": "high",
+              "rationale": "1 whole egg (50g) for structure + 1 extra yolk (18g) for richness and natural lecithin. Martin's uses no eggs — the egg yolk here substitutes for their commercial emulsifiers."
+            },
+            {
+              "id": "neutral_oil",
+              "name": "Neutral Oil (for shaping)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Technique consensus",
+              "confidence": "medium",
+              "rationale": "Small amount for oiling glass bottom when pressing buns flat and oiling fermentation bowl. Not a flavor ingredient."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.1.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=45m, proof_passive=155m, oven_occupancy=32m, bake=32m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

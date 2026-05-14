@@ -168,6 +168,37 @@ export interface RecipeMeta {
   source?: RecipeSource
   yields: string
   total_time: string
+  /**
+   * Hands-on baker time, in minutes. Sum of `RecipeState.duration_min` for
+   * states whose `timer` is false (mix, knead, shape, score, glaze, etc.).
+   * Excludes passive rises and oven time. Optional — scheduler treats
+   * `undefined` as "not yet decomposed" and falls back to summing per-state
+   * durations. (PF-267 / PF-255.3)
+   */
+  prep_active_min?: number
+  /**
+   * Passive kitchen time, in minutes. Sum of `RecipeState.duration_min` for
+   * states with `timer: true` that are NOT bake/preheat states — rises,
+   * autolyses, bench rests, cold retards, chill steps, and cool-on-rack.
+   * Baker is free; oven is free. (PF-267 / PF-255.3)
+   */
+  proof_passive_min?: number
+  /**
+   * Total minutes the oven slot is occupied by this recipe, summed across
+   * all preheat + bake states. For multi-batch recipes (e.g. two loaves
+   * baked sequentially), this is the single-batch slot footprint — the
+   * scheduler multiplies by `config.stats.itemsPerBatch` math separately.
+   * (PF-267 / PF-255.3)
+   */
+  oven_occupancy_min?: number
+  /**
+   * Single-batch active oven time, in minutes — sum of states whose id or
+   * title contains `bake` or `roast` (or that live in a bake-named stage).
+   * Excludes preheat. For single-bake recipes, equals
+   * `oven_occupancy_min - preheat`. The scheduler uses this to interleave
+   * batches with other recipes. (PF-267 / PF-255.3)
+   */
+  bake_min?: number
   description?: string
   allergenOverride?: string[]
   outdated?: OutdatedMarker

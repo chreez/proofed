@@ -7,7 +7,11 @@
     },
     "yields": "~240g cream (10-12 piped rosettes — tops one 23cm tart)",
     "total_time": "~50 min (10 min active, 40 min passive — maceration + chill)",
-    "description": "Cream-cheese-stabilized lime whipped cream built for transport. Persian lime zest macerated into powdered sugar (Pierre Hermé / Dorie Greenspan smush trick), bloomed in softened cream cheese, then whipped with cold heavy cream. Holds piped peaks 24-48h refrigerated against an acidic curd surface. Designed as the topping for Tartine Lemon Cream Tart (lemon-on-lime pairing — Dominique Ansel's Salted Lemon Lime Tart precedent), but pairs with any citrus tart, berry pavlova, or summer fruit dessert."
+    "description": "Cream-cheese-stabilized lime whipped cream built for transport. Persian lime zest macerated into powdered sugar (Pierre Hermé / Dorie Greenspan smush trick), bloomed in softened cream cheese, then whipped with cold heavy cream. Holds piped peaks 24-48h refrigerated against an acidic curd surface. Designed as the topping for Tartine Lemon Cream Tart (lemon-on-lime pairing — Dominique Ansel's Salted Lemon Lime Tart precedent), but pairs with any citrus tart, berry pavlova, or summer fruit dessert.",
+    "prep_active_min": 13,
+    "proof_passive_min": 155,
+    "oven_occupancy_min": 0,
+    "bake_min": 0
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "rosettes"
     }
   },
-  "version": "v1.0.2",
+  "version": "v1.0.3",
   "change_log": [
     {
       "version": "v1.0.1",
@@ -224,6 +228,117 @@
       "version": "v1.0.2",
       "date": "2026-05-12",
       "summary": "Seed estimatedCost block (PF-266): 8 ingredients priced via cost-rates.json, total $3.12 (perServing $0.28 across 11 rosettes). Recipe has one bake (2026-05-13) with cost:null — no real cost data to consume yet, so estimatedCost provides pre-bake pricing for PF-255 surfaces.",
+      "ingredients": [
+        {
+          "stageId": "MACERATE",
+          "stageName": "Macerate Lime Sugar",
+          "ingredients": [
+            {
+              "id": "lime_zest",
+              "name": "Persian Lime Zest (microplaned)",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "zest of 1 lime (~2 tsp)",
+              "sourcedFrom": "Tier 1: 6/7 agents — modal value across lemon+lime WC recipes",
+              "confidence": "high",
+              "rationale": "Persian lime safer than key lime for whipped applications (less bitter peel); ~2 tsp delivers clear lime identity without pith bitterness"
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Powdered Sugar (10X with cornstarch)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 6/7 agents — 20-25% sugar:cream consensus",
+              "confidence": "high",
+              "rationale": "Cornstarch in 10X powdered sugar adds micro-stabilization; sweetens without overpowering"
+            }
+          ]
+        },
+        {
+          "stageId": "SMOOTH",
+          "stageName": "Smooth Cream Cheese Base",
+          "ingredients": [
+            {
+              "id": "cream_cheese",
+              "name": "Block Cream Cheese (full-fat, softened)",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 7/7 agents — heavy-ratio cluster (50% CC:cream) for transport hold",
+              "confidence": "high",
+              "rationale": "Block only (tub adds whey/gums that break the whip); H-E-B Organics Brick has cleanest label (locust bean gum only — the gum specifically associated with whipped cream stability). RecipeTin Eats Nagi tested this ratio holding 4 days piped on cake."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Salt",
+              "total": 0.3,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "pinch"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Bean Paste or Extract",
+              "total": 2.5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1/2 tsp (optional)"
+            }
+          ]
+        },
+        {
+          "stageId": "WHIP",
+          "stageName": "Whip with Heavy Cream",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (cold, ≥36% fat)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 cup",
+              "sourcedFrom": "Tier 1: 7/7 agents",
+              "confidence": "high",
+              "rationale": "Cold straight from fridge — ATK measured fat-crystal-dependent whipping efficiency; warm cream won't form stiff peaks. H-E-B Heavy Whipping Cream (gellan-only stabilizer) is cleanest label at store; avoid Land O Lakes (carrageenan + polysorbate 80)"
+            },
+            {
+              "id": "lime_juice",
+              "name": "Fresh Lime Juice (optional)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 tsp (optional)",
+              "sourcedFrom": "Tier 2: 4-5 agents — fold late at soft peaks",
+              "confidence": "medium",
+              "rationale": "Lemon curd below already supplies acid; juice >1 tsp risks weep + curdle. Skip entirely for cleanest aroma; include 1 tsp for perceptible tang lift."
+            }
+          ]
+        },
+        {
+          "stageId": "PIPE",
+          "stageName": "Pipe & Set",
+          "ingredients": [
+            {
+              "id": "flake_salt",
+              "name": "Flake Salt (Maldon / fleur de sel)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "for finishing",
+              "sourcedFrom": "Tier 2: chef precedent — Dominique Ansel Salted Lemon Lime Tart",
+              "confidence": "high",
+              "rationale": "Maldon flake works as fleur de sel sub. Visible crystal + crunch + burst on tongue. Avoid table/iodized salt (dissolves on contact)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.0.3",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=13m, proof_passive=155m, oven_occupancy=0m, bake=0m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "MACERATE",
@@ -962,7 +1077,7 @@
         "sourceName": "Hill Country Fare Confectioners Sugar 32 oz ($1.84)",
         "amount": 50,
         "unit": "g",
-        "cost": 0.10
+        "cost": 0.1
       },
       {
         "ingredientId": "cream_cheese",
@@ -980,7 +1095,7 @@
         "sourceName": "Morton Iodized Salt 26 oz ($1.29)",
         "amount": 0.3,
         "unit": "g",
-        "cost": 0.0
+        "cost": 0
       },
       {
         "ingredientId": "vanilla",

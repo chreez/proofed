@@ -13,7 +13,11 @@
     "outdated": {
       "reason": "Superseded by the jalapeño cheddar sourdough — same base method, refined hydration and bake schedule, and the version I keep going back to.",
       "supersededBy": "jalapeno-cheddar-sourdough"
-    }
+    },
+    "prep_active_min": 33,
+    "proof_passive_min": 1010,
+    "oven_occupancy_min": 90,
+    "bake_min": 45
   },
   "config": {
     "early_check_percent": 0.8,
@@ -27,7 +31,7 @@
       "itemsPerBatch": 1
     }
   },
-  "version": "v1.1.1",
+  "version": "v1.1.2",
   "change_log": [
     {
       "version": "v1.1.0",
@@ -197,6 +201,88 @@
       "version": "v1.1.1",
       "date": "2026-05-12",
       "summary": "Add config.stats.itemsPerBatch=1 for throughput modeling (PF-265). One dutch oven, one loaf at a time; second loaf waits in fridge — 2 batches.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 agents)",
+              "confidence": "high",
+              "rationale": "Same base as simple sourdough. 12-13% protein for strong gluten network."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 670,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Food science agent, TheYeastWeCando, JennyBlogs",
+              "confidence": "high",
+              "rationale": "67% hydration — reduced 3% from lean recipe. Cheese adds ~97g bound moisture; without reduction, dough becomes too slack."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus, same as simple-sourdough base",
+              "confidence": "high",
+              "rationale": "20% inoculation unchanged — cheese fat slows fermentation, so maintaining the higher inoculation rate compensates."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "The Perfect Loaf, The Fresh Loaf (alfanso), Sourdough Geeks",
+              "confidence": "high",
+              "rationale": "1.8% of flour weight — reduced from 2% because 226g cheddar adds ~1.4g sodium. Prevents over-salting."
+            },
+            {
+              "id": "cheddar",
+              "name": "Tillamook Sharp Cheddar",
+              "total": 226,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 113
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 113
+                }
+              ],
+              "sourcedFrom": "Poetry & Pies, Little Spoon Farm, The Perfect Loaf, 8/8 agents",
+              "confidence": "high",
+              "rationale": "22.6% of flour weight — dead center of 20-25% consensus range. One 8oz/226g Tillamook block, split evenly."
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (melted)",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Multiple community bakers, Reddit consensus",
+              "confidence": "medium",
+              "rationale": "Post-bake brush only (~7g per loaf). Achieves butter flavor and golden crust without disrupting dough. No butter IN the dough — cheese already contributes 72g fat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.1.2",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=33m, proof_passive=1010m, oven_occupancy=90m, bake=45m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

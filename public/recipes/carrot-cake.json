@@ -8,7 +8,11 @@
     },
     "yields": "Two 23cm (9\") layers, 12-16 slices",
     "total_time": "~5 hrs (1 hr active, 4 hrs passive)",
-    "description": "A research-backed carrot cake synthesized from 64 sources — Michelin-star chefs, JBF award winners, food science, and competition bake-off data. Oil-based for moisture, with spices bloomed in warm oil for amplified flavor. Finished with a brown butter cream cheese frosting using Nancy Silverton's cold-cream-cheese technique. Designed for exceptional results with one-bowl simplicity."
+    "description": "A research-backed carrot cake synthesized from 64 sources — Michelin-star chefs, JBF award winners, food science, and competition bake-off data. Oil-based for moisture, with spices bloomed in warm oil for amplified flavor. Finished with a brown butter cream cheese frosting using Nancy Silverton's cold-cream-cheese technique. Designed for exceptional results with one-bowl simplicity.",
+    "prep_active_min": 14,
+    "proof_passive_min": 158,
+    "oven_occupancy_min": 125,
+    "bake_min": 110
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,12 +24,233 @@
       "servingUnit": "slices"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "change_log": [
     {
       "version": "v1.0.0",
       "date": "2026-02-10",
       "summary": "Initial recipe synthesized from 9-agent research across 64 sources (Michelin/JBF chefs, food science, competition winners, community intel)",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 280,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — universal for carrot cake. AP, not cake flour (too weak for heavy batter with mix-ins)",
+              "confidence": "high",
+              "rationale": "Every source surveyed uses all-purpose flour. Cake flour produces too delicate a crumb for the weight of carrots and nuts."
+            },
+            {
+              "id": "baking_powder",
+              "name": "Baking Powder",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/9 agents — primary leavening lift",
+              "confidence": "high",
+              "rationale": "Provides the main rise. Used alongside baking soda for insurance — dual leavening is universal in acclaimed recipes."
+            },
+            {
+              "id": "baking_soda",
+              "name": "Baking Soda",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — ATK food science confirms it softens carrots and promotes browning",
+              "confidence": "high",
+              "rationale": "Softens carrot fibers during baking (ATK), promotes Maillard browning, and activates with the acid in brown sugar."
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — the defining spice, present in every recipe surveyed",
+              "confidence": "high",
+              "rationale": "Universal. Bloom in warm oil for up to 10x flavor amplification (ATK/MasalaBear food science)."
+            },
+            {
+              "id": "ginger",
+              "name": "Ground Ginger",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 2: 6/9 agents — third most common spice after cinnamon and nutmeg",
+              "confidence": "medium",
+              "rationale": "Warm, peppery heat complements cinnamon. Bloom with other spices in oil."
+            },
+            {
+              "id": "nutmeg",
+              "name": "Ground Nutmeg",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 2: 6/9 agents — second most common spice after cinnamon",
+              "confidence": "medium",
+              "rationale": "Warm, slightly sweet. Small amount adds complexity without being identifiable. Bloom in oil."
+            },
+            {
+              "id": "cloves",
+              "name": "Ground Cloves",
+              "total": 0.3,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 3: 4/9 agents — potent, easy to overpower",
+              "confidence": "low",
+              "rationale": "Extremely potent — a pinch adds warmth and depth. Bloom in oil with other spices."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Salt",
+              "total": 7,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "cake batter",
+                  "amount": 4
+                },
+                {
+                  "label": "frosting",
+                  "amount": 3
+                }
+              ],
+              "sourcedFrom": "Tier 1: 9/9 agents",
+              "confidence": "high",
+              "rationale": "Balances sweetness in both cake and frosting."
+            },
+            {
+              "id": "oil",
+              "name": "Canola Oil",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — oil stays liquid when cold, coats gluten, more forgiving than butter",
+              "confidence": "high",
+              "rationale": "Oil-based cake is the universal consensus. Stays moist even when cold (butter solidifies). Also serves as the blooming medium for spices."
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — roughly 50/50 split with brown sugar, ~300-400g total",
+              "confidence": "high",
+              "rationale": "Provides clean sweetness and structure. Split with brown sugar for depth."
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Dark Brown Sugar (packed)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — molasses depth, moisture, acid for baking soda",
+              "confidence": "high",
+              "rationale": "Adds moisture, molasses flavor, and provides acid to activate baking soda."
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 4,
+              "unit": "whole",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — near-universal at 4 large eggs",
+              "confidence": "high",
+              "rationale": "Structure, moisture, and emulsification. Room temperature for better incorporation into oil-based batter."
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 8,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "cake batter",
+                  "amount": 4
+                },
+                {
+                  "label": "frosting",
+                  "amount": 4
+                }
+              ],
+              "sourcedFrom": "Tier 2: 6/9 agents — in cake and/or frosting",
+              "confidence": "medium",
+              "rationale": "Rounds out spice flavor in cake, adds warmth to frosting."
+            },
+            {
+              "id": "orange_zest",
+              "name": "Orange Zest",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 2: 5/9 agents — brightens heavy spice, natural pairing with carrot",
+              "confidence": "medium",
+              "rationale": "Citrus brightness cuts through the richness. A small amount lifts the entire flavor profile."
+            },
+            {
+              "id": "carrots",
+              "name": "Fresh Carrots (fine-grated)",
+              "total": 325,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — NEVER pre-shredded. Small holes of box grater for max moisture and even distribution",
+              "confidence": "high",
+              "rationale": "The defining ingredient. Fine-grate on the small holes of a box grater — smaller shreds distribute more evenly and release more moisture into the batter."
+            },
+            {
+              "id": "pecans",
+              "name": "Pecans",
+              "total": 115,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/9 agents — always toasted. Pecans = sweeter/buttery vs walnuts = earthier",
+              "confidence": "high",
+              "rationale": "Toast before adding for maximum flavor and to reduce sogginess in batter. Pecans chosen over walnuts for their buttery sweetness."
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 226,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 2: 6/9 agents — brown butter frosting is the #1 elevation move (Silverton, Parks, Saffitz)",
+              "confidence": "high",
+              "rationale": "All butter goes to the frosting. Browned for nutty, caramel depth — independently endorsed by Silverton, Parks, Saffitz, and The Kitchn bake-off winner."
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (full-fat, block)",
+              "total": 340,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 9/9 agents — cream cheese frosting is the only frosting for carrot cake",
+              "confidence": "high",
+              "rationale": "Must be cold from fridge (Silverton technique) for stable frosting. Block-style, not spreadable."
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Powdered Sugar",
+              "total": 270,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Frosting consensus — sift before adding to prevent lumps",
+              "confidence": "high",
+              "rationale": "Sweetens and stabilizes the frosting. Sifting is essential for smooth texture."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.0.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=14m, proof_passive=158m, oven_occupancy=125m, bake=110m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

@@ -8,7 +8,11 @@
     },
     "yields": "12 tartlets (10cm / 4in) — dough batch makes all 12, bake as many as needed and freeze remaining discs",
     "total_time": "~6 hrs (1.5 hrs active, 4.5 hrs passive)",
-    "description": "Tartine's signature lemon tart: buttery pate sucree shell filled with Pierre Herme-style lemon cream (butter mounted into curd for a softer, more unctuous texture than standard curd), topped with whipped cream. Dough recipe from Boulangerie Artisanale des Maures in southern France."
+    "description": "Tartine's signature lemon tart: buttery pate sucree shell filled with Pierre Herme-style lemon cream (butter mounted into curd for a softer, more unctuous texture than standard curd), topped with whipped cream. Dough recipe from Boulangerie Artisanale des Maures in southern France.",
+    "prep_active_min": 64,
+    "proof_passive_min": 240,
+    "oven_occupancy_min": 82,
+    "bake_min": 67
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "tartlet"
     }
   },
-  "version": "v1.4.1",
+  "version": "v1.4.2",
   "change_log": [
     {
       "version": "v1.4.1",
@@ -776,6 +780,142 @@
               "id": "lemon_juice",
               "name": "Fresh Lemon Juice",
               "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_cream",
+              "name": "Large Eggs",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "egg_yolk",
+              "name": "Large Egg Yolk",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_cream",
+              "name": "Granulated Sugar",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_cream",
+              "name": "Salt (pinch)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "butter_cream",
+              "name": "Unsalted Butter (cool, not cold)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "FINISH",
+          "stageName": "Whipped Cream & Serve",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (very cold)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_topping",
+              "name": "Granulated Sugar",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.4.2",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=64m, proof_passive=240m, oven_occupancy=82m, bake=67m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            {
+              "id": "butter_dough",
+              "name": "Unsalted Butter (room temp)",
+              "total": 255,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar_dough",
+              "name": "Granulated Sugar",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt_dough",
+              "name": "Salt (1/4 tsp)",
+              "total": 1.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs_dough",
+              "name": "Large Eggs (room temp)",
+              "total": 2,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 500,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            {
+              "id": "eggs_wash",
+              "name": "Large Egg (wash)",
+              "total": 1,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "salt_wash",
+              "name": "Salt (pinch, wash)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            {
+              "id": "lemon_juice",
+              "name": "Fresh Lemon Juice",
+              "total": 200,
               "unit": "g",
               "breakdown": null
             },

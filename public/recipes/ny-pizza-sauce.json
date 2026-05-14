@@ -8,7 +8,11 @@
     },
     "yields": "~860g sauce",
     "total_time": "~1 hr 10 min (10 min active, 1 hr rest)",
-    "description": "No-cook pizza sauce. Sclafani crushed tomatoes hand-blended with garlic, basil, oregano, and sugar. Rest an hour to let flavors develop."
+    "description": "No-cook pizza sauce. Sclafani crushed tomatoes hand-blended with garlic, basil, oregano, and sugar. Rest an hour to let flavors develop.",
+    "prep_active_min": 8,
+    "proof_passive_min": 60,
+    "oven_occupancy_min": 0,
+    "bake_min": 0
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,12 +24,74 @@
       "servingUnit": "servings"
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "change_log": [
     {
       "version": "v1.0.0",
       "date": "2026-02-17",
       "summary": "Initial recipe from r/Pizza wiki",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Make Sauce",
+          "ingredients": [
+            {
+              "id": "crushed_tomatoes",
+              "name": "Sclafani Crushed Tomatoes",
+              "total": 794,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 57,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "basil",
+              "name": "Fresh Basil",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "oregano",
+              "name": "Dried Oregano",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar",
+              "name": "Sugar",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "garlic",
+              "name": "Garlic",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.0.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=8m, proof_passive=60m, oven_occupancy=0m, bake=0m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

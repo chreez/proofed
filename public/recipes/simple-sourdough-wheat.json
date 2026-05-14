@@ -9,7 +9,11 @@
     },
     "yields": "2 loaves (~800g each baked)",
     "total_time": "~21 hrs (25 min active)",
-    "description": "A flavor-focused variant of Simple Sourdough, swapping 20% of the bread flour for whole wheat and rye. Same simple workflow — mix, fold, overnight bulk, shape, cold proof, bake — with deeper, nuttier flavor from whole grains and a touch of rye complexity. Hydration bumped to 74% to compensate for bran absorption, inoculation reduced to 15% to prevent over-fermentation."
+    "description": "A flavor-focused variant of Simple Sourdough, swapping 20% of the bread flour for whole wheat and rye. Same simple workflow — mix, fold, overnight bulk, shape, cold proof, bake — with deeper, nuttier flavor from whole grains and a touch of rye complexity. Hydration bumped to 74% to compensate for bran absorption, inoculation reduced to 15% to prevent over-fermentation.",
+    "prep_active_min": 25,
+    "proof_passive_min": 800,
+    "oven_occupancy_min": 89,
+    "bake_min": 44
   },
   "config": {
     "early_check_percent": 0.8,
@@ -23,7 +27,7 @@
       "itemsPerBatch": 1
     }
   },
-  "version": "v1.1.1",
+  "version": "v1.1.2",
   "change_log": [
     {
       "version": "v1.1.0",
@@ -175,6 +179,79 @@
       "version": "v1.1.1",
       "date": "2026-05-12",
       "summary": "Add config.stats.itemsPerBatch=1 for throughput modeling (PF-265). One dutch oven, one loaf at a time; second loaf waits in fridge — 2 batches.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 800,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "PF-166.1 research spike — 80% bread flour retains strong gluten network",
+              "confidence": "high",
+              "rationale": "80% bread flour maintains oven spring and open crumb while allowing 20% whole grain for flavor. King Arthur Bread Flour (12.7% protein) recommended."
+            },
+            {
+              "id": "whole_wheat_flour",
+              "name": "Whole Wheat Flour",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "The Perfect Loaf, King Arthur, Tartine, The Clever Carrot consensus",
+              "confidence": "high",
+              "rationale": "15% whole wheat — sweet spot for nutty, earthy flavor without degrading handling. More impactful than Tartine's 10%, more manageable than 25%+."
+            },
+            {
+              "id": "dark_rye_flour",
+              "name": "Dark Rye Flour",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Breadtopia, Grant Bakes, yoursourdoughstart.com, Pain de Campagne tradition",
+              "confidence": "high",
+              "rationale": "5% dark rye adds fruity, spicy complexity that whole wheat alone cannot provide. Traditional country bread accent. Also slows staling via pentosans."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 740,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "King Arthur, yoursourdoughstart.com, The Perfect Loaf hydration guides",
+              "confidence": "high",
+              "rationale": "74% hydration — +4% over base recipe to compensate for bran absorption. Whole grain bran absorbs 2-3x its weight in water. Conservative start — can go to 75% if dough feels tight."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "The Perfect Loaf, The Sourdough Framework, sourdoughtalk.com",
+              "confidence": "high",
+              "rationale": "15% inoculation — reduced from 20% to offset faster fermentation from whole grains. Whole grain is more enzymatically active. This keeps the same overnight bulk ferment window."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.1.2",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=25m, proof_passive=800m, oven_occupancy=89m, bake=44m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

@@ -8,7 +8,11 @@
       "author": "America's Test Kitchen"
     },
     "yields": "8 buns",
-    "total_time": "~5 hrs (1.5 active)"
+    "total_time": "~5 hrs (1.5 active)",
+    "prep_active_min": 52,
+    "proof_passive_min": 210,
+    "oven_occupancy_min": 52,
+    "bake_min": 37
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v1.3.0",
+  "version": "v1.3.1",
   "change_log": [
     {
       "version": "v1.3.0",
@@ -431,6 +435,141 @@
       "version": "v1.0.0",
       "date": "2026-02-05",
       "summary": "Initial recipe from ATK, adapted for stand mixer",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110°F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.3.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=52m, proof_passive=210m, oven_occupancy=52m, bake=37m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

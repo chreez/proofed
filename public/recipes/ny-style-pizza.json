@@ -9,7 +9,11 @@
     },
     "yields": "2 pizzas",
     "total_time": "~3 days (45 min active)",
-    "description": "Classic NY-style pizza dough with a 30-minute autolyse and stand mixer knead. A 62% hydration dough that stretches thin with a puffy, foldable crust. 3-day cold ferment for maximum flavor and extensibility."
+    "description": "Classic NY-style pizza dough with a 30-minute autolyse and stand mixer knead. A 62% hydration dough that stretches thin with a puffy, foldable crust. 3-day cold ferment for maximum flavor and extensibility.",
+    "prep_active_min": 37,
+    "proof_passive_min": 3750,
+    "oven_occupancy_min": 58,
+    "bake_min": 13
   },
   "config": {
     "early_check_percent": 0.8,
@@ -22,7 +26,7 @@
       "itemsPerBatch": 1
     }
   },
-  "version": "v1.5.1",
+  "version": "v1.5.2",
   "change_log": [
     {
       "version": "v1.5.0",
@@ -613,6 +617,91 @@
       "version": "v1.5.1",
       "date": "2026-05-12",
       "summary": "Add config.stats.itemsPerBatch=1 for throughput modeling (PF-265). One baking steel, one pizza at a time; recipe explicitly says \"Repeat the stretch, top, and bake process for the second pizza\" — 2 batches.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 463,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 288,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "instant_yeast",
+              "name": "Instant Dry Yeast",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "olive_oil",
+              "name": "Olive Oil",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornmeal",
+              "name": "Cornmeal",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "san_marzano_sauce",
+              "name": "Raw San Marzano Tomato Sauce",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "mozzarella",
+              "name": "Low-Moisture Mozzarella",
+              "total": 350,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Low-moisture, high-fat, whole milk mozzarella is mandatory — it shreds clean and melts right"
+            },
+            {
+              "id": "hard_cheese",
+              "name": "Parmigiano-Reggiano or Pecorino Romano",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "note": "Freshly grated — adds a savory base layer under the mozzarella"
+            },
+            {
+              "id": "pepperoni",
+              "name": "Pepperoni",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.5.2",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=37m, proof_passive=3750m, oven_occupancy=58m, bake=13m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

@@ -9,7 +9,11 @@
     },
     "yields": "2 loaves (~800g each baked)",
     "total_time": "~21 hrs (25 min active)",
-    "description": "A beginner-friendly overnight sourdough recipe yielding two boules. Four ingredients, 70% hydration, stretch-and-fold method, overnight room-temperature bulk ferment, cold proof, sequential Dutch oven bake. Optimized for simplicity without sacrificing quality."
+    "description": "A beginner-friendly overnight sourdough recipe yielding two boules. Four ingredients, 70% hydration, stretch-and-fold method, overnight room-temperature bulk ferment, cold proof, sequential Dutch oven bake. Optimized for simplicity without sacrificing quality.",
+    "prep_active_min": 30,
+    "proof_passive_min": 890,
+    "oven_occupancy_min": 102,
+    "bake_min": 42
   },
   "config": {
     "early_check_percent": 0.8,
@@ -34,7 +38,7 @@
       ]
     }
   },
-  "version": "v3.6.1",
+  "version": "v3.6.2",
   "change_log": [
     {
       "version": "v3.6.0",
@@ -729,6 +733,59 @@
       "version": "v3.6.1",
       "date": "2026-05-12",
       "summary": "Add config.stats.itemsPerBatch=1 for throughput modeling (PF-265). One dutch oven holds one loaf; bake instructions explicitly sequence \"first loaf\" then \"second loaf from fridge\" — 2 batches.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v3.6.2",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=30m, proof_passive=890m, oven_occupancy=102m, bake=42m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",

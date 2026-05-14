@@ -8,7 +8,11 @@
     },
     "yields": "4-6 servings",
     "total_time": "~24 hrs (90 min active)",
-    "description": "A smooth, pourable Japanese curry modeled after CoCo Ichibanya — the world's largest curry chain. Built from 60+ sources including factory tours, retail product labels, and copycat recipes. The sauce is completely chunk-free (sara-sara style), with layers of hidden flavor from caramelized onions, grated apple, mango chutney, instant coffee, and dark chocolate. Mandatory overnight rest transforms it."
+    "description": "A smooth, pourable Japanese curry modeled after CoCo Ichibanya — the world's largest curry chain. Built from 60+ sources including factory tours, retail product labels, and copycat recipes. The sauce is completely chunk-free (sara-sara style), with layers of hidden flavor from caramelized onions, grated apple, mango chutney, instant coffee, and dark chocolate. Mandatory overnight rest transforms it.",
+    "prep_active_min": 126,
+    "proof_passive_min": 780,
+    "oven_occupancy_min": 0,
+    "bake_min": 0
   },
   "config": {
     "early_check_percent": 0.8,
@@ -20,7 +24,7 @@
       "servingUnit": "servings"
     }
   },
-  "version": "v1.1.0",
+  "version": "v1.1.1",
   "change_log": [
     {
       "version": "v1.1.0",
@@ -323,6 +327,303 @@
       "version": "v1.0.0",
       "date": "2026-02-08",
       "summary": "Initial recipe synthesized from 9-agent research across 60+ sources (recipe blogs, factory tours, retail labels, Reddit threads)",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "curry_roux",
+              "name": "House Foods Java Curry (Medium Hot)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S3, S13, S17 — 7/7 agents; House Foods corporate connection to CoCo Ichibanya (2015 acquisition)",
+              "confidence": "high",
+              "rationale": "Java Curry is manufactured by House Foods, which owns 51% of CoCo Ichibanya. Saigen Daisuke (Japanese recipe recreator) and SoraNews24 native recipe both specify Java Curry Medium Hot."
+            },
+            {
+              "id": "curry_powder",
+              "name": "S&B Oriental Curry Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S2, S40 — 6/7 agents recommend additional curry powder beyond roux",
+              "confidence": "high",
+              "rationale": "Additional 2 tsp beyond roux blocks boosts spice complexity. S&B red can is the standard Japanese curry powder."
+            },
+            {
+              "id": "onions",
+              "name": "Yellow Onions",
+              "total": 600,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "caramelize (thinly sliced)",
+                  "amount": 300
+                },
+                {
+                  "label": "deep-fry (thinly sliced)",
+                  "amount": 120
+                },
+                {
+                  "label": "saute with pork (finely diced)",
+                  "amount": 180
+                }
+              ],
+              "sourcedFrom": "S1, S2, S3, S19 — 7/7 agents; factory confirms 'onion saute' as separate listed ingredient",
+              "confidence": "high",
+              "rationale": "Triple onion treatment (caramelized + fried + raw) creates three dimensions of onion flavor. Okonomi Kitchen technique, supported by CoCo factory process listing sauteed onion as distinct ingredient."
+            },
+            {
+              "id": "carrot",
+              "name": "Carrot (finely grated)",
+              "total": 60,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S19, S20 — 4/7 agents; factory process confirms vegetables added during simmering",
+              "confidence": "medium",
+              "rationale": "Dissolves into sauce for sweetness without leaving chunks. Factory process adds vegetables 10 min after pork."
+            },
+            {
+              "id": "apple",
+              "name": "Fuji Apple (finely grated)",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S2, S3, S4, S23 — 7/7 agents; retail labels confirm apple allergen across all products",
+              "confidence": "high",
+              "rationale": "Universal across all sources and confirmed by CoCo retail product allergen labeling. Fuji or Gala preferred for balanced sweetness."
+            },
+            {
+              "id": "pork",
+              "name": "Pork Shoulder (small cubes)",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S3, S19, S20 — factory footage shows pork simmered as first protein step",
+              "confidence": "medium",
+              "rationale": "CoCo's pork curry is the baseline. Factory process: pork simmered 25 min before vegetables. Shoulder provides fat and flavor that blends into the sauce."
+            },
+            {
+              "id": "beef_broth",
+              "name": "Beef Broth (low-sodium)",
+              "total": 1200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S26 — CoCo employee confirmed beef stock; S1, S10 use chicken stock as alternative",
+              "confidence": "low",
+              "rationale": "CoCo employee (Reddit, u/jacobw4473) specifically confirmed beef stock, contradicting most copycat recipes that use chicken. Using beef for authenticity."
+            },
+            {
+              "id": "water",
+              "name": "Water (for consistency)",
+              "total": 360,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "initial simmer",
+                  "amount": 240
+                },
+                {
+                  "label": "consistency adjustment",
+                  "amount": 120
+                }
+              ],
+              "sourcedFrom": "S3, S45 — SoraNews24 native recipe emphasizes thinner, pourable consistency",
+              "confidence": "medium",
+              "rationale": "CoCo curry is thinner than typical homemade Japanese curry. Higher water ratio is 'necessary to bring out the smooth flavor found at Coco Ichi' (SoraNews24)."
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 56,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "caramelize onions",
+                  "amount": 28
+                },
+                {
+                  "label": "finishing (cold)",
+                  "amount": 28
+                }
+              ],
+              "sourcedFrom": "S2, S26 — CoCo employee confirmed butter; Jecca Chantilly finishing technique",
+              "confidence": "high",
+              "rationale": "Employee confirmed butter is used. Cold butter finish adds richness and gloss — a French technique applied to Japanese curry."
+            },
+            {
+              "id": "oil",
+              "name": "Neutral Oil (for cooking)",
+              "total": 30,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "caramelize onions",
+                  "amount": 15
+                },
+                {
+                  "label": "deep-fry onions",
+                  "amount": 15
+                }
+              ],
+              "sourcedFrom": "S1, S2 — standard cooking medium across all recipes",
+              "confidence": "high",
+              "rationale": "Mixed with butter for caramelizing (prevents burning). Separate oil for frying onions."
+            },
+            {
+              "id": "mango_chutney",
+              "name": "Mango Chutney",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S3, S23, S50 — 7/7 agents; retail labels confirm 'fruit chutney' in keema curry",
+              "confidence": "high",
+              "rationale": "Universal across sources. Retail labels explicitly list fruit chutney. SoraNews24: 'brings flavor closer to CoCo.' Major Grey's or similar."
+            },
+            {
+              "id": "worcestershire",
+              "name": "Bull-Dog Worcestershire Sauce",
+              "total": 20,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "during simmer",
+                  "amount": 20
+                }
+              ],
+              "sourcedFrom": "S1, S2, S23, S39 — 7/7 agents; retail label explicitly lists Worcestershire sauce",
+              "confidence": "high",
+              "rationale": "Confirmed on CoCo retail product labels. Bull-Dog is the standard Japanese Worcestershire brand."
+            },
+            {
+              "id": "chuno_sauce",
+              "name": "Bull-Dog Fruit & Vegetable Sauce",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S2, S39 — 4/7 agents; distinct from Worcestershire, adds fruity sweetness",
+              "confidence": "medium",
+              "rationale": "Chuno (medium-thick) sauce is distinct from Worcestershire — fruitier and sweeter. Substitute with ketchup if unavailable."
+            },
+            {
+              "id": "soy_sauce",
+              "name": "Dark Soy Sauce (Kikkoman koikuchi)",
+              "total": 23,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S2, S4 — 5/7 agents recommend for color and umami depth",
+              "confidence": "medium",
+              "rationale": "Standard Japanese dark (koikuchi) soy sauce. Adds color depth that partially compensates for CoCo's industrial caramel coloring."
+            },
+            {
+              "id": "miso",
+              "name": "Red Miso Paste",
+              "total": 12,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1 — 4/7 agents; Okonomi Kitchen recipe",
+              "confidence": "medium",
+              "rationale": "Fermented umami without adding liquid volume. Red (aka) miso preferred over white for deeper flavor."
+            },
+            {
+              "id": "instant_coffee",
+              "name": "Instant Coffee",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S13, S35, S36 — 7/7 agents; Japanese survey ranked coffee #2 secret curry ingredient",
+              "confidence": "high",
+              "rationale": "1 tsp dissolved in hot water. Saigen Daisuke uses it. Japanese home cook survey (Hypebeast/Calbee) ranked coffee as #2 hidden curry ingredient. Multiple reviewers warn: do NOT exceed 1 tsp."
+            },
+            {
+              "id": "chocolate",
+              "name": "Dark Chocolate (70%+)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S4, S36 — 5/7 agents; Japanese survey ranked chocolate #3 secret curry ingredient",
+              "confidence": "medium",
+              "rationale": "Adds depth, color, and subtle bitterness. Japanese home cook survey ranked chocolate #3 hidden curry ingredient. Finely chopped so it melts instantly."
+            },
+            {
+              "id": "peanut_butter",
+              "name": "Peanut Butter (smooth, unsweetened)",
+              "total": 16,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S23 — 4/7 agents; retail labels list peanuts as allergen in standard roux",
+              "confidence": "medium",
+              "rationale": "Peanut allergen confirmed across all standard CoCo products but absent from vegetable/care variants — indicating peanuts are in the standard roux itself."
+            },
+            {
+              "id": "rice_vinegar",
+              "name": "Rice Vinegar",
+              "total": 15,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "during simmer",
+                  "amount": 8
+                },
+                {
+                  "label": "final seasoning",
+                  "amount": 7
+                }
+              ],
+              "sourcedFrom": "S1 — 4/7 agents; Okonomi Kitchen recipe",
+              "confidence": "medium",
+              "rationale": "Small amount adds brightness and tang. Divided addition: half during cooking (mellows), half at end (brightness)."
+            },
+            {
+              "id": "white_pepper",
+              "name": "White Pepper",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S1, S2 — 5/7 agents specify white pepper, NOT black",
+              "confidence": "medium",
+              "rationale": "S&B white pepper specifically. White pepper gives a different heat profile than black — more aromatic, less sharp. Consistent with Japanese curry tradition."
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "General — adjust to taste after blending",
+              "confidence": "high",
+              "rationale": "Starting amount; roux, broth, soy sauce, and Worcestershire all contribute sodium. Taste and adjust after blending."
+            },
+            {
+              "id": "honey",
+              "name": "Honey",
+              "total": 21,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S4 — 3/7 agents; EatHealthy365 copycat recipe",
+              "confidence": "low",
+              "rationale": "Optional sweetener. Vermont Curry already contains honey — reduce or omit if blending roux brands. 1 tbsp."
+            },
+            {
+              "id": "rice",
+              "name": "Short-Grain Rice (Tamanishiki)",
+              "total": 480,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "S43 — Just One Cookbook rice guide; standard CoCo serving style",
+              "confidence": "high",
+              "rationale": "Japanese short-grain rice is non-negotiable. 480g uncooked yields roughly 300g cooked per serving for 4-6 people."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.1.1",
+      "date": "2026-05-12",
+      "summary": "Backfill throughput timing fields on meta — prep_active=126m, proof_passive=780m, oven_occupancy=0m, bake=0m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",
