@@ -1,0 +1,487 @@
+{
+  "meta": {
+    "name": "Lime Chantilly",
+    "source": {
+      "name": "proofed. — synthesized from 7-agent research",
+      "type": "original"
+    },
+    "yields": "~240g cream (10-12 piped rosettes — tops one 23cm tart)",
+    "total_time": "~50 min (10 min active, 40 min passive — maceration + chill)",
+    "description": "Cream-cheese-stabilized lime whipped cream built for transport. Persian lime zest macerated into powdered sugar (Pierre Hermé / Dorie Greenspan smush trick), bloomed in softened cream cheese, then whipped with cold heavy cream. Holds piped peaks 24-48h refrigerated against an acidic curd surface. Designed as the topping for Tartine Lemon Cream Tart (lemon-on-lime pairing — Dominique Ansel's Salted Lemon Lime Tart precedent), but pairs with any citrus tart, berry pavlova, or summer fruit dessert."
+  },
+  "config": {
+    "early_check_percent": 0.8
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-05-13",
+      "summary": "Initial recipe synthesized from 7-agent parallel research on cream-cheese-stabilized lime whipped cream. Heavy-ratio (50% CC) for transport hold; zest macerated into powdered sugar; juice optional fold at soft peaks.",
+      "ingredients": [
+        {
+          "stageId": "MACERATE",
+          "stageName": "Macerate Lime Sugar",
+          "ingredients": [
+            {
+              "id": "lime_zest",
+              "name": "Persian Lime Zest (microplaned)",
+              "total": 1,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "zest of 1 lime (~2 tsp)"
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Powdered Sugar (10X with cornstarch)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SMOOTH",
+          "stageName": "Smooth Cream Cheese Base",
+          "ingredients": [
+            {
+              "id": "cream_cheese",
+              "name": "Block Cream Cheese (full-fat, softened)",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Salt",
+              "total": 0.3,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "pinch"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Bean Paste or Extract",
+              "total": 2.5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1/2 tsp (optional)"
+            }
+          ]
+        },
+        {
+          "stageId": "WHIP",
+          "stageName": "Whip with Heavy Cream",
+          "ingredients": [
+            {
+              "id": "heavy_cream",
+              "name": "Heavy Cream (cold, ≥36% fat)",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 cup"
+            },
+            {
+              "id": "lime_juice",
+              "name": "Fresh Lime Juice (optional)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 tsp (optional)"
+            }
+          ]
+        },
+        {
+          "stageId": "PIPE",
+          "stageName": "Pipe & Set",
+          "ingredients": [
+            {
+              "id": "flake_salt",
+              "name": "Flake Salt (Maldon / fleur de sel)",
+              "total": 0.5,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "for finishing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Small Bowl",
+      "reuse": "Maceration only — wash before chilling other items"
+    },
+    {
+      "id": "V2",
+      "name": "Stand Mixer Bowl",
+      "reuse": "Chill in freezer → CC smoothing → cream whipping (single bowl, no transfer)"
+    },
+    {
+      "id": "V3",
+      "name": "Piping Bag",
+      "reuse": "Fit with Ateco 869 French star or Wilton 1M tip; single-use"
+    }
+  ],
+  "stages": [
+    {
+      "id": "MACERATE",
+      "title": "Macerate Lime Sugar",
+      "gather": {
+        "vessels": ["Small Bowl", "Stand Mixer Bowl"],
+        "equipment": ["Microplane", "Kitchen Scale", "Stand Mixer with Whisk Attachment"],
+        "ingredients": [
+          {
+            "id": "lime_zest",
+            "name": "Persian Lime Zest (microplaned)",
+            "total": 1,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "zest of 1 lime (~2 tsp)",
+            "sourcedFrom": "Tier 1: 6/7 agents — modal value across lemon+lime WC recipes",
+            "confidence": "high",
+            "rationale": "Persian lime safer than key lime for whipped applications (less bitter peel); ~2 tsp delivers clear lime identity without pith bitterness"
+          },
+          {
+            "id": "powdered_sugar",
+            "name": "Powdered Sugar (10X with cornstarch)",
+            "total": 50,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: 6/7 agents — 20-25% sugar:cream consensus",
+            "confidence": "high",
+            "rationale": "Cornstarch in 10X powdered sugar adds micro-stabilization; sweetens without overpowering"
+          }
+        ]
+      },
+      "states": ["chill-bowl", "zest-into-sugar", "smush-and-rest"]
+    },
+    {
+      "id": "SMOOTH",
+      "title": "Smooth Cream Cheese Base",
+      "gather": {
+        "vessels": [],
+        "equipment": ["Rubber Spatula"],
+        "ingredients": [
+          {
+            "id": "cream_cheese",
+            "name": "Block Cream Cheese (full-fat, softened)",
+            "total": 120,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: 7/7 agents — heavy-ratio cluster (50% CC:cream) for transport hold",
+            "confidence": "high",
+            "rationale": "Block only (tub adds whey/gums that break the whip); H-E-B Organics Brick has cleanest label (locust bean gum only — the gum specifically associated with whipped cream stability). RecipeTin Eats Nagi tested this ratio holding 4 days piped on cake."
+          },
+          {
+            "id": "salt",
+            "name": "Fine Salt",
+            "total": 0.3,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "pinch"
+          },
+          {
+            "id": "vanilla",
+            "name": "Vanilla Bean Paste or Extract",
+            "total": 2.5,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1/2 tsp (optional)"
+          }
+        ]
+      },
+      "states": ["rest-cc", "smooth-base"]
+    },
+    {
+      "id": "WHIP",
+      "title": "Whip with Heavy Cream",
+      "gather": {
+        "vessels": [],
+        "equipment": [],
+        "ingredients": [
+          {
+            "id": "heavy_cream",
+            "name": "Heavy Cream (cold, ≥36% fat)",
+            "total": 240,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1 cup",
+            "sourcedFrom": "Tier 1: 7/7 agents",
+            "confidence": "high",
+            "rationale": "Cold straight from fridge — ATK measured fat-crystal-dependent whipping efficiency; warm cream won't form stiff peaks. H-E-B Heavy Whipping Cream (gellan-only stabilizer) is cleanest label at store; avoid Land O Lakes (carrageenan + polysorbate 80)"
+          },
+          {
+            "id": "lime_juice",
+            "name": "Fresh Lime Juice (optional)",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "1 tsp (optional)",
+            "sourcedFrom": "Tier 2: 4-5 agents — fold late at soft peaks",
+            "confidence": "medium",
+            "rationale": "Lemon curd below already supplies acid; juice >1 tsp risks weep + curdle. Skip entirely for cleanest aroma; include 1 tsp for perceptible tang lift."
+          }
+        ]
+      },
+      "states": ["stream-cream", "whip-to-peaks"]
+    },
+    {
+      "id": "PIPE",
+      "title": "Pipe & Set",
+      "gather": {
+        "vessels": ["Piping Bag"],
+        "equipment": ["Ateco 869 French Star Tip (or Wilton 1M)"],
+        "ingredients": [
+          {
+            "id": "flake_salt",
+            "name": "Flake Salt (Maldon / fleur de sel)",
+            "total": 0.5,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "for finishing",
+            "sourcedFrom": "Tier 2: chef precedent — Dominique Ansel Salted Lemon Lime Tart",
+            "confidence": "high",
+            "rationale": "Maldon flake works as fleur de sel sub. Visible crystal + crunch + burst on tongue. Avoid table/iodized salt (dissolves on contact)."
+          }
+        ]
+      },
+      "states": ["pipe-rosettes", "chill-set"]
+    }
+  ],
+  "states": [
+    {
+      "id": "zest-into-sugar",
+      "title": "Zest Lime into Sugar",
+      "direction": "Hold microplane at 45° over the small bowl. Light pressure, short strokes, rotate the lime constantly — stop the moment you see any white pith. Zest 1 Persian lime directly onto the 50g powdered sugar.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Persian Lime Zest", "amount": "zest of 1 lime (~2 tsp / ~1g)" },
+        { "name": "Powdered Sugar", "amount": "50g" }
+      ],
+      "exit_condition": "All green zest from one lime sits on top of the sugar; no visible white pith in the zest.",
+      "notes": [
+        {
+          "text": "Persian limes (the standard grocery store lime) work better here than key limes — less bitter peel, more forgiving if the microplane catches a touch of pith.",
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "smush-and-rest",
+      "title": "Smush & Rest (Maceration)",
+      "direction": "Rub the zest into the sugar with your fingertips for 2-3 minutes until the sugar is damp, fragrant, and faintly green-tinged. Rest uncovered 15-30 minutes for oils to migrate into the sugar crystals.",
+      "duration_min": 25,
+      "timer": true,
+      "parallel": true,
+      "components": [
+        { "name": "Lime Sugar", "amount": "from previous step" }
+      ],
+      "exit_condition": "Sugar appears damp and pale green; aroma is intensely lime-forward when sniffed.",
+      "notes": [
+        {
+          "text": "Known as the 'smush trick' (Pierre Hermé / Dorie Greenspan). Lime peel oils are fat- and sugar-soluble, not water-soluble — rubbing breaks the oil glands and binds the aromatics to the sugar crystals. Skipping this step yields noticeably less lime character in the finished cream.",
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "chill-bowl",
+      "title": "Chill Mixer Bowl",
+      "direction": "Place stand mixer bowl and whisk attachment in the freezer. Chill 15 minutes (overlap with the maceration rest).",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Bowl and whisk are cold to the touch."
+    },
+    {
+      "id": "rest-cc",
+      "title": "Rest Cream Cheese to Room Temp",
+      "direction": "Cube 120g block cream cheese on the counter. Let sit 20-30 minutes (overlap with maceration). Target: pliable but cool, not warm. If still cold from fridge, add 5-10 min.",
+      "duration_min": 25,
+      "timer": true,
+      "parallel": true,
+      "components": [
+        { "name": "Block Cream Cheese", "amount": "120g" }
+      ],
+      "exit_condition": "Cream cheese cubes yield to gentle finger pressure but are not visibly soft or shiny.",
+      "notes": [
+        {
+          "text": "Block only — never tub, whipped, or reduced-fat. Tub varieties add whey protein and pre-incorporated air that break the whip. H-E-B Organics Brick or Philadelphia Original are both reliable picks.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "smooth-base",
+      "title": "Smooth Cream Cheese Base",
+      "direction": "Add softened cream cheese, lime-sugar (from maceration), salt, and vanilla to chilled mixer bowl. Beat on medium with whisk attachment 2-3 minutes until completely silky-smooth, scraping sides 2x. No lumps — point of no return.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Cream Cheese (softened)", "amount": "120g" },
+        { "name": "Lime Sugar", "amount": "from maceration (~51g)" },
+        { "name": "Salt", "amount": "pinch" },
+        { "name": "Vanilla", "amount": "1/2 tsp (optional)" }
+      ],
+      "exit_condition": "Mixture is completely smooth, glossy, no visible lumps when scraped against the bowl. Spreads cleanly with rubber spatula.",
+      "notes": [
+        {
+          "text": "Lumps now = grain forever. If any cream cheese lump survives this step, cold cream will seize against it and the finished whip will be permanently grainy. Beat longer if needed.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "stream-cream",
+      "title": "Stream in Cold Cream",
+      "direction": "With mixer on low, drizzle in about ¼ cup (60g) of the cold heavy cream over ~30 seconds to thin the cream cheese base. Then stream remaining cream slowly while running medium-high.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Heavy Cream (cold)", "amount": "240g, streamed slowly" }
+      ],
+      "exit_condition": "All cream incorporated, mixture thickened to a thin pourable consistency.",
+      "notes": [
+        {
+          "text": "Pouring too fast or dumping all at once causes the cold cream to shock the cream cheese into clumps. The slow stream is what keeps the emulsion smooth.",
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "whip-to-peaks",
+      "title": "Whip to Stiff-ish Peaks",
+      "direction": "Whip on medium-high 1-2 minutes until thickened to medium peaks. Drop to medium-low for last 20 seconds. Switch to hand whisk and finish to stiff-ish peaks (base upright, tip just folding). If using, fold in 1 tsp lime juice by hand at this stage.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Lime Juice (optional)", "amount": "1 tsp folded at end" }
+      ],
+      "exit_condition": "Peaks hold their shape when whisk is lifted; tip folds slightly but base stays upright. Surface is smooth and glossy, not grainy.",
+      "notes": [
+        {
+          "text": "Window from stiff peaks to butter is narrow with cream cheese — finish by hand whisk for control. If it goes grainy (overwhipped), rescue by folding in 1-2 Tbsp fresh heavy cream by hand.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Lime juice is optional because acid can curdle whipped cream — the same mechanism that makes lemon juice curdle milk. Three things make 1 tsp safe here: the cream cheese stabilizer is already acid-tolerant, the juice is folded in late (after fat structure has formed), and the amount is small. The lemon curd below also supplies plenty of acidity. Adding 1 tsp gives a perceptible tang lift; skipping keeps the lime aroma cleaner. Either is correct.",
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "pipe-rosettes",
+      "title": "Pipe Rosettes",
+      "direction": "Transfer cream to piping bag fitted with Ateco 869 French star (or Wilton 1M). Pipe 10-12 evenly-spaced rosettes around the perimeter of the chilled tart, leaving the lemon-curd center exposed.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Lime Chantilly", "amount": "~240g" }
+      ],
+      "exit_condition": "Perimeter ring of rosettes complete; rosettes sharp and upright; center curd still visible.",
+      "notes": [
+        {
+          "text": "French star (Ateco 869) has fine deep ridges that stay crisp through chilling. Wilton 1M is a good substitute — taller, chunkier swirls that forgive minor settling during transport.",
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "chill-set",
+      "title": "Chill to Set Peaks",
+      "direction": "Refrigerate dressed tart uncovered 1-2 hours so piped peaks set firm. After setting, can be loose-tented with foil propped up by toothpicks for transport. Finish with a flake of salt at destination just before serving.",
+      "duration_min": 90,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        { "name": "Flake Salt", "amount": "pinch — applied at destination" }
+      ],
+      "exit_condition": "Rosette surfaces feel firm to gentle finger pressure; peaks no longer move when bowl is jostled.",
+      "notes": [
+        {
+          "text": "Transport: insert toothpicks in the exposed curd center to keep foil off rosettes; loose-tent foil. Pack in cooler bag with 2 frozen gel packs (not loose ice) — target ≤8°C. Flat surface in car (floorboard/trunk, not seat). At destination: straight to fridge, hold until 20-30 min before serving, then microplane fresh lime zest over rosettes, sprinkle flake salt, optional channel-knife lime curl and viola/marigold/lemon thyme garnish.",
+          "source": "agent"
+        }
+      ]
+    }
+  ],
+  "nutrition": null,
+  "reheat": {
+    "methods": [
+      {
+        "method": "Re-whip",
+        "detail": "If peaks soften after extended storage (>24h), transfer cream to a chilled bowl and whisk by hand 5-10 seconds to re-aerate. Will not fully recover original sharp peaks but presentable. Not applicable if already piped onto a tart — re-piping is the only fix at that point.",
+        "source": "agent",
+        "reference": "photos-source/lime-chantilly/research/lime-chantilly-research-synthesis.md"
+      }
+    ]
+  },
+  "research": {
+    "sources": [
+      { "name": "Dominique Ansel Bakery — Salted Lemon Lime Tart", "url": "https://m.facebook.com/Dominique.Ansel.Bakery/photos/day-two-salted-lemon-lime-tartcreamy-lemon-curd-lime-mousse-fleur-de-sel-and-can/629630100400120/", "type": "inspired", "author": "Dominique Ansel" },
+      { "name": "Dorie Greenspan — The Smush Trick (Pierre Hermé)", "url": "https://doriegreenspan.substack.com/p/the-smush-trick-21-06-26", "type": "inspired", "author": "Dorie Greenspan / Pierre Hermé" },
+      { "name": "RecipeTin Eats — Nagi Pistachio Cake (4-day-tested CC ratio)", "url": "https://www.recipetineats.com/pistachio-cake/", "type": "inspired", "author": "Nagi Maehashi" },
+      { "name": "Style Sweet — Stabilized Whipped Cream with Cream Cheese", "url": "https://stylesweet.com/stabilized-whipped-cream-with-cream-cheese/", "type": "inspired", "author": "Tessa Huff" },
+      { "name": "King Arthur Baking Trials — Stabilized Whipped Cream", "url": "https://www.kingarthurbaking.com/blog/2023/06/08/baking-trials-whats-the-best-way-to-stabilize-whipped-cream", "type": "inspired" },
+      { "name": "ATK — Best Cream Cheese Taste Test", "url": "https://www.americastestkitchen.com/taste_tests/1785-cream-cheese", "type": "inspired" },
+      { "name": "ScienceDirect — Whipped Cream Overview (partial coalescence mechanism)", "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/whipped-cream", "type": "inspired" },
+      { "name": "Bake School (Janice Lawandi PhD) — Lemon Sugar Maceration", "url": "https://bakeschool.com/how-to-make-lemon-sugar/", "type": "inspired", "author": "Janice Lawandi" },
+      { "name": "Sand Dollars and Lime — Key Lime Whipped Cream", "url": "https://sanddollarsandlime.com/key-lime-whipped-cream/", "type": "inspired" },
+      { "name": "Butter Love & Salt — Lime Whipped Cream", "url": "https://butterloveandsalt.com/homemade-lime-whipped-cream/", "type": "inspired" }
+    ],
+    "techniques": [
+      {
+        "name": "Maceration (smush trick)",
+        "sourcedFrom": "Pierre Hermé via Dorie Greenspan; Janice Lawandi PhD; Half-Batch Baking",
+        "rationale": "Rub zest into sugar 2-3 min, rest 15-30 min. Friction breaks oil glands and binds fat-soluble limonene/citral to sugar crystals. Highest-leverage flavor amplifier in citrus desserts.",
+        "confidence": "high"
+      },
+      {
+        "name": "Cream cheese as stabilizer at 50% ratio",
+        "sourcedFrom": "Tier 1: 7/7 agents — heavy ratio cluster (Chelsweets, Always Eat Dessert, Nagi, Simply Stacie)",
+        "rationale": "120g CC per 240g cream holds piped peaks 24-48h refrigerated. Casein matrix + acid tolerance (CC already at pH ~4.5) lets it sit on acidic curd without breaking. Required for transport scenarios.",
+        "confidence": "high"
+      },
+      {
+        "name": "Soften CC + chill bowl + chill cream — temperature mismatch",
+        "sourcedFrom": "6/7 agents — universal protocol",
+        "rationale": "Cream cheese soft (disperses smoothly), cream cold (whips properly). Mismatch is intentional. Cold-on-cold causes lumps that become permanent grain.",
+        "confidence": "high"
+      },
+      {
+        "name": "Stream cream slowly, finish by hand whisk",
+        "sourcedFrom": "5/7 agents — Style Sweet, Baking Mischief, Chelsweets",
+        "rationale": "Dumping cold cream onto CC base seizes the cheese. Slow stream + medium speed emulsifies cleanly. Hand finish gives feel for the narrow stiff-peak-to-butter window.",
+        "confidence": "high"
+      },
+      {
+        "name": "Lime zest > lime juice; juice only at fold-in if at all",
+        "sourcedFrom": "6/7 agents — universal across lime WC recipes",
+        "rationale": "Zest oils are fat-soluble (limonene + citral); juice is water + acid that destabilizes. >1 tsp juice per 240g cream risks weep. Lemon curd below already supplies acidity.",
+        "confidence": "high"
+      },
+      {
+        "name": "Persian lime over key lime for whipped applications",
+        "sourcedFrom": "Lady Behind the Curtain, Sand Dollars and Lime",
+        "rationale": "Persian (Tahiti) lime peel has less bitter compound concentration than key lime. Wider safety margin for microplane technique.",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "7-agent parallel research (cream-cheese ratios, lime flavor extraction, lemon-lime pairing, hold-time science, community intel, brand selection, plating/transport) — see photos-source/lime-chantilly/research/lime-chantilly-research-synthesis.md",
+    "sourceCount": 60,
+    "date": "2026-05-13"
+  }
+}
