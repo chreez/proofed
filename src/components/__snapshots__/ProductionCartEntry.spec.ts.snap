@@ -13,7 +13,7 @@ exports[`ProductionCartEntry > matches HTML snapshot for a user-added default-mo
   <div data-v-b45f02f6="" class="cart-entry-controls">
     <div data-v-b45f02f6="" class="cart-entry-qty"><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Remove one batch" aria-label="Remove one batch">−</button><span data-v-b45f02f6="" class="cart-entry-qty-display" title="Double-click to set a custom amount" aria-label="Quantity for Tartine Baguette" role="button" tabindex="0" data-testid="cart-entry-yield-display">4</span><button data-v-b45f02f6="" type="button" class="cart-entry-qty-btn" title="Add one batch" aria-label="Add one batch">+</button></div><input data-v-b45f02f6="" type="text" class="cart-entry-unit" placeholder="unit" title="Per-recipe unit label (e.g. loaf, roll, cookie)" aria-label="Unit for Tartine Baguette" value="loaf">
   </div>
-  <div data-v-b45f02f6="" class="cart-entry-subtext"><span data-v-b45f02f6="" class="cart-entry-subtext-scale" data-testid="cart-entry-scale-label">2 batch<span data-v-b45f02f6="">es</span> · scaled from 2/batch </span></div>
+  <div data-v-b45f02f6="" class="cart-entry-subtext"><span data-v-b45f02f6="" class="cart-entry-subtext-scale" data-testid="cart-entry-scale-label">2 batch<span data-v-b45f02f6="">es</span></span></div>
   <div data-v-b45f02f6="" class="cart-entry-meta"> added by <span data-v-b45f02f6="" class="cart-entry-meta-by" data-added-by="user">user</span> · <span data-v-b45f02f6="" class="cart-entry-meta-date">May 12</span></div>
 </div>"
 `;

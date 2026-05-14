@@ -40,7 +40,6 @@ describe('ProductionCartEntry', () => {
 
     // Scale subtext.
     expect(wrapper.text()).toContain('2 batches')
-    expect(wrapper.text()).toContain('scaled from 8/batch')
 
     const unit = wrapper.find('input.cart-entry-unit')
     expect(unit.exists()).toBe(true)

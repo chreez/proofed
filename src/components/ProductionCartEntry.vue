@@ -259,7 +259,6 @@ function onRemove(): void {
       <template v-else>
         <span class="cart-entry-subtext-scale" data-testid="cart-entry-scale-label">
           {{ entry.batches }} batch<span v-if="entry.batches !== 1">es</span>
-          · scaled from {{ safeBaseYield }}/batch
         </span>
       </template>
     </div>
