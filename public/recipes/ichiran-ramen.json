@@ -21,7 +21,8 @@
       "defaultYield": 8,
       "unit": "servings",
       "servingsPerItem": 1,
-      "servingUnit": "servings"
+      "servingUnit": "servings",
+      "baking": false
     }
   },
   "version": "v1.0.1",

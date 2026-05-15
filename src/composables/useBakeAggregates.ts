@@ -40,12 +40,18 @@ export function isExcludedFromStats(
   return false
 }
 
-// Mirrors StatsPage.vue lines 69-78 — keep in sync.
+// Mirrors StatsPage.vue GROUP_ICONS — keep in sync. F45: every stats.group
+// present in /public/recipes/*.json must have an entry here. 📦 fallback
+// indicates a missing mapping; fix the map.
 export const SHARE_GROUP_ICONS: Record<string, string> = {
   'Sourdough Breads': '\u{1F35E}',
   'Pizza': '\u{1F355}',
   'Buns & Rolls': '\u{1F9C1}',
   'Cakes': '\u{1F382}',
+  'Tarts & Pies': '\u{1F967}',
+  'Cookies & Bars': '\u{1F36A}',
+  'Crackers & Snacks': '\u{1F968}',
+  'Grain-Free Breads': '\u{1F33E}',
   'Sauces & Condiments': '\u{1F345}',
   'Noodles & Soups': '\u{1F35C}',
   'Drinks': '\u{1F9CB}',
@@ -57,6 +63,10 @@ const SHARE_GROUP_ORDER = [
   'Pizza',
   'Buns & Rolls',
   'Cakes',
+  'Tarts & Pies',
+  'Cookies & Bars',
+  'Crackers & Snacks',
+  'Grain-Free Breads',
   'Sauces & Condiments',
   'Noodles & Soups',
   'Drinks',
@@ -196,14 +206,33 @@ export function buildCaption(input: CaptionInput): string {
 // Aggregation logic — pure (takes raw recipes, returns aggregates)
 // ---------------------------------------------------------------------------
 
+export interface ComputeAggregatesOptions {
+  /**
+   * When true (default), recipes with `config.stats.baking === false`
+   * are dropped from every aggregate. The IG caption + StatsPage default
+   * to baking-only; StatsPage's "Show all recipes" toggle flips this off.
+   * Recipes with `baking` absent default to baking-eligible. (F44)
+   */
+  bakingOnly?: boolean
+}
+
 /** Compute lifetime aggregates from a list of loaded recipes. Pure. */
-export function computeBakeAggregates(recipes: Recipe[], today: Date = new Date()): BakeAggregates {
+export function computeBakeAggregates(
+  recipes: Recipe[],
+  today: Date = new Date(),
+  options: ComputeAggregatesOptions = {},
+): BakeAggregates {
+  const { bakingOnly = true } = options
   const allDates = new Set<string>()
   let totalCalories = 0
   let lifetimeSpend = 0
   const groupCounts = new Map<string, number>()
 
-  for (const recipe of recipes) {
+  const filteredRecipes = bakingOnly
+    ? recipes.filter((r) => r.config?.stats?.baking !== false)
+    : recipes
+
+  for (const recipe of filteredRecipes) {
     const cookLog = recipe.cook_log ?? []
     // PF-240: drop entries flagged excludeFromStats (or recipe-default-excluded)
     // BEFORE every aggregate. The flag is independent of `aberration` — both

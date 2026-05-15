@@ -1923,4 +1923,108 @@ describe('StatsPage', () => {
     // 3 items × 10 servings × 100 cal = 3000 → "3.0k"
     expect(wrapper.find('.ds3-calories-value').text()).toBe('3.0k')
   })
+
+  // --- F44: Baking-only filter + "Show all recipes" toggle ---
+
+  describe('baking-only filter (F44)', () => {
+    beforeEach(() => {
+      // Reset persisted preference between toggle tests so each starts
+      // in baking-only mode. The test env's stub may not expose
+      // removeItem; swallow either way.
+      try {
+        (localStorage as { removeItem?: (k: string) => void }).removeItem?.('statsPage:showAllRecipes')
+      } catch { /* noop */ }
+    })
+
+    function bakingRecipe(name: string) {
+      return makeRecipe({
+        meta: { name, source: { name: 'Test' }, yields: '1 loaf', total_time: '4 hours' },
+        config: {
+          early_check_percent: 75,
+          stats: { group: 'Sourdough Breads', defaultYield: 1, unit: 'loaves', servingsPerItem: 1, servingUnit: 'pieces' },
+        },
+        cook_log: [makeCookLogEntry({ date: '2026-02-01' })],
+      })
+    }
+
+    function nonBakingRecipe(name: string, group: string) {
+      return makeRecipe({
+        meta: { name, source: { name: 'Test' }, yields: '1 batch', total_time: '1 hour' },
+        config: {
+          early_check_percent: 75,
+          stats: { group, defaultYield: 1, unit: 'jars', servingsPerItem: 1, servingUnit: 'pieces', baking: false },
+        },
+        cook_log: [makeCookLogEntry({ date: '2026-03-01' })],
+      })
+    }
+
+    it('hides non-baking groups by default', async () => {
+      const manifest = makeManifest([
+        { id: 'bread', name: 'Bread', file: 'bread.json' },
+        { id: 'sauce', name: 'Sauce', file: 'sauce.json' },
+      ])
+      const wrapper = await mountAndLoad(manifest, {
+        'bread.json': bakingRecipe('Bread'),
+        'sauce.json': nonBakingRecipe('Sauce', 'Sauces & Condiments'),
+      })
+
+      const titles = wrapper.findAll('.ds3-group-title').map((n) => n.text())
+      expect(titles).toContain('Sourdough Breads')
+      expect(titles).not.toContain('Sauces & Condiments')
+      expect(wrapper.find('.ds3-page-title').text()).toBe('Baking Stats')
+    })
+
+    it('reveals non-baking groups when toggle is enabled', async () => {
+      const manifest = makeManifest([
+        { id: 'bread', name: 'Bread', file: 'bread.json' },
+        { id: 'sauce', name: 'Sauce', file: 'sauce.json' },
+      ])
+      const wrapper = await mountAndLoad(manifest, {
+        'bread.json': bakingRecipe('Bread'),
+        'sauce.json': nonBakingRecipe('Sauce', 'Sauces & Condiments'),
+      })
+
+      const checkbox = wrapper.find('.ds3-scope-checkbox')
+      await checkbox.setValue(true)
+      await nextTick()
+
+      const titles = wrapper.findAll('.ds3-group-title').map((n) => n.text())
+      expect(titles).toContain('Sourdough Breads')
+      expect(titles).toContain('Sauces & Condiments')
+      expect(wrapper.find('.ds3-page-title').text()).toBe('Cooking Stats')
+    })
+
+    it('persists toggle state to localStorage', async () => {
+      const store = new Map<string, string>()
+      vi.stubGlobal('localStorage', {
+        getItem: (k: string) => store.get(k) ?? null,
+        setItem: (k: string, v: string) => { store.set(k, v) },
+        removeItem: (k: string) => { store.delete(k) },
+      })
+      const manifest = makeManifest([{ id: 'bread', name: 'Bread', file: 'bread.json' }])
+      const wrapper = await mountAndLoad(manifest, { 'bread.json': bakingRecipe('Bread') })
+
+      await wrapper.find('.ds3-scope-checkbox').setValue(true)
+      await nextTick()
+      expect(store.get('statsPage:showAllRecipes')).toBe('true')
+
+      await wrapper.find('.ds3-scope-checkbox').setValue(false)
+      await nextTick()
+      expect(store.get('statsPage:showAllRecipes')).toBe('false')
+    })
+
+    it('drops non-baking dates from calendar bake count by default', async () => {
+      const manifest = makeManifest([
+        { id: 'bread', name: 'Bread', file: 'bread.json' },
+        { id: 'sauce', name: 'Sauce', file: 'sauce.json' },
+      ])
+      const wrapper = await mountAndLoad(manifest, {
+        'bread.json': bakingRecipe('Bread'),
+        'sauce.json': nonBakingRecipe('Sauce', 'Noodles & Soups'),
+      })
+
+      // Only the baking bread date counts (1 session); sauce date dropped.
+      expect(wrapper.find('.ds3-calendar-count').text()).toContain('1 bake sessions')
+    })
+  })
 })

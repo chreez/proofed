@@ -227,6 +227,14 @@ export interface RecipeStats {
    * pan, single skillet — the common case). (PF-265 / PF-255.3 §5)
    */
   itemsPerBatch?: number
+  /**
+   * Whether this recipe counts as "baking" for the default stats filter
+   * (PF — F44). Absent = true (most recipes are baking). Set to `false`
+   * for non-baking recipes (sauces, noodles, drinks) so they are hidden
+   * from typeCounts on the IG caption and StatsPage by default. Users
+   * can flip the "Show all recipes" toggle on StatsPage to reveal them.
+   */
+  baking?: boolean
 }
 
 export interface RecipeConfig {

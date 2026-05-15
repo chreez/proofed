@@ -21,7 +21,8 @@
       "defaultYield": 1,
       "unit": "batch",
       "servingsPerItem": 11,
-      "servingUnit": "rosettes"
+      "servingUnit": "rosettes",
+      "baking": false
     }
   },
   "version": "v1.0.3",

@@ -21,7 +21,8 @@
       "defaultYield": 2,
       "unit": "drinks",
       "servingsPerItem": 1,
-      "servingUnit": "drinks"
+      "servingUnit": "drinks",
+      "baking": false
     }
   },
   "version": "v1.0.1",

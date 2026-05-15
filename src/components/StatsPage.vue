@@ -39,6 +39,13 @@ interface ProductGroup {
   label: string
   icon: string
   recipes: StatsRecipe[]
+  /**
+   * F44: whether this group counts as "baking" for the default filter.
+   * Derived from `recipe.config.stats.baking` (absent = true). Aberrations
+   * always set true. The page-level `showAllRecipes` toggle controls whether
+   * non-baking groups appear in `displayedGroups`.
+   */
+  baking: boolean
 }
 
 interface LedgerRow {
@@ -54,6 +61,12 @@ interface TimelineBakeInfo {
   recipeName: string
   heroThumb: string | null
   date: string
+  /**
+   * F44: whether the source recipe counts as "baking" for the default
+   * filter. Used by `displayedBakeMap` to drop non-baking entries from
+   * the calendar when `showAllRecipes` is false.
+   */
+  baking: boolean
 }
 
 // --- Data loading ---
@@ -61,16 +74,51 @@ interface TimelineBakeInfo {
 const router = useRouter()
 
 const isLoading = ref(true)
-const groups = ref<ProductGroup[]>([])
+// All groups built from the manifest. The visible list is `groups` (computed
+// below), which filters non-baking groups out when `showAllRecipes` is false.
+const allGroups = ref<ProductGroup[]>([])
 const allRecipeCount = ref(0)
 const timelineBakeMap = ref(new Map<string, TimelineBakeInfo[]>())
 const calendarScrollEl = ref<HTMLElement | null>(null)
 
+// F44: page-level toggle for the "Baking Stats" default. Persisted in
+// localStorage so the choice survives reloads. Wrapped in try/catch
+// because the test env stubs `localStorage` to a no-op shape.
+const SHOW_ALL_KEY = 'statsPage:showAllRecipes'
+function readShowAll(): boolean {
+  try {
+    return localStorage.getItem(SHOW_ALL_KEY) === 'true'
+  } catch {
+    return false
+  }
+}
+const showAllRecipes = ref<boolean>(readShowAll())
+watchEffect(() => {
+  try {
+    localStorage.setItem(SHOW_ALL_KEY, showAllRecipes.value ? 'true' : 'false')
+  } catch {
+    // swallow — no persistence in environments without localStorage
+  }
+})
+
+// Filtered view used by every downstream computed. Aberrations group always
+// renders (its `baking` flag is forced true at build time).
+const groups = computed<ProductGroup[]>(() =>
+  allGroups.value.filter((g) => g.baking || showAllRecipes.value),
+)
+
+// F45: keep in sync with `SHARE_GROUP_ICONS` in useBakeAggregates.ts. Every
+// `stats.group` in /public/recipes/*.json must have an entry. 📦 fallback
+// indicates a missing mapping — fix the map.
 const GROUP_ICONS: Record<string, string> = {
   'Sourdough Breads': '\u{1F35E}',
   'Pizza': '\u{1F355}',
   'Buns & Rolls': '\u{1F9C1}',
   'Cakes': '\u{1F382}',
+  'Tarts & Pies': '\u{1F967}',
+  'Cookies & Bars': '\u{1F36A}',
+  'Crackers & Snacks': '\u{1F968}',
+  'Grain-Free Breads': '\u{1F33E}',
   'Sauces & Condiments': '\u{1F345}',
   'Noodles & Soups': '\u{1F35C}',
   'Drinks': '\u{1F9CB}',
@@ -112,6 +160,9 @@ async function loadData(): Promise<void> {
     const recipes = await Promise.all(recipePromises)
 
     const groupMap = new Map<string, StatsRecipe[]>()
+    // Tracks baking flag per group label. Read from `recipe.config.stats.baking`
+    // (absent = true). Recipes within a group are expected to agree.
+    const groupBaking = new Map<string, boolean>()
     const aberrationRecipes: StatsRecipe[] = []
     const bakeMap = new Map<string, TimelineBakeInfo[]>()
     let recipeWithBakes = 0
@@ -136,10 +187,17 @@ async function loadData(): Promise<void> {
       // Aberration-only days are tracked separately via aberrationDatesSet
       // so the calendar can render them in the muted aberration color while
       // mixed days (normal + aberration on same date) still render as accent.
+      const recipeBaking = stats.baking !== false
       for (const entry of normalEntries) {
         const photos = entry.photos ?? []
         const heroThumb = photos.length > 0 ? photos[photos.length - 1].thumb : null
-        const info: TimelineBakeInfo = { recipeId: id, recipeName: name, heroThumb, date: entry.date }
+        const info: TimelineBakeInfo = {
+          recipeId: id,
+          recipeName: name,
+          heroThumb,
+          date: entry.date,
+          baking: recipeBaking,
+        }
         const existing = bakeMap.get(entry.date)
         if (existing) {
           existing.push(info)
@@ -168,6 +226,7 @@ async function loadData(): Promise<void> {
         } else {
           groupMap.set(stats.group, [statsRecipe])
         }
+        groupBaking.set(stats.group, stats.baking !== false)
       }
 
       // Build aberration entries
@@ -189,12 +248,18 @@ async function loadData(): Promise<void> {
       }
     }
 
-    // Build ordered groups
+    // Build ordered groups. Baking groups first (in canonical order), then
+    // non-baking groups (sauces, noodles, drinks) — hidden by default via
+    // the `groups` computed filter unless `showAllRecipes` is true.
     const groupOrder = [
       'Sourdough Breads',
       'Pizza',
       'Buns & Rolls',
       'Cakes',
+      'Tarts & Pies',
+      'Cookies & Bars',
+      'Crackers & Snacks',
+      'Grain-Free Breads',
       'Sauces & Condiments',
       'Noodles & Soups',
       'Drinks',
@@ -208,6 +273,7 @@ async function loadData(): Promise<void> {
           label,
           icon: GROUP_ICONS[label] ?? '\u{1F4E6}',
           recipes,
+          baking: groupBaking.get(label) ?? true,
         })
       }
     }
@@ -219,20 +285,23 @@ async function loadData(): Promise<void> {
           label,
           icon: GROUP_ICONS[label] ?? '\u{1F4E6}',
           recipes,
+          baking: groupBaking.get(label) ?? true,
         })
       }
     }
 
-    // Add aberrations group if any
+    // Add aberrations group if any. Always treated as baking so the toggle
+    // doesn't hide it (it carries the user's failure stories regardless).
     if (aberrationRecipes.length > 0) {
       result.push({
         label: 'Aberrations',
         icon: GROUP_ICONS['Aberrations'],
         recipes: aberrationRecipes,
+        baking: true,
       })
     }
 
-    groups.value = result
+    allGroups.value = result
     allRecipeCount.value = recipeWithBakes
     timelineBakeMap.value = bakeMap
   } catch (err) {
@@ -413,6 +482,20 @@ const ledgerMaxPerServing = computed(() => {
 
 // --- Baking cadence (contribution calendar) ---
 
+// F44: filter the raw bakeMap by the page-level baking toggle. When
+// `showAllRecipes` is false, drop entries whose source recipe has
+// `stats.baking === false` (sauces, noodles, drinks). Empty date keys
+// are pruned so the calendar doesn't render hollow cells.
+const displayedBakeMap = computed<Map<string, TimelineBakeInfo[]>>(() => {
+  if (showAllRecipes.value) return timelineBakeMap.value
+  const next = new Map<string, TimelineBakeInfo[]>()
+  for (const [date, infos] of timelineBakeMap.value) {
+    const kept = infos.filter((i) => i.baking)
+    if (kept.length > 0) next.set(date, kept)
+  }
+  return next
+})
+
 // Set of ISO dates that have at least one aberration entry. The calendar
 // uses this to render aberration-only days as stone-400. Days with both
 // a normal bake and an aberration still render as accent (normal wins)
@@ -442,7 +525,7 @@ const calendarBakeCount = computed(() => {
   const todayIso = startOfDayToday.toISOString().slice(0, 10)
 
   const dates = new Set<string>()
-  for (const date of timelineBakeMap.value.keys()) {
+  for (const date of displayedBakeMap.value.keys()) {
     if (date >= windowStartIso && date <= todayIso) dates.add(date)
   }
   for (const date of aberrationDatesSet.value) {
@@ -487,7 +570,7 @@ const POPOVER_FLIP_THRESHOLD = 200
 
 const activePopoverBakes = computed<TimelineBakeInfo[]>(() => {
   if (!activeCalendarDate.value) return []
-  return timelineBakeMap.value.get(activeCalendarDate.value) ?? []
+  return displayedBakeMap.value.get(activeCalendarDate.value) ?? []
 })
 
 function showPopover(date: string, event: MouseEvent | PointerEvent): void {
@@ -625,6 +708,21 @@ watchEffect(() => {
     <div class="ds3-empty-text">No bake data yet. Complete your first bake to see stats.</div>
   </div>
   <div v-else class="ds3">
+    <!-- Page header: title + scope toggle (F44) -->
+    <header class="ds3-page-header">
+      <h1 class="ds3-page-title">
+        {{ showAllRecipes ? 'Cooking Stats' : 'Baking Stats' }}
+      </h1>
+      <label class="ds3-scope-toggle">
+        <input
+          type="checkbox"
+          v-model="showAllRecipes"
+          class="ds3-scope-checkbox"
+        />
+        <span>Show all recipes</span>
+      </label>
+    </header>
+
     <!-- Hero metric tiles -->
     <div class="ds3-hero">
       <div class="ds3-tile ds3-tile--accent">
@@ -659,7 +757,7 @@ watchEffect(() => {
       </div>
       <div class="ds3-calendar-scroll" ref="calendarScrollEl">
         <ContributionCalendar
-          :bake-map="timelineBakeMap"
+          :bake-map="displayedBakeMap"
           :aberration-dates="aberrationDatesSet"
           @cell-hover="onCalendarHover"
           @cell-click="onCalendarClick"
@@ -896,6 +994,43 @@ watchEffect(() => {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   color: var(--color-stone-400);
+}
+
+/* --- Page header: title + scope toggle (F44) --- */
+
+.ds3-page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 0.25rem;
+}
+
+.ds3-page-title {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.ds3-scope-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-stone-500);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ds3-scope-checkbox {
+  accent-color: var(--color-accent);
+  cursor: pointer;
+  margin: 0;
 }
 
 /* --- Hero metric tiles --- */

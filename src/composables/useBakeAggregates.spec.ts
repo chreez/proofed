@@ -559,6 +559,88 @@ describe('computeBakeAggregates — excludeFromStats (PF-240)', () => {
   })
 })
 
+describe('computeBakeAggregates — bakingOnly filter (F44)', () => {
+  const fixedToday = new Date(2026, 4, 5)
+
+  function bakingRecipe(group: string, dates: string[]): Recipe {
+    return makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group, defaultYield: 1, unit: 'loaf', servingsPerItem: 1, servingUnit: 'pieces' },
+      },
+      cook_log: dates.map((d) => ({ date: d, version: 'v1', notes: [] })),
+    })
+  }
+
+  function nonBakingRecipe(group: string, dates: string[]): Recipe {
+    return makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group, defaultYield: 1, unit: 'jar', servingsPerItem: 1, servingUnit: 'pieces', baking: false },
+      },
+      cook_log: dates.map((d) => ({ date: d, version: 'v1', notes: [] })),
+    })
+  }
+
+  it('drops non-baking recipes from every aggregate by default', () => {
+    const recipes = [
+      bakingRecipe('Sourdough Breads', ['2026-01-01', '2026-02-01']),
+      nonBakingRecipe('Sauces & Condiments', ['2026-03-01']),
+      nonBakingRecipe('Noodles & Soups', ['2026-04-01']),
+    ]
+    const r = computeBakeAggregates(recipes, fixedToday)
+    expect(r.totalBakes).toBe(2)
+    expect(r.typeCounts.map((g) => g.label)).toEqual(['Sourdough Breads'])
+    expect(r.daysBaked).toBe(2)
+  })
+
+  it('includes non-baking recipes when bakingOnly is false', () => {
+    const recipes = [
+      bakingRecipe('Sourdough Breads', ['2026-01-01']),
+      nonBakingRecipe('Sauces & Condiments', ['2026-03-01']),
+      nonBakingRecipe('Noodles & Soups', ['2026-04-01']),
+    ]
+    const r = computeBakeAggregates(recipes, fixedToday, { bakingOnly: false })
+    expect(r.totalBakes).toBe(3)
+    expect(r.typeCounts.map((g) => g.label).sort()).toEqual(
+      ['Noodles & Soups', 'Sauces & Condiments', 'Sourdough Breads'].sort(),
+    )
+    expect(r.daysBaked).toBe(3)
+  })
+
+  it('treats baking: absent as baking-eligible (default true)', () => {
+    const noFlag = makeRecipe({
+      config: {
+        early_check_percent: 75,
+        stats: { group: 'Pizza', defaultYield: 1, unit: 'pizza', servingsPerItem: 1, servingUnit: 'pieces' },
+        // no baking field
+      },
+      cook_log: [{ date: '2026-01-01', version: 'v1', notes: [] }],
+    })
+    const r = computeBakeAggregates([noFlag], fixedToday)
+    expect(r.totalBakes).toBe(1)
+    expect(r.typeCounts[0]?.label).toBe('Pizza')
+  })
+})
+
+describe('SHARE_GROUP_ICONS (F45)', () => {
+  it('covers every stats.group present in /public/recipes/*.json', async () => {
+    const { readdirSync, readFileSync } = await import('node:fs')
+    const { resolve } = await import('node:path')
+    const { SHARE_GROUP_ICONS } = await import('./useBakeAggregates')
+    const dir = resolve(process.cwd(), 'public/recipes')
+    const files = readdirSync(dir).filter((f) => f.endsWith('.json') && f !== 'index.json')
+    const groups = new Set<string>()
+    for (const f of files) {
+      const data = JSON.parse(readFileSync(resolve(dir, f), 'utf-8'))
+      const g = data?.config?.stats?.group
+      if (typeof g === 'string') groups.add(g)
+    }
+    const missing = [...groups].filter((g) => !(g in SHARE_GROUP_ICONS))
+    expect(missing).toEqual([])
+  })
+})
+
 describe('computeRecipeAggregates — excludeFromStats (PF-240)', () => {
   it('skips excludeFromStats entries from recipeBakeCount', () => {
     const recipe = makeRecipe({
