@@ -123,6 +123,8 @@ Add checks here for new features:
 | F41 | Preview nav targets | Bake log previews navigate to `/recipe/:id/bake/:date`. Recipe index previews navigate to `/recipe/:id`. Wired via `navigate` prop / emit. | 2026-05-11 |
 | F42 | Recipe index filter coherence | When recipes are filtered by chips, existing groupings still render correctly: in-progress section, baked category groups, outdated section, and "+N more" unbaked toggle all operate on the filtered subset. | 2026-05-11 |
 | F43 | Help tooltips on interactive elements | Every interactive or jargon-bearing UI element (icons, badges, sliders, computed values, tag chips, legend swatches, phase blocks) must surface a help tooltip on hover/focus/touch explaining what it is or does. Canonical implementation: wrap the trigger in `<HelpTooltip text="…">` from `src/components/HelpTooltip.vue` (DRAFT-89). Native `title=` remains an acceptable fallback for non-Vue surfaces (demos, prerendered output) and for `<option>` elements that browsers handle natively. Verified by manual review during HITL gates for any styling/UI task. | 2026-05-12 |
+| F44 | Baking-only filter | `RecipeStats.baking?: boolean` (absent = true). IG caption typeCounts + StatsPage groups default to baking-only (`baking !== false`). StatsPage exposes a "Show all recipes" checkbox to expand to non-baking groups. Non-baking recipes (sauces, noodles, drinks) must set `config.stats.baking: false`. | 2026-05-15 |
+| F45 | Group icon coverage | Every `stats.group` value present in `public/recipes/*.json` must have an entry in `SHARE_GROUP_ICONS` (useBakeAggregates.ts) and `GROUP_ICONS` (StatsPage.vue). Fallback `📦` indicates a missing mapping — fix the map, do not let `📦` ship. | 2026-05-15 |
 
 ## Print Validation
 

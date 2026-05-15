@@ -1,7 +1,7 @@
 ---
 project: Proofed
 status: active
-updated: 2026-05-14
+updated: 2026-05-15
 ---
 
 ## Description
@@ -10,7 +10,7 @@ Personal portfolio and blog site (proofed.netlify.app) — Vue 3 + Vite recipe w
 
 ## Current Focus
 
-**PF-256 Bakery Ops Assistant** — full-service local (bake + schedule + sell). Umbrella epic with 9 candidate slices (S0–S8). **PF-256.1 shipped** 2026-05-14: `/production` route with library grid (search + sort + keyboard nav) + sticky cart sidebar (qty stepper, yield override, provenance). PF-256.2 demo spike closed (B / Cart pattern locked). Next: S2 Labels / S3 Inventory / S1 Pricing rework / S0.1 agent skill.
+**PF-256 Bakery Ops Assistant** — full-service local (bake + schedule + sell). 3 slices shipped on top of the foundation: **PF-256.1** (/production plan skeleton), **PF-256.3** (/labels lens — printable 4×6 stickers w/ allergens + nutrition + QR), **PF-256.4** (/pricing rework reading ProductionPlan — decimal pricing + sell-price override + estimated-sold + break-even). Next candidates: S0.1 agent skill, S3 inventory (PF-268 design ready), S4 scheduler MVP, S6 sell log, S5 data health.
 
 Background: recipe workflow features (cook logs, photo pipeline, energy-level reading modes). Also serves as living portfolio piece for resume/applications.
 
@@ -27,6 +27,8 @@ Background: recipe workflow features (cook logs, photo pipeline, energy-level re
 
 ## Recent
 
+- PF-256.4: /pricing rework on ProductionPlan — decimal sell prices + pretty hint (≈$X.50/whole), per-recipe estimated-sold input, break-even line, sell-price override via double-click (mirrors /production yield-override), markup cap 1500%, cost-per-unit bug fix (was halving for batches>1). Tooltip teleports to body (escapes scroll container). 2537 tests pass.
+- PF-256.3: /labels lens shipped — printable 4×6 cards per ProductionPlan entry (recipe name + batch/unit + date + allergens FDA Big 9 + ingredient list + per-serving nutrition + QR to /recipe/:id); print → browser PDF
 - PF-268/269/270/271: design wave for remaining PF-256 slices — ingredient inventory (S3); multi-baker shift mgmt (S8); passive-time batching solver (S8); observed step times + per-state worker capacity (S5/S8). Each design doc + ACs + spawned implementation drafts (12 new drafts total).
 - PF-261/262/263/264/265/266/267: streamlined backfill wave — D4 timer audit (6 fixes across 3 recipes); nutrition for 5 un-nutritioned recipes; cost.items refresh on 5 recipes (100% HEB-sourced); config.stats backfill on 7 recipes (3 new top-level groups: Cookies & Bars / Crackers & Snacks / Tarts & Pies); RecipeStats.itemsPerBatch field + 9 backfills; estimatedCost seed for lime-chantilly (only un-seeded); RecipeMeta throughput fields (prep_active_min, proof_passive_min, oven_occupancy_min, bake_min) on all 27 recipes
 - PF-256.1: `/production` route shipped — library grid (search + sort by most-baked + keyboard nav j/k/Enter//) + sticky cart sidebar (qty stepper, yield override via dbl-click, provenance per entry); hero thumbs from cook_log; scroll-isolated viewport; minimized header
