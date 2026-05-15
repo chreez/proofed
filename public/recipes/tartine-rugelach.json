@@ -1279,7 +1279,7 @@
           "src": "/images/tartine-rugelach/2026-05-12/img-7542-800w.webp",
           "thumb": "/images/tartine-rugelach/2026-05-12/img-7542-400w.webp",
           "alt": "Finished rugelach packed into kraft paper bags with cellophane windows, on a dark wood table with the Tartine cookbook in the background. Bagged for sharing after the bake.",
-          "tag": "step",
+          "tag": "hero",
           "name": "img-7542"
         }
       ],
@@ -1594,6 +1594,336 @@
         "perServing": 0.79,
         "servings": 16,
         "date": "2026-05-12"
+      }
+    },
+    {
+      "date": "2026-05-15",
+      "version": "v1.1.2",
+      "summary": "Second bake. 1hr chill, top rack helped browning but still needed ~35min (recipe says 22). Rolled tighter, look nicer. Flavor addicting. Effort/reward strong — viable scale-up.",
+      "notes": [
+        "Dough into fridge ~11:26am CDT (approx, from \"25 min ago\").",
+        "Chilled 1 hour (not the 2hr try from last next_time).",
+        "Did not split into 2 discs — last bake's Claire-inspired split was for bigger batch, not needed at 16 count.",
+        "Kept egg wash + sugar after freezer (recipe order) — not switching to pre-freeze.",
+        "Used regular granulated sugar for topping — no demerara yet.",
+        "Top rack — helped browning.",
+        "Into oven 1:21pm CDT.",
+        "Out ~1:56pm CDT, ~35 min bake (~13 min over recipe's 22). Pastries reliably resist browning.",
+        "Food processor order: did dough first this time. Walnuts-first would rinse-out easier next bake.",
+        "Did not cross-reference Claire Saffitz this bake.",
+        "Rolling more diligent — crescents look nicer.",
+        "Flavor addicting, great. Solid effort/reward — candidate for scale-up / resell."
+      ],
+      "photos": [
+        {
+          "src": "/images/tartine-rugelach/2026-05-15/finished-rugelach-800w.webp",
+          "thumb": "/images/tartine-rugelach/2026-05-15/finished-rugelach-400w.webp",
+          "alt": "Sixteen finished crescents on a clear glass platter, arranged in loose rows. Pale gold — barely browned, confirming the recipe's reluctance to color even with +13 min over recipe time. Sugar topping glistens on tops. Currants escaped during shaping — scattered on the platter alongside the rolls. A few rolls show filling oozing from open ends; otherwise shapes are tighter and more uniform than last bake. Aesthetic: more disciplined rolling visible.",
+          "tag": "hero",
+          "name": "finished-rugelach"
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Walnuts first in food processor — easier rinse-out for dough"
+        },
+        {
+          "text": "Plan ~35 min bake instead of recipe's 22 — pastries need it"
+        },
+        {
+          "text": "Investigate browning helpers — convection? higher final temp? broiler finish?"
+        },
+        {
+          "text": "Get demerara/turbinado sugar for topping — coarser, better flavor"
+        },
+        {
+          "text": "Cross-check Claire Saffitz's almond paste rugelach recipe for technique cues",
+          "source": "Claire Saffitz YouTube: https://www.youtube.com/watch?v=93ZbPtxv_RY"
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-15T16:26:00Z",
+          "raw": "started dough chilling approx 25 minutes ago.",
+          "curated": "Dough into fridge — chill start",
+          "notable": true,
+          "stepId": "chill-dough",
+          "processing": "chill | Timestamp inferred: 'approx 25 minutes ago' relative to 2026-05-15T16:51:05Z → 2026-05-15T16:26:00Z"
+        },
+        {
+          "timestamp": "2026-05-15T18:21:09Z",
+          "raw": "into oven.",
+          "notable": true,
+          "stepId": "bake",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-15T18:56:00Z",
+          "raw": "(user-stated offset: \"about 35 minutes\" after into-oven)",
+          "curated": "Out of oven",
+          "notable": true,
+          "stepId": "bake",
+          "processing": "bake | Timestamp inferred: '+35 min' from 2026-05-15T18:21:09Z → 2026-05-15T18:56:00Z"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "MIX_DOUGH",
+          "stageName": "Mix Cream Cheese Dough",
+          "ingredients": [
+            {
+              "id": "cream-cheese",
+              "name": "Cream Cheese (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 260,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "MAKE_FILLING",
+          "stageName": "Make Walnut-Currant Filling",
+          "ingredients": [
+            {
+              "id": "walnuts",
+              "name": "Walnuts",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "currants",
+              "name": "Currants",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Roll, Fill, and Shape",
+          "ingredients": [
+            {
+              "id": "melted-butter",
+              "name": "Unsalted Butter (melted, cooled)",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Egg Wash, Sugar, and Bake",
+          "ingredients": [
+            {
+              "id": "egg",
+              "name": "Large Egg",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar-topping",
+              "name": "Granulated Sugar (for topping)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-15",
+        "temp_high_f": 90.9,
+        "temp_low_f": 69.3,
+        "humidity_avg_percent": 64,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "cream-cheese",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Regular Cream Cheese",
+            "packageSize": "8 oz",
+            "packagePrice": 2.3,
+            "cost": 2.28,
+            "name": "Cream Cheese (room temperature)",
+            "amount": 225,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "unsalted-butter",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 3.98,
+            "cost": 1.97,
+            "name": "Unsalted Butter (room temperature)",
+            "amount": 225,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "ap-flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour",
+            "packageSize": "5 lbs",
+            "packagePrice": 3.78,
+            "cost": 0.43,
+            "name": "All-Purpose Flour",
+            "amount": 260,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "einkorn-flour",
+            "sourceType": "heb",
+            "sourceName": "Jovial Organic Einkorn All-Purpose Flour",
+            "packageSize": "2 lb",
+            "packagePrice": 9.29,
+            "cost": 0.67,
+            "name": "Einkorn Flour",
+            "amount": 65,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.04,
+            "name": "Fine Sea Salt",
+            "amount": 6,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "walnuts",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Chopped Walnut Pieces",
+            "packageSize": "8 oz",
+            "packagePrice": 5.28,
+            "cost": 2.79,
+            "name": "Walnuts",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Brown Sugar",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.42,
+            "cost": 0.32,
+            "name": "Brown Sugar",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "cinnamon",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Ground Cinnamon Seasoning",
+            "packageSize": "1.8 oz",
+            "packagePrice": 2.58,
+            "cost": 0.35,
+            "name": "Ground Cinnamon",
+            "amount": 7,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "currants",
+            "sourceType": "heb",
+            "sourceName": "Sun-Maid California Sun-Dried Zante Currants",
+            "packageSize": "8 oz",
+            "packagePrice": 4.98,
+            "cost": 1.54,
+            "name": "Currants",
+            "amount": 70,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "melted-butter",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 3.98,
+            "cost": 0.57,
+            "name": "Unsalted Butter (melted, cooled)",
+            "amount": 65,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "egg",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Grade AA Cage Free Large White Eggs",
+            "packageSize": "12 ct",
+            "packagePrice": 2.86,
+            "cost": 0.24,
+            "name": "Large Egg",
+            "amount": 50,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "sugar-topping",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.48,
+            "cost": 0.05,
+            "name": "Granulated Sugar (for topping)",
+            "amount": 20,
+            "unit": "g"
+          }
+        ],
+        "total": 11.25,
+        "perServing": 0.7,
+        "servings": 16,
+        "date": "2026-05-15"
       }
     }
   ]

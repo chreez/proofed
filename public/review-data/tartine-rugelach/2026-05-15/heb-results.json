@@ -1,0 +1,190 @@
+{
+  "recipeId": "tartine-rugelach",
+  "date": "2026-05-15",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "cream-cheese",
+      "name": "Cream Cheese (room temperature)",
+      "recipeAmount": 225,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Regular Cream Cheese", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 2.30, "salePrice": null, "unitPrice": "$0.29/oz", "inStock": true },
+        { "name": "H-E-B Plain Cream Cheese Spread", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 1.84, "salePrice": null, "unitPrice": "$0.23/oz", "inStock": true },
+        { "name": "H-E-B Plain Cream Cheese Spread", "brand": "H-E-B", "size": "16 oz", "sizeGrams": 454, "price": 3.66, "salePrice": null, "unitPrice": "$0.23/oz", "inStock": true },
+        { "name": "Hill Country Fare Cream Cheese", "brand": "Hill Country Fare", "size": "8 oz", "sizeGrams": 227, "price": 1.49, "salePrice": null, "unitPrice": "$0.19/oz", "inStock": true },
+        { "name": "Philadelphia Original Cream Cheese", "brand": "Philadelphia", "size": "8 oz", "sizeGrams": 227, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Philadelphia Original Cream Cheese", "brand": "Philadelphia", "size": "2 ct (16 oz)", "sizeGrams": 454, "price": 5.46, "salePrice": null, "unitPrice": "$0.34/oz", "inStock": true },
+        { "name": "H-E-B Whipped Plain Cream Cheese Spread", "brand": "H-E-B", "size": "12 oz", "sizeGrams": 340, "price": 2.92, "salePrice": null, "unitPrice": "$0.24/oz", "inStock": true },
+        { "name": "H-E-B Whipped Plain Cream Cheese Spread", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 2.53, "salePrice": null, "unitPrice": "$0.32/oz", "inStock": true },
+        { "name": "Philadelphia Original Cream Cheese Spread", "brand": "Philadelphia", "size": "8 oz", "sizeGrams": 227, "price": 3.97, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "Philadelphia Original Cream Cheese Spread", "brand": "Philadelphia", "size": "16 oz", "sizeGrams": 454, "price": 6.97, "salePrice": null, "unitPrice": "$0.44/oz", "inStock": true },
+        { "name": "Philadelphia 1/3 Less Fat Cream Cheese", "brand": "Philadelphia", "size": "8 oz", "sizeGrams": 227, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "H-E-B Neufchatel Cheese", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 2.30, "salePrice": null, "unitPrice": "$0.29/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "unsalted-butter",
+      "name": "Unsalted Butter (room temperature)",
+      "recipeAmount": 225,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 2.88, "salePrice": null, "unitPrice": "$0.18/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "2 ct (8 oz)", "sizeGrams": 227, "price": 2.46, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Central Market European Style Unsalted Butter Sticks", "brand": "Central Market", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Land O Lakes Unsalted Sweet Butter Sticks", "brand": "Land O Lakes", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 4.46, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Falfurrias Unsalted Butter Sticks", "brand": "Falfurrias", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 4.47, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Challenge Unsalted Butter Sticks", "brand": "Challenge", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 4.28, "salePrice": null, "unitPrice": "$0.27/oz", "inStock": true },
+        { "name": "Kerrygold Grass-Fed Unsalted Pure Irish Butter", "brand": "Kerrygold", "size": "8 oz", "sizeGrams": 227, "price": 4.84, "salePrice": null, "unitPrice": "$0.60/oz", "inStock": true },
+        { "name": "Kerrygold Unsalted Pure Irish Butter Sticks", "brand": "Kerrygold", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 10.88, "salePrice": null, "unitPrice": "$0.68/oz", "inStock": true },
+        { "name": "H-E-B Organics Unsalted Butter", "brand": "H-E-B", "size": "16 oz", "sizeGrams": 454, "price": 5.85, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Plugra Premium European Style Unsalted Butter", "brand": "Plugra", "size": "8 oz", "sizeGrams": 227, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Danish Creamery Unsalted European Style Butter Sticks", "brand": "Danish Creamery", "size": "2 ct (8 oz)", "sizeGrams": 227, "price": 3.44, "salePrice": null, "unitPrice": "$0.43/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "ap-flour",
+      "name": "All-Purpose Flour",
+      "recipeAmount": 260,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour", "brand": "H-E-B", "size": "5 lbs", "sizeGrams": 2268, "price": 3.78, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 5.48, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "Central Market Unbleached All-Purpose Flour", "brand": "Central Market", "size": "5 lbs", "sizeGrams": 2268, "price": 4.48, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "H-E-B Organics Unbleached All Purpose Flour", "brand": "H-E-B Organics", "size": "5 lbs", "sizeGrams": 2268, "price": 5.98, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "Hill Country Fare Enriched Unbleached All-Purpose Flour", "brand": "Hill Country Fare", "size": "5 lbs", "sizeGrams": 2268, "price": 2.58, "salePrice": null, "unitPrice": "$0.03/oz", "inStock": true },
+        { "name": "Hill Country Fare Enriched Bleached All-Purpose Flour", "brand": "Hill Country Fare", "size": "2 lbs", "sizeGrams": 907, "price": 1.32, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All Purpose Flour", "brand": "King Arthur", "size": "2 lb", "sizeGrams": 907, "price": 2.78, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Bob's Red Mill Unbleached White All-Purpose Flour", "brand": "Bob's Red Mill", "size": "5 lbs", "sizeGrams": 2268, "price": 4.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "einkorn-flour",
+      "name": "Einkorn Flour",
+      "recipeAmount": 65,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Jovial Organic Einkorn All-Purpose Flour", "brand": "Jovial", "size": "2 lb", "sizeGrams": 907, "price": 9.29, "salePrice": null, "unitPrice": "$0.29/oz", "inStock": true },
+        { "name": "Jovial 100% Organic Einkorn Whole Wheat Flour", "brand": "Jovial", "size": "2 lb", "sizeGrams": 907, "price": 9.29, "salePrice": null, "unitPrice": "$0.29/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Fine Sea Salt",
+      "recipeAmount": 6,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Morton Fine Sea Salt", "brand": "Morton", "size": "17.6 oz", "sizeGrams": 499, "price": 2.98, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "La Baleine Fine Sea Salt Shaker", "brand": "La Baleine", "size": "4.4 oz", "sizeGrams": 125, "price": 2.18, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "H-E-B Fine Mediterranean Sea Salt Crystals", "brand": "H-E-B", "size": "26.5 oz", "sizeGrams": 751, "price": 2.38, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Redmond Real Salt Fine Sea Salt", "brand": "Redmond Real Salt", "size": "10 oz", "sizeGrams": 284, "price": 4.98, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "Southern Style Spices Bulk Fine California Sea Salt", "brand": "Southern Style Spices", "size": "1 lb", "sizeGrams": 454, "price": 2.78, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "walnuts",
+      "name": "Walnuts",
+      "recipeAmount": 120,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Chopped Walnut Pieces", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 5.28, "salePrice": null, "unitPrice": "$0.66/oz", "inStock": true },
+        { "name": "H-E-B Premium Walnut Halves", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 5.28, "salePrice": null, "unitPrice": "$0.66/oz", "inStock": true },
+        { "name": "H-E-B Premium Walnut Halves", "brand": "H-E-B", "size": "16 oz", "sizeGrams": 454, "price": 9.98, "salePrice": null, "unitPrice": "$0.62/oz", "inStock": true },
+        { "name": "Hill Country Fare Walnut Halves & Pieces", "brand": "Hill Country Fare", "size": "6 oz", "sizeGrams": 170, "price": 2.18, "salePrice": null, "unitPrice": "$0.36/oz", "inStock": true },
+        { "name": "H-E-B Walnut Halves & Pieces", "brand": "H-E-B", "size": "11 oz", "sizeGrams": 312, "price": 5.98, "salePrice": null, "unitPrice": "$0.54/oz", "inStock": true },
+        { "name": "Fisher Walnuts Halves & Pieces", "brand": "Fisher", "size": "16 oz", "sizeGrams": 454, "price": 8.48, "salePrice": null, "unitPrice": "$0.53/oz", "inStock": true },
+        { "name": "Diamond of California Shelled Walnuts", "brand": "Diamond of California", "size": "16 oz", "sizeGrams": 454, "price": 7.48, "salePrice": null, "unitPrice": "$0.47/oz", "inStock": true },
+        { "name": "Diamond of California Chopped Walnuts", "brand": "Diamond of California", "size": "8 oz", "sizeGrams": 227, "price": 4.24, "salePrice": null, "unitPrice": "$0.53/oz", "inStock": true },
+        { "name": "Alpine Pacific Nut Light English Walnuts", "brand": "Alpine Pacific Nut", "size": "1 lb", "sizeGrams": 454, "price": 5.88, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "brown-sugar",
+      "name": "Brown Sugar",
+      "recipeAmount": 120,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Brown Sugar", "brand": "H-E-B", "size": "2 lbs", "sizeGrams": 907, "price": 2.42, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "Hill Country Fare Brown Sugar", "brand": "Hill Country Fare", "size": "32 oz", "sizeGrams": 907, "price": 1.84, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Imperial Sugar Pure Cane Light Brown Sugar", "brand": "Imperial Sugar", "size": "2 lbs", "sizeGrams": 907, "price": 2.82, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Imperial Sugar Pure Cane Dark Brown Sugar", "brand": "Imperial Sugar", "size": "2 lbs", "sizeGrams": 907, "price": 2.82, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "C&H Premium Pure Cane Light Brown Sugar", "brand": "C&H", "size": "2 lbs", "sizeGrams": 907, "price": 2.62, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "C&H Premium Pure Cane Dark Brown Sugar", "brand": "C&H", "size": "2 lbs", "sizeGrams": 907, "price": 2.82, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "H-E-B Organics Light Brown Sugar", "brand": "H-E-B Organics", "size": "24 oz", "sizeGrams": 680, "price": 3.09, "salePrice": null, "unitPrice": "$0.13/oz", "inStock": true },
+        { "name": "Zulka Brown Pure Cane Sugar", "brand": "Zulka", "size": "1 lb", "sizeGrams": 454, "price": 1.48, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "cinnamon",
+      "name": "Ground Cinnamon",
+      "recipeAmount": 7,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Ground Cinnamon Seasoning", "brand": "H-E-B", "size": "1.8 oz", "sizeGrams": 51, "price": 2.58, "salePrice": null, "unitPrice": "$1.43/oz", "inStock": true },
+        { "name": "Hill Country Fare Ground Cinnamon", "brand": "Hill Country Fare", "size": "1 oz", "sizeGrams": 28, "price": 0.53, "salePrice": null, "unitPrice": "$0.53/oz", "inStock": true },
+        { "name": "McCormick Ground Cinnamon", "brand": "McCormick", "size": "2.37 oz", "sizeGrams": 67, "price": 2.77, "salePrice": null, "unitPrice": "$1.17/oz", "inStock": true },
+        { "name": "McCormick Ground Cinnamon", "brand": "McCormick", "size": "4.12 oz", "sizeGrams": 117, "price": 4.18, "salePrice": null, "unitPrice": "$1.01/oz", "inStock": true },
+        { "name": "Bolner's Fiesta Ground Cinnamon", "brand": "Bolner's Fiesta", "size": "3.75 oz", "sizeGrams": 106, "price": 4.48, "salePrice": null, "unitPrice": "$1.19/oz", "inStock": true },
+        { "name": "Central Market Organics Ground Korintje Cinnamon", "brand": "Central Market", "size": "2.15 oz", "sizeGrams": 61, "price": 4.88, "salePrice": null, "unitPrice": "$2.27/oz", "inStock": true },
+        { "name": "Simply Organic Ground Ceylon Cinnamon", "brand": "Simply Organic", "size": "2.08 oz", "sizeGrams": 59, "price": 7.28, "salePrice": null, "unitPrice": "$3.50/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "currants",
+      "name": "Currants",
+      "recipeAmount": 70,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Sun-Maid California Sun-Dried Zante Currants", "brand": "Sun-Maid", "size": "8 oz", "sizeGrams": 227, "price": 4.98, "salePrice": null, "unitPrice": "$0.62/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "melted-butter",
+      "name": "Unsalted Butter (melted, cooled)",
+      "recipeAmount": 65,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 2.88, "salePrice": null, "unitPrice": "$0.18/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "2 ct (8 oz)", "sizeGrams": 227, "price": 2.46, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Land O Lakes Unsalted Sweet Butter Sticks", "brand": "Land O Lakes", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 4.46, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Challenge Unsalted Butter Sticks", "brand": "Challenge", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 4.28, "salePrice": null, "unitPrice": "$0.27/oz", "inStock": true },
+        { "name": "Falfurrias Unsalted Butter Sticks", "brand": "Falfurrias", "size": "4 ct (1 lb)", "sizeGrams": 454, "price": 4.47, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "egg",
+      "name": "Large Egg",
+      "recipeAmount": 50,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": 600, "price": 2.86, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "18 ct", "sizeGrams": 900, "price": 4.29, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "12 ct", "sizeGrams": 600, "price": 1.67, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "18 ct", "sizeGrams": 900, "price": 2.17, "salePrice": null, "unitPrice": "$0.12/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large Brown Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": 600, "price": 2.96, "salePrice": null, "unitPrice": "$0.25/ct", "inStock": true },
+        { "name": "Vital Farms Pasture Raised Large Eggs", "brand": "Vital Farms", "size": "12 ct", "sizeGrams": 600, "price": 7.46, "salePrice": null, "unitPrice": "$0.62/ct", "inStock": true },
+        { "name": "Eggland's Best Grade A Cage Free Large White Eggs", "brand": "Eggland's Best", "size": "12 ct", "sizeGrams": 600, "price": 3.87, "salePrice": null, "unitPrice": "$0.32/ct", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "sugar-topping",
+      "name": "Granulated Sugar (for topping)",
+      "recipeAmount": 20,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "2 lbs", "sizeGrams": 907, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "4 lbs", "sizeGrams": 1814, "price": 3.48, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "Hill Country Fare Granulated Sugar", "brand": "Hill Country Fare", "size": "4 lbs", "sizeGrams": 1814, "price": 2.58, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "Imperial Sugar Extra Fine Granulated Pure Cane Sugar", "brand": "Imperial Sugar", "size": "2 lb", "sizeGrams": 907, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "Imperial Sugar Pure Cane Extra Fine Granulated Sugar", "brand": "Imperial Sugar", "size": "4 lbs", "sizeGrams": 1814, "price": 3.64, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "C&H Premium Pure Cane Granulated Sugar", "brand": "C&H", "size": "4 lbs", "sizeGrams": 1814, "price": 3.94, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "C&H Pure Cane Granulated Sugar", "brand": "C&H", "size": "2 lbs", "sizeGrams": 907, "price": 2.49, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "H-E-B Fair Trade Turbinado Raw Cane Sugar", "brand": "H-E-B", "size": "2 lb", "sizeGrams": 907, "price": 3.49, "salePrice": null, "unitPrice": "$0.11/oz", "inStock": true },
+        { "name": "Sugar in the Raw Natural Cane Turbinado Sugar", "brand": "Sugar in the Raw", "size": "2 lb", "sizeGrams": 907, "price": 4.36, "salePrice": null, "unitPrice": "$0.14/oz", "inStock": true },
+        { "name": "Dulce Cana Turbinado Sugar", "brand": "Dulce Cana", "size": "2 lb", "sizeGrams": 907, "price": 4.48, "salePrice": null, "unitPrice": "$0.14/oz", "inStock": true }
+      ]
+    }
+  ]
+}
