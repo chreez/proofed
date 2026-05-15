@@ -1,6 +1,13 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ProductionLibraryRow from './ProductionLibraryRow.vue'
+
+// HelpTooltip teleports its popover to document.body. Sweep the teleported
+// nodes between tests so previous mounts don't leak their tooltips into the
+// next assertion (the helper looks up by `aria-describedby`-targeted id).
+afterEach(() => {
+  document.body.querySelectorAll('.help-tooltip-popover').forEach((el) => el.remove())
+})
 
 describe('ProductionLibraryRow', () => {
   it('renders recipe name, yields, category, and bake count', () => {
@@ -105,15 +112,21 @@ describe('ProductionLibraryRow', () => {
   it('exposes tooltips on the + button (F43)', () => {
     const wrapper = mount(ProductionLibraryRow, {
       props: { recipeId: 'x', recipeName: 'X' },
+      attachTo: document.body,
     })
     const btn = wrapper.find('button.library-row-plus')
     // F43: the + button must sit inside a HelpTooltip wrapper carrying the
-    // descriptive add-to-queue text. ARIA label is still present on the button.
-    const tooltipWrap = btn.element.closest('.help-tooltip')
-    expect(tooltipWrap).not.toBeNull()
-    const popover = tooltipWrap?.querySelector('[role="tooltip"]')
+    // descriptive add-to-queue text. The popover is teleported to body, so
+    // we resolve it via the trigger's aria-describedby pointer.
+    const triggerHost = btn.element.closest('.help-tooltip-trigger')
+    expect(triggerHost).not.toBeNull()
+    const describedBy = triggerHost?.getAttribute('aria-describedby')
+    expect(describedBy).toBeTruthy()
+    const popover = document.getElementById(describedBy ?? '')
     expect(popover?.textContent?.trim()).toContain('Add X to production queue')
     expect(btn.attributes('aria-label')).toBeTruthy()
+    wrapper.unmount()
+    document.body.querySelectorAll('.help-tooltip-popover').forEach((el) => el.remove())
   })
 
   it('matches HTML snapshot for a row with hero thumb (in queue)', () => {

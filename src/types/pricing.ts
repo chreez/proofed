@@ -1,63 +1,58 @@
 /**
- * Pricing profile schema for the /pricing route (PF-255 epic).
+ * Pricing state for the /pricing route (PF-256.4 rework).
  *
- * Separated from `recipe.ts` to keep recipe-data concerns isolated from
- * pricing/business-logic concerns. See `backlog/tasks/pf-255.5-design-notes.md`
- * for the full design rationale.
+ * Replaces the original PF-255.1 PricingProfile model. The new pricing lens is
+ * a thin layer over `ProductionPlan` — per-recipe markup overrides only.
+ * Costs come from recipe JSON (`cook_log[].cost.total` → `estimatedCost.total`)
+ * and unit math comes from the active production entry, not from this state.
  */
 
 /**
  * Recipe identifier — string matching `RecipeEntry.id` from
- * `public/recipes/index.json`. Aliased here for self-documentation;
- * the codebase passes recipe ids as bare strings elsewhere.
+ * `public/recipes/index.json`.
  */
 export type RecipeId = string
 
 /**
- * Per-recipe pricing override. All fields optional — absent fields fall
- * back to `PricingProfile.default` (see `resolveMarkupPct`).
+ * Per-recipe pricing override. `markupPct` is the required field;
+ * `estimatedSoldUnits` is optional — when undefined the caller assumes the
+ * full bake will sell (defaultUnits === unitsPerBake). When set explicitly,
+ * the value is used in revenue math (sell × estimatedSoldUnits) while cost
+ * stays sunk on the entire batch (cost × unitsPerBake).
+ *
+ * `sellPriceOverride` is the "by-feel" escape hatch — when set, the row
+ * ignores the markup% math entirely and uses this absolute dollar amount as
+ * the per-unit sell price. Lets us price a $1.27/loaf sourdough at $18 the
+ * way a real cottage bakery would, without trying to express that as a
+ * 1300%+ markup. `null` (or omitted) means "compute from markupPct".
  */
-export interface PerRecipePricing {
-  /** Markup percentage applied to ingredient cost. Allowed range: 0–500. */
-  markupPct?: number
-  /**
-   * Hard sell-price override in dollars. When present, takes precedence
-   * over the computed (cost × markup) price and the pretty-price snap —
-   * the user has manually locked this price.
-   */
-  sellPrice?: number
-  /** Free-form user note (e.g. "matches Goodall's $9 retail"). */
-  notes?: string
-}
-
-/** Profile-wide defaults, shared across recipes that don't have an override. */
-export interface PricingProfileDefaults {
-  /** Default markup percentage used when a recipe has no override. */
+export interface PricingPerRecipe {
   markupPct: number
-  // Reserved for future expansion — keep additive only:
-  // laborRatePerHour?: number   // PF-255.3 throughput modeling
-  // overheadPerBake?: number    // fixed cost per bake (utilities, etc.)
-  // currency?: 'USD' | 'EUR'    // currently USD-only; add when needed
+  /** Override for "how many units will actually sell". Undefined = sell all. */
+  estimatedSoldUnits?: number
+  /**
+   * Absolute per-unit sell price. When set, takes precedence over
+   * `markupPct`-derived pricing. `null` or undefined = no override.
+   */
+  sellPriceOverride?: number | null
 }
 
 /**
- * Top-level pricing profile. Serialized to JSON for export/import and for
- * the committed default at `public/profiles/pricing/default.json`.
+ * Persisted pricing state. Stored at localStorage key `bake-pricing-current`.
+ *
+ * `perRecipe` is keyed by recipe id and carries the user-set markup percent
+ * for that recipe. Recipes without an override fall back to
+ * {@link FALLBACK_MARKUP_PCT}.
  */
-export interface PricingProfile {
-  /** Display name. Drives the slugified filename on export. */
-  name: string
-  /** Profile schema version (semver). Independent of recipe versions. */
-  version: string
-  /** ISO 8601 date of profile creation. Set once, never auto-mutated. */
-  created: string
-  /** ISO 8601 date of last save/export. Updated on every write. */
+export interface PricingState {
+  perRecipe: Record<RecipeId, PricingPerRecipe>
+  /** ISO 8601 timestamp; bumped on every save. */
   updated: string
-  /** Profile-wide defaults — fallback when perRecipe entry is absent. */
-  default: PricingProfileDefaults
-  /** Per-recipe overrides keyed by recipe id. */
-  perRecipe: Record<RecipeId, PerRecipePricing>
 }
 
-/** Hardcoded fallback markup percent, used when the profile lacks a default. */
-export const FALLBACK_MARKUP_PCT = 65
+/**
+ * Default markup percent applied when a recipe has no override. 150% lines up
+ * with the cottage-bakery rule-of-thumb used elsewhere in the docs and gives
+ * a sensible mid-range starting point on the 50–300 slider.
+ */
+export const FALLBACK_MARKUP_PCT = 150

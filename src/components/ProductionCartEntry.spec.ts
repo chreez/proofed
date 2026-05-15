@@ -1,8 +1,15 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, afterEach } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import ProductionCartEntry from './ProductionCartEntry.vue'
 import type { ProductionEntry } from '@/types/production'
+
+// HelpTooltip teleports its popover to document.body. Sweep the teleported
+// nodes between tests so previous mounts don't leak their tooltips into the
+// next assertion (the helper looks up by `aria-describedby`-targeted id).
+afterEach(() => {
+  document.body.querySelectorAll('.help-tooltip-popover').forEach((el) => el.remove())
+})
 
 function makeEntry(overrides: Partial<ProductionEntry> = {}): ProductionEntry {
   return {
@@ -376,13 +383,16 @@ describe('ProductionCartEntry', () => {
 
   /**
    * Helpers for F43 — find the HelpTooltip wrapper around an element and
-   * read its popover text.
+   * read its popover text. The popover is teleported to `document.body`,
+   * so we resolve it via the trigger's `aria-describedby`.
    */
   function tooltipTextFor(el: Element | null | undefined): string | null {
     if (!el) return null
-    const wrapper = el.closest('.help-tooltip')
-    if (!wrapper) return null
-    const popover = wrapper.querySelector('[role="tooltip"]')
+    const trigger = el.closest('.help-tooltip-trigger')
+    if (!trigger) return null
+    const id = trigger.getAttribute('aria-describedby')
+    if (!id) return null
+    const popover = document.getElementById(id)
     return popover?.textContent?.trim() ?? null
   }
 

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import HelpTooltip from './HelpTooltip.vue'
 
@@ -8,39 +8,68 @@ import HelpTooltip from './HelpTooltip.vue'
  * Covers reveal modalities (hover, focus, touch), dismiss paths
  * (mouseleave, blur, Escape, second-tap, outside-tap), ARIA wiring,
  * alignment + placement variants, and slot rendering.
+ *
+ * The popover renders via `<Teleport to="body">`, so assertions for the
+ * tooltip element query `document.body` rather than the wrapper's DOM.
  */
+
+function findPopover(): HTMLElement | null {
+  return document.body.querySelector<HTMLElement>('.help-tooltip-popover')
+}
+
+afterEach(() => {
+  // Teleported nodes persist on document.body across mount/unmount cycles
+  // when @vue/test-utils doesn't have `attachTo`. Sweep them between tests
+  // so we don't bleed state across assertions.
+  document.body.querySelectorAll('.help-tooltip-popover').forEach((el) => el.remove())
+})
+
 describe('HelpTooltip', () => {
-  it('renders the slot trigger and the popover text', () => {
+  it('renders the slot trigger and the popover text via teleport to body', () => {
     const wrapper = mount(HelpTooltip, {
       props: { text: 'Helpful explanation' },
       slots: { default: '<button data-testid="trigger">i</button>' },
+      attachTo: document.body,
     })
 
     expect(wrapper.find('[data-testid="trigger"]').exists()).toBe(true)
-    expect(wrapper.find('[role="tooltip"]').text()).toBe('Helpful explanation')
+    const popover = findPopover()
+    expect(popover).not.toBeNull()
+    expect(popover!.textContent).toBe('Helpful explanation')
+    // Teleport lands the popover in body, not inside the wrapper.
+    expect(wrapper.element.contains(popover!)).toBe(false)
+
+    wrapper.unmount()
   })
 
   it('starts closed (data-open="false")', () => {
     const wrapper = mount(HelpTooltip, {
       props: { text: 'hi' },
       slots: { default: '<button>i</button>' },
+      attachTo: document.body,
     })
-    expect(wrapper.find('[role="tooltip"]').attributes('data-open')).toBe('false')
+    const popover = findPopover()
+    expect(popover?.getAttribute('data-open')).toBe('false')
     expect(wrapper.classes()).not.toContain('help-tooltip--open')
+
+    wrapper.unmount()
   })
 
   it('opens on hover (mouseenter) and closes on mouseleave', async () => {
     const wrapper = mount(HelpTooltip, {
       props: { text: 'hover me' },
       slots: { default: '<button>i</button>' },
+      attachTo: document.body,
     })
 
     await wrapper.trigger('mouseenter')
     expect(wrapper.classes()).toContain('help-tooltip--open')
-    expect(wrapper.find('[role="tooltip"]').attributes('data-open')).toBe('true')
+    expect(findPopover()?.getAttribute('data-open')).toBe('true')
 
     await wrapper.trigger('mouseleave')
     expect(wrapper.classes()).not.toContain('help-tooltip--open')
+
+    wrapper.unmount()
   })
 
   it('opens on keyboard focusin', async () => {
@@ -84,23 +113,29 @@ describe('HelpTooltip', () => {
     const wrapper = mount(HelpTooltip, {
       props: { text: 'a11y' },
       slots: { default: '<button>i</button>' },
+      attachTo: document.body,
     })
 
     const trigger = wrapper.find('.help-tooltip-trigger')
-    const tooltip = wrapper.find('[role="tooltip"]')
+    const tooltip = findPopover()
     const describedBy = trigger.attributes('aria-describedby')
     expect(describedBy).toBeTruthy()
-    expect(tooltip.attributes('id')).toBe(describedBy)
+    expect(tooltip?.getAttribute('id')).toBe(describedBy)
+
+    wrapper.unmount()
   })
 
   it('honors a custom explicit id', () => {
     const wrapper = mount(HelpTooltip, {
       props: { text: 'custom', id: 'my-tip' },
       slots: { default: '<button>i</button>' },
+      attachTo: document.body,
     })
 
-    expect(wrapper.find('[role="tooltip"]').attributes('id')).toBe('my-tip')
+    expect(findPopover()?.getAttribute('id')).toBe('my-tip')
     expect(wrapper.find('.help-tooltip-trigger').attributes('aria-describedby')).toBe('my-tip')
+
+    wrapper.unmount()
   })
 
   it('applies alignment modifier classes', () => {

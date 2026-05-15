@@ -1,43 +1,30 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PricingRow > matches HTML snapshot for a dirty row with no cost data 1`] = `
-"<div data-v-28c293e9="" class="pricing-row" data-recipe-id="test-recipe" data-dirty="true">
-  <!-- Row 1: name + dirty badge + cost -->
-  <div data-v-28c293e9="" class="pricing-row-top">
-    <div data-v-28c293e9="" class="pricing-row-name-wrap"><span data-v-28c293e9="" class="pricing-row-name">Test Recipe</span><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-dirty">modified</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Differs from committed default. Export to save.</span></span><span data-v-28c293e9="" class="pricing-row-id">test-recipe</span></div>
-    <div data-v-28c293e9="" class="pricing-row-cost"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-cost-missing">no cost data</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">No cost recorded yet — add a cook_log entry with cost.items.</span></span><span data-v-28c293e9="" class="pricing-row-label">cost</span></div>
-  </div><!-- Row 2: slider + readout -->
-  <div data-v-28c293e9="" class="pricing-row-controls">
-    <div data-v-28c293e9="" class="pricing-row-slider-wrap"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-left help-tooltip--placement-top pricing-row-slider-tooltip"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><input data-v-28c293e9="" type="range" class="pricing-row-slider" min="50" max="300" step="1" aria-label="Markup percent for Test Recipe" value="200"></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Markup percent — drag to set retail price (50% to 300%).</span></span>
-      <div data-v-28c293e9="" class="pricing-row-slider-readout"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-left help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-markup">200%</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Markup as a percentage above variable cost.</span></span><span data-v-28c293e9="" class="pricing-row-label">markup</span></div>
-    </div>
-    <div data-v-28c293e9="" class="pricing-row-readout">
-      <div data-v-28c293e9="" class="pricing-row-price pricing-row-price--missing">—</div>
-      <!--v-if-->
-    </div>
-  </div><!-- Row 3: nudge hint -->
-  <!--v-if-->
-</div>"
-`;
-
-exports[`PricingRow > matches HTML snapshot for a typical row 1`] = `
-"<div data-v-28c293e9="" class="pricing-row" data-recipe-id="test-recipe" data-dirty="false">
-  <!-- Row 1: name + dirty badge + cost -->
-  <div data-v-28c293e9="" class="pricing-row-top">
-    <div data-v-28c293e9="" class="pricing-row-name-wrap"><span data-v-28c293e9="" class="pricing-row-name">Test Recipe</span>
-      <!--v-if--><span data-v-28c293e9="" class="pricing-row-id">test-recipe</span>
-    </div>
-    <div data-v-28c293e9="" class="pricing-row-cost"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-cost-value">$2.50</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Variable cost per recipe — most recent cook_log[].cost.total.</span></span><span data-v-28c293e9="" class="pricing-row-label">cost</span></div>
-  </div><!-- Row 2: slider + readout -->
-  <div data-v-28c293e9="" class="pricing-row-controls">
-    <div data-v-28c293e9="" class="pricing-row-slider-wrap"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-left help-tooltip--placement-top pricing-row-slider-tooltip"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><input data-v-28c293e9="" type="range" class="pricing-row-slider" min="50" max="300" step="1" aria-label="Markup percent for Test Recipe" value="150"></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Markup percent — drag to set retail price (50% to 300%).</span></span>
-      <div data-v-28c293e9="" class="pricing-row-slider-readout"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-left help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-markup">150%</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Markup as a percentage above variable cost.</span></span><span data-v-28c293e9="" class="pricing-row-label">markup</span></div>
-    </div>
-    <div data-v-28c293e9="" class="pricing-row-readout">
-      <div data-v-28c293e9="" class="pricing-row-price"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-pretty">$6.50</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Snapped retail price — pretty-pricing rounded from raw $6.25.</span></span><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-raw">raw $6.25</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Raw price — variable cost × (1 + markup%), before pretty-price snap.</span></span></div>
-      <div data-v-28c293e9="" class="pricing-row-cp"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-cp-dollar">$4.00</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Contribution profit in dollars — retail price minus variable cost.</span></span><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-cp-pct">61.5% CP</span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Contribution profit as a share of retail price.</span></span></div>
-    </div>
-  </div><!-- Row 3: nudge hint -->
-  <div data-v-28c293e9="" class="pricing-row-hint-wrap"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-left help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-1"><span data-v-28c293e9="" class="pricing-row-hint"> Nudge up to <strong data-v-28c293e9="">$6.95</strong> for <strong data-v-28c293e9="">+$0.45</strong> CP </span></span><span data-v-65c8741e="" id="help-tooltip-1" role="tooltip" class="help-tooltip-popover" data-open="false">Bumping to the next pretty price increases contribution profit by this much.</span></span></div>
-</div>"
+exports[`PricingRow > matches HTML snapshot with full pricing data 1`] = `
+"<li data-v-28c293e9="" class="pricing-row" data-recipe-id="r1" data-entry-id="e1"><img data-v-28c293e9="" class="pricing-row-thumb" src="/images/atk/2026-05-01/img-400w.webp" alt="ATK Cinnamon Buns — latest bake" loading="lazy">
+  <div data-v-28c293e9="" class="pricing-row-id"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top pricing-row-name-tooltip"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-178"><span data-v-28c293e9="" class="pricing-row-name">ATK Cinnamon Buns</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-28c293e9="" class="pricing-row-yields">1 batch · 8 buns</span>
+  </div>
+  <div data-v-28c293e9="" class="pricing-row-cost"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-179"><span data-v-28c293e9="" class="pricing-row-cost-value">$0.50<span data-v-28c293e9="" class="pricing-row-cost-unit">/bun</span></span></span>
+    <!--teleport start-->
+    <!--teleport end--></span>
+  </div>
+  <div data-v-28c293e9="" class="pricing-row-slider-wrap"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-left help-tooltip--placement-top pricing-row-slider-tooltip"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-180"><input data-v-28c293e9="" type="range" class="pricing-row-slider" min="50" max="1500" step="1" aria-label="Markup percent for ATK Cinnamon Buns" aria-readonly="false" data-testid="pricing-row-slider" value="200"></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-28c293e9="" class="pricing-row-markup" data-testid="pricing-row-markup">200%</span><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-left help-tooltip--placement-top pricing-row-sold-tooltip"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-181"><label data-v-28c293e9="" class="pricing-row-sold-label"><span data-v-28c293e9="" class="pricing-row-sold-text">≈ sell</span><input data-v-28c293e9="" type="number" class="pricing-row-sold-input" inputmode="numeric" step="1" min="0" placeholder="8" aria-label="Estimated units sold for ATK Cinnamon Buns" value=""></label></span>
+    <!--teleport start-->
+    <!--teleport end--></span>
+  </div>
+  <div data-v-28c293e9="" class="pricing-row-readout"><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-182"><span data-v-28c293e9="" class="pricing-row-sell" role="button" tabindex="0" data-testid="pricing-row-sell-display">$1.50</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span>
+    <!--v-if-->
+    <!--v-if--><span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-183"><span data-v-28c293e9="" class="pricing-row-cp">+$1.00 · 67%</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-28c293e9="" class="pricing-row-breakeven">break even: sell <span data-v-65c8741e="" data-v-28c293e9="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-184"><span data-v-28c293e9="" class="pricing-row-breakeven-n">3</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span> of 8</span>
+  </div>
+</li>"
 `;
