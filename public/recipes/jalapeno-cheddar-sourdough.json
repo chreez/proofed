@@ -3988,6 +3988,380 @@
         "perServing": 3.03,
         "servings": 2
       }
+    },
+    {
+      "date": "2026-05-16",
+      "start_date": "2026-05-15",
+      "version": "v2.1.4",
+      "summary": "Two-loaf Dutch oven bake on schedule-pressured long RT proof (~8hr post-shape). Both loaves 210°F internal, good ear/spring/crumb; loaf 2 bottom over-browned. Cheese dropped to 239g (jalapeño held at 120g) via ExperimentPanel — export bug still hides settings from scratchpad.",
+      "notes": [
+        "Pre-bake kitchen 76.1°F, 53% humidity",
+        "Autolyse started ~5:19pm Fri; dry ingredients added 5:49pm; butter added ~6:11pm after ~10 min wait post-dry",
+        "First stretch+fold 7:27pm; last stretch+fold 7:45pm",
+        "Misjudged shaping timing — placed full dough into fridge for bulk retard at ~8:51pm Fri",
+        "Shaped ~4am Sat, room-temp rest (no Pullman tin this bake — skipped)",
+        "Loaf 1: preheat 11am at 480°F for 1hr; covered 450°F/30min; uncovered 425°F/15min; out ~12:45pm",
+        "Loaf 2: preheat ~12:50pm at 480°F (~30min); in 1:24pm covered 450°F; lid off 1:55pm at 415°F; out ~2:10pm",
+        "Both loaves Dutch oven, single ear-cut score, internal 210°F at pull",
+        "Loaf 1: decent ear, good spring, well-distributed crumb, tastes great",
+        "Loaf 2: bottom over-browned — want less bottom char next bake",
+        "ExperimentPanel showed 239g cheese; export bug — settings still not in scratchpad payload (known issue)",
+        "Long RT proof was schedule pressure — fermentation timing held up, validates flex understanding"
+      ],
+      "next_time": [
+        {
+          "text": "Lower bottom-bake temp OR raise rack position to reduce bottom over-browning on loaf 2 profile"
+        },
+        {
+          "text": "Fix ExperimentPanel export bug — settings not included in scratchpad payload"
+        }
+      ],
+      "photos": [
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-16/img-7576-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-16/img-7576-400w.webp",
+          "alt": "Loaf 1 just out of the oven on a copper wire rack, held up — domed crust dusted with flour, sharp ear scoring visible, dark caramelized cheese leak streaming down one flank."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-16/img-7580-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-16/img-7580-400w.webp",
+          "alt": "Crumb shot — loaf cut in half showing open, well-distributed crumb with bright green jalapeño chunks and golden cheese melts throughout, finished whole loaf still on copper rack in the background."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-16/img-7579-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-16/img-7579-400w.webp",
+          "alt": "Both loaves on the counter together — foreground loaf large with heavy flour dusting and a dramatic dark cheese-and-jalapeño bleed along the side seam; background loaf smaller on the copper rack with similar leak pattern."
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-15T16:51:55Z",
+          "raw": "76.1",
+          "curated": "76.1°F kitchen temp",
+          "notable": true,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-15T16:52:00Z",
+          "raw": "53% humidity.",
+          "curated": "53% humidity",
+          "notable": true,
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-15T22:19:00Z",
+          "raw": "forgot to log autolyse start. it was 30 minutes ago",
+          "curated": "Autolyse started (logged retrospectively — was 30 min ago)",
+          "notable": true,
+          "processing": "autolyse | Timestamp inferred: '30 minutes ago' relative to 2026-05-15T22:49:19Z → 2026-05-15T22:19:00Z"
+        },
+        {
+          "timestamp": "2026-05-15T22:49:32Z",
+          "raw": "adding dry ingredients now",
+          "curated": "Adding dry ingredients now",
+          "notable": false,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-15T23:11:00Z",
+          "raw": "after i added the dry ingredients i waited around 10 minutes. just added the butter after that wait period which was approx 2 minutes ago.",
+          "curated": "Waited ~10 min after dry ingredients; butter added",
+          "notable": true,
+          "processing": "mix | Timestamp inferred: '~2 minutes ago' relative to 2026-05-15T23:13:34Z → 2026-05-15T23:11:00Z"
+        },
+        {
+          "timestamp": "2026-05-16T00:27:20Z",
+          "raw": "stretch and fold done",
+          "curated": "First stretch+fold done",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-16T01:51:27Z",
+          "raw": "745 i did the last stretch and fold. i actually misjudged how long it would take to get to shaping. \n\ni placed the full dough to bulk retard overnight. will need to shape when i get back from event or wake up tomorrow.",
+          "curated": "Last stretch+fold at 7:45pm. Misjudged shaping timing — full dough into fridge for overnight bulk retard",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-16T18:09:42Z",
+          "raw": "shaped the bread around 4 am - room temp rest. 11am preheat one hour 480 - drop to 450 30 minutes covered. 15 uncovered at 425 -",
+          "curated": "Shaped ~4am, RT rest. Loaf 1: 11am preheat 480°F/1hr; covered 450°F/30min; uncovered 425°F/15min",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-16T17:50:00Z",
+          "raw": "approx 20 minutes ago preheat oven 480 (10 minutes left on second preheat)",
+          "curated": "Started second preheat at 480°F (10 min remaining)",
+          "notable": false,
+          "processing": "bake | Timestamp inferred: 'approx 20 minutes ago' relative to 2026-05-16T18:10:03Z → 2026-05-16T17:50:00Z"
+        },
+        {
+          "timestamp": "2026-05-16T18:24:09Z",
+          "raw": "second loaf in oven covered 450",
+          "curated": "Loaf 2 in, covered 450°F",
+          "notable": false,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-16T18:55:07Z",
+          "raw": "lid off 415",
+          "curated": "Lid off, dropped to 415°F",
+          "notable": false,
+          "processing": "bake"
+        }
+      ],
+      "bake_stats": {
+        "shape_time": "2026-05-16 - 04:00",
+        "confidence": "medium",
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-05-15",
+            "temp_f": 76.1,
+            "note": "pre-bake, 53% humidity"
+          }
+        ],
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 480,
+            "duration_min": 60,
+            "start_time": "2026-05-16 - 11:00",
+            "note": "loaf 1"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 30,
+            "start_time": "2026-05-16 - 12:00",
+            "note": "loaf 1"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 15,
+            "start_time": "2026-05-16 - 12:30",
+            "note": "loaf 1"
+          },
+          {
+            "stage": "preheat",
+            "temp_f": 480,
+            "duration_min": 30,
+            "start_time": "2026-05-16 - 12:50",
+            "note": "loaf 2 (inferred: 'approx 20 min ago' at 13:10 → 12:50)"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 31,
+            "start_time": "2026-05-16 - 13:24",
+            "note": "loaf 2"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 415,
+            "duration_min": 15,
+            "start_time": "2026-05-16 - 13:55",
+            "note": "loaf 2"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-05-15 - 19:27",
+            "type": "stretch_fold",
+            "note": "first"
+          },
+          {
+            "time": "2026-05-15 - 19:45",
+            "type": "stretch_fold",
+            "note": "last"
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "cold_retard",
+            "start": "2026-05-15 - 20:51",
+            "end": "2026-05-16 - 04:00",
+            "duration_min": 429,
+            "note": "overnight bulk retard — schedule pressure"
+          },
+          {
+            "type": "bench_rest",
+            "start": "2026-05-16 - 04:00",
+            "end": "2026-05-16 - 12:00",
+            "duration_min": 480,
+            "note": "long RT proof — schedule pressure validated fermentation flex"
+          }
+        ]
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 550,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 340,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 31,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 239,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Dough Mixing",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-16",
+        "temp_high_f": 89.2,
+        "temp_low_f": 71.4,
+        "humidity_avg_percent": 64,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 550,
+            "unit": "g",
+            "cost": 1.33
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "La Baleine Fine Sea Salt Shaker",
+            "amount": 11,
+            "unit": "g",
+            "cost": 0.19
+          },
+          {
+            "ingredientId": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Instant Non-Fat Dry Milk",
+            "amount": 28,
+            "unit": "g",
+            "cost": 0.35
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "name": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Brown Sugar",
+            "amount": 31,
+            "unit": "g",
+            "cost": 0.08
+          },
+          {
+            "ingredientId": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "sourceType": "heb",
+            "sourceName": "Fresh Jalapeño Pepper",
+            "amount": 120,
+            "unit": "g",
+            "cost": 0.26
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "sourceType": "heb",
+            "sourceName": "Tillamook Sharp Cheddar Cheese",
+            "amount": 239,
+            "unit": "g",
+            "cost": 3.67
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 50,
+            "unit": "g",
+            "cost": 0.44
+          }
+        ],
+        "total": 6.32,
+        "perServing": 3.16,
+        "servings": 2
+      }
     }
   ]
 }
