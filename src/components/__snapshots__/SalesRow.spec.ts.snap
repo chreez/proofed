@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SalesRow > matches snapshot — active session row 1`] = `
+"<li data-v-3834f89a="" class="sales-row" data-recipe-id="r1"><img data-v-3834f89a="" class="sales-row-thumb" src="/images/atk/2026-05-01/img-400w.webp" alt="ATK Cinnamon Buns — latest bake" loading="lazy">
+  <div data-v-3834f89a="" class="sales-row-id"><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top sales-row-name-tooltip"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-91"><span data-v-3834f89a="" class="sales-row-name">ATK Cinnamon Buns</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-3834f89a="" class="sales-row-planned">planned: 8 buns</span>
+  </div>
+  <div data-v-3834f89a="" class="sales-row-stepper"><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-92"><button data-v-3834f89a="" type="button" class="sales-row-step-btn" aria-label="Decrement sold for ATK Cinnamon Buns" data-testid="sales-row-dec">−</button></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-93"><input data-v-3834f89a="" type="number" class="sales-row-count-input" inputmode="numeric" step="1" min="0" aria-label="Sold units for ATK Cinnamon Buns" data-testid="sales-row-count" value="3"></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-94"><button data-v-3834f89a="" type="button" class="sales-row-step-btn" aria-label="Increment sold for ATK Cinnamon Buns" data-testid="sales-row-inc">+</button></span>
+    <!--teleport start-->
+    <!--teleport end--></span>
+  </div>
+  <div data-v-3834f89a="" class="sales-row-readout"><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-95"><span data-v-3834f89a="" class="sales-row-revenue" data-testid="sales-row-revenue">$15.00</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-96"><span data-v-3834f89a="" class="sales-row-leftover" data-testid="sales-row-leftover">5 buns left</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span>
+  </div>
+</li>"
+`;
+
+exports[`SalesRow > matches snapshot — readonly history row 1`] = `
+"<li data-v-3834f89a="" class="sales-row sales-row--readonly" data-recipe-id="r1"><img data-v-3834f89a="" class="sales-row-thumb" src="/images/atk/2026-05-01/img-400w.webp" alt="ATK Cinnamon Buns — latest bake" loading="lazy">
+  <div data-v-3834f89a="" class="sales-row-id"><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top sales-row-name-tooltip"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-97"><span data-v-3834f89a="" class="sales-row-name">ATK Cinnamon Buns</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-3834f89a="" class="sales-row-planned">planned: 8 buns</span>
+  </div>
+  <div data-v-3834f89a="" class="sales-row-stepper"><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-98"><button data-v-3834f89a="" type="button" class="sales-row-step-btn" disabled="" aria-label="Decrement sold for ATK Cinnamon Buns" data-testid="sales-row-dec">−</button></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-99"><input data-v-3834f89a="" type="number" class="sales-row-count-input" inputmode="numeric" step="1" min="0" readonly="" aria-label="Sold units for ATK Cinnamon Buns" data-testid="sales-row-count" value="8"></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-100"><button data-v-3834f89a="" type="button" class="sales-row-step-btn" disabled="" aria-label="Increment sold for ATK Cinnamon Buns" data-testid="sales-row-inc">+</button></span>
+    <!--teleport start-->
+    <!--teleport end--></span>
+  </div>
+  <div data-v-3834f89a="" class="sales-row-readout"><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-101"><span data-v-3834f89a="" class="sales-row-revenue" data-testid="sales-row-revenue">$40.00</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span><span data-v-65c8741e="" data-v-3834f89a="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-102"><span data-v-3834f89a="" class="sales-row-leftover" data-testid="sales-row-leftover">0 buns left</span></span>
+    <!--teleport start-->
+    <!--teleport end--></span>
+  </div>
+</li>"
+`;

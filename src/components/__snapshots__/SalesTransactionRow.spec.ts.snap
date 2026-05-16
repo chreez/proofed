@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SalesTransactionRow > matches snapshot — collapsed row 1`] = `
+"<li data-v-02cb2e19="" class="tx-row" data-tx-id="tx-1"><span data-v-65c8741e="" data-v-02cb2e19="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-16"><button data-v-02cb2e19="" type="button" class="tx-summary" aria-expanded="false" data-testid="tx-row-toggle"><span data-v-02cb2e19="" class="tx-time" data-testid="tx-row-time">10:30 AM</span><span data-v-02cb2e19="" class="tx-meta"><span data-v-02cb2e19="" data-testid="tx-row-count">3 items</span></span><span data-v-02cb2e19="" class="tx-total" data-testid="tx-row-total">$20.00</span><span data-v-02cb2e19="" class="tx-chevron">›</span></button></span>
+  <!--teleport start-->
+  <!--teleport end--></span>
+  <!--v-if-->
+</li>"
+`;
+
+exports[`SalesTransactionRow > matches snapshot — expanded row with notes 1`] = `
+"<li data-v-02cb2e19="" class="tx-row tx-row--expanded" data-tx-id="tx-1"><span data-v-65c8741e="" data-v-02cb2e19="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-17"><button data-v-02cb2e19="" type="button" class="tx-summary" aria-expanded="true" data-testid="tx-row-toggle"><span data-v-02cb2e19="" class="tx-time" data-testid="tx-row-time">10:30 AM</span><span data-v-02cb2e19="" class="tx-meta"><span data-v-02cb2e19="" data-testid="tx-row-count">3 items</span></span><span data-v-02cb2e19="" class="tx-total" data-testid="tx-row-total">$20.00</span><span data-v-02cb2e19="" class="tx-chevron tx-chevron--open">›</span></button></span>
+  <!--teleport start-->
+  <!--teleport end--></span>
+  <div data-v-02cb2e19="" class="tx-details" data-testid="tx-row-details">
+    <ul data-v-02cb2e19="" class="tx-items">
+      <li data-v-02cb2e19="" class="tx-item" data-recipe-id="r1"><span data-v-02cb2e19="" class="tx-item-units">2×</span><span data-v-02cb2e19="" class="tx-item-name">ATK Cinnamon Buns</span><span data-v-02cb2e19="" class="tx-item-price">@ $5.00</span><span data-v-02cb2e19="" class="tx-item-linetotal">$10.00</span></li>
+      <li data-v-02cb2e19="" class="tx-item" data-recipe-id="r2"><span data-v-02cb2e19="" class="tx-item-units">1×</span><span data-v-02cb2e19="" class="tx-item-name">Tartine Baguette</span><span data-v-02cb2e19="" class="tx-item-price">@ $10.00</span><span data-v-02cb2e19="" class="tx-item-linetotal">$10.00</span></li>
+    </ul>
+    <p data-v-02cb2e19="" class="tx-notes" data-testid="tx-row-notes"><span data-v-02cb2e19="" class="tx-notes-label">notes:</span> Cash, regular customer</p>
+    <p data-v-02cb2e19="" class="tx-occurred-date">May 12</p>
+    <div data-v-02cb2e19="" class="tx-footer"><span data-v-65c8741e="" data-v-02cb2e19="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-18"><button data-v-02cb2e19="" type="button" class="tx-delete-btn" data-testid="tx-row-delete">Delete</button></span>
+      <!--teleport start-->
+      <!--teleport end--></span>
+    </div>
+  </div>
+</li>"
+`;

@@ -57,6 +57,7 @@ import RecipePrintView from '@/components/RecipePrintView.vue'
 import PricingView from '@/components/PricingView.vue'
 import ProductionView from '@/components/ProductionView.vue'
 import LabelsView from '@/components/LabelsView.vue'
+import SalesView from '@/components/SalesView.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -136,8 +137,9 @@ const showStats = computed(() => route.name === 'stats' || route.name === 'stats
 const showPricing = computed(() => route.name === 'pricing')
 const showProduction = computed(() => route.name === 'production')
 const showLabels = computed(() => route.name === 'labels')
+const showSales = computed(() => route.name === 'sales')
 const showPrintMode = computed(() => route.name === 'recipe-print')
-const showHeaderActions = computed(() => !!currentRecipe.value && !showIndex.value && !showAbout.value && !showBakeDetail.value && !showPricing.value && !showProduction.value && !showLabels.value)
+const showHeaderActions = computed(() => !!currentRecipe.value && !showIndex.value && !showAbout.value && !showBakeDetail.value && !showPricing.value && !showProduction.value && !showLabels.value && !showSales.value)
 
 // Inclusion list — routes that mount a search bar into the header slot.
 // Add a route name here to opt in. Falls back to no header search.
@@ -597,7 +599,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </nav>
 
-    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showBakeDetail || showStats || showPricing || showProduction || showLabels) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && !showPricing && !showProduction && !showLabels && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode && !showPricing && !showProduction && !showLabels ? 'max-w-3xl mx-auto px-4' : '')]">
+    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showBakeDetail || showStats || showPricing || showProduction || showLabels || showSales) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && !showPricing && !showProduction && !showLabels && !showSales && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode && !showPricing && !showProduction && !showLabels && !showSales ? 'max-w-3xl mx-auto px-4' : '')]">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
@@ -638,6 +640,12 @@ watch(() => route.hash, (newHash) => {
       <template v-else-if="showLabels">
         <div class="page-settle">
           <LabelsView />
+        </div>
+      </template>
+
+      <template v-else-if="showSales">
+        <div class="page-settle">
+          <SalesView />
         </div>
       </template>
 

@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NewSaleSheet > matches snapshot — empty cart (just opened) 1`] = `
+"<div data-v-49ff4644="" class="new-sale-backdrop" data-testid="new-sale-backdrop" role="dialog" aria-modal="true" aria-labelledby="new-sale-title">
+  <div data-v-49ff4644="" class="new-sale-sheet" data-testid="new-sale-sheet">
+    <header data-v-49ff4644="" class="new-sale-header">
+      <h2 data-v-49ff4644="" id="new-sale-title" class="new-sale-title">New Sale</h2><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-351"><button data-v-49ff4644="" type="button" class="new-sale-close" aria-label="Cancel new sale" data-testid="new-sale-cancel">×</button></span>
+      <!--teleport start-->
+      <!--teleport end--></span>
+    </header>
+    <div data-v-49ff4644="" class="new-sale-body">
+      <ul data-v-49ff4644="" class="new-sale-list" data-testid="new-sale-list">
+        <li data-v-49ff4644="" class="new-sale-row" data-recipe-id="r1">
+          <div data-v-49ff4644="" class="new-sale-row-thumb new-sale-row-thumb-placeholder" aria-hidden="true">AC</div>
+          <div data-v-49ff4644="" class="new-sale-row-id"><span data-v-49ff4644="" class="new-sale-row-name">ATK Cinnamon Buns</span><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-352"><span data-v-49ff4644="" class="new-sale-row-meta">available: 8 buns</span></span>
+            <!--teleport start-->
+            <!--teleport end--></span>
+          </div>
+          <div data-v-49ff4644="" class="new-sale-row-qty"><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-353"><button data-v-49ff4644="" type="button" class="new-sale-step-btn" disabled="" aria-label="Decrement ATK Cinnamon Buns" data-testid="new-sale-dec-r1">−</button></span>
+            <!--teleport start-->
+            <!--teleport end--></span><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-354"><input data-v-49ff4644="" type="number" class="new-sale-units-input" inputmode="numeric" step="1" min="0" aria-label="Units for ATK Cinnamon Buns" data-testid="new-sale-units-r1" value="0"></span>
+            <!--teleport start-->
+            <!--teleport end--></span><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-355"><button data-v-49ff4644="" type="button" class="new-sale-step-btn" aria-label="Increment ATK Cinnamon Buns" data-testid="new-sale-inc-r1">+</button></span>
+            <!--teleport start-->
+            <!--teleport end--></span>
+          </div>
+          <div data-v-49ff4644="" class="new-sale-row-price"><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-356"><label data-v-49ff4644="" class="new-sale-price-label"><span data-v-49ff4644="" class="new-sale-price-prefix">$</span><input data-v-49ff4644="" type="number" class="new-sale-price-input" inputmode="decimal" step="0.01" min="0" aria-label="Unit price for ATK Cinnamon Buns" data-testid="new-sale-price-r1" value="5"></label></span>
+            <!--teleport start-->
+            <!--teleport end--></span><span data-v-49ff4644="" class="new-sale-line-total" data-testid="new-sale-linetotal-r1">$0.00</span>
+          </div>
+        </li>
+        <li data-v-49ff4644="" class="new-sale-row" data-recipe-id="r2"><img data-v-49ff4644="" class="new-sale-row-thumb" src="/img.webp" alt="Tartine Baguette — latest bake" loading="lazy">
+          <div data-v-49ff4644="" class="new-sale-row-id"><span data-v-49ff4644="" class="new-sale-row-name">Tartine Baguette</span><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-357"><span data-v-49ff4644="" class="new-sale-row-meta">available: 4 baguettes</span></span>
+            <!--teleport start-->
+            <!--teleport end--></span>
+          </div>
+          <div data-v-49ff4644="" class="new-sale-row-qty"><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-358"><button data-v-49ff4644="" type="button" class="new-sale-step-btn" disabled="" aria-label="Decrement Tartine Baguette" data-testid="new-sale-dec-r2">−</button></span>
+            <!--teleport start-->
+            <!--teleport end--></span><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-359"><input data-v-49ff4644="" type="number" class="new-sale-units-input" inputmode="numeric" step="1" min="0" aria-label="Units for Tartine Baguette" data-testid="new-sale-units-r2" value="0"></span>
+            <!--teleport start-->
+            <!--teleport end--></span><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-360"><button data-v-49ff4644="" type="button" class="new-sale-step-btn" aria-label="Increment Tartine Baguette" data-testid="new-sale-inc-r2">+</button></span>
+            <!--teleport start-->
+            <!--teleport end--></span>
+          </div>
+          <div data-v-49ff4644="" class="new-sale-row-price"><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-361"><label data-v-49ff4644="" class="new-sale-price-label"><span data-v-49ff4644="" class="new-sale-price-prefix">$</span><input data-v-49ff4644="" type="number" class="new-sale-price-input" inputmode="decimal" step="0.01" min="0" aria-label="Unit price for Tartine Baguette" data-testid="new-sale-price-r2" value="10"></label></span>
+            <!--teleport start-->
+            <!--teleport end--></span><span data-v-49ff4644="" class="new-sale-line-total" data-testid="new-sale-linetotal-r2">$0.00</span>
+          </div>
+        </li>
+      </ul><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-center help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-362"><textarea data-v-49ff4644="" class="new-sale-notes" placeholder="Notes (optional)" rows="2" data-testid="new-sale-notes"></textarea></span>
+      <!--teleport start-->
+      <!--teleport end--></span>
+    </div>
+    <footer data-v-49ff4644="" class="new-sale-footer">
+      <div data-v-49ff4644="" class="new-sale-total" data-testid="new-sale-total"> Total: <strong data-v-49ff4644="">$0.00</strong></div>
+      <div data-v-49ff4644="" class="new-sale-actions"><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-363"><button data-v-49ff4644="" type="button" class="new-sale-cancel-btn" data-testid="new-sale-cancel-btn">Cancel</button></span>
+        <!--teleport start-->
+        <!--teleport end--></span><span data-v-65c8741e="" data-v-49ff4644="" class="help-tooltip help-tooltip--align-right help-tooltip--placement-top"><span data-v-65c8741e="" class="help-tooltip-trigger" aria-describedby="help-tooltip-364"><button data-v-49ff4644="" type="button" class="new-sale-complete-btn" disabled="" data-testid="new-sale-complete">Complete Sale</button></span>
+        <!--teleport start-->
+        <!--teleport end--></span>
+      </div>
+    </footer>
+  </div>
+</div>"
+`;

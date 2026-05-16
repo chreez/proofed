@@ -168,6 +168,12 @@ const router = createRouter({
       meta: { showIndex: false, showLabels: true }
     },
     {
+      path: '/sales',
+      name: 'sales',
+      component: EmptyRouteView,
+      meta: { showIndex: false, showSales: true }
+    },
+    {
       path: '/demo/stats',
       name: 'stats-demo',
       component: EmptyRouteView,
