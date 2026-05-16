@@ -109,6 +109,30 @@ describe('HelpTooltip', () => {
     expect(wrapper.classes()).not.toContain('help-tooltip--open')
   })
 
+  it('click on the trigger closes an open tooltip (button activation)', async () => {
+    const wrapper = mount(HelpTooltip, {
+      props: { text: 'click me' },
+      slots: { default: '<button>i</button>' },
+    })
+
+    await wrapper.trigger('mouseenter')
+    expect(wrapper.classes()).toContain('help-tooltip--open')
+
+    await wrapper.trigger('click')
+    expect(wrapper.classes()).not.toContain('help-tooltip--open')
+  })
+
+  it('click on a closed tooltip is a no-op', async () => {
+    const wrapper = mount(HelpTooltip, {
+      props: { text: 'noop' },
+      slots: { default: '<button>i</button>' },
+    })
+
+    expect(wrapper.classes()).not.toContain('help-tooltip--open')
+    await wrapper.trigger('click')
+    expect(wrapper.classes()).not.toContain('help-tooltip--open')
+  })
+
   it('wires aria-describedby from trigger host to tooltip id', () => {
     const wrapper = mount(HelpTooltip, {
       props: { text: 'a11y' },

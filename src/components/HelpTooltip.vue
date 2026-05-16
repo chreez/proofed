@@ -118,6 +118,21 @@ function onKeydown(event: KeyboardEvent): void {
 }
 
 /**
+ * Click on the trigger (mouse or touch) — close the tooltip immediately.
+ * Without this, clicking a button leaves the tooltip stuck because the mouse
+ * stays over the trigger (no mouseleave) and focus often remains (no blur).
+ * Clearing all open-state flags ensures it stays closed until the pointer
+ * actually moves out and back in, or refocus, etc.
+ */
+function onClick(): void {
+  if (!open.value) return
+  open.value = false
+  hovered.value = false
+  tappedOpen.value = false
+  focused.value = false
+}
+
+/**
  * Touch tap toggle. Pointer events let us discriminate touch from mouse so
  * we don't double-fire with the synthetic mouseenter that follows a tap.
  */
@@ -219,6 +234,7 @@ watch(() => props.text, () => {
     @focusout="onFocusout"
     @keydown="onKeydown"
     @pointerdown="onPointerdown"
+    @click="onClick"
   >
     <span class="help-tooltip-trigger" :aria-describedby="tooltipId">
       <slot />
