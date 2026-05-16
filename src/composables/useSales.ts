@@ -169,7 +169,21 @@ export function loadActiveSession(): MarketSession | null {
   if (!raw) return null
   try {
     const parsed = JSON.parse(raw) as unknown
-    return validateSession(parsed)
+    const session = validateSession(parsed)
+    if (!session) return null
+    // PF-256.6 back-compat: legacy active sessions (PF-256.5) lack initialPlan +
+    // transactions. Derive both on read so the New Sale flow works against them.
+    if (!session.initialPlan && Array.isArray(session.sales)) {
+      session.initialPlan = session.sales.map((s) => ({
+        recipeId: s.recipeId,
+        plannedUnits: s.plannedUnits,
+        unitPrice: s.unitPrice,
+      }))
+    }
+    if (!session.transactions) {
+      session.transactions = []
+    }
+    return session
   } catch {
     return null
   }

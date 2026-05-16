@@ -112,13 +112,16 @@ describe('loadActiveSession', () => {
     expect(loaded?.transactions).toEqual([])
   })
 
-  it('reads a valid legacy-shape persisted session', () => {
+  it('reads a valid legacy-shape persisted session and back-fills initialPlan + transactions', () => {
     const session = makeLegacySession()
     localStorage.setItem('bake-sales-active', JSON.stringify(session))
     const loaded = loadActiveSession()
     expect(loaded?.id).toBe('s-legacy')
     expect(loaded?.sales).toHaveLength(2)
-    expect(loaded?.transactions).toBeUndefined()
+    // PF-256.6 back-compat: legacy active sessions get initialPlan derived from
+    // sales[] and an empty transactions[] so the New Sale flow works.
+    expect(loaded?.initialPlan).toHaveLength(2)
+    expect(loaded?.transactions).toEqual([])
   })
 
   it('preserves optional label and transaction notes', () => {
