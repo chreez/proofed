@@ -1,7 +1,7 @@
 ---
 project: Proofed
 status: active
-updated: 2026-05-15
+updated: 2026-05-17
 ---
 
 ## Description
@@ -27,6 +27,7 @@ Background: recipe workflow features (cook logs, photo pipeline, energy-level re
 
 ## Recent
 
+- PF-259: scratchpad export JSON now includes `experimentExport` block (full `ExperimentExport` shape: adjustments + derivedValues + multiplier + scaleMode) when ExperimentPanel has non-default values; key fully omitted otherwise. Closes the PF-244 silent-apply gap — /bake-log no longer has to verbally re-ask for dialed amounts. New `buildCurrentExport()` on `useExperimentStorage`; threaded through `useScratchpad.exportJson/exportJsonString`. 11 new unit tests, 2703 total pass.
 - PF-256.4: /pricing rework on ProductionPlan — decimal sell prices + pretty hint (≈$X.50/whole), per-recipe estimated-sold input, break-even line, sell-price override via double-click (mirrors /production yield-override), markup cap 1500%, cost-per-unit bug fix (was halving for batches>1). Tooltip teleports to body (escapes scroll container). 2537 tests pass.
 - PF-256.3: /labels lens shipped — printable 4×6 cards per ProductionPlan entry (recipe name + batch/unit + date + allergens FDA Big 9 + ingredient list + per-serving nutrition + QR to /recipe/:id); print → browser PDF
 - PF-268/269/270/271: design wave for remaining PF-256 slices — ingredient inventory (S3); multi-baker shift mgmt (S8); passive-time batching solver (S8); observed step times + per-state worker capacity (S5/S8). Each design doc + ACs + spawned implementation drafts (12 new drafts total).
