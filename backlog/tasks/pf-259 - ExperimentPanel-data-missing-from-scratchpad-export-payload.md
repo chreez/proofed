@@ -1,10 +1,10 @@
 ---
 id: PF-259
 title: ExperimentPanel data missing from scratchpad export payload
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-05-13 21:35'
-updated_date: '2026-05-13 22:18'
+updated_date: '2026-05-17 19:38'
 labels:
   - bug
   - scratchpad
@@ -41,9 +41,44 @@ Scratchpad export should include an `experiment` block at the top level mirrorin
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 BakeScratchpad type in src/types/recipe.ts includes optional experiment field as Array of { ingredientId: string; total: number }
-- [ ] #2 exportJson() in useScratchpad.ts reads proofed:experiment:{recipeId} localStorage and includes the experiment array when non-empty
-- [ ] #3 experiment block omitted entirely when ExperimentPanel has no values (empty/default state)
-- [ ] #4 Unit test: export with active ExperimentPanel includes block; export with empty panel omits it
-- [ ] #5 Manual repro on 2026-05-13 jalapeno-cheddar-sourdough: scratchpad export now contains experiment block when user has dialed amounts
+- [x] #1 useScratchpad.exportJson(multiplier?, experimentExport?) accepts optional ExperimentExport second arg; when truthy with adjustments.length > 0, returned BakeScratchpad includes experimentExport populated verbatim
+- [x] #2 When experimentExport arg is undefined/null OR its adjustments.length === 0, returned BakeScratchpad has NO experimentExport key (key fully omitted, not null/undefined/{}); existing exports for recipes without experiment config remain byte-identical to pre-fix output
+- [x] #3 useScratchpad.exportJsonString(multiplier?, experimentExport?) mirrors the signature and forwards the arg to exportJson
+- [x] #4 useExperimentStorage returns buildCurrentExport(): ExperimentExport | null helper that internally calls buildExperimentExport() with current adjustments, derivedValues, config, and multiplier; returns null when adjustments map is empty OR every adjustment equals the config defaultAmount
+- [x] #5 App.vue handleCopyScratchpad (line 305) calls scratchpad.value.exportJsonString(scalingMultiplier.value, experimentStorageInstance?.buildCurrentExport() ?? undefined)
+- [x] #6 Unit test in useScratchpad.spec.ts: calling exportJson(1, mockExperimentExport) with two adjustments produces output where result.experimentExport deep-equals mockExperimentExport
+- [x] #7 Unit test in useScratchpad.spec.ts: calling exportJson(1, null) and exportJson(1, { adjustments: [] }) both produce output where 'experimentExport' in result === false
+- [x] #8 Unit test in useScratchpad.spec.ts: calling exportJson() with no second arg is byte-identical to pre-change behavior — no experimentExport key
+- [x] #9 Unit test in useExperimentStorage.spec.ts: buildCurrentExport() returns null when adjustments map empty; returns ExperimentExport with correct adjustments[] when ≥1 adjusted ingredient differs from default
+- [x] #10 Manual repro documented in task notes: re-run on jalapeno-cheddar-sourdough recipe with non-default jalapeño/cheddar values dialed; copy scratchpad payload; verify pasted JSON contains experimentExport.adjustments with both ingredients before marking Done
+- [x] #11 No changes to BakeScratchpad or ExperimentExport type shapes — both already exist in src/types/recipe.ts
+- [x] #12 npm run build passes (BV1-BV3)
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Implementation (2026-05-16)
+
+Wired ExperimentPanel adjustments into scratchpad export via existing buildExperimentExport() infra.
+
+**Files changed:**
+- src/composables/useExperimentStorage.ts (+43): new ExperimentExportDeps interface, optional 5th arg, new buildCurrentExport() method
+- src/composables/useScratchpad.ts (+12/-3): added optional experimentExport? 2nd arg to exportJson + exportJsonString with spread-conditional inclusion
+- src/App.vue (+33/-3): new experimentDerivedSnapshot computed, threaded buildCurrentExport() into handleScratchpadExport
+- src/composables/useScratchpad.spec.ts (+96): 6 new tests
+- src/composables/useExperimentStorage.spec.ts (+118): 5 new tests
+
+**Tests:** 11 new, all pass. Full suite 2703/2703. No snapshots updated.
+
+**Build:** npm run build exit 0 — vitest + vue-tsc + bundle + prerender-og all green.
+
+**Notes:**
+- Derived value mapping handles effective_hydration / inclusion_load / total_dough_weight types. 'custom' formula type silently skipped (no formula evaluator yet).
+- App.spec.ts mock was loose enough to need no update.
+- Pending AC #10: HITL manual repro on jalapeno-cheddar-sourdough (or any recipe with experiment block).
+
+## HITL Repro Confirmed (2026-05-17)
+
+User exported on jalapeno-cheddar-sourdough with cheddar 220→275 (+55) and milk-powder 28→35 (+7). Pasted payload contains full experimentExport block: adjustments[] with correct delta values, derivedValues[] (effective-hydration 123%, inclusion-load 71.8%, total-dough 1522g), multiplier 1, scaleMode pre_scaled. Negative cases covered by unit tests AC#7a/b + AC#8.
+<!-- SECTION:NOTES:END -->

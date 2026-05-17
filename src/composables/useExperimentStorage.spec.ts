@@ -178,6 +178,136 @@ describe('useExperimentStorage', () => {
       expect(storage.removeItem).toHaveBeenCalledWith(STORAGE_KEY)
     })
   })
+
+  describe('buildCurrentExport() — PF-259', () => {
+    const cfg: ExperimentConfig = {
+      description: 'Test',
+      ingredients: [
+        { id: 'flour', role: 'base_flour', defaultAmount: 500, min: 400, max: 600, step: 10 },
+        { id: 'water', role: 'base_liquid', defaultAmount: 350, min: 250, max: 450, step: 5 }
+      ],
+      derived: []
+    }
+
+    it('AC#9a: returns null when adjustments map is empty', () => {
+      const adjustments = ref(new Map<string, number>())
+      const freeformIngredients = ref<FreeformIngredient[]>([])
+      const notes = ref<Record<string, string>>({})
+
+      const { buildCurrentExport } = useExperimentStorage(
+        'test-recipe',
+        adjustments,
+        freeformIngredients,
+        notes,
+        {
+          config: ref(cfg),
+          derivedValues: ref([]),
+          multiplier: ref(1)
+        }
+      )
+
+      expect(buildCurrentExport()).toBeNull()
+    })
+
+    it('AC#9a: returns null when every adjustment equals defaultAmount', () => {
+      const adjustments = ref(new Map<string, number>([
+        ['flour', 500], // matches default
+        ['water', 350]  // matches default
+      ]))
+      const freeformIngredients = ref<FreeformIngredient[]>([])
+      const notes = ref<Record<string, string>>({})
+
+      const { buildCurrentExport } = useExperimentStorage(
+        'test-recipe',
+        adjustments,
+        freeformIngredients,
+        notes,
+        {
+          config: ref(cfg),
+          derivedValues: ref([]),
+          multiplier: ref(1)
+        }
+      )
+
+      expect(buildCurrentExport()).toBeNull()
+    })
+
+    it('AC#9b: returns ExperimentExport with correct adjustments when ≥1 ingredient differs', () => {
+      const adjustments = ref(new Map<string, number>([
+        ['flour', 460], // differs
+        ['water', 350]  // matches default — filtered out
+      ]))
+      const freeformIngredients = ref<FreeformIngredient[]>([])
+      const notes = ref<Record<string, string>>({})
+
+      const derived = ref([
+        { id: 'effective_hydration', label: 'Effective Hydration', value: 81.5, unit: '%' }
+      ])
+
+      const { buildCurrentExport } = useExperimentStorage(
+        'test-recipe',
+        adjustments,
+        freeformIngredients,
+        notes,
+        {
+          config: ref(cfg),
+          derivedValues: derived,
+          multiplier: ref(2)
+        }
+      )
+
+      const result = buildCurrentExport()
+      expect(result).not.toBeNull()
+      expect(result!.recipeId).toBe('test-recipe')
+      expect(result!.multiplier).toBe(2)
+      expect(result!.adjustments).toHaveLength(1)
+      expect(result!.adjustments[0]).toEqual({
+        ingredientId: 'flour',
+        ingredientName: 'flour',
+        originalAmount: 500,
+        adjustedAmount: 460,
+        delta: -40
+      })
+      expect(result!.derivedValues).toEqual([
+        { id: 'effective_hydration', label: 'Effective Hydration', value: 81.5, unit: '%' }
+      ])
+    })
+
+    it('returns null when exportDeps is not provided (backward compat)', () => {
+      const adjustments = ref(new Map<string, number>([['flour', 460]]))
+      const freeformIngredients = ref<FreeformIngredient[]>([])
+      const notes = ref<Record<string, string>>({})
+
+      const { buildCurrentExport } = useExperimentStorage(
+        'test-recipe',
+        adjustments,
+        freeformIngredients,
+        notes
+      )
+
+      expect(buildCurrentExport()).toBeNull()
+    })
+
+    it('returns null when config ref resolves to null', () => {
+      const adjustments = ref(new Map<string, number>([['flour', 460]]))
+      const freeformIngredients = ref<FreeformIngredient[]>([])
+      const notes = ref<Record<string, string>>({})
+
+      const { buildCurrentExport } = useExperimentStorage(
+        'test-recipe',
+        adjustments,
+        freeformIngredients,
+        notes,
+        {
+          config: ref<ExperimentConfig | null>(null),
+          derivedValues: ref([]),
+          multiplier: ref(1)
+        }
+      )
+
+      expect(buildCurrentExport()).toBeNull()
+    })
+  })
 })
 
 describe('buildExperimentExport', () => {

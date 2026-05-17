@@ -11,6 +11,20 @@ export interface ExperimentStorageData {
   editHistory: string[]
 }
 
+/**
+ * Optional dependencies wired in by callers that need `buildCurrentExport()`.
+ * Kept optional so existing call sites (and tests) that only use load/save/clear
+ * continue to work without change.
+ */
+export interface ExperimentExportDeps {
+  /** Active ExperimentConfig (auto-generated or recipe-defined). */
+  config: Ref<ExperimentConfig | null>
+  /** Snapshot of derived values at the moment of export. */
+  derivedValues: Ref<ExperimentDerivedSnapshot[]>
+  /** Active scaling multiplier (1 = unscaled). */
+  multiplier: Ref<number>
+}
+
 function getStorageKey(recipeId: string): string {
   return `experiment-${recipeId}`
 }
@@ -18,12 +32,17 @@ function getStorageKey(recipeId: string): string {
 /**
  * Persistence layer for experiment panel state.
  * Saves adjustments, freeform ingredients, and per-slider notes to localStorage.
+ *
+ * When `exportDeps` is provided, also exposes `buildCurrentExport()` that
+ * snapshots the current adjustments + derived values as an ExperimentExport
+ * (used by the scratchpad export pathway, PF-259).
  */
 export function useExperimentStorage(
   recipeId: string,
   adjustments: Ref<Map<string, number>>,
   freeformIngredients: Ref<FreeformIngredient[]>,
-  notes: Ref<Record<string, string>>
+  notes: Ref<Record<string, string>>,
+  exportDeps?: ExperimentExportDeps
 ) {
   const key = getStorageKey(recipeId)
 
@@ -87,7 +106,33 @@ export function useExperimentStorage(
   watch(freeformIngredients, save, { deep: true })
   watch(notes, save, { deep: true })
 
-  return { load, save, clear }
+  /**
+   * Snapshot the current experiment state as an `ExperimentExport`.
+   * Returns `null` when:
+   *   - `exportDeps` was not supplied at composable instantiation
+   *   - active `config` ref is null
+   *   - every adjustment equals the config's `defaultAmount` (i.e. the user
+   *     hasn't actually deviated from the recipe baseline)
+   *
+   * Mirrors the filtering in `buildExperimentExport()`: only ingredients whose
+   * adjusted amount differs from `defaultAmount` are included.
+   */
+  function buildCurrentExport(): ExperimentExport | null {
+    if (!exportDeps) return null
+    const cfg = exportDeps.config.value
+    if (!cfg) return null
+    const result = buildExperimentExport(
+      recipeId,
+      cfg,
+      adjustments.value,
+      exportDeps.derivedValues.value,
+      exportDeps.multiplier.value
+    )
+    if (result.adjustments.length === 0) return null
+    return result
+  }
+
+  return { load, save, clear, buildCurrentExport }
 }
 
 /**

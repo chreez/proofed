@@ -13,7 +13,7 @@ import { SCALING_MULTIPLIER_KEY, SCALING_INGREDIENTS_KEY, EXPERIMENT_ADJUSTMENTS
 import { useExperiment } from '@/composables/useExperiment'
 import { useExperimentStorage } from '@/composables/useExperimentStorage'
 import { generateExperimentConfig } from '@/composables/useAutoExperiment'
-import type { ExperimentConfig } from '@/types/recipe'
+import type { ExperimentConfig, ExperimentDerivedSnapshot } from '@/types/recipe'
 import { QrCode, Printer, ArrowLeft } from 'lucide-vue-next'
 import type { RecipeState, CookLogPhoto, WaterContentTable } from '@/types/recipe'
 import RecipeMeta from '@/components/RecipeMeta.vue'
@@ -99,6 +99,31 @@ const experimentInstance = shallowRef<ReturnType<typeof useExperiment> | null>(n
 const experimentSliderNotes = ref<Record<string, string>>({})
 let experimentStorageInstance: ReturnType<typeof useExperimentStorage> | null = null
 
+/**
+ * Snapshot of derived values for the active experiment, mapped from
+ * `config.derived[]` ids/labels to the live computed values on the instance.
+ * Empty array when no experiment instance/config is active.
+ * Used by `useExperimentStorage.buildCurrentExport()` to populate
+ * `ExperimentExport.derivedValues` at scratchpad export time (PF-259).
+ */
+const experimentDerivedSnapshot = computed<ExperimentDerivedSnapshot[]>(() => {
+  const instance = experimentInstance.value
+  const config = effectiveExperimentConfig.value
+  if (!instance || !config) return []
+  const out: ExperimentDerivedSnapshot[] = []
+  for (const d of config.derived) {
+    if (d.type === 'effective_hydration') {
+      out.push({ id: d.id, label: d.label, value: instance.effectiveHydration.value.percent, unit: d.unit })
+    } else if (d.type === 'inclusion_load') {
+      out.push({ id: d.id, label: d.label, value: instance.inclusionLoad.value.percent, unit: d.unit })
+    } else if (d.type === 'total_dough_weight') {
+      out.push({ id: d.id, label: d.label, value: instance.totalDoughWeight.value, unit: d.unit })
+    }
+    // 'custom' types skipped — no formula evaluator yet.
+  }
+  return out
+})
+
 watch([currentRecipe, effectiveExperimentConfig, waterContentTable], ([recipe, config, wcTable]) => {
   if (!recipe || !config || !wcTable) {
     experimentInstance.value = null
@@ -110,14 +135,19 @@ watch([currentRecipe, effectiveExperimentConfig, waterContentTable], ([recipe, c
   const instance = useExperiment(recipeWithConfig, wcTable)
   experimentInstance.value = instance
 
-  // Wire up persistence
+  // Wire up persistence (plus export deps so buildCurrentExport() works)
   if (currentRecipeId.value) {
     experimentSliderNotes.value = {}
     experimentStorageInstance = useExperimentStorage(
       currentRecipeId.value,
       instance.adjustments,
       instance.freeformIngredients,
-      experimentSliderNotes
+      experimentSliderNotes,
+      {
+        config: effectiveExperimentConfig,
+        derivedValues: experimentDerivedSnapshot,
+        multiplier: scalingMultiplier
+      }
     )
     experimentStorageInstance.load()
   }
@@ -302,7 +332,8 @@ function openShareModal(): void {
 // Scratchpad export handler
 async function handleScratchpadExport(): Promise<void> {
   if (!scratchpad.value) return
-  const json = scratchpad.value.exportJsonString(scalingMultiplier.value)
+  const experimentExport = experimentStorageInstance?.buildCurrentExport() ?? undefined
+  const json = scratchpad.value.exportJsonString(scalingMultiplier.value, experimentExport)
   await copyToClipboard(json)
 }
 

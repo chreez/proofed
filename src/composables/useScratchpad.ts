@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue'
-import type { BakeScratchpad, ScratchpadEntry } from '@/types/recipe'
+import type { BakeScratchpad, ScratchpadEntry, ExperimentExport } from '@/types/recipe'
 
 interface ScratchpadState {
   entries: Record<string, ScratchpadEntry[]>
@@ -169,18 +169,31 @@ export function useScratchpad(recipeId: string) {
     return !!entries && entries.length > 0
   }
 
-  function exportJson(multiplier?: number): BakeScratchpad {
+  function exportJson(
+    multiplier?: number,
+    experimentExport?: ExperimentExport | null
+  ): BakeScratchpad {
     return {
       recipeId: recipeId,
       bakeDate: new Date().toISOString().split('T')[0],
       ...(multiplier != null && multiplier !== 1 ? { multiplier } : {}),
       entries: { ...state.entries },
-      generalNotes: [...state.generalNotes]
+      generalNotes: [...state.generalNotes],
+      // Only attach when a real export with at least one adjustment is provided.
+      // Use a spread-conditional so the key is fully omitted (not set to null/{})
+      // when no experiment was active — preserves byte-identical exports for
+      // recipes without experiment config (PF-259 AC #2).
+      ...(experimentExport && experimentExport.adjustments.length > 0
+        ? { experimentExport }
+        : {})
     }
   }
 
-  function exportJsonString(multiplier?: number): string {
-    return JSON.stringify(exportJson(multiplier), null, 2)
+  function exportJsonString(
+    multiplier?: number,
+    experimentExport?: ExperimentExport | null
+  ): string {
+    return JSON.stringify(exportJson(multiplier, experimentExport), null, 2)
   }
 
   function clearAll(): void {

@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { useScratchpad } from './useScratchpad'
+import type { ExperimentExport } from '@/types/recipe'
 
 // Mock localStorage
 let store: Record<string, string> = {}
@@ -436,6 +437,101 @@ describe('useScratchpad', () => {
       const parsed = JSON.parse(str)
 
       expect(parsed.multiplier).toBe(2)
+    })
+
+    it('PF-259: forwards experimentExport arg through to exportJson', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const mockExperimentExport: ExperimentExport = {
+        recipeId: 'recipe-a',
+        exportedAt: '2026-05-16T00:00:00.000Z',
+        multiplier: 1,
+        scaleMode: 'pre_scaled',
+        adjustments: [
+          { ingredientId: 'flour', ingredientName: 'flour', originalAmount: 500, adjustedAmount: 460, delta: -40 }
+        ],
+        derivedValues: []
+      }
+
+      const str = sp.exportJsonString(1, mockExperimentExport)
+      const parsed = JSON.parse(str)
+
+      expect(parsed.experimentExport).toEqual(mockExperimentExport)
+    })
+  })
+
+  describe('exportJson — experimentExport (PF-259)', () => {
+    const mockExperimentExport: ExperimentExport = {
+      recipeId: 'recipe-a',
+      exportedAt: '2026-05-16T00:00:00.000Z',
+      multiplier: 1,
+      scaleMode: 'pre_scaled',
+      adjustments: [
+        { ingredientId: 'flour', ingredientName: 'flour', originalAmount: 500, adjustedAmount: 460, delta: -40 },
+        { ingredientId: 'water', ingredientName: 'water', originalAmount: 350, adjustedAmount: 375, delta: 25 }
+      ],
+      derivedValues: [
+        { id: 'effective_hydration', label: 'Effective Hydration', value: 82, unit: '%' }
+      ]
+    }
+
+    it('AC#6: includes experimentExport verbatim when arg has adjustments', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const result = sp.exportJson(1, mockExperimentExport)
+
+      expect(result.experimentExport).toEqual(mockExperimentExport)
+    })
+
+    it('AC#7a: omits experimentExport key entirely when arg is null', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const result = sp.exportJson(1, null)
+
+      expect('experimentExport' in result).toBe(false)
+    })
+
+    it('AC#7b: omits experimentExport key entirely when adjustments[] is empty', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const emptyAdjustments: ExperimentExport = {
+        ...mockExperimentExport,
+        adjustments: []
+      }
+      const result = sp.exportJson(1, emptyAdjustments)
+
+      expect('experimentExport' in result).toBe(false)
+    })
+
+    it('AC#8: byte-identical to pre-change behavior when called with no second arg', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+      sp.addNote('step-1', 'note')
+      sp.addGeneralNote('general')
+
+      const result = sp.exportJson(1)
+
+      expect('experimentExport' in result).toBe(false)
+      // And shape matches what callers used to get
+      expect(result).toEqual({
+        recipeId: 'recipe-a',
+        bakeDate: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+        entries: expect.objectContaining({ 'step-1': expect.any(Array) }),
+        generalNotes: expect.any(Array)
+      })
+    })
+
+    it('omits experimentExport key when arg is undefined', () => {
+      const sp = useScratchpad('recipe-a')
+      sp.load()
+
+      const result = sp.exportJson(1, undefined)
+
+      expect('experimentExport' in result).toBe(false)
     })
   })
 
