@@ -19,6 +19,7 @@
     { "id": "ny-style-pizza", "name": "NY-Style Pizza Dough", "file": "ny-style-pizza.json" },
     { "id": "potato-buns", "name": "Potato Buns for Smashburgers", "file": "potato-buns.json" },
     { "id": "carrot-cake", "name": "Carrot Cake with Brown Butter Cream Cheese Frosting", "file": "carrot-cake.json" },
+    { "id": "sonoran-flour-tortillas", "name": "Sonoran Flour Tortillas", "file": "sonoran-flour-tortillas.json" },
     { "id": "simple-sourdough", "name": "Sourdough Bread - 70% Hydration", "file": "simple-sourdough.json" },
     { "id": "simple-sourdough-wheat", "name": "Whole Wheat Sourdough Bread", "file": "simple-sourdough-wheat.json" },
     { "id": "sourdough-cheddar-bay-biscuits", "name": "Sourdough Cheddar Bay Biscuits", "file": "sourdough-cheddar-bay-biscuits.json" },

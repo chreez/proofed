@@ -1,0 +1,634 @@
+{
+  "meta": {
+    "name": "Sonoran Flour Tortillas",
+    "shortName": "Sonoran Tortillas",
+    "source": {
+      "name": "proofed. Research Synthesis",
+      "type": "adapted",
+      "author": "8-agent parallel research, 60+ sources"
+    },
+    "yields": "10 tortillas (~54g balls, 20cm / 8\" diameter)",
+    "total_time": "~1.5 hrs (35 min active, 45-60 min rest)",
+    "description": "Canonical Sonoran-style flour tortilla — paper-thin, leopard-spotted, pliable. Four ingredients only: heritage Sonora soft white wheat, lard (manteca), salt, hot water. No baking powder (Sonora tradition, not Chihuahua). Built around 100% Sonora '00' heritage flour; supports heritage blend variants in technical notes.",
+    "prep_active_min": 35,
+    "proof_passive_min": 60,
+    "oven_occupancy_min": 0,
+    "bake_min": 0,
+    "shopping_notes": "Lard: fresh-rendered manteca (Mexican grocer) or leaf lard beats supermarket bricks; back lard is canonical for the slight savory depth (leaf lard is too neutral for tortillas). Flour: 100% Sonora '00' heritage is the canonical baseline. See technical notes for heritage blend variants (Marquis, Rouge de Bordeaux, einkorn, rye, whole wheat)."
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Flatbreads",
+      "subgroup": "Tortillas",
+      "defaultYield": 10,
+      "unit": "tortillas",
+      "servingsPerItem": 1,
+      "servingUnit": "tortilla",
+      "itemsPerBatch": 1
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-05-17",
+      "summary": "Initial recipe from 8-agent parallel research synthesis. Canonical Sonoran-style: 100g Sonora flour / 20% lard / 60% hot water / 1.7% salt. No baking powder. Cross-source confirmed via Pati Jinich (King Arthur podcast), Hank Shaw, Tucson Foodie, Proof Mill, Larousse Cocina, Barton Springs Mill, plus food science (gliadin:glutenin rheology, starch gelatinization).",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "sonora_flour",
+              "name": "Sonora '00' Heritage Soft White Wheat Flour",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents",
+              "confidence": "high",
+              "rationale": "Heritage soft white wheat ~10-11.5% protein, gliadin-leaning. The variety this dish was built on in Sonora since ~1542. Naturally weak/extensible gluten matches what tortillas reward (Sci-Direct 2022: extension resistance negatively correlates with diameter r=-0.86)."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents",
+              "confidence": "high",
+              "rationale": "1.7% of flour. Industry hot-press standard 1.75%; home recipes cluster 1.5-2%."
+            },
+            {
+              "id": "lard",
+              "name": "Lard (Manteca de Cerdo)",
+              "total": 60,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 7/8 agents — Bayless, Pati, Hank Shaw, Karina (Hermosillo tortillera), Proof Mill",
+              "confidence": "high",
+              "rationale": "20% of flour. Median across artisan recipes 20-22%. Fresh-rendered back lard preferred over leaf lard for tortillas — slight savory depth is desirable. Beef tallow (asiento de res) is also authentic (Doña Guille, Hermosillo). Butter/shortening/duck fat work as subs."
+            },
+            {
+              "id": "water",
+              "name": "Hot Water (160-180°F / 71-82°C)",
+              "total": 180,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents",
+              "confidence": "high",
+              "rationale": "60% hydration. Hot water (Spanish 'agua casi hirviendo') partially gelatinizes starch above 60°C — softer, more pliable dough, faster gluten relaxation, fat plasticization. Same mechanism as Asian tangzhong / yudane doughs."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Mix dough → bulk rest covered with damp cloth"
+    },
+    {
+      "id": "V2",
+      "name": "Small Saucepan or Kettle",
+      "reuse": "Heat water to 160-180°F → measure into bowl"
+    },
+    {
+      "id": "V3",
+      "name": "Cast Iron Skillet or Comal (25cm / 10\")",
+      "reuse": "Dry, ungreased — preheat then cook tortillas"
+    },
+    {
+      "id": "V4",
+      "name": "Linen Tortilla Cloth or Clean Kitchen Towel",
+      "reuse": "Steam-rehydrate stacked tortillas after cooking"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Mixing Bowl",
+          "Small Saucepan or Kettle",
+          "Cast Iron Skillet or Comal (25cm / 10\")",
+          "Linen Tortilla Cloth or Clean Kitchen Towel"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Rolling Pin (palote or Western pin)",
+          "Bench Scraper",
+          "Instant-Read Thermometer",
+          "Wooden Spoon",
+          "Fish Spatula or Thin Turner"
+        ],
+        "ingredients": [
+          {
+            "id": "sonora_flour",
+            "name": "Sonora '00' Heritage Soft White Wheat Flour",
+            "total": 300,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: 8/8 agents",
+            "confidence": "high",
+            "rationale": "Heritage soft white wheat ~10-11.5% protein, gliadin-leaning. The variety this dish was built on in Sonora since ~1542."
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: 8/8 agents",
+            "confidence": "high",
+            "rationale": "1.7% of flour. Industry hot-press standard 1.75%; home recipes cluster 1.5-2%.",
+            "display_amount": "1 tsp"
+          },
+          {
+            "id": "lard",
+            "name": "Lard (Manteca de Cerdo)",
+            "total": 60,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: 7/8 agents",
+            "confidence": "high",
+            "rationale": "20% of flour. Fresh-rendered back lard preferred. Beef tallow (asiento de res) is also authentic per Doña Guille, Hermosillo."
+          },
+          {
+            "id": "water",
+            "name": "Hot Water (160-180°F / 71-82°C)",
+            "total": 180,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1: 8/8 agents",
+            "confidence": "high",
+            "rationale": "60% hydration. 'Agua casi hirviendo' partially gelatinizes starch → softer dough, faster gluten relaxation."
+          }
+        ]
+      },
+      "states": [
+        "HEAT_WATER",
+        "CUT_FAT_INTO_FLOUR"
+      ]
+    },
+    {
+      "id": "MIX",
+      "title": "Combine and Knead",
+      "gather": null,
+      "states": [
+        "ADD_WATER",
+        "KNEAD"
+      ]
+    },
+    {
+      "id": "REST",
+      "title": "Bulk Rest",
+      "gather": null,
+      "states": [
+        "BULK_REST"
+      ]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Divide and Ball-Rest",
+      "gather": null,
+      "states": [
+        "DIVIDE",
+        "BALL_REST"
+      ]
+    },
+    {
+      "id": "COOK",
+      "title": "Roll and Cook",
+      "gather": null,
+      "states": [
+        "PREHEAT_COMAL",
+        "ROLL_AND_COOK"
+      ]
+    },
+    {
+      "id": "FINISH",
+      "title": "Steam-Rest in Cloth",
+      "gather": null,
+      "states": [
+        "STACK_REST"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "HEAT_WATER",
+      "title": "Heat Water to 160-180°F (71-82°C)",
+      "direction": "Heat 200g water in a small saucepan or kettle. Target 160-180°F (71-82°C) — hot enough to steam but not vigorously boiling. Measure 180g into a heat-safe measuring cup; the extra 20g compensates for evaporation and gives a small reserve in case dough needs more.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Water", "amount": "200g (180g target)" }
+      ],
+      "exit_condition": "Water reads 160-180°F (71-82°C) on instant-read thermometer; steaming but not at rolling boil.",
+      "notes": [
+        {
+          "text": "Spanish sources consistently say 'agua casi hirviendo' (almost boiling). For soft Sonora flour with weak gluten, lower end (160°F / 71°C) is safer — boiling water can over-gelatinize the limited starch matrix.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Lady & Pups (Sonoran paper-thin) specifies 140-150°F (60-66°C). Hank Shaw uses simmering water. Both work — find your preference. Hotter = more starch gelatinization = softer dough but more torn-prone when rolling.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Record water temperature (°F)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "CUT_FAT_INTO_FLOUR",
+      "title": "Rub Lard into Flour and Salt",
+      "direction": "In the large mixing bowl (V1), combine 300g Sonora flour and 5g salt. Add 60g lard (room temperature, soft but not melted). Rub the lard into the flour with fingertips until the mixture looks like coarse sand with no lard chunks larger than a pea.",
+      "duration_min": 4,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Sonora '00' flour", "amount": "300g" },
+        { "name": "Fine sea salt", "amount": "5g" },
+        { "name": "Lard", "amount": "60g" }
+      ],
+      "exit_condition": "Mixture looks like coarse sand or breadcrumbs; no visible chunks of lard remain larger than a pea; flour evenly coated with fat.",
+      "notes": [
+        {
+          "text": "Cold/firm lard cut in like pie dough produces a flakier, more laminated tortilla (Kenji 'thin & tender' technique). Room-temp soft lard produces a more uniform pliable tortilla. Both are valid — choose by desired texture.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Mechanism: fat coats gluten proteins, preventing them from forming long elastic chains (Modernist Cuisine). This is what gives tortillas their tenderness vs bread's chew.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "ADD_WATER",
+      "title": "Add Hot Water and Mix",
+      "direction": "Pour 180g hot water gradually into the flour-fat mixture while stirring with a wooden spoon. Mix until the dough comes together into a shaggy mass with no dry flour pockets. Let it cool 1-2 minutes before handling (water is hot).",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Hot water", "amount": "180g" }
+      ],
+      "exit_condition": "Dough is fully hydrated — no dry flour pockets visible at the bottom of the bowl. Mass is sticky but cohesive. Cool enough to handle without burning.",
+      "notes": [
+        {
+          "text": "Add 90% of the water first, mix, then add the rest only if needed. Heritage Sonora can be 'thirsty' when fresh-milled — Barton Springs explicitly says 'don't be afraid to add more' if dough looks dry.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "KNEAD",
+      "title": "Knead Until Lisa (Smooth)",
+      "direction": "Turn the dough out onto a lightly floured surface. Knead 5-7 minutes — push the dough toward the center with the heel of your palm ('apuñar' as Sonoran tortilleras say), fold, rotate, and repeat. Finish when the dough is glassy-smooth and elastic enough to pull without tearing.",
+      "duration_min": 7,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is 'lisa' — glassy-smooth surface, no rough patches. When you pinch off a small piece and pull it gently, it stretches without tearing immediately. Feels soft like Play-Doh.",
+      "notes": [
+        {
+          "text": "'Apuñar' (fist-press toward center) is the kneading verb used by Karina, a 28-year tortillera in San Pedro El Saucito (outside Hermosillo). Quote: 'el punto de amasado es darle puro para el centro, apuñarla' — 'the kneading goal is pushing everything to the center, fist-pressing it.'",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Don't over-knead. Sonora's gluten is weak/extensible; 5-7 minutes is enough. Over-kneading develops elasticity you don't want — the tortilla will snap back during rolling.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "If dough is too sticky, resist adding more flour. Damp hands and a bench scraper handle stickiness better. Adding flour drops hydration permanently.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Dough texture and surface after knead", "type": "observation" }
+      ]
+    },
+    {
+      "id": "BULK_REST",
+      "title": "Bulk Rest, Covered",
+      "direction": "Form the dough into a ball and place back in the mixing bowl (V1). Cover tightly with a damp cloth or plastic wrap. Rest on the counter at room temperature for at least 30 minutes — 45-60 minutes is better for thin rolling.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Dough has rested at least 30 minutes (45-60 ideal). Surface is still moist (covered worked). When pulled gently, it stretches farther without snapping back than it did right after kneading.",
+      "notes": [
+        {
+          "text": "Rest mechanism: stress relaxation in the viscoelastic gluten network — strands recoil and de-tension. Without rest, the gluten snaps back the moment you stop rolling.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Counter, not fridge. Spanish sources are emphatic — 20-30 min room temp is standard; never refrigerate. Refrigeration is an American adaptation that introduces cold-fat stiffness.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Hank Shaw recommends 2+ hours for the Sonoran-thin style; up to 6 hours OK. Lady & Pups recommends overnight refrigerated for paper-thin. The longer rest = the thinner you can roll.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "DIVIDE",
+      "title": "Divide into 10 × 54g Balls",
+      "direction": "Turn dough onto a clean surface (no flour). Use a bench scraper to divide into 10 equal portions (~54g each — use a scale). Roll each portion into a tight, smooth ball between your palms.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "10 smooth balls, each ~54g (±2g). Surface of each ball is taut and glassy; no flour rolled in.",
+      "notes": [
+        {
+          "text": "Ball weight by target diameter: 30-35g → 15cm (6\") taco-size; 50-55g → 20cm (8\") standard; 65-70g → 25cm (10\") burrito; 90-100g → 33cm (13\") or sobaquera attempt.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Optional: lightly oil each ball after shaping (Karina + Abarrey gorditas tradition). Prevents drying during ball rest, makes them easier to roll. Use a few drops of neutral oil or lard.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Average ball weight (g)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "BALL_REST",
+      "title": "Second Rest — Balls Covered",
+      "direction": "Arrange the balls on a tray or back in the mixing bowl, spaced so they don't touch. Cover with damp cloth or plastic. Rest 15-20 minutes — this second relaxation lets the just-shaped gluten settle so the dough rolls without snapping back.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Balls have rested 15-20 minutes. Surface still moist (cover worked). When you press a ball lightly, it deforms easily and doesn't spring back immediately.",
+      "notes": [
+        {
+          "text": "Use this rest to preheat the comal — see next state. Parallelize.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "PREHEAT_COMAL",
+      "title": "Preheat Cast Iron Comal",
+      "direction": "Set the dry cast iron skillet or comal (V3) over medium-high heat. Preheat 8-10 minutes — surface target 425-450°F (218-232°C). Test: a drop of water should evaporate within 2-3 seconds with a sharp sizzle, or the surface should be slightly smoking (wisp, not billow).",
+      "duration_min": 8,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Comal surface 425-450°F (218-232°C); water drop sizzles and evaporates in 2-3 sec. Surface lightly smoking (wisp only, not billowing).",
+      "notes": [
+        {
+          "text": "Dry comal — no oil. The dry heat is what gives the leopard char marks.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "ThermoWorks-load-bearing data: 450-550°F (232-288°C) surface temp for best puff. Hotter = better steam-driven inflation = lighter, airier tortillas.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Comal surface temperature (°F)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "ROLL_AND_COOK",
+      "title": "Roll, Cook, Stack — One at a Time",
+      "direction": "For each ball: flour a clean rolling surface lightly. Press the ball flat with your palm; roll with a rolling pin in short forward-back strokes, rotating the dough 90° between each stroke. Target diameter ~20cm (8\") and thin enough to see light through it (~1.5-2mm). Lay the rolled tortilla on the hot comal. Cook 30-45 seconds on side 1 — flip when brown freckles develop. Cook 20-30 seconds on side 2 — flip again for an optional 10-15 second third flip to trigger puff. Slide off into the linen cloth, stack hot, cover. Repeat for all 10.",
+      "duration_min": 20,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 10 tortillas cooked. Each has brown leopard freckles on both sides, is pliable (not crisp), and most have puffed at least partially during cooking. Stacked in cloth.",
+      "notes": [
+        {
+          "text": "Rotation discipline is everything. Quarter-turn between strokes keeps the tortilla round and even. Mexico's master tortilleras roll without flour using a palote (straight wooden dowel) — Western rolling pin works fine too.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "NO tortilla press for flour. Gluten fights compression and snaps back. Press is a corn-tortilla tool only.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Puff mechanism: surface contact sets a thin skin via gluten denaturation + starch gelatinization; steam inside flashes and inflates the tortilla like pita. If puff fails, comal isn't hot enough OR dough is too thick. Don't press down with the spatula — that releases the steam bubble.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If a tortilla looks too thick on the comal, lower the heat slightly and cook longer. If it crisps before puffing, the comal is too hot — drop heat one notch.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "If you can't roll fast enough to keep up with cook time, roll all 10 first (stacked between parchment), then cook in sequence. Lose a little texture but save panic.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "First tortilla cook time per side (sec)", "type": "measurement" },
+        { "prompt": "Puff success rate (how many of 10 puffed)", "type": "observation" }
+      ]
+    },
+    {
+      "id": "STACK_REST",
+      "title": "Steam-Rest in Cloth",
+      "direction": "Keep the stack of finished tortillas tightly wrapped in the linen cloth (V4) for at least 5 minutes before serving. The residual steam from the hot stack rehydrates each tortilla's surface, completing the soft-pliable texture.",
+      "duration_min": 5,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Tortillas have steamed in their stack for at least 5 minutes. When you peel one off the stack, it's soft, pliable, and foldable without cracking.",
+      "notes": [
+        {
+          "text": "This step is often the difference between a soft and a leathery tortilla. Don't skip — the steam-rehydration is part of the cook.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Hold in the cloth-wrapped stack up to 30 min for service. Beyond that, transfer to a tortilla warmer or zip-bag and reheat on dry skillet 30s/side before use.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Final tortilla quality", "type": "rating" }
+      ]
+    }
+  ],
+  "nutrition": null,
+  "research": {
+    "sources": [
+      { "name": "Pati Jinich — Flour Tortillas", "url": "https://patijinich.com/flour-tortillas/", "type": "adapted", "author": "Pati Jinich" },
+      { "name": "Pati Jinich — Chubby Flour Tortillas (Sonora)", "url": "https://patijinich.com/chubby-flour-tortillas/", "type": "adapted", "author": "Pati Jinich" },
+      { "name": "Pati Jinich — King Arthur Podcast", "url": "https://www.kingarthurbaking.com/podcast/talking-tortillas-with-pati-jinich", "type": "original", "author": "Pati Jinich / King Arthur" },
+      { "name": "Rick Bayless — Flour Tortillas", "url": "https://www.rickbayless.com/recipe/flour-tortillas-2/", "type": "adapted", "author": "Rick Bayless" },
+      { "name": "Hank Shaw / Honest Food — Sonoran-style", "url": "https://honest-food.net/how-to-make-homemade-flour-tortillas/", "type": "adapted", "author": "Hank Shaw" },
+      { "name": "Noah Tanen Substack — Sonoran Flour Tortillas", "url": "https://noahtanen.substack.com/p/sonoran-flour-tortillas", "type": "adapted", "author": "Noah Tanen" },
+      { "name": "Lady & Pups — Paper-thin Sonoran", "url": "https://ladyandpups.com/2021/05/13/paper-thin-soft-chewy-sonoran-style-flour-tortilla/", "type": "adapted", "author": "Mandy Lee" },
+      { "name": "Tucson Foodie — Sonoran tortillas special", "url": "https://tucsonfoodie.com/2019/08/07/sonoran-flour-tortillas/", "type": "original" },
+      { "name": "Borderlore — Staple of Life", "url": "https://borderlore.org/staple-of-life/", "type": "original" },
+      { "name": "Karina interview — Proyecto Puente", "url": "https://proyectopuente.com.mx/2023/03/11/con-harina-agua-manteca-y-sal-quedan-las-sobaqueras-karina-cumplio-28-anos-elaborando-este-producto-en-san-pedro-el-saucito/", "type": "original", "author": "Karina (San Pedro El Saucito tortillera)" },
+      { "name": "Larousse Cocina — tortilla de harina", "url": "http://laroussecocina.mx/palabra/tortilla-de-harina/", "type": "original" },
+      { "name": "México Desconocido — sobaquera o de agua", "url": "https://www.mexicodesconocido.com.mx/tortilla-sobaquera-o-de-agua-sonora.html", "type": "original" },
+      { "name": "Sonora Star — historia", "url": "https://sonorastar.com/2019/10/13/historia-de-las-tortillas-sonorenses/", "type": "original" },
+      { "name": "El Imparcial — Si son de harina ni me las calienten", "url": "https://www.elimparcial.com/son/sonora/2025/04/04/las-tortillas-si-son-de-harina-ni-me-las-calienten/", "type": "original" },
+      { "name": "Mexico En Mi Cocina (Mely Martinez)", "url": "https://www.mexicoenmicocina.com/como-hacer-tortillas-de-harina/", "type": "adapted", "author": "Mely Martinez" },
+      { "name": "Hayden Flour Mills — Masa × Wheat Tortillas", "url": "https://haydenflourmills.com/blogs/recipes/homemade-masa-x-wheat-tortillas", "type": "original", "author": "Hayden Flour Mills" },
+      { "name": "Barton Springs Mill — Pork Tallow Tortillas", "url": "https://bartonspringsmill.com/blogs/recipes/pork-tallow-tortillas", "type": "original", "author": "Barton Springs Mill" },
+      { "name": "Barton Springs Mill — Einkorn Tortillas", "url": "https://bartonspringsmill.com/blogs/recipes/einkorn-flour-tortillas", "type": "original", "author": "Barton Springs Mill / Abby Love" },
+      { "name": "Proof Flour Mill — 100% White Sonora Tortillas", "url": "https://proofmill.com/blogs/recipes/homemade-tortillas-with-100-white-sonora-flour", "type": "original", "author": "Proof Flour Mill" },
+      { "name": "Bluebird Grain Farms — Sonora", "url": "https://bluebirdgrainfarms.com/product/organic-sonora-heritage-soft-white-wheat-flour/", "type": "original" },
+      { "name": "Janie's Mill — Sergio's Tortillas", "url": "https://www.janiesmill.com/blogs/recipes/sergios-special-flour-tortillas", "type": "original" },
+      { "name": "Anson Mills — Handmade Flour Tortillas", "url": "https://ansonmills.com/recipes/671", "type": "original", "author": "Glenn Roberts" },
+      { "name": "Slow Food USA — White Sonora Wheat", "url": "https://slowfoodusa.org/white-sonora-wheat/", "type": "original" },
+      { "name": "High protein and gliadin content (peer-reviewed)", "url": "https://www.sciencedirect.com/science/article/pii/S0023643822002559", "type": "original" },
+      { "name": "Functionality of gliadin proteins (peer-reviewed)", "url": "https://pubmed.ncbi.nlm.nih.gov/19170634/", "type": "original" },
+      { "name": "Modernist Cuisine — Gluten mechanism", "url": "https://modernistcuisine.com/mcah/gluten-how-does-it-work/", "type": "original" },
+      { "name": "BAKERpedia — Arabinoxylans", "url": "https://bakerpedia.com/ingredients/arabinoxylans/", "type": "original" },
+      { "name": "BAKERpedia — Starch Gelatinization", "url": "https://bakerpedia.com/processes/starch-gelatinization/", "type": "original" },
+      { "name": "ThermoWorks — Homemade Flour Tortillas", "url": "https://blog.thermoworks.com/how-to-make-homemade-flour-tortillas/", "type": "original" },
+      { "name": "Taste Cooking — 3-temp water test", "url": "https://tastecooking.com/today-is-the-day-to-make-a-flour-tortilla/", "type": "original" },
+      { "name": "Masienda — Anatomy of Tortilla Puff", "url": "https://masienda.com/blogs/learn/anatomy-tortilla-puff", "type": "original" },
+      { "name": "King Arthur — Rye Tortillas", "url": "https://www.kingarthurbaking.com/recipes/rye-tortillas-recipe", "type": "original" },
+      { "name": "Tildes — Flour Tortillas (bakers % analysis)", "url": "https://tildes.net/~food/1b12/flour_tortillas_my_recipe_and_explanations", "type": "original" },
+      { "name": "ChainBaker — 5-Flour Tortilla Comparison", "url": "https://www.chainbaker.com/5-tortillas/", "type": "original" }
+    ],
+    "techniques": [
+      {
+        "name": "Hot water (160-180°F) for partial starch gelatinization",
+        "sourcedFrom": "All 8 agents; mechanism from BAKERpedia, King Arthur, peer-reviewed sources",
+        "rationale": "Starch granules begin to swell ~60°C, gelatinize ~70°C. Pre-gelatinized starch absorbs ~2× water, denatures some gluten proteins (less elasticity), distributes fat evenly. Same physics as tangzhong/yudane. Produces immediately soft pliable dough; 5-min rest suffices vs 30+ with cold water (Tildes test).",
+        "confidence": "high"
+      },
+      {
+        "name": "No baking powder — pure Sonoran tradition",
+        "sourcedFrom": "7/8 agents; Pati Jinich (King Arthur podcast), Hank Shaw, Tucson Foodie, Larousse Cocina, Karina (Hermosillo)",
+        "rationale": "Larousse Cocina explicitly assigns baking powder to Chihuahua, NOT Sonora. Pati Jinich on record: 'I've never seen baking powder or baking soda used in Sonora.' Steam from hot water inside the dough creates puff during cooking. Baking powder is a Tex-Mex / commercial drift, not Sonoran.",
+        "confidence": "high"
+      },
+      {
+        "name": "Lard (manteca) — fresh-rendered, back fat preferred over leaf",
+        "sourcedFrom": "Bayless, Pati, Hank Shaw, Karina, Proof Mill — 7/8 agents",
+        "rationale": "For tortillas (not pastry) the slight savory depth of back lard is desirable; leaf lard is too neutral. Beef tallow (asiento de res) is also authentic per Doña Guille, Hermosillo. Industry hot-press tortillas use ~10% fat; home recipes 15-25%; 20% is the median sweet spot (Food Lab 1-lb-flour test: 3 oz lard = ideal).",
+        "confidence": "high"
+      },
+      {
+        "name": "'Apuñar' kneading — fist-press toward center until lisa",
+        "sourcedFrom": "Karina (Proyecto Puente interview), corroborating Spanish-language sources",
+        "rationale": "Sonora-specific verb: 'darle puro para el centro, apuñarla' — push everything to the center, fist-press. Dough must finish 'lisa' (glassy-smooth) or it tears during rolling or arm-stretching for sobaqueras.",
+        "confidence": "high"
+      },
+      {
+        "name": "Counter rest 30-60 min — never refrigerated as default",
+        "sourcedFrom": "All Spanish-language sources, plus Pati Jinich, Bayless, Hank Shaw",
+        "rationale": "Stress relaxation in viscoelastic gluten network. 20-30 min is universal floor; 45-60 min better. Fridge introduces cold-fat stiffness — Spanish sources never use fridge. Longer rest = thinner roll achievable.",
+        "confidence": "high"
+      },
+      {
+        "name": "Dry cast iron / comal at 425-450°F (218-232°C), no oil",
+        "sourcedFrom": "ThermoWorks (load-bearing), Hank Shaw, Hayden, Bayless, Pati, Lady & Pups",
+        "rationale": "Steam-driven puff mechanism requires fast surface set. Below 400°F (204°C) steam escapes before crust seals; above 500°F (260°C) crust crisps before steam can lift. 30-45s side 1 for browning, 20-30s side 2 for puff, optional 10-15s third flip to finish puff.",
+        "confidence": "high"
+      },
+      {
+        "name": "Steam-rest stacked tortillas in cloth",
+        "sourcedFrom": "Bayless, Pati, Lady & Pups, Fresh Milled Mama, multiple",
+        "rationale": "Residual steam from the hot stack inside the cloth rehydrates each tortilla's surface, completing the soft-pliable texture. Skipping this step is the single most common cause of 'soft on day-of, leathery within an hour' tortillas.",
+        "confidence": "high"
+      },
+      {
+        "name": "Rolling pin (palote) not tortilla press for flour dough",
+        "sourcedFrom": "Tasting Table, Hayden (with caveat), Pati, Bayless — 6/6 who address",
+        "rationale": "Flour gluten fights compression — pressed flour tortilla snaps back and shrinks. Press is corn-only. Use palote (Mexican straight wooden dowel) or Western rolling pin with quarter-turn discipline between strokes.",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "8-agent parallel research: copycat blogs, Spanish-language Mexican sources, heritage mill primary sources, Reddit/community failure modes, food science mechanism, heritage flour blending, fat+hydration deep dive, shaping/cooking technique",
+    "sourceCount": 60,
+    "date": "2026-05-17"
+  },
+  "reheat": {
+    "methods": [
+      {
+        "method": "Dry Skillet",
+        "detail": "Medium heat, 30 seconds per side. Spritz with water before reheating to revive pliability. Best method.",
+        "source": "agent"
+      },
+      {
+        "method": "Wrapped in Foil, Oven",
+        "detail": "Stack tortillas in foil, 350°F (177°C), 8-10 minutes. Good for batch reheating before a meal.",
+        "source": "agent"
+      },
+      {
+        "method": "Microwave (last resort)",
+        "detail": "Stack between two damp paper towels, 20-30 seconds. Result: rubbery, not flaky. Community consensus: avoid if you have a skillet.",
+        "source": "agent"
+      },
+      {
+        "method": "Comal — Sobaquera-Style Heating",
+        "detail": "Hot comal (~450°F / 232°C), 15-20 seconds per side. Lonestar Tortillas reheating method for large/thin tortillas.",
+        "source": "agent",
+        "reference": "https://lonestartortillas.com/guides/sonoran-style-tortillas"
+      }
+    ]
+  },
+  "technical_notes": [
+    {
+      "title": "Heritage Flour Blend Variants",
+      "category": "substitution",
+      "text": "Five tested-on-paper blend variants for your heritage flour stock. Test in cook log entries.\n\n• **Sonora + Marquis 75/25** — 'Big burrito strength'. 225g Sonora + 75g Marquis, 5g salt, 60g lard, 175g hot water (58% hyd). Rest 45 min. Roll thinner without tearing.\n\n• **Sonora + Mediterranean WW 70/30** — 'Nutty body'. 210g Sonora + 90g WW, 5g salt, 60g lard, 190g hot water (63% hyd). Rest 45-60 min for bran hydration.\n\n• **Sonora + Einkorn 70/30** — 'Ancient grain accent'. 210g Sonora + 90g Einkorn, 5g salt, 60g lard, 170g hot water (56% hyd). Gentle knead 3-4 min only — einkorn gluten is fragile (no D-genome HMW-GS). Modest puff expected.\n\n• **Sonora + Ryman Rye 80/20** — 'Experimental flavor'. 240g Sonora + 60g Rye, 5g salt, 60g lard, 175g hot water (58% hyd). Rest 45 min for pentosan hydration. No Mexican precedent — your invention.\n\n• **Sonora + Rouge de Bordeaux 75/25** — 'Barton Springs precedent'. Same proportions as Marquis variant; Rouge adds distinct nutty/cinnamon character. Barton Springs Mill's published pork tallow tortilla uses this blend approximately."
+    },
+    {
+      "title": "Sobaquera Variant — Arm-Stretched, 14-18\" Paper-Thin",
+      "category": "technique",
+      "text": "Different formula, different technique. 500g Sonora, 10g salt, 50g lard (10%), 250g hot water (50% hyd). 5 × 100g balls. Rest 45 min. Roll to ~7-8\" with palote, rest 10 min, then drape over fists/forearms and rotate while pulling gently to 14-18\". Cook seconds per side on very hot comal, avoiding browning ('evitando que se doren'). Practice-heavy — Sonoran tortilleras spend years on this. Watch Pati Jinich's TikTok of Doña Guille (Hermosillo) for visual reference. Cultural note: name 'sobaquera' derives from 'sobaco' (armpit) — dough edge reaches the maker's armpit during stretch."
+    },
+    {
+      "title": "Tortillas de Agua — Zero-Fat Variant",
+      "category": "substitution",
+      "text": "Authentic Sonoran minimalist style: flour + water + salt, no fat. 300g Sonora + 6g salt + 195g hot water (65% hyd). Lukewarm-to-hot water; longer knead (10 min); longer rest (1 hr+); cook same as canonical. Texture trade-off: more chewy, dries faster, less rich. Documented in Gustavo Arellano (Splendid Table) and Tucson Foodie as a real regional sub-style; not a compromise."
+    },
+    {
+      "title": "Whole-Grain Sonora — Bran Sifting Optional",
+      "category": "technique",
+      "text": "When using 100% whole-grain (unrefined) Sonora flour, bran flecks become tear-initiation sites at thin gauges (Whole Purpose blog post-mortem). For best results, sift out the coarsest bran (~10% of total weight) and reserve for bread. Or: bump hydration +5%, rest +15-30 min so bran fully hydrates before rolling. Otherwise the bran continues absorbing water from the gluten matrix mid-roll, drying out the sheet."
+    },
+    {
+      "title": "Fat Crystal Behavior: Cold-Cut-In vs Melted",
+      "category": "technique",
+      "text": "Two valid fat techniques produce different textures. Cold-cut-in (firm lard rubbed into flour like pie dough): creates discrete fat pockets that translate to flakier, more laminated tortillas — Kenji's 'Thin & Tender' approach. Melted/soft fat (room-temp lard rubbed in): more uniform, more pliable, less laminated — most Mexican home cooks. Lard has large irregular fat crystals vs shortening's small uniform crystals; this is why lard produces flakier-but-pliable texture and shortening produces uniformly tender."
+    },
+    {
+      "title": "Why Marquis and Rouge de Bordeaux Don't Work Solo",
+      "category": "substitution",
+      "text": "Marquis (10.5% protein, glutenin-heavy) and Rouge de Bordeaux (14.2% protein, glutenin-heavy) are bred for bread. Their gluten matrix has strong HMW-glutenin chains that snap back when rolled — small thick tortillas with rubbery chew. Use only as 20-40% structure boosters in a Sonora-dominant blend, where their gliadin contribution adds extensibility for thin rolling without the glutenin overload. Barton Springs Mill's published tortilla recipe uses ~25% Rouge in their Sonora blend — definitive heritage-mill precedent."
+    }
+  ]
+}
