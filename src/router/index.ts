@@ -48,6 +48,12 @@ const router = createRouter({
       meta: { showIndex: false }
     },
     {
+      path: '/flours/barton-springs-mill',
+      name: 'flours-bsm',
+      component: EmptyRouteView,
+      meta: { showIndex: false }
+    },
+    {
       path: '/review/photos/:recipeId/:date',
       name: 'photo-review',
       component: EmptyRouteView,

@@ -31,6 +31,7 @@ import TechnicalNotesSection from '@/components/TechnicalNotesSection.vue'
 import RecipeSummary from '@/components/RecipeSummary.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import AboutPage from '@/components/AboutPage.vue'
+import FloursReferencePage from '@/components/FloursReferencePage.vue'
 import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import PhotoReview from '@/components/PhotoReview.vue'
 import DemoQrTest from '@/components/DemoQrTest.vue'
@@ -159,6 +160,7 @@ provide(EXPERIMENT_ADJUSTMENTS_KEY, computed(() => experimentInstance.value?.adj
 // Derive page state from route
 const showIndex = computed(() => route.name === 'index')
 const showAbout = computed(() => route.name === 'about')
+const showFloursBsm = computed(() => route.name === 'flours-bsm')
 const showPhotoReview = computed(() => route.name === 'photo-review')
 const showBakeDetail = computed(() => route.name === 'bake-detail')
 const showBakeReview = computed(() => route.name === 'bake-review')
@@ -630,7 +632,7 @@ watch(() => route.hash, (newHash) => {
       </div>
     </nav>
 
-    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showBakeDetail || showStats || showPricing || showProduction || showLabels || showSales) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && !showPricing && !showProduction && !showLabels && !showSales && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode && !showPricing && !showProduction && !showLabels && !showSales ? 'max-w-3xl mx-auto px-4' : '')]">
+    <main :class="['flex-1 w-full', showPrintMode ? '' : ((showIndex || showBakeLog || showBakeDetail || showStats || showPricing || showProduction || showLabels || showSales) ? 'pb-6' : 'py-6'), !showIndex && !showBakeLog && !showStats && !showPricing && !showProduction && !showLabels && !showSales && !showFloursBsm && currentRecipe && !showPrintMode ? 'max-w-4xl mx-auto px-4' : (!showPrintMode && !showPricing && !showProduction && !showLabels && !showSales && !showFloursBsm ? 'max-w-3xl mx-auto px-4' : '')]">
       <div v-if="loading" class="text-center py-12 text-muted">
         Loading...
       </div>
@@ -693,6 +695,12 @@ watch(() => route.hash, (newHash) => {
       <template v-else-if="showAbout">
         <div class="page-settle">
           <AboutPage />
+        </div>
+      </template>
+
+      <template v-else-if="showFloursBsm">
+        <div class="page-settle">
+          <FloursReferencePage />
         </div>
       </template>
 
