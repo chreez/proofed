@@ -7483,6 +7483,471 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-05-19",
+      "start_date": "2026-05-18",
+      "version": "v3.6.2",
+      "summary": "First 100% Marquis (BSM) sub for the 70% formula. Sluggish starter, 60min autolyse, three folds, 64% aliquot, double-shaping loaf 2 to fix surface tension. Loaf 1 baked with Dutch oven lid not fully closed — steam loss, poor spring, dense crumb, complex but acetic-forward flavor. Loaf 2 experimental step-down uncovered (450→425→350); couldn't hit Tartine's 412°F internal target. Bread is bread, even if it's just a frisbee.",
+      "notes": [
+        "First bake using Barton Springs Mill Marquis — 100% sub for the 1000g bread flour. Bag was just over 1kg so weighed out exactly 1000g.",
+        "Starter was sluggish before mix — didn't pass float test. Smelled fine, not vinegar. Had used Ryman Rye in starter, effectively making it the levain.",
+        "Autolyse extended to 60min for the stone-ground whole-grain flour (BSM house rule).",
+        "Mix: 1000g Marquis, 700g water (70%), 200g starter, 20g salt. Dough 79.3°F after autolyse, 80.1°F after salt + fold 1.",
+        "Three folds at 12:00pm, 12:38pm, 1:19pm. Dough cooled to ~78°F by fold 2 and held.",
+        "Bulk monitored via aliquot: 0% at salt-in (noon), 30% at 2:19pm, 64% at 3:30pm → preshape go.",
+        "Yield post-bulk 1893g (≈27g bowl loss from 1920g formula). Target 946g per loaf.",
+        "Loaf 1 shaped at 4:39pm (940g). Loaf 2 surface tension not satisfying — bench rested another 20min, shaped at 5:12pm (954g).",
+        "Both loaves into fridge for overnight cold retard.",
+        "Loaf 1 bake: preheated Dutch oven 490°F/60min, covered 450°F/20min, uncovered 425°F/20min. Internal ~208°F, hollow knock, no crackling (probably from lack of spring).",
+        "Notable issue: didn't notice Dutch oven lid wasn't fully closed during covered phase — steam not trapped. Morning brain + poor kitchen light.",
+        "Loaf 2 out of fridge around 7:14am (when loaf 1's covered bake started). Cold retard ~14hr.",
+        "Loaf 2 bake: preheat #2 500°F/30min, covered 450°F/20min, then Tartine-style uncovered 450°F/20min, then stepped down 425°F/5min, then 350°F/5min for browning. Total 30min uncovered. Still couldn't hit Tartine's 412°F internal target — possibly thermometer dwell or pulled too early.",
+        "Loaf 1 assessment: flavor complex (not just sour), acetic-forward — more sour than usual. Crumb dense as expected for heritage stone-ground. Spring poor — self-diagnosed impatient shaping + the lid-not-closed steam loss. 'Bread is bread, even if it's just a frisbee.' Loaf 2 given away — no taste data."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-05-19/img-7613-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-19/img-7613-400w.webp",
+          "alt": "Loaf 1 just out of the oven on the copper cooling rack — banneton spiral pattern dusted with flour, short squat dome from limited oven spring, side crack from the loaf bursting laterally instead of opening at a proper ear. Lid-not-closed steam loss visible in the muted crust."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-05-19/img-7614-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-19/img-7614-400w.webp",
+          "alt": "Wider angle of loaf 1 on the copper cooling rack, kitchen sink and mirrored picture frame behind. Concentric banneton spiral rings clean and well-defined; side burst more visible from this angle. Dense profile, deep amber stone-ground crust color."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-05-19/img-7617-v1-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-19/img-7617-v1-400w.webp",
+          "alt": "Loaf 1 crumb shot — half-loaf cross-section held up by hand, oriented with the bottom crust at the base of the frame. Crumb is tight and uniform with small irregular pockets; the denser, more compressed third sits near the bottom. More workable than the poor spring suggested. Stone-ground Marquis crust shows deep amber color."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-05-19/img-7624-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-19/img-7624-400w.webp",
+          "alt": "Loaf 2 crumb shot — sliced cross-section laid on a white cutting board with loaf 1's crumb visible behind. Tight uniform crumb structure with scattered small irregular pockets. Dark crust band visible along the bottom curve from the Dutch oven contact. Crumb walls slightly translucent suggesting good gelatinization despite the short spring."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-05-19/img-7625-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-19/img-7625-400w.webp",
+          "alt": "Both loaves bagged in kraft paper bread bags with windowed fronts showing the banneton spiral crusts. 'Especially for you — thank you' kraft seal stickers in the foreground waiting to be applied. Loaf 2 heading out as a gift."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-05-19/img-7622-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-19/img-7622-400w.webp",
+          "alt": "Hero shot of loaf 2 — afternoon light catches the banneton spiral on the deep amber crust, copper cooling rack underneath, living room with framed art and couch in soft-focus background. The Marquis stone-ground flour develops a nuttier color than KABF. Spiral ridges clean and well-floured; side burst from oven spring on the left edge."
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Bump hydration to 80% for whole-grain Marquis — Tartine's whole-wheat spec. 70% gives dense crumb on heritage stone-ground flour.",
+          "source": "Tartine Bread (Robertson)"
+        },
+        {
+          "text": "Multi-stage shaping with full rest between (preshape → 20min → reshape → 20min → final shape). Loaf 2's double-shape produced better surface tension; apply to both loaves next time."
+        },
+        {
+          "text": "Possibly skip overnight cold retard — whole-wheat ferments faster than bread flour, so long retard amplifies acetic sour beyond preference. Try shorter (4-6hr) or skip."
+        },
+        {
+          "text": "Halve the recipe for next experimental BSM flour — don't burn a whole new bag dialing in formula."
+        },
+        {
+          "text": "Confirm Dutch oven lid fully closed before covered phase. Set up under better light."
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-18T15:57:31Z",
+          "raw": "76.6",
+          "curated": "Pre-bake kitchen temp: 76.6°F",
+          "notable": true,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-18T15:57:57Z",
+          "raw": "starter is not that active i think. perhaps i should have halved the recipe for this experiment with the new flour so i dont waste it.",
+          "curated": "Starter not that active. Perhaps should have halved the recipe for this experiment with the new flour to avoid waste.",
+          "notable": true,
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-18T15:58:14Z",
+          "raw": "autolyse start. for 60 minutes due to bsm flour",
+          "curated": "Autolyse start — 60min for the BSM stone-ground flour.",
+          "notable": true,
+          "processing": "autolyse"
+        },
+        {
+          "timestamp": "2026-05-18T15:58:31Z",
+          "raw": "79.3 dough temp",
+          "curated": "Dough temp 79.3°F at autolyse mix.",
+          "notable": true,
+          "processing": "autolyse"
+        },
+        {
+          "timestamp": "2026-05-18T17:00:58Z",
+          "raw": "aliquot 0%",
+          "curated": "Aliquot baseline 0% — taken after incorporating salt.",
+          "notable": true,
+          "stepId": "ADD_SALT",
+          "prompt": "Take aliquot sample after incorporating salt",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-18T17:01:15Z",
+          "raw": "aliquot and salt added for first stretch and fold. 80.1 degree dough temp",
+          "curated": "Salt + aliquot baseline added for first stretch and fold. Dough temp 80.1°F.",
+          "notable": true,
+          "stepId": "FOLD_1",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-18T17:38:52Z",
+          "raw": "78 degrees.",
+          "curated": "Fold 2 — dough temp 78°F.",
+          "notable": false,
+          "stepId": "FOLD_2",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-18T18:19:11Z",
+          "raw": "78.1",
+          "curated": "Fold 3 — dough temp 78.1°F.",
+          "notable": false,
+          "stepId": "FOLD_3",
+          "prompt": "Record dough temperature",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-18T19:19:54Z",
+          "raw": "30% aliquot. monitoring still.",
+          "curated": "Aliquot at 30% — monitoring still.",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-18T20:30:16Z",
+          "raw": "aliquot at 64%. good to preshape",
+          "curated": "Aliquot at 64% — good to preshape.",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-18T21:06:55Z",
+          "raw": "bench rested for 20 minutes. started preshape. yield was 1893. target for each loaf 946. i got around 940 for one loaf and i'm sure i lost a bit of the yield when getting it out of bowl. letting preshape rest for 20 minutes.",
+          "curated": "Bench rested 20min, started preshape. Yield 1893g; target 946g per loaf. Got ~940g for first loaf (lost a bit in transfer from bowl). Letting preshape rest 20min.",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-18T21:39:00Z",
+          "raw": "i shaped one.. not sure i'm happy with the surface tension in the second so i'm gonna let it bench rest for 20 minutes or so. \n\nfirst loaf weighed when i shaped and placed in basket 940g",
+          "curated": "Shaped loaf 1 (940g into banneton). Loaf 2 surface tension unsatisfying — bench resting another 20min before reshape.",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-18T22:12:49Z",
+          "raw": "shaped the other loaf. 954g",
+          "curated": "Shaped loaf 2 — 954g into banneton (after second bench rest).",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-19T12:53:37Z",
+          "raw": "baked first loaf. i'm adding 5 minutes and lowering to 400 would like a more golden brown color. process was follows:",
+          "curated": "Loaf 1 baked. Want to add 5 min and lower to 400°F next time for more golden brown color.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-19T12:54:24Z",
+          "raw": "approx 20 minutes ago - lid off. 425 (20minute) \n\nbefore that, i did covered at 450 for 20. please calculate timestamps. \n\ni preheated for an hour at 490",
+          "curated": "Loaf 1 bake schedule (working back from this note at 7:54am): preheat 1hr @ 490°F (06:14), covered 450°F/20min (07:14), uncovered 425°F/20min (07:34), out at 07:54.",
+          "notable": true,
+          "processing": "bake | Timestamp inferred: 'approx 20 minutes ago' relative to 2026-05-19T12:54:24Z → uncovered start 2026-05-19T12:34:00Z; 'before that, covered 450 for 20' → covered start 2026-05-19T12:14:00Z; 'preheated for an hour' → preheat start 2026-05-19T11:14:00Z"
+        },
+        {
+          "timestamp": "2026-05-19T12:54:53Z",
+          "raw": "notable issue for first bake. perhaps morning brain and not enough light in the kitchen. i didn't notice that i hadn't closed the lid completely. this means steam was not trapped during initial bake.",
+          "curated": "Notable issue: didn't notice Dutch oven lid wasn't fully closed during the covered phase. Steam not trapped. Morning brain + poor kitchen light.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-19T13:33:23Z",
+          "raw": "30 minutes ago i preheated at 500. second loaf scored and placed into oven 450. 20 minute start",
+          "curated": "Loaf 2 in oven at 8:33am — covered 450°F/20min. Preheat #2 started 30min prior at 500°F (08:03).",
+          "notable": true,
+          "processing": "bake | Timestamp inferred: '30 minutes ago i preheated at 500' relative to 2026-05-19T13:33:23Z → preheat #2 start 2026-05-19T13:03:00Z"
+        }
+      ],
+      "bake_stats": {
+        "confidence": "medium",
+        "dough_temps": [
+          {
+            "time": "2026-05-18 - 10:58",
+            "temp_f": 79.3,
+            "note": "autolyse mix"
+          },
+          {
+            "time": "2026-05-18 - 12:01",
+            "temp_f": 80.1,
+            "note": "after salt + fold 1"
+          },
+          {
+            "time": "2026-05-18 - 12:38",
+            "temp_f": 78.0,
+            "note": "fold 2"
+          },
+          {
+            "time": "2026-05-18 - 13:19",
+            "temp_f": 78.1,
+            "note": "fold 3"
+          }
+        ],
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-05-18",
+            "temp_f": 76.6,
+            "note": "pre-bake, autolyse start"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-05-18 - 12:01",
+            "type": "stretch_fold",
+            "note": "salt incorporated + fold 1"
+          },
+          {
+            "time": "2026-05-18 - 12:38",
+            "type": "stretch_fold",
+            "note": "fold 2"
+          },
+          {
+            "time": "2026-05-18 - 13:19",
+            "type": "stretch_fold",
+            "note": "fold 3"
+          }
+        ],
+        "aliquot_rises": [
+          {
+            "time": "2026-05-18 - 12:00",
+            "rise_pct": 0,
+            "stage": "bulk",
+            "note": "salt-in baseline"
+          },
+          {
+            "time": "2026-05-18 - 14:19",
+            "rise_pct": 30,
+            "stage": "bulk"
+          },
+          {
+            "time": "2026-05-18 - 15:30",
+            "rise_pct": 64,
+            "stage": "bulk",
+            "note": "preshape go"
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "start": "2026-05-18 - 16:06",
+            "duration_min": 33,
+            "note": "Preshape bench rest, loaf 1 shaped at end (loaf 2 needed extra time for surface tension)"
+          },
+          {
+            "type": "bench_rest",
+            "start": "2026-05-18 - 16:39",
+            "duration_min": 33,
+            "note": "Loaf 2 extra bench rest after first attempt (surface tension not satisfying)"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-05-18 - 16:39",
+            "end": "2026-05-19 - 07:14",
+            "duration_min": 875,
+            "note": "Loaf 1: ~14hr 35min"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-05-18 - 17:12",
+            "end": "2026-05-19 - 07:14",
+            "duration_min": 842,
+            "note": "Loaf 2: ~14hr 2min"
+          }
+        ],
+        "shape_time": "2026-05-18 - 16:39",
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 490,
+            "duration_min": 60,
+            "start_time": "2026-05-19 - 06:14",
+            "note": "loaf 1; inferred from 'preheated 1hr at 490' at 7:54am"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "start_time": "2026-05-19 - 07:14",
+            "note": "loaf 1; LID NOT FULLY CLOSED — steam loss; inferred from 'before that covered 450 for 20'"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 20,
+            "start_time": "2026-05-19 - 07:34",
+            "note": "loaf 1; inferred from 'approx 20 min ago lid off' at 7:54am; out 07:54, internal ~208°F, hollow knock"
+          },
+          {
+            "stage": "preheat",
+            "temp_f": 500,
+            "duration_min": 30,
+            "start_time": "2026-05-19 - 08:03",
+            "note": "loaf 2; inferred from '30 min ago preheated 500' at 8:33am"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "start_time": "2026-05-19 - 08:33",
+            "note": "loaf 2"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "start_time": "2026-05-19 - 08:53",
+            "note": "loaf 2; Tartine spec; inferred from Tartine schedule + step-down sequence"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 5,
+            "start_time": "2026-05-19 - 09:13",
+            "note": "loaf 2; step 2 for browning; inferred"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 350,
+            "duration_min": 5,
+            "start_time": "2026-05-19 - 09:18",
+            "note": "loaf 2; step 3 for browning; couldn't hit Tartine's 412°F internal target; inferred"
+          }
+        ]
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Marquis (Barton Springs Mill, 100% stone-ground whole)",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Barton Springs Mill — Dripping Springs, TX",
+              "confidence": "high",
+              "rationale": "100% Marquis sub for first heritage-flour bake. Stone-ground hard red winter wheat, ~10.5-12% protein. 1kg bag, weighed exactly 1000g."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-19",
+        "temp_high_f": 86.7,
+        "temp_low_f": 70.6,
+        "humidity_avg_percent": 84,
+        "condition": "Rain",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "sourceType": "manual",
+            "sourceName": "Barton Springs Mill Marquis (certified organic, stone-ground whole)",
+            "packageSize": "2.5 lb (~1134g)",
+            "packagePrice": 13.00,
+            "cost": 11.46,
+            "amount": 1000,
+            "unit": "g",
+            "name": "Marquis (Barton Springs Mill, 100% stone-ground whole)"
+          },
+          {
+            "ingredientId": "water",
+            "sourceType": "rate",
+            "sourceName": "Tap water",
+            "packageSize": "n/a",
+            "packagePrice": 0,
+            "cost": 0,
+            "amount": 700,
+            "unit": "g",
+            "name": "Water"
+          },
+          {
+            "ingredientId": "starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% flour rate (homemade, flour + water already counted)",
+            "packageSize": "$0/g composite",
+            "packagePrice": 0,
+            "cost": 0,
+            "amount": 200,
+            "unit": "g",
+            "name": "Active Sourdough Starter"
+          },
+          {
+            "ingredientId": "salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.12,
+            "amount": 20,
+            "unit": "g",
+            "name": "Fine Sea Salt"
+          }
+        ],
+        "total": 11.58,
+        "perServing": 5.79,
+        "servings": 2,
+        "date": "2026-05-19"
+      }
     }
   ],
   "research": {
