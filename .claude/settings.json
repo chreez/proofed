@@ -24,6 +24,29 @@
           }
         ]
       }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/chris/workspace/bsm-mcp-server/hooks/session-start.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "mcp__bsm__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/chris/workspace/bsm-mcp-server/hooks/pre-tool-use.sh",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
