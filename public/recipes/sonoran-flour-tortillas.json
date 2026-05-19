@@ -28,8 +28,61 @@
       "itemsPerBatch": 1
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "change_log": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-05-18",
+      "summary": "Added Tex-Mex Whole Wheat variant to technical_notes — Mediterranean WW + baking powder + shortening, smaller diameter, slightly thicker. Master recipe ingredients unchanged.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "sonora_flour",
+              "name": "Sonora '00' Heritage Soft White Wheat Flour",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents",
+              "confidence": "high",
+              "rationale": "Heritage soft white wheat ~10-11.5% protein, gliadin-leaning. The variety this dish was built on in Sonora since ~1542."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents",
+              "confidence": "high",
+              "rationale": "1.7% of flour."
+            },
+            {
+              "id": "lard",
+              "name": "Lard (Manteca de Cerdo)",
+              "total": 60,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 7/8 agents",
+              "confidence": "high",
+              "rationale": "20% of flour."
+            },
+            {
+              "id": "water",
+              "name": "Hot Water (160-180°F / 71-82°C)",
+              "total": 180,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1: 8/8 agents",
+              "confidence": "high",
+              "rationale": "60% hydration."
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.0.0",
       "date": "2026-05-17",
@@ -624,6 +677,11 @@
       "title": "Fat Crystal Behavior: Cold-Cut-In vs Melted",
       "category": "technique",
       "text": "Two valid fat techniques produce different textures. Cold-cut-in (firm lard rubbed into flour like pie dough): creates discrete fat pockets that translate to flakier, more laminated tortillas — Kenji's 'Thin & Tender' approach. Melted/soft fat (room-temp lard rubbed in): more uniform, more pliable, less laminated — most Mexican home cooks. Lard has large irregular fat crystals vs shortening's small uniform crystals; this is why lard produces flakier-but-pliable texture and shortening produces uniformly tender."
+    },
+    {
+      "title": "Tex-Mex Whole Wheat Variant — Mediterranean WW + Baking Powder",
+      "category": "substitution",
+      "text": "A genuinely different tortilla tradition — not Sonoran. Tex-Mex / Norteño style is thicker (~3mm vs paper-thin Sonoran), smaller (15-18cm / 6-7\"), uses baking powder for mechanical lift (Larousse: Chihuahua marker that spread north into Texas), and traditionally vegetable shortening. The thicker profile + powder lift accommodates whole wheat's gluten-disrupting bran beautifully.\n\n**Formula** (10 × 15-18cm / 6-7\" tacos):\n• Mediterranean WW flour 300g (100%)\n• Fine sea salt 5g (1.7%)\n• Baking powder 4g (1.3%) — the Tex-Mex marker\n• Vegetable shortening or lard 60g (20%)\n• Hot water (160-180°F / 71-82°C) 200g (67% — +7% vs canonical for bran hydration)\n\n**Method deltas vs canonical:**\n1. Whisk baking powder into the flour + salt first (ensures even distribution).\n2. Rest 45-60 min (not 30) — bran needs time to fully hydrate. If skipped, dough will continue absorbing water during rolling, drying the sheet.\n3. Roll to ~3mm (not see-through). You won't get paper-thin with 100% WW — bran flecks become tear initiation sites.\n4. Cook on slightly cooler comal (~400°F / 204°C) and longer (45-60s/side) to give baking powder time to fully activate.\n5. Expect puff but less dramatic than 100% Sonora — bran cuts gluten chains, steam pockets weaker.\n\n**Texture expectation:** Chewier, denser, slightly grainy crumb. Nutty flavor. Pairs with bold fillings (carne asada, refried beans, queso) — doesn't disappear under salsa the way Sonoran-thin tortillas can.\n\n**Insurance blends:**\n• 50/50 Mediterranean WW + Sonora '00' — best of both: WW flavor with Sonora's gliadin stretch. Drop water to 190g.\n• 70/30 WW + Sonora — closer to 100% WW with handling insurance. Water 195g."
     },
     {
       "title": "Why Marquis and Rouge de Bordeaux Don't Work Solo",
