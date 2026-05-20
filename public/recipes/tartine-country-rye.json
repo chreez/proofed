@@ -1,0 +1,365 @@
+{
+  "meta": {
+    "name": "Tartine Country Rye",
+    "source": {
+      "name": "Tartine Bread",
+      "type": "adapted",
+      "author": "Chad Robertson",
+      "page": "118",
+      "accessed": "2026-05-20"
+    },
+    "yields": "2 loaves (~880g each baked)",
+    "total_time": "~21 hrs (25 min active)",
+    "description": "STUB — Country Rye variation from Tartine Bread (pg 118). 17% whole rye flour blended with bread flour at 80% hydration, 20% leaven, 2% salt. Workflow follows Simple Sourdough (proofed.) until proper Tartine instructions are transcribed. Bake log captured today.",
+    "prep_active_min": 25,
+    "proof_passive_min": 800,
+    "oven_occupancy_min": 89,
+    "bake_min": 44
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Sourdough Breads",
+      "subgroup": "Loaves",
+      "defaultYield": 2,
+      "unit": "loaves",
+      "servingsPerItem": 10,
+      "servingUnit": "slices",
+      "itemsPerBatch": 1
+    }
+  },
+  "version": "v0.1.0",
+  "change_log": [
+    {
+      "version": "v0.1.0",
+      "date": "2026-05-20",
+      "summary": "Initial stub. Captures Tartine Country Rye (pg 118) ingredient block and baker percentages to support today's bake log. Workflow steps are placeholders pointing to Simple Sourdough (proofed.) until Tartine instructions are transcribed.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "White Bread Flour",
+              "total": 830,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "83% bread flour — base for Country Rye blend. 12-13% protein for gluten structure."
+            },
+            {
+              "id": "whole_rye_flour",
+              "name": "Whole Rye Flour (medium fine)",
+              "total": 170,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "17% whole rye, medium fine grind — Tartine's Country Rye ratio. Fruity, earthy depth without dominating gluten network."
+            },
+            {
+              "id": "water",
+              "name": "Water (75°F / 24°C)",
+              "total": 800,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "80% hydration. Mix temperature 75°F (24°C) per Tartine method to target DDT in low 70s."
+            },
+            {
+              "id": "leaven",
+              "name": "Leaven",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "20% inoculation. Tartine leaven = fed pre-ferment built from starter the night before (1 tbsp starter + 200g flour + 200g water at 78-80°F, ripens 8-12 hrs)."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Added with 50g reserved water after autolyse per Tartine method."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Leaven → mix → bulk ferment"
+    },
+    {
+      "id": "V2a",
+      "name": "Proofing Basket 1 (lined with towel)",
+      "reuse": "Shaping → cold proof (loaf 1)"
+    },
+    {
+      "id": "V2b",
+      "name": "Proofing Basket 2 (lined with towel)",
+      "reuse": "Shaping → cold proof (loaf 2)"
+    },
+    {
+      "id": "V3",
+      "name": "Dutch Oven with Lid"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Mixing Bowl",
+          "Proofing Basket 1 (lined with towel)",
+          "Proofing Basket 2 (lined with towel)",
+          "Dutch Oven with Lid"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Bench Scraper",
+          "Bread Lame or Sharp Knife",
+          "Parchment Paper",
+          "Plastic Wrap",
+          "Wire Rack",
+          "Clean Linen or Cotton Towel",
+          "Rice Flour (for dusting towel)",
+          "Thermometer (instant-read)"
+        ],
+        "ingredients": [
+          {
+            "id": "bread_flour",
+            "name": "White Bread Flour",
+            "total": 830,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tartine Bread pg 118",
+            "confidence": "high",
+            "rationale": "83% bread flour — base for Country Rye blend. 12-13% protein for gluten structure."
+          },
+          {
+            "id": "whole_rye_flour",
+            "name": "Whole Rye Flour (medium fine)",
+            "total": 170,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tartine Bread pg 118",
+            "confidence": "high",
+            "rationale": "17% whole rye, medium fine grind — Tartine's Country Rye ratio."
+          },
+          {
+            "id": "water",
+            "name": "Water (75°F / 24°C)",
+            "total": 800,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tartine Bread pg 118",
+            "confidence": "high",
+            "rationale": "80% hydration. Mix temperature 75°F (24°C)."
+          },
+          {
+            "id": "leaven",
+            "name": "Leaven",
+            "total": 200,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tartine Bread pg 118",
+            "confidence": "high",
+            "rationale": "20% inoculation. Fed pre-ferment built from starter the night before."
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 20,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tartine Bread pg 118",
+            "confidence": "high",
+            "rationale": "2% of flour weight."
+          }
+        ]
+      },
+      "states": [
+        "PREP_WORKSPACE"
+      ]
+    },
+    {
+      "id": "WORKFLOW",
+      "title": "Workflow (Stub — see Simple Sourdough)",
+      "gather": null,
+      "states": [
+        "FOLLOW_SIMPLE_SOURDOUGH"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Gather all vessels, equipment, and ingredients. Weigh out 830g bread flour, 170g whole rye flour, 800g water (warmed to 75°F / 24°C), 200g ripe leaven, and 20g salt. Reserve 50g of the water separately for the salt addition after autolyse.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed and at target temps; vessels and equipment laid out",
+      "notes": [
+        {
+          "text": "Leaven must be ripe — passes float test, smells sweet/yogurty. Tartine builds leaven 8-12 hrs ahead from 1 tbsp starter + 200g 50/50 bread/whole wheat flour + 200g 80°F water at warm room temperature.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Water temperature 75°F (24°C) is the Tartine target for the mix. Adjust slightly warmer in cold kitchens, cooler in hot ones, to land dough at 78-82°F (26-28°C) DDT.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FOLLOW_SIMPLE_SOURDOUGH",
+      "title": "Follow Simple Sourdough Workflow (STUB)",
+      "direction": "STUB — until proper Tartine instructions are transcribed, follow the Simple Sourdough (proofed.) workflow for the remaining steps: combine ingredients, stretch & fold (3 sets every 30 min), overnight bulk ferment, divide and shape, cold proof in fridge, bake in preheated Dutch oven (covered then uncovered). See simple-sourdough.json on the recipes index.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Bake complete — both loaves on cooling rack",
+      "notes": [
+        {
+          "text": "This is a STUB workflow. Tartine's Country Rye method differs from Simple Sourdough in important ways (autolyse, salt addition with reserved water, slap-and-fold, longer bulk with 6 folds at 30-min intervals, etc). Transcribe proper instructions from Tartine Bread pg 118 before relying on this recipe for guidance.",
+          "critical": true,
+          "source": "agent"
+        }
+      ]
+    }
+  ],
+  "nutrition": {
+    "servings": 10,
+    "servingSize": "1 slice (per loaf, 10 slices each)",
+    "calculatedDate": "2026-05-20",
+    "dataSource": "USDA FoodData Central (computed mechanically — verify before publishing)",
+    "totals": {
+      "calories": 1954.6,
+      "protein": 69.2,
+      "totalFat": 10,
+      "saturatedFat": 1.3,
+      "carbohydrates": 395.6,
+      "sugar": 2.1,
+      "fiber": 30.4,
+      "sodium": 3887.8
+    },
+    "perServing": {
+      "calories": 195.5,
+      "protein": 6.9,
+      "totalFat": 1,
+      "saturatedFat": 0.1,
+      "carbohydrates": 39.6,
+      "sugar": 0.2,
+      "fiber": 3,
+      "sodium": 388.8
+    },
+    "breakdown": [
+      {
+        "ingredientId": "bread_flour",
+        "ingredientName": "White Bread Flour",
+        "amount": 415,
+        "fdcId": 168896,
+        "calories": 1498.2,
+        "protein": 49.7,
+        "totalFat": 6.9,
+        "saturatedFat": 1,
+        "carbohydrates": 301,
+        "sugar": 1.1,
+        "fiber": 10,
+        "sodium": 8.3
+      },
+      {
+        "ingredientId": "whole_rye_flour",
+        "ingredientName": "Whole Rye Flour",
+        "amount": 85,
+        "fdcId": 169747,
+        "calories": 275.4,
+        "protein": 13.5,
+        "totalFat": 2.3,
+        "saturatedFat": 0.2,
+        "carbohydrates": 58.3,
+        "sugar": 0.8,
+        "fiber": 19.2,
+        "sodium": 0.9
+      },
+      {
+        "ingredientId": "leaven",
+        "ingredientName": "Ripe Leaven (100% hydration)",
+        "amount": 100,
+        "fdcId": null,
+        "calories": 181,
+        "protein": 6,
+        "totalFat": 0.8,
+        "saturatedFat": 0.1,
+        "carbohydrates": 36.3,
+        "sugar": 0.1,
+        "fiber": 1.2,
+        "sodium": 1.1
+      },
+      {
+        "ingredientId": "water",
+        "ingredientName": "Water",
+        "amount": 400,
+        "fdcId": 173647,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 1.6
+      },
+      {
+        "ingredientId": "salt",
+        "ingredientName": "Fine Sea Salt",
+        "amount": 10,
+        "fdcId": 173468,
+        "calories": 0,
+        "protein": 0,
+        "totalFat": 0,
+        "saturatedFat": 0,
+        "carbohydrates": 0,
+        "sugar": 0,
+        "fiber": 0,
+        "sodium": 3875.9
+      }
+    ]
+  },
+  "cook_log": [],
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "350°F (175°C), 5-10 min for slices or 15 min for a half-loaf. Spritz with water for a crisp crust.",
+        "source": "agent"
+      },
+      {
+        "method": "Toaster/Air Fryer",
+        "detail": "Slice and toast directly — best for day-old bread.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Cut-side down on a board, room temp, same day. Freeze sliced in zip-lock for up to 1 month.",
+        "source": "agent"
+      }
+    ]
+  }
+}
