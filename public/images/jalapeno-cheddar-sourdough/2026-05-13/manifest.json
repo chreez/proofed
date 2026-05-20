@@ -1,7 +1,7 @@
 {
   "recipeId": "jalapeno-cheddar-sourdough",
   "date": "2026-05-13",
-  "processedAt": "2026-05-13T21:39:20.740Z",
+  "processedAt": "2026-05-20T15:33:13.156Z",
   "photos": [
     {
       "name": "01-bulk-fold-skin",
@@ -56,6 +56,12 @@
       "thumb": "09-dutch-oven-final-2-400w.webp",
       "src": "09-dutch-oven-final-2-800w.webp",
       "summary": "Dutch oven batard from the front — open score showing green jalapeño and orange cheddar bubbling out, deep caramelization streaks running down the crust."
+    },
+    {
+      "name": "10-friend-serving",
+      "thumb": "10-friend-serving-400w.webp",
+      "src": "10-friend-serving-800w.webp",
+      "summary": "Friend's gift loaf served as crostini — toasted jalapeño cheddar sourdough rounds on a wooden board alongside two creamy spreads, cucumber spears, and sliced radishes, set out in dappled afternoon light."
     }
   ]
 }
