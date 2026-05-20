@@ -1,0 +1,185 @@
+{
+  "recipeId": "tartine-country-rye",
+  "date": "2026-05-20",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "bread_flour",
+      "name": "White Bread Flour",
+      "recipeAmount": 830,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B The Baker's Scoop Bread Flour",
+          "brand": "H-E-B",
+          "size": "5 lbs",
+          "sizeGrams": 2267.96,
+          "price": 3.78,
+          "salePrice": null,
+          "unitPrice": "$0.05/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lbs",
+          "sizeGrams": 2267.96,
+          "price": 5.78,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Organics Unbleached Bread Flour",
+          "brand": "H-E-B Organics",
+          "size": "5 lbs",
+          "sizeGrams": 2267.96,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "10 lbs",
+          "sizeGrams": 4535.92,
+          "price": 10.99,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "Central Market Unbleached Bread Flour",
+          "brand": "Central Market",
+          "size": "5 lbs",
+          "sizeGrams": 2267.96,
+          "price": 4.88,
+          "salePrice": null,
+          "unitPrice": "$0.06/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Organic Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lb",
+          "sizeGrams": 2267.96,
+          "price": 7.73,
+          "salePrice": null,
+          "unitPrice": "$0.10/oz",
+          "inStock": true
+        },
+        {
+          "name": "Bob's Red Mill Artisan Bread Flour",
+          "brand": "Bob's Red Mill",
+          "size": "5 lb",
+          "sizeGrams": 2267.96,
+          "price": 5.98,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "whole_rye_flour",
+      "name": "Whole Rye Flour (medium fine)",
+      "recipeAmount": 170,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Bob's Red Mill Organic Stone Ground Dark Rye Flour",
+          "brand": "Bob's Red Mill",
+          "size": "1.25 lb",
+          "sizeGrams": 566.99,
+          "price": 3.48,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        },
+        {
+          "name": "Arrowhead Mills Organic Rye Flour",
+          "brand": "Arrowhead Mills",
+          "size": "1.25 lb",
+          "sizeGrams": 566.99,
+          "price": 5.48,
+          "salePrice": null,
+          "unitPrice": "$0.27/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "water",
+      "name": "Water (75°F / 24°C)",
+      "recipeAmount": 800,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "leaven",
+      "name": "Leaven",
+      "recipeAmount": 175,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Fine Sea Salt",
+      "recipeAmount": 20,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Morton Fine Sea Salt",
+          "brand": "Morton",
+          "size": "17.6 oz",
+          "sizeGrams": 498.95,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        },
+        {
+          "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
+          "brand": "H-E-B",
+          "size": "26.5 oz",
+          "sizeGrams": 751.27,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Redmond Real Salt Fine Sea Salt",
+          "brand": "Redmond Real Salt",
+          "size": "10 oz",
+          "sizeGrams": 283.5,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "La Baleine Fine Sea Salt Shaker",
+          "brand": "La Baleine",
+          "size": "4.4 oz",
+          "sizeGrams": 124.74,
+          "price": 2.18,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "Southern Style Spices Bulk Fine California Sea Salt",
+          "brand": "Southern Style Spices",
+          "size": "1 lb",
+          "sizeGrams": 453.59,
+          "price": 2.78,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        }
+      ]
+    }
+  ]
+}

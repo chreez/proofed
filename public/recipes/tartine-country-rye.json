@@ -341,7 +341,219 @@
       }
     ]
   },
-  "cook_log": [],
+  "cook_log": [
+    {
+      "date": "2026-05-20",
+      "start_date": "2026-05-19",
+      "version": "v0.1.0",
+      "summary": "First tartine country rye bake. Levain short (175g vs 200g), schedule slipped, dough probably overproofed. Cold-retarded overnight; loaf 2 (side score, longer covered bake) shaped better than loaf 1 (cross score). Crumb even but bubbled, flavor mild.",
+      "notes": [
+        "Levain short — built 175g vs 200g recipe target. Should have halved the recipe; didn't.",
+        "Autolyse start 12:49pm 5/19. Kitchen 77.8°F, 50% humidity. May have overshot autolyse (~2hr in by 2:56pm).",
+        "Salt + reserved water added 3:44pm 5/19. DDT 79°F. Dough very extensible.",
+        "S&F set at 4:18pm 5/19, DDT 78.6°F. Last S&F at 4:54pm. Super high hydration, hard to handle.",
+        "Continued room-temp bulk until preshape ~7:36pm 5/19. No aliquot — schedule was off, seemed pointless.",
+        "Preshape → rest → shape → straight into fridge. Loaf 1 shaped 998g; loaf 2 shaped 952g (needed two shaping passes). Suspected overproof going in.",
+        "Cold retard overnight in fridge (~12hr).",
+        "Loaf 1: preheat 490°F × 45 min. Bake covered 20 min @ 450°F, uncovered 23 min @ 450°F. Internal 211°F. Cross score.",
+        "Loaf 2: preheat 500°F × 30 min. Bake covered 25 min @ 450°F, uncovered 25 min @ 450°F. Side score. Better shape than loaf 1.",
+        "Tasted loaf 1 only: mild, less complex than standard full whole wheat. Crust good. Crumb evenly distributed with some large bubbles — likely overproof + WW + 80% hydration combined."
+      ],
+      "photos": [
+        {
+          "src": "/images/tartine-country-rye/2026-05-20/img-7630-800w.webp",
+          "thumb": "/images/tartine-country-rye/2026-05-20/img-7630-400w.webp",
+          "alt": "Two shaped loaves resting on silicone mat under inverted glass bowls, bench scraper between them — preshape/shape stage on the kitchen counter."
+        },
+        {
+          "src": "/images/tartine-country-rye/2026-05-20/img-7632-800w.webp",
+          "thumb": "/images/tartine-country-rye/2026-05-20/img-7632-400w.webp",
+          "alt": "Loaf 1 fresh out of the oven on a copper wire rack — cross score blown wide open with strong oven spring, dark caramelized crust dusted with flour."
+        },
+        {
+          "src": "/images/tartine-country-rye/2026-05-20/img-7633-800w.webp",
+          "thumb": "/images/tartine-country-rye/2026-05-20/img-7633-400w.webp",
+          "alt": "Side profile of loaf 1 next to a wooden-handled bread knife showing height — tall, well-domed, deep slash flared open with a defined ear."
+        },
+        {
+          "src": "/images/tartine-country-rye/2026-05-20/img-7635-800w.webp",
+          "thumb": "/images/tartine-country-rye/2026-05-20/img-7635-400w.webp",
+          "alt": "Two crumb slices in direct sunlight with a ruler showing ~4 inches — open, evenly distributed crumb with a few larger holes, creamy interior, thin crust."
+        },
+        {
+          "src": "/images/tartine-country-rye/2026-05-20/img-7638-800w.webp",
+          "thumb": "/images/tartine-country-rye/2026-05-20/img-7638-400w.webp",
+          "alt": "Three-quarter view of loaf 2 on the wire rack — single side score gaping into a thick ear, crust mottled mahogany and floured white across the top."
+        },
+        {
+          "src": "/images/tartine-country-rye/2026-05-20/img-7636-800w.webp",
+          "thumb": "/images/tartine-country-rye/2026-05-20/img-7636-400w.webp",
+          "alt": "Loaf 2 cooling on the wire rack — single curved side score blown open into a clean ear, floury dark amber crust with light blistering."
+        }
+      ],
+      "next_time": [
+        { "text": "Build enough starter — don't get caught short on levain" },
+        { "text": "Halve the recipe when starter capacity is limited" },
+        { "text": "Try 25 min covered + 25 min uncovered for both loaves (loaf 2 shape was better)" },
+        { "text": "Try side score over cross score — loaf 2 result was better shaped" },
+        { "text": "Track aliquot rise even on irregular schedule — without it, hard to call overproof in real time" },
+        { "text": "Watch for autolyse overshoot — autolyse felt long this round" }
+      ],
+      "bake_notes": [
+        { "timestamp": "2026-05-19T17:49:18Z", "raw": "using this recipe as a stub for tartine recipe using rye flour. will provide recipe upon bake log flow. autolyse start", "curated": "Using simple-sourdough as scratchpad stub — actual bake is Tartine Country Rye. Autolyse start.", "notable": true, "processing": "prep" },
+        { "timestamp": "2026-05-19T17:49:28Z", "raw": "Kitchen temp (°F)?: 77.8", "curated": "Pre-bake kitchen temp: 77.8°F", "notable": true, "stepId": "_pre_bake", "prompt": "Kitchen temp (°F)?", "processing": "prep" },
+        { "timestamp": "2026-05-19T17:49:55Z", "raw": "50% humidity ambient. \n\ncould only procure 175g levain. should have halved the recipe because i didn't adequately create enough starter.", "curated": "50% ambient humidity. Could only procure 175g levain (vs 200g recipe target) — should have halved the recipe, starter build was inadequate.", "notable": true, "processing": "prep" },
+        { "timestamp": "2026-05-19T19:56:10Z", "raw": "may be overshooting the autolyse period", "curated": "May be overshooting the autolyse period.", "notable": false, "processing": "autolyse" },
+        { "timestamp": "2026-05-19T20:44:42Z", "raw": "79 degree dough temp after adding salt. dough feels very extensible.", "curated": "DDT 79°F after salt addition. Dough feels very extensible.", "notable": true, "processing": "mix" },
+        { "timestamp": "2026-05-19T21:18:21Z", "raw": "78.6 dough temp. stretch and fold. monitoring closely due to irregular schedule", "curated": "DDT 78.6°F. Stretch and fold. Monitoring closely due to irregular schedule.", "notable": true, "processing": "bulk_ferment" },
+        { "timestamp": "2026-05-19T21:54:17Z", "raw": "last s&f. super high hydration dough. will need to figure out when this is manageable enough to shape. checking back in a hour", "curated": "Last S&F. Super high hydration dough — will need to figure out when it's manageable enough to shape. Checking back in an hour.", "notable": true, "processing": "bulk_ferment" },
+        { "timestamp": "2026-05-20T00:36:00Z", "raw": "preshape (inferred from 'about 15 minutes ago' at 2026-05-20T00:51:29Z)", "curated": "Preshape start — loaf 1 measured ~1kg, loaf 2 unmeasured at preshape.", "notable": true, "processing": "shaping | Timestamp inferred: 'about 15 minutes ago' relative to 2026-05-20T00:51:29Z → 2026-05-20T00:36:00Z" },
+        { "timestamp": "2026-05-20T00:51:29Z", "raw": "dough may be overproofed unfortunately but i'm gonna stick it out. i preshaped one loaf around 1kg about 15 minutes ago (also preshaped the other but didn't measure) will provide actual measurements when i place in shaping basket", "curated": "Dough may be overproofed — sticking it out. Preshaped one loaf ~1kg about 15 minutes ago; preshaped the other (unmeasured). Will measure on shape into basket.", "notable": true, "processing": "shaping" },
+        { "timestamp": "2026-05-20T12:23:00Z", "raw": "loaf 1 into Dutch oven, covered bake start (inferred — 20 min covered + 23 min uncovered, out at 13:06Z)", "curated": "Loaf 1 into Dutch oven — covered bake start, 450°F.", "notable": true, "processing": "bake | Timestamp inferred from loaf 1 out time 2026-05-20T13:06:21Z minus 20 min covered + 23 min uncovered" },
+        { "timestamp": "2026-05-20T12:43:00Z", "raw": "loaf 1 uncovered start (inferred — out 13:06Z minus 23 min uncovered)", "curated": "Loaf 1 lid off — uncovered bake start, 450°F.", "notable": false, "processing": "bake | Timestamp inferred from loaf 1 out time 2026-05-20T13:06:21Z minus 23 min uncovered" },
+        { "timestamp": "2026-05-20T13:06:21Z", "raw": "first loaf out of oven now", "curated": "First loaf out of oven. Internal 211°F (per next note).", "notable": true, "processing": "bake" },
+        { "timestamp": "2026-05-20T13:07:36Z", "raw": "process for first loaf (should be able to derive timestamps)\n\n23 minutes uncovered. temp got up to 211 - will try 25 minutes uncovered for second loaf\n\n20 minutes covered. bother covered and uncovered at 450\n\npreheated at 490 for 45 minutes", "curated": "Loaf 1 process — 20 min covered + 23 min uncovered at 450°F, internal 211°F. Preheat was 490°F for 45 min. Will try 25 min uncovered for loaf 2.", "notable": true, "processing": "bake" },
+        { "timestamp": "2026-05-20T13:08:00Z", "raw": "started preheat at 500 for 30 minutes. \n\nfirst loaf was a cross score. will try side score for second loaf", "curated": "Started loaf 2 preheat at 500°F for 30 min. Loaf 1 was a cross score; will try side score for loaf 2.", "notable": true, "processing": "bake" },
+        { "timestamp": "2026-05-20T13:34:00Z", "raw": "loaf 2 covered bake start (inferred — 25 min covered, lid off at 13:59Z)", "curated": "Loaf 2 into Dutch oven — covered bake start, 450°F.", "notable": false, "processing": "bake | Timestamp inferred from loaf 2 lid-off 2026-05-20T13:59:09Z minus 25 min covered" },
+        { "timestamp": "2026-05-20T13:53:18Z", "raw": "second loaf covered in around 15 minutes ago 450", "curated": "Loaf 2 already covered ~15 min in at 450°F (user check-in; canonical covered start derived from 25 min total).", "notable": false, "processing": "bake" },
+        { "timestamp": "2026-05-20T13:59:09Z", "raw": "lid off 450 start", "curated": "Loaf 2 lid off — uncovered bake start, 450°F.", "notable": true, "processing": "bake" },
+        { "timestamp": "2026-05-20T14:24:00Z", "raw": "loaf 2 out of oven (inferred — 25 min uncovered from 13:59Z lid-off)", "curated": "Loaf 2 out of oven (25 min uncovered).", "notable": true, "processing": "bake | Timestamp inferred from loaf 2 lid-off 2026-05-20T13:59:09Z plus 25 min uncovered" },
+        { "timestamp": "2026-05-20T14:37:50Z", "raw": "did a 25 minute covered at 450. \n\nresulting second loaf had a more desirable shape. could be two variables (dutch oven and oven temp, or a shaping failure on loaf 1)", "curated": "Loaf 2 was 25 min covered at 450°F. Better shape than loaf 1 — could be Dutch oven + oven temp variables, or a shaping failure on loaf 1.", "notable": true, "processing": "result" },
+        { "timestamp": "2026-05-20T14:38:49Z", "raw": "taste was mild and less complex than the standard full whole wheat bread. but still nice. crust was good. i only tried loaf 1. crumb seemed pretty evenly distributed, only some large bubbles. possibly a symptom of overproof", "curated": "Tasted loaf 1: mild, less complex than standard full whole wheat. Still nice. Crust good. Crumb evenly distributed with some large bubbles — possibly an overproof symptom.", "notable": true, "processing": "result" },
+        { "timestamp": "2026-05-20T14:39:10Z", "raw": "well overproof AND the fact that it has whole wheat in it and it's a 80% hydration dough", "curated": "Layered cause for the crumb pattern: overproof, plus whole wheat content, plus 80% hydration.", "notable": false, "processing": "result" }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-20",
+        "temp_high_f": 80.5,
+        "temp_low_f": 66.6,
+        "humidity_avg_percent": 88,
+        "condition": "Rain",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "White Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 830,
+            "unit": "g",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 2.01
+          },
+          {
+            "ingredientId": "whole_rye_flour",
+            "name": "Whole Rye Flour (medium fine)",
+            "sourceType": "manual",
+            "sourceName": "BSM Ryman Rye Flour (certified organic) — 2.5 lb / Whole Grain Flour, $12.00. UPS receipt #1Z92Y52X0331346752, fulfilled 2026-05-15.",
+            "amount": 170,
+            "unit": "g",
+            "packageSize": "2.5 lb",
+            "packagePrice": 12.0,
+            "cost": 1.8
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water (75°F / 24°C)",
+            "sourceType": "rate",
+            "sourceName": "Filtered water (not yet priced)",
+            "amount": 800,
+            "unit": "g",
+            "packageSize": "not yet priced",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "leaven",
+            "name": "Leaven",
+            "sourceType": "manual",
+            "sourceName": "Starter approximation — 175g leaven ≈ 87.5g flour + 87.5g water built from inherited starter. Treated as zero-cost for now; future rule: amortize flour cost of the build into leaven.",
+            "amount": 175,
+            "unit": "g",
+            "packageSize": "0g",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.12
+          }
+        ],
+        "total": 3.93,
+        "perServing": 1.97,
+        "servings": 2,
+        "date": "2026-05-20"
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "White Bread Flour",
+              "total": 830,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "83% bread flour — base for Country Rye blend."
+            },
+            {
+              "id": "whole_rye_flour",
+              "name": "Whole Rye Flour (medium fine)",
+              "total": 170,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "17% whole rye, medium fine grind."
+            },
+            {
+              "id": "water",
+              "name": "Water (75°F / 24°C)",
+              "total": 800,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "80% hydration."
+            },
+            {
+              "id": "leaven",
+              "name": "Leaven",
+              "total": 175,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Bake-time delta — user reported short build (vs 200g recipe target)",
+              "confidence": "high",
+              "rationale": "17.5% inoculation — short by 25g from recipe target due to inadequate starter capacity."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine Bread pg 118",
+              "confidence": "high",
+              "rationale": "2% of flour weight."
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "reheat": {
     "methods": [
       {
