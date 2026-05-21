@@ -1,0 +1,67 @@
+{
+  "recipeId": "jalapeno-cheddar-sourdough",
+  "date": "2026-05-21",
+  "processedAt": "2026-05-21T21:04:32.322Z",
+  "photos": [
+    {
+      "name": "img-7650",
+      "thumb": "img-7650-400w.webp",
+      "src": "img-7650-800w.webp",
+      "summary": "Loaf 1 cooling on a white cutting board after bake, S-shape score visible across a deeply browned, blistered crust with pockets of caramelized cheese and jalapeño peeking through. Dark crust ring of overflowed cheese rims the base."
+    },
+    {
+      "name": "img-7652",
+      "thumb": "img-7652-400w.webp",
+      "src": "img-7652-800w.webp",
+      "summary": "Top-down view of loaf 1 showing the S-shape score open across the crown, flour-dusted ears framing a dark, glossy seam of melted cheese and jalapeño. Burnt cheese skirt fans out around the base."
+    },
+    {
+      "name": "img-7654",
+      "thumb": "img-7654-400w.webp",
+      "src": "img-7654-800w.webp",
+      "summary": "Loaf 2 cooling on a wire rack just out of the oven, flour-dusted crust with an S-shape score opened to reveal caramelized cheese and a glimpse of green jalapeño. Lower profile than loaf 1, with the score sitting flatter across the top."
+    },
+    {
+      "name": "img-7656",
+      "thumb": "img-7656-400w.webp",
+      "src": "img-7656-800w.webp",
+      "summary": "Cut interior of loaf 1 held in hand, showing an open, airy crumb with a concentrated band of melted cheddar and whole pickled jalapeño slices clustered through the center. Cheese and pepper distribution is uneven, pooled rather than dispersed."
+    },
+    {
+      "name": "img-7648-frame-001",
+      "thumb": "img-7648-frame-001-400w.webp",
+      "src": "img-7648-frame-001-800w.webp",
+      "summary": "Motion-blurred video frame of loaf 1 in the Dutch oven on parchment just after the uncovered bake, S-shape score visible with golden-orange caramelized cheese pooling along the seam. Dark cheese leak ring already forming on the parchment.",
+      "source": "video",
+      "sourceFile": "IMG_7648.MOV",
+      "frameIndex": 0
+    },
+    {
+      "name": "img-7648-frame-002",
+      "thumb": "img-7648-frame-002-400w.webp",
+      "src": "img-7648-frame-002-800w.webp",
+      "summary": "Loaf 1 in the Dutch oven on parchment, captured just out of the oven. S-shape score opened cleanly with deep amber-caramelized cheese pooled along the seam and dark cheese leak ring on the parchment.",
+      "source": "video",
+      "sourceFile": "IMG_7648.MOV",
+      "frameIndex": 1
+    },
+    {
+      "name": "img-7648-frame-003",
+      "thumb": "img-7648-frame-003-400w.webp",
+      "src": "img-7648-frame-003-800w.webp",
+      "summary": "Side-angle frame of loaf 1 in the Dutch oven, flour-dusted crust with the S-shape score running diagonally across the crown. Caramelized cheese fills the open seam and pools onto the surrounding parchment.",
+      "source": "video",
+      "sourceFile": "IMG_7648.MOV",
+      "frameIndex": 2
+    },
+    {
+      "name": "img-7648-frame-004",
+      "thumb": "img-7648-frame-004-400w.webp",
+      "src": "img-7648-frame-004-800w.webp",
+      "summary": "Close-up of loaf 1 still in the Dutch oven on parchment, S-shape score fully bloomed with glossy caramelized cheese filling the channel. Dark cheese leakage rings the base, parchment stained from sugars rendered out during the uncovered bake.",
+      "source": "video",
+      "sourceFile": "IMG_7648.MOV",
+      "frameIndex": 3
+    }
+  ]
+}

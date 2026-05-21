@@ -4367,6 +4367,451 @@
         "perServing": 3.16,
         "servings": 2
       }
+    },
+    {
+      "date": "2026-05-21",
+      "start_date": "2026-05-20",
+      "version": "v2.1.4",
+      "summary": "Two-loaf bake with new S-shape score. Loaf 1 followed usual 450°F preheat + recipe timings and rose well; loaf 2 sat on counter ~1hr during the 490°F reheat and came out flatter. Loaf 1 cut showed uneven cheese distribution.",
+      "notes": [
+        "Pre-bake kitchen 77.2°F (5/20 5:42pm).",
+        "Inclusions folded in at 7:06pm 5/20; DDT 73.9°F at 7:07pm.",
+        "Shape done ~11:40pm 5/20 → 45 min room-temp rest → into fridge ~12:25am 5/21.",
+        "Loaf 1: 60-min preheat at 450°F (usual practice — user noted recipe says 490°F, needs verification). Scored cold straight from fridge. 30 min covered + 15 min uncovered at 450°F. ~11:11am–11:56am.",
+        "Forgot to check internal temp on loaf 1.",
+        "Loaf 2 out of fridge ~11:41am, sat ~1hr at room temp during 490°F reheat between loaves.",
+        "Loaf 2: in at 12:41pm with S-shape score, oven dropped from 490 → 450, covered ~30 min, uncovered 425°F/10 min → 400°F/5 min, out ~1:26pm.",
+        "Loaf 2 came out flatter than loaf 1. Theory: room-temp rest during preheat softened structure vs direct-from-fridge.",
+        "Loaf 1 cut at 1:36pm — cheese distribution uneven, possibly because more cheese ended up in loaf 2.",
+        "Loaf 2 to be gifted next day; likely won't be cut today, may report crumb later."
+      ],
+      "photos": [
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7650-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7650-400w.webp",
+          "alt": "Loaf 1 cooling on a white cutting board after bake, S-shape score visible across a deeply browned, blistered crust with pockets of caramelized cheese and jalapeño peeking through. Dark crust ring of overflowed cheese rims the base."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7648-frame-004-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7648-frame-004-400w.webp",
+          "alt": "Close-up of loaf 1 still in the Dutch oven on parchment, S-shape score fully bloomed with glossy caramelized cheese filling the channel. Dark cheese leakage rings the base, parchment stained from sugars rendered out during the uncovered bake."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7656-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7656-400w.webp",
+          "alt": "Cut interior of loaf 1 held in hand, showing an open, airy crumb with a concentrated band of melted cheddar and whole jalapeño slices clustered through the center. Cheese and pepper distribution is uneven, pooled rather than dispersed."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7654-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7654-400w.webp",
+          "alt": "Loaf 2 cooling on a wire rack just out of the oven, flour-dusted crust with an S-shape score opened to reveal caramelized cheese and a glimpse of green jalapeño. Lower profile than loaf 1, with the score sitting flatter across the top."
+        },
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7652-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-05-21/img-7652-400w.webp",
+          "alt": "Top-down view of loaf 1 showing the S-shape score open across the crown, flour-dusted ears framing a dark, glossy seam of melted cheese and jalapeño. Burnt cheese skirt fans out around the base."
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Bake loaf 2 direct-from-fridge (skip room-temp warmup during reheat) — test if rise improves"
+        },
+        {
+          "text": "Improve cheese distribution between loaves during shaping"
+        },
+        {
+          "text": "Verify recipe preheat temperature — recipe JSON currently says 450°F but user recalls 490°F"
+        },
+        {
+          "text": "Report on loaf 2 crumb + cheese distribution when cut (gifted)"
+        }
+      ],
+      "bake_stats": {
+        "confidence": "medium",
+        "shape_time": "2026-05-20 - 23:40",
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-05-20",
+            "temp_f": 77.2,
+            "note": "pre-bake"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-05-20 - 19:06",
+            "type": "stretch_fold",
+            "note": "inclusion fold (recipe fold-inclusions step)"
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "start": "2026-05-20 - 23:40",
+            "end": "2026-05-21 - 00:25",
+            "duration_min": 45,
+            "note": "post-shape room-temp rest (~77°F kitchen). Inferred: 'shape done ~20 min ago' at 5/21 00:00 CDT → shape 23:40."
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-05-21 - 00:25",
+            "end": "2026-05-21 - 10:11",
+            "duration_min": 586,
+            "note": "loaf 1 — scored cold straight from fridge"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-05-21 - 00:25",
+            "end": "2026-05-21 - 11:41",
+            "duration_min": 676,
+            "note": "loaf 2"
+          },
+          {
+            "type": "bench_rest",
+            "start": "2026-05-21 - 11:41",
+            "end": "2026-05-21 - 12:41",
+            "duration_min": 60,
+            "note": "loaf 2 on counter ~1hr during 490°F reheat — likely cause of flatter loaf"
+          }
+        ],
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 450,
+            "duration_min": 60,
+            "start_time": "2026-05-21 - 10:11",
+            "note": "loaf 1; followed usual practice (user noted recipe states 490°F — needs verification)"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 30,
+            "start_time": "2026-05-21 - 11:11",
+            "note": "loaf 1"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 450,
+            "duration_min": 15,
+            "start_time": "2026-05-21 - 11:41",
+            "note": "loaf 1"
+          },
+          {
+            "stage": "preheat",
+            "temp_f": 490,
+            "duration_min": 45,
+            "start_time": "2026-05-21 - 11:56",
+            "note": "between loaves — back-to-temp"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 30,
+            "start_time": "2026-05-21 - 12:41",
+            "note": "loaf 2; dropped from 490 → 450 on entry, S-score"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 10,
+            "start_time": "2026-05-21 - 13:11",
+            "note": "loaf 2 — uncovered phase 1"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 400,
+            "duration_min": 5,
+            "start_time": "2026-05-21 - 13:21",
+            "note": "loaf 2 — uncovered phase 2, lower temp"
+          }
+        ]
+      },
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-20T22:42:24Z",
+          "raw": "77.2",
+          "curated": "Kitchen temp 77.2°F (pre-bake)",
+          "notable": true,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-21T00:06:49Z",
+          "raw": "inclusions folded in.",
+          "curated": "Inclusions folded in.",
+          "notable": false,
+          "stepId": "fold-inclusions",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-21T00:07:51Z",
+          "raw": "73.9 dough temp",
+          "curated": "DDT 73.9°F after inclusion fold.",
+          "notable": true,
+          "stepId": "fold-inclusions",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-21T04:40:00Z",
+          "raw": "shaping done about 20 minutes ago. room temp resting for about 45 minutes. will place in fridge after the room temp rest",
+          "curated": "Shape done. Plan: 45-min room-temp rest, then into fridge.",
+          "notable": true,
+          "processing": "shaping | Timestamp inferred: 'shaping done about 20 minutes ago' relative to 2026-05-21T05:00:21Z → 2026-05-21T04:40:21Z"
+        },
+        {
+          "timestamp": "2026-05-21T17:41:40Z",
+          "raw": "trying out an S shape score for both loaves. i followed recipe temperature and timings for the first loaf and the first loaf came out about 45 minutes (can infer timestamps from this)\n\nfor the last 45 minutes i preheated at 490 to get it back to temp. \n\nsecond loaf in now. S shape score.",
+          "curated": "Trying S-shape score on both loaves. Followed recipe temps and timings for loaf 1 — total bake ~45 min. Preheated at 490°F for the last 45 min to get oven back to temp. Loaf 2 in now with S-score.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-21T17:41:45Z",
+          "raw": "dropped to 450",
+          "curated": "Oven dropped to 450°F (from 490°F) when loaf 2 went in.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-21T17:50:36Z",
+          "raw": "first loaf was actually uncovered at 15 minutes before i pulled. forgot to check internal temp",
+          "curated": "Loaf 1 was uncovered for last 15 min before pull. Forgot to check internal temp.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-21T18:22:39Z",
+          "raw": "second loaf note. did uncovered 425 for 10 minutes and then lowering to 400 for 5 minutes",
+          "curated": "Loaf 2 uncovered phase: 425°F × 10 min, then dropped to 400°F × 5 min.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-05-21T18:35:54Z",
+          "raw": "second loaf was a bit flatter. possibly because i let room temp rest during preheat. this loaf might be better if scored and directly baked from fridge",
+          "curated": "Loaf 2 came out flatter than loaf 1. Theory: room-temp rest during preheat softened it. Next time try scoring + baking direct from fridge.",
+          "notable": true,
+          "processing": "result"
+        },
+        {
+          "timestamp": "2026-05-21T18:36:29Z",
+          "raw": "opening the first loaf. the cheese distribution didn't seem too even. maybe need to do better about distribution of the cheese. could have had a bunch go to the second loaf. will report when i cut open second loaf",
+          "curated": "Cut loaf 1 — cheese distribution uneven. Possible imbalance: more cheese may have gone into loaf 2. Will report when loaf 2 is cut.",
+          "notable": true,
+          "processing": "result"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 550,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 340,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 31,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 320,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 160
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 160
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Dough Mixing",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-21",
+        "temp_high_f": 83.6,
+        "temp_low_f": 69.2,
+        "humidity_avg_percent": 86,
+        "condition": "Rain",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 550,
+            "unit": "g",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 1.33
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Filtered water (not yet priced)",
+            "amount": 340,
+            "unit": "g",
+            "packageSize": "not yet priced",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter (100% hydration)",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 110,
+            "unit": "g",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 11,
+            "unit": "g",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.07
+          },
+          {
+            "ingredientId": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Instant Non-Fat Dry Milk",
+            "amount": 28,
+            "unit": "g",
+            "packageSize": "25.6 oz",
+            "packagePrice": 7.98,
+            "cost": 0.31
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "name": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Brown Sugar",
+            "amount": 31,
+            "unit": "g",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.42,
+            "cost": 0.08
+          },
+          {
+            "ingredientId": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "sourceType": "heb",
+            "sourceName": "Fresh Jalapeño Pepper",
+            "amount": 120,
+            "unit": "g",
+            "packageSize": "Avg. 0.165 lb",
+            "packagePrice": 0.16,
+            "cost": 0.26
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "sourceType": "heb",
+            "sourceName": "Tillamook Sharp Cheddar Cheese",
+            "amount": 320,
+            "unit": "g",
+            "packageSize": "16 oz",
+            "packagePrice": 6.97,
+            "cost": 4.91
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "Central Market European Style Unsalted Butter Sticks",
+            "amount": 50,
+            "unit": "g",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 5.98,
+            "cost": 0.66
+          }
+        ],
+        "total": 7.68,
+        "perServing": 3.84,
+        "servings": 2,
+        "date": "2026-05-21"
+      }
     }
   ]
 }
