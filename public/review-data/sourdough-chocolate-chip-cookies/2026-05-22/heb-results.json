@@ -1,0 +1,192 @@
+{
+  "recipeId": "sourdough-chocolate-chip-cookies",
+  "date": "2026-05-22",
+  "storeId": 218,
+  "ingredients": [
+    {
+      "ingredientId": "butter",
+      "name": "Unsalted Butter",
+      "recipeAmount": 225,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct (16 oz)", "sizeGrams": 453.6, "price": 2.88, "salePrice": null, "unitPrice": "$0.18/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct (16 oz)", "sizeGrams": 453.6, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "Falfurrias Unsalted Butter Sticks", "brand": "Falfurrias", "size": "4 ct (16 oz)", "sizeGrams": 453.6, "price": 4.47, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Land O Lakes Unsalted Sweet Butter Sticks", "brand": "Land O Lakes", "size": "4 ct (16 oz)", "sizeGrams": 453.6, "price": 4.46, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Challenge Unsalted Butter Sticks", "brand": "Challenge", "size": "4 ct (16 oz)", "sizeGrams": 453.6, "price": 4.28, "salePrice": null, "unitPrice": "$0.27/oz", "inStock": true },
+        { "name": "Kerrygold Grass-Fed Unsalted Pure Irish Butter", "brand": "Kerrygold", "size": "8 oz", "sizeGrams": 226.8, "price": 4.84, "salePrice": null, "unitPrice": "$0.60/oz", "inStock": true },
+        { "name": "Plugra Premium European Style Unsalted Butter", "brand": "Plugra", "size": "8 oz", "sizeGrams": 226.8, "price": 2.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Central Market European Style Unsalted Butter Sticks", "brand": "Central Market", "size": "4 ct (16 oz)", "sizeGrams": 453.6, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "H-E-B Organics Unsalted Butter", "brand": "H-E-B Organics", "size": "16 oz", "sizeGrams": 453.6, "price": 5.85, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Grassland Unsalted Sweet Cream Butter Sticks", "brand": "Grassland", "size": "4 ct (16 oz)", "sizeGrams": 453.6, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Vital Farms Grass Fed Unsalted Butter Sticks", "brand": "Vital Farms", "size": "2 ct (8 oz)", "sizeGrams": 226.8, "price": 5.28, "salePrice": null, "unitPrice": "$0.66/oz", "inStock": true },
+        { "name": "Truly Grass Fed Unsalted Butter", "brand": "Truly Grass Fed", "size": "8 oz", "sizeGrams": 226.8, "price": 5.88, "salePrice": null, "unitPrice": "$0.74/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "dark-brown-sugar",
+      "name": "Dark Brown Sugar",
+      "recipeAmount": 210,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Imperial Sugar Pure Cane Dark Brown Sugar", "brand": "Imperial Sugar", "size": "2 lbs", "sizeGrams": 907.2, "price": 2.82, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "C&H Premium Pure Cane Dark Brown Sugar", "brand": "C&H", "size": "2 lbs", "sizeGrams": 907.2, "price": 2.82, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Wholesome Organic Dark Brown Sugar", "brand": "Wholesome", "size": "1.5 lb", "sizeGrams": 680.4, "price": 5.40, "salePrice": null, "unitPrice": "$0.22/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "granulated-sugar",
+      "name": "Granulated Sugar",
+      "recipeAmount": 96,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Granulated Sugar", "brand": "Hill Country Fare", "size": "4 lbs", "sizeGrams": 1814.4, "price": 2.58, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "4 lbs", "sizeGrams": 1814.4, "price": 3.48, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "2 lbs", "sizeGrams": 907.2, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "C&H Premium Pure Cane Granulated Sugar", "brand": "C&H", "size": "4 lbs", "sizeGrams": 1814.4, "price": 3.94, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Imperial Sugar Pure Cane Extra Fine Granulated Sugar", "brand": "Imperial Sugar", "size": "4 lbs", "sizeGrams": 1814.4, "price": 3.64, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Hill Country Fare Granulated Sugar (Texas-Size)", "brand": "Hill Country Fare", "size": "25 lbs", "sizeGrams": 11339.8, "price": 19.57, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "egg-yolks",
+      "name": "Egg Yolks (large)",
+      "recipeAmount": 54,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "12 ct", "sizeGrams": 600, "price": 1.67, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "Sunups Grade A Large White Eggs", "brand": "Sunups", "size": "12 ct", "sizeGrams": 600, "price": 1.46, "salePrice": null, "unitPrice": "$0.12/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "18 ct", "sizeGrams": 900, "price": 2.17, "salePrice": null, "unitPrice": "$0.12/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": 600, "price": 2.86, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large Brown Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": 600, "price": 2.96, "salePrice": null, "unitPrice": "$0.25/ct", "inStock": true },
+        { "name": "H-E-B Cage Free Omega-3 Grade AA Large Brown Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": 600, "price": 3.46, "salePrice": null, "unitPrice": "$0.29/ct", "inStock": true },
+        { "name": "Eggland's Best Grade A Cage Free Large White Eggs", "brand": "Eggland's Best", "size": "12 ct", "sizeGrams": 600, "price": 3.87, "salePrice": null, "unitPrice": "$0.32/ct", "inStock": true },
+        { "name": "Vital Farms Pasture Raised Large Eggs", "brand": "Vital Farms", "size": "12 ct", "sizeGrams": 600, "price": 7.46, "salePrice": null, "unitPrice": "$0.62/ct", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "sourdough-discard",
+      "name": "Sourdough Discard (100% hydration)",
+      "recipeAmount": 150,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "vanilla",
+      "name": "Vanilla Extract",
+      "recipeAmount": 13,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Adams Best Twice as Strong Vanilla Extract", "brand": "Adams", "size": "1.5 oz", "sizeGrams": 42.5, "price": 2.92, "salePrice": null, "unitPrice": "$1.95/oz", "inStock": true },
+        { "name": "Adams Best Twice as Strong Vanilla Extract", "brand": "Adams", "size": "4 oz", "sizeGrams": 113.4, "price": 7.78, "salePrice": null, "unitPrice": "$1.94/oz", "inStock": true },
+        { "name": "McCormick Pure Vanilla Extract", "brand": "McCormick", "size": "2 fl oz", "sizeGrams": 56.7, "price": 6.68, "salePrice": null, "unitPrice": "$3.34/oz", "inStock": true },
+        { "name": "McCormick All Natural Pure Vanilla Extract", "brand": "McCormick", "size": "4 oz", "sizeGrams": 113.4, "price": 11.68, "salePrice": null, "unitPrice": "$2.92/oz", "inStock": true },
+        { "name": "H-E-B Pure Madagascar Bourbon Vanilla Extract", "brand": "H-E-B", "size": "4 oz", "sizeGrams": 113.4, "price": 9.98, "salePrice": null, "unitPrice": "$2.50/oz", "inStock": true },
+        { "name": "Central Market Organics Pure Vanilla Extract", "brand": "Central Market", "size": "2 oz", "sizeGrams": 56.7, "price": 8.48, "salePrice": null, "unitPrice": "$4.24/oz", "inStock": true },
+        { "name": "Nielsen-Massey Pure Vanilla Extract", "brand": "Nielsen-Massey", "size": "4 oz", "sizeGrams": 113.4, "price": 14.98, "salePrice": null, "unitPrice": "$3.74/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "ap-flour",
+      "name": "All-Purpose Flour",
+      "recipeAmount": 140,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare All-Purpose Flour", "brand": "Hill Country Fare", "size": "5 lbs", "sizeGrams": 2268, "price": 1.95, "salePrice": null, "unitPrice": "$0.02/oz", "inStock": true },
+        { "name": "H-E-B Baker's Scoop Unbleached All-Purpose Flour", "brand": "H-E-B", "size": "5 lbs", "sizeGrams": 2268, "price": 3.78, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 5.48, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "Central Market Unbleached All-Purpose Flour", "brand": "Central Market", "size": "5 lbs", "sizeGrams": 2268, "price": 4.48, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Gold Medal Bleached All-Purpose Flour", "brand": "Gold Medal", "size": "5 lbs", "sizeGrams": 2268, "price": 3.97, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "Bob's Red Mill Unbleached All-Purpose Flour", "brand": "Bob's Red Mill", "size": "5 lbs", "sizeGrams": 2268, "price": 4.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "H-E-B Organics Unbleached All-Purpose Flour", "brand": "H-E-B Organics", "size": "5 lbs", "sizeGrams": 2268, "price": 5.98, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Organic Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 7.87, "salePrice": null, "unitPrice": "$0.10/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "ryman-rye-flour",
+      "name": "Ryman Rye Flour (Barton Springs Mill)",
+      "recipeAmount": 60,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "bread-flour",
+      "name": "Bread Flour",
+      "recipeAmount": 120,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Baker's Scoop Bread Flour", "brand": "H-E-B", "size": "5 lbs", "sizeGrams": 2268, "price": 3.78, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "King Arthur Unbleached Bread Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 5.78, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "Central Market Unbleached Bread Flour", "brand": "Central Market", "size": "5 lbs", "sizeGrams": 2268, "price": 4.88, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "H-E-B Organics Unbleached Bread Flour", "brand": "H-E-B Organics", "size": "5 lbs", "sizeGrams": 2268, "price": 5.98, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Organic Bread Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 7.73, "salePrice": null, "unitPrice": "$0.10/oz", "inStock": true },
+        { "name": "Bob's Red Mill Artisan Bread Flour", "brand": "Bob's Red Mill", "size": "5 lbs", "sizeGrams": 2268, "price": 5.98, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "baking-soda",
+      "name": "Baking Soda",
+      "recipeAmount": 5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Pure Baking Soda", "brand": "Hill Country Fare", "size": "16 oz", "sizeGrams": 453.6, "price": 0.89, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Arm & Hammer Pure Baking Soda", "brand": "Arm & Hammer", "size": "8 oz", "sizeGrams": 226.8, "price": 0.87, "salePrice": null, "unitPrice": "$0.11/oz", "inStock": true },
+        { "name": "Arm & Hammer Pure Baking Soda", "brand": "Arm & Hammer", "size": "1 lb", "sizeGrams": 453.6, "price": 1.47, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Hill Country Fare Pure Baking Soda", "brand": "Hill Country Fare", "size": "64 oz", "sizeGrams": 1814.4, "price": 2.98, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "baking-powder",
+      "name": "Baking Powder",
+      "recipeAmount": 2,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Hill Country Fare Double Acting Baking Powder", "brand": "Hill Country Fare", "size": "8.1 oz", "sizeGrams": 229.6, "price": 2.08, "salePrice": null, "unitPrice": "$0.26/oz", "inStock": true },
+        { "name": "H-E-B Double Acting Baking Powder", "brand": "H-E-B", "size": "8.1 oz", "sizeGrams": 229.6, "price": 2.78, "salePrice": null, "unitPrice": "$0.34/oz", "inStock": true },
+        { "name": "Clabber Girl Double Acting Baking Powder", "brand": "Clabber Girl", "size": "8.1 oz", "sizeGrams": 229.6, "price": 2.88, "salePrice": null, "unitPrice": "$0.36/oz", "inStock": true },
+        { "name": "Rumford Aluminum-Free Baking Powder", "brand": "Rumford", "size": "8.1 oz", "sizeGrams": 229.6, "price": 3.12, "salePrice": null, "unitPrice": "$0.39/oz", "inStock": true },
+        { "name": "Royal Baking Powder", "brand": "Royal", "size": "8.1 oz", "sizeGrams": 229.6, "price": 2.48, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "fine-sea-salt",
+      "name": "Fine Sea Salt",
+      "recipeAmount": 6,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Fine Mediterranean Sea Salt Crystals", "brand": "H-E-B", "size": "26.5 oz", "sizeGrams": 751.3, "price": 2.38, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Morton Fine Sea Salt", "brand": "Morton", "size": "17.6 oz", "sizeGrams": 499, "price": 2.98, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "La Baleine Fine Sea Salt Shaker", "brand": "La Baleine", "size": "4.4 oz", "sizeGrams": 124.7, "price": 2.18, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "Redmond Real Salt Fine Sea Salt", "brand": "Redmond Real Salt", "size": "10 oz", "sizeGrams": 283.5, "price": 4.98, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "chocolate",
+      "name": "Chopped Chocolate (60-66% semisweet)",
+      "recipeAmount": 350,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Organics 55% Cacao Semi-Sweet Chocolate Baking Bar", "brand": "H-E-B Organics", "size": "4 oz", "sizeGrams": 113.4, "price": 3.50, "salePrice": null, "unitPrice": "$0.88/oz", "inStock": true },
+        { "name": "Baker's Semi-Sweet 56% Cacao Baking Chocolate Bar", "brand": "Baker's", "size": "4 oz", "sizeGrams": 113.4, "price": 3.98, "salePrice": null, "unitPrice": "$1.00/oz", "inStock": true },
+        { "name": "Ghirardelli Premium Baking Bar Semi-Sweet Chocolate", "brand": "Ghirardelli", "size": "4 oz", "sizeGrams": 113.4, "price": 4.28, "salePrice": null, "unitPrice": "$1.07/oz", "inStock": true },
+        { "name": "H-E-B Organics 55% Cacao Semi-Sweet Chocolate Baking Chips", "brand": "H-E-B Organics", "size": "10 oz", "sizeGrams": 283.5, "price": 5.98, "salePrice": null, "unitPrice": "$0.60/oz", "inStock": true },
+        { "name": "Ghirardelli Premium Baking Semi-Sweet Chocolate Chips", "brand": "Ghirardelli", "size": "12 oz", "sizeGrams": 340.2, "price": 6.88, "salePrice": null, "unitPrice": "$0.57/oz", "inStock": true },
+        { "name": "Hill Country Fare Semi-Sweet Chocolate Chips", "brand": "Hill Country Fare", "size": "12 oz", "sizeGrams": 340.2, "price": 3.58, "salePrice": null, "unitPrice": "$0.30/oz", "inStock": true },
+        { "name": "Hershey's Semi Sweet Chocolate Baking Chips", "brand": "Hershey's", "size": "12 oz", "sizeGrams": 340.2, "price": 4.48, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Nestle Toll House Semi Sweet Chocolate Chips", "brand": "Nestle", "size": "12 oz", "sizeGrams": 340.2, "price": 4.68, "salePrice": null, "unitPrice": "$0.39/oz", "inStock": true },
+        { "name": "Nestle Toll House Semi Sweet Chocolate Chunks", "brand": "Nestle", "size": "11.5 oz", "sizeGrams": 326, "price": 4.68, "salePrice": null, "unitPrice": "$0.41/oz", "inStock": true },
+        { "name": "Guittard Organic Akoma Extra Semi-Sweet Chocolate Chips", "brand": "Guittard", "size": "10 oz", "sizeGrams": 283.5, "price": 7.78, "salePrice": null, "unitPrice": "$0.78/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "flaky-salt",
+      "name": "Flaky Sea Salt (Maldon)",
+      "recipeAmount": 2,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Maldon Sea Salt Flakes", "brand": "Maldon", "size": "8.5 oz", "sizeGrams": 240.9, "price": 5.98, "salePrice": null, "unitPrice": "$0.70/oz", "inStock": true },
+        { "name": "Maldon Smoked Sea Salt Flakes", "brand": "Maldon", "size": "4.4 oz", "sizeGrams": 124.7, "price": 4.18, "salePrice": null, "unitPrice": "$0.95/oz", "inStock": true }
+      ]
+    }
+  ]
+}
