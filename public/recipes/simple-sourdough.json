@@ -7535,6 +7535,11 @@
           "src": "/images/simple-sourdough/2026-05-19/img-7622-800w.webp",
           "thumb": "/images/simple-sourdough/2026-05-19/img-7622-400w.webp",
           "alt": "Hero shot of loaf 2 — afternoon light catches the banneton spiral on the deep amber crust, copper cooling rack underneath, living room with framed art and couch in soft-focus background. The Marquis stone-ground flour develops a nuttier color than KABF. Spiral ridges clean and well-floured; side burst from oven spring on the left edge."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-05-19/9701-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-19/9701-400w.webp",
+          "alt": "Two toasted slices of the 100% Marquis whole-wheat sourdough served with breakfast sausages and a scramble of eggs, zucchini, and tomatoes on a speckled stoneware plate"
         }
       ],
       "next_time": [
@@ -7903,7 +7908,7 @@
             "sourceType": "manual",
             "sourceName": "Barton Springs Mill Marquis (certified organic, stone-ground whole)",
             "packageSize": "2.5 lb (~1134g)",
-            "packagePrice": 13.00,
+            "packagePrice": 13.0,
             "cost": 11.46,
             "amount": 1000,
             "unit": "g",

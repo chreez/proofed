@@ -1,58 +1,55 @@
 {
   "recipeId": "simple-sourdough",
   "date": "2026-05-19",
-  "processedAt": "2026-05-19T17:01:43.749Z",
+  "processedAt": "2026-05-23T16:47:46.695Z",
   "photos": [
+    {
+      "name": "9701",
+      "thumb": "9701-400w.webp",
+      "src": "9701-800w.webp",
+      "summary": ""
+    },
     {
       "name": "img-7613",
       "thumb": "img-7613-400w.webp",
       "src": "img-7613-800w.webp",
-      "summary": "Loaf 1 just out of the oven (~8am), tight close-up from the side on the copper cooling rack. Banneton spiral pattern visible on top with flour dusting. Dome is short and squat — visibly limited oven spring, consistent with the lid-not-fully-closed steam loss. A crack runs down the side where the loaf burst sideways instead of opening at a proper ear. Dim kitchen lighting."
+      "summary": ""
     },
     {
       "name": "img-7614",
       "thumb": "img-7614-400w.webp",
       "src": "img-7614-800w.webp",
-      "summary": "Loaf 1 wider shot on the copper cooling rack, kitchen sink and mirrored picture frame in background. Banneton spiral concentric rings clearly defined on top. Side burst more visible from this angle — the dough split open laterally rather than along a deliberate score. Dense, short profile. Stone-ground crust color is deep amber-brown."
+      "summary": ""
     },
     {
       "name": "img-7617",
       "thumb": "img-7617-400w.webp",
       "src": "img-7617-800w.webp",
-      "summary": "Crumb shot — half-loaf cross-section held up by hand over a white cutting board. Crumb is tight and uniform with small irregular pockets throughout, more open than expected for a 70% whole-grain Marquis loaf with poor spring. Bottom-third is denser/more compressed. Wall is darker amber where the crust is thicker. Self-described 'dense as expected' is fair but the crumb is actually more workable than the spring suggested.",
-      "versions": [
-        {
-          "version": 1,
-          "thumb": "img-7617-v1-400w.webp",
-          "src": "img-7617-v1-800w.webp",
-          "editInstruction": "rotate CCW 90 - bottom of loaf to bottom of photo (loaf 1)",
-          "editedAt": "2026-05-19T17:13:00.914Z"
-        }
-      ]
+      "summary": ""
     },
     {
       "name": "img-7620",
       "thumb": "img-7620-400w.webp",
       "src": "img-7620-800w.webp",
-      "summary": "Loaf 2 just out of the oven (~9:28am), top-down angled view on the copper cooling rack. Stainless fridge and gas range in background. Banneton spiral ridges are sharp and well-defined, dusted with flour. A large dramatic crack runs across the right side where the loaf split during oven spring — better spring than loaf 1, but still a 'frisbee' compared to a typical KABF bake. Deep amber crust."
+      "summary": ""
     },
     {
       "name": "img-7622",
       "thumb": "img-7622-400w.webp",
       "src": "img-7622-800w.webp",
-      "summary": "Loaf 2 hero-style shot — golden afternoon light catches the banneton spiral on the crust, copper cooling rack underneath, living room with framed art and couch in soft-focus background. Best photogenic frame of the bake. Crust shows the Marquis flour's deep nutty color development; spiral ridges are clean and well-floured. Side burst from oven spring visible on the left edge."
+      "summary": ""
     },
     {
       "name": "img-7624",
       "thumb": "img-7624-400w.webp",
       "src": "img-7624-800w.webp",
-      "summary": "Both loaves sliced and laid side-by-side on a white cutting board. Cross-sections show similar crumb structure between the two — tight, uniform, with scattered small holes. Loaf at right shows the dramatic dark crust band along the bottom curve where the dough sat in the Dutch oven. Crumb walls are slightly translucent suggesting good gelatinization despite the short spring."
+      "summary": ""
     },
     {
       "name": "img-7625",
       "thumb": "img-7625-400w.webp",
       "src": "img-7625-800w.webp",
-      "summary": "Both loaves bagged for storage and gifting — kraft paper bread bags with windowed fronts showing the banneton spiral crusts. 'Especially for you — thank you' round kraft seal stickers in the foreground waiting to be applied. Loaf 2 (right) heading out as a gift."
+      "summary": ""
     }
   ]
 }
