@@ -1,0 +1,25 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-05-26",
+  "processedAt": "2026-05-26T17:18:37.330Z",
+  "photos": [
+    {
+      "name": "img-7701",
+      "thumb": "img-7701-400w.webp",
+      "src": "img-7701-800w.webp",
+      "summary": "Boule on a wire cooling rack viewed from a low front angle — single off-center diagonal score has opened into a pronounced ear with exposed pale interior crust, surrounded by deep amber-mahogany flanks with concentric flour-dusted scoring rings curving around the side. Background shows a dim kitchen with a framed painting and white interior door."
+    },
+    {
+      "name": "img-7702",
+      "thumb": "img-7702-400w.webp",
+      "src": "img-7702-800w.webp",
+      "summary": "Same boule rotated and shot from a higher angle, fingers visible at lower right holding the rack — the top crown is much darker, nearly burnt-brown and matte where the ear lifted, and the side scoring rings show heavy flour bloom with blistering visible across the lower belly of the loaf."
+    },
+    {
+      "name": "img-7705",
+      "thumb": "img-7705-400w.webp",
+      "src": "img-7705-800w.webp",
+      "summary": "Half-loaf cross-section held over a beige tile floor, daylight from the left — crumb is pale cream-yellow with a mix of medium and large irregular holes clustered toward the upper-center and a denser, tighter band along the bottom third. Crust is thin and golden, and a tattooed thumb is visible at the lower left edge."
+    }
+  ]
+}

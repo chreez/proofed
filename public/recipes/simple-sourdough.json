@@ -7953,6 +7953,380 @@
         "servings": 2,
         "date": "2026-05-19"
       }
+    },
+    {
+      "date": "2026-05-26",
+      "start_date": "2026-05-25",
+      "version": "v3.6.2",
+      "summary": "Tartine country loaf p.48, 1-loaf scaled at 75% hydration. Grabbed AP/rice 50/50 blend instead of 50g whole wheat by mistake — no bran meant intact gluten and best oven spring in a while. Predicted-failure-to-unexpected-success bake.",
+      "notes": [
+        "Tartine country loaf p.48 reference, scaled to 1 loaf at 75% hydration (350g water + 25g added with salt for 500g flour).",
+        "Flour: intended 450g bread flour + 50g whole wheat. Container mislabeled — actually used 50g of 50/50 AP/rice flour blend. Realized post-mix.",
+        "Levain: 100g, fed ~4hr pre-mix (12:27pm Mon). Barely floating but aroma was right, sent it.",
+        "Autolyse start 4:27pm Mon, DDT 79.3°F. Kitchen 77°F.",
+        "Three coil folds at 5:01pm, 5:31pm, 6:02pm. Salt + 25g water added between fold 1 and fold 2 (dough dropped to 77.9°F from 78.8°F). Held 78.1°F at fold 3.",
+        "Bulk ended ~10:02pm Mon (1hr counter rest post-shape). 2hr wait after final fold, then turned out dough for light surface tension — no real preshape, just walking the dough.",
+        "Shaping complete 9:02pm Mon, 973g final dough weight. Into fridge ~10:02pm for cold retard.",
+        "Out of fridge ~9:41am Tue (30min counter rest). Total cold retard ~11hr 40min.",
+        "Bake: preheat Dutch oven 490°F/60min, covered 450°F/20min, uncovered 450°F/20min, then dropped to 420°F/4min for final color. Internal ~210°F; couldn't quite hit 212°F target.",
+        "Predicted disaster from the flour mistake → best oven spring on a regular sourdough in a while. Working theory: AP/rice blend swap removed whole-wheat bran, leaving more intact gluten + rice flour acting as steam-release starch filler."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-05-26/img-7702-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-26/img-7702-400w.webp",
+          "alt": "Top-down view of finished loaf on cooling rack — dark mahogany crown, ear lifted, heavy flour bloom and blistering across the side."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-05-26/img-7705-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-26/img-7705-400w.webp",
+          "alt": "Half-loaf cross-section — pale cream crumb with mix of medium and large holes upper-center, tighter band along the bottom third, thin golden crust."
+        },
+        {
+          "src": "/images/simple-sourdough/2026-05-26/img-7701-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-05-26/img-7701-400w.webp",
+          "alt": "Boule on wire cooling rack — off-center diagonal score opened into pronounced ear with pale interior crust, amber-mahogany flanks with concentric flour-dusted scoring rings."
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Verify flour container labels before mix — the accidental AP/rice blend produced better spring than the intended whole-wheat formula."
+        },
+        {
+          "text": "Consider an intentional 50g AP/rice 50/50 sub-in for spring-focused bakes. Test against a control loaf with 50g whole wheat to confirm bran-removal hypothesis."
+        },
+        {
+          "text": "Push internal temp closer to 212°F target — stalled at ~210°F again. Maybe add 1-2 min at 420°F or step up final phase to 430°F."
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-05-25T21:27:07Z",
+          "raw": "77",
+          "curated": "Kitchen temp 77°F.",
+          "notable": true,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-05-25T21:27:46Z",
+          "raw": "autolyse start. doing tartine base recipe country loaf. pg 48. one loaf. 350g water. plus 25 when i add salt.",
+          "curated": "Autolyse start. Tartine base recipe country loaf, p.48. One loaf. 350g water, plus 25g added with salt.",
+          "notable": true,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-25T21:28:02Z",
+          "raw": "total flour is 500g with 450 bread flour and 50 whole wheat flour",
+          "curated": "Total flour 500g: 450g bread flour + 50g whole wheat flour.",
+          "notable": true,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-25T21:28:24Z",
+          "raw": "dough temp 79.3",
+          "curated": "Dough temp 79.3°F.",
+          "notable": true,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-05-25T22:31:36Z",
+          "raw": "78.8 added salt. stretch and fold one (30 minutes ago)",
+          "curated": "Dough temp 78.8°F. Added salt. First stretch and fold was 30 minutes ago (~5:01pm).",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-25T22:31:45Z",
+          "raw": "second stretch and fold now. temp. 77.9",
+          "curated": "Second stretch and fold now. Temp 77.9°F (dropped from added salt + 25g water).",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-25T23:02:45Z",
+          "raw": "78.1 dough temp s and f 3",
+          "curated": "Dough temp 78.1°F. Stretch and fold 3.",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-26T01:31:23Z",
+          "raw": "may have screwed up at the very start. one of my containers for flour may be mislabeled. i might have used my 50/50 ap rice flour blend instead of the actual wheat flour i have on hand.",
+          "curated": "Possible flour mix-up — container may be mislabeled. Might have used 50/50 AP/rice flour blend instead of whole wheat.",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-05-26T02:02:15Z",
+          "raw": "973g shaping complete",
+          "curated": "Shaping complete. Final dough weight 973g.",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-05-26T15:11:00Z",
+          "raw": "in oven approx 6 minutes ago 450",
+          "curated": "Loaf into oven at 450°F.",
+          "notable": true,
+          "stepId": "bake",
+          "processing": "bake | Timestamp inferred: 'approx 6 minutes ago' relative to 2026-05-26T15:17:42Z → 2026-05-26T15:11:00Z"
+        },
+        {
+          "timestamp": "2026-05-26T16:01:43Z",
+          "raw": "kinda frustrated when predicted failure results in a unexplainable success",
+          "curated": "Frustrated when predicted failure turned into unexplainable success.",
+          "notable": true,
+          "processing": "result"
+        },
+        {
+          "timestamp": "2026-05-26T16:01:55Z",
+          "raw": "some of the best spring i got from a regular sourdough in a while",
+          "curated": "Some of the best oven spring on a regular sourdough in a while.",
+          "notable": true,
+          "processing": "result"
+        }
+      ],
+      "bake_stats": {
+        "confidence": "medium",
+        "dough_temps": [
+          {
+            "time": "2026-05-25 - 16:28",
+            "temp_f": 79.3,
+            "note": "after autolyse mix"
+          },
+          {
+            "time": "2026-05-25 - 17:31",
+            "temp_f": 78.8,
+            "note": "pre salt addition"
+          },
+          {
+            "time": "2026-05-25 - 17:31",
+            "temp_f": 77.9,
+            "note": "post salt + 25g water, S&F 2"
+          },
+          {
+            "time": "2026-05-25 - 18:02",
+            "temp_f": 78.1,
+            "note": "S&F 3"
+          }
+        ],
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-05-25",
+            "temp_f": 77,
+            "note": "pre-bake, kitchen during bulk"
+          }
+        ],
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 490,
+            "duration_min": 60,
+            "start_time": "2026-05-26 - 09:11"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "start_time": "2026-05-26 - 10:11",
+            "note": "inferred: 'approx 6 minutes ago' at 10:17 → into oven 10:11"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "start_time": "2026-05-26 - 10:31"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 420,
+            "duration_min": 4,
+            "start_time": "2026-05-26 - 10:51",
+            "note": "final color step; internal ~210°F at pull"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-05-25 - 17:01",
+            "type": "coil",
+            "note": "S&F 1; inferred: '30 minutes ago' at 17:31"
+          },
+          {
+            "time": "2026-05-25 - 17:31",
+            "type": "coil",
+            "note": "S&F 2; post-salt + 25g water; 77.9°F"
+          },
+          {
+            "time": "2026-05-25 - 18:02",
+            "type": "coil",
+            "note": "S&F 3; 78.1°F"
+          }
+        ],
+        "aliquot_rises": [],
+        "proof_phases": [
+          {
+            "type": "bench_rest",
+            "start": "2026-05-25 - 20:02",
+            "duration_min": 60,
+            "note": "Turn-out + light surface tension shaping (no real preshape)"
+          },
+          {
+            "type": "cold_retard",
+            "start": "2026-05-25 - 22:02",
+            "end": "2026-05-26 - 09:41",
+            "duration_min": 699,
+            "note": "Cold retard ~11hr 40min"
+          },
+          {
+            "type": "counter_warmup",
+            "start": "2026-05-26 - 09:41",
+            "duration_min": 30,
+            "note": "Out of fridge, 30min counter rest before oven"
+          }
+        ],
+        "shape_time": "2026-05-25 - 21:02"
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 450,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry default",
+              "confidence": "high",
+              "rationale": "Scaled down to single-loaf Tartine country formula. 90% of total flour."
+            },
+            {
+              "id": "ap_rice_blend",
+              "name": "AP/Rice Flour Blend (50/50, used in error — intended whole wheat)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Mislabeled flour container",
+              "confidence": "high",
+              "rationale": "Container was supposed to hold whole wheat; actually held a 50/50 all-purpose + rice flour blend. Discovered ~5hr post-mix during bulk. Working theory: no whole-wheat bran preserved more intact gluten, contributing to the surprise spring."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 375,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "name": "autolyse",
+                  "amount": 350
+                },
+                {
+                  "name": "added with salt",
+                  "amount": 25
+                }
+              ],
+              "sourcedFrom": "Tartine country loaf spec",
+              "confidence": "high",
+              "rationale": "75% hydration — Tartine base. 350g at autolyse, 25g added with salt at ~5:31pm."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine country loaf spec",
+              "confidence": "high",
+              "rationale": "20% inoculation. Fed ~4hr pre-mix (12:27pm Mon). Barely floating at mix time but aroma was right."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine country loaf spec",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Added at ~5:31pm with 25g additional water."
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-05-26",
+        "temp_high_f": 88.9,
+        "temp_low_f": 66.8,
+        "humidity_avg_percent": 80,
+        "condition": "Rain",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "date": "2026-05-26",
+        "items": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 450,
+            "unit": "g",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 1.09
+          },
+          {
+            "ingredientId": "ap_rice_blend",
+            "name": "AP/Rice Flour Blend (50/50, used in error — 25g AP + 25g rice)",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached All-Purpose Flour",
+            "amount": 50,
+            "unit": "g",
+            "packageSize": "5 lbs",
+            "packagePrice": 5.48,
+            "cost": 0.12
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Filtered water (not yet priced)",
+            "amount": 375,
+            "unit": "g",
+            "packageSize": "not yet priced",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 100,
+            "unit": "g",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 10,
+            "unit": "g",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.06
+          }
+        ],
+        "total": 1.33,
+        "perServing": 1.33,
+        "servings": 1
+      }
     }
   ],
   "research": {
