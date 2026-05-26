@@ -2,6 +2,12 @@
 import { ref, reactive, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { copyToClipboard } from '@/composables/useClipboard'
+import {
+  buildPreferenceEntry,
+  matchPreferenceToProduct,
+  pickCheapestProductIndex,
+} from '@/composables/useCostPreferences'
+import HelpTooltip from '@/components/HelpTooltip.vue'
 import { marked } from 'marked'
 import { ArrowLeft } from 'lucide-vue-next'
 import type {
@@ -16,6 +22,8 @@ import type {
   CostSourceType,
   CostLineItem,
   BakeCostSummary,
+  CostPreferenceEntry,
+  CostPreferences,
   KeyNote
 } from '@/types/recipe'
 
@@ -231,6 +239,12 @@ function buildCombinedPayload(): object {
   if (notesFeedback.value.trim()) {
     payload.notesFeedback = notesFeedback.value.trim()
   }
+  // PF-276: include any per-ingredient preference updates the user made
+  // this session (pin/unpin or implicit lastUsed). The /bake-log skill
+  // merges this into public/cost-preferences.json at commit time.
+  if (Object.keys(preferencesUpdates).length > 0) {
+    payload.preferencesUpdates = { ...preferencesUpdates }
+  }
   return payload
 }
 
@@ -374,6 +388,25 @@ const costSelections = reactive<Record<string, CostSelection>>({})
 const recipeServings = ref(1)
 const recipeYields = ref('')
 
+// PF-276: in-memory cache of fetched preferences plus a "dirty" buffer of
+// per-ingredient updates the user has made this session. The dirty buffer
+// gets serialized into the copy-review-data payload as `preferencesUpdates`
+// so the /bake-log agent can merge it back into public/cost-preferences.json
+// at commit time.
+//
+// Shape for dirty entries:
+//   { pinned: PrefEntry } → pin (or replace pin) for this ingredient
+//   { pinned: null }      → explicit unpin
+//   { lastUsed: PrefEntry }→ implicit "last selected" capture (always tracked)
+//
+// Multiple fields may be present in a single entry (e.g. pin + lastUsed in
+// the same session). The merge in /bake-log treats each field individually.
+const costPreferences = ref<CostPreferences | null>(null)
+const preferencesUpdates = reactive<Record<string, {
+  pinned?: CostPreferenceEntry | null
+  lastUsed?: CostPreferenceEntry
+}>>({})
+
 function costStorageKey(): string {
   return `cost-selections:${recipeId.value}:${date.value}`
 }
@@ -439,6 +472,17 @@ function selectProduct(ingredientId: string, productIndex: number): void {
   const sel = getSelection(ingredientId)
   sel.sourceType = 'heb'
   sel.productIndex = productIndex
+  // PF-276: implicit lastUsed tracking — every HEB selection updates the
+  // dirty-preferences buffer so the /bake-log skill can persist it. Pinned
+  // is unaffected (explicit-only).
+  const ingredient = hebResults.value?.ingredients.find(i => i.ingredientId === ingredientId)
+  const product = ingredient?.products[productIndex]
+  if (product) {
+    if (!preferencesUpdates[ingredientId]) {
+      preferencesUpdates[ingredientId] = {}
+    }
+    preferencesUpdates[ingredientId].lastUsed = buildPreferenceEntry(product)
+  }
 }
 
 function setSourceType(ingredientId: string, sourceType: CostSourceType): void {
@@ -605,12 +649,83 @@ async function loadCostRates(): Promise<void> {
   } catch { /* cost rates are optional */ }
 }
 
+/**
+ * Fetch per-ingredient cost preferences from /cost-preferences.json (PF-276).
+ * Optional/silent on failure — a missing file or parse error falls back to
+ * smart-default behavior. We deliberately do not surface a console error
+ * because most recipes will not have preferences for every ingredient.
+ */
+async function loadCostPreferences(): Promise<void> {
+  try {
+    const res = await fetch('/cost-preferences.json')
+    if (!res.ok) return
+    const parsed = await res.json() as CostPreferences
+    if (parsed && parsed.version === 1 && parsed.ingredients) {
+      costPreferences.value = parsed
+    }
+  } catch {
+    /* preferences are optional — silently fall back */
+  }
+}
+
+/**
+ * Read the stored preference for an ingredient, if any. Pinned wins over
+ * lastUsed. Returns `null` when no preference exists.
+ */
+function getPreferenceFor(ingredientId: string): CostPreferenceEntry | null {
+  const entry = costPreferences.value?.ingredients[ingredientId]
+  if (!entry) return null
+  return entry.pinned ?? entry.lastUsed ?? null
+}
+
+/**
+ * Resolve the *effective* pinned preference for an ingredient — session-local
+ * dirty edits win over the file state. Returns `null` when no pin is active
+ * (either never set, or explicitly unpinned this session).
+ */
+function effectivePinned(ingredientId: string): CostPreferenceEntry | null {
+  const dirty = preferencesUpdates[ingredientId]
+  if (dirty && 'pinned' in dirty) {
+    return dirty.pinned ?? null
+  }
+  return costPreferences.value?.ingredients[ingredientId]?.pinned ?? null
+}
+
+/**
+ * True when a saved `pinned` preference exists for this ingredient AND
+ * the currently-selected HEB product matches it. Used by the template to
+ * render the filled-pin marker on the selected card.
+ */
+function isProductPinned(ingredientId: string, productIndex: number): boolean {
+  const pin = effectivePinned(ingredientId)
+  if (!pin) return false
+  const ingredient = hebResults.value?.ingredients.find(i => i.ingredientId === ingredientId)
+  if (!ingredient) return false
+  return matchPreferenceToProduct(pin, ingredient.products) === productIndex
+}
+
+/**
+ * Toggle the pinned preference for an ingredient against the currently
+ * selected HEB product. The change is buffered in `preferencesUpdates`;
+ * the actual write to `public/cost-preferences.json` happens in the
+ * /bake-log skill when the user pastes the review payload back.
+ */
+function togglePin(ingredientId: string, product: HebProduct): void {
+  const pin = effectivePinned(ingredientId)
+  const currentlyPinned = pin !== null && matchPreferenceToProduct(pin, [product]) === 0
+  const next = preferencesUpdates[ingredientId] ?? {}
+  next.pinned = currentlyPinned ? null : buildPreferenceEntry(product)
+  preferencesUpdates[ingredientId] = next
+}
+
 async function loadHebResults(): Promise<void> {
   hebLoading.value = true
   hebError.value = ''
   try {
-    // Load cost rates first so we can use them for smart defaults
+    // Load cost rates and preferences first so we can use them for smart
+    // defaults. Both are silent-on-failure (optional inputs).
     await loadCostRates()
+    await loadCostPreferences()
 
     const res = await fetch(`/review-data/${recipeId.value}/${date.value}/heb-results.json`)
     if (!res.ok) {
@@ -618,15 +733,19 @@ async function loadHebResults(): Promise<void> {
       return
     }
     hebResults.value = await res.json() as HebResultsFile
-    // Initialize selections with smart defaults
+
+    // Step 1: initialize selections with smart defaults (cheapest HEB > rate > manual).
+    // PF-276 replaces the legacy `productIndex: 0` default with the
+    // cheapest in-stock product by `salePrice ?? price`.
     for (const ingredient of hebResults.value.ingredients) {
       if (!costSelections[ingredient.ingredientId]) {
         if (ingredient.products.length > 0) {
-          // Has HEB products → default to store product picker
+          // Has HEB products → default to cheapest store product
+          const cheapest = pickCheapestProductIndex(ingredient.products)
           costSelections[ingredient.ingredientId] = {
             ingredientId: ingredient.ingredientId,
             sourceType: 'heb',
-            productIndex: 0
+            productIndex: cheapest === -1 ? 0 : cheapest
           }
         } else if (getCostRate(ingredient.ingredientId) !== null) {
           // No products but has a stored rate → auto-apply rate
@@ -643,7 +762,43 @@ async function loadHebResults(): Promise<void> {
         }
       }
     }
-    // Load saved selections on top of defaults
+
+    // Step 2: apply saved preferences (pinned > lastUsed) on top of the
+    // smart defaults — but ONLY for ingredients that don't already have a
+    // per-bake localStorage entry. The localStorage check happens after
+    // this block (Step 3), and `loadCostSelections()` will overwrite our
+    // preference picks for those ingredients. That's intentional: an
+    // explicit per-bake selection always wins over the global preference.
+    const savedSelectionIds = (() => {
+      const raw = localStorage.getItem(costStorageKey())
+      if (!raw) return new Set<string>()
+      try {
+        const parsed = JSON.parse(raw) as Record<string, unknown>
+        return new Set(Object.keys(parsed))
+      } catch {
+        return new Set<string>()
+      }
+    })()
+
+    if (costPreferences.value) {
+      for (const ingredient of hebResults.value.ingredients) {
+        if (ingredient.products.length === 0) continue
+        if (savedSelectionIds.has(ingredient.ingredientId)) continue
+        const pref = getPreferenceFor(ingredient.ingredientId)
+        if (!pref) continue
+        const matchedIndex = matchPreferenceToProduct(pref, ingredient.products)
+        if (matchedIndex !== null) {
+          costSelections[ingredient.ingredientId] = {
+            ingredientId: ingredient.ingredientId,
+            sourceType: 'heb',
+            productIndex: matchedIndex
+          }
+        }
+      }
+    }
+
+    // Step 3: load saved per-bake selections (localStorage overrides
+    // preferences AND smart defaults — see AC #11).
     loadCostSelections()
     // Apply saved pantry rates
     const pantryRates = loadPantryRates()
@@ -1146,20 +1301,31 @@ onMounted(async () => {
               </div>
               <div class="max-h-[300px] overflow-y-auto" data-testid="product-list-scroll">
               <div class="space-y-3">
-                <button
+                <div
                   v-for="{ product, originalIndex } in filteredProducts(ingredient)"
                   :key="originalIndex"
-                  class="w-full text-left p-4 border-2 transition-colors"
+                  role="button"
+                  tabindex="0"
+                  class="w-full text-left p-4 border-2 transition-colors cursor-pointer"
                   :class="getSelection(ingredient.ingredientId).productIndex === originalIndex
                     ? 'border-accent bg-accent-tint'
                     : 'border-stone-200 bg-surface hover:border-stone-300'"
                   data-testid="product-card"
                   @click="selectProduct(ingredient.ingredientId, originalIndex)"
+                  @keydown.enter="selectProduct(ingredient.ingredientId, originalIndex)"
+                  @keydown.space.prevent="selectProduct(ingredient.ingredientId, originalIndex)"
                 >
                   <div class="flex items-start justify-between mb-2">
                     <div class="min-w-0">
                       <div class="flex items-center gap-2">
                         <span class="font-medium text-ink">{{ product.brand }}</span>
+                        <!-- PF-276: pinned marker (filled pin) on the auto-selected product -->
+                        <span
+                          v-if="isProductPinned(ingredient.ingredientId, originalIndex)"
+                          class="font-mono text-[10px] bg-accent-tint text-accent px-1.5 py-0.5"
+                          data-testid="product-pinned-marker"
+                          aria-label="Pinned as default"
+                        >&#128204; pinned</span>
                         <span v-if="product.salePrice" class="font-mono text-[10px] bg-accent text-stone-50 px-1.5 py-0.5">SALE</span>
                         <span v-if="!product.inStock" class="font-mono text-[10px] bg-stone-300 text-stone-600 px-1.5 py-0.5">OUT OF STOCK</span>
                       </div>
@@ -1184,13 +1350,34 @@ onMounted(async () => {
                     <span class="text-stone-300">|</span>
                     <span class="text-xs text-stone-400 font-mono">{{ product.unitPrice }}</span>
                   </div>
-                  <div v-if="getSelection(ingredient.ingredientId).productIndex === originalIndex" class="mt-2 pt-2 border-t border-stone-200">
-                    <span class="font-mono text-xs text-stone-500">{{ ingredient.recipeAmount }}{{ ingredient.recipeUnit }} used of {{ product.sizeGrams }}g package</span>
-                    <span class="font-mono text-xs text-accent ml-2" data-testid="calculated-cost">
-                      = ${{ calculateCost(ingredient, getSelection(ingredient.ingredientId)).toFixed(2) }}
-                    </span>
+                  <div v-if="getSelection(ingredient.ingredientId).productIndex === originalIndex" class="mt-2 pt-2 border-t border-stone-200 flex items-center justify-between gap-2">
+                    <div>
+                      <span class="font-mono text-xs text-stone-500">{{ ingredient.recipeAmount }}{{ ingredient.recipeUnit }} used of {{ product.sizeGrams }}g package</span>
+                      <span class="font-mono text-xs text-accent ml-2" data-testid="calculated-cost">
+                        = ${{ calculateCost(ingredient, getSelection(ingredient.ingredientId)).toFixed(2) }}
+                      </span>
+                    </div>
+                    <!-- PF-276: pin toggle (filled when pinned, outline when not) -->
+                    <HelpTooltip
+                      :text="isProductPinned(ingredient.ingredientId, originalIndex) ? 'Unpin as default for this ingredient' : 'Pin as default for this ingredient'"
+                      align="right"
+                    >
+                      <button
+                        type="button"
+                        class="font-mono text-xs px-2 py-1 border-2 transition-colors flex items-center gap-1"
+                        :class="isProductPinned(ingredient.ingredientId, originalIndex)
+                          ? 'border-accent bg-accent-tint text-accent'
+                          : 'border-stone-200 bg-surface text-stone-500 hover:border-stone-300'"
+                        data-testid="product-pin-toggle"
+                        :aria-pressed="isProductPinned(ingredient.ingredientId, originalIndex) ? 'true' : 'false'"
+                        @click.stop="togglePin(ingredient.ingredientId, product)"
+                      >
+                        <span aria-hidden="true">{{ isProductPinned(ingredient.ingredientId, originalIndex) ? '&#128204;' : '&#128205;' }}</span>
+                        <span>{{ isProductPinned(ingredient.ingredientId, originalIndex) ? 'Pinned' : 'Pin' }}</span>
+                      </button>
+                    </HelpTooltip>
                   </div>
-                </button>
+                </div>
                 <!-- No results message -->
                 <p
                   v-if="filteredProducts(ingredient).length === 0"

@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "ingredients": {
+    "bread_flour": {
+      "pinned": {
+        "name": "Unbleached Bread Flour",
+        "brand": "King Arthur",
+        "sizeGrams": 4535.92,
+        "packagePrice": 10.99,
+        "packageSize": "10 lb",
+        "updatedAt": "2026-05-26"
+      }
+    },
+    "ap_flour": {
+      "pinned": {
+        "name": "Unbleached All-Purpose Flour",
+        "brand": "King Arthur",
+        "sizeGrams": 2267.96,
+        "packagePrice": 5.48,
+        "packageSize": "5 lb",
+        "updatedAt": "2026-05-26"
+      }
+    },
+    "salt": {
+      "pinned": {
+        "name": "Fine Sea Salt",
+        "brand": "Morton",
+        "sizeGrams": 498.96,
+        "packagePrice": 2.98,
+        "packageSize": "17.6 oz",
+        "updatedAt": "2026-05-26"
+      }
+    }
+  }
+}

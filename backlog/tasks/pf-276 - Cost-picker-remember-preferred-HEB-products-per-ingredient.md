@@ -1,10 +1,10 @@
 ---
 id: PF-276
 title: 'Cost picker: remember preferred HEB products per ingredient'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-26 17:12'
-updated_date: '2026-05-26 18:08'
+updated_date: '2026-05-26 20:00'
 labels: []
 dependencies: []
 ---
@@ -50,4 +50,5 @@ Open questions for grooming:
 - [ ] #12 Missing or unfetchable cost-preferences.json: review page falls back to smart-default behavior with no user-visible errors
 - [ ] #13 Vitest covers: (a) match by brand+sizeGrams within tolerance, (b) brand-only fallback when size mismatches, (c) selection priority pinned > lastUsed > smart default, (d) per-bake localStorage override
 - [ ] #14 .claude/skills/bake-log/SKILL.md Phase 5+6 documents the preferencesUpdates payload field and the file-write step
+- [ ] #15 1,2,3,4,5,6,7,8,9,10,11,12,13,14
 <!-- AC:END -->

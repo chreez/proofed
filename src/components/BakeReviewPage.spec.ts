@@ -153,12 +153,30 @@ const sampleCostRates = {
   }
 }
 
-function makeFetchSuccess(manifest = sampleManifest, recipe = sampleRecipe, hebResults = sampleHebResults as typeof sampleHebResults | null) {
+function makeFetchSuccess(
+  manifest = sampleManifest,
+  recipe = sampleRecipe,
+  hebResults = sampleHebResults as typeof sampleHebResults | null,
+  costPreferences: unknown = null
+) {
   return vi.fn((url: string) => {
     if (url.includes('/cost-rates.json')) {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve(sampleCostRates)
+      } as Response)
+    }
+    if (url.includes('/cost-preferences.json')) {
+      if (costPreferences) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(costPreferences)
+        } as Response)
+      }
+      return Promise.resolve({
+        ok: false,
+        status: 404,
+        json: () => Promise.reject(new Error('Not found'))
       } as Response)
     }
     if (url.includes('/recipes/')) {
@@ -193,6 +211,13 @@ function makeFetchManifestNotFound() {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve(sampleCostRates)
+      } as Response)
+    }
+    if (url.includes('/cost-preferences.json')) {
+      return Promise.resolve({
+        ok: false,
+        status: 404,
+        json: () => Promise.reject(new Error('Not found'))
       } as Response)
     }
     if (url.includes('/recipes/')) {
@@ -1265,6 +1290,328 @@ describe('BakeReviewPage', () => {
       // Should be in pantry mode for butter
       const ingredientCards = wrapper.findAll('[data-testid="cost-ingredient-card"]')
       expect(ingredientCards[0].find('[data-testid="pantry-rate-form"]').exists()).toBe(true)
+    })
+  })
+
+  describe('Cost preferences (PF-276)', () => {
+    // HEB results crafted so the cheapest-default and a "pinned" preference
+    // diverge — lets us isolate which selection rule is firing.
+    const hebForPrefs = {
+      recipeId: 'test-recipe',
+      date: '2026-02-10',
+      storeId: 428,
+      ingredients: [
+        {
+          ingredientId: 'bread_flour',
+          name: 'Bread flour',
+          recipeAmount: 500,
+          recipeUnit: 'g',
+          products: [
+            // [0] cheapest by price — would be smart default
+            { name: 'Bread Flour', brand: 'H-E-B', size: '5 lb', sizeGrams: 2268, price: 3.49, salePrice: null, unitPrice: '$0.03/oz', inStock: true },
+            // [1] matches the pinned preference (King Arthur 10 lb, 4535.92g)
+            { name: 'Unbleached Bread Flour', brand: 'King Arthur', size: '10 lb', sizeGrams: 4535.92, price: 10.99, salePrice: null, unitPrice: '$0.06/oz', inStock: true },
+            // [2] same brand, different size — used for brand-only fallback test
+            { name: 'Bread Flour 3 lb', brand: 'King Arthur', size: '3 lb', sizeGrams: 1360, price: 6.99, salePrice: null, unitPrice: '$0.13/oz', inStock: true },
+          ]
+        }
+      ]
+    }
+
+    const samplePreferences = {
+      version: 1,
+      ingredients: {
+        bread_flour: {
+          pinned: {
+            name: 'Unbleached Bread Flour',
+            brand: 'King Arthur',
+            sizeGrams: 4535.92,
+            packagePrice: 10.99,
+            packageSize: '10 lb',
+            updatedAt: '2026-05-26'
+          }
+        }
+      }
+    }
+
+    it('matches pinned preference by brand+size within tolerance', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs, samplePreferences)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // King Arthur 10lb (idx 1) should be selected — not the cheapest [0]
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[1].classes()).toContain('border-accent')
+      expect(productCards[0].classes()).not.toContain('border-accent')
+    })
+
+    it('renders pinned marker on the selected product', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs, samplePreferences)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      // Only the matched card gets the pinned marker
+      expect(productCards[1].find('[data-testid="product-pinned-marker"]').exists()).toBe(true)
+      expect(productCards[0].find('[data-testid="product-pinned-marker"]').exists()).toBe(false)
+    })
+
+    it('falls back to brand-only when size differs beyond tolerance', async () => {
+      const prefsBrandOnly = {
+        version: 1,
+        ingredients: {
+          bread_flour: {
+            pinned: {
+              // Brand match, but no product in results has this size within ±5g
+              name: 'Bread Flour 99 lb',
+              brand: 'King Arthur',
+              sizeGrams: 44900,
+              packagePrice: 99.99,
+              packageSize: '99 lb',
+              updatedAt: '2026-05-26'
+            }
+          }
+        }
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs, prefsBrandOnly)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // Brand-only fallback: cheapest King Arthur is [2] ($6.99) vs [1] ($10.99)
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[2].classes()).toContain('border-accent')
+    })
+
+    it('falls back to cheapest smart default when brand absent from results', async () => {
+      const prefsMissingBrand = {
+        version: 1,
+        ingredients: {
+          bread_flour: {
+            pinned: {
+              name: 'Some Other Flour',
+              brand: 'Nonexistent Brand',
+              sizeGrams: 4535.92,
+              packagePrice: 9.99,
+              packageSize: '10 lb',
+              updatedAt: '2026-05-26'
+            }
+          }
+        }
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs, prefsMissingBrand)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // No preference match → cheapest smart default ([0] @ $3.49)
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[0].classes()).toContain('border-accent')
+    })
+
+    it('per-bake localStorage selection wins over preference', async () => {
+      // localStorage explicitly selects product idx 2 (King Arthur 3 lb)
+      const savedSelections = {
+        bread_flour: {
+          ingredientId: 'bread_flour',
+          sourceType: 'heb',
+          productIndex: 2
+        }
+      }
+      localStorageMock._store['cost-selections:test-recipe:2026-02-10'] = JSON.stringify(savedSelections)
+      localStorageMock.getItem.mockImplementation((key: string) => localStorageMock._store[key] ?? null)
+
+      // Preferences would otherwise pick idx 1
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs, samplePreferences)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[2].classes()).toContain('border-accent')
+      expect(productCards[1].classes()).not.toContain('border-accent')
+    })
+
+    it('uses lastUsed when pinned is absent', async () => {
+      const lastUsedOnly = {
+        version: 1,
+        ingredients: {
+          bread_flour: {
+            lastUsed: {
+              name: 'Unbleached Bread Flour',
+              brand: 'King Arthur',
+              sizeGrams: 4535.92,
+              packagePrice: 10.99,
+              packageSize: '10 lb',
+              updatedAt: '2026-05-20'
+            }
+          }
+        }
+      }
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs, lastUsedOnly)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[1].classes()).toContain('border-accent')
+      // lastUsed-only should NOT render the pinned marker
+      expect(productCards[1].find('[data-testid="product-pinned-marker"]').exists()).toBe(false)
+    })
+
+    it('uses cheapest in-stock smart default when no preferences file exists', async () => {
+      // No preferences fetched (default makeFetchSuccess returns 404 for prefs)
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      // Cheapest is idx 0 ($3.49)
+      expect(productCards[0].classes()).toContain('border-accent')
+    })
+
+    it('silently falls back when preferences fetch rejects', async () => {
+      global.fetch = vi.fn((url: string) => {
+        if (url.includes('/cost-rates.json')) {
+          return Promise.resolve({ ok: true, json: () => Promise.resolve(sampleCostRates) } as Response)
+        }
+        if (url.includes('/cost-preferences.json')) {
+          return Promise.reject(new Error('Network error'))
+        }
+        if (url.includes('/recipes/')) {
+          return Promise.resolve({ ok: true, json: () => Promise.resolve(sampleRecipe) } as Response)
+        }
+        if (url.includes('/review-data/')) {
+          return Promise.resolve({ ok: true, json: () => Promise.resolve(hebForPrefs) } as Response)
+        }
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(sampleManifest) } as Response)
+      })
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // No throw, still renders smart-default selection
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[0].classes()).toContain('border-accent')
+    })
+
+    it('clicking pin toggle adds pinned entry to preferencesUpdates payload', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // Click the pin button on the currently-selected product card
+      const pinBtn = wrapper.find('[data-testid="product-pin-toggle"]')
+      expect(pinBtn.exists()).toBe(true)
+      await pinBtn.trigger('click')
+      await flushPromises()
+
+      // Marker should now appear
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[0].find('[data-testid="product-pinned-marker"]').exists()).toBe(true)
+
+      // Copy payload should include preferencesUpdates with a pinned entry
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+      const copyMock = copyToClipboard as unknown as ReturnType<typeof vi.fn>
+      const copyBtn = wrapper.find('[data-testid="copy-all-btn"]')
+      await copyBtn.trigger('click')
+      await flushPromises()
+      expect(copyMock).toHaveBeenCalled()
+      const lastCall = copyMock.mock.calls[copyMock.mock.calls.length - 1]
+      const payload = JSON.parse(lastCall[0] as string)
+      expect(payload.preferencesUpdates).toBeDefined()
+      expect(payload.preferencesUpdates.bread_flour).toBeDefined()
+      expect(payload.preferencesUpdates.bread_flour.pinned).toMatchObject({
+        brand: 'H-E-B',
+        name: 'Bread Flour'
+      })
+    })
+
+    it('clicking pin again unpins (sets pinned: null in payload)', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs, samplePreferences)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // Marker is visible (King Arthur is pinned via samplePreferences)
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      expect(productCards[1].find('[data-testid="product-pinned-marker"]').exists()).toBe(true)
+
+      // Click pin on the selected (pinned) card → unpins
+      const pinBtn = productCards[1].find('[data-testid="product-pin-toggle"]')
+      await pinBtn.trigger('click')
+      await flushPromises()
+      expect(productCards[1].find('[data-testid="product-pinned-marker"]').exists()).toBe(false)
+
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+      const copyMock = copyToClipboard as unknown as ReturnType<typeof vi.fn>
+      const copyBtn = wrapper.find('[data-testid="copy-all-btn"]')
+      await copyBtn.trigger('click')
+      await flushPromises()
+      const lastCall = copyMock.mock.calls[copyMock.mock.calls.length - 1]
+      const payload = JSON.parse(lastCall[0] as string)
+      expect(payload.preferencesUpdates.bread_flour.pinned).toBeNull()
+    })
+
+    it('selecting any product captures lastUsed in payload', async () => {
+      global.fetch = makeFetchSuccess(sampleManifest, sampleRecipe, hebForPrefs)
+
+      const wrapper = mount(BakeReviewPage)
+      await flushPromises()
+
+      const tabs = wrapper.find('[data-testid="section-nav"]').findAll('button')
+      await tabs.find(t => t.text() === 'Cost')!.trigger('click')
+
+      // Click product idx 2 (King Arthur 3 lb)
+      const productCards = wrapper.findAll('[data-testid="product-card"]')
+      await productCards[2].trigger('click')
+      await flushPromises()
+
+      const { copyToClipboard } = await import('@/composables/useClipboard')
+      const copyMock = copyToClipboard as unknown as ReturnType<typeof vi.fn>
+      const copyBtn = wrapper.find('[data-testid="copy-all-btn"]')
+      await copyBtn.trigger('click')
+      await flushPromises()
+      const lastCall = copyMock.mock.calls[copyMock.mock.calls.length - 1]
+      const payload = JSON.parse(lastCall[0] as string)
+      expect(payload.preferencesUpdates.bread_flour.lastUsed).toMatchObject({
+        brand: 'King Arthur',
+        sizeGrams: 1360
+      })
     })
   })
 

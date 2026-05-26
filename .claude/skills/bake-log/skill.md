@@ -784,13 +784,37 @@ Paste the combined JSON back here to wire into the cook_log entry.
     "total": 1.34,
     "perServing": 1.34,
     "servings": 1
+  },
+  "notesFeedback": "optional free-form feedback string",
+  "preferencesUpdates": {
+    "{ingredientId}": {
+      "pinned": { "name": "...", "brand": "...", "sizeGrams": 4535.92, "packagePrice": 10.99, "packageSize": "10 lb", "updatedAt": "YYYY-MM-DD" },
+      "lastUsed": { "name": "...", "brand": "...", "sizeGrams": 4535.92, "packagePrice": 10.99, "packageSize": "10 lb", "updatedAt": "YYYY-MM-DD" }
+    }
   }
 }
 ```
 
+**`preferencesUpdates` field (PF-276):** when present, merge each ingredient
+entry into `public/cost-preferences.json` and stage that file alongside the
+cook_log entry commit. Merge rules per ingredient:
+- `pinned: <PrefEntry>` → set/replace the `pinned` field for that ingredient
+- `pinned: null` → explicit unpin: delete the `pinned` field
+- `lastUsed: <PrefEntry>` → set/replace the `lastUsed` field
+- Other fields on the existing ingredient entry (e.g. an existing `lastUsed`
+  when only `pinned` was updated) are preserved
+- Create the ingredient entry if it doesn't exist yet
+- If `public/cost-preferences.json` is missing, create it with
+  `{ "version": 1, "ingredients": { ... } }`
+
+Stage `public/cost-preferences.json` in the same commit as the cook_log
+entry so the preference state and the bake that produced it land together.
+
 **Skip conditions:**
 - If user says "skip cost" or "no cost" — skip this phase entirely
 - If HEB MCP server is unavailable (tool errors) — warn and skip gracefully
+- If `preferencesUpdates` is absent or empty, skip the preferences-file
+  merge step (no-op)
 
 ## Phase 6b: Print Validation Gate (automated)
 

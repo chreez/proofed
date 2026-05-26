@@ -690,6 +690,35 @@ export interface CostRatesFile {
   rates: Record<string, CostRate>
 }
 
+// Cost preferences — remembered HEB product picks per ingredient (PF-276)
+export interface CostPreferenceEntry {
+  /** Product name (e.g., "Unbleached Bread Flour") */
+  name: string
+  /** Brand (e.g., "King Arthur") — used for case-insensitive matching */
+  brand: string
+  /** Package size in grams — used for ±5g tolerance matching */
+  sizeGrams: number
+  /** Package price at the time the preference was captured */
+  packagePrice: number
+  /** Raw package size string (e.g., "5 lb", "17.6 oz") */
+  packageSize: string
+  /** ISO date (YYYY-MM-DD) the preference was last updated */
+  updatedAt: string
+}
+
+export interface CostPreferencesIngredient {
+  /** User-pinned preference — wins over `lastUsed` and smart defaults. */
+  pinned?: CostPreferenceEntry
+  /** Implicit "last selected" preference — captured whenever the user picks a HEB product. */
+  lastUsed?: CostPreferenceEntry
+}
+
+export interface CostPreferences {
+  /** Schema version — bump on incompatible shape changes. */
+  version: 1
+  ingredients: Record<string, CostPreferencesIngredient>
+}
+
 // Cost selection — user picks for each ingredient
 export type CostSourceType = 'heb' | 'pantry' | 'manual' | 'rate'
 
