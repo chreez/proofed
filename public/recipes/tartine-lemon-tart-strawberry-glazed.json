@@ -1,0 +1,796 @@
+{
+  "meta": {
+    "name": "Tartine Lemon Tart, Strawberry-Glazed",
+    "shortName": "Lemon Tart, Strawberry",
+    "source": {
+      "name": "Tartine Bakery (adapted)",
+      "type": "adapted",
+      "author": "Elisabeth Prueitt & Chad Robertson (base); proofed. variant 2026-05-26"
+    },
+    "yields": "12 tartlets (10cm / 4in) — full Tartine pate sucree batch yields all 12; box-of-6 = portfolio portion + 6 home test/eat",
+    "total_time": "~16 hrs (2 hrs active, ~14 hrs passive including overnight curd set)",
+    "description": "Sibling of Tartine's canonical lemon cream tart. Pate sucree + Pierre Herme-style lemon cream reused verbatim; whipped cream finish replaced with fresh strawberries + warm red currant jelly glaze. Adds chablonnage (white chocolate shell wash) for travel-grade moisture barrier and an upgraded egg-yolk + cream wash for deeper golden-brown edges. Designed for refrigerated transport, served at cool room temp (~65F / 18C). Travel window: total kitchen-to-table <=90 min under USDA 2hr food-safety ceiling.",
+    "prep_active_min": 120,
+    "proof_passive_min": 840,
+    "oven_occupancy_min": 82,
+    "bake_min": 67,
+    "shopping_notes": "Red currant jelly: 1 jar (10-12oz) Bonne Maman or HEB house. White chocolate: 100g bar (Ghirardelli White Baking minimum; Valrhona Ivoire or Callebaut W2 if available). Strawberries: 1.2-1.5kg (~3 clamshells) — Driscoll's Sweetest Batch (TM) 14oz preferred, call HEB to verify stock; Driscoll's 1lb standard backup. Pastry box: BRP #2378 14x10x4 brown no-window (better thermal in sun). Mono-boards: 4-inch gold rounds (MT Products 48-pack). Egg wash uses Tartine canonical whole-egg + salt (strained) — no additional dairy needed."
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Tarts & Pies",
+      "defaultYield": 12,
+      "unit": "tartlets",
+      "servingsPerItem": 1,
+      "servingUnit": "tartlet"
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-05-26",
+      "summary": "Initial recipe — sibling of tartine-lemon-cream-tart. Whip topping replaced with fresh strawberries + warm red currant jelly glaze (2:1 jelly:water). Chablonnage layer added between baked shell and curd. Egg wash kept as Tartine canonical (whole egg + salt) but strained through fine-mesh sieve to remove chalazae for smoother brushing. Strawberries placed cut-side UP per food-science weep mitigation (King Arthur). Three-use jelly glaze: curd seal + berry pre-toss + top brush. Synthesized from 7-agent research, 60+ sources — see photos-source/tartine-lemon-tart-strawberry-glazed/research/.",
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            { "id": "butter_dough", "name": "Unsalted Butter (room temp)", "total": 255, "unit": "g", "breakdown": null },
+            { "id": "sugar_dough", "name": "Granulated Sugar", "total": 200, "unit": "g", "breakdown": null },
+            { "id": "salt_dough", "name": "Salt", "total": 1.5, "unit": "g", "breakdown": null, "display_amount": "1/4 tsp" },
+            { "id": "eggs_dough", "name": "Large Eggs (room temp)", "total": 2, "unit": "whole", "breakdown": null, "display_amount": "2 large" },
+            { "id": "flour", "name": "All-Purpose Flour", "total": 500, "unit": "g", "breakdown": null }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            { "id": "eggs_wash", "name": "Large Egg (wash)", "total": 1, "unit": "whole", "breakdown": null, "display_amount": "1 large" },
+            { "id": "salt_wash", "name": "Salt (pinch, wash)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" }
+          ]
+        },
+        {
+          "stageId": "CHABLONNAGE",
+          "stageName": "Chablonnage (Moisture Barrier)",
+          "ingredients": [
+            { "id": "white_chocolate", "name": "White Chocolate (couverture preferred)", "total": 60, "unit": "g", "breakdown": null }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            { "id": "lemon_juice", "name": "Fresh Lemon Juice", "total": 200, "unit": "g", "breakdown": null },
+            { "id": "eggs_cream", "name": "Large Eggs", "total": 3, "unit": "whole", "breakdown": null, "display_amount": "3 large" },
+            { "id": "egg_yolk_cream", "name": "Large Egg Yolk", "total": 1, "unit": "whole", "breakdown": null, "display_amount": "1 yolk" },
+            { "id": "sugar_cream", "name": "Granulated Sugar", "total": 175, "unit": "g", "breakdown": null },
+            { "id": "salt_cream", "name": "Salt (pinch)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" },
+            { "id": "butter_cream", "name": "Unsalted Butter (cool, not cold)", "total": 225, "unit": "g", "breakdown": null }
+          ]
+        },
+        {
+          "stageId": "STRAWBERRY",
+          "stageName": "Strawberry Prep",
+          "ingredients": [
+            { "id": "strawberries", "name": "Fresh Strawberries (Driscoll's preferred)", "total": 960, "unit": "g", "breakdown": [
+              { "label": "centerpiece (1 small whole per tartlet)", "amount": 180 },
+              { "label": "ring (4-5 halves per tartlet)", "amount": 720 },
+              { "label": "rejects / buffer", "amount": 60 }
+            ] },
+            { "id": "lemon_zest", "name": "Fresh Lemon Zest", "total": 2, "unit": "g", "breakdown": null, "display_amount": "1/2 tsp grated" }
+          ]
+        },
+        {
+          "stageId": "GLAZE",
+          "stageName": "Red Currant Glaze & Assembly",
+          "ingredients": [
+            { "id": "currant_jelly", "name": "Red Currant Jelly (Bonne Maman)", "total": 160, "unit": "g", "breakdown": [
+              { "label": "curd surface seal", "amount": 48 },
+              { "label": "berry pre-toss", "amount": 64 },
+              { "label": "top brush", "amount": 48 }
+            ], "display_amount": "8 Tbsp" },
+            { "id": "glaze_water", "name": "Water (for glaze)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "4 Tbsp" }
+          ]
+        }
+      ]
+    }
+  ],
+  "vessels": [
+    { "id": "V1", "name": "Stand Mixer Bowl", "reuse": "Dough mix -> clean -> (fallback only) whipped cream" },
+    { "id": "V2", "name": "10cm Tartlet Pans", "reuse": "Line -> bake -> chablonnage -> fill -> serve" },
+    { "id": "V3", "name": "Stainless-Steel Bowl", "reuse": "Double-boiler curd -> mount butter -> pour into shells" },
+    { "id": "V4", "name": "Medium Saucepan", "reuse": "Water bath for curd -> rinse -> warm glaze" },
+    { "id": "V5", "name": "Small Bowl", "reuse": "Egg-yolk wash -> rinse -> melt chablonnage -> rinse -> hold jelly" },
+    { "id": "V6", "name": "Wire Rack", "reuse": "Cool tart shells -> drain glazed berries" }
+  ],
+  "stages": [
+    {
+      "id": "DOUGH",
+      "title": "Make Tart Dough (Pate Sucree)",
+      "gather": {
+        "vessels": ["Stand Mixer Bowl"],
+        "equipment": ["Stand Mixer + Paddle Attachment", "Rubber Spatula", "Plastic Wrap", "Kitchen Scale"],
+        "ingredients": [
+          { "id": "butter_dough", "name": "Unsalted Butter (room temp)", "total": 255, "unit": "g", "breakdown": null },
+          { "id": "sugar_dough", "name": "Granulated Sugar", "total": 200, "unit": "g", "breakdown": null },
+          { "id": "salt_dough", "name": "Salt", "total": 1.5, "unit": "g", "breakdown": null, "display_amount": "1/4 tsp" },
+          { "id": "eggs_dough", "name": "Large Eggs (room temp)", "total": 2, "unit": "whole", "breakdown": null, "display_amount": "2 large" },
+          { "id": "flour", "name": "All-Purpose Flour", "total": 500, "unit": "g", "breakdown": null }
+        ]
+      },
+      "states": ["cream-butter-sugar", "add-eggs", "add-flour", "form-discs", "chill-dough"]
+    },
+    {
+      "id": "LINE",
+      "title": "Line & Blind Bake Tart Shell",
+      "gather": {
+        "vessels": ["10cm Tartlet Pans", "Small Bowl"],
+        "equipment": ["Rolling Pin", "Paring Knife", "Fork", "Pastry Brush", "Wire Rack", "Oven Thermometer", "Pie Weights (or rice/beans + parchment)"],
+        "ingredients": [
+          { "id": "eggs_wash", "name": "Large Egg (wash)", "total": 1, "unit": "whole", "breakdown": null, "display_amount": "1 large" },
+          { "id": "salt_wash", "name": "Salt (pinch, wash)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" }
+        ]
+      },
+      "states": ["roll-dough", "line-pan", "chill-shell", "preheat-tart-oven", "blind-bake-weighted", "egg-wash", "finish-bake-golden", "cool-shell"]
+    },
+    {
+      "id": "CHABLONNAGE",
+      "title": "Chablonnage (Moisture Barrier)",
+      "gather": {
+        "vessels": ["Small Bowl"],
+        "equipment": ["Pastry Brush", "Microwave or Double Boiler"],
+        "ingredients": [
+          { "id": "white_chocolate", "name": "White Chocolate (couverture preferred)", "total": 60, "unit": "g", "breakdown": null }
+        ]
+      },
+      "states": ["melt-chocolate", "brush-chablonnage", "chill-chablonnage"]
+    },
+    {
+      "id": "CREAM",
+      "title": "Make Lemon Cream",
+      "gather": {
+        "vessels": ["Stainless-Steel Bowl", "Medium Saucepan"],
+        "equipment": ["Whisk", "Thermometer", "Fine-Mesh Sieve", "Immersion Blender"],
+        "ingredients": [
+          { "id": "lemon_juice", "name": "Fresh Lemon Juice", "total": 200, "unit": "g", "breakdown": null },
+          { "id": "eggs_cream", "name": "Large Eggs", "total": 3, "unit": "whole", "breakdown": null, "display_amount": "3 large" },
+          { "id": "egg_yolk_cream", "name": "Large Egg Yolk", "total": 1, "unit": "whole", "breakdown": null, "display_amount": "1 yolk" },
+          { "id": "sugar_cream", "name": "Granulated Sugar", "total": 175, "unit": "g", "breakdown": null },
+          { "id": "salt_cream", "name": "Salt (pinch)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" },
+          { "id": "butter_cream", "name": "Unsalted Butter (cool, not cold)", "total": 225, "unit": "g", "breakdown": null }
+        ]
+      },
+      "states": ["strain-lemon-juice", "setup-water-bath", "combine-curd", "cook-curd", "strain-curd", "cool-curd", "mount-butter"]
+    },
+    {
+      "id": "FILL",
+      "title": "Fill & Overnight Set",
+      "gather": null,
+      "states": ["fill-shell", "chill-tart-overnight"]
+    },
+    {
+      "id": "STRAWBERRY",
+      "title": "Strawberry Prep",
+      "gather": {
+        "vessels": ["Wire Rack"],
+        "equipment": ["Paper Towels", "Sheet Pan", "Paring Knife", "Microplane (for lemon zest)"],
+        "ingredients": [
+          { "id": "strawberries", "name": "Fresh Strawberries (Driscoll's preferred)", "total": 960, "unit": "g", "breakdown": [
+            { "label": "centerpiece (1 small whole per tartlet)", "amount": 180 },
+            { "label": "ring (4-5 halves per tartlet)", "amount": 720 },
+            { "label": "rejects / buffer", "amount": 60 }
+          ] },
+          { "id": "lemon_zest", "name": "Fresh Lemon Zest", "total": 2, "unit": "g", "breakdown": null, "display_amount": "1/2 tsp grated" }
+        ]
+      },
+      "states": ["wash-and-dry", "chill-berries", "hull-and-cut"]
+    },
+    {
+      "id": "GLAZE",
+      "title": "Red Currant Glaze & Assembly",
+      "gather": {
+        "vessels": ["Medium Saucepan", "Small Bowl"],
+        "equipment": ["Pastry Brush", "Slotted Spoon", "Wire Rack"],
+        "ingredients": [
+          { "id": "currant_jelly", "name": "Red Currant Jelly (Bonne Maman)", "total": 160, "unit": "g", "breakdown": [
+            { "label": "curd surface seal", "amount": 48 },
+            { "label": "berry pre-toss", "amount": 64 },
+            { "label": "top brush", "amount": 48 }
+          ], "display_amount": "8 Tbsp" },
+          { "id": "glaze_water", "name": "Water (for glaze)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "4 Tbsp" }
+        ]
+      },
+      "states": ["warm-glaze", "seal-curd", "pre-toss-berries", "arrange-berries", "top-brush-glaze", "zest-and-chill"]
+    },
+    {
+      "id": "PACK",
+      "title": "Box & Transport",
+      "gather": null,
+      "states": ["depan-mount-boards", "load-box-transport"]
+    }
+  ],
+  "states": [
+    {
+      "id": "cream-butter-sugar",
+      "title": "Cream Butter, Sugar & Salt",
+      "direction": "Using stand mixer fitted with paddle attachment, combine 255g room-temperature butter, 200g sugar, and 1.5g salt. Mix on medium speed until smooth.",
+      "duration_min": 4,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Butter (room temp)", "amount": "255g" },
+        { "name": "Sugar", "amount": "200g" },
+        { "name": "Salt", "amount": "1.5g" }
+      ],
+      "exit_condition": "Mixture is smooth and uniformly combined, no visible butter chunks",
+      "notes": [
+        { "text": "Butter must be truly room temp — soft enough to indent easily with a finger but not greasy or melting.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "add-eggs",
+      "title": "Add Eggs",
+      "direction": "Mix in 1 egg on medium speed. Add remaining egg and mix until smooth. Stop mixer and scrape down sides of bowl with rubber spatula.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [{ "name": "Eggs", "amount": "2 whole" }],
+      "exit_condition": "Eggs fully incorporated, mixture smooth, bowl sides scraped clean",
+      "notes": [
+        { "text": "Eggs can be brought to room temp quickly by submerging in lukewarm water for 5 minutes.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "add-flour",
+      "title": "Add Flour",
+      "direction": "Add 500g flour all at once. Mix on low speed just until incorporated.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [{ "name": "Flour", "amount": "500g" }],
+      "exit_condition": "Flour just incorporated — no dry patches, no overmixing. Dough cohesive but not elastic.",
+      "notes": [
+        { "text": "Do not overmix — stop the moment flour disappears. Overmixing develops gluten and makes the dough tough rather than tender.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "form-discs",
+      "title": "Divide & Shape Discs",
+      "direction": "On a lightly floured surface, divide dough into 12 equal portions (~88g each). Shape each into a ball, then flatten into a disc 12mm thick. Wrap each disc individually in plastic wrap.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "12 evenly sized discs (~88g each), each 12mm thick, individually wrapped in plastic",
+      "notes": [
+        { "text": "Weigh portions for even tartlets — scale is more reliable than eyeballing 12 pieces.", "critical": false, "source": "agent" },
+        { "text": "For the strawberry-glazed variant, bake all 12 discs at once (box-of-6 portfolio + 6 home).", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "chill-dough",
+      "title": "Chill Dough",
+      "direction": "Chill wrapped discs in refrigerator for at least 2 hours or overnight.",
+      "duration_min": 120,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is firm and cold throughout — holds its shape when pressed",
+      "notes": null
+    },
+    {
+      "id": "roll-dough",
+      "title": "Roll Out Dough",
+      "direction": "Place a chilled dough disc on a lightly floured surface. Roll to 3mm thick, rolling from center toward edge in all directions. Lift and rotate dough a quarter turn after every few strokes, dusting underneath as needed. Work quickly to keep dough cool. Cut circles sized for your tartlet pans.",
+      "duration_min": 30,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "12 dough circles rolled to uniform 3mm thickness, sized for 10cm tartlet pans",
+      "notes": [
+        { "text": "If dough becomes too soft to work with, return to refrigerator for a few minutes to firm up.", "critical": false, "source": "agent" },
+        { "text": "For tartlets, pressing the disc directly into the pan with fingers also works — push from center outward, working up the sides to even thickness.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "line-pan",
+      "title": "Line Tartlet Pans",
+      "direction": "Line all 12 tartlet pans: transfer dough circles, ease into bottom and sides, pressing gently into place. Do not stretch the dough. Patch any tears with extra dough, pressing firmly to adhere. Trim level with pan edges.",
+      "duration_min": 15,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 12 tartlet pans lined with dough, no gaps or tears, excess trimmed flush with rims",
+      "notes": [
+        { "text": "Do not stretch the dough or the sides will shrink during baking.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "chill-shell",
+      "title": "Chill Lined Shells",
+      "direction": "Place lined tartlet pans in refrigerator or freezer until firm, about 15 minutes.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Shells are firm to the touch — dough does not dent when lightly pressed",
+      "notes": null
+    },
+    {
+      "id": "preheat-tart-oven",
+      "title": "Preheat Oven",
+      "direction": "Preheat oven to 325°F (160°C). Use an oven thermometer to verify temp matches setpoint — home ovens drift 15-50°F off-set and pale edges almost always trace back to a cool oven.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Oven at 325°F (160°C) confirmed by thermometer (not just dial setpoint)",
+      "notes": [
+        { "text": "Oven calibration is the single biggest cause of pale tart edges. Verify with a thermometer before every blind bake.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "blind-bake-weighted",
+      "title": "Blind Bake to Pale Gold",
+      "direction": "Dock the bottom of each chilled shell with fork tines, 5cm apart. Line each shell with parchment, fill with pie weights (or rice/beans). Bake 20-25 min until edges turn dull pale gold and parchment lifts cleanly without sticking. Rotate tray 180° at the halfway mark for even color.",
+      "duration_min": 25,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Edges dull pale gold; parchment lifts cleanly; shell appears set but not yet golden brown",
+      "notes": [
+        { "text": "Rotate 180° at ~T+12min for even color. Hot spots in home ovens otherwise produce one-side-pale, one-side-dark shells.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "egg-wash",
+      "title": "Apply Egg Wash (Strained)",
+      "direction": "Remove parchment and weights from each shell. Whisk 1 large egg with a pinch of salt until smooth. Strain through a fine-mesh sieve into a clean small bowl — removes chalazae (the twisted white strands) and yolk membrane bits for an even, lump-free wash. Brush lightly on bottom AND sides of each warm shell.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Egg", "amount": "1 whole" },
+        { "name": "Salt", "amount": "0.5g (pinch)" }
+      ],
+      "exit_condition": "All shells brushed thinly with strained egg wash on bottoms and sides; no pools, drips, or lumpy bits visible",
+      "notes": [
+        { "text": "Straining is the key upgrade over canonical Tartine wash. Chalazae bake into visible lumps on the shell surface that interrupt the smooth golden finish. Strain takes 10 seconds, eliminates that defect entirely.", "critical": true, "source": "agent" },
+        { "text": "Canonical Tartine wash uses whole egg + salt — gives standard golden but not deep golden. If pale edges remain an issue across bakes, see Golden-Brown Edge Protocol in technical_notes for the optional egg-yolk + heavy-cream upgrade.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "finish-bake-golden",
+      "title": "Finish Bake to Deep Golden",
+      "direction": "Return shells to oven and bake an additional 5-8 minutes until edges are deep amber-gold (not light gold) and bottom is fully matte gold and dry to the touch. Trust the look, not the timer. Rotate 180° at T+3 min if needed.",
+      "duration_min": 8,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Edges deep amber-gold; bottom fully matte gold and dry to touch; shell smells like toast (Maillard-developed). Total LINE bake time ~30-35 min vs Tartine canonical ~25 min.",
+      "notes": [
+        { "text": "Tartine's recipe says egg wash 'a minute or two before done' — that's too brief to develop deep color. The yolk+cream wash needs 5-8 min of heat exposure. Watch the visual, pull when edges are deep amber.", "critical": false, "source": "agent" },
+        { "text": "If shell wobbles or sags when nudged, add 2-3 min and re-check — visually golden but undercooked = soggy after fill.", "critical": false, "source": "agent" }
+      ],
+      "reminders": [
+        { "prompt": "Rate the edge color this bake (good / ok / pale)", "type": "rating" }
+      ]
+    },
+    {
+      "id": "cool-shell",
+      "title": "Cool Shells Completely",
+      "direction": "Remove from oven and let cool completely on a wire rack.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Shells are room temperature throughout — no warmth when touching the bottom",
+      "notes": [
+        { "text": "Start the chablonnage step as soon as shells are cool to the touch (~80°F). Hotter than that melts the white chocolate too thinly; colder is fine.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "melt-chocolate",
+      "title": "Melt White Chocolate",
+      "direction": "Place 60g white chocolate in a small heatproof bowl. Microwave at 50% power in 20-second bursts, stirring between, until just melted and smooth (about 60-90 seconds total). Alternatively, melt over a double boiler. Do not overheat — white chocolate scorches at 110°F.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "White Chocolate", "amount": "60g" }
+      ],
+      "exit_condition": "Chocolate is smooth, glossy, fully liquid; warm but not hot to touch (~95-100°F)",
+      "notes": [
+        { "text": "Couverture (Valrhona Ivoire 35%, Callebaut W2) melts more smoothly than chip-form. Avoid white chocolate chips for chablonnage — added stabilizers leave a chalky film.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "brush-chablonnage",
+      "title": "Brush Chablonnage on Shell Interiors",
+      "direction": "Using a clean pastry brush, paint a thin even layer of melted white chocolate over the inside bottom AND sides of each cooled tart shell. Aim for ~5g chocolate per tartlet (~60g total across 12). Coverage should be sheer — you should see the golden shell through it.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 12 shell interiors brushed with thin, even chocolate layer; no thick pools or unbrushed gaps",
+      "notes": [
+        { "text": "CHABLONNAGE is the pro French technique (cooking-ez.com) for waterproofing a baked shell against a wet filling. Thicker than ATK's 'plain egg wash', it's a true hydrophobic film. Required for travel-grade tarts.", "critical": true, "source": "agent" },
+        { "text": "If the chocolate begins to set on the brush as you work, return bowl to microwave for 10-15 sec at 50% power.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "chill-chablonnage",
+      "title": "Chill Chablonnage to Set",
+      "direction": "Place brushed shells (in their pans) on a tray and refrigerate 5-10 minutes to set the chocolate.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Chocolate fully set — surface is matte and firm, not glossy or tacky to touch",
+      "notes": null
+    },
+    {
+      "id": "strain-lemon-juice",
+      "title": "Strain Lemon Juice",
+      "direction": "Strain 200g fresh lemon juice through a fine-mesh sieve to remove pulp and seeds.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [{ "name": "Lemon Juice", "amount": "200g" }],
+      "exit_condition": "Lemon juice strained, no pulp or seeds remain",
+      "notes": null
+    },
+    {
+      "id": "setup-water-bath",
+      "title": "Set Up Water Bath",
+      "direction": "Pour water to a depth of about 5cm into the saucepan. Place over medium heat and bring to a simmer.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Water at a steady simmer in saucepan",
+      "notes": [
+        { "text": "Never use unlined aluminum — acid reacts with metal and creates a metallic flavor.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "combine-curd",
+      "title": "Combine Curd Ingredients",
+      "direction": "In the stainless-steel bowl: whisk 3 eggs and 1 egg yolk together first. Add 175g sugar and whisk immediately — do not let yolks and sugar sit. Add strained lemon juice and salt, whisk to combine.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Eggs", "amount": "3 whole" },
+        { "name": "Egg Yolk", "amount": "1" },
+        { "name": "Sugar", "amount": "175g" },
+        { "name": "Strained Lemon Juice", "amount": "200g" },
+        { "name": "Salt", "amount": "0.5g (pinch)" }
+      ],
+      "exit_condition": "All curd ingredients whisked together in steel bowl, homogeneous",
+      "notes": [
+        { "text": "Never let egg yolks and sugar sit together without stirring — the sugar will 'cook' the yolks and turn them granular.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "cook-curd",
+      "title": "Cook Curd to 180°F (82°C)",
+      "direction": "Place bowl over saucepan — it should rest on the rim, over but not touching the water. Whisk continuously until mixture becomes very thick and registers 180°F (82°C) on a thermometer. This will take 10 to 12 minutes.",
+      "duration_min": 12,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curd is very thick and thermometer reads 180°F (82°C)",
+      "notes": null,
+      "reminders": [
+        { "prompt": "Record curd temperature at thickening", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "strain-curd",
+      "title": "Strain Curd",
+      "direction": "Immediately strain the hot curd through a fine-mesh sieve into a clean bowl to remove any chalazae or bits of cooked egg.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curd is smooth and silky — no lumps, strands, or cooked egg bits remain",
+      "notes": [
+        { "text": "Strain while hot — it flows through the sieve much more easily than when cooled.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "cool-curd",
+      "title": "Cool Curd to 140°F (60°C)",
+      "direction": "Let strained curd cool to 140°F (60°C), stirring from time to time to release heat. Meanwhile, cut 225g butter into ~14g (1 Tbsp) pieces.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curd temperature at 140°F (60°C), butter cut into 1 Tbsp pieces and ready",
+      "notes": [
+        { "text": "Do not add butter while curd is too hot — the emulsion won't hold properly.", "critical": true, "source": "agent" }
+      ],
+      "reminders": [
+        { "prompt": "Record curd temperature before adding butter", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "mount-butter",
+      "title": "Mount Butter into Cream",
+      "direction": "Using immersion blender in the bowl, add 225g butter one tablespoon at a time, blending after each addition until incorporated before adding the next piece.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": [{ "name": "Butter (cool)", "amount": "225g" }],
+      "exit_condition": "Cream is pale yellow, opaque, and quite thick — all butter incorporated and emulsified",
+      "notes": [
+        { "text": "This 'mounting' technique (like a beurre blanc) keeps butter in emulsion, creating the softer, lighter texture that distinguishes this from standard lemon curd.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "fill-shell",
+      "title": "Fill Chablonnage-Set Shells",
+      "direction": "Pour or spoon lemon cream into each chablonnage-set tartlet shell. Shake pans gently to smooth the surface.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 12 tartlet shells filled with lemon cream, surfaces smooth and level",
+      "notes": [
+        { "text": "Pour while curd is still warm (~80°F) for the smoothest top surface. If curd has chilled, soften over simmering water before filling.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "chill-tart-overnight",
+      "title": "Press Plastic & Chill Overnight",
+      "direction": "Press plastic wrap directly onto the surface of the lemon cream in each tartlet (prevents skin formation). Refrigerate overnight (8-12 hr) for full set. Tartlets must be cold and fully firm before strawberries go on.",
+      "duration_min": 720,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Curd surface is firm enough to support fruit without sagging or being pierced by berry tips. Tartlets fully cold throughout.",
+      "notes": [
+        { "text": "Overnight set (vs Tartine's 2hr) firms the curd surface and slows hygroscopic moisture pull on the fruit — material weep mitigation for travel-grade tarts.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "wash-and-dry",
+      "title": "Wash & Dry Strawberries",
+      "direction": "Rinse 1.2-1.5kg whole strawberries briefly under cool running water (DO NOT soak — accelerates mold and water absorption). Shake off excess. Lay in single layer on paper-towel-lined sheet pan. Pat tops gently dry from above with another paper towel. Air-dry 30 minutes.",
+      "duration_min": 30,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Whole Strawberries", "amount": "1.2-1.5kg" }
+      ],
+      "exit_condition": "All berries fully dry to the touch — no visible water on surface or stems. Single layer on absorbent towels.",
+      "notes": [
+        { "text": "Wet berries = glaze won't adhere AND extra moisture migrates to curd. Drying is non-negotiable for travel-grade.", "critical": true, "source": "agent" },
+        { "text": "Wash with stems/calyx INTACT — hulling first lets water into the berry interior.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "chill-berries",
+      "title": "Chill Berries",
+      "direction": "Move sheet pan to refrigerator (uncovered) for 30 minutes. Cold berries hold their shape better under the warm glaze brush and reduce thermal shock to the cold curd.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": true,
+      "components": null,
+      "exit_condition": "Berries chilled throughout — cold to touch but not frozen",
+      "notes": null
+    },
+    {
+      "id": "hull-and-cut",
+      "title": "Hull, Sort & Cut",
+      "direction": "Hull each berry (remove green calyx + small core cone). Sort by size: reserve 12 small whole hulled berries (~15g each = 180g) for centerpieces; reserve 48-60 medium berries (~12g each = 720g) for halving. Cut halves LENGTHWISE through the stem-to-tip axis.",
+      "duration_min": 20,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "12 whole hulled centerpiece berries + 48-60 lengthwise halves separated into two trays. Total weight ~900g on tarts (60g rejected).",
+      "notes": [
+        { "text": "Cut LENGTHWISE not crosswise — lengthwise halves show the seed pattern and pointed tip, the classic French silhouette.", "critical": true, "source": "agent" },
+        { "text": "Hull just before assembly — hulled berries weep faster than unhulled.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "warm-glaze",
+      "title": "Warm Red Currant Glaze",
+      "direction": "Combine 160g (8 Tbsp) red currant jelly + 60g (4 Tbsp) water in a small saucepan. Warm over medium-low heat, stirring, until just melted and uniformly liquid (~2 min). Do NOT boil. Goal: warm not hot. The glaze should slide slowly off a spoon and form a shiny film without dripping.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Red Currant Jelly", "amount": "160g" },
+        { "name": "Water", "amount": "60g" }
+      ],
+      "exit_condition": "Glaze fully liquid, no jelly clumps, warm not hot (~35-40°C / 95-105°F). No straining needed — jelly is already clear.",
+      "notes": [
+        { "text": "Red currant jelly chosen over apricot for: clarity (no amber tint muting strawberry red), highest natural pectin (firmest set, best Texas-heat tolerance), no straining required, classic French for red fruit (ATK + King Arthur).", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "seal-curd",
+      "title": "Seal Curd Surface (Use 1 of 3)",
+      "direction": "Using pastry brush, brush a thin warm-glaze layer (~4g each, ~48g total) across the cooled curd surface of each tartlet. This is the inter-layer moisture barrier between curd and fruit. Refrigerate 5-10 min to set this layer before placing fruit.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": [{ "name": "Red Currant Glaze (curd seal)", "amount": "48g (4g per tartlet)" }],
+      "exit_condition": "All 12 tartlets have thin glaze film over the curd; glaze set and tacky to touch but not pooling",
+      "notes": [
+        { "text": "First of three glaze uses. Curd seal + berry pre-toss + top brush = three-layer moisture defense without flavor shift.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "pre-toss-berries",
+      "title": "Pre-Toss Berries in Glaze (Use 2 of 3)",
+      "direction": "Re-warm remaining glaze 5-10 sec in microwave if it's cooled. Gently toss prepared halved berries + whole centerpieces in the warm glaze using a slotted spoon, coating all faces including the cut/contact face. Lift out onto wire rack to drain ~30 sec. Uses ~64g glaze.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [{ "name": "Red Currant Glaze (berry pre-toss)", "amount": "64g" }],
+      "exit_condition": "Every berry surface coated with thin glaze film, excess drained on wire rack. Berries glossy and tacky.",
+      "notes": [
+        { "text": "King Arthur's underrated technique: pre-coating the cut face seals against juice release into the curd. Stronger anti-weep mitigation than top glaze alone.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "arrange-berries",
+      "title": "Arrange Berries (Cut-Side UP)",
+      "direction": "On each tartlet: place 1 whole centerpiece berry standing pointed-up in dead center. Arrange 4-5 halved berries CUT-SIDE UP in a tight ring around the centerpiece, points facing outward toward the tart edge. Work outside→in. Glaze pools beautifully in the cut bowl.",
+      "duration_min": 15,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 12 tartlets arranged: 1 whole center + 4-5 halves cut-up around. Restraint anchor — four ingredients visible (curd, berry, glaze, shell).",
+      "notes": [
+        { "text": "CUT-SIDE UP: cuticle (low water permeance) faces curd; cut face stays dry under top glaze pool. Halved cut-DOWN is more 'pro patisserie aesthetic' but exposes cut face directly to curd = worst weep scenario. Food science wins for travel/hold.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "top-brush-glaze",
+      "title": "Top Brush Glaze (Use 3 of 3)",
+      "direction": "Re-warm remaining glaze 5 sec if needed. Brush a single light coat of warm glaze over the arranged berries on each tartlet, working center→edges with gentle strokes (don't move berries). Uses ~48g (4g per tartlet). Single coat only — double-coating creates a 'jam-thick' look.",
+      "duration_min": 8,
+      "timer": false,
+      "parallel": false,
+      "components": [{ "name": "Red Currant Glaze (top brush)", "amount": "48g (4g per tartlet)" }],
+      "exit_condition": "All berries lightly coated with shiny glaze film; no pooling or drips down the side of the tartlet",
+      "notes": [
+        { "text": "Glaze temperature: 'warm not hot' — slides slowly off brush, forms shiny film without dripping. Too hot = wilts berries; too cold = thick and uneven.", "critical": true, "source": "agent" },
+        { "text": "YouTube technique references: Martha Stewart Red Berry Fruit Tart (https://www.youtube.com/watch?v=slMZvGZOJ_M), Simple Clear Fruit Glaze (https://www.youtube.com/watch?v=TRjxOeGc9YY).", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "zest-and-chill",
+      "title": "Lemon Zest Garnish & Chill",
+      "direction": "Microplane fresh lemon zest sparingly over the glazed berries — concentrate the zest in ONE quadrant per tartlet (Jacques Genin restraint echo), not all sides. ~1/2 tsp total across all 12 tartlets. Refrigerate ≥30 min to set the glaze before transport or service.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        { "name": "Lemon Zest", "amount": "~2g (1/2 tsp)" }
+      ],
+      "exit_condition": "All tartlets garnished with one-quadrant zest dust; glaze fully set (matte not tacky); tartlets chilled and ready for transport or service.",
+      "notes": [
+        { "text": "Restraint over flex. Four ingredients on the plate: curd, strawberry, glaze, zest. No mint sprig, no edible flower, no candied fennel.", "critical": false, "source": "agent" }
+      ]
+    },
+    {
+      "id": "depan-mount-boards",
+      "title": "De-Pan & Mount on Boards",
+      "direction": "Remove tartlets from fluted pans by pushing the removable bottom up gently. Slide each tartlet onto a 4-inch gold mono-board (MT Products). Secure with a small dab of corn syrup between board and tart bottom to prevent slide during transport.",
+      "duration_min": 15,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All 12 tartlets removed from pans, each mounted on a 4-inch gold mono-board with corn syrup glue. Pans empty.",
+      "notes": [
+        { "text": "De-pan BEFORE boxing, not at the venue. At-venue de-panning under time pressure = fumbled tarts.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "load-box-transport",
+      "title": "Load Box & Transport",
+      "direction": "Line box floor with single parchment sheet. Place 6 boarded tartlets (portfolio portion) in 2x3 grid, single layer (never stack). Pre-cool car AC 5-10 min. Pre-chill insulated tote with 1-2 gel packs at bottom + folded towel barrier (gel packs never touch box directly). Place box flat in tote, tote on rear-seat floor behind front passenger.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Box loaded with 6 tartlets on boards, parchment lined; tote pre-chilled; car AC running; ready to depart with ≤90 min car-time budget under USDA 2hr ceiling.",
+      "notes": [
+        { "text": "Other 6 tartlets stay home (refrigerated) for test/eat. See technical_notes for Food Safety + Storage Timeline before extended hold.", "critical": false, "source": "agent" },
+        { "text": "At venue: unbox immediately to release any condensation. Let tartlets warm to ~65°F / 18°C (~20-30 min indoor cool spot) before service. Cold dulls lemon flavor materially.", "critical": true, "source": "agent" }
+      ]
+    }
+  ],
+  "technical_notes": [
+    {
+      "category": "general",
+      "title": "Food Safety + Storage Timeline",
+      "text": "Lemon crème is an egg-and-butter emulsion — USDA classifies as perishable cooked food. USDA hard limits: 40-140°F is the Danger Zone; 2-hour rule at <90°F ambient, 1-hour rule at >90°F ambient. Texas car cabin in direct sun reaches 129°F at 95°F ambient within 30 min.\n\nStorage table:\n• Unfilled baked shells: fridge 5-7 days airtight / room temp 2-3 days loosely covered\n• Curd in jar sealed: fridge 1 week / room temp 2hr max\n• Chablonnage+curd filled (no fruit, plastic on surface): fridge 24-48hr (flavor peaks day-of) / room temp 2hr max\n• Fully assembled (curd+fruit+glaze): fridge 6-8hr (visual degrades after 4hr — berries dull, curd may bead) / 72°F room: 1hr pristine, 2hr presentable, 3-4hr weeping; warm room (72-85°F) NOT RECOMMENDED.\n\nDecision tree:\n• Bake shells day-before? YES → store airtight room-temp; chablonnage day-of. NO → fresh-cooled shells.\n• Curd made >24hr ahead? YES → fridge in jar with plastic on surface; warm to room temp 30min before filling. NO → fresh curd, fill, refrigerate overnight.\n• Service in >6hr from full assembly? YES → refrigerate; warm 20-30min at room temp before serving. NO → refrigerate ≤30min to set top glaze, then transport.\n• Procurement delay (strawberries day-of)? Quality fine. The 2-3 day pre-purchase window is for QC inspection time, not stability.\n• Made too early (8+hr before service)? Refrigerate fully assembled. Expect berry dulling, possible glaze cloudiness, slight curd bead-out. Pull from fridge 30-60min before service to warm. If visual unacceptable: brush fresh warm glaze over the tarts again to refresh shine.\n• Pickup/delivery delayed? If total room-temp exposure approaches 2 hours, return to fridge IMMEDIATELY. Flavor downgrade from cold curd is reversible. Food-safety violation is NOT reversible.\n\nCold-vs-flavor tradeoff: lemon volatiles (limonene, citral) much more perceptible at 65-70°F than fridge temp. Use refrigeration as a SAFETY tool, never serve straight from fridge — pull 20-30min before service to warm. Target service temp: 65°F / 18°C."
+    },
+    {
+      "category": "technique",
+      "title": "Fallback: Whipped Cream Finish (Tartine Canonical)",
+      "text": "If the strawberry-glaze plan fails (berries sub-par, glaze sets cloudy, refrigeration unavailable, glaze brush technique not landing), revert to canonical Tartine whipped cream topping.\n\nWhen to invoke:\n• Berry quality unacceptable day-of (soft, mold-tinged, white-shouldered)\n• Currant jelly unavailable; no time to source apricot or nappage\n• Glaze brush technique not landing desired sheen — dull/cloudy results\n• Refrigerated transport not possible; same-day in-venue assembly required\n\nConversion protocol:\n• Skip CHABLONNAGE stage (optional but still beneficial for shell crispness)\n• Stage CREAM fills shells normally — refrigerate set per Tartine canonical (2hr, not overnight)\n• Skip STRAWBERRY and GLAZE stages entirely\n• Whip 240ml heavy cream + 8g granulated sugar to soft peaks (do not over-whip)\n• Apply whipped cream just before service (max 30 min ahead)\n• Garnish with optional fresh strawberries (whole hulled, pointed up) or candied fennel\n\nCross-reference: canonical recipe `tartine-lemon-cream-tart` for whip prep details (Tartine p.306).\n\nTradeoff: whip weeps and deflates within ~2hr in Texas heat. Works ONLY for same-day in-venue assembly, NOT for pre-assembled transport. Visual is more 'soft Americana' than restrained French — different aesthetic register. Acceptable for interview if framed as the canonical Tartine version (technique-respect signal)."
+    },
+    {
+      "category": "technique",
+      "title": "Golden-Brown Edge Protocol",
+      "text": "Recurring user issue: pâte sucrée edges come out pale, not golden brown. Research identifies five levers ranked by impact. This recipe applies levers 2-5 by default and keeps lever 1 as an optional upgrade.\n\n1. EGG WASH CHOICE (highest impact, OPTIONAL UPGRADE). Tartine canonical 'whole egg + salt' (used here) gives standard golden — improved further by straining through fine-mesh sieve. Egg WHITE = pale + shiny. Egg YOLK + 1 Tbsp heavy cream = deepest golden brown but requires adding heavy cream to the shopping list for a single-use ingredient. If pale edges remain an issue after dialing in levers 2-5, swap to yolk+cream as the next upgrade.\n\n2. EGG WASH TIMING (applied by default). Tartine says '1-2 min before done' — too brief to develop deep color. This recipe applies wash with 5-8 min of bake time remaining. Watch the visual, pull when edges are deep amber.\n\n3. TWO-STAGE BLIND BAKE (applied by default). Stage A (parchment + weights at 325°F / 160°C, 20-25 min) pulls shell to pale gold. Stage B (weights removed, wash applied, 5-8 min) develops deep gold. Total ~28-35 min vs Tartine canonical ~25 min.\n\n4. OVEN CALIBRATION. Pale edges almost always trace to a cool oven (home ovens drift 15-50°F off setpoint). Place oven thermometer on rack BEFORE starting. If 325°F setpoint reads 300°F on thermometer, bake at 350°F setpoint to compensate. Recalibrate annually.\n\n5. ROTATE + POSITION (applied by default). Position rack middle-lower third (more heat from bottom = better edge dev from metal pan). Rotate 180° halfway through each stage. If browning unevenly even with rotation, add thin foil ring over over-browned section in stage B.\n\nSTRAINING THE WASH (applied by default, regardless of composition). Whole egg + salt whisked together still contains chalazae (twisted white protein strands) and yolk membrane bits that bake into visible lumps on the shell. Straining through fine-mesh sieve takes 10 seconds and eliminates that surface defect entirely. Smoother brushing, more uniform color.\n\nDoneness check (visual, not timer): edges deep amber-gold (slightly darker than center); bottom fully matte gold (no wet/glossy patches), dry to touch when tapped; shell 'smells like toast' (Maillard-developed). If shell wobbles or sags when nudged, add 2-3 min — visually golden but undercooked = soggy after fill."
+    },
+    {
+      "category": "general",
+      "title": "Texas Strawberry Sourcing Reference",
+      "text": "LATE-MAY 2026 REALITY: Texas local strawberry season is essentially over. Plan A = Driscoll's CA-sourced from HEB.\n\nSourcing priority (late-May/June):\n1. Driscoll's Sweetest Batch™ 14oz from HEB (call store to verify stock — confirmed at Kroger/Harris Teeter/Fred Meyer, HEB unconfirmed)\n2. Driscoll's 1lb clamshell from HEB ($4-5; CA-peak window May-July)\n3. HEB Fresh Strawberries 1lb ($2.29) — likely same CA supply, lower QC\n4. Bonus scout: Sunday Mueller Farmers' Market hothouse strawberries (supply not guaranteed late-May)\n\n2027 PLANNING: Schedule strawberry-tart shoots for mid-April to early May to hit TX local peak. Sweet Eats Adventure Farm (Georgetown, ~30mi N) grows Albion variety — technical ideal for tarts: firm, symmetrical conical, glossy when ripe, balanced sweetness (9.3/10 firmness).\n\nSelection at retail: deep uniform red tip-to-shoulder (no white shoulders — picked underripe and don't ripen post-harvest); glossy sheen catches light (dull = past prime); firm but yielding; fresh green calyx; size uniformity in clamshell; no bruises, soft spots, weeping juice at clamshell bottom, no mold.\n\nStorage (purchase to use): unwashed, paper-toweled tray, fridge back (32-36°F); 7-day storage life but BEST photographic quality within 2-3 days. Day-of: rinse briefly cold water, pat dry thoroughly, hull, then cut. See STRAWBERRY stage states."
+    },
+    {
+      "category": "equipment",
+      "title": "Travel & Packaging Equipment (Box of 6)",
+      "text": "PRIMARY box: BRP Box Shop #2378 14x10x4 brown no-window lock-and-tab. Better thermal performance in sun than window version. Pack of 10 ~$30 shipped from brpboxshop.com.\n\nAlt with window: BRP #244 14x10x4 white window — visual reveal at delivery but greenhouse effect in direct-sun car.\n\nMono-boards: MT Products 4-inch Gold Mini Round 48-pack, Amazon ~$15. Moisture-proof foil-laminated cardboard. Each tartlet sits on its own board, glued with corn syrup/glucose to prevent slide.\n\nAcetate dome NOT needed at 1.5\" product / 4\" box headroom — tall-box reliance is sufficient.\n\nInsulated tote: any pastry-grade tote, pre-chilled. 1-2 gel packs at bottom + folded towel barrier (gel packs never touch box directly — that chills tarts, condensation forms when opened in warm venue, lemon flavor dulled). Goal: keep box at ~65-70°F throughout transit, never below.\n\nDelivery clock: best before 10am OR after 7pm. AVOID 11a-4p direct-sun windows. Cabin temp lags ambient ~30 min — pre-cool car AC 5-10 min before loading. Hard ceiling: ≤90 min car time if AC <80°F; ≤45 min if 90°F+. Total kitchen-to-table ≤90 min under USDA 2hr food-safety limit."
+    },
+    {
+      "category": "general",
+      "title": "YouTube Glaze Technique References",
+      "text": "User-curated for review (not endorsed/validated):\n• Martha Stewart — Red Berry Fruit Tart (Martha Bakes): https://www.youtube.com/watch?v=slMZvGZOJ_M — full tart assembly + glaze brush demo\n• Simple Clear Fruit Glaze for Pies, Flans, Desserts: https://www.youtube.com/watch?v=TRjxOeGc9YY — generic glaze brush technique, useful for brush motion\n• Easy Mini Fruit Tarts by BakeLikeAPro: https://www.youtube.com/watch?v=kVpVy_FlWoY — mini tart format relevant to box-of-12 yield\n\nWritten authority: King Arthur Baking — How to Glaze Berries (https://www.kingarthurbaking.com/blog/2015/05/19/how-to-glaze-berries). Key callouts: tart must be completely cool, fruit must be completely dry, glaze 'warm not hot' (slides slowly off brush, shiny film no drip), single light coat only, start center → move toward edges with gentle strokes."
+    }
+  ],
+  "reheat": {
+    "methods": [
+      {
+        "method": "Cool room temp from fridge",
+        "detail": "Pull tartlets from fridge 20-30 min before serving. Place on a cool indoor surface — not in sun, not near oven. Target 65°F / 18°C (cool room, not warm). Lemon volatiles (limonene, citral) much more perceptible at 65-70°F than fridge temp. Do NOT use the oven or microwave — heat melts the butter-mounted curd and breaks the emulsion.",
+        "source": "agent",
+        "reference": "USDA FSIS Danger Zone + research synthesis food-safety section"
+      },
+      {
+        "method": "Refresh dulled glaze",
+        "detail": "If tartlet has sat refrigerated >4hr and glaze appears cloudy or dull, re-warm 1-2 Tbsp red currant jelly + 1 tsp water 5 sec in microwave, brush a light fresh layer over the existing glaze. Restores shine. Do this BEFORE the 20-30 min warming step.",
+        "source": "agent",
+        "reference": "research synthesis Open Question #7"
+      }
+    ]
+  },
+  "research": {
+    "sources": [
+      { "name": "Pierre Hermé — A Parisian Journey lemon tart", "url": "https://www.aparisianjourney.com/en/pierre-hermes-tarte-au-citron-recipe/", "type": "adapted", "author": "Pierre Hermé via interpreter" },
+      { "name": "Dominique Ansel via Feedfeed (Everyone Can Bake)", "url": "https://thefeedfeed.com/dominiqueansel/lemon-curd-tart-with-vanilla-sable-crust-and-fresh-berries", "type": "original", "author": "Dominique Ansel" },
+      { "name": "Cédric Grolet — Strawberry Tart 2023", "url": "https://cedric-grolet.com/opera/en/product/strawberry-tart-2023", "type": "original", "author": "Cédric Grolet" },
+      { "name": "Chef Iso — Neutral Nappage Glaze", "url": "https://chefiso.com/p/glaze-fruit-tart-recipe/", "type": "original" },
+      { "name": "King Arthur — How to Glaze Berries", "url": "https://www.kingarthurbaking.com/blog/2015/05/19/how-to-glaze-berries", "type": "original" },
+      { "name": "ATK — How to Glaze a Fresh Fruit Tart", "url": "https://www.americastestkitchen.com/articles/7297-how-to-glaze-a-fruit-tart", "type": "original" },
+      { "name": "Joy of Baking — Apricot Glaze", "url": "https://m.joyofbaking.com/ingredients/ApricotGlaze.html", "type": "original" },
+      { "name": "Delicious Magazine — French Strawberry Tart (redcurrant 2:1)", "url": "https://www.deliciousmagazine.co.uk/recipes/french-strawberry-tart/", "type": "original" },
+      { "name": "That Skinny Chick — Strawberry Lemon Tart (redcurrant)", "url": "https://www.thatskinnychickcanbake.com/strawberry-lemon-tart/", "type": "adapted" },
+      { "name": "Your Home Based Mom — Mini Strawberry Tarts (redcurrant)", "url": "https://www.yourhomebasedmom.com/strawberry-tart/", "type": "adapted" },
+      { "name": "Bakes by Brown Sugar — Strawberry & White Chocolate Tart", "url": "https://bakesbybrownsugar.com/strawberry-and-white-chocolate-tart/", "type": "adapted" },
+      { "name": "cooking-ez.com — Chablonner (French technique authority)", "url": "https://cooking-ez.com/lexique.php?id=56", "type": "original" },
+      { "name": "Tasting Table — Cocoa Butter for Tart Shells", "url": "https://www.tastingtable.com/1242156/cocoa-butter-protect-tart-shells/", "type": "original" },
+      { "name": "Cloudy Kitchen — 2-Minute Egg Wash Guide", "url": "https://cloudykitchen.com/blog/egg-wash-recipe/", "type": "original" },
+      { "name": "USDA FSIS — Danger Zone 40°F-140°F", "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/danger-zone-40f-140f", "type": "original" },
+      { "name": "PMC — Strawberry cuticle permeability study", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8118533/", "type": "original" },
+      { "name": "AgriLife Today — TX Strawberry Season 2026", "url": "https://agrilifetoday.tamu.edu/2026/04/14/texas-strawberry-season-slow-to-start-but-quality-stays-high/", "type": "original" },
+      { "name": "Tartine (canonical base)", "type": "adapted", "author": "Elisabeth Prueitt & Chad Robertson" }
+    ],
+    "techniques": [
+      { "name": "Red currant jelly glaze, 2:1 jelly:water", "sourcedFrom": "Tier 1: 6/7 agents on lemon-curd-tart-with-strawberry recipes (ATK, King Arthur, That Skinny Chick, Your Home Based Mom, Delicious Magazine, Eugenie Kitchen)", "rationale": "Clear (no straining), highest natural pectin (firmest set, best Texas-heat tolerance), classic French for red fruit, no amber tint muting strawberry red", "confidence": "high" },
+      { "name": "Chablonnage (white chocolate brushed on cooled shell interior)", "sourcedFrom": "Tier 2: 5/7 agents (cooking-ez, Tasting Table, Bakes by Brown Sugar, Preppy Kitchen, Sugar Spun Run)", "rationale": "True hydrophobic moisture barrier vs porous egg-wash film; required for travel-grade fruit tarts under wet filling", "confidence": "high" },
+      { "name": "Cut-side UP for halved berries", "sourcedFrom": "Tier 2: food science (PMC cuticle study) + King Arthur + curd-fruit interface synthesis", "rationale": "Cuticle (low water permeance) faces curd; cut face stays dry under top glaze pool. Travel/hold weep math wins over pro patisserie cut-down aesthetic", "confidence": "high" },
+      { "name": "Pre-toss berries in warm jelly before placement", "sourcedFrom": "Tier 2: King Arthur primary, ATK confirming", "rationale": "Seals cut/contact face against juice release into curd; stronger anti-weep than top glaze alone", "confidence": "high" },
+      { "name": "Strained canonical egg wash (Tartine whole-egg + salt, sieve-strained)", "sourcedFrom": "Tier 3: 3/3 egg-wash sources (Cloudy Kitchen, Spatula Desserts, Everyday Pie); Tartine canonical recipe", "rationale": "Keeps Tartine canonical wash composition (no new ingredients) but adds a fine-mesh strain to remove chalazae for smoother brushing and more uniform color. Optional further upgrade to yolk + heavy cream is documented in technical_notes for users who can absorb the additional shopping line.", "confidence": "high" },
+      { "name": "Overnight curd set (vs Tartine's 2hr)", "sourcedFrom": "Tier 3: 2/7 agents (Love and Olive Oil, Dessert First)", "rationale": "Firms curd surface, slows hygroscopic moisture pull on fruit — material weep mitigation for travel-grade", "confidence": "medium" },
+      { "name": "Lemon zest single-quadrant dust (restraint)", "sourcedFrom": "Tier 2: Pardon Your French (Jacques Genin echo), Claire Damon profile", "rationale": "Restraint anchor for portfolio-piece aesthetic; four-ingredient clarity (curd, berry, glaze, zest)", "confidence": "high" }
+    ],
+    "strategy": "Multi-agent parallel research (7 agents) + targeted user-prompted follow-ups (golden-brown edge protocol, YouTube glaze references)",
+    "sourceCount": 64,
+    "date": "2026-05-26"
+  },
+  "nutrition": null
+}

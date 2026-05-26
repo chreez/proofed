@@ -84,6 +84,7 @@ const categoryMap: Record<string, string> = {
   'sourdough-chocolate-chip-cookies': 'baking',
   'sourdough-cinnamon-buns': 'baking',
   'tartine-lemon-cream-tart': 'baking',
+  'tartine-lemon-tart-strawberry-glazed': 'baking',
   'tartine-rugelach': 'baking',
   'sourdough-discard-cheese-crackers': 'baking',
   'sonoran-flour-tortillas': 'baking',
