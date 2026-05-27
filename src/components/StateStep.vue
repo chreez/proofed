@@ -199,7 +199,7 @@ function parseSourceSegments(src: string): SourceSegment[] {
           />
         </div>
 
-        <p class="text-body text-sm mb-3">{{ state.direction }}</p>
+        <p class="text-body text-sm mb-3 whitespace-pre-line">{{ state.direction }}</p>
 
         <div v-if="scaledComponents.length" class="flex flex-wrap gap-2 mb-3">
           <span
