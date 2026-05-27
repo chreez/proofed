@@ -310,3 +310,41 @@ describe('RecipePrintView — ingredient snapshot resolution (PF-237)', () => {
     expect(wrapper.text()).toContain('medium (999 g)')
   })
 })
+
+describe('RecipePrintView — unit-aware cost labels (PF-277)', () => {
+  beforeEach(() => {
+    mockCurrentRecipe.value = null
+    mockRouteParams.value = { recipeId: 'test-recipe' }
+  })
+
+  it('renders "per loaf" for bread recipe (1 loaf yields)', async () => {
+    const recipe = makeRecipe({ estimatedCostItems: [makeCostItem()] })
+    // makeRecipe defaults to yields = '1 loaf'
+    const wrapper = await mountAndSelect(recipe, /^Estimated/)
+    const text = wrapper.text()
+    expect(text).toContain('per loaf')
+    expect(text).not.toContain('per unit')
+    expect(text).not.toContain('per serving')
+  })
+
+  it('renders "per cookie" for cookie recipe (PF-277)', async () => {
+    const recipe = makeRecipe({ estimatedCostItems: [makeCostItem()] })
+    recipe.meta.yields = '~22-24 cookies'
+    const wrapper = await mountAndSelect(recipe, /^Estimated/)
+    const text = wrapper.text()
+    expect(text).toContain('per cookie')
+    expect(text).not.toContain('per unit')
+  })
+
+  it('"Recipe makes …" sentence uses meta.yields when present', async () => {
+    const recipe = makeRecipe({ estimatedCostItems: [makeCostItem()] })
+    recipe.meta.yields = '2 loaves (~800g each)'
+    const wrapper = await mountAndSelect(recipe, /^Estimated/)
+    expect(wrapper.text()).toContain('Recipe makes 2 loaves (~800g each)')
+  })
+
+  // Note: empty meta.yields makes validation.ready === false, so the print view
+  // gates the cost section entirely. The fallback to "per serving" still
+  // exists in the code as a defensive path; unit-tested in
+  // useProductionPlan.spec.ts via inferDefaultUnit/pluralizeUnit integration.
+})

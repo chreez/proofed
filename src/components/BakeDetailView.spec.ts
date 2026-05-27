@@ -570,7 +570,7 @@ describe('BakeDetailView', () => {
       expect(costSection.text()).not.toContain('negligible')
     })
 
-    it('shows total and per-serving in footer', () => {
+    it('shows total and per-unit (PF-277: derived from meta.yields) in footer', () => {
       mockCurrentRecipe.value = makeRecipe({
         cook_log: [{
           date: '2026-02-05',
@@ -584,10 +584,11 @@ describe('BakeDetailView', () => {
       expect(footer.exists()).toBe(true)
       expect(footer.text()).toContain('$1.29')
       expect(footer.text()).toContain('Total bake cost')
-      expect(footer.text()).toContain('Per serving')
+      // makeRecipe default yields '8 buns' → unit "bun"
+      expect(footer.text()).toContain('Per bun')
     })
 
-    it('shows serving count in header', () => {
+    it('shows unit count in header (PF-277: derived from meta.yields)', () => {
       mockCurrentRecipe.value = makeRecipe({
         cook_log: [{
           date: '2026-02-05',
@@ -597,10 +598,11 @@ describe('BakeDetailView', () => {
         }]
       })
       const wrapper = mountComponent()
-      expect(wrapper.text()).toContain('8 servings')
+      // makeRecipe default yields '8 buns' → "8 buns" instead of "8 servings"
+      expect(wrapper.text()).toContain('8 buns')
     })
 
-    it('shows singular "serving" for 1 serving', () => {
+    it('shows singular unit for count === 1 (PF-277)', () => {
       mockCurrentRecipe.value = makeRecipe({
         cook_log: [{
           date: '2026-02-05',
@@ -610,8 +612,30 @@ describe('BakeDetailView', () => {
         }]
       })
       const wrapper = mountComponent()
-      expect(wrapper.text()).toContain('1 serving')
-      expect(wrapper.text()).not.toContain('1 servings')
+      // makeRecipe default yields '8 buns' → "1 bun" not "1 buns"
+      expect(wrapper.text()).toContain('1 bun')
+      expect(wrapper.text()).not.toContain('1 buns')
+    })
+
+    it('falls back to "serving"/"servings" when meta.yields is empty (PF-277)', () => {
+      mockCurrentRecipe.value = makeRecipe({
+        meta: {
+          name: 'Test',
+          source: { name: 'Self' },
+          yields: '',
+          total_time: '1h'
+        },
+        cook_log: [{
+          date: '2026-02-05',
+          version: 'v1.1.0',
+          notes: ['A note'],
+          cost: { ...costData, servings: 2 }
+        }]
+      })
+      const wrapper = mountComponent()
+      const footer = wrapper.find('[data-testid="cost-footer"]')
+      expect(footer.text()).toContain('Per serving')
+      expect(wrapper.text()).toContain('2 servings')
     })
 
     it('shows ingredient names and amounts', () => {

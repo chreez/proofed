@@ -23,6 +23,7 @@ import {
   updateEntry,
   inferDefaultUnit,
   parseBaseYield,
+  pluralizeUnit,
 } from './useProductionPlan'
 import type { ProductionPlan } from '@/types/production'
 import type { Recipe } from '@/types/recipe'
@@ -484,5 +485,88 @@ describe('inferDefaultUnit', () => {
 
   it('handles leading noun without a number: "rolls" → "roll"', () => {
     expect(inferDefaultUnit(makeRecipe('rolls'))).toBe('roll')
+  })
+})
+
+describe('pluralizeUnit (PF-277)', () => {
+  describe('count === 1 returns singular unchanged', () => {
+    it('loaf', () => expect(pluralizeUnit(1, 'loaf')).toBe('loaf'))
+    it('knife', () => expect(pluralizeUnit(1, 'knife')).toBe('knife'))
+    it('berry', () => expect(pluralizeUnit(1, 'berry')).toBe('berry'))
+    it('cookie', () => expect(pluralizeUnit(1, 'cookie')).toBe('cookie'))
+    it('tart', () => expect(pluralizeUnit(1, 'tart')).toBe('tart'))
+    it('bun', () => expect(pluralizeUnit(1, 'bun')).toBe('bun'))
+    it('serving', () => expect(pluralizeUnit(1, 'serving')).toBe('serving'))
+  })
+
+  describe('-f → -ves', () => {
+    it('loaf → loaves', () => expect(pluralizeUnit(2, 'loaf')).toBe('loaves'))
+    it('loaf at count 0 still pluralizes', () => expect(pluralizeUnit(0, 'loaf')).toBe('loaves'))
+  })
+
+  describe('-fe → -ves', () => {
+    it('knife → knives', () => expect(pluralizeUnit(2, 'knife')).toBe('knives'))
+    it('knife at count 3 → knives', () => expect(pluralizeUnit(3, 'knife')).toBe('knives'))
+  })
+
+  describe('consonant + y → -ies', () => {
+    it('berry → berries', () => expect(pluralizeUnit(2, 'berry')).toBe('berries'))
+    it('but vowel + y stays + s: "day" → "days"', () => {
+      expect(pluralizeUnit(2, 'day')).toBe('days')
+    })
+  })
+
+  describe('default: append s', () => {
+    it('cookie → cookies', () => expect(pluralizeUnit(2, 'cookie')).toBe('cookies'))
+    it('tart → tarts', () => expect(pluralizeUnit(2, 'tart')).toBe('tarts'))
+    it('bun → buns', () => expect(pluralizeUnit(2, 'bun')).toBe('buns'))
+    it('serving → servings', () => expect(pluralizeUnit(2, 'serving')).toBe('servings'))
+  })
+
+  describe('edge cases', () => {
+    it('empty string returns empty string', () => {
+      expect(pluralizeUnit(2, '')).toBe('')
+    })
+  })
+})
+
+describe('inferDefaultUnit + pluralizeUnit integration (PF-277)', () => {
+  it('yields "2 loaves" → singular "loaf" → "loaves" for count 2', () => {
+    const recipe = makeRecipe('2 loaves')
+    const singular = inferDefaultUnit(recipe)
+    expect(singular).toBe('loaf')
+    expect(pluralizeUnit(2, singular)).toBe('loaves')
+  })
+
+  it('yields "1 loaf" → singular "loaf" → "loaf" for count 1', () => {
+    const recipe = makeRecipe('1 loaf')
+    const singular = inferDefaultUnit(recipe)
+    expect(singular).toBe('loaf')
+    expect(pluralizeUnit(1, singular)).toBe('loaf')
+  })
+
+  it('yields "~22-24 cookies" → singular "cookie" → "cookies" for count 23', () => {
+    const recipe = makeRecipe('~22-24 cookies')
+    const singular = inferDefaultUnit(recipe)
+    expect(singular).toBe('cookie')
+    expect(pluralizeUnit(23, singular)).toBe('cookies')
+  })
+
+  it('yields "8 buns" → "buns" for count 8', () => {
+    const recipe = makeRecipe('8 buns')
+    const singular = inferDefaultUnit(recipe)
+    expect(singular).toBe('bun')
+    expect(pluralizeUnit(8, singular)).toBe('buns')
+  })
+
+  it('yields empty → fallback to "serving"/"servings" at call site', () => {
+    // inferDefaultUnit returns "unit" for empty/missing yields.
+    // Per PF-277, render-site logic substitutes "serving" for "unit".
+    const recipe = makeRecipe('')
+    const inferred = inferDefaultUnit(recipe)
+    expect(inferred).toBe('unit')
+    const effective = inferred === 'unit' ? 'serving' : inferred
+    expect(pluralizeUnit(2, effective)).toBe('servings')
+    expect(pluralizeUnit(1, effective)).toBe('serving')
   })
 })

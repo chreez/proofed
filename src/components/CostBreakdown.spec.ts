@@ -334,6 +334,86 @@ describe('CostBreakdown', () => {
       expect(footer.text()).toContain('$0.79')
     })
 
+    it('renders loaves/loaf for bread recipes (PF-277)', () => {
+      const cost: CookLogCost = {
+        total: 2.66,
+        perServing: 1.33,
+        servings: 2,
+        items: []
+      }
+      const recipe = createRecipe({
+        meta: { name: 'Sourdough', source: { name: 'Self' }, yields: '2 loaves (~800g each)', total_time: '24h' },
+        cook_log: [
+          { date: '2026-05-26', version: 'v1.0.0', notes: ['bake'], cost }
+        ]
+      })
+
+      const wrapper = mount(CostBreakdown, { props: { recipe } })
+      expect(wrapper.text()).toContain('2 loaves')
+      expect(wrapper.text()).not.toContain('2 servings')
+      expect(wrapper.text()).toContain('Per loaf')
+      expect(wrapper.text()).not.toContain('Per serving')
+    })
+
+    it('renders singular "loaf" when servings === 1 (PF-277)', () => {
+      const cost: CookLogCost = {
+        total: 1.33,
+        perServing: 1.33,
+        servings: 1,
+        items: []
+      }
+      const recipe = createRecipe({
+        meta: { name: 'Sourdough', source: { name: 'Self' }, yields: '1 loaf', total_time: '24h' },
+        cook_log: [
+          { date: '2026-05-26', version: 'v1.0.0', notes: ['bake'], cost }
+        ]
+      })
+
+      const wrapper = mount(CostBreakdown, { props: { recipe } })
+      expect(wrapper.text()).toContain('1 loaf')
+      expect(wrapper.text()).not.toContain('1 loaves')
+      expect(wrapper.text()).toContain('Per loaf')
+    })
+
+    it('renders cookies for cookie recipes (PF-277)', () => {
+      const cost: CookLogCost = {
+        total: 6.90,
+        perServing: 0.30,
+        servings: 23,
+        items: []
+      }
+      const recipe = createRecipe({
+        meta: { name: 'Sourdough Cookies', source: { name: 'Self' }, yields: '~22-24 cookies', total_time: '3h' },
+        cook_log: [
+          { date: '2026-05-22', version: 'v1.0.0', notes: ['bake'], cost }
+        ]
+      })
+
+      const wrapper = mount(CostBreakdown, { props: { recipe } })
+      expect(wrapper.text()).toContain('23 cookies')
+      expect(wrapper.text()).toContain('Per cookie')
+    })
+
+    it('falls back to "serving"/"servings" when meta.yields is empty (PF-277)', () => {
+      const cost: CookLogCost = {
+        total: 5.00,
+        perServing: 2.50,
+        servings: 2,
+        items: []
+      }
+      // meta.yields is empty — inferDefaultUnit returns "unit", call site falls back to "serving"
+      const recipe = createRecipe({
+        meta: { name: 'Test', source: { name: 'Self' }, yields: '', total_time: '1h' },
+        cook_log: [
+          { date: '2026-05-22', version: 'v1.0.0', notes: ['bake'], cost }
+        ]
+      })
+
+      const wrapper = mount(CostBreakdown, { props: { recipe } })
+      expect(wrapper.text()).toContain('2 servings')
+      expect(wrapper.text()).toContain('Per serving')
+    })
+
     it('displays cost date note', () => {
       const cost: CookLogCost = {
         total: 1.34,

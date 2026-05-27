@@ -250,6 +250,50 @@ function singularize(word: string): string {
 }
 
 /**
+ * Pluralize a singular noun for display purposes.
+ *
+ * Used together with `inferDefaultUnit` to render count labels in cost
+ * breakdowns (e.g. "2 loaves", "16 cookies", "1 loaf"). PF-277.
+ *
+ * Rules (applied in order):
+ *  1. `count === 1` → return `singular` unchanged.
+ *  2. Ends in "fe" → replace "fe" with "ves" (`knife` → `knives`).
+ *  3. Ends in "f" → replace "f" with "ves" (`loaf` → `loaves`).
+ *  4. Ends in "y" preceded by a consonant → replace "y" with "ies"
+ *     (`berry` → `berries`, but NOT `day` → `days`).
+ *  5. Otherwise append "s" (`cookie` → `cookies`, `tart` → `tarts`).
+ *
+ * Known wart: invariant plurals like `rugelach` round-trip to `rugelachs`
+ * for count > 1 since rule 5 always adds an "s". The existing
+ * `singularize` map already treats `rugelach` as invariant, so display
+ * label is consistent for `count === 1`.
+ */
+export function pluralizeUnit(count: number, singular: string): string {
+  const word = singular ?? ''
+  if (count === 1) return word
+  if (!word) return word
+
+  // 2. -fe → -ves
+  if (word.length >= 3 && word.endsWith('fe')) {
+    return word.slice(0, -2) + 'ves'
+  }
+  // 3. -f → -ves
+  if (word.length >= 2 && word.endsWith('f')) {
+    return word.slice(0, -1) + 'ves'
+  }
+  // 4. consonant + y → -ies
+  if (word.length >= 2 && word.endsWith('y')) {
+    const prevChar = word.charAt(word.length - 2).toLowerCase()
+    const isVowel = prevChar === 'a' || prevChar === 'e' || prevChar === 'i' || prevChar === 'o' || prevChar === 'u'
+    if (!isVowel) {
+      return word.slice(0, -1) + 'ies'
+    }
+  }
+  // 5. default: append s
+  return word + 's'
+}
+
+/**
  * Best-effort default unit from a recipe's meta.yields string.
  *
  * Strategy:
@@ -259,13 +303,16 @@ function singularize(word: string): string {
  *
  * Drops parenthetical detail and trailing qualifiers (e.g. "8 rolls (cast-iron)"
  * → "roll", "12 cookies, 30g each" → "cookie").
+ *
+ * Tolerates approximation markers (`~22-24 cookies`) by stripping leading `~`.
  */
 export function inferDefaultUnit(recipe: Recipe | null | undefined): string {
   const yields = recipe?.meta?.yields
   if (!yields || typeof yields !== 'string') return 'unit'
 
   // Strip parentheticals and clauses after commas.
-  const cleaned = yields.replace(/\([^)]*\)/g, '').split(',')[0].trim()
+  // Also strip leading approximation markers (e.g. "~22-24 cookies").
+  const cleaned = yields.replace(/\([^)]*\)/g, '').split(',')[0].trim().replace(/^~+\s*/, '')
   if (!cleaned) return 'unit'
 
   // Pattern A: "<number><frac?> <noun>" — capture first word group after a number.

@@ -9,6 +9,7 @@ import BakeStatsBlock from '@/components/BakeStatsBlock.vue'
 import BakeQrModal from '@/components/BakeQrModal.vue'
 import ShareBottomSheet from '@/components/ShareBottomSheet.vue'
 import { useBakeAggregates } from '@/composables/useBakeAggregates'
+import { inferDefaultUnit, pluralizeUnit } from '@/composables/useProductionPlan'
 import type { BakeScratchpad, CookLogEntry, CookLogPhoto, ReheatMethod, CookLogCostItem, CostSourceType, KeyNote, BakeNote } from '@/types/recipe'
 
 const route = useRoute()
@@ -350,6 +351,22 @@ function formatCost(cost: number): string {
   return `$${cost.toFixed(2)}`
 }
 
+// PF-277: unit-aware cost labels — derived from recipe.meta.yields so breads
+// render "1 loaf"/"Per loaf" instead of "1 serving"/"Per serving". Falls back
+// to the original "serving" terminology when meta.yields is empty/missing
+// (inferDefaultUnit returns "unit" in that case).
+const costUnitSingular = computed<string>(() => {
+  const inferred = inferDefaultUnit(currentRecipe.value)
+  return inferred === 'unit' ? 'serving' : inferred
+})
+
+const costUnitCountLabel = computed<string>(() => {
+  const servings = entry.value?.cost?.servings ?? 1
+  return pluralizeUnit(servings, costUnitSingular.value)
+})
+
+const perCostUnitLabel = computed<string>(() => `Per ${costUnitSingular.value}`)
+
 // --- Shared mode popover ---
 const isSharedMode = computed(() => route.query.shared === 'true')
 const popoverVisible = ref(false)
@@ -537,7 +554,7 @@ function weatherIcon(condition: string): string {
           <!-- Header -->
           <div class="flex items-center justify-between p-3 border-b-2 border-stone-200 bg-stone-50">
             <h4 class="font-mono text-sm text-heading font-semibold">Cost Breakdown</h4>
-            <span class="font-mono text-xs text-stone-400">{{ entry.cost.servings }} serving{{ entry.cost.servings !== 1 ? 's' : '' }}</span>
+            <span class="font-mono text-xs text-stone-400">{{ entry.cost.servings }} {{ costUnitCountLabel }}</span>
           </div>
 
           <!-- Ingredient rows -->
@@ -581,7 +598,7 @@ function weatherIcon(condition: string): string {
               <span class="text-lg font-mono font-medium text-ink">${{ entry.cost.total.toFixed(2) }}</span>
             </div>
             <div class="flex items-center justify-between mt-1">
-              <span class="font-mono text-xs text-stone-400">Per serving</span>
+              <span class="font-mono text-xs text-stone-400">{{ perCostUnitLabel }}</span>
               <span class="font-mono text-sm text-accent font-medium">${{ entry.cost.perServing.toFixed(2) }}</span>
             </div>
           </div>

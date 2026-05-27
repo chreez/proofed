@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import type { Recipe, CostSourceType } from '@/types/recipe'
 import { getMostRecentCost, getMostRecentCostDate } from '@/composables/useCost'
+import { inferDefaultUnit, pluralizeUnit } from '@/composables/useProductionPlan'
 
 interface Props {
   recipe: Recipe
@@ -13,6 +14,22 @@ const costData = computed(() => getMostRecentCost(props.recipe))
 const costDate = computed(() => getMostRecentCostDate(props.recipe))
 
 const hasCost = computed(() => costData.value !== null)
+
+// PF-277: derive unit label from recipe.meta.yields ("2 loaves" → "loaf").
+// `inferDefaultUnit` returns "unit" when yields is missing — in that case
+// fall back to the original "serving" terminology.
+const unitSingular = computed<string>(() => {
+  const inferred = inferDefaultUnit(props.recipe)
+  return inferred === 'unit' ? 'serving' : inferred
+})
+
+const unitCountLabel = computed<string>(() => {
+  const servings = costData.value?.servings ?? 1
+  return pluralizeUnit(servings, unitSingular.value)
+})
+
+// Matches existing "Per serving" casing (capital P, lowercase noun).
+const perUnitLabel = computed<string>(() => `Per ${unitSingular.value}`)
 
 const isPartialCost = computed(() => {
   if (!costData.value) return false
@@ -67,7 +84,7 @@ function formatDate(dateStr: string): string {
       <div class="flex flex-col gap-1">
         <h4 class="font-mono text-sm text-heading font-semibold">Cost Breakdown</h4>
         <span class="font-mono text-xs text-stone-400">
-          {{ costData.servings }} serving{{ costData.servings !== 1 ? 's' : '' }}
+          {{ costData.servings }} {{ unitCountLabel }}
         </span>
       </div>
     </div>
@@ -114,7 +131,7 @@ function formatDate(dateStr: string): string {
           <span class="text-lg font-mono font-medium text-ink">${{ costData.total.toFixed(2) }}</span>
         </div>
         <div class="flex justify-between items-baseline">
-          <span class="font-mono text-xs text-stone-500">Per serving</span>
+          <span class="font-mono text-xs text-stone-500">{{ perUnitLabel }}</span>
           <span class="font-mono text-sm text-accent font-medium">${{ costData.perServing.toFixed(2) }}</span>
         </div>
       </div>

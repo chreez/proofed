@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { validatePrintSections } from '@/composables/usePrintValidation'
 import { deriveAllergens } from '@/composables/useAllergens'
+import { inferDefaultUnit, pluralizeUnit } from '@/composables/useProductionPlan'
 import type { CookLogCostItem, IngredientSnapshotGroup } from '@/types/recipe'
 import NutritionLabel from '@/components/NutritionLabel.vue'
 import { renderBrandedQr, generateQrLabelDataUrl } from '@/composables/useQrLabel'
@@ -315,6 +316,24 @@ const costDateFormatted = computed(() => {
 
 const costBreakdownDateFormatted = computed(() => costDateFormatted.value)
 
+// PF-277: unit-aware cost labels derived from recipe.meta.yields.
+// Empty/missing yields falls back to "serving" (matching prior behavior).
+const costUnitSingular = computed<string>(() => {
+  const inferred = inferDefaultUnit(currentRecipe.value)
+  return inferred === 'unit' ? 'serving' : inferred
+})
+
+const perCostUnitLabel = computed<string>(() => `per ${costUnitSingular.value}`)
+
+const costRecipeMakesLabel = computed<string>(() => {
+  // Prefer meta.yields when present (user-authored, more descriptive).
+  // Fall back to "{n} {pluralized unit}" derived from the cost source.
+  const yields = currentRecipe.value?.meta.yields
+  if (yields) return yields
+  const servings = costBreakdown.value?.servings ?? 0
+  return `${servings} ${pluralizeUnit(servings, costUnitSingular.value)}`
+})
+
 function formatCostRate(item: CookLogCostItem): string {
   const rate = item.cost / item.amount
   const unit = item.unit === 'whole' ? 'ea' : item.unit
@@ -443,7 +462,7 @@ const recipeUrl = computed(() => {
       <div class="cost-values">
         <span class="cost-total">${{ costSummary!.total.toFixed(2) }} per bake</span>
         <span class="cost-divider">&middot;</span>
-        <span class="cost-serving">${{ costSummary!.perServing.toFixed(2) }} per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}</span>
+        <span class="cost-serving">${{ costSummary!.perServing.toFixed(2) }} {{ perCostUnitLabel }}</span>
       </div>
       <div class="estimation-note">
         Estimated from H-E-B retail prices<span v-if="costDateFormatted">, snapshotted {{ costDateFormatted }}</span>
@@ -503,7 +522,7 @@ const recipeUrl = computed(() => {
             <td class="col-cost cost-total-value">${{ costBreakdown.total.toFixed(2) }}</td>
           </tr>
           <tr class="cost-detail-row">
-            <td colspan="2" class="cost-detail-label">per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}</td>
+            <td colspan="2" class="cost-detail-label">{{ perCostUnitLabel }}</td>
             <td class="col-cost cost-detail-value">${{ costBreakdown.perServing.toFixed(2) }}</td>
           </tr>
         </tfoot>
@@ -511,8 +530,8 @@ const recipeUrl = computed(() => {
 
       <!-- Cost summary -->
       <div class="cost-summary-text">
-        Recipe makes {{ currentRecipe?.meta.yields || `${costBreakdown.servings} servings` }}.
-        Estimated cost is ${{ costBreakdown.total.toFixed(2) }} per bake, or ${{ costBreakdown.perServing.toFixed(2) }} per {{ currentRecipe?.meta.yields ? 'unit' : 'serving' }}.
+        Recipe makes {{ costRecipeMakesLabel }}.
+        Estimated cost is ${{ costBreakdown.total.toFixed(2) }} per bake, or ${{ costBreakdown.perServing.toFixed(2) }} {{ perCostUnitLabel }}.
       </div>
 
       <!-- Estimation disclaimer -->

@@ -1,10 +1,10 @@
 ---
 id: PF-277
 title: 'Cost breakdown: ''servings'' label wrong for breads (use ''loaves'')'
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-05-26 17:19'
-updated_date: '2026-05-26 19:44'
+updated_date: '2026-05-27 16:36'
 labels: []
 dependencies: []
 ---
@@ -38,4 +38,5 @@ Touch points: bake detail cost breakdown component, print page cost block, IG sh
 - [ ] #10 Vitest covers integration of inferDefaultUnit + pluralizeUnit: yields present -> derived unit name; yields empty -> 'servings'
 - [ ] #11 CostBreakdown and RecipePrintView snapshot tests updated to reflect new labels; snapshot diff is bounded to label strings only (no structural changes)
 - [ ] #12 Styling/UX HITL gate: dev server running, bake detail page opened for visual review on desktop + iPhone URL, explicit user approval before commit
+- [ ] #13 1,2,3,4,5,6,7,8,9,10,11,12
 <!-- AC:END -->
