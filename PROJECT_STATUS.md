@@ -1,7 +1,7 @@
 ---
 project: Proofed
 status: active
-updated: 2026-05-26
+updated: 2026-05-27
 ---
 
 ## Description
@@ -27,6 +27,7 @@ Background: recipe workflow features (cook logs, photo pipeline, energy-level re
 
 ## Recent
 
+- PF-277: unit-aware cost breakdown labels — `pluralizeUnit(count, singular)` util (loaf→loaves, knife→knives, berry→berries, default +s) co-located with `inferDefaultUnit` in `useProductionPlan.ts`. `inferDefaultUnit` now strips leading `~` so "~22-24 cookies" resolves. `CostBreakdown`, `BakeDetailView`, `RecipePrintView` derive count + per-unit labels from `recipe.meta.yields`; empty yields falls back to `serving(s)`. No `CookLogCost` schema change — label derived at render. 17 new unit + 8 component tests; 2811 total pass.
 - PF-276: cost-picker preferences — `public/cost-preferences.json` seed (KA bread/AP flour, Morton salt); BakeReviewPage auto-applies pinned > lastUsed > cheapest HEB; pin/unpin toggle on selected card with HelpTooltip; `preferencesUpdates` block in copy-review payload; bake-log Phase 5+6 merges into file at write time. Pure helpers in `useCostPreferences.ts` (match by brand+sizeGrams ±5g, brand-only fallback, cheapest pick). 18 unit + 10 integration tests; 2764 total pass.
 - PF-259: scratchpad export JSON now includes `experimentExport` block (full `ExperimentExport` shape: adjustments + derivedValues + multiplier + scaleMode) when ExperimentPanel has non-default values; key fully omitted otherwise. Closes the PF-244 silent-apply gap — /bake-log no longer has to verbally re-ask for dialed amounts. New `buildCurrentExport()` on `useExperimentStorage`; threaded through `useScratchpad.exportJson/exportJsonString`. 11 new unit tests, 2703 total pass.
 - PF-256.4: /pricing rework on ProductionPlan — decimal sell prices + pretty hint (≈$X.50/whole), per-recipe estimated-sold input, break-even line, sell-price override via double-click (mirrors /production yield-override), markup cap 1500%, cost-per-unit bug fix (was halving for batches>1). Tooltip teleports to body (escapes scroll container). 2537 tests pass.
