@@ -1,0 +1,951 @@
+{
+  "meta": {
+    "name": "Tartine Walnut Currant Sourdough",
+    "source": {
+      "name": "Tartine Bread, pg. 91 (adapted with currants)",
+      "type": "adapted",
+      "author": "Chad Robertson",
+      "accessed": "2026-05-27"
+    },
+    "yields": "2 loaves (~900g each baked)",
+    "total_time": "~21 hrs (40 min active)",
+    "description": "Tartine Country Walnut Sourdough (Bread, pg. 91) extended with soaked Zante currants. 80% KABF / 10% BSM Marquis whole / 10% BSM Ryman Rye at 77% hydration; combined inclusions ~36% (top of open-crumb safe zone). Walnuts toasted; currants soaked in boiling water with the soak liquid returned to the dough. Inclusions laminated in, then 2-3 coil folds, overnight cold retard, Dutch oven bake. Expect a purple-grey crumb from walnut tannins reacting with iron in the flour — characteristic of walnut sourdough, not a defect.",
+    "prep_active_min": 40,
+    "proof_passive_min": 950,
+    "oven_occupancy_min": 110,
+    "bake_min": 50
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Sourdough Breads",
+      "subgroup": "Loaves",
+      "defaultYield": 2,
+      "unit": "loaves",
+      "servingsPerItem": 10,
+      "servingUnit": "slices",
+      "itemsPerBatch": 1
+    },
+    "bakeStatsSchema": {
+      "fields": [
+        "dough_temps",
+        "bulk_ambient_temps",
+        "bake_phases",
+        "stretch_folds",
+        "aliquot_rises",
+        "proof_phases",
+        "shape_time"
+      ]
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-05-27",
+      "summary": "Initial recipe from 7-agent research synthesis. Tartine Country Walnut Sourdough (pg. 91) base extended with soaked Zante currants. Option B flour blend (80% KABF + 10% BSM Marquis whole + 10% BSM Ryman Rye) per user direction. 23% walnuts + 13% currants = 36% combined inclusions. Hydration raised to 77% to compensate for stone-milled fraction. Lamination-incorporation. Will be cross-referenced against physical Tartine book on first bake.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "kabf",
+              "name": "King Arthur Bread Flour",
+              "total": 800,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tier 1 confirmed: 7/7 agents",
+              "confidence": "high",
+              "rationale": "80% of total flour. 12.7% protein KABF provides structural backbone for high-hydration high-inclusion country loaf. Tartine baseline is 90% white; we drop to 80% to make room for the BSM heritage fraction without overloading whole-grain content."
+            },
+            {
+              "id": "marquis_whole",
+              "name": "BSM Marquis Whole Wheat Flour",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "User direction (Option B blend); Barton Springs Mill analog spec",
+              "confidence": "medium",
+              "rationale": "10% of total flour. BSM Marquis is a 1906 heritage Canadian hard red spring wheat (Red Fife × Red Calcutta cross). Stone-milled, ~12-13.5% protein in whole-grain form, nutty/rich flavor that amplifies walnut. Substitutes Robertson's 10% whole-wheat fraction."
+            },
+            {
+              "id": "ryman_rye",
+              "name": "BSM Ryman Rye Flour",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "User direction (Option B blend); Tartine Country Rye (pg. 118) precedent",
+              "confidence": "medium",
+              "rationale": "10% of total flour. Mild-spice rye — adds malty depth that frames currant sweetness. Below the 17% Tartine Country Rye ratio; structural impact minimal at this %. Pairs with walnut + currant for a Northern/Central European register."
+            },
+            {
+              "id": "water",
+              "name": "Water (80°F / 27°C)",
+              "total": 770,
+              "unit": "g",
+              "breakdown": [
+                { "label": "mix (including reserved currant soak liquid)", "amount": 720 },
+                { "label": "reserved for salt addition", "amount": 50 }
+              ],
+              "sourcedFrom": "Tartine baseline +2%; heritage flour adjustment",
+              "confidence": "high",
+              "rationale": "77% hydration. Tartine baseline 75% + 2% for stone-milled BSM Marquis (Cairnspring/Hayden guidance: +3-5% for stone-milled). Hold back 50g for the salt addition per Robertson's method. The currant soak liquid (~120-150g of the dark mineral-rich water from soaking) goes INTO the dough water budget, not on top of it."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (50/50 AP+WW @ 100% hydration)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Robertson leaven spec (Tartine Bread, pg. 45); user starter matches flour ratio",
+              "confidence": "high",
+              "rationale": "20% inoculation. User's existing 50/50 AP+WW starter at 100% hydration matches Robertson's leaven flour ratio. v1 uses direct active starter (Option X); upgrade to cool 12-hr overnight leaven build on bake #2 for deeper flavor complexity."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal — all 7 agents agree",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Tartine canon. Dissolved in reserved 50g water and pinched through dough after autolyse."
+            },
+            {
+              "id": "walnuts",
+              "name": "Walnuts (California halves)",
+              "total": 230,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Synthesis of Tartine canon (~35%) + Maurizio Leo (~20%) + home-baker median (~18-20%)",
+              "confidence": "high",
+              "rationale": "23% of flour. Splits the gap between Robertson's heavy 35% and Leo's modern 20% to leave headroom for currants. Toasted at 350°F/8-10 min, coarsely chopped (hand-chop ~1-2cm pieces). Source California halves for lowest oxidation risk — pre-chopped bags rancidify faster."
+            },
+            {
+              "id": "currants",
+              "name": "Sun-Maid Zante Currants (dried Black Corinth grapes)",
+              "total": 130,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Synthesis of Maurizio Leo cranberry analog (14%) + SFBI walnut-currant + sourdough inclusion ceiling math",
+              "confidence": "high",
+              "rationale": "13% of flour. Smaller/more intense than raisins or cranberries — same flavor impact at lower %. Soak in boiling water 10-20 min, drain, reserve soak liquid for dough water (Breadtopia method). HEB Aisle 9, single-ingredient label. Do NOT soak in alcohol — kills sourdough yeast even after draining."
+            },
+            {
+              "id": "walnut_oil",
+              "name": "Walnut Oil (or EVOO as substitute)",
+              "total": 25,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2 Tbsp",
+              "sourcedFrom": "Tartine Bread, pg. 91 (Robertson spec)",
+              "confidence": "high",
+              "rationale": "2-3 Tbsp per Robertson. Drizzled over toasted walnuts before lamination — lubricates the walnut chunks so they don't tear the gluten net during incorporation. La Tourangelle walnut oil is the home-baker default; EVOO subs without issue if walnut oil isn't on hand."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Large Mixing Bowl",
+      "reuse": "Dough mix → autolyse → bulk ferment (cover with plastic between)"
+    },
+    {
+      "id": "V2",
+      "name": "Small Bowl (heat-safe)",
+      "reuse": "Currant soak → drain into colander → wash for next use"
+    },
+    {
+      "id": "V3a",
+      "name": "Proofing Basket 1 (banneton or towel-lined bowl)",
+      "reuse": "Shape → cold proof (loaf 1)"
+    },
+    {
+      "id": "V3b",
+      "name": "Proofing Basket 2 (banneton or towel-lined bowl)",
+      "reuse": "Shape → cold proof (loaf 2)"
+    },
+    {
+      "id": "V4",
+      "name": "Dutch Oven with Lid (or combo cooker)",
+      "reuse": "Preheat → bake loaf 1 → wipe → bake loaf 2"
+    },
+    {
+      "id": "V5",
+      "name": "Rimmed Baking Sheet",
+      "reuse": "Toast walnuts → cool"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Mise en Place",
+      "gather": {
+        "vessels": [
+          "Large Mixing Bowl",
+          "Small Bowl (heat-safe)",
+          "Proofing Basket 1 (banneton or towel-lined bowl)",
+          "Proofing Basket 2 (banneton or towel-lined bowl)",
+          "Dutch Oven with Lid (or combo cooker)",
+          "Rimmed Baking Sheet"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Bench Scraper",
+          "Bread Lame or Sharp Knife",
+          "Parchment Paper",
+          "Plastic Wrap or Bowl Cover",
+          "Wire Rack",
+          "Colander or Fine-Mesh Strainer",
+          "Cutting Board + Chef's Knife (for chopping walnuts)",
+          "Thermometer (instant-read)",
+          "Rice Flour or 50/50 rice flour + whole wheat (for dusting bannetons)"
+        ],
+        "ingredients": [
+          {
+            "id": "kabf",
+            "name": "King Arthur Bread Flour",
+            "total": 800,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Tier 1 confirmed: 7/7 agents",
+            "confidence": "high",
+            "rationale": "80% of total flour. 12.7% protein KABF provides structural backbone."
+          },
+          {
+            "id": "marquis_whole",
+            "name": "BSM Marquis Whole Wheat Flour",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "User direction (Option B blend)",
+            "confidence": "medium",
+            "rationale": "10% of total flour. Heritage Canadian hard red spring wheat, stone-milled. Nutty flavor amplifies walnut."
+          },
+          {
+            "id": "ryman_rye",
+            "name": "BSM Ryman Rye Flour",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "User direction (Option B blend)",
+            "confidence": "medium",
+            "rationale": "10% of total flour. Mild rye — frames currant sweetness with malty depth."
+          },
+          {
+            "id": "water",
+            "name": "Water (80°F / 27°C)",
+            "total": 770,
+            "unit": "g",
+            "breakdown": [
+              { "label": "mix (including reserved currant soak liquid)", "amount": 720 },
+              { "label": "reserved for salt addition", "amount": 50 }
+            ],
+            "sourcedFrom": "Tartine baseline +2% for heritage flour",
+            "confidence": "high",
+            "rationale": "77% hydration. The currant soak liquid replaces an equivalent volume of the 720g mix water — do not double-count."
+          },
+          {
+            "id": "starter",
+            "name": "Active Sourdough Starter (50/50 AP+WW @ 100% hydration)",
+            "total": 200,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Robertson leaven spec (Tartine Bread, pg. 45)",
+            "confidence": "high",
+            "rationale": "20% inoculation. Direct active starter at peak."
+          },
+          {
+            "id": "salt",
+            "name": "Fine Sea Salt",
+            "total": 20,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Universal",
+            "confidence": "high",
+            "rationale": "2% of flour. Dissolved in reserved 50g water, added after autolyse."
+          },
+          {
+            "id": "walnuts",
+            "name": "Walnuts (California halves)",
+            "total": 230,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Synthesis of Robertson + Leo + home-baker median",
+            "confidence": "high",
+            "rationale": "23% of flour. Toasted, coarsely chopped ~1-2cm pieces."
+          },
+          {
+            "id": "currants",
+            "name": "Sun-Maid Zante Currants (dried Black Corinth grapes)",
+            "total": 130,
+            "unit": "g",
+            "breakdown": null,
+            "sourcedFrom": "Synthesis of Leo cranberry analog + SFBI walnut-currant",
+            "confidence": "high",
+            "rationale": "13% of flour. Soaked in boiling water; soak liquid returned to dough."
+          },
+          {
+            "id": "walnut_oil",
+            "name": "Walnut Oil (or EVOO substitute)",
+            "total": 25,
+            "unit": "g",
+            "breakdown": null,
+            "display_amount": "2 Tbsp",
+            "sourcedFrom": "Tartine Bread, pg. 91",
+            "confidence": "high",
+            "rationale": "Robertson spec. Lubricates walnut chunks during lamination."
+          }
+        ]
+      },
+      "states": ["PREP_WORKSPACE"]
+    },
+    {
+      "id": "INCLUSION_PREP",
+      "title": "Toast Walnuts & Soak Currants",
+      "gather": null,
+      "states": ["TOAST_WALNUTS", "SOAK_CURRANTS"]
+    },
+    {
+      "id": "MIX",
+      "title": "Mix Dough",
+      "gather": null,
+      "states": ["MIX_DOUGH", "AUTOLYSE", "ADD_SALT"]
+    },
+    {
+      "id": "STRETCH_FOLD",
+      "title": "Lamination & Folds",
+      "gather": null,
+      "states": [
+        "REST_BEFORE_LAMINATION",
+        "LAMINATE_INCLUSIONS",
+        "REST_AFTER_LAMINATION",
+        "COIL_FOLD_1",
+        "REST_1",
+        "COIL_FOLD_2",
+        "REST_2",
+        "COIL_FOLD_3"
+      ]
+    },
+    {
+      "id": "BULK_FERMENT",
+      "title": "Final Bulk Ferment",
+      "gather": null,
+      "states": ["FINAL_BULK"]
+    },
+    {
+      "id": "SHAPE",
+      "title": "Divide & Shape",
+      "gather": null,
+      "states": ["TURN_OUT_AND_DIVIDE", "PRE_SHAPE", "BENCH_REST", "FINAL_SHAPE"]
+    },
+    {
+      "id": "COLD_PROOF",
+      "title": "Cold Retard (Overnight)",
+      "gather": null,
+      "states": ["COLD_RETARD"]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": null,
+      "states": ["PREHEAT", "SCORE", "BAKE_COVERED", "BAKE_UNCOVERED"]
+    },
+    {
+      "id": "COOL",
+      "title": "Cool",
+      "gather": null,
+      "states": ["COOL_ON_RACK"]
+    }
+  ],
+  "states": [
+    {
+      "id": "PREP_WORKSPACE",
+      "title": "Prepare Workspace",
+      "direction": "Weigh the flours into the large mixing bowl:\n• 800g KABF\n• 100g BSM Marquis whole\n• 100g BSM Ryman Rye\n\nDon't combine yet — you'll mix on dough day.\n\nWeigh the water (target 80°F / 27°C):\n• 720g for the mix\n• 50g reserved separately for the salt addition\n\nWeigh into separate dishes:\n• 230g walnut halves\n• 130g Zante currants\n• 25g walnut oil (~2 Tbsp)\n• 20g fine sea salt\n\nConfirm starter is active and at peak — float test before mixing.",
+      "duration_min": 10,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "All ingredients weighed at target temps; vessels and equipment laid out; starter confirmed active.",
+      "notes": [
+        {
+          "text": "Starter readiness — your 50/50 AP+WW starter should pass the float test, smell sweet/yogurty, and have visible bubbles throughout. Feed 4-12 hr before mix depending on your kitchen temperature. If using cool overnight leaven build instead (recommended on bake #2): 1 Tbsp ripe starter + 200g 50/50 AP+WW flour + 200g 80°F water, ripen 8-12 hr at ~65°F.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "BSM (Belmont Sourdough Mill) flours are stone-milled and heritage — they ferment ~25% faster than KABF-only doughs. Watch the dough, not the clock. If you can't get BSM Marquis, sub any whole wheat flour (King Arthur Whole Wheat works); for Ryman Rye, any whole rye flour works. Skip the heritage fraction entirely as a fallback: use 1000g KABF with no rye/whole and drop hydration to 75%.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "TOAST_WALNUTS",
+      "title": "Toast Walnuts",
+      "direction": "1. Preheat oven to 350°F (175°C).\n2. Spread the 230g walnut halves in a single layer on a rimmed baking sheet.\n3. Toast 8-10 min — pull when the kitchen smells nutty and the walnuts are a shade darker than raw. UNDER-roast slightly; they brown again in the bake.\n4. Cool fully on the pan.\n5. Coarsely chop with a chef's knife into ~1-2cm pieces. Hand-chop, NOT food processor — processor produces dust that uniformly darkens the dough.",
+      "duration_min": 12,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "walnuts", "amount": "230g" }
+      ],
+      "exit_condition": "Walnuts smell fragrant, surface is a shade darker than raw, fully cooled, coarsely chopped to ~1-2cm pieces.",
+      "notes": [
+        {
+          "text": "Don't skin walnuts for a country loaf — the pellicle (brown skin) carries walnut character. Blanching/skinning is reserved for delicate pastry applications. If you want to mute the purple-grey crumb (see AUTOLYSE notes), blanch 1 min in boiling water BEFORE toasting; ATK reports this removes ~92% of skin tannins.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Toast doneness: pull EARLIER than you think. Burnt walnuts taste acrid and ruin a bake. Forkish goes to 12 min at 400°F; Leo goes 10 min at 350°F; Robertson's Tartine spec is closer to 8-10 min at 350°F.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Walnut toast doneness (good/ok/over)", "type": "rating" }
+      ]
+    },
+    {
+      "id": "SOAK_CURRANTS",
+      "title": "Soak Currants",
+      "direction": "1. Place 130g Sun-Maid Zante currants in a heat-safe small bowl.\n2. Pour ~150g boiling water over them to cover.\n3. Soak 10-30 min until plump. Lean toward 10-15 min for fresh currants; 20-30 min if they're old/hard. Longer doesn't hurt.\n4. Drain through a fine-mesh strainer or colander. Press gently to remove excess water but do NOT pat-dry — leave them plump.\n5. RESERVE THE DARK SOAK LIQUID. It goes into the dough water budget — replaces an equivalent volume of the 720g mix water, doesn't add to it.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": true,
+      "components": [
+        { "name": "currants", "amount": "130g" }
+      ],
+      "exit_condition": "Currants plump (no longer hard pellets); soak liquid drained into a measuring cup and reserved; volume of reserved liquid noted (typically 100-130g).",
+      "notes": [
+        {
+          "text": "Do NOT soak currants in alcohol (rum, brandy, wine) for sourdough — even after draining, residual alcohol can kill the wild yeast and the bread won't rise. Stick with water or tea. For a flavor variant in future bakes, brewed black tea (Earl Grey) is the next safest upgrade and pairs well with walnut bitterness.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Reserve the soak liquid — this is the Breadtopia / King Arthur technique. The dark mineral-rich water carries currant flavor into the whole crumb and contributes to Maillard browning on the crust. If you don't reserve it, the recipe still works — just use plain water for the full 720g.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Reserved soak liquid volume (g)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "MIX_DOUGH",
+      "title": "Mix Flour, Water, & Starter",
+      "direction": "1. Combine the reserved currant soak liquid with plain water to hit 720g total. (If the soak gave you 130g, add 590g plain water.)\n2. In the large mixing bowl, dissolve 200g active starter into the 720g combined water. Stir to break up the starter.\n3. Add the flours: 800g KABF + 100g Marquis whole + 100g Ryman Rye.\n4. Hand-mix until no dry flour remains. A shaggy, sticky mass is fine — don't overwork.\n5. Cover the bowl.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "kabf", "amount": "800g" },
+        { "name": "marquis_whole", "amount": "100g" },
+        { "name": "ryman_rye", "amount": "100g" },
+        { "name": "water", "amount": "720g (mix water + reserved currant liquid)" },
+        { "name": "starter", "amount": "200g" }
+      ],
+      "exit_condition": "No dry flour visible in the bowl; dough is a shaggy, sticky mass; bowl covered.",
+      "notes": [
+        {
+          "text": "Robertson's method dissolves leaven INTO the water before adding flour — easier than trying to incorporate starter into already-mixed dough. Mix temp target ~80°F (27°C) to land DDT in low 80s.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Mix water temp (°F)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "AUTOLYSE",
+      "title": "Autolyse Rest",
+      "direction": "Rest the covered dough at room temperature for 45 minutes. Don't touch it during this rest. The flour fully hydrates and gluten starts to develop on its own.",
+      "duration_min": 45,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "45 min elapsed; dough has relaxed slightly and looks smoother on the surface than the initial shaggy mix.",
+      "notes": [
+        {
+          "text": "Shorter than Tartine's 90-min canonical autolyse (Robertson allows 25-40 min on hard wheat, longer overnight on soft wheat). With ~20% stone-milled heritage flour, 45 min is the sweet spot — longer triggers premature starch degradation per Janie's Mill guidance.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "ADD_SALT",
+      "title": "Add Salt & Pinch Through",
+      "direction": "1. Dissolve 20g salt in the reserved 50g water.\n2. Pour the salt water over the dough.\n3. Pinch and squeeze the dough vigorously to incorporate fully — about 2-3 minutes.\n\nThe dough will feel slacker at first, then come back together as you work it.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "salt", "amount": "20g" },
+        { "name": "water", "amount": "50g (reserved)" }
+      ],
+      "exit_condition": "Salt water fully incorporated; no visible pockets of water on the dough surface; dough is one cohesive mass again.",
+      "notes": [
+        {
+          "text": "Take a dough temperature reading here — your DDT (desired dough temperature) target is 78-82°F (26-28°C). If your dough is colder, plan for a longer bulk; warmer, shorter. This is the most reliable single data point for predicting bulk timing.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "DDT after salt addition (°F)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "REST_BEFORE_LAMINATION",
+      "title": "Rest Before Lamination",
+      "direction": "Cover and rest 30 minutes. Lets the gluten begin to organize so the dough can stretch thin without tearing during lamination.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 min elapsed; dough feels more elastic when prodded; surface is smoother."
+    },
+    {
+      "id": "LAMINATE_INCLUSIONS",
+      "title": "Lamination with Walnuts & Currants",
+      "direction": "1. Wet your counter generously with water — NO flour.\n2. Drizzle 25g walnut oil over the chopped walnuts and toss to coat.\n3. Slide the dough out of the bowl with wet hands. Do NOT degas.\n4. Stretch with wet hands into a thin rectangle, about 5mm thick. The dough should look translucent in spots but not tear.\n5. Scatter the oiled walnuts evenly across the sheet.\n6. Scatter the drained currants on top of the walnuts.\n7. Letter-fold:\n   • top third down\n   • bottom third up\n   • right third over\n   • left third over\n8. Slide the folded packet seam-side-down back into the bowl. Cover.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "walnuts", "amount": "230g (chopped, toasted)" },
+        { "name": "currants", "amount": "130g (soaked, drained)" },
+        { "name": "walnut_oil", "amount": "25g (~2 Tbsp)" }
+      ],
+      "exit_condition": "Inclusions visibly distributed through the folded packet; no large bare patches; dough seam-down in covered bowl.",
+      "notes": [
+        {
+          "text": "Lamination beats incremental stretch-and-fold for high-inclusion doughs (>30% combined). One disruption event vs many = less gluten damage, more even distribution. Combined inclusions here are ~36% of flour — top of the open-crumb safe zone.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Walnuts first then currants — walnuts are heavier/more rigid and distribute via folding; currants are softer and cling on top. If a walnut chunk pokes through the dough during lamination, pinch dough over it rather than tearing it out.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "technique_url": "https://challengerbreadware.com/bread-techniques/inclusions-the-lamination-method/"
+    },
+    {
+      "id": "REST_AFTER_LAMINATION",
+      "title": "Rest After Lamination",
+      "direction": "Cover and rest 30 minutes before the first coil fold.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 min elapsed; dough has relaxed; gluten net is gathering strength."
+    },
+    {
+      "id": "COIL_FOLD_1",
+      "title": "Coil Fold — Set 1",
+      "direction": "1. Wet hands.\n2. Slide both hands under the middle of the dough.\n3. Lift gently until the dough releases from the bowl, and let the bottom fold under itself.\n4. Rotate the bowl 90° and repeat.\n5. Two passes total. Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has been coiled twice (90° rotation between); back in the bowl with a tighter, smoother surface.",
+      "reminders": [
+        { "prompt": "Dough temp at fold 1 (°F)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "REST_1",
+      "title": "Rest 1",
+      "direction": "Cover and rest 30 minutes.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 min elapsed; dough has relaxed slightly."
+    },
+    {
+      "id": "COIL_FOLD_2",
+      "title": "Coil Fold — Set 2",
+      "direction": "Same as fold 1:\n1. Wet hands.\n2. Lift from the middle and let the bottom fold under.\n3. Rotate 90° and repeat.\n4. Cover.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Two coil passes complete; dough surface tighter than after fold 1."
+    },
+    {
+      "id": "REST_2",
+      "title": "Rest 2",
+      "direction": "Cover and rest 30 minutes.",
+      "duration_min": 30,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "30 min elapsed; dough is starting to look domed and aerated."
+    },
+    {
+      "id": "COIL_FOLD_3",
+      "title": "Coil Fold — Set 3 (final)",
+      "direction": "Final coil fold — same technique, but gentler. By now the dough should hold a smooth, taut surface after coiling. If it still feels slack, do one extra rest + coil pair before declaring bulk in motion.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Two gentle coil passes; dough surface taut and smooth; visible aeration just beginning under the surface.",
+      "notes": [
+        {
+          "text": "After the last fold, inclusions should be visibly studded throughout the dough — not clustered. If you see clumps, do one more gentle coil before stopping. Aliquot jar trick: pinch off ~30g of dough into a small clear jar, marked at start of bulk — easier to read 50% rise than eyeballing the main bowl.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "FINAL_BULK",
+      "title": "Bulk Ferment to ~50% Rise",
+      "direction": "Cover and let bulk ferment until the dough has risen ~50% from its post-mix volume and the dome peaks (just begins to fall or flatten slightly when you jiggle the bowl). Expect 1.5-2.5 hr more at 78°F (26°C) after the last fold — total bulk from MIX_DOUGH is ~3-3.5 hr. Heritage flour ferments faster than KABF-only doughs; trust the visual cue, not the clock.",
+      "duration_min": 90,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough has risen ~50% from initial volume; dome peaks or just begins to flatten; aerated feel; jiggles in the bowl when shaken; tiny bubbles visible at the surface and at the bowl sides.",
+      "notes": [
+        {
+          "text": "Don't wait for doubling — that's an over-bulk signal for this style. ~50% rise + dome peak is the Tartine country target. Over-bulked dough loses structure and bakes flat.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Stone-milled flour + dried fruit sugars both accelerate fermentation. If your dough is hitting 50% rise faster than 3 hr total bulk, shape sooner. If slower than 4.5 hr total, your starter wasn't fully ripe or your kitchen is cold.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Final aliquot rise % at end of bulk", "type": "measurement" },
+        { "prompt": "Kitchen ambient temp (°F)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "TURN_OUT_AND_DIVIDE",
+      "title": "Turn Out & Divide",
+      "direction": "1. Lightly flour your work surface.\n2. Tip the dough out — use a wet bench scraper to help it release.\n3. Lightly flour the top.\n4. Using the bench scraper, cut the dough in half. Aim for two even ~1,100g portions before shaping (you'll lose a bit to handling).",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough divided into 2 portions of roughly equal weight; surface lightly floured."
+    },
+    {
+      "id": "PRE_SHAPE",
+      "title": "Pre-Shape",
+      "direction": "For each piece, use the bench scraper and one hand to drag the dough across the unfloured part of the counter in a circular motion, building a loose round with light surface tension. Minimal handling — high-inclusion dough can't take aggressive shaping without tearing.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Two loose round shapes on the counter; surface tension built but not maximal; some inclusions visible at the surface (normal).",
+      "notes": [
+        {
+          "text": "Lower tension than your usual sourdough pre-shape. The walnut chunks act as tear points in the gluten net — too tight a pre-shape rips the skin.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "BENCH_REST",
+      "title": "Bench Rest",
+      "direction": "Cover loosely (a clean dish towel works) and rest the two rounds on the counter for 20-30 minutes. The gluten relaxes so the final shape doesn't fight you.",
+      "duration_min": 25,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "25 min elapsed; rounds have relaxed and spread slightly; feel slightly puffy when prodded."
+    },
+    {
+      "id": "FINAL_SHAPE",
+      "title": "Final Shape into Bannetons",
+      "direction": "For each round:\n1. Flour the top lightly.\n2. Flip floured-side-down.\n3. Stretch the dough into a rough rectangle.\n4. Letter-fold: bottom up to middle, top down over that.\n5. Roll from the short end into a tight cylinder.\n6. Flip seam-side-down. Cup with both hands and drag toward you a few times to build surface tension.\n7. Transfer SEAM-SIDE-UP into a banneton dusted with 50/50 rice flour + whole wheat.\n8. Pinch the seam closed if it gapes.\n\nRepeat for the second loaf.",
+      "duration_min": 3,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Both loaves seam-side-up in well-floured bannetons; seams pinched; surface taut but not torn.",
+      "notes": [
+        {
+          "text": "If a walnut chunk pokes through the surface, pinch dough over it. Surface walnuts burn during the bake. Some inclusions inevitably end up at the edge — that's fine, just minimize.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Heavy rice flour dusting on bannetons is critical for high-inclusion dough — the sticky walnut/currant surface is prone to sticking. Whole-wheat-only doesn't release as cleanly. 50/50 rice flour + whole wheat is the standard release blend.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    },
+    {
+      "id": "COLD_RETARD",
+      "title": "Cold Retard (Overnight)",
+      "direction": "Cover the bannetons (plastic bag, shower cap, or upturned bowl) and refrigerate 12-16 hours. The cold slows fermentation while the gluten continues to develop and flavor deepens. Don't exceed 18 hr — heritage flour + dried fruit sugars push toward over-proof beyond that.",
+      "duration_min": 840,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "12-16 hr elapsed; dough is cold to the touch, slightly puffy, holds an indent when poked gently (springs back slowly).",
+      "notes": [
+        {
+          "text": "Cold proofing exaggerates the walnut purple-grey crumb effect — the tannin-iron reaction continues slowly at fridge temps. Same-day bakes are paler; overnight retards are more dramatically purple. This is normal and characteristic.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        { "prompt": "Fridge temp (°F)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "PREHEAT",
+      "title": "Preheat Oven + Dutch Oven",
+      "direction": "1 hr before you want to bake, place the Dutch oven (lid on) on the middle rack and preheat the oven to 500°F (260°C). Full 60-min preheat — the cast iron needs to be fully heat-saturated for proper oven spring.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Oven and Dutch oven at 500°F (260°C) for at least 60 minutes; Dutch oven lid handle is too hot to touch without a mitt."
+    },
+    {
+      "id": "SCORE",
+      "title": "Score the Loaf",
+      "direction": "1. Pull the first banneton from the fridge.\n2. Tip the loaf out onto a square of parchment paper, seam-side-DOWN on the parchment.\n3. Dust off excess flour.\n4. Score SHALLOWLY with the bread lame — one long curved ear cut on the side, or a simple X across the top.\n\nAvoid deep scores: they expose currants and walnuts which can burn.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Loaf on parchment, scored cleanly with shallow cuts; no inclusions exposed in the score line."
+    },
+    {
+      "id": "BAKE_COVERED",
+      "title": "Bake — Covered (500°F)",
+      "direction": "1. Using the parchment as a sling, transfer the loaf into the preheated Dutch oven.\n2. Replace the lid.\n3. Bake at 500°F (260°C) for 20 minutes.\n\nDo not peek.",
+      "duration_min": 20,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "20 min elapsed at 500°F lid-on; oven spring should have happened by now."
+    },
+    {
+      "id": "BAKE_UNCOVERED",
+      "title": "Bake — Uncovered (450°F)",
+      "direction": "1. Remove the lid.\n2. Drop oven temperature to 450°F (230°C).\n3. Bake 25-30 minutes until:\n   • crust is deep mahogany\n   • internal temperature reads 205°F (96°C) on an instant-read thermometer",
+      "duration_min": 28,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Internal temp 205°F (96°C); crust deep mahogany; base sounds hollow when tapped.",
+      "reminders": [
+        { "prompt": "Internal bread temp out of oven (°F)", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "COOL_ON_RACK",
+      "title": "Cool on Rack",
+      "direction": "1. Transfer the loaf to a wire rack.\n2. Cool for at least 1 hour before slicing.\n\nCrumb structure sets during cooling — cutting too soon produces a gummy interior.\n\nFor the second loaf: repeat SCORE → BAKE_COVERED → BAKE_UNCOVERED using the same hot Dutch oven. Allow ~10 min between bakes for reheat.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Loaf cool to touch on the bottom; resonant hollow sound when tapped; second loaf has gone through the same bake cycle.",
+      "notes": [
+        {
+          "text": "Crumb color: expect purple-grey from walnut tannins reacting with iron in the flour. The reaction is accelerated by sourdough acidity and the long cold retard. This is harmless and characteristic of walnut sourdough — not a defect.",
+          "critical": false,
+          "source": "agent"
+        }
+      ]
+    }
+  ],
+  "nutrition": null,
+  "reheat": {
+    "methods": [
+      {
+        "method": "Oven",
+        "detail": "350°F (175°C), 12-15 min for a half-loaf. Run filtered water over the bread and rub it all around — moist but not soggy. Refreshes crust and crumb.",
+        "source": "agent"
+      },
+      {
+        "method": "Toaster / Air Fryer",
+        "detail": "Slice and toast or air-fry at 350°F (175°C) for ~5 min. Walnut oils re-bloom under heat — wait 1 min after toasting before eating.",
+        "source": "agent"
+      },
+      {
+        "method": "Storage",
+        "detail": "Cut-side down on a wooden board, room temp, eat within 2 days. Freeze sliced in zip-lock for up to 1 month — slices toast directly from frozen.",
+        "source": "agent"
+      }
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "name": "Tartine Bread — Country Walnut (pg. 91)",
+        "url": "http://scottsbreads.weebly.com/uploads/1/0/5/3/10536109/tartine_walnut_bread-08-40-s.pdf",
+        "type": "adapted",
+        "author": "Chad Robertson"
+      },
+      {
+        "name": "Tartine Bread — Basic Country (pg. 45)",
+        "url": "http://scottsbreads.weebly.com/uploads/1/0/5/3/10536109/tartine_country_loaf-08-40-s.pdf",
+        "type": "adapted",
+        "author": "Chad Robertson"
+      },
+      {
+        "name": "The Perfect Loaf — Tartine Country Walnut Sourdough",
+        "url": "https://www.theperfectloaf.com/tartine-country-walnut-sourdough/",
+        "type": "adapted",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "The Perfect Loaf — Walnut Cranberry Sourdough",
+        "url": "https://www.theperfectloaf.com/walnut-cranberry-sourdough/",
+        "type": "adapted",
+        "author": "Maurizio Leo"
+      },
+      {
+        "name": "The Clever Carrot — Country Sourdough with Walnuts + Raisins",
+        "url": "https://www.theclevercarrot.com/2014/03/country-sourdough-with-walnuts-raisins/",
+        "type": "adapted",
+        "author": "Emilie Raffa"
+      },
+      {
+        "name": "Make It Dough — Rustic Cranberry Walnut Sourdough",
+        "url": "https://makeitdough.com/cranberry-walnut-sourdough-bread/",
+        "type": "adapted"
+      },
+      {
+        "name": "Bourke Street Bakery — Walnut and Currant Loaf",
+        "url": "https://app.ckbk.com/recipe/bour64332c02s005r006/walnut-and-currant-loaf",
+        "type": "inspired",
+        "author": "Paul Allam & David McGuinness"
+      },
+      {
+        "name": "The Fresh Loaf — Tartine + SFBI Walnut-Currant",
+        "url": "https://www.thefreshloaf.com/node/23578/tartine-basic-country-bread-and-sfbi-walnutcurrant-bread",
+        "type": "inspired"
+      },
+      {
+        "name": "Breadtopia — Rye and Buckwheat Bread with Currants (reserve-soak-liquid technique)",
+        "url": "https://breadtopia.com/rye-and-buckwheat-bread-with-currants/",
+        "type": "inspired"
+      },
+      {
+        "name": "California Walnut Board — Walnut Wisdom: Purple Baked Goods",
+        "url": "https://walnuts.org/news/walnut-wisdom-purple-baked-goods/",
+        "type": "inspired"
+      },
+      {
+        "name": "America's Test Kitchen — Preventing Purple Walnut Bread",
+        "url": "https://www.americastestkitchen.com/how_tos/6672-preventing-purple-walnut-bread",
+        "type": "inspired"
+      },
+      {
+        "name": "Andrew Janjigian / Wordloaf — Walnut Pain au Levain",
+        "url": "https://newsletter.wordloaf.org/recipe-walnut-pain-au-levain/",
+        "type": "inspired",
+        "author": "Andrew Janjigian"
+      },
+      {
+        "name": "Challenger Breadware — Inclusions: The Lamination Method",
+        "url": "https://challengerbreadware.com/bread-techniques/inclusions-the-lamination-method/",
+        "type": "inspired"
+      },
+      {
+        "name": "Barton Springs Mill — Marquis Wheat Heirloom (BSM analog)",
+        "url": "https://bartonspringsmill.com/products/marquis-wheat-heirloom",
+        "type": "inspired"
+      },
+      {
+        "name": "Barton Springs Mill — Ryman Rye (BSM analog)",
+        "url": "https://bartonspringsmill.com/products/ryman-rye",
+        "type": "inspired"
+      },
+      {
+        "name": "HEB — Sun-Maid Zante Currants",
+        "url": "https://www.heb.com/product-detail/sun-maid-california-sun-dried-zante-currants/3031013",
+        "type": "inspired"
+      }
+    ],
+    "techniques": [
+      {
+        "name": "80/10/10 flour blend (KABF / Marquis whole / Ryman Rye)",
+        "sourcedFrom": "User direction (Option B); Tartine baseline 90/10 modified for heritage character",
+        "rationale": "Substitutes Robertson's 10% whole-wheat with BSM Marquis whole and adds 10% BSM Ryman Rye for malty depth that frames currant sweetness. Stays within Tartine country structure (10% non-white max) while introducing meaningful BSM heritage character.",
+        "confidence": "medium"
+      },
+      {
+        "name": "77% hydration (Tartine baseline +2%)",
+        "sourcedFrom": "Cairnspring / Hayden / Janie's Mill guidance on stone-milled flour absorption",
+        "rationale": "Stone-milled heritage flour absorbs 3-5% more water than roller-milled KABF. The +2% bump keeps the dough at the same handling consistency as a 75% all-KABF Tartine country.",
+        "confidence": "high"
+      },
+      {
+        "name": "Toast walnuts 350°F / 8-10 min, under-roast slightly",
+        "sourcedFrom": "Universal — Tartine (Robertson), The Perfect Loaf (Leo), Forkish, Sourdough & Olives",
+        "rationale": "Cross-source consensus on temp + time. Under-roast because walnuts brown again during the bake; over-roasted walnuts taste acrid.",
+        "confidence": "high"
+      },
+      {
+        "name": "Soak currants in boiling water + reserve liquid for dough",
+        "sourcedFrom": "Breadtopia rye-currant; King Arthur dried fruit focaccia",
+        "rationale": "Soaking prevents currants from robbing dough water during long bulk + cold retard. Reserved soak liquid infuses currant flavor through the whole crumb and contributes to Maillard browning on the crust.",
+        "confidence": "high"
+      },
+      {
+        "name": "Lamination-incorporation of inclusions (after first rest, before coil folds)",
+        "sourcedFrom": "Challenger Breadware; The Perfect Loaf; Sourdough Joe",
+        "rationale": "For combined inclusions >30% of flour, lamination beats incremental stretch-and-fold. One disruption event vs many = less gluten damage, more even distribution. Combined inclusions here are ~36% — top of safe zone.",
+        "confidence": "high"
+      },
+      {
+        "name": "Walnut oil drizzle during lamination",
+        "sourcedFrom": "Tartine Bread, pg. 91 (Robertson canon)",
+        "rationale": "Lubricates the walnut chunks so they slide rather than snag the gluten net during fold-in. Also boosts walnut flavor disproportionately.",
+        "confidence": "high"
+      },
+      {
+        "name": "Don't blanch/skin walnuts (keep pellicle)",
+        "sourcedFrom": "All bread sources (Tartine, Leo, Forkish, KAB)",
+        "rationale": "The brown pellicle carries walnut character. Blanching is reserved for delicate pastry applications. Purple-grey crumb is a feature, not a defect — leave skins on.",
+        "confidence": "high"
+      },
+      {
+        "name": "Cold retard 12-16 hr (not 18+)",
+        "sourcedFrom": "Maurizio Leo + heritage flour fermentation timing",
+        "rationale": "Heritage flour + dried fruit sugars accelerate fermentation. Capping at 16 hr avoids over-proof; 18+ hr risks structural collapse.",
+        "confidence": "medium"
+      },
+      {
+        "name": "Dutch oven 500°F preheat → 500°F covered 20 min → 450°F uncovered 25-30 min",
+        "sourcedFrom": "Make It Dough + Maurizio Leo; Tartine canon runs 500°F preheat → 430°F bake",
+        "rationale": "500°F→450°F drop is the modern home-baker consensus and gives more reliable spring than Robertson's 430°F constant bake. Internal target 205°F.",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "7-agent parallel research: Tartine canon, niche walnut-currant pairing, home-baker formulas, inclusion technique science, walnut prep, currant prep, BSM heritage flour behavior",
+    "sourceCount": 100,
+    "date": "2026-05-27"
+  }
+}

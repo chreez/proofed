@@ -9,6 +9,7 @@
     { "id": "tartine-lemon-tart-strawberry-glazed", "name": "Tartine Lemon Tart, Strawberry-Glazed", "file": "tartine-lemon-tart-strawberry-glazed.json" },
     { "id": "tartine-rugelach", "name": "Tartine Rugelach", "file": "tartine-rugelach.json" },
     { "id": "tartine-country-rye", "name": "Tartine Country Rye", "file": "tartine-country-rye.json" },
+    { "id": "tartine-walnut-currant-sourdough", "name": "Tartine Walnut Currant Sourdough", "file": "tartine-walnut-currant-sourdough.json" },
     { "id": "coco-curry", "name": "CoCo Ichibanya-Style Japanese Curry", "file": "coco-curry.json" },
     { "id": "gochujang-garlic-buns", "name": "Gochujang & Garlic Savoury Buns", "file": "gochujang-garlic-buns.json" },
     { "id": "grain-free-bread", "name": "Grain-Free Bread", "file": "grain-free-bread.json" },
