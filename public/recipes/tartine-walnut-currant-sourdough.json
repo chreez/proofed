@@ -38,8 +38,30 @@
       ]
     }
   },
-  "version": "v1.0.2",
+  "version": "v1.0.3",
   "change_log": [
+    {
+      "version": "v1.0.3",
+      "date": "2026-05-28",
+      "summary": "Notes-only refinement from first bake (2026-05-28). Three findings folded into the recipe: (1) PREP_WORKSPACE now explicitly clarifies that the 720g mix water budget INCLUDES the currant soak liquid (don't weigh extra) — first bake user missed this and used 360g plain water for the mix without reserving the dark currant liquid. (2) TOAST_WALNUTS direction shortened from '8-10 min' to '7-9 min, pull at first color' and a note added about over-roast astringency risk (first bake walnuts produced light astringent aftertaste). (3) LAMINATE_INCLUSIONS gets a critical note that walnut oil is NOT optional (first bake user skipped it; on taste eval said 'walnut oil would put it over the top'). Walnut oil ingredient rationale strengthened. No structural changes; no ingredient amount changes.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            { "id": "kabf", "name": "King Arthur Bread Flour", "total": 800, "unit": "g", "breakdown": null, "sourcedFrom": "Tier 1 confirmed: 7/7 agents", "confidence": "high", "rationale": "80% of total flour. 12.7% protein KABF provides structural backbone for high-hydration high-inclusion country loaf." },
+            { "id": "marquis_whole", "name": "BSM Marquis Whole Wheat Flour", "total": 100, "unit": "g", "breakdown": null, "sourcedFrom": "User direction (Option B blend); Barton Springs Mill — Marquis Flour 2.5 lb whole wheat", "confidence": "high", "rationale": "10% of total flour. Heritage Canadian hard red spring wheat (Red Fife × Red Calcutta, 1906), stone-milled. $13.00 per 2.5 lb at BSM." },
+            { "id": "ryman_rye", "name": "BSM Ryman Rye Flour", "total": 100, "unit": "g", "breakdown": null, "sourcedFrom": "User direction (Option B blend); Barton Springs Mill — Ryman Rye Flour 2.5 lb whole grain", "confidence": "high", "rationale": "10% of total flour. Mild rye — frames currant sweetness with malty depth. $12.00 per 2.5 lb at BSM." },
+            { "id": "water", "name": "Water (80°F / 27°C)", "total": 770, "unit": "g", "breakdown": [{ "label": "mix (INCLUDING reserved currant soak liquid — do not weigh extra)", "amount": 720 }, { "label": "reserved for salt addition", "amount": 50 }], "sourcedFrom": "Tartine baseline +2% for heritage flour", "confidence": "high", "rationale": "77% hydration. The currant soak liquid IS part of the 720g mix water — boil ~130g, soak currants, then drain the dark liquid back into the dough. Total stays 720g. (Clarified in v1.0.3 after first-bake user confusion.)" },
+            { "id": "starter", "name": "Active Sourdough Starter (50/50 AP+WW @ 100% hydration)", "total": 200, "unit": "g", "breakdown": null, "sourcedFrom": "Robertson leaven spec (Tartine Bread, pg. 45)", "confidence": "high", "rationale": "20% inoculation. Direct active starter at peak." },
+            { "id": "salt", "name": "Fine Sea Salt", "total": 20, "unit": "g", "breakdown": null, "sourcedFrom": "Universal", "confidence": "high", "rationale": "2% of flour. Added with reserved 50g water after autolyse." },
+            { "id": "walnuts", "name": "Walnuts (California halves)", "total": 230, "unit": "g", "breakdown": null, "sourcedFrom": "Synthesis of Robertson + Leo + home-baker median", "confidence": "high", "rationale": "23% of flour. Toasted at 350°F / 7-9 min (pull at FIRST color — over-roast produces astringent aftertaste, confirmed first bake)." },
+            { "id": "currants", "name": "Sun-Maid Zante Currants (dried Black Corinth grapes)", "total": 130, "unit": "g", "breakdown": null, "sourcedFrom": "Synthesis of Leo cranberry analog + SFBI walnut-currant", "confidence": "high", "rationale": "13% of flour. Soaked in boiling water; soak liquid IS the dough mix water (not extra). First bake taste: currants didn't read at 13% — consider raisins at 18-20% or push currant % up next iteration." },
+            { "id": "walnut_oil", "name": "Walnut Oil (or EVOO substitute)", "total": 25, "unit": "g", "breakdown": null, "display_amount": "2 Tbsp", "sourcedFrom": "Tartine Bread, pg. 91 (Robertson canon)", "confidence": "high", "rationale": "MANDATORY step (Robertson spec) — drizzle on walnuts during lamination. Lubricates the chunks so they don't tear the gluten net AND boosts walnut flavor disproportionately. First bake (2026-05-28) skipped this: user concluded 'walnut oil would put it over the top'. Do not skip." }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.0.2",
       "date": "2026-05-27",
@@ -286,12 +308,12 @@
             "total": 770,
             "unit": "g",
             "breakdown": [
-              { "label": "mix (including reserved currant soak liquid)", "amount": 720 },
+              { "label": "mix (INCLUDING reserved currant soak liquid — do not weigh extra)", "amount": 720 },
               { "label": "reserved for salt addition", "amount": 50 }
             ],
             "sourcedFrom": "Tartine baseline +2% for heritage flour",
             "confidence": "high",
-            "rationale": "77% hydration. The currant soak liquid replaces an equivalent volume of the 720g mix water — do not double-count."
+            "rationale": "77% hydration. The 720g mix water INCLUDES the currant soak liquid — boil ~130g of it to soak the currants, then drain the dark liquid back into the dough. Don't measure extra water for the soak. (Clarified v1.0.3 after first-bake confusion.)"
           },
           {
             "id": "starter",
@@ -340,9 +362,9 @@
             "unit": "g",
             "breakdown": null,
             "display_amount": "2 Tbsp",
-            "sourcedFrom": "Tartine Bread, pg. 91",
+            "sourcedFrom": "Tartine Bread, pg. 91 (Robertson canon)",
             "confidence": "high",
-            "rationale": "Robertson spec. Lubricates walnut chunks during lamination."
+            "rationale": "MANDATORY step — drizzle on walnuts during lamination. Lubricates the chunks AND boosts walnut flavor disproportionately. First bake user skipped it and concluded 'walnut oil would put it over the top'. Do not skip."
           }
         ]
       },
@@ -410,7 +432,7 @@
     {
       "id": "PREP_WORKSPACE",
       "title": "Prepare Workspace",
-      "direction": "Weigh the flours into the large mixing bowl:\n• 800g KABF\n• 100g BSM Marquis whole\n• 100g BSM Ryman Rye\n\nDon't combine yet — you'll mix on dough day.\n\nWeigh the water (target 80°F / 27°C):\n• 720g for the mix\n• 50g reserved separately for the salt addition\n\nWeigh into separate dishes:\n• 230g walnut halves\n• 130g Zante currants\n• 25g walnut oil (~2 Tbsp)\n• 20g fine sea salt\n\nConfirm starter is active and at peak — float test before mixing.",
+      "direction": "Weigh the flours into the large mixing bowl:\n• 800g KABF\n• 100g BSM Marquis whole\n• 100g BSM Ryman Rye\n\nDon't combine yet — you'll mix on dough day.\n\nWeigh the water (target 80°F / 27°C):\n• 720g TOTAL for the mix — ~130g of this will get boiled for the currant soak, then drained back into the dough. Don't weigh extra water for the soak.\n• 50g reserved separately for the salt addition\n\nWeigh into separate dishes:\n• 230g walnut halves\n• 130g Zante currants\n• 25g walnut oil (~2 Tbsp) — DON'T SKIP, mandatory step\n• 20g fine sea salt\n\nConfirm starter is active and at peak — float test before mixing.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
@@ -432,22 +454,22 @@
     {
       "id": "TOAST_WALNUTS",
       "title": "Toast Walnuts",
-      "direction": "1. Preheat oven to 350°F (175°C).\n2. Spread the 230g walnut halves in a single layer on a rimmed baking sheet.\n3. Toast 8-10 min — pull when the kitchen smells nutty and the walnuts are a shade darker than raw. UNDER-roast slightly; they brown again in the bake.\n4. Cool fully on the pan.\n5. Coarsely chop with a chef's knife into ~1-2cm pieces. Hand-chop, NOT food processor — processor produces dust that uniformly darkens the dough.",
-      "duration_min": 12,
+      "direction": "1. Preheat oven to 350°F (175°C).\n2. Spread the 230g walnut halves in a single layer on a rimmed baking sheet.\n3. Toast 7-9 min — PULL AT THE FIRST SIGNS OF COLOR. Walnuts should smell faintly nutty and be only slightly darker than raw. UNDER-roast deliberately; they brown again in the bake.\n4. Cool fully on the pan.\n5. Coarsely chop with a chef's knife into ~1-2cm pieces. Hand-chop, NOT food processor — processor produces dust that uniformly darkens the dough.",
+      "duration_min": 10,
       "timer": false,
       "parallel": true,
       "components": [
         { "name": "walnuts", "amount": "230g" }
       ],
-      "exit_condition": "Walnuts smell fragrant, surface is a shade darker than raw, fully cooled, coarsely chopped to ~1-2cm pieces.",
+      "exit_condition": "Walnuts smell faintly nutty, surface is only slightly darker than raw, fully cooled, coarsely chopped to ~1-2cm pieces.",
       "notes": [
         {
-          "text": "Don't skin walnuts for a country loaf — the pellicle (brown skin) carries walnut character. Blanching/skinning is reserved for delicate pastry applications. If you want to mute the purple-grey crumb (see AUTOLYSE notes), blanch 1 min in boiling water BEFORE toasting; ATK reports this removes ~92% of skin tannins.",
-          "critical": false,
+          "text": "Pull at FIRST color — first bake (2026-05-28) toasted 8-10 min and produced a light astringent aftertaste in the finished loaf. Over-roast tannins are the cause. Lean to 7-8 min and tolerate looking under-done; the bake itself will darken them further.",
+          "critical": true,
           "source": "agent"
         },
         {
-          "text": "Toast doneness: pull EARLIER than you think. Burnt walnuts taste acrid and ruin a bake. Forkish goes to 12 min at 400°F; Leo goes 10 min at 350°F; Robertson's Tartine spec is closer to 8-10 min at 350°F.",
+          "text": "Don't skin walnuts for a country loaf — the pellicle (brown skin) carries walnut character. Blanching/skinning is reserved for delicate pastry applications. If you want to mute the purple-grey crumb (see AUTOLYSE notes), blanch 1 min in boiling water BEFORE toasting; ATK reports this removes ~92% of skin tannins.",
           "critical": false,
           "source": "agent"
         }
@@ -573,6 +595,11 @@
       ],
       "exit_condition": "Inclusions visibly distributed through the folded packet; no large bare patches; dough seam-down in covered bowl.",
       "notes": [
+        {
+          "text": "WALNUT OIL IS NOT OPTIONAL. The 25g (~2 Tbsp) gets drizzled on the toasted walnuts at step 2, BEFORE scattering. First bake (2026-05-28) skipped this step and the taste eval concluded 'walnut oil would put it over the top' — the oil is the difference between a fine loaf and a great one. If you don't have walnut oil, EVOO is an acceptable substitute. Do not skip the step entirely.",
+          "critical": true,
+          "source": "agent"
+        },
         {
           "text": "Lamination beats incremental stretch-and-fold for high-inclusion doughs (>30% combined). One disruption event vs many = less gluten damage, more even distribution. Combined inclusions here are ~36% of flour — top of the open-crumb safe zone.",
           "critical": false,
@@ -983,105 +1010,6 @@
             { "id": "walnuts", "name": "Walnuts (California halves)", "total": 115, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (230g × 0.5). Toasted ~8 min (10 min timer was too long)." },
             { "id": "currants", "name": "Sun-Maid Zante Currants", "total": 65, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (130g × 0.5). Soaked in boiling water but soak liquid NOT reserved into dough." },
             { "id": "walnut_oil", "name": "Walnut Oil", "total": 0, "unit": "g", "breakdown": null, "display_amount": "skipped", "sourcedFrom": "User deviation (skipped this bake)", "confidence": "high", "rationale": "SKIPPED this bake — user confirmed during finalize taste eval that walnut oil was missed. Recipe spec'd 25g (12.5g halved). Flagged in next_time and incorporated into v1.0.3 recipe notes." }
-          ]
-        }
-      ]
-    }
-  ],
-  "cook_log": [
-    {
-      "date": "2026-05-28",
-      "start_date": "2026-05-27",
-      "version": "v1.0.2",
-      "status": "in_progress",
-      "summary": null,
-      "notes": [
-        "Starter very active. Halving the recipe — bread flour inventory was short, just enough for half.",
-        "MIX_DOUGH: Fucked up — didn't realize I needed to reserve the currant soak liquid. Used 360g plain water for mix + 25g reserved for salt (halved baseline). Will try again next time.",
-        "Autolyse start ~5:27pm CDT (inferred from 'started about 17 min ago' note at 5:44pm).",
-        "TOAST_WALNUTS: 8 min was sufficient — 10 min timer was too long.",
-        "ADD_SALT 6:16pm: DDT 80°F.",
-        "LAMINATE_INCLUSIONS 6:53pm: 80°F dough temp after adding inclusions.",
-        "COIL_FOLD_1 7:25pm: 80.2°F dough — oops, did 4 passes (recipe spec'd 2).",
-        "COIL_FOLD_2 8:00pm: 81.2°F dough.",
-        "COIL_FOLD_3 ~8:30pm (per user recall).",
-        "FINAL_BULK 8:36pm: 81.5°F dough, kitchen 77°F. Time-limited — shaped early after a 30 min rest. Dough during bulk was jiggly with a few bubbles on top and the side — no proof concerns.",
-        "Bench rest 20 min, shape, straight to fridge ~10:06pm (inferred from 'fridge about 10 min ago' note at 10:16pm).",
-        "PREHEAT 8:11am 5/28: 490°F for ~60 min.",
-        "BAKE_COVERED 9:11am: 430°F lid on, 20 min.",
-        "BAKE_UNCOVERED ~9:32am: 430°F lid off, ~25 min (20 min planned + 5 extra for color). No internal temp recorded — confident at temp from experience.",
-        "Out of oven ~10:00am 5/28. Spring looks great. No proof concerns. Bulk after folds couldn't have been longer than 1.5 hours.",
-        "Surface currants probably burned.",
-        "Cooling — crumb assessment pending."
-      ],
-      "next_time": [
-        { "text": "Try raisins instead of currants next bake — same soak process (currants were on-hand, not a first-principles pick)" },
-        { "text": "Reserve the soak liquid (currants or raisins) and feed it into the dough water budget — that step was missed this bake" }
-      ],
-      "bake_stats": {
-        "dough_temps": [
-          { "time": "2026-05-27 - 18:16", "temp_f": 80 },
-          { "time": "2026-05-27 - 18:53", "temp_f": 80 },
-          { "time": "2026-05-27 - 19:25", "temp_f": 80.2 },
-          { "time": "2026-05-27 - 20:00", "temp_f": 81.2 },
-          { "time": "2026-05-27 - 20:36", "temp_f": 81.5 }
-        ],
-        "bulk_ambient_temps": [
-          { "date": "2026-05-27", "temp_f": 75.5, "note": "pre-bake kitchen ~5:20pm CDT" },
-          { "date": "2026-05-27", "temp_f": 77, "note": "during bulk ~8:36pm CDT" }
-        ],
-        "bake_phases": [
-          { "stage": "preheat", "temp_f": 490, "duration_min": 60, "start_time": "2026-05-28 - 08:11" },
-          { "stage": "covered", "temp_f": 430, "duration_min": 20, "start_time": "2026-05-28 - 09:11" },
-          { "stage": "uncovered", "temp_f": 430, "duration_min": 25, "start_time": "2026-05-28 - 09:32" }
-        ],
-        "stretch_folds": [
-          { "time": "2026-05-27 - 18:53", "type": "lamination", "note": "walnuts + currants laminated in; 80°F dough" },
-          { "time": "2026-05-27 - 19:25", "type": "coil", "note": "4 passes (recipe spec'd 2)" },
-          { "time": "2026-05-27 - 20:00", "type": "coil" },
-          { "time": "2026-05-27 - 20:30", "type": "coil", "note": "inferred from user recall during echo check" }
-        ],
-        "proof_phases": [
-          { "type": "cold_retard", "start": "2026-05-27 - 22:06", "end": "2026-05-28 - 09:11", "duration_min": 665, "note": "~11 hr (under recipe's 12-16 hr target — time-limited)" }
-        ],
-        "shape_time": "2026-05-27 - 22:00",
-        "confidence": "high"
-      },
-      "bake_notes": [
-        { "timestamp": "2026-05-27T22:20:08Z", "raw": "75.5", "curated": "75.5°F kitchen temp pre-bake", "notable": true, "stepId": "_pre_bake", "prompt": "Kitchen temp (°F)?", "processing": "prep" },
-        { "timestamp": "2026-05-27T22:20:27Z", "raw": "starter very active. halving recipe due to lack of bread flour in inventory. had just enough for half.", "curated": "Starter very active. Halving recipe due to lack of bread flour in inventory — had just enough for half.", "notable": true, "processing": "prep" },
-        { "timestamp": "2026-05-27T22:21:45Z", "raw": "fucked up. didn't know i needed the reserve water from soaking. will try again next time.", "curated": "Fucked up — didn't know I needed the reserved water from soaking. Will try again next time.", "notable": true, "stepId": "MIX_DOUGH", "processing": "mix" },
-        { "timestamp": "2026-05-27T22:40:50Z", "raw": "i think 8 minutes sufficient. 10 minute timer too long.", "curated": "8 minutes was sufficient — 10 minute timer was too long.", "notable": true, "stepId": "TOAST_WALNUTS", "processing": "prep" },
-        { "timestamp": "2026-05-27T22:27:41Z", "raw": "autolyse started approx 17 minutes ago", "curated": "Autolyse started ~17 minutes ago.", "notable": false, "processing": "mix | Timestamp inferred: '17 minutes ago' relative to 2026-05-27T22:44:41Z → 2026-05-27T22:27:41Z" },
-        { "timestamp": "2026-05-27T23:16:25Z", "raw": "80", "curated": "DDT 80°F after salt addition.", "notable": true, "stepId": "ADD_SALT", "prompt": "DDT after salt addition (°F)", "processing": "mix" },
-        { "timestamp": "2026-05-27T23:53:19Z", "raw": "80 degree dough temp after adding inclusions.", "curated": "80°F dough temp after adding inclusions.", "notable": true, "stepId": "LAMINATE_INCLUSIONS", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-28T00:25:56Z", "raw": "80.2", "curated": "80.2°F dough temp at fold 1.", "notable": true, "stepId": "COIL_FOLD_1", "prompt": "Dough temp at fold 1 (°F)", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-28T00:26:23Z", "raw": "oops did four passes", "curated": "Oops — did four passes (recipe spec'd 2).", "notable": true, "stepId": "COIL_FOLD_1", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-28T01:00:14Z", "raw": "81.2", "curated": "81.2°F dough temp at fold 2.", "notable": true, "stepId": "COIL_FOLD_2", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-28T01:36:05Z", "raw": "81.5 dough temp.", "curated": "81.5°F dough temp at final bulk.", "notable": true, "stepId": "FINAL_BULK", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-28T01:36:17Z", "raw": "77", "curated": "77°F kitchen ambient during bulk.", "notable": true, "stepId": "FINAL_BULK", "prompt": "Kitchen ambient temp (°F)", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-28T01:36:42Z", "raw": "may be time limited here and i might shape early after a 30 minute rest. will watch dough.", "curated": "May be time-limited — might shape early after a 30 minute rest. Will watch dough.", "notable": true, "stepId": "FINAL_BULK", "processing": "bulk_ferment" },
-        { "timestamp": "2026-05-28T03:06:59Z", "raw": "fridge about 10 minutes ago", "curated": "Into the fridge ~10 minutes ago.", "notable": true, "processing": "bulk_ferment | Timestamp inferred: 'about 10 minutes ago' relative to 2026-05-28T03:16:59Z → 2026-05-28T03:06:59Z" },
-        { "timestamp": "2026-05-28T13:11:35Z", "raw": "preheated for 60 minutes roughly", "curated": "Preheated for ~60 minutes.", "notable": false, "stepId": "PREHEAT", "processing": "bake | Timestamp inferred: 'preheated for 60 minutes roughly' relative to 2026-05-28T14:11:35Z → 2026-05-28T13:11:35Z" },
-        { "timestamp": "2026-05-28T14:11:49Z", "raw": "started cover bake now", "curated": "Started covered bake now.", "notable": false, "stepId": "BAKE_COVERED", "processing": "bake" },
-        { "timestamp": "2026-05-28T14:52:30Z", "raw": "uncovered 20 minutes complete. adding 5 more minute for a little more color.", "curated": "Uncovered 20 minutes complete. Adding 5 more minutes for a little more color.", "notable": true, "stepId": "BAKE_UNCOVERED", "processing": "bake" },
-        { "timestamp": "2026-05-28T15:04:10Z", "raw": "spring looks great. no concern with over or underproofing. bulk ferment after folds couldn't have been longer than 1.5 hours (bench rest was 20 minutes, then shaped. then straight to fridge last night) - when i looked at dough during bulk ferment it was a bit jiggly and had a few bubbles on top and the side. so no problem there", "curated": "Spring looks great. No concern with over- or under-proofing. Bulk ferment after folds couldn't have been longer than 1.5 hours (bench rest 20 min, then shaped, then straight to fridge last night). When I looked at dough during bulk ferment it was a bit jiggly with a few bubbles on top and the side — so no problem there.", "notable": true, "processing": "result" },
-        { "timestamp": "2026-05-28T15:05:57Z", "raw": "the surface currants are probably burned", "curated": "The surface currants are probably burned.", "notable": true, "processing": "result" }
-      ],
-      "ingredients": [
-        {
-          "stageId": "PREP",
-          "stageName": "Mise en Place",
-          "ingredients": [
-            { "id": "kabf", "name": "King Arthur Bread Flour", "total": 400, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline (user halved entire recipe due to bread flour shortage)", "confidence": "high", "rationale": "50% of recipe baseline (800g × 0.5). Bread flour inventory was short — had just enough for half." },
-            { "id": "marquis_whole", "name": "BSM Marquis Whole Wheat Flour", "total": 50, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (100g × 0.5)." },
-            { "id": "ryman_rye", "name": "BSM Ryman Rye Flour", "total": 50, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (100g × 0.5)." },
-            { "id": "water", "name": "Water (80°F / 27°C)", "total": 385, "unit": "g", "breakdown": [{ "label": "mix (plain water — no soak liquid reserved this bake)", "amount": 360 }, { "label": "reserved for salt addition", "amount": 25 }], "sourcedFrom": "Halved baseline with no-soak-reserve deviation", "confidence": "high", "rationale": "Halved 770g × 0.5 = 385g (360g mix + 25g reserved). User did not reserve the currant soak liquid this bake — used 360g plain water for the mix." },
-            { "id": "starter", "name": "Active Sourdough Starter (50/50 AP+WW @ 100% hydration)", "total": 100, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (200g × 0.5). Starter very active." },
-            { "id": "salt", "name": "Fine Sea Salt", "total": 10, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (20g × 0.5)." },
-            { "id": "walnuts", "name": "Walnuts (California halves)", "total": 115, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (230g × 0.5). Toasted ~8 min (10 min timer was too long)." },
-            { "id": "currants", "name": "Sun-Maid Zante Currants", "total": 65, "unit": "g", "breakdown": null, "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (130g × 0.5). Soaked in boiling water but soak liquid NOT reserved into dough." },
-            { "id": "walnut_oil", "name": "Walnut Oil", "total": 12.5, "unit": "g", "breakdown": null, "display_amount": "1 Tbsp", "sourcedFrom": "Halved baseline", "confidence": "high", "rationale": "50% of recipe baseline (25g × 0.5)." }
           ]
         }
       ]
