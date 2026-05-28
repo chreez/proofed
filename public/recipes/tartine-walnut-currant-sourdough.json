@@ -38,8 +38,30 @@
       ]
     }
   },
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "change_log": [
+    {
+      "version": "v1.0.1",
+      "date": "2026-05-27",
+      "summary": "Fix bake temp: covered phase was incorrectly written as 500°F (the preheat temp). Corrected to load-and-drop method — preheat 500°F, drop to 450°F immediately at load, bake covered 20 min at 450°F, uncovered 25-30 min at 450°F. This matches Make It Dough / Maurizio Leo consensus and avoids over-coloring the high-sugar currants near the surface. No ingredient changes.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            { "id": "kabf", "name": "King Arthur Bread Flour", "total": 800, "unit": "g", "breakdown": null, "sourcedFrom": "Tier 1 confirmed: 7/7 agents", "confidence": "high", "rationale": "80% of total flour. 12.7% protein KABF provides structural backbone for high-hydration high-inclusion country loaf." },
+            { "id": "marquis_whole", "name": "BSM Marquis Whole Wheat Flour", "total": 100, "unit": "g", "breakdown": null, "sourcedFrom": "User direction (Option B blend); Barton Springs Mill analog spec", "confidence": "medium", "rationale": "10% of total flour. Heritage Canadian hard red spring wheat, stone-milled." },
+            { "id": "ryman_rye", "name": "BSM Ryman Rye Flour", "total": 100, "unit": "g", "breakdown": null, "sourcedFrom": "User direction (Option B blend)", "confidence": "medium", "rationale": "10% of total flour. Mild rye — frames currant sweetness with malty depth." },
+            { "id": "water", "name": "Water (80°F / 27°C)", "total": 770, "unit": "g", "breakdown": [{ "label": "mix (including reserved currant soak liquid)", "amount": 720 }, { "label": "reserved for salt addition", "amount": 50 }], "sourcedFrom": "Tartine baseline +2% for heritage flour", "confidence": "high", "rationale": "77% hydration. Currant soak liquid replaces equivalent volume of mix water." },
+            { "id": "starter", "name": "Active Sourdough Starter (50/50 AP+WW @ 100% hydration)", "total": 200, "unit": "g", "breakdown": null, "sourcedFrom": "Robertson leaven spec (Tartine Bread, pg. 45)", "confidence": "high", "rationale": "20% inoculation. Direct active starter at peak." },
+            { "id": "salt", "name": "Fine Sea Salt", "total": 20, "unit": "g", "breakdown": null, "sourcedFrom": "Universal", "confidence": "high", "rationale": "2% of flour. Added with reserved 50g water after autolyse." },
+            { "id": "walnuts", "name": "Walnuts (California halves)", "total": 230, "unit": "g", "breakdown": null, "sourcedFrom": "Synthesis of Robertson + Leo + home-baker median", "confidence": "high", "rationale": "23% of flour. Toasted at 350°F / 8-10 min, coarsely chopped." },
+            { "id": "currants", "name": "Sun-Maid Zante Currants (dried Black Corinth grapes)", "total": 130, "unit": "g", "breakdown": null, "sourcedFrom": "Synthesis of Leo cranberry analog + SFBI walnut-currant", "confidence": "high", "rationale": "13% of flour. Soaked in boiling water; soak liquid returned to dough." },
+            { "id": "walnut_oil", "name": "Walnut Oil (or EVOO substitute)", "total": 25, "unit": "g", "breakdown": null, "display_amount": "2 Tbsp", "sourcedFrom": "Tartine Bread, pg. 91", "confidence": "high", "rationale": "Robertson spec. Lubricates walnut chunks during lamination." }
+          ]
+        }
+      ]
+    },
     {
       "version": "v1.0.0",
       "date": "2026-05-27",
@@ -739,8 +761,8 @@
     },
     {
       "id": "BAKE_COVERED",
-      "title": "Bake — Covered (500°F)",
-      "direction": "1. Using the parchment as a sling, transfer the loaf into the preheated Dutch oven.\n2. Replace the lid.\n3. Bake at 500°F (260°C) for 20 minutes.\n\nDo not peek.",
+      "title": "Bake — Covered (450°F)",
+      "direction": "1. Using the parchment as a sling, transfer the loaf into the preheated Dutch oven.\n2. Replace the lid.\n3. IMMEDIATELY drop oven temperature from 500°F to 450°F (230°C).\n4. Bake 20 minutes.\n\nDo not peek. The cast iron retains plenty of heat — dropping the oven setting at load prevents the high-sugar currants from over-coloring.",
       "duration_min": 20,
       "timer": true,
       "parallel": false,
@@ -750,7 +772,7 @@
     {
       "id": "BAKE_UNCOVERED",
       "title": "Bake — Uncovered (450°F)",
-      "direction": "1. Remove the lid.\n2. Drop oven temperature to 450°F (230°C).\n3. Bake 25-30 minutes until:\n   • crust is deep mahogany\n   • internal temperature reads 205°F (96°C) on an instant-read thermometer",
+      "direction": "1. Remove the lid (oven is already at 450°F from the covered phase).\n2. Continue baking 25-30 minutes until:\n   • crust is deep mahogany\n   • internal temperature reads 205°F (96°C) on an instant-read thermometer",
       "duration_min": 28,
       "timer": true,
       "parallel": false,
