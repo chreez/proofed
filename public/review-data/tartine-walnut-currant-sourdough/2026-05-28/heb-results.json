@@ -1,0 +1,94 @@
+{
+  "recipeId": "tartine-walnut-currant-sourdough",
+  "date": "2026-05-28",
+  "storeId": 218,
+  "ingredients": [
+    {
+      "ingredientId": "kabf",
+      "name": "King Arthur Bread Flour",
+      "recipeAmount": 400,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "King Arthur Unbleached Bread Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 5.78, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Unbleached Bread Flour", "brand": "King Arthur", "size": "10 lbs", "sizeGrams": 4536, "price": 10.99, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Organic Bread Flour", "brand": "King Arthur", "size": "5 lb", "sizeGrams": 2268, "price": 7.87, "salePrice": null, "unitPrice": "$0.10/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2268, "price": 5.48, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "10 lbs", "sizeGrams": 4536, "price": 9.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "marquis_whole",
+      "name": "BSM Marquis Whole Wheat Flour",
+      "recipeAmount": 50,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "ryman_rye",
+      "name": "BSM Ryman Rye Flour",
+      "recipeAmount": 50,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "water",
+      "name": "Water",
+      "recipeAmount": 385,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "starter",
+      "name": "Active Sourdough Starter",
+      "recipeAmount": 100,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Fine Sea Salt",
+      "recipeAmount": 10,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Fine Mediterranean Sea Salt Crystals", "brand": "H-E-B", "size": "26.5 oz", "sizeGrams": 751, "price": 2.38, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Morton Fine Sea Salt", "brand": "Morton", "size": "17.6 oz", "sizeGrams": 499, "price": 2.98, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "Redmond Real Salt Fine Sea Salt", "brand": "Redmond Real Salt", "size": "10 oz", "sizeGrams": 284, "price": 4.98, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "La Baleine Fine Sea Salt Shaker", "brand": "La Baleine", "size": "4.4 oz", "sizeGrams": 125, "price": 2.18, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "walnuts",
+      "name": "Walnuts (California halves)",
+      "recipeAmount": 115,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Walnut Halves & Pieces", "brand": "H-E-B", "size": "11 oz", "sizeGrams": 312, "price": 5.98, "salePrice": null, "unitPrice": "$0.54/oz", "inStock": true },
+        { "name": "H-E-B Walnut Halves & Pieces", "brand": "H-E-B", "size": "32 oz", "sizeGrams": 907, "price": 12.48, "salePrice": null, "unitPrice": "$0.39/oz", "inStock": true },
+        { "name": "H-E-B Walnut Halves & Pieces", "brand": "H-E-B", "size": "6.35 oz", "sizeGrams": 180, "price": 3.48, "salePrice": null, "unitPrice": "$0.54/oz", "inStock": true },
+        { "name": "H-E-B Premium Walnut Halves", "brand": "H-E-B", "size": "16 oz", "sizeGrams": 454, "price": 9.98, "salePrice": null, "unitPrice": "$0.62/oz", "inStock": true },
+        { "name": "H-E-B Premium Walnut Halves", "brand": "H-E-B", "size": "8 oz", "sizeGrams": 227, "price": 5.28, "salePrice": null, "unitPrice": "$0.66/oz", "inStock": true },
+        { "name": "Fisher Walnuts Halves & Pieces", "brand": "Fisher", "size": "16 oz", "sizeGrams": 454, "price": 8.48, "salePrice": null, "unitPrice": "$0.53/oz", "inStock": true },
+        { "name": "Hill Country Fare Walnut Halves & Pieces", "brand": "Hill Country Fare", "size": "6 oz", "sizeGrams": 170, "price": 2.18, "salePrice": null, "unitPrice": "$0.36/oz", "inStock": true },
+        { "name": "H-E-B Walnut Halves & Pieces - Texas-Size Pack", "brand": "H-E-B", "size": "48 oz", "sizeGrams": 1361, "price": 17.48, "salePrice": null, "unitPrice": "$0.36/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "currants",
+      "name": "Sun-Maid Zante Currants",
+      "recipeAmount": 65,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Sun-Maid California Sun-Dried Zante Currants", "brand": "Sun-Maid", "size": "8 oz", "sizeGrams": 227, "price": 4.98, "salePrice": null, "unitPrice": "$0.62/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "walnut_oil",
+      "name": "Walnut Oil (SKIPPED this bake)",
+      "recipeAmount": 0,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "La Tourangelle Roasted Walnut Oil", "brand": "La Tourangelle", "size": "16.9 fl oz", "sizeGrams": 460, "price": 10.28, "salePrice": null, "unitPrice": "$0.61/oz", "inStock": true }
+      ]
+    }
+  ]
+}

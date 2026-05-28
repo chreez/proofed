@@ -1,0 +1,331 @@
+{
+  "recipeId": "tartine-walnut-currant-sourdough",
+  "date": "2026-05-28",
+  "processedAt": "2026-05-28T16:18:36.793Z",
+  "photos": [
+    {
+      "name": "img-7718",
+      "thumb": "img-7718-400w.webp",
+      "src": "img-7718-800w.webp",
+      "summary": "Cooled loaf on a copper wire rack from a low side angle, dark mahogany crust with charred patches and visible burned currants on top."
+    },
+    {
+      "name": "img-7719",
+      "thumb": "img-7719-400w.webp",
+      "src": "img-7719-800w.webp",
+      "summary": "Hero-ish three-quarter view of the whole loaf on the copper rack with kitchen and clock blurred in the background, golden flour-dusted crust with dark currant flecks and a clean ear."
+    },
+    {
+      "name": "img-7720",
+      "thumb": "img-7720-400w.webp",
+      "src": "img-7720-800w.webp",
+      "summary": "Top-down shot of the loaf on the copper rack held over a tile floor, full scoring pattern visible with scorched currants along the high edges."
+    },
+    {
+      "name": "img-7721-frame-001",
+      "thumb": "img-7721-frame-001-400w.webp",
+      "src": "img-7721-frame-001-800w.webp",
+      "summary": "Motion-blurred shot of the loaf being set down onto a white cutting board, purple knife sheath in the foreground.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 0
+    },
+    {
+      "name": "img-7721-frame-002",
+      "thumb": "img-7721-frame-002-400w.webp",
+      "src": "img-7721-frame-002-800w.webp",
+      "summary": "Loaf held up bottom-first toward the camera, showing the pale floured base with scattered currant specks.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 1
+    },
+    {
+      "name": "img-7721-frame-003",
+      "thumb": "img-7721-frame-003-400w.webp",
+      "src": "img-7721-frame-003-800w.webp",
+      "summary": "Bottom of the loaf again from a slightly lower angle, floured base with dark currant studs across the surface.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 2
+    },
+    {
+      "name": "img-7721-frame-004",
+      "thumb": "img-7721-frame-004-400w.webp",
+      "src": "img-7721-frame-004-800w.webp",
+      "summary": "Underside of the loaf tilting forward, darker bake color and burned currants beginning to show along the rim.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 3
+    },
+    {
+      "name": "img-7721-frame-005",
+      "thumb": "img-7721-frame-005-400w.webp",
+      "src": "img-7721-frame-005-800w.webp",
+      "summary": "Hand reaching across the loaf base mid-rotation, base still upturned to camera.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 4
+    },
+    {
+      "name": "img-7721-frame-006",
+      "thumb": "img-7721-frame-006-400w.webp",
+      "src": "img-7721-frame-006-800w.webp",
+      "summary": "Loaf tipping over from upside-down toward upright, partial side view with one hand supporting it.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 5
+    },
+    {
+      "name": "img-7721-frame-007",
+      "thumb": "img-7721-frame-007-400w.webp",
+      "src": "img-7721-frame-007-800w.webp",
+      "summary": "Loaf set right-side-up on the cutting board with both hands gripping the sides, dark scored top now visible.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 6
+    },
+    {
+      "name": "img-7721-frame-008",
+      "thumb": "img-7721-frame-008-400w.webp",
+      "src": "img-7721-frame-008-800w.webp",
+      "summary": "Top-down view of the upright loaf on the cutting board, blurred purple bread knife entering the frame from the left.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 7
+    },
+    {
+      "name": "img-7721-frame-009",
+      "thumb": "img-7721-frame-009-400w.webp",
+      "src": "img-7721-frame-009-800w.webp",
+      "summary": "Purple bread knife resting across the top of the loaf, scoring pattern and currant specks clearly visible.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 8
+    },
+    {
+      "name": "img-7721-frame-010",
+      "thumb": "img-7721-frame-010-400w.webp",
+      "src": "img-7721-frame-010-800w.webp",
+      "summary": "Knife held above the loaf at a slight diagonal, lined up to start the cut down the center.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 9
+    },
+    {
+      "name": "img-7721-frame-011",
+      "thumb": "img-7721-frame-011-400w.webp",
+      "src": "img-7721-frame-011-800w.webp",
+      "summary": "Knife angled down onto the crust, free hand steadying the top of the loaf.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 10
+    },
+    {
+      "name": "img-7721-frame-012",
+      "thumb": "img-7721-frame-012-400w.webp",
+      "src": "img-7721-frame-012-800w.webp",
+      "summary": "Knife tip pressing into the crust at the start of the cut, hand bracing the far side.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 11
+    },
+    {
+      "name": "img-7721-frame-013",
+      "thumb": "img-7721-frame-013-400w.webp",
+      "src": "img-7721-frame-013-800w.webp",
+      "summary": "Knife sawing into the top of the loaf, hand stabilizing across the back.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 12
+    },
+    {
+      "name": "img-7721-frame-014",
+      "thumb": "img-7721-frame-014-400w.webp",
+      "src": "img-7721-frame-014-800w.webp",
+      "summary": "Knife further into the cut, blade partially buried in the crust near the ear.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 13
+    },
+    {
+      "name": "img-7721-frame-015",
+      "thumb": "img-7721-frame-015-400w.webp",
+      "src": "img-7721-frame-015-800w.webp",
+      "summary": "Mid-cut from the front, knife working through the upper half of the loaf with the ear curling above the blade.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 14
+    },
+    {
+      "name": "img-7721-frame-016",
+      "thumb": "img-7721-frame-016-400w.webp",
+      "src": "img-7721-frame-016-800w.webp",
+      "summary": "Knife deeper into the cut, free hand pressed across the top to hold the loaf steady.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 15
+    },
+    {
+      "name": "img-7721-frame-017",
+      "thumb": "img-7721-frame-017-400w.webp",
+      "src": "img-7721-frame-017-800w.webp",
+      "summary": "Knife angled steeply downward into the loaf, sawing through the lower portion.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 16
+    },
+    {
+      "name": "img-7721-frame-018",
+      "thumb": "img-7721-frame-018-400w.webp",
+      "src": "img-7721-frame-018-800w.webp",
+      "summary": "Knife near the bottom of the loaf, hand still gripping the top with the ear standing tall above the cut.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 17
+    },
+    {
+      "name": "img-7721-frame-019",
+      "thumb": "img-7721-frame-019-400w.webp",
+      "src": "img-7721-frame-019-800w.webp",
+      "summary": "Knife withdrawing slightly from the cut, loaf still intact on the cutting board.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 18
+    },
+    {
+      "name": "img-7721-frame-020",
+      "thumb": "img-7721-frame-020-400w.webp",
+      "src": "img-7721-frame-020-800w.webp",
+      "summary": "Knife re-entering the cut for another pass, ear and scoring pattern visible from above.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 19
+    },
+    {
+      "name": "img-7721-frame-021",
+      "thumb": "img-7721-frame-021-400w.webp",
+      "src": "img-7721-frame-021-800w.webp",
+      "summary": "Knife pulled back from the cut, hand still resting on the loaf top mid-sequence.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 20
+    },
+    {
+      "name": "img-7721-frame-022",
+      "thumb": "img-7721-frame-022-400w.webp",
+      "src": "img-7721-frame-022-800w.webp",
+      "summary": "Hand resting on the cut loaf with knife withdrawn, top-down view of scored crust before pulling halves apart.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 21
+    },
+    {
+      "name": "img-7721-frame-023",
+      "thumb": "img-7721-frame-023-400w.webp",
+      "src": "img-7721-frame-023-800w.webp",
+      "summary": "Whole loaf settled back on the cutting board with cut line visible down the middle, knife resting to the side.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 22
+    },
+    {
+      "name": "img-7721-frame-024",
+      "thumb": "img-7721-frame-024-400w.webp",
+      "src": "img-7721-frame-024-800w.webp",
+      "summary": "Motion-blurred shot of the loaf being lifted off the board, cut side starting to separate.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 23
+    },
+    {
+      "name": "img-7721-frame-025",
+      "thumb": "img-7721-frame-025-400w.webp",
+      "src": "img-7721-frame-025-800w.webp",
+      "summary": "Both halves held cut-side toward the camera, revealing the open crumb with dense walnut and currant studding.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 24
+    },
+    {
+      "name": "img-7721-frame-026",
+      "thumb": "img-7721-frame-026-400w.webp",
+      "src": "img-7721-frame-026-800w.webp",
+      "summary": "Closer crumb shot of both halves angled toward the camera, pale interior with heavy walnut/currant inclusions and a faint purple tint near the nuts.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 25
+    },
+    {
+      "name": "img-7721-frame-027",
+      "thumb": "img-7721-frame-027-400w.webp",
+      "src": "img-7721-frame-027-800w.webp",
+      "summary": "Tight, slightly skewed top-down view of both cut halves stacked, showing crumb structure with thick dark walnut and currant inclusions throughout.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 26
+    },
+    {
+      "name": "img-7721-frame-028",
+      "thumb": "img-7721-frame-028-400w.webp",
+      "src": "img-7721-frame-028-800w.webp",
+      "summary": "Extreme close-up crumb shot with both halves stacked, dense walnut chunks and currants packed through a relatively tight interior.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 27
+    },
+    {
+      "name": "img-7721-frame-029",
+      "thumb": "img-7721-frame-029-400w.webp",
+      "src": "img-7721-frame-029-800w.webp",
+      "summary": "Motion-blurred frame of the halves being swung back together or rotated, hard to read.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 28
+    },
+    {
+      "name": "img-7721-frame-030",
+      "thumb": "img-7721-frame-030-400w.webp",
+      "src": "img-7721-frame-030-800w.webp",
+      "summary": "Heavily blurred mid-motion frame of the loaf being lifted or repositioned, scissors visible in the background.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 29
+    },
+    {
+      "name": "img-7721-frame-031",
+      "thumb": "img-7721-frame-031-400w.webp",
+      "src": "img-7721-frame-031-800w.webp",
+      "summary": "One half held tilted toward the camera showing the floured outer crust and burned currant patches near the rim.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 30
+    },
+    {
+      "name": "img-7721-frame-032",
+      "thumb": "img-7721-frame-032-400w.webp",
+      "src": "img-7721-frame-032-800w.webp",
+      "summary": "Half loaf held base-up toward the camera, pale floured underside with scattered dark currants and good even bake color.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 31
+    },
+    {
+      "name": "img-7721-frame-033",
+      "thumb": "img-7721-frame-033-400w.webp",
+      "src": "img-7721-frame-033-800w.webp",
+      "summary": "Both halves cradled in hands above the cutting board with cut sides angled toward each other, walnut-studded crumb visible at the seam.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 32
+    },
+    {
+      "name": "img-7721-frame-034",
+      "thumb": "img-7721-frame-034-400w.webp",
+      "src": "img-7721-frame-034-800w.webp",
+      "summary": "Final composed shot on the cutting board: cut half standing on edge revealing crumb beside the closed half showing crust, knife resting to the left.",
+      "source": "video",
+      "sourceFile": "IMG_7721.MOV",
+      "frameIndex": 33
+    }
+  ]
+}
