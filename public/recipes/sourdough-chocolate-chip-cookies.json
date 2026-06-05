@@ -2204,15 +2204,20 @@
       }
     },
     {
-      "date": "2026-06-04",
+      "date": "2026-06-05",
       "version": "v2.0.4",
       "in_progress": true,
-      "summary": "In-progress heritage-flour experiment. Dry-mix portion completed: 80g BSM Marquis (finished bag) + 124g KABF bread + 119g KABF AP + 119g BSM einkorn (50% AP swap). Total dry overshot recipe v2.0.4 by ~38% (442g flour vs 320g target; baking powder 4g vs 2g) — agent mise-en-place erroneously cited Clever Carrot original weights instead of in-app adapted values. User opted to proceed as-mixed. Wet phase + bake outcome pending; full pipeline + snapshots to be updated post-bake.",
+      "summary": "In-progress heritage-flour experiment, split-batch bake. Dry-mix portion (06-04) overshot recipe v2.0.4 by ~38% — agent mise cited Clever Carrot original weights instead of in-app adapted values (442g flour vs 320g; baking powder 4g vs 2g). User opted to proceed as-mixed. Heritage subs: 80g BSM Marquis (finished bag) for bread role, 119g BSM einkorn (50% AP swap). Chocolate dialed back to 250g fold + 50g tops (vs 300g+50g recipe). Dough yielded 1441g. First batch of 8 cookies (~60g each, freezer-chilled scoops) baked 14 min 06-04 evening — cookies came out with cracks (user attributed to einkorn). Targeting 24 total at 60g; remaining dough to be shaped + frozen 06-05.",
       "notes": [
         "2026-06-04 evening — Mixed dry. Marquis weighed 80g (finished the BSM bag). Topped up bread portion with 124g KABF bread flour to hit 204g.",
         "2026-06-04 evening — AP portion: 119g KABF AP + 119g BSM einkorn (50% swap for fun — heritage experiment).",
         "2026-06-04 evening — Leaveners + salt: 4g baking powder, 5g baking soda, 7g fine sea salt. Whisked hard (einkorn clumps).",
-        "2026-06-04 evening — Mid-mix discovery: total dry hit 458g (442g flour + 16g leavener/salt). Recipe v2.0.4 actually calls for 320g flour + 13g leavener/salt; agent had cited Clever Carrot original (442g/17g). User chose to proceed as-mixed (\"oh well.. lets see how it turns out\") rather than scale wet 1.38x or discard 122g dry. Expect cakier rise (BP 2x), drier crumb, possibly less spread (extra flour, einkorn lower hydration draw)."
+        "2026-06-04 evening — Mid-mix discovery: total dry hit 458g (442g flour + 16g leavener/salt). Recipe v2.0.4 actually calls for 320g flour + 13g leavener/salt; agent had cited Clever Carrot original (442g/17g). User chose to proceed as-mixed (\"oh well.. lets see how it turns out\") rather than scale wet 1.38x or discard 122g dry. Expect cakier rise (BP 2x), drier crumb, possibly less spread (extra flour, einkorn lower hydration draw).",
+        "2026-06-04 6:43pm — Folded only 250g chocolate (recipe spec 300g). Judged sufficient. Reserving 50g for tops per recipe.",
+        "2026-06-04 9:07pm — Dough chilled a few hours in fridge. Total dough yield 1441g. Doing one set of 6 cookies tonight.",
+        "2026-06-04 9:37pm — Started bake. Scoops went into freezer first to chill cold before sheet.",
+        "2026-06-04 9:54pm — Out of oven at 14 minutes (cold-from-freezer scoops). Cookies show visible cracks — \"probably from einkorn\" (lower gluten = less elastic surface).",
+        "2026-06-04 9:56pm — Plan: shape and freeze the rest of the dough tomorrow. Tonight's batch was 8 cookies at ~60g each (480g). Targeting 24 total at 60g/each (~1440g) — matches 1441g actual yield."
       ],
       "ingredients": [
         {
@@ -2339,12 +2344,12 @@
             {
               "id": "chocolate",
               "name": "Chopped Chocolate (60-66% semisweet)",
-              "total": 350,
+              "total": 300,
               "unit": "g",
               "breakdown": [
                 {
                   "label": "fold into dough",
-                  "amount": 300
+                  "amount": 250
                 },
                 {
                   "label": "press into tops",
@@ -2352,7 +2357,7 @@
                 }
               ],
               "confidence": "high",
-              "rationale": "Hand-chopped bar, not chips; reserve for surface per Schiff technique"
+              "rationale": "Folded 250g instead of recipe-spec 300g — user judged sufficient; reserved 50g for tops per Schiff technique"
             },
             {
               "id": "flaky-salt",
@@ -2366,7 +2371,8 @@
           ]
         }
       ],
-      "next_time": []
+      "next_time": [],
+      "start_date": "2026-06-04"
     }
   ],
   "reheat": {
