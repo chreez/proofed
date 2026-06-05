@@ -50,6 +50,16 @@
         "packageSize": "16 oz",
         "updatedAt": "2026-05-28"
       }
+    },
+    "chocolate": {
+      "lastUsed": {
+        "name": "Ghirardelli Premium 60% Cacao Bittersweet Chocolate Baking Bar",
+        "brand": "Ghirardelli",
+        "sizeGrams": 113,
+        "packagePrice": 4.28,
+        "packageSize": "4 oz",
+        "updatedAt": "2026-06-05"
+      }
     }
   }
 }

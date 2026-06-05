@@ -2206,7 +2206,7 @@
     {
       "date": "2026-06-05",
       "version": "v2.0.4",
-      "summary": "Heritage-flour experiment, partial bake — 8 of targeted 24 cookies baked 06-04 evening; remaining dough to shape/freeze 06-05+. Dry-mix portion overshot recipe v2.0.4 by ~38% (agent mise cited Clever Carrot original weights instead of in-app adapted values: 442g flour vs 320g; baking powder 4g vs 2g). User proceeded as-mixed. Heritage subs: 80g BSM Marquis (finished bag) for bread role, 119g BSM einkorn (50% AP swap). Chocolate dialed back to 250g fold + 50g tops (vs 300g+50g recipe). Dough yielded 1441g. First set of 8 (~60g each, freezer-chilled scoops) baked 14 min, came out with visible cracks (user attributed to einkorn).",
+      "summary": "Heritage-flour experiment, split-batch — first 8 of 24 cookies baked 06-04 evening (~60g each, 14 min from freezer-chilled scoops); visible cracks, likely einkorn. Heritage subs: BSM Marquis 80g + einkorn 119g (50% AP swap). Chocolate trimmed to 250g fold + 50g tops. Dough yielded 1441g. Dry mix overshot recipe v2.0.4 by ~38% (agent mise error citing Clever Carrot original weights); proceeded as-mixed. Cost $19.95 total ($0.91/cookie); chocolate dominates at $11.36.",
       "notes": [
         "2026-06-04 evening — Mixed dry. Marquis weighed 80g (finished the BSM bag). Topped up bread portion with 124g KABF bread flour to hit 204g.",
         "2026-06-04 evening — AP portion: 119g KABF AP + 119g BSM einkorn (50% swap for fun — heritage experiment).",
@@ -2371,7 +2371,199 @@
         }
       ],
       "next_time": [],
-      "start_date": "2026-06-04"
+      "start_date": "2026-06-04",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-06-05",
+        "temp_high_f": 84.5,
+        "temp_low_f": 72.1,
+        "humidity_avg_percent": 88,
+        "condition": "Rain",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "total": 19.95,
+        "servings": 22,
+        "perServing": 0.91,
+        "date": "2026-06-05",
+        "store": "HEB store #428 (Parmer & Mopac, 78727) + BSM heritage flours",
+        "items": [
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 225,
+            "unit": "g",
+            "packageSize": "2 ct (0.5 lb)",
+            "packagePrice": 2.46,
+            "cost": 2.44
+          },
+          {
+            "ingredientId": "dark-brown-sugar",
+            "name": "Dark Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "C&H Premium Pure Cane Dark Brown Sugar",
+            "amount": 210,
+            "unit": "g",
+            "packageSize": "2 lb",
+            "packagePrice": 2.82,
+            "cost": 0.65
+          },
+          {
+            "ingredientId": "granulated-sugar",
+            "name": "Granulated Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "amount": 96,
+            "unit": "g",
+            "packageSize": "2 lb",
+            "packagePrice": 2.48,
+            "cost": 0.26
+          },
+          {
+            "ingredientId": "egg-yolks",
+            "name": "Egg Yolks (large)",
+            "sourceType": "heb",
+            "sourceName": "Sunups Grade A Large White Eggs",
+            "amount": 54,
+            "unit": "g",
+            "packageSize": "12 ct",
+            "packagePrice": 1.46,
+            "cost": 0.13
+          },
+          {
+            "ingredientId": "sourdough-discard",
+            "name": "Sourdough Discard (100% hydration)",
+            "sourceType": "manual",
+            "sourceName": "Homemade discard (recycled starter feed — no marginal cost)",
+            "amount": 150,
+            "unit": "g",
+            "packageSize": "homemade",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "vanilla",
+            "name": "Vanilla Extract",
+            "sourceType": "heb",
+            "sourceName": "McCormick Pure Vanilla Extract",
+            "amount": 13,
+            "unit": "g",
+            "packageSize": "1 oz",
+            "packagePrice": 4.87,
+            "cost": 2.44
+          },
+          {
+            "ingredientId": "ap-flour",
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Enriched Unbleached All-Purpose Flour",
+            "amount": 119,
+            "unit": "g",
+            "packageSize": "5 lb",
+            "packagePrice": 2.58,
+            "cost": 0.14
+          },
+          {
+            "ingredientId": "einkorn-flour",
+            "name": "Einkorn Flour (Barton Springs Mill)",
+            "sourceType": "manual",
+            "sourceName": "BSM Einkorn Flour (Whole Grain, certified organic) — 5 lb $22.00",
+            "amount": 119,
+            "unit": "g",
+            "packageSize": "5 lb",
+            "packagePrice": 22.0,
+            "cost": 1.15
+          },
+          {
+            "ingredientId": "marquis-flour",
+            "name": "Marquis Flour (Barton Springs Mill)",
+            "sourceType": "manual",
+            "sourceName": "BSM Marquis Flour (Whole Wheat, certified organic) — 2.5 lb $13.00",
+            "amount": 80,
+            "unit": "g",
+            "packageSize": "2.5 lb",
+            "packagePrice": 13.0,
+            "cost": 0.92
+          },
+          {
+            "ingredientId": "bread-flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B The Baker's Scoop Bread Flour",
+            "amount": 124,
+            "unit": "g",
+            "packageSize": "5 lb",
+            "packagePrice": 3.78,
+            "cost": 0.21
+          },
+          {
+            "ingredientId": "baking-soda",
+            "name": "Baking Soda",
+            "sourceType": "heb",
+            "sourceName": "Arm & Hammer Pure Baking Soda",
+            "amount": 5,
+            "unit": "g",
+            "packageSize": "8 oz",
+            "packagePrice": 0.87,
+            "cost": 0.02
+          },
+          {
+            "ingredientId": "baking-powder",
+            "name": "Baking Powder",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Double Acting Baking Powder",
+            "amount": 4,
+            "unit": "g",
+            "packageSize": "8.1 oz",
+            "packagePrice": 2.08,
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "fine-sea-salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "La Baleine Fine Sea Salt Shaker",
+            "amount": 7,
+            "unit": "g",
+            "packageSize": "4.4 oz",
+            "packagePrice": 2.18,
+            "cost": 0.12
+          },
+          {
+            "ingredientId": "chocolate",
+            "name": "Chopped Chocolate (60-66% semisweet)",
+            "sourceType": "heb",
+            "sourceName": "Ghirardelli Premium 60% Cacao Bittersweet Chocolate Baking Bar",
+            "amount": 300,
+            "unit": "g",
+            "packageSize": "4 oz",
+            "packagePrice": 4.28,
+            "cost": 11.36
+          },
+          {
+            "ingredientId": "flaky-salt",
+            "name": "Flaky Sea Salt (Maldon)",
+            "sourceType": "heb",
+            "sourceName": "Maldon Smoked Sea Salt Flakes",
+            "amount": 2,
+            "unit": "g",
+            "packageSize": "4.4 oz",
+            "packagePrice": 4.18,
+            "cost": 0.07
+          }
+        ]
+      },
+      "photos": [
+        {
+          "name": "img-7802",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-06-05/img-7802-400w.webp",
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-06-05/img-7802-800w.webp",
+          "alt": "Eight golden-brown cookies in two rows of four on parchment-lined sheet pan fresh from the oven. Heritage flour bake — BSM Marquis + einkorn experiment, baked 14 min from freezer-chilled scoops.",
+          "usage": "hero"
+        }
+      ]
     }
   ],
   "reheat": {
