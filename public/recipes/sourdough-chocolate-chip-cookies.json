@@ -2202,6 +2202,171 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-06-04",
+      "version": "v2.0.4",
+      "in_progress": true,
+      "summary": "In-progress heritage-flour experiment. Dry-mix portion completed: 80g BSM Marquis (finished bag) + 124g KABF bread + 119g KABF AP + 119g BSM einkorn (50% AP swap). Total dry overshot recipe v2.0.4 by ~38% (442g flour vs 320g target; baking powder 4g vs 2g) — agent mise-en-place erroneously cited Clever Carrot original weights instead of in-app adapted values. User opted to proceed as-mixed. Wet phase + bake outcome pending; full pipeline + snapshots to be updated post-bake.",
+      "notes": [
+        "2026-06-04 evening — Mixed dry. Marquis weighed 80g (finished the BSM bag). Topped up bread portion with 124g KABF bread flour to hit 204g.",
+        "2026-06-04 evening — AP portion: 119g KABF AP + 119g BSM einkorn (50% swap for fun — heritage experiment).",
+        "2026-06-04 evening — Leaveners + salt: 4g baking powder, 5g baking soda, 7g fine sea salt. Whisked hard (einkorn clumps).",
+        "2026-06-04 evening — Mid-mix discovery: total dry hit 458g (442g flour + 16g leavener/salt). Recipe v2.0.4 actually calls for 320g flour + 13g leavener/salt; agent had cited Clever Carrot original (442g/17g). User chose to proceed as-mixed (\"oh well.. lets see how it turns out\") rather than scale wet 1.38x or discard 122g dry. Expect cakier rise (BP 2x), drier crumb, possibly less spread (extra flour, einkorn lower hydration draw)."
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "6/7 agents confirmed 225-227g browned butter as consensus"
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 210,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across sources; 2:1 brown-to-white ratio"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 96,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Provides crispness and spread balance"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 54,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Yolks only removes excess moisture; validated by JennyBlogs bake-off winner"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "100-150g sweet spot for overnight ferment; discard preferred over active"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "1 tbsp; bean paste upgrade recommended"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 119,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reduced from 200g — 119g KABF AP only; remaining AP role filled by 119g BSM einkorn (50% swap)"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour (Barton Springs Mill)",
+              "total": 119,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "50% of AP role swapped for einkorn (heritage experiment). Lower gluten + nutty flavor; expect softer eat, slightly more spread."
+            },
+            {
+              "id": "marquis-flour",
+              "name": "Marquis Flour (Barton Springs Mill)",
+              "total": 80,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Finished the bag — last 80g of Marquis used as part of the bread flour role; topped up to 204g with KABF bread"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 124,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "KABF bread flour topping up after 80g BSM Marquis (finished bag) to hit 204g bread portion total — but note: 204g target itself was an agent-mise error citing Clever Carrot original (recipe v2.0.4 calls for 120g bread)"
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid for lift and browning"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Agent mise-en-place error — recipe v2.0.4 calls for 2g; mixed 4g and discovered post-hoc; proceeded as-mixed"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Agent mise-en-place over by 1g vs recipe v2.0.4 (6g); proceeded as-mixed"
+            },
+            {
+              "id": "chocolate",
+              "name": "Chopped Chocolate (60-66% semisweet)",
+              "total": 350,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "fold into dough",
+                  "amount": 300
+                },
+                {
+                  "label": "press into tops",
+                  "amount": 50
+                }
+              ],
+              "confidence": "high",
+              "rationale": "Hand-chopped bar, not chips; reserve for surface per Schiff technique"
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across every source"
+            }
+          ]
+        }
+      ],
+      "next_time": []
     }
   ],
   "reheat": {
