@@ -71,6 +71,12 @@ vi.mock('@/components/DemoStats.vue', () => ({
 vi.mock('@/components/DemoQrTest.vue', () => ({
   default: { name: 'DemoQrTest', template: '<div class="demo-qr-test-stub">Demo QR Test</div>' }
 }))
+vi.mock('@/components/DemoMiseSheet.vue', () => ({
+  default: { name: 'DemoMiseSheet', template: '<div class="demo-mise-sheet-stub">Demo Mise Sheet</div>' }
+}))
+vi.mock('@/components/DemoMiseSheetV1.vue', () => ({
+  default: { name: 'DemoMiseSheetV1', template: '<div class="demo-mise-sheet-v1-stub">Demo Mise Sheet v1</div>' }
+}))
 // Mock composables
 const mockLoadTechniques = vi.fn()
 vi.mock('@/composables/useTechniques', () => ({
@@ -194,6 +200,8 @@ function makeRouter() {
       { path: '/', name: 'index', component: { template: '<div />' } },
       { path: '/recipe/:recipeId', name: 'recipe', component: { template: '<div />' } },
       { path: '/recipe/:recipeId/print', name: 'recipe-print', component: { template: '<div />' }, meta: { printMode: true } },
+      { path: '/mise-sheet', name: 'mise-sheet', component: { template: '<div />' }, meta: { printMode: true } },
+      { path: '/mise-sheet/v1', name: 'mise-sheet-v1', component: { template: '<div />' }, meta: { printMode: true } },
       { path: '/about', name: 'about', component: { template: '<div />' } },
       { path: '/review/photos/:recipeId/:date', name: 'photo-review', component: { template: '<div />' } },
       { path: '/recipe/:recipeId/bake/:date', name: 'bake-detail', component: { template: '<div />' }, meta: { bakeDetail: true } },
@@ -568,6 +576,16 @@ describe('App', () => {
     const { wrapper } = await mountApp('/demo/qr-test')
     expect(wrapper.find('.demo-qr-test-stub').exists()).toBe(true)
     expect(wrapper.text()).toContain('Demo QR Test')
+  })
+
+  it('shows DemoMiseSheet on /mise-sheet route', async () => {
+    const { wrapper } = await mountApp('/mise-sheet')
+    expect(wrapper.find('.demo-mise-sheet-stub').exists()).toBe(true)
+  })
+
+  it('shows DemoMiseSheetV1 on /mise-sheet/v1 route', async () => {
+    const { wrapper } = await mountApp('/mise-sheet/v1')
+    expect(wrapper.find('.demo-mise-sheet-v1-stub').exists()).toBe(true)
   })
 
   it('shows loading state when loading is true', async () => {

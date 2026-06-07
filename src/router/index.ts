@@ -150,6 +150,18 @@ const router = createRouter({
       meta: { showIndex: false, printMode: true }
     },
     {
+      path: '/mise-sheet',
+      name: 'mise-sheet',
+      component: EmptyRouteView,
+      meta: { showIndex: false, printMode: true }
+    },
+    {
+      path: '/mise-sheet/v1',
+      name: 'mise-sheet-v1',
+      component: EmptyRouteView,
+      meta: { showIndex: false, printMode: true }
+    },
+    {
       path: '/stats',
       name: 'stats',
       component: EmptyRouteView,

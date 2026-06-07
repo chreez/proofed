@@ -48,6 +48,8 @@ import DemoStateNoteTables from '@/components/DemoStateNoteTables.vue'
 import DemoQrLabelVariants from '@/components/DemoQrLabelVariants.vue'
 import DemoRecipePrintout from '@/components/DemoRecipePrintout.vue'
 import DemoPrintNav from '@/components/DemoPrintNav.vue'
+import DemoMiseSheet from '@/components/DemoMiseSheet.vue'
+import DemoMiseSheetV1 from '@/components/DemoMiseSheetV1.vue'
 import StatsPage from '@/components/StatsPage.vue'
 import BakeDetailView from '@/components/BakeDetailView.vue'
 import BakeReviewPage from '@/components/BakeReviewPage.vue'
@@ -170,7 +172,7 @@ const showPricing = computed(() => route.name === 'pricing')
 const showProduction = computed(() => route.name === 'production')
 const showLabels = computed(() => route.name === 'labels')
 const showSales = computed(() => route.name === 'sales')
-const showPrintMode = computed(() => route.name === 'recipe-print')
+const showPrintMode = computed(() => route.name === 'recipe-print' || route.name === 'mise-sheet' || route.name === 'mise-sheet-v1')
 const showHeaderActions = computed(() => !!currentRecipe.value && !showIndex.value && !showAbout.value && !showBakeDetail.value && !showPricing.value && !showProduction.value && !showLabels.value && !showSales.value)
 
 // Inclusion list — routes that mount a search bar into the header slot.
@@ -683,7 +685,9 @@ watch(() => route.hash, (newHash) => {
       </template>
 
       <template v-else-if="showPrintMode">
-        <RecipePrintView />
+        <DemoMiseSheet v-if="route.name === 'mise-sheet'" />
+        <DemoMiseSheetV1 v-else-if="route.name === 'mise-sheet-v1'" />
+        <RecipePrintView v-else />
       </template>
 
       <template v-else-if="showBakeDetail">
