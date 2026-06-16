@@ -1,0 +1,227 @@
+{
+  "recipeId": "tartine-lemon-tart-strawberry-glazed",
+  "date": "2026-06-09",
+  "storeId": 428,
+  "note": "Red currant jelly NOT carried at HEB #218 — listed Bonne Maman alternatives (Apricot is the recipe's documented HEB fallback, Four Fruits contains some currant). User likely sourced from Central Market, Whole Foods, or IKEA.",
+  "ingredients": [
+    {
+      "ingredientId": "butter_dough",
+      "name": "Unsalted Butter (room temp, dough)",
+      "recipeAmount": 255,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 2.78, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "Central Market European Style Unsalted Butter Sticks", "brand": "Central Market", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Kerrygold Unsalted Pure Irish Butter Sticks", "brand": "Kerrygold", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 10.32, "salePrice": null, "unitPrice": "$0.64/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "2 ct (8 oz)", "sizeGrams": 226.80, "price": 2.46, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Truly Grass Fed Naturally Creamy Unsalted Butter", "brand": "Truly Grass Fed", "size": "8 oz", "sizeGrams": 226.80, "price": 5.98, "salePrice": null, "unitPrice": "$0.75/oz", "inStock": true },
+        { "name": "Vital Farms Grass Fed Unsalted Butter Sticks", "brand": "Vital Farms", "size": "2 ct (8 oz)", "sizeGrams": 226.80, "price": 5.28, "salePrice": null, "unitPrice": "$0.66/oz", "inStock": true },
+        { "name": "Kerrygold Grass-Fed Unsalted Pure Irish Butter", "brand": "Kerrygold", "size": "8 oz", "sizeGrams": 226.80, "price": 4.84, "salePrice": null, "unitPrice": "$0.60/oz", "inStock": true },
+        { "name": "Land O Lakes Unsalted Butter Half Sticks", "brand": "Land O Lakes", "size": "8 ct (1 lb)", "sizeGrams": 453.59, "price": 4.46, "salePrice": null, "unitPrice": "$0.28/oz", "inStock": true },
+        { "name": "Grassland Unsalted Sweet Cream Butter Sticks", "brand": "Grassland", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "butter_cream",
+      "name": "Unsalted Butter (cool, cream)",
+      "recipeAmount": 225,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 3.98, "salePrice": null, "unitPrice": "$0.25/oz", "inStock": true },
+        { "name": "Hill Country Fare Unsalted Butter Sticks", "brand": "Hill Country Fare", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 2.78, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "Central Market European Style Unsalted Butter Sticks", "brand": "Central Market", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 5.98, "salePrice": null, "unitPrice": "$0.37/oz", "inStock": true },
+        { "name": "Kerrygold Unsalted Pure Irish Butter Sticks", "brand": "Kerrygold", "size": "4 ct (1 lb)", "sizeGrams": 453.59, "price": 10.32, "salePrice": null, "unitPrice": "$0.64/oz", "inStock": true },
+        { "name": "H-E-B Sweet Cream Unsalted Butter Sticks", "brand": "H-E-B", "size": "2 ct (8 oz)", "sizeGrams": 226.80, "price": 2.46, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "Truly Grass Fed Naturally Creamy Unsalted Butter", "brand": "Truly Grass Fed", "size": "8 oz", "sizeGrams": 226.80, "price": 5.98, "salePrice": null, "unitPrice": "$0.75/oz", "inStock": true },
+        { "name": "Vital Farms Grass Fed Unsalted Butter Sticks", "brand": "Vital Farms", "size": "2 ct (8 oz)", "sizeGrams": 226.80, "price": 5.28, "salePrice": null, "unitPrice": "$0.66/oz", "inStock": true },
+        { "name": "Kerrygold Grass-Fed Unsalted Pure Irish Butter", "brand": "Kerrygold", "size": "8 oz", "sizeGrams": 226.80, "price": 4.84, "salePrice": null, "unitPrice": "$0.60/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "sugar_dough",
+      "name": "Granulated Sugar (dough)",
+      "recipeAmount": 200,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "4 lbs", "sizeGrams": 1814.37, "price": 3.48, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "2 lbs", "sizeGrams": 907.18, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "10 lbs", "sizeGrams": 4535.92, "price": 7.88, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "Hill Country Fare Granulated Sugar", "brand": "Hill Country Fare", "size": "4 lbs", "sizeGrams": 1814.37, "price": 2.54, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "Hill Country Fare Granulated Sugar", "brand": "Hill Country Fare", "size": "10 lbs", "sizeGrams": 4535.92, "price": 7.58, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "C&H Premium Pure Cane Granulated Sugar", "brand": "C&H", "size": "4 lbs", "sizeGrams": 1814.37, "price": 3.94, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Imperial Sugar Extra Fine Granulated Pure Cane Sugar", "brand": "Imperial Sugar", "size": "2 lb", "sizeGrams": 907.18, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "Imperial Sugar Pure Cane Extra Fine Granulated Sugar", "brand": "Imperial Sugar", "size": "4 lbs", "sizeGrams": 1814.37, "price": 3.64, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "sugar_cream",
+      "name": "Granulated Sugar (cream)",
+      "recipeAmount": 175,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "4 lbs", "sizeGrams": 1814.37, "price": 3.48, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "H-E-B Pure Cane Extra Fine Granulated Sugar", "brand": "H-E-B", "size": "2 lbs", "sizeGrams": 907.18, "price": 2.48, "salePrice": null, "unitPrice": "$0.08/oz", "inStock": true },
+        { "name": "Hill Country Fare Granulated Sugar", "brand": "Hill Country Fare", "size": "4 lbs", "sizeGrams": 1814.37, "price": 2.54, "salePrice": null, "unitPrice": "$0.04/oz", "inStock": true },
+        { "name": "C&H Premium Pure Cane Granulated Sugar", "brand": "C&H", "size": "4 lbs", "sizeGrams": 1814.37, "price": 3.94, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "salt_dough",
+      "name": "Salt (dough)",
+      "recipeAmount": 1.5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Morton Fine Sea Salt", "brand": "Morton", "size": "17.6 oz", "sizeGrams": 499.00, "price": 2.98, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "H-E-B Fine Mediterranean Sea Salt Crystals", "brand": "H-E-B", "size": "26.5 oz", "sizeGrams": 751.27, "price": 2.38, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true },
+        { "name": "Redmond Real Salt Fine Sea Salt", "brand": "Redmond Real Salt", "size": "10 oz", "sizeGrams": 283.50, "price": 4.98, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "La Baleine Fine Sea Salt Shaker", "brand": "La Baleine", "size": "4.4 oz", "sizeGrams": 124.74, "price": 2.18, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "salt_wash",
+      "name": "Salt (egg wash pinch)",
+      "recipeAmount": 0.5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Morton Fine Sea Salt", "brand": "Morton", "size": "17.6 oz", "sizeGrams": 499.00, "price": 2.98, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "H-E-B Fine Mediterranean Sea Salt Crystals", "brand": "H-E-B", "size": "26.5 oz", "sizeGrams": 751.27, "price": 2.38, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "salt_cream",
+      "name": "Salt (cream pinch)",
+      "recipeAmount": 0.5,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Morton Fine Sea Salt", "brand": "Morton", "size": "17.6 oz", "sizeGrams": 499.00, "price": 2.98, "salePrice": null, "unitPrice": "$0.17/oz", "inStock": true },
+        { "name": "H-E-B Fine Mediterranean Sea Salt Crystals", "brand": "H-E-B", "size": "26.5 oz", "sizeGrams": 751.27, "price": 2.38, "salePrice": null, "unitPrice": "$0.09/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "eggs_dough",
+      "name": "Large Eggs (dough)",
+      "recipeAmount": 2,
+      "recipeUnit": "whole",
+      "products": [
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "12 ct", "sizeGrams": null, "price": 1.67, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "18 ct", "sizeGrams": null, "price": 2.17, "salePrice": null, "unitPrice": "$0.12/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": null, "price": 2.86, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "18 ct", "sizeGrams": null, "price": 4.29, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large Brown Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": null, "price": 2.96, "salePrice": null, "unitPrice": "$0.25/ct", "inStock": true },
+        { "name": "Vital Farms Pasture Raised Large Eggs", "brand": "Vital Farms", "size": "12 ct", "sizeGrams": null, "price": 7.46, "salePrice": null, "unitPrice": "$0.62/ct", "inStock": true },
+        { "name": "Central Market Pasture Raised Large Brown Eggs", "brand": "Central Market", "size": "12 ct", "sizeGrams": null, "price": 5.98, "salePrice": null, "unitPrice": "$0.50/ct", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "eggs_wash",
+      "name": "Large Egg (wash)",
+      "recipeAmount": 1,
+      "recipeUnit": "whole",
+      "products": [
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "12 ct", "sizeGrams": null, "price": 1.67, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": null, "price": 2.86, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "eggs_cream",
+      "name": "Large Eggs (cream)",
+      "recipeAmount": 3,
+      "recipeUnit": "whole",
+      "products": [
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "12 ct", "sizeGrams": null, "price": 1.67, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "18 ct", "sizeGrams": null, "price": 2.17, "salePrice": null, "unitPrice": "$0.12/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": null, "price": 2.86, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "egg_yolk_cream",
+      "name": "Large Egg Yolk (cream)",
+      "recipeAmount": 1,
+      "recipeUnit": "whole",
+      "products": [
+        { "name": "Hill Country Fare Grade A Large White Eggs", "brand": "Hill Country Fare", "size": "12 ct", "sizeGrams": null, "price": 1.67, "salePrice": null, "unitPrice": "$0.14/ct", "inStock": true },
+        { "name": "H-E-B Grade AA Cage Free Large White Eggs", "brand": "H-E-B", "size": "12 ct", "sizeGrams": null, "price": 2.86, "salePrice": null, "unitPrice": "$0.24/ct", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "flour",
+      "name": "All-Purpose Flour",
+      "recipeAmount": 500,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour", "brand": "H-E-B", "size": "5 lbs", "sizeGrams": 2267.96, "price": 3.78, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "Hill Country Fare Enriched Unbleached All-Purpose Flour", "brand": "Hill Country Fare", "size": "5 lbs", "sizeGrams": 2267.96, "price": 2.58, "salePrice": null, "unitPrice": "$0.03/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "5 lbs", "sizeGrams": 2267.96, "price": 5.48, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true },
+        { "name": "King Arthur Unbleached All-Purpose Flour", "brand": "King Arthur", "size": "10 lbs", "sizeGrams": 4535.92, "price": 9.98, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Central Market Unbleached All-Purpose Flour", "brand": "Central Market", "size": "5 lbs", "sizeGrams": 2267.96, "price": 4.48, "salePrice": null, "unitPrice": "$0.06/oz", "inStock": true },
+        { "name": "Gold Medal Enriched Bleached Pre-Sifted All-Purpose Flour", "brand": "Gold Medal", "size": "5 lbs", "sizeGrams": 2267.96, "price": 3.97, "salePrice": null, "unitPrice": "$0.05/oz", "inStock": true },
+        { "name": "H-E-B Organics Unbleached All Purpose Flour", "brand": "H-E-B Organics", "size": "5 lbs", "sizeGrams": 2267.96, "price": 5.98, "salePrice": null, "unitPrice": "$0.07/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "white_chocolate",
+      "name": "White Chocolate (skipped this bake)",
+      "recipeAmount": 0,
+      "recipeUnit": "g",
+      "note": "Chablonnage stage skipped — included for completeness if user purchased anyway.",
+      "products": [
+        { "name": "Ghirardelli Premium Baking Bar White Chocolate", "brand": "Ghirardelli", "size": "4 oz", "sizeGrams": 113.40, "price": 4.28, "salePrice": null, "unitPrice": "$1.07/oz", "inStock": true },
+        { "name": "Baker's Premium White Chocolate Baking Bar", "brand": "Baker's", "size": "4 oz", "sizeGrams": 113.40, "price": 3.98, "salePrice": null, "unitPrice": "$1.00/oz", "inStock": true },
+        { "name": "Lily's No Sugar Added White Chocolate-Style Baking Bar", "brand": "Lily's", "size": "4 oz", "sizeGrams": 113.40, "price": 5.28, "salePrice": 3.96, "unitPrice": "$1.32/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "lemon_juice",
+      "name": "Fresh Lemon Juice",
+      "recipeAmount": 200,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Fresh Extra Large Lemon (each)", "brand": "Fresh", "size": "each (~70g)", "sizeGrams": 70.00, "price": 0.88, "salePrice": null, "unitPrice": "$0.88/ea", "inStock": true },
+        { "name": "Fresh Small Lemon (each)", "brand": "Fresh", "size": "each (~58g)", "sizeGrams": 58.00, "price": 0.50, "salePrice": null, "unitPrice": "$0.50/ea", "inStock": true },
+        { "name": "H-E-B Fresh Lemons", "brand": "H-E-B", "size": "2 lb bag", "sizeGrams": 907.18, "price": 3.89, "salePrice": null, "unitPrice": "$0.12/oz", "inStock": true },
+        { "name": "H-E-B Organics Fresh Lemons", "brand": "H-E-B Organics", "size": "2 lb bag", "sizeGrams": 907.18, "price": 4.20, "salePrice": null, "unitPrice": "$0.13/oz", "inStock": true },
+        { "name": "H-E-B Fresh Meyer Lemons", "brand": "H-E-B", "size": "2 lb bag", "sizeGrams": 907.18, "price": 4.98, "salePrice": null, "unitPrice": "$0.16/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "lemon_zest",
+      "name": "Fresh Lemon Zest",
+      "recipeAmount": 2,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Fresh Extra Large Lemon (each)", "brand": "Fresh", "size": "each (~70g)", "sizeGrams": 70.00, "price": 0.88, "salePrice": null, "unitPrice": "$0.88/ea", "inStock": true },
+        { "name": "Fresh Small Lemon (each)", "brand": "Fresh", "size": "each (~58g)", "sizeGrams": 58.00, "price": 0.50, "salePrice": null, "unitPrice": "$0.50/ea", "inStock": true },
+        { "name": "H-E-B Fresh Lemons", "brand": "H-E-B", "size": "2 lb bag", "sizeGrams": 907.18, "price": 3.89, "salePrice": null, "unitPrice": "$0.12/oz", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "strawberries",
+      "name": "Fresh Strawberries",
+      "recipeAmount": 960,
+      "recipeUnit": "g",
+      "products": [
+        { "name": "Fresh Strawberries", "brand": "Fresh", "size": "1 lb", "sizeGrams": 453.59, "price": 2.19, "salePrice": null, "unitPrice": "$0.14/oz", "inStock": true },
+        { "name": "H-E-B Premium Fresh Hydroponic Strawberries", "brand": "H-E-B", "size": "1 lb", "sizeGrams": 453.59, "price": 4.98, "salePrice": null, "unitPrice": "$0.31/oz", "inStock": true },
+        { "name": "H-E-B Fresh Cut Strawberries - Large", "brand": "H-E-B", "size": "Avg. 1.2 lbs", "sizeGrams": 544.31, "price": 5.98, "salePrice": null, "unitPrice": "$4.98/lb", "inStock": true },
+        { "name": "H-E-B Fresh Cut Strawberries - Small", "brand": "H-E-B", "size": "Avg. 0.6 lb", "sizeGrams": 272.16, "price": 3.29, "salePrice": null, "unitPrice": "$5.48/lb", "inStock": true },
+        { "name": "Fresh Cut Strawberries - Extra Large", "brand": "Fresh", "size": "Avg. 1.86 lbs", "sizeGrams": 843.69, "price": 9.26, "salePrice": null, "unitPrice": "$4.98/lb", "inStock": true }
+      ]
+    },
+    {
+      "ingredientId": "currant_jelly",
+      "name": "Red Currant Jelly",
+      "recipeAmount": 160,
+      "recipeUnit": "g",
+      "note": "Red currant jelly NOT carried at HEB #218. Bonne Maman Apricot Preserves is the recipe's documented HEB fallback (amber tint mutes red but acceptable). Four Fruits contains some currant in the blend. If sourced elsewhere (Central Market / IKEA Sylt Vinbär / Whole Foods), add as custom entry on review page.",
+      "products": [
+        { "name": "Bonne Maman Apricot Preserves (recipe-documented HEB fallback)", "brand": "Bonne Maman", "size": "13 oz", "sizeGrams": 368.55, "price": 6.44, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "Bonne Maman Four Fruits Preserves (contains red currants in blend)", "brand": "Bonne Maman", "size": "13 oz", "sizeGrams": 368.55, "price": 6.44, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "Bonne Maman Strawberry Preserves", "brand": "Bonne Maman", "size": "13 oz", "sizeGrams": 368.55, "price": 6.44, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "Bonne Maman Mixed Berries Preserves", "brand": "Bonne Maman", "size": "13 oz", "sizeGrams": 368.55, "price": 6.44, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "Bonne Maman Wild Blueberry Preserves", "brand": "Bonne Maman", "size": "13 oz", "sizeGrams": 368.55, "price": 6.44, "salePrice": null, "unitPrice": "$0.50/oz", "inStock": true },
+        { "name": "Bonne Maman Concord Grape Fruit Spread", "brand": "Bonne Maman", "size": "12.7 oz", "sizeGrams": 360.05, "price": 6.44, "salePrice": null, "unitPrice": "$0.51/oz", "inStock": true }
+      ]
+    }
+  ]
+}

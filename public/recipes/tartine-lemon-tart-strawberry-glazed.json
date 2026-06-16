@@ -14,7 +14,7 @@
     "proof_passive_min": 840,
     "oven_occupancy_min": 82,
     "bake_min": 67,
-    "shopping_notes": "Red currant jelly: 1 jar (10-12oz) Bonne Maman or HEB house. White chocolate: 100g bar (Ghirardelli White Baking minimum; Valrhona Ivoire or Callebaut W2 if available). Strawberries: 1.2-1.5kg (~3 clamshells) — Driscoll's Sweetest Batch (TM) 14oz preferred, call HEB to verify stock; Driscoll's 1lb standard backup. Pastry box: BRP #2378 14x10x4 brown no-window (better thermal in sun). Mono-boards: 4-inch gold rounds (MT Products 48-pack). Egg wash uses Tartine canonical whole-egg + salt (strained) — no additional dairy needed."
+    "shopping_notes": "Red currant jelly: 1 jar (10-12oz) Bonne Maman Red Currant Jelly preferred. NOT stocked at HEB (verified #218 May 2026 — HEB only carries Bonne Maman Red Fruit Spread, which is a mixed-berry blend that doubles strawberry flavor — AVOID). Direct-match sourcing priority: (1) Central Market or Whole Foods stock Bonne Maman + Hero (Swiss) + Wilkin & Sons Tiptree (UK) red currant jelly, all clean-label direct matches; (2) Stonewall Kitchen or St. Dalfour at natural grocers; (3) IKEA Sylt Vinbär (Round Rock, ~$3-4) cheapest pure red currant; (4) Online (Amazon 2-day) if local trip not feasible. Clean-label fallbacks with tradeoffs if currant unobtainable: Bonne Maman Apple Jelly + drop beet juice for tint (Central Market) preserves clarity + flavor neutrality, requires DIY ruby tint; Valrhona Absolu Cristal nappage (online $20-25, reusable across many tarts) is pro-grade neutral glucose-based glaze, best ROI if baking fruit tarts >3x/yr; Bonne Maman Apricot Preserves sieved (HEB $6.44) is the 100-year French tradition but amber tint mutes strawberry red (golden-glaze aesthetic instead of ruby); Bonne Maman or Sarabeth's Quince Jelly highest pectin but honey-floral flavor competes with lemon. AVOID: any berry preserves (raspberry, strawberry, Red Fruit Spread) flavor doubles strawberry; grape jelly purple tint kills the red. White chocolate: 100g bar (Ghirardelli White Baking minimum confirmed at HEB #218 $4.28/4oz; Valrhona Ivoire or Callebaut W2 if available). NOT chips or melting wafers — added stabilizers leave a chalky film. Strawberries: 1.2-1.5kg (~3 clamshells) — Driscoll's Sweetest Batch (TM) 14oz preferred, call HEB to verify stock; Driscoll's 1lb standard backup (HEB Fresh Strawberries 1lb $2.19 likely same CA supply). Pastry box: BRP #2378 14x10x4 brown no-window (better thermal in sun). Mono-boards: 4-inch gold rounds (MT Products 48-pack). Egg wash uses Tartine canonical whole-egg + salt (strained) — no additional dairy needed."
   },
   "config": {
     "early_check_percent": 0.8,
@@ -740,6 +740,152 @@
       "category": "general",
       "title": "YouTube Glaze Technique References",
       "text": "User-curated for review (not endorsed/validated):\n• Martha Stewart — Red Berry Fruit Tart (Martha Bakes): https://www.youtube.com/watch?v=slMZvGZOJ_M — full tart assembly + glaze brush demo\n• Simple Clear Fruit Glaze for Pies, Flans, Desserts: https://www.youtube.com/watch?v=TRjxOeGc9YY — generic glaze brush technique, useful for brush motion\n• Easy Mini Fruit Tarts by BakeLikeAPro: https://www.youtube.com/watch?v=kVpVy_FlWoY — mini tart format relevant to box-of-12 yield\n\nWritten authority: King Arthur Baking — How to Glaze Berries (https://www.kingarthurbaking.com/blog/2015/05/19/how-to-glaze-berries). Key callouts: tart must be completely cool, fruit must be completely dry, glaze 'warm not hot' (slides slowly off brush, shiny film no drip), single light coat only, start center → move toward edges with gentle strokes."
+    }
+  ],
+  "cook_log": [
+    {
+      "date": "2026-06-09",
+      "version": "v1.0.0",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-06-09",
+        "temp_high_f": 90.3,
+        "temp_low_f": 76.0,
+        "humidity_avg_percent": 75,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "summary": "First bake of the strawberry-glazed variant. Skipped the chablonnage, then half the finished batch fell out of the fridge — the 6 survivors held up, and the 4 I took to work disappeared.",
+      "notes": [
+        "First bake of this variant — turned out good overall.",
+        "Softened the butter in the microwave during mise.",
+        "Skipped the chablonnage (white chocolate moisture barrier) — didn't have the energy.",
+        "Red currant jelly glaze: wasn't sure about it but I think it was nice.",
+        "Dropped half the batch (~6 tartlets) — they fell out of the fridge after I had them all finished and chilling.",
+        "Of the 6 survivors: 1 home taste-test, 4 to coworkers (all eaten), 1 brought home that went to waste."
+      ],
+      "photos": [
+        {
+          "src": "/images/tartine-lemon-tart-strawberry-glazed/2026-06-09/img-7878-800w.webp",
+          "thumb": "/images/tartine-lemon-tart-strawberry-glazed/2026-06-09/img-7878-400w.webp",
+          "alt": "The floor casualty — finished tartlets that fell out of the fridge, curd smeared across the tile."
+        },
+        {
+          "src": "/images/tartine-lemon-tart-strawberry-glazed/2026-06-09/img-7879-800w.webp",
+          "thumb": "/images/tartine-lemon-tart-strawberry-glazed/2026-06-09/img-7879-400w.webp",
+          "alt": "Strawberry prep on the wire rack: hulled whole berries, halves, sliced fans, with the glaze bowl alongside."
+        },
+        {
+          "src": "/images/tartine-lemon-tart-strawberry-glazed/2026-06-09/img-7881-800w.webp",
+          "thumb": "/images/tartine-lemon-tart-strawberry-glazed/2026-06-09/img-7881-400w.webp",
+          "alt": "Single finished tartlet on a lace plate, halved strawberry standing in the lemon curd, glaze running down the fluted crust."
+        },
+        {
+          "src": "/images/tartine-lemon-tart-strawberry-glazed/2026-06-09/img-7884-800w.webp",
+          "thumb": "/images/tartine-lemon-tart-strawberry-glazed/2026-06-09/img-7884-400w.webp",
+          "alt": "Steadying the container of survivors before the trip to work — five glazed tartlets, lemon curd glowing yellow."
+        }
+      ],
+      "next_time": [],
+      "cost": {
+        "items": [
+          { "ingredientId": "butter_dough", "name": "Unsalted Butter (room temp, dough)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 255, "unit": "g", "packageSize": "2 ct (8 oz)", "packagePrice": 2.46, "cost": 2.77 },
+          { "ingredientId": "butter_cream", "name": "Unsalted Butter (cool, cream)", "sourceType": "heb", "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks", "amount": 225, "unit": "g", "packageSize": "2 ct (8 oz)", "packagePrice": 2.46, "cost": 2.44 },
+          { "ingredientId": "sugar_dough", "name": "Granulated Sugar (dough)", "sourceType": "heb", "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar", "amount": 200, "unit": "g", "packageSize": "2 lbs", "packagePrice": 2.48, "cost": 0.55 },
+          { "ingredientId": "sugar_cream", "name": "Granulated Sugar (cream)", "sourceType": "heb", "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar", "amount": 175, "unit": "g", "packageSize": "2 lbs", "packagePrice": 2.48, "cost": 0.48 },
+          { "ingredientId": "salt_dough", "name": "Salt (dough)", "sourceType": "heb", "sourceName": "La Baleine Fine Sea Salt Shaker", "amount": 1.5, "unit": "g", "packageSize": "4.4 oz", "packagePrice": 2.18, "cost": 0.03 },
+          { "ingredientId": "salt_wash", "name": "Salt (egg wash pinch)", "sourceType": "heb", "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals", "amount": 0.5, "unit": "g", "packageSize": "26.5 oz", "packagePrice": 2.38, "cost": 0 },
+          { "ingredientId": "salt_cream", "name": "Salt (cream pinch)", "sourceType": "heb", "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals", "amount": 0.5, "unit": "g", "packageSize": "26.5 oz", "packagePrice": 2.38, "cost": 0 },
+          { "ingredientId": "eggs_dough", "name": "Large Eggs (dough)", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 2, "unit": "whole", "packageSize": "12 ct", "packagePrice": 1.67, "cost": 0 },
+          { "ingredientId": "eggs_wash", "name": "Large Egg (wash)", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 1, "unit": "whole", "packageSize": "12 ct", "packagePrice": 1.67, "cost": 0 },
+          { "ingredientId": "eggs_cream", "name": "Large Eggs (cream)", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 3, "unit": "whole", "packageSize": "12 ct", "packagePrice": 1.67, "cost": 0 },
+          { "ingredientId": "egg_yolk_cream", "name": "Large Egg Yolk (cream)", "sourceType": "heb", "sourceName": "Hill Country Fare Grade A Large White Eggs", "amount": 1, "unit": "whole", "packageSize": "12 ct", "packagePrice": 1.67, "cost": 0 },
+          { "ingredientId": "flour", "name": "All-Purpose Flour", "sourceType": "heb", "sourceName": "King Arthur Unbleached All-Purpose Flour", "amount": 500, "unit": "g", "packageSize": "10 lbs", "packagePrice": 9.98, "cost": 1.1 },
+          { "ingredientId": "white_chocolate", "name": "White Chocolate (skipped this bake)", "sourceType": "manual", "sourceName": "did not use", "amount": 0, "unit": "g", "packageSize": "0g", "packagePrice": 0, "cost": 0 },
+          { "ingredientId": "lemon_juice", "name": "Fresh Lemon Juice", "sourceType": "heb", "sourceName": "Fresh Small Lemon (each)", "amount": 200, "unit": "g", "packageSize": "each (~58g)", "packagePrice": 0.5, "cost": 1.72 },
+          { "ingredientId": "lemon_zest", "name": "Fresh Lemon Zest", "sourceType": "heb", "sourceName": "Fresh Small Lemon (each)", "amount": 2, "unit": "g", "packageSize": "each (~58g)", "packagePrice": 0.5, "cost": 0.02 },
+          { "ingredientId": "strawberries", "name": "Fresh Strawberries", "sourceType": "heb", "sourceName": "Fresh Strawberries", "amount": 960, "unit": "g", "packageSize": "1 lb", "packagePrice": 2.19, "cost": 4.64 },
+          { "ingredientId": "currant_jelly", "name": "Red Currant Jelly", "sourceType": "heb", "sourceName": "Bonne Maman Apricot Preserves (recipe-documented HEB fallback)", "amount": 160, "unit": "g", "packageSize": "13 oz", "packagePrice": 6.44, "cost": 2.8 }
+        ],
+        "total": 16.55,
+        "perServing": 1.38,
+        "servings": 12,
+        "estimatedAt": "2026-06-16"
+      },
+      "bake_notes": [
+        {
+          "timestamp": "2026-06-09T19:25:49.152Z",
+          "raw": "starting mise. waiting for eggs and butter room temp. will microwave butter",
+          "curated": "Starting mise. Waiting for eggs and butter to reach room temp; will microwave butter.",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "prep"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "DOUGH",
+          "stageName": "Make Tart Dough (Pate Sucree)",
+          "ingredients": [
+            { "id": "butter_dough", "name": "Unsalted Butter (room temp)", "total": 255, "unit": "g", "breakdown": null },
+            { "id": "sugar_dough", "name": "Granulated Sugar", "total": 200, "unit": "g", "breakdown": null },
+            { "id": "salt_dough", "name": "Salt", "total": 1.5, "unit": "g", "breakdown": null, "display_amount": "1/4 tsp" },
+            { "id": "eggs_dough", "name": "Large Eggs (room temp)", "total": 2, "unit": "whole", "breakdown": null, "display_amount": "2 large" },
+            { "id": "flour", "name": "All-Purpose Flour", "total": 500, "unit": "g", "breakdown": null }
+          ]
+        },
+        {
+          "stageId": "LINE",
+          "stageName": "Line & Blind Bake Tart Shell",
+          "ingredients": [
+            { "id": "eggs_wash", "name": "Large Egg (wash)", "total": 1, "unit": "whole", "breakdown": null, "display_amount": "1 large" },
+            { "id": "salt_wash", "name": "Salt (pinch, wash)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" }
+          ]
+        },
+        {
+          "stageId": "CHABLONNAGE",
+          "stageName": "Chablonnage (Moisture Barrier)",
+          "ingredients": [
+            { "id": "white_chocolate", "name": "White Chocolate (couverture preferred)", "total": 0, "unit": "g", "breakdown": null, "display_amount": "skipped" }
+          ]
+        },
+        {
+          "stageId": "CREAM",
+          "stageName": "Make Lemon Cream",
+          "ingredients": [
+            { "id": "lemon_juice", "name": "Fresh Lemon Juice", "total": 200, "unit": "g", "breakdown": null },
+            { "id": "eggs_cream", "name": "Large Eggs", "total": 3, "unit": "whole", "breakdown": null, "display_amount": "3 large" },
+            { "id": "egg_yolk_cream", "name": "Large Egg Yolk", "total": 1, "unit": "whole", "breakdown": null, "display_amount": "1 yolk" },
+            { "id": "sugar_cream", "name": "Granulated Sugar", "total": 175, "unit": "g", "breakdown": null },
+            { "id": "salt_cream", "name": "Salt (pinch)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" },
+            { "id": "butter_cream", "name": "Unsalted Butter (cool, not cold)", "total": 225, "unit": "g", "breakdown": null }
+          ]
+        },
+        {
+          "stageId": "STRAWBERRY",
+          "stageName": "Strawberry Prep",
+          "ingredients": [
+            { "id": "strawberries", "name": "Fresh Strawberries (Driscoll's preferred)", "total": 960, "unit": "g", "breakdown": [
+              { "label": "centerpiece (1 small whole per tartlet)", "amount": 180 },
+              { "label": "ring (4-5 halves per tartlet)", "amount": 720 },
+              { "label": "rejects / buffer", "amount": 60 }
+            ] },
+            { "id": "lemon_zest", "name": "Fresh Lemon Zest", "total": 2, "unit": "g", "breakdown": null, "display_amount": "1/2 tsp grated" }
+          ]
+        },
+        {
+          "stageId": "GLAZE",
+          "stageName": "Red Currant Glaze & Assembly",
+          "ingredients": [
+            { "id": "currant_jelly", "name": "Red Currant Jelly (Bonne Maman)", "total": 160, "unit": "g", "breakdown": [
+              { "label": "curd surface seal", "amount": 48 },
+              { "label": "berry pre-toss", "amount": 64 },
+              { "label": "top brush", "amount": 48 }
+            ], "display_amount": "8 Tbsp" },
+            { "id": "glaze_water", "name": "Water (for glaze)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "4 Tbsp" }
+          ]
+        }
+      ]
     }
   ],
   "reheat": {

@@ -60,6 +60,24 @@
         "packageSize": "4 oz",
         "updatedAt": "2026-06-05"
       }
+    },
+    "flour": {
+      "pinned": {
+        "name": "King Arthur Unbleached All-Purpose Flour",
+        "brand": "King Arthur",
+        "sizeGrams": 4535.92,
+        "packagePrice": 9.98,
+        "packageSize": "10 lbs",
+        "updatedAt": "2026-06-16"
+      },
+      "lastUsed": {
+        "name": "King Arthur Unbleached All-Purpose Flour",
+        "brand": "King Arthur",
+        "sizeGrams": 4535.92,
+        "packagePrice": 9.98,
+        "packageSize": "10 lbs",
+        "updatedAt": "2026-06-16"
+      }
     }
   }
 }
