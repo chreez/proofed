@@ -1,0 +1,774 @@
+{
+  "version": "v1.0.0",
+  "meta": {
+    "name": "Tartine Pastel de Tres Leches",
+    "shortName": "Tartine Tres Leches",
+    "source": {
+      "name": "Tartine (cookbook)",
+      "type": "original",
+      "author": "Elisabeth Prueitt & Chad Robertson",
+      "accessed": "2026-06-16"
+    },
+    "yields": "1 × 25 cm cake (12 servings)",
+    "total_time": "~6 hrs active + overnight chill (génoise 1.25 hr, pastry cream 45 min, caramel 30 min, assembly 30 min, chill ≥4 hr / overnight, topping 10 min)",
+    "description": "Génoise sponge layered with gelatin-stabilized vanilla pastry cream cut with whipped cream, drizzled with caramel, brushed with coconut syrup. Mission District San Francisco–style tres leches reimagined with coconut milk and caramel in place of the traditional three-milks soak.",
+    "prep_active_min": 175,
+    "proof_passive_min": 240,
+    "oven_occupancy_min": 50,
+    "bake_min": 45,
+    "shopping_notes": "Génoise calls for AP flour — BSM Stone-Milled All-Purpose Standard (Yecora Rojo + Crawford Red blend, sifted to '00') works 1:1 but yields a slightly denser, more flavorful sponge than commodity AP. For special occasions or first attempts, use commodity AP. Buy a vanilla bean for pastry cream + caramel (~¾ bean total). Light corn syrup is small qty — substitute glucose syrup if avoiding HFCS."
+  },
+  "config": {
+    "early_check_percent": 0.85,
+    "stats": {
+      "group": "Cakes",
+      "subgroup": "Layer Cakes",
+      "defaultYield": 1,
+      "unit": "cake",
+      "servingsPerItem": 12,
+      "servingUnit": "slice"
+    }
+  },
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-06-16",
+      "summary": "Initial recipe from Tartine cookbook (Prueitt & Robertson). Master recipe + cross-referenced subrecipes: Génoise (p.312), Pastry Cream (p.300, larger cornstarch variant for firmer set), Caramel Sauce (p.309). Source photos preserved at photos-source/tartine-tres-leches/source/.",
+      "ingredients": [
+        {
+          "stageId": "MAKE_GENOISE",
+          "stageName": "Bake the Génoise",
+          "ingredients": [
+            { "id": "butter-genoise", "name": "Unsalted Butter (génoise)", "total": 75, "unit": "g", "breakdown": null, "display_amount": "5 Tbsp" },
+            { "id": "ap-flour", "name": "All-Purpose Flour", "total": 185, "unit": "g", "breakdown": null, "display_amount": "1½ cups + 1 Tbsp" },
+            { "id": "cornstarch-genoise", "name": "Cornstarch (génoise)", "total": 8, "unit": "g", "breakdown": null, "display_amount": "1 Tbsp" },
+            { "id": "eggs-genoise", "name": "Large Eggs (génoise)", "total": 300, "unit": "g", "breakdown": null, "display_amount": "6 large" },
+            { "id": "sugar-genoise", "name": "Granulated Sugar (génoise)", "total": 210, "unit": "g", "breakdown": null, "display_amount": "1 cup + 1 Tbsp" },
+            { "id": "salt-genoise", "name": "Fine Sea Salt (génoise)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" }
+          ]
+        },
+        {
+          "stageId": "MAKE_PASTRY_CREAM",
+          "stageName": "Make the Pastry Cream",
+          "ingredients": [
+            { "id": "whole-milk", "name": "Whole Milk", "total": 480, "unit": "g", "breakdown": null, "display_amount": "2 cups" },
+            { "id": "vanilla-bean-pc", "name": "Vanilla Bean (pastry cream)", "total": 1, "unit": "g", "breakdown": null, "display_amount": "½ bean" },
+            { "id": "salt-pc", "name": "Fine Sea Salt (pastry cream)", "total": 1.5, "unit": "g", "breakdown": null, "display_amount": "¼ tsp" },
+            { "id": "sugar-pc", "name": "Granulated Sugar (pastry cream)", "total": 115, "unit": "g", "breakdown": null, "display_amount": "½ cup + 1 Tbsp" },
+            { "id": "cornstarch-pc", "name": "Cornstarch (pastry cream, larger amount for firmer set)", "total": 35, "unit": "g", "breakdown": null, "display_amount": "5 Tbsp" },
+            { "id": "eggs-pc", "name": "Large Eggs (pastry cream)", "total": 100, "unit": "g", "breakdown": null, "display_amount": "2 large" },
+            { "id": "butter-pc", "name": "Unsalted Butter (pastry cream)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "¼ cup" }
+          ]
+        },
+        {
+          "stageId": "MAKE_CARAMEL",
+          "stageName": "Make the Caramel Sauce",
+          "ingredients": [
+            { "id": "heavy-cream-caramel", "name": "Heavy Cream (caramel)", "total": 160, "unit": "g", "breakdown": null, "display_amount": "⅔ cup" },
+            { "id": "vanilla-bean-caramel", "name": "Vanilla Bean (caramel)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "¼ bean" },
+            { "id": "sugar-caramel", "name": "Granulated Sugar (caramel)", "total": 250, "unit": "g", "breakdown": null, "display_amount": "1¼ cups" },
+            { "id": "water-caramel", "name": "Water (caramel)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "¼ cup" },
+            { "id": "corn-syrup", "name": "Light Corn Syrup", "total": 40, "unit": "g", "breakdown": null, "display_amount": "2 Tbsp" },
+            { "id": "salt-caramel", "name": "Fine Sea Salt (caramel)", "total": 1.5, "unit": "g", "breakdown": null, "display_amount": "¼ tsp" },
+            { "id": "lemon-juice", "name": "Fresh Lemon Juice", "total": 3.5, "unit": "g", "breakdown": null, "display_amount": "¾ tsp" },
+            { "id": "butter-caramel", "name": "Unsalted Butter (caramel)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "4 Tbsp" }
+          ]
+        },
+        {
+          "stageId": "MAKE_SYRUP",
+          "stageName": "Make the Coconut Syrup",
+          "ingredients": [
+            { "id": "coconut-milk", "name": "Unsweetened Coconut Milk", "total": 240, "unit": "g", "breakdown": null, "display_amount": "1 cup" },
+            { "id": "sugar-syrup", "name": "Granulated Sugar (syrup)", "total": 75, "unit": "g", "breakdown": null, "display_amount": "6 Tbsp" },
+            { "id": "vanilla-extract", "name": "Vanilla Extract", "total": 4, "unit": "g", "breakdown": null, "display_amount": "1 tsp" },
+            { "id": "salt-syrup", "name": "Fine Sea Salt (syrup)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" }
+          ]
+        },
+        {
+          "stageId": "PREP_FILLING",
+          "stageName": "Prep the Filling",
+          "ingredients": [
+            { "id": "gelatin", "name": "Unflavored Gelatin (½ envelope)", "total": 5, "unit": "g", "breakdown": null, "display_amount": "1½ tsp" },
+            { "id": "water-bloom", "name": "Water (for gelatin bloom)", "total": 30, "unit": "g", "breakdown": null, "display_amount": "2 Tbsp" },
+            { "id": "heavy-cream-filling", "name": "Heavy Cream, very cold (filling)", "total": 240, "unit": "g", "breakdown": null, "display_amount": "1 cup" }
+          ]
+        },
+        {
+          "stageId": "FROST",
+          "stageName": "Whip & Frost the Topping",
+          "ingredients": [
+            { "id": "heavy-cream-topping", "name": "Heavy Cream, very cold (topping)", "total": 300, "unit": "g", "breakdown": null, "display_amount": "1¼ cups" },
+            { "id": "sugar-topping", "name": "Granulated Sugar (topping)", "total": 17, "unit": "g", "breakdown": null, "display_amount": "4 tsp" }
+          ]
+        }
+      ]
+    }
+  ],
+  "vessels": [
+    { "id": "V1", "name": "10 in (25 cm) Springform Pan, 3 in (7.5 cm) sides", "reuse": "Bake génoise → wash → re-line w/ plastic wrap for assembly" },
+    { "id": "V2", "name": "Stand Mixer Bowl + Whisk", "reuse": "Bain-marie warm + whip eggs (génoise) → wash → whip filling cream → wash → whip topping cream" },
+    { "id": "V3", "name": "Heavy Saucepan (medium, ~3 qt)", "reuse": "Heat milk + cook pastry cream → wash → caramelize sugar + finish caramel" },
+    { "id": "V4", "name": "Small Saucepan", "reuse": "Melt butter (génoise) → wash → warm cream (caramel) → wash → bain-marie water for filling fraction" },
+    { "id": "V5", "name": "Mixing Bowls (set of 3)", "reuse": "Sift dry (génoise) / sieve receiver (pastry cream) / sugar mix (caramel) / fold filling — washed between" }
+  ],
+  "stages": [
+    {
+      "id": "MAKE_GENOISE",
+      "title": "Bake the Génoise",
+      "gather": {
+        "vessels": ["V1", "V2", "V4", "V5"],
+        "equipment": ["Kitchen Scale", "Stand Mixer w/ Whisk", "Fine-Mesh Sieve", "Rubber Spatula", "Instant-Read Thermometer", "Parchment Paper", "Wire Rack", "Serrated Knife"],
+        "ingredients": [
+          { "id": "butter-genoise", "name": "Unsalted Butter (génoise)", "total": 75, "unit": "g", "breakdown": null, "display_amount": "5 Tbsp" },
+          { "id": "ap-flour", "name": "All-Purpose Flour", "total": 185, "unit": "g", "breakdown": null, "display_amount": "1½ cups + 1 Tbsp" },
+          { "id": "cornstarch-genoise", "name": "Cornstarch (génoise)", "total": 8, "unit": "g", "breakdown": null, "display_amount": "1 Tbsp" },
+          { "id": "eggs-genoise", "name": "Large Eggs (génoise)", "total": 300, "unit": "g", "breakdown": null, "display_amount": "6 large" },
+          { "id": "sugar-genoise", "name": "Granulated Sugar (génoise)", "total": 210, "unit": "g", "breakdown": null, "display_amount": "1 cup + 1 Tbsp" },
+          { "id": "salt-genoise", "name": "Fine Sea Salt (génoise)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" }
+        ]
+      },
+      "states": ["preheat-oven", "line-pan-genoise", "melt-butter-genoise", "sift-dry-genoise", "bain-marie-warm", "whip-eggs", "fold-flour", "fold-butter", "bake-genoise", "cool-unmold", "split-layers"]
+    },
+    {
+      "id": "MAKE_PASTRY_CREAM",
+      "title": "Make the Pastry Cream",
+      "gather": {
+        "vessels": ["V3", "V5"],
+        "equipment": ["Heavy Whisk", "Fine-Mesh Sieve", "Plastic Wrap", "Shallow Dish (for cooling)", "Instant-Read Thermometer"],
+        "ingredients": [
+          { "id": "whole-milk", "name": "Whole Milk", "total": 480, "unit": "g", "breakdown": null, "display_amount": "2 cups" },
+          { "id": "vanilla-bean-pc", "name": "Vanilla Bean (pastry cream)", "total": 1, "unit": "g", "breakdown": null, "display_amount": "½ bean" },
+          { "id": "salt-pc", "name": "Fine Sea Salt (pastry cream)", "total": 1.5, "unit": "g", "breakdown": null, "display_amount": "¼ tsp" },
+          { "id": "sugar-pc", "name": "Granulated Sugar (pastry cream)", "total": 115, "unit": "g", "breakdown": null, "display_amount": "½ cup + 1 Tbsp" },
+          { "id": "cornstarch-pc", "name": "Cornstarch (pastry cream, larger amount for firmer set)", "total": 35, "unit": "g", "breakdown": null, "display_amount": "5 Tbsp" },
+          { "id": "eggs-pc", "name": "Large Eggs (pastry cream)", "total": 100, "unit": "g", "breakdown": null, "display_amount": "2 large" },
+          { "id": "butter-pc", "name": "Unsalted Butter (pastry cream)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "¼ cup" }
+        ]
+      },
+      "states": ["prep-vanilla-pc", "heat-milk-pc", "mix-egg-base-pc", "temper-pc", "cook-pc", "strain-pc", "cool-pc", "whisk-butter-pc", "chill-pc"]
+    },
+    {
+      "id": "MAKE_CARAMEL",
+      "title": "Make the Caramel Sauce",
+      "gather": {
+        "vessels": ["V3", "V4", "V5"],
+        "equipment": ["Whisk", "Wooden Spoon", "Bowl of Ice Water (safety)"],
+        "ingredients": [
+          { "id": "heavy-cream-caramel", "name": "Heavy Cream (caramel)", "total": 160, "unit": "g", "breakdown": null, "display_amount": "⅔ cup" },
+          { "id": "vanilla-bean-caramel", "name": "Vanilla Bean (caramel)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "¼ bean" },
+          { "id": "sugar-caramel", "name": "Granulated Sugar (caramel)", "total": 250, "unit": "g", "breakdown": null, "display_amount": "1¼ cups" },
+          { "id": "water-caramel", "name": "Water (caramel)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "¼ cup" },
+          { "id": "corn-syrup", "name": "Light Corn Syrup", "total": 40, "unit": "g", "breakdown": null, "display_amount": "2 Tbsp" },
+          { "id": "salt-caramel", "name": "Fine Sea Salt (caramel)", "total": 1.5, "unit": "g", "breakdown": null, "display_amount": "¼ tsp" },
+          { "id": "lemon-juice", "name": "Fresh Lemon Juice", "total": 3.5, "unit": "g", "breakdown": null, "display_amount": "¾ tsp" },
+          { "id": "butter-caramel", "name": "Unsalted Butter (caramel)", "total": 60, "unit": "g", "breakdown": null, "display_amount": "4 Tbsp" }
+        ]
+      },
+      "states": ["warm-cream-caramel", "dissolve-sugar", "caramelize", "add-cream-caramel", "boil-finish-caramel", "cool-caramel", "whisk-butter-caramel"]
+    },
+    {
+      "id": "MAKE_SYRUP",
+      "title": "Make the Coconut Syrup",
+      "gather": {
+        "vessels": ["V5"],
+        "equipment": ["Whisk"],
+        "ingredients": [
+          { "id": "coconut-milk", "name": "Unsweetened Coconut Milk", "total": 240, "unit": "g", "breakdown": null, "display_amount": "1 cup" },
+          { "id": "sugar-syrup", "name": "Granulated Sugar (syrup)", "total": 75, "unit": "g", "breakdown": null, "display_amount": "6 Tbsp" },
+          { "id": "vanilla-extract", "name": "Vanilla Extract", "total": 4, "unit": "g", "breakdown": null, "display_amount": "1 tsp" },
+          { "id": "salt-syrup", "name": "Fine Sea Salt (syrup)", "total": 0.5, "unit": "g", "breakdown": null, "display_amount": "pinch" }
+        ]
+      },
+      "states": ["mix-syrup"]
+    },
+    {
+      "id": "PREP_FILLING",
+      "title": "Prep the Filling",
+      "gather": {
+        "vessels": ["V2", "V4", "V5"],
+        "equipment": ["Stand Mixer w/ Whisk", "Heatproof Bowl (for bain-marie)", "Rubber Spatula"],
+        "ingredients": [
+          { "id": "gelatin", "name": "Unflavored Gelatin (½ envelope)", "total": 5, "unit": "g", "breakdown": null, "display_amount": "1½ tsp" },
+          { "id": "water-bloom", "name": "Water (for gelatin bloom)", "total": 30, "unit": "g", "breakdown": null, "display_amount": "2 Tbsp" },
+          { "id": "heavy-cream-filling", "name": "Heavy Cream, very cold (filling)", "total": 240, "unit": "g", "breakdown": null, "display_amount": "1 cup" }
+        ]
+      },
+      "states": ["bloom-gelatin", "heat-fraction", "combine-fraction", "whip-cream-filling", "fold-filling"]
+    },
+    {
+      "id": "ASSEMBLE",
+      "title": "Assemble the Cake",
+      "gather": null,
+      "states": ["line-pan-plastic", "layer1", "layer2", "layer3", "fold-press"]
+    },
+    {
+      "id": "CHILL",
+      "title": "Chill",
+      "gather": null,
+      "states": ["chill-set"]
+    },
+    {
+      "id": "FROST",
+      "title": "Whip & Frost the Topping",
+      "gather": {
+        "vessels": ["V2"],
+        "equipment": ["Stand Mixer w/ Whisk", "Wide Metal Offset Spatula"],
+        "ingredients": [
+          { "id": "heavy-cream-topping", "name": "Heavy Cream, very cold (topping)", "total": 300, "unit": "g", "breakdown": null, "display_amount": "1¼ cups" },
+          { "id": "sugar-topping", "name": "Granulated Sugar (topping)", "total": 17, "unit": "g", "breakdown": null, "display_amount": "4 tsp" }
+        ]
+      },
+      "states": ["release-pan", "whip-topping", "frost"]
+    }
+  ],
+  "states": [
+    {
+      "id": "preheat-oven",
+      "title": "Preheat Oven",
+      "direction": "Preheat oven to 350°F (180°C) with rack in the middle.",
+      "duration_min": 15,
+      "timer": true,
+      "components": null,
+      "exit_condition": "Oven fully preheated to 350°F (180°C); rack centered.",
+      "notes": null
+    },
+    {
+      "id": "line-pan-genoise",
+      "title": "Line Springform",
+      "direction": "Cut parchment to fit the bottom of a 25 cm springform pan with 7.5 cm sides. Line the bottom only — do NOT butter the sides. The batter needs the ungreased wall to climb during the bake.",
+      "duration_min": 3,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Parchment cut to fit, dropped flat in pan bottom, sides ungreased.",
+      "notes": [
+        { "text": "Critical: do not butter the sides. Buttered sides cause the sponge to slide back down as it cools.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "melt-butter-genoise",
+      "title": "Melt Butter",
+      "direction": "In a small saucepan over low heat, melt the butter. Remove from heat and keep warm.",
+      "duration_min": 4,
+      "timer": false,
+      "components": [
+        { "name": "Unsalted Butter (génoise)", "amount": "75g (5 Tbsp)" }
+      ],
+      "exit_condition": "Butter fully melted, kept warm but not hot.",
+      "notes": null
+    },
+    {
+      "id": "sift-dry-genoise",
+      "title": "Sift Flour + Cornstarch",
+      "direction": "Sift the all-purpose flour and cornstarch together into a bowl. Set aside.",
+      "duration_min": 2,
+      "timer": false,
+      "components": [
+        { "name": "All-Purpose Flour", "amount": "185g (1½ cups + 1 Tbsp)" },
+        { "name": "Cornstarch (génoise)", "amount": "8g (1 Tbsp)" }
+      ],
+      "exit_condition": "Flour + cornstarch sifted together, lump-free, in a bowl reserved beside the mixer.",
+      "notes": null
+    },
+    {
+      "id": "bain-marie-warm",
+      "title": "Warm Eggs + Sugar over Bain-Marie",
+      "direction": "Pour water to a depth of 5 cm into a saucepan; bring to a simmer. Combine the eggs, sugar, and salt in the bowl of a stand mixer that will rest securely on the rim of the saucepan over (but not touching) the water. Whisk continuously until the mixture is hot to the touch, 120°F (50°C), 5 to 7 minutes.",
+      "duration_min": 7,
+      "timer": false,
+      "components": [
+        { "name": "Large Eggs (génoise)", "amount": "300g (6 large)" },
+        { "name": "Granulated Sugar (génoise)", "amount": "210g (1 cup + 1 Tbsp)" },
+        { "name": "Fine Sea Salt (génoise)", "amount": "0.5g (pinch)" }
+      ],
+      "exit_condition": "Mixture is hot to the touch, registers 120°F (50°C) on a thermometer; sugar fully dissolved.",
+      "notes": [
+        { "text": "Whisking constantly prevents the eggs from scrambling on the hot bowl bottom.", "critical": true, "source": "agent" }
+      ],
+      "reminders": [
+        { "prompt": "Record egg-sugar temp at end of warming", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "whip-eggs",
+      "title": "Whip to Ribbon",
+      "direction": "Remove bowl from over the water and place on the stand mixer. Fit the mixer with the whisk attachment and mix on medium-high until the batter is pale yellow, has tripled in volume, and falls back on itself in a wide ribbon that slowly dissolves on the surface, 3 to 5 minutes.",
+      "duration_min": 5,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Batter pale yellow, tripled in volume, falls in a wide ribbon that slowly dissolves on the surface.",
+      "notes": null
+    },
+    {
+      "id": "fold-flour",
+      "title": "Fold in Flour",
+      "direction": "Using a rubber spatula, fold the sifted flour mixture into the egg foam in three batches. Reach all the way to the bottom of the bowl where the flour likes to sink, and pull it all the way up to the top. Avoid scraping the sides — scrape from underneath. Stop folding the moment the flour is incorporated.",
+      "duration_min": 3,
+      "timer": false,
+      "components": [
+        { "name": "All-Purpose Flour", "amount": "185g (1½ cups + 1 Tbsp)" }
+      ],
+      "exit_condition": "No visible streaks of flour; batter still aerated, not deflated.",
+      "notes": [
+        { "text": "Scrape the sides only briefly — clinging batter is hard to incorporate without deflating. Better to leave a little behind than to overmix.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "fold-butter",
+      "title": "Fold in Warm Butter",
+      "direction": "Scoop a small portion (~1 cup) of the batter into a small bowl with the warm melted butter and whisk to combine. Gently and quickly fold this butter-batter mixture back into the rest of the batter — be careful not to deflate.",
+      "duration_min": 2,
+      "timer": false,
+      "components": [
+        { "name": "Unsalted Butter (génoise)", "amount": "75g (warm, melted)" }
+      ],
+      "exit_condition": "Butter fully folded in; no streaks of yellow butter visible; batter still high-volume.",
+      "notes": [
+        { "text": "The pre-mix into a portion of batter is critical — dropping warm butter directly onto the whole foam will collapse it. The sacrificial cup acts as a buffer.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "bake-genoise",
+      "title": "Bake Génoise",
+      "direction": "Pour batter immediately into the prepared pan. Bake at 350°F (180°C) until the top springs back when lightly touched, 40 to 45 minutes. The sides will likely pull slightly from the pan.",
+      "duration_min": 43,
+      "timer": true,
+      "components": null,
+      "exit_condition": "Top springs back when lightly touched; cake is golden; sides slightly pulled from pan.",
+      "notes": null,
+      "reminders": [
+        { "prompt": "Record actual bake time", "type": "measurement" },
+        { "prompt": "Cake spring-back observation", "type": "observation" }
+      ]
+    },
+    {
+      "id": "cool-unmold",
+      "title": "Cool, Unmold, Peel",
+      "direction": "Let cool in pan on a wire rack (the sides of the pan help hold the structure as the cake cools). To unmold, run a thin knife around the sides, release the pan, peel off the parchment, and invert/flip back upright onto the rack.",
+      "duration_min": 60,
+      "timer": true,
+      "components": null,
+      "exit_condition": "Cake fully cooled to room temperature; unmolded; parchment removed.",
+      "notes": [
+        { "text": "Can be wrapped in plastic and refrigerated up to 1 week or frozen up to 1 month at this point. A day-old génoise actually slices cleaner.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "split-layers",
+      "title": "Split into 3 Layers",
+      "direction": "Place the cooled cake on a flat surface. Use a long serrated knife. Mark the desired thickness all the way around the cake. Work from the top down, cutting through the cake using a sawing motion, holding the knife parallel to the surface. Take off the first layer and set aside. Then begin to cut the next. Cover layers with plastic wrap if not assembling right away so they don't dry out.",
+      "duration_min": 8,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Three even cake layers, each ~2 cm thick; layers covered if not assembling immediately.",
+      "notes": null
+    },
+    {
+      "id": "prep-vanilla-pc",
+      "title": "Prep Vanilla Bean",
+      "direction": "Split the half vanilla bean lengthwise. Use the tip of a sharp knife to scrape the seeds from the pod into the milk. Add the salt. Add the pod too.",
+      "duration_min": 2,
+      "timer": false,
+      "components": [
+        { "name": "Vanilla Bean (pastry cream)", "amount": "1g (½ bean, split + scraped)" },
+        { "name": "Fine Sea Salt (pastry cream)", "amount": "1.5g (¼ tsp)" }
+      ],
+      "exit_condition": "Vanilla seeds + pod + salt added to milk; bean pod will be sieved out later.",
+      "notes": null
+    },
+    {
+      "id": "heat-milk-pc",
+      "title": "Heat Milk",
+      "direction": "Pour milk into a heavy saucepan. Place over medium-high heat and bring to just a boil, stirring occasionally to keep the milk solids from sticking to the bottom of the pan. The larger the batch, the more careful you need to be.",
+      "duration_min": 6,
+      "timer": false,
+      "components": [
+        { "name": "Whole Milk", "amount": "480g (2 cups)" }
+      ],
+      "exit_condition": "Milk brought just to a boil; no scorched bottom.",
+      "notes": [
+        { "text": "Burn spots taint the flavor with an acrid note. If you see any, taste the milk — discard the batch and start over rather than try to rescue.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "mix-egg-base-pc",
+      "title": "Mix Egg Base",
+      "direction": "Meanwhile, in a mixing bowl, whisk together the sugar and cornstarch (use the larger 35g amount — needed for the firmer pastry cream that the tres leches filling requires). Add the eggs and whisk until smooth.",
+      "duration_min": 2,
+      "timer": false,
+      "components": [
+        { "name": "Granulated Sugar (pastry cream)", "amount": "115g (½ cup + 1 Tbsp)" },
+        { "name": "Cornstarch (pastry cream)", "amount": "35g (5 Tbsp — larger amount for firmer set)" },
+        { "name": "Large Eggs (pastry cream)", "amount": "100g (2 large)" }
+      ],
+      "exit_condition": "Smooth, pale yellow mixture with no lumps of cornstarch or sugar.",
+      "notes": [
+        { "text": "Whisk sugar + cornstarch BEFORE adding eggs — never let yolks and sugar sit together undissolved; the sugar 'cooks' the yolks granular.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "temper-pc",
+      "title": "Temper Eggs",
+      "direction": "When the milk is ready, slowly ladle about one-third of the hot milk into the egg mixture, whisking constantly.",
+      "duration_min": 2,
+      "timer": false,
+      "components": null,
+      "exit_condition": "About ⅓ of hot milk whisked into the egg mixture; mixture warmed but eggs not scrambled.",
+      "notes": null
+    },
+    {
+      "id": "cook-pc",
+      "title": "Cook the Pastry Cream",
+      "direction": "Pour the egg-milk mixture back into the hot milk and continue whisking over medium heat until the custard is as thick as lightly whipped cream, about 2 minutes. In order for the cornstarch to cook out and thicken fully, the mixture must come just to the boiling point. You want to see a few slow bubbles boiling. Remove from heat immediately and pour through the sieve.",
+      "duration_min": 3,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Custard as thick as lightly whipped cream; a few slow bubbles seen at the boiling point; immediately removed from heat.",
+      "notes": [
+        { "text": "If the cream curdles, remove from heat, pour through the sieve immediately, stir occasionally over 10 minutes to release heat. The cream will continue to cook off-heat from residual heat.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "strain-pc",
+      "title": "Strain into Bowl",
+      "direction": "Strain the hot pastry cream through a fine-mesh sieve into a clean bowl, leaving the vanilla pod behind. Press cream through gently with a spatula.",
+      "duration_min": 2,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Pastry cream in clean bowl; vanilla pod and any solids strained out; surface smooth.",
+      "notes": null
+    },
+    {
+      "id": "cool-pc",
+      "title": "Cool to 140°F (60°C)",
+      "direction": "Let the strained pastry cream cool, stirring occasionally, until it registers 140°F (60°C). This takes 10 to 15 minutes at room temperature.",
+      "duration_min": 12,
+      "timer": true,
+      "components": null,
+      "exit_condition": "Pastry cream at 140°F (60°C); still pourable but no longer steaming.",
+      "notes": null,
+      "reminders": [
+        { "prompt": "Record temp before butter addition", "type": "measurement" }
+      ]
+    },
+    {
+      "id": "whisk-butter-pc",
+      "title": "Whisk in Butter",
+      "direction": "Cut the butter into four pieces. Whisk the butter into the pastry cream one piece at a time, always whisking until smooth before adding the next piece.",
+      "duration_min": 3,
+      "timer": false,
+      "components": [
+        { "name": "Unsalted Butter (pastry cream)", "amount": "60g (¼ cup, cut into 4 pieces)" }
+      ],
+      "exit_condition": "Pastry cream is glossy, smooth, all butter incorporated.",
+      "notes": null
+    },
+    {
+      "id": "chill-pc",
+      "title": "Chill",
+      "direction": "Cover the cream by pressing plastic wrap directly onto the surface (this prevents a skin from forming). Place the bowl in a shallow dish to cool quickly. Refrigerate until cold, at least 2 hours. Keeps refrigerated up to 5 days.",
+      "duration_min": 120,
+      "timer": true,
+      "components": null,
+      "exit_condition": "Pastry cream cold to the touch; no skin formed under plastic wrap.",
+      "notes": [
+        { "text": "Do NOT overwhisk once cold — this breaks down the starch and thins the cream irreversibly.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "warm-cream-caramel",
+      "title": "Warm Cream + Vanilla",
+      "direction": "Pour cream into a small saucepan. Split the quarter vanilla bean lengthwise, scrape seeds into the cream, add the pod. Place over medium-high heat and bring to just under a boil. Reduce heat to low to keep the cream warm.",
+      "duration_min": 4,
+      "timer": false,
+      "components": [
+        { "name": "Heavy Cream (caramel)", "amount": "160g (⅔ cup)" },
+        { "name": "Vanilla Bean (caramel)", "amount": "0.5g (¼ bean, split + scraped)" }
+      ],
+      "exit_condition": "Cream warmed to just under a boil, kept warm on low heat with vanilla pod steeping.",
+      "notes": null
+    },
+    {
+      "id": "dissolve-sugar",
+      "title": "Dissolve Sugar",
+      "direction": "In a medium heavy saucepan, combine the sugar, water, salt, and corn syrup. Bring to a boil over medium heat, stirring just until the sugar dissolves.",
+      "duration_min": 3,
+      "timer": false,
+      "components": [
+        { "name": "Granulated Sugar (caramel)", "amount": "250g (1¼ cups)" },
+        { "name": "Water (caramel)", "amount": "60g (¼ cup)" },
+        { "name": "Fine Sea Salt (caramel)", "amount": "1.5g (¼ tsp)" },
+        { "name": "Light Corn Syrup", "amount": "40g (2 Tbsp)" }
+      ],
+      "exit_condition": "Sugar fully dissolved into a clear syrup; mixture just boiling.",
+      "notes": [
+        { "text": "Keep ice water close by in case of a burn — the caramel will reach 350°F+.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "caramelize",
+      "title": "Caramelize to Amber",
+      "direction": "Stop stirring. Cook, without stirring, until the mixture is amber colored, 5 to 8 minutes. Remove from the heat the moment it reaches amber.",
+      "duration_min": 6,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Sugar syrup is amber colored (medium amber, like maple syrup or a copper penny). Removed from heat.",
+      "notes": [
+        { "text": "Stirring causes crystallization — leave it alone. Swirl the pan gently if the color is uneven.", "critical": true, "source": "agent" },
+        { "text": "Once it hits amber, color develops fast. The residual heat will continue to darken it — pull just before the target.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "add-cream-caramel",
+      "title": "Add Warm Cream",
+      "direction": "Off heat. Carefully and slowly add the warm cream to the sugar syrup. The mixture will boil vigorously at first and dramatically increase in volume. Whisk gently as you add.",
+      "duration_min": 2,
+      "timer": false,
+      "components": [
+        { "name": "Heavy Cream (caramel)", "amount": "160g (warmed)" }
+      ],
+      "exit_condition": "Cream fully added; mixture has stopped erupting; sauce is dark amber and unified.",
+      "notes": [
+        { "text": "Wear an oven mitt and lean back. The bubble-up is severe — using a deep pan and a long-handled whisk reduces splash risk.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "boil-finish-caramel",
+      "title": "Boil + Add Lemon",
+      "direction": "Return to medium heat. Let the mixture simmer down, whisking until smooth. Add the lemon juice. Let cook for about 10 minutes — the mixture will continue to cook off the heat and become darker, so pull just under your target color.",
+      "duration_min": 10,
+      "timer": true,
+      "components": [
+        { "name": "Fresh Lemon Juice", "amount": "3.5g (¾ tsp)" }
+      ],
+      "exit_condition": "Caramel is smooth, glossy, just under target final color (will darken on residual heat).",
+      "notes": null
+    },
+    {
+      "id": "cool-caramel",
+      "title": "Cool 10 Minutes",
+      "direction": "Remove from heat. Let cool for about 10 minutes before adding the butter.",
+      "duration_min": 10,
+      "timer": true,
+      "components": null,
+      "exit_condition": "Caramel cooled enough that butter won't immediately separate (still warm, not steaming).",
+      "notes": null
+    },
+    {
+      "id": "whisk-butter-caramel",
+      "title": "Whisk in Butter",
+      "direction": "Cut the butter into 1 in (2.5 cm) chunks. Whisk into the caramel one chunk at a time, whisking constantly after each addition until incorporated. Then whisk the caramel periodically as it cools to keep emulsified. Refrigerate airtight up to 1 month.",
+      "duration_min": 4,
+      "timer": false,
+      "components": [
+        { "name": "Unsalted Butter (caramel)", "amount": "60g (4 Tbsp, cut in 2.5 cm chunks)" }
+      ],
+      "exit_condition": "Caramel is glossy, smooth, all butter incorporated; sauce coats the back of a spoon.",
+      "notes": null
+    },
+    {
+      "id": "mix-syrup",
+      "title": "Whisk Coconut Syrup",
+      "direction": "In a small bowl, whisk together the coconut milk, sugar, vanilla extract, and salt until the sugar dissolves. Set aside until assembly.",
+      "duration_min": 2,
+      "timer": false,
+      "components": [
+        { "name": "Unsweetened Coconut Milk", "amount": "240g (1 cup)" },
+        { "name": "Granulated Sugar (syrup)", "amount": "75g (6 Tbsp)" },
+        { "name": "Vanilla Extract", "amount": "4g (1 tsp)" },
+        { "name": "Fine Sea Salt (syrup)", "amount": "0.5g (pinch)" }
+      ],
+      "exit_condition": "Sugar fully dissolved into coconut milk; smooth, no graininess.",
+      "notes": [
+        { "text": "Shake or stir the coconut milk can well before opening — the fat separates and you want a homogeneous milk.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "bloom-gelatin",
+      "title": "Bloom Gelatin",
+      "direction": "In a small bowl, sprinkle the gelatin over the water and let stand for a few minutes to soften.",
+      "duration_min": 3,
+      "timer": false,
+      "components": [
+        { "name": "Unflavored Gelatin (½ envelope)", "amount": "5g (1½ tsp)" },
+        { "name": "Water (for gelatin bloom)", "amount": "30g (2 Tbsp)" }
+      ],
+      "exit_condition": "Gelatin has absorbed the water and looks like soft, wet sand; no dry granules visible.",
+      "notes": null
+    },
+    {
+      "id": "heat-fraction",
+      "title": "Heat Pastry Cream Fraction + Gelatin",
+      "direction": "Place ½ cup (120g) of the chilled pastry cream into a stainless-steel bowl that will rest securely on the rim of a saucepan filled with 5 cm of simmering water. Whisk in the softened gelatin until smooth. Heat, whisking often, until very hot to the touch, 4 to 5 minutes. (If using freshly made hot pastry cream, simply whisk the gelatin into the entire amount and skip this fraction step.)",
+      "duration_min": 5,
+      "timer": false,
+      "components": [
+        { "name": "Pastry Cream", "amount": "120g (½ cup, reserved from chilled batch)" }
+      ],
+      "exit_condition": "Fraction of pastry cream is very hot to the touch; gelatin fully dissolved with no visible granules.",
+      "notes": [
+        { "text": "The cold cream will make the gelatin begin to set up quickly — be sure you have all of your cake components (moistening syrup, caramel if using, and cake layers) ready before starting this step.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "combine-fraction",
+      "title": "Combine Hot Fraction with Rest",
+      "direction": "Remove the bowl from the double boiler. Whisk half of the cold pastry cream into the hot fraction. Then whisk that combined mixture into the rest of the cold pastry cream until smooth.",
+      "duration_min": 2,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Pastry cream is uniform, smooth, just warm to the touch; no streaks of hot vs cold; gelatin distributed evenly.",
+      "notes": null
+    },
+    {
+      "id": "whip-cream-filling",
+      "title": "Whip Cream",
+      "direction": "Using a stand mixer fitted with the whisk attachment, whip the cold heavy cream until it holds medium-soft peaks.",
+      "duration_min": 3,
+      "timer": false,
+      "components": [
+        { "name": "Heavy Cream, very cold (filling)", "amount": "240g (1 cup)" }
+      ],
+      "exit_condition": "Cream holds medium-soft peaks — peaks droop slightly when the whisk is lifted, but hold their shape on the surface.",
+      "notes": [
+        { "text": "Stop at medium-soft. Stiff whipped cream is hard to fold without deflating, and the gelatin will tighten the filling further.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "fold-filling",
+      "title": "Fold Cream into Pastry Cream",
+      "direction": "Working quickly, gently fold the whipped cream into the pastry cream mixture with a rubber spatula in two or three additions.",
+      "duration_min": 3,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Filling is uniform pale ivory, no streaks of white cream, still aerated and pillowy. Use immediately — gelatin sets fast.",
+      "notes": [
+        { "text": "Have the springform pan lined and the bottom cake layer in place before starting the fold. Once the filling is mixed, you have minutes before it firms up.", "critical": true, "source": "agent" }
+      ]
+    },
+    {
+      "id": "line-pan-plastic",
+      "title": "Line Springform with Plastic Wrap",
+      "direction": "Line the sides of the cleaned 25 cm springform pan with plastic wrap, allowing enough overhang to cover the top of the cake completely when it is assembled. Leave the bottom of the pan unlined. Have the cake layers ready.",
+      "duration_min": 3,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Springform sides lined with plastic wrap; 7.5 cm of overhang above the rim; bottom of pan bare; three cake layers within reach.",
+      "notes": null
+    },
+    {
+      "id": "layer1",
+      "title": "Layer 1: Cake + Syrup + Caramel + Filling",
+      "direction": "Place one cake layer in the bottom of the prepared springform pan. Using a pastry brush, moisten the layer evenly with about ⅓ of the coconut syrup. Drizzle half of the caramel sauce evenly over the cake layer. Pour half of the filling over the layer and spread it evenly (the back of a large spoon works well).",
+      "duration_min": 4,
+      "timer": false,
+      "components": [
+        { "name": "Génoise Layer 1", "amount": "1 of 3" },
+        { "name": "Coconut Syrup", "amount": "~120g (⅓ of 360g total)" },
+        { "name": "Caramel Sauce", "amount": "60g (half of 120g filling allocation)" },
+        { "name": "Filling", "amount": "~⅓ of total filling (~300g)" }
+      ],
+      "exit_condition": "Layer 1 fully moistened with syrup, caramel drizzled across, filling spread to edges in an even layer.",
+      "notes": null
+    },
+    {
+      "id": "layer2",
+      "title": "Layer 2: Cake + Syrup + Caramel + Filling",
+      "direction": "Place the second cake layer over the filling, pressing down gently with even pressure. Moisten this layer with half of the remaining coconut syrup, then drizzle over the remaining caramel. Pour the remaining filling over the second layer and spread evenly.",
+      "duration_min": 3,
+      "timer": false,
+      "components": [
+        { "name": "Génoise Layer 2", "amount": "1 of 3" },
+        { "name": "Coconut Syrup", "amount": "~120g (⅓ of total)" },
+        { "name": "Caramel Sauce", "amount": "60g (remaining)" },
+        { "name": "Filling", "amount": "remaining ~300g" }
+      ],
+      "exit_condition": "Layer 2 pressed in evenly, moistened, caramel drizzled, remaining filling spread to edges.",
+      "notes": null
+    },
+    {
+      "id": "layer3",
+      "title": "Layer 3: Top + Final Syrup",
+      "direction": "Place the third cake layer on top and moisten it with the rest of the coconut syrup. The top layer should come right up to the rim of the cake pan or go a little over.",
+      "duration_min": 2,
+      "timer": false,
+      "components": [
+        { "name": "Génoise Layer 3", "amount": "1 of 3" },
+        { "name": "Coconut Syrup", "amount": "~120g (remaining ⅓)" }
+      ],
+      "exit_condition": "Top layer in place, soaked with final syrup; cake comes to or just over pan rim.",
+      "notes": null
+    },
+    {
+      "id": "fold-press",
+      "title": "Fold Plastic, Press Level",
+      "direction": "Fold the overhanging plastic wrap over the top of the cake, covering it completely. Place something flat — a flat plate or a small baking sheet — over the cake. Press down gently to level the layers.",
+      "duration_min": 1,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Plastic wrap folded over top sealing the cake; flat weight pressed gently to level layers across the pan.",
+      "notes": null
+    },
+    {
+      "id": "chill-set",
+      "title": "Chill (Overnight Preferred)",
+      "direction": "Refrigerate the assembled cake for at least 4 hours, preferably overnight.",
+      "duration_min": 240,
+      "timer": true,
+      "components": null,
+      "exit_condition": "Cake fully chilled; filling set (firm enough to slice cleanly); flavors melded.",
+      "notes": [
+        { "text": "Overnight is the meaningfully better choice. The syrup distributes more evenly through the sponge, the gelatin sets completely, and slicing is much cleaner the next day.", "source": "agent" }
+      ]
+    },
+    {
+      "id": "release-pan",
+      "title": "Release Pan + Transfer",
+      "direction": "When ready to finish, release the cake and lift off the pan sides. Peel away the plastic wrap. Using a wide metal offset spatula, transfer the cake to a serving plate, or leave it on the cake pan base.",
+      "duration_min": 3,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Cake released from pan, plastic peeled, transferred to serving surface; sides clean and visible.",
+      "notes": null
+    },
+    {
+      "id": "whip-topping",
+      "title": "Whip Topping Cream",
+      "direction": "Using the stand mixer or a whisk, whip the cream until it has thickened. Add the sugar and whip until the cream holds soft peaks.",
+      "duration_min": 3,
+      "timer": false,
+      "components": [
+        { "name": "Heavy Cream, very cold (topping)", "amount": "300g (1¼ cups)" },
+        { "name": "Granulated Sugar (topping)", "amount": "17g (4 tsp)" }
+      ],
+      "exit_condition": "Cream holds soft peaks — peaks fold over when the whisk is lifted. Lightly sweetened, not stiff.",
+      "notes": null
+    },
+    {
+      "id": "frost",
+      "title": "Frost the Top",
+      "direction": "Using an offset spatula, frost the top of the cake with the whipped cream. The cake can be served immediately or kept cold in the refrigerator until ready to serve.",
+      "duration_min": 4,
+      "timer": false,
+      "components": null,
+      "exit_condition": "Top of cake covered with a smooth or lightly swooped layer of whipped cream; sides bare (Tartine style — exposed layers visible).",
+      "notes": [
+        { "text": "Keeps well-wrapped in the refrigerator up to 5 days, but the whipped cream topping is best within the first 24 hours.", "source": "agent" }
+      ]
+    }
+  ],
+  "reheat": {
+    "methods": [
+      {
+        "method": "Serve cold from fridge",
+        "detail": "This is a cold dessert. Slice straight from the refrigerator with a long thin knife wiped clean between slices. No reheating intended.",
+        "source": "agent"
+      },
+      {
+        "method": "Temper 15 min before serving",
+        "detail": "If the kitchen is very cold, let slices sit at room temperature for 10-15 minutes before serving — the caramel will loosen slightly and the genoise crumb softens.",
+        "source": "agent"
+      }
+    ]
+  },
+  "nutrition": null
+}

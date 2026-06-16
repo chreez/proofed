@@ -415,3 +415,177 @@ Pulse the walnuts in a food processor fitted with the steel blade until the piec
 | 11 in circle | 28cm | Rolled dough diameter |
 | 1/8 in thick | 3mm | Rolled dough thickness |
 | 1/2 in border | 12mm | Filling border (source prints "1/4 in [12 mm]" but 1/4 in = 6mm; preserving 12mm as the metric value matches Tartine's convention elsewhere) |
+
+---
+
+## Tartine Pastel de Tres Leches
+
+**Original Source:** Tartine (cookbook), main recipe + cross-referenced subrecipes
+**Authors:** Elisabeth Prueitt & Chad Robertson
+**Captured from:** User photos `IMG_7931.HEIC` (master/assembly), `IMG_7933.HEIC` (assembly continued), `IMG_7936.HEIC` + `IMG_7937.HEIC` (Pastry Cream p.300), `IMG_7938.HEIC` (Caramel Sauce p.309), `IMG_7939.HEIC` + `IMG_7940.HEIC` (Génoise p.312) — captured 2026-06-16.
+**Source location in repo:** `photos-source/tartine-tres-leches/source/`
+**Cross-check sources (NOT used as golden):**
+- ZoëBakes adaptation (uses coconut chiffon, NOT génoise): https://www.zoebakes.com/2018/05/05/tres-leches/
+- Mondo Dinner adaptation: https://mondodinner.com/2014/01/pastel-de-tres-leches-a-recipe-by-tartine-bakery/
+- Note: Both online sources substitute a coconut chiffon for the book's génoise. Book is golden.
+
+### Original Ingredients
+
+**MASTER RECIPE** (yields one 10 in / 25 cm cake, 12 to 16 servings)
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| 10 in (25 cm) Génoise (page 312), split into 3 layers | 1 | — |
+
+**COCONUT SYRUP**
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| Unsweetened coconut milk | 1 cup | 240 ml |
+| Sugar | 6 Tbsp | 75 g |
+| Vanilla extract | 1 tsp | — |
+| Salt | pinch | — |
+
+**FILLING**
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| Unflavored gelatin (½ envelope) | 1½ tsp | — |
+| Water | 2 Tbsp | — |
+| Pastry Cream (page 300) | 2½ cups | 600 ml |
+| Heavy cream, very cold | 1 cup | 240 ml |
+| Caramel Sauce (page 309) | ½ cup | 120 ml |
+
+**TOPPING**
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| Heavy cream, very cold | 1¼ cups | 300 ml |
+| Sugar | 4 tsp | — |
+
+**GÉNOISE** (page 312, yields one 10 in / 25 cm cake)
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| Unsalted butter | 5 Tbsp | 75 g |
+| All-purpose flour | 1½ cups + 1 Tbsp | 185 g |
+| Cornstarch | 1 Tbsp | — |
+| Large eggs | 6 | — |
+| Sugar | 1 cup + 1 Tbsp | 210 g |
+| Salt | pinch | — |
+
+**PASTRY CREAM** (page 300, yields 2½ cups / 600 ml)
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| Whole milk | 2 cups | 480 ml |
+| Vanilla bean | ½ bean | — |
+| Salt | ¼ tsp | — |
+| Sugar | ½ cup + 1 Tbsp | 115 g |
+| Cornstarch | 4 to 5 Tbsp | 30 to 35 g |
+| Large eggs | 2 | — |
+| Unsalted butter | ¼ cup | 60 g |
+
+> Kitchen note (book p.300): "Use the larger amount of cornstarch for making pastry cream for the Coconut Banana Cream Pie and Chocolate Banana Cream Pie variation that accompanies it and the smaller amount for other uses."
+> Tres leches sits between — use 35g for firmer filling that holds the layered build.
+
+**CARAMEL SAUCE** (page 309, yields about 1½ cups / 360 ml)
+
+| Ingredient | Volume | Weight |
+|-----------|--------|--------|
+| Heavy cream | ⅔ cup | 160 ml |
+| Vanilla bean | ¼ bean | — |
+| Sugar | 1¼ cups | 250 g |
+| Water | ¼ cup | 60 ml |
+| Light corn syrup | 2 Tbsp | — |
+| Salt | ¼ tsp | — |
+| Lemon juice | ¾ tsp | — |
+| Unsalted butter | 4 Tbsp | 60 g |
+
+### Original Instructions (summarized from book)
+
+**Génoise (p.312):**
+1. 350°F (180°C). Line 10 in (25 cm) springform w/ 3 in (7.5 cm) sides w/ parchment bottom. Do NOT butter sides.
+2. Melt butter low heat, keep warm. Sift flour + cornstarch.
+3. Bain-marie: water 2 in deep, simmer. Eggs+sugar+salt in stand mixer bowl over rim (not touching water). Whisk continuously until hot to touch, ~120°F (50°C), 5-7 min.
+4. Remove from water, attach to mixer. Whip medium-high until pale yellow, tripled, ribbon, 3-5 min.
+5. Fold flour in 3 batches. Whisk warm butter into a small portion of batter, then fold quickly into rest. Do not deflate.
+6. Bake 40-45 min until top springs back. Cool in pan, unmold, peel parchment.
+7. Keeps refrigerated up to 1 week wrapped / freezer 1 month.
+
+**Pastry Cream (p.300):**
+1. Bowl ready w/ fine sieve over.
+2. Milk + vanilla bean (split, seeds scraped, pod added) + salt → heavy saucepan, medium-high heat, bring just to boil. Stir to prevent sticking.
+3. Sugar + cornstarch whisked together in mixing bowl. Add eggs, whisk smooth.
+4. Slowly ladle ⅓ hot milk into egg mixture whisking. Pour egg-milk back into pot, whisk constantly over medium until thick like lightly whipped cream, ~2 min, just to slow boil (the larger cornstarch will form a firmer set).
+5. Remove from heat, immediately pour through sieve into bowl. If curdled, stir 10 min to release heat (curd will continue to cook). Cool to ~140°F (60°C).
+6. Cut butter into 4 pieces. Whisk in one at a time until smooth.
+7. Cover w/ plastic wrap pressed directly onto surface. Cool in shallow dish in fridge. Do not overmix — breaks down starch and thins cream.
+8. Keeps refrigerated up to 5 days.
+
+**Caramel Sauce (p.309):**
+1. Cream + vanilla bean (split) → small saucepan, medium-high, bring just under boil. Reduce to low, keep warm.
+2. Sugar + water + salt + corn syrup → medium heavy saucepan, medium heat, stir to dissolve. Then NO stirring, cook until amber, 5-8 min.
+3. Off heat. Slowly add warm cream — will boil furiously, mixture will dramatically increase volume. Have ice water close.
+4. Return to heat, whisk until smooth. Add lemon juice. Boil ~10 min.
+5. Cool 10 min. Cut butter into 1 in (2.5 cm) chunks. Whisk in one at a time.
+6. Refrigerator up to 1 month airtight.
+
+**Coconut Syrup:**
+- Whisk coconut milk + sugar + vanilla + salt until sugar dissolves.
+
+**Assembly (p.~301-302, from photos 7931+7933):**
+1. Line 10 in (25 cm) springform sides w/ plastic wrap, 3 in (7.5 cm) overhang. Cake layers ready.
+2. Soften gelatin in 2 Tbsp water in small bowl, stand a few minutes.
+3. If using freshly-made pastry cream still hot: whisk softened gelatin into entire pastry cream. If using cold pastry cream: place ½ cup (120 ml) of it in stainless-steel bowl over saucepan w/ 2 in simmering water, whisk softened gelatin in, heat to "very hot to touch", 4-5 min until smooth. Whisk that hot fraction back into the cold rest.
+4. Stand mixer w/ whisk: whip heavy cream (1 cup) to medium-soft peaks. Fold whipped cream into pastry cream mixture w/ rubber spatula.
+5. Place layer 1 in pan. Moisten w/ ⅓ coconut syrup (pastry brush). Drizzle ½ caramel over. Spread ½ filling.
+6. Layer 2: moisten w/ next ⅓ syrup, remaining caramel, remaining filling.
+7. Layer 3: moisten w/ remaining syrup. Top should come up to rim or slightly over.
+8. Fold overhanging plastic wrap over top. Press flat plate/baking sheet down to level. Refrigerate ≥4 hrs, preferably overnight.
+9. Release pan, peel plastic, transfer w/ wide spatula to plate or leave on pan base.
+10. Whip topping cream until thickened. Add sugar, whip to soft peaks. Frost top w/ offset spatula. Serve immediately or chill. Keeps fridge 5 days.
+
+### Conversion Reference
+
+| Original | Metric | Notes |
+|----------|--------|-------|
+| 1 cup coconut milk | 240 ml ≈ 240g | density ~1.0 g/ml |
+| 6 Tbsp sugar | 75g | given in book |
+| 1 tsp vanilla extract | 4g | extract density ~0.88 g/ml × 4.93ml ≈ 4g |
+| pinch salt | 0.5g | convention |
+| 1½ tsp gelatin | 5g | 1 tsp granular gelatin ≈ 3g; given as half-envelope (envelope = ~7g) |
+| 2 Tbsp water (gelatin bloom) | 30g | 2 × 15ml |
+| 2½ cups pastry cream | 600 ml | given in book; treat as ~600g for cost/nutrition |
+| 1 cup heavy cream | 240 ml ≈ 240g | density ~1.0 g/ml |
+| ½ cup caramel sauce | 120 ml ≈ 120g | density ~1.3 g/ml — could be ~155g; preserving 120 as book lists ml |
+| 1¼ cups heavy cream (topping) | 300 ml ≈ 300g | as above |
+| 4 tsp sugar (topping) | 17g | 1 tsp granulated ≈ 4.2g |
+| 5 Tbsp butter (génoise) | 75g | book; 1 Tbsp butter = 14-15g; 5 × 14 = 70, 5 × 15 = 75 — book rounds to 75g |
+| 1½ cups + 1 Tbsp AP flour | 185g | book |
+| 1 Tbsp cornstarch (génoise) | 8g | 1 Tbsp cornstarch ≈ 8g |
+| 6 eggs | 300g | 1 large egg w/o shell ≈ 50g |
+| 1 cup + 1 Tbsp sugar (génoise) | 210g | book |
+| 2 cups whole milk | 480 ml ≈ 495g | book lists 480ml; treat as 480g for label consistency |
+| ¼ tsp salt | 1.5g | 1 tsp fine sea salt ≈ 6g |
+| ½ cup + 1 Tbsp sugar (PC) | 115g | book |
+| 4-5 Tbsp cornstarch (PC) | 30-35g | book; use 35g for firmer set per book note |
+| 2 eggs (PC) | 100g | 50g each |
+| ¼ cup butter (PC) | 60g | book; standard 1 Tbsp butter = 14g (4 Tbsp = 56g) — book rounds to 60g |
+| ⅔ cup heavy cream (caramel) | 160 ml ≈ 160g | book; standard ⅔ cup = ~158g |
+| ¼ cup water | 60g | book |
+| 2 Tbsp corn syrup | 40g | 1 Tbsp light corn syrup ≈ 20g (density 1.38 × 14.8) |
+| ¾ tsp lemon juice | 3.5g | density ~1.04 |
+| 1¼ cups sugar (caramel) | 250g | book |
+| 4 Tbsp butter (caramel) | 60g | book |
+| 350°F | 180°C | génoise oven |
+| 10 in springform | 25 cm | pan |
+| 3 in pan sides | 7.5 cm | pan |
+| 120°F | 50°C | bain-marie target before whip |
+| 140°F | 60°C | pastry cream cool point before butter |
+| 1 in butter chunks | 2.5 cm | caramel finish |
+
+### Notes / Adaptations Considered
+
+- BSM Stone-Milled All-Purpose Flour (Standard, $14 / 2.5 lb) suitable for génoise — Yecora Rojo + Crawford Red blend, sifted to '00'. Stone-milled has higher protein and slight bran content vs commodity AP; expect denser sponge if substituted 1:1. Test before committing for special occasions.
+- "Larger cornstarch" book note: use 35g (5 Tbsp) for pastry cream when destined for tres leches filling — needs firmer set to hold layered structure.
