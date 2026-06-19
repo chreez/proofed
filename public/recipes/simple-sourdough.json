@@ -8332,8 +8332,7 @@
       "start_date": "2026-06-16",
       "date": "2026-06-19",
       "version": "v3.6.2",
-      "status": "in_progress",
-      "summary": "Tartine country at 1000g flour, 75% hydration. 100g Rouge de Bordeaux (BSM) blended into 900g KA bread flour. Mixed 9:20am Tue 6/16, DDT 80°F. Bassinage to 75% at salt fold. Preshape 3:42pm Tue to 999g single loaf. Bake target 6/19. Notes/results to be filled in.",
+      "summary": "Tartine country at 1000g flour, 75% hydration. 100g BSM Rouge de Bordeaux + 900g KA bread flour. Two loaves — loaf 1 baked into a frisbee (still good open crumb); loaf 2 forgot to score, big air bubble at top, otherwise better than loaf 1.",
       "notes": [
         "Tartine country formula scaled to 1000g flour at 75% hydration. Blended 100g Rouge de Bordeaux (BSM) with 900g KA bread flour.",
         "Mixed 9:20am Tue 6/16, kitchen 75.4°F. DDT 80°F at mix.",
@@ -8341,8 +8340,62 @@
         "Second coil fold at 11:26am — 77.2°F (effectively fold 2/4).",
         "Preshape 3:42pm — total yield 1937g, divided to 999g single loaf, 20 min bench rest."
       ],
-      "photos": [],
-      "next_time": [],
+      "photos": [
+        {
+          "name": "img-7960",
+          "src": "/images/simple-sourdough/2026-06-19/img-7960-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-06-19/img-7960-400w.webp",
+          "alt": "Loaf 2 cooling on wire rack — boule with sharp banneton ring pattern, deep mahogany base, unscored crown",
+          "summary": "Baked boule cooling on wire rack, side-lit and glowing amber — tight concentric banneton coils held shape, deep mahogany base.",
+          "notes": "this is loaf 2 i think. forgot to score this dough.. it could have been even better.",
+          "usage": "process"
+        },
+        {
+          "name": "img-7963",
+          "src": "/images/simple-sourdough/2026-06-19/img-7963-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-06-19/img-7963-400w.webp",
+          "alt": "Loaf 1 crumb shot — split in half, open irregular alveoli, glossy yellow gelatinized walls, even hole distribution edge to edge",
+          "summary": "Crumb shot of loaf split in half — open irregular alveoli, glossy yellow gelatinized walls, even hole distribution from edge to edge.",
+          "notes": "this is loaf 1 - frisbee. but good crumb.",
+          "usage": "process"
+        },
+        {
+          "name": "img-7961",
+          "src": "/images/simple-sourdough/2026-06-19/img-7961-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-06-19/img-7961-400w.webp",
+          "alt": "Loaf 2 top-down on wire rack — top swirl visible, banneton ring crisp, no blowouts on the crown",
+          "summary": "Same boule from a higher angle on the wire rack — top swirl visible, banneton ring pattern crisp, no blowouts on the crown."
+        },
+        {
+          "name": "img-7964",
+          "src": "/images/simple-sourdough/2026-06-19/img-7964-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-06-19/img-7964-400w.webp",
+          "alt": "Loaf 2 on cutting board at BSM, pre-bake — sharp banneton rings, floured towels and sheet pan in background",
+          "summary": "Boule resting on a cutting board in a commercial kitchen — banneton rings sharply defined, floured towels and sheet pan in the background.",
+          "notes": "loaf 2 - no sorec."
+        },
+        {
+          "name": "img-7965",
+          "src": "/images/simple-sourdough/2026-06-19/img-7965-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-06-19/img-7965-400w.webp",
+          "alt": "Loaf 2 crumb — open creamy interior, medium-large holes, big bay near the ear, thin crackling crust",
+          "summary": "Hand-held crumb shot of the split loaf — open creamy interior with medium-large holes and one big bay near the ear, thin crackling crust.",
+          "notes": "loaf 2 - no score - likely cause of the big air bubble at top."
+        },
+        {
+          "name": "img-7966",
+          "src": "/images/simple-sourdough/2026-06-19/img-7966-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-06-19/img-7966-400w.webp",
+          "alt": "Loaf torn in half on cutting board at BSM — baker in background, vinegar spray bottle and stacked deli cups visible",
+          "summary": "Loaf torn in half on a cutting board, BSM kitchen behind — baker in background, vinegar spray bottle and stacked deli cups visible.",
+          "notes": "loaf on the cutting board at work."
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Don't forget to score — unscored loaf 2 got a big air bubble at the top"
+        }
+      ],
       "bake_notes": [
         {
           "timestamp": "2026-06-16T14:36:14.719Z",
@@ -8516,7 +8569,69 @@
             }
           ]
         }
-      ]
+      ],
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 900,
+            "unit": "g",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 2.18
+          },
+          {
+            "ingredientId": "rouge_de_bordeaux",
+            "name": "Rouge de Bordeaux (BSM)",
+            "sourceType": "manual",
+            "sourceName": "BSM Rouge de Bordeaux Flour — Whole Wheat (2.5 lb)",
+            "amount": 100,
+            "unit": "g",
+            "packageSize": "2.5 lb",
+            "packagePrice": 14.00,
+            "cost": 1.23
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "manual",
+            "sourceName": "Tap (filtered) — negligible",
+            "amount": 750,
+            "unit": "g",
+            "packageSize": "0g",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.12
+          }
+        ],
+        "total": 3.64,
+        "perServing": 1.82,
+        "servings": 2
+      }
     }
   ],
   "research": {
