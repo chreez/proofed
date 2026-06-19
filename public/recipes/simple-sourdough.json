@@ -8327,6 +8327,196 @@
         "perServing": 1.33,
         "servings": 1
       }
+    },
+    {
+      "start_date": "2026-06-16",
+      "date": "2026-06-19",
+      "version": "v3.6.2",
+      "status": "in_progress",
+      "summary": "Tartine country at 1000g flour, 75% hydration. 100g Rouge de Bordeaux (BSM) blended into 900g KA bread flour. Mixed 9:20am Tue 6/16, DDT 80°F. Bassinage to 75% at salt fold. Preshape 3:42pm Tue to 999g single loaf. Bake target 6/19. Notes/results to be filled in.",
+      "notes": [
+        "Tartine country formula scaled to 1000g flour at 75% hydration. Blended 100g Rouge de Bordeaux (BSM) with 900g KA bread flour.",
+        "Mixed 9:20am Tue 6/16, kitchen 75.4°F. DDT 80°F at mix.",
+        "Folded in salt + 50g additional water (bassinage to 75%) at 10:20am. Dough temp 77.2°F. Three more S&F to go.",
+        "Second coil fold at 11:26am — 77.2°F (effectively fold 2/4).",
+        "Preshape 3:42pm — total yield 1937g, divided to 999g single loaf, 20 min bench rest."
+      ],
+      "photos": [],
+      "next_time": [],
+      "bake_notes": [
+        {
+          "timestamp": "2026-06-16T14:36:14.719Z",
+          "raw": "doing tartine recipe. with 1000 grams of flour and 75% hydration. using 100g rouge de bordeaux and 900g of ka bf.",
+          "curated": "Doing Tartine recipe with 1000g flour and 75% hydration. Using 100g Rouge de Bordeaux and 900g KA bread flour.",
+          "notable": true,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-06-16T14:36:33.979Z",
+          "raw": "mixed at 920. will fold in salt and 50g of water at 10:20",
+          "curated": "Mixed at 9:20am. Will fold in salt and 50g of water at 10:20am.",
+          "notable": true,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-06-16T14:36:38.931Z",
+          "raw": "75.4",
+          "curated": "Kitchen temp 75.4°F (pre-bake).",
+          "notable": true,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-06-16T14:37:06.096Z",
+          "raw": "80 degrees at mix",
+          "curated": "DDT 80°F at mix.",
+          "notable": true,
+          "stepId": "FOLD_1",
+          "prompt": "Record dough temperature",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-06-16T15:25:01.853Z",
+          "raw": "77.2 dough temp on salt incorporating \n\nthree more s&f to go",
+          "curated": "77.2°F dough temp on salt incorporating. Three more stretch-and-folds to go.",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-06-16T16:26:45.568Z",
+          "raw": "77.2 c&f (effectively 2/4)",
+          "curated": "77.2°F at coil-and-fold (effectively 2/4).",
+          "notable": false,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-06-16T20:42:02.105Z",
+          "raw": "1937 total yield. and 999g for one preshape. preshape start. resting 20 minutes",
+          "curated": "Total yield 1937g. 999g for one preshape. Preshape start, resting 20 minutes.",
+          "notable": true,
+          "processing": "shaping"
+        }
+      ],
+      "bake_stats": {
+        "confidence": "high",
+        "dough_temps": [
+          {
+            "time": "2026-06-16 - 09:20",
+            "temp_f": 80,
+            "note": "DDT at mix"
+          },
+          {
+            "time": "2026-06-16 - 10:25",
+            "temp_f": 77.2,
+            "note": "during salt incorporation"
+          },
+          {
+            "time": "2026-06-16 - 11:26",
+            "temp_f": 77.2,
+            "note": "coil fold 2/4"
+          }
+        ],
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-06-16",
+            "temp_f": 75.4,
+            "note": "pre-bake"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-06-16 - 10:20",
+            "type": "stretch_fold",
+            "note": "salt + 50g bassinage fold (1/4)"
+          },
+          {
+            "time": "2026-06-16 - 11:26",
+            "type": "coil",
+            "note": "2/4"
+          }
+        ],
+        "aliquot_rises": [],
+        "bake_phases": [],
+        "proof_phases": [],
+        "shape_time": "2026-06-16 - 15:42"
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-06-19",
+        "temp_high_f": 90.4,
+        "temp_low_f": 77.8,
+        "humidity_avg_percent": 80,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour (King Arthur)",
+              "total": 900,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Tartine country, scaled — 90% of flour",
+              "confidence": "high",
+              "rationale": "90% of 1000g total flour. KA Unbleached Bread Flour, 12.7% protein."
+            },
+            {
+              "id": "rouge_de_bordeaux",
+              "name": "Rouge de Bordeaux (BSM)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Barton Springs Mill",
+              "confidence": "high",
+              "rationale": "10% heritage red wheat blend for flavor. BSM stone-milled."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 750,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "name": "autolyse / mix",
+                  "amount": 700
+                },
+                {
+                  "name": "bassinage with salt",
+                  "amount": 50
+                }
+              ],
+              "sourcedFrom": "Tartine country, hydration bumped to 75%",
+              "confidence": "high",
+              "rationale": "75% hydration. 700g at mix, 50g added with salt at 10:20am."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Recipe baseline",
+              "confidence": "medium",
+              "rationale": "20% inoculation per recipe baseline. Exact amount not stated in scratchpad notes — defaulted from version baseline."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Recipe baseline",
+              "confidence": "medium",
+              "rationale": "2% of flour weight. Amount not stated in scratchpad notes — defaulted from version baseline."
+            }
+          ]
+        }
+      ]
     }
   ],
   "research": {

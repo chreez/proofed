@@ -1,0 +1,43 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-06-19",
+  "processedAt": "2026-06-19T00:07:36.817Z",
+  "photos": [
+    {
+      "name": "img-7960",
+      "thumb": "img-7960-400w.webp",
+      "src": "img-7960-800w.webp",
+      "summary": "Baked boule cooling on wire rack, side-lit and glowing amber — tight concentric banneton coils held shape, deep mahogany base."
+    },
+    {
+      "name": "img-7961",
+      "thumb": "img-7961-400w.webp",
+      "src": "img-7961-800w.webp",
+      "summary": "Same boule from a higher angle on the wire rack — top swirl visible, banneton ring pattern crisp, no blowouts on the crown."
+    },
+    {
+      "name": "img-7963",
+      "thumb": "img-7963-400w.webp",
+      "src": "img-7963-800w.webp",
+      "summary": "Crumb shot of loaf split in half — open irregular alveoli, glossy yellow gelatinized walls, even hole distribution from edge to edge."
+    },
+    {
+      "name": "img-7964",
+      "thumb": "img-7964-400w.webp",
+      "src": "img-7964-800w.webp",
+      "summary": "Boule resting on a cutting board in a commercial kitchen — banneton rings sharply defined, floured towels and sheet pan in the background."
+    },
+    {
+      "name": "img-7965",
+      "thumb": "img-7965-400w.webp",
+      "src": "img-7965-800w.webp",
+      "summary": "Hand-held crumb shot of the split loaf — open creamy interior with medium-large holes and one big bay near the ear, thin crackling crust."
+    },
+    {
+      "name": "img-7966",
+      "thumb": "img-7966-400w.webp",
+      "src": "img-7966-800w.webp",
+      "summary": "Loaf torn in half on a cutting board, BSM kitchen behind — baker in background, vinegar spray bottle and stacked deli cups visible."
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-06-19",
+  "storeId": 428,
+  "ingredients": [
+    {
+      "ingredientId": "bread_flour",
+      "name": "Bread Flour",
+      "recipeAmount": 1000,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lbs",
+          "sizeGrams": 2267.96,
+          "price": 5.78,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Unbleached Bread Flour",
+          "brand": "King Arthur",
+          "size": "10 lbs",
+          "sizeGrams": 4535.92,
+          "price": 10.99,
+          "salePrice": null,
+          "unitPrice": "$0.07/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Organic Bread Flour",
+          "brand": "King Arthur",
+          "size": "5 lb",
+          "sizeGrams": 2267.96,
+          "price": 7.87,
+          "salePrice": null,
+          "unitPrice": "$0.10/oz",
+          "inStock": true
+        },
+        {
+          "name": "King Arthur Neapolitan-Style '00' Pizza Flour",
+          "brand": "King Arthur",
+          "size": "3 lbs",
+          "sizeGrams": 1360.78,
+          "price": 6.68,
+          "salePrice": null,
+          "unitPrice": "$0.14/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "rouge_de_bordeaux",
+      "name": "Rouge de Bordeaux (BSM)",
+      "recipeAmount": 100,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "water",
+      "name": "Water",
+      "recipeAmount": 750,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "Hill Country Fare Distilled Water",
+          "brand": "Hill Country Fare",
+          "size": "1 gal",
+          "sizeGrams": 3785.41,
+          "price": 1.37,
+          "salePrice": null,
+          "unitPrice": "$0.01/fl oz",
+          "inStock": true
+        },
+        {
+          "name": "Hill Country Fare Natural Texas Spring Water",
+          "brand": "Hill Country Fare",
+          "size": "1 gal",
+          "sizeGrams": 3785.41,
+          "price": 1.34,
+          "salePrice": null,
+          "unitPrice": "$0.01/fl oz",
+          "inStock": true
+        },
+        {
+          "name": "Ozarka 100% Natural Texas Spring Water",
+          "brand": "Ozarka",
+          "size": "2.5 gal",
+          "sizeGrams": 9463.52,
+          "price": 4.48,
+          "salePrice": null,
+          "unitPrice": "$0.01/oz",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "ingredientId": "starter",
+      "name": "Active Sourdough Starter",
+      "recipeAmount": 200,
+      "recipeUnit": "g",
+      "products": []
+    },
+    {
+      "ingredientId": "salt",
+      "name": "Fine Sea Salt",
+      "recipeAmount": 20,
+      "recipeUnit": "g",
+      "products": [
+        {
+          "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
+          "brand": "H-E-B",
+          "size": "26.5 oz",
+          "sizeGrams": 751.26,
+          "price": 2.38,
+          "salePrice": null,
+          "unitPrice": "$0.09/oz",
+          "inStock": true
+        },
+        {
+          "name": "Morton Fine Sea Salt",
+          "brand": "Morton",
+          "size": "17.6 oz",
+          "sizeGrams": 498.95,
+          "price": 2.98,
+          "salePrice": null,
+          "unitPrice": "$0.17/oz",
+          "inStock": true
+        },
+        {
+          "name": "La Baleine Fine Sea Salt Shaker",
+          "brand": "La Baleine",
+          "size": "4.4 oz",
+          "sizeGrams": 124.74,
+          "price": 2.18,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        },
+        {
+          "name": "Redmond Real Salt Fine Sea Salt",
+          "brand": "Redmond Real Salt",
+          "size": "10 oz",
+          "sizeGrams": 283.5,
+          "price": 4.98,
+          "salePrice": null,
+          "unitPrice": "$0.50/oz",
+          "inStock": true
+        }
+      ]
+    }
+  ]
+}
