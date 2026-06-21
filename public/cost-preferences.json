@@ -78,6 +78,16 @@
         "packageSize": "10 lbs",
         "updatedAt": "2026-06-16"
       }
+    },
+    "milk-powder": {
+      "lastUsed": {
+        "name": "H-E-B Instant Non-Fat Dry Milk",
+        "brand": "H-E-B",
+        "sizeGrams": 725.75,
+        "packagePrice": 7.98,
+        "packageSize": "25.6 oz",
+        "updatedAt": "2026-06-21"
+      }
     }
   }
 }

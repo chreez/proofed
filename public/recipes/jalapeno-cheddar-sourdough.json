@@ -4812,6 +4812,343 @@
         "servings": 2,
         "date": "2026-05-21"
       }
+    },
+    {
+      "date": "2026-06-21",
+      "start_date": "2026-06-20",
+      "version": "v2.1.4",
+      "summary": "Levain variant of jalapeño cheddar — 200g levain + 50g BSM Rouge de Bordeaux + 67% hydration. Quick-bake flow (short fridge after shape) yielded underproofed but flavorful loaves. Verdict: levain doesn't justify the extra step; reverting to direct starter going forward.",
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-06-21",
+        "temp_high_f": 90.8,
+        "temp_low_f": 73.9,
+        "humidity_avg_percent": 81,
+        "condition": "Drizzle",
+        "source": "open-meteo"
+      },
+      "notes": [
+        "Friday 6/19 7:41pm — prepped 4 jalapeños, weighed a bit over 120g. Four is enough.",
+        "Friday 6/19 7:50pm — weighed cheese: 257g + 90g block = 347g total (above the 320g experiment-panel plan).",
+        "Sat 6/20 9:33am — kitchen 75.4°F pre-mix.",
+        "Sat 6/20 9:34am — mixed: 50g BSM Rouge de Bordeaux + 455g KA bread flour, 285g water + 20g bassinage held back, 200g ripe levain (built night before from 200g flour + 200g water + 60g 1:1 starter), 11g salt, 28g milk powder, 31g brown sugar, 50g room-temp butter. Target 67% effective hydration.",
+        "Sat 6/20 11:05am — folded inclusions in (~1.5hr into bulk; bulk started ~9:35am).",
+        "Sat 6/20 11:30am — coil fold.",
+        "Sat 6/20 ~12:30pm — third effective fold. Four folds total during bulk.",
+        "Sat 6/20 evening — shape, brief fridge of portioned doughs, quick bake about 2 hours after shaping. IMG_8008 captured Sat 9:42pm just out of oven.",
+        "Sun 6/21 afternoon — cut. Crumb tight (consistent with underproof), cheese pockets and jalapeño slices visible throughout both halves.",
+        "Verdict: levain experiment doesn't justify the extra step on this enriched, inclusion-heavy dough. Sticking with direct starter going forward."
+      ],
+      "next_time": [
+        {
+          "text": "Don't use levain for jalapeño cheddar — stick with direct starter at 65% hydration"
+        },
+        {
+          "text": "If retesting BSM blend, allow proper overnight cold retard — quick bake compounds underproof risk"
+        },
+        {
+          "text": "4 jalapeños is enough (was a bit over 120g this time)"
+        }
+      ],
+      "photos": [
+        {
+          "name": "img-8010",
+          "src": "/images/jalapeno-cheddar-sourdough/2026-06-21/img-8010-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-06-21/img-8010-400w.webp",
+          "summary": "Crumb shot of the loaf halved on a yellow cutting board over a stainless surface, showing a dense and tight interior with yellow cheese pockets and green jalapeño slices visible throughout, dark crust around the edges, purple bread lame in the upper background.",
+          "alt": "Loaf halved on yellow cutting board, tight underproofed crumb with even cheese pockets and jalapeño slices distributed throughout",
+          "usage": {
+            "hero": false,
+            "step": false,
+            "process": true,
+            "exclude": false
+          }
+        },
+        {
+          "name": "img-8008",
+          "src": "/images/jalapeno-cheddar-sourdough/2026-06-21/img-8008-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-06-21/img-8008-400w.webp",
+          "summary": "Top-down shot of a boule cooling on a wire rack, dusted with flour, deep mahogany crust with a prominent curling ear and bubbled cheese spots breaking through the surface, dim warm lighting.",
+          "alt": "Just-baked jalapeño cheddar boule cooling on wire rack, mahogany crust with prominent ear and cheese bubbled through the top",
+          "usage": {
+            "hero": true,
+            "step": false,
+            "process": false,
+            "exclude": false
+          }
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-06-20T00:41:30Z",
+          "raw": "note you just need four jalapeños really. weighed a bit over 120 this time",
+          "curated": "4 jalapeños is enough — weighed a bit over 120g this time",
+          "notable": false,
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-06-20T00:50:48Z",
+          "raw": "257+90 grams cheese",
+          "curated": "Weighed cheese: 257g + 90g block = 347g total",
+          "notable": true,
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-06-20T14:33:45Z",
+          "raw": "75.4",
+          "curated": "Kitchen 75.4°F pre-mix",
+          "notable": true,
+          "processing": "prep",
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?"
+        },
+        {
+          "timestamp": "2026-06-20T14:34:15Z",
+          "raw": "will be mixing today. doing a rouge de bordeaux mix with a levain instead of starter. will have measurements ready for processing",
+          "curated": "Mixing today — Rouge de Bordeaux + levain variant (instead of direct starter)",
+          "notable": true,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-06-20T16:05:23Z",
+          "raw": "folded inclusions in. waiting for 30 minutes. will do coil and folds. bulk proof has been already in progress for approx 1.5 hours",
+          "curated": "Folded inclusions in. ~30 min wait before coils. Bulk in progress ~1.5hr (started ~9:35am)",
+          "notable": true,
+          "processing": "bulk_ferment",
+          "stepId": "fold-inclusions"
+        },
+        {
+          "timestamp": "2026-06-20T17:09:08Z",
+          "raw": "did coil fold at 11:30. about to do effectively third fold",
+          "curated": "Coil fold at 11:30am. About to do effective 3rd fold (~12:30pm)",
+          "notable": false,
+          "processing": "bulk_ferment"
+        }
+      ],
+      "bake_stats": {
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-06-20",
+            "temp_f": 75.4,
+            "note": "pre-mix kitchen"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-06-20 - 11:05",
+            "type": "stretch_fold",
+            "note": "inclusion fold"
+          },
+          {
+            "time": "2026-06-20 - 11:30",
+            "type": "coil"
+          },
+          {
+            "time": "2026-06-20 - 12:30",
+            "type": "coil",
+            "note": "3rd effective fold (time inferred from 12:09pm note 'about to do')"
+          }
+        ]
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour (KA)",
+              "total": 455,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "bsm-rouge",
+              "name": "BSM Rouge de Bordeaux Flour",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 305,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "mix",
+                  "amount": 285
+                },
+                {
+                  "label": "bassinage",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "id": "starter",
+              "name": "Levain (200g; built from 200g flour + 200g water + 60g 1:1 starter)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 31,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 347,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Dough Mixing",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 550,
+            "unit": "g",
+            "cost": 1.33
+          },
+          {
+            "ingredientId": "bsm-rouge",
+            "name": "BSM Rouge de Bordeaux Flour",
+            "sourceType": "manual",
+            "sourceName": "Barton Springs Mill — Rouge de Bordeaux (estimated at Marquis rate)",
+            "amount": 50,
+            "unit": "g",
+            "cost": 0.57
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Filtered water (not yet priced)",
+            "amount": 340,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter (100% hydration)",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 110,
+            "unit": "g",
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 11,
+            "unit": "g",
+            "cost": 0.07
+          },
+          {
+            "ingredientId": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Instant Non-Fat Dry Milk",
+            "amount": 28,
+            "unit": "g",
+            "cost": 0.31
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "name": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Brown Sugar",
+            "amount": 31,
+            "unit": "g",
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "sourceType": "heb",
+            "sourceName": "Fresh Jalapeño Pepper",
+            "amount": 120,
+            "unit": "g",
+            "cost": 0.30
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sharp Cheddar Cheese",
+            "amount": 320,
+            "unit": "g",
+            "cost": 4.20
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter Sticks",
+            "amount": 50,
+            "unit": "g",
+            "cost": 0.31
+          }
+        ],
+        "total": 7.21,
+        "perServing": 3.61,
+        "servings": 2
+      }
     }
   ]
 }
