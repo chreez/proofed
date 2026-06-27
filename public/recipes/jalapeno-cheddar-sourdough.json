@@ -5154,8 +5154,7 @@
       "date": "2026-06-27",
       "start_date": "2026-06-26",
       "version": "v2.1.4",
-      "status": "in_progress",
-      "summary": null,
+      "summary": "Two-loaf bake at 750g each — on target for recipe (730g/loaf), not small as initially perceived (anchored to 5/7 double-cheese outlier). 22.5hr cold retard immediately after fold 3 + asymmetric final proof (loaf 2 sat ~2hr 13min RT during loaf 1 bake); both loaves ended with dark crusts, prominent cheese caramelization, sharp ears.",
       "notes": [
         "Pre-bake kitchen 75.4°F (Fri 10:56am).",
         "Observed butter (50g, stage 2) missing from mise list — recipe has it but UI didn't surface it.",
