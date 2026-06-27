@@ -5124,7 +5124,7 @@
             "sourceName": "Fresh Jalapeño Pepper",
             "amount": 120,
             "unit": "g",
-            "cost": 0.30
+            "cost": 0.3
           },
           {
             "ingredientId": "cheddar",
@@ -5133,7 +5133,7 @@
             "sourceName": "H-E-B Sharp Cheddar Cheese",
             "amount": 320,
             "unit": "g",
-            "cost": 4.20
+            "cost": 4.2
           },
           {
             "ingredientId": "butter",
@@ -5148,6 +5148,448 @@
         "total": 7.21,
         "perServing": 3.61,
         "servings": 2
+      }
+    },
+    {
+      "date": "2026-06-27",
+      "start_date": "2026-06-26",
+      "version": "v2.1.4",
+      "status": "in_progress",
+      "summary": null,
+      "notes": [
+        "Pre-bake kitchen 75.4°F (Fri 10:56am).",
+        "Observed butter (50g, stage 2) missing from mise list — recipe has it but UI didn't surface it.",
+        "Fold-inclusions done out of order: forgot to dry-mix-with-starter, did all in one step. Worried dry mix not well distributed; hoped stretch and folds would resolve.",
+        "Three coil folds Fri at 12:00, 12:30, 1:00pm. Into fridge immediately after fold 3 for overnight cold retard (~22.5hr).",
+        "Sat 11:30am — out of fridge. Dough still chilled after 1hr counter rest; harder to get target preshape.",
+        "Preshape at 12:30, 30min rest, into bannetons at 1:00pm.",
+        "Loaf 1: ~1hr banneton, S-score, 450°F covered 23min + uncovered ~20min (flipped halfway). Out ~2:43pm.",
+        "Loaf 2: ~2hr 13min banneton at RT (waited through loaf 1 bake + 30min preheat recovery to 450°F). Same S-score. In oven ~3:13pm, uncovered 3:35pm.",
+        "Both loaves ~750g — on target per recipe (730g) but felt small relative to expectation."
+      ],
+      "photos": [
+        {
+          "src": "/images/jalapeno-cheddar-sourdough/2026-06-27/img-8059-800w.webp",
+          "thumb": "/images/jalapeno-cheddar-sourdough/2026-06-27/img-8059-400w.webp",
+          "alt": "Both finished loaves on the kitchen counter — keeper on copper cooling rack with dark blistered crust, cheese caramelization oozing from base, prominent ear; gift loaf in foreground, parchment-sleeved in clear bag with floured top and visible cheese melt through plastic.",
+          "summary": "Both finished loaves on the kitchen counter — keeper on the copper cooling rack with a dark, blistered crust, visible cheese caramelization oozing from the bottom edge, and prominent ear; gift loaf in foreground, parchment-sleeved in clear bag, floured top with visible cheese melt through the plastic. Crusts on both look similarly developed.",
+          "usage": {
+            "hero": true,
+            "step": false,
+            "process": false,
+            "exclude": false
+          }
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Investigate ExperimentPanel reset bug — trash icon may not clear state; no full-reset path visible. Possible UI/code divergence."
+        },
+        {
+          "text": "Fix mise list to surface butter (50g, stage 2 ingredient) — UI omitted it."
+        },
+        {
+          "text": "Consider: 22.5hr cold retard + chilled preshape may be over-fermenting and deflating structure. Try shorter retard (14-16hr) or longer counter warmup before next mass-bump."
+        },
+        {
+          "text": "Try: scale dough phase to hit 900g/loaf target — bread flour 550→675g, water 340→415g, starter 110→135g, salt 11→14g, milk powder 28→34g, brown sugar 31→38g. Inclusions stay at 490g (load drops 31%→27%). Total 1560→1800g."
+        },
+        {
+          "text": "Consider: proportional 1.154× scaling alternative — adds ~50g cheddar + ~18g jalapeños to maintain inclusion ratio."
+        },
+        {
+          "text": "Try: longer dry-mix-with-starter step or explicit checklist for inclusion mixing order to avoid forgetting."
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-06-26T15:56:02Z",
+          "raw": "75.4",
+          "curated": "Pre-bake kitchen temp 75.4°F (scratchpad prompt: Kitchen temp °F?)",
+          "notable": true,
+          "processing": "prep",
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (°F)?"
+        },
+        {
+          "timestamp": "2026-06-26T16:15:16Z",
+          "raw": "butter is not in the mise list",
+          "curated": "Butter is not in the mise list",
+          "notable": true,
+          "processing": "prep",
+          "stepId": "_general"
+        },
+        {
+          "timestamp": "2026-06-26T17:24:20Z",
+          "raw": "did things a little out of order. forgot dry mix with the starter. but just did it all in one step. the dry mix may not be that well distributed but i’m hoping stretch and folds will help",
+          "curated": "Did things a little out of order. Forgot dry mix with the starter — did it all in one step. Dry mix may not be well distributed; hoping stretch and folds will help.",
+          "notable": true,
+          "processing": "mix",
+          "stepId": "fold-inclusions"
+        },
+        {
+          "timestamp": "2026-06-26T17:30:00Z",
+          "raw": "Coil fold #1 at 12:30 (assumed 30min prior to fold 2)",
+          "notable": false,
+          "processing": "bulk_ferment",
+          "stepId": "stretch-fold-1"
+        },
+        {
+          "timestamp": "2026-06-26T17:58:57Z",
+          "raw": "did coil fold at 12:30",
+          "curated": "Coil fold #2 done at 12:30pm",
+          "notable": false,
+          "processing": "bulk_ferment",
+          "stepId": "stretch-fold-2"
+        },
+        {
+          "timestamp": "2026-06-26T18:00:37Z",
+          "raw": "doing fold 3 now",
+          "curated": "Coil fold #3 in progress (1:00pm)",
+          "notable": false,
+          "processing": "bulk_ferment",
+          "stepId": "stretch-fold-3"
+        },
+        {
+          "timestamp": "2026-06-26T18:05:00Z",
+          "raw": "Into fridge immediately after fold 3 for overnight cold retard",
+          "notable": true,
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-06-27T16:30:00Z",
+          "raw": "Out of fridge. Dough still chilled after 1hr counter rest; harder to get target preshape.",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-06-27T17:30:00Z",
+          "raw": "Preshape at 12:30pm, 30min rest, into bannetons at 1:00pm",
+          "notable": false,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-06-27T19:00:00Z",
+          "raw": "Loaf 1 scored S-design, into oven 450°F covered 23min + uncovered ~20min (flipped halfway)",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-06-27T19:43:00Z",
+          "raw": "Loaf 1 out of oven ~2:43pm",
+          "notable": false,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-06-27T20:13:00Z",
+          "raw": "Loaf 2 into oven after ~30min preheat recovery to 450°F",
+          "notable": false,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-06-27T20:35:00Z",
+          "raw": "Loaf 2 uncovered at 3:35pm",
+          "notable": false,
+          "processing": "bake"
+        }
+      ],
+      "bake_stats": {
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-06-26",
+            "temp_f": 75.4,
+            "note": "pre-bake"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-06-26 - 12:00",
+            "type": "coil",
+            "note": "fold 1, assumed 30min prior to fold 2"
+          },
+          {
+            "time": "2026-06-26 - 12:30",
+            "type": "coil",
+            "note": "fold 2"
+          },
+          {
+            "time": "2026-06-26 - 13:00",
+            "type": "coil",
+            "note": "fold 3, into fridge immediately after"
+          }
+        ],
+        "proof_phases": [
+          {
+            "type": "cold_retard",
+            "start": "2026-06-26 - 13:00",
+            "end": "2026-06-27 - 11:30",
+            "duration_min": 1350,
+            "note": "~22.5hr cold retard, into fridge immediately after fold 3"
+          },
+          {
+            "type": "bench_rest",
+            "start": "2026-06-27 - 11:30",
+            "end": "2026-06-27 - 12:30",
+            "duration_min": 60,
+            "note": "counter warmup from fridge — dough still chilled at end"
+          },
+          {
+            "type": "bench_rest",
+            "start": "2026-06-27 - 12:30",
+            "end": "2026-06-27 - 13:00",
+            "duration_min": 30,
+            "note": "preshape rest"
+          },
+          {
+            "type": "bench_rest",
+            "start": "2026-06-27 - 13:00",
+            "end": "2026-06-27 - 14:00",
+            "duration_min": 60,
+            "note": "loaf 1 banneton final proof at RT"
+          },
+          {
+            "type": "bench_rest",
+            "start": "2026-06-27 - 13:00",
+            "end": "2026-06-27 - 15:13",
+            "duration_min": 133,
+            "note": "loaf 2 banneton final proof at RT — waited through loaf 1 bake + preheat recovery"
+          }
+        ],
+        "bake_phases": [
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 23,
+            "start_time": "2026-06-27 - 14:00",
+            "note": "loaf 1"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "note": "loaf 1, flipped halfway"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 22,
+            "start_time": "2026-06-27 - 15:13",
+            "note": "loaf 2"
+          }
+        ],
+        "shape_time": "2026-06-27 - 12:30",
+        "confidence": "medium"
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 550,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 340,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 28,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 31,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 320,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 160
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 160
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Dough Mixing",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-06-27",
+        "temp_high_f": 97.6,
+        "temp_low_f": 77.0,
+        "humidity_avg_percent": 62,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 550,
+            "unit": "g",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 1.33
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Filtered water (not yet priced)",
+            "amount": 340,
+            "unit": "g",
+            "packageSize": "not yet priced",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter (100% hydration)",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 110,
+            "unit": "g",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0.06
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 11,
+            "unit": "g",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.07
+          },
+          {
+            "ingredientId": "milk-powder",
+            "name": "Nonfat Milk Powder",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Instant Non-Fat Dry Milk",
+            "amount": 28,
+            "unit": "g",
+            "packageSize": "25.6 oz",
+            "packagePrice": 7.98,
+            "cost": 0.31
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "name": "Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "Zulka Brown Pure Cane Sugar",
+            "amount": 31,
+            "unit": "g",
+            "packageSize": "1 lb",
+            "packagePrice": 1.48,
+            "cost": 0.1
+          },
+          {
+            "ingredientId": "jalapenos",
+            "name": "Fresh Jalapeños",
+            "sourceType": "heb",
+            "sourceName": "Fresh Jalapeño Pepper",
+            "amount": 120,
+            "unit": "g",
+            "packageSize": "Avg. 0.165 lb",
+            "packagePrice": 0.19,
+            "cost": 0.3
+          },
+          {
+            "ingredientId": "cheddar",
+            "name": "Sharp Cheddar Cheese (block)",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sharp Cheddar Cheese",
+            "amount": 320,
+            "unit": "g",
+            "packageSize": "8 oz",
+            "packagePrice": 2.98,
+            "cost": 4.2
+          },
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter (room temp)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter Sticks",
+            "amount": 50,
+            "unit": "g",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 2.78,
+            "cost": 0.31
+          }
+        ],
+        "total": 6.68,
+        "perServing": 3.34,
+        "servings": 2,
+        "date": "2026-06-27"
       }
     }
   ]
