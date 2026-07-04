@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { useTechniques } from './useTechniques'
+import { useTechniques, setTechniqueTooltipsEnabled } from './useTechniques'
 
 global.fetch = vi.fn()
 
@@ -27,6 +27,7 @@ describe('useTechniques', () => {
     const { techniques, loaded } = useTechniques()
     techniques.value = {}
     loaded.value = false
+    setTechniqueTooltipsEnabled(true)
   })
 
   it('loads techniques from /techniques.json', async () => {
@@ -108,5 +109,47 @@ describe('useTechniques', () => {
       technique: mockTechniques.techniques['room temp']
     })
     expect(result[1]).toEqual({ type: 'text', content: ' butter' })
+  })
+
+  describe('kill switch (PF-283)', () => {
+    it('findTechnique returns null when disabled even for matching keyword', async () => {
+      vi.mocked(fetch).mockResolvedValueOnce({
+        json: () => Promise.resolve(mockTechniques)
+      } as Response)
+
+      const { loadTechniques, findTechnique } = useTechniques()
+      await loadTechniques()
+
+      setTechniqueTooltipsEnabled(false)
+      expect(findTechnique('room temp butter')).toBeNull()
+    })
+
+    it('parseTextWithTechniques returns single text chunk when disabled', async () => {
+      vi.mocked(fetch).mockResolvedValueOnce({
+        json: () => Promise.resolve(mockTechniques)
+      } as Response)
+
+      const { loadTechniques, parseTextWithTechniques } = useTechniques()
+      await loadTechniques()
+
+      setTechniqueTooltipsEnabled(false)
+      const result = parseTextWithTechniques('room temp butter')
+      expect(result).toEqual([{ type: 'text', content: 'room temp butter' }])
+    })
+
+    it('re-enabling restores matcher behavior', async () => {
+      vi.mocked(fetch).mockResolvedValueOnce({
+        json: () => Promise.resolve(mockTechniques)
+      } as Response)
+
+      const { loadTechniques, findTechnique } = useTechniques()
+      await loadTechniques()
+
+      setTechniqueTooltipsEnabled(false)
+      expect(findTechnique('room temp butter')).toBeNull()
+
+      setTechniqueTooltipsEnabled(true)
+      expect(findTechnique('room temp butter')).not.toBeNull()
+    })
   })
 })

@@ -11,6 +11,13 @@ export interface TechniquesData {
 
 const techniques = ref<Record<string, Technique>>({})
 const loaded = ref(false)
+// PF-283 kill switch: when false, matcher functions return no-decoration
+// results. App.vue sets this per-recipe from `config.techniqueTooltips`.
+const enabled = ref(true)
+
+export function setTechniqueTooltipsEnabled(value: boolean): void {
+  enabled.value = value
+}
 
 export function useTechniques() {
   async function loadTechniques(): Promise<void> {
@@ -27,6 +34,7 @@ export function useTechniques() {
   }
 
   function findTechnique(text: string): { keyword: string; technique: Technique } | null {
+    if (!enabled.value) return null
     const lowerText = text.toLowerCase()
 
     // Sort by keyword length (longest first) to match "warm to 43°C" before "warm"
@@ -41,6 +49,7 @@ export function useTechniques() {
   }
 
   function parseTextWithTechniques(text: string): Array<{ type: 'text' | 'technique'; content: string; technique?: Technique }> {
+    if (!enabled.value) return [{ type: 'text', content: text }]
     const result: Array<{ type: 'text' | 'technique'; content: string; technique?: Technique }> = []
     let remaining = text
 
@@ -88,6 +97,7 @@ export function useTechniques() {
   return {
     techniques,
     loaded,
+    enabled,
     loadTechniques,
     findTechnique,
     parseTextWithTechniques

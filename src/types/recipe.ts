@@ -250,6 +250,13 @@ export interface RecipeConfig {
    * for that entry. Independent of `aberration` (PF-240).
    */
   excludeFromStatsDefault?: boolean
+  /**
+   * PF-283 kill switch: when explicitly `false`, disables technique-glossary
+   * tooltip decoration for this recipe. Used as a per-recipe escape hatch
+   * while the matcher redesign is being developed. Absent/true = tooltips
+   * on (current behavior).
+   */
+  techniqueTooltips?: boolean
 }
 
 // Per-bake structured stats (Option A — flat scalars + arrays).

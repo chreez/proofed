@@ -5,7 +5,7 @@ import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
 import { useScratchpad } from '@/composables/useScratchpad'
 import { useScrollRestore } from '@/composables/useScrollRestore'
-import { useTechniques } from '@/composables/useTechniques'
+import { useTechniques, setTechniqueTooltipsEnabled } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import { latestCookLogEntryWithHero, findHeroPhoto } from '@/composables/useCookLog'
 import { targetToHash, hashToTarget, targetToElementId, SECTION_TARGETS } from '@/composables/useTocHash'
@@ -300,6 +300,17 @@ onMounted(async () => {
     // Non-critical — experiment panel just won't render
   }
 })
+
+// PF-283: honor per-recipe kill switch for technique glossary tooltips
+/* v8 ignore start -- app-level watch, matcher itself is unit-tested */
+watch(
+  () => currentRecipe.value?.config?.techniqueTooltips,
+  (flag) => {
+    // Absent/undefined = enabled (default). Explicit false = disabled.
+    setTechniqueTooltipsEnabled(flag !== false)
+  }
+)
+/* v8 ignore stop */
 
 // PF-281: scroll restore on recipe route
 const scrollRestore = useScrollRestore(
