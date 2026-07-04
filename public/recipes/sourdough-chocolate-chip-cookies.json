@@ -2581,7 +2581,8 @@
         "Bake time ~20 min at recipe temp — pulled by eye.",
         "Remainder: 8 dough balls vacuum-sealed to freezer for Thursday bake.",
         "Verdict: one of the better bakes (taste-test metrics pending).",
-        "Taste: good ratio of chocolate chip to cookie — validates the 250g fold trim (down from 350g recipe baseline)."
+        "Taste: good ratio of chocolate chip to cookie — validates the 250g fold trim (down from 350g recipe baseline).",
+        "Forgot flaky salt on top immediately after baking (again). Rescue: light water spray then sprinkle Maldon — adheres fine, tastes right. Minor issue."
       ],
       "photos": [
         {
@@ -2617,6 +2618,12 @@
         },
         {
           "text": "New evaluation metric proposed (from photo tagging): 'dog loitering %' as informal bake success indicator — Pyrenees hovering = kitchen-approved."
+        },
+        {
+          "text": "Flaky salt reminder: sprinkle Maldon on tops WITHIN the first minute after pulling from oven, while surface is still glossy. Recurring miss — consider a physical cue (e.g., pre-portion salt into a ramekin next to the cooling rack before oven-in)."
+        },
+        {
+          "text": "Rescue for forgotten flaky salt: light water mist over cooled cookies, then sprinkle Maldon — adheres well enough."
         }
       ],
       "bake_notes": [
@@ -2698,6 +2705,13 @@
           "curated": "Taste-test result: good chocolate chip to cookie ratio — 250g fold hit the sweet spot.",
           "notable": true,
           "processing": "taste_test"
+        },
+        {
+          "timestamp": "2026-07-04T20:05:00Z",
+          "raw": "i keep forgetting to put salt on it directly after baking. unsure how i can remember it but a callout for next time. very minor. i fix this by spraying it with some water and then sprinkling after",
+          "curated": "Flaky salt was forgotten immediately after baking (recurring miss). Rescue workaround: light water spray + Maldon sprinkle after the fact — works fine.",
+          "notable": true,
+          "processing": "finishing"
         }
       ],
       "ingredients": [
