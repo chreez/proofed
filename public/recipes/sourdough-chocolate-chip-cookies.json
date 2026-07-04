@@ -2580,7 +2580,8 @@
         "Baked Sat ~12:30 on large sheet pan (vs usual half-sheet which fits only 8); 13 cookies + 1 extra mini fit comfortably.",
         "Bake time ~20 min at recipe temp — pulled by eye.",
         "Remainder: 8 dough balls vacuum-sealed to freezer for Thursday bake.",
-        "Verdict: one of the better bakes (taste-test metrics pending)."
+        "Verdict: one of the better bakes (taste-test metrics pending).",
+        "Taste: good ratio of chocolate chip to cookie — validates the 250g fold trim (down from 350g recipe baseline)."
       ],
       "photos": [
         {
@@ -2690,6 +2691,13 @@
           "curated": "One of the better bakes; formal taste test pending.",
           "notable": true,
           "processing": "result"
+        },
+        {
+          "timestamp": "2026-07-04T20:00:00Z",
+          "raw": "taste - good ratio of choco chip to cookie",
+          "curated": "Taste-test result: good chocolate chip to cookie ratio — 250g fold hit the sweet spot.",
+          "notable": true,
+          "processing": "taste_test"
         }
       ],
       "ingredients": [
