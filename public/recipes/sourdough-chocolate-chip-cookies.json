@@ -2564,6 +2564,428 @@
           "usage": "hero"
         }
       ]
+    },
+    {
+      "date": "2026-07-04",
+      "start_date": "2026-07-03",
+      "version": "v2.0.4",
+      "summary": "Best-execution cookie bake to date — brown butter dialed to honey color, 250g chocolate fold + ~5-chip decorative tops, ~20 min on large sheet pan at recipe temp. 13 cookies + 1 mini baked; 8 dough balls vacuum-sealed for Thursday.",
+      "notes": [
+        "Mixed dough Fri 07-03 ~20:30 — into fridge overnight.",
+        "Chocolate: 250g folded in (intentional). Recipe's 50g 'tops' number treated as decoration only — ~5 chips per cookie, not a weight.",
+        "Brown butter dialed to honey color — good this time; a prior attempt a few days ago was overdone.",
+        "Out of fridge Sat 07-04 ~11:00; tempered on counter until ~12:00 for easier scooping.",
+        "Scoop: target 56g per ball; many landed 57-58g. Divided by 24 but came up ~1.5 cookies short. Dough transfer/scoop was lossless — cambro was clean by end of shaping.",
+        "Chilled scooped balls in freezer ~15 min to solidify.",
+        "Baked Sat ~12:30 on large sheet pan (vs usual half-sheet which fits only 8); 13 cookies + 1 extra mini fit comfortably.",
+        "Bake time ~20 min at recipe temp — pulled by eye.",
+        "Remainder: 8 dough balls vacuum-sealed to freezer for Thursday bake.",
+        "Verdict: one of the better bakes (taste-test metrics pending)."
+      ],
+      "photos": [
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8131-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8131-400w.webp",
+          "alt": "Cold-rested dough in a square lidded container on parchment with a cookie scoop resting inside; chocolate chunks visible throughout the tan dough after the overnight fridge rest."
+        },
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8136-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8136-400w.webp",
+          "alt": "Close-up of baked cookies on the wire rack — puffed rounds with molten chocolate chip tops and honey-brown color from the dialed-in brown butter; Great Pyrenees and second dog mid-lick blurred in background."
+        },
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8140-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8140-400w.webp",
+          "alt": "Rack of finished cookies in the foreground with the Great Pyrenees watching from across the room — decorative chips on each cookie top, honey-brown crumb, edges set but centers still glossy."
+        },
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-07-04/fullsizerender-vsco-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-04/fullsizerender-vsco-400w.webp",
+          "alt": "Hero shot of the finished bake — wire rack of 13 cookies plus one mini on a large sheet pan, warm honey-brown crumb from the browned butter, chocolate chunks visible across the tops; both dogs framed in the background."
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Scoop math: aim ~5g under a perfectly-divisible target (e.g. 51g if dividing dough by 24) — actual scoops drift up to 57-58g, which eats into cookie count. Dough is lossless so under-target is safe."
+        },
+        {
+          "text": "Recipe 'chocolate tops 50g' field is misleading — for this bake pattern tops are ~5 chips per cookie decoration, not a weight. Clarify in recipe or split into separate ingredient lines."
+        },
+        {
+          "text": "A/B taste: today's brown-butter-honey batch vs Thursday's frozen-dough batch. Log crumb/edge/flavor differences."
+        },
+        {
+          "text": "New evaluation metric proposed (from photo tagging): 'dog loitering %' as informal bake success indicator — Pyrenees hovering = kitchen-approved."
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-07-04T01:30:00Z",
+          "raw": "mixed everything and placed in fridge around 20:30",
+          "curated": "Mixed everything and placed in fridge around 20:30 CDT.",
+          "notable": true,
+          "stepId": "overnight-rest",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-07-04T02:00:00Z",
+          "raw": "did 250g of chocolate",
+          "curated": "Chocolate: 250g folded in (deviation from 350g recipe baseline; tops handled as ~5-chip decoration instead of 50g weight).",
+          "notable": true,
+          "stepId": "overnight-rest",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-07-04T16:00:00Z",
+          "raw": "pulled out of fridge around 11am - let rest on counter till about 12 to temper the dough for easier scooping",
+          "curated": "Pulled dough from fridge ~11:00 CDT; rested on counter until ~12:00 to temper for easier scooping.",
+          "notable": false,
+          "processing": "temper"
+        },
+        {
+          "timestamp": "2026-07-04T17:15:00Z",
+          "raw": "process was: scoop all cookies aiming for 56g (a lot of them came out to 57 or 58, which could have added up to the missing cookie.) may need to shoot for 5g less than perfectly divisible amount. this cookie dough is pretty lossless when i transfer containers or scoop (no remnants being lost.. the cambro was pretty much clean by the time i was done shaping)",
+          "curated": "Scooped to 56g target; many balls landed 57-58g. Divided dough by 24 but came up ~1.5 cookies short — drift up ate into cookie count. Dough is lossless during transfer and scooping.",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-07-04T17:20:00Z",
+          "raw": "after i scaled the balls, i placed in freezer for approx 15 minutes to solidify",
+          "curated": "Scooped balls into freezer ~15 min to solidify before pan-out.",
+          "notable": false,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-07-04T17:30:00Z",
+          "raw": "baked around 1230 - i did a larger sheet of cookies and the final bake time was probably closer to 20 minutes or so. i just kept an eye on the cookies. ... i set out 13 cookies (+1 one extra mini one) which sat perfectly fine on this baking pan i used. i normally use a half sheet pan which can only comfortable seat 8.",
+          "curated": "Into oven ~12:30 CDT on large sheet pan (13 cookies + 1 mini); half-sheet normally seats only 8.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-07-04T17:50:00Z",
+          "raw": "final bake time was probably closer to 20 minutes or so. i just kept an eye on the cookies.",
+          "curated": "Bake ~20 min at recipe temp, pulled by eye.",
+          "notable": true,
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-07-04T17:55:00Z",
+          "raw": "i had 8 remainder dough balls that i placed in the freezer in a vacuum seal bag. will bake likely on thursday.",
+          "curated": "8 remainder dough balls vacuum-sealed to freezer for Thursday bake.",
+          "notable": true,
+          "processing": "storage"
+        },
+        {
+          "timestamp": "2026-07-04T18:00:00Z",
+          "raw": "this time it seemed good. i had made one a few days ago but i think i overdid it. this time around it was just fine. it was a honey color.",
+          "curated": "Brown butter came out honey color this time — dialed in vs prior overdone attempt.",
+          "notable": true,
+          "processing": "result"
+        },
+        {
+          "timestamp": "2026-07-04T18:05:00Z",
+          "raw": "seems good. one of the better bakes. will have to try one and bite into it to see.",
+          "curated": "One of the better bakes; formal taste test pending.",
+          "notable": true,
+          "processing": "result"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "6/7 agents confirmed 225-227g browned butter as consensus"
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 210,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across sources; 2:1 brown-to-white ratio"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 96,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Provides crispness and spread balance"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 54,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Yolks only removes excess moisture; validated by JennyBlogs bake-off winner"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "100-150g sweet spot for overnight ferment; discard preferred over active"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "1 tbsp; bean paste upgrade recommended"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "AP-dominant blend"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "AP+bread blend is our v1 differentiator; most blogs use AP only but KAB and Edd Kimber validate the blend"
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid for lift and browning"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Insurance lift; some recipes omit"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Consistent across sources"
+            },
+            {
+              "id": "chocolate",
+              "name": "Chopped Chocolate (60-66% semisweet)",
+              "total": 260,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "fold into dough",
+                  "amount": 250
+                },
+                {
+                  "label": "press into tops",
+                  "amount": 10
+                }
+              ],
+              "confidence": "high",
+              "rationale": "Hand-chopped bar, not chips; reserve for surface per Schiff technique"
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across every source"
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-07-04",
+        "temp_high_f": 97.0,
+        "temp_low_f": 76.5,
+        "humidity_avg_percent": 61,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "date": "2026-07-04",
+        "total": 14.21,
+        "perServing": 0.65,
+        "servings": 22,
+        "items": [
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Unsalted Butter Sticks",
+            "amount": 225,
+            "unit": "g",
+            "packageSize": "4 ct (16 oz)",
+            "packagePrice": 2.78,
+            "cost": 1.38
+          },
+          {
+            "ingredientId": "dark-brown-sugar",
+            "name": "Dark Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "Imperial Sugar Pure Cane Dark Brown Sugar",
+            "amount": 210,
+            "unit": "g",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.82,
+            "cost": 0.65
+          },
+          {
+            "ingredientId": "granulated-sugar",
+            "name": "Granulated Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "amount": 96,
+            "unit": "g",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.48,
+            "cost": 0.26
+          },
+          {
+            "ingredientId": "egg-yolks",
+            "name": "Egg Yolks (large)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs",
+            "amount": 54,
+            "unit": "g",
+            "packageSize": "12 ct",
+            "packagePrice": 1.67,
+            "cost": 0.0
+          },
+          {
+            "ingredientId": "vanilla",
+            "name": "Vanilla Extract",
+            "sourceType": "heb",
+            "sourceName": "McCormick Pure Vanilla Extract",
+            "amount": 13,
+            "unit": "g",
+            "packageSize": "2 fl oz",
+            "packagePrice": 6.68,
+            "cost": 1.53
+          },
+          {
+            "ingredientId": "ap-flour",
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Enriched Bleached All-Purpose Flour",
+            "amount": 200,
+            "unit": "g",
+            "packageSize": "5 lbs",
+            "packagePrice": 1.95,
+            "cost": 0.17
+          },
+          {
+            "ingredientId": "bread-flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B The Baker's Scoop Bread Flour",
+            "amount": 120,
+            "unit": "g",
+            "packageSize": "5 lbs",
+            "packagePrice": 3.78,
+            "cost": 0.2
+          },
+          {
+            "ingredientId": "sourdough-discard",
+            "name": "Sourdough Discard (100% hydration)",
+            "sourceType": "manual",
+            "sourceName": "Manual entry",
+            "amount": 150,
+            "unit": "g",
+            "packageSize": "0g",
+            "packagePrice": 0.0,
+            "cost": 0.0
+          },
+          {
+            "ingredientId": "baking-soda",
+            "name": "Baking Soda",
+            "sourceType": "heb",
+            "sourceName": "Arm & Hammer Pure Baking Soda",
+            "amount": 5,
+            "unit": "g",
+            "packageSize": "8 oz",
+            "packagePrice": 0.87,
+            "cost": 0.02
+          },
+          {
+            "ingredientId": "baking-powder",
+            "name": "Baking Powder",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Double Acting Baking Powder",
+            "amount": 2,
+            "unit": "g",
+            "packageSize": "8.1 oz",
+            "packagePrice": 2.08,
+            "cost": 0.02
+          },
+          {
+            "ingredientId": "fine-sea-salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "La Baleine Fine Sea Salt Shaker",
+            "amount": 6,
+            "unit": "g",
+            "packageSize": "4.4 oz",
+            "packagePrice": 2.18,
+            "cost": 0.1
+          },
+          {
+            "ingredientId": "chocolate",
+            "name": "Chopped Chocolate (60-66% semisweet)",
+            "sourceType": "heb",
+            "sourceName": "Ghirardelli Premium Baking Bar Semi-Sweet Chocolate",
+            "amount": 260,
+            "unit": "g",
+            "packageSize": "4 oz",
+            "packagePrice": 4.28,
+            "cost": 9.81
+          },
+          {
+            "ingredientId": "flaky-salt",
+            "name": "Flaky Sea Salt (Maldon)",
+            "sourceType": "heb",
+            "sourceName": "Maldon Smoked Sea Salt Flakes",
+            "amount": 2,
+            "unit": "g",
+            "packageSize": "4.4 oz",
+            "packagePrice": 4.18,
+            "cost": 0.07
+          }
+        ]
+      }
     }
   ],
   "reheat": {
