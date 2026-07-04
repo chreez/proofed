@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useRecipe } from '@/composables/useRecipe'
 import { useProgress } from '@/composables/useProgress'
 import { useScratchpad } from '@/composables/useScratchpad'
+import { useScrollRestore } from '@/composables/useScrollRestore'
 import { useTechniques } from '@/composables/useTechniques'
 import { useRecipeMeta } from '@/composables/useRecipeMeta'
 import { latestCookLogEntryWithHero, findHeroPhoto } from '@/composables/useCookLog'
@@ -300,10 +301,31 @@ onMounted(async () => {
   }
 })
 
+// PF-281: scroll restore on recipe route
+const scrollRestore = useScrollRestore(
+  computed(() => (route.name === 'recipe' && currentRecipeId.value) ? currentRecipeId.value : null),
+  computed(() => currentRecipe.value?.version ?? null)
+)
+
+watch(
+  [() => route.name, currentRecipeId, () => currentRecipe.value?.version] as const,
+  ([routeName, id, version], _prev, onCleanup) => {
+    if (routeName === 'recipe' && id && version) {
+      nextTick(() => {
+        scrollRestore.startTracking()
+      })
+      onCleanup(() => scrollRestore.stopTracking())
+    } else {
+      scrollRestore.stopTracking()
+    }
+  }
+)
+
 /* v8 ignore start -- guarded by template v-if, null branches unreachable */
 function handleReset(): void {
   progress.value!.resetProgress()
   scratchpad.value!.clearAll()
+  scrollRestore.clearCurrent()
 }
 /* v8 ignore stop */
 

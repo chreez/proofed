@@ -1,9 +1,10 @@
 ---
 id: PF-281
 title: Restore scroll position when reloading a recipe
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-06-27 22:06'
+updated_date: '2026-07-04 20:18'
 labels:
   - ux
 dependencies: []
