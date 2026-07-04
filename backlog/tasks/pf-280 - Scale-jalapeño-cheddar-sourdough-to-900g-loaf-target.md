@@ -1,9 +1,10 @@
 ---
-id: DRAFT-122
+id: PF-280
 title: Scale jalapeño cheddar sourdough to 900g/loaf target
-status: Draft
+status: Done
 assignee: []
 created_date: '2026-06-27 22:05'
+updated_date: '2026-07-04 19:07'
 labels:
   - ungroomed
   - recipe

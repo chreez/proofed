@@ -8,7 +8,7 @@
       "type": "inspired",
       "author": "Jon Przybyl"
     },
-    "yields": "2 loaves (~730g each)",
+    "yields": "2 loaves (~967g each)",
     "servings": 16,
     "total_time": "~26 hrs (1 hr active, 25 hrs passive)",
     "description": "Enriched sourdough with milk powder, butter, and brown sugar — soft sandwich-style crumb studded with fresh jalapeño heat and melty cheddar pockets. 65% base hydration (67% effective with butter). Inclusions contribute ~189g moisture — shape fast before they bleed. Uses 100g active starter directly (no levain build). Scaled 10% from Proof Bread's Ukrainian baton-style approach.",
@@ -39,7 +39,7 @@
       ]
     }
   },
-  "version": "v2.1.4",
+  "version": "v3.0.0",
   "change_log": [
     {
       "version": "v2.1.2",
@@ -893,6 +893,106 @@
           ]
         }
       ]
+    },
+    {
+      "version": "v3.0.0",
+      "date": "2026-07-04",
+      "summary": "Major: scale to ~967g/loaf — bread flour 550→675g, water 340→415g, starter 110→135g, salt 11→14g, milk powder 28→34g, brown sugar 31→38g, cheddar 320→454g (whole 16oz block). Jalapeños + butter unchanged. Hydration 65% + salt 1.8% preserved. Bake schedule +3min covered (30→33), +2min uncovered (18→20). (PF-280)",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 675,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 415,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 135,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 34,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 38,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 454,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 227
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 227
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stageId": "MIX",
+          "stageName": "Dough Mixing",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (room temp)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -943,42 +1043,42 @@
           {
             "id": "flour",
             "name": "Bread Flour",
-            "total": 550,
+            "total": 675,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "water",
             "name": "Water",
-            "total": 340,
+            "total": 415,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "starter",
             "name": "Active Sourdough Starter (100% hydration)",
-            "total": 110,
+            "total": 135,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "salt",
             "name": "Fine Sea Salt",
-            "total": 11,
+            "total": 14,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "milk-powder",
             "name": "Nonfat Milk Powder",
-            "total": 28,
+            "total": 34,
             "unit": "g",
             "breakdown": null
           },
           {
             "id": "brown-sugar",
             "name": "Brown Sugar",
-            "total": 31,
+            "total": 38,
             "unit": "g",
             "breakdown": null
           },
@@ -1001,16 +1101,16 @@
           {
             "id": "cheddar",
             "name": "Sharp Cheddar Cheese (block)",
-            "total": 320,
+            "total": 454,
             "unit": "g",
             "breakdown": [
               {
                 "label": "loaf 1",
-                "amount": 160
+                "amount": 227
               },
               {
                 "label": "loaf 2",
-                "amount": 160
+                "amount": 227
               }
             ]
           }
@@ -1092,7 +1192,7 @@
     {
       "id": "autolyse-rest",
       "title": "Autolyse Rest",
-      "direction": "In a large mixing bowl, combine 550g bread flour and 340g water. Mix until no dry flour remains. Place 110g active sourdough starter on top of the dough (do not mix in yet). Cover and rest 20-30 minutes.",
+      "direction": "In a large mixing bowl, combine 675g bread flour and 415g water. Mix until no dry flour remains. Place 135g active sourdough starter on top of the dough (do not mix in yet). Cover and rest 20-30 minutes.",
       "duration_min": 25,
       "timer": true,
       "parallel": true,
@@ -1181,7 +1281,7 @@
     {
       "id": "cube-cheddar",
       "title": "Cube Cheddar",
-      "direction": "Cut block cheddar into 1cm cubes. Slice block into 1cm slabs, then cut into 1cm strips, then crosscut into cubes. Weigh out 110g per loaf (220g total).",
+      "direction": "Cut block cheddar into 1cm cubes. Slice block into 1cm slabs, then cut into 1cm strips, then crosscut into cubes. Weigh out 227g per loaf (454g total).",
       "duration_min": 15,
       "timer": false,
       "parallel": true,
@@ -1206,7 +1306,7 @@
     {
       "id": "pre-mix-dry",
       "title": "Pre-Mix Dry Additions",
-      "direction": "In a medium bowl, combine 11g salt, 28g milk powder, and 31g brown sugar. Mix by hand, breaking up any brown sugar clumps. Discard any hard crystallized sugar pieces.",
+      "direction": "In a medium bowl, combine 14g salt, 34g milk powder, and 38g brown sugar. Mix by hand, breaking up any brown sugar clumps. Discard any hard crystallized sugar pieces.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
@@ -1396,12 +1496,12 @@
     {
       "id": "divide",
       "title": "Divide Dough",
-      "direction": "Turn the dough out onto a lightly floured surface. Using a bench scraper, divide into two equal pieces, each approximately 730g.",
+      "direction": "Turn the dough out onto a lightly floured surface. Using a bench scraper, divide into two equal pieces, each approximately 967g.",
       "duration_min": 2,
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Two roughly equal pieces of dough, each ~730g.",
+      "exit_condition": "Two roughly equal pieces of dough, each ~967g.",
       "notes": null
     },
     {
@@ -1510,19 +1610,19 @@
     {
       "id": "bake-steam",
       "title": "Bake (Steam Phase)",
-      "direction": "Place the lid on the Dutch oven. Bake at 450°F (230°C) for 30 minutes with the lid on.",
-      "duration_min": 30,
+      "direction": "Place the lid on the Dutch oven. Bake at 450°F (230°C) for 33 minutes with the lid on.",
+      "duration_min": 33,
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "30 minutes elapsed. Do not open the lid during this phase.",
+      "exit_condition": "33 minutes elapsed. Do not open the lid during this phase.",
       "notes": null
     },
     {
       "id": "bake-dry",
       "title": "Bake (Dry Phase)",
-      "direction": "Carefully remove the Dutch oven lid. Drop oven temperature to 425°F (218°C) and continue baking 15-20 minutes until the crust is deep golden brown and the internal temperature reads 210°F (99°C). The reduced uncovered temp prevents over-browning while the loaf finishes setting.",
-      "duration_min": 18,
+      "direction": "Carefully remove the Dutch oven lid. Drop oven temperature to 425°F (218°C) and continue baking 17-22 minutes until the crust is deep golden brown and the internal temperature reads 210°F (99°C). The reduced uncovered temp prevents over-browning while the loaf finishes setting.",
+      "duration_min": 20,
       "timer": true,
       "parallel": false,
       "components": null,
