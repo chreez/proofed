@@ -16,7 +16,8 @@
     "test:watch": "vitest",
     "nutrition": "tsx scripts/calculate-nutrition.ts",
     "photos": "tsx scripts/process-photos.ts",
-    "bake-stats": "tsx scripts/bake-stats.ts"
+    "bake-stats": "tsx scripts/bake-stats.ts",
+    "audit:techniques": "tsx scripts/audit-techniques.ts"
   },
   "keywords": [],
   "author": "",

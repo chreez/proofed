@@ -1,9 +1,10 @@
 ---
 id: PF-283
 title: 'SPIKE: Technique-glossary matcher redesign + audit'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-07-04 20:01'
+updated_date: '2026-07-04 20:35'
 labels:
   - spike
   - ux
