@@ -39,7 +39,7 @@
       ]
     }
   },
-  "version": "v3.0.0",
+  "version": "v3.0.1",
   "change_log": [
     {
       "version": "v2.1.2",
@@ -993,6 +993,100 @@
           ]
         }
       ]
+    },
+    {
+      "version": "v3.0.1",
+      "date": "2026-07-04",
+      "summary": "Patch: move butter (50g) from MIX gather to PREP gather. Butter is still added at the temper-butter state in MIX, but is now surfaced upfront in the mise en place so users see the full ingredient list before starting. Fixes cook_log 2026-06-27 observation. (PF-282) Also renames butter ingredient to \"Unsalted Butter (softened)\" so it matches the correct softened-butter tooltip in the technique glossary (was misfiring the room-temp-eggs tooltip).",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "flour",
+              "name": "Bread Flour",
+              "total": 675,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 415,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter (100% hydration)",
+              "total": 135,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 14,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk-powder",
+              "name": "Nonfat Milk Powder",
+              "total": 34,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 38,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "jalapenos",
+              "name": "Fresh Jalapeños",
+              "total": 120,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 60
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "id": "cheddar",
+              "name": "Sharp Cheddar Cheese (block)",
+              "total": 454,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "loaf 1",
+                  "amount": 227
+                },
+                {
+                  "label": "loaf 2",
+                  "amount": 227
+                }
+              ]
+            },
+            {
+              "id": "butter",
+              "name": "Unsalted Butter (softened)",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -1113,6 +1207,13 @@
                 "amount": 227
               }
             ]
+          },
+          {
+            "id": "butter",
+            "name": "Unsalted Butter (softened)",
+            "total": 50,
+            "unit": "g",
+            "breakdown": null
           }
         ]
       },
@@ -1127,17 +1228,7 @@
     {
       "id": "MIX",
       "title": "Dough Mixing",
-      "gather": {
-        "ingredients": [
-          {
-            "id": "butter",
-            "name": "Unsalted Butter (room temp)",
-            "total": 50,
-            "unit": "g",
-            "breakdown": null
-          }
-        ]
-      },
+      "gather": null,
       "states": [
         "incorporate",
         "develop-gluten",
