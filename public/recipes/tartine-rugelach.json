@@ -1,5 +1,5 @@
 {
-  "version": "v1.1.2",
+  "version": "v1.1.3",
   "meta": {
     "name": "Tartine Rugelach",
     "source": {
@@ -260,7 +260,7 @@
     {
       "version": "v1.0.0",
       "date": "2026-05-11",
-      "summary": "Initial recipe from Tartine cookbook (pp. 222-223) — cream cheese dough with walnut-currant filling, baker Davita's part-einkorn version.",
+      "summary": "Initial recipe from Tartine cookbook (pp. 222-223) \u2014 cream cheese dough with walnut-currant filling, baker Davita's part-einkorn version.",
       "ingredients": [
         {
           "stageId": "MIX_DOUGH",
@@ -375,7 +375,134 @@
     {
       "version": "v1.1.2",
       "date": "2026-05-12",
-      "summary": "Backfill throughput timing fields on meta — prep_active=33m, proof_passive=72m, oven_occupancy=40m, bake=25m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
+      "summary": "Backfill throughput timing fields on meta \u2014 prep_active=33m, proof_passive=72m, oven_occupancy=40m, bake=25m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
+      "ingredients": [
+        {
+          "stageId": "MIX_DOUGH",
+          "stageName": "Mix Cream Cheese Dough",
+          "ingredients": [
+            {
+              "id": "cream-cheese",
+              "name": "Cream Cheese (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "8 oz"
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 cup"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 260,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2 cups"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1/2 cup"
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 tsp"
+            }
+          ]
+        },
+        {
+          "stageId": "MAKE_FILLING",
+          "stageName": "Make Walnut-Currant Filling",
+          "ingredients": [
+            {
+              "id": "walnuts",
+              "name": "Walnuts",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 cup"
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "2/3 cup"
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 Tbsp"
+            },
+            {
+              "id": "currants",
+              "name": "Currants",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1/2 cup"
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Roll, Fill, and Shape",
+          "ingredients": [
+            {
+              "id": "melted-butter",
+              "name": "Unsalted Butter (melted, cooled)",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "3 Tbsp"
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Egg Wash, Sugar, and Bake",
+          "ingredients": [
+            {
+              "id": "egg",
+              "name": "Large Egg",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "1 large"
+            },
+            {
+              "id": "sugar-topping",
+              "name": "Granulated Sugar (for topping)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "display_amount": "for sprinkling"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "v1.1.3",
+      "date": "2026-06-02",
+      "summary": "Cook log: third bake \u2014 overnight chill, middle rack, 24 min @ 350\u00b0F. Significant time reduction vs 5/15 (35 min on top rack). Slight bitterness from exposed walnuts at seams identified as next-bake fix.",
       "ingredients": [
         {
           "stageId": "MIX_DOUGH",
@@ -504,12 +631,12 @@
     {
       "id": "V1",
       "name": "Stand Mixer Bowl",
-      "reuse": "Used only for cream cheese dough — wash and dry after dough is shaped into disc."
+      "reuse": "Used only for cream cheese dough \u2014 wash and dry after dough is shaped into disc."
     },
     {
       "id": "V2",
       "name": "Food Processor",
-      "reuse": "Used only for walnut-currant filling — pulse walnuts, then sugar + cinnamon, then transfer filling to a bowl for stirring in currants."
+      "reuse": "Used only for walnut-currant filling \u2014 pulse walnuts, then sugar + cinnamon, then transfer filling to a bowl for stirring in currants."
     },
     {
       "id": "V3",
@@ -519,7 +646,7 @@
     {
       "id": "V4",
       "name": "Baking Sheet",
-      "reuse": "Lined with parchment — used for shaping placement, freezer chill, and bake."
+      "reuse": "Lined with parchment \u2014 used for shaping placement, freezer chill, and bake."
     }
   ],
   "stages": [
@@ -725,10 +852,10 @@
           "amount": "225g"
         }
       ],
-      "exit_condition": "Cream cheese is smooth, lightened in color, and slightly aerated — no visible lumps or hard chunks.",
+      "exit_condition": "Cream cheese is smooth, lightened in color, and slightly aerated \u2014 no visible lumps or hard chunks.",
       "notes": [
         {
-          "text": "Cream cheese must be at true room temperature (~68°F/20°C). Cold cream cheese will not aerate; the dough will be lumpy.",
+          "text": "Cream cheese must be at true room temperature (~68\u00b0F/20\u00b0C). Cold cream cheese will not aerate; the dough will be lumpy.",
           "critical": false,
           "source": "agent"
         }
@@ -773,7 +900,7 @@
           "amount": "6g"
         }
       ],
-      "exit_condition": "Dough balls around the paddle but is moist with some chunks and visible specks of loose flour. Not totally cohesive — that's correct.",
+      "exit_condition": "Dough balls around the paddle but is moist with some chunks and visible specks of loose flour. Not totally cohesive \u2014 that's correct.",
       "notes": [
         {
           "text": "Undermixing is the goal. Overmixed dough develops gluten and loses flakiness. Specks of loose flour should still be visible.",
@@ -806,14 +933,14 @@
       "exit_condition": "Dough is firm and cold throughout, no longer tacky. Easy to roll without sticking excessively.",
       "notes": [
         {
-          "text": "Overnight chill is fine and often improves both flavor and roll-out behavior — dough relaxes and rolls more evenly.",
+          "text": "Overnight chill is fine and often improves both flavor and roll-out behavior \u2014 dough relaxes and rolls more evenly.",
           "critical": false,
           "source": "agent"
         }
       ],
       "reminders": [
         {
-          "prompt": "Dough texture out of fridge — too firm, just right, or still soft?",
+          "prompt": "Dough texture out of fridge \u2014 too firm, just right, or still soft?",
           "type": "observation"
         }
       ]
@@ -821,7 +948,7 @@
     {
       "id": "pulse-walnuts",
       "title": "Pulse Walnuts",
-      "direction": "In food processor fitted with the steel blade, pulse the walnuts until the pieces are small — about the size of sunflower seeds.",
+      "direction": "In food processor fitted with the steel blade, pulse the walnuts until the pieces are small \u2014 about the size of sunflower seeds.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -831,7 +958,7 @@
           "amount": "120g"
         }
       ],
-      "exit_condition": "Walnut pieces are roughly sunflower-seed sized — uniform pieces, not powdered, no whole halves remaining.",
+      "exit_condition": "Walnut pieces are roughly sunflower-seed sized \u2014 uniform pieces, not powdered, no whole halves remaining.",
       "notes": [
         {
           "text": "Over-processing turns walnuts into nut butter. Stop when most pieces are small but a few are still slightly larger.",
@@ -858,14 +985,14 @@
           "amount": "7g"
         }
       ],
-      "exit_condition": "Sugar, cinnamon, and walnut pieces are evenly mixed — uniform light brown color throughout, no streaks of plain sugar.",
+      "exit_condition": "Sugar, cinnamon, and walnut pieces are evenly mixed \u2014 uniform light brown color throughout, no streaks of plain sugar.",
       "notes": null,
       "reminders": null
     },
     {
       "id": "stir-currants",
       "title": "Stir in Currants",
-      "direction": "Transfer the walnut-sugar mixture to a medium bowl. Stir in the currants by hand — do not pulse.",
+      "direction": "Transfer the walnut-sugar mixture to a medium bowl. Stir in the currants by hand \u2014 do not pulse.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
@@ -882,12 +1009,12 @@
     {
       "id": "preheat-oven",
       "title": "Preheat Oven",
-      "direction": "Adjust oven rack to middle position. Preheat oven to 350°F (180°C). Line the baking sheet with parchment paper or a nonstick liner.",
+      "direction": "Adjust oven rack to middle position. Preheat oven to 350\u00b0F (180\u00b0C). Line the baking sheet with parchment paper or a nonstick liner.",
       "duration_min": 15,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven is fully preheated to 350°F (180°C) and the baking sheet is lined and ready.",
+      "exit_condition": "Oven is fully preheated to 350\u00b0F (180\u00b0C) and the baking sheet is lined and ready.",
       "notes": null,
       "reminders": null
     },
@@ -899,7 +1026,7 @@
       "timer": false,
       "parallel": false,
       "components": null,
-      "exit_condition": "Dough is a 28cm round, evenly thick at slightly over 3mm. Edges may be ragged — that's fine.",
+      "exit_condition": "Dough is a 28cm round, evenly thick at slightly over 3mm. Edges may be ragged \u2014 that's fine.",
       "notes": [
         {
           "text": "If the dough cracks or feels too firm to roll, let it rest at room temperature 5-10 minutes before rolling.",
@@ -922,7 +1049,7 @@
           "amount": "65g"
         }
       ],
-      "exit_condition": "Entire dough surface has a thin, even layer of melted butter — not pooling or saturated.",
+      "exit_condition": "Entire dough surface has a thin, even layer of melted butter \u2014 not pooling or saturated.",
       "notes": null,
       "reminders": null
     },
@@ -966,7 +1093,7 @@
       "exit_condition": "16 rolled crescents arranged on the baking sheet with the tucked tip on the bottom. Spacing roughly 5cm apart so they don't merge during bake.",
       "notes": [
         {
-          "text": "Roll snug but not tight — over-tight rolls can split during baking. Tip tucked under the base prevents unrolling.",
+          "text": "Roll snug but not tight \u2014 over-tight rolls can split during baking. Tip tucked under the base prevents unrolling.",
           "critical": false,
           "source": "agent"
         }
@@ -981,10 +1108,10 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Rugelach are firm to the touch and hold their shape — well chilled but not frozen solid.",
+      "exit_condition": "Rugelach are firm to the touch and hold their shape \u2014 well chilled but not frozen solid.",
       "notes": [
         {
-          "text": "The freeze step keeps the butter cold so the dough holds shape during the egg wash and the initial oven hit — critical for flake structure.",
+          "text": "The freeze step keeps the butter cold so the dough holds shape during the egg wash and the initial oven hit \u2014 critical for flake structure.",
           "critical": false,
           "source": "agent"
         }
@@ -1015,7 +1142,7 @@
     {
       "id": "bake",
       "title": "Bake",
-      "direction": "Bake at 350°F (180°C) until golden brown and the base of each cookie is set and slightly darker than the tops, 20-25 minutes.",
+      "direction": "Bake at 350\u00b0F (180\u00b0C) until golden brown and the base of each cookie is set and slightly darker than the tops, 20-25 minutes.",
       "duration_min": 22,
       "timer": true,
       "parallel": false,
@@ -1023,14 +1150,14 @@
       "exit_condition": "Tops are golden brown. Bottoms are set and slightly darker than the tops. Filling visible at the cut ends is bubbling slightly.",
       "notes": [
         {
-          "text": "Rotate sheet halfway through if your oven has hot spots — the front of the sheet often browns faster than the back.",
+          "text": "Rotate sheet halfway through if your oven has hot spots \u2014 the front of the sheet often browns faster than the back.",
           "critical": false,
           "source": "agent"
         }
       ],
       "reminders": [
         {
-          "prompt": "How were the bottoms — pale, golden, or scorched?",
+          "prompt": "How were the bottoms \u2014 pale, golden, or scorched?",
           "type": "observation"
         },
         {
@@ -1044,12 +1171,12 @@
     "methods": [
       {
         "method": "oven",
-        "detail": "Reheat at 300°F (150°C) on parchment-lined sheet for 5-7 minutes until warmed through and crust re-crisps. Avoid microwave — it makes the dough gummy.",
+        "detail": "Reheat at 300\u00b0F (150\u00b0C) on parchment-lined sheet for 5-7 minutes until warmed through and crust re-crisps. Avoid microwave \u2014 it makes the dough gummy.",
         "source": "agent"
       },
       {
         "method": "toaster oven",
-        "detail": "300°F (150°C) for 4-5 minutes works well for 1-2 cookies at a time.",
+        "detail": "300\u00b0F (150\u00b0C) for 4-5 minutes works well for 1-2 cookies at a time.",
         "source": "agent"
       }
     ]
@@ -1254,24 +1381,24 @@
     {
       "date": "2026-05-12",
       "version": "v1.0.0",
-      "summary": "First bake — splash run, recipe-only. Food-processor dough came together well-hydrated; 1hr chill, shapes uneven. Bake stretched to ~30 min and bottoms set before tops browned. Flavor there, could be sweeter.",
+      "summary": "First bake \u2014 splash run, recipe-only. Food-processor dough came together well-hydrated; 1hr chill, shapes uneven. Bake stretched to ~30 min and bottoms set before tops browned. Flavor there, could be sweeter.",
       "notes": [
-        "Splash bake — going blind, recipe-only, learning pass",
-        "Kitchen pre-bake: 74.5°F ambient, 54% humidity",
-        "Used food processor for dough; also processed walnuts for filling. Order may matter — will think about it.",
-        "Dough seemed well-hydrated — never got the 'specks of loose flour' the recipe describes",
+        "Splash bake \u2014 going blind, recipe-only, learning pass",
+        "Kitchen pre-bake: 74.5\u00b0F ambient, 54% humidity",
+        "Used food processor for dough; also processed walnuts for filling. Order may matter \u2014 will think about it.",
+        "Dough seemed well-hydrated \u2014 never got the 'specks of loose flour' the recipe describes",
         "Chilled ~1 hour (recipe allows 1hr or overnight)",
         "Filling: walnut-currant per recipe",
-        "Rolled as single big disc → 16 pieces, none lost. Some shapes better than others.",
+        "Rolled as single big disc \u2192 16 pieces, none lost. Some shapes better than others.",
         "Egg wash + sugar applied per recipe, then 10-15 min freezer",
         "Baked ~30 min vs recipe's 22 min. Bottoms set before tops got golden brown.",
-        "Flavor present but could be sweeter — coarser sugar topping might help"
+        "Flavor present but could be sweeter \u2014 coarser sugar topping might help"
       ],
       "photos": [
         {
           "src": "/images/tartine-rugelach/2026-05-12/img-7541-800w.webp",
           "thumb": "/images/tartine-rugelach/2026-05-12/img-7541-400w.webp",
-          "alt": "Sheet pan of 16 freshly baked rugelach on parchment — blonde tops, set bottoms, walnut-currant filling leaked and caramelized between cookies. First-bake shape inconsistency visible: some tight crescents, others loose with filling exposed at the seam.",
+          "alt": "Sheet pan of 16 freshly baked rugelach on parchment \u2014 blonde tops, set bottoms, walnut-currant filling leaked and caramelized between cookies. First-bake shape inconsistency visible: some tight crescents, others loose with filling exposed at the seam.",
           "tag": "process",
           "name": "img-7541"
         },
@@ -1288,7 +1415,7 @@
           "text": "Try 2hr chill instead of 1hr"
         },
         {
-          "text": "Split dough into 2 smaller discs — easier roll-out",
+          "text": "Split dough into 2 smaller discs \u2014 easier roll-out",
           "source": "Claire Saffitz YouTube: https://www.youtube.com/watch?v=93ZbPtxv_RY"
         },
         {
@@ -1296,14 +1423,14 @@
           "source": "Claire Saffitz"
         },
         {
-          "text": "Get demerara/turbinado sugar for topping — coarser, stands out, better flavor"
+          "text": "Get demerara/turbinado sugar for topping \u2014 coarser, stands out, better flavor"
         },
         {
           "text": "Move bake to top rack to prevent bottoms setting before tops brown",
           "source": "Claire Saffitz"
         },
         {
-          "text": "Decide food processor order — dough first then walnuts, or reverse"
+          "text": "Decide food processor order \u2014 dough first then walnuts, or reverse"
         },
         {
           "text": "Cross-check Claire Saffitz's almond paste rugelach recipe for technique cues",
@@ -1314,7 +1441,7 @@
         {
           "timestamp": "2026-05-12T13:08:31Z",
           "raw": "74.5 ambient temp. 54% humidity in kitchen",
-          "curated": "Kitchen 74.5°F ambient, 54% humidity",
+          "curated": "Kitchen 74.5\u00b0F ambient, 54% humidity",
           "notable": true,
           "stepId": "_general",
           "processing": "prep"
@@ -1330,7 +1457,7 @@
         {
           "timestamp": "2026-05-12T16:03:14Z",
           "raw": "first bake issues. not sure the shape of the final product is as desired. may need to ensure i do a tighter roll and roll more cleanly",
-          "curated": "First bake — shape not quite right. Try tighter roll and cleaner cutting next time",
+          "curated": "First bake \u2014 shape not quite right. Try tighter roll and cleaner cutting next time",
           "notable": true,
           "stepId": "_general",
           "processing": "result"
@@ -1599,42 +1726,42 @@
     {
       "date": "2026-05-15",
       "version": "v1.1.2",
-      "summary": "Second bake. 1hr chill, top rack helped browning but still needed ~35min (recipe says 22). Rolled tighter, look nicer. Flavor addicting. Effort/reward strong — viable scale-up.",
+      "summary": "Second bake. 1hr chill, top rack helped browning but still needed ~35min (recipe says 22). Rolled tighter, look nicer. Flavor addicting. Effort/reward strong \u2014 viable scale-up.",
       "notes": [
         "Dough into fridge ~11:26am CDT (approx, from \"25 min ago\").",
         "Chilled 1 hour (not the 2hr try from last next_time).",
-        "Did not split into 2 discs — last bake's Claire-inspired split was for bigger batch, not needed at 16 count.",
-        "Kept egg wash + sugar after freezer (recipe order) — not switching to pre-freeze.",
-        "Used regular granulated sugar for topping — no demerara yet.",
-        "Top rack — helped browning.",
+        "Did not split into 2 discs \u2014 last bake's Claire-inspired split was for bigger batch, not needed at 16 count.",
+        "Kept egg wash + sugar after freezer (recipe order) \u2014 not switching to pre-freeze.",
+        "Used regular granulated sugar for topping \u2014 no demerara yet.",
+        "Top rack \u2014 helped browning.",
         "Into oven 1:21pm CDT.",
         "Out ~1:56pm CDT, ~35 min bake (~13 min over recipe's 22). Pastries reliably resist browning.",
         "Food processor order: did dough first this time. Walnuts-first would rinse-out easier next bake.",
         "Did not cross-reference Claire Saffitz this bake.",
-        "Rolling more diligent — crescents look nicer.",
-        "Flavor addicting, great. Solid effort/reward — candidate for scale-up / resell."
+        "Rolling more diligent \u2014 crescents look nicer.",
+        "Flavor addicting, great. Solid effort/reward \u2014 candidate for scale-up / resell."
       ],
       "photos": [
         {
           "src": "/images/tartine-rugelach/2026-05-15/finished-rugelach-800w.webp",
           "thumb": "/images/tartine-rugelach/2026-05-15/finished-rugelach-400w.webp",
-          "alt": "Sixteen finished crescents on a clear glass platter, arranged in loose rows. Pale gold — barely browned, confirming the recipe's reluctance to color even with +13 min over recipe time. Sugar topping glistens on tops. Currants escaped during shaping — scattered on the platter alongside the rolls. A few rolls show filling oozing from open ends; otherwise shapes are tighter and more uniform than last bake. Aesthetic: more disciplined rolling visible.",
+          "alt": "Sixteen finished crescents on a clear glass platter, arranged in loose rows. Pale gold \u2014 barely browned, confirming the recipe's reluctance to color even with +13 min over recipe time. Sugar topping glistens on tops. Currants escaped during shaping \u2014 scattered on the platter alongside the rolls. A few rolls show filling oozing from open ends; otherwise shapes are tighter and more uniform than last bake. Aesthetic: more disciplined rolling visible.",
           "tag": "hero",
           "name": "finished-rugelach"
         }
       ],
       "next_time": [
         {
-          "text": "Walnuts first in food processor — easier rinse-out for dough"
+          "text": "Walnuts first in food processor \u2014 easier rinse-out for dough"
         },
         {
-          "text": "Plan ~35 min bake instead of recipe's 22 — pastries need it"
+          "text": "Plan ~35 min bake instead of recipe's 22 \u2014 pastries need it"
         },
         {
-          "text": "Investigate browning helpers — convection? higher final temp? broiler finish?"
+          "text": "Investigate browning helpers \u2014 convection? higher final temp? broiler finish?"
         },
         {
-          "text": "Get demerara/turbinado sugar for topping — coarser, better flavor"
+          "text": "Get demerara/turbinado sugar for topping \u2014 coarser, better flavor"
         },
         {
           "text": "Cross-check Claire Saffitz's almond paste rugelach recipe for technique cues",
@@ -1645,10 +1772,10 @@
         {
           "timestamp": "2026-05-15T16:26:00Z",
           "raw": "started dough chilling approx 25 minutes ago.",
-          "curated": "Dough into fridge — chill start",
+          "curated": "Dough into fridge \u2014 chill start",
           "notable": true,
           "stepId": "chill-dough",
-          "processing": "chill | Timestamp inferred: 'approx 25 minutes ago' relative to 2026-05-15T16:51:05Z → 2026-05-15T16:26:00Z"
+          "processing": "chill | Timestamp inferred: 'approx 25 minutes ago' relative to 2026-05-15T16:51:05Z \u2192 2026-05-15T16:26:00Z"
         },
         {
           "timestamp": "2026-05-15T18:21:09Z",
@@ -1663,7 +1790,7 @@
           "curated": "Out of oven",
           "notable": true,
           "stepId": "bake",
-          "processing": "bake | Timestamp inferred: '+35 min' from 2026-05-15T18:21:09Z → 2026-05-15T18:56:00Z"
+          "processing": "bake | Timestamp inferred: '+35 min' from 2026-05-15T18:21:09Z \u2192 2026-05-15T18:56:00Z"
         }
       ],
       "ingredients": [
@@ -1924,6 +2051,344 @@
         "perServing": 0.7,
         "servings": 16,
         "date": "2026-05-15"
+      }
+    },
+    {
+      "date": "2026-06-02",
+      "version": "v1.1.3",
+      "summary": "Third bake. Overnight chill (mixed Sunday 6/1 evening, baked Monday 6/2 midday). Middle rack, 24 min @ 350\u00b0F browned fine \u2014 significant time cut vs 5/15's 35 min on top rack. Slight bitterness from exposed walnuts where filling leaked at the seams. Gave away to coworkers at Epicerie.",
+      "notes": [
+        "Kitchen pre-bake: 76.4\u00b0F ambient, 50% humidity (read 6/1 7:56pm CDT, on beat-cream-cheese step).",
+        "Overnight chill \u2014 mixed dough Sunday evening 6/1, baked Monday midday 6/2 (graduation from prior 1hr chills).",
+        "Middle rack this time (vs top rack on 5/15).",
+        "Topping: regular granulated sugar \u2014 demerara/turbinado still pending.",
+        "Bake: 350\u00b0F, 24 min total (started ~1:03pm CDT, planned +4 min over base 20).",
+        "Tops browned fine at 24 min \u2014 significant reduction vs last bake's 35 min on top rack.",
+        "Slight bitterness in finished cookies \u2014 likely from exposed walnuts where filling leaked at the seams.",
+        "Gave away to new workmates at Epicerie."
+      ],
+      "next_time": [
+        {
+          "text": "Tighter rolls / cleaner seams to keep walnut filling sealed \u2014 exposed walnuts caramelized to bitter at 24 min"
+        },
+        {
+          "text": "Validate 24 min @ 350\u00b0F middle rack as new baseline on next bake (was 35 min top rack on 5/15)"
+        },
+        {
+          "text": "Get demerara/turbinado sugar for topping \u2014 coarser, better flavor (carried)"
+        },
+        {
+          "text": "Cross-check Claire Saffitz's almond paste rugelach recipe for technique cues (carried \u2014 transcripts archived in scratchpad/scrapes/)",
+          "source": "Claire Saffitz YouTube: https://www.youtube.com/watch?v=93ZbPtxv_RY"
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-06-02T00:56:42Z",
+          "raw": "76.4 50%",
+          "curated": "Kitchen pre-bake: 76.4\u00b0F ambient, 50% humidity",
+          "notable": true,
+          "stepId": "beat-cream-cheese",
+          "processing": "prep | scratchpad reading on beat-cream-cheese step"
+        },
+        {
+          "timestamp": "2026-06-02T18:23:16Z",
+          "raw": "started bake approx 20 minutes ago. going to do an extra 4 minutes so 24 total. lets see",
+          "curated": "Mid-bake check: 20 min in, planning +4 for 24 min total (implies into oven ~1:03pm CDT).",
+          "notable": true,
+          "stepId": "bake",
+          "processing": "bake"
+        },
+        {
+          "timestamp": "2026-06-02T18:27:00Z",
+          "raw": "(user-stated plan: 24 min total from into-oven ~1:03pm)",
+          "curated": "Out of oven (planned 24 min)",
+          "notable": true,
+          "stepId": "bake",
+          "processing": "bake | Timestamp inferred: '+24 min' from 2026-06-02T18:03:00Z \u2192 2026-06-02T18:27:00Z. Photo IMG_7789 EXIF 2026-06-02T18:31:17Z confirms within \u00b14 min."
+        }
+      ],
+      "photos": [
+        {
+          "src": "/images/tartine-rugelach/2026-06-02/img-7787-prep-1224-800w.webp",
+          "thumb": "/images/tartine-rugelach/2026-06-02/img-7787-prep-1224-400w.webp",
+          "alt": "Shape stage: rolled dough round on a silicone mat, sized close to the 11 in [28 cm] target diameter. Wooden rolling pin, bench scraper, and a bowl of walnut-currant filling sit nearby on the counter.",
+          "tag": "process",
+          "name": "img-7787-prep-1224"
+        },
+        {
+          "src": "/images/tartine-rugelach/2026-06-02/img-7790-finished-1357-800w.webp",
+          "thumb": "/images/tartine-rugelach/2026-06-02/img-7790-finished-1357-400w.webp",
+          "alt": "Six clear gift bags of finished rugelach arranged on the kitchen counter, each holding a few cooled crescents portioned for sharing with Epicerie coworkers.",
+          "tag": "process",
+          "name": "img-7790-finished-1357"
+        },
+        {
+          "src": "/images/tartine-rugelach/2026-06-02/img-7789-oven-1331-800w.webp",
+          "thumb": "/images/tartine-rugelach/2026-06-02/img-7789-oven-1331-400w.webp",
+          "alt": "Sixteen baked rugelach crescents on parchment-lined sheet pan, golden brown with sugared tops. Visible filling leakage and small caramelized puddles at the seams between cookies \u2014 the source of the slight bitterness in finished cookies.",
+          "tag": "hero",
+          "name": "img-7789-oven-1331"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "MIX_DOUGH",
+          "stageName": "Mix Cream Cheese Dough",
+          "ingredients": [
+            {
+              "id": "cream-cheese",
+              "name": "Cream Cheese (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "unsalted-butter",
+              "name": "Unsalted Butter (room temperature)",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 260,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "MAKE_FILLING",
+          "stageName": "Make Walnut-Currant Filling",
+          "ingredients": [
+            {
+              "id": "walnuts",
+              "name": "Walnuts",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown-sugar",
+              "name": "Brown Sugar",
+              "total": 120,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "currants",
+              "name": "Currants",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "SHAPE",
+          "stageName": "Roll, Fill, and Shape",
+          "ingredients": [
+            {
+              "id": "melted-butter",
+              "name": "Unsalted Butter (melted, cooled)",
+              "total": 65,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Egg Wash, Sugar, and Bake",
+          "ingredients": [
+            {
+              "id": "egg",
+              "name": "Large Egg",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "sugar-topping",
+              "name": "Granulated Sugar (for topping)",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-06-02",
+        "temp_high_f": 93.4,
+        "temp_low_f": 75.1,
+        "humidity_avg_percent": 73,
+        "condition": "Slight rain",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "cream-cheese",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Regular Cream Cheese",
+            "packageSize": "8 oz",
+            "packagePrice": 2.3,
+            "cost": 2.28,
+            "name": "Cream Cheese (room temperature)",
+            "amount": 225,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "unsalted-butter",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 3.98,
+            "cost": 1.97,
+            "name": "Unsalted Butter (room temperature)",
+            "amount": 225,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "ap-flour",
+            "sourceType": "heb",
+            "sourceName": "H-E-B The Baker's Scoop Unbleached All-Purpose Flour",
+            "packageSize": "5 lbs",
+            "packagePrice": 3.78,
+            "cost": 0.43,
+            "name": "All-Purpose Flour",
+            "amount": 260,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "einkorn-flour",
+            "sourceType": "heb",
+            "sourceName": "Jovial Organic Einkorn All-Purpose Flour",
+            "packageSize": "2 lb",
+            "packagePrice": 9.29,
+            "cost": 0.67,
+            "name": "Einkorn Flour",
+            "amount": 65,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.04,
+            "name": "Fine Sea Salt",
+            "amount": 6,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "walnuts",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Chopped Walnut Pieces",
+            "packageSize": "8 oz",
+            "packagePrice": 5.28,
+            "cost": 2.79,
+            "name": "Walnuts",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "brown-sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Brown Sugar",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.42,
+            "cost": 0.32,
+            "name": "Brown Sugar",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "cinnamon",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Ground Cinnamon Seasoning",
+            "packageSize": "1.8 oz",
+            "packagePrice": 2.58,
+            "cost": 0.35,
+            "name": "Ground Cinnamon",
+            "amount": 7,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "currants",
+            "sourceType": "heb",
+            "sourceName": "Sun-Maid California Sun-Dried Zante Currants",
+            "packageSize": "8 oz",
+            "packagePrice": 4.98,
+            "cost": 1.54,
+            "name": "Currants",
+            "amount": 70,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "melted-butter",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 3.98,
+            "cost": 0.57,
+            "name": "Unsalted Butter (melted, cooled)",
+            "amount": 65,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "egg",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Grade AA Cage Free Large White Eggs",
+            "packageSize": "12 ct",
+            "packagePrice": 2.86,
+            "cost": 0.24,
+            "name": "Large Egg",
+            "amount": 50,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "sugar-topping",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.48,
+            "cost": 0.05,
+            "name": "Granulated Sugar (for topping)",
+            "amount": 20,
+            "unit": "g"
+          }
+        ],
+        "total": 11.25,
+        "perServing": 0.7,
+        "servings": 16,
+        "date": "2026-06-02"
       }
     }
   ]
