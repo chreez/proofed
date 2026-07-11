@@ -159,6 +159,12 @@ const router = createRouter({
       path: '/mise-sheet/v1',
       name: 'mise-sheet-v1',
       component: EmptyRouteView,
+      meta: { showIndex: false, demoPage: true }
+    },
+    {
+      path: '/mise-sheet/v1/printout',
+      name: 'mise-sheet-v1-printout',
+      component: EmptyRouteView,
       meta: { showIndex: false, printMode: true }
     },
     {
