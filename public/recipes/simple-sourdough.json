@@ -8591,7 +8591,7 @@
             "amount": 100,
             "unit": "g",
             "packageSize": "2.5 lb",
-            "packagePrice": 14.00,
+            "packagePrice": 14.0,
             "cost": 1.23
           },
           {
@@ -8631,6 +8631,283 @@
         "total": 3.64,
         "perServing": 1.82,
         "servings": 2
+      }
+    },
+    {
+      "date": "2026-07-11",
+      "start_date": "2026-07-10",
+      "version": "v3.6.2",
+      "summary": "Two-loaf bake with weak starter — loaf 2 huge oven spring, loaf 1 fine with possible underproof for its potential. One side score, one cross score (scoring practice). Loaf 1 cooler profile (450→425 flip), loaf 2 hotter (475→450 flip) — many variables but loaf 2 clearly won.",
+      "notes": [
+        "Weak starter Friday morning — noted at fermentolyse 'should have fed it and tried at 12'. Fermentolyse 7:20am, salt in at 7:50am.",
+        "Sparse mid-day timeline — folds, shape, and retard timing not logged this session.",
+        "Two loaves scored differently as practice: loaf 1 side score, loaf 2 cross score.",
+        "Bake 1: 500°F preheat ~1hr, 450°F covered 20min, 425°F uncovered 10min + flip + 10min + ~5min extra to brown. Out ~11:45am.",
+        "Bake 2 (recovery to 500°F ~30min, then): 475°F covered 20min, 450°F uncovered 10min + flip + 10min + ~2min extra. Out ~12:55pm.",
+        "Loaf 2 had huge oven spring. Loaf 1 fine; possibly slightly underproofed relative to potential. Many variables at play between the two."
+      ],
+      "photos": [
+        {
+          "src": "/images/simple-sourdough/2026-07-11/img-8176-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-07-11/img-8176-400w.webp",
+          "alt": "Loaf 1 crumb cross-section on white cutting board with purple bread knife — open, irregular crumb with medium alveoli. Loaf 2 (cross score) on copper rack + paper-sleeved gift loaf in background.",
+          "summary": "Loaf 1 crumb shot — cut cross-section on white cutting board with purple bread knife, open irregular crumb structure with medium alveoli. Background shows loaf 2 whole on copper cooling rack (cross score visible) and a paper-sleeved gift loaf on the counter.",
+          "usage": {
+            "hero": true,
+            "step": false,
+            "process": false,
+            "exclude": false
+          },
+          "editPresets": {
+            "cropTighten": true
+          }
+        },
+        {
+          "src": "/images/simple-sourdough/2026-07-11/img-8177-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-07-11/img-8177-400w.webp",
+          "alt": "Loaf 2 on copper cooling rack — big domed loaf with cross-score pattern, prominent ear along the deeper diagonal, thick well-browned crust with visible spring, floury dust.",
+          "summary": "Loaf 2 hero shot on copper cooling rack — big domed loaf with cross-score pattern, prominent ear along the deeper diagonal, thick well-browned crust with visible spring, floury dust. Corner of another loaf peeking bottom-left.",
+          "usage": {
+            "hero": false,
+            "step": false,
+            "process": true,
+            "exclude": false
+          }
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Feed starter earlier if morning mix — sluggish starter cost timing options this bake"
+        },
+        {
+          "text": "Consider hotter cover temp (475°F) as default — loaf 2's profile got better spring"
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-07-10T12:20:00Z",
+          "raw": "starter not that active. will see how it turns out. probably should have fed it and tried at 12",
+          "curated": "Starter not that active. Will see how it turns out — should have fed it and tried at 12.",
+          "notable": true,
+          "processing": "mix",
+          "stepId": "FERMENTOLYSE",
+          "prompt": "note"
+        },
+        {
+          "timestamp": "2026-07-10T12:50:41Z",
+          "raw": "added salt",
+          "notable": false,
+          "processing": "mix",
+          "stepId": "ADD_SALT"
+        },
+        {
+          "timestamp": "2026-07-11T15:00:00Z",
+          "raw": "500°F preheat about 1 hour (loaf 1)",
+          "notable": false,
+          "processing": "bake",
+          "prompt": "inferred"
+        },
+        {
+          "timestamp": "2026-07-11T16:00:00Z",
+          "raw": "Loaf 1 in oven: 450°F covered 20 min",
+          "notable": true,
+          "processing": "bake",
+          "prompt": "inferred"
+        },
+        {
+          "timestamp": "2026-07-11T16:20:00Z",
+          "raw": "Loaf 1 uncovered, 425°F, 10 min + flip + 10 min + ~5 min extra to brown",
+          "notable": false,
+          "processing": "bake",
+          "prompt": "inferred"
+        },
+        {
+          "timestamp": "2026-07-11T16:45:00Z",
+          "raw": "Loaf 1 out ~11:45am with 5 min extra browning",
+          "notable": true,
+          "processing": "result",
+          "prompt": "inferred"
+        },
+        {
+          "timestamp": "2026-07-11T16:45:00Z",
+          "raw": "500°F preheat recovery 30 min before loaf 2",
+          "notable": false,
+          "processing": "bake",
+          "prompt": "inferred"
+        },
+        {
+          "timestamp": "2026-07-11T17:15:00Z",
+          "raw": "Loaf 2 in oven: 475°F covered 20 min",
+          "notable": true,
+          "processing": "bake",
+          "prompt": "inferred"
+        },
+        {
+          "timestamp": "2026-07-11T17:35:00Z",
+          "raw": "Loaf 2 uncovered, 450°F, 10 min + flip + 10 min + ~2 min extra",
+          "notable": false,
+          "processing": "bake",
+          "prompt": "inferred"
+        },
+        {
+          "timestamp": "2026-07-11T17:55:00Z",
+          "raw": "Loaf 2 out ~12:55pm. Huge spring. Loaf 1 fine, possibly slightly underproofed for its potential.",
+          "notable": true,
+          "processing": "result",
+          "prompt": "inferred from 'finished ~30 min ago' at 1:24pm CDT"
+        }
+      ],
+      "bake_stats": {
+        "bake_phases": [
+          {
+            "stage": "preheat",
+            "temp_f": 500,
+            "duration_min": 60,
+            "note": "loaf 1 (inferred from stated ~1hr)"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 450,
+            "duration_min": 20,
+            "start_time": "2026-07-11 - 11:00",
+            "note": "loaf 1 (start inferred backwards from bake 2 finish)"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 425,
+            "duration_min": 25,
+            "note": "loaf 1: 10min + flip + 10min + ~5min extra brown"
+          },
+          {
+            "stage": "preheat",
+            "temp_f": 500,
+            "duration_min": 30,
+            "note": "loaf 2 recovery to 500°F"
+          },
+          {
+            "stage": "covered",
+            "temp_f": 475,
+            "duration_min": 20,
+            "start_time": "2026-07-11 - 12:15",
+            "note": "loaf 2 (inferred)"
+          },
+          {
+            "stage": "uncovered",
+            "temp_f": 450,
+            "duration_min": 22,
+            "note": "loaf 2: 10min + flip + 10min + ~2min extra"
+          }
+        ],
+        "confidence": "medium"
+      },
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour",
+              "total": 1000,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Cross-source consensus (8/8 beginner recipes)",
+              "confidence": "high",
+              "rationale": "12-13% protein provides strong gluten network for structure and oven spring. King Arthur Bread Flour (12.7%) recommended."
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Pantry Mama, Country Roads, Perfect Loaf consensus",
+              "confidence": "high",
+              "rationale": "70% hydration — beginner sweet spot. Manageable handling, good open crumb. Filtered water is fine."
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Feasting at Home, Alexandra's Kitchen, Little Spoon Farm",
+              "confidence": "high",
+              "rationale": "20% inoculation — higher than traditional 10% for insurance with potentially sluggish starter. More predictable fermentation timing."
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null,
+              "sourcedFrom": "Universal consensus across all sources",
+              "confidence": "high",
+              "rationale": "2% of flour weight. Non-iodized preferred for clean flavor. Strengthens gluten, controls fermentation, promotes crust browning."
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-07-11",
+        "temp_high_f": 87.1,
+        "temp_low_f": 75.8,
+        "humidity_avg_percent": 78,
+        "condition": "Rain",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 1000,
+            "unit": "g",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 2.42
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Filtered water (not yet priced)",
+            "amount": 700,
+            "unit": "g",
+            "packageSize": "not yet priced",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0.11
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.12
+          }
+        ],
+        "total": 2.65,
+        "perServing": 1.32,
+        "servings": 2,
+        "date": "2026-07-11"
       }
     }
   ],

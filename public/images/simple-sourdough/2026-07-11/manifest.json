@@ -1,0 +1,19 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-07-11",
+  "processedAt": "2026-07-11T18:29:27.304Z",
+  "photos": [
+    {
+      "name": "img-8176",
+      "thumb": "img-8176-400w.webp",
+      "src": "img-8176-800w.webp",
+      "summary": "Loaf 1 crumb shot — cut cross-section on white cutting board with purple bread knife, open irregular crumb structure with medium alveoli. Background shows loaf 2 whole on copper cooling rack (cross score visible) and a paper-sleeved gift loaf on the counter."
+    },
+    {
+      "name": "img-8177",
+      "thumb": "img-8177-400w.webp",
+      "src": "img-8177-800w.webp",
+      "summary": "Loaf 2 hero shot on copper cooling rack — big domed loaf with cross-score pattern, prominent ear along the deeper diagonal, thick well-browned crust with visible spring, floury dust. Corner of another loaf peeking bottom-left."
+    }
+  ]
+}
