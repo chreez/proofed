@@ -53,12 +53,12 @@
     },
     "chocolate": {
       "lastUsed": {
-        "name": "Ghirardelli Premium 60% Cacao Bittersweet Chocolate Baking Bar",
-        "brand": "Ghirardelli",
-        "sizeGrams": 113,
-        "packagePrice": 4.28,
-        "packageSize": "4 oz",
-        "updatedAt": "2026-06-05"
+        "name": "Guittard 72% Cacao Bittersweet Baking Wafers (user-supplied — estimate; adjust package price manually if known)",
+        "brand": "Guittard",
+        "sizeGrams": 255,
+        "packagePrice": 12.99,
+        "packageSize": "~9 oz (255 g)",
+        "updatedAt": "2026-07-31"
       }
     },
     "flour": {
@@ -87,6 +87,70 @@
         "packagePrice": 7.98,
         "packageSize": "25.6 oz",
         "updatedAt": "2026-06-21"
+      }
+    },
+    "vanilla": {
+      "lastUsed": {
+        "name": "H-E-B Pure Madagascar Bourbon Vanilla Extract",
+        "brand": "H-E-B",
+        "sizeGrams": 118,
+        "packagePrice": 9.98,
+        "packageSize": "4 oz (~118 g)",
+        "updatedAt": "2026-07-31"
+      }
+    },
+    "ap-flour": {
+      "pinned": {
+        "name": "King Arthur Unbleached All-Purpose Flour",
+        "brand": "King Arthur",
+        "sizeGrams": 4535.92,
+        "packagePrice": 9.98,
+        "packageSize": "10 lbs",
+        "updatedAt": "2026-07-31"
+      },
+      "lastUsed": {
+        "name": "King Arthur Unbleached All-Purpose Flour",
+        "brand": "King Arthur",
+        "sizeGrams": 4535.92,
+        "packagePrice": 9.98,
+        "packageSize": "10 lbs",
+        "updatedAt": "2026-07-31"
+      }
+    },
+    "bread-flour": {
+      "pinned": {
+        "name": "King Arthur Unbleached Bread Flour",
+        "brand": "King Arthur",
+        "sizeGrams": 4535.92,
+        "packagePrice": 10.99,
+        "packageSize": "10 lbs",
+        "updatedAt": "2026-07-31"
+      },
+      "lastUsed": {
+        "name": "King Arthur Unbleached Bread Flour",
+        "brand": "King Arthur",
+        "sizeGrams": 4535.92,
+        "packagePrice": 10.99,
+        "packageSize": "10 lbs",
+        "updatedAt": "2026-07-31"
+      }
+    },
+    "fine-sea-salt": {
+      "pinned": {
+        "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
+        "brand": "H-E-B",
+        "sizeGrams": 751.26,
+        "packagePrice": 2.5,
+        "packageSize": "26.5 oz",
+        "updatedAt": "2026-07-31"
+      },
+      "lastUsed": {
+        "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
+        "brand": "H-E-B",
+        "sizeGrams": 751.26,
+        "packagePrice": 2.5,
+        "packageSize": "26.5 oz",
+        "updatedAt": "2026-07-31"
       }
     }
   }

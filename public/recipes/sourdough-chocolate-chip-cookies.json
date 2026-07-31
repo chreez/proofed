@@ -1811,7 +1811,7 @@
         "location": "Austin, TX",
         "date": "2026-05-22",
         "temp_high_f": 84.8,
-        "temp_low_f": 65.0,
+        "temp_low_f": 65,
         "humidity_avg_percent": 85,
         "condition": "Rain",
         "source": "open-meteo"
@@ -1903,7 +1903,7 @@
             "amount": 60,
             "unit": "g",
             "packageSize": "2.5 lb",
-            "packagePrice": 12.0,
+            "packagePrice": 12,
             "cost": 0.64
           },
           {
@@ -1991,7 +1991,7 @@
           "carbohydrates": 818.5,
           "sugar": 492.2,
           "fiber": 43.1,
-          "sodium": 4860.0
+          "sodium": 4860
         },
         "perServing": {
           "calories": 243.1,
@@ -2107,7 +2107,7 @@
             "ingredientName": "Ryman Rye Flour (Barton Springs Mill, whole grain)",
             "amount": 60,
             "fdcId": 168880,
-            "calories": 195.0,
+            "calories": 195,
             "protein": 8.2,
             "totalFat": 1.6,
             "saturatedFat": 0.2,
@@ -2473,7 +2473,7 @@
             "amount": 119,
             "unit": "g",
             "packageSize": "5 lb",
-            "packagePrice": 22.0,
+            "packagePrice": 22,
             "cost": 1.15
           },
           {
@@ -2484,7 +2484,7 @@
             "amount": 80,
             "unit": "g",
             "packageSize": "2.5 lb",
-            "packagePrice": 13.0,
+            "packagePrice": 13,
             "cost": 0.92
           },
           {
@@ -2851,7 +2851,7 @@
       "weather": {
         "location": "Austin, TX",
         "date": "2026-07-04",
-        "temp_high_f": 97.0,
+        "temp_high_f": 97,
         "temp_low_f": 76.5,
         "humidity_avg_percent": 61,
         "condition": "Overcast",
@@ -2905,7 +2905,7 @@
             "unit": "g",
             "packageSize": "12 ct",
             "packagePrice": 1.67,
-            "cost": 0.0
+            "cost": 0
           },
           {
             "ingredientId": "vanilla",
@@ -2948,8 +2948,8 @@
             "amount": 150,
             "unit": "g",
             "packageSize": "0g",
-            "packagePrice": 0.0,
-            "cost": 0.0
+            "packagePrice": 0,
+            "cost": 0
           },
           {
             "ingredientId": "baking-soda",
@@ -3005,6 +3005,344 @@
             "packageSize": "4.4 oz",
             "packagePrice": 4.18,
             "cost": 0.07
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-07-31",
+      "version": "v2.0.4",
+      "summary": "Double batch, 43 cookies out. Chocolate blend: 255g Guittard 72% + ~195g Ghirardelli semi-sweet (450g total; ~250g under a fully-doubled 700g — \"just using what I have\"). Nailed the flaky-salt window; brown butter could've gone a shade darker; Guittard 72% read a touch too dark in the final cookie. ~$0.8/cookie all-in ($34.27 for 43).",
+      "notes": [
+        "Double batch. Chocolate mix: 255g Guittard 72% cacao (full package) + ~195g Ghirardelli semi-sweet remainder = 450g total. Deliberate under-target vs. a fully-doubled 700g — \"just using what I have\".",
+        "Brown butter could have cooked a beat longer — landed short of ideal honey color.",
+        "Baked 16 cookies on a full sheet tray in one round; arrangement was suboptimal (spacing off). No issues with the bake itself.",
+        "Remembered the flaky Maldon within the first minute out of the oven — following through on last bake's next_time cue.",
+        "Verdict: Guittard 72% cacao read a touch too dark in the final cookie. Rest of the bake was clean.",
+        "Final yield: 43 cookies (vs ~46 target for a doubled batch — ~3 short, consistent with light-hand scooping / arrangement)."
+      ],
+      "photos": [
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8236-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8236-400w.webp",
+          "alt": "Prep station mid-mix — brown-sugar bowl and starter bowl staged with spatulas out, dog on the floor, TV on in background. Evening light, dough not yet assembled.",
+          "tag": "process",
+          "name": "img-8236"
+        },
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8237-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8237-400w.webp",
+          "alt": "First batch of finished dough scraped into a Cambro; emptied mixing bowls parked to the side with spatula still in the last one.",
+          "tag": "process",
+          "name": "img-8237"
+        },
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8239-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8239-400w.webp",
+          "alt": "Overhead of the dough in the Cambro, chocolate chunks visible throughout — headed to the fridge for the overnight chill.",
+          "tag": "process",
+          "name": "img-8239"
+        },
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8242-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8242-400w.webp",
+          "alt": "Morning bake output: 16 cookies on the wire rack fresh out of the oven (uneven spacing showing) with an earlier Maldon-salted batch stacked in a storage bin to the left. Exposure bumped +10%.",
+          "tag": "hero",
+          "name": "img-8242"
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Guittard 72% cacao alone reads too dark for this cookie — either blend with more semi-sweet or drop back to 60% baking bars."
+        },
+        {
+          "text": "Push brown butter a beat longer — aim for a slightly deeper honey color; today's landed short."
+        },
+        {
+          "text": "When baking 16 on a full sheet: pre-plan the grid (4×4) and space evenly — this bake's arrangement was off."
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-07-30T23:13:01.978Z",
+          "raw": "doing 450. this time i got guittard 72% cacao package only 255g but the remainder ghiradeli semi sweet. just using what i have. this is a double batch.",
+          "curated": "Doing 450g chocolate. This time I got a Guittard 72% cacao package (only 255g); the remainder is Ghirardelli semi-sweet. Just using what I have. This is a double batch.",
+          "notable": true,
+          "stepId": "fold-chocolate",
+          "processing": "fold-chocolate"
+        },
+        {
+          "timestamp": "2026-07-31T12:53:40.491Z",
+          "raw": "baked this morning. i think the dark chocolate was a bit too dark",
+          "curated": "Baked this morning. I think the dark chocolate (Guittard 72%) was a bit too dark.",
+          "notable": true,
+          "processing": "result"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 450,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "6/7 agents confirmed 225-227g browned butter as consensus"
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 420,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across sources; 2:1 brown-to-white ratio"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 192,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Provides crispness and spread balance"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 108,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Yolks only removes excess moisture; validated by JennyBlogs bake-off winner"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "100-150g sweet spot for overnight ferment; discard preferred over active"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 26,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "1 tbsp; bean paste upgrade recommended"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 400,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "AP-dominant blend"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "AP+bread blend is our v1 differentiator; most blogs use AP only but KAB and Edd Kimber validate the blend"
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid for lift and browning"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Insurance lift; some recipes omit"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 12,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Consistent across sources"
+            },
+            {
+              "id": "chocolate",
+              "name": "Chopped Chocolate (60-66% semisweet)",
+              "total": 450,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "description": "Guittard 72% cacao (package purchased)",
+                  "amount": 255
+                },
+                {
+                  "description": "Ghirardelli semi-sweet (remainder)",
+                  "amount": 195
+                }
+              ],
+              "confidence": "medium",
+              "rationale": "This bake: 255g Guittard 72% cacao + ~195g Ghirardelli semi-sweet = 450g total (recipe doubled would target 700g; deliberate under-target — user \"just using what I have\"). Guittard 72% read a touch too dark in final cookie."
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across every source"
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-07-31",
+        "temp_high_f": 99.2,
+        "temp_low_f": 75.8,
+        "humidity_avg_percent": 60,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "total": 34.27,
+        "servings": 43,
+        "perServing": 0.8,
+        "items": [
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Sweet Cream Unsalted Butter Sticks",
+            "amount": 450,
+            "unit": "g",
+            "cost": 4.88
+          },
+          {
+            "ingredientId": "dark-brown-sugar",
+            "name": "Dark Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "Imperial Sugar Pure Cane Dark Brown Sugar",
+            "amount": 420,
+            "unit": "g",
+            "cost": 1.31
+          },
+          {
+            "ingredientId": "granulated-sugar",
+            "name": "Granulated Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "amount": 192,
+            "unit": "g",
+            "cost": 0.52
+          },
+          {
+            "ingredientId": "egg-yolks",
+            "name": "Egg Yolks (large)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs (yolk-basis: ~18g/egg × 18)",
+            "amount": 108,
+            "unit": "g",
+            "cost": 0.72
+          },
+          {
+            "ingredientId": "sourdough-discard",
+            "name": "Sourdough Discard (100% hydration)",
+            "sourceType": "heb",
+            "sourceName": "Homemade Sourdough Discard (home starter — no packaged equivalent, free)",
+            "amount": 300,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "vanilla",
+            "name": "Vanilla Extract",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Madagascar Bourbon Vanilla Extract",
+            "amount": 26,
+            "unit": "g",
+            "cost": 2.2
+          },
+          {
+            "ingredientId": "ap-flour",
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached All-Purpose Flour",
+            "amount": 400,
+            "unit": "g",
+            "cost": 0.88
+          },
+          {
+            "ingredientId": "bread-flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 240,
+            "unit": "g",
+            "cost": 0.58
+          },
+          {
+            "ingredientId": "baking-soda",
+            "name": "Baking Soda",
+            "sourceType": "heb",
+            "sourceName": "Arm & Hammer Pure Baking Soda",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "baking-powder",
+            "name": "Baking Powder",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Double Acting Baking Powder",
+            "amount": 4,
+            "unit": "g",
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "fine-sea-salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals",
+            "amount": 12,
+            "unit": "g",
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "chocolate",
+            "name": "Chopped Chocolate (60-66% semisweet) — this bake: 255g Guittard 72% + ~195g Ghirardelli semi-sweet = 450g total",
+            "sourceType": "heb",
+            "sourceName": "Guittard 72% Cacao Bittersweet Baking Wafers (user-supplied — estimate; adjust package price manually if known)",
+            "amount": 450,
+            "unit": "g",
+            "cost": 22.92
+          },
+          {
+            "ingredientId": "flaky-salt",
+            "name": "Flaky Sea Salt (Maldon)",
+            "sourceType": "heb",
+            "sourceName": "Maldon Smoked Sea Salt Flakes",
+            "amount": 4,
+            "unit": "g",
+            "cost": 0.14
           }
         ]
       }
