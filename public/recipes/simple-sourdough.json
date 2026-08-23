@@ -8571,7 +8571,10 @@
         }
       ],
       "cost": {
-        "costs": [
+        "total": 3.64,
+        "perServing": 1.82,
+        "servings": 2,
+        "items": [
           {
             "ingredientId": "bread_flour",
             "name": "Bread Flour",
@@ -8627,10 +8630,7 @@
             "packagePrice": 2.98,
             "cost": 0.12
           }
-        ],
-        "total": 3.64,
-        "perServing": 1.82,
-        "servings": 2
+        ]
       }
     },
     {
@@ -8858,7 +8858,11 @@
         "source": "open-meteo"
       },
       "cost": {
-        "costs": [
+        "total": 2.65,
+        "perServing": 1.32,
+        "servings": 2,
+        "date": "2026-07-11",
+        "items": [
           {
             "ingredientId": "bread_flour",
             "name": "Bread Flour",
@@ -8903,11 +8907,7 @@
             "packagePrice": 2.98,
             "cost": 0.12
           }
-        ],
-        "total": 2.65,
-        "perServing": 1.32,
-        "servings": 2,
-        "date": "2026-07-11"
+        ]
       }
     },
     {
@@ -9074,7 +9074,10 @@
         "source": "open-meteo"
       },
       "cost": {
-        "costs": [
+        "total": 2.36,
+        "perServing": 2.36,
+        "servings": 1,
+        "items": [
           {
             "ingredientId": "bread_flour",
             "name": "Bread Flour (King Arthur)",
@@ -9130,10 +9133,7 @@
             "packagePrice": 2.98,
             "cost": 0.1
           }
-        ],
-        "total": 2.36,
-        "perServing": 2.36,
-        "servings": 1
+        ]
       }
     },
     {
@@ -9322,7 +9322,10 @@
         "source": "open-meteo"
       },
       "cost": {
-        "costs": [
+        "total": 4.65,
+        "perServing": 2.33,
+        "servings": 2,
+        "items": [
           {
             "ingredientId": "bread_flour",
             "name": "Bread Flour (King Arthur)",
@@ -9378,10 +9381,7 @@
             "packagePrice": 2.98,
             "cost": 0.12
           }
-        ],
-        "total": 4.65,
-        "perServing": 2.33,
-        "servings": 2
+        ]
       }
     }
   ],
