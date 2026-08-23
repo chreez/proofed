@@ -1,0 +1,31 @@
+{
+  "recipeId": "simple-sourdough",
+  "date": "2026-08-01",
+  "processedAt": "2026-08-22T20:47:00.453Z",
+  "photos": [
+    {
+      "name": "img-8263",
+      "thumb": "img-8263-400w.webp",
+      "src": "img-8263-800w.webp",
+      "summary": "Finished boule held up wrapped in a linen cloth — banneton spiral clearly visible across the top crust, good rise with a deep golden ear where the score opened."
+    },
+    {
+      "name": "img-8264",
+      "thumb": "img-8264-400w.webp",
+      "src": "img-8264-800w.webp",
+      "summary": "Overhead view of the boule bottom held up — full banneton spiral imprinted across the base, darker blistered crust on the sides visible, strong oven spring evident in the loaf height."
+    },
+    {
+      "name": "img-8265",
+      "thumb": "img-8265-400w.webp",
+      "src": "img-8265-800w.webp",
+      "summary": "Boule resting on a white cutting board just before slicing — single score opened wide into a pronounced ear, banneton spiral visible on the top crust, bread knife resting alongside."
+    },
+    {
+      "name": "img-8267",
+      "thumb": "img-8267-400w.webp",
+      "src": "img-8267-800w.webp",
+      "summary": "Crumb shot — first slice held up showing open, irregular structure with medium-to-large holes distributed throughout; loaf half visible on the cutting board in background, bench brush and bread bag visible on the counter."
+    }
+  ]
+}
