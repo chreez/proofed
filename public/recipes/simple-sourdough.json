@@ -9135,6 +9135,254 @@
         "perServing": 2.36,
         "servings": 1
       }
+    },
+    {
+      "date": "2026-08-22",
+      "start_date": "2026-08-21",
+      "version": "v3.6.2",
+      "summary": "Full batch with 20% Rouge de Bordeaux \u2014 overnight cold bulk ferment, baked 8/22. Two loaves, standard bake, no issues.",
+      "notes": [
+        "Kitchen 77\u00b0F, 45% humidity at mix (8/21 1:04pm).",
+        "DDT 80.2\u00b0F at mix; starting autolyse. Dropped to 79\u00b0F by first S&F and held constant through bulk.",
+        "Four stretch and folds: 1:38pm, 2:05pm, ~2:30pm, 3:00pm.",
+        "Into fridge at 4:05pm for overnight cold bulk ferment.",
+        "Baked 8/22 \u2014 standard baking procedure, no deviations. Two loaves."
+      ],
+      "photos": [
+        {
+          "name": "img-8408",
+          "src": "/images/simple-sourdough/2026-08-22/img-8408-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-08-22/img-8408-400w.webp",
+          "alt": "Two finished boules resting on a white cutting board \u2014 left loaf deep golden brown with banneton spiral and pronounced open ear; right loaf lighter in color with visible rice flour and banneton spiral, both showing strong oven spring.",
+          "usage": "process"
+        },
+        {
+          "name": "img-8411",
+          "src": "/images/simple-sourdough/2026-08-22/img-8411-800w.webp",
+          "thumb": "/images/simple-sourdough/2026-08-22/img-8411-400w.webp",
+          "alt": "Crumb shot with loaf cut in half showing both halves side-by-side \u2014 open, irregular structure with medium-to-large holes throughout and warm golden interior; bench brush and bread knife visible on the counter below.",
+          "usage": "hero"
+        }
+      ],
+      "next_time": [],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "bread_flour",
+              "name": "Bread Flour (King Arthur)",
+              "total": 800,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "rouge_de_bordeaux",
+              "name": "Rouge de Bordeaux Whole Wheat (BSM)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "water",
+              "name": "Water",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "starter",
+              "name": "Active Sourdough Starter",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Fine Sea Salt",
+              "total": 20,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-08-21T18:04:02Z",
+          "raw": "77",
+          "curated": "Kitchen temp: 77\u00b0F",
+          "notable": false,
+          "stepId": "_pre_bake",
+          "prompt": "Kitchen temp (\u00b0F)?",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-08-21T18:04:08Z",
+          "raw": "45% humidity",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-08-21T18:04:19Z",
+          "raw": "80.2 ddt at mix. starting autolyse",
+          "curated": "80.2\u00b0F DDT at mix. Starting autolyse.",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-08-21T18:38:14Z",
+          "raw": "sf 1 79 ddt",
+          "curated": "S&F 1 \u2014 DDT 79\u00b0F.",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-08-21T19:04:58Z",
+          "raw": "sf 2 79",
+          "curated": "S&F 2 \u2014 DDT 79\u00b0F.",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-08-21T19:30:00Z",
+          "raw": "sf 4",
+          "curated": "S&F 3 (inferred: 30 min before S&F 4).",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-08-21T20:00:41Z",
+          "raw": "sf 4",
+          "curated": "S&F 4.",
+          "notable": false,
+          "stepId": "_general",
+          "processing": "bulk_ferment"
+        },
+        {
+          "timestamp": "2026-08-21T21:05:08Z",
+          "raw": "placed in fridge for overnight bulk ferment",
+          "notable": true,
+          "stepId": "_general",
+          "processing": "bulk_ferment"
+        }
+      ],
+      "bake_stats": {
+        "dough_temps": [
+          {
+            "time": "2026-08-21 - 13:04",
+            "temp_f": 80.2
+          },
+          {
+            "time": "2026-08-21 - 13:38",
+            "temp_f": 79,
+            "note": "constant through bulk"
+          }
+        ],
+        "bulk_ambient_temps": [
+          {
+            "date": "2026-08-21",
+            "temp_f": 77,
+            "note": "pre-bake kitchen temp"
+          }
+        ],
+        "stretch_folds": [
+          {
+            "time": "2026-08-21 - 13:38",
+            "type": "stretch_fold"
+          },
+          {
+            "time": "2026-08-21 - 14:05",
+            "type": "stretch_fold"
+          },
+          {
+            "time": "2026-08-21 - 14:30",
+            "type": "stretch_fold",
+            "note": "inferred: 30 min before S&F 4"
+          },
+          {
+            "time": "2026-08-21 - 15:00",
+            "type": "stretch_fold"
+          }
+        ]
+      },
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-08-22",
+        "temp_high_f": 104.2,
+        "temp_low_f": 77.9,
+        "humidity_avg_percent": 46,
+        "condition": "Overcast",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "costs": [
+          {
+            "ingredientId": "bread_flour",
+            "name": "Bread Flour (King Arthur)",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 800,
+            "unit": "g",
+            "packageSize": "10 lbs",
+            "packagePrice": 10.99,
+            "cost": 1.94
+          },
+          {
+            "ingredientId": "rouge_de_bordeaux",
+            "name": "Rouge de Bordeaux Whole Wheat (BSM)",
+            "sourceType": "manual",
+            "sourceName": "BSM Rouge de Bordeaux Flour \u2014 Whole Wheat (2.5 lb)",
+            "amount": 200,
+            "unit": "g",
+            "packageSize": "2.5 lb",
+            "packagePrice": 14.0,
+            "cost": 2.47
+          },
+          {
+            "ingredientId": "water",
+            "name": "Water",
+            "sourceType": "rate",
+            "sourceName": "Filtered water (not yet priced)",
+            "amount": 700,
+            "unit": "g",
+            "packageSize": "not yet priced",
+            "packagePrice": 0,
+            "cost": 0
+          },
+          {
+            "ingredientId": "starter",
+            "name": "Active Sourdough Starter",
+            "sourceType": "rate",
+            "sourceName": "Derived: 50% AP flour rate (flour + water)",
+            "amount": 200,
+            "unit": "g",
+            "packageSize": "$0.0006/g",
+            "packagePrice": 0,
+            "cost": 0.12
+          },
+          {
+            "ingredientId": "salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "Morton Fine Sea Salt",
+            "amount": 20,
+            "unit": "g",
+            "packageSize": "17.6 oz",
+            "packagePrice": 2.98,
+            "cost": 0.12
+          }
+        ],
+        "total": 4.65,
+        "perServing": 2.33,
+        "servings": 2
+      }
     }
   ],
   "research": {
