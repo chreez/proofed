@@ -447,7 +447,7 @@
     {
       "version": "v2.0.2",
       "date": "2026-05-12",
-      "summary": "Add config.stats.itemsPerBatch=6 for throughput modeling (PF-265). Recipe states \"No more than 6 cookies per sheet\" + \"Bake one sheet at a time\" — 23 cookies → 4 batches.",
+      "summary": "Add config.stats.itemsPerBatch=6 for throughput modeling (PF-265). Recipe states \"No more than 6 cookies per sheet\" + \"Bake one sheet at a time\" \u2014 23 cookies \u2192 4 batches.",
       "ingredients": [
         {
           "stageId": "PREP",
@@ -586,7 +586,7 @@
     {
       "version": "v2.0.3",
       "date": "2026-05-12",
-      "summary": "Backfill throughput timing fields on meta — prep_active=16m, proof_passive=1020m, oven_occupancy=54m, bake=39m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
+      "summary": "Backfill throughput timing fields on meta \u2014 prep_active=16m, proof_passive=1020m, oven_occupancy=54m, bake=39m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",
@@ -1082,7 +1082,7 @@
           "source": "agent"
         },
         {
-          "text": "Pull off heat slightly early — residual heat continues browning. If you smell burnt or acrid notes, start over with fresh butter.",
+          "text": "Pull off heat slightly early \u2014 residual heat continues browning. If you smell burnt or acrid notes, start over with fresh butter.",
           "critical": true,
           "source": "agent"
         }
@@ -1096,7 +1096,7 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Brown butter is opaque, creamy, and holds its shape — not liquid, not rock-hard",
+      "exit_condition": "Brown butter is opaque, creamy, and holds its shape \u2014 not liquid, not rock-hard",
       "notes": [
         {
           "text": "This step is critical. Warm brown butter melts sugar on contact, creating greasy dough that spreads too thin in the oven. The butter should feel like softened butter when ready.",
@@ -1129,7 +1129,7 @@
       "exit_condition": "Butter and sugars are evenly combined with a wet, sandy appearance",
       "notes": [
         {
-          "text": "No stand mixer needed. Since the brown butter is already pre-melted (just chilled), there is no creaming step — you are simply combining, not aerating.",
+          "text": "No stand mixer needed. Since the brown butter is already pre-melted (just chilled), there is no creaming step \u2014 you are simply combining, not aerating.",
           "critical": false,
           "source": "agent"
         }
@@ -1215,7 +1215,7 @@
       "exit_condition": "Dry ingredients evenly combined with no visible clumps",
       "notes": [
         {
-          "text": "The AP + bread flour blend adds chewiness from bread flour's higher protein while keeping cookies tender from the AP flour. Most sourdough CCC blogs use AP only — the blend is our differentiator.",
+          "text": "The AP + bread flour blend adds chewiness from bread flour's higher protein while keeping cookies tender from the AP flour. Most sourdough CCC blogs use AP only \u2014 the blend is our differentiator.",
           "critical": false,
           "source": "agent"
         }
@@ -1254,7 +1254,7 @@
       "exit_condition": "Chocolate evenly distributed throughout dough; reserved chocolate set aside",
       "notes": [
         {
-          "text": "Hand-chopped bar chocolate creates irregular pieces — thin shavings melt into pools while larger chunks stay semi-intact. This gives different chocolate experiences in every bite.",
+          "text": "Hand-chopped bar chocolate creates irregular pieces \u2014 thin shavings melt into pools while larger chunks stay semi-intact. This gives different chocolate experiences in every bite.",
           "critical": false,
           "source": "agent"
         }
@@ -1285,12 +1285,12 @@
     {
       "id": "preheat-oven",
       "title": "Preheat Oven",
-      "direction": "Position rack in upper third of oven, about 15cm from the top heating element. Preheat to 350°F (175°C). Line baking sheets with parchment paper.",
+      "direction": "Position rack in upper third of oven, about 15cm from the top heating element. Preheat to 350\u00b0F (175\u00b0C). Line baking sheets with parchment paper.",
       "duration_min": 15,
       "timer": true,
       "parallel": true,
       "components": null,
-      "exit_condition": "Oven reaches 350°F (175°C) and baking sheets are lined with parchment",
+      "exit_condition": "Oven reaches 350\u00b0F (175\u00b0C) and baking sheets are lined with parchment",
       "notes": null
     },
     {
@@ -1309,12 +1309,12 @@
       "exit_condition": "Dough portioned into uniform 57g balls with chocolate pressed into tops; maximum 6 per sheet with 8cm spacing",
       "notes": [
         {
-          "text": "Pressing chocolate into the surface creates visible chocolate puddles on the baked cookie exterior — a signature bakery technique from Caroline Schiff.",
+          "text": "Pressing chocolate into the surface creates visible chocolate puddles on the baked cookie exterior \u2014 a signature bakery technique from Caroline Schiff.",
           "critical": false,
           "source": "agent"
         },
         {
-          "text": "Freeze extra dough balls on a sheet, then transfer to a zip bag. Bake from frozen — add 2-3 minutes to bake time. Frozen dough keeps up to 2 months.",
+          "text": "Freeze extra dough balls on a sheet, then transfer to a zip bag. Bake from frozen \u2014 add 2-3 minutes to bake time. Frozen dough keeps up to 2 months.",
           "critical": false,
           "source": "agent"
         }
@@ -1331,7 +1331,7 @@
       "exit_condition": "Edges golden brown, centers look slightly underbaked and puffy; cookies still soft when gently pressed",
       "notes": [
         {
-          "text": "Cookies firm up significantly as they cool. Pull them when they still look underdone in the center — they continue baking on the hot sheet.",
+          "text": "Cookies firm up significantly as they cool. Pull them when they still look underdone in the center \u2014 they continue baking on the hot sheet.",
           "critical": true,
           "source": "agent"
         },
@@ -1574,14 +1574,14 @@
       "date": "2026-05-22",
       "start_date": "2026-05-21",
       "version": "v2.0.4",
-      "summary": "Split-batch first bake — 6 cookies same-night via 30-min freezer chill, 19 cookies from rested dough next morning (25 total, recipe target 22-24). Subbed 60g Ryman Rye for AP (BSM heritage experiment). Brown butter pulled cautious (lighter than ideal); same-night batch needed 15-20 min vs recipe 12-14, came out good.",
+      "summary": "Split-batch first bake \u2014 6 cookies same-night via 30-min freezer chill, 19 cookies from rested dough next morning (25 total, recipe target 22-24). Subbed 60g Ryman Rye for AP (BSM heritage experiment). Brown butter pulled cautious (lighter than ideal); same-night batch needed 15-20 min vs recipe 12-14, came out good.",
       "notes": [
-        "Wed 8:10pm — Made brown butter, cooling. Possibly under-browned; pulled cautious to avoid burning.",
-        "Wed 8:59pm — Used 60g Ryman Rye (sub from AP flour) as experiment.",
-        "Wed 9:37pm — Mixed dough. Into Cambro, fridge. Scooped 6 cookies for night bake; freezing 30 min.",
-        "Wed 10:48pm — Night batch baked 15-20 min total (recipe calls for 12-14). Came out good. Wondering if oven temp could go higher for more browning.",
-        "Thu 11:34am — Started morning bakes ~9am from rested dough. Two batches of 6 done so far; second batch cooling.",
-        "Thu 12:02pm — Last batch ended up 7 cookies (2 measured 59g; all other batches were 57g exactly). Total yield: 25 cookies (recipe says 22-24). Recipe yield is pretty close."
+        "Wed 8:10pm \u2014 Made brown butter, cooling. Possibly under-browned; pulled cautious to avoid burning.",
+        "Wed 8:59pm \u2014 Used 60g Ryman Rye (sub from AP flour) as experiment.",
+        "Wed 9:37pm \u2014 Mixed dough. Into Cambro, fridge. Scooped 6 cookies for night bake; freezing 30 min.",
+        "Wed 10:48pm \u2014 Night batch baked 15-20 min total (recipe calls for 12-14). Came out good. Wondering if oven temp could go higher for more browning.",
+        "Thu 11:34am \u2014 Started morning bakes ~9am from rested dough. Two batches of 6 done so far; second batch cooling.",
+        "Thu 12:02pm \u2014 Last batch ended up 7 cookies (2 measured 59g; all other batches were 57g exactly). Total yield: 25 cookies (recipe says 22-24). Recipe yield is pretty close."
       ],
       "photos": [
         {
@@ -1608,23 +1608,23 @@
       ],
       "next_time": [
         {
-          "text": "Brown butter deeper next time — pull at nutty aroma + visible brown flecks on bottom. Light brown butter likely contributed to pale finish + longer bake."
+          "text": "Brown butter deeper next time \u2014 pull at nutty aroma + visible brown flecks on bottom. Light brown butter likely contributed to pale finish + longer bake."
         },
         {
-          "text": "Try raising oven temp 10-15°F (or shift rack lower) for more browning. Same-night batch needed 15-20 min vs recipe 12-14."
+          "text": "Try raising oven temp 10-15\u00b0F (or shift rack lower) for more browning. Same-night batch needed 15-20 min vs recipe 12-14."
         },
         {
           "text": "A/B taste compare: same-night freezer-chill batch vs ~12-hr rested morning batch. Log differences after cooling."
         },
         {
-          "text": "Scoop discipline: 4 batches all hit 57g exactly except final batch (2 cookies at 59g). Last-scoop drift is normal — fine to accept, or split into 8 smaller cookies next time."
+          "text": "Scoop discipline: 4 batches all hit 57g exactly except final batch (2 cookies at 59g). Last-scoop drift is normal \u2014 fine to accept, or split into 8 smaller cookies next time."
         }
       ],
       "bake_notes": [
         {
           "timestamp": "2026-05-22T01:10:34Z",
           "raw": "Made browned butter. currently cooling it. It is maybe not that brown. but i didn't want to burn it",
-          "curated": "Made brown butter, currently cooling. Possibly not that brown — pulled cautious to avoid burning.",
+          "curated": "Made brown butter, currently cooling. Possibly not that brown \u2014 pulled cautious to avoid burning.",
           "notable": true,
           "processing": "prep"
         },
@@ -1638,7 +1638,7 @@
         {
           "timestamp": "2026-05-22T02:37:46Z",
           "raw": "mixed dough. placed in cambro. just placed in fridge. scooped out 6 cookies for tonight's bake. freezing for 30 minutes. then should be able to bake tonight",
-          "curated": "Mixed dough. Placed in Cambro, into fridge. Scooped 6 cookies for tonight's bake — freezing 30 min, then bake.",
+          "curated": "Mixed dough. Placed in Cambro, into fridge. Scooped 6 cookies for tonight's bake \u2014 freezing 30 min, then bake.",
           "notable": false,
           "processing": "mix"
         },
@@ -1659,7 +1659,7 @@
         {
           "timestamp": "2026-05-22T17:02:54Z",
           "raw": "last batch ended up being 7 cookies with 2 cookies measuring 59. literally all other batches were 57g perfectly. recipe pretty close",
-          "curated": "Last batch was 7 cookies — 2 measured 59g, the other 5 (and all prior batches) measured 57g exactly. Total yield 25; recipe target is 22-24.",
+          "curated": "Last batch was 7 cookies \u2014 2 measured 59g, the other 5 (and all prior batches) measured 57g exactly. Total yield 25; recipe target is 22-24.",
           "notable": true,
           "processing": "result"
         }
@@ -1730,7 +1730,7 @@
               "unit": "g",
               "breakdown": null,
               "confidence": "high",
-              "rationale": "Reduced from 200g — 60g swapped for Ryman Rye (BSM heritage flour experiment)"
+              "rationale": "Reduced from 200g \u2014 60g swapped for Ryman Rye (BSM heritage flour experiment)"
             },
             {
               "id": "ryman-rye-flour",
@@ -1869,7 +1869,7 @@
             "sourceName": "Derived: 50% AP flour rate (flour + water)",
             "amount": 150,
             "unit": "g",
-            "packageSize": "—",
+            "packageSize": "\u2014",
             "packagePrice": 0,
             "cost": 0.18
           },
@@ -2206,17 +2206,17 @@
     {
       "date": "2026-06-05",
       "version": "v2.0.4",
-      "summary": "Heritage-flour experiment, split-batch — first 8 of 24 cookies baked 06-04 evening (~60g each, 14 min from freezer-chilled scoops); visible cracks, likely einkorn. Heritage subs: BSM Marquis 80g + einkorn 119g (50% AP swap). Chocolate trimmed to 250g fold + 50g tops. Dough yielded 1441g. Dry mix overshot recipe v2.0.4 by ~38% (agent mise error citing Clever Carrot original weights); proceeded as-mixed. Cost $19.95 total ($0.91/cookie); chocolate dominates at $11.36.",
+      "summary": "Heritage-flour experiment, split-batch \u2014 first 8 of 24 cookies baked 06-04 evening (~60g each, 14 min from freezer-chilled scoops); visible cracks, likely einkorn. Heritage subs: BSM Marquis 80g + einkorn 119g (50% AP swap). Chocolate trimmed to 250g fold + 50g tops. Dough yielded 1441g. Dry mix overshot recipe v2.0.4 by ~38% (agent mise error citing Clever Carrot original weights); proceeded as-mixed. Cost $19.95 total ($0.91/cookie); chocolate dominates at $11.36.",
       "notes": [
-        "2026-06-04 evening — Mixed dry. Marquis weighed 80g (finished the BSM bag). Topped up bread portion with 124g KABF bread flour to hit 204g.",
-        "2026-06-04 evening — AP portion: 119g KABF AP + 119g BSM einkorn (50% swap for fun — heritage experiment).",
-        "2026-06-04 evening — Leaveners + salt: 4g baking powder, 5g baking soda, 7g fine sea salt. Whisked hard (einkorn clumps).",
-        "2026-06-04 evening — Mid-mix discovery: total dry hit 458g (442g flour + 16g leavener/salt). Recipe v2.0.4 actually calls for 320g flour + 13g leavener/salt; agent had cited Clever Carrot original (442g/17g). User chose to proceed as-mixed (\"oh well.. lets see how it turns out\") rather than scale wet 1.38x or discard 122g dry. Expect cakier rise (BP 2x), drier crumb, possibly less spread (extra flour, einkorn lower hydration draw).",
-        "2026-06-04 6:43pm — Folded only 250g chocolate (recipe spec 300g). Judged sufficient. Reserving 50g for tops per recipe.",
-        "2026-06-04 9:07pm — Dough chilled a few hours in fridge. Total dough yield 1441g. Doing one set of 6 cookies tonight.",
-        "2026-06-04 9:37pm — Started bake. Scoops went into freezer first to chill cold before sheet.",
-        "2026-06-04 9:54pm — Out of oven at 14 minutes (cold-from-freezer scoops). Cookies show visible cracks — \"probably from einkorn\" (lower gluten = less elastic surface).",
-        "2026-06-04 9:56pm — Plan: shape and freeze the rest of the dough tomorrow. Tonight's batch was 8 cookies at ~60g each (480g). Targeting 24 total at 60g/each (~1440g) — matches 1441g actual yield."
+        "2026-06-04 evening \u2014 Mixed dry. Marquis weighed 80g (finished the BSM bag). Topped up bread portion with 124g KABF bread flour to hit 204g.",
+        "2026-06-04 evening \u2014 AP portion: 119g KABF AP + 119g BSM einkorn (50% swap for fun \u2014 heritage experiment).",
+        "2026-06-04 evening \u2014 Leaveners + salt: 4g baking powder, 5g baking soda, 7g fine sea salt. Whisked hard (einkorn clumps).",
+        "2026-06-04 evening \u2014 Mid-mix discovery: total dry hit 458g (442g flour + 16g leavener/salt). Recipe v2.0.4 actually calls for 320g flour + 13g leavener/salt; agent had cited Clever Carrot original (442g/17g). User chose to proceed as-mixed (\"oh well.. lets see how it turns out\") rather than scale wet 1.38x or discard 122g dry. Expect cakier rise (BP 2x), drier crumb, possibly less spread (extra flour, einkorn lower hydration draw).",
+        "2026-06-04 6:43pm \u2014 Folded only 250g chocolate (recipe spec 300g). Judged sufficient. Reserving 50g for tops per recipe.",
+        "2026-06-04 9:07pm \u2014 Dough chilled a few hours in fridge. Total dough yield 1441g. Doing one set of 6 cookies tonight.",
+        "2026-06-04 9:37pm \u2014 Started bake. Scoops went into freezer first to chill cold before sheet.",
+        "2026-06-04 9:54pm \u2014 Out of oven at 14 minutes (cold-from-freezer scoops). Cookies show visible cracks \u2014 \"probably from einkorn\" (lower gluten = less elastic surface).",
+        "2026-06-04 9:56pm \u2014 Plan: shape and freeze the rest of the dough tomorrow. Tonight's batch was 8 cookies at ~60g each (480g). Targeting 24 total at 60g/each (~1440g) \u2014 matches 1441g actual yield."
       ],
       "ingredients": [
         {
@@ -2284,7 +2284,7 @@
               "unit": "g",
               "breakdown": null,
               "confidence": "high",
-              "rationale": "Reduced from 200g — 119g KABF AP only; remaining AP role filled by 119g BSM einkorn (50% swap)"
+              "rationale": "Reduced from 200g \u2014 119g KABF AP only; remaining AP role filled by 119g BSM einkorn (50% swap)"
             },
             {
               "id": "einkorn-flour",
@@ -2302,7 +2302,7 @@
               "unit": "g",
               "breakdown": null,
               "confidence": "high",
-              "rationale": "Finished the bag — last 80g of Marquis used as part of the bread flour role; topped up to 204g with KABF bread"
+              "rationale": "Finished the bag \u2014 last 80g of Marquis used as part of the bread flour role; topped up to 204g with KABF bread"
             },
             {
               "id": "bread-flour",
@@ -2311,7 +2311,7 @@
               "unit": "g",
               "breakdown": null,
               "confidence": "medium",
-              "rationale": "KABF bread flour topping up after 80g BSM Marquis (finished bag) to hit 204g bread portion total — but note: 204g target itself was an agent-mise error citing Clever Carrot original (recipe v2.0.4 calls for 120g bread)"
+              "rationale": "KABF bread flour topping up after 80g BSM Marquis (finished bag) to hit 204g bread portion total \u2014 but note: 204g target itself was an agent-mise error citing Clever Carrot original (recipe v2.0.4 calls for 120g bread)"
             },
             {
               "id": "baking-soda",
@@ -2329,7 +2329,7 @@
               "unit": "g",
               "breakdown": null,
               "confidence": "medium",
-              "rationale": "Agent mise-en-place error — recipe v2.0.4 calls for 2g; mixed 4g and discovered post-hoc; proceeded as-mixed"
+              "rationale": "Agent mise-en-place error \u2014 recipe v2.0.4 calls for 2g; mixed 4g and discovered post-hoc; proceeded as-mixed"
             },
             {
               "id": "fine-sea-salt",
@@ -2356,7 +2356,7 @@
                 }
               ],
               "confidence": "high",
-              "rationale": "Folded 250g instead of recipe-spec 300g — user judged sufficient; reserved 50g for tops per Schiff technique"
+              "rationale": "Folded 250g instead of recipe-spec 300g \u2014 user judged sufficient; reserved 50g for tops per Schiff technique"
             },
             {
               "id": "flaky-salt",
@@ -2436,7 +2436,7 @@
             "ingredientId": "sourdough-discard",
             "name": "Sourdough Discard (100% hydration)",
             "sourceType": "manual",
-            "sourceName": "Homemade discard (recycled starter feed — no marginal cost)",
+            "sourceName": "Homemade discard (recycled starter feed \u2014 no marginal cost)",
             "amount": 150,
             "unit": "g",
             "packageSize": "homemade",
@@ -2469,7 +2469,7 @@
             "ingredientId": "einkorn-flour",
             "name": "Einkorn Flour (Barton Springs Mill)",
             "sourceType": "manual",
-            "sourceName": "BSM Einkorn Flour (Whole Grain, certified organic) — 5 lb $22.00",
+            "sourceName": "BSM Einkorn Flour (Whole Grain, certified organic) \u2014 5 lb $22.00",
             "amount": 119,
             "unit": "g",
             "packageSize": "5 lb",
@@ -2480,7 +2480,7 @@
             "ingredientId": "marquis-flour",
             "name": "Marquis Flour (Barton Springs Mill)",
             "sourceType": "manual",
-            "sourceName": "BSM Marquis Flour (Whole Wheat, certified organic) — 2.5 lb $13.00",
+            "sourceName": "BSM Marquis Flour (Whole Wheat, certified organic) \u2014 2.5 lb $13.00",
             "amount": 80,
             "unit": "g",
             "packageSize": "2.5 lb",
@@ -2560,7 +2560,7 @@
           "name": "img-7802",
           "thumb": "/images/sourdough-chocolate-chip-cookies/2026-06-05/img-7802-400w.webp",
           "src": "/images/sourdough-chocolate-chip-cookies/2026-06-05/img-7802-800w.webp",
-          "alt": "Eight golden-brown cookies in two rows of four on parchment-lined sheet pan fresh from the oven. Heritage flour bake — BSM Marquis + einkorn experiment, baked 14 min from freezer-chilled scoops.",
+          "alt": "Eight golden-brown cookies in two rows of four on parchment-lined sheet pan fresh from the oven. Heritage flour bake \u2014 BSM Marquis + einkorn experiment, baked 14 min from freezer-chilled scoops.",
           "usage": "hero"
         }
       ]
@@ -2569,20 +2569,20 @@
       "date": "2026-07-04",
       "start_date": "2026-07-03",
       "version": "v2.0.4",
-      "summary": "Best-execution cookie bake to date — brown butter dialed to honey color, 250g chocolate fold + ~5-chip decorative tops, ~20 min on large sheet pan at recipe temp. 13 cookies + 1 mini baked; 8 dough balls vacuum-sealed for Thursday.",
+      "summary": "Best-execution cookie bake to date \u2014 brown butter dialed to honey color, 250g chocolate fold + ~5-chip decorative tops, ~20 min on large sheet pan at recipe temp. 13 cookies + 1 mini baked; 8 dough balls vacuum-sealed for Thursday.",
       "notes": [
-        "Mixed dough Fri 07-03 ~20:30 — into fridge overnight.",
-        "Chocolate: 250g folded in (intentional). Recipe's 50g 'tops' number treated as decoration only — ~5 chips per cookie, not a weight.",
-        "Brown butter dialed to honey color — good this time; a prior attempt a few days ago was overdone.",
+        "Mixed dough Fri 07-03 ~20:30 \u2014 into fridge overnight.",
+        "Chocolate: 250g folded in (intentional). Recipe's 50g 'tops' number treated as decoration only \u2014 ~5 chips per cookie, not a weight.",
+        "Brown butter dialed to honey color \u2014 good this time; a prior attempt a few days ago was overdone.",
         "Out of fridge Sat 07-04 ~11:00; tempered on counter until ~12:00 for easier scooping.",
-        "Scoop: target 56g per ball; many landed 57-58g. Divided by 24 but came up ~1.5 cookies short. Dough transfer/scoop was lossless — cambro was clean by end of shaping.",
+        "Scoop: target 56g per ball; many landed 57-58g. Divided by 24 but came up ~1.5 cookies short. Dough transfer/scoop was lossless \u2014 cambro was clean by end of shaping.",
         "Chilled scooped balls in freezer ~15 min to solidify.",
         "Baked Sat ~12:30 on large sheet pan (vs usual half-sheet which fits only 8); 13 cookies + 1 extra mini fit comfortably.",
-        "Bake time ~20 min at recipe temp — pulled by eye.",
+        "Bake time ~20 min at recipe temp \u2014 pulled by eye.",
         "Remainder: 8 dough balls vacuum-sealed to freezer for Thursday bake.",
         "Verdict: one of the better bakes (taste-test metrics pending).",
-        "Taste: good ratio of chocolate chip to cookie — validates the 250g fold trim (down from 350g recipe baseline).",
-        "Forgot flaky salt on top immediately after baking (again). Rescue: light water spray then sprinkle Maldon — adheres fine, tastes right. Minor issue."
+        "Taste: good ratio of chocolate chip to cookie \u2014 validates the 250g fold trim (down from 350g recipe baseline).",
+        "Forgot flaky salt on top immediately after baking (again). Rescue: light water spray then sprinkle Maldon \u2014 adheres fine, tastes right. Minor issue."
       ],
       "photos": [
         {
@@ -2593,37 +2593,37 @@
         {
           "src": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8136-800w.webp",
           "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8136-400w.webp",
-          "alt": "Close-up of baked cookies on the wire rack — puffed rounds with molten chocolate chip tops and honey-brown color from the dialed-in brown butter; Great Pyrenees and second dog mid-lick blurred in background."
+          "alt": "Close-up of baked cookies on the wire rack \u2014 puffed rounds with molten chocolate chip tops and honey-brown color from the dialed-in brown butter; Great Pyrenees and second dog mid-lick blurred in background."
         },
         {
           "src": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8140-800w.webp",
           "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-04/img-8140-400w.webp",
-          "alt": "Rack of finished cookies in the foreground with the Great Pyrenees watching from across the room — decorative chips on each cookie top, honey-brown crumb, edges set but centers still glossy."
+          "alt": "Rack of finished cookies in the foreground with the Great Pyrenees watching from across the room \u2014 decorative chips on each cookie top, honey-brown crumb, edges set but centers still glossy."
         },
         {
           "src": "/images/sourdough-chocolate-chip-cookies/2026-07-04/fullsizerender-vsco-800w.webp",
           "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-04/fullsizerender-vsco-400w.webp",
-          "alt": "Hero shot of the finished bake — wire rack of 13 cookies plus one mini on a large sheet pan, warm honey-brown crumb from the browned butter, chocolate chunks visible across the tops; both dogs framed in the background."
+          "alt": "Hero shot of the finished bake \u2014 wire rack of 13 cookies plus one mini on a large sheet pan, warm honey-brown crumb from the browned butter, chocolate chunks visible across the tops; both dogs framed in the background."
         }
       ],
       "next_time": [
         {
-          "text": "Scoop math: aim ~5g under a perfectly-divisible target (e.g. 51g if dividing dough by 24) — actual scoops drift up to 57-58g, which eats into cookie count. Dough is lossless so under-target is safe."
+          "text": "Scoop math: aim ~5g under a perfectly-divisible target (e.g. 51g if dividing dough by 24) \u2014 actual scoops drift up to 57-58g, which eats into cookie count. Dough is lossless so under-target is safe."
         },
         {
-          "text": "Recipe 'chocolate tops 50g' field is misleading — for this bake pattern tops are ~5 chips per cookie decoration, not a weight. Clarify in recipe or split into separate ingredient lines."
+          "text": "Recipe 'chocolate tops 50g' field is misleading \u2014 for this bake pattern tops are ~5 chips per cookie decoration, not a weight. Clarify in recipe or split into separate ingredient lines."
         },
         {
           "text": "A/B taste: today's brown-butter-honey batch vs Thursday's frozen-dough batch. Log crumb/edge/flavor differences."
         },
         {
-          "text": "New evaluation metric proposed (from photo tagging): 'dog loitering %' as informal bake success indicator — Pyrenees hovering = kitchen-approved."
+          "text": "New evaluation metric proposed (from photo tagging): 'dog loitering %' as informal bake success indicator \u2014 Pyrenees hovering = kitchen-approved."
         },
         {
-          "text": "Flaky salt reminder: sprinkle Maldon on tops WITHIN the first minute after pulling from oven, while surface is still glossy. Recurring miss — consider a physical cue (e.g., pre-portion salt into a ramekin next to the cooling rack before oven-in)."
+          "text": "Flaky salt reminder: sprinkle Maldon on tops WITHIN the first minute after pulling from oven, while surface is still glossy. Recurring miss \u2014 consider a physical cue (e.g., pre-portion salt into a ramekin next to the cooling rack before oven-in)."
         },
         {
-          "text": "Rescue for forgotten flaky salt: light water mist over cooled cookies, then sprinkle Maldon — adheres well enough."
+          "text": "Rescue for forgotten flaky salt: light water mist over cooled cookies, then sprinkle Maldon \u2014 adheres well enough."
         }
       ],
       "bake_notes": [
@@ -2653,7 +2653,7 @@
         {
           "timestamp": "2026-07-04T17:15:00Z",
           "raw": "process was: scoop all cookies aiming for 56g (a lot of them came out to 57 or 58, which could have added up to the missing cookie.) may need to shoot for 5g less than perfectly divisible amount. this cookie dough is pretty lossless when i transfer containers or scoop (no remnants being lost.. the cambro was pretty much clean by the time i was done shaping)",
-          "curated": "Scooped to 56g target; many balls landed 57-58g. Divided dough by 24 but came up ~1.5 cookies short — drift up ate into cookie count. Dough is lossless during transfer and scooping.",
+          "curated": "Scooped to 56g target; many balls landed 57-58g. Divided dough by 24 but came up ~1.5 cookies short \u2014 drift up ate into cookie count. Dough is lossless during transfer and scooping.",
           "notable": true,
           "processing": "shaping"
         },
@@ -2688,7 +2688,7 @@
         {
           "timestamp": "2026-07-04T18:00:00Z",
           "raw": "this time it seemed good. i had made one a few days ago but i think i overdid it. this time around it was just fine. it was a honey color.",
-          "curated": "Brown butter came out honey color this time — dialed in vs prior overdone attempt.",
+          "curated": "Brown butter came out honey color this time \u2014 dialed in vs prior overdone attempt.",
           "notable": true,
           "processing": "result"
         },
@@ -2702,14 +2702,14 @@
         {
           "timestamp": "2026-07-04T20:00:00Z",
           "raw": "taste - good ratio of choco chip to cookie",
-          "curated": "Taste-test result: good chocolate chip to cookie ratio — 250g fold hit the sweet spot.",
+          "curated": "Taste-test result: good chocolate chip to cookie ratio \u2014 250g fold hit the sweet spot.",
           "notable": true,
           "processing": "taste_test"
         },
         {
           "timestamp": "2026-07-04T20:05:00Z",
           "raw": "i keep forgetting to put salt on it directly after baking. unsure how i can remember it but a callout for next time. very minor. i fix this by spraying it with some water and then sprinkling after",
-          "curated": "Flaky salt was forgotten immediately after baking (recurring miss). Rescue workaround: light water spray + Maldon sprinkle after the fact — works fine.",
+          "curated": "Flaky salt was forgotten immediately after baking (recurring miss). Rescue workaround: light water spray + Maldon sprinkle after the fact \u2014 works fine.",
           "notable": true,
           "processing": "finishing"
         }
@@ -3012,20 +3012,20 @@
     {
       "date": "2026-07-31",
       "version": "v2.0.4",
-      "summary": "Double batch, 43 cookies out. Chocolate blend: 255g Guittard 72% + ~195g Ghirardelli semi-sweet (450g total; ~250g under a fully-doubled 700g — \"just using what I have\"). Nailed the flaky-salt window; brown butter could've gone a shade darker; Guittard 72% read a touch too dark in the final cookie. ~$0.8/cookie all-in ($34.27 for 43).",
+      "summary": "Double batch, 43 cookies out. Chocolate blend: 255g Guittard 72% + ~195g Ghirardelli semi-sweet (450g total; ~250g under a fully-doubled 700g \u2014 \"just using what I have\"). Nailed the flaky-salt window; brown butter could've gone a shade darker; Guittard 72% read a touch too dark in the final cookie. ~$0.8/cookie all-in ($34.27 for 43).",
       "notes": [
-        "Double batch. Chocolate mix: 255g Guittard 72% cacao (full package) + ~195g Ghirardelli semi-sweet remainder = 450g total. Deliberate under-target vs. a fully-doubled 700g — \"just using what I have\".",
-        "Brown butter could have cooked a beat longer — landed short of ideal honey color.",
+        "Double batch. Chocolate mix: 255g Guittard 72% cacao (full package) + ~195g Ghirardelli semi-sweet remainder = 450g total. Deliberate under-target vs. a fully-doubled 700g \u2014 \"just using what I have\".",
+        "Brown butter could have cooked a beat longer \u2014 landed short of ideal honey color.",
         "Baked 16 cookies on a full sheet tray in one round; arrangement was suboptimal (spacing off). No issues with the bake itself.",
-        "Remembered the flaky Maldon within the first minute out of the oven — following through on last bake's next_time cue.",
+        "Remembered the flaky Maldon within the first minute out of the oven \u2014 following through on last bake's next_time cue.",
         "Verdict: Guittard 72% cacao read a touch too dark in the final cookie. Rest of the bake was clean.",
-        "Final yield: 43 cookies (vs ~46 target for a doubled batch — ~3 short, consistent with light-hand scooping / arrangement)."
+        "Final yield: 43 cookies (vs ~46 target for a doubled batch \u2014 ~3 short, consistent with light-hand scooping / arrangement)."
       ],
       "photos": [
         {
           "src": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8236-800w.webp",
           "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8236-400w.webp",
-          "alt": "Prep station mid-mix — brown-sugar bowl and starter bowl staged with spatulas out, dog on the floor, TV on in background. Evening light, dough not yet assembled.",
+          "alt": "Prep station mid-mix \u2014 brown-sugar bowl and starter bowl staged with spatulas out, dog on the floor, TV on in background. Evening light, dough not yet assembled.",
           "tag": "process",
           "name": "img-8236"
         },
@@ -3039,7 +3039,7 @@
         {
           "src": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8239-800w.webp",
           "thumb": "/images/sourdough-chocolate-chip-cookies/2026-07-31/img-8239-400w.webp",
-          "alt": "Overhead of the dough in the Cambro, chocolate chunks visible throughout — headed to the fridge for the overnight chill.",
+          "alt": "Overhead of the dough in the Cambro, chocolate chunks visible throughout \u2014 headed to the fridge for the overnight chill.",
           "tag": "process",
           "name": "img-8239"
         },
@@ -3053,13 +3053,13 @@
       ],
       "next_time": [
         {
-          "text": "Guittard 72% cacao alone reads too dark for this cookie — either blend with more semi-sweet or drop back to 60% baking bars."
+          "text": "Guittard 72% cacao alone reads too dark for this cookie \u2014 either blend with more semi-sweet or drop back to 60% baking bars."
         },
         {
-          "text": "Push brown butter a beat longer — aim for a slightly deeper honey color; today's landed short."
+          "text": "Push brown butter a beat longer \u2014 aim for a slightly deeper honey color; today's landed short."
         },
         {
-          "text": "When baking 16 on a full sheet: pre-plan the grid (4×4) and space evenly — this bake's arrangement was off."
+          "text": "When baking 16 on a full sheet: pre-plan the grid (4\u00d74) and space evenly \u2014 this bake's arrangement was off."
         }
       ],
       "bake_notes": [
@@ -3199,7 +3199,7 @@
                 }
               ],
               "confidence": "medium",
-              "rationale": "This bake: 255g Guittard 72% cacao + ~195g Ghirardelli semi-sweet = 450g total (recipe doubled would target 700g; deliberate under-target — user \"just using what I have\"). Guittard 72% read a touch too dark in final cookie."
+              "rationale": "This bake: 255g Guittard 72% cacao + ~195g Ghirardelli semi-sweet = 450g total (recipe doubled would target 700g; deliberate under-target \u2014 user \"just using what I have\"). Guittard 72% read a touch too dark in final cookie."
             },
             {
               "id": "flaky-salt",
@@ -3258,7 +3258,7 @@
             "ingredientId": "egg-yolks",
             "name": "Egg Yolks (large)",
             "sourceType": "heb",
-            "sourceName": "Hill Country Fare Grade A Large White Eggs (yolk-basis: ~18g/egg × 18)",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs (yolk-basis: ~18g/egg \u00d7 18)",
             "amount": 108,
             "unit": "g",
             "cost": 0.72
@@ -3267,7 +3267,7 @@
             "ingredientId": "sourdough-discard",
             "name": "Sourdough Discard (100% hydration)",
             "sourceType": "heb",
-            "sourceName": "Homemade Sourdough Discard (home starter — no packaged equivalent, free)",
+            "sourceName": "Homemade Sourdough Discard (home starter \u2014 no packaged equivalent, free)",
             "amount": 300,
             "unit": "g",
             "cost": 0
@@ -3328,12 +3328,356 @@
           },
           {
             "ingredientId": "chocolate",
-            "name": "Chopped Chocolate (60-66% semisweet) — this bake: 255g Guittard 72% + ~195g Ghirardelli semi-sweet = 450g total",
+            "name": "Chopped Chocolate (60-66% semisweet) \u2014 this bake: 255g Guittard 72% + ~195g Ghirardelli semi-sweet = 450g total",
             "sourceType": "heb",
-            "sourceName": "Guittard 72% Cacao Bittersweet Baking Wafers (user-supplied — estimate; adjust package price manually if known)",
+            "sourceName": "Guittard 72% Cacao Bittersweet Baking Wafers (user-supplied \u2014 estimate; adjust package price manually if known)",
             "amount": 450,
             "unit": "g",
             "cost": 22.92
+          },
+          {
+            "ingredientId": "flaky-salt",
+            "name": "Flaky Sea Salt (Maldon)",
+            "sourceType": "heb",
+            "sourceName": "Maldon Smoked Sea Salt Flakes",
+            "amount": 4,
+            "unit": "g",
+            "cost": 0.14
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-08-25",
+      "start_date": "2026-08-24",
+      "version": "v2.0.4",
+      "summary": "Double batch with 200g BSM einkorn swapped in (100g each from AP and bread flour). Nestl\u00e9 Toll House semisweet chips throughout, pressed for puddle effect. Portioned into 8-cookie frozen bake kits \u2014 first kit baked ~Thu Aug 28, 3 kits remain.",
+      "notes": [
+        "Double batch.",
+        "Flour swap: replaced 100g AP + 100g bread flour with 200g BSM einkorn flour. Preferred the effect over straight AP/bread mix.",
+        "Chocolate: Nestl\u00e9 Toll House semi-sweet chips (pure semisweet; no Guittard this time).",
+        "Pressed cookies down during shaping for puddle effect before freezing.",
+        "Portioned into 8-cookie bags as frozen bake kits. First kit baked ~Thursday Aug 28. 3 kits remaining."
+      ],
+      "photos": [
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-08-25/img-8417-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-08-25/img-8417-400w.webp",
+          "alt": "Full sheet pan of portioned cookie dough balls packed tight on parchment, ready for the freezer \u2014 double batch ~40+ balls with chocolate chips pressed into each top. Kitchen scale upper right.",
+          "tag": "hero",
+          "name": "img-8417"
+        },
+        {
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-08-25/img-8419-800w.webp",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-08-25/img-8419-400w.webp",
+          "alt": "Evening bagging session \u2014 Ziploc bags open on counter, two filled with frozen dough balls (8 per kit), sheet tray of frozen balls upper right, gloved hand mid-process.",
+          "tag": "process",
+          "name": "img-8419"
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Einkorn swap at 100g each (AP + bread) per batch is the preferred flour setup \u2014 keep doing this."
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-08-25T12:00:00Z",
+          "raw": "Double batch.",
+          "notable": false,
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-08-25T12:01:00Z",
+          "raw": "Flour swap: replaced 100g AP + 100g bread with 200g BSM einkorn flour. Preferred the effect over straight AP/bread mix.",
+          "curated": "Flour swap: replaced 100g AP flour and 100g bread flour with 200g BSM einkorn flour. Preferred the effect over the straight AP/bread mix.",
+          "notable": true,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-08-25T12:02:00Z",
+          "raw": "Chocolate: Nestle Toll House semi-sweet chips (pure semisweet; no Guittard this time).",
+          "curated": "Chocolate: Nestl\u00e9 Toll House semi-sweet chips (pure semisweet; no Guittard this time).",
+          "notable": true,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-08-25T12:03:00Z",
+          "raw": "Pressed cookies down during shaping for puddle effect before freezing.",
+          "notable": true,
+          "processing": "shaping"
+        },
+        {
+          "timestamp": "2026-08-25T12:04:00Z",
+          "raw": "Portioned into 8-cookie bags as frozen bake kits. First kit baked ~Thursday Aug 28. 3 kits remaining.",
+          "notable": true,
+          "processing": "result"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 450,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 420,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 192,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 108,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 26,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "2\u00d7 base (400g) minus 100g swapped to einkorn"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 140,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "2\u00d7 base (240g) minus 100g swapped to einkorn"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "BSM Einkorn Flour (Barton Springs Mill)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "100g per batch \u2014 100g from AP swap + 100g from bread swap"
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 12,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            },
+            {
+              "id": "chocolate",
+              "name": "Nestl\u00e9 Toll House Semi-Sweet Chips",
+              "total": 700,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 doubled target; pure semisweet only"
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2\u00d7 single batch"
+            }
+          ]
+        }
+      ],
+      "weather": {
+        "location": "Austin, TX",
+        "date": "2026-08-25",
+        "temp_high_f": 101.5,
+        "temp_low_f": 75.5,
+        "humidity_avg_percent": 48,
+        "condition": "Partly cloudy",
+        "source": "open-meteo"
+      },
+      "cost": {
+        "total": 26.29,
+        "servings": 22,
+        "perServing": 1.2,
+        "items": [
+          {
+            "ingredientId": "butter",
+            "name": "Unsalted Butter",
+            "sourceType": "heb",
+            "sourceName": "Kerrygold Unsalted Pure Irish Butter Sticks",
+            "amount": 450,
+            "unit": "g",
+            "cost": 10.23
+          },
+          {
+            "ingredientId": "dark-brown-sugar",
+            "name": "Dark Brown Sugar",
+            "sourceType": "heb",
+            "sourceName": "Imperial Sugar Pure Cane Dark Brown Sugar",
+            "amount": 420,
+            "unit": "g",
+            "cost": 1.31
+          },
+          {
+            "ingredientId": "granulated-sugar",
+            "name": "Granulated Sugar",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "amount": 192,
+            "unit": "g",
+            "cost": 0.52
+          },
+          {
+            "ingredientId": "egg-yolks",
+            "name": "Egg Yolks (large)",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs",
+            "amount": 108,
+            "unit": "g",
+            "cost": 0.3
+          },
+          {
+            "ingredientId": "sourdough-discard",
+            "name": "Sourdough Discard (100% hydration)",
+            "sourceType": "manual",
+            "sourceName": "Homemade sourdough discard",
+            "amount": 300,
+            "unit": "g",
+            "cost": 0
+          },
+          {
+            "ingredientId": "vanilla",
+            "name": "Vanilla Extract",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Pure Madagascar Bourbon Vanilla Extract",
+            "amount": 26,
+            "unit": "g",
+            "cost": 2.3
+          },
+          {
+            "ingredientId": "ap-flour",
+            "name": "All-Purpose Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached All-Purpose Flour",
+            "amount": 300,
+            "unit": "g",
+            "cost": 0.89
+          },
+          {
+            "ingredientId": "bread-flour",
+            "name": "Bread Flour",
+            "sourceType": "heb",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "amount": 140,
+            "unit": "g",
+            "cost": 0.36
+          },
+          {
+            "ingredientId": "einkorn-flour",
+            "name": "BSM Einkorn Flour (Barton Springs Mill)",
+            "sourceType": "manual",
+            "sourceName": "Barton Springs Mill Einkorn Whole Grain Flour ($22/5lb)",
+            "amount": 200,
+            "unit": "g",
+            "cost": 1.94
+          },
+          {
+            "ingredientId": "baking-soda",
+            "name": "Baking Soda",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Pure Baking Soda",
+            "amount": 10,
+            "unit": "g",
+            "cost": 0.02
+          },
+          {
+            "ingredientId": "baking-powder",
+            "name": "Baking Powder",
+            "sourceType": "heb",
+            "sourceName": "Hill Country Fare Double Acting Baking Powder",
+            "amount": 4,
+            "unit": "g",
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "fine-sea-salt",
+            "name": "Fine Sea Salt",
+            "sourceType": "heb",
+            "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals",
+            "amount": 12,
+            "unit": "g",
+            "cost": 0.04
+          },
+          {
+            "ingredientId": "chocolate",
+            "name": "Nestl\u00e9 Toll House Semi-Sweet Chips",
+            "sourceType": "heb",
+            "sourceName": "Nestle Toll House Semi Sweet Chocolate Chips",
+            "amount": 700,
+            "unit": "g",
+            "cost": 8.2
           },
           {
             "ingredientId": "flaky-salt",
@@ -3357,7 +3701,7 @@
       },
       {
         "method": "Oven",
-        "detail": "350°F (175°C) for 3-4 minutes on a baking sheet. Refreshes the crisp edges without over-softening.",
+        "detail": "350\u00b0F (175\u00b0C) for 3-4 minutes on a baking sheet. Refreshes the crisp edges without over-softening.",
         "source": "agent"
       }
     ]
@@ -3399,7 +3743,7 @@
         "author": "Emilie Raffa"
       },
       {
-        "name": "Nik Sharma — Cookie Dough Rest Science",
+        "name": "Nik Sharma \u2014 Cookie Dough Rest Science",
         "url": "https://niksharma.substack.com/p/what-does-cookie-dough-resting-do",
         "type": "adapted",
         "author": "Nik Sharma"
@@ -3438,7 +3782,7 @@
       {
         "name": "Hand mix (no stand mixer)",
         "sourcedFrom": "4/7 agents",
-        "rationale": "Brown butter is already melted — no creaming step needed. Spatula gives better gluten control.",
+        "rationale": "Brown butter is already melted \u2014 no creaming step needed. Spatula gives better gluten control.",
         "confidence": "medium"
       },
       {
@@ -3580,12 +3924,12 @@
   "technical_notes": [
     {
       "title": "Quick Bake vs Overnight Rest",
-      "text": "- Recipe defaults to overnight rest (8-24h fridge). Same-day bake works with tradeoffs.\n- **Why rest helps**: flour hydrates fully (chewier crumb, less gritty); enzymes break starch into sugars (deeper browning, toffee depth); discard acidity mellows; dough firms so cookies stay thicker (less spread).\n- **Quick bake (30-min freezer chill, no overnight)**: flatter cookies (warm butter spreads in oven), paler color (less browning fuel), sharper sourdough tang, slightly grittier bite from under-hydrated flour.\n- **Minimum viable chill**: 30 min in freezer firms butter enough to prevent runaway spread. Flavor will be one-dimensional compared to rested dough.\n- **No yeast involved**: leavening is baking soda + baking powder. Sourdough discard contributes flavor + hydration, not lift. Adding instant yeast won't help — bake window is too short for fermentation.",
+      "text": "- Recipe defaults to overnight rest (8-24h fridge). Same-day bake works with tradeoffs.\n- **Why rest helps**: flour hydrates fully (chewier crumb, less gritty); enzymes break starch into sugars (deeper browning, toffee depth); discard acidity mellows; dough firms so cookies stay thicker (less spread).\n- **Quick bake (30-min freezer chill, no overnight)**: flatter cookies (warm butter spreads in oven), paler color (less browning fuel), sharper sourdough tang, slightly grittier bite from under-hydrated flour.\n- **Minimum viable chill**: 30 min in freezer firms butter enough to prevent runaway spread. Flavor will be one-dimensional compared to rested dough.\n- **No yeast involved**: leavening is baking soda + baking powder. Sourdough discard contributes flavor + hydration, not lift. Adding instant yeast won't help \u2014 bake window is too short for fermentation.",
       "category": "method"
     },
     {
       "title": "Split-Batch Workflow (Same-Night + Overnight)",
-      "text": "- Best of both: brown butter + mix full dough once, then split between same-night bake and overnight rest. Same dough → two cookies, side-by-side A/B.\n- **Tonight portion** (~6 cookies, one sheet — matches per-sheet max): scoop balls, freezer 30 min, bake. Expect flatter, paler, sharper sourdough tang.\n- **Tomorrow portion** (remainder, ~17 cookies): press plastic wrap directly onto dough surface in bulk. Refrigerate 16-24h. Scoop + bake next day. Expect deeper toffee, chewier, mellow tang.\n- **Bulk-rest the remainder, do not pre-scoop balls then fridge**: smaller surface area on bulk dough → less air exposure → better flour hydration during the rest.\n- **Frozen alternative** (if fridge is full): scoop tomorrow's balls now and freeze on a tray. Bake from frozen, +2-3 min. Loses the overnight ferment flavor — use only as last resort.\n- **Tomorrow's bake time may shift**: colder, firmer dough may need +1 min. Watch for golden edges + puffy underbaked center (same exit condition as state `bake-cookies`).",
+      "text": "- Best of both: brown butter + mix full dough once, then split between same-night bake and overnight rest. Same dough \u2192 two cookies, side-by-side A/B.\n- **Tonight portion** (~6 cookies, one sheet \u2014 matches per-sheet max): scoop balls, freezer 30 min, bake. Expect flatter, paler, sharper sourdough tang.\n- **Tomorrow portion** (remainder, ~17 cookies): press plastic wrap directly onto dough surface in bulk. Refrigerate 16-24h. Scoop + bake next day. Expect deeper toffee, chewier, mellow tang.\n- **Bulk-rest the remainder, do not pre-scoop balls then fridge**: smaller surface area on bulk dough \u2192 less air exposure \u2192 better flour hydration during the rest.\n- **Frozen alternative** (if fridge is full): scoop tomorrow's balls now and freeze on a tray. Bake from frozen, +2-3 min. Loses the overnight ferment flavor \u2014 use only as last resort.\n- **Tomorrow's bake time may shift**: colder, firmer dough may need +1 min. Watch for golden edges + puffy underbaked center (same exit condition as state `bake-cookies`).",
       "category": "method"
     }
   ]
