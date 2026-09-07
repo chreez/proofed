@@ -111,10 +111,10 @@
       "lastUsed": {
         "name": "King Arthur Unbleached All-Purpose Flour",
         "brand": "King Arthur",
-        "sizeGrams": 4535.92,
-        "packagePrice": 9.98,
+        "sizeGrams": 4536,
+        "packagePrice": 10.28,
         "packageSize": "10 lbs",
-        "updatedAt": "2026-07-31"
+        "updatedAt": "2026-09-07"
       }
     },
     "bread-flour": {
@@ -129,10 +129,10 @@
       "lastUsed": {
         "name": "King Arthur Unbleached Bread Flour",
         "brand": "King Arthur",
-        "sizeGrams": 4535.92,
-        "packagePrice": 10.99,
+        "sizeGrams": 4536,
+        "packagePrice": 11.38,
         "packageSize": "10 lbs",
-        "updatedAt": "2026-07-31"
+        "updatedAt": "2026-09-07"
       }
     },
     "fine-sea-salt": {
