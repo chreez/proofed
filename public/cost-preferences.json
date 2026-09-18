@@ -135,6 +135,42 @@
         "updatedAt": "2026-09-07"
       }
     },
+    "brown_sugar": {
+      "lastUsed": {
+        "name": "Imperial Sugar Pure Cane Light Brown Sugar",
+        "brand": "Imperial Sugar",
+        "sizeGrams": 907,
+        "packagePrice": 2.82,
+        "packageSize": "2 lbs",
+        "updatedAt": "2026-09-18"
+      },
+      "pinned": {
+        "name": "Imperial Sugar Pure Cane Light Brown Sugar",
+        "brand": "Imperial Sugar",
+        "sizeGrams": 907,
+        "packagePrice": 2.82,
+        "packageSize": "2 lbs",
+        "updatedAt": "2026-09-18"
+      }
+    },
+    "yeast": {
+      "lastUsed": {
+        "name": "Red Star Quick-Rise Instant Dry Yeast - Original",
+        "brand": "Red Star",
+        "sizeGrams": 21,
+        "packagePrice": 1.76,
+        "packageSize": "3 ct",
+        "updatedAt": "2026-09-18"
+      },
+      "pinned": {
+        "name": "Red Star Quick-Rise Instant Dry Yeast - Original",
+        "brand": "Red Star",
+        "sizeGrams": 21,
+        "packagePrice": 1.76,
+        "packageSize": "3 ct",
+        "updatedAt": "2026-09-18"
+      }
+    },
     "fine-sea-salt": {
       "pinned": {
         "name": "H-E-B Fine Mediterranean Sea Salt Crystals",
