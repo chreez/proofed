@@ -25,7 +25,7 @@
       "itemsPerBatch": 6
     }
   },
-  "version": "v2.2.0",
+  "version": "v2.3.0",
   "change_log": [
     {
       "version": "v1.0.0",
@@ -1147,6 +1147,158 @@
           ]
         }
       ]
+    },
+    {
+      "version": "v2.3.0",
+      "date": "2026-09-18",
+      "summary": "Define chocolate split: 200g Nestlé semisweet chips + 100g Ghirardelli fold into dough; 50g Ghirardelli press into tops. Replaces generic chopped bar spec with chip-based starting ratios from bake history.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "6/7 agents confirmed 225-227g browned butter as consensus"
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 210,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across sources; 2:1 brown-to-white ratio"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 96,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Provides crispness and spread balance"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 54,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Yolks only removes excess moisture; validated by JennyBlogs bake-off winner"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "100-150g sweet spot for overnight ferment; discard preferred over active"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "1 tbsp; bean paste upgrade recommended"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "AP-dominant blend"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "AP+bread blend is our v1 differentiator; most blogs use AP only but KAB and Edd Kimber validate the blend"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour (Barton Springs Mill)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Preferred swap: 50g from AP + 50g from bread per batch. Tested across multiple double-batch bakes."
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid for lift and browning"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Insurance lift; some recipes omit"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Consistent across sources"
+            },
+            {
+              "id": "chocolate",
+              "name": "Semisweet Chocolate Chips (Nestlé + Ghirardelli mix)",
+              "total": 350,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "Nestlé — fold into dough",
+                  "amount": 200
+                },
+                {
+                  "label": "Ghirardelli — fold into dough",
+                  "amount": 100
+                },
+                {
+                  "label": "Ghirardelli — press into tops",
+                  "amount": 50
+                }
+              ],
+              "confidence": "medium",
+              "rationale": "200g Nestlé semisweet chips + 100g Ghirardelli fold; 50g Ghirardelli press into tops. Chips replace chopped bar for consistency; Ghirardelli adds richness without going too dark (Guittard 72% was too intense). Starting ratios — adjust across bakes."
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across every source"
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -1298,21 +1450,25 @@
           },
           {
             "id": "chocolate",
-            "name": "Chopped Chocolate (60-66% semisweet)",
+            "name": "Semisweet Chocolate Chips (Nestlé + Ghirardelli mix)",
             "total": 350,
             "unit": "g",
             "breakdown": [
               {
-                "label": "fold into dough",
-                "amount": 300
+                "label": "Nestlé — fold into dough",
+                "amount": 200
               },
               {
-                "label": "press into tops",
+                "label": "Ghirardelli — fold into dough",
+                "amount": 100
+              },
+              {
+                "label": "Ghirardelli — press into tops",
                 "amount": 50
               }
             ],
-            "confidence": "high",
-            "rationale": "Hand-chopped bar, not chips; reserve for surface per Schiff technique"
+            "confidence": "medium",
+            "rationale": "200g Nestlé semisweet chips + 100g Ghirardelli fold; 50g Ghirardelli press into tops. Chips replace chopped bar for consistency; Ghirardelli adds richness without going too dark (Guittard 72% was too intense). Starting ratios — adjust across bakes."
           },
           {
             "id": "flaky-salt",
@@ -1482,18 +1638,22 @@
     {
       "id": "whisk-dry",
       "title": "Whisk Dry Ingredients",
-      "direction": "In a medium bowl, whisk together all-purpose flour, bread flour, baking soda, baking powder, and fine sea salt.",
+      "direction": "In a medium bowl, whisk together all-purpose flour, bread flour, einkorn flour, baking soda, baking powder, and fine sea salt.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "all-purpose flour",
-          "amount": "200g"
+          "amount": "150g"
         },
         {
           "name": "bread flour",
-          "amount": "120g"
+          "amount": "70g"
+        },
+        {
+          "name": "einkorn flour",
+          "amount": "100g"
         },
         {
           "name": "baking soda",
@@ -1511,7 +1671,7 @@
       "exit_condition": "Dry ingredients evenly combined with no visible clumps",
       "notes": [
         {
-          "text": "The AP + bread flour blend adds chewiness from bread flour's higher protein while keeping cookies tender from the AP flour. Most sourdough CCC blogs use AP only — the blend is our differentiator.",
+          "text": "The three-flour blend — AP for tenderness, bread flour for chew, einkorn for complexity — is the structural backbone of v2.2.0+. Most sourdough CCC recipes use AP only; the blend is the differentiator.",
           "critical": false,
           "source": "agent"
         }
@@ -1537,20 +1697,20 @@
     {
       "id": "fold-chocolate",
       "title": "Fold in Chocolate",
-      "direction": "Using a rubber spatula, fold 300g of the chopped chocolate into the dough until evenly distributed. Reserve the remaining 50g for pressing into tops before baking.",
+      "direction": "Using a rubber spatula, fold 300g of the chocolate chips into the dough until evenly distributed (200g Nestlé + 100g Ghirardelli). Reserve the remaining 50g Ghirardelli chips for pressing into tops before baking.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": [
         {
-          "name": "chopped chocolate",
+          "name": "semisweet chocolate chips",
           "amount": "300g (reserve 50g)"
         }
       ],
       "exit_condition": "Chocolate evenly distributed throughout dough; reserved chocolate set aside",
       "notes": [
         {
-          "text": "Hand-chopped bar chocolate creates irregular pieces — thin shavings melt into pools while larger chunks stay semi-intact. This gives different chocolate experiences in every bite.",
+          "text": "Chips give more consistent distribution than hand-chopped bar. The split — more Nestlé for bulk, Ghirardelli for a richer finish — is a starting ratio; adjust based on how the bake reads.",
           "critical": false,
           "source": "agent"
         }
@@ -1592,13 +1752,13 @@
     {
       "id": "scoop-cookies",
       "title": "Scoop and Shape Cookies",
-      "direction": "Using a cookie scoop, portion dough into 57g balls. Roll gently into balls, then press reserved chopped chocolate into the tops. Place on parchment-lined baking sheets, spaced 8cm apart. No more than 6 cookies per sheet.",
+      "direction": "Using a cookie scoop, portion dough into 57g balls. Roll gently into balls, then press reserved Ghirardelli chips into the tops. Place on parchment-lined baking sheets, spaced 8cm apart. No more than 6 cookies per sheet.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
       "components": [
         {
-          "name": "reserved chopped chocolate",
+          "name": "reserved Ghirardelli chips",
           "amount": "50g"
         }
       ],
@@ -4052,7 +4212,7 @@
       "cost": {
         "total": 26.66,
         "servings": 67,
-        "perServing": 0.40,
+        "perServing": 0.4,
         "items": [
           {
             "ingredientId": "butter",
@@ -4106,7 +4266,7 @@
             "sourceName": "H-E-B Pure Madagascar Bourbon Vanilla Extract",
             "amount": 39,
             "unit": "g",
-            "cost": 3.30
+            "cost": 3.3
           },
           {
             "ingredientId": "ap-flour",
@@ -4606,6 +4766,11 @@
       {
         "id": "bread-flour",
         "behavior": "linear"
+      },
+      {
+        "id": "einkorn-flour",
+        "behavior": "linear",
+        "note": "Scales linearly with the AP/bread flour blend; maintain 100g-per-batch ratio relative to total flour."
       },
       {
         "id": "baking-soda",
