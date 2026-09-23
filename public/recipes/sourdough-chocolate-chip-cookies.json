@@ -25,7 +25,7 @@
       "itemsPerBatch": 6
     }
   },
-  "version": "v2.3.0",
+  "version": "v2.4.0",
   "change_log": [
     {
       "version": "v1.0.0",
@@ -1299,6 +1299,160 @@
           ]
         }
       ]
+    },
+    {
+      "version": "v2.4.0",
+      "date": "2026-09-23",
+      "summary": "Split chocolate into separate mise ingredients by role: chocolate-fold (300g, PREP stage) and chocolate-tops (50g, BAKE stage). Tops chocolate now gathered at bake time. BAKE stage gets its own gather section.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "6/7 agents confirmed 225-227g browned butter as consensus"
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 210,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across sources; 2:1 brown-to-white ratio"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 96,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Provides crispness and spread balance"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 54,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Yolks only removes excess moisture; validated by JennyBlogs bake-off winner"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "100-150g sweet spot for overnight ferment; discard preferred over active"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "1 tbsp; bean paste upgrade recommended"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "AP-dominant blend"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "AP+bread blend is our v1 differentiator; most blogs use AP only but KAB and Edd Kimber validate the blend"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour (Barton Springs Mill)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Preferred swap: 50g from AP + 50g from bread per batch. Tested across multiple double-batch bakes."
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid for lift and browning"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Insurance lift; some recipes omit"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Consistent across sources"
+            },
+            {
+              "id": "chocolate-fold",
+              "name": "Semisweet Chocolate Chips",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Fold into dough. Current mix: 200g Nestlé + 100g Ghirardelli semisweet chips. v2.5.0 will split to semisweet/dark blend."
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across every source"
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Bake",
+          "ingredients": [
+            {
+              "id": "chocolate-tops",
+              "name": "Semisweet Chocolate Chips",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Press into tops of shaped cookies before baking. Kept separate from fold chocolate — gathered at bake time, not with dough ingredients."
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -1449,26 +1603,13 @@
             "rationale": "Consistent across sources"
           },
           {
-            "id": "chocolate",
-            "name": "Semisweet Chocolate Chips (Nestlé + Ghirardelli mix)",
-            "total": 350,
+            "id": "chocolate-fold",
+            "name": "Semisweet Chocolate Chips",
+            "total": 300,
             "unit": "g",
-            "breakdown": [
-              {
-                "label": "Nestlé — fold into dough",
-                "amount": 200
-              },
-              {
-                "label": "Ghirardelli — fold into dough",
-                "amount": 100
-              },
-              {
-                "label": "Ghirardelli — press into tops",
-                "amount": 50
-              }
-            ],
+            "breakdown": null,
             "confidence": "medium",
-            "rationale": "200g Nestlé semisweet chips + 100g Ghirardelli fold; 50g Ghirardelli press into tops. Chips replace chopped bar for consistency; Ghirardelli adds richness without going too dark (Guittard 72% was too intense). Starting ratios — adjust across bakes."
+            "rationale": "Fold into dough. Current mix: 200g Nestlé + 100g Ghirardelli semisweet chips. v2.5.0 will split to semisweet/dark blend."
           },
           {
             "id": "flaky-salt",
@@ -1503,7 +1644,21 @@
     {
       "id": "BAKE",
       "title": "Bake",
-      "gather": null,
+      "gather": {
+        "vessels": null,
+        "equipment": null,
+        "ingredients": [
+          {
+            "id": "chocolate-tops",
+            "name": "Semisweet Chocolate Chips",
+            "total": 50,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "medium",
+            "rationale": "Press into tops of shaped cookies before baking. Kept separate from fold chocolate — gathered at bake time, not with dough ingredients."
+          }
+        ]
+      },
       "states": [
         "preheat-oven",
         "scoop-cookies",
@@ -1697,20 +1852,20 @@
     {
       "id": "fold-chocolate",
       "title": "Fold in Chocolate",
-      "direction": "Using a rubber spatula, fold 300g of the chocolate chips into the dough until evenly distributed (200g Nestlé + 100g Ghirardelli). Reserve the remaining 50g Ghirardelli chips for pressing into tops before baking.",
+      "direction": "Using a rubber spatula, fold all 300g of the semisweet chocolate chips into the dough until evenly distributed.",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": [
         {
           "name": "semisweet chocolate chips",
-          "amount": "300g (reserve 50g)"
+          "amount": "300g"
         }
       ],
-      "exit_condition": "Chocolate evenly distributed throughout dough; reserved chocolate set aside",
+      "exit_condition": "Chocolate evenly distributed throughout dough",
       "notes": [
         {
-          "text": "Chips give more consistent distribution than hand-chopped bar. The split — more Nestlé for bulk, Ghirardelli for a richer finish — is a starting ratio; adjust based on how the bake reads.",
+          "text": "Chips give more consistent distribution than hand-chopped bar. The fold chocolate and tops chocolate are now separate mise items — the 50g for pressing into tops is gathered at bake time.",
           "critical": false,
           "source": "agent"
         }
@@ -1752,14 +1907,18 @@
     {
       "id": "scoop-cookies",
       "title": "Scoop and Shape Cookies",
-      "direction": "Using a cookie scoop, portion dough into 57g balls. Roll gently into balls, then press reserved Ghirardelli chips into the tops. Place on parchment-lined baking sheets, spaced 8cm apart. No more than 6 cookies per sheet.",
+      "direction": "Using a cookie scoop, portion dough into 57g balls. Roll gently into balls, then press chocolate chips and flaky salt into the tops. Place on parchment-lined baking sheets, spaced 8cm apart. No more than 6 cookies per sheet.",
       "duration_min": 10,
       "timer": false,
       "parallel": false,
       "components": [
         {
-          "name": "reserved Ghirardelli chips",
+          "name": "semisweet chocolate chips (tops)",
           "amount": "50g"
+        },
+        {
+          "name": "flaky sea salt",
+          "amount": "pinch per cookie"
         }
       ],
       "exit_condition": "Dough portioned into uniform 57g balls with chocolate pressed into tops; maximum 6 per sheet with 8cm spacing",
@@ -5152,9 +5311,14 @@
         "behavior": "linear"
       },
       {
-        "id": "chocolate",
+        "id": "chocolate-fold",
         "behavior": "linear",
-        "note": "Can vary ±20% to taste"
+        "note": "Can vary ±20% to taste; v2.5.0 will split to semisweet + dark blend"
+      },
+      {
+        "id": "chocolate-tops",
+        "behavior": "linear",
+        "note": "Scales with batch size; roughly 1-2 chips per cookie top"
       },
       {
         "id": "flaky-salt",
