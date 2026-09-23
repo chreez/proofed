@@ -24,12 +24,12 @@
       "servingUnit": "buns"
     }
   },
-  "version": "v1.3.1",
+  "version": "v1.4.0",
   "change_log": [
     {
       "version": "v1.3.0",
       "date": "2026-02-11",
-      "summary": "Added internal temp doneness check (190°F / 88°C) to bake step exit condition",
+      "summary": "Added internal temp doneness check (190\u00b0F / 88\u00b0C) to bake step exit condition",
       "ingredients": [
         {
           "stageId": "PREP",
@@ -93,7 +93,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -164,7 +164,7 @@
     {
       "version": "v1.2.0",
       "date": "2026-02-07",
-      "summary": "Reduced all sugars ~25% (brown 320→240g, granulated 100→75g, confectioners' 170→128g). Increased cream cheese 113→150g to offset thinner glaze.",
+      "summary": "Reduced all sugars ~25% (brown 320\u2192240g, granulated 100\u219275g, confectioners' 170\u2192128g). Increased cream cheese 113\u2192150g to offset thinner glaze.",
       "ingredients": [
         {
           "stageId": "PREP",
@@ -228,7 +228,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -363,7 +363,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -498,7 +498,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -569,7 +569,7 @@
     {
       "version": "v1.3.1",
       "date": "2026-05-12",
-      "summary": "Backfill throughput timing fields on meta — prep_active=52m, proof_passive=210m, oven_occupancy=52m, bake=37m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
+      "summary": "Backfill throughput timing fields on meta \u2014 prep_active=52m, proof_passive=210m, oven_occupancy=52m, bake=37m. Derived mechanically by walking stages[].states[] per PF-255.3 spike heuristic. (PF-267)",
       "ingredients": [
         {
           "stageId": "PREP",
@@ -633,7 +633,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -700,25 +700,167 @@
           ]
         }
       ]
+    },
+    {
+      "version": "v1.4.0",
+      "date": "2026-09-21",
+      "summary": "Add espresso powder to glaze (3g baseline, derived from bake log history). Add scaling block (0.5\u00d7\u20131.5\u00d7) with per-ingredient behaviors and process caveats.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Mise en Place",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 227,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
+              ]
+            },
+            {
+              "id": "flour",
+              "name": "All-Purpose Flour",
+              "total": 531,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cornstarch",
+              "name": "Cornstarch",
+              "total": 64,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "granulated_sugar",
+              "name": "Granulated Sugar",
+              "total": 75,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "brown_sugar",
+              "name": "Light Brown Sugar",
+              "total": 240,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "powdered_sugar",
+              "name": "Confectioners' Sugar",
+              "total": 128,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "milk",
+              "name": "Whole Milk",
+              "total": 192,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough (warm to 110\u00b0F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "id": "cream_cheese",
+              "name": "Cream Cheese (softened)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "eggs",
+              "name": "Large Eggs (room temp)",
+              "total": 3,
+              "unit": "whole",
+              "breakdown": null
+            },
+            {
+              "id": "yeast",
+              "name": "Instant Yeast",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "cinnamon",
+              "name": "Ground Cinnamon",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "salt",
+              "name": "Salt",
+              "total": 11,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
+              ]
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null
+            },
+            {
+              "id": "espresso_powder",
+              "name": "Espresso Powder (fine/instant)",
+              "total": 3,
+              "unit": "g",
+              "breakdown": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "cook_log": [
     {
       "date": "2026-02-10",
       "version": "v1.2.0",
-      "summary": "I did an overnight cold proof with the v1.2.0 reduced-sugar recipe, subbing ~40g water for milk I was short on, and added nutmeg and espresso to the icing. The sweetness level was much better than v1.0, but the rolls may have slightly overproofed — uneven sizing with smaller ones overtaken by neighbors — and I couldn't detect the nutmeg or espresso in the glaze.",
+      "summary": "I did an overnight cold proof with the v1.2.0 reduced-sugar recipe, subbing ~40g water for milk I was short on, and added nutmeg and espresso to the icing. The sweetness level was much better than v1.0, but the rolls may have slightly overproofed \u2014 uneven sizing with smaller ones overtaken by neighbors \u2014 and I couldn't detect the nutmeg or espresso in the glaze.",
       "notes": [
-        "**Second bake** — overnight cold proof, short on milk (~40g replaced with water)",
-        "Dough was tacky not sticky — hard to form into a ball, left unshaped in fridge overnight",
+        "**Second bake** \u2014 overnight cold proof, short on milk (~40g replaced with water)",
+        "Dough was tacky not sticky \u2014 hard to form into a ball, left unshaped in fridge overnight",
         "Day 2: waited longer for dough to come to room temp, much easier to shape. Overnight proof removes variance of underworking.",
-        "Rolls hard to keep sealed after cutting — tried thread (not great), need dental floss next time",
+        "Rolls hard to keep sealed after cutting \u2014 tried thread (not great), need dental floss next time",
         "Added **nutmeg + espresso** (2 pinches each, ground) to icing. Frosting tasted good but couldn't discern either spice.",
-        "Possible overproof — rolls stuck together, smaller ones overtaken by bigger neighbors",
+        "Possible overproof \u2014 rolls stuck together, smaller ones overtaken by bigger neighbors",
         "Bouncy/lighter poke test. Possibly slightly undercooked (no internal temp taken).",
-        "Sweetness much better than v1.0 — tolerable level. Overall a success.",
-        "Made a fresh latte to go with it — coffee pairs well, the bitterness offsets the sweetness.",
-        "Herbert went wild when I opened the cling wrap on the proofed dough — never heard him whine like that before.",
-        "Prediction: this batch will reheat well — planning to try in the air fryer tomorrow."
+        "Sweetness much better than v1.0 \u2014 tolerable level. Overall a success.",
+        "Made a fresh latte to go with it \u2014 coffee pairs well, the bitterness offsets the sweetness.",
+        "Herbert went wild when I opened the cling wrap on the proofed dough \u2014 never heard him whine like that before.",
+        "Prediction: this batch will reheat well \u2014 planning to try in the air fryer tomorrow."
       ],
       "next_time": [
         {
@@ -728,16 +870,16 @@
           "text": "Try dental floss for cleaner roll cuts"
         },
         {
-          "text": "Try air fryer directly after cooling phase — still warm, might add a nice crust"
+          "text": "Try air fryer directly after cooling phase \u2014 still warm, might add a nice crust"
         },
         {
-          "text": "Get milk in advance — avoid water sub"
+          "text": "Get milk in advance \u2014 avoid water sub"
         },
         {
           "text": "Figure out consistent roll sizing"
         },
         {
-          "text": "More cream cheese in glaze — love that cream cheese taste"
+          "text": "More cream cheese in glaze \u2014 love that cream cheese taste"
         }
       ],
       "photos": [
@@ -869,7 +1011,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -940,11 +1082,11 @@
     {
       "date": "2026-02-05",
       "version": "v1.0.0",
-      "summary": "I made the first bake of the ultimate version, using a Pyrex container instead of a foil-sling pan and a blend of AP and bread flour since I was short on AP. The outcome was amazing, but the dough was cold and resistant when rolling — it needs more time at room temp — and uneven rolling caused smaller end pieces.",
+      "summary": "I made the first bake of the ultimate version, using a Pyrex container instead of a foil-sling pan and a blend of AP and bread flour since I was short on AP. The outcome was amazing, but the dough was cold and resistant when rolling \u2014 it needs more time at room temp \u2014 and uneven rolling caused smaller end pieces.",
       "notes": [
-        "**First bake** of Ultimate version — outcome was amazing!",
-        "Used Pyrex container with lid instead of `33×23cm` baking pan with foil sling",
-        "Foil sling: attempted with multiple small sheets — *would have made unmolding difficult*. Pyrex worked better.",
+        "**First bake** of Ultimate version \u2014 outcome was amazing!",
+        "Used Pyrex container with lid instead of `33\u00d723cm` baking pan with foil sling",
+        "Foil sling: attempted with multiple small sheets \u2014 *would have made unmolding difficult*. Pyrex worked better.",
         "Flour: used `278g` AP + `253g` bread flour blend *(was short on AP)*. Worked great.",
         "Yeast: had `5.4g` instant, topped up with `~2g` active dry"
       ],
@@ -956,12 +1098,12 @@
         "Shape before rolling: pat dough into rough square/rectangle before using rolling pin.",
         "Cut an X: cut X on dough ball, roll each quadrant outward, they join into rectangle.",
         "Roll from center diagonally toward corners, not just back-and-forth.",
-        "Rotate 90° every few rolls to maintain shape and prevent sticking.",
+        "Rotate 90\u00b0 every few rolls to maintain shape and prevent sticking.",
         "Use guides for even thickness: rulers, dowels, chopsticks alongside dough.",
         "Fix thick spots: lift and scrunch dough to redistribute, then roll toward thin areas.",
-        "Let cold dough rest 10-15 min — stiff dough snaps back.",
+        "Let cold dough rest 10-15 min \u2014 stiff dough snaps back.",
         "Run hand over surface to feel for hills/valleys.",
-        "Keep pressure consistent — uneven pressure = uneven dough."
+        "Keep pressure consistent \u2014 uneven pressure = uneven dough."
       ],
       "photos": [
         {
@@ -992,19 +1134,19 @@
       ],
       "next_time": [
         {
-          "text": "Use **all AP flour** — no blending. Reduces variables."
+          "text": "Use **all AP flour** \u2014 no blending. Reduces variables."
         },
         {
-          "text": "Use **single yeast type** — no mixing instant + active dry"
+          "text": "Use **single yeast type** \u2014 no mixing instant + active dry"
         },
         {
-          "text": "Roll dough more evenly into true square — end pieces were smaller due to uneven thickness, not cutting"
+          "text": "Roll dough more evenly into true square \u2014 end pieces were smaller due to uneven thickness, not cutting"
         },
         {
           "text": "Try pasta roller for consistent thickness? *Could be fun.*"
         },
         {
-          "text": "Pyrex with foil lining works great — could skip foil but makes cleanup easier"
+          "text": "Pyrex with foil lining works great \u2014 could skip foil but makes cleanup easier"
         }
       ],
       "weather": {
@@ -1079,7 +1221,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -1150,17 +1292,17 @@
     {
       "date": "2026-04-25",
       "version": "v1.3.0",
-      "summary": "Experimental bake — tried tangzhong (20g bread flour + 100g water), bread flour for main dough, and cupcake tin instead of Pyrex. Bottoms and centers stuck, gelatinized sugar was hard to eat. Not great overall.",
+      "summary": "Experimental bake \u2014 tried tangzhong (20g bread flour + 100g water), bread flour for main dough, and cupcake tin instead of Pyrex. Bottoms and centers stuck, gelatinized sugar was hard to eat. Not great overall.",
       "notes": [
         "Tried tangzhong: 20g bread flour + 100g water. Used bread flour for main dough.",
-        "Lightweight mixing, treated like autolyse — let dough rest, then slap and folds, reshaped to ball.",
+        "Lightweight mixing, treated like autolyse \u2014 let dough rest, then slap and folds, reshaped to ball.",
         "Used cupcake tin instead of glass Pyrex pan.",
-        "Bottoms and centers of rolls stuck to cupcake tin. Gelatinized sugar hardened — hard to eat.",
+        "Bottoms and centers of rolls stuck to cupcake tin. Gelatinized sugar hardened \u2014 hard to eat.",
         "Didn't love bread flour for this recipe. Not great overall."
       ],
       "next_time": [
         {
-          "text": "Go back to AP flour and Pyrex — don't fix what ain't broken"
+          "text": "Go back to AP flour and Pyrex \u2014 don't fix what ain't broken"
         },
         {
           "text": "If revisiting tangzhong, try with AP flour and Pyrex to isolate the variable"
@@ -1170,7 +1312,7 @@
         {
           "src": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-in-tin-800w.webp",
           "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-in-tin-400w.webp",
-          "alt": "Both baking vessels in the oven — cupcake tin with individual buns on left, Pyrex glass dish with clustered buns on right. Pre-bake or early bake stage, dough still pale and rising.",
+          "alt": "Both baking vessels in the oven \u2014 cupcake tin with individual buns on left, Pyrex glass dish with clustered buns on right. Pre-bake or early bake stage, dough still pale and rising.",
           "tag": "process"
         },
         {
@@ -1188,7 +1330,7 @@
         {
           "src": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-detail-2-800w.webp",
           "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-25/buns-detail-2-400w.webp",
-          "alt": "Cupcake tin aftermath — buns stuck to cups with gelatinized sugar residue visible in each well. Tongs gripping one bun mid-extraction. Shows the sticking problem from baking in individual cups without adequate greasing.",
+          "alt": "Cupcake tin aftermath \u2014 buns stuck to cups with gelatinized sugar residue visible in each well. Tongs gripping one bun mid-extraction. Shows the sticking problem from baking in individual cups without adequate greasing.",
           "tag": "process"
         }
       ],
@@ -1404,7 +1546,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -1475,28 +1617,28 @@
     {
       "date": "2026-04-26",
       "version": "v1.3.0",
-      "summary": "Back to AP flour and Pyrex after last bake's failed experiments. New shaping method — cut filled rectangle into strips with pizza cutter, rolled each individually. Added extra espresso powder to icing and it hit the complementary flavor that was missing last time.",
+      "summary": "Back to AP flour and Pyrex after last bake's failed experiments. New shaping method \u2014 cut filled rectangle into strips with pizza cutter, rolled each individually. Added extra espresso powder to icing and it hit the complementary flavor that was missing last time.",
       "notes": [
         "Went back to AP flour and Pyrex (per last bake's next_time)",
         "New shaping method: spread butter and filling on rectangle, cut into strips with pizza cutter, rolled each strip individually into buns (instead of rolling cylinder first then cutting)",
-        "Added more espresso powder in icing — nailed the complementary flavor that was undetectable in the 2/10 bake"
+        "Added more espresso powder in icing \u2014 nailed the complementary flavor that was undetectable in the 2/10 bake"
       ],
       "next_time": [
         {
-          "text": "Keep using strip-cut method — pizza cutter into strips, roll individually"
+          "text": "Keep using strip-cut method \u2014 pizza cutter into strips, roll individually"
         }
       ],
       "photos": [
         {
           "src": "/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-side-800w.webp",
           "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-side-400w.webp",
-          "alt": "Last remaining glazed cinnamon bun in foil pan lined with parchment — side angle showing swirl layers, cream cheese espresso glaze coating, golden dough visible at base",
+          "alt": "Last remaining glazed cinnamon bun in foil pan lined with parchment \u2014 side angle showing swirl layers, cream cheese espresso glaze coating, golden dough visible at base",
           "tag": "process"
         },
         {
           "src": "/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-top-800w.webp",
           "thumb": "/images/atk-cinnamon-buns-ultimate/2026-04-26/last-bun-top-400w.webp",
-          "alt": "Last glazed cinnamon bun from above — top-down view of spiral with cream cheese espresso glaze, cinnamon filling visible through layers, crumbs and glaze residue on parchment",
+          "alt": "Last glazed cinnamon bun from above \u2014 top-down view of spiral with cream cheese espresso glaze, cinnamon filling visible through layers, crumbs and glaze residue on parchment",
           "tag": "process"
         }
       ],
@@ -1696,7 +1838,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -1768,14 +1910,14 @@
       "date": "2026-05-08",
       "start_date": "2026-05-07",
       "version": "v1.3.0",
-      "summary": "Recovered from butter taboo (dumped all at once into hand-mix) by patience and stretch-and-folds — dough was fine. Ran out of cornstarch so used ~32g (half of 64g target); crumb came out slightly less spongey. 1g ground espresso in icing was a subtle hit. Strip-cut shaping continued.",
+      "summary": "Recovered from butter taboo (dumped all at once into hand-mix) by patience and stretch-and-folds \u2014 dough was fine. Ran out of cornstarch so used ~32g (half of 64g target); crumb came out slightly less spongey. 1g ground espresso in icing was a subtle hit. Strip-cut shaping continued.",
       "notes": [
-        "Started late 5/7 — ran late on prep. Continued strip-cut method (cut filled rectangle into strips with pizza cutter, rolled each individually) per last bake's next_time",
-        "Hand-mixing — added all butter at once (taboo). Let dough rest 30 min, did stretch-and-folds — dough recovered fine, just had to be patient",
-        "Cornstarch: ran out, used ~32g (half of 64g target). Didn't substitute. Should have gotten more — attributing slightly less spongey crumb to this",
-        "1g ground espresso added to icing — subtle, nice. Better than last bake's heavier espresso powder",
+        "Started late 5/7 \u2014 ran late on prep. Continued strip-cut method (cut filled rectangle into strips with pizza cutter, rolled each individually) per last bake's next_time",
+        "Hand-mixing \u2014 added all butter at once (taboo). Let dough rest 30 min, did stretch-and-folds \u2014 dough recovered fine, just had to be patient",
+        "Cornstarch: ran out, used ~32g (half of 64g target). Didn't substitute. Should have gotten more \u2014 attributing slightly less spongey crumb to this",
+        "1g ground espresso added to icing \u2014 subtle, nice. Better than last bake's heavier espresso powder",
         "Finished rolling/shaping ~4:11am 5/8, into Pyrex, wrapped with plastic, into fridge for cold proof. Baked late same morning",
-        "Bake: 350°F per recipe, 35 min total, rotated at 15 min"
+        "Bake: 350\u00b0F per recipe, 35 min total, rotated at 15 min"
       ],
       "photos": [],
       "next_time": [
@@ -1783,17 +1925,17 @@
           "text": "Hand-mix dough = split butter additions: half, mix, rest, last half (don't dump all at once)"
         },
         {
-          "text": "Replace cornstarch before running out — full 64g made better sponge in past bakes"
+          "text": "Replace cornstarch before running out \u2014 full 64g made better sponge in past bakes"
         },
         {
-          "text": "Keep 1g ground espresso in icing — subtle hit, don't overshoot"
+          "text": "Keep 1g ground espresso in icing \u2014 subtle hit, don't overshoot"
         }
       ],
       "bake_notes": [
         {
           "timestamp": "2026-05-08T05:54:51Z",
           "raw": "may have committed the taboo. added too much butter at once. going to try stretch and folding in 30 minutes. letting dough rest. mixing by hand.",
-          "curated": "May have committed the taboo — added too much butter at once. Going to try stretch-and-folding in 30 min. Letting dough rest. Mixing by hand",
+          "curated": "May have committed the taboo \u2014 added too much butter at once. Going to try stretch-and-folding in 30 min. Letting dough rest. Mixing by hand",
           "notable": true,
           "stepId": "ADD_BUTTER",
           "processing": "dough"
@@ -1966,7 +2108,7 @@
             "amount": 1,
             "unit": "g",
             "cost": 0.03,
-            "note": "bake-time addition — 1g ground espresso in icing"
+            "note": "bake-time addition \u2014 1g ground espresso in icing"
           }
         ],
         "total": 8.21,
@@ -2045,7 +2187,7 @@
               "unit": "g",
               "breakdown": [
                 {
-                  "label": "dough (warm to 110°F)",
+                  "label": "dough (warm to 110\u00b0F)",
                   "amount": 177
                 },
                 {
@@ -2125,10 +2267,10 @@
         "condition": "Overcast",
         "source": "open-meteo"
       },
-      "summary": "Good bake overall; espresso powder in icing too subtle — used too little again. Targeting 3g next time to dial in the complementary flavor. Considering adding heavy cream to icing for more moisture per Silvia's suggestion.",
+      "summary": "Good bake overall; espresso powder in icing too subtle \u2014 used too little again. Targeting 3g next time to dial in the complementary flavor. Considering adding heavy cream to icing for more moisture per Silvia's suggestion.",
       "notes": [
         "Good result overall.",
-        "Espresso powder in icing too subtle — used too little.",
+        "Espresso powder in icing too subtle \u2014 used too little.",
         "Considering adding heavy cream to icing for more moisture (Silvia's recommendation).",
         "May want slightly more icing yield."
       ],
@@ -2136,7 +2278,7 @@
         {
           "src": "/images/atk-cinnamon-buns-ultimate/2026-09-15/img-8653-800w.webp",
           "thumb": "/images/atk-cinnamon-buns-ultimate/2026-09-15/img-8653-400w.webp",
-          "alt": "Two unbaked bun rounds on plastic wrap — one standing on edge to show the spiral cross-section, one flat showing the cinnamon sugar swirl from above. Shaping stage, just after cutting strips."
+          "alt": "Two unbaked bun rounds on plastic wrap \u2014 one standing on edge to show the spiral cross-section, one flat showing the cinnamon sugar swirl from above. Shaping stage, just after cutting strips."
         },
         {
           "src": "/images/atk-cinnamon-buns-ultimate/2026-09-15/img-8655-800w.webp",
@@ -2180,7 +2322,7 @@
             "sourceName": "King Arthur Unbleached All-Purpose Flour",
             "amount": 531,
             "unit": "g",
-            "cost": 1.20
+            "cost": 1.2
           },
           {
             "ingredientId": "cornstarch",
@@ -2285,7 +2427,7 @@
       },
       "next_time": [
         {
-          "text": "Target 3g ground espresso in icing — still dialing in (too little this bake), assess next bake"
+          "text": "Target 3g ground espresso in icing \u2014 still dialing in (too little this bake), assess next bake"
         },
         {
           "text": "Try adding heavy cream to icing for more moisture (Silvia's recommendation)"
@@ -2298,7 +2440,7 @@
         {
           "timestamp": "2026-09-18T00:00:00Z",
           "raw": "used too little espresso powder",
-          "curated": "Used too little espresso powder in icing — too subtle.",
+          "curated": "Used too little espresso powder in icing \u2014 too subtle.",
           "notable": true,
           "processing": "glaze"
         },
@@ -2321,8 +2463,14 @@
               "total": 227,
               "unit": "g",
               "breakdown": [
-                { "label": "dough (softened)", "amount": 170 },
-                { "label": "filling (softened)", "amount": 57 }
+                {
+                  "label": "dough (softened)",
+                  "amount": 170
+                },
+                {
+                  "label": "filling (softened)",
+                  "amount": 57
+                }
               ]
             },
             {
@@ -2366,8 +2514,14 @@
               "total": 192,
               "unit": "g",
               "breakdown": [
-                { "label": "dough (warm to 110°F)", "amount": 177 },
-                { "label": "glaze (room temp)", "amount": 15 }
+                {
+                  "label": "dough (warm to 110\u00b0F)",
+                  "amount": 177
+                },
+                {
+                  "label": "glaze (room temp)",
+                  "amount": 15
+                }
               ]
             },
             {
@@ -2404,9 +2558,18 @@
               "total": 11,
               "unit": "g",
               "breakdown": [
-                { "label": "dough", "amount": 9 },
-                { "label": "filling", "amount": 1.5 },
-                { "label": "glaze (pinch)", "amount": 0.5 }
+                {
+                  "label": "dough",
+                  "amount": 9
+                },
+                {
+                  "label": "filling",
+                  "amount": 1.5
+                },
+                {
+                  "label": "glaze (pinch)",
+                  "amount": 0.5
+                }
               ]
             },
             {
@@ -2422,7 +2585,7 @@
               "total": null,
               "unit": "g",
               "breakdown": null,
-              "rationale": "bake-time icing addition — amount still being calibrated, targeting 3g next bake"
+              "rationale": "bake-time icing addition \u2014 amount still being calibrated, targeting 3g next bake"
             }
           ]
         }
@@ -2433,22 +2596,22 @@
     {
       "id": "V1",
       "name": "Stand Mixer Bowl",
-      "reuse": "Dry mix → dough → first rise → freed after punch"
+      "reuse": "Dry mix \u2192 dough \u2192 first rise \u2192 freed after punch"
     },
     {
       "id": "V2",
       "name": "Small Bowl",
-      "reuse": "Filling mixture → freed → glaze"
+      "reuse": "Filling mixture \u2192 freed \u2192 glaze"
     },
     {
       "id": "V3",
-      "name": "33×23cm Baking Pan",
-      "reuse": "Grease → second rise → bake → serve"
+      "name": "33\u00d723cm Baking Pan",
+      "reuse": "Grease \u2192 second rise \u2192 bake \u2192 serve"
     },
     {
       "id": "V4",
       "name": "Liquid Measure",
-      "reuse": "Warm milk/yeast → freed after use"
+      "reuse": "Warm milk/yeast \u2192 freed after use"
     }
   ],
   "stages": [
@@ -2459,7 +2622,7 @@
         "vessels": [
           "Stand Mixer Bowl",
           "Small Bowl",
-          "33×23cm Baking Pan",
+          "33\u00d723cm Baking Pan",
           "Liquid Measure"
         ],
         "equipment": [
@@ -2531,7 +2694,7 @@
             "unit": "g",
             "breakdown": [
               {
-                "label": "dough (warm to 110°F)",
+                "label": "dough (warm to 110\u00b0F)",
                 "amount": 177
               },
               {
@@ -2592,6 +2755,13 @@
             "id": "vanilla",
             "name": "Vanilla Extract",
             "total": 5,
+            "unit": "g",
+            "breakdown": null
+          },
+          {
+            "id": "espresso_powder",
+            "name": "Espresso Powder (fine/instant)",
+            "total": 3,
             "unit": "g",
             "breakdown": null
           }
@@ -2675,7 +2845,7 @@
     {
       "id": "PREP_OVEN",
       "title": "Create Warm Environment",
-      "direction": "Heat oven to 200°F (95°C), then turn OFF. This creates a warm proofing environment.",
+      "direction": "Heat oven to 200\u00b0F (95\u00b0C), then turn OFF. This creates a warm proofing environment.",
       "duration_min": 5,
       "timer": false,
       "parallel": false,
@@ -2686,7 +2856,7 @@
     {
       "id": "PREP_PAN",
       "title": "Make Foil Sling",
-      "direction": "Line 33×23cm pan with a foil sling. Grease foil thoroughly.",
+      "direction": "Line 33\u00d723cm pan with a foil sling. Grease foil thoroughly.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -2704,7 +2874,7 @@
     {
       "id": "BLOOM_YEAST",
       "title": "Bloom Yeast",
-      "direction": "In liquid measure, heat 177g milk to 110°F (43°C). Whisk in yeast until dissolved. Whisk in eggs.",
+      "direction": "In liquid measure, heat 177g milk to 110\u00b0F (43\u00b0C). Whisk in yeast until dissolved. Whisk in eggs.",
       "duration_min": 3,
       "timer": false,
       "parallel": false,
@@ -2725,12 +2895,12 @@
       "exit_condition": "Yeast dissolved, eggs incorporated, mixture homogeneous",
       "notes": [
         {
-          "text": "Milk must be 105-115°F (40-46°C). Too hot kills yeast.",
+          "text": "Milk must be 105-115\u00b0F (40-46\u00b0C). Too hot kills yeast.",
           "critical": true,
           "source": "user"
         },
         {
-          "text": "Store leftover yeast in airtight container in freezer — lasts 6+ months. No need to thaw before use.",
+          "text": "Store leftover yeast in airtight container in freezer \u2014 lasts 6+ months. No need to thaw before use.",
           "critical": false,
           "source": "user"
         }
@@ -2802,7 +2972,7 @@
           "source": "user"
         },
         {
-          "text": "Butter must be softened, not melted—cold butter won't incorporate",
+          "text": "Butter must be softened, not melted\u2014cold butter won't incorporate",
           "critical": true,
           "source": "user"
         }
@@ -2875,7 +3045,7 @@
     {
       "id": "ROLL_DOUGH",
       "title": "Roll Dough into Square",
-      "direction": "Punch down risen dough. Pat into rough square shape with hands first. Transfer to lightly floured surface. Roll from center diagonally toward corners. Rotate 90° every few rolls. Target: 46×46 cm square (18×18 inch).",
+      "direction": "Punch down risen dough. Pat into rough square shape with hands first. Transfer to lightly floured surface. Roll from center diagonally toward corners. Rotate 90\u00b0 every few rolls. Target: 46\u00d746 cm square (18\u00d718 inch).",
       "duration_min": 8,
       "timer": false,
       "parallel": false,
@@ -2883,7 +3053,7 @@
       "exit_condition": "Even square with sharp corners, consistent thickness throughout. Run hand over surface to check for hills/valleys.",
       "notes": [
         {
-          "text": "Cold dough? Let rest 10-15 min at room temp — stiff dough snaps back.",
+          "text": "Cold dough? Let rest 10-15 min at room temp \u2014 stiff dough snaps back.",
           "critical": false,
           "source": "user"
         },
@@ -2931,7 +3101,7 @@
       "exit_condition": "Tight, even cylinder with sealed seam",
       "notes": [
         {
-          "text": "Keep tension consistent—loose rolls create gaps",
+          "text": "Keep tension consistent\u2014loose rolls create gaps",
           "critical": false,
           "source": "user"
         }
@@ -2968,7 +3138,7 @@
     {
       "id": "PREHEAT",
       "title": "Preheat Oven",
-      "direction": "Remove buns from oven if proofing inside. Heat oven to 350°F (175°C) with rack in middle position. Remove plastic wrap from buns.",
+      "direction": "Remove buns from oven if proofing inside. Heat oven to 350\u00b0F (175\u00b0C) with rack in middle position. Remove plastic wrap from buns.",
       "duration_min": 15,
       "timer": true,
       "parallel": false,
@@ -2984,10 +3154,10 @@
       "timer": true,
       "parallel": false,
       "components": null,
-      "exit_condition": "Deep golden brown, filling visibly melted and bubbling. Internal temp 190°F (88°C).",
+      "exit_condition": "Deep golden brown, filling visibly melted and bubbling. Internal temp 190\u00b0F (88\u00b0C).",
       "notes": [
         {
-          "text": "Check at 35 min—ovens vary. Target is golden, not pale.",
+          "text": "Check at 35 min\u2014ovens vary. Target is golden, not pale.",
           "critical": false,
           "source": "user"
         }
@@ -3014,7 +3184,7 @@
       "exit_condition": "Buns warm but not molten-hot",
       "notes": [
         {
-          "text": "Filling is extremely hot—wait the full time",
+          "text": "Filling is extremely hot\u2014wait the full time",
           "critical": true,
           "source": "user"
         }
@@ -3023,7 +3193,7 @@
     {
       "id": "MAKE_GLAZE",
       "title": "Make Glaze",
-      "direction": "In small bowl (V2, now empty), whisk cream cheese, 15g milk, vanilla, and confectioners' sugar until smooth. Add pinch of salt.",
+      "direction": "In small bowl (V2, now empty), whisk cream cheese, 15g milk, vanilla, espresso powder, and confectioners' sugar until smooth. Add pinch of salt.",
       "duration_min": 3,
       "timer": false,
       "parallel": true,
@@ -3047,6 +3217,10 @@
         {
           "name": "Salt",
           "amount": "0.5g"
+        },
+        {
+          "name": "Espresso Powder",
+          "amount": "3g"
         }
       ],
       "exit_condition": "Smooth, spreadable glaze with no lumps",
@@ -3306,12 +3480,12 @@
     "methods": [
       {
         "method": "Air Fryer",
-        "detail": "300°F (150°C), 5 min. Loosely wrap in foil — cover top if dried out.",
+        "detail": "300\u00b0F (150\u00b0C), 5 min. Loosely wrap in foil \u2014 cover top if dried out.",
         "source": "user"
       },
       {
         "method": "Microwave",
-        "detail": "Damp paper towel, 20–30 sec.",
+        "detail": "Damp paper towel, 20\u201330 sec.",
         "source": "user"
       },
       {
@@ -3444,6 +3618,83 @@
         "unit": "g",
         "cost": 0.34
       }
+    ]
+  },
+  "scaling": {
+    "tested_range": {
+      "min": 0.5,
+      "max": 1.5
+    },
+    "ingredients": [
+      {
+        "id": "butter",
+        "behavior": "linear"
+      },
+      {
+        "id": "flour",
+        "behavior": "linear"
+      },
+      {
+        "id": "cornstarch",
+        "behavior": "linear"
+      },
+      {
+        "id": "granulated_sugar",
+        "behavior": "linear"
+      },
+      {
+        "id": "brown_sugar",
+        "behavior": "linear"
+      },
+      {
+        "id": "powdered_sugar",
+        "behavior": "linear"
+      },
+      {
+        "id": "milk",
+        "behavior": "linear"
+      },
+      {
+        "id": "cream_cheese",
+        "behavior": "linear"
+      },
+      {
+        "id": "eggs",
+        "behavior": "non_linear",
+        "note": "Round to nearest whole egg (~50g each). 0.5\u00d7: 1 egg (round down \u2014 acceptable texture). 1\u00d7: 3 eggs. 1.5\u00d7: 4 eggs (round down)."
+      },
+      {
+        "id": "yeast",
+        "behavior": "linear"
+      },
+      {
+        "id": "cinnamon",
+        "behavior": "linear"
+      },
+      {
+        "id": "salt",
+        "behavior": "linear"
+      },
+      {
+        "id": "vanilla",
+        "behavior": "linear"
+      },
+      {
+        "id": "espresso_powder",
+        "behavior": "linear",
+        "note": "Can vary \u00b11g to taste. Still being dialed in \u2014 3g per batch targets a detectable but not dominant espresso note."
+      }
+    ],
+    "process_caveats": [
+      "0.5\u00d7: 4 buns; use 8\" pan or pack 4 in center of 10\" skillet; eggs = 1 whole",
+      "1.5\u00d7: 12 buns; requires two 10\" pans or one 13\u00d79\" baking dish; eggs = 4 whole",
+      "Eggs must round to whole at any scale \u2014 use 50g per egg as weight conversion"
+    ],
+    "researched_date": "2026-09-21",
+    "sources": [
+      "Bake logs 2026-02-10 through 2026-09-15 \u2014 glaze ingredients scale linearly",
+      "Espresso powder target of 3g derived from 9/15 next_time: prior 1g was too subtle",
+      "ATK enriched dough scales within \u00b150% per standard enriched dough practices"
     ]
   }
 }
