@@ -1,0 +1,865 @@
+{
+  "meta": {
+    "name": "Matcha Yuzu Inspiration Cookies",
+    "source": {
+      "name": "Research Synthesis (24 sources)",
+      "type": "original",
+      "author": "Multi-agent parallel research — matcha-yuzu-cookies"
+    },
+    "yields": "~20 cookies",
+    "total_time": "~3.5 hrs (25 min active + ~2.75 hrs chill/bake)",
+    "description": "Brown butter matcha cookies with Valrhona Yuzu Inspiration couverture, white chocolate, and freeze-dried raspberry. Sourdough CCC base adapted for matcha: lighter sugar ratio, whole egg, baking powder only, no discard. Earthy-bitter / citrus-bright / tart-fruity flavor triangle.",
+    "prep_active_min": 25,
+    "proof_passive_min": 165,
+    "oven_occupancy_min": 63,
+    "bake_min": 12
+  },
+  "config": {
+    "early_check_percent": 0.8,
+    "stats": {
+      "group": "Cookies & Bars",
+      "defaultYield": 20,
+      "unit": "cookies",
+      "servingsPerItem": 1,
+      "servingUnit": "cookie",
+      "itemsPerBatch": 6
+    }
+  },
+  "version": "v1.0.0",
+  "change_log": [
+    {
+      "version": "v1.0.0",
+      "date": "2026-09-23",
+      "summary": "Initial recipe from 6-agent parallel research synthesis. Sourdough CCC base adapted for matcha: sugar ratio shifted white-dominant, egg yolks-only replaced with 1 whole + 1 yolk, baking soda eliminated, sourdough discard removed. Valrhona Yuzu Inspiration replaces semisweet chocolate.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Brown butter confirmed by 7/12 surveyed matcha recipes; nutty/toasty register complements matcha earthiness"
+            },
+            {
+              "id": "light-brown-sugar",
+              "name": "Light Brown Sugar",
+              "total": 110,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "White-dominant ratio preserves matcha color and flavor clarity; dark brown muddies both"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 130,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "White-dominant (54% of total sugar) to preserve matcha clarity; also offsets Yuzu Inspiration ~55% sugar load"
+            },
+            {
+              "id": "citrus-zest",
+              "name": "Meyer Lemon Zest (or yuzu zest)",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Rubbed into sugar to release volatile oils; restores bright citrus top notes lost at 175°C; Meyer lemon = closest yuzu analog"
+            },
+            {
+              "id": "egg",
+              "name": "Egg, Large",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "1 whole + 1 yolk pattern = majority of 12 surveyed matcha recipes; yolks-only yellows dough and kills matcha green"
+            },
+            {
+              "id": "egg-yolk",
+              "name": "Egg Yolk, Large",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Second yolk adds fat and richness without white protein structure"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 8,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reduced from base 13g; backstop flavor only — matcha leads"
+            },
+            {
+              "id": "whole-milk",
+              "name": "Whole Milk",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Replaces sourdough discard moisture in no-discard version; keeps dough hydration consistent"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 190,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "AP-only base confirmed by 8/9 surveyed matcha recipes; bread flour removed — matcha = tender target"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour (Barton Springs Mill)",
+              "total": 130,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Nutty/honey flavor complements matcha earthiness; high gliadin/glutenin ratio promotes spread (tender target); golden carotenoids add warm undertone"
+            },
+            {
+              "id": "matcha",
+              "name": "Culinary Matcha (Aiya or Jade Leaf)",
+              "total": 18,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "5.6% of 320g flour — lower end given yuzu bitterness stack. Escalate to 25g if flavor not forward enough (noted in technical_notes)"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Buffered, gentler on chlorophyll vs. baking soda; baking soda (alkaline, pH ~9) triggers rapid chlorophyll degradation — eliminated"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 7,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Increased from base 6g to offset Yuzu Inspiration ~55% sugar load"
+            },
+            {
+              "id": "yuzu-inspiration",
+              "name": "Valrhona Yuzu Inspiration, roughly chopped",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Fruit couverture (34% cocoa butter, ~55% sugar, 2.4% yuzu juice) — pools when baked; rough chop per Valrhona official recipes. 200g not 300g to split with white chocolate."
+            },
+            {
+              "id": "white-chocolate",
+              "name": "White Chocolate (Ghirardelli baking bar), chopped",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Cuts expensive Yuzu Inspiration; creamy contrast; mirrors Nestlé/Ghirardelli split logic from base recipe"
+            },
+            {
+              "id": "freeze-dried-raspberry",
+              "name": "Freeze-Dried Raspberry",
+              "total": 40,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Optional but recommended; raspberry + matcha + yuzu = documented flavor trio; freeze-dried = no moisture impact"
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Bake",
+          "ingredients": [
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Dominant garnish on matcha drop cookies; salt + yuzu = documented citrus brightener (Jacobsen Salt Co.)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "vessels": [
+    {
+      "id": "V1",
+      "name": "Light-Colored Saucepan",
+      "reuse": "Brown butter only"
+    },
+    {
+      "id": "V2",
+      "name": "Large Mixing Bowl",
+      "reuse": "Butter-sugar mix → full dough assembly"
+    },
+    {
+      "id": "V3",
+      "name": "Medium Mixing Bowl",
+      "reuse": "Whisk dry ingredients"
+    },
+    {
+      "id": "V4",
+      "name": "Small Bowl",
+      "reuse": "Zest-sugar rub"
+    },
+    {
+      "id": "V5",
+      "name": "Baking Sheets (2)",
+      "reuse": "Rotate between batches; cool completely between uses"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PREP",
+      "title": "Brown Butter & Mix Dough",
+      "gather": {
+        "vessels": [
+          "Light-Colored Saucepan",
+          "Large Mixing Bowl",
+          "Medium Mixing Bowl",
+          "Small Bowl",
+          "Baking Sheets (2)"
+        ],
+        "equipment": [
+          "Kitchen Scale",
+          "Whisk",
+          "Rubber Spatula",
+          "Microplane / Zester",
+          "Cookie Scoop",
+          "Parchment Paper",
+          "Wire Rack"
+        ],
+        "ingredients": [
+          {
+            "id": "butter",
+            "name": "Unsalted Butter",
+            "total": 225,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Brown butter confirmed by 7/12 surveyed matcha recipes"
+          },
+          {
+            "id": "light-brown-sugar",
+            "name": "Light Brown Sugar",
+            "total": 110,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "White-dominant ratio preserves matcha color and flavor"
+          },
+          {
+            "id": "granulated-sugar",
+            "name": "Granulated Sugar",
+            "total": 130,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "White-dominant (54% of total sugar)"
+          },
+          {
+            "id": "citrus-zest",
+            "name": "Meyer Lemon Zest (or yuzu zest)",
+            "total": 5,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "medium",
+            "rationale": "Rubbed into sugar; restores bright citrus top notes"
+          },
+          {
+            "id": "egg",
+            "name": "Egg, Large",
+            "total": 50,
+            "unit": "g",
+            "display_amount": "1 large",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "1 whole + 1 yolk — preserves matcha green vs. yolks-only"
+          },
+          {
+            "id": "egg-yolk",
+            "name": "Egg Yolk, Large",
+            "total": 18,
+            "unit": "g",
+            "display_amount": "1 large yolk",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Additional fat and richness"
+          },
+          {
+            "id": "vanilla",
+            "name": "Vanilla Extract",
+            "total": 8,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Backstop flavor only"
+          },
+          {
+            "id": "whole-milk",
+            "name": "Whole Milk",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Replaces discard moisture"
+          },
+          {
+            "id": "ap-flour",
+            "name": "All-Purpose Flour",
+            "total": 190,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "AP-only per 8/9 surveyed matcha recipes"
+          },
+          {
+            "id": "einkorn-flour",
+            "name": "Einkorn Flour (Barton Springs Mill)",
+            "total": 130,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Nutty/honey flavor + tender texture from weak gluten"
+          },
+          {
+            "id": "matcha",
+            "name": "Culinary Matcha (Aiya or Jade Leaf)",
+            "total": 18,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "5.6% of flour weight; escalate to 25g if needed"
+          },
+          {
+            "id": "baking-powder",
+            "name": "Baking Powder",
+            "total": 4,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Buffered lift; baking soda eliminated to protect chlorophyll"
+          },
+          {
+            "id": "fine-sea-salt",
+            "name": "Fine Sea Salt",
+            "total": 7,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Slightly elevated to balance Yuzu Inspiration sugar load"
+          },
+          {
+            "id": "yuzu-inspiration",
+            "name": "Valrhona Yuzu Inspiration, roughly chopped",
+            "total": 200,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Fruit couverture; rough chop; will pool when baked"
+          },
+          {
+            "id": "white-chocolate",
+            "name": "White Chocolate (Ghirardelli baking bar), chopped",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Cuts Yuzu Inspiration cost; creamy contrast"
+          },
+          {
+            "id": "freeze-dried-raspberry",
+            "name": "Freeze-Dried Raspberry",
+            "total": 40,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "medium",
+            "rationale": "Optional; raspberry + matcha + yuzu = documented flavor trio"
+          }
+        ]
+      },
+      "states": [
+        "brown-butter",
+        "chill-butter",
+        "rub-zest",
+        "mix-butter-sugar",
+        "add-eggs",
+        "add-wet",
+        "whisk-dry",
+        "combine-dough",
+        "fold-inclusions"
+      ]
+    },
+    {
+      "id": "CHILL",
+      "title": "Chill Dough",
+      "gather": null,
+      "states": [
+        "chill-dough"
+      ]
+    },
+    {
+      "id": "BAKE",
+      "title": "Bake",
+      "gather": {
+        "vessels": [],
+        "equipment": [],
+        "ingredients": [
+          {
+            "id": "flaky-salt",
+            "name": "Flaky Sea Salt (Maldon)",
+            "total": 2,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "high",
+            "rationale": "Applied to warm cookies immediately after baking"
+          }
+        ]
+      },
+      "states": [
+        "preheat-oven",
+        "scoop-cookies",
+        "bake-cookies",
+        "salt-cool"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "brown-butter",
+      "title": "Brown the Butter",
+      "direction": "In a light-colored saucepan over medium-high heat, melt butter and cook, whisking frequently, until honey-colored with brown bits on the bottom and a nutty aroma, 4-6 minutes. Remove from heat.",
+      "duration_min": 6,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "unsalted butter", "amount": "225g" }
+      ],
+      "exit_condition": "Butter is honey-colored with visible brown flecks on the bottom; nutty aroma; yields approximately 185g",
+      "notes": [
+        {
+          "text": "Use a light-colored pan — dark pans hide the browning and make it easy to burn.",
+          "critical": false,
+          "source": "agent"
+        },
+        {
+          "text": "Pull off heat slightly early — residual heat continues browning. Acrid or burnt smell means start over.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "chill-butter",
+      "title": "Chill Brown Butter",
+      "direction": "Transfer brown butter to the large mixing bowl. Cool at room temperature 10 minutes, then refrigerate until opaque and creamy — not liquid, not rock-hard. About 45-60 minutes.",
+      "duration_min": 60,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Brown butter is opaque and creamy, holds its shape when pressed, feels like softened butter",
+      "notes": [
+        {
+          "text": "Critical step. Warm butter melts sugar on contact and creates dough that spreads too thin. The butter needs to be properly chilled before mixing.",
+          "critical": true,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "rub-zest",
+      "title": "Rub Zest into Sugars",
+      "direction": "Zest 1-2 Meyer lemons (or yuzu if available) directly over the small bowl containing the light brown sugar and granulated sugar. Using fingertips, rub zest into sugar for 1 minute until fragrant and evenly distributed.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "Meyer lemon zest (or yuzu)", "amount": "~5g (1-2 lemons)" },
+        { "name": "light brown sugar", "amount": "110g" },
+        { "name": "granulated sugar", "amount": "130g" }
+      ],
+      "exit_condition": "Sugar is fragrant and slightly clumped from zest oil; visible green flecks throughout",
+      "notes": [
+        {
+          "text": "Rubbing zest into sugar before mixing releases volatile citrus oils and distributes them through the dough evenly. Do not skip — citrus flavors are volatile at 175°C and this step maximizes what survives baking.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "mix-butter-sugar",
+      "title": "Mix Butter and Sugars",
+      "direction": "Add the zest-infused sugars to the chilled brown butter. Mix with a spatula until evenly combined, about 2 minutes.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "chilled brown butter", "amount": "~185g" },
+        { "name": "zest-infused sugars", "amount": "240g combined" }
+      ],
+      "exit_condition": "Butter and sugars evenly combined; wet, sandy appearance; no dry pockets",
+      "notes": [
+        {
+          "text": "No creaming needed — brown butter is pre-melted, just chilled. You are combining, not aerating.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "add-eggs",
+      "title": "Add Eggs",
+      "direction": "Add the whole egg. Mix well until incorporated. Add the egg yolk. Mix until smooth and glossy.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "egg, large (whole)", "amount": "1 (~50g)" },
+        { "name": "egg yolk, large", "amount": "1 (~18g)" }
+      ],
+      "exit_condition": "Each egg fully incorporated before adding the next; mixture is smooth and glossy with no streaks",
+      "notes": [
+        {
+          "text": "Using 1 whole egg + 1 yolk (not yolks-only) is intentional for matcha. Yolks-only dough turns yellow and dulls the matcha green.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "add-wet",
+      "title": "Add Vanilla and Milk",
+      "direction": "Add vanilla extract and whole milk. Mix until smooth and fully incorporated.",
+      "duration_min": 1,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "vanilla extract", "amount": "8g" },
+        { "name": "whole milk", "amount": "40g" }
+      ],
+      "exit_condition": "Mixture is smooth, well combined, no visible separation",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "whisk-dry",
+      "title": "Whisk Dry Ingredients",
+      "direction": "In the medium mixing bowl, whisk together AP flour, einkorn flour, matcha, baking powder, and fine sea salt until evenly combined and no lumps of matcha remain.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": true,
+      "components": [
+        { "name": "AP flour", "amount": "190g" },
+        { "name": "einkorn flour (BSM)", "amount": "130g" },
+        { "name": "culinary matcha", "amount": "18g" },
+        { "name": "baking powder", "amount": "4g" },
+        { "name": "fine sea salt", "amount": "7g" }
+      ],
+      "exit_condition": "Dry ingredients uniformly combined; matcha color is evenly distributed throughout — no clumps or streaks",
+      "notes": [
+        {
+          "text": "Sift or whisk thoroughly — matcha clumps easily and uneven distribution shows as green streaks in the baked cookie.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "combine-dough",
+      "title": "Combine Wet and Dry",
+      "direction": "Add the dry ingredients to the wet mixture in two additions, folding with a spatula after each until just combined. Do not overmix.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "dry ingredient mixture", "amount": "349g combined" }
+      ],
+      "exit_condition": "No visible flour streaks; dough is cohesive and a uniform sage-green color",
+      "notes": [
+        {
+          "text": "Stop mixing as soon as no dry streaks remain. Overmixing develops gluten and produces tough cookies.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "fold-inclusions",
+      "title": "Fold in Inclusions",
+      "direction": "Add the chopped Yuzu Inspiration, chopped white chocolate, and freeze-dried raspberry (if using). Fold gently with a spatula until evenly distributed.",
+      "duration_min": 2,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "Valrhona Yuzu Inspiration, rough chopped", "amount": "200g" },
+        { "name": "white chocolate (Ghirardelli), chopped", "amount": "100g" },
+        { "name": "freeze-dried raspberry (optional)", "amount": "40g" }
+      ],
+      "exit_condition": "Inclusions evenly distributed throughout dough; no pockets of chocolate or fruit",
+      "notes": [
+        {
+          "text": "Yuzu Inspiration is fruit couverture (high cocoa butter, ~55% sugar) — it will pool rather than hold chip shape during baking. This is expected and desired.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "chill-dough",
+      "title": "Chill the Dough",
+      "direction": "Cover the bowl with plastic wrap and refrigerate for at least 2 hours, up to 48 hours.",
+      "duration_min": 120,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Dough is firm and cold throughout; scoops cleanly without sticking",
+      "notes": [
+        {
+          "text": "Mandatory for spread control with couverture. Cold dough also allows flavors to meld and the matcha to hydrate fully.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Dough can rest up to 48 hours — longer rest deepens flavor complexity.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Note dough color — what shade of green after resting?",
+          "type": "observation"
+        }
+      ]
+    },
+    {
+      "id": "preheat-oven",
+      "title": "Preheat Oven",
+      "direction": "Position oven rack in top third, about 15cm from heat source. Preheat oven to 350°F (175°C). Line baking sheets with parchment paper.",
+      "duration_min": 15,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Oven at 350°F (175°C); rack in top third position; baking sheets lined",
+      "notes": null,
+      "reminders": null
+    },
+    {
+      "id": "scoop-cookies",
+      "title": "Scoop and Space Cookies",
+      "direction": "Using a cookie scoop or spoon, portion dough into balls approximately 45-50g each (about 2 heaping tablespoons). Space 5cm apart on lined baking sheets.",
+      "duration_min": 5,
+      "timer": false,
+      "parallel": false,
+      "components": [
+        { "name": "chilled dough", "amount": "~900g total" }
+      ],
+      "exit_condition": "Dough portioned into even balls, 5cm apart on parchment; ~6-7 cookies per sheet",
+      "notes": [
+        {
+          "text": "Bake one sheet at a time on the top third rack. Do not crowd — the Yuzu Inspiration pools and cookies spread more than standard chips.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": null
+    },
+    {
+      "id": "bake-cookies",
+      "title": "Bake",
+      "direction": "Bake at 350°F (175°C) for 11-13 minutes until edges are set and tops look slightly underdone in the center. Rotate pan at 6 minutes.",
+      "duration_min": 12,
+      "timer": true,
+      "parallel": false,
+      "components": null,
+      "exit_condition": "Edges are set and golden; centers look slightly underdone (they firm up on the pan); Yuzu Inspiration has pooled into glossy puddles; cookies are not yet crisp",
+      "notes": [
+        {
+          "text": "Do not overbake. The Yuzu Inspiration and white chocolate are high-sugar — they brown faster than chocolate chips. Pull at 11 min if your oven runs hot.",
+          "critical": true,
+          "source": "agent"
+        },
+        {
+          "text": "Expected color: olive-sage green (not bright green). The einkorn carotenoids warm the matcha color. A distinctly yellow-brown cookie indicates overbaked or insufficient matcha.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Cookie color at pull — olive-sage, yellow-brown, or bright green?",
+          "type": "observation"
+        },
+        {
+          "prompt": "Actual bake time (minutes)",
+          "type": "measurement"
+        }
+      ]
+    },
+    {
+      "id": "salt-cool",
+      "title": "Salt and Cool",
+      "direction": "Immediately sprinkle warm cookies with Maldon flaky salt. Cool on the baking sheet for 10 minutes, then transfer to a wire rack.",
+      "duration_min": 10,
+      "timer": true,
+      "parallel": false,
+      "components": [
+        { "name": "Maldon flaky sea salt", "amount": "2g (for batch)" }
+      ],
+      "exit_condition": "Salt applied to all cookies while still warm; cookies have firmed up on the pan; centers no longer look wet",
+      "notes": [
+        {
+          "text": "Apply salt within 1-2 minutes of pulling from oven while the surface is still tacky — it will not adhere to fully cooled cookies.",
+          "critical": false,
+          "source": "agent"
+        }
+      ],
+      "reminders": [
+        {
+          "prompt": "Overall result — color, texture, flavor balance?",
+          "type": "observation"
+        },
+        {
+          "prompt": "Matcha strength: too strong / balanced / not forward enough?",
+          "type": "rating"
+        }
+      ]
+    }
+  ],
+  "nutrition": null,
+  "reheat": {
+    "methods": [
+      {
+        "name": "Microwave",
+        "instructions": "10-15 seconds on a plate. The Yuzu Inspiration pools will re-melt and come back to a glossy, soft texture.",
+        "duration_min": 1,
+        "notes": null
+      },
+      {
+        "name": "Oven",
+        "instructions": "Place on a baking sheet at 300°F (150°C) for 3-4 minutes. Restores slight crisp to the edges.",
+        "duration_min": 4,
+        "notes": null
+      }
+    ]
+  },
+  "technical_notes": [
+    {
+      "id": "TN1",
+      "title": "Sourdough Variation",
+      "body": "To use sourdough discard: omit whole milk, add 80g 100%-hydration discard. Reduce baking powder to 3g and add 1.5g baking soda (the acid from discard neutralizes the small amount of soda before it can damage chlorophyll at this level). Expect slightly more tang and a marginally denser crumb.",
+      "source": "agent"
+    },
+    {
+      "id": "TN2",
+      "title": "Escalate Matcha",
+      "body": "If matcha flavor is not forward enough on first bake, increase to 25g (7.8% of flour). The 18g starting point is conservative given the yuzu bitterness stack. Taste the raw dough before chilling — it should taste distinctly of matcha.",
+      "source": "agent"
+    },
+    {
+      "id": "TN3",
+      "title": "Color Expectations",
+      "body": "Expect olive-sage green, not bright jade. Einkorn golden carotenoids warm the matcha color; high heat converts some chlorophyll to pheophytin (olive-brown). A dull olive-brown is normal. A yellow-brown cookie indicates overbaking.",
+      "source": "agent"
+    },
+    {
+      "id": "TN4",
+      "title": "Yuzu Zest Sourcing",
+      "body": "Fresh yuzu: try Central Market or MT Supermarket (Lamar). Low probability. Dried yuzu peel available on Amazon as backup. Meyer lemon is the best substitute — similar aromatic profile. Use the freshest citrus available and zest generously.",
+      "source": "agent"
+    },
+    {
+      "id": "TN5",
+      "title": "Yuzu Inspiration Cost",
+      "body": "Valrhona Yuzu Inspiration is expensive (~$25-35/250g bag). The 100g Ghirardelli white chocolate cut reduces cost by roughly 33% while maintaining the creamy-citrus character. Chocosphere, Valrhona direct, or Amazon are the primary sources — not available at HEB.",
+      "source": "agent"
+    },
+    {
+      "id": "TN6",
+      "title": "Black Sesame Garnish (Optional)",
+      "body": "Toasted black sesame is the second most common matcha cookie garnish and adds visual contrast. Skip for the first bake to evaluate the base flavor triangle clearly. Add as a topping experiment on subsequent bakes.",
+      "source": "agent"
+    }
+  ],
+  "research": {
+    "sources": [
+      { "id": "S1", "name": "Valrhona Yuzu Inspiration (professional)", "type": "manufacturer", "url": "https://www.valrhona.com/en/our-products/for-professionals/laboratory-range/pioneer-range/inspiration-range/yuzu-inspiration" },
+      { "id": "S2", "name": "Valrhona Asia Red Berry Cookies", "type": "recipe-blog", "url": "https://www.valrhona.asia/au-EN/our-recipes/all-our-recipes/red-berry-cookies" },
+      { "id": "S3", "name": "Bastecutfold — Passionfruit Inspiration Cookies", "type": "recipe-blog", "url": "https://bastecutfold.com/dark-chocolate-passionfruit-cookies/" },
+      { "id": "S4", "name": "Bryony's Bakes — Strawberry Inspiration Cookies", "type": "recipe-blog", "url": "https://bryonysbakes.com/strawberry-inspiration-cookies/" },
+      { "id": "S5", "name": "Somebody Feed Seb — Matcha Sourdough Cookies", "type": "recipe-blog", "url": "https://somebodyfeedseb.com/matcha-sourdough-cookies/" },
+      { "id": "S6", "name": "What to Cook Today — Sourdough Matcha White Choc", "type": "recipe-blog", "url": "https://whattocooktoday.com/sourdough-matcha-white-chocolate-cookie.html" },
+      { "id": "S7", "name": "Sourdough Jesha — Matcha White Choc SD Cookies", "type": "recipe-blog", "url": "https://sourdoughjesha.com/matcha-sourdough-cookies-with-white-chocolate/" },
+      { "id": "S8", "name": "Eric Tries It — Brown Butter Matcha Cookies", "type": "recipe-blog", "url": "https://erictriesit.com/brown-butter-matcha-cookies/" },
+      { "id": "S9", "name": "Cooking Therapy — BB White Choc Matcha Cookies", "type": "recipe-blog", "url": "https://www.cooking-therapy.com/matcha-white-chocolate-chip-cookies/" },
+      { "id": "S10", "name": "Takes Two Eggs — Matcha Cookies", "type": "recipe-blog", "url": "https://takestwoeggs.com/matcha-cookies/" },
+      { "id": "S11", "name": "Love and Lemons — Matcha Cookies", "type": "recipe-blog", "url": "https://www.loveandlemons.com/matcha-cookies/" },
+      { "id": "S12", "name": "Justine Snacks — Matcha Cookies", "type": "recipe-blog", "url": "https://justinesnacks.com/matcha-cookies/" },
+      { "id": "S13", "name": "Busy But Cooking — Chewy Matcha Cookies", "type": "recipe-blog", "url": "https://busybutcooking.com/chewy-matcha-cookies/" },
+      { "id": "S14", "name": "Jacobsen Salt Co — Matcha Shortbread", "type": "guide", "url": "https://jacobsensalt.com/blogs/our-recipes/matcha-shortbread-cookies" },
+      { "id": "S15", "name": "First Agri — Matcha for Baking Guide", "type": "guide", "url": "https://first-agri.jp/matcha/columns/matcha-for-baking-guide" },
+      { "id": "S16", "name": "Jiu Eco — Chlorophyll Chemistry", "type": "guide", "url": "https://www.jiueco.com/cases-detail/why-matcha-changes-color" },
+      { "id": "S17", "name": "PMC — Gluten Fractionation + Cookie Quality", "type": "guide", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5306027/" },
+      { "id": "S18", "name": "Innichka Chef — Matcha Butter Cookies (einkorn endorsed)", "type": "recipe-blog", "url": "https://www.innichkachef.com/post/matcha-butter-cookies-video" },
+      { "id": "S19", "name": "Keylink — Valrhona Yuzu Inspiration profile", "type": "guide", "url": "https://www.keylink.org/resources/the-blog/valrhona-cocoa-library-yuzu-inspiration" },
+      { "id": "S20", "name": "Matchalicious Girl — Matcha Yuzu Cookies", "type": "recipe-blog", "url": "https://matchaliciousgirl.substack.com/p/matcha-yuzu-cookies" },
+      { "id": "S21", "name": "Food Republic — Skip High-Quality Matcha for Baking", "type": "guide", "url": "https://www.foodrepublic.com/1723216/skip-high-quality-matcha-baking/" },
+      { "id": "S22", "name": "Chenée Today — Matcha Choc Chip Cookies", "type": "recipe-blog", "url": "https://cheneetoday.com/matcha-chocolate-chip-cookies/" },
+      { "id": "S23", "name": "King Arthur Baking — Bread Flour in Cookies", "type": "guide", "url": "https://www.kingarthurbaking.com/blog/2020/09/02/bread-flour-for-cookies" },
+      { "id": "S24", "name": "Boston Girl Bakes — Flour Comparison in Cookies", "type": "guide", "url": "https://www.bostongirlbakes.com/cookie-science-which-flour-is-best-for-cookies/" }
+    ],
+    "techniques": [
+      {
+        "name": "Brown butter for matcha",
+        "description": "Confirmed complementary by 7/12 surveyed matcha recipes. Nutty/toasty register pairs with matcha earthiness.",
+        "confidence": "high"
+      },
+      {
+        "name": "Chlorophyll protection",
+        "description": "pH 6-7 optimal for matcha green. Baking soda (pH ~9) triggers rapid chlorophyll degradation. Baking powder only; discard optional at low amounts.",
+        "confidence": "high"
+      },
+      {
+        "name": "Zest rubbed into sugar",
+        "description": "Releases volatile citrus oils into the fat phase of sugar before mixing, distributing aromatics throughout dough.",
+        "confidence": "high"
+      },
+      {
+        "name": "Rough chop fruit couverture",
+        "description": "Yuzu Inspiration and similar Inspiration range products should be roughly chopped, not used whole. Official Valrhona cookie recipes call for chopped fèves.",
+        "confidence": "high"
+      }
+    ],
+    "strategy": "Parallel multi-agent research with 6 agents (technique, sourdough adaptation, yuzu couverture behavior, salt garnish, sugar type, einkorn flour)",
+    "sourceCount": 24,
+    "date": "2026-09-23"
+  }
+}
