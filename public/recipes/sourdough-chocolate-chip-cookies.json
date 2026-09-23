@@ -1612,13 +1612,22 @@
             "rationale": "Consistent across sources"
           },
           {
-            "id": "chocolate-fold",
-            "name": "Semisweet Chocolate Chips",
-            "total": 300,
+            "id": "chocolate-primary",
+            "name": "Nestlé Toll House Semi-Sweet Morsels",
+            "total": 200,
             "unit": "g",
             "breakdown": null,
             "confidence": "medium",
-            "rationale": "Fold into dough. Current mix: 200g Nestlé + 100g Ghirardelli semisweet chips. v2.5.0 will split to semisweet/dark blend."
+            "rationale": "Bulk fold chocolate. Cheap, consistent, reliable baseline."
+          },
+          {
+            "id": "chocolate-accent",
+            "name": "Ghirardelli Semi-Sweet Chocolate Chips",
+            "total": 100,
+            "unit": "g",
+            "breakdown": null,
+            "confidence": "medium",
+            "rationale": "Accent fold chocolate. v2.5.0 will swap to a darker type."
           },
           {
             "id": "flaky-salt",
