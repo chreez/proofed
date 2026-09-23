@@ -25,7 +25,7 @@
       "itemsPerBatch": 6
     }
   },
-  "version": "v2.5.0",
+  "version": "v2.6.0",
   "change_log": [
     {
       "version": "v1.0.0",
@@ -1625,6 +1625,169 @@
           ]
         }
       ]
+    },
+    {
+      "version": "v2.6.0",
+      "date": "2026-09-23",
+      "summary": "50/50 dark/semisweet chocolate split: chocolate-primary (semisweet, 150g) + chocolate-accent (dark, 150g). Brand examples in parens in ingredient names. Ghirardelli 60% Bittersweet as default dark; Guittard 64% bar noted as top alternative.",
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 225,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "6/7 agents confirmed 225-227g browned butter as consensus"
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 210,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across sources; 2:1 brown-to-white ratio"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 96,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Provides crispness and spread balance"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 54,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Yolks only removes excess moisture; validated by JennyBlogs bake-off winner"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "100-150g sweet spot for overnight ferment; discard preferred over active"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 13,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "1 tbsp; bean paste upgrade recommended"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "AP-dominant blend"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 70,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "AP+bread blend is our v1 differentiator; most blogs use AP only but KAB and Edd Kimber validate the blend"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour (Barton Springs Mill)",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Preferred swap: 50g from AP + 50g from bread per batch. Tested across multiple double-batch bakes."
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 5,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Reacts with sourdough acid for lift and browning"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Insurance lift; some recipes omit"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 6,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Consistent across sources"
+            },
+            {
+              "id": "chocolate-primary",
+              "name": "Semisweet Chocolate Chips (e.g. Nestlé Toll House)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Bulk fold chocolate. 150g semisweet half of the 300g fold."
+            },
+            {
+              "id": "chocolate-accent",
+              "name": "Dark Chocolate Chips (e.g. Ghirardelli 60% Bittersweet)",
+              "total": 150,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Darker accent fold chocolate. 150g dark half of the 300g fold. Guittard 64% bar (Central Market) is the top-ranked alternative."
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 2,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "Universal across every source"
+            }
+          ]
+        },
+        {
+          "stageId": "BAKE",
+          "stageName": "Bake",
+          "ingredients": [
+            {
+              "id": "chocolate-tops",
+              "name": "Semisweet Chocolate Chips",
+              "total": 50,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Press into tops of shaped cookies before baking. Kept separate from fold chocolate — gathered at bake time, not with dough ingredients."
+            }
+          ]
+        }
+      ]
     }
   ],
   "vessels": [
@@ -1776,21 +1939,21 @@
           },
           {
             "id": "chocolate-primary",
-            "name": "Semisweet Chocolate Chips",
-            "total": 200,
+            "name": "Semisweet Chocolate Chips (e.g. Nestlé Toll House)",
+            "total": 150,
             "unit": "g",
             "breakdown": null,
             "confidence": "medium",
-            "rationale": "Bulk fold chocolate. 200g of the 300g dough fold."
+            "rationale": "Bulk fold chocolate. 150g semisweet half of the 300g fold."
           },
           {
             "id": "chocolate-accent",
-            "name": "Semisweet Chocolate Chips",
-            "total": 100,
+            "name": "Dark Chocolate Chips (e.g. Ghirardelli 60% Bittersweet)",
+            "total": 150,
             "unit": "g",
             "breakdown": null,
             "confidence": "medium",
-            "rationale": "Accent fold chocolate. 100g of the 300g dough fold. Swap this one for a darker type when testing."
+            "rationale": "Darker accent fold chocolate. 150g dark half of the 300g fold. Guittard 64% bar (Central Market) is the top-ranked alternative."
           },
           {
             "id": "flaky-salt",
@@ -2033,18 +2196,18 @@
     {
       "id": "fold-chocolate",
       "title": "Fold in Chocolate",
-      "direction": "Using a rubber spatula, fold all 300g of chocolate chips into the dough until evenly distributed (200g primary + 100g accent).",
+      "direction": "Using a rubber spatula, fold all 300g of chocolate chips into the dough until evenly distributed (150g semisweet + 150g dark).",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": [
         {
-          "name": "semisweet chocolate chips (primary)",
-          "amount": "200g"
+          "name": "semisweet chocolate chips",
+          "amount": "150g"
         },
         {
-          "name": "semisweet chocolate chips (accent)",
-          "amount": "100g"
+          "name": "dark chocolate chips",
+          "amount": "150g"
         }
       ],
       "exit_condition": "Chocolate evenly distributed throughout dough",
@@ -5503,7 +5666,7 @@
       {
         "id": "chocolate-accent",
         "behavior": "linear",
-        "note": "Can vary ±20% to taste; v2.5.0 swaps to darker type"
+        "note": "Can vary ±20% to taste; swap brand/type per bake"
       },
       {
         "id": "chocolate-tops",
