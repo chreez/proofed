@@ -1,0 +1,31 @@
+{
+  "recipeId": "sourdough-chocolate-chip-cookies",
+  "date": "2026-09-07",
+  "processedAt": "2026-09-07T21:33:46.353Z",
+  "photos": [
+    {
+      "name": "bake-kits",
+      "thumb": "bake-kits-400w.webp",
+      "src": "bake-kits-800w.webp",
+      "summary": "Multiple Ziploc freezer bags filled with portioned cookie dough balls arranged on the counter, one labeled with a handwritten count. Freezer bake kits packed for storage after shaping."
+    },
+    {
+      "name": "img-8507",
+      "thumb": "img-8507-400w.webp",
+      "src": "img-8507-800w.webp",
+      "summary": "Large square cambro container filled with mixed cookie dough resting on a kitchen scale, chocolate chips visible throughout. Mixed dough weighed before the overnight ferment."
+    },
+    {
+      "name": "img-8519",
+      "thumb": "img-8519-400w.webp",
+      "src": "img-8519-800w.webp",
+      "summary": "Sheet tray packed with rows of portioned dough balls topped with pressed-in chocolate chips, alongside a plastic-wrapped tray of a few larger dough rounds. Shaped cookies staged before freezing."
+    },
+    {
+      "name": "img-8533",
+      "thumb": "img-8533-400w.webp",
+      "src": "img-8533-800w.webp",
+      "summary": "Three baked chocolate chip cookies cooling on a round wire rack, showing crisp golden edges, crackled tops, and visible chocolate pools. First bake from the frozen kit."
+    }
+  ]
+}
