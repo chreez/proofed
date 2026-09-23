@@ -1418,13 +1418,22 @@
               "rationale": "Consistent across sources"
             },
             {
-              "id": "chocolate-fold",
-              "name": "Semisweet Chocolate Chips",
-              "total": 300,
+              "id": "chocolate-primary",
+              "name": "Nestlé Toll House Semi-Sweet Morsels",
+              "total": 200,
               "unit": "g",
               "breakdown": null,
               "confidence": "medium",
-              "rationale": "Fold into dough. Current mix: 200g Nestlé + 100g Ghirardelli semisweet chips. v2.5.0 will split to semisweet/dark blend."
+              "rationale": "Bulk fold chocolate. Cheap, consistent, reliable baseline."
+            },
+            {
+              "id": "chocolate-accent",
+              "name": "Ghirardelli Semi-Sweet Chocolate Chips",
+              "total": 100,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "Accent fold chocolate. v2.5.0 will swap to a darker type."
             },
             {
               "id": "flaky-salt",
@@ -1852,14 +1861,18 @@
     {
       "id": "fold-chocolate",
       "title": "Fold in Chocolate",
-      "direction": "Using a rubber spatula, fold all 300g of the semisweet chocolate chips into the dough until evenly distributed.",
+      "direction": "Using a rubber spatula, fold all 300g of chocolate chips into the dough until evenly distributed (200g Nestlé + 100g Ghirardelli).",
       "duration_min": 1,
       "timer": false,
       "parallel": false,
       "components": [
         {
-          "name": "semisweet chocolate chips",
-          "amount": "300g"
+          "name": "Nestlé Semi-Sweet Morsels",
+          "amount": "200g"
+        },
+        {
+          "name": "Ghirardelli Semi-Sweet Chips",
+          "amount": "100g"
         }
       ],
       "exit_condition": "Chocolate evenly distributed throughout dough",
@@ -5311,9 +5324,14 @@
         "behavior": "linear"
       },
       {
-        "id": "chocolate-fold",
+        "id": "chocolate-primary",
         "behavior": "linear",
-        "note": "Can vary ±20% to taste; v2.5.0 will split to semisweet + dark blend"
+        "note": "Can vary ±20% to taste"
+      },
+      {
+        "id": "chocolate-accent",
+        "behavior": "linear",
+        "note": "Can vary ±20% to taste; v2.5.0 swaps to darker type"
       },
       {
         "id": "chocolate-tops",
