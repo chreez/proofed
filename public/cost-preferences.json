@@ -53,12 +53,20 @@
     },
     "chocolate": {
       "lastUsed": {
-        "name": "Guittard 72% Cacao Bittersweet Baking Wafers (user-supplied — estimate; adjust package price manually if known)",
-        "brand": "Guittard",
-        "sizeGrams": 255,
-        "packagePrice": 12.99,
-        "packageSize": "~9 oz (255 g)",
-        "updatedAt": "2026-07-31"
+        "name": "Nestle Toll House Semi Sweet Chocolate Chips",
+        "brand": "Nestl\u00e9",
+        "sizeGrams": 1021,
+        "packagePrice": 10.88,
+        "packageSize": "36 oz",
+        "updatedAt": "2026-09-23"
+      },
+      "pinned": {
+        "name": "Nestle Toll House Semi Sweet Chocolate Chips",
+        "brand": "Nestl\u00e9",
+        "sizeGrams": 1021,
+        "packagePrice": 10.88,
+        "packageSize": "36 oz",
+        "updatedAt": "2026-09-23"
       }
     },
     "flour": {
@@ -187,6 +195,60 @@
         "packagePrice": 2.5,
         "packageSize": "26.5 oz",
         "updatedAt": "2026-07-31"
+      }
+    },
+    "dark-brown-sugar": {
+      "pinned": {
+        "name": "Imperial Sugar Pure Cane Dark Brown Sugar",
+        "brand": "Imperial Sugar",
+        "sizeGrams": 907,
+        "packagePrice": 2.82,
+        "packageSize": "2 lbs",
+        "updatedAt": "2026-09-23"
+      },
+      "lastUsed": {
+        "name": "Imperial Sugar Pure Cane Dark Brown Sugar",
+        "brand": "Imperial Sugar",
+        "sizeGrams": 907,
+        "packagePrice": 2.82,
+        "packageSize": "2 lbs",
+        "updatedAt": "2026-09-23"
+      }
+    },
+    "granulated-sugar": {
+      "pinned": {
+        "name": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+        "brand": "H-E-B",
+        "sizeGrams": 1814,
+        "packagePrice": 3.54,
+        "packageSize": "4 lbs",
+        "updatedAt": "2026-09-23"
+      },
+      "lastUsed": {
+        "name": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+        "brand": "H-E-B",
+        "sizeGrams": 1814,
+        "packagePrice": 3.54,
+        "packageSize": "4 lbs",
+        "updatedAt": "2026-09-23"
+      }
+    },
+    "flaky-salt": {
+      "pinned": {
+        "name": "Maldon Sea Salt Flakes",
+        "brand": "Maldon",
+        "sizeGrams": 241,
+        "packagePrice": 5.98,
+        "packageSize": "8.5 oz",
+        "updatedAt": "2026-09-23"
+      },
+      "lastUsed": {
+        "name": "Maldon Sea Salt Flakes",
+        "brand": "Maldon",
+        "sizeGrams": 241,
+        "packagePrice": 5.98,
+        "packageSize": "8.5 oz",
+        "updatedAt": "2026-09-23"
       }
     }
   }

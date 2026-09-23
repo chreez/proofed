@@ -4485,6 +4485,373 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-09-19",
+      "start_date": "2026-09-17",
+      "version": "v2.3.0",
+      "summary": "First 2× batch at v2.3.0. Browned butter 9/17, mixed 9/18, portioned 46 cookies (57g min, many hit 59g) and frozen 9/19 — under expected yield by ~3 cookies.",
+      "notes": [
+        "Browned butter 9/17. Mixed dough 9/18. Portioned and frozen 9/19.",
+        "2× scale. 46 cookies at 57g minimum; many hit 59g. Under expected yield (~49 cookies at 57g after accounting for browned butter mass loss).",
+        "Chocolate: 50/50 Ghirardelli semisweet and Nestlé semisweet — deviation from v2.3.0 baseline ratio of 200/150g Nestlé/Ghirardelli."
+      ],
+      "photos": [
+        {
+          "name": "bake-kits-angle-2",
+          "thumb": "/images/sourdough-chocolate-chip-cookies/2026-09-19/bake-kits-angle-2-400w.webp",
+          "src": "/images/sourdough-chocolate-chip-cookies/2026-09-19/bake-kits-angle-2-800w.webp",
+          "alt": "Six Ziploc freezer bags of portioned sourdough chocolate chip cookie dough balls labeled 9/19 spread across a kitchen counter — 2× batch of 46 cookies packed at ~57–59g each, ready for the freezer.",
+          "hero": true
+        }
+      ],
+      "next_time": [
+        {
+          "text": "Test a darker chocolate (60–70% bittersweet) for half the blend — pair against Nestlé or HEB semisweet to compare."
+        },
+        {
+          "text": "Portion at exactly 57g to hit expected yield — drift to 59g costs 3 cookies per 2× batch."
+        }
+      ],
+      "bake_notes": [
+        {
+          "timestamp": "2026-09-17T18:00:00Z",
+          "raw": "browned butter",
+          "notable": false,
+          "processing": "prep"
+        },
+        {
+          "timestamp": "2026-09-18T18:00:00Z",
+          "raw": "mixed started on 9/17 - browned butter - 9.18 was when i mixed",
+          "curated": "Browned butter 9/17. Mixed dough 9/18.",
+          "notable": false,
+          "processing": "mix"
+        },
+        {
+          "timestamp": "2026-09-19T18:00:00Z",
+          "raw": "i had 46 cookies with a 2x scale. cookies were 57g each. when i mise i always do a minimum of 57g.. a lot of them hit 59 so i expect that i woulda hit under the expected yield.",
+          "curated": "2× scale yielded 46 cookies at 57g minimum; many hit 59g. Under expected yield by ~3 cookies.",
+          "notable": true,
+          "processing": "portioning"
+        },
+        {
+          "timestamp": "2026-09-19T18:01:00Z",
+          "raw": "i think i want to do half ghira and half nestle/heb brand (whichever of the cheaper chocolate i happen to have on hand). wondering if i should test out a different type of chocolate for the other half of the chocolate. perhaps a darker choco, paired with the nestle(or heb) semisweet.",
+          "curated": "This bake: 50/50 Ghirardelli semisweet and Nestlé semisweet. Future: consider testing darker chocolate (60–70%) for half the blend.",
+          "notable": true,
+          "processing": "portioning"
+        },
+        {
+          "timestamp": "2026-09-19T18:02:00Z",
+          "raw": "confirm semi sweet.",
+          "notable": false,
+          "processing": "portioning"
+        }
+      ],
+      "ingredients": [
+        {
+          "stageId": "PREP",
+          "stageName": "Brown Butter & Mix Dough",
+          "ingredients": [
+            {
+              "id": "butter",
+              "name": "Unsalted Butter",
+              "total": 450,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (225g). Browned before use."
+            },
+            {
+              "id": "dark-brown-sugar",
+              "name": "Dark Brown Sugar",
+              "total": 420,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (210g)"
+            },
+            {
+              "id": "granulated-sugar",
+              "name": "Granulated Sugar",
+              "total": 192,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (96g)"
+            },
+            {
+              "id": "egg-yolks",
+              "name": "Egg Yolks (large)",
+              "total": 108,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (54g ≈ 6 yolks)"
+            },
+            {
+              "id": "sourdough-discard",
+              "name": "Sourdough Discard (100% hydration)",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (150g)"
+            },
+            {
+              "id": "vanilla",
+              "name": "Vanilla Extract",
+              "total": 26,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (13g)"
+            },
+            {
+              "id": "ap-flour",
+              "name": "All-Purpose Flour",
+              "total": 300,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (150g)"
+            },
+            {
+              "id": "bread-flour",
+              "name": "Bread Flour",
+              "total": 140,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "2× base (70g)"
+            },
+            {
+              "id": "einkorn-flour",
+              "name": "Einkorn Flour (Barton Springs Mill)",
+              "total": 200,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (100g)"
+            },
+            {
+              "id": "baking-soda",
+              "name": "Baking Soda",
+              "total": 10,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (5g)"
+            },
+            {
+              "id": "baking-powder",
+              "name": "Baking Powder",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "medium",
+              "rationale": "2× base (2g)"
+            },
+            {
+              "id": "fine-sea-salt",
+              "name": "Fine Sea Salt",
+              "total": 12,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (6g)"
+            },
+            {
+              "id": "chocolate",
+              "name": "Semisweet Chocolate Chips (Nestlé + Ghirardelli mix)",
+              "total": 700,
+              "unit": "g",
+              "breakdown": [
+                {
+                  "label": "Nestlé semisweet",
+                  "amount": 350
+                },
+                {
+                  "label": "Ghirardelli semisweet",
+                  "amount": 350
+                }
+              ],
+              "confidence": "medium",
+              "rationale": "2× base (350g total). This bake: 50/50 Nestlé/Ghirardelli (deviation from v2.3.0 200/100/50 ratio — user trying equal split)."
+            },
+            {
+              "id": "flaky-salt",
+              "name": "Flaky Sea Salt (Maldon)",
+              "total": 4,
+              "unit": "g",
+              "breakdown": null,
+              "confidence": "high",
+              "rationale": "2× base (2g)"
+            }
+          ]
+        }
+      ],
+      "cost": {
+        "items": [
+          {
+            "ingredientId": "butter",
+            "sourceName": "Hill Country Fare Unsalted Butter Sticks",
+            "packageSize": "4 ct (1 lb)",
+            "packagePrice": 2.78,
+            "cost": 2.76,
+            "sourceType": "heb",
+            "name": "Unsalted Butter",
+            "amount": 450,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "dark-brown-sugar",
+            "sourceName": "Imperial Sugar Pure Cane Dark Brown Sugar",
+            "packageSize": "2 lbs",
+            "packagePrice": 2.82,
+            "cost": 1.3,
+            "sourceType": "heb",
+            "name": "Dark Brown Sugar",
+            "amount": 420,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "granulated-sugar",
+            "sourceName": "H-E-B Pure Cane Extra Fine Granulated Sugar",
+            "packageSize": "4 lbs",
+            "packagePrice": 3.54,
+            "cost": 0.38,
+            "sourceType": "heb",
+            "name": "Granulated Sugar",
+            "amount": 192,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "egg-yolks",
+            "sourceName": "Hill Country Fare Grade A Large White Eggs",
+            "packageSize": "12 ct",
+            "packagePrice": 1.67,
+            "cost": 0,
+            "sourceType": "heb",
+            "name": "Egg Yolks (large)",
+            "amount": 108,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "sourdough-discard",
+            "sourceName": "Manual entry",
+            "packageSize": "0g",
+            "packagePrice": 0,
+            "cost": 0,
+            "sourceType": "manual",
+            "name": "Sourdough Discard (100% hydration)",
+            "amount": 300,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "vanilla",
+            "sourceName": "H-E-B Pure Madagascar Bourbon Vanilla Extract",
+            "packageSize": "4 oz",
+            "packagePrice": 9.98,
+            "cost": 2.3,
+            "sourceType": "heb",
+            "name": "Vanilla Extract",
+            "amount": 26,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "ap-flour",
+            "sourceName": "King Arthur Unbleached All-Purpose Flour",
+            "packageSize": "5 lbs",
+            "packagePrice": 5.48,
+            "cost": 0.72,
+            "sourceType": "heb",
+            "name": "All-Purpose Flour",
+            "amount": 300,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "bread-flour",
+            "sourceName": "King Arthur Unbleached Bread Flour",
+            "packageSize": "5 lbs",
+            "packagePrice": 5.78,
+            "cost": 0.36,
+            "sourceType": "heb",
+            "name": "Bread Flour",
+            "amount": 140,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "einkorn-flour",
+            "sourceName": "Jovial Organic Einkorn All-Purpose Flour",
+            "packageSize": "2 lb",
+            "packagePrice": 9.29,
+            "cost": 2.04,
+            "sourceType": "heb",
+            "name": "Einkorn Flour (Barton Springs Mill)",
+            "amount": 200,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "baking-soda",
+            "sourceName": "Arm & Hammer Pure Baking Soda",
+            "packageSize": "8 oz",
+            "packagePrice": 0.82,
+            "cost": 0.04,
+            "sourceType": "heb",
+            "name": "Baking Soda",
+            "amount": 10,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "baking-powder",
+            "sourceName": "Hill Country Fare Double Acting Baking Powder",
+            "packageSize": "8.1 oz",
+            "packagePrice": 2.08,
+            "cost": 0.04,
+            "sourceType": "heb",
+            "name": "Baking Powder",
+            "amount": 4,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "fine-sea-salt",
+            "sourceName": "H-E-B Fine Mediterranean Sea Salt Crystals",
+            "packageSize": "26.5 oz",
+            "packagePrice": 2.5,
+            "cost": 0.04,
+            "sourceType": "heb",
+            "name": "Fine Sea Salt",
+            "amount": 12,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "chocolate",
+            "sourceName": "Nestle Toll House Semi Sweet Chocolate Chips",
+            "packageSize": "36 oz",
+            "packagePrice": 10.88,
+            "cost": 7.46,
+            "sourceType": "heb",
+            "name": "Semisweet Chocolate Chips (Nestlé + Ghirardelli)",
+            "amount": 700,
+            "unit": "g"
+          },
+          {
+            "ingredientId": "flaky-salt",
+            "sourceName": "Maldon Sea Salt Flakes",
+            "packageSize": "8.5 oz",
+            "packagePrice": 5.98,
+            "cost": 0.1,
+            "sourceType": "heb",
+            "name": "Flaky Sea Salt (Maldon)",
+            "amount": 4,
+            "unit": "g"
+          }
+        ],
+        "total": 17.54,
+        "perServing": 0.38,
+        "servings": 46
+      }
     }
   ],
   "reheat": {
